@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import bankfeedbankaccount as shared_bankfeedbankaccount
 from ..shared import security as shared_security

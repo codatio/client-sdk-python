@@ -1,5 +1,6 @@
+from __future__ import annotations
 import dataclasses
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from sdk import utils
 from typing import Optional
@@ -38,22 +39,22 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice
     MULTI_PART = "MultiPart"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation:
     details: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('details') }})
     field: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('field') }})
-    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref') }})
+    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfo:
-    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information') }})
-    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings') }})
+    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information'), 'exclude': lambda f: f is None }})
+    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoice:
     description: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('description') }})
@@ -61,8 +62,8 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice
     required: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('required') }})
     type: GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoiceOptionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
     value: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('value') }})
-    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel') }})
-    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation') }})
+    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel'), 'exclude': lambda f: f is None }})
+    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation'), 'exclude': lambda f: f is None }})
     
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoiceOptionTypeEnum(str, Enum):
     ARRAY = "Array"
@@ -75,22 +76,22 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice
     MULTI_PART = "MultiPart"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation:
     details: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('details') }})
     field: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('field') }})
-    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref') }})
+    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfo:
-    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information') }})
-    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings') }})
+    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information'), 'exclude': lambda f: f is None }})
+    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoice:
     description: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('description') }})
@@ -98,9 +99,9 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice
     required: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('required') }})
     type: GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoiceOptionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
     value: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('value') }})
-    options: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('options') }})
-    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel') }})
-    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation') }})
+    options: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('options'), 'exclude': lambda f: f is None }})
+    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel'), 'exclude': lambda f: f is None }})
+    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoicePushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation'), 'exclude': lambda f: f is None }})
     
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoiceOptionTypeEnum(str, Enum):
     ARRAY = "Array"
@@ -113,22 +114,22 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice
     MULTI_PART = "MultiPart"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation:
     details: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('details') }})
     field: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('field') }})
-    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref') }})
+    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushValidationInfo:
-    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information') }})
-    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings') }})
+    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information'), 'exclude': lambda f: f is None }})
+    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoice:
     description: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('description') }})
@@ -136,9 +137,9 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice
     required: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('required') }})
     type: GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoiceOptionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
     value: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('value') }})
-    options: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('options') }})
-    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel') }})
-    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation') }})
+    options: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('options'), 'exclude': lambda f: f is None }})
+    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel'), 'exclude': lambda f: f is None }})
+    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoicePushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation'), 'exclude': lambda f: f is None }})
     
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoiceOptionTypeEnum(str, Enum):
     ARRAY = "Array"
@@ -151,22 +152,22 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice
     MULTI_PART = "MultiPart"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushValidationInfoPushFieldValidation:
     details: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('details') }})
     field: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('field') }})
-    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref') }})
+    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushValidationInfo:
-    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information') }})
-    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings') }})
+    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information'), 'exclude': lambda f: f is None }})
+    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice:
     description: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('description') }})
@@ -174,9 +175,9 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice
     required: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('required') }})
     type: GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoiceOptionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
     value: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('value') }})
-    options: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('options') }})
-    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel') }})
-    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation') }})
+    options: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('options'), 'exclude': lambda f: f is None }})
+    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel'), 'exclude': lambda f: f is None }})
+    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoicePushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation'), 'exclude': lambda f: f is None }})
     
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionOptionTypeEnum(str, Enum):
     ARRAY = "Array"
@@ -189,31 +190,31 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionOptionTypeEnum(s
     MULTI_PART = "MultiPart"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushValidationInfoPushFieldValidation:
     details: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('details') }})
     field: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('field') }})
-    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref') }})
+    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ref'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushValidationInfo:
-    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information') }})
-    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings') }})
+    information: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('information'), 'exclude': lambda f: f is None }})
+    warnings: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('warnings'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOption:
     description: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('description') }})
     display_name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('displayName') }})
     required: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('required') }})
     type: GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionOptionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
-    options: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('options') }})
-    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel') }})
-    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation') }})
+    options: Optional[list[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('options'), 'exclude': lambda f: f is None }})
+    rel: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('rel'), 'exclude': lambda f: f is None }})
+    validation: Optional[GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('validation'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass
