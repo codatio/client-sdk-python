@@ -1,7 +1,12 @@
 configVersion: 1.0.0
+management:
+  docChecksum: 4015bad9a263dec3fde8cdb3b179bd73
+  docVersion: "1.0"
+  speakeasyVersion: 1.7.0
 generation:
+  telemetryEnabled: false
   sdkClassName: codatio
   sdkFlattening: true
 python:
-  version: 0.0.1
+  version: 0.1.0
   packageName: codatio-assess
