@@ -4,17 +4,17 @@
 ## SDK Installation
 
 ```bash
-pip install codatio-accounting
+pip install codat-accounting
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import codatio
-from codatio.models import operations, shared
+import codat
+from codat.models import operations, shared
 
-s = codatio.Codatio()
+s = codat.Codat()
 s.config_security(
     security=shared.Security(
         api_key="YOUR_API_KEY_HERE",
