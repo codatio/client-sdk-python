@@ -1,0 +1,15 @@
+src/codatio/files.py
+src/codatio/sdk.py
+setup.py
+src/codatio/__init__.py
+src/codatio/models/__init__.py
+src/codatio/utils/__init__.py
+src/codatio/utils/retries.py
+src/codatio/utils/utils.py
+src/codatio/models/operations/download_files.py
+src/codatio/models/operations/list_files.py
+src/codatio/models/operations/upload_files.py
+src/codatio/models/operations/__init__.py
+src/codatio/models/shared/security.py
+src/codatio/models/shared/__init__.py
+USAGE.md
