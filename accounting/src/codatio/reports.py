@@ -22,7 +22,7 @@ class Reports:
     
     def get_aged_creditors_report(self, request: operations.GetAgedCreditorsReportRequest) -> operations.GetAgedCreditorsReportResponse:
         r"""Aged creditors report
-        Returns aged creditors report for company
+        Returns aged creditors report for company that shows the total balance owed by a business to its suppliers over time.
         """
         
         base_url = self._server_url
@@ -48,7 +48,7 @@ class Reports:
     
     def get_aged_debtors_report(self, request: operations.GetAgedDebtorsReportRequest) -> operations.GetAgedDebtorsReportResponse:
         r"""Aged debtors report
-        Returns aged debtors report for company.
+        Returns aged debtors report for company that shows the total outstanding balance due from customers to the business over time.
         """
         
         base_url = self._server_url
