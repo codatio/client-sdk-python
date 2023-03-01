@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-from ..shared import security as shared_security
+
 
 
 @dataclasses.dataclass
@@ -12,7 +12,7 @@ class PostDirectIncomeAttachmentPathParams:
 
 @dataclasses.dataclass
 class PostDirectIncomeAttachmentSecurity:
-    api_key: shared_security.SchemeAPIKey = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
+    api_key: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
 
 @dataclasses.dataclass
