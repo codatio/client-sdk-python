@@ -1,7 +1,6 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-from ..shared import security as shared_security
 from codatio import utils
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
@@ -69,7 +68,7 @@ class PushJournalSourceModifiedDateInput:
 
 @dataclasses.dataclass
 class PushJournalSecurity:
-    api_key: shared_security.SchemeAPIKey = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
+    api_key: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
 
 @dataclasses.dataclass

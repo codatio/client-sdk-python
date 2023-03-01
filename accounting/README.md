@@ -17,17 +17,13 @@ from codatio.models import operations, shared
 s = codatio.Codatio()
 s.config_security(
     security=shared.Security(
-        api_key=shared.SchemeAPIKey(
-            api_key="YOUR_API_KEY_HERE",
-        ),
+        api_key="YOUR_API_KEY_HERE",
     )
 )
    
 req = operations.GetAccountTransactionRequest(
     security=operations.GetAccountTransactionSecurity(
-        api_key=shared.SchemeAPIKey(
-            api_key="YOUR_API_KEY_HERE",
-        ),
+        api_key="YOUR_API_KEY_HERE",
     ),
     path_params=operations.GetAccountTransactionPathParams(
         account_transaction_id="unde",

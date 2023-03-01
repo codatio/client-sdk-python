@@ -8,5 +8,5 @@ generation:
   sdkClassName: codatio
   sdkFlattening: true
 python:
-  version: 0.1.0
+  version: 0.1.1
   packageName: codatio-accounting
