@@ -1,0 +1,6 @@
+configVersion: 1.0.0
+generation:
+  sdkClassName: codatio
+go:
+  version: 0.0.1
+  packageName: codatio-files-sdk
