@@ -46,11 +46,6 @@ class Sync:
             if utils.match_content_type(content_type, "application/json"):
                 out = utils.unmarshal_json(r.text, Optional[operations.PostSyncLatest200ApplicationJSON])
                 res.post_sync_latest_200_application_json_object = out
-            if utils.match_content_type(content_type, "text/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.PostSyncLatest200TextJSON])
-                res.post_sync_latest_200_text_json_object = out
-            if utils.match_content_type(content_type, "text/plain"):
-                res.post_sync_latest_200_text_plain_object = r.content
 
         return res
 
