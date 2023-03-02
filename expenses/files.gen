@@ -1,4 +1,5 @@
 src/codat/configuration.py
+src/codat/connections.py
 src/codat/expenses.py
 src/codat/mapping_options.py
 src/codat/sync.py
@@ -13,6 +14,7 @@ src/codat/utils/retries.py
 src/codat/utils/utils.py
 src/codat/models/operations/get_company_configuration.py
 src/codat/models/operations/save_company_configuration.py
+src/codat/models/operations/create_partnerexpense_connection.py
 src/codat/models/operations/create_expense_dataset.py
 src/codat/models/operations/upload_attachment.py
 src/codat/models/operations/get_mapping_options.py

@@ -2,6 +2,7 @@
 import requests
 from . import utils
 from .configuration import Configuration
+from .connections import Connections
 from .expenses import Expenses
 from .mapping_options import MappingOptions
 from .sync import Sync
@@ -17,6 +18,7 @@ SERVERS = [
 class Codat:
     
     configuration: Configuration
+    connections: Connections
     expenses: Expenses
     mapping_options: MappingOptions
     sync: Sync
@@ -28,8 +30,8 @@ class Codat:
     _security: shared.Security
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.1.0"
-    _gen_version: str = "1.7.0"
+    _sdk_version: str = "0.1.1"
+    _gen_version: str = "1.7.1"
 
     def __init__(self) -> None:
         self._client = requests.Session()
@@ -63,6 +65,15 @@ class Codat:
     def _init_sdks(self):
         
         self.configuration = Configuration(
+            self._client,
+            self._security_client,
+            self._server_url,
+            self._language,
+            self._sdk_version,
+            self._gen_version
+        )
+        
+        self.connections = Connections(
             self._client,
             self._security_client,
             self._server_url,

@@ -41,10 +41,22 @@ class Sync:
 
         res = operations.IntiateSyncResponse(status_code=r.status_code, content_type=content_type)
         
-        if r.status_code == 200:
+        if r.status_code == 202:
             if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.IntiateSync200ApplicationJSON])
-                res.intiate_sync_200_application_json_object = out
+                out = utils.unmarshal_json(r.text, Optional[operations.IntiateSync202ApplicationJSON])
+                res.intiate_sync_202_application_json_object = out
+        elif r.status_code == 400:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[operations.IntiateSync400ApplicationJSON])
+                res.intiate_sync_400_application_json_object = out
+        elif r.status_code == 404:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[operations.IntiateSync404ApplicationJSON])
+                res.intiate_sync_404_application_json_object = out
+        elif r.status_code == 422:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[operations.IntiateSync422ApplicationJSON])
+                res.intiate_sync_422_application_json_object = out
 
         return res
 

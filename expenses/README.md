@@ -43,6 +43,10 @@ if res.get_company_configuration_200_application_json_object is not None:
 * `get_company_configuration` - Get Company configuration
 * `save_company_configuration` - Set Company configuration
 
+### connections
+
+* `create_partnerexpense_connection` - Create Partner Expense connection
+
 ### expenses
 
 * `create_expense_dataset` - Create expense-transactions
