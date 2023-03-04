@@ -18,8 +18,7 @@ class SyncStatus:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
+        
     def get_last_successful_sync(self, request: operations.GetLastSuccessfulSyncRequest) -> operations.GetLastSuccessfulSyncResponse:
         r"""Last successful sync
         Gets the status of the last successfull sync
@@ -27,24 +26,23 @@ class SyncStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/syncs/lastSuccessful/status", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/syncs/lastSuccessful/status', request.path_params)
         
         
         client = self._security_client
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetLastSuccessfulSyncResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetLastSuccessfulSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetLastSuccessfulSync200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetLastSuccessfulSync200ApplicationJSON])
                 res.get_last_successful_sync_200_application_json_object = out
 
         return res
 
-    
     def get_latest_sync(self, request: operations.GetLatestSyncRequest) -> operations.GetLatestSyncResponse:
         r"""Latest sync status
         Gets the latest sync status
@@ -52,24 +50,23 @@ class SyncStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/syncs/latest/status", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/syncs/latest/status', request.path_params)
         
         
         client = self._security_client
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetLatestSyncResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetLatestSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetLatestSync200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetLatestSync200ApplicationJSON])
                 res.get_latest_sync_200_application_json_object = out
 
         return res
 
-    
     def get_sync_by_id(self, request: operations.GetSyncByIDRequest) -> operations.GetSyncByIDResponse:
         r"""Get Sync status
         Get the sync status for a specified sync
@@ -77,24 +74,23 @@ class SyncStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/syncs/{syncId}/status", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/syncs/{syncId}/status', request.path_params)
         
         
         client = self._security_client
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetSyncByIDResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetSyncByIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetSyncByID200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetSyncByID200ApplicationJSON])
                 res.get_sync_by_id_200_application_json_object = out
 
         return res
 
-    
     def list_syncs(self, request: operations.ListSyncsRequest) -> operations.ListSyncsResponse:
         r"""List sync statuses
         Gets a list of sync statuses
@@ -102,19 +98,19 @@ class SyncStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/syncs/list/status", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/syncs/list/status', request.path_params)
         
         
         client = self._security_client
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListSyncsResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.ListSyncsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[list[operations.ListSyncs200ApplicationJSON]])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[list[operations.ListSyncs200ApplicationJSON]])
                 res.list_syncs_200_application_json_objects = out
 
         return res

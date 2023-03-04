@@ -1,5 +1,6 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -32,10 +33,10 @@ class GetSyncTransaction200ApplicationJSONStatusEnum(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetSyncTransaction200ApplicationJSON:
-    integration_type: Optional[GetSyncTransaction200ApplicationJSONIntegrationTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('integrationType'), 'exclude': lambda f: f is None }})
-    message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('message'), 'exclude': lambda f: f is None }})
-    status: Optional[GetSyncTransaction200ApplicationJSONStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('status'), 'exclude': lambda f: f is None }})
-    transaction_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('transactionId'), 'exclude': lambda f: f is None }})
+    integration_type: Optional[GetSyncTransaction200ApplicationJSONIntegrationTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('integrationType'), 'exclude': lambda f: f is None }})
+    message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
+    status: Optional[GetSyncTransaction200ApplicationJSONStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    transaction_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionId'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass
@@ -43,4 +44,5 @@ class GetSyncTransactionResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     get_sync_transaction_200_application_json_objects: Optional[list[GetSyncTransaction200ApplicationJSON]] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

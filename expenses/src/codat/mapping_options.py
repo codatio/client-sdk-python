@@ -18,8 +18,7 @@ class MappingOptions:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
+        
     def get_mapping_options(self, request: operations.GetMappingOptionsRequest) -> operations.GetMappingOptionsResponse:
         r"""Mapping options
         Gets the expense mapping options for a companies accounting software
@@ -27,19 +26,19 @@ class MappingOptions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/mappingOptions", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/mappingOptions', request.path_params)
         
         
         client = self._security_client
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetMappingOptionsResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetMappingOptionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetMappingOptions200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetMappingOptions200ApplicationJSON])
                 res.get_mapping_options_200_application_json_object = out
 
         return res
