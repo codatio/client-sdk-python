@@ -17,14 +17,11 @@ from codat.models import operations, shared
 s = codat.Codat()
 s.config_security(
     security=shared.Security(
-        api_key="YOUR_API_KEY_HERE",
+        auth_header="YOUR_API_KEY_HERE",
     )
 )
    
 req = operations.GetAccountTransactionRequest(
-    security=operations.GetAccountTransactionSecurity(
-        api_key="YOUR_API_KEY_HERE",
-    ),
     path_params=operations.GetAccountTransactionPathParams(
         account_transaction_id="unde",
         company_id="deserunt",
@@ -57,7 +54,7 @@ if res.source_modified_date is not None:
 ### bank_account_transactions
 
 * `get_bank_account_push_options` - List push options for bank account bank transactions
-* `list_all_bank_transactionscount` - List bank transactions for bank account
+* `list_bank_account_transactions` - List bank transactions for bank account
 * `list_bank_transactions` - List all bank transactions
 * `post_bank_transactions` - Create bank transactions
 
@@ -71,26 +68,26 @@ if res.source_modified_date is not None:
 
 ### bill_credit_notes
 
+* `create_bill_credit_note` - Create bill credit note
 * `get_bill_credit_note` - Get bill credit note
 * `list_bill_credit_notes` - List bill credit notes
-* `post_bill_credit_note` - Create bill credit note
 * `update_bill_credit_note` - Update bill credit note
 
 ### bill_payments
 
+* `create_bill_payment` - Create bill payment
 * `get_bill_payments` - Get bill payment
 * `list_bill_payments` - List bill payments
-* `post_bill_payment` - Create bill payment
 
 ### bills
 
+* `create_bill` - Create bill
+* `create_bill_attachments` - Create bill attachments
 * `download_bill_attachment` - Download bill attachment
 * `get_bill` - Get bill
 * `get_bill_attachment` - Get bill attachment
 * `get_bill_attachments` - List bill attachments
 * `list_bills` - List bills
-* `post_bill` - Create bill
-* `post_bill_attachments` - Create bill attachments
 * `update_bill` - Update bill
 
 ### credit_notes

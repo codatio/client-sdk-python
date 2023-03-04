@@ -1,5 +1,6 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from typing import Optional
 
 
@@ -18,4 +19,5 @@ class IsAgedDebtorReportAvailableResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     is_aged_debtor_report_available_200_application_json_boolean: Optional[bool] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

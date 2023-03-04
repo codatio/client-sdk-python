@@ -18,8 +18,7 @@ class PurchaseOrders:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
+        
     def get_purchase_order(self, request: operations.GetPurchaseOrderRequest) -> operations.GetPurchaseOrderResponse:
         r"""Get purchase order
         Get purchase order
@@ -27,24 +26,23 @@ class PurchaseOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}', request.path_params)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetPurchaseOrderResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetPurchaseOrderResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetPurchaseOrderSourceModifiedDate])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPurchaseOrderSourceModifiedDate])
                 res.source_modified_date = out
 
         return res
 
-    
     def list_purchase_orders(self, request: operations.ListPurchaseOrdersRequest) -> operations.ListPurchaseOrdersResponse:
         r"""List purchase orders
         Get purchase orders
@@ -52,25 +50,24 @@ class PurchaseOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/data/purchaseOrders", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/data/purchaseOrders', request.path_params)
         
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListPurchaseOrdersResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.ListPurchaseOrdersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.ListPurchaseOrdersLinks])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListPurchaseOrdersLinks])
                 res.links = out
 
         return res
 
-    
     def post_purchase_order(self, request: operations.PostPurchaseOrderRequest) -> operations.PostPurchaseOrderResponse:
         r"""Create purchase order
         Posts a new purchase order to the accounting package for a given company.
@@ -82,29 +79,28 @@ class PurchaseOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/connections/{connectionId}/push/purchaseOrders", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/purchaseOrders', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("POST", url, params=query_params, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostPurchaseOrderResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.PostPurchaseOrderResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.PostPurchaseOrder200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostPurchaseOrder200ApplicationJSON])
                 res.post_purchase_order_200_application_json_object = out
 
         return res
 
-    
     def update_purchase_order(self, request: operations.UpdatePurchaseOrderRequest) -> operations.UpdatePurchaseOrderResponse:
         r"""Update purchase order
         Posts an updated purchase order to the accounting package for a given company.
@@ -116,24 +112,24 @@ class PurchaseOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/connections/{connectionId}/push/purchaseOrders/{purchaseOrderId}", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/purchaseOrders/{purchaseOrderId}', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("PUT", url, params=query_params, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.UpdatePurchaseOrderResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.UpdatePurchaseOrderResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.UpdatePurchaseOrder200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdatePurchaseOrder200ApplicationJSON])
                 res.update_purchase_order_200_application_json_object = out
 
         return res

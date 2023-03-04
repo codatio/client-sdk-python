@@ -1,6 +1,7 @@
 from __future__ import annotations
 import dataclasses
-
+import requests
+from typing import Optional
 
 
 @dataclasses.dataclass
@@ -11,18 +12,13 @@ class PostDirectIncomeAttachmentPathParams:
     
 
 @dataclasses.dataclass
-class PostDirectIncomeAttachmentSecurity:
-    api_key: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
-    
-
-@dataclasses.dataclass
 class PostDirectIncomeAttachmentRequest:
     path_params: PostDirectIncomeAttachmentPathParams = dataclasses.field()
-    security: PostDirectIncomeAttachmentSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
 class PostDirectIncomeAttachmentResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

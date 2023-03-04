@@ -1,6 +1,7 @@
 from __future__ import annotations
 import dataclasses
-
+import requests
+from typing import Optional
 
 
 @dataclasses.dataclass
@@ -11,18 +12,13 @@ class PushInvoiceAttachmentPathParams:
     
 
 @dataclasses.dataclass
-class PushInvoiceAttachmentSecurity:
-    api_key: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
-    
-
-@dataclasses.dataclass
 class PushInvoiceAttachmentRequest:
     path_params: PushInvoiceAttachmentPathParams = dataclasses.field()
-    security: PushInvoiceAttachmentSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
 class PushInvoiceAttachmentResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

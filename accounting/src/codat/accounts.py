@@ -18,8 +18,7 @@ class Accounts:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
+        
     def get_account(self, request: operations.GetAccountRequest) -> operations.GetAccountResponse:
         r"""Get account
         Gets a single account corresponding to the supplied Id
@@ -27,24 +26,23 @@ class Accounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/data/accounts/{accountId}", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/data/accounts/{accountId}', request.path_params)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetAccountResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetAccountSourceModifiedDate])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountSourceModifiedDate])
                 res.source_modified_date = out
 
         return res
 
-    
     def get_accounts(self, request: operations.GetAccountsRequest) -> operations.GetAccountsResponse:
         r"""List accounts
         Gets the latest accounts for a company
@@ -52,25 +50,24 @@ class Accounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/data/accounts", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/data/accounts', request.path_params)
         
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetAccountsResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetAccountsLinks])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountsLinks])
                 res.links = out
 
         return res
 
-    
     def post_account(self, request: operations.PostAccountRequest) -> operations.PostAccountResponse:
         r"""Create account
         Posts an individual account for a given company.
@@ -82,24 +79,24 @@ class Accounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/connections/{connectionId}/push/accounts", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/accounts', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("POST", url, params=query_params, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostAccountResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.PostAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.PostAccount200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostAccount200ApplicationJSON])
                 res.post_account_200_application_json_object = out
 
         return res

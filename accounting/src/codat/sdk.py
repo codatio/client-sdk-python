@@ -1,4 +1,10 @@
+__doc__ = """ SDK Documentation: A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
 
+Standardize how you connect to your customers’ accounting software. View, create, update, and delete data in the same way for all the leading accounting platforms.
+
+[Read more...](https://docs.codat.io/accounting-api/overview)
+
+[See our OpenAPI spec](https://github.com/codatio/oas)    """
 import requests
 from . import utils
 from .account_transactions import AccountTransactions
@@ -33,9 +39,14 @@ SERVERS = [
 	"https://api.codat.io",
 ]
 
-
 class Codat:
+    r"""SDK Documentation: A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
     
+    Standardize how you connect to your customers’ accounting software. View, create, update, and delete data in the same way for all the leading accounting platforms.
+    
+    [Read more...](https://docs.codat.io/accounting-api/overview)
+    
+    [See our OpenAPI spec](https://github.com/codatio/oas)    """
     account_transactions: AccountTransactions
     accounts: Accounts
     bank_account_transactions: BankAccountTransactions
@@ -62,28 +73,28 @@ class Codat:
     tax_rates: TaxRates
     tracking_categories: TrackingCategories
     transfers: Transfers
-
+    
     _client: requests.Session
     _security_client: requests.Session
     _security: shared.Security
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.1.3"
-    _gen_version: str = "1.7.1"
+    _sdk_version: str = "0.2.0"
+    _gen_version: str = "1.8.2"
 
     def __init__(self) -> None:
         self._client = requests.Session()
         self._security_client = requests.Session()
         self._init_sdks()
 
-
-    def config_server_url(self, server_url: str, params: dict[str, str]):
+    def config_server_url(self, server_url: str, params: dict[str, str] = None):
         if params is not None:
-            self._server_url = utils.replace_parameters(server_url, params)
+            self._server_url = utils.template_url(server_url, params)
         else:
             self._server_url = server_url
 
         self._init_sdks()
+    
     
 
     def config_client(self, client: requests.Session):
@@ -93,15 +104,12 @@ class Codat:
             self._security_client = utils.configure_security_client(self._client, self._security)
         self._init_sdks()
     
-
     def config_security(self, security: shared.Security):
         self._security = security
         self._security_client = utils.configure_security_client(self._client, security)
         self._init_sdks()
     
-    
     def _init_sdks(self):
-        
         self.account_transactions = AccountTransactions(
             self._client,
             self._security_client,
@@ -335,5 +343,5 @@ class Codat:
             self._sdk_version,
             self._gen_version
         )
-    
+        
     

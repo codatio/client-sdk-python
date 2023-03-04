@@ -11,13 +11,14 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class ListBankTransactionsPathParams:
+class ListBankAccountTransactionsPathParams:
     account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountId', 'style': 'simple', 'explode': False }})
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass
-class ListBankTransactionsQueryParams:
+class ListBankAccountTransactionsQueryParams:
     page: float = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     page_size: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
@@ -25,44 +26,44 @@ class ListBankTransactionsQueryParams:
     
 
 @dataclasses.dataclass
-class ListBankTransactionsRequest:
-    path_params: ListBankTransactionsPathParams = dataclasses.field()
-    query_params: ListBankTransactionsQueryParams = dataclasses.field()
+class ListBankAccountTransactionsRequest:
+    path_params: ListBankAccountTransactionsPathParams = dataclasses.field()
+    query_params: ListBankAccountTransactionsQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksLinksCurrent:
+class ListBankAccountTransactionsLinksLinksCurrent:
     href: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href') }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksLinksNext:
+class ListBankAccountTransactionsLinksLinksNext:
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksLinksPrevious:
+class ListBankAccountTransactionsLinksLinksPrevious:
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksLinksSelf:
+class ListBankAccountTransactionsLinksLinksSelf:
     href: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href') }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksLinks:
-    current: ListBankTransactionsLinksLinksCurrent = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})
-    self: ListBankTransactionsLinksLinksSelf = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})
-    next: Optional[ListBankTransactionsLinksLinksNext] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})
-    previous: Optional[ListBankTransactionsLinksLinksPrevious] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})
+class ListBankAccountTransactionsLinksLinks:
+    current: ListBankAccountTransactionsLinksLinksCurrent = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})
+    self: ListBankAccountTransactionsLinksLinksSelf = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})
+    next: Optional[ListBankAccountTransactionsLinksLinksNext] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})
+    previous: Optional[ListBankAccountTransactionsLinksLinksPrevious] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})
     
-class ListBankTransactionsLinksResultsTransactionTypeEnum(str, Enum):
+class ListBankAccountTransactionsLinksResultsTransactionsTransactionTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
@@ -85,12 +86,12 @@ class ListBankTransactionsLinksResultsTransactionTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksResults:
+class ListBankAccountTransactionsLinksResultsTransactions:
     amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount') }})
     balance: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})
     date_: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     reconciled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reconciled') }})
-    transaction_type: ListBankTransactionsLinksResultsTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})
+    transaction_type: ListBankAccountTransactionsLinksResultsTransactionsTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})
     counterparty: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('counterparty'), 'exclude': lambda f: f is None }})
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -101,22 +102,49 @@ class ListBankTransactionsLinksResults:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinks:
-    r"""ListBankTransactionsLinks
+class ListBankAccountTransactionsLinksResults:
+    r"""ListBankAccountTransactionsLinksResults
+    > **Accessing Bank Accounts through Banking API**
+    > 
+    > This datatype was originally used for accessing bank account data both in accounting integrations and open banking aggregators. 
+    >
+    > To view bank account data through the Banking API, please refer to the new datatype [here](https://docs.codat.io/banking-api#/operations/list-all-banking-transactions)
+    
+    > View the coverage for bank transactions in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions\" target=\"_blank\">Data coverage explorer</a>.
+    
+    ## Overview
+    
+    Transactional banking data for a specific company and account.
+    
+    Bank transactions include the:
+    * Amount of the transaction.
+    * Current account balance.
+    * Transaction type, for example, credit, debit, or transfer.
+    """
+    
+    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
+    contract_version: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contractVersion'), 'exclude': lambda f: f is None }})
+    transactions: Optional[list[ListBankAccountTransactionsLinksResultsTransactions]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class ListBankAccountTransactionsLinks:
+    r"""ListBankAccountTransactionsLinks
     Codat's Paging Model
     """
     
-    links: ListBankTransactionsLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})
+    links: ListBankAccountTransactionsLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})
-    results: Optional[list[ListBankTransactionsLinksResults]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
+    results: Optional[list[ListBankAccountTransactionsLinksResults]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass
-class ListBankTransactionsResponse:
+class ListBankAccountTransactionsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    links: Optional[ListBankTransactionsLinks] = dataclasses.field(default=None)
+    links: Optional[ListBankAccountTransactionsLinks] = dataclasses.field(default=None)
     raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

@@ -18,60 +18,8 @@ class BillPayments:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
-    def get_bill_payments(self, request: operations.GetBillPaymentsRequest) -> operations.GetBillPaymentsResponse:
-        r"""Get bill payment
-        Get a bill payment
-        """
         
-        base_url = self._server_url
-        
-        url = utils.generate_url(base_url, "/companies/{companyId}/data/billPayments/{billPaymentId}", request.path_params)
-        
-        
-        client = utils.configure_security_client(self._client, request.security)
-        
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
-
-        res = operations.GetBillPaymentsResponse(status_code=r.status_code, content_type=content_type)
-        
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetBillPaymentsSourceModifiedDate])
-                res.source_modified_date = out
-
-        return res
-
-    
-    def list_bill_payments(self, request: operations.ListBillPaymentsRequest) -> operations.ListBillPaymentsResponse:
-        r"""List bill payments
-        Gets the latest billPayments for a company, with pagination
-        """
-        
-        base_url = self._server_url
-        
-        url = utils.generate_url(base_url, "/companies/{companyId}/data/billPayments", request.path_params)
-        
-        query_params = utils.get_query_params(request.query_params)
-        
-        client = utils.configure_security_client(self._client, request.security)
-        
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
-
-        res = operations.ListBillPaymentsResponse(status_code=r.status_code, content_type=content_type)
-        
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.ListBillPaymentsLinks])
-                res.links = out
-
-        return res
-
-    
-    def post_bill_payment(self, request: operations.PostBillPaymentRequest) -> operations.PostBillPaymentResponse:
+    def create_bill_payment(self, request: operations.CreateBillPaymentRequest) -> operations.CreateBillPaymentResponse:
         r"""Create bill payment
         Posts a new bill payment to the accounting package for a given company.
         
@@ -82,25 +30,74 @@ class BillPayments:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/connections/{connectionId}/push/billPayments", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/billPayments', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("POST", url, params=query_params, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostBillPaymentResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.CreateBillPaymentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.PostBillPayment200ApplicationJSON])
-                res.post_bill_payment_200_application_json_object = out
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateBillPayment200ApplicationJSON])
+                res.create_bill_payment_200_application_json_object = out
+
+        return res
+
+    def get_bill_payments(self, request: operations.GetBillPaymentsRequest) -> operations.GetBillPaymentsResponse:
+        r"""Get bill payment
+        Get a bill payment
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/data/billPayments/{billPaymentId}', request.path_params)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetBillPaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBillPaymentsSourceModifiedDate])
+                res.source_modified_date = out
+
+        return res
+
+    def list_bill_payments(self, request: operations.ListBillPaymentsRequest) -> operations.ListBillPaymentsResponse:
+        r"""List bill payments
+        Gets the latest billPayments for a company, with pagination
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/data/billPayments', request.path_params)
+        
+        query_params = utils.get_query_params(request.query_params)
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListBillPaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBillPaymentsLinks])
+                res.links = out
 
         return res
 

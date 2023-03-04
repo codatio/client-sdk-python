@@ -18,8 +18,7 @@ class BankAccounts:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
+        
     def get_all_bank_account(self, request: operations.GetAllBankAccountRequest) -> operations.GetAllBankAccountResponse:
         r"""Get bank account
         Gets the bank account for given account ID.
@@ -27,25 +26,24 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/data/bankAccounts/{accountId}", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/data/bankAccounts/{accountId}', request.path_params)
         
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetAllBankAccountResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetAllBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetAllBankAccount200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAllBankAccount200ApplicationJSON])
                 res.get_all_bank_account_200_application_json_object = out
 
         return res
 
-    
     def get_bank_account(self, request: operations.GetBankAccountRequest) -> operations.GetBankAccountResponse:
         r"""Get bank account
         Gets the bank account with a given ID
@@ -53,24 +51,23 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}', request.path_params)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetBankAccountResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetBankAccountSourceModifiedDate])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBankAccountSourceModifiedDate])
                 res.source_modified_date = out
 
         return res
 
-    
     def list_bank_accounts(self, request: operations.ListBankAccountsRequest) -> operations.ListBankAccountsResponse:
         r"""List bank accounts
         Gets the list of bank accounts for a given connection
@@ -78,25 +75,24 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/connections/{connectionId}/data/bankAccounts", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts', request.path_params)
         
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListBankAccountsResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.ListBankAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.ListBankAccountsLinks])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankAccountsLinks])
                 res.links = out
 
         return res
 
-    
     def post_bank_account(self, request: operations.PostBankAccountRequest) -> operations.PostBankAccountResponse:
         r"""Create bank account
         Posts a new bank account to the accounting package for a given company.
@@ -108,29 +104,28 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/connections/{connectionId}/push/bankAccounts", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("POST", url, params=query_params, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostBankAccountResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.PostBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.PostBankAccount200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostBankAccount200ApplicationJSON])
                 res.post_bank_account_200_application_json_object = out
 
         return res
 
-    
     def put_bank_account(self, request: operations.PutBankAccountRequest) -> operations.PutBankAccountResponse:
         r"""Update bank account
         Posts an updated bank account to the accounting package for a given company.
@@ -142,24 +137,24 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{bankAccountId}", request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{bankAccountId}', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = self._security_client
         
-        r = client.request("PUT", url, params=query_params, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PutBankAccountResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.PutBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.PutBankAccount200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PutBankAccount200ApplicationJSON])
                 res.put_bank_account_200_application_json_object = out
 
         return res

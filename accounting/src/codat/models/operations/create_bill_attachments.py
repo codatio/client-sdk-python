@@ -1,28 +1,24 @@
 from __future__ import annotations
 import dataclasses
-
+import requests
+from typing import Optional
 
 
 @dataclasses.dataclass
-class PostBillAttachmentsPathParams:
+class CreateBillAttachmentsPathParams:
     bill_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'billId', 'style': 'simple', 'explode': False }})
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass
-class PostBillAttachmentsSecurity:
-    api_key: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+class CreateBillAttachmentsRequest:
+    path_params: CreateBillAttachmentsPathParams = dataclasses.field()
     
 
 @dataclasses.dataclass
-class PostBillAttachmentsRequest:
-    path_params: PostBillAttachmentsPathParams = dataclasses.field()
-    security: PostBillAttachmentsSecurity = dataclasses.field()
-    
-
-@dataclasses.dataclass
-class PostBillAttachmentsResponse:
+class CreateBillAttachmentsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

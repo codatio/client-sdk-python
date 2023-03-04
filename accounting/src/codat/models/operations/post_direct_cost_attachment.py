@@ -1,6 +1,7 @@
 from __future__ import annotations
 import dataclasses
-
+import requests
+from typing import Optional
 
 
 @dataclasses.dataclass
@@ -11,18 +12,13 @@ class PostDirectCostAttachmentPathParams:
     
 
 @dataclasses.dataclass
-class PostDirectCostAttachmentSecurity:
-    api_key: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
-    
-
-@dataclasses.dataclass
 class PostDirectCostAttachmentRequest:
     path_params: PostDirectCostAttachmentPathParams = dataclasses.field()
-    security: PostDirectCostAttachmentSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
 class PostDirectCostAttachmentResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     
