@@ -17,14 +17,11 @@ from codat.models import operations, shared
 s = codat.Codat()
 s.config_security(
     security=shared.Security(
-        api_key="YOUR_API_KEY_HERE",
+        auth_header="YOUR_API_KEY_HERE",
     )
 )
    
 req = operations.GetBankAccountPushOptionsRequest(
-    security=operations.GetBankAccountPushOptionsSecurity(
-        api_key="YOUR_API_KEY_HERE",
-    ),
     path_params=operations.GetBankAccountPushOptionsPathParams(
         account_id="unde",
         company_id="deserunt",
@@ -52,13 +49,13 @@ if res.push_option is not None:
 ### bank_account_transactions
 
 * `get_bank_account_push_options` - List push options for bank account bank transactions
-* `list_all_bank_transactionscount` - List bank transactions for bank account
+* `list_bank_account_transactions` - List bank transactions for bank account
 * `post_bank_transactions` - Create bank transactions
 
 ### bank_feed_accounts
 
+* `create_bank_feed` - Create bank feed bank accounts
 * `get_bank_feeds` - List bank feed bank accounts
-* `put_bank_feeds` - Update bank feed bank accounts
 * `update_bank_feed` - Update bank feed bank account
 <!-- End SDK Available Operations -->
 

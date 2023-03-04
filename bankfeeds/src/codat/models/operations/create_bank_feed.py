@@ -11,12 +11,11 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class UpdateBankFeedPathParams:
-    bank_account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'bankAccountId', 'style': 'simple', 'explode': False }})
+class CreateBankFeedPathParams:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     
-class UpdateBankFeedBankFeedBankAccountAccountTypeEnum(str, Enum):
+class CreateBankFeedBankFeedBankAccountAccountTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
@@ -24,15 +23,15 @@ class UpdateBankFeedBankFeedBankAccountAccountTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class UpdateBankFeedBankFeedBankAccount:
-    r"""UpdateBankFeedBankFeedBankAccount
+class CreateBankFeedBankFeedBankAccount:
+    r"""CreateBankFeedBankFeedBankAccount
     The target bank account in a supported accounting package for ingestion into a bank feed.
     """
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountName'), 'exclude': lambda f: f is None }})
     account_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountNumber'), 'exclude': lambda f: f is None }})
-    account_type: Optional[UpdateBankFeedBankFeedBankAccountAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
+    account_type: Optional[CreateBankFeedBankFeedBankAccountAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
     balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'exclude': lambda f: f is None }})
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     feed_start_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('feedStartDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
@@ -42,15 +41,15 @@ class UpdateBankFeedBankFeedBankAccount:
     
 
 @dataclasses.dataclass
-class UpdateBankFeedRequest:
-    path_params: UpdateBankFeedPathParams = dataclasses.field()
-    request: Optional[UpdateBankFeedBankFeedBankAccount] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+class CreateBankFeedRequest:
+    path_params: CreateBankFeedPathParams = dataclasses.field()
+    request: Optional[list[CreateBankFeedBankFeedBankAccount]] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass
-class UpdateBankFeedResponse:
+class CreateBankFeedResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    bank_feed_bank_account: Optional[UpdateBankFeedBankFeedBankAccount] = dataclasses.field(default=None)
+    bank_feed_bank_accounts: Optional[list[CreateBankFeedBankFeedBankAccount]] = dataclasses.field(default=None)
     raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     
