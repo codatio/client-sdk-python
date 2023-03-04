@@ -8,6 +8,7 @@ src/codat/products.py
 src/codat/tax_components.py
 src/codat/transactions.py
 src/codat/sdk.py
+pylintrc
 setup.py
 src/codat/__init__.py
 src/codat/models/__init__.py
