@@ -11,27 +11,26 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class ListCompanyConnectionsPathParams:
+class UnlinkCompanyConnectionPathParams:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class ListCompanyConnectionsQueryParams:
-    page: float = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
-    order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
-    page_size: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
-    query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class ListCompanyConnectionsRequest:
-    path_params: ListCompanyConnectionsPathParams = dataclasses.field()
-    query_params: ListCompanyConnectionsQueryParams = dataclasses.field()
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanyConnections401ApplicationJSON:
+class UnlinkCompanyConnectionRequestBody:
+    status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    
+
+@dataclasses.dataclass
+class UnlinkCompanyConnectionRequest:
+    path_params: UnlinkCompanyConnectionPathParams = dataclasses.field()
+    request: Optional[UnlinkCompanyConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class UnlinkCompanyConnection404ApplicationJSON:
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
     detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})
@@ -42,7 +41,7 @@ class ListCompanyConnections401ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanyConnections400ApplicationJSON:
+class UnlinkCompanyConnection401ApplicationJSON:
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
     detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})
@@ -53,40 +52,7 @@ class ListCompanyConnections400ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanyConnectionsLinksLinksCurrent:
-    href: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href') }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListCompanyConnectionsLinksLinksNext:
-    href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListCompanyConnectionsLinksLinksPrevious:
-    href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListCompanyConnectionsLinksLinksSelf:
-    href: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href') }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListCompanyConnectionsLinksLinks:
-    current: ListCompanyConnectionsLinksLinksCurrent = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})
-    self: ListCompanyConnectionsLinksLinksSelf = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})
-    next: Optional[ListCompanyConnectionsLinksLinksNext] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})
-    previous: Optional[ListCompanyConnectionsLinksLinksPrevious] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListCompanyConnectionsLinksConnectionConnectionInfo:
+class UnlinkCompanyConnectionConnectionConnectionInfo:
     additional_prop1: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalProp1'), 'exclude': lambda f: f is None }})
     additional_prop2: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalProp2'), 'exclude': lambda f: f is None }})
     additional_prop3: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalProp3'), 'exclude': lambda f: f is None }})
@@ -94,20 +60,20 @@ class ListCompanyConnectionsLinksConnectionConnectionInfo:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanyConnectionsLinksConnectionDataConnectionErrors:
+class UnlinkCompanyConnectionConnectionDataConnectionErrors:
     errored_on_utc: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('erroredOnUtc'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})
     status_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
     status_text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusText'), 'exclude': lambda f: f is None }})
     
-class ListCompanyConnectionsLinksConnectionSourceTypeEnum(str, Enum):
+class UnlinkCompanyConnectionConnectionSourceTypeEnum(str, Enum):
     ACCOUNTING = "Accounting"
     BANKING = "Banking"
     COMMERCE = "Commerce"
     OTHER = "Other"
     UNKNOWN = "Unknown"
 
-class ListCompanyConnectionsLinksConnectionDataConnectionStatusEnum(str, Enum):
+class UnlinkCompanyConnectionConnectionDataConnectionStatusEnum(str, Enum):
     PENDING_AUTH = "PendingAuth"
     LINKED = "Linked"
     UNLINKED = "Unlinked"
@@ -116,8 +82,8 @@ class ListCompanyConnectionsLinksConnectionDataConnectionStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanyConnectionsLinksConnection:
-    r"""ListCompanyConnectionsLinksConnection
+class UnlinkCompanyConnectionConnection:
+    r"""UnlinkCompanyConnectionConnection
     A connection represents the link between a `company` and a source of data.
     """
     
@@ -128,33 +94,19 @@ class ListCompanyConnectionsLinksConnection:
     link_url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('linkUrl') }})
     platform_name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformName') }})
     source_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceId') }})
-    source_type: ListCompanyConnectionsLinksConnectionSourceTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceType') }})
-    status: ListCompanyConnectionsLinksConnectionDataConnectionStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    connection_info: Optional[ListCompanyConnectionsLinksConnectionConnectionInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionInfo'), 'exclude': lambda f: f is None }})
-    data_connection_errors: Optional[list[ListCompanyConnectionsLinksConnectionDataConnectionErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionErrors'), 'exclude': lambda f: f is None }})
+    source_type: UnlinkCompanyConnectionConnectionSourceTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceType') }})
+    status: UnlinkCompanyConnectionConnectionDataConnectionStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    connection_info: Optional[UnlinkCompanyConnectionConnectionConnectionInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionInfo'), 'exclude': lambda f: f is None }})
+    data_connection_errors: Optional[list[UnlinkCompanyConnectionConnectionDataConnectionErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionErrors'), 'exclude': lambda f: f is None }})
     last_sync: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastSync'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanyConnectionsLinks:
-    r"""ListCompanyConnectionsLinks
-    Codat's Paging Model
-    """
-    
-    links: ListCompanyConnectionsLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})
-    page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})
-    page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})
-    total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})
-    results: Optional[list[ListCompanyConnectionsLinksConnection]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
-    
-
-@dataclasses.dataclass
-class ListCompanyConnectionsResponse:
+class UnlinkCompanyConnectionResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    links: Optional[ListCompanyConnectionsLinks] = dataclasses.field(default=None)
-    list_company_connections_400_application_json_object: Optional[ListCompanyConnections400ApplicationJSON] = dataclasses.field(default=None)
-    list_company_connections_401_application_json_object: Optional[ListCompanyConnections401ApplicationJSON] = dataclasses.field(default=None)
+    connection: Optional[UnlinkCompanyConnectionConnection] = dataclasses.field(default=None)
     raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    unlink_company_connection_401_application_json_object: Optional[UnlinkCompanyConnection401ApplicationJSON] = dataclasses.field(default=None)
+    unlink_company_connection_404_application_json_object: Optional[UnlinkCompanyConnection404ApplicationJSON] = dataclasses.field(default=None)
     
