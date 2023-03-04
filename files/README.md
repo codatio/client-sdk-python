@@ -17,19 +17,16 @@ from codat.models import operations, shared
 s = codat.Codat()
 s.config_security(
     security=shared.Security(
-        api_key="YOUR_API_KEY_HERE",
+        auth_header="YOUR_API_KEY_HERE",
     )
 )
    
 req = operations.DownloadFilesRequest(
-    security=operations.DownloadFilesSecurity(
-        api_key="YOUR_API_KEY_HERE",
-    ),
     path_params=operations.DownloadFilesPathParams(
         company_id="unde",
     ),
     query_params=operations.DownloadFilesQueryParams(
-        date_="2022-07-28T14:41:43.209Z",
+        date_="2022-07-30T14:41:22.972Z",
     ),
 )
     

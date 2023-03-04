@@ -1,6 +1,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
+import requests
 from datetime import datetime
 from marshmallow import fields
 from typing import Optional
@@ -17,19 +18,14 @@ class DownloadFilesQueryParams:
     
 
 @dataclasses.dataclass
-class DownloadFilesSecurity:
-    api_key: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
-    
-
-@dataclasses.dataclass
 class DownloadFilesRequest:
     path_params: DownloadFilesPathParams = dataclasses.field()
     query_params: DownloadFilesQueryParams = dataclasses.field()
-    security: DownloadFilesSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
 class DownloadFilesResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     
