@@ -88,7 +88,7 @@ class Categories:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[list[operations.ListAvailableAccountCategoriesChartOfAccountCategory]])
-                res.list_available_account_categories_chart_of_account_category_all_ofs = out
+                res.list_available_account_categories_chart_of_account_category_anies = out
 
         return res
 

@@ -21,6 +21,6 @@ class ListAvailableAccountCategoriesChartOfAccountCategory:
 class ListAvailableAccountCategoriesResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    list_available_account_categories_chart_of_account_category_all_ofs: Optional[list[ListAvailableAccountCategoriesChartOfAccountCategory]] = dataclasses.field(default=None)
+    list_available_account_categories_chart_of_account_category_anies: Optional[list[ListAvailableAccountCategoriesChartOfAccountCategory]] = dataclasses.field(default=None)
     raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     
