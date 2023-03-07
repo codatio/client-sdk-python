@@ -5,7 +5,7 @@ A bank feed is a connection between a source bank accountâ€”in your applicationâ
 [Read more...](https://docs.codat.io/bank-feeds-api/overview)
 
 [See our OpenAPI spec](https://github.com/codatio/oas) """
-import requests
+import requests as requests_http
 from . import utils
 from .bank_account_transactions import BankAccountTransactions
 from .bank_feed_accounts import BankFeedAccounts
@@ -26,17 +26,17 @@ class Codat:
     bank_account_transactions: BankAccountTransactions
     bank_feed_accounts: BankFeedAccounts
     
-    _client: requests.Session
-    _security_client: requests.Session
+    _client: requests_http.Session
+    _security_client: requests_http.Session
     _security: shared.Security
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.2.1"
-    _gen_version: str = "1.8.4"
+    _sdk_version: str = "0.2.2"
+    _gen_version: str = "1.8.5"
 
     def __init__(self) -> None:
-        self._client = requests.Session()
-        self._security_client = requests.Session()
+        self._client = requests_http.Session()
+        self._security_client = requests_http.Session()
         self._init_sdks()
 
     def config_server_url(self, server_url: str, params: dict[str, str] = None):
@@ -49,7 +49,7 @@ class Codat:
     
     
 
-    def config_client(self, client: requests.Session):
+    def config_client(self, client: requests_http.Session):
         self._client = client
         
         if self._security is not None:
