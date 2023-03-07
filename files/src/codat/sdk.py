@@ -5,7 +5,7 @@ The Accounting file upload, Banking file upload, and Business documents file upl
 [Read more...](https://docs.codat.io/other/file-upload)
 
 [See our OpenAPI spec](https://github.com/codatio/oas) """
-import requests
+import requests as requests_http
 from . import utils
 from .files import Files
 from codat.models import shared
@@ -24,17 +24,17 @@ class Codat:
     [See our OpenAPI spec](https://github.com/codatio/oas) """
     files: Files
     
-    _client: requests.Session
-    _security_client: requests.Session
+    _client: requests_http.Session
+    _security_client: requests_http.Session
     _security: shared.Security
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.2.1"
-    _gen_version: str = "1.8.4"
+    _sdk_version: str = "0.2.2"
+    _gen_version: str = "1.8.5"
 
     def __init__(self) -> None:
-        self._client = requests.Session()
-        self._security_client = requests.Session()
+        self._client = requests_http.Session()
+        self._security_client = requests_http.Session()
         self._init_sdks()
 
     def config_server_url(self, server_url: str, params: dict[str, str] = None):
@@ -47,7 +47,7 @@ class Codat:
     
     
 
-    def config_client(self, client: requests.Session):
+    def config_client(self, client: requests_http.Session):
         self._client = client
         
         if self._security is not None:
