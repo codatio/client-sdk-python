@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Any, Optional
@@ -48,5 +48,5 @@ class CreateCompanyResponse:
     status_code: int = dataclasses.field()
     create_company_200_application_json_object: Optional[CreateCompany200ApplicationJSON] = dataclasses.field(default=None)
     create_company_401_application_json_object: Optional[CreateCompany401ApplicationJSON] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

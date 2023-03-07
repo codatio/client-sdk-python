@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -160,5 +160,5 @@ class ListIntegrationsResponse:
     links: Optional[ListIntegrationsLinks] = dataclasses.field(default=None)
     list_integrations_400_application_json_object: Optional[ListIntegrations400ApplicationJSON] = dataclasses.field(default=None)
     list_integrations_401_application_json_object: Optional[ListIntegrations401ApplicationJSON] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

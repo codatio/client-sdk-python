@@ -1,7 +1,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-import requests
+import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
@@ -111,5 +111,5 @@ class CreatePullOperationResponse:
     create_pull_operation_401_application_json_object: Optional[CreatePullOperation401ApplicationJSON] = dataclasses.field(default=None)
     create_pull_operation_404_application_json_object: Optional[CreatePullOperation404ApplicationJSON] = dataclasses.field(default=None)
     pull_operation: Optional[CreatePullOperationPullOperation] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

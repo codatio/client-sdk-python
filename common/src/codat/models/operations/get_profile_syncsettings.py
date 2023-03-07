@@ -1,7 +1,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-import requests
+import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
@@ -51,5 +51,5 @@ class GetProfileSyncSettingsResponse:
     status_code: int = dataclasses.field()
     get_profile_sync_settings_200_application_json_object: Optional[GetProfileSyncSettings200ApplicationJSON] = dataclasses.field(default=None)
     get_profile_sync_settings_401_application_json_object: Optional[GetProfileSyncSettings401ApplicationJSON] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
