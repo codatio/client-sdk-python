@@ -1,7 +1,7 @@
 __doc__ = """ SDK Documentation: The API for Sync for Commerce. Sync for Commerce is an API and a set of supporting tools. It has been built to enable e-commerce, point of sale platforms to provide high-quality integrations with numerous accounting platform through standardized API, seamlessly transforming business sale's data into accounting artefacts.
 
 [Read More...](https://docs.codat.io/sfc/overview)"""
-import requests
+import requests as requests_http
 from . import utils
 from .company_management import CompanyManagement
 from .integrations import Integrations
@@ -24,17 +24,17 @@ class Codat:
     sync_configuration: SyncConfiguration
     sync_data: SyncData
     
-    _client: requests.Session
-    _security_client: requests.Session
+    _client: requests_http.Session
+    _security_client: requests_http.Session
     _security: shared.Security
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.2.1"
-    _gen_version: str = "1.8.4"
+    _sdk_version: str = "0.2.2"
+    _gen_version: str = "1.8.5"
 
     def __init__(self) -> None:
-        self._client = requests.Session()
-        self._security_client = requests.Session()
+        self._client = requests_http.Session()
+        self._security_client = requests_http.Session()
         self._init_sdks()
 
     def config_server_url(self, server_url: str, params: dict[str, str] = None):
@@ -47,7 +47,7 @@ class Codat:
     
     
 
-    def config_client(self, client: requests.Session):
+    def config_client(self, client: requests_http.Session):
         self._client = client
         
         if self._security is not None:
