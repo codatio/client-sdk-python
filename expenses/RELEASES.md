@@ -39,3 +39,11 @@ Based on:
 - Speakeasy CLI 1.8.4 https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.2.1] https://pypi.org/project/codat-expenses/0.2.1 - expenses
+
+## 2023-03-07 00:16:00
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.8.5 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.2.2] https://pypi.org/project/codat-expenses/0.2.2 - expenses

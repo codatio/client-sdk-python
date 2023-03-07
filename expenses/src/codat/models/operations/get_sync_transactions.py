@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -66,5 +66,5 @@ class GetSyncTransactionsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     get_sync_transactions_200_application_json_object: Optional[GetSyncTransactions200ApplicationJSON] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
