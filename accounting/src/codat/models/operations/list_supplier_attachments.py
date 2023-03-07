@@ -1,7 +1,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-import requests
+import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
@@ -45,5 +45,5 @@ class ListSupplierAttachmentsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     attachments: Optional[ListSupplierAttachmentsAttachments] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

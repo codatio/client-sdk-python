@@ -1,7 +1,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-import requests
+import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
@@ -188,6 +188,10 @@ class GetDirectCostsLinksSourceModifiedDatePaymentAllocations:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetDirectCostsLinksSourceModifiedDateSupplementalData:
+    r"""GetDirectCostsLinksSourceModifiedDateSupplementalData
+    Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more.
+    """
+    
     content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})
     
 
@@ -253,5 +257,5 @@ class GetDirectCostsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     links: Optional[GetDirectCostsLinks] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
