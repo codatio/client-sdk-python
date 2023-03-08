@@ -26,7 +26,7 @@ req = operations.DownloadFilesRequest(
         company_id="unde",
     ),
     query_params=operations.DownloadFilesQueryParams(
-        date_="2022-08-02T14:41:50.655Z",
+        date_="2022-08-03T14:41:47.861Z",
     ),
 )
     
