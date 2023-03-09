@@ -19,6 +19,41 @@ class Customers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    def create_customer(self, request: operations.CreateCustomerRequest) -> operations.CreateCustomerResponse:
+        r"""Create customer
+        Posts an individual customer for a given company.
+        
+        Required data may vary by integration. To see what data to post, first call [Get create/update customer model](https://docs.codat.io/accounting-api#/operations/get-create-update-customers-model).
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating customers.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/customers', request.path_params)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request)
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        query_params = utils.get_query_params(request.query_params)
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.CreateCustomerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateCustomer200ApplicationJSON])
+                res.create_customer_200_application_json_object = out
+
+        return res
+
     def download_customer_attachment(self, request: operations.DownloadCustomerAttachmentRequest) -> operations.DownloadCustomerAttachmentResponse:
         r"""Download customer attachment
         Download customer attachment
@@ -41,9 +76,39 @@ class Customers:
 
         return res
 
+    def get_create_update_customers_model(self, request: operations.GetCreateUpdateCustomersModelRequest) -> operations.GetCreateUpdateCustomersModelResponse:
+        r"""Get create/update customer model
+        Get create/update customer model. Returns the expected data for the request payload.
+        
+        See the examples for integration-specific indicative models.
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating and updating customers.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/customers', request.path_params)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCreateUpdateCustomersModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateCustomersModelPushOption])
+                res.push_option = out
+
+        return res
+
     def get_customer(self, request: operations.GetCustomerRequest) -> operations.GetCustomerResponse:
         r"""Get customer
-        Gets a single customer corresponding to the supplied Id
+        Gets a single customer corresponding to the given Id
         """
         
         base_url = self._server_url
@@ -138,46 +203,15 @@ class Customers:
 
         return res
 
-    def post_customer(self, request: operations.PostCustomerRequest) -> operations.PostCustomerResponse:
-        r"""Create customer
-        Posts an individual customer for a given company.
-        
-        > **Supported Integrations**
-        > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support POST methods.
-        """
-        
-        base_url = self._server_url
-        
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/customers', request.path_params)
-        
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.PostCustomerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostCustomer200ApplicationJSON])
-                res.post_customer_200_application_json_object = out
-
-        return res
-
     def update_customer(self, request: operations.UpdateCustomerRequest) -> operations.UpdateCustomerResponse:
         r"""Update customer
         Posts an updated customer for a given company.
         
+        Required data may vary by integration. To see what data to post, first call [Get create/update customer model](https://docs.codat.io/accounting-api#/operations/get-create-update-customers-model).
+        
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support PUT methods.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support updating customers.
         """
         
         base_url = self._server_url

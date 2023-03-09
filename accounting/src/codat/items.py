@@ -19,6 +19,71 @@ class Items:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    def create_item(self, request: operations.CreateItemRequest) -> operations.CreateItemResponse:
+        r"""Create item
+        Posts a new item to the accounting package for a given company.
+        
+        Required data may vary by integration. To see what data to post, first call [Get create item model](https://docs.codat.io/accounting-api#/operations/get-create-items-model).
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating items.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/items', request.path_params)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request)
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        query_params = utils.get_query_params(request.query_params)
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.CreateItemResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateItem200ApplicationJSON])
+                res.create_item_200_application_json_object = out
+
+        return res
+
+    def get_create_items_model(self, request: operations.GetCreateItemsModelRequest) -> operations.GetCreateItemsModelResponse:
+        r"""Get create item model
+        Get create item model. Returns the expected data for the request payload.
+        
+        See the examples for integration-specific indicative models.
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating items.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/items', request.path_params)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCreateItemsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateItemsModelPushOption])
+                res.push_option = out
+
+        return res
+
     def get_item(self, request: operations.GetItemRequest) -> operations.GetItemResponse:
         r"""Get item
         Gets the specified item for a given company.
@@ -65,39 +130,6 @@ class Items:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.ListItemsLinks])
                 res.links = out
-
-        return res
-
-    def post_item(self, request: operations.PostItemRequest) -> operations.PostItemResponse:
-        r"""Create item
-        Posts a new item to the accounting package for a given company.
-        
-        > **Supported Integrations**
-        > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support POST methods.
-        """
-        
-        base_url = self._server_url
-        
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/items', request.path_params)
-        
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.PostItemResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostItem200ApplicationJSON])
-                res.post_item_200_application_json_object = out
 
         return res
 

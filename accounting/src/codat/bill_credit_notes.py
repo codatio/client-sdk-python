@@ -23,9 +23,11 @@ class BillCreditNotes:
         r"""Create bill credit note
         Posts a new billCreditNote to the accounting package for a given company.
         
+        Required data may vary by integration. To see what data to post, first call [Get create/update bill credit note model](https://docs.codat.io/accounting-api#/operations/get-create-update-billCreditNotes-model).
+        
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support POST methods.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support creating bill credit notes.
         """
         
         base_url = self._server_url
@@ -54,7 +56,7 @@ class BillCreditNotes:
 
     def get_bill_credit_note(self, request: operations.GetBillCreditNoteRequest) -> operations.GetBillCreditNoteResponse:
         r"""Get bill credit note
-        Gets a single billCreditNote corresponding to the supplied Id
+        Gets a single billCreditNote corresponding to the given Id
         """
         
         base_url = self._server_url
@@ -73,6 +75,34 @@ class BillCreditNotes:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.GetBillCreditNoteSourceModifiedDate])
                 res.source_modified_date = out
+
+        return res
+
+    def get_create_update_bill_credit_notes_model(self, request: operations.GetCreateUpdateBillCreditNotesModelRequest) -> operations.GetCreateUpdateBillCreditNotesModelResponse:
+        r"""Get create/update bill credit note model
+        Get create/update bill credit note model.
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support creating and updating bill credit notes.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/billCreditNotes', request.path_params)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCreateUpdateBillCreditNotesModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateBillCreditNotesModelPushOption])
+                res.push_option = out
 
         return res
 
@@ -105,9 +135,11 @@ class BillCreditNotes:
         r"""Update bill credit note
         Posts an updated billCreditNote to the accounting package for a given company.
         
+        Required data may vary by integration. To see what data to post, first call [Get create/update bill credit note model](https://docs.codat.io/accounting-api#/operations/get-create-update-billCreditNotes-model).
+        
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support PUT methods.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support updating bill credit notes.
         """
         
         base_url = self._server_url

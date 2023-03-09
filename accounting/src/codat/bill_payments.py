@@ -20,12 +20,14 @@ class BillPayments:
         self._gen_version = gen_version
         
     def create_bill_payment(self, request: operations.CreateBillPaymentRequest) -> operations.CreateBillPaymentResponse:
-        r"""Create bill payment
+        r"""Create bill payments
         Posts a new bill payment to the accounting package for a given company.
+        
+        Required data may vary by integration. To see what data to post, first call [Get create bill payment model](https://docs.codat.io/accounting-api#/operations/get-create-billPayments-model).
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support POST methods.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating bill payments.
         """
         
         base_url = self._server_url
@@ -52,6 +54,34 @@ class BillPayments:
 
         return res
 
+    def delete_companies_company_id_connections_connection_id_push_bill_payments_bill_payment_id(self, request: operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDRequest) -> operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDResponse:
+        r"""Delete bill payment
+        Deletes a bill payment from the accounting package for a given company.
+        
+        > **Supported Integrations**
+        > 
+        > This functionality is currently only supported for our Oracle NetSuite integration. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/billPayments/{billPaymentId}', request.path_params)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('DELETE', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentID200ApplicationJSON])
+                res.delete_companies_company_id_connections_connection_id_push_bill_payments_bill_payment_id_200_application_json_object = out
+
+        return res
+
     def get_bill_payments(self, request: operations.GetBillPaymentsRequest) -> operations.GetBillPaymentsResponse:
         r"""Get bill payment
         Get a bill payment
@@ -73,6 +103,34 @@ class BillPayments:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.GetBillPaymentsSourceModifiedDate])
                 res.source_modified_date = out
+
+        return res
+
+    def get_create_bill_payments_model(self, request: operations.GetCreateBillPaymentsModelRequest) -> operations.GetCreateBillPaymentsModelResponse:
+        r"""Get create bill payment model
+        Get create bill payment model.
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating and deleting bill payments.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/billPayments', request.path_params)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCreateBillPaymentsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateBillPaymentsModelPushOption])
+                res.push_option = out
 
         return res
 

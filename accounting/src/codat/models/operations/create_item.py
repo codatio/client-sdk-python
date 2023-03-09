@@ -11,20 +11,20 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class PostItemPathParams:
+class CreateItemPathParams:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass
-class PostItemQueryParams:
+class CreateItemQueryParams:
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItemSourceModifiedDateBillItemAccountRef:
-    r"""PostItemSourceModifiedDateBillItemAccountRef
+class CreateItemSourceModifiedDateBillItemAccountRef:
+    r"""CreateItemSourceModifiedDateBillItemAccountRef
     Reference of the account to which the item is linked.
     """
     
@@ -34,8 +34,8 @@ class PostItemSourceModifiedDateBillItemAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItemSourceModifiedDateBillItemTaxRateRef:
-    r"""PostItemSourceModifiedDateBillItemTaxRateRef
+class CreateItemSourceModifiedDateBillItemTaxRateRef:
+    r"""CreateItemSourceModifiedDateBillItemTaxRateRef
     Reference of the tax rate to which the item is linked.
     """
     
@@ -46,21 +46,21 @@ class PostItemSourceModifiedDateBillItemTaxRateRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItemSourceModifiedDateBillItem:
-    r"""PostItemSourceModifiedDateBillItem
+class CreateItemSourceModifiedDateBillItem:
+    r"""CreateItemSourceModifiedDateBillItem
     Item details that are only for bills.
     """
     
-    account_ref: Optional[PostItemSourceModifiedDateBillItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[CreateItemSourceModifiedDateBillItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    tax_rate_ref: Optional[PostItemSourceModifiedDateBillItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
+    tax_rate_ref: Optional[CreateItemSourceModifiedDateBillItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     unit_price: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItemSourceModifiedDateInvoiceItemAccountRef:
-    r"""PostItemSourceModifiedDateInvoiceItemAccountRef
+class CreateItemSourceModifiedDateInvoiceItemAccountRef:
+    r"""CreateItemSourceModifiedDateInvoiceItemAccountRef
     Reference of the account to which the item is linked.
     """
     
@@ -70,8 +70,8 @@ class PostItemSourceModifiedDateInvoiceItemAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItemSourceModifiedDateInvoiceItemTaxRateRef:
-    r"""PostItemSourceModifiedDateInvoiceItemTaxRateRef
+class CreateItemSourceModifiedDateInvoiceItemTaxRateRef:
+    r"""CreateItemSourceModifiedDateInvoiceItemTaxRateRef
     Reference of the tax rate to which the item is linked.
     """
     
@@ -82,17 +82,17 @@ class PostItemSourceModifiedDateInvoiceItemTaxRateRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItemSourceModifiedDateInvoiceItem:
-    r"""PostItemSourceModifiedDateInvoiceItem
+class CreateItemSourceModifiedDateInvoiceItem:
+    r"""CreateItemSourceModifiedDateInvoiceItem
     Item details that are only for bills.
     """
     
-    account_ref: Optional[PostItemSourceModifiedDateInvoiceItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[CreateItemSourceModifiedDateInvoiceItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    tax_rate_ref: Optional[PostItemSourceModifiedDateInvoiceItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
+    tax_rate_ref: Optional[CreateItemSourceModifiedDateInvoiceItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     unit_price: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'exclude': lambda f: f is None }})
     
-class PostItemSourceModifiedDateItemStatusEnum(str, Enum):
+class CreateItemSourceModifiedDateItemStatusEnum(str, Enum):
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
     ARCHIVED = "Archived"
@@ -100,10 +100,10 @@ class PostItemSourceModifiedDateItemStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItemSourceModifiedDateMetadata:
+class CreateItemSourceModifiedDateMetadata:
     is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
     
-class PostItemSourceModifiedDateTypeEnum(str, Enum):
+class CreateItemSourceModifiedDateTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     INVENTORY = "Inventory"
     NON_INVENTORY = "NonInventory"
@@ -112,8 +112,8 @@ class PostItemSourceModifiedDateTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItemSourceModifiedDate:
-    r"""PostItemSourceModifiedDate
+class CreateItemSourceModifiedDate:
+    r"""CreateItemSourceModifiedDate
     > View the coverage for items in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
@@ -124,32 +124,32 @@ class PostItemSourceModifiedDate:
     
     is_bill_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBillItem') }})
     is_invoice_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isInvoiceItem') }})
-    item_status: PostItemSourceModifiedDateItemStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemStatus') }})
-    type: PostItemSourceModifiedDateTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    bill_item: Optional[PostItemSourceModifiedDateBillItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billItem'), 'exclude': lambda f: f is None }})
+    item_status: CreateItemSourceModifiedDateItemStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemStatus') }})
+    type: CreateItemSourceModifiedDateTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    bill_item: Optional[CreateItemSourceModifiedDateBillItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billItem'), 'exclude': lambda f: f is None }})
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    invoice_item: Optional[PostItemSourceModifiedDateInvoiceItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceItem'), 'exclude': lambda f: f is None }})
-    metadata: Optional[PostItemSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
+    invoice_item: Optional[CreateItemSourceModifiedDateInvoiceItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceItem'), 'exclude': lambda f: f is None }})
+    metadata: Optional[CreateItemSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     source_modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass
-class PostItemRequest:
-    path_params: PostItemPathParams = dataclasses.field()
-    query_params: PostItemQueryParams = dataclasses.field()
-    request: Optional[PostItemSourceModifiedDate] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+class CreateItemRequest:
+    path_params: CreateItemPathParams = dataclasses.field()
+    query_params: CreateItemQueryParams = dataclasses.field()
+    request: Optional[CreateItemSourceModifiedDate] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONChangesPushOperationRecordRef:
+class CreateItem200ApplicationJSONChangesPushOperationRecordRef:
     data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     
-class PostItem200ApplicationJSONChangesTypeEnum(str, Enum):
+class CreateItem200ApplicationJSONChangesTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     CREATED = "Created"
     MODIFIED = "Modified"
@@ -159,16 +159,16 @@ class PostItem200ApplicationJSONChangesTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONChanges:
+class CreateItem200ApplicationJSONChanges:
     attachment_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachmentId'), 'exclude': lambda f: f is None }})
-    record_ref: Optional[PostItem200ApplicationJSONChangesPushOperationRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
-    type: Optional[PostItem200ApplicationJSONChangesTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    record_ref: Optional[CreateItem200ApplicationJSONChangesPushOperationRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
+    type: Optional[CreateItem200ApplicationJSONChangesTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONSourceModifiedDateBillItemAccountRef:
-    r"""PostItem200ApplicationJSONSourceModifiedDateBillItemAccountRef
+class CreateItem200ApplicationJSONSourceModifiedDateBillItemAccountRef:
+    r"""CreateItem200ApplicationJSONSourceModifiedDateBillItemAccountRef
     Reference of the account to which the item is linked.
     """
     
@@ -178,8 +178,8 @@ class PostItem200ApplicationJSONSourceModifiedDateBillItemAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONSourceModifiedDateBillItemTaxRateRef:
-    r"""PostItem200ApplicationJSONSourceModifiedDateBillItemTaxRateRef
+class CreateItem200ApplicationJSONSourceModifiedDateBillItemTaxRateRef:
+    r"""CreateItem200ApplicationJSONSourceModifiedDateBillItemTaxRateRef
     Reference of the tax rate to which the item is linked.
     """
     
@@ -190,21 +190,21 @@ class PostItem200ApplicationJSONSourceModifiedDateBillItemTaxRateRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONSourceModifiedDateBillItem:
-    r"""PostItem200ApplicationJSONSourceModifiedDateBillItem
+class CreateItem200ApplicationJSONSourceModifiedDateBillItem:
+    r"""CreateItem200ApplicationJSONSourceModifiedDateBillItem
     Item details that are only for bills.
     """
     
-    account_ref: Optional[PostItem200ApplicationJSONSourceModifiedDateBillItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[CreateItem200ApplicationJSONSourceModifiedDateBillItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    tax_rate_ref: Optional[PostItem200ApplicationJSONSourceModifiedDateBillItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
+    tax_rate_ref: Optional[CreateItem200ApplicationJSONSourceModifiedDateBillItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     unit_price: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONSourceModifiedDateInvoiceItemAccountRef:
-    r"""PostItem200ApplicationJSONSourceModifiedDateInvoiceItemAccountRef
+class CreateItem200ApplicationJSONSourceModifiedDateInvoiceItemAccountRef:
+    r"""CreateItem200ApplicationJSONSourceModifiedDateInvoiceItemAccountRef
     Reference of the account to which the item is linked.
     """
     
@@ -214,8 +214,8 @@ class PostItem200ApplicationJSONSourceModifiedDateInvoiceItemAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONSourceModifiedDateInvoiceItemTaxRateRef:
-    r"""PostItem200ApplicationJSONSourceModifiedDateInvoiceItemTaxRateRef
+class CreateItem200ApplicationJSONSourceModifiedDateInvoiceItemTaxRateRef:
+    r"""CreateItem200ApplicationJSONSourceModifiedDateInvoiceItemTaxRateRef
     Reference of the tax rate to which the item is linked.
     """
     
@@ -226,17 +226,17 @@ class PostItem200ApplicationJSONSourceModifiedDateInvoiceItemTaxRateRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONSourceModifiedDateInvoiceItem:
-    r"""PostItem200ApplicationJSONSourceModifiedDateInvoiceItem
+class CreateItem200ApplicationJSONSourceModifiedDateInvoiceItem:
+    r"""CreateItem200ApplicationJSONSourceModifiedDateInvoiceItem
     Item details that are only for bills.
     """
     
-    account_ref: Optional[PostItem200ApplicationJSONSourceModifiedDateInvoiceItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[CreateItem200ApplicationJSONSourceModifiedDateInvoiceItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    tax_rate_ref: Optional[PostItem200ApplicationJSONSourceModifiedDateInvoiceItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
+    tax_rate_ref: Optional[CreateItem200ApplicationJSONSourceModifiedDateInvoiceItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     unit_price: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'exclude': lambda f: f is None }})
     
-class PostItem200ApplicationJSONSourceModifiedDateItemStatusEnum(str, Enum):
+class CreateItem200ApplicationJSONSourceModifiedDateItemStatusEnum(str, Enum):
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
     ARCHIVED = "Archived"
@@ -244,10 +244,10 @@ class PostItem200ApplicationJSONSourceModifiedDateItemStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONSourceModifiedDateMetadata:
+class CreateItem200ApplicationJSONSourceModifiedDateMetadata:
     is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
     
-class PostItem200ApplicationJSONSourceModifiedDateTypeEnum(str, Enum):
+class CreateItem200ApplicationJSONSourceModifiedDateTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     INVENTORY = "Inventory"
     NON_INVENTORY = "NonInventory"
@@ -256,8 +256,8 @@ class PostItem200ApplicationJSONSourceModifiedDateTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONSourceModifiedDate:
-    r"""PostItem200ApplicationJSONSourceModifiedDate
+class CreateItem200ApplicationJSONSourceModifiedDate:
+    r"""CreateItem200ApplicationJSONSourceModifiedDate
     > View the coverage for items in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
@@ -268,18 +268,18 @@ class PostItem200ApplicationJSONSourceModifiedDate:
     
     is_bill_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBillItem') }})
     is_invoice_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isInvoiceItem') }})
-    item_status: PostItem200ApplicationJSONSourceModifiedDateItemStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemStatus') }})
-    type: PostItem200ApplicationJSONSourceModifiedDateTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    bill_item: Optional[PostItem200ApplicationJSONSourceModifiedDateBillItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billItem'), 'exclude': lambda f: f is None }})
+    item_status: CreateItem200ApplicationJSONSourceModifiedDateItemStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemStatus') }})
+    type: CreateItem200ApplicationJSONSourceModifiedDateTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    bill_item: Optional[CreateItem200ApplicationJSONSourceModifiedDateBillItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billItem'), 'exclude': lambda f: f is None }})
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    invoice_item: Optional[PostItem200ApplicationJSONSourceModifiedDateInvoiceItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceItem'), 'exclude': lambda f: f is None }})
-    metadata: Optional[PostItem200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
+    invoice_item: Optional[CreateItem200ApplicationJSONSourceModifiedDateInvoiceItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceItem'), 'exclude': lambda f: f is None }})
+    metadata: Optional[CreateItem200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     source_modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     
-class PostItem200ApplicationJSONStatusEnum(str, Enum):
+class CreateItem200ApplicationJSONStatusEnum(str, Enum):
     PENDING = "Pending"
     FAILED = "Failed"
     SUCCESS = "Success"
@@ -288,7 +288,7 @@ class PostItem200ApplicationJSONStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONValidationValidationItem:
+class CreateItem200ApplicationJSONValidationValidationItem:
     item_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemId'), 'exclude': lambda f: f is None }})
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
     validator_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validatorName'), 'exclude': lambda f: f is None }})
@@ -296,38 +296,38 @@ class PostItem200ApplicationJSONValidationValidationItem:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSONValidation:
-    r"""PostItem200ApplicationJSONValidation
+class CreateItem200ApplicationJSONValidation:
+    r"""CreateItem200ApplicationJSONValidation
     A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here.
     """
     
-    errors: Optional[list[PostItem200ApplicationJSONValidationValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
-    warnings: Optional[list[PostItem200ApplicationJSONValidationValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings'), 'exclude': lambda f: f is None }})
+    errors: Optional[list[CreateItem200ApplicationJSONValidationValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
+    warnings: Optional[list[CreateItem200ApplicationJSONValidationValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostItem200ApplicationJSON:
+class CreateItem200ApplicationJSON:
     company_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId') }})
     data_connection_key: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionKey') }})
     push_operation_key: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pushOperationKey') }})
     requested_on_utc: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('requestedOnUtc'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    status: PostItem200ApplicationJSONStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: CreateItem200ApplicationJSONStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     status_code: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode') }})
-    changes: Optional[list[PostItem200ApplicationJSONChanges]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes'), 'exclude': lambda f: f is None }})
+    changes: Optional[list[CreateItem200ApplicationJSONChanges]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes'), 'exclude': lambda f: f is None }})
     completed_on_utc: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completedOnUtc'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
-    data: Optional[PostItem200ApplicationJSONSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
+    data: Optional[CreateItem200ApplicationJSONSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is None }})
     timeout_in_seconds: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInSeconds'), 'exclude': lambda f: f is None }})
-    validation: Optional[PostItem200ApplicationJSONValidation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
+    validation: Optional[CreateItem200ApplicationJSONValidation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass
-class PostItemResponse:
+class CreateItemResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    post_item_200_application_json_object: Optional[PostItem200ApplicationJSON] = dataclasses.field(default=None)
+    create_item_200_application_json_object: Optional[CreateItem200ApplicationJSON] = dataclasses.field(default=None)
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

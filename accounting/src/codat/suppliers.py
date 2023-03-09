@@ -19,6 +19,41 @@ class Suppliers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    def create_suppliers(self, request: operations.CreateSuppliersRequest) -> operations.CreateSuppliersResponse:
+        r"""Create suppliers
+        Push suppliers
+        
+        Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/accounting-api#/operations/get-create-update-suppliers-model).
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support creating suppliers.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/suppliers', request.path_params)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request)
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        query_params = utils.get_query_params(request.query_params)
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.CreateSuppliersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateSuppliers200ApplicationJSON])
+                res.create_suppliers_200_application_json_object = out
+
+        return res
+
     def download_supplier_attachment(self, request: operations.DownloadSupplierAttachmentRequest) -> operations.DownloadSupplierAttachmentResponse:
         r"""Download supplier attachment
         Download supplier attachment
@@ -41,9 +76,39 @@ class Suppliers:
 
         return res
 
+    def get_create_update_suppliers_model(self, request: operations.GetCreateUpdateSuppliersModelRequest) -> operations.GetCreateUpdateSuppliersModelResponse:
+        r"""Get create/update supplier model
+        Get create/update supplier model. Returns the expected data for the request payload.
+        
+        See the examples for integration-specific indicative models.
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support creating and updating suppliers.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/suppliers', request.path_params)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCreateUpdateSuppliersModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateSuppliersModelPushOption])
+                res.push_option = out
+
+        return res
+
     def get_supplier(self, request: operations.GetSupplierRequest) -> operations.GetSupplierResponse:
         r"""Get supplier
-        Gets a single supplier corresponding to the supplied Id
+        Gets a single supplier corresponding to the given Id
         """
         
         base_url = self._server_url
@@ -138,46 +203,15 @@ class Suppliers:
 
         return res
 
-    def post_suppliers(self, request: operations.PostSuppliersRequest) -> operations.PostSuppliersResponse:
-        r"""Create suppliers
-        Push suppliers
-        
-        > **Supported Integrations**
-        > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support POST methods.
-        """
-        
-        base_url = self._server_url
-        
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/suppliers', request.path_params)
-        
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.PostSuppliersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostSuppliers200ApplicationJSON])
-                res.post_suppliers_200_application_json_object = out
-
-        return res
-
     def put_supplier(self, request: operations.PutSupplierRequest) -> operations.PutSupplierResponse:
         r"""Update supplier
         Push supplier
         
+        Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/accounting-api#/operations/get-create-update-suppliers-model).
+        
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support PUT methods.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support updating suppliers.
         """
         
         base_url = self._server_url

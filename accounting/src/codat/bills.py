@@ -23,9 +23,11 @@ class Bills:
         r"""Create bill
         Posts a new bill to the accounting package for a given company.
         
+        Required data may vary by integration. To see what data to post, first call [Get create/update bill model](https://docs.codat.io/accounting-api#/operations/get-create-update-bills-model).
+        
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support POST methods.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support creating a bill.
         """
         
         base_url = self._server_url
@@ -71,6 +73,38 @@ class Bills:
         
         if http_res.status_code == 200:
             pass
+
+        return res
+
+    def delete_companies_company_id_connections_connection_id_push_bills_bill_id(self, request: operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDRequest) -> operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDResponse:
+        r"""Delete bill
+        Deletes a bill from the accounting package for a given company.
+        
+        > **Supported Integrations**
+        > 
+        > This functionality is currently only supported for our Oracle NetSuite integration. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request.path_params)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('DELETE', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillID200ApplicationJSON])
+                res.delete_companies_company_id_connections_connection_id_push_bills_bill_id_200_application_json_object = out
+            if utils.match_content_type(content_type, 'application/xml'):
+                res.body = http_res.content
+            if utils.match_content_type(content_type, 'multipart/form-data'):
+                res.body = http_res.content
 
         return res
 
@@ -168,6 +202,34 @@ class Bills:
 
         return res
 
+    def get_create_update_bills_model(self, request: operations.GetCreateUpdateBillsModelRequest) -> operations.GetCreateUpdateBillsModelResponse:
+        r"""Get create/update bill model
+        Get create/update bill model.
+        
+         > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support creating and updating a bill.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/bills', request.path_params)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCreateUpdateBillsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateBillsModelPushOption])
+                res.push_option = out
+
+        return res
+
     def list_bills(self, request: operations.ListBillsRequest) -> operations.ListBillsResponse:
         r"""List bills
         Gets the latest bills for a company, with pagination
@@ -197,9 +259,11 @@ class Bills:
         r"""Update bill
         Posts an updated bill to the accounting package for a given company.
         
+        Required data may vary by integration. To see what data to post, first call [Get create/update bill model](https://docs.codat.io/accounting-api#/operations/get-create-update-bills-model).
+        
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support PUT methods.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support updating a bill.
         """
         
         base_url = self._server_url

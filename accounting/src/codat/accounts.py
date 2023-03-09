@@ -19,9 +19,44 @@ class Accounts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    def create_account(self, request: operations.CreateAccountRequest) -> operations.CreateAccountResponse:
+        r"""Create account
+        Creates a new account for a given company.
+        
+        Required data may vary by integration. To see what data to post, first call [Get create account model](https://docs.codat.io/accounting-api#/operations/get-create-chartOfAccounts-model).
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/accounts', request.path_params)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request)
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        query_params = utils.get_query_params(request.query_params)
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.CreateAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateAccount200ApplicationJSON])
+                res.create_account_200_application_json_object = out
+
+        return res
+
     def get_account(self, request: operations.GetAccountRequest) -> operations.GetAccountResponse:
         r"""Get account
-        Gets a single account corresponding to the supplied Id
+        Gets a single account corresponding to the given Id
         """
         
         base_url = self._server_url
@@ -68,36 +103,33 @@ class Accounts:
 
         return res
 
-    def post_account(self, request: operations.PostAccountRequest) -> operations.PostAccountResponse:
-        r"""Create account
-        Posts an individual account for a given company.
+    def get_create_chart_of_accounts_model(self, request: operations.GetCreateChartOfAccountsModelRequest) -> operations.GetCreateChartOfAccountsModelResponse:
+        r"""Get create account model
+        Get create account model. Returns the expected data for the request payload.
+        
+        See the examples for integration-specific indicative models.
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support POST methods.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/accounts', request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/chartOfAccounts', request.path_params)
         
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetCreateChartOfAccountsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostAccount200ApplicationJSON])
-                res.post_account_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateChartOfAccountsModelPushOption])
+                res.push_option = out
 
         return res
 
