@@ -55,3 +55,11 @@ Based on:
 - Speakeasy CLI 1.8.7 https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.2.4] https://pypi.org/project/codat-files/0.2.4 - files
+
+## 2023-03-10 00:00:48
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Files.yaml
+- Speakeasy CLI 1.9.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.3.0] https://pypi.org/project/codat-files/0.3.0 - files

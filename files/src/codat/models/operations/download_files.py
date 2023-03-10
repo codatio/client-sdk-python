@@ -1,9 +1,7 @@
 from __future__ import annotations
 import dataclasses
-import dateutil.parser
 import requests as requests_http
 from datetime import datetime
-from marshmallow import fields
 from typing import Optional
 
 
