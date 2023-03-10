@@ -86,7 +86,7 @@ class JournalEntries:
 
     def get_journal_entry(self, request: operations.GetJournalEntryRequest) -> operations.GetJournalEntryResponse:
         r"""Get journal entry
-        Gets a single JournalEntry corresponding to the given Id
+        Gets a single JournalEntry corresponding to the given ID.
         """
         
         base_url = self._server_url

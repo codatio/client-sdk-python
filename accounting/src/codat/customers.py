@@ -108,7 +108,7 @@ class Customers:
 
     def get_customer(self, request: operations.GetCustomerRequest) -> operations.GetCustomerResponse:
         r"""Get customer
-        Gets a single customer corresponding to the given Id
+        Gets a single customer corresponding to the given ID.
         """
         
         base_url = self._server_url

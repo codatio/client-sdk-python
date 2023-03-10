@@ -51,7 +51,7 @@ class Journals:
 
     def get_journal(self, request: operations.GetJournalRequest) -> operations.GetJournalResponse:
         r"""Get journal
-        Gets a single journal corresponding to the given Id
+        Gets a single journal corresponding to the given ID.
         """
         
         base_url = self._server_url

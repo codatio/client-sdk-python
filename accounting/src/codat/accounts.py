@@ -56,7 +56,7 @@ class Accounts:
 
     def get_account(self, request: operations.GetAccountRequest) -> operations.GetAccountResponse:
         r"""Get account
-        Gets a single account corresponding to the given Id
+        Gets a single account corresponding to the given ID.
         """
         
         base_url = self._server_url

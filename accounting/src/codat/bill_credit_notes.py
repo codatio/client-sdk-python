@@ -56,7 +56,7 @@ class BillCreditNotes:
 
     def get_bill_credit_note(self, request: operations.GetBillCreditNoteRequest) -> operations.GetBillCreditNoteResponse:
         r"""Get bill credit note
-        Gets a single billCreditNote corresponding to the given Id
+        Gets a single billCreditNote corresponding to the given ID.
         """
         
         base_url = self._server_url

@@ -108,7 +108,7 @@ class Suppliers:
 
     def get_supplier(self, request: operations.GetSupplierRequest) -> operations.GetSupplierResponse:
         r"""Get supplier
-        Gets a single supplier corresponding to the given Id
+        Gets a single supplier corresponding to the given ID.
         """
         
         base_url = self._server_url

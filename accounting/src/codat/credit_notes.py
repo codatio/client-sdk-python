@@ -86,7 +86,7 @@ class CreditNotes:
 
     def get_credit_note(self, request: operations.GetCreditNoteRequest) -> operations.GetCreditNoteResponse:
         r"""Get credit note
-        Gets a single creditNote corresponding to the given Id
+        Gets a single creditNote corresponding to the given ID.
         """
         
         base_url = self._server_url
