@@ -17,7 +17,7 @@ from codat.models import operations, shared
 s = codat.Codat()
 s.config_security(
     security=shared.Security(
-        api_key="YOUR_API_KEY_HERE",
+        auth_header="YOUR_API_KEY_HERE",
     )
 )
    
@@ -44,7 +44,7 @@ if res.add_data_connection_200_application_json_object is not None:
 * `add_data_connection` - Create data connection
 * `companies` - List companies
 * `get_dataconnections` - List connections
-* `post_companies` - Create a Sync for commerce company
+* `post_companies` - Create a Sync for Commerce company
 * `update_data_connection` - Update data connection
 
 ### integrations

@@ -4,6 +4,7 @@ src/codat/sync.py
 src/codat/sync_configuration.py
 src/codat/sync_data.py
 src/codat/sdk.py
+pylintrc
 setup.py
 src/codat/__init__.py
 src/codat/models/__init__.py
