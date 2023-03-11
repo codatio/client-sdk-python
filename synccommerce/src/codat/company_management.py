@@ -98,7 +98,7 @@ class CompanyManagement:
         return res
 
     def post_companies(self, request: operations.PostCompaniesRequest) -> operations.PostCompaniesResponse:
-        r"""Create a Sync for commerce company
+        r"""Create a Sync for Commerce company
         Creates a Codat company with a commerce partner data connection.
         """
         
