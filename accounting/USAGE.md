@@ -6,22 +6,19 @@ from codat.models import operations, shared
 s = codat.Codat()
 s.config_security(
     security=shared.Security(
-        api_key="YOUR_API_KEY_HERE",
+        auth_header="YOUR_API_KEY_HERE",
     )
 )
    
-req = operations.GetAccountTransactionRequest(
-    security=operations.GetAccountTransactionSecurity(
-        api_key="YOUR_API_KEY_HERE",
-    ),
-    path_params=operations.GetAccountTransactionPathParams(
+req = operations.GetCreateUpdateAccountTransactionsModelRequest(
+    path_params=operations.GetCreateUpdateAccountTransactionsModelPathParams(
         account_transaction_id="unde",
         company_id="deserunt",
         connection_id="porro",
     ),
 )
     
-res = s.account_transactions.get_account_transaction(req)
+res = s.account_transactions.get_create_update_account_transactions_model(req)
 
 if res.source_modified_date is not None:
     # handle response
