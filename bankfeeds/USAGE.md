@@ -6,14 +6,11 @@ from codat.models import operations, shared
 s = codat.Codat()
 s.config_security(
     security=shared.Security(
-        api_key="YOUR_API_KEY_HERE",
+        auth_header="YOUR_API_KEY_HERE",
     )
 )
    
 req = operations.GetBankAccountPushOptionsRequest(
-    security=operations.GetBankAccountPushOptionsSecurity(
-        api_key="YOUR_API_KEY_HERE",
-    ),
     path_params=operations.GetBankAccountPushOptionsPathParams(
         account_id="unde",
         company_id="deserunt",
