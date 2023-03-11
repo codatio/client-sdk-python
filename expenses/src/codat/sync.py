@@ -26,7 +26,7 @@ class Sync:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/syncs', request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/syncs', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)

@@ -26,7 +26,7 @@ class Expenses:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/expense-transactions', request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/data/expense-transactions', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
@@ -54,7 +54,7 @@ class Expenses:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/syncs/{syncId}/transactions/{transactionId}/attachments', request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}/attachments', request.path_params)
         
         
         client = self._security_client

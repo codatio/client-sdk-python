@@ -40,8 +40,8 @@ if res.get_company_configuration_200_application_json_object is not None:
 
 ### configuration
 
-* `get_company_configuration` - Get Company configuration
-* `save_company_configuration` - Set Company configuration
+* `get_company_configuration` - Get company configuration
+* `save_company_configuration` - Set company configuration
 
 ### connections
 

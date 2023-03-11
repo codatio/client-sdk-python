@@ -26,7 +26,7 @@ class MappingOptions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/mappingOptions', request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/mappingOptions', request.path_params)
         
         
         client = self._security_client

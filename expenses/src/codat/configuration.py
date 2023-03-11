@@ -20,13 +20,13 @@ class Configuration:
         self._gen_version = gen_version
         
     def get_company_configuration(self, request: operations.GetCompanyConfigurationRequest) -> operations.GetCompanyConfigurationResponse:
-        r"""Get Company configuration
+        r"""Get company configuration
         Gets a companies expense sync configuration
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/config', request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/config', request.path_params)
         
         
         client = self._security_client
@@ -44,13 +44,13 @@ class Configuration:
         return res
 
     def save_company_configuration(self, request: operations.SaveCompanyConfigurationRequest) -> operations.SaveCompanyConfigurationResponse:
-        r"""Set Company configuration
+        r"""Set company configuration
         Sets a companies expense sync configuration
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/config', request.path_params)
+        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/config', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
