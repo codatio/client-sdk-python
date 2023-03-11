@@ -14,12 +14,12 @@ from .bank_accounts import BankAccounts
 from .bill_credit_notes import BillCreditNotes
 from .bill_payments import BillPayments
 from .bills import Bills
+from .company_info import CompanyInfo
 from .credit_notes import CreditNotes
 from .customers import Customers
 from .direct_costs import DirectCosts
 from .direct_incomes import DirectIncomes
 from .financials import Financials
-from .info import Info
 from .invoices import Invoices
 from .items import Items
 from .journal_entries import JournalEntries
@@ -54,12 +54,12 @@ class Codat:
     bill_credit_notes: BillCreditNotes
     bill_payments: BillPayments
     bills: Bills
+    company_info: CompanyInfo
     credit_notes: CreditNotes
     customers: Customers
     direct_costs: DirectCosts
     direct_incomes: DirectIncomes
     financials: Financials
-    info: Info
     invoices: Invoices
     items: Items
     journal_entries: JournalEntries
@@ -79,8 +79,8 @@ class Codat:
     _security: shared.Security
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.3.0"
-    _gen_version: str = "1.9.1"
+    _sdk_version: str = "0.3.1"
+    _gen_version: str = "1.9.2"
 
     def __init__(self) -> None:
         self._client = requests_http.Session()
@@ -173,6 +173,15 @@ class Codat:
             self._gen_version
         )
         
+        self.company_info = CompanyInfo(
+            self._client,
+            self._security_client,
+            self._server_url,
+            self._language,
+            self._sdk_version,
+            self._gen_version
+        )
+        
         self.credit_notes = CreditNotes(
             self._client,
             self._security_client,
@@ -210,15 +219,6 @@ class Codat:
         )
         
         self.financials = Financials(
-            self._client,
-            self._security_client,
-            self._server_url,
-            self._language,
-            self._sdk_version,
-            self._gen_version
-        )
-        
-        self.info = Info(
             self._client,
             self._security_client,
             self._server_url,

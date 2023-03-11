@@ -97,6 +97,11 @@ if res.source_modified_date is not None:
 * `list_bills` - List bills
 * `update_bill` - Update bill
 
+### company_info
+
+* `get_company_info` - Get company info
+* `post_sync_info` - Refresh company info
+
 ### credit_notes
 
 * `create_credit_note` - Update creditNote
@@ -143,11 +148,6 @@ if res.source_modified_date is not None:
 * `get_balance_sheet` - Get balance sheet
 * `get_cash_flow_statement` - Get cash flow statement
 * `get_profit_and_loss` - Get profit and loss
-
-### info
-
-* `get_company_info` - Get company info
-* `post_sync_info` - Refresh company info
 
 ### invoices
 

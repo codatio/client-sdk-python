@@ -3,7 +3,7 @@ from . import utils
 from codat.models import operations
 from typing import Optional
 
-class Info:
+class CompanyInfo:
     _client: requests_http.Session
     _security_client: requests_http.Session
     _server_url: str

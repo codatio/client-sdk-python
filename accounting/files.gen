@@ -5,12 +5,12 @@ src/codat/bank_accounts.py
 src/codat/bill_credit_notes.py
 src/codat/bill_payments.py
 src/codat/bills.py
+src/codat/company_info.py
 src/codat/credit_notes.py
 src/codat/customers.py
 src/codat/direct_costs.py
 src/codat/direct_incomes.py
 src/codat/financials.py
-src/codat/info.py
 src/codat/invoices.py
 src/codat/items.py
 src/codat/journal_entries.py
@@ -68,6 +68,8 @@ src/codat/models/operations/get_bill_attachments.py
 src/codat/models/operations/get_create_update_bills_model.py
 src/codat/models/operations/list_bills.py
 src/codat/models/operations/update_bill.py
+src/codat/models/operations/get_company_info.py
+src/codat/models/operations/post_sync_info.py
 src/codat/models/operations/create_credit_note.py
 src/codat/models/operations/get_create_update_creditnotes_model.py
 src/codat/models/operations/get_credit_note.py
@@ -100,8 +102,6 @@ src/codat/models/operations/post_direct_income_attachment.py
 src/codat/models/operations/get_balance_sheet.py
 src/codat/models/operations/get_cash_flow_statement.py
 src/codat/models/operations/get_profit_and_loss.py
-src/codat/models/operations/get_company_info.py
-src/codat/models/operations/post_sync_info.py
 src/codat/models/operations/create_invoice.py
 src/codat/models/operations/donwload_invoice_attachment.py
 src/codat/models/operations/get_create_update_invoices_model.py
