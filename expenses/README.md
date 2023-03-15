@@ -14,17 +14,15 @@ pip install codat-expenses
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
-        authorization="YOUR_API_KEY_HERE",
-    )
-)
-   
-req = operations.GetCompanyConfigurationRequest(
-    path_params=operations.GetCompanyConfigurationPathParams(
-        company_id="unde",
+        auth_header="YOUR_API_KEY_HERE",
     ),
+)
+
+
+req = operations.GetCompanyConfigurationRequest(
+    company_id="unde",
 )
     
 res = s.configuration.get_company_configuration(req)
@@ -40,8 +38,8 @@ if res.get_company_configuration_200_application_json_object is not None:
 
 ### configuration
 
-* `get_company_configuration` - Get Company configuration
-* `save_company_configuration` - Set Company configuration
+* `get_company_configuration` - Get company configuration
+* `save_company_configuration` - Set company configuration
 
 ### connections
 
