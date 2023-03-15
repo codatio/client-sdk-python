@@ -26,7 +26,7 @@ class Connections:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections', request.path_params)
+        url = utils.generate_url(operations.CreateDataConnectionRequest, base_url, '/companies/{companyId}/connections', request)
         
         
         client = self._security_client
@@ -51,7 +51,7 @@ class Connections:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}', request.path_params)
+        url = utils.generate_url(operations.DeleteCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
         
         
         client = self._security_client
@@ -81,10 +81,10 @@ class Connections:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/authorization', request.path_params)
+        url = utils.generate_url(operations.GetCompanyAuthorizationRequest, base_url, '/companies/{companyId}/connections/{connectionId}/authorization', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -109,7 +109,7 @@ class Connections:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}', request.path_params)
+        url = utils.generate_url(operations.GetCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
         
         
         client = self._security_client
@@ -141,9 +141,9 @@ class Connections:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections', request.path_params)
+        url = utils.generate_url(operations.ListCompanyConnectionsRequest, base_url, '/companies/{companyId}/connections', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListCompanyConnectionsRequest, request)
         
         client = self._security_client
         
@@ -174,10 +174,10 @@ class Connections:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}', request.path_params)
+        url = utils.generate_url(operations.UnlinkCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

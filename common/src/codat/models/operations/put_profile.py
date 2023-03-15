@@ -23,11 +23,6 @@ class PutProfileProfile:
     white_list_urls: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('whiteListUrls'), 'exclude': lambda f: f is None }})
     
 
-@dataclasses.dataclass
-class PutProfileRequest:
-    request: Optional[PutProfileProfile] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PutProfile401ApplicationJSON:

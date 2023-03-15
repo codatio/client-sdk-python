@@ -19,7 +19,7 @@ class Webhooks:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_rule(self, request: operations.CreateRuleRequest) -> operations.CreateRuleResponse:
+    def create_rule(self, request: operations.CreateRuleWebhook) -> operations.CreateRuleResponse:
         r"""Create webhook
         Create a new webhook configuration
         """
@@ -29,7 +29,7 @@ class Webhooks:
         url = base_url.removesuffix('/') + '/rules'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -58,7 +58,7 @@ class Webhooks:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/rules/{ruleId}', request.path_params)
+        url = utils.generate_url(operations.GetWebhookRequest, base_url, '/rules/{ruleId}', request)
         
         
         client = self._security_client
@@ -92,7 +92,7 @@ class Webhooks:
         
         url = base_url.removesuffix('/') + '/rules'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListRulesRequest, request)
         
         client = self._security_client
         

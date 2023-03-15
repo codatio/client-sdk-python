@@ -26,7 +26,7 @@ class DataStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/dataStatus', request.path_params)
+        url = utils.generate_url(operations.GetCompaniesCompanyIDDataStatusRequest, base_url, '/companies/{companyId}/dataStatus', request)
         
         
         client = self._security_client
@@ -58,9 +58,9 @@ class DataStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/history', request.path_params)
+        url = utils.generate_url(operations.GetCompanyDataHistoryRequest, base_url, '/companies/{companyId}/data/history', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetCompanyDataHistoryRequest, request)
         
         client = self._security_client
         
@@ -95,7 +95,7 @@ class DataStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/history/{datasetId}', request.path_params)
+        url = utils.generate_url(operations.GetPullOperationRequest, base_url, '/companies/{companyId}/data/history/{datasetId}', request)
         
         
         client = self._security_client

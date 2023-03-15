@@ -26,7 +26,7 @@ class RefreshData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/all', request.path_params)
+        url = utils.generate_url(operations.CreateManyPullOperationsRequest, base_url, '/companies/{companyId}/data/all', request)
         
         
         client = self._security_client
@@ -58,9 +58,9 @@ class RefreshData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/queue/{dataType}', request.path_params)
+        url = utils.generate_url(operations.CreatePullOperationRequest, base_url, '/companies/{companyId}/data/queue/{dataType}', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreatePullOperationRequest, request)
         
         client = self._security_client
         

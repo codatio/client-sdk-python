@@ -35,7 +35,7 @@ class PushData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/{dataType}', request.path_params)
+        url = utils.generate_url(operations.GetCompaniesCompanyIDConnectionsConnectionIDPushRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/{dataType}', request)
         
         
         client = self._security_client
@@ -59,9 +59,9 @@ class PushData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/push', request.path_params)
+        url = utils.generate_url(operations.GetCompaniesCompanyIDPushRequest, base_url, '/companies/{companyId}/push', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetCompaniesCompanyIDPushRequest, request)
         
         client = self._security_client
         
@@ -84,7 +84,7 @@ class PushData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/push/{pushOperationKey}', request.path_params)
+        url = utils.generate_url(operations.GetCompaniesCompanyIDPushPushOperationKeyRequest, base_url, '/companies/{companyId}/push/{pushOperationKey}', request)
         
         
         client = self._security_client

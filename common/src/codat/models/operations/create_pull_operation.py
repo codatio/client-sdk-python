@@ -22,20 +22,10 @@ class CreatePullOperationDataTypeEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class CreatePullOperationPathParams:
+class CreatePullOperationRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     data_type: CreatePullOperationDataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class CreatePullOperationQueryParams:
     connection_id: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'connectionId', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class CreatePullOperationRequest:
-    path_params: CreatePullOperationPathParams = dataclasses.field()
-    query_params: CreatePullOperationQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

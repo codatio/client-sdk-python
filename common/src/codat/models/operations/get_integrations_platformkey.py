@@ -8,13 +8,8 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetIntegrationsPlatformKeyPathParams:
-    platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetIntegrationsPlatformKeyRequest:
-    path_params: GetIntegrationsPlatformKeyPathParams = dataclasses.field()
+    platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

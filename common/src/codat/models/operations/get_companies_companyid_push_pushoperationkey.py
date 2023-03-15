@@ -11,14 +11,9 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class GetCompaniesCompanyIDPushPushOperationKeyPathParams:
+class GetCompaniesCompanyIDPushPushOperationKeyRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     push_operation_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'pushOperationKey', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetCompaniesCompanyIDPushPushOperationKeyRequest:
-    path_params: GetCompaniesCompanyIDPushPushOperationKeyPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

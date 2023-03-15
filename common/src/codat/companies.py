@@ -19,7 +19,7 @@ class Companies:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_company(self, request: operations.CreateCompanyRequest) -> operations.CreateCompanyResponse:
+    def create_company(self, request: operations.CreateCompanyRequestBody) -> operations.CreateCompanyResponse:
         r"""Create company
         Create a new company
         """
@@ -29,7 +29,7 @@ class Companies:
         url = base_url.removesuffix('/') + '/companies'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -59,7 +59,7 @@ class Companies:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}', request.path_params)
+        url = utils.generate_url(operations.DeleteCompanyRequest, base_url, '/companies/{companyId}', request)
         
         
         client = self._security_client
@@ -85,7 +85,7 @@ class Companies:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}', request.path_params)
+        url = utils.generate_url(operations.GetCompanyRequest, base_url, '/companies/{companyId}', request)
         
         
         client = self._security_client
@@ -115,7 +115,7 @@ class Companies:
         
         url = base_url.removesuffix('/') + '/companies'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListCompaniesRequest, request)
         
         client = self._security_client
         
@@ -146,10 +146,10 @@ class Companies:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}', request.path_params)
+        url = utils.generate_url(operations.UpdateCompanyRequest, base_url, '/companies/{companyId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

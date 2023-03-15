@@ -34,11 +34,6 @@ class PostProfileSyncSettingsRequestBody:
     settings: list[PostProfileSyncSettingsRequestBodySyncSetting] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('settings') }})
     
 
-@dataclasses.dataclass
-class PostProfileSyncSettingsRequest:
-    request: Optional[PostProfileSyncSettingsRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostProfileSyncSettings401ApplicationJSON:

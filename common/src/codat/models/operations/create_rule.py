@@ -26,11 +26,6 @@ class CreateRuleWebhook:
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})
     
 
-@dataclasses.dataclass
-class CreateRuleRequest:
-    request: Optional[CreateRuleWebhook] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateRule401ApplicationJSON:

@@ -7,13 +7,8 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class CreateManyPullOperationsPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class CreateManyPullOperationsRequest:
-    path_params: CreateManyPullOperationsPathParams = dataclasses.field()
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

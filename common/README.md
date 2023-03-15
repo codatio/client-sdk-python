@@ -14,18 +14,16 @@ pip install codat-common
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
-    )
-)
-   
-req = operations.CreateCompanyRequest(
-    request=operations.CreateCompanyRequestBody(
-        description="unde",
-        name="deserunt",
     ),
+)
+
+
+req = operations.CreateCompanyRequestBody(
+    description="unde",
+    name="deserunt",
 )
     
 res = s.companies.create_company(req)

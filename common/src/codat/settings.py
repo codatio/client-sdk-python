@@ -75,7 +75,7 @@ class Settings:
 
         return res
 
-    def post_profile_sync_settings(self, request: operations.PostProfileSyncSettingsRequest) -> operations.PostProfileSyncSettingsResponse:
+    def post_profile_sync_settings(self, request: operations.PostProfileSyncSettingsRequestBody) -> operations.PostProfileSyncSettingsResponse:
         r"""Update all sync settings
         Update sync settings for all data types.
         """
@@ -85,7 +85,7 @@ class Settings:
         url = base_url.removesuffix('/') + '/profile/syncSettings'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -105,7 +105,7 @@ class Settings:
 
         return res
 
-    def put_profile(self, request: operations.PutProfileRequest) -> operations.PutProfileResponse:
+    def put_profile(self, request: operations.PutProfileProfile) -> operations.PutProfileResponse:
         r"""Update profile
         Update your Codat profile
         """
@@ -115,7 +115,7 @@ class Settings:
         url = base_url.removesuffix('/') + '/profile'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

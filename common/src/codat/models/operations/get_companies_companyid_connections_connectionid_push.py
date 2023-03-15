@@ -19,15 +19,10 @@ class GetCompaniesCompanyIDConnectionsConnectionIDPushDataTypeEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class GetCompaniesCompanyIDConnectionsConnectionIDPushPathParams:
+class GetCompaniesCompanyIDConnectionsConnectionIDPushRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     data_type: GetCompaniesCompanyIDConnectionsConnectionIDPushDataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetCompaniesCompanyIDConnectionsConnectionIDPushRequest:
-    path_params: GetCompaniesCompanyIDConnectionsConnectionIDPushPathParams = dataclasses.field()
     
 class GetCompaniesCompanyIDConnectionsConnectionIDPushPushOptionPushOptionPropertyPushOptionChoiceOptionTypeEnum(str, Enum):
     ARRAY = "Array"
