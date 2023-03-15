@@ -14,27 +14,20 @@ pip install codat-banking
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
-        api_key="YOUR_API_KEY_HERE",
-    )
+        auth_header="YOUR_API_KEY_HERE",
+    ),
 )
-   
+
+
 req = operations.ListBankingAccountBalancesRequest(
-    security=operations.ListBankingAccountBalancesSecurity(
-        api_key="YOUR_API_KEY_HERE",
-    ),
-    path_params=operations.ListBankingAccountBalancesPathParams(
-        company_id="unde",
-        connection_id="deserunt",
-    ),
-    query_params=operations.ListBankingAccountBalancesQueryParams(
-        order_by="porro",
-        page=8442.66,
-        page_size=6027.63,
-        query="vero",
-    ),
+    company_id="unde",
+    connection_id="deserunt",
+    order_by="porro",
+    page=8442.66,
+    page_size=6027.63,
+    query="vero",
 )
     
 res = s.account_balances.list_banking_account_balances(req)
@@ -50,12 +43,12 @@ if res.links is not None:
 
 ### account_balances
 
-* `list_banking_account_balances` - List bank balances
+* `list_banking_account_balances` - List account balances
 
 ### accounts
 
-* `get_bank_account` - Get bank account
-* `list_banking_accounts` - List bank accounts
+* `get_banking_account` - Get account
+* `list_banking_accounts` - List accounts
 
 ### transaction_categories
 

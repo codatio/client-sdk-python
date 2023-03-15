@@ -11,52 +11,16 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class ListBankingAccountsRequest:
+class GetBankingAccountRequest:
+    account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountId', 'style': 'simple', 'explode': False }})
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    page: float = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
-    order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
-    page_size: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
-    query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountsLinksLinksCurrent:
-    href: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href') }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankingAccountsLinksLinksNext:
-    href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankingAccountsLinksLinksPrevious:
-    href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankingAccountsLinksLinksSelf:
-    href: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href') }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankingAccountsLinksLinks:
-    current: ListBankingAccountsLinksLinksCurrent = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})
-    self: ListBankingAccountsLinksLinksSelf = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})
-    next: Optional[ListBankingAccountsLinksLinksNext] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})
-    previous: Optional[ListBankingAccountsLinksLinksPrevious] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankingAccountsLinksSourceModifiedDateAccountBalanceAmounts:
-    r"""ListBankingAccountsLinksSourceModifiedDateAccountBalanceAmounts
+class GetBankingAccountSourceModifiedDateAccountBalanceAmounts:
+    r"""GetBankingAccountSourceModifiedDateAccountBalanceAmounts
     An object containing bank balance data.
     """
     
@@ -64,7 +28,7 @@ class ListBankingAccountsLinksSourceModifiedDateAccountBalanceAmounts:
     current: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current'), 'exclude': lambda f: f is None }})
     limit: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('limit'), 'exclude': lambda f: f is None }})
     
-class ListBankingAccountsLinksSourceModifiedDateAccountIdentifiersTypeEnum(str, Enum):
+class GetBankingAccountSourceModifiedDateAccountIdentifiersTypeEnum(str, Enum):
     ACCOUNT = "Account"
     CARD = "Card"
     CREDIT = "Credit"
@@ -76,12 +40,12 @@ class ListBankingAccountsLinksSourceModifiedDateAccountIdentifiersTypeEnum(str, 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountsLinksSourceModifiedDateAccountIdentifiers:
-    r"""ListBankingAccountsLinksSourceModifiedDateAccountIdentifiers
+class GetBankingAccountSourceModifiedDateAccountIdentifiers:
+    r"""GetBankingAccountSourceModifiedDateAccountIdentifiers
     An object containing bank account identification information.
     """
     
-    type: ListBankingAccountsLinksSourceModifiedDateAccountIdentifiersTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: GetBankingAccountSourceModifiedDateAccountIdentifiersTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     bank_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankCode'), 'exclude': lambda f: f is None }})
     bic: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bic'), 'exclude': lambda f: f is None }})
     iban: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('iban'), 'exclude': lambda f: f is None }})
@@ -92,15 +56,15 @@ class ListBankingAccountsLinksSourceModifiedDateAccountIdentifiers:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountsLinksSourceModifiedDateAccountInstitution:
-    r"""ListBankingAccountsLinksSourceModifiedDateAccountInstitution
+class GetBankingAccountSourceModifiedDateAccountInstitution:
+    r"""GetBankingAccountSourceModifiedDateAccountInstitution
     The bank or other financial institution providing the account.
     """
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     
-class ListBankingAccountsLinksSourceModifiedDateTypeEnum(str, Enum):
+class GetBankingAccountSourceModifiedDateTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
@@ -108,44 +72,30 @@ class ListBankingAccountsLinksSourceModifiedDateTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountsLinksSourceModifiedDate:
-    r"""ListBankingAccountsLinksSourceModifiedDate
+class GetBankingAccountSourceModifiedDate:
+    r"""GetBankingAccountSourceModifiedDate
     An account where payments are made or received, and bank transactions are recorded.
     
     Explore our [data coverage](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-accounts).
     """
     
-    balance: ListBankingAccountsLinksSourceModifiedDateAccountBalanceAmounts = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})
+    balance: GetBankingAccountSourceModifiedDateAccountBalanceAmounts = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    identifiers: ListBankingAccountsLinksSourceModifiedDateAccountIdentifiers = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('identifiers') }})
-    institution: ListBankingAccountsLinksSourceModifiedDateAccountInstitution = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('institution') }})
+    identifiers: GetBankingAccountSourceModifiedDateAccountIdentifiers = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('identifiers') }})
+    institution: GetBankingAccountSourceModifiedDateAccountInstitution = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('institution') }})
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    type: ListBankingAccountsLinksSourceModifiedDateTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: GetBankingAccountSourceModifiedDateTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     holder: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('holder'), 'exclude': lambda f: f is None }})
     informal_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('informalName'), 'exclude': lambda f: f is None }})
     modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     source_modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountsLinks:
-    r"""ListBankingAccountsLinks
-    Codat's Paging Model
-    """
-    
-    links: ListBankingAccountsLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})
-    page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})
-    page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})
-    total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})
-    results: Optional[ListBankingAccountsLinksSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
-    
-
-@dataclasses.dataclass
-class ListBankingAccountsResponse:
+class GetBankingAccountResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    links: Optional[ListBankingAccountsLinks] = dataclasses.field(default=None)
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    source_modified_date: Optional[GetBankingAccountSourceModifiedDate] = dataclasses.field(default=None)
     

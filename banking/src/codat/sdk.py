@@ -1,5 +1,11 @@
+__doc__ = """ SDK Documentation: Codat's Banking API allows you to access standardised data from over bank accounts via third party providers.
 
-import requests
+Standardize how you connect to your customers’ bank accounts. Retrieve bank account and bank transaction data in the same way via our partnerships with Plaid and TrueLayer.
+
+[Read more...](https://docs.codat.io/banking-api/overview)
+
+[See our OpenAPI spec](https://github.com/codatio/oas) """
+import requests as requests_http
 from . import utils
 from .account_balances import AccountBalances
 from .accounts import Accounts
@@ -11,53 +17,50 @@ SERVERS = [
 	"https://api.codat.io",
 ]
 
-
 class Codat:
+    r"""SDK Documentation: Codat's Banking API allows you to access standardised data from over bank accounts via third party providers.
     
+    Standardize how you connect to your customers’ bank accounts. Retrieve bank account and bank transaction data in the same way via our partnerships with Plaid and TrueLayer.
+    
+    [Read more...](https://docs.codat.io/banking-api/overview)
+    
+    [See our OpenAPI spec](https://github.com/codatio/oas) """
     account_balances: AccountBalances
     accounts: Accounts
     transaction_categories: TransactionCategories
     transactions: Transactions
-
-    _client: requests.Session
-    _security_client: requests.Session
-    _security: shared.Security
+    
+    _client: requests_http.Session
+    _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.1.1"
-    _gen_version: str = "1.7.1"
+    _sdk_version: str = "0.4.0"
+    _gen_version: str = "1.11.0"
 
-    def __init__(self) -> None:
-        self._client = requests.Session()
-        self._security_client = requests.Session()
-        self._init_sdks()
-
-
-    def config_server_url(self, server_url: str, params: dict[str, str]):
-        if params is not None:
-            self._server_url = utils.replace_parameters(server_url, params)
-        else:
-            self._server_url = server_url
-
-        self._init_sdks()
-    
-
-    def config_client(self, client: requests.Session):
-        self._client = client
+    def __init__(self,
+                 security: shared.Security = None,
+                 server_url: str = None,
+                 url_params: dict[str, str] = None,
+                 client: requests_http.Session = None
+                 ) -> None:
+        self._client = requests_http.Session()
         
-        if self._security is not None:
-            self._security_client = utils.configure_security_client(self._client, self._security)
-        self._init_sdks()
-    
+        
+        if server_url is not None:
+            if url_params is not None:
+                self._server_url = utils.template_url(server_url, url_params)
+            else:
+                self._server_url = server_url
 
-    def config_security(self, security: shared.Security):
-        self._security = security
+        if client is not None:
+            self._client = client
+        
         self._security_client = utils.configure_security_client(self._client, security)
+        
+
         self._init_sdks()
-    
     
     def _init_sdks(self):
-        
         self.account_balances = AccountBalances(
             self._client,
             self._security_client,
@@ -93,5 +96,5 @@ class Codat:
             self._sdk_version,
             self._gen_version
         )
-    
+        
     
