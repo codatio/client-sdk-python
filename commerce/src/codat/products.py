@@ -26,9 +26,9 @@ class Products:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-productCategories', request.path_params)
+        url = utils.generate_url(operations.ListCommerceProductCategoriesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-productCategories', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListCommerceProductCategoriesRequest, request)
         
         client = self._security_client
         
@@ -51,9 +51,9 @@ class Products:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-products', request.path_params)
+        url = utils.generate_url(operations.ListCommerceProductsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-products', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListCommerceProductsRequest, request)
         
         client = self._security_client
         

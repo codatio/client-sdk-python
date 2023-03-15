@@ -26,9 +26,9 @@ class Disputes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-disputes', request.path_params)
+        url = utils.generate_url(operations.ListCommerceDisputesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-disputes', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListCommerceDisputesRequest, request)
         
         client = self._security_client
         

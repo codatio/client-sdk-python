@@ -3,18 +3,16 @@
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
-    )
-)
-   
-req = operations.GetCommerceInfoRequest(
-    path_params=operations.GetCommerceInfoPathParams(
-        company_id="unde",
-        connection_id="deserunt",
     ),
+)
+
+
+req = operations.GetCommerceInfoRequest(
+    company_id="unde",
+    connection_id="deserunt",
 )
     
 res = s.company_info.get_commerce_info(req)

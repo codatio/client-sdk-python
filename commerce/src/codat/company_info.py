@@ -28,7 +28,7 @@ class CompanyInfo:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-info', request.path_params)
+        url = utils.generate_url(operations.GetCommerceInfoRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-info', request)
         
         
         client = self._security_client

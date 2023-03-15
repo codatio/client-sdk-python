@@ -26,9 +26,9 @@ class Transactions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-transactions', request.path_params)
+        url = utils.generate_url(operations.ListCommerceTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-transactions', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListCommerceTransactionsRequest, request)
         
         client = self._security_client
         
