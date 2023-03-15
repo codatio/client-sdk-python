@@ -3,25 +3,20 @@
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
-        api_key="YOUR_API_KEY_HERE",
-    )
+        auth_header="YOUR_API_KEY_HERE",
+    ),
 )
-   
-req = operations.GetAccountTransactionRequest(
-    security=operations.GetAccountTransactionSecurity(
-        api_key="YOUR_API_KEY_HERE",
-    ),
-    path_params=operations.GetAccountTransactionPathParams(
-        account_transaction_id="unde",
-        company_id="deserunt",
-        connection_id="porro",
-    ),
+
+
+req = operations.GetCreateUpdateAccountTransactionsModelRequest(
+    account_transaction_id="unde",
+    company_id="deserunt",
+    connection_id="porro",
 )
     
-res = s.account_transactions.get_account_transaction(req)
+res = s.account_transactions.get_create_update_account_transactions_model(req)
 
 if res.source_modified_date is not None:
     # handle response

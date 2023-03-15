@@ -1,5 +1,11 @@
+__doc__ = """ SDK Documentation: A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
 
-import requests
+Standardize how you connect to your customers’ accounting software. View, create, update, and delete data in the same way for all the leading accounting platforms.
+
+[Read more...](https://docs.codat.io/accounting-api/overview)
+
+[See our OpenAPI spec](https://github.com/codatio/oas)    """
+import requests as requests_http
 from . import utils
 from .account_transactions import AccountTransactions
 from .accounts import Accounts
@@ -8,12 +14,12 @@ from .bank_accounts import BankAccounts
 from .bill_credit_notes import BillCreditNotes
 from .bill_payments import BillPayments
 from .bills import Bills
+from .company_info import CompanyInfo
 from .credit_notes import CreditNotes
 from .customers import Customers
 from .direct_costs import DirectCosts
 from .direct_incomes import DirectIncomes
 from .financials import Financials
-from .info import Info
 from .invoices import Invoices
 from .items import Items
 from .journal_entries import JournalEntries
@@ -33,9 +39,14 @@ SERVERS = [
 	"https://api.codat.io",
 ]
 
-
 class Codat:
+    r"""SDK Documentation: A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
     
+    Standardize how you connect to your customers’ accounting software. View, create, update, and delete data in the same way for all the leading accounting platforms.
+    
+    [Read more...](https://docs.codat.io/accounting-api/overview)
+    
+    [See our OpenAPI spec](https://github.com/codatio/oas)    """
     account_transactions: AccountTransactions
     accounts: Accounts
     bank_account_transactions: BankAccountTransactions
@@ -43,12 +54,12 @@ class Codat:
     bill_credit_notes: BillCreditNotes
     bill_payments: BillPayments
     bills: Bills
+    company_info: CompanyInfo
     credit_notes: CreditNotes
     customers: Customers
     direct_costs: DirectCosts
     direct_incomes: DirectIncomes
     financials: Financials
-    info: Info
     invoices: Invoices
     items: Items
     journal_entries: JournalEntries
@@ -62,46 +73,38 @@ class Codat:
     tax_rates: TaxRates
     tracking_categories: TrackingCategories
     transfers: Transfers
-
-    _client: requests.Session
-    _security_client: requests.Session
-    _security: shared.Security
+    
+    _client: requests_http.Session
+    _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.1.3"
-    _gen_version: str = "1.7.1"
+    _sdk_version: str = "0.4.0"
+    _gen_version: str = "1.11.0"
 
-    def __init__(self) -> None:
-        self._client = requests.Session()
-        self._security_client = requests.Session()
-        self._init_sdks()
-
-
-    def config_server_url(self, server_url: str, params: dict[str, str]):
-        if params is not None:
-            self._server_url = utils.replace_parameters(server_url, params)
-        else:
-            self._server_url = server_url
-
-        self._init_sdks()
-    
-
-    def config_client(self, client: requests.Session):
-        self._client = client
+    def __init__(self,
+                 security: shared.Security = None,
+                 server_url: str = None,
+                 url_params: dict[str, str] = None,
+                 client: requests_http.Session = None
+                 ) -> None:
+        self._client = requests_http.Session()
         
-        if self._security is not None:
-            self._security_client = utils.configure_security_client(self._client, self._security)
-        self._init_sdks()
-    
+        
+        if server_url is not None:
+            if url_params is not None:
+                self._server_url = utils.template_url(server_url, url_params)
+            else:
+                self._server_url = server_url
 
-    def config_security(self, security: shared.Security):
-        self._security = security
+        if client is not None:
+            self._client = client
+        
         self._security_client = utils.configure_security_client(self._client, security)
+        
+
         self._init_sdks()
-    
     
     def _init_sdks(self):
-        
         self.account_transactions = AccountTransactions(
             self._client,
             self._security_client,
@@ -165,6 +168,15 @@ class Codat:
             self._gen_version
         )
         
+        self.company_info = CompanyInfo(
+            self._client,
+            self._security_client,
+            self._server_url,
+            self._language,
+            self._sdk_version,
+            self._gen_version
+        )
+        
         self.credit_notes = CreditNotes(
             self._client,
             self._security_client,
@@ -202,15 +214,6 @@ class Codat:
         )
         
         self.financials = Financials(
-            self._client,
-            self._security_client,
-            self._server_url,
-            self._language,
-            self._sdk_version,
-            self._gen_version
-        )
-        
-        self.info = Info(
             self._client,
             self._security_client,
             self._server_url,
@@ -335,5 +338,5 @@ class Codat:
             self._sdk_version,
             self._gen_version
         )
-    
+        
     
