@@ -26,7 +26,7 @@ class Transactions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactions/{transactionId}', request.path_params)
+        url = utils.generate_url(operations.GetBankingTransactionRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactions/{transactionId}', request)
         
         
         client = self._security_client
@@ -50,9 +50,9 @@ class Transactions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/banking-transactions', request.path_params)
+        url = utils.generate_url(operations.ListAllBankingTransactionsRequest, base_url, '/companies/{companyId}/data/banking-transactions', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListAllBankingTransactionsRequest, request)
         
         client = self._security_client
         
@@ -75,9 +75,9 @@ class Transactions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactions', request.path_params)
+        url = utils.generate_url(operations.ListBankingTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactions', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListBankingTransactionsRequest, request)
         
         client = self._security_client
         

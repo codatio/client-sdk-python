@@ -11,15 +11,10 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetBankingTransactionPathParams:
+class GetBankingTransactionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     transaction_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'transactionId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetBankingTransactionRequest:
-    path_params: GetBankingTransactionPathParams = dataclasses.field()
     
 class GetBankingTransactionSourceModifiedDateCodeEnum(str, Enum):
     UNKNOWN = "Unknown"

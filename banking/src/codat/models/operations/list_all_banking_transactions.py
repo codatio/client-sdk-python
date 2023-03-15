@@ -11,22 +11,12 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class ListAllBankingTransactionsPathParams:
+class ListAllBankingTransactionsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class ListAllBankingTransactionsQueryParams:
     page: float = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     page_size: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
     query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class ListAllBankingTransactionsRequest:
-    path_params: ListAllBankingTransactionsPathParams = dataclasses.field()
-    query_params: ListAllBankingTransactionsQueryParams = dataclasses.field()
     
 class ListAllBankingTransactions200ApplicationJSONSourceModifiedDateCodeEnum(str, Enum):
     UNKNOWN = "Unknown"
