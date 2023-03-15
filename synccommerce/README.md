@@ -14,18 +14,16 @@ pip install codat-synccommerce
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
-        api_key="YOUR_API_KEY_HERE",
-    )
-)
-   
-req = operations.AddDataConnectionRequest(
-    path_params=operations.AddDataConnectionPathParams(
-        company_id="unde",
+        auth_header="YOUR_API_KEY_HERE",
     ),
-    request="deserunt",
+)
+
+
+req = operations.AddDataConnectionRequest(
+    request_body="unde",
+    company_id="deserunt",
 )
     
 res = s.company_management.add_data_connection(req)
@@ -44,7 +42,7 @@ if res.add_data_connection_200_application_json_object is not None:
 * `add_data_connection` - Create data connection
 * `companies` - List companies
 * `get_dataconnections` - List connections
-* `post_companies` - Create a Sync for commerce company
+* `post_companies` - Create a Sync for Commerce company
 * `update_data_connection` - Update data connection
 
 ### integrations
