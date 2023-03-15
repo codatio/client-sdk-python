@@ -3,19 +3,17 @@
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
-    )
-)
-   
-req = operations.GetCreateUpdateAccountTransactionsModelRequest(
-    path_params=operations.GetCreateUpdateAccountTransactionsModelPathParams(
-        account_transaction_id="unde",
-        company_id="deserunt",
-        connection_id="porro",
     ),
+)
+
+
+req = operations.GetCreateUpdateAccountTransactionsModelRequest(
+    account_transaction_id="unde",
+    company_id="deserunt",
+    connection_id="porro",
 )
     
 res = s.account_transactions.get_create_update_account_transactions_model(req)

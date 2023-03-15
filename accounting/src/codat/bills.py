@@ -32,13 +32,13 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/bills', request.path_params)
+        url = utils.generate_url(operations.CreateBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateBillRequest, request)
         
         client = self._security_client
         
@@ -61,7 +61,7 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments', request.path_params)
+        url = utils.generate_url(operations.CreateBillAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments', request)
         
         
         client = self._security_client
@@ -87,7 +87,7 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request.path_params)
+        url = utils.generate_url(operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request)
         
         
         client = self._security_client
@@ -115,7 +115,7 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}/download', request.path_params)
+        url = utils.generate_url(operations.DownloadBillAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}/download', request)
         
         
         client = self._security_client
@@ -137,7 +137,7 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/bills/{billId}', request.path_params)
+        url = utils.generate_url(operations.GetBillRequest, base_url, '/companies/{companyId}/data/bills/{billId}', request)
         
         
         client = self._security_client
@@ -161,7 +161,7 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}', request.path_params)
+        url = utils.generate_url(operations.GetBillAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}', request)
         
         
         client = self._security_client
@@ -185,7 +185,7 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments', request.path_params)
+        url = utils.generate_url(operations.GetBillAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments', request)
         
         
         client = self._security_client
@@ -213,7 +213,7 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/bills', request.path_params)
+        url = utils.generate_url(operations.GetCreateUpdateBillsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bills', request)
         
         
         client = self._security_client
@@ -237,9 +237,9 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/bills', request.path_params)
+        url = utils.generate_url(operations.ListBillsRequest, base_url, '/companies/{companyId}/data/bills', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListBillsRequest, request)
         
         client = self._security_client
         
@@ -268,13 +268,13 @@ class Bills:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request.path_params)
+        url = utils.generate_url(operations.UpdateBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.UpdateBillRequest, request)
         
         client = self._security_client
         

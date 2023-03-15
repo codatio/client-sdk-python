@@ -26,7 +26,7 @@ class AccountTransactions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/accountTransactions/{accountTransactionId}', request.path_params)
+        url = utils.generate_url(operations.GetCreateUpdateAccountTransactionsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/accountTransactions/{accountTransactionId}', request)
         
         
         client = self._security_client
@@ -50,9 +50,9 @@ class AccountTransactions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/accountTransactions', request.path_params)
+        url = utils.generate_url(operations.ListAccountTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/accountTransactions', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListAccountTransactionsRequest, request)
         
         client = self._security_client
         

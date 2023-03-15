@@ -10,22 +10,12 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class ListJournalEntriesPathParams:
+class ListJournalEntriesRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class ListJournalEntriesQueryParams:
     page: float = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     page_size: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
     query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class ListJournalEntriesRequest:
-    path_params: ListJournalEntriesPathParams = dataclasses.field()
-    query_params: ListJournalEntriesQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

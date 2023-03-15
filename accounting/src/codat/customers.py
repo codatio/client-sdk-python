@@ -32,13 +32,13 @@ class Customers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/customers', request.path_params)
+        url = utils.generate_url(operations.CreateCustomerRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/customers', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateCustomerRequest, request)
         
         client = self._security_client
         
@@ -61,7 +61,7 @@ class Customers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/customers/{customerId}/attachments/{attachmentId}/download', request.path_params)
+        url = utils.generate_url(operations.DownloadCustomerAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/customers/{customerId}/attachments/{attachmentId}/download', request)
         
         
         client = self._security_client
@@ -89,7 +89,7 @@ class Customers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/customers', request.path_params)
+        url = utils.generate_url(operations.GetCreateUpdateCustomersModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/customers', request)
         
         
         client = self._security_client
@@ -113,7 +113,7 @@ class Customers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/customers/{customerId}', request.path_params)
+        url = utils.generate_url(operations.GetCustomerRequest, base_url, '/companies/{companyId}/data/customers/{customerId}', request)
         
         
         client = self._security_client
@@ -137,7 +137,7 @@ class Customers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/customers/{customerId}/attachments/{attachmentId}', request.path_params)
+        url = utils.generate_url(operations.GetCustomerAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/customers/{customerId}/attachments/{attachmentId}', request)
         
         
         client = self._security_client
@@ -161,7 +161,7 @@ class Customers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/customers/{customerId}/attachments', request.path_params)
+        url = utils.generate_url(operations.GetCustomerAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/customers/{customerId}/attachments', request)
         
         
         client = self._security_client
@@ -185,9 +185,9 @@ class Customers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/customers', request.path_params)
+        url = utils.generate_url(operations.GetCustomersRequest, base_url, '/companies/{companyId}/data/customers', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetCustomersRequest, request)
         
         client = self._security_client
         
@@ -216,13 +216,13 @@ class Customers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/customers/{customerId}', request.path_params)
+        url = utils.generate_url(operations.UpdateCustomerRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/customers/{customerId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.UpdateCustomerRequest, request)
         
         client = self._security_client
         

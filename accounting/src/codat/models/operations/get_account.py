@@ -11,14 +11,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetAccountPathParams:
+class GetAccountRequest:
     account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountId', 'style': 'simple', 'explode': False }})
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetAccountRequest:
-    path_params: GetAccountPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

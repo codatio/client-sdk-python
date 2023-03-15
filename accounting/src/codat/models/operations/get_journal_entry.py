@@ -10,14 +10,9 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class GetJournalEntryPathParams:
+class GetJournalEntryRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     journal_entry_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'journalEntryId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetJournalEntryRequest:
-    path_params: GetJournalEntryPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

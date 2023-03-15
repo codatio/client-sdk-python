@@ -32,7 +32,7 @@ class Journals:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/journals', request.path_params)
+        url = utils.generate_url(operations.GetCreateJournalsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/journals', request)
         
         
         client = self._security_client
@@ -56,7 +56,7 @@ class Journals:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/journals/{journalId}', request.path_params)
+        url = utils.generate_url(operations.GetJournalRequest, base_url, '/companies/{companyId}/data/journals/{journalId}', request)
         
         
         client = self._security_client
@@ -80,9 +80,9 @@ class Journals:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/journals', request.path_params)
+        url = utils.generate_url(operations.ListJournalsRequest, base_url, '/companies/{companyId}/data/journals', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListJournalsRequest, request)
         
         client = self._security_client
         
@@ -111,13 +111,13 @@ class Journals:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/journals', request.path_params)
+        url = utils.generate_url(operations.PushJournalRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journals', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.PushJournalRequest, request)
         
         client = self._security_client
         

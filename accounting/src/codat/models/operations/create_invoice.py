@@ -10,17 +10,6 @@ from marshmallow import fields
 from typing import Any, Optional
 
 
-@dataclasses.dataclass
-class CreateInvoicePathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class CreateInvoiceQueryParams:
-    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateInvoiceSourceModifiedDateCustomerRef:
@@ -256,9 +245,10 @@ class CreateInvoiceSourceModifiedDate:
 
 @dataclasses.dataclass
 class CreateInvoiceRequest:
-    path_params: CreateInvoicePathParams = dataclasses.field()
-    query_params: CreateInvoiceQueryParams = dataclasses.field()
-    request: Optional[CreateInvoiceSourceModifiedDate] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[CreateInvoiceSourceModifiedDate] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

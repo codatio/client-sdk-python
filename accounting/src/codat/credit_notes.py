@@ -32,13 +32,13 @@ class CreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes/{creditNoteId}', request.path_params)
+        url = utils.generate_url(operations.CreateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes/{creditNoteId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateCreditNoteRequest, request)
         
         client = self._security_client
         
@@ -67,7 +67,7 @@ class CreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/creditNotes', request.path_params)
+        url = utils.generate_url(operations.GetCreateUpdateCreditNotesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/creditNotes', request)
         
         
         client = self._security_client
@@ -91,7 +91,7 @@ class CreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/creditNotes/{creditNoteId}', request.path_params)
+        url = utils.generate_url(operations.GetCreditNoteRequest, base_url, '/companies/{companyId}/data/creditNotes/{creditNoteId}', request)
         
         
         client = self._security_client
@@ -115,9 +115,9 @@ class CreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/creditNotes', request.path_params)
+        url = utils.generate_url(operations.ListCreditNotesRequest, base_url, '/companies/{companyId}/data/creditNotes', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListCreditNotesRequest, request)
         
         client = self._security_client
         
@@ -147,13 +147,13 @@ class CreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes', request.path_params)
+        url = utils.generate_url(operations.PushCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.PushCreditNoteRequest, request)
         
         client = self._security_client
         

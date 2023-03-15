@@ -10,15 +10,10 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class ListDirectCostAttachmentsPathParams:
+class ListDirectCostAttachmentsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     direct_cost_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'directCostId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class ListDirectCostAttachmentsRequest:
-    path_params: ListDirectCostAttachmentsPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

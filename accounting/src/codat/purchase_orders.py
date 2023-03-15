@@ -32,13 +32,13 @@ class PurchaseOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/purchaseOrders', request.path_params)
+        url = utils.generate_url(operations.CreatePurchaseOrderRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/purchaseOrders', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreatePurchaseOrderRequest, request)
         
         client = self._security_client
         
@@ -67,7 +67,7 @@ class PurchaseOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/purchaseOrders', request.path_params)
+        url = utils.generate_url(operations.GetCreateUpdatePurchaseOrdersModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/purchaseOrders', request)
         
         
         client = self._security_client
@@ -91,7 +91,7 @@ class PurchaseOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}', request.path_params)
+        url = utils.generate_url(operations.GetPurchaseOrderRequest, base_url, '/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}', request)
         
         
         client = self._security_client
@@ -115,9 +115,9 @@ class PurchaseOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/purchaseOrders', request.path_params)
+        url = utils.generate_url(operations.ListPurchaseOrdersRequest, base_url, '/companies/{companyId}/data/purchaseOrders', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListPurchaseOrdersRequest, request)
         
         client = self._security_client
         
@@ -146,13 +146,13 @@ class PurchaseOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/purchaseOrders/{purchaseOrderId}', request.path_params)
+        url = utils.generate_url(operations.UpdatePurchaseOrderRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/purchaseOrders/{purchaseOrderId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.UpdatePurchaseOrderRequest, request)
         
         client = self._security_client
         

@@ -26,7 +26,7 @@ class SalesOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/salesOrders/{salesOrderId}', request.path_params)
+        url = utils.generate_url(operations.GetSalesOrderRequest, base_url, '/companies/{companyId}/data/salesOrders/{salesOrderId}', request)
         
         
         client = self._security_client
@@ -50,9 +50,9 @@ class SalesOrders:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/salesOrders', request.path_params)
+        url = utils.generate_url(operations.ListSalesOrdersRequest, base_url, '/companies/{companyId}/data/salesOrders', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListSalesOrdersRequest, request)
         
         client = self._security_client
         

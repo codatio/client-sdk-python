@@ -5,13 +5,8 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class IsAgedCreditorsReportAvailablePathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class IsAgedCreditorsReportAvailableRequest:
-    path_params: IsAgedCreditorsReportAvailablePathParams = dataclasses.field()
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

@@ -32,13 +32,13 @@ class BillCreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes', request.path_params)
+        url = utils.generate_url(operations.CreateBillCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateBillCreditNoteRequest, request)
         
         client = self._security_client
         
@@ -61,7 +61,7 @@ class BillCreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/billCreditNotes/{billCreditNoteId}', request.path_params)
+        url = utils.generate_url(operations.GetBillCreditNoteRequest, base_url, '/companies/{companyId}/data/billCreditNotes/{billCreditNoteId}', request)
         
         
         client = self._security_client
@@ -89,7 +89,7 @@ class BillCreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/billCreditNotes', request.path_params)
+        url = utils.generate_url(operations.GetCreateUpdateBillCreditNotesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/billCreditNotes', request)
         
         
         client = self._security_client
@@ -113,9 +113,9 @@ class BillCreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/billCreditNotes', request.path_params)
+        url = utils.generate_url(operations.ListBillCreditNotesRequest, base_url, '/companies/{companyId}/data/billCreditNotes', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListBillCreditNotesRequest, request)
         
         client = self._security_client
         
@@ -144,13 +144,13 @@ class BillCreditNotes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes/{billCreditNoteId}', request.path_params)
+        url = utils.generate_url(operations.UpdateBillCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes/{billCreditNoteId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.UpdateBillCreditNoteRequest, request)
         
         client = self._security_client
         

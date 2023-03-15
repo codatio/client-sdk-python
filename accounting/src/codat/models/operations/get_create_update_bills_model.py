@@ -8,14 +8,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetCreateUpdateBillsModelPathParams:
+class GetCreateUpdateBillsModelRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetCreateUpdateBillsModelRequest:
-    path_params: GetCreateUpdateBillsModelPathParams = dataclasses.field()
     
 class GetCreateUpdateBillsModelPushOptionPushOptionPropertyPushOptionChoiceOptionTypeEnum(str, Enum):
     ARRAY = "Array"

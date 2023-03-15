@@ -32,13 +32,13 @@ class Items:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/items', request.path_params)
+        url = utils.generate_url(operations.CreateItemRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/items', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateItemRequest, request)
         
         client = self._security_client
         
@@ -67,7 +67,7 @@ class Items:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/items', request.path_params)
+        url = utils.generate_url(operations.GetCreateItemsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/items', request)
         
         
         client = self._security_client
@@ -91,7 +91,7 @@ class Items:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/items/{itemId}', request.path_params)
+        url = utils.generate_url(operations.GetItemRequest, base_url, '/companies/{companyId}/data/items/{itemId}', request)
         
         
         client = self._security_client
@@ -115,9 +115,9 @@ class Items:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/items', request.path_params)
+        url = utils.generate_url(operations.ListItemsRequest, base_url, '/companies/{companyId}/data/items', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListItemsRequest, request)
         
         client = self._security_client
         

@@ -10,12 +10,6 @@ from marshmallow import fields
 from typing import Any, Optional
 
 
-@dataclasses.dataclass
-class CreateTransferPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateTransferSourceModifiedDateContactRef:
@@ -104,8 +98,9 @@ class CreateTransferSourceModifiedDate:
 
 @dataclasses.dataclass
 class CreateTransferRequest:
-    path_params: CreateTransferPathParams = dataclasses.field()
-    request: Optional[CreateTransferSourceModifiedDate] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[CreateTransferSourceModifiedDate] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

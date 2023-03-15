@@ -10,15 +10,10 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class GetTransferPathParams:
+class GetTransferRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     transfer_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'transferId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetTransferRequest:
-    path_params: GetTransferPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

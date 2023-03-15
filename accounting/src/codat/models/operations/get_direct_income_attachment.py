@@ -10,22 +10,12 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetDirectIncomeAttachmentPathParams:
+class GetDirectIncomeAttachmentRequest:
     attachment_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'attachmentId', 'style': 'simple', 'explode': False }})
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     direct_income_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'directIncomeId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetDirectIncomeAttachmentQueryParams:
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetDirectIncomeAttachmentRequest:
-    path_params: GetDirectIncomeAttachmentPathParams = dataclasses.field()
-    query_params: GetDirectIncomeAttachmentQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

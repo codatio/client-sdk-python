@@ -11,14 +11,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetPaymentMethodPathParams:
+class GetPaymentMethodRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     payment_method_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'paymentMethodId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetPaymentMethodRequest:
-    path_params: GetPaymentMethodPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

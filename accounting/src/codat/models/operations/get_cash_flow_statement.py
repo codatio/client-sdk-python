@@ -11,21 +11,11 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetCashFlowStatementPathParams:
+class GetCashFlowStatementRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetCashFlowStatementQueryParams:
     period_length: int = dataclasses.field(metadata={'query_param': { 'field_name': 'periodLength', 'style': 'form', 'explode': True }})
     periods_to_compare: int = dataclasses.field(metadata={'query_param': { 'field_name': 'periodsToCompare', 'style': 'form', 'explode': True }})
     start_month: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'startMonth', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetCashFlowStatementRequest:
-    path_params: GetCashFlowStatementPathParams = dataclasses.field()
-    query_params: GetCashFlowStatementQueryParams = dataclasses.field()
     
 class GetCashFlowStatement200ApplicationJSONReportBasisEnum(str, Enum):
     UNKNOWN = "Unknown"

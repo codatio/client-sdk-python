@@ -26,7 +26,7 @@ class PaymentMethods:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/paymentMethods/{paymentMethodId}', request.path_params)
+        url = utils.generate_url(operations.GetPaymentMethodRequest, base_url, '/companies/{companyId}/data/paymentMethods/{paymentMethodId}', request)
         
         
         client = self._security_client
@@ -50,9 +50,9 @@ class PaymentMethods:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/paymentMethods', request.path_params)
+        url = utils.generate_url(operations.ListPaymentMethodsRequest, base_url, '/companies/{companyId}/data/paymentMethods', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListPaymentMethodsRequest, request)
         
         client = self._security_client
         

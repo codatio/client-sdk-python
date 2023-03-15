@@ -26,7 +26,7 @@ class CompanyInfo:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/info', request.path_params)
+        url = utils.generate_url(operations.GetCompanyInfoRequest, base_url, '/companies/{companyId}/data/info', request)
         
         
         client = self._security_client
@@ -50,7 +50,7 @@ class CompanyInfo:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/info', request.path_params)
+        url = utils.generate_url(operations.PostSyncInfoRequest, base_url, '/companies/{companyId}/data/info', request)
         
         
         client = self._security_client

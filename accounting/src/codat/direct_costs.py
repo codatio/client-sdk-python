@@ -32,13 +32,13 @@ class DirectCosts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts', request.path_params)
+        url = utils.generate_url(operations.CreateDirectCostRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateDirectCostRequest, request)
         
         client = self._security_client
         
@@ -61,7 +61,7 @@ class DirectCosts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}/download', request.path_params)
+        url = utils.generate_url(operations.DownloadDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}/download', request)
         
         
         client = self._security_client
@@ -89,7 +89,7 @@ class DirectCosts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/directCosts', request.path_params)
+        url = utils.generate_url(operations.GetCreateDirectCostsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/directCosts', request)
         
         
         client = self._security_client
@@ -113,7 +113,7 @@ class DirectCosts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}', request.path_params)
+        url = utils.generate_url(operations.GetDirectCostRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}', request)
         
         
         client = self._security_client
@@ -137,7 +137,7 @@ class DirectCosts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}', request.path_params)
+        url = utils.generate_url(operations.GetDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}', request)
         
         
         client = self._security_client
@@ -161,9 +161,9 @@ class DirectCosts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts', request.path_params)
+        url = utils.generate_url(operations.GetDirectCostsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetDirectCostsRequest, request)
         
         client = self._security_client
         
@@ -186,7 +186,7 @@ class DirectCosts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments', request.path_params)
+        url = utils.generate_url(operations.ListDirectCostAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments', request)
         
         
         client = self._security_client
@@ -210,7 +210,7 @@ class DirectCosts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts/{directCostId}/attachment', request.path_params)
+        url = utils.generate_url(operations.PostDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts/{directCostId}/attachment', request)
         
         
         client = self._security_client

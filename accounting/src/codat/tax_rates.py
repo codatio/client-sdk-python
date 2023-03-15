@@ -26,7 +26,7 @@ class TaxRates:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/taxRates/{taxRateId}', request.path_params)
+        url = utils.generate_url(operations.GetTaxRateRequest, base_url, '/companies/{companyId}/data/taxRates/{taxRateId}', request)
         
         
         client = self._security_client
@@ -50,9 +50,9 @@ class TaxRates:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/taxRates', request.path_params)
+        url = utils.generate_url(operations.ListTaxRatesRequest, base_url, '/companies/{companyId}/data/taxRates', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListTaxRatesRequest, request)
         
         client = self._security_client
         

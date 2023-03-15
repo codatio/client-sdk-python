@@ -32,13 +32,13 @@ class DirectIncomes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes', request.path_params)
+        url = utils.generate_url(operations.CreateDirectIncomeRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateDirectIncomeRequest, request)
         
         client = self._security_client
         
@@ -61,7 +61,7 @@ class DirectIncomes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}/download', request.path_params)
+        url = utils.generate_url(operations.DownloadDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}/download', request)
         
         
         client = self._security_client
@@ -89,7 +89,7 @@ class DirectIncomes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/directIncomes', request.path_params)
+        url = utils.generate_url(operations.GetCreateDirectIncomesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/directIncomes', request)
         
         
         client = self._security_client
@@ -113,7 +113,7 @@ class DirectIncomes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}', request.path_params)
+        url = utils.generate_url(operations.GetDirectIncomeRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}', request)
         
         
         client = self._security_client
@@ -137,9 +137,9 @@ class DirectIncomes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}', request.path_params)
+        url = utils.generate_url(operations.GetDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetDirectIncomeAttachmentRequest, request)
         
         client = self._security_client
         
@@ -162,9 +162,9 @@ class DirectIncomes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes', request.path_params)
+        url = utils.generate_url(operations.GetDirectIncomesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetDirectIncomesRequest, request)
         
         client = self._security_client
         
@@ -187,7 +187,7 @@ class DirectIncomes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments', request.path_params)
+        url = utils.generate_url(operations.ListDirectIncomeAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments', request)
         
         
         client = self._security_client
@@ -211,7 +211,7 @@ class DirectIncomes:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes/{directIncomeId}/attachment', request.path_params)
+        url = utils.generate_url(operations.PostDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes/{directIncomeId}/attachment', request)
         
         
         client = self._security_client

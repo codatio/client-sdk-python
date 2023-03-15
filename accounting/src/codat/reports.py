@@ -26,9 +26,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/reports/agedCreditor', request.path_params)
+        url = utils.generate_url(operations.GetAgedCreditorsReportRequest, base_url, '/companies/{companyId}/reports/agedCreditor', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetAgedCreditorsReportRequest, request)
         
         client = self._security_client
         
@@ -51,9 +51,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/reports/agedDebtor', request.path_params)
+        url = utils.generate_url(operations.GetAgedDebtorsReportRequest, base_url, '/companies/{companyId}/reports/agedDebtor', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetAgedDebtorsReportRequest, request)
         
         client = self._security_client
         
@@ -76,7 +76,7 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/reports/agedCreditor/available', request.path_params)
+        url = utils.generate_url(operations.IsAgedCreditorsReportAvailableRequest, base_url, '/companies/{companyId}/reports/agedCreditor/available', request)
         
         
         client = self._security_client
@@ -100,7 +100,7 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/reports/agedDebtor/available', request.path_params)
+        url = utils.generate_url(operations.IsAgedDebtorReportAvailableRequest, base_url, '/companies/{companyId}/reports/agedDebtor/available', request)
         
         
         client = self._security_client

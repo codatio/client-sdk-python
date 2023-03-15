@@ -26,9 +26,9 @@ class Financials:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/financials/balanceSheet', request.path_params)
+        url = utils.generate_url(operations.GetBalanceSheetRequest, base_url, '/companies/{companyId}/data/financials/balanceSheet', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetBalanceSheetRequest, request)
         
         client = self._security_client
         
@@ -51,9 +51,9 @@ class Financials:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/financials/cashFlowStatement', request.path_params)
+        url = utils.generate_url(operations.GetCashFlowStatementRequest, base_url, '/companies/{companyId}/data/financials/cashFlowStatement', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetCashFlowStatementRequest, request)
         
         client = self._security_client
         
@@ -76,9 +76,9 @@ class Financials:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/financials/profitAndLoss', request.path_params)
+        url = utils.generate_url(operations.GetProfitAndLossRequest, base_url, '/companies/{companyId}/data/financials/profitAndLoss', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetProfitAndLossRequest, request)
         
         client = self._security_client
         

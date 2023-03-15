@@ -11,13 +11,8 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class PostSyncInfoPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class PostSyncInfoRequest:
-    path_params: PostSyncInfoPathParams = dataclasses.field()
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     
 class PostSyncInfo200ApplicationJSONStatusEnum(str, Enum):
     INITIAL = "Initial"

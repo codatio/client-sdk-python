@@ -9,19 +9,6 @@ from enum import Enum
 from marshmallow import fields
 from typing import Any, Optional
 
-
-@dataclasses.dataclass
-class UpdateCustomerPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    customer_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'customerId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class UpdateCustomerQueryParams:
-    force_update: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'forceUpdate', 'style': 'form', 'explode': True }})
-    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
-    
 class UpdateCustomerSourceModifiedDateAddressesTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     BILLING = "Billing"
@@ -145,9 +132,12 @@ class UpdateCustomerSourceModifiedDate:
 
 @dataclasses.dataclass
 class UpdateCustomerRequest:
-    path_params: UpdateCustomerPathParams = dataclasses.field()
-    query_params: UpdateCustomerQueryParams = dataclasses.field()
-    request: Optional[UpdateCustomerSourceModifiedDate] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    customer_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'customerId', 'style': 'simple', 'explode': False }})
+    force_update: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'forceUpdate', 'style': 'form', 'explode': True }})
+    request_body: Optional[UpdateCustomerSourceModifiedDate] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

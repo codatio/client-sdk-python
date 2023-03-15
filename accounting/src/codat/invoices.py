@@ -32,13 +32,13 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices', request.path_params)
+        url = utils.generate_url(operations.CreateInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateInvoiceRequest, request)
         
         client = self._security_client
         
@@ -61,7 +61,7 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download', request.path_params)
+        url = utils.generate_url(operations.DonwloadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download', request)
         
         
         client = self._security_client
@@ -89,7 +89,7 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/invoices', request.path_params)
+        url = utils.generate_url(operations.GetCreateUpdateInvoicesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/invoices', request)
         
         
         client = self._security_client
@@ -113,7 +113,7 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/invoices/{invoiceId}', request.path_params)
+        url = utils.generate_url(operations.GetInvoiceRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}', request)
         
         
         client = self._security_client
@@ -137,7 +137,7 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}', request.path_params)
+        url = utils.generate_url(operations.GetInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}', request)
         
         
         client = self._security_client
@@ -161,7 +161,7 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments', request.path_params)
+        url = utils.generate_url(operations.GetInvoiceAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments', request)
         
         
         client = self._security_client
@@ -185,7 +185,7 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/invoices/{invoiceId}/pdf', request.path_params)
+        url = utils.generate_url(operations.GetInvoicePdfRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}/pdf', request)
         
         
         client = self._security_client
@@ -207,9 +207,9 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/invoices', request.path_params)
+        url = utils.generate_url(operations.ListInvoicesRequest, base_url, '/companies/{companyId}/data/invoices', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListInvoicesRequest, request)
         
         client = self._security_client
         
@@ -232,7 +232,7 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}/attachment', request.path_params)
+        url = utils.generate_url(operations.PushInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}/attachment', request)
         
         
         client = self._security_client
@@ -260,13 +260,13 @@ class Invoices:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}', request.path_params)
+        url = utils.generate_url(operations.UpdateInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.UpdateInvoiceRequest, request)
         
         client = self._security_client
         

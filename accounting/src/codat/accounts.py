@@ -32,13 +32,13 @@ class Accounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/accounts', request.path_params)
+        url = utils.generate_url(operations.CreateAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/accounts', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateAccountRequest, request)
         
         client = self._security_client
         
@@ -61,7 +61,7 @@ class Accounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/accounts/{accountId}', request.path_params)
+        url = utils.generate_url(operations.GetAccountRequest, base_url, '/companies/{companyId}/data/accounts/{accountId}', request)
         
         
         client = self._security_client
@@ -85,9 +85,9 @@ class Accounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/accounts', request.path_params)
+        url = utils.generate_url(operations.GetAccountsRequest, base_url, '/companies/{companyId}/data/accounts', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetAccountsRequest, request)
         
         client = self._security_client
         
@@ -116,7 +116,7 @@ class Accounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/chartOfAccounts', request.path_params)
+        url = utils.generate_url(operations.GetCreateChartOfAccountsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/chartOfAccounts', request)
         
         
         client = self._security_client

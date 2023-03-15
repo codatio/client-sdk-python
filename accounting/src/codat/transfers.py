@@ -32,10 +32,10 @@ class Transfers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/transfers', request.path_params)
+        url = utils.generate_url(operations.CreateTransferRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/transfers', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -66,7 +66,7 @@ class Transfers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/transfers', request.path_params)
+        url = utils.generate_url(operations.GetCreateTransfersModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/transfers', request)
         
         
         client = self._security_client
@@ -90,7 +90,7 @@ class Transfers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}', request.path_params)
+        url = utils.generate_url(operations.GetTransferRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}', request)
         
         
         client = self._security_client
@@ -114,9 +114,9 @@ class Transfers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/transfers', request.path_params)
+        url = utils.generate_url(operations.ListTransfersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/transfers', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListTransfersRequest, request)
         
         client = self._security_client
         

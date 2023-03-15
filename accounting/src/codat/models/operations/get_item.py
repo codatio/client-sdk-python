@@ -11,14 +11,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetItemPathParams:
+class GetItemRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     item_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'itemId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetItemRequest:
-    path_params: GetItemPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -32,13 +32,13 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts', request.path_params)
+        url = utils.generate_url(operations.CreateBankAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateBankAccountRequest, request)
         
         client = self._security_client
         
@@ -61,9 +61,9 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/bankAccounts/{accountId}', request.path_params)
+        url = utils.generate_url(operations.GetAllBankAccountRequest, base_url, '/companies/{companyId}/data/bankAccounts/{accountId}', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetAllBankAccountRequest, request)
         
         client = self._security_client
         
@@ -86,7 +86,7 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}', request.path_params)
+        url = utils.generate_url(operations.GetBankAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}', request)
         
         
         client = self._security_client
@@ -116,7 +116,7 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/bankAccounts', request.path_params)
+        url = utils.generate_url(operations.GetCreateUpdateBankAccountsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bankAccounts', request)
         
         
         client = self._security_client
@@ -140,9 +140,9 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts', request.path_params)
+        url = utils.generate_url(operations.ListBankAccountsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListBankAccountsRequest, request)
         
         client = self._security_client
         
@@ -171,13 +171,13 @@ class BankAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{bankAccountId}', request.path_params)
+        url = utils.generate_url(operations.PutBankAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{bankAccountId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.PutBankAccountRequest, request)
         
         client = self._security_client
         

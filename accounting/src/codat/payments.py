@@ -32,13 +32,13 @@ class Payments:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/payments', request.path_params)
+        url = utils.generate_url(operations.CreatePaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/payments', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreatePaymentRequest, request)
         
         client = self._security_client
         
@@ -67,7 +67,7 @@ class Payments:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/payments', request.path_params)
+        url = utils.generate_url(operations.GetCreatePaymentsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/payments', request)
         
         
         client = self._security_client
@@ -91,7 +91,7 @@ class Payments:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/payments/{paymentId}', request.path_params)
+        url = utils.generate_url(operations.GetPaymentRequest, base_url, '/companies/{companyId}/data/payments/{paymentId}', request)
         
         
         client = self._security_client
@@ -115,9 +115,9 @@ class Payments:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/payments', request.path_params)
+        url = utils.generate_url(operations.ListPaymentsRequest, base_url, '/companies/{companyId}/data/payments', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListPaymentsRequest, request)
         
         client = self._security_client
         

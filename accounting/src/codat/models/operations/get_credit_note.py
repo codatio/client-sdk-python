@@ -11,14 +11,9 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class GetCreditNotePathParams:
+class GetCreditNoteRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     credit_note_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'creditNoteId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetCreditNoteRequest:
-    path_params: GetCreditNotePathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

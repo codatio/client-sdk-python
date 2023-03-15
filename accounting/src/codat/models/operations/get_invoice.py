@@ -11,14 +11,9 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class GetInvoicePathParams:
+class GetInvoiceRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     invoice_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'invoiceId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetInvoiceRequest:
-    path_params: GetInvoicePathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

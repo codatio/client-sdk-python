@@ -11,15 +11,10 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDPathParams:
+class DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDRequest:
     bill_payment_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'billPaymentId', 'style': 'simple', 'explode': False }})
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDRequest:
-    path_params: DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

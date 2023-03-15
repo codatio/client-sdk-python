@@ -11,14 +11,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetTaxRatePathParams:
+class GetTaxRateRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     tax_rate_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'taxRateId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetTaxRateRequest:
-    path_params: GetTaxRatePathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

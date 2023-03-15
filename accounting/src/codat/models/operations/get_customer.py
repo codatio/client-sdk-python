@@ -11,14 +11,9 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class GetCustomerPathParams:
+class GetCustomerRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     customer_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'customerId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetCustomerRequest:
-    path_params: GetCustomerPathParams = dataclasses.field()
     
 class GetCustomerSourceModifiedDateAddressesTypeEnum(str, Enum):
     UNKNOWN = "Unknown"

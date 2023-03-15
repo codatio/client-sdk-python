@@ -9,17 +9,6 @@ from enum import Enum
 from marshmallow import fields
 from typing import Optional
 
-
-@dataclasses.dataclass
-class PushJournalPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class PushJournalQueryParams:
-    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
-    
 class PushJournalSourceModifiedDateStatusEnum(str, Enum):
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
@@ -69,9 +58,10 @@ class PushJournalSourceModifiedDateInput:
 
 @dataclasses.dataclass
 class PushJournalRequest:
-    path_params: PushJournalPathParams = dataclasses.field()
-    query_params: PushJournalQueryParams = dataclasses.field()
-    request: Optional[PushJournalSourceModifiedDateInput] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[PushJournalSourceModifiedDateInput] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

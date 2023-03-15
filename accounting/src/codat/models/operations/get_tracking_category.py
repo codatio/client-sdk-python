@@ -11,14 +11,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetTrackingCategoryPathParams:
+class GetTrackingCategoryRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     tracking_category_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'trackingCategoryId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetTrackingCategoryRequest:
-    path_params: GetTrackingCategoryPathParams = dataclasses.field()
     
 class GetTrackingCategorySourceModifiedDateTrackingCategoryStatusEnum(str, Enum):
     UNKNOWN = "Unknown"

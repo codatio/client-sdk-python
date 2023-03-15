@@ -5,14 +5,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetInvoicePdfPathParams:
+class GetInvoicePdfRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     invoice_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'invoiceId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetInvoicePdfRequest:
-    path_params: GetInvoicePdfPathParams = dataclasses.field()
     
 
 @dataclasses.dataclass

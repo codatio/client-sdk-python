@@ -32,13 +32,13 @@ class JournalEntries:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/push/journalEntries', request.path_params)
+        url = utils.generate_url(operations.CreateJournalEntryRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journalEntries', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CreateJournalEntryRequest, request)
         
         client = self._security_client
         
@@ -67,7 +67,7 @@ class JournalEntries:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/options/journalEntries', request.path_params)
+        url = utils.generate_url(operations.GetCreateJournalEntriesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/journalEntries', request)
         
         
         client = self._security_client
@@ -91,7 +91,7 @@ class JournalEntries:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/journalEntries/{journalEntryId}', request.path_params)
+        url = utils.generate_url(operations.GetJournalEntryRequest, base_url, '/companies/{companyId}/data/journalEntries/{journalEntryId}', request)
         
         
         client = self._security_client
@@ -115,9 +115,9 @@ class JournalEntries:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/data/journalEntries', request.path_params)
+        url = utils.generate_url(operations.ListJournalEntriesRequest, base_url, '/companies/{companyId}/data/journalEntries', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListJournalEntriesRequest, request)
         
         client = self._security_client
         

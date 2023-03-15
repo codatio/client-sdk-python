@@ -10,21 +10,11 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetAgedDebtorsReportPathParams:
+class GetAgedDebtorsReportRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetAgedDebtorsReportQueryParams:
     number_of_periods: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'numberOfPeriods', 'style': 'form', 'explode': True }})
     period_length_days: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'periodLengthDays', 'style': 'form', 'explode': True }})
     report_date: Optional[date] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'reportDate', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetAgedDebtorsReportRequest:
-    path_params: GetAgedDebtorsReportPathParams = dataclasses.field()
-    query_params: GetAgedDebtorsReportQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
