@@ -14,25 +14,21 @@ pip install codat-bankfeeds
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
-    )
+    ),
 )
-   
+
+
 req = operations.GetBankAccountPushOptionsRequest(
-    path_params=operations.GetBankAccountPushOptionsPathParams(
-        account_id="unde",
-        company_id="deserunt",
-        connection_id="porro",
-    ),
-    query_params=operations.GetBankAccountPushOptionsQueryParams(
-        order_by="nulla",
-        page=6027.63,
-        page_size=8579.46,
-        query="perspiciatis",
-    ),
+    account_id="unde",
+    company_id="deserunt",
+    connection_id="porro",
+    order_by="nulla",
+    page=6027.63,
+    page_size=8579.46,
+    query="perspiciatis",
 )
     
 res = s.bank_account_transactions.get_bank_account_push_options(req)

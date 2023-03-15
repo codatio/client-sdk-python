@@ -26,10 +26,10 @@ class BankFeedAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request.path_params)
+        url = utils.generate_url(operations.CreateBankFeedRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -54,7 +54,7 @@ class BankFeedAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request.path_params)
+        url = utils.generate_url(operations.GetBankFeedsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
         
         
         client = self._security_client
@@ -78,10 +78,10 @@ class BankFeedAccounts:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{bankAccountId}', request.path_params)
+        url = utils.generate_url(operations.UpdateBankFeedRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{bankAccountId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
