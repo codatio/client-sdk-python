@@ -9,24 +9,14 @@ from enum import Enum
 from marshmallow import fields
 from typing import Optional
 
-
-@dataclasses.dataclass
-class RequestExcelReportForDownloadPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
 class RequestExcelReportForDownloadReportTypeEnum(str, Enum):
     AUDIT = "audit"
 
 
 @dataclasses.dataclass
-class RequestExcelReportForDownloadQueryParams:
-    report_type: RequestExcelReportForDownloadReportTypeEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'reportType', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
 class RequestExcelReportForDownloadRequest:
-    path_params: RequestExcelReportForDownloadPathParams = dataclasses.field()
-    query_params: RequestExcelReportForDownloadQueryParams = dataclasses.field()
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    report_type: RequestExcelReportForDownloadReportTypeEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'reportType', 'style': 'form', 'explode': True }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

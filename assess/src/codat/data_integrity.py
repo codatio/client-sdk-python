@@ -26,9 +26,9 @@ class DataIntegrity:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/details', request.path_params)
+        url = utils.generate_url(operations.GetDataIntegrityDetailsRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/details', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetDataIntegrityDetailsRequest, request)
         
         client = self._security_client
         
@@ -51,7 +51,7 @@ class DataIntegrity:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/status', request.path_params)
+        url = utils.generate_url(operations.GetDataIntegrityStatusRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/status', request)
         
         
         client = self._security_client
@@ -75,9 +75,9 @@ class DataIntegrity:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/summaries', request.path_params)
+        url = utils.generate_url(operations.GetDataIntegritySummariesRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/summaries', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetDataIntegritySummariesRequest, request)
         
         client = self._security_client
         

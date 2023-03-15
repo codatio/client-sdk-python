@@ -10,20 +10,10 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetAccountsForEnhancedProfitAndLossPathParams:
+class GetAccountsForEnhancedProfitAndLossRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetAccountsForEnhancedProfitAndLossQueryParams:
     number_of_periods: int = dataclasses.field(metadata={'query_param': { 'field_name': 'numberOfPeriods', 'style': 'form', 'explode': True }})
     report_date: str = dataclasses.field(metadata={'query_param': { 'field_name': 'reportDate', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetAccountsForEnhancedProfitAndLossRequest:
-    path_params: GetAccountsForEnhancedProfitAndLossPathParams = dataclasses.field()
-    query_params: GetAccountsForEnhancedProfitAndLossQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

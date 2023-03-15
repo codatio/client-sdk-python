@@ -7,23 +7,13 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetEnhancedProfitAndLossPathParams:
+class GetEnhancedProfitAndLossRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetEnhancedProfitAndLossQueryParams:
     number_of_periods: int = dataclasses.field(metadata={'query_param': { 'field_name': 'numberOfPeriods', 'style': 'form', 'explode': True }})
     period_length: int = dataclasses.field(metadata={'query_param': { 'field_name': 'periodLength', 'style': 'form', 'explode': True }})
     report_date: str = dataclasses.field(metadata={'query_param': { 'field_name': 'reportDate', 'style': 'form', 'explode': True }})
     include_display_names: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'includeDisplayNames', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetEnhancedProfitAndLossRequest:
-    path_params: GetEnhancedProfitAndLossPathParams = dataclasses.field()
-    query_params: GetEnhancedProfitAndLossQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

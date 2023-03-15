@@ -3,19 +3,17 @@
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
-    )
-)
-   
-req = operations.GetAccountCategoryRequest(
-    path_params=operations.GetAccountCategoryPathParams(
-        account_id="unde",
-        company_id="deserunt",
-        connection_id="porro",
     ),
+)
+
+
+req = operations.GetAccountCategoryRequest(
+    account_id="unde",
+    company_id="deserunt",
+    connection_id="porro",
 )
     
 res = s.categories.get_account_category(req)

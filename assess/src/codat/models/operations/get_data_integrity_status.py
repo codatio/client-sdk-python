@@ -17,14 +17,9 @@ class GetDataIntegrityStatusDataTypeEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class GetDataIntegrityStatusPathParams:
+class GetDataIntegrityStatusRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     data_type: GetDataIntegrityStatusDataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetDataIntegrityStatusRequest:
-    path_params: GetDataIntegrityStatusPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

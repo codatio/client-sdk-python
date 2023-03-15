@@ -1,3 +1,3 @@
 from .account_categories_updated import *
 
-__all__ = ["AccountCategoriesUpdatedAccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedAccountCategoriesUpdatedWebhookData","AccountCategoriesUpdatedRequest","AccountCategoriesUpdatedResponse"]
+__all__ = ["AccountCategoriesUpdatedAccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedAccountCategoriesUpdatedWebhookData","AccountCategoriesUpdatedResponse"]

@@ -26,7 +26,7 @@ class Categories:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories', request.path_params)
+        url = utils.generate_url(operations.GetAccountCategoryRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories', request)
         
         
         client = self._security_client
@@ -50,9 +50,9 @@ class Categories:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories', request.path_params)
+        url = utils.generate_url(operations.ListAccountsCategoriesRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListAccountsCategoriesRequest, request)
         
         client = self._security_client
         
@@ -99,10 +99,10 @@ class Categories:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories', request.path_params)
+        url = utils.generate_url(operations.UpdateAccountCategoryRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -127,10 +127,10 @@ class Categories:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories', request.path_params)
+        url = utils.generate_url(operations.UpdateAccountsCategoriesRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

@@ -14,20 +14,10 @@ class GetDataIntegritySummariesDataTypeEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class GetDataIntegritySummariesPathParams:
+class GetDataIntegritySummariesRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     data_type: GetDataIntegritySummariesDataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetDataIntegritySummariesQueryParams:
     query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetDataIntegritySummariesRequest:
-    path_params: GetDataIntegritySummariesPathParams = dataclasses.field()
-    query_params: GetDataIntegritySummariesQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

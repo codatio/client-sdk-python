@@ -26,9 +26,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/reports/enhancedBalanceSheet/accounts', request.path_params)
+        url = utils.generate_url(operations.GetAccountsForEnhancedBalanceSheetRequest, base_url, '/companies/{companyId}/reports/enhancedBalanceSheet/accounts', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetAccountsForEnhancedBalanceSheetRequest, request)
         
         client = self._security_client
         
@@ -51,9 +51,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/reports/enhancedProfitAndLoss/accounts', request.path_params)
+        url = utils.generate_url(operations.GetAccountsForEnhancedProfitAndLossRequest, base_url, '/companies/{companyId}/reports/enhancedProfitAndLoss/accounts', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetAccountsForEnhancedProfitAndLossRequest, request)
         
         client = self._security_client
         
@@ -76,9 +76,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/customerRetention', request.path_params)
+        url = utils.generate_url(operations.GetCommerceCustomerRetentionMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/customerRetention', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetCommerceCustomerRetentionMetricsRequest, request)
         
         client = self._security_client
         
@@ -101,9 +101,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/lifetimeValue', request.path_params)
+        url = utils.generate_url(operations.GetCommerceLifetimeValueMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/lifetimeValue', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetCommerceLifetimeValueMetricsRequest, request)
         
         client = self._security_client
         
@@ -126,9 +126,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/orders', request.path_params)
+        url = utils.generate_url(operations.GetCommerceOrdersMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/orders', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetCommerceOrdersMetricsRequest, request)
         
         client = self._security_client
         
@@ -151,9 +151,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/refunds', request.path_params)
+        url = utils.generate_url(operations.GetCommerceRefundsMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/refunds', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetCommerceRefundsMetricsRequest, request)
         
         client = self._security_client
         
@@ -176,9 +176,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/revenue', request.path_params)
+        url = utils.generate_url(operations.GetCommerceRevenueMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/revenue', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetCommerceRevenueMetricsRequest, request)
         
         client = self._security_client
         
@@ -201,9 +201,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/enhancedBalanceSheet', request.path_params)
+        url = utils.generate_url(operations.GetEnhancedBalanceSheetRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/enhancedBalanceSheet', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetEnhancedBalanceSheetRequest, request)
         
         client = self._security_client
         
@@ -226,9 +226,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/reports/enhancedCashFlow/transactions', request.path_params)
+        url = utils.generate_url(operations.GetEnhancedCashFlowTransactionsRequest, base_url, '/companies/{companyId}/reports/enhancedCashFlow/transactions', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetEnhancedCashFlowTransactionsRequest, request)
         
         client = self._security_client
         
@@ -251,9 +251,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/financialMetrics', request.path_params)
+        url = utils.generate_url(operations.GetEnhancedFinancialMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/financialMetrics', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetEnhancedFinancialMetricsRequest, request)
         
         client = self._security_client
         
@@ -276,9 +276,9 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/enhancedProfitAndLoss', request.path_params)
+        url = utils.generate_url(operations.GetEnhancedProfitAndLossRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/enhancedProfitAndLoss', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetEnhancedProfitAndLossRequest, request)
         
         client = self._security_client
         
@@ -301,7 +301,7 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/subscriptions/mrr', request.path_params)
+        url = utils.generate_url(operations.GetRecurringRevenueMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/subscriptions/mrr', request)
         
         
         client = self._security_client
@@ -325,7 +325,7 @@ class Reports:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/subscriptions/process', request.path_params)
+        url = utils.generate_url(operations.RequestRecurringRevenueMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/subscriptions/process', request)
         
         
         client = self._security_client

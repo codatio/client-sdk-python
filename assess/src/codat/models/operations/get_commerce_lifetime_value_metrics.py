@@ -6,12 +6,6 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-
-@dataclasses.dataclass
-class GetCommerceLifetimeValueMetricsPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    
 class GetCommerceLifetimeValueMetricsPeriodUnitEnum(str, Enum):
     DAY = "Day"
     WEEK = "Week"
@@ -20,18 +14,14 @@ class GetCommerceLifetimeValueMetricsPeriodUnitEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class GetCommerceLifetimeValueMetricsQueryParams:
+class GetCommerceLifetimeValueMetricsRequest:
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     number_of_periods: int = dataclasses.field(metadata={'query_param': { 'field_name': 'numberOfPeriods', 'style': 'form', 'explode': True }})
     period_length: int = dataclasses.field(metadata={'query_param': { 'field_name': 'periodLength', 'style': 'form', 'explode': True }})
     period_unit: GetCommerceLifetimeValueMetricsPeriodUnitEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'periodUnit', 'style': 'form', 'explode': True }})
     report_date: str = dataclasses.field(metadata={'query_param': { 'field_name': 'reportDate', 'style': 'form', 'explode': True }})
     include_display_names: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'includeDisplayNames', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetCommerceLifetimeValueMetricsRequest:
-    path_params: GetCommerceLifetimeValueMetricsPathParams = dataclasses.field()
-    query_params: GetCommerceLifetimeValueMetricsQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
