@@ -9,11 +9,6 @@ from enum import Enum
 from marshmallow import fields
 from typing import Optional
 
-
-@dataclasses.dataclass
-class SendPaymentsDataPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
 class SendPaymentsDataRequestBodyPaymentsStatusEnum(str, Enum):
     UNKNOWN = "Unknown"
     PENDING = "Pending"
@@ -61,8 +56,8 @@ class SendPaymentsDataRequestBody:
 
 @dataclasses.dataclass
 class SendPaymentsDataRequest:
-    path_params: SendPaymentsDataPathParams = dataclasses.field()
-    request: Optional[SendPaymentsDataRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[SendPaymentsDataRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 class SendPaymentsData200ApplicationJSONDataPaymentsStatusEnum(str, Enum):
     UNKNOWN = "Unknown"

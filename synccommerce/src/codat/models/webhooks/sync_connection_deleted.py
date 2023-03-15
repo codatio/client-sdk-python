@@ -29,8 +29,3 @@ class SyncConnectionDeletedAccountCategoriesUpdatedWebhook:
     rule_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ruleId'), 'exclude': lambda f: f is None }})
     rule_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ruleType'), 'exclude': lambda f: f is None }})
     
-
-@dataclasses.dataclass
-class SyncConnectionDeletedRequest:
-    request: Optional[SyncConnectionDeletedAccountCategoriesUpdatedWebhook] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    

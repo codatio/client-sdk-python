@@ -26,7 +26,7 @@ class SyncData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/meta/companies/{companyId}/pull/history/{datasetId}', request.path_params)
+        url = utils.generate_url(operations.CheckDataStatusRequest, base_url, '/meta/companies/{companyId}/pull/history/{datasetId}', request)
         
         
         client = self._security_client
@@ -48,10 +48,10 @@ class SyncData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/sync/commerce-orders', request.path_params)
+        url = utils.generate_url(operations.SendOrdersDataRequest, base_url, '/data/companies/{companyId}/sync/commerce-orders', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -76,10 +76,10 @@ class SyncData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/sync/commerce-payments', request.path_params)
+        url = utils.generate_url(operations.SendPaymentsDataRequest, base_url, '/data/companies/{companyId}/sync/commerce-payments', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -104,10 +104,10 @@ class SyncData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/data/companies/{companyId}/sync/commerce-transactions', request.path_params)
+        url = utils.generate_url(operations.SendTransactionsDataRequest, base_url, '/data/companies/{companyId}/sync/commerce-transactions', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

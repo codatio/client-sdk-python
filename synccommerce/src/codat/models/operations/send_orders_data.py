@@ -10,11 +10,6 @@ from marshmallow import fields
 from typing import Optional
 
 
-@dataclasses.dataclass
-class SendOrdersDataPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SendOrdersDataRequestBodyOrdersCustomerRef:
@@ -150,8 +145,8 @@ class SendOrdersDataRequestBody:
 
 @dataclasses.dataclass
 class SendOrdersDataRequest:
-    path_params: SendOrdersDataPathParams = dataclasses.field()
-    request: Optional[SendOrdersDataRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[SendOrdersDataRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

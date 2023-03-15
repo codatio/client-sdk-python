@@ -5,14 +5,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class CheckDataStatusPathParams:
+class CheckDataStatusRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     dataset_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'datasetId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class CheckDataStatusRequest:
-    path_params: CheckDataStatusPathParams = dataclasses.field()
     
 
 @dataclasses.dataclass

@@ -9,12 +9,6 @@ from marshmallow import fields
 from typing import Optional
 
 
-@dataclasses.dataclass
-class UpdateDataConnectionPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateDataConnectionRequestBody:
@@ -23,8 +17,9 @@ class UpdateDataConnectionRequestBody:
 
 @dataclasses.dataclass
 class UpdateDataConnectionRequest:
-    path_params: UpdateDataConnectionPathParams = dataclasses.field()
-    request: Optional[UpdateDataConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[UpdateDataConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

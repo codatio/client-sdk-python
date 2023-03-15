@@ -15,11 +15,6 @@ class PostCompaniesRequestBody:
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     
 
-@dataclasses.dataclass
-class PostCompaniesRequest:
-    request: Optional[PostCompaniesRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostCompanies200ApplicationJSONDataConnectionsDataConnectionErrors:

@@ -26,10 +26,10 @@ class SyncConfiguration:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/config/companies/{companyId}/sync/commerce', request.path_params)
+        url = utils.generate_url(operations.ConfigureSyncRequest, base_url, '/config/companies/{companyId}/sync/commerce', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -54,7 +54,7 @@ class SyncConfiguration:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/meta/companies/{companyId}/sync/commerce/status', request.path_params)
+        url = utils.generate_url(operations.GetCompanyCommerceSyncStatusRequest, base_url, '/meta/companies/{companyId}/sync/commerce/status', request)
         
         
         client = self._security_client
@@ -76,9 +76,9 @@ class SyncConfiguration:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/config/sync/commerce/{commerceKey}/{accountingKey}/start', request.path_params)
+        url = utils.generate_url(operations.GetSyncFlowURLRequest, base_url, '/config/sync/commerce/{commerceKey}/{accountingKey}/start', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetSyncFlowURLRequest, request)
         
         client = self._security_client
         
@@ -99,7 +99,7 @@ class SyncConfiguration:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/config/companies/{companyId}/sync/commerce', request.path_params)
+        url = utils.generate_url(operations.GetSyncOptionsRequest, base_url, '/config/companies/{companyId}/sync/commerce', request)
         
         
         client = self._security_client

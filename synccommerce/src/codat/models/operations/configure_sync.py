@@ -9,11 +9,6 @@ from marshmallow import fields
 from typing import Optional
 
 
-@dataclasses.dataclass
-class ConfigureSyncPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ConfigureSyncRequestBodyConfigurationFeesAccountsAccountOptions:
@@ -278,8 +273,8 @@ class ConfigureSyncRequestBody:
 
 @dataclasses.dataclass
 class ConfigureSyncRequest:
-    path_params: ConfigureSyncPathParams = dataclasses.field()
-    request: Optional[ConfigureSyncRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[ConfigureSyncRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

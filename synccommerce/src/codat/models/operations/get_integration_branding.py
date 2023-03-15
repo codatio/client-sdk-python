@@ -5,13 +5,8 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetIntegrationBrandingPathParams:
-    platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetIntegrationBrandingRequest:
-    path_params: GetIntegrationBrandingPathParams = dataclasses.field()
+    platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

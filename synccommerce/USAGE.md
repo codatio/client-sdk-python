@@ -3,18 +3,16 @@
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
-    )
-)
-   
-req = operations.AddDataConnectionRequest(
-    path_params=operations.AddDataConnectionPathParams(
-        company_id="unde",
     ),
-    request="deserunt",
+)
+
+
+req = operations.AddDataConnectionRequest(
+    request_body="unde",
+    company_id="deserunt",
 )
     
 res = s.company_management.add_data_connection(req)

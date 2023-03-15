@@ -9,11 +9,6 @@ from enum import Enum
 from marshmallow import fields
 from typing import Optional
 
-
-@dataclasses.dataclass
-class SendTransactionsDataPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
 class SendTransactionsDataRequestBodyTransactionsTransactionSourceRefTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     FEE = "Fee"
@@ -62,8 +57,8 @@ class SendTransactionsDataRequestBody:
 
 @dataclasses.dataclass
 class SendTransactionsDataRequest:
-    path_params: SendTransactionsDataPathParams = dataclasses.field()
-    request: Optional[SendTransactionsDataRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[SendTransactionsDataRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 class SendTransactionsData200ApplicationJSONDataTransactionsTransactionSourceRefTypeEnum(str, Enum):
     UNKNOWN = "Unknown"

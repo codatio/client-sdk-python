@@ -26,10 +26,10 @@ class CompanyManagement:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/meta/companies/{companyId}/connections', request.path_params)
+        url = utils.generate_url(operations.AddDataConnectionRequest, base_url, '/meta/companies/{companyId}/connections', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'string')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -56,7 +56,7 @@ class CompanyManagement:
         
         url = base_url.removesuffix('/') + '/meta/companies'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.CompaniesRequest, request)
         
         client = self._security_client
         
@@ -79,9 +79,9 @@ class CompanyManagement:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/meta/companies/{companyId}/connections', request.path_params)
+        url = utils.generate_url(operations.GetDataconnectionsRequest, base_url, '/meta/companies/{companyId}/connections', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetDataconnectionsRequest, request)
         
         client = self._security_client
         
@@ -97,7 +97,7 @@ class CompanyManagement:
 
         return res
 
-    def post_companies(self, request: operations.PostCompaniesRequest) -> operations.PostCompaniesResponse:
+    def post_companies(self, request: operations.PostCompaniesRequestBody) -> operations.PostCompaniesResponse:
         r"""Create a Sync for Commerce company
         Creates a Codat company with a commerce partner data connection.
         """
@@ -107,7 +107,7 @@ class CompanyManagement:
         url = base_url.removesuffix('/') + '/meta/companies/sync'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -132,10 +132,10 @@ class CompanyManagement:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/meta/companies/{companyId}/connections/{connectionId}', request.path_params)
+        url = utils.generate_url(operations.UpdateDataConnectionRequest, base_url, '/meta/companies/{companyId}/connections/{connectionId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

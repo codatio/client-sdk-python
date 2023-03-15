@@ -26,7 +26,7 @@ class Integrations:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/config/integrations/{platformKey}/branding', request.path_params)
+        url = utils.generate_url(operations.GetIntegrationBrandingRequest, base_url, '/config/integrations/{platformKey}/branding', request)
         
         
         client = self._security_client
@@ -50,7 +50,7 @@ class Integrations:
         
         url = base_url.removesuffix('/') + '/config/integrations'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetIntegrationsRequest, request)
         
         client = self._security_client
         
