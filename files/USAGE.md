@@ -3,20 +3,16 @@
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
-    )
+    ),
 )
-   
+
+
 req = operations.DownloadFilesRequest(
-    path_params=operations.DownloadFilesPathParams(
-        company_id="unde",
-    ),
-    query_params=operations.DownloadFilesQueryParams(
-        date_="2022-08-06T14:41:39.552Z",
-    ),
+    company_id="unde",
+    date_="2022-08-10T14:41:25.900Z",
 )
     
 res = s.files.download_files(req)

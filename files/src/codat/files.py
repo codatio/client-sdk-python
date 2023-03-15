@@ -26,9 +26,9 @@ class Files:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/files/download', request.path_params)
+        url = utils.generate_url(operations.DownloadFilesRequest, base_url, '/companies/{companyId}/files/download', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.DownloadFilesRequest, request)
         
         client = self._security_client
         
@@ -49,7 +49,7 @@ class Files:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/files', request.path_params)
+        url = utils.generate_url(operations.ListFilesRequest, base_url, '/companies/{companyId}/files', request)
         
         
         client = self._security_client
@@ -73,7 +73,7 @@ class Files:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/connections/{connectionId}/files', request.path_params)
+        url = utils.generate_url(operations.UploadFilesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/files', request)
         
         
         client = self._security_client
