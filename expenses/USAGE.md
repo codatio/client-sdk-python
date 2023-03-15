@@ -3,17 +3,15 @@
 import codat
 from codat.models import operations, shared
 
-s = codat.Codat()
-s.config_security(
+s = codat.Codat(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
-    )
-)
-   
-req = operations.GetCompanyConfigurationRequest(
-    path_params=operations.GetCompanyConfigurationPathParams(
-        company_id="unde",
     ),
+)
+
+
+req = operations.GetCompanyConfigurationRequest(
+    company_id="unde",
 )
     
 res = s.configuration.get_company_configuration(req)

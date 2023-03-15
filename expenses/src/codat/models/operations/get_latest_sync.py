@@ -10,13 +10,8 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetLatestSyncPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetLatestSyncRequest:
-    path_params: GetLatestSyncPathParams = dataclasses.field()
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -11,13 +11,8 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetMappingOptionsPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetMappingOptionsRequest:
-    path_params: GetMappingOptionsPathParams = dataclasses.field()
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     
 class GetMappingOptions200ApplicationJSONAccountsAccountTypeEnum(str, Enum):
     ASSET = "Asset"

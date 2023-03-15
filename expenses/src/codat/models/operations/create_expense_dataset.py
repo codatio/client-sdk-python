@@ -10,11 +10,6 @@ from marshmallow import fields
 from typing import Optional
 
 
-@dataclasses.dataclass
-class CreateExpenseDatasetPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateExpenseDatasetRequestBodyItemsLinesRecordRef:
@@ -62,8 +57,8 @@ class CreateExpenseDatasetRequestBody:
 
 @dataclasses.dataclass
 class CreateExpenseDatasetRequest:
-    path_params: CreateExpenseDatasetPathParams = dataclasses.field()
-    request: Optional[CreateExpenseDatasetRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[CreateExpenseDatasetRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

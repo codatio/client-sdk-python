@@ -6,11 +6,6 @@ from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
-@dataclasses.dataclass
-class SaveCompanyConfigurationPathParams:
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SaveCompanyConfigurationRequestBodyBankAccount:
@@ -39,8 +34,8 @@ class SaveCompanyConfigurationRequestBody:
 
 @dataclasses.dataclass
 class SaveCompanyConfigurationRequest:
-    path_params: SaveCompanyConfigurationPathParams = dataclasses.field()
-    request: Optional[SaveCompanyConfigurationRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[SaveCompanyConfigurationRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

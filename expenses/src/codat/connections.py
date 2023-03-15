@@ -26,7 +26,7 @@ class Connections:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/connections/partnerExpense', request.path_params)
+        url = utils.generate_url(operations.CreatePartnerexpenseConnectionRequest, base_url, '/companies/{companyId}/sync/expenses/connections/partnerExpense', request)
         
         
         client = self._security_client

@@ -26,10 +26,10 @@ class Expenses:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/data/expense-transactions', request.path_params)
+        url = utils.generate_url(operations.CreateExpenseDatasetRequest, base_url, '/companies/{companyId}/sync/expenses/data/expense-transactions', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -54,7 +54,7 @@ class Expenses:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}/attachments', request.path_params)
+        url = utils.generate_url(operations.UploadAttachmentRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}/attachments', request)
         
         
         client = self._security_client

@@ -7,15 +7,10 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class UploadAttachmentPathParams:
+class UploadAttachmentRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     transaction_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'transactionId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class UploadAttachmentRequest:
-    path_params: UploadAttachmentPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

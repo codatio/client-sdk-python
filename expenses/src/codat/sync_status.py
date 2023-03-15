@@ -26,7 +26,7 @@ class SyncStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/syncs/lastSuccessful/status', request.path_params)
+        url = utils.generate_url(operations.GetLastSuccessfulSyncRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/lastSuccessful/status', request)
         
         
         client = self._security_client
@@ -50,7 +50,7 @@ class SyncStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/syncs/latest/status', request.path_params)
+        url = utils.generate_url(operations.GetLatestSyncRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/latest/status', request)
         
         
         client = self._security_client
@@ -74,7 +74,7 @@ class SyncStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/status', request.path_params)
+        url = utils.generate_url(operations.GetSyncByIDRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/status', request)
         
         
         client = self._security_client
@@ -98,7 +98,7 @@ class SyncStatus:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/companies/{companyId}/sync/expenses/syncs/list/status', request.path_params)
+        url = utils.generate_url(operations.ListSyncsRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/list/status', request)
         
         
         client = self._security_client

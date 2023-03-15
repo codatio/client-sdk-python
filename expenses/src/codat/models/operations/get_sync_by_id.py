@@ -10,14 +10,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetSyncByIDPathParams:
+class GetSyncByIDRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetSyncByIDRequest:
-    path_params: GetSyncByIDPathParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

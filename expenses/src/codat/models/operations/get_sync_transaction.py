@@ -8,15 +8,10 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetSyncTransactionPathParams:
+class GetSyncTransactionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     transaction_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'transactionId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetSyncTransactionRequest:
-    path_params: GetSyncTransactionPathParams = dataclasses.field()
     
 class GetSyncTransaction200ApplicationJSONIntegrationTypeEnum(str, Enum):
     EXPENSES = "expenses"
