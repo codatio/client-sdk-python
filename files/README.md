@@ -23,7 +23,7 @@ s = codat.Codat(
 
 req = operations.DownloadFilesRequest(
     company_id="unde",
-    date_="2022-08-10T14:41:25.900Z",
+    date_="2022-08-11T14:41:47.787Z",
 )
     
 res = s.files.download_files(req)
