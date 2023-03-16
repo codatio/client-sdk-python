@@ -2,7 +2,7 @@ from __future__ import annotations
 import dataclasses
 import dateutil.parser
 import requests as requests_http
-from codat import utils
+from bankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
