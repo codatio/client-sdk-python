@@ -4,6 +4,9 @@ management:
   docVersion: 2.1.0
   speakeasyVersion: 1.11.0
 generation:
+  sdkClassName: BankFeeds
+  sdkFlattening: true
+  tagNamespacingDisabled: true
   telemetryEnabled: false
 python:
   version: 0.4.0
