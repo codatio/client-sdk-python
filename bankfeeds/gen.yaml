@@ -5,8 +5,9 @@ management:
   speakeasyVersion: 1.11.0
 generation:
   telemetryEnabled: false
-  sdkClassName: codat
+  sdkClassName: BankFeeds
   sdkFlattening: true
+  tagNamespacingDisabled: true
 python:
   version: 0.4.0
   author: Speakeasy
