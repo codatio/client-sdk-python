@@ -4,7 +4,6 @@ on:
   push: # Will trigger when the RELEASES.md file is updated by the merged PR from the generation workflow
     paths:
       - "bankfeeds/RELEASES.md"
-      - "bankfeeds/gen.yaml"
     branches:
       - main
 
