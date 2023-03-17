@@ -47,7 +47,7 @@ class GetCompaniesCompanyIDPushLinksLinksSelf:
 @dataclasses.dataclass
 class GetCompaniesCompanyIDPushLinksLinks:
     current: GetCompaniesCompanyIDPushLinksLinksCurrent = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})
-    self: GetCompaniesCompanyIDPushLinksLinksSelf = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})
+    self_: GetCompaniesCompanyIDPushLinksLinksSelf = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})
     next: Optional[GetCompaniesCompanyIDPushLinksLinksNext] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})
     previous: Optional[GetCompaniesCompanyIDPushLinksLinksPrevious] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})
     
