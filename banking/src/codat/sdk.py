@@ -34,8 +34,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.4.0"
-    _gen_version: str = "1.11.0"
+    _sdk_version: str = "0.5.0"
+    _gen_version: str = "1.12.0"
 
     def __init__(self,
                  security: shared.Security = None,

@@ -25,8 +25,8 @@ req = operations.ListBankingAccountBalancesRequest(
     company_id="unde",
     connection_id="deserunt",
     order_by="porro",
-    page=8442.66,
-    page_size=6027.63,
+    page=844266,
+    page_size=602763,
     query="vero",
 )
     
