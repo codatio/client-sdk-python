@@ -57,14 +57,54 @@ class CreateDirectCostSourceModifiedDateLineItemsTaxRateRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreateDirectCostSourceModifiedDateLineItemsTracking:
-    record_refs: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
-    invoice_to: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
+class CreateDirectCostSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo:
+    r"""CreateDirectCostSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo
+    Links to the underlying record or data type.
+    
+    Found on:
+    
+    - Journal entries
+    - Account transactions
+    - Invoices
+    - Transfers
+    """
+    
+    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class CreateDirectCostSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs:
+    r"""CreateDirectCostSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs
+    Links to the underlying record or data type.
+    
+    Found on:
+    
+    - Journal entries
+    - Account transactions
+    - Invoices
+    - Transfers
+    """
+    
+    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class CreateDirectCostSourceModifiedDateLineItemsInvoiceableTracking:
+    record_refs: list[CreateDirectCostSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
+    invoice_to: Optional[CreateDirectCostSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateDirectCostSourceModifiedDateLineItemsTrackingCategoryRefs:
+    r"""CreateDirectCostSourceModifiedDateLineItemsTrackingCategoryRefs
+    References a category against which the item is tracked.
+    """
+    
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     
@@ -83,7 +123,7 @@ class CreateDirectCostSourceModifiedDateLineItems:
     tax_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxAmount'), 'exclude': lambda f: f is None }})
     tax_rate_ref: Optional[CreateDirectCostSourceModifiedDateLineItemsTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
-    tracking: Optional[CreateDirectCostSourceModifiedDateLineItemsTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
+    tracking: Optional[CreateDirectCostSourceModifiedDateLineItemsInvoiceableTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
     tracking_category_refs: Optional[list[CreateDirectCostSourceModifiedDateLineItemsTrackingCategoryRefs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
     
 
@@ -263,14 +303,54 @@ class CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsTracking:
-    record_refs: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
-    invoice_to: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
+class CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo:
+    r"""CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo
+    Links to the underlying record or data type.
+    
+    Found on:
+    
+    - Journal entries
+    - Account transactions
+    - Invoices
+    - Transfers
+    """
+    
+    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs:
+    r"""CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs
+    Links to the underlying record or data type.
+    
+    Found on:
+    
+    - Journal entries
+    - Account transactions
+    - Invoices
+    - Transfers
+    """
+    
+    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTracking:
+    record_refs: list[CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
+    invoice_to: Optional[CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs:
+    r"""CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs
+    References a category against which the item is tracked.
+    """
+    
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     
@@ -289,7 +369,7 @@ class CreateDirectCost200ApplicationJSONSourceModifiedDateLineItems:
     tax_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxAmount'), 'exclude': lambda f: f is None }})
     tax_rate_ref: Optional[CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
-    tracking: Optional[CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
+    tracking: Optional[CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
     tracking_category_refs: Optional[list[CreateDirectCost200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
     
 
