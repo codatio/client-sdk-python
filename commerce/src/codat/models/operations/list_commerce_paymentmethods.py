@@ -48,7 +48,7 @@ class ListCommercePaymentMethodsLinksLinksSelf:
 @dataclasses.dataclass
 class ListCommercePaymentMethodsLinksLinks:
     current: ListCommercePaymentMethodsLinksLinksCurrent = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})
-    self: ListCommercePaymentMethodsLinksLinksSelf = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})
+    self_: ListCommercePaymentMethodsLinksLinksSelf = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})
     next: Optional[ListCommercePaymentMethodsLinksLinksNext] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})
     previous: Optional[ListCommercePaymentMethodsLinksLinksPrevious] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})
     
