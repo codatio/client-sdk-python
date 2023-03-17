@@ -13,9 +13,9 @@ from typing import Any, Optional
 @dataclasses.dataclass
 class ListInvoicesRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    page: float = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
+    page: int = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
-    page_size: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
+    page_size: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
     query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
     
 
@@ -100,6 +100,10 @@ class ListInvoicesLinksSourceModifiedDateLineItemsTaxRateRef:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListInvoicesLinksSourceModifiedDateLineItemsTrackingCategoryRefs:
+    r"""ListInvoicesLinksSourceModifiedDateLineItemsTrackingCategoryRefs
+    References a category against which the item is tracked.
+    """
+    
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     
@@ -131,6 +135,10 @@ class ListInvoicesLinksSourceModifiedDateLineItemsTrackingProjectRef:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListInvoicesLinksSourceModifiedDateLineItemsTracking:
+    r"""ListInvoicesLinksSourceModifiedDateLineItemsTracking
+    Categories, and a project and customer, against which the item is tracked.
+    """
+    
     category_refs: list[ListInvoicesLinksSourceModifiedDateLineItemsTrackingCategoryRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})
     is_billed_to: ListInvoicesLinksSourceModifiedDateLineItemsTrackingIsBilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})
     is_rebilled_to: ListInvoicesLinksSourceModifiedDateLineItemsTrackingIsRebilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})

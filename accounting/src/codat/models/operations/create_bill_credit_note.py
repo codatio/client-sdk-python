@@ -47,6 +47,10 @@ class CreateBillCreditNoteSourceModifiedDateLineItemsTaxRateRef:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateBillCreditNoteSourceModifiedDateLineItemsTrackingCategoryRefs:
+    r"""CreateBillCreditNoteSourceModifiedDateLineItemsTrackingCategoryRefs
+    References a category against which the item is tracked.
+    """
+    
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     
@@ -80,6 +84,10 @@ class CreateBillCreditNoteSourceModifiedDateLineItemsTrackingProjectRef:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateBillCreditNoteSourceModifiedDateLineItemsTracking:
+    r"""CreateBillCreditNoteSourceModifiedDateLineItemsTracking
+    Categories, and a project and customer, against which the item is tracked.
+    """
+    
     category_refs: list[CreateBillCreditNoteSourceModifiedDateLineItemsTrackingCategoryRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})
     is_billed_to: CreateBillCreditNoteSourceModifiedDateLineItemsTrackingIsBilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})
     is_rebilled_to: CreateBillCreditNoteSourceModifiedDateLineItemsTrackingIsRebilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
@@ -300,6 +308,10 @@ class CreateBillCreditNote200ApplicationJSONSourceModifiedDateLineItemsTaxRateRe
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateBillCreditNote200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs:
+    r"""CreateBillCreditNote200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs
+    References a category against which the item is tracked.
+    """
+    
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     
@@ -333,6 +345,10 @@ class CreateBillCreditNote200ApplicationJSONSourceModifiedDateLineItemsTrackingP
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateBillCreditNote200ApplicationJSONSourceModifiedDateLineItemsTracking:
+    r"""CreateBillCreditNote200ApplicationJSONSourceModifiedDateLineItemsTracking
+    Categories, and a project and customer, against which the item is tracked.
+    """
+    
     category_refs: list[CreateBillCreditNote200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})
     is_billed_to: CreateBillCreditNote200ApplicationJSONSourceModifiedDateLineItemsTrackingIsBilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})
     is_rebilled_to: CreateBillCreditNote200ApplicationJSONSourceModifiedDateLineItemsTrackingIsRebilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})

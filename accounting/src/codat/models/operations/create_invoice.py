@@ -58,6 +58,10 @@ class CreateInvoiceSourceModifiedDateLineItemsTaxRateRef:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateInvoiceSourceModifiedDateLineItemsTrackingCategoryRefs:
+    r"""CreateInvoiceSourceModifiedDateLineItemsTrackingCategoryRefs
+    References a category against which the item is tracked.
+    """
+    
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     
@@ -89,6 +93,10 @@ class CreateInvoiceSourceModifiedDateLineItemsTrackingProjectRef:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateInvoiceSourceModifiedDateLineItemsTracking:
+    r"""CreateInvoiceSourceModifiedDateLineItemsTracking
+    Categories, and a project and customer, against which the item is tracked.
+    """
+    
     category_refs: list[CreateInvoiceSourceModifiedDateLineItemsTrackingCategoryRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})
     is_billed_to: CreateInvoiceSourceModifiedDateLineItemsTrackingIsBilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})
     is_rebilled_to: CreateInvoiceSourceModifiedDateLineItemsTrackingIsRebilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
@@ -321,6 +329,10 @@ class CreateInvoice200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateInvoice200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs:
+    r"""CreateInvoice200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs
+    References a category against which the item is tracked.
+    """
+    
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     
@@ -352,6 +364,10 @@ class CreateInvoice200ApplicationJSONSourceModifiedDateLineItemsTrackingProjectR
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateInvoice200ApplicationJSONSourceModifiedDateLineItemsTracking:
+    r"""CreateInvoice200ApplicationJSONSourceModifiedDateLineItemsTracking
+    Categories, and a project and customer, against which the item is tracked.
+    """
+    
     category_refs: list[CreateInvoice200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})
     is_billed_to: CreateInvoice200ApplicationJSONSourceModifiedDateLineItemsTrackingIsBilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})
     is_rebilled_to: CreateInvoice200ApplicationJSONSourceModifiedDateLineItemsTrackingIsRebilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
