@@ -10,9 +10,16 @@ from marshmallow import fields
 from typing import Optional
 
 
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class CreateDataConnectionRequestBody:
+    platform_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformKey'), 'exclude': lambda f: f is None }})
+    
+
 @dataclasses.dataclass
 class CreateDataConnectionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    request_body: Optional[CreateDataConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
