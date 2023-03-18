@@ -27,8 +27,8 @@ class BankFeeds:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.5.3"
-    _gen_version: str = "1.12.1"
+    _sdk_version: str = "0.5.4"
+    _gen_version: str = "1.12.3"
 
     def __init__(self,
                  security: shared.Security = None,
