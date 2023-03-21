@@ -31,7 +31,6 @@ class CreatePullOperationDataTypeEnum(str, Enum):
     PAYMENT_METHODS = "paymentMethods"
     PAYMENTS = "payments"
     PROFIT_AND_LOSS = "profitAndLoss"
-    PROJECTS = "projects"
     PURCHASE_ORDERS = "purchaseOrders"
     SALES_ORDERS = "salesOrders"
     SUPPLIERS = "suppliers"
