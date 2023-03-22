@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from bankfeeds import utils
+from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional

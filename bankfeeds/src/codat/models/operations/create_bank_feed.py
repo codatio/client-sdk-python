@@ -2,20 +2,17 @@
 
 from __future__ import annotations
 import dataclasses
-import dateutil.parser
 import requests as requests_http
-from bankfeeds import utils
+from codat import utils
 from dataclasses_json import Undefined, dataclass_json
-from datetime import datetime
 from enum import Enum
-from marshmallow import fields
 from typing import Optional
 
 class CreateBankFeedBankFeedBankAccountAccountTypeEnum(str, Enum):
     r"""The type of bank account e.g. Credit"""
-    UNKNOWN = "Unknown"
-    CREDIT = "Credit"
-    DEBIT = "Debit"
+    UNKNOWN = "unknown"
+    CREDIT = "credit"
+    DEBIT = "debit"
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -35,9 +32,9 @@ class CreateBankFeedBankFeedBankAccount:
     r"""The latest balance for the bank account"""  
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency e.g. USD"""  
-    feed_start_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('feedStartDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    feed_start_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('feedStartDate'), 'exclude': lambda f: f is None }})
     r"""null"""  
-    modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     r"""The last date the bank account was modified"""  
     sort_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sortCode'), 'exclude': lambda f: f is None }})
     r"""The sort code"""  
