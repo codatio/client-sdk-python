@@ -11,10 +11,10 @@ pip install codat-bankfeeds
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import bankfeeds
-from bankfeeds.models import operations, shared
+import codat
+from codat.models import operations, shared
 
-s = bankfeeds.BankFeeds(
+s = codat.Codat(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
     ),
@@ -26,36 +26,36 @@ req = operations.CreateBankFeedRequest(
         operations.CreateBankFeedBankFeedBankAccount(
             account_name="deserunt",
             account_number="porro",
-            account_type="Debit",
+            account_type="debit",
             balance=6027.63,
             currency="vero",
-            feed_start_date="2022-09-04T03:05:19.307Z",
+            feed_start_date="perspiciatis",
             id="nulla",
-            modified_date="2022-10-18T09:02:57.396Z",
+            modified_date="nihil",
             sort_code="fuga",
             status="facilis",
         ),
         operations.CreateBankFeedBankFeedBankAccount(
             account_name="eum",
             account_number="iusto",
-            account_type="Unknown",
+            account_type="unknown",
             balance=8917.73,
             currency="inventore",
-            feed_start_date="2022-04-04T06:34:46.681Z",
+            feed_start_date="sapiente",
             id="enim",
-            modified_date="2022-11-02T01:19:03.212Z",
+            modified_date="eum",
             sort_code="voluptatum",
             status="autem",
         ),
         operations.CreateBankFeedBankFeedBankAccount(
             account_name="vel",
             account_number="non",
-            account_type="Credit",
+            account_type="credit",
             balance=5680.45,
             currency="reprehenderit",
-            feed_start_date="2022-04-18T04:02:20.145Z",
+            feed_start_date="molestiae",
             id="quo",
-            modified_date="2023-02-24T01:59:21.569Z",
+            modified_date="quasi",
             sort_code="laboriosam",
             status="dicta",
         ),
@@ -74,7 +74,7 @@ if res.bank_feed_bank_accounts is not None:
 <!-- Start SDK Available Operations -->
 ## SDK Available Operations
 
-### BankFeeds SDK
+### Codat SDK
 
 * `create_bank_feed` - Create bank feed bank accounts
 * `get_bank_account_push_options` - List push options for bank account bank transactions
