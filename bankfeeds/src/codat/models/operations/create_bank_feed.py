@@ -5,14 +5,7 @@ import dataclasses
 import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
 from typing import Optional
-
-class CreateBankFeedBankFeedBankAccountAccountTypeEnum(str, Enum):
-    r"""The type of bank account e.g. Credit"""
-    UNKNOWN = "unknown"
-    CREDIT = "credit"
-    DEBIT = "debit"
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -26,7 +19,7 @@ class CreateBankFeedBankFeedBankAccount:
     r"""The bank account name"""  
     account_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountNumber'), 'exclude': lambda f: f is None }})
     r"""The account number"""  
-    account_type: Optional[CreateBankFeedBankFeedBankAccountAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
+    account_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
     r"""The type of bank account e.g. Credit"""  
     balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'exclude': lambda f: f is None }})
     r"""The latest balance for the bank account"""  
