@@ -220,7 +220,7 @@ class ListCommerceOrdersLinksSourceModifiedDate:
     country: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('country'), 'exclude': lambda f: f is None }})
     r"""The Codat country property is returned as it was provided in the underlying platform by the company without any formatting on our part.
     
-    Depending on the platform the value of this property will either be an <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" target="_blank">ISO 3166</a> code (2-alpha or 3-alpha) or free-form text returned as a string name in our model. 
+    Depending on the platform the value of this property will either be an <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes\" target=\"_blank\">ISO 3166</a> code (2-alpha or 3-alpha) or free-form text returned as a string name in our model. 
     
     For POST operations against platforms that demand a specific format for the country code, we have documented accepted values in the [options](https://docs.codat.io/codat-api#/operations/get-companies-companyId-connections-connectionId-push) endpoint.
     """  

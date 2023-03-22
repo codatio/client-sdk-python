@@ -91,7 +91,7 @@ class ListCommerceCustomersLinksSourceModifiedDateAddress:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListCommerceCustomersLinksSourceModifiedDate:
-    r"""Represents a customer who has placed an order in the commerce system""""
+    r"""Represents a customer who has placed an order in the commerce system\""""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique, persistent identifier for this record"""  

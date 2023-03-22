@@ -77,7 +77,7 @@ class ListCommerceProductCategoriesLinksProductCategoryRecordRef:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListCommerceProductCategoriesLinksProductCategory:
-    r"""Product categories are used to classify a group of products together, either by type (eg "Furniture"), or sometimes by tax profile."""
+    r"""Product categories are used to classify a group of products together, either by type (eg \"Furniture\"), or sometimes by tax profile."""
     
     ancestor_refs: Optional[list[ListCommerceProductCategoriesLinksProductCategoryRecordRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ancestorRefs'), 'exclude': lambda f: f is None }})  
     has_children: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasChildren'), 'exclude': lambda f: f is None }})  

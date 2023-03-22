@@ -24,7 +24,7 @@ class Products:
         
     def list_commerce_product_categories(self, request: operations.ListCommerceProductCategoriesRequest) -> operations.ListCommerceProductCategoriesResponse:
         r"""List product categories
-        Product categories are used to classify a group of products together, either by type (eg "Furniture"), or sometimes by tax profile.
+        Product categories are used to classify a group of products together, either by type (eg \"Furniture\"), or sometimes by tax profile.
         """
         base_url = self._server_url
         
