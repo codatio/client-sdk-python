@@ -91,7 +91,7 @@ class GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLine:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCashFlowStatement200ApplicationJSONCashFlowStatement:
-    r"""> View the coverage for cash flow statement in the <a className="external" href="https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement" target="_blank">Data coverage explorer</a>.
+    r"""> View the coverage for cash flow statement in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\" target=\"_blank\">Data coverage explorer</a>.
     
     > ** Operating activities only**  
     > 
@@ -110,9 +110,9 @@ class GetCashFlowStatement200ApplicationJSONCashFlowStatement:
     r"""ReportLines for cash payments to suppliers for the purchase of goods or services."""  
     cash_receipts: Optional[GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cashReceipts'), 'exclude': lambda f: f is None }})
     r"""ReportLines for cash receipts from the sale of goods."""  
-    from_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    from_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'exclude': lambda f: f is None }})
     r"""Start date for the reporting period."""  
-    to_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    to_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'exclude': lambda f: f is None }})
     r"""End date for the reporting period."""  
     
 

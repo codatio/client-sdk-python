@@ -58,18 +58,18 @@ class GetTaxRate200ApplicationJSONValidDataTypeLinks:
     
     ```json validDatatypeLinks for an account
     {
-                "id": "bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4",
-                "nominalCode": "090",
-                "name": "Business Bank Account",
+                \"id\": \"bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4\",
+                \"nominalCode\": \"090\",
+                \"name\": \"Business Bank Account\",
                 #...
-                "validDatatypeLinks": [
+                \"validDatatypeLinks\": [
                     {
-                        "property": "Id",
-                        "links": [
-                            "Payment.AccountRef.Id",
-                            "BillPayment.AccountRef.Id",
-                            "DirectIncome.LineItems.AccountRef.Id",
-                            "DirectCost.LineItems.AccountRef.Id"
+                        \"property\": \"Id\",
+                        \"links\": [
+                            \"Payment.AccountRef.Id\",
+                            \"BillPayment.AccountRef.Id\",
+                            \"DirectIncome.LineItems.AccountRef.Id\",
+                            \"DirectCost.LineItems.AccountRef.Id\"
                         ]
                     }
                 ]
@@ -82,7 +82,7 @@ class GetTaxRate200ApplicationJSONValidDataTypeLinks:
     
     Codat currently supports `validDatatypeLinks` for some data types on our Xero, QuickBooks Online, QuickBooks Desktop, Exact (NL), and Sage Business Cloud integrations. 
     
-    If you'd like us to extend support to more data types or integrations, suggest or vote for this on our <a href="https://portal.productboard.com/codat/5-product-roadmap">Product Roadmap</a>.
+    If you'd like us to extend support to more data types or integrations, suggest or vote for this on our <a href=\"https://portal.productboard.com/codat/5-product-roadmap\">Product Roadmap</a>.
     """
     
     links: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('links'), 'exclude': lambda f: f is None }})
@@ -94,15 +94,15 @@ class GetTaxRate200ApplicationJSONValidDataTypeLinks:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetTaxRate200ApplicationJSON:
-    r"""> View the coverage for tax rates in the <a className="external" href="https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=taxRates" target="_blank">Data coverage explorer</a>.
+    r"""> View the coverage for tax rates in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=taxRates\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
     
-    Accounting systems typically store a set of taxes and associated rates within the accounting package. This means that users don't have to look up or remember the rates for each type of tax. For example: Applying the tax "UK sales VAT" to line items of an invoice adds the correct rate of 20%. 
+    Accounting systems typically store a set of taxes and associated rates within the accounting package. This means that users don't have to look up or remember the rates for each type of tax. For example: Applying the tax \"UK sales VAT\" to line items of an invoice adds the correct rate of 20%. 
     
     ### Tax components
     
-    In some cases, a tax is made up of multiple sub taxes, often called _components_ of the tax.  For example: You may have an item that is charged a tax rate called "City import tax (8%)" that has two components: 
+    In some cases, a tax is made up of multiple sub taxes, often called _components_ of the tax.  For example: You may have an item that is charged a tax rate called \"City import tax (8%)\" that has two components: 
     
     - A city tax of 5%. 
     - An import tax of 3%.

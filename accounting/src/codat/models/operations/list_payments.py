@@ -2,13 +2,10 @@
 
 from __future__ import annotations
 import dataclasses
-import dateutil.parser
 import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
-from datetime import datetime
 from enum import Enum
-from marshmallow import fields
 from typing import Any, Optional
 
 
@@ -145,7 +142,7 @@ class ListPaymentsLinksSourceModifiedDateLines:
     r"""	
     Amount in the payment currency.
     """  
-    allocated_on_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocatedOnDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    allocated_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocatedOnDate'), 'exclude': lambda f: f is None }})
     r"""The date the payment was allocated."""  
     links: Optional[list[ListPaymentsLinksSourceModifiedDateLinesLinks]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('links'), 'exclude': lambda f: f is None }})  
     
@@ -181,7 +178,7 @@ class ListPaymentsLinksSourceModifiedDate:
     > 
     >  In Codat, payments represent accounts receivable only. For accounts payable, see [bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment). These include [bills](https://docs.codat.io/accounting-api#/schemas/Bill) and credit notes against bills.
     
-    > View the coverage for payments in the <a className="external" href="https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments" target="_blank">Data coverage explorer</a>.
+    > View the coverage for payments in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
     
@@ -321,19 +318,19 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Currency rate example
     {
-        "id": "123",
-        "note": ""
-        "totalAmount": 99.99,
-        "currency": "GBP",
-        "lines": [
+        \"id\": \"123\",
+        \"note\": \"\"
+        \"totalAmount\": 99.99,
+        \"currency\": \"GBP\",
+        \"lines\": [
             {
-                "amount": 99.99,
-                "links": [
+                \"amount\": 99.99,
+                \"links\": [
                     {
-                        "type": "Invoice",
-                        "id": "178",
-                        "amount": -50,
-                        "currencyRate":  1.9998,
+                        \"type\": \"Invoice\",
+                        \"id\": \"178\",
+                        \"amount\": -50,
+                        \"currencyRate\":  1.9998,
                     }
                 ]
             }
@@ -353,15 +350,15 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Payment for invoice
     {
-        "totalAmount": 1000,
-        "lines": [
+        \"totalAmount\": 1000,
+        \"lines\": [
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     }
                 ]
             }
@@ -373,20 +370,20 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Allocation of credit note
     {
-        "totalAmount": 0,
-        "lines": [
+        \"totalAmount\": 0,
+        \"lines\": [
             {
-                "amount" : 0,
-                "links" : [
+                \"amount\" : 0,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "CreditNote",
-                        "id" : "y",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"y\",
+                        \"amount\" : 1000
                     }
                 ]
             }
@@ -398,25 +395,25 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Payment of invoice and payment on account
     {
-        "totalAmount": 2000,
-        "lines": [
+        \"totalAmount\": 2000,
+        \"lines\": [
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     }
                 ]
             },
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "PaymentOnAccount",
-                        "id" : "y",
-                        "amount" : -1000
+                        \"type\" : \"PaymentOnAccount\",
+                        \"id\" : \"y\",
+                        \"amount\" : -1000
                     }
                 ]
             }
@@ -428,15 +425,15 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Refund of credit note
     {
-        "totalAmount": -1000,
-        "lines": [
+        \"totalAmount\": -1000,
+        \"lines\": [
             {
-                "amount" : -1000,
-                "links" : [
+                \"amount\" : -1000,
+                \"links\" : [
                     {
-                        "type" : "CreditNote",
-                        "id" : "y",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"y\",
+                        \"amount\" : 1000
                     }
                 ]
             }
@@ -448,15 +445,15 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Refund on accounts receivable account
     {
-        "totalAmount": -1000,
-        "lines": [
+        \"totalAmount\": -1000,
+        \"lines\": [
             {
-                "amount" : -1000,
-                "links" : [
+                \"amount\" : -1000,
+                \"links\" : [
                     {
-                        "type" : "PaymentOnAccount",
-                        "id" : "y",
-                        "amount" : 1000
+                        \"type\" : \"PaymentOnAccount\",
+                        \"id\" : \"y\",
+                        \"amount\" : 1000
                     }
                 ]
             }
@@ -468,32 +465,32 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Linked refund on accounts receivable account
     {
-        "id" : "payment-001",
-        "totalAmount": 1000,
-        "lines": [
+        \"id\" : \"payment-001\",
+        \"totalAmount\": 1000,
+        \"lines\": [
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Refund",
-                        "id" : "refund-001",
-                        "amount" : -1000
+                        \"type\" : \"Refund\",
+                        \"id\" : \"refund-001\",
+                        \"amount\" : -1000
                     }
                 ]
             }
         ]
     }
     {
-        "id" : "refund-001",
-        "totalAmount": -1000,
-        "lines": [
+        \"id\" : \"refund-001\",
+        \"totalAmount\": -1000,
+        \"lines\": [
             {
-                "amount" : -1000,
-                "links" : [
+                \"amount\" : -1000,
+                \"links\" : [
                     {
-                        "type" : "Payment",
-                        "id" : "payment-001",
-                        "amount" : 1000
+                        \"type\" : \"Payment\",
+                        \"id\" : \"payment-001\",
+                        \"amount\" : 1000
                     }
                 ]
             }
@@ -505,30 +502,30 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Using a credit note and cash to pay an invoice
     {
-        "totalAmount": 250,
-        "lines": [
+        \"totalAmount\": 250,
+        \"lines\": [
             {
-                "amount": 0,
-                "links": [
+                \"amount\": 0,
+                \"links\": [
                     {
-                        "type": "Invoice",
-                        "id": "x",
-                        "amount": -750
+                        \"type\": \"Invoice\",
+                        \"id\": \"x\",
+                        \"amount\": -750
                     }, 
                     {
-                        "type": "CreditNote",
-                        "id": "y",
-                        "amount": 750
+                        \"type\": \"CreditNote\",
+                        \"id\": \"y\",
+                        \"amount\": 750
                     }
                 ]
             },
             {
-                "amount": 250,
-                "links": [
+                \"amount\": 250,
+                \"links\": [
                     {
-                        "type": "Invoice",
-                        "id": "x",
-                        "amount": -250
+                        \"type\": \"Invoice\",
+                        \"id\": \"x\",
+                        \"amount\": -250
                     }
                 ]
             }
@@ -540,47 +537,47 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ## Complex examples
     
-    ```json Use two credit notes and 1000 in to "bank" (cash, cheque etc.) to pay invoice
+    ```json Use two credit notes and 1000 in to \"bank\" (cash, cheque etc.) to pay invoice
     {
-        "totalAmount": 1000,
-        "lines": [
+        \"totalAmount\": 1000,
+        \"lines\": [
             {
-                "amount" : 0,
-                "links" : [
+                \"amount\" : 0,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "CreditNote",
-                        "id" : "y",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"y\",
+                        \"amount\" : 1000
                     }
                 ]
             },
             {
-                "amount" : 0,
-                "links" : [
+                \"amount\" : 0,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "CreditNote",
-                        "id" : "z",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"z\",
+                        \"amount\" : 1000
                     }
                 ]
             },
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     }
                 ]
             }
@@ -590,57 +587,57 @@ class ListPaymentsLinksSourceModifiedDate:
     
     
     
-    ```json Pay an invoice with two credit notes and cash, with 1000 left "on account"
+    ```json Pay an invoice with two credit notes and cash, with 1000 left \"on account\"
     {
-        "totalAmount": 2000,
-        "lines": [
+        \"totalAmount\": 2000,
+        \"lines\": [
             {
-                "amount" : 0,
-                "links" : [
+                \"amount\" : 0,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "CreditNote",
-                        "id" : "y",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"y\",
+                        \"amount\" : 1000
                     }
                 ]
             },
             {
-                "amount" : 0,
-                "links" : [
+                \"amount\" : 0,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "CreditNote",
-                        "id" : "z",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"z\",
+                        \"amount\" : 1000
                     }
                 ]
             },
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     }
                 ]
             },
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "PaymentOnAccount",
-                        "id" : "customer-001",
-                        "amount" : -1000
+                        \"type\" : \"PaymentOnAccount\",
+                        \"id\" : \"customer-001\",
+                        \"amount\" : -1000
                     }
                 ]
             }
@@ -652,30 +649,30 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Two credit notes pay two invoices with no allocation amount specified
     {
-        "totalAmount": 0,
-        "lines": [
+        \"totalAmount\": 0,
+        \"lines\": [
             {
-                "amount" : 0,
-                "links" : [
+                \"amount\" : 0,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "w",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"w\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "CreditNote",
-                        "id" : "y",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"y\",
+                        \"amount\" : 1000
                     },
                     {
-                        "type" : "CreditNote",
-                        "id" : "z",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"z\",
+                        \"amount\" : 1000
                     }
                 ]
             }
@@ -687,61 +684,61 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Two credit notes and cash pay three invoices with no allocation amount specified, and refund cash
     {
-        "totalAmount": 2000,
-        "lines": [
+        \"totalAmount\": 2000,
+        \"lines\": [
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "w",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"w\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "Invoice",
-                        "id" : "x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"x\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "Invoice",
-                        "id" : "u",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"u\",
+                        \"amount\" : -1000
                     },
                     {
-                        "type" : "CreditNote",
-                        "id" : "y",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"y\",
+                        \"amount\" : 1000
                     },
                     {
-                        "type" : "CreditNote",
-                        "id" : "z",
-                        "amount" : 1000
+                        \"type\" : \"CreditNote\",
+                        \"id\" : \"z\",
+                        \"amount\" : 1000
                     }
                 ]
             },
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Refund",
-                        "id" : "refund-001",
-                        "amount" : -1000
+                        \"type\" : \"Refund\",
+                        \"id\" : \"refund-001\",
+                        \"amount\" : -1000
                     }
                 ]
             }
         ]
     }
     {
-        "id" : "refund-001",
-        "totalAmount": -1000,
-        "lines": [
+        \"id\" : \"refund-001\",
+        \"totalAmount\": -1000,
+        \"lines\": [
             {
-                "amount" : -1000,
-                "links" : [
+                \"amount\" : -1000,
+                \"links\" : [
                     {
-                        "type" : "Payment",
-                        "id" : "payment-001",
-                        "amount" : 1000
+                        \"type\" : \"Payment\",
+                        \"id\" : \"payment-001\",
+                        \"amount\" : 1000
                     }
                 ]
             }
@@ -755,27 +752,27 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json January
     {
-        "id": "001",
-        "totalAmount": 5000,
-        "date" : "1901-01-01",
-        "lines": [
+        \"id\": \"001\",
+        \"totalAmount\": 5000,
+        \"date\" : \"1901-01-01\",
+        \"lines\": [
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "Invoice-x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"Invoice-x\",
+                        \"amount\" : -1000
                     }
                 ]
             },
             {
-                "amount" : 4000,
-                "links" : [
+                \"amount\" : 4000,
+                \"links\" : [
                     {
-                        "type" : "PaymentOnAccount",
-                        "id" : "PaymentOnAccount-y",
-                        "amount" : -4000
+                        \"type\" : \"PaymentOnAccount\",
+                        \"id\" : \"PaymentOnAccount-y\",
+                        \"amount\" : -4000
                     }
                 ]
             }
@@ -787,37 +784,37 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json February
     {
-        "id": "001",
-        "totalAmount": 5000,
-        "date" : "1901-02-01",
-        "lines": [
+        \"id\": \"001\",
+        \"totalAmount\": 5000,
+        \"date\" : \"1901-02-01\",
+        \"lines\": [
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "Invoice-x",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"Invoice-x\",
+                        \"amount\" : -1000
                     }
                 ]
             },
             {
-                "amount" : 1000,
-                "links" : [
+                \"amount\" : 1000,
+                \"links\" : [
                     {
-                        "type" : "Invoice",
-                        "id" : "Invoice-y",
-                        "amount" : -1000
+                        \"type\" : \"Invoice\",
+                        \"id\" : \"Invoice-y\",
+                        \"amount\" : -1000
                     }
                 ]
             },
             {
-                "amount" : 3000,
-                "links" : [
+                \"amount\" : 3000,
+                \"links\" : [
                     {
-                        "type" : "PaymentOnAccount",
-                        "id" : "PaymentOnAccount-y",
-                        "amount" : -3000
+                        \"type\" : \"PaymentOnAccount\",
+                        \"id\" : \"PaymentOnAccount-y\",
+                        \"amount\" : -3000
                     }
                 ]
             }
@@ -829,26 +826,26 @@ class ListPaymentsLinksSourceModifiedDate:
     
     ```json Two credit notes and some cash pay two invoices with no allocations specified
     {
-        "totalAmount": 500,
-        "lines": [
+        \"totalAmount\": 500,
+        \"lines\": [
             {
-                "amount": 500,
-                "links": [{
-                        "type": "Invoice",
-                        "id": "a",
-                        "amount": -1000
+                \"amount\": 500,
+                \"links\": [{
+                        \"type\": \"Invoice\",
+                        \"id\": \"a\",
+                        \"amount\": -1000
                     }, {
-                        "type": "Invoice",
-                        "id": "b",
-                        "amount": -1000
+                        \"type\": \"Invoice\",
+                        \"id\": \"b\",
+                        \"amount\": -1000
                     }, {
-                        "type": "CreditNote",
-                        "id": "y",
-                        "amount": 750
+                        \"type\": \"CreditNote\",
+                        \"id\": \"y\",
+                        \"amount\": 750
                     },{
-                        "type": "CreditNote",
-                        "id": "z",
-                        "amount": 750
+                        \"type\": \"CreditNote\",
+                        \"id\": \"z\",
+                        \"amount\": 750
                     }
                 ]
             }
@@ -857,7 +854,7 @@ class ListPaymentsLinksSourceModifiedDate:
     ```
     """
     
-    date_: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
+    date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
     r"""Date the payment was recorded in the accounting software."""  
     account_ref: Optional[ListPaymentsLinksSourceModifiedDateAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""Account the payment is recorded against in the accounting platform."""  
@@ -895,7 +892,7 @@ class ListPaymentsLinksSourceModifiedDate:
     lines: Optional[list[ListPaymentsLinksSourceModifiedDateLines]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines'), 'exclude': lambda f: f is None }})
     r"""An array of payment lines."""  
     metadata: Optional[ListPaymentsLinksSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in Codat."""  
     note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
     r"""Any additional information associated with the payment."""  
@@ -903,7 +900,7 @@ class ListPaymentsLinksSourceModifiedDate:
     r"""The Payment Method to which the payment is linked in the accounting platform."""  
     reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference'), 'exclude': lambda f: f is None }})
     r"""Friendly reference for the payment."""  
-    source_modified_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in the originating system"""  
     supplemental_data: Optional[ListPaymentsLinksSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  

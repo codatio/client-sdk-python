@@ -78,7 +78,7 @@ class GetBalanceSheet200ApplicationJSONBalanceSheetReportLine:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetBalanceSheet200ApplicationJSONBalanceSheet:
-    r"""> View the coverage for balance sheet in the <a className="external" href="https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=balanceSheet" target="_blank">Data coverage explorer</a>.
+    r"""> View the coverage for balance sheet in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=balanceSheet\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
     
@@ -102,7 +102,7 @@ class GetBalanceSheet200ApplicationJSONBalanceSheet:
     r"""Value of net assets for a company in their base currency."""  
     assets: Optional[GetBalanceSheet200ApplicationJSONBalanceSheetReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('assets'), 'exclude': lambda f: f is None }})
     r"""ReportLines for assets. For example, fixed and current assets."""  
-    date_: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    date_: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date'), 'exclude': lambda f: f is None }})
     r"""Point in time when a snapshot of a company's financial position is taken."""  
     equity: Optional[GetBalanceSheet200ApplicationJSONBalanceSheetReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('equity'), 'exclude': lambda f: f is None }})
     r"""ReportLines for equities. For example, retained and current year earnings. See below."""  

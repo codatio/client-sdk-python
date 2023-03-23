@@ -2,13 +2,11 @@
 
 from __future__ import annotations
 import dataclasses
-import dateutil.parser
 import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
-from marshmallow import fields
 from typing import Optional
 
 
@@ -87,7 +85,7 @@ class GetProfitAndLoss200ApplicationJSONProfitAndLossReportReportLine:
 class GetProfitAndLoss200ApplicationJSONProfitAndLossReport:
     r"""> **Language tip:** Profit and loss statement is also referred to as **income statement** under US GAAP (Generally Accepted Accounting Principles).
     
-    > View the coverage for profit and loss in the <a className="external" href="https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=profitAndLoss" target="_blank">Data coverage explorer</a>.
+    > View the coverage for profit and loss in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=profitAndLoss\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
     
@@ -121,7 +119,7 @@ class GetProfitAndLoss200ApplicationJSONProfitAndLossReport:
     r"""ReportLine items for cost of sales in the given date range."""  
     expenses: Optional[GetProfitAndLoss200ApplicationJSONProfitAndLossReportReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expenses'), 'exclude': lambda f: f is None }})
     r"""ReportLine items for expenses in the given date range."""  
-    from_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    from_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'exclude': lambda f: f is None }})
     r"""Date from which the report data begins."""  
     income: Optional[GetProfitAndLoss200ApplicationJSONProfitAndLossReportReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('income'), 'exclude': lambda f: f is None }})
     r"""ReportLine items for income in the given date range."""  
@@ -129,7 +127,7 @@ class GetProfitAndLoss200ApplicationJSONProfitAndLossReport:
     r"""ReportLine items for other expenses in the given date range."""  
     other_income: Optional[GetProfitAndLoss200ApplicationJSONProfitAndLossReportReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('otherIncome'), 'exclude': lambda f: f is None }})
     r"""ReportLine items for other income in the given date range."""  
-    to_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    to_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'exclude': lambda f: f is None }})
     r"""Date on which the report data ends."""  
     
 
@@ -144,9 +142,9 @@ class GetProfitAndLoss200ApplicationJSON:
     r"""The basis of a report."""  
     reports: list[GetProfitAndLoss200ApplicationJSONProfitAndLossReport] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
     r"""An array of ProfitAndLossReports."""  
-    earliest_available_month: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('earliestAvailableMonth'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    earliest_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('earliestAvailableMonth'), 'exclude': lambda f: f is None }})
     r"""Earliest available monthly report data."""  
-    most_recent_available_month: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mostRecentAvailableMonth'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    most_recent_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mostRecentAvailableMonth'), 'exclude': lambda f: f is None }})
     r"""Most recent available monthly report data."""  
     
 
