@@ -2,13 +2,10 @@
 
 from __future__ import annotations
 import dataclasses
-import dateutil.parser
 import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
-from datetime import datetime
 from enum import Enum
-from marshmallow import fields
 from typing import Optional
 
 class GetDataIntegrityStatusDataTypeEnum(str, Enum):
@@ -62,13 +59,13 @@ class GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeConnectionIds:
 class GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeDates:
     r"""Only returned for transactions. For accounts, there is nothing returned."""
     
-    max_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('maxDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    max_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('maxDate'), 'exclude': lambda f: f is None }})
     r"""Latest date of transaction set."""  
-    max_overlapping_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('maxOverlappingDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    max_overlapping_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('maxOverlappingDate'), 'exclude': lambda f: f is None }})
     r"""Latest date where transactions exist in both account and banking platforms."""  
-    min_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('minDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    min_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('minDate'), 'exclude': lambda f: f is None }})
     r"""Earliest date of transaction set."""  
-    min_overlapping_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('minOverlappingDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    min_overlapping_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('minOverlappingDate'), 'exclude': lambda f: f is None }})
     r"""Earliest date where transactions exist in both accounting and banking platforms."""  
     
 class GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeStatusInfoCurrentStatusEnum(str, Enum):
@@ -85,7 +82,7 @@ class GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeStatusInfo:
     
     current_status: Optional[GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeStatusInfoCurrentStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currentStatus'), 'exclude': lambda f: f is None }})
     r"""The current status of the most recently run matching algorithm."""  
-    last_matched: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastMatched'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    last_matched: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastMatched'), 'exclude': lambda f: f is None }})
     r"""The date the matching algorithm last ran against the company’s data type specified."""  
     status_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusMessage'), 'exclude': lambda f: f is None }})
     r"""Detailed explanation supporting the status value."""  
