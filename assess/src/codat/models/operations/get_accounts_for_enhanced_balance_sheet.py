@@ -36,7 +36,7 @@ class GetAccountsForEnhancedBalanceSheetEnhancedReportReportInfo:
     
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """  
-    generated_date: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('generatedDate'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    generated_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('generatedDate'), 'exclude': lambda f: f is None }})
     r"""The date the report was generated."""  
     report_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportName'), 'exclude': lambda f: f is None }})
     r"""The name of the report."""  

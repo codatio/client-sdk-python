@@ -192,7 +192,7 @@ class GetCommerceRevenueMetrics200ApplicationJSON:
     2. Information about the dimension contained in the reports such as:
       a. The type of dimension (e.g. datetime, recordRef).
       b. The display name of the dimension (e.g. Period, Category type, Category sub type).
-      c. The details about each item within the dimension (e.g. displayName:"Jan 2022", start:"...", end:"...", id:"...", name:"...").
+      c. The details about each item within the dimension (e.g. displayName:\"Jan 2022\", start:\"...\", end:\"...\", id:\"...\", name:\"...\").
     3. Information about the measures contained in the report such as:
       a. The display name of the measure (e.g. value of account, percentage change).
       b. The type of the measure (e.g. currency, percentage).
