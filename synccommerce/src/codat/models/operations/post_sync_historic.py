@@ -14,22 +14,24 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostSyncLatestSyncToLatestArgs:
+class PostSyncHistoricRequestBody:
     
-    sync_to: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncTo'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
-    r"""The DateTime, upto which Sync will run up to starting from the previous successful sync"""  
+    finish: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    r"""Finish date of the Sync."""  
+    start: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('start'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
+    r"""Start date of the Sync."""  
     
 
 @dataclasses.dataclass
-class PostSyncLatestRequest:
+class PostSyncHistoricRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
-    request_body: Optional[PostSyncLatestSyncToLatestArgs] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
+    request_body: Optional[PostSyncHistoricRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostSyncLatest200ApplicationJSONDataConnectionsDataConnectionErrors:
+class PostSyncHistoric200ApplicationJSONDataConnectionsDataConnectionErrors:
     
     errored_on_utc: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('erroredOnUtc'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the ISO 8601 standard. Date and time fields are formatted as strings."""  
@@ -40,7 +42,7 @@ class PostSyncLatest200ApplicationJSONDataConnectionsDataConnectionErrors:
     status_text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusText'), 'exclude': lambda f: f is None }})
     r"""Descriptive text for the data connection error."""  
     
-class PostSyncLatest200ApplicationJSONDataConnectionsSourceTypeEnum(str, Enum):
+class PostSyncHistoric200ApplicationJSONDataConnectionsSourceTypeEnum(str, Enum):
     r"""The type of platform of the connection."""
     ACCOUNTING = "Accounting"
     BANKING = "Banking"
@@ -48,7 +50,7 @@ class PostSyncLatest200ApplicationJSONDataConnectionsSourceTypeEnum(str, Enum):
     OTHER = "Other"
     UNKNOWN = "Unknown"
 
-class PostSyncLatest200ApplicationJSONDataConnectionsStatusEnum(str, Enum):
+class PostSyncHistoric200ApplicationJSONDataConnectionsStatusEnum(str, Enum):
     r"""The current authorization status of the data connection."""
     PENDING_AUTH = "PendingAuth"
     LINKED = "Linked"
@@ -58,7 +60,7 @@ class PostSyncLatest200ApplicationJSONDataConnectionsStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostSyncLatest200ApplicationJSONDataConnections:
+class PostSyncHistoric200ApplicationJSONDataConnections:
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier for a company's data connection."""  
@@ -72,19 +74,19 @@ class PostSyncLatest200ApplicationJSONDataConnections:
     r"""A source-specific ID used to distinguish between different sources originating from the same data connection. In general, a data connection is a single data source. However, for TrueLayer, sourceId is associated with a specific bank and has a many-to-one relationship with the integrationId."""  
     created: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the ISO 8601 standard. Date and time fields are formatted as string."""  
-    data_connection_errors: Optional[list[PostSyncLatest200ApplicationJSONDataConnectionsDataConnectionErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionErrors'), 'exclude': lambda f: f is None }})
+    data_connection_errors: Optional[list[PostSyncHistoric200ApplicationJSONDataConnectionsDataConnectionErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionErrors'), 'exclude': lambda f: f is None }})
     r"""Array containing errors on data connections."""  
     last_sync: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastSync'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the ISO 8601 standard. Date and time fields are formatted as string."""  
-    source_type: Optional[PostSyncLatest200ApplicationJSONDataConnectionsSourceTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceType'), 'exclude': lambda f: f is None }})
+    source_type: Optional[PostSyncHistoric200ApplicationJSONDataConnectionsSourceTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceType'), 'exclude': lambda f: f is None }})
     r"""The type of platform of the connection."""  
-    status: Optional[PostSyncLatest200ApplicationJSONDataConnectionsStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[PostSyncHistoric200ApplicationJSONDataConnectionsStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""The current authorization status of the data connection."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostSyncLatest200ApplicationJSONSyncDateRangeUtc:
+class PostSyncHistoric200ApplicationJSONSyncDateRangeUtc:
     
     finish: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     r"""Finish date of the Sync."""  
@@ -94,20 +96,20 @@ class PostSyncLatest200ApplicationJSONSyncDateRangeUtc:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostSyncLatest200ApplicationJSON:
+class PostSyncHistoric200ApplicationJSON:
     r"""Success"""
     
     commerce_sync_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('commerceSyncId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for the sync in Codat."""  
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for your SMB in Codat."""  
-    data_connections: Optional[list[PostSyncLatest200ApplicationJSONDataConnections]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections'), 'exclude': lambda f: f is None }})
+    data_connections: Optional[list[PostSyncHistoric200ApplicationJSONDataConnections]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections'), 'exclude': lambda f: f is None }})
     r"""Array of containing objects data connection information for the company."""  
     data_pushed: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataPushed'), 'exclude': lambda f: f is None }})
     r"""Boolean indicator for data being pushed during a sync operation."""  
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})
     r"""Friendly error message for the sync operation."""  
-    sync_date_range_utc: Optional[PostSyncLatest200ApplicationJSONSyncDateRangeUtc] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncDateRangeUtc'), 'exclude': lambda f: f is None }})  
+    sync_date_range_utc: Optional[PostSyncHistoric200ApplicationJSONSyncDateRangeUtc] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncDateRangeUtc'), 'exclude': lambda f: f is None }})  
     sync_exception_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncExceptionMessage'), 'exclude': lambda f: f is None }})
     r"""Exception message for the sync operation."""  
     sync_status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncStatus'), 'exclude': lambda f: f is None }})
@@ -119,11 +121,11 @@ class PostSyncLatest200ApplicationJSON:
     
 
 @dataclasses.dataclass
-class PostSyncLatestResponse:
+class PostSyncHistoricResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    post_sync_latest_200_application_json_object: Optional[PostSyncLatest200ApplicationJSON] = dataclasses.field(default=None)
+    post_sync_historic_200_application_json_object: Optional[PostSyncHistoric200ApplicationJSON] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

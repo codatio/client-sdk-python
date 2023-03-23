@@ -5,14 +5,14 @@ from codat.models import operations, shared
 
 s = codat.Codat(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic YOUR_ENCODED_API_KEY",
     ),
 )
 
 
 req = operations.AddDataConnectionRequest(
     request_body="unde",
-    company_id="deserunt",
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
     
 res = s.company_management.add_data_connection(req)
