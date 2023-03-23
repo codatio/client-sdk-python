@@ -156,8 +156,8 @@ class Connections:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnectionsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnectionsListConnectionsResponse])
+                res.list_connections_response = out
         elif http_res.status_code == 400:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnections400ApplicationJSON])
