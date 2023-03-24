@@ -8,6 +8,22 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class PostBankTransactionsRequestBodyTransactionsModifiedDate:
+    
+    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
+    r"""The date on which this record was last modified in Codat."""  
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class PostBankTransactionsRequestBodyTransactionsSourceModifiedDate:
+    
+    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
+    r"""The date on which this record was last modified in the originating system"""  
+    
 class PostBankTransactionsRequestBodyTransactionsTransactionTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
@@ -35,15 +51,35 @@ class PostBankTransactionsRequestBodyTransactions:
     
     amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount') }})  
     balance: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})  
-    date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})  
+    date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
+    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
+    
+    ```
+    2020-10-08T22:40:50Z
+    2021-01-01T00:00:00
+    ```
+    
+    
+    
+    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
+    
+    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
+    - Unqualified local time: `2021-11-15T01:00:00`
+    - UTC time offsets: `2021-11-15T01:00:00-05:00`
+    
+    > 📘 Time zones
+    > 
+    > Not all dates from Codat will contain information about time zones.  
+    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
+    """  
     reconciled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reconciled') }})  
     transaction_type: PostBankTransactionsRequestBodyTransactionsTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})  
     counterparty: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('counterparty'), 'exclude': lambda f: f is None }})  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
+    modified_date: Optional[PostBankTransactionsRequestBodyTransactionsModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
     reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference'), 'exclude': lambda f: f is None }})  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
+    source_modified_date: Optional[PostBankTransactionsRequestBodyTransactionsSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -107,6 +143,22 @@ class PostBankTransactions200ApplicationJSONChanges:
     record_ref: Optional[PostBankTransactions200ApplicationJSONChangesPushOperationRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})  
     type: Optional[PostBankTransactions200ApplicationJSONChangesTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})  
     
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class PostBankTransactions200ApplicationJSONDataTransactionsModifiedDate:
+    
+    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
+    r"""The date on which this record was last modified in Codat."""  
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class PostBankTransactions200ApplicationJSONDataTransactionsSourceModifiedDate:
+    
+    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
+    r"""The date on which this record was last modified in the originating system"""  
+    
 class PostBankTransactions200ApplicationJSONDataTransactionsTransactionTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
@@ -134,15 +186,35 @@ class PostBankTransactions200ApplicationJSONDataTransactions:
     
     amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount') }})  
     balance: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})  
-    date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})  
+    date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
+    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
+    
+    ```
+    2020-10-08T22:40:50Z
+    2021-01-01T00:00:00
+    ```
+    
+    
+    
+    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
+    
+    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
+    - Unqualified local time: `2021-11-15T01:00:00`
+    - UTC time offsets: `2021-11-15T01:00:00-05:00`
+    
+    > 📘 Time zones
+    > 
+    > Not all dates from Codat will contain information about time zones.  
+    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
+    """  
     reconciled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reconciled') }})  
     transaction_type: PostBankTransactions200ApplicationJSONDataTransactionsTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})  
     counterparty: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('counterparty'), 'exclude': lambda f: f is None }})  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
+    modified_date: Optional[PostBankTransactions200ApplicationJSONDataTransactionsModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
     reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference'), 'exclude': lambda f: f is None }})  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
+    source_modified_date: Optional[PostBankTransactions200ApplicationJSONDataTransactionsSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
