@@ -71,6 +71,7 @@ if res.categorised_account is not None:
 * `get_enhanced_balance_sheet` - Enhanced Balance Sheet
 * `get_enhanced_cash_flow_transactions` - Get enhanced cash flow report
 * `get_enhanced_financial_metrics` - List finanicial metrics
+* `get_enhanced_invoices_report` - Enhanced Invoices Report
 * `get_enhanced_profit_and_loss` - Enhanced Profit and Loss
 * `get_recurring_revenue_metrics` - Get key metrics for subscription revenue
 * `request_recurring_revenue_metrics` - Request production of key subscription revenue metrics

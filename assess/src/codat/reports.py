@@ -262,6 +262,30 @@ class Reports:
 
         return res
 
+    def get_enhanced_invoices_report(self, request: operations.GetEnhancedInvoicesReportRequest) -> operations.GetEnhancedInvoicesReportResponse:
+        r"""Enhanced Invoices Report
+        Gets a list of invoices linked to the corresponding banking transaction
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetEnhancedInvoicesReportRequest, base_url, '/companies/{companyId}/reports/enhancedInvoices', request)
+        
+        query_params = utils.get_query_params(operations.GetEnhancedInvoicesReportRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetEnhancedInvoicesReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetEnhancedInvoicesReportEnhancedInvoicesReport])
+                res.enhanced_invoices_report = out
+
+        return res
+
     def get_enhanced_profit_and_loss(self, request: operations.GetEnhancedProfitAndLossRequest) -> operations.GetEnhancedProfitAndLossResponse:
         r"""Enhanced Profit and Loss
         Gets a fully categorized profit and loss statement for a given company, over one or more period(s).

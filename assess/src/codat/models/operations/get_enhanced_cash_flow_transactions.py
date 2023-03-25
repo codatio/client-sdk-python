@@ -50,12 +50,16 @@ class GetEnhancedCashFlowTransactionsEnhancedCashFlowTransactionsDataSources:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetEnhancedCashFlowTransactionsEnhancedCashFlowTransactionsReportInfo:
+    r"""Report additional information, which is specific to Assess reports"""
     
-    company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})  
-    generated_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('generatedDate'), 'exclude': lambda f: f is None }})  
+    company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})
+    r"""Company name"""  
+    generated_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('generatedDate'), 'exclude': lambda f: f is None }})
+    r"""Date the report was generated"""  
     page_number: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber'), 'exclude': lambda f: f is None }})  
     page_size: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize'), 'exclude': lambda f: f is None }})  
-    report_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportName'), 'exclude': lambda f: f is None }})  
+    report_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportName'), 'exclude': lambda f: f is None }})
+    r"""Name of the report"""  
     total_results: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults'), 'exclude': lambda f: f is None }})  
     
 
@@ -120,7 +124,8 @@ class GetEnhancedCashFlowTransactionsEnhancedCashFlowTransactions:
     r"""OK"""
     
     data_sources: Optional[list[GetEnhancedCashFlowTransactionsEnhancedCashFlowTransactionsDataSources]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataSources'), 'exclude': lambda f: f is None }})  
-    report_info: Optional[GetEnhancedCashFlowTransactionsEnhancedCashFlowTransactionsReportInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInfo'), 'exclude': lambda f: f is None }})  
+    report_info: Optional[GetEnhancedCashFlowTransactionsEnhancedCashFlowTransactionsReportInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInfo'), 'exclude': lambda f: f is None }})
+    r"""Report additional information, which is specific to Assess reports"""  
     report_items: Optional[list[GetEnhancedCashFlowTransactionsEnhancedCashFlowTransactionsReportItems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportItems'), 'exclude': lambda f: f is None }})  
     
 

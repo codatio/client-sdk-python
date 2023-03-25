@@ -32,6 +32,7 @@ src/codat/models/operations/get_commerce_revenue_metrics.py
 src/codat/models/operations/get_enhanced_balance_sheet.py
 src/codat/models/operations/get_enhanced_cash_flow_transactions.py
 src/codat/models/operations/get_enhanced_financial_metrics.py
+src/codat/models/operations/get_enhanced_invoices_report.py
 src/codat/models/operations/get_enhanced_profit_and_loss.py
 src/codat/models/operations/get_recurring_revenue_metrics.py
 src/codat/models/operations/request_recurring_revenue_metrics.py
