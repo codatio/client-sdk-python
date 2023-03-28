@@ -27,24 +27,24 @@ class ListBankTransactionsRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksLinksHypertextReference:
+class ListBankTransactions200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksLinks:
+class ListBankTransactions200ApplicationJSONLinks:
     
-    current: ListBankTransactionsLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListBankTransactionsLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListBankTransactionsLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListBankTransactionsLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: ListBankTransactions200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: ListBankTransactions200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[ListBankTransactions200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[ListBankTransactions200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksResultsModifiedDate:
+class ListBankTransactions200ApplicationJSONResultsModifiedDate:
     
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in Codat."""  
@@ -52,12 +52,12 @@ class ListBankTransactionsLinksResultsModifiedDate:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksResultsSourceModifiedDate:
+class ListBankTransactions200ApplicationJSONResultsSourceModifiedDate:
     
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in the originating system"""  
     
-class ListBankTransactionsLinksResultsTransactionTypeEnum(str, Enum):
+class ListBankTransactions200ApplicationJSONResultsTransactionTypeEnum(str, Enum):
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
@@ -80,7 +80,7 @@ class ListBankTransactionsLinksResultsTransactionTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinksResults:
+class ListBankTransactions200ApplicationJSONResults:
     
     amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount') }})  
     balance: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})  
@@ -106,25 +106,25 @@ class ListBankTransactionsLinksResults:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """  
     reconciled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reconciled') }})  
-    transaction_type: ListBankTransactionsLinksResultsTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})  
+    transaction_type: ListBankTransactions200ApplicationJSONResultsTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})  
     counterparty: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('counterparty'), 'exclude': lambda f: f is None }})  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[ListBankTransactionsLinksResultsModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
+    modified_date: Optional[ListBankTransactions200ApplicationJSONResultsModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
     reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference'), 'exclude': lambda f: f is None }})  
-    source_modified_date: Optional[ListBankTransactionsLinksResultsSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
+    source_modified_date: Optional[ListBankTransactions200ApplicationJSONResultsSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankTransactionsLinks:
-    r"""Codat's Paging Model"""
+class ListBankTransactions200ApplicationJSON:
+    r"""Success"""
     
-    links: ListBankTransactionsLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: ListBankTransactions200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListBankTransactionsLinksResults]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
+    results: Optional[list[ListBankTransactions200ApplicationJSONResults]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -132,7 +132,7 @@ class ListBankTransactionsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[ListBankTransactionsLinks] = dataclasses.field(default=None)
+    list_bank_transactions_200_application_json_object: Optional[ListBankTransactions200ApplicationJSON] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

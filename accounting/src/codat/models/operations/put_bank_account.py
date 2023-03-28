@@ -19,7 +19,8 @@ class PutBankAccountSourceModifiedDateAccountTypeEnum(str, Enum):
 @dataclasses.dataclass
 class PutBankAccountSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -134,7 +135,8 @@ class PutBankAccount200ApplicationJSONSourceModifiedDateAccountTypeEnum(str, Enu
 @dataclasses.dataclass
 class PutBankAccount200ApplicationJSONSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

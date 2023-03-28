@@ -25,24 +25,24 @@ class ListBillCreditNotesRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksLinksHypertextReference:
+class ListBillCreditNotes200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksLinks:
+class ListBillCreditNotes200ApplicationJSONLinks:
     
-    current: ListBillCreditNotesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListBillCreditNotesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListBillCreditNotesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListBillCreditNotesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: ListBillCreditNotes200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: ListBillCreditNotes200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[ListBillCreditNotes200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[ListBillCreditNotes200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateLineItemsAccountRef:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsAccountRef:
     r"""Reference to the account to which the line item is linked."""
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -53,7 +53,7 @@ class ListBillCreditNotesLinksSourceModifiedDateLineItemsAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateLineItemsItemRef:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsItemRef:
     r"""Reference to the item the line is linked to."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
@@ -62,7 +62,7 @@ class ListBillCreditNotesLinksSourceModifiedDateLineItemsItemRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateLineItemsTaxRateRef:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef:
     r"""Reference to the tax rate to which the line item is linked."""
     
     effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
@@ -75,7 +75,7 @@ class ListBillCreditNotesLinksSourceModifiedDateLineItemsTaxRateRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingCategoryRefs:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs:
     r"""References a category against which the item is tracked."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
@@ -84,18 +84,18 @@ class ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingCategoryRefs:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingCustomerRef:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingCustomerRef:
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
     company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})  
     
-class ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingIsBilledToEnum(str, Enum):
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingIsBilledToEnum(str, Enum):
     UNKNOWN = "Unknown"
     NOT_APPLICABLE = "NotApplicable"
     CUSTOMER = "Customer"
     PROJECT = "Project"
 
-class ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingIsRebilledToEnum(str, Enum):
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingIsRebilledToEnum(str, Enum):
     UNKNOWN = "Unknown"
     NOT_APPLICABLE = "NotApplicable"
     CUSTOMER = "Customer"
@@ -104,7 +104,7 @@ class ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingIsRebilledToEnu
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingProjectRef:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingProjectRef:
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
@@ -112,25 +112,25 @@ class ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingProjectRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateLineItemsTracking:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTracking:
     r"""Categories, and a project and customer, against which the item is tracked."""
     
-    category_refs: list[ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingCategoryRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})  
-    is_billed_to: ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingIsBilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})  
-    is_rebilled_to: ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingIsRebilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})  
-    customer_ref: Optional[ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})  
-    project_ref: Optional[ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingProjectRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})  
+    category_refs: list[ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})  
+    is_billed_to: ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingIsBilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})  
+    is_rebilled_to: ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingIsRebilledToEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})  
+    customer_ref: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})  
+    project_ref: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingProjectRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateLineItems:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItems:
     
     quantity: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity') }})
     r"""Number of units of the goods or service for which credit has been received."""  
     unit_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitAmount') }})
     r"""Unit price of the goods or service."""  
-    account_ref: Optional[ListBillCreditNotesLinksSourceModifiedDateLineItemsAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the account to which the line item is linked."""  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Friendly name of each line item. For example, the goods or service for which credit has been received."""  
@@ -138,32 +138,33 @@ class ListBillCreditNotesLinksSourceModifiedDateLineItems:
     r"""Value of any discounts applied."""  
     discount_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage'), 'exclude': lambda f: f is None }})
     r"""Percentage rate of any discount applied to the line item."""  
-    item_ref: Optional[ListBillCreditNotesLinksSourceModifiedDateLineItemsItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
+    item_ref: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the item the line is linked to."""  
     sub_total: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal'), 'exclude': lambda f: f is None }})
     r"""Amount of credit associated with the line item, including discounts but excluding tax."""  
     tax_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxAmount'), 'exclude': lambda f: f is None }})
     r"""Amount of tax associated with the line item."""  
-    tax_rate_ref: Optional[ListBillCreditNotesLinksSourceModifiedDateLineItemsTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
+    tax_rate_ref: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the tax rate to which the line item is linked."""  
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
     r"""Total amount of the line item, including discounts and tax."""  
-    tracking: Optional[ListBillCreditNotesLinksSourceModifiedDateLineItemsTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
+    tracking: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
     r"""Categories, and a project and customer, against which the item is tracked."""  
-    tracking_category_refs: Optional[list[ListBillCreditNotesLinksSourceModifiedDateLineItemsTrackingCategoryRefs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
+    tracking_category_refs: Optional[list[ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
     r"""Reference to the tracking categories to which the line item is linked."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateMetadata:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDatePaymentAllocationsAllocation:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDatePaymentAllocationsAllocation:
     
     allocated_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocatedOnDate'), 'exclude': lambda f: f is None }})
     r"""The date the payment was allocated."""  
@@ -200,7 +201,7 @@ class ListBillCreditNotesLinksSourceModifiedDatePaymentAllocationsAllocation:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDatePaymentAllocationsPaymentAccountRef:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDatePaymentAllocationsPaymentAccountRef:
     r"""The account that the allocated payment is made from or to."""
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -211,9 +212,9 @@ class ListBillCreditNotesLinksSourceModifiedDatePaymentAllocationsPaymentAccount
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDatePaymentAllocationsPayment:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDatePaymentAllocationsPayment:
     
-    account_ref: Optional[ListBillCreditNotesLinksSourceModifiedDatePaymentAllocationsPaymentAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDatePaymentAllocationsPaymentAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""The account that the allocated payment is made from or to."""  
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""Currency the payment has been made in."""  
@@ -256,12 +257,12 @@ class ListBillCreditNotesLinksSourceModifiedDatePaymentAllocationsPayment:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDatePaymentAllocations:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDatePaymentAllocations:
     
-    allocation: ListBillCreditNotesLinksSourceModifiedDatePaymentAllocationsAllocation = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocation') }})  
-    payment: ListBillCreditNotesLinksSourceModifiedDatePaymentAllocationsPayment = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payment') }})  
+    allocation: ListBillCreditNotes200ApplicationJSONSourceModifiedDatePaymentAllocationsAllocation = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocation') }})  
+    payment: ListBillCreditNotes200ApplicationJSONSourceModifiedDatePaymentAllocationsPayment = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payment') }})  
     
-class ListBillCreditNotesLinksSourceModifiedDateStatusEnum(str, Enum):
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateStatusEnum(str, Enum):
     r"""Current state of the bill credit note"""
     UNKNOWN = "Unknown"
     DRAFT = "Draft"
@@ -273,7 +274,7 @@ class ListBillCreditNotesLinksSourceModifiedDateStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateSupplementalData:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateSupplementalData:
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""
     
     content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})  
@@ -281,7 +282,7 @@ class ListBillCreditNotesLinksSourceModifiedDateSupplementalData:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateSupplierRef:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateSupplierRef:
     r"""Supplier that issued the bill credit note."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
@@ -290,7 +291,7 @@ class ListBillCreditNotesLinksSourceModifiedDateSupplierRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDateWithholdingTax:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDateWithholdingTax:
     
     amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount') }})  
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})  
@@ -298,7 +299,7 @@ class ListBillCreditNotesLinksSourceModifiedDateWithholdingTax:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinksSourceModifiedDate:
+class ListBillCreditNotes200ApplicationJSONSourceModifiedDate:
     r"""> **Bill credit notes or credit notes?**
     > 
     > In Codat, bill credit notes represent accounts payable only. For accounts receivable, see [Credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote).
@@ -321,7 +322,7 @@ class ListBillCreditNotesLinksSourceModifiedDate:
     r"""Percentage rate of any discount applied to the bill credit note."""  
     remaining_credit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('remainingCredit') }})
     r"""Amount of the bill credit note that is still outstanding."""  
-    status: ListBillCreditNotesLinksSourceModifiedDateStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: ListBillCreditNotes200ApplicationJSONSourceModifiedDateStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Current state of the bill credit note"""  
     sub_total: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal') }})
     r"""Total amount of the bill credit note, including discounts but excluding tax."""  
@@ -366,34 +367,34 @@ class ListBillCreditNotesLinksSourceModifiedDate:
     r"""Identifier for the bill credit note that is unique to a company in the accounting platform."""  
     issue_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate'), 'exclude': lambda f: f is None }})
     r"""Date the bill credit note was issued by the supplier."""  
-    line_items: Optional[list[ListBillCreditNotesLinksSourceModifiedDateLineItems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems'), 'exclude': lambda f: f is None }})
+    line_items: Optional[list[ListBillCreditNotes200ApplicationJSONSourceModifiedDateLineItems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems'), 'exclude': lambda f: f is None }})
     r"""An array of line """  
-    metadata: Optional[ListBillCreditNotesLinksSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
+    metadata: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in Codat."""  
     note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
     r"""Any additional information about the bill credit note."""  
-    payment_allocations: Optional[list[ListBillCreditNotesLinksSourceModifiedDatePaymentAllocations]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations'), 'exclude': lambda f: f is None }})
+    payment_allocations: Optional[list[ListBillCreditNotes200ApplicationJSONSourceModifiedDatePaymentAllocations]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations'), 'exclude': lambda f: f is None }})
     r"""An array of payment allocations."""  
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in the originating system"""  
-    supplemental_data: Optional[ListBillCreditNotesLinksSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    supplemental_data: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  
-    supplier_ref: Optional[ListBillCreditNotesLinksSourceModifiedDateSupplierRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierRef'), 'exclude': lambda f: f is None }})
+    supplier_ref: Optional[ListBillCreditNotes200ApplicationJSONSourceModifiedDateSupplierRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierRef'), 'exclude': lambda f: f is None }})
     r"""Supplier that issued the bill credit note."""  
-    withholding_tax: Optional[list[ListBillCreditNotesLinksSourceModifiedDateWithholdingTax]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})  
+    withholding_tax: Optional[list[ListBillCreditNotes200ApplicationJSONSourceModifiedDateWithholdingTax]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBillCreditNotesLinks:
-    r"""Codat's Paging Model"""
+class ListBillCreditNotes200ApplicationJSON:
+    r"""Success"""
     
-    links: ListBillCreditNotesLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: ListBillCreditNotes200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListBillCreditNotesLinksSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
+    results: Optional[list[ListBillCreditNotes200ApplicationJSONSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -401,7 +402,7 @@ class ListBillCreditNotesResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[ListBillCreditNotesLinks] = dataclasses.field(default=None)
+    list_bill_credit_notes_200_application_json_object: Optional[ListBillCreditNotes200ApplicationJSON] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

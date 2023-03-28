@@ -25,21 +25,21 @@ class GetCustomersRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinksLinksHypertextReference:
+class GetCustomers200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinksLinks:
+class GetCustomers200ApplicationJSONLinks:
     
-    current: GetCustomersLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: GetCustomersLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[GetCustomersLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[GetCustomersLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: GetCustomers200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: GetCustomers200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[GetCustomers200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[GetCustomers200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
-class GetCustomersLinksSourceModifiedDateAddressesTypeEnum(str, Enum):
+class GetCustomers200ApplicationJSONSourceModifiedDateAddressesTypeEnum(str, Enum):
     r"""Type of the address."""
     UNKNOWN = "Unknown"
     BILLING = "Billing"
@@ -48,9 +48,9 @@ class GetCustomersLinksSourceModifiedDateAddressesTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinksSourceModifiedDateAddresses:
+class GetCustomers200ApplicationJSONSourceModifiedDateAddresses:
     
-    type: GetCustomersLinksSourceModifiedDateAddressesTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: GetCustomers200ApplicationJSONSourceModifiedDateAddressesTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Type of the address."""  
     city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city'), 'exclude': lambda f: f is None }})
     r"""City of the customer address."""  
@@ -65,7 +65,7 @@ class GetCustomersLinksSourceModifiedDateAddresses:
     region: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('region'), 'exclude': lambda f: f is None }})
     r"""Region of the customer address."""  
     
-class GetCustomersLinksSourceModifiedDateContactsAddressTypeEnum(str, Enum):
+class GetCustomers200ApplicationJSONSourceModifiedDateContactsAddressTypeEnum(str, Enum):
     r"""Type of the address."""
     UNKNOWN = "Unknown"
     BILLING = "Billing"
@@ -74,10 +74,10 @@ class GetCustomersLinksSourceModifiedDateContactsAddressTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinksSourceModifiedDateContactsAddress:
+class GetCustomers200ApplicationJSONSourceModifiedDateContactsAddress:
     r"""An object of Address information."""
     
-    type: GetCustomersLinksSourceModifiedDateContactsAddressTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: GetCustomers200ApplicationJSONSourceModifiedDateContactsAddressTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Type of the address."""  
     city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city'), 'exclude': lambda f: f is None }})
     r"""City of the customer address."""  
@@ -92,7 +92,7 @@ class GetCustomersLinksSourceModifiedDateContactsAddress:
     region: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('region'), 'exclude': lambda f: f is None }})
     r"""Region of the customer address."""  
     
-class GetCustomersLinksSourceModifiedDateContactsPhoneTypeEnum(str, Enum):
+class GetCustomers200ApplicationJSONSourceModifiedDateContactsPhoneTypeEnum(str, Enum):
     r"""Type of phone number."""
     UNKNOWN = "Unknown"
     PRIMARY = "Primary"
@@ -103,14 +103,14 @@ class GetCustomersLinksSourceModifiedDateContactsPhoneTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinksSourceModifiedDateContactsPhone:
+class GetCustomers200ApplicationJSONSourceModifiedDateContactsPhone:
     
-    type: GetCustomersLinksSourceModifiedDateContactsPhoneTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: GetCustomers200ApplicationJSONSourceModifiedDateContactsPhoneTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Type of phone number."""  
     number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('number'), 'exclude': lambda f: f is None }})
     r"""Phone number for a customer contact."""  
     
-class GetCustomersLinksSourceModifiedDateContactsStatusEnum(str, Enum):
+class GetCustomers200ApplicationJSONSourceModifiedDateContactsStatusEnum(str, Enum):
     r"""Status of customer contacts.
     
     Customers can have multiple contacts.
@@ -122,14 +122,14 @@ class GetCustomersLinksSourceModifiedDateContactsStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinksSourceModifiedDateContacts:
+class GetCustomers200ApplicationJSONSourceModifiedDateContacts:
     
-    status: GetCustomersLinksSourceModifiedDateContactsStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: GetCustomers200ApplicationJSONSourceModifiedDateContactsStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of customer contacts.
     
     Customers can have multiple contacts.
     """  
-    address: Optional[GetCustomersLinksSourceModifiedDateContactsAddress] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('address'), 'exclude': lambda f: f is None }})
+    address: Optional[GetCustomers200ApplicationJSONSourceModifiedDateContactsAddress] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('address'), 'exclude': lambda f: f is None }})
     r"""An object of Address information."""  
     email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email'), 'exclude': lambda f: f is None }})
     r"""Email of a contact for a customer."""  
@@ -156,17 +156,18 @@ class GetCustomersLinksSourceModifiedDateContacts:
     """  
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""Name of a contact for a customer."""  
-    phone: Optional[list[GetCustomersLinksSourceModifiedDateContactsPhone]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone'), 'exclude': lambda f: f is None }})
+    phone: Optional[list[GetCustomers200ApplicationJSONSourceModifiedDateContactsPhone]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone'), 'exclude': lambda f: f is None }})
     r"""An array of Phone numbers."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinksSourceModifiedDateMetadata:
+class GetCustomers200ApplicationJSONSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
-class GetCustomersLinksSourceModifiedDateStatusEnum(str, Enum):
+class GetCustomers200ApplicationJSONSourceModifiedDateStatusEnum(str, Enum):
     r"""Current state of the customer."""
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
@@ -175,7 +176,7 @@ class GetCustomersLinksSourceModifiedDateStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinksSourceModifiedDateSupplementalData:
+class GetCustomers200ApplicationJSONSourceModifiedDateSupplementalData:
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""
     
     content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})  
@@ -183,7 +184,7 @@ class GetCustomersLinksSourceModifiedDateSupplementalData:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinksSourceModifiedDate:
+class GetCustomers200ApplicationJSONSourceModifiedDate:
     r"""> View the coverage for customers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
@@ -194,13 +195,13 @@ class GetCustomersLinksSourceModifiedDate:
     
     """
     
-    status: GetCustomersLinksSourceModifiedDateStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: GetCustomers200ApplicationJSONSourceModifiedDateStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Current state of the customer."""  
-    addresses: Optional[list[GetCustomersLinksSourceModifiedDateAddresses]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
+    addresses: Optional[list[GetCustomers200ApplicationJSONSourceModifiedDateAddresses]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
     r"""An array of Addresses."""  
     contact_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactName'), 'exclude': lambda f: f is None }})
     r"""Name of the main contact for the identified customer."""  
-    contacts: Optional[list[GetCustomersLinksSourceModifiedDateContacts]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contacts'), 'exclude': lambda f: f is None }})
+    contacts: Optional[list[GetCustomers200ApplicationJSONSourceModifiedDateContacts]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contacts'), 'exclude': lambda f: f is None }})
     r"""An array of Contacts."""  
     customer_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerName'), 'exclude': lambda f: f is None }})
     r"""Name of the customer as recorded in the accounting system, typically the company name."""  
@@ -210,7 +211,7 @@ class GetCustomersLinksSourceModifiedDate:
     r"""Email address the customer can be contacted by."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier for the customer, unique to the company in the accounting platform."""  
-    metadata: Optional[GetCustomersLinksSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
+    metadata: Optional[GetCustomers200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in Codat."""  
     phone: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone'), 'exclude': lambda f: f is None }})
@@ -219,7 +220,7 @@ class GetCustomersLinksSourceModifiedDate:
     r"""Company number. In the UK, this is typically the Companies House company registration number."""  
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in the originating system"""  
-    supplemental_data: Optional[GetCustomersLinksSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    supplemental_data: Optional[GetCustomers200ApplicationJSONSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  
     tax_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxNumber'), 'exclude': lambda f: f is None }})
     r"""Company tax number."""  
@@ -227,14 +228,14 @@ class GetCustomersLinksSourceModifiedDate:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCustomersLinks:
-    r"""Codat's Paging Model"""
+class GetCustomers200ApplicationJSON:
+    r"""Success"""
     
-    links: GetCustomersLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: GetCustomers200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[GetCustomersLinksSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
+    results: Optional[list[GetCustomers200ApplicationJSONSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -242,7 +243,7 @@ class GetCustomersResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[GetCustomersLinks] = dataclasses.field(default=None)
+    get_customers_200_application_json_object: Optional[GetCustomers200ApplicationJSON] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

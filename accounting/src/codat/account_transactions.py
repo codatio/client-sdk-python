@@ -22,13 +22,13 @@ class AccountTransactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_create_update_account_transactions_model(self, request: operations.GetCreateUpdateAccountTransactionsModelRequest) -> operations.GetCreateUpdateAccountTransactionsModelResponse:
+    def get_account_transaction(self, request: operations.GetAccountTransactionRequest) -> operations.GetAccountTransactionResponse:
         r"""Get account transaction
-        Get create/update account transactions model.
+        Gets the account transactions for a given company.Gets the specified account transaction for a given company and connection.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetCreateUpdateAccountTransactionsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/accountTransactions/{accountTransactionId}', request)
+        url = utils.generate_url(operations.GetAccountTransactionRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/accountTransactions/{accountTransactionId}', request)
         
         
         client = self._security_client
@@ -36,11 +36,11 @@ class AccountTransactions:
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetCreateUpdateAccountTransactionsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetAccountTransactionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateAccountTransactionsModelSourceModifiedDate])
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountTransactionSourceModifiedDate])
                 res.source_modified_date = out
 
         return res
@@ -64,8 +64,8 @@ class AccountTransactions:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListAccountTransactionsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListAccountTransactions200ApplicationJSON])
+                res.list_account_transactions_200_application_json_object = out
 
         return res
 

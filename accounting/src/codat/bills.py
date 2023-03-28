@@ -244,8 +244,8 @@ class Bills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBillsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBills200ApplicationJSON])
+                res.list_bills_200_application_json_object = out
 
         return res
 

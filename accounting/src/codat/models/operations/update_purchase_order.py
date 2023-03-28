@@ -85,7 +85,8 @@ class UpdatePurchaseOrderSourceModifiedDateLineItems:
 @dataclasses.dataclass
 class UpdatePurchaseOrderSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
 class UpdatePurchaseOrderSourceModifiedDateShipToAddressTypeEnum(str, Enum):
     r"""Type of the address."""
@@ -345,7 +346,8 @@ class UpdatePurchaseOrder200ApplicationJSONSourceModifiedDateLineItems:
 @dataclasses.dataclass
 class UpdatePurchaseOrder200ApplicationJSONSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
 class UpdatePurchaseOrder200ApplicationJSONSourceModifiedDateShipToAddressTypeEnum(str, Enum):
     r"""Type of the address."""

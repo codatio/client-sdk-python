@@ -171,8 +171,8 @@ class DirectCosts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDirectCostsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDirectCosts200ApplicationJSON])
+                res.get_direct_costs_200_application_json_object = out
 
         return res
 

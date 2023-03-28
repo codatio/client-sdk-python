@@ -65,8 +65,8 @@ class BankAccountTransactions:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankAccountTransactionsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankAccountTransactions200ApplicationJSON])
+                res.list_bank_account_transactions_200_application_json_object = out
 
         return res
 
@@ -89,8 +89,8 @@ class BankAccountTransactions:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankTransactionsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankTransactions200ApplicationJSON])
+                res.list_bank_transactions_200_application_json_object = out
 
         return res
 

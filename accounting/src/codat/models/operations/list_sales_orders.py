@@ -25,30 +25,30 @@ class ListSalesOrdersRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksLinksHypertextReference:
+class ListSalesOrders200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksLinks:
+class ListSalesOrders200ApplicationJSONLinks:
     
-    current: ListSalesOrdersLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListSalesOrdersLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListSalesOrdersLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListSalesOrdersLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: ListSalesOrders200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: ListSalesOrders200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[ListSalesOrders200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[ListSalesOrders200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateCustomerRef:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateCustomerRef:
     r"""The customer that the sales order is recorded against in the accounting system."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
     company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})  
     
-class ListSalesOrdersLinksSourceModifiedDateInvoicingStatusEnum(str, Enum):
+class ListSalesOrders200ApplicationJSONSourceModifiedDateInvoicingStatusEnum(str, Enum):
     r"""If the sales order is converted to an invoice, or will be in future, the invoicingStatus field indicates the current stage of the invoicing process."""
     UNKNOWN = "Unknown"
     PARTIALLY_INVOICED = "PartiallyInvoiced"
@@ -58,7 +58,7 @@ class ListSalesOrdersLinksSourceModifiedDateInvoicingStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateLineItemsAccountRef:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateLineItemsAccountRef:
     r"""Reference to the account to which the line item is linked."""
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -69,7 +69,7 @@ class ListSalesOrdersLinksSourceModifiedDateLineItemsAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateLineItemsItemRef:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateLineItemsItemRef:
     r"""Reference to the product or inventory item to which the line item is linked."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
@@ -78,7 +78,7 @@ class ListSalesOrdersLinksSourceModifiedDateLineItemsItemRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateLineItemsTaxRateRef:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef:
     r"""Reference to the tax rate to which the line item is linked."""
     
     effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
@@ -91,16 +91,16 @@ class ListSalesOrdersLinksSourceModifiedDateLineItemsTaxRateRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateLineItemsTracking:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateLineItemsTracking:
     
     record_refs: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateLineItems:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateLineItems:
     
-    account_ref: Optional[ListSalesOrdersLinksSourceModifiedDateLineItemsAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateLineItemsAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the account to which the line item is linked."""  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Description of the goods or services that have been ordered."""  
@@ -108,7 +108,7 @@ class ListSalesOrdersLinksSourceModifiedDateLineItems:
     r"""Value of any discounts applied."""  
     discount_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage'), 'exclude': lambda f: f is None }})
     r"""Percentage rate (from 0 to 100) of any discounts applied to the unit amount."""  
-    item_ref: Optional[ListSalesOrdersLinksSourceModifiedDateLineItemsItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
+    item_ref: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateLineItemsItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the product or inventory item to which the line item is linked."""  
     quantity: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity'), 'exclude': lambda f: f is None }})
     r"""Number of units that have been ordered."""  
@@ -116,22 +116,23 @@ class ListSalesOrdersLinksSourceModifiedDateLineItems:
     r"""Amount of the line, inclusive of discounts but exclusive of tax."""  
     tax_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxAmount'), 'exclude': lambda f: f is None }})
     r"""Amount of tax for the line."""  
-    tax_rate_ref: Optional[ListSalesOrdersLinksSourceModifiedDateLineItemsTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
+    tax_rate_ref: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the tax rate to which the line item is linked."""  
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
     r"""Total amount of the line, inclusive of discounts and tax."""  
-    tracking: Optional[ListSalesOrdersLinksSourceModifiedDateLineItemsTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})  
+    tracking: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateLineItemsTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})  
     unit_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitAmount'), 'exclude': lambda f: f is None }})
     r"""Price of each unit."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateMetadata:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
-class ListSalesOrdersLinksSourceModifiedDateShipToAddressTypeEnum(str, Enum):
+class ListSalesOrders200ApplicationJSONSourceModifiedDateShipToAddressTypeEnum(str, Enum):
     r"""Type of the address."""
     UNKNOWN = "Unknown"
     BILLING = "Billing"
@@ -140,10 +141,10 @@ class ListSalesOrdersLinksSourceModifiedDateShipToAddressTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateShipToAddress:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateShipToAddress:
     r"""Delivery address for any goods that have been ordered."""
     
-    type: ListSalesOrdersLinksSourceModifiedDateShipToAddressTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: ListSalesOrders200ApplicationJSONSourceModifiedDateShipToAddressTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Type of the address."""  
     city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city'), 'exclude': lambda f: f is None }})
     r"""City of the customer address."""  
@@ -161,7 +162,7 @@ class ListSalesOrdersLinksSourceModifiedDateShipToAddress:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateShipToContact:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateShipToContact:
     r"""Details of the named contact at the delivery address."""
     
     email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email'), 'exclude': lambda f: f is None }})
@@ -174,15 +175,15 @@ class ListSalesOrdersLinksSourceModifiedDateShipToContact:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDateShipTo:
+class ListSalesOrders200ApplicationJSONSourceModifiedDateShipTo:
     r"""Delivery details for any goods that have been ordered."""
     
-    address: Optional[ListSalesOrdersLinksSourceModifiedDateShipToAddress] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('address'), 'exclude': lambda f: f is None }})
+    address: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateShipToAddress] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('address'), 'exclude': lambda f: f is None }})
     r"""Delivery address for any goods that have been ordered."""  
-    contact: Optional[ListSalesOrdersLinksSourceModifiedDateShipToContact] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contact'), 'exclude': lambda f: f is None }})
+    contact: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateShipToContact] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contact'), 'exclude': lambda f: f is None }})
     r"""Details of the named contact at the delivery address."""  
     
-class ListSalesOrdersLinksSourceModifiedDateStatusEnum(str, Enum):
+class ListSalesOrders200ApplicationJSONSourceModifiedDateStatusEnum(str, Enum):
     r"""Current state of the sales order."""
     UNKNOWN = "Unknown"
     DRAFT = "Draft"
@@ -193,7 +194,7 @@ class ListSalesOrdersLinksSourceModifiedDateStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinksSourceModifiedDate:
+class ListSalesOrders200ApplicationJSONSourceModifiedDate:
     r"""> View the coverage for sales orders in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=salesOrders\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
@@ -232,30 +233,30 @@ class ListSalesOrdersLinksSourceModifiedDate:
     """  
     customer_purchase_order_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerPurchaseOrderNumber'), 'exclude': lambda f: f is None }})
     r"""A customer-supplied identifier for the purchase order in the customer's system."""  
-    customer_ref: Optional[ListSalesOrdersLinksSourceModifiedDateCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
+    customer_ref: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
     r"""The customer that the sales order is recorded against in the accounting system."""  
     expected_delivery_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expectedDeliveryDate'), 'exclude': lambda f: f is None }})
     r"""Expected delivery date for any goods that have been ordered."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier for the sales order, unique for the company in the accounting platform."""  
-    invoicing_status: Optional[ListSalesOrdersLinksSourceModifiedDateInvoicingStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoicingStatus'), 'exclude': lambda f: f is None }})
+    invoicing_status: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateInvoicingStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoicingStatus'), 'exclude': lambda f: f is None }})
     r"""If the sales order is converted to an invoice, or will be in future, the invoicingStatus field indicates the current stage of the invoicing process."""  
     issue_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate'), 'exclude': lambda f: f is None }})
     r"""Date of the sales order as recorded in the accounting platform."""  
-    line_items: Optional[list[ListSalesOrdersLinksSourceModifiedDateLineItems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems'), 'exclude': lambda f: f is None }})
+    line_items: Optional[list[ListSalesOrders200ApplicationJSONSourceModifiedDateLineItems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems'), 'exclude': lambda f: f is None }})
     r"""An array of line items."""  
-    metadata: Optional[ListSalesOrdersLinksSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
+    metadata: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in Codat."""  
     note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
     r"""Any additional information associated with the sales order."""  
     sales_order_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('salesOrderNumber'), 'exclude': lambda f: f is None }})
     r"""Friendly reference for the sales order, commonly generated by the accounting platform."""  
-    ship_to: Optional[ListSalesOrdersLinksSourceModifiedDateShipTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('shipTo'), 'exclude': lambda f: f is None }})
+    ship_to: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateShipTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('shipTo'), 'exclude': lambda f: f is None }})
     r"""Delivery details for any goods that have been ordered."""  
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in the originating system"""  
-    status: Optional[ListSalesOrdersLinksSourceModifiedDateStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[ListSalesOrders200ApplicationJSONSourceModifiedDateStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Current state of the sales order."""  
     sub_total: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal'), 'exclude': lambda f: f is None }})
     r"""Total amount of the sales order, including discounts but excluding tax."""  
@@ -271,14 +272,14 @@ class ListSalesOrdersLinksSourceModifiedDate:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSalesOrdersLinks:
-    r"""Codat's Paging Model"""
+class ListSalesOrders200ApplicationJSON:
+    r"""Success"""
     
-    links: ListSalesOrdersLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: ListSalesOrders200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListSalesOrdersLinksSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
+    results: Optional[list[ListSalesOrders200ApplicationJSONSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -286,7 +287,7 @@ class ListSalesOrdersResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[ListSalesOrdersLinks] = dataclasses.field(default=None)
+    list_sales_orders_200_application_json_object: Optional[ListSalesOrders200ApplicationJSON] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

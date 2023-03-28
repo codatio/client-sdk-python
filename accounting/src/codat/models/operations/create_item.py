@@ -104,7 +104,8 @@ class CreateItemSourceModifiedDateItemStatusEnum(str, Enum):
 @dataclasses.dataclass
 class CreateItemSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
 class CreateItemSourceModifiedDateTypeEnum(str, Enum):
     r"""Type of the item."""
@@ -285,7 +286,8 @@ class CreateItem200ApplicationJSONSourceModifiedDateItemStatusEnum(str, Enum):
 @dataclasses.dataclass
 class CreateItem200ApplicationJSONSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
 class CreateItem200ApplicationJSONSourceModifiedDateTypeEnum(str, Enum):
     r"""Type of the item."""

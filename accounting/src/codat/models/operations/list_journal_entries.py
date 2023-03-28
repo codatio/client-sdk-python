@@ -24,24 +24,24 @@ class ListJournalEntriesRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksLinksHypertextReference:
+class ListJournalEntries200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksLinks:
+class ListJournalEntries200ApplicationJSONLinks:
     
-    current: ListJournalEntriesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListJournalEntriesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListJournalEntriesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListJournalEntriesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: ListJournalEntries200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: ListJournalEntries200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[ListJournalEntries200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[ListJournalEntries200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksSourceModifiedDateJournalLinesAccountRef:
+class ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLinesAccountRef:
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -52,7 +52,7 @@ class ListJournalEntriesLinksSourceModifiedDateJournalLinesAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksSourceModifiedDateJournalLinesTracking:
+class ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLinesTracking:
     r"""List of record refs associated with the tracking information for the line (eg to a Tracking Category, or customer etc.)"""
     
     record_refs: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs'), 'exclude': lambda f: f is None }})  
@@ -60,23 +60,23 @@ class ListJournalEntriesLinksSourceModifiedDateJournalLinesTracking:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksSourceModifiedDateJournalLines:
+class ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLines:
     
     net_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netAmount') }})
     r"""Amount for the journal line. Debit entries are considered positive, and credit entries are considered negative."""  
-    account_ref: Optional[ListJournalEntriesLinksSourceModifiedDateJournalLinesAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLinesAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""  
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""Currency for the journal line item."""  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Description of the journal line item."""  
-    tracking: Optional[ListJournalEntriesLinksSourceModifiedDateJournalLinesTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
+    tracking: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLinesTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
     r"""List of record refs associated with the tracking information for the line (eg to a Tracking Category, or customer etc.)"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksSourceModifiedDateJournalRef:
+class ListJournalEntries200ApplicationJSONSourceModifiedDateJournalRef:
     r"""Links journal entries to the relevant journal in accounting integrations that use multi-book accounting (multiple journals)."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
@@ -87,14 +87,15 @@ class ListJournalEntriesLinksSourceModifiedDateJournalRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksSourceModifiedDateMetadata:
+class ListJournalEntries200ApplicationJSONSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksSourceModifiedDateRecordRef:
+class ListJournalEntries200ApplicationJSONSourceModifiedDateRecordRef:
     r"""Links to the underlying record or data type.
     
     Found on:
@@ -113,7 +114,7 @@ class ListJournalEntriesLinksSourceModifiedDateRecordRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksSourceModifiedDateSupplementalData:
+class ListJournalEntries200ApplicationJSONSourceModifiedDateSupplementalData:
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""
     
     content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})  
@@ -121,7 +122,7 @@ class ListJournalEntriesLinksSourceModifiedDateSupplementalData:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinksSourceModifiedDate:
+class ListJournalEntries200ApplicationJSONSourceModifiedDate:
     r"""> **Language tip:** For the top-level record of a company's financial transactions, refer to the [Journals](https://docs.codat.io/accounting-api#/schemas/Journal) data type
     
     > View the coverage for journal entries in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journalEntries\" target=\"_blank\">Data coverage explorer</a>.
@@ -152,11 +153,11 @@ class ListJournalEntriesLinksSourceModifiedDate:
     r"""Optional description of the journal entry."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Unique identifier of the journal entry for the company in the accounting platform."""  
-    journal_lines: Optional[list[ListJournalEntriesLinksSourceModifiedDateJournalLines]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalLines'), 'exclude': lambda f: f is None }})
+    journal_lines: Optional[list[ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLines]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalLines'), 'exclude': lambda f: f is None }})
     r"""An array of journal lines."""  
-    journal_ref: Optional[ListJournalEntriesLinksSourceModifiedDateJournalRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalRef'), 'exclude': lambda f: f is None }})
+    journal_ref: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateJournalRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalRef'), 'exclude': lambda f: f is None }})
     r"""Links journal entries to the relevant journal in accounting integrations that use multi-book accounting (multiple journals)."""  
-    metadata: Optional[ListJournalEntriesLinksSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
+    metadata: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in Codat."""  
     posted_on: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('postedOn'), 'exclude': lambda f: f is None }})
@@ -168,7 +169,7 @@ class ListJournalEntriesLinksSourceModifiedDate:
     The **postedOn** date shows as Thursday.
     Journal entries can also be backdated, so the **postedOn** date may be earlier than the **createdOn** date.
     """  
-    record_ref: Optional[ListJournalEntriesLinksSourceModifiedDateRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
+    record_ref: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
     r"""Links to the underlying record or data type.
     
     Found on:
@@ -180,7 +181,7 @@ class ListJournalEntriesLinksSourceModifiedDate:
     """  
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in the originating system"""  
-    supplemental_data: Optional[ListJournalEntriesLinksSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    supplemental_data: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  
     updated_on: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedOn'), 'exclude': lambda f: f is None }})
     r"""Date on which the journal was last updated in the accounting platform."""  
@@ -188,14 +189,14 @@ class ListJournalEntriesLinksSourceModifiedDate:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListJournalEntriesLinks:
-    r"""Codat's Paging Model"""
+class ListJournalEntries200ApplicationJSON:
+    r"""Success"""
     
-    links: ListJournalEntriesLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: ListJournalEntries200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListJournalEntriesLinksSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
+    results: Optional[list[ListJournalEntries200ApplicationJSONSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -203,7 +204,7 @@ class ListJournalEntriesResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[ListJournalEntriesLinks] = dataclasses.field(default=None)
+    list_journal_entries_200_application_json_object: Optional[ListJournalEntries200ApplicationJSON] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

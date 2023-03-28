@@ -98,8 +98,8 @@ class Accounts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccounts200ApplicationJSON])
+                res.get_accounts_200_application_json_object = out
 
         return res
 

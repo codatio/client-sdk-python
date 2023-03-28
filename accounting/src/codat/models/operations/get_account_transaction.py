@@ -10,7 +10,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetCreateUpdateAccountTransactionsModelRequest:
+class GetAccountTransactionRequest:
     
     account_transaction_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountTransactionId', 'style': 'simple', 'explode': False }})  
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
@@ -19,7 +19,7 @@ class GetCreateUpdateAccountTransactionsModelRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCreateUpdateAccountTransactionsModelSourceModifiedDateBankAccountRef:
+class GetAccountTransactionSourceModifiedDateBankAccountRef:
     r"""Reference to the bank account the account transaction is recorded against."""
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -30,7 +30,7 @@ class GetCreateUpdateAccountTransactionsModelSourceModifiedDateBankAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCreateUpdateAccountTransactionsModelSourceModifiedDateLinesRecordRef:
+class GetAccountTransactionSourceModifiedDateLinesRecordRef:
     r"""Links an account transaction line to the underlying record that created it."""
     
     data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
@@ -41,23 +41,24 @@ class GetCreateUpdateAccountTransactionsModelSourceModifiedDateLinesRecordRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCreateUpdateAccountTransactionsModelSourceModifiedDateLines:
+class GetAccountTransactionSourceModifiedDateLines:
     
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
     r"""Amount in the bill payment currency."""  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Description of the account transaction."""  
-    record_ref: Optional[GetCreateUpdateAccountTransactionsModelSourceModifiedDateLinesRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
+    record_ref: Optional[GetAccountTransactionSourceModifiedDateLinesRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
     r"""Links an account transaction line to the underlying record that created it."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCreateUpdateAccountTransactionsModelSourceModifiedDateMetadata:
+class GetAccountTransactionSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
-class GetCreateUpdateAccountTransactionsModelSourceModifiedDateStatusEnum(str, Enum):
+class GetAccountTransactionSourceModifiedDateStatusEnum(str, Enum):
     r"""The status of the account transaction."""
     UNKNOWN = "Unknown"
     UNRECONCILED = "Unreconciled"
@@ -67,7 +68,7 @@ class GetCreateUpdateAccountTransactionsModelSourceModifiedDateStatusEnum(str, E
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCreateUpdateAccountTransactionsModelSourceModifiedDate:
+class GetAccountTransactionSourceModifiedDate:
     r"""> **Language tip:** In Codat, account transactions represent all transactions posted to a bank account within an accounting platform. For bank transactions posted within a banking platform, refer to [Banking transactions](https://docs.codat.io/banking-api#/operations/list-all-banking-transactions).
     
     > View the coverage for account transactions in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=accountTransactions\" target=\"_blank\">Data coverage explorer</a>.
@@ -87,7 +88,7 @@ class GetCreateUpdateAccountTransactionsModelSourceModifiedDate:
     Account transactions is the parent data type of [payments](https://docs.codat.io/accounting-api#/schemas/Payment), [bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment), [direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost), [direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome), and [transfers](https://docs.codat.io/accounting-api#/schemas/Transfer).
     """
     
-    bank_account_ref: Optional[GetCreateUpdateAccountTransactionsModelSourceModifiedDateBankAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccountRef'), 'exclude': lambda f: f is None }})
+    bank_account_ref: Optional[GetAccountTransactionSourceModifiedDateBankAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccountRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the bank account the account transaction is recorded against."""  
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code. e.g. _GBP_.
@@ -127,16 +128,16 @@ class GetCreateUpdateAccountTransactionsModelSourceModifiedDate:
     r"""The date the account transaction was recorded in the platform."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier of the direct cost (unique to the company)."""  
-    lines: Optional[list[GetCreateUpdateAccountTransactionsModelSourceModifiedDateLines]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines'), 'exclude': lambda f: f is None }})
+    lines: Optional[list[GetAccountTransactionSourceModifiedDateLines]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines'), 'exclude': lambda f: f is None }})
     r"""Array of account transaction lines."""  
-    metadata: Optional[GetCreateUpdateAccountTransactionsModelSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
+    metadata: Optional[GetAccountTransactionSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in Codat."""  
     note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
     r"""Additional information about the account transaction, if available."""  
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in the originating system"""  
-    status: Optional[GetCreateUpdateAccountTransactionsModelSourceModifiedDateStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[GetAccountTransactionSourceModifiedDateStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""The status of the account transaction."""  
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
     r"""Total amount of the account transactions, inclusive of tax."""  
@@ -145,11 +146,11 @@ class GetCreateUpdateAccountTransactionsModelSourceModifiedDate:
     
 
 @dataclasses.dataclass
-class GetCreateUpdateAccountTransactionsModelResponse:
+class GetAccountTransactionResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
-    source_modified_date: Optional[GetCreateUpdateAccountTransactionsModelSourceModifiedDate] = dataclasses.field(default=None)
+    source_modified_date: Optional[GetAccountTransactionSourceModifiedDate] = dataclasses.field(default=None)
     r"""Success"""  
     

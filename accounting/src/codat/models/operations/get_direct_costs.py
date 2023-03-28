@@ -25,24 +25,24 @@ class GetDirectCostsRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksLinksHypertextReference:
+class GetDirectCosts200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksLinks:
+class GetDirectCosts200ApplicationJSONLinks:
     
-    current: GetDirectCostsLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: GetDirectCostsLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[GetDirectCostsLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[GetDirectCostsLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: GetDirectCosts200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: GetDirectCosts200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[GetDirectCosts200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[GetDirectCosts200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateContactRef:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateContactRef:
     r"""A customer or supplier associated with the direct cost."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
@@ -51,7 +51,7 @@ class GetDirectCostsLinksSourceModifiedDateContactRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateLineItemsAccountRef:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsAccountRef:
     r"""Reference to the account to which the line item is linked."""
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -62,7 +62,7 @@ class GetDirectCostsLinksSourceModifiedDateLineItemsAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateLineItemsItemRef:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsItemRef:
     r"""Reference to the product, service type, or inventory item to which the direct cost is linked."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
@@ -71,7 +71,7 @@ class GetDirectCostsLinksSourceModifiedDateLineItemsItemRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateLineItemsTaxRateRef:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef:
     r"""Reference to the tax rate to which the the line item is linked."""
     
     effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
@@ -84,7 +84,7 @@ class GetDirectCostsLinksSourceModifiedDateLineItemsTaxRateRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo:
     r"""Links to the underlying record or data type.
     
     Found on:
@@ -103,7 +103,7 @@ class GetDirectCostsLinksSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs:
     r"""Links to the underlying record or data type.
     
     Found on:
@@ -122,10 +122,10 @@ class GetDirectCostsLinksSourceModifiedDateLineItemsInvoiceableTrackingRecordRef
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateLineItemsInvoiceableTracking:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTracking:
     
-    record_refs: list[GetDirectCostsLinksSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})  
-    invoice_to: Optional[GetDirectCostsLinksSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
+    record_refs: list[GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingRecordRefs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})  
+    invoice_to: Optional[GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTrackingInvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
     r"""Links to the underlying record or data type.
     
     Found on:
@@ -139,7 +139,7 @@ class GetDirectCostsLinksSourceModifiedDateLineItemsInvoiceableTracking:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateLineItemsTrackingCategoryRefs:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs:
     r"""References a category against which the item is tracked."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
@@ -148,7 +148,7 @@ class GetDirectCostsLinksSourceModifiedDateLineItemsTrackingCategoryRefs:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateLineItems:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItems:
     
     quantity: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity') }})
     r"""Number of units of goods or services received.
@@ -159,7 +159,7 @@ class GetDirectCostsLinksSourceModifiedDateLineItems:
     r"""Price of each unit of goods or services.
     Note: If the platform does not provide this information, the unit amount will be mapped to the total amount.
     """  
-    account_ref: Optional[GetDirectCostsLinksSourceModifiedDateLineItemsAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the account to which the line item is linked."""  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Friendly name of the goods or services."""  
@@ -167,31 +167,32 @@ class GetDirectCostsLinksSourceModifiedDateLineItems:
     r"""Discount amount for the line before tax."""  
     discount_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage'), 'exclude': lambda f: f is None }})
     r"""Discount percentage for the line before tax."""  
-    item_ref: Optional[GetDirectCostsLinksSourceModifiedDateLineItemsItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
+    item_ref: Optional[GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the product, service type, or inventory item to which the direct cost is linked."""  
     sub_total: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal'), 'exclude': lambda f: f is None }})
     r"""Amount of the line, inclusive of discounts but exclusive of tax."""  
     tax_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxAmount'), 'exclude': lambda f: f is None }})
     r"""Amount of tax for the line."""  
-    tax_rate_ref: Optional[GetDirectCostsLinksSourceModifiedDateLineItemsTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
+    tax_rate_ref: Optional[GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the tax rate to which the the line item is linked."""  
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
     r"""Total amount of the line, including tax."""  
-    tracking: Optional[GetDirectCostsLinksSourceModifiedDateLineItemsInvoiceableTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})  
-    tracking_category_refs: Optional[list[GetDirectCostsLinksSourceModifiedDateLineItemsTrackingCategoryRefs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
+    tracking: Optional[GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsInvoiceableTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})  
+    tracking_category_refs: Optional[list[GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsTrackingCategoryRefs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
     r"""Collection of categories against which this direct cost is tracked."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateMetadata:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateMetadata:
     
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})  
+    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
+    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDatePaymentAllocationsAllocation:
+class GetDirectCosts200ApplicationJSONSourceModifiedDatePaymentAllocationsAllocation:
     
     allocated_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocatedOnDate'), 'exclude': lambda f: f is None }})
     r"""The date the payment was allocated."""  
@@ -228,7 +229,7 @@ class GetDirectCostsLinksSourceModifiedDatePaymentAllocationsAllocation:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDatePaymentAllocationsPaymentAccountRef:
+class GetDirectCosts200ApplicationJSONSourceModifiedDatePaymentAllocationsPaymentAccountRef:
     r"""The account that the allocated payment is made from or to."""
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -239,9 +240,9 @@ class GetDirectCostsLinksSourceModifiedDatePaymentAllocationsPaymentAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDatePaymentAllocationsPayment:
+class GetDirectCosts200ApplicationJSONSourceModifiedDatePaymentAllocationsPayment:
     
-    account_ref: Optional[GetDirectCostsLinksSourceModifiedDatePaymentAllocationsPaymentAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[GetDirectCosts200ApplicationJSONSourceModifiedDatePaymentAllocationsPaymentAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""The account that the allocated payment is made from or to."""  
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""Currency the payment has been made in."""  
@@ -284,15 +285,15 @@ class GetDirectCostsLinksSourceModifiedDatePaymentAllocationsPayment:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDatePaymentAllocations:
+class GetDirectCosts200ApplicationJSONSourceModifiedDatePaymentAllocations:
     
-    allocation: GetDirectCostsLinksSourceModifiedDatePaymentAllocationsAllocation = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocation') }})  
-    payment: GetDirectCostsLinksSourceModifiedDatePaymentAllocationsPayment = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payment') }})  
+    allocation: GetDirectCosts200ApplicationJSONSourceModifiedDatePaymentAllocationsAllocation = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocation') }})  
+    payment: GetDirectCosts200ApplicationJSONSourceModifiedDatePaymentAllocationsPayment = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payment') }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDateSupplementalData:
+class GetDirectCosts200ApplicationJSONSourceModifiedDateSupplementalData:
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""
     
     content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})  
@@ -300,7 +301,7 @@ class GetDirectCostsLinksSourceModifiedDateSupplementalData:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinksSourceModifiedDate:
+class GetDirectCosts200ApplicationJSONSourceModifiedDate:
     r"""> **Language tip: ** Direct costs may also be referred to as **Spend transactions**, **Spend money transactions**, or **Payments** in various accounting platforms.
     
     > View the coverage for direct costs in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts\" target=\"_blank\">Data coverage explorer</a>.
@@ -326,9 +327,9 @@ class GetDirectCostsLinksSourceModifiedDate:
     r"""Currency of the direct cost."""  
     issue_date: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate') }})
     r"""Date of the direct cost as recorded in the accounting platform.Date of the direct cost as recorded in the accounting platform."""  
-    line_items: list[GetDirectCostsLinksSourceModifiedDateLineItems] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems') }})
+    line_items: list[GetDirectCosts200ApplicationJSONSourceModifiedDateLineItems] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems') }})
     r"""An array of line items."""  
-    payment_allocations: list[GetDirectCostsLinksSourceModifiedDatePaymentAllocations] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations') }})
+    payment_allocations: list[GetDirectCosts200ApplicationJSONSourceModifiedDatePaymentAllocations] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations') }})
     r"""An array of payment allocations."""  
     sub_total: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal') }})
     r"""The total amount of the direct costs, excluding any taxes."""  
@@ -336,7 +337,7 @@ class GetDirectCostsLinksSourceModifiedDate:
     r"""The total amount of tax on the direct costs."""  
     total_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount') }})
     r"""The amount of the direct costs, inclusive of tax."""  
-    contact_ref: Optional[GetDirectCostsLinksSourceModifiedDateContactRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
+    contact_ref: Optional[GetDirectCosts200ApplicationJSONSourceModifiedDateContactRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
     r"""A customer or supplier associated with the direct cost."""  
     currency_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'exclude': lambda f: f is None }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
@@ -365,7 +366,7 @@ class GetDirectCostsLinksSourceModifiedDate:
     """  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier of the direct cost, unique for the company."""  
-    metadata: Optional[GetDirectCostsLinksSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
+    metadata: Optional[GetDirectCosts200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in Codat."""  
     note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
@@ -374,20 +375,20 @@ class GetDirectCostsLinksSourceModifiedDate:
     r"""User-friendly reference for the direct cost."""  
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in the originating system"""  
-    supplemental_data: Optional[GetDirectCostsLinksSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    supplemental_data: Optional[GetDirectCosts200ApplicationJSONSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDirectCostsLinks:
-    r"""Codat's Paging Model"""
+class GetDirectCosts200ApplicationJSON:
+    r"""Success"""
     
-    links: GetDirectCostsLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: GetDirectCosts200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[GetDirectCostsLinksSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
+    results: Optional[list[GetDirectCosts200ApplicationJSONSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -395,7 +396,7 @@ class GetDirectCostsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[GetDirectCostsLinks] = dataclasses.field(default=None)
+    get_direct_costs_200_application_json_object: Optional[GetDirectCosts200ApplicationJSON] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     
