@@ -34,24 +34,24 @@ class GetDataIntegrityDetailsRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDataIntegrityDetailsLinksLinksHypertextReference:
+class GetDataIntegrityDetails200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDataIntegrityDetailsLinksLinks:
+class GetDataIntegrityDetails200ApplicationJSONLinks:
     
-    current: GetDataIntegrityDetailsLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: GetDataIntegrityDetailsLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[GetDataIntegrityDetailsLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[GetDataIntegrityDetailsLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: GetDataIntegrityDetails200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: GetDataIntegrityDetails200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[GetDataIntegrityDetails200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[GetDataIntegrityDetails200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDataIntegrityDetailsLinksDataIntegrityDetailsMatches:
+class GetDataIntegrityDetails200ApplicationJSONDataIntegrityDetailsMatches:
     
     amount: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
     r"""The transaction value."""  
@@ -71,7 +71,7 @@ class GetDataIntegrityDetailsLinksDataIntegrityDetailsMatches:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDataIntegrityDetailsLinksDataIntegrityDetails:
+class GetDataIntegrityDetails200ApplicationJSONDataIntegrityDetails:
     
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
     r"""The transaction value."""  
@@ -85,21 +85,21 @@ class GetDataIntegrityDetailsLinksDataIntegrityDetails:
     r"""The transaction description."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""ID GUID of the transaction."""  
-    matches: Optional[list[GetDataIntegrityDetailsLinksDataIntegrityDetailsMatches]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matches'), 'exclude': lambda f: f is None }})  
+    matches: Optional[list[GetDataIntegrityDetails200ApplicationJSONDataIntegrityDetailsMatches]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matches'), 'exclude': lambda f: f is None }})  
     type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The data type of the record."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetDataIntegrityDetailsLinks:
-    r"""Codat's Paging Model"""
+class GetDataIntegrityDetails200ApplicationJSON:
+    r"""OK"""
     
-    links: GetDataIntegrityDetailsLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: GetDataIntegrityDetails200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[GetDataIntegrityDetailsLinksDataIntegrityDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
+    results: Optional[list[GetDataIntegrityDetails200ApplicationJSONDataIntegrityDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -107,7 +107,7 @@ class GetDataIntegrityDetailsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[GetDataIntegrityDetailsLinks] = dataclasses.field(default=None)
+    get_data_integrity_details_200_application_json_object: Optional[GetDataIntegrityDetails200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

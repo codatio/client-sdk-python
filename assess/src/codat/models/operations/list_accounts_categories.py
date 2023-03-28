@@ -25,24 +25,24 @@ class ListAccountsCategoriesRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListAccountsCategoriesLinksLinksHypertextReference:
+class ListAccountsCategories200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListAccountsCategoriesLinksLinks:
+class ListAccountsCategories200ApplicationJSONLinks:
     
-    current: ListAccountsCategoriesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListAccountsCategoriesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListAccountsCategoriesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListAccountsCategoriesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: ListAccountsCategories200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: ListAccountsCategories200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[ListAccountsCategories200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[ListAccountsCategories200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListAccountsCategoriesLinksCategorisedAccountAccountRef:
+class ListAccountsCategories200ApplicationJSONCategorisedAccountAccountRef:
     r"""An object containing account reference data."""
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -53,7 +53,7 @@ class ListAccountsCategoriesLinksCategorisedAccountAccountRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListAccountsCategoriesLinksCategorisedAccountModifiedDate:
+class ListAccountsCategories200ApplicationJSONCategorisedAccountModifiedDate:
     
     detail_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailType'), 'exclude': lambda f: f is None }})
     r"""Most granular chart of account type."""  
@@ -67,24 +67,24 @@ class ListAccountsCategoriesLinksCategorisedAccountModifiedDate:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListAccountsCategoriesLinksCategorisedAccount:
+class ListAccountsCategories200ApplicationJSONCategorisedAccount:
     
-    account_ref: Optional[ListAccountsCategoriesLinksCategorisedAccountAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[ListAccountsCategories200ApplicationJSONCategorisedAccountAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""An object containing account reference data."""  
-    confirmed: Optional[ListAccountsCategoriesLinksCategorisedAccountModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('confirmed'), 'exclude': lambda f: f is None }})  
-    suggested: Optional[ListAccountsCategoriesLinksCategorisedAccountModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suggested'), 'exclude': lambda f: f is None }})  
+    confirmed: Optional[ListAccountsCategories200ApplicationJSONCategorisedAccountModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('confirmed'), 'exclude': lambda f: f is None }})  
+    suggested: Optional[ListAccountsCategories200ApplicationJSONCategorisedAccountModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suggested'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListAccountsCategoriesLinks:
-    r"""Codat's Paging Model"""
+class ListAccountsCategories200ApplicationJSON:
+    r"""OK"""
     
-    links: ListAccountsCategoriesLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: ListAccountsCategories200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListAccountsCategoriesLinksCategorisedAccount]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
+    results: Optional[list[ListAccountsCategories200ApplicationJSONCategorisedAccount]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
     r"""A list confirmed and suggested account categories."""  
     
 
@@ -93,7 +93,7 @@ class ListAccountsCategoriesResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[ListAccountsCategoriesLinks] = dataclasses.field(default=None)
+    list_accounts_categories_200_application_json_object: Optional[ListAccountsCategories200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

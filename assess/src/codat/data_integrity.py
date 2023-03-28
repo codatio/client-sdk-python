@@ -41,8 +41,8 @@ class DataIntegrity:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDataIntegrityDetailsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDataIntegrityDetails200ApplicationJSON])
+                res.get_data_integrity_details_200_application_json_object = out
 
         return res
 
