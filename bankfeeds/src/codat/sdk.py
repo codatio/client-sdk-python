@@ -25,8 +25,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.8.0"
-    _gen_version: str = "2.16.1"
+    _sdk_version: str = "0.8.1"
+    _gen_version: str = "2.16.4"
 
     def __init__(self,
                  security: shared.Security = None,
@@ -156,8 +156,8 @@ class Codat:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankAccountTransactionsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankAccountTransactions200ApplicationJSON])
+                res.list_bank_account_transactions_200_application_json_object = out
 
         return res
 
