@@ -25,24 +25,24 @@ class ListBankingAccountBalancesRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountBalancesLinksLinksHypertextReference:
+class ListBankingAccountBalances200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountBalancesLinksLinks:
+class ListBankingAccountBalances200ApplicationJSONLinks:
     
-    current: ListBankingAccountBalancesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListBankingAccountBalancesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListBankingAccountBalancesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListBankingAccountBalancesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: ListBankingAccountBalances200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: ListBankingAccountBalances200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[ListBankingAccountBalances200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[ListBankingAccountBalances200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountBalancesLinksSourceModifiedDateBalance:
+class ListBankingAccountBalances200ApplicationJSONSourceModifiedDateBalance:
     r"""An object containing bank balance data."""
     
     current: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})
@@ -55,12 +55,12 @@ class ListBankingAccountBalancesLinksSourceModifiedDateBalance:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountBalancesLinksSourceModifiedDate:
+class ListBankingAccountBalances200ApplicationJSONSourceModifiedDate:
     r"""The Banking Account Balances data type provides a list of balances for a bank account including end-of-day batch balance or running balances per transaction."""
     
     account_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId') }})
     r"""The unique identifier of the account."""  
-    balance: ListBankingAccountBalancesLinksSourceModifiedDateBalance = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})
+    balance: ListBankingAccountBalances200ApplicationJSONSourceModifiedDateBalance = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})
     r"""An object containing bank balance data."""  
     date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
     r"""Date of the balance."""  
@@ -72,14 +72,14 @@ class ListBankingAccountBalancesLinksSourceModifiedDate:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankingAccountBalancesLinks:
-    r"""Codat's Paging Model"""
+class ListBankingAccountBalances200ApplicationJSON:
+    r"""Success"""
     
-    links: ListBankingAccountBalancesLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: ListBankingAccountBalances200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[ListBankingAccountBalancesLinksSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
+    results: Optional[ListBankingAccountBalances200ApplicationJSONSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
     r"""The Banking Account Balances data type provides a list of balances for a bank account including end-of-day batch balance or running balances per transaction."""  
     
 
@@ -88,7 +88,7 @@ class ListBankingAccountBalancesResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[ListBankingAccountBalancesLinks] = dataclasses.field(default=None)
+    list_banking_account_balances_200_application_json_object: Optional[ListBankingAccountBalances200ApplicationJSON] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

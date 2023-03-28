@@ -32,7 +32,7 @@ req = operations.ListBankingAccountBalancesRequest(
     
 res = s.account_balances.list_banking_account_balances(req)
 
-if res.links is not None:
+if res.list_banking_account_balances_200_application_json_object is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
