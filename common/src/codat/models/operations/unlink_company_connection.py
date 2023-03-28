@@ -26,7 +26,7 @@ class UnlinkCompanyConnectionRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class UnlinkCompanyConnection404ApplicationJSON:
+class UnlinkCompanyConnectionNotFound:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
@@ -41,7 +41,7 @@ class UnlinkCompanyConnection404ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class UnlinkCompanyConnection401ApplicationJSON:
+class UnlinkCompanyConnectionUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -178,11 +178,11 @@ class UnlinkCompanyConnectionResponse:
     status_code: int = dataclasses.field()  
     connection: Optional[UnlinkCompanyConnectionConnection] = dataclasses.field(default=None)
     r"""OK"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
-    unlink_company_connection_401_application_json_object: Optional[UnlinkCompanyConnection401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    unlink_company_connection_404_application_json_object: Optional[UnlinkCompanyConnection404ApplicationJSON] = dataclasses.field(default=None)
+    not_found: Optional[UnlinkCompanyConnectionNotFound] = dataclasses.field(default=None)
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """  
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[UnlinkCompanyConnectionUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

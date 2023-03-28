@@ -24,7 +24,7 @@ class ListCompaniesRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanies401ApplicationJSON:
+class ListCompaniesUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -37,7 +37,7 @@ class ListCompanies401ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanies400ApplicationJSON:
+class ListCompaniesMalformedQuery:
     r"""Your `query` parameter was not correctly formed"""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -50,24 +50,24 @@ class ListCompanies400ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompaniesLinksLinksHypertextReference:
+class ListCompaniesCompaniesLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompaniesLinksLinks:
+class ListCompaniesCompaniesLinks:
     
-    current: ListCompaniesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListCompaniesLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListCompaniesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListCompaniesLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: ListCompaniesCompaniesLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: ListCompaniesCompaniesLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[ListCompaniesCompaniesLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[ListCompaniesCompaniesLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompaniesLinksCompanyConnectionConnectionInfo:
+class ListCompaniesCompaniesCompanyConnectionConnectionInfo:
     
     additional_prop1: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalProp1'), 'exclude': lambda f: f is None }})  
     additional_prop2: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalProp2'), 'exclude': lambda f: f is None }})  
@@ -76,7 +76,7 @@ class ListCompaniesLinksCompanyConnectionConnectionInfo:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompaniesLinksCompanyConnectionDataConnectionErrors:
+class ListCompaniesCompaniesCompanyConnectionDataConnectionErrors:
     
     errored_on_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('erroredOnUtc'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -103,7 +103,7 @@ class ListCompaniesLinksCompanyConnectionDataConnectionErrors:
     status_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})  
     status_text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusText'), 'exclude': lambda f: f is None }})  
     
-class ListCompaniesLinksCompanyConnectionSourceTypeEnum(str, Enum):
+class ListCompaniesCompaniesCompanyConnectionSourceTypeEnum(str, Enum):
     r"""The type of platform of the connection."""
     ACCOUNTING = "Accounting"
     BANKING = "Banking"
@@ -111,7 +111,7 @@ class ListCompaniesLinksCompanyConnectionSourceTypeEnum(str, Enum):
     OTHER = "Other"
     UNKNOWN = "Unknown"
 
-class ListCompaniesLinksCompanyConnectionDataConnectionStatusEnum(str, Enum):
+class ListCompaniesCompaniesCompanyConnectionDataConnectionStatusEnum(str, Enum):
     r"""The current authorization status of the data connection."""
     PENDING_AUTH = "PendingAuth"
     LINKED = "Linked"
@@ -121,7 +121,7 @@ class ListCompaniesLinksCompanyConnectionDataConnectionStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompaniesLinksCompanyConnection:
+class ListCompaniesCompaniesCompanyConnection:
     r"""A connection represents the link between a `company` and a source of data."""
     
     created: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
@@ -155,12 +155,12 @@ class ListCompaniesLinksCompanyConnection:
     platform_name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformName') }})  
     source_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceId') }})
     r"""A source-specific ID used to distinguish between different sources originating from the same data connection. In general, a data connection is a single data source. However, for TrueLayer, `sourceId` is associated with a specific bank and has a many-to-one relationship with the `integrationId`."""  
-    source_type: ListCompaniesLinksCompanyConnectionSourceTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceType') }})
+    source_type: ListCompaniesCompaniesCompanyConnectionSourceTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceType') }})
     r"""The type of platform of the connection."""  
-    status: ListCompaniesLinksCompanyConnectionDataConnectionStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: ListCompaniesCompaniesCompanyConnectionDataConnectionStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The current authorization status of the data connection."""  
-    connection_info: Optional[ListCompaniesLinksCompanyConnectionConnectionInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionInfo'), 'exclude': lambda f: f is None }})  
-    data_connection_errors: Optional[list[ListCompaniesLinksCompanyConnectionDataConnectionErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionErrors'), 'exclude': lambda f: f is None }})  
+    connection_info: Optional[ListCompaniesCompaniesCompanyConnectionConnectionInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionInfo'), 'exclude': lambda f: f is None }})  
+    data_connection_errors: Optional[list[ListCompaniesCompaniesCompanyConnectionDataConnectionErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionErrors'), 'exclude': lambda f: f is None }})  
     last_sync: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastSync'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
@@ -186,7 +186,7 @@ class ListCompaniesLinksCompanyConnection:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompaniesLinksCompany:
+class ListCompaniesCompaniesCompany:
     r"""A company in Codat represent a small or medium sized business, whose data you wish to share"""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
@@ -217,7 +217,7 @@ class ListCompaniesLinksCompany:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """  
     created_by_user_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdByUserName'), 'exclude': lambda f: f is None }})  
-    data_connections: Optional[list[ListCompaniesLinksCompanyConnection]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections'), 'exclude': lambda f: f is None }})  
+    data_connections: Optional[list[ListCompaniesCompaniesCompanyConnection]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections'), 'exclude': lambda f: f is None }})  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Additional information about the company. This can be used to store foreign IDs, references, etc."""  
     last_sync: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastSync'), 'exclude': lambda f: f is None }})
@@ -246,14 +246,14 @@ class ListCompaniesLinksCompany:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompaniesLinks:
-    r"""Codat's Paging Model"""
+class Companies:
+    r"""OK"""
     
-    links: ListCompaniesLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: ListCompaniesCompaniesLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListCompaniesLinksCompany]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
+    results: Optional[list[ListCompaniesCompaniesCompany]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -261,11 +261,11 @@ class ListCompaniesResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[ListCompaniesLinks] = dataclasses.field(default=None)
+    companies: Optional[Companies] = dataclasses.field(default=None)
     r"""OK"""  
-    list_companies_400_application_json_object: Optional[ListCompanies400ApplicationJSON] = dataclasses.field(default=None)
+    malformed_query: Optional[ListCompaniesMalformedQuery] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""  
-    list_companies_401_application_json_object: Optional[ListCompanies401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[ListCompaniesUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

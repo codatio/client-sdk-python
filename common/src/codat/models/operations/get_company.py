@@ -17,7 +17,7 @@ class GetCompanyRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompany401ApplicationJSON:
+class GetCompanyUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -214,7 +214,7 @@ class GetCompanyResponse:
     status_code: int = dataclasses.field()  
     company: Optional[GetCompanyCompany] = dataclasses.field(default=None)
     r"""OK"""  
-    get_company_401_application_json_object: Optional[GetCompany401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[GetCompanyUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

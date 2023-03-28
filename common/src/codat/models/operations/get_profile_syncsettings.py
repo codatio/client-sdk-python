@@ -10,7 +10,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetProfileSyncSettings401ApplicationJSON:
+class GetProfileSyncSettingsUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -58,7 +58,7 @@ class GetProfileSyncSettingsResponse:
     status_code: int = dataclasses.field()  
     get_profile_sync_settings_200_application_json_object: Optional[GetProfileSyncSettings200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
-    get_profile_sync_settings_401_application_json_object: Optional[GetProfileSyncSettings401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[GetProfileSyncSettingsUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

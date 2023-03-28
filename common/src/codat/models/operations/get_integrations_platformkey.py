@@ -17,7 +17,7 @@ class GetIntegrationsPlatformKeyRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetIntegrationsPlatformKey404ApplicationJSON:
+class GetIntegrationsPlatformKeyNotFound:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
@@ -32,7 +32,7 @@ class GetIntegrationsPlatformKey404ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetIntegrationsPlatformKey401ApplicationJSON:
+class GetIntegrationsPlatformKeyUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -115,13 +115,13 @@ class GetIntegrationsPlatformKeyResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    get_integrations_platform_key_401_application_json_object: Optional[GetIntegrationsPlatformKey401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    get_integrations_platform_key_404_application_json_object: Optional[GetIntegrationsPlatformKey404ApplicationJSON] = dataclasses.field(default=None)
+    integration: Optional[GetIntegrationsPlatformKeyIntegration] = dataclasses.field(default=None)
+    r"""OK"""  
+    not_found: Optional[GetIntegrationsPlatformKeyNotFound] = dataclasses.field(default=None)
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """  
-    integration: Optional[GetIntegrationsPlatformKeyIntegration] = dataclasses.field(default=None)
-    r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[GetIntegrationsPlatformKeyUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

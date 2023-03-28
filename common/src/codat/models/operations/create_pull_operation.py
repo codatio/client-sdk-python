@@ -9,7 +9,7 @@ from enum import Enum
 from typing import Optional
 
 class CreatePullOperationDataTypeEnum(str, Enum):
-    r"""The key of a Codat data type"""
+    r"""Available Data types"""
     ACCOUNT_TRANSACTIONS = "accountTransactions"
     BALANCE_SHEET = "balanceSheet"
     BANK_ACCOUNTS = "bankAccounts"
@@ -66,7 +66,7 @@ class CreatePullOperationRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreatePullOperation404ApplicationJSON:
+class CreatePullOperationNotFound:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
@@ -81,7 +81,7 @@ class CreatePullOperation404ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreatePullOperation401ApplicationJSON:
+class CreatePullOperationUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -160,13 +160,13 @@ class CreatePullOperationResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    create_pull_operation_401_application_json_object: Optional[CreatePullOperation401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    create_pull_operation_404_application_json_object: Optional[CreatePullOperation404ApplicationJSON] = dataclasses.field(default=None)
+    not_found: Optional[CreatePullOperationNotFound] = dataclasses.field(default=None)
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """  
     pull_operation: Optional[CreatePullOperationPullOperation] = dataclasses.field(default=None)
     r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[CreatePullOperationUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

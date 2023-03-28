@@ -25,7 +25,7 @@ class PutProfileProfile:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PutProfile401ApplicationJSON:
+class PutProfileUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -43,7 +43,7 @@ class PutProfileResponse:
     status_code: int = dataclasses.field()  
     profile: Optional[PutProfileProfile] = dataclasses.field(default=None)
     r"""OK"""  
-    put_profile_401_application_json_object: Optional[PutProfile401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[PutProfileUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

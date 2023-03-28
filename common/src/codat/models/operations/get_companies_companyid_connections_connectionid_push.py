@@ -9,7 +9,7 @@ from enum import Enum
 from typing import Optional
 
 class GetCompaniesCompanyIDConnectionsConnectionIDPushDataTypeEnum(str, Enum):
-    r"""The key of a Codat data type"""
+    r"""Available Data types"""
     ACCOUNT_TRANSACTIONS = "accountTransactions"
     BALANCE_SHEET = "balanceSheet"
     BANK_ACCOUNTS = "bankAccounts"

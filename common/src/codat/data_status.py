@@ -44,12 +44,12 @@ class DataStatus:
                 res.get_companies_company_id_data_status_200_application_json_object = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompaniesCompanyIDDataStatus401ApplicationJSON])
-                res.get_companies_company_id_data_status_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompaniesCompanyIDDataStatusUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompaniesCompanyIDDataStatus404ApplicationJSON])
-                res.get_companies_company_id_data_status_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompaniesCompanyIDDataStatusNotFound])
+                res.not_found = out
 
         return res
 
@@ -72,20 +72,20 @@ class DataStatus:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistoryLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistory200ApplicationJSON])
+                res.get_company_data_history_200_application_json_object = out
         elif http_res.status_code == 400:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistory400ApplicationJSON])
-                res.get_company_data_history_400_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistoryMalformedQuery])
+                res.malformed_query = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistory401ApplicationJSON])
-                res.get_company_data_history_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistoryUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistory404ApplicationJSON])
-                res.get_company_data_history_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistoryNotFound])
+                res.not_found = out
 
         return res
 
@@ -111,12 +111,12 @@ class DataStatus:
                 res.pull_operation = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPullOperation401ApplicationJSON])
-                res.get_pull_operation_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPullOperationUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPullOperation404ApplicationJSON])
-                res.get_pull_operation_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPullOperationNotFound])
+                res.not_found = out
 
         return res
 

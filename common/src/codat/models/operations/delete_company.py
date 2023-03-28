@@ -16,7 +16,7 @@ class DeleteCompanyRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class DeleteCompany401ApplicationJSON:
+class DeleteCompanyUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -32,7 +32,7 @@ class DeleteCompanyResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    delete_company_401_application_json_object: Optional[DeleteCompany401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[DeleteCompanyUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

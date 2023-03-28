@@ -42,12 +42,12 @@ class RefreshData:
             pass
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateManyPullOperations401ApplicationJSON])
-                res.create_many_pull_operations_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateManyPullOperationsUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateManyPullOperations404ApplicationJSON])
-                res.create_many_pull_operations_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateManyPullOperationsNotFound])
+                res.not_found = out
 
         return res
 
@@ -76,12 +76,12 @@ class RefreshData:
                 res.pull_operation = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePullOperation401ApplicationJSON])
-                res.create_pull_operation_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePullOperationUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePullOperation404ApplicationJSON])
-                res.create_pull_operation_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePullOperationNotFound])
+                res.not_found = out
 
         return res
 

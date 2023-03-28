@@ -70,12 +70,12 @@ class Connections:
             pass
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompanyConnection401ApplicationJSON])
-                res.delete_company_connection_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompanyConnectionUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompanyConnection404ApplicationJSON])
-                res.delete_company_connection_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompanyConnectionNotFound])
+                res.not_found = out
 
         return res
 
@@ -128,12 +128,12 @@ class Connections:
                 res.connection = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyConnection401ApplicationJSON])
-                res.get_company_connection_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyConnectionUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyConnection404ApplicationJSON])
-                res.get_company_connection_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyConnectionNotFound])
+                res.not_found = out
 
         return res
 
@@ -156,16 +156,16 @@ class Connections:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnectionsConnections])
+                out = utils.unmarshal_json(http_res.text, Optional[operations.Connections])
                 res.connections = out
         elif http_res.status_code == 400:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnections400ApplicationJSON])
-                res.list_company_connections_400_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnectionsMalformedQuery])
+                res.malformed_query = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnections401ApplicationJSON])
-                res.list_company_connections_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnectionsUnauthorized])
+                res.unauthorized = out
 
         return res
 
@@ -195,12 +195,12 @@ class Connections:
                 res.connection = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UnlinkCompanyConnection401ApplicationJSON])
-                res.unlink_company_connection_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.UnlinkCompanyConnectionUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UnlinkCompanyConnection404ApplicationJSON])
-                res.unlink_company_connection_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.UnlinkCompanyConnectionNotFound])
+                res.not_found = out
 
         return res
 

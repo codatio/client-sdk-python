@@ -29,7 +29,7 @@ class CreateRuleWebhook:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreateRule401ApplicationJSON:
+class CreateRuleUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -45,9 +45,9 @@ class CreateRuleResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    create_rule_401_application_json_object: Optional[CreateRule401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[CreateRuleUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     webhook: Optional[CreateRuleWebhook] = dataclasses.field(default=None)
     r"""OK"""  
     

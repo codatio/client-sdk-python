@@ -42,7 +42,7 @@ class PostProfileSyncSettingsRequestBody:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PostProfileSyncSettings401ApplicationJSON:
+class PostProfileSyncSettingsUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -58,7 +58,7 @@ class PostProfileSyncSettingsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    post_profile_sync_settings_401_application_json_object: Optional[PostProfileSyncSettings401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[PostProfileSyncSettingsUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

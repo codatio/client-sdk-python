@@ -17,7 +17,7 @@ class DeleteCompanyConnectionRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class DeleteCompanyConnection404ApplicationJSON:
+class DeleteCompanyConnectionNotFound:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
@@ -32,7 +32,7 @@ class DeleteCompanyConnection404ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class DeleteCompanyConnection401ApplicationJSON:
+class DeleteCompanyConnectionUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -48,11 +48,11 @@ class DeleteCompanyConnectionResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    delete_company_connection_401_application_json_object: Optional[DeleteCompanyConnection401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    delete_company_connection_404_application_json_object: Optional[DeleteCompanyConnection404ApplicationJSON] = dataclasses.field(default=None)
+    not_found: Optional[DeleteCompanyConnectionNotFound] = dataclasses.field(default=None)
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[DeleteCompanyConnectionUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

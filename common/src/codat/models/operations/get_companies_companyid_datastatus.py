@@ -16,7 +16,7 @@ class GetCompaniesCompanyIDDataStatusRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompaniesCompanyIDDataStatus404ApplicationJSON:
+class GetCompaniesCompanyIDDataStatusNotFound:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
@@ -31,7 +31,7 @@ class GetCompaniesCompanyIDDataStatus404ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompaniesCompanyIDDataStatus401ApplicationJSON:
+class GetCompaniesCompanyIDDataStatusUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -92,11 +92,11 @@ class GetCompaniesCompanyIDDataStatusResponse:
     status_code: int = dataclasses.field()  
     get_companies_company_id_data_status_200_application_json_object: Optional[GetCompaniesCompanyIDDataStatus200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
-    get_companies_company_id_data_status_401_application_json_object: Optional[GetCompaniesCompanyIDDataStatus401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    get_companies_company_id_data_status_404_application_json_object: Optional[GetCompaniesCompanyIDDataStatus404ApplicationJSON] = dataclasses.field(default=None)
+    not_found: Optional[GetCompaniesCompanyIDDataStatusNotFound] = dataclasses.field(default=None)
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[GetCompaniesCompanyIDDataStatusUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

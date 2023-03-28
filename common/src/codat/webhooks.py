@@ -48,8 +48,8 @@ class Webhooks:
                 res.webhook = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateRule401ApplicationJSON])
-                res.create_rule_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateRuleUnauthorized])
+                res.unauthorized = out
 
         return res
 
@@ -75,12 +75,12 @@ class Webhooks:
                 res.webhook = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhook401ApplicationJSON])
-                res.get_webhook_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhookUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhook404ApplicationJSON])
-                res.get_webhook_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhookNotFound])
+                res.not_found = out
 
         return res
 
@@ -103,16 +103,16 @@ class Webhooks:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRulesLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRules200ApplicationJSON])
+                res.list_rules_200_application_json_object = out
         elif http_res.status_code == 400:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRules400ApplicationJSON])
-                res.list_rules_400_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRulesMalformedQuery])
+                res.malformed_query = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRules401ApplicationJSON])
-                res.list_rules_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRulesUnauthorized])
+                res.unauthorized = out
 
         return res
 

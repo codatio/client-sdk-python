@@ -48,8 +48,8 @@ class Companies:
                 res.create_company_200_application_json_object = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateCompany401ApplicationJSON])
-                res.create_company_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateCompanyUnauthorized])
+                res.unauthorized = out
 
         return res
 
@@ -74,8 +74,8 @@ class Companies:
             pass
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompany401ApplicationJSON])
-                res.delete_company_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompanyUnauthorized])
+                res.unauthorized = out
 
         return res
 
@@ -101,8 +101,8 @@ class Companies:
                 res.company = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompany401ApplicationJSON])
-                res.get_company_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyUnauthorized])
+                res.unauthorized = out
 
         return res
 
@@ -125,16 +125,16 @@ class Companies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompaniesLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.Companies])
+                res.companies = out
         elif http_res.status_code == 400:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanies400ApplicationJSON])
-                res.list_companies_400_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompaniesMalformedQuery])
+                res.malformed_query = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanies401ApplicationJSON])
-                res.list_companies_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompaniesUnauthorized])
+                res.unauthorized = out
 
         return res
 
@@ -164,8 +164,8 @@ class Companies:
                 res.company = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateCompany401ApplicationJSON])
-                res.update_company_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateCompanyUnauthorized])
+                res.unauthorized = out
 
         return res
 

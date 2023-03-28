@@ -44,12 +44,12 @@ class Integrations:
                 res.integration = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetIntegrationsPlatformKey401ApplicationJSON])
-                res.get_integrations_platform_key_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetIntegrationsPlatformKeyUnauthorized])
+                res.unauthorized = out
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetIntegrationsPlatformKey404ApplicationJSON])
-                res.get_integrations_platform_key_404_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetIntegrationsPlatformKeyNotFound])
+                res.not_found = out
 
         return res
 
@@ -95,16 +95,16 @@ class Integrations:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListIntegrationsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListIntegrations200ApplicationJSON])
+                res.list_integrations_200_application_json_object = out
         elif http_res.status_code == 400:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListIntegrations400ApplicationJSON])
-                res.list_integrations_400_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListIntegrationsMalformedQuery])
+                res.malformed_query = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListIntegrations401ApplicationJSON])
-                res.list_integrations_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListIntegrationsUnauthorized])
+                res.unauthorized = out
 
         return res
 

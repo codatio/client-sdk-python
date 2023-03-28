@@ -16,7 +16,7 @@ class CreateManyPullOperationsRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreateManyPullOperations404ApplicationJSON:
+class CreateManyPullOperationsNotFound:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
@@ -31,7 +31,7 @@ class CreateManyPullOperations404ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreateManyPullOperations401ApplicationJSON:
+class CreateManyPullOperationsUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -47,11 +47,11 @@ class CreateManyPullOperationsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    create_many_pull_operations_401_application_json_object: Optional[CreateManyPullOperations401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    create_many_pull_operations_404_application_json_object: Optional[CreateManyPullOperations404ApplicationJSON] = dataclasses.field(default=None)
+    not_found: Optional[CreateManyPullOperationsNotFound] = dataclasses.field(default=None)
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[CreateManyPullOperationsUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

@@ -19,7 +19,7 @@ class GetPullOperationRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetPullOperation404ApplicationJSON:
+class GetPullOperationNotFound:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
@@ -34,7 +34,7 @@ class GetPullOperation404ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetPullOperation401ApplicationJSON:
+class GetPullOperationUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -113,13 +113,13 @@ class GetPullOperationResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    get_pull_operation_401_application_json_object: Optional[GetPullOperation401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    get_pull_operation_404_application_json_object: Optional[GetPullOperation404ApplicationJSON] = dataclasses.field(default=None)
+    not_found: Optional[GetPullOperationNotFound] = dataclasses.field(default=None)
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """  
     pull_operation: Optional[GetPullOperationPullOperation] = dataclasses.field(default=None)
     r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[GetPullOperationUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

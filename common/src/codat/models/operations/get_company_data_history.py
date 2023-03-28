@@ -25,7 +25,7 @@ class GetCompanyDataHistoryRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompanyDataHistory404ApplicationJSON:
+class GetCompanyDataHistoryNotFound:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
@@ -40,7 +40,7 @@ class GetCompanyDataHistory404ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompanyDataHistory401ApplicationJSON:
+class GetCompanyDataHistoryUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -53,7 +53,7 @@ class GetCompanyDataHistory401ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompanyDataHistory400ApplicationJSON:
+class GetCompanyDataHistoryMalformedQuery:
     r"""Your `query` parameter was not correctly formed"""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -66,21 +66,21 @@ class GetCompanyDataHistory400ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompanyDataHistoryLinksLinksHypertextReference:
+class GetCompanyDataHistory200ApplicationJSONLinksHypertextReference:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompanyDataHistoryLinksLinks:
+class GetCompanyDataHistory200ApplicationJSONLinks:
     
-    current: GetCompanyDataHistoryLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: GetCompanyDataHistoryLinksLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[GetCompanyDataHistoryLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[GetCompanyDataHistoryLinksLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
+    current: GetCompanyDataHistory200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
+    self_: GetCompanyDataHistory200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
+    next: Optional[GetCompanyDataHistory200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
+    previous: Optional[GetCompanyDataHistory200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
-class GetCompanyDataHistoryLinksPullOperationStatusEnum(str, Enum):
+class GetCompanyDataHistory200ApplicationJSONPullOperationStatusEnum(str, Enum):
     INITIAL = "Initial"
     QUEUED = "Queued"
     FETCHING = "Fetching"
@@ -108,7 +108,7 @@ class GetCompanyDataHistoryLinksPullOperationStatusEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompanyDataHistoryLinksPullOperation:
+class GetCompanyDataHistory200ApplicationJSONPullOperation:
     r"""Information about a queued, in progress or completed pull operation.
     *Formally called `dataset`*
     """
@@ -141,19 +141,19 @@ class GetCompanyDataHistoryLinksPullOperation:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """  
-    status: GetCompanyDataHistoryLinksPullOperationStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})  
+    status: GetCompanyDataHistory200ApplicationJSONPullOperationStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompanyDataHistoryLinks:
-    r"""Codat's Paging Model"""
+class GetCompanyDataHistory200ApplicationJSON:
+    r"""OK"""
     
-    links: GetCompanyDataHistoryLinksLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
+    links: GetCompanyDataHistory200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[GetCompanyDataHistoryLinksPullOperation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
+    results: Optional[list[GetCompanyDataHistory200ApplicationJSONPullOperation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -161,15 +161,15 @@ class GetCompanyDataHistoryResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    links: Optional[GetCompanyDataHistoryLinks] = dataclasses.field(default=None)
+    get_company_data_history_200_application_json_object: Optional[GetCompanyDataHistory200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
-    get_company_data_history_400_application_json_object: Optional[GetCompanyDataHistory400ApplicationJSON] = dataclasses.field(default=None)
+    malformed_query: Optional[GetCompanyDataHistoryMalformedQuery] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""  
-    get_company_data_history_401_application_json_object: Optional[GetCompanyDataHistory401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    get_company_data_history_404_application_json_object: Optional[GetCompanyDataHistory404ApplicationJSON] = dataclasses.field(default=None)
+    not_found: Optional[GetCompanyDataHistoryNotFound] = dataclasses.field(default=None)
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[GetCompanyDataHistoryUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     

@@ -44,8 +44,8 @@ class Settings:
                 res.get_profile_sync_settings_200_application_json_object = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetProfileSyncSettings401ApplicationJSON])
-                res.get_profile_sync_settings_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetProfileSyncSettingsUnauthorized])
+                res.unauthorized = out
 
         return res
 
@@ -71,8 +71,8 @@ class Settings:
                 res.profile = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetSettingsProfile401ApplicationJSON])
-                res.get_settings_profile_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetSettingsProfileUnauthorized])
+                res.unauthorized = out
 
         return res
 
@@ -100,8 +100,8 @@ class Settings:
             pass
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostProfileSyncSettings401ApplicationJSON])
-                res.post_profile_sync_settings_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostProfileSyncSettingsUnauthorized])
+                res.unauthorized = out
 
         return res
 
@@ -131,8 +131,8 @@ class Settings:
                 res.profile = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PutProfile401ApplicationJSON])
-                res.put_profile_401_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PutProfileUnauthorized])
+                res.unauthorized = out
 
         return res
 

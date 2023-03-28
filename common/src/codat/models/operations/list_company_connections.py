@@ -25,7 +25,7 @@ class ListCompanyConnectionsRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanyConnections401ApplicationJSON:
+class ListCompanyConnectionsUnauthorized:
     r"""Your API request was not properly authorized."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -38,7 +38,7 @@ class ListCompanyConnections401ApplicationJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanyConnections400ApplicationJSON:
+class ListCompanyConnectionsMalformedQuery:
     r"""Your `query` parameter was not correctly formed"""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
@@ -187,7 +187,7 @@ class ListCompanyConnectionsConnectionsConnection:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListCompanyConnectionsConnections:
+class Connections:
     r"""OK"""
     
     links: Optional[ListCompanyConnectionsConnectionsLinks] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links'), 'exclude': lambda f: f is None }})  
@@ -202,11 +202,11 @@ class ListCompanyConnectionsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    connections: Optional[ListCompanyConnectionsConnections] = dataclasses.field(default=None)
+    connections: Optional[Connections] = dataclasses.field(default=None)
     r"""OK"""  
-    list_company_connections_400_application_json_object: Optional[ListCompanyConnections400ApplicationJSON] = dataclasses.field(default=None)
+    malformed_query: Optional[ListCompanyConnectionsMalformedQuery] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""  
-    list_company_connections_401_application_json_object: Optional[ListCompanyConnections401ApplicationJSON] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    unauthorized: Optional[ListCompanyConnectionsUnauthorized] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""  
     
