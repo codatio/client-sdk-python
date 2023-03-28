@@ -41,8 +41,8 @@ class Products:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommerceProductCategoriesLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommerceProductCategories200ApplicationJSON])
+                res.list_commerce_product_categories_200_application_json_object = out
 
         return res
 
@@ -65,8 +65,8 @@ class Products:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommerceProductsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommerceProducts200ApplicationJSON])
+                res.list_commerce_products_200_application_json_object = out
 
         return res
 

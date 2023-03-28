@@ -41,8 +41,8 @@ class Payments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommercePaymentMethodsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommercePaymentMethods200ApplicationJSON])
+                res.list_commerce_payment_methods_200_application_json_object = out
 
         return res
 
@@ -65,8 +65,8 @@ class Payments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommercePaymentsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommercePayments200ApplicationJSON])
+                res.list_commerce_payments_200_application_json_object = out
 
         return res
 
