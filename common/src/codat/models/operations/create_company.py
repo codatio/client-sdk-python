@@ -3,55 +3,19 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
-from typing import Any, Optional
+from ..shared import company as shared_company
+from ..shared import errormessage as shared_errormessage
+from typing import Optional
 
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class CreateCompanyRequestBody:
-    
-    name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})  
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class CreateCompanyUnauthorized:
-    r"""Your API request was not properly authorized."""
-    
-    can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
-    correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})  
-    detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})  
-    error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('error'), 'exclude': lambda f: f is None }})  
-    service: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('service'), 'exclude': lambda f: f is None }})  
-    status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class CreateCompany200ApplicationJSON:
-    r"""OK"""
-    
-    created: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created'), 'exclude': lambda f: f is None }})  
-    created_by_user_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdByUserName'), 'exclude': lambda f: f is None }})  
-    data_connections: Optional[list[dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections'), 'exclude': lambda f: f is None }})  
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
-    platform: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platform'), 'exclude': lambda f: f is None }})  
-    redirect: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('redirect'), 'exclude': lambda f: f is None }})  
-    
 
 @dataclasses.dataclass
 class CreateCompanyResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    create_company_200_application_json_object: Optional[CreateCompany200ApplicationJSON] = dataclasses.field(default=None)
+    company: Optional[shared_company.Company] = dataclasses.field(default=None)
     r"""OK"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
-    unauthorized: Optional[CreateCompanyUnauthorized] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""  
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

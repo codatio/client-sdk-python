@@ -21,14 +21,14 @@ s = codat.Codat(
 )
 
 
-req = operations.CreateCompanyRequestBody(
+req = shared.CompanyRequestBody(
     description="unde",
     name="deserunt",
 )
     
 res = s.companies.create_company(req)
 
-if res.create_company_200_application_json_object is not None:
+if res.company is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
@@ -49,40 +49,40 @@ if res.create_company_200_application_json_object is not None:
 
 * `create_data_connection` - Create a data connection
 * `delete_company_connection` - Delete connection
-* `get_company_authorization` - Update authorization
 * `get_company_connection` - Get connection
 * `list_company_connections` - List connections
 * `unlink_company_connection` - Unlink connection
+* `update_connection_authorization` - Update authorization
 
 ### data_status
 
-* `get_companies_company_id_data_status` - Get data status
 * `get_company_data_history` - Get pull operations
+* `get_company_data_status` - Get data status
 * `get_pull_operation` - Get pull operation
 
 ### integrations
 
-* `get_integrations_platform_key` - Get integration
-* `get_integrations_platform_key_branding` - Get branding
+* `get_integration` - Get integration
+* `get_integrations_branding` - Get branding
 * `list_integrations` - List integrations
 
 ### push_data
 
-* `get_companies_company_id_connections_connection_id_push` - List push options
-* `get_companies_company_id_push` - List push operations
-* `get_companies_company_id_push_push_operation_key` - Get push operation
+* `get_company_push_history` - List push operations
+* `get_create_update_model_options_by_data_type` - List push options
+* `get_push_operation` - Get push operation
 
 ### refresh_data
 
-* `create_many_pull_operations` - Queue pull operations
 * `create_pull_operation` - Queue pull operation
+* `refresh_company_data` - Queue pull operations
 
 ### settings
 
+* `get_profile` - Get profile
 * `get_profile_sync_settings` - Get sync settings
-* `get_settings_profile` - Get profile
-* `post_profile_sync_settings` - Update all sync settings
-* `put_profile` - Update profile
+* `update_profile` - Update profile
+* `update_sync_settings` - Update all sync settings
 
 ### webhooks
 

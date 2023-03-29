@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Companies:
@@ -22,7 +22,7 @@ class Companies:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_company(self, request: operations.CreateCompanyRequestBody) -> operations.CreateCompanyResponse:
+    def create_company(self, request: shared.CompanyRequestBody) -> operations.CreateCompanyResponse:
         r"""Create company
         Create a new company
         """
@@ -44,12 +44,12 @@ class Companies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateCompany200ApplicationJSON])
-                res.create_company_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
+                res.company = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateCompanyUnauthorized])
-                res.unauthorized = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -74,8 +74,8 @@ class Companies:
             pass
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompanyUnauthorized])
-                res.unauthorized = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -97,12 +97,12 @@ class Companies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyCompany])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
                 res.company = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyUnauthorized])
-                res.unauthorized = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -125,16 +125,12 @@ class Companies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.Companies])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Companies])
                 res.companies = out
-        elif http_res.status_code == 400:
+        elif http_res.status_code in [400, 401]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompaniesMalformedQuery])
-                res.malformed_query = out
-        elif http_res.status_code == 401:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompaniesUnauthorized])
-                res.unauthorized = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -147,7 +143,7 @@ class Companies:
         url = utils.generate_url(operations.UpdateCompanyRequest, base_url, '/companies/{companyId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "company_request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -160,12 +156,12 @@ class Companies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateCompanyCompany])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
                 res.company = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateCompanyUnauthorized])
-                res.unauthorized = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 

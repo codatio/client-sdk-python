@@ -3,62 +3,19 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
+from ..shared import errormessage as shared_errormessage
+from ..shared import syncsettings as shared_syncsettings
 from typing import Optional
 
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetProfileSyncSettingsUnauthorized:
-    r"""Your API request was not properly authorized."""
-    
-    can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})  
-    correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})  
-    detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})  
-    error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('error'), 'exclude': lambda f: f is None }})  
-    service: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('service'), 'exclude': lambda f: f is None }})  
-    status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetProfileSyncSettings200ApplicationJSONSyncSetting:
-    r"""Describes how often, and how much history, should be fetched for the given data type when a pull operation is queued."""
-    
-    data_type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})  
-    fetch_on_first_link: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fetchOnFirstLink') }})
-    r"""Whether this data type should be queued after a company has authorized a connection."""  
-    sync_order: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncOrder') }})  
-    sync_schedule: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncSchedule') }})
-    r"""Number of hours after which this data type should be refreshed."""  
-    is_locked: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isLocked'), 'exclude': lambda f: f is None }})  
-    months_to_sync: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('monthsToSync'), 'exclude': lambda f: f is None }})
-    r"""Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only."""  
-    sync_from_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncFromUtc'), 'exclude': lambda f: f is None }})
-    r"""Date from which data should be fetched. Set this *or* `syncFromWindow`"""  
-    sync_from_window: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncFromWindow'), 'exclude': lambda f: f is None }})
-    r"""Number of months of data to be fetched. Set this *or* `syncFromUTC`"""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetProfileSyncSettings200ApplicationJSON:
-    r"""OK"""
-    
-    client_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('clientId'), 'exclude': lambda f: f is None }})  
-    overrides_defaults: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overridesDefaults'), 'exclude': lambda f: f is None }})  
-    settings: Optional[list[GetProfileSyncSettings200ApplicationJSONSyncSetting]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('settings'), 'exclude': lambda f: f is None }})  
-    
 
 @dataclasses.dataclass
 class GetProfileSyncSettingsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    get_profile_sync_settings_200_application_json_object: Optional[GetProfileSyncSettings200ApplicationJSON] = dataclasses.field(default=None)
-    r"""OK"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
-    unauthorized: Optional[GetProfileSyncSettingsUnauthorized] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""  
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    sync_settings: Optional[shared_syncsettings.SyncSettings] = dataclasses.field(default=None)
+    r"""OK"""  
     

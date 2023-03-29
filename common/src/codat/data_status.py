@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class DataStatus:
@@ -22,37 +22,6 @@ class DataStatus:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_companies_company_id_data_status(self, request: operations.GetCompaniesCompanyIDDataStatusRequest) -> operations.GetCompaniesCompanyIDDataStatusResponse:
-        r"""Get data status
-        Get the state of each data type for a company
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetCompaniesCompanyIDDataStatusRequest, base_url, '/companies/{companyId}/dataStatus', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetCompaniesCompanyIDDataStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompaniesCompanyIDDataStatus200ApplicationJSON])
-                res.get_companies_company_id_data_status_200_application_json_object = out
-        elif http_res.status_code == 401:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompaniesCompanyIDDataStatusUnauthorized])
-                res.unauthorized = out
-        elif http_res.status_code == 404:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompaniesCompanyIDDataStatusNotFound])
-                res.not_found = out
-
-        return res
-
     def get_company_data_history(self, request: operations.GetCompanyDataHistoryRequest) -> operations.GetCompanyDataHistoryResponse:
         r"""Get pull operations
         Gets the pull operation history (datasets) for a given company.
@@ -72,20 +41,39 @@ class DataStatus:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistory200ApplicationJSON])
-                res.get_company_data_history_200_application_json_object = out
-        elif http_res.status_code == 400:
+                out = utils.unmarshal_json(http_res.text, Optional[shared.DataConnectionHistory])
+                res.data_connection_history = out
+        elif http_res.status_code in [400, 401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistoryMalformedQuery])
-                res.malformed_query = out
-        elif http_res.status_code == 401:
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+
+        return res
+
+    def get_company_data_status(self, request: operations.GetCompanyDataStatusRequest) -> operations.GetCompanyDataStatusResponse:
+        r"""Get data status
+        Get the state of each data type for a company
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetCompanyDataStatusRequest, base_url, '/companies/{companyId}/dataStatus', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCompanyDataStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistoryUnauthorized])
-                res.unauthorized = out
-        elif http_res.status_code == 404:
+                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.DataStatus]])
+                res.data_status_response = out
+        elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyDataHistoryNotFound])
-                res.not_found = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -107,16 +95,12 @@ class DataStatus:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPullOperationPullOperation])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PullOperation])
                 res.pull_operation = out
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPullOperationUnauthorized])
-                res.unauthorized = out
-        elif http_res.status_code == 404:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPullOperationNotFound])
-                res.not_found = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 

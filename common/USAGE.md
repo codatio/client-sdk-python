@@ -10,14 +10,14 @@ s = codat.Codat(
 )
 
 
-req = operations.CreateCompanyRequestBody(
+req = shared.CompanyRequestBody(
     description="unde",
     name="deserunt",
 )
     
 res = s.companies.create_company(req)
 
-if res.create_company_200_application_json_object is not None:
+if res.company is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

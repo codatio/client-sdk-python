@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Connections:
@@ -44,8 +44,12 @@ class Connections:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateDataConnectionConnection])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Connection])
                 res.connection = out
+        elif http_res.status_code == 404:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -68,41 +72,10 @@ class Connections:
         
         if http_res.status_code == 200:
             pass
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompanyConnectionUnauthorized])
-                res.unauthorized = out
-        elif http_res.status_code == 404:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompanyConnectionNotFound])
-                res.not_found = out
-
-        return res
-
-    def get_company_authorization(self, request: operations.GetCompanyAuthorizationRequest) -> operations.GetCompanyAuthorizationResponse:
-        r"""Update authorization
-        Update data connection's authorization.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetCompanyAuthorizationRequest, base_url, '/companies/{companyId}/connections/{connectionId}/authorization', request)
-        
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        
-        client = self._security_client
-        
-        http_res = client.request('PUT', url, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetCompanyAuthorizationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyAuthorizationConnection])
-                res.connection = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -124,16 +97,12 @@ class Connections:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyConnectionConnection])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Connection])
                 res.connection = out
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyConnectionUnauthorized])
-                res.unauthorized = out
-        elif http_res.status_code == 404:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyConnectionNotFound])
-                res.not_found = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -156,16 +125,12 @@ class Connections:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.Connections])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Connections])
                 res.connections = out
-        elif http_res.status_code == 400:
+        elif http_res.status_code in [400, 401]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnectionsMalformedQuery])
-                res.malformed_query = out
-        elif http_res.status_code == 401:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCompanyConnectionsUnauthorized])
-                res.unauthorized = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -191,16 +156,39 @@ class Connections:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UnlinkCompanyConnectionConnection])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Connection])
                 res.connection = out
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [400, 401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UnlinkCompanyConnectionUnauthorized])
-                res.unauthorized = out
-        elif http_res.status_code == 404:
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+
+        return res
+
+    def update_connection_authorization(self, request: operations.UpdateConnectionAuthorizationRequest) -> operations.UpdateConnectionAuthorizationResponse:
+        r"""Update authorization
+        Update data connection's authorization.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.UpdateConnectionAuthorizationRequest, base_url, '/companies/{companyId}/connections/{connectionId}/authorization', request)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        
+        client = self._security_client
+        
+        http_res = client.request('PUT', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.UpdateConnectionAuthorizationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UnlinkCompanyConnectionNotFound])
-                res.not_found = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Connection])
+                res.connection = out
 
         return res
 

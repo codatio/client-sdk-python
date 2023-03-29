@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class RefreshData:
@@ -22,35 +22,6 @@ class RefreshData:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_many_pull_operations(self, request: operations.CreateManyPullOperationsRequest) -> operations.CreateManyPullOperationsResponse:
-        r"""Queue pull operations
-        Refreshes all data types marked Fetch on first link.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.CreateManyPullOperationsRequest, base_url, '/companies/{companyId}/data/all', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.CreateManyPullOperationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 204:
-            pass
-        elif http_res.status_code == 401:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateManyPullOperationsUnauthorized])
-                res.unauthorized = out
-        elif http_res.status_code == 404:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateManyPullOperationsNotFound])
-                res.not_found = out
-
-        return res
-
     def create_pull_operation(self, request: operations.CreatePullOperationRequest) -> operations.CreatePullOperationResponse:
         r"""Queue pull operation
         Queue a single pull operation for the given company and data type.
@@ -72,16 +43,37 @@ class RefreshData:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePullOperationPullOperation])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PullOperation])
                 res.pull_operation = out
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePullOperationUnauthorized])
-                res.unauthorized = out
-        elif http_res.status_code == 404:
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+
+        return res
+
+    def refresh_company_data(self, request: operations.RefreshCompanyDataRequest) -> operations.RefreshCompanyDataResponse:
+        r"""Queue pull operations
+        Refreshes all data types marked Fetch on first link.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.RefreshCompanyDataRequest, base_url, '/companies/{companyId}/data/all', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RefreshCompanyDataResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 204:
+            pass
+        elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePullOperationNotFound])
-                res.not_found = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 

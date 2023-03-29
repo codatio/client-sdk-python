@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Webhooks:
@@ -22,7 +22,7 @@ class Webhooks:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_rule(self, request: operations.CreateRuleWebhook) -> operations.CreateRuleResponse:
+    def create_rule(self, request: shared.Rule) -> operations.CreateRuleResponse:
         r"""Create webhook
         Create a new webhook configuration
         """
@@ -44,12 +44,12 @@ class Webhooks:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateRuleWebhook])
-                res.webhook = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Rule])
+                res.rule = out
         elif http_res.status_code == 401:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateRuleUnauthorized])
-                res.unauthorized = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -71,16 +71,12 @@ class Webhooks:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhookWebhook])
-                res.webhook = out
-        elif http_res.status_code == 401:
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Rule])
+                res.rule = out
+        elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhookUnauthorized])
-                res.unauthorized = out
-        elif http_res.status_code == 404:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhookNotFound])
-                res.not_found = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
@@ -103,16 +99,12 @@ class Webhooks:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRules200ApplicationJSON])
-                res.list_rules_200_application_json_object = out
-        elif http_res.status_code == 400:
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Rules])
+                res.rules = out
+        elif http_res.status_code in [400, 401]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRulesMalformedQuery])
-                res.malformed_query = out
-        elif http_res.status_code == 401:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRulesUnauthorized])
-                res.unauthorized = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
 
         return res
 
