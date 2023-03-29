@@ -67,7 +67,10 @@ class ListCommerceCustomers200ApplicationJSONSourceModifiedDateAddress:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListCommerceCustomers200ApplicationJSONSourceModifiedDate:
-    r"""Represents a customer who has placed an order in the commerce system\""""
+    r"""When a customer places an order with the connected commerce store their details are added to the Customers dataset. You can use the data from the Customers endpoints to calculate key metrics, such as customer churn.
+    
+    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-customers) for this data type.
+    """
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique, persistent identifier for this record"""  

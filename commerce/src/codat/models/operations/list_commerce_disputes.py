@@ -74,6 +74,15 @@ class ListCommerceDisputes200ApplicationJSONSourceModifiedDateStatusEnum(str, En
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListCommerceDisputes200ApplicationJSONSourceModifiedDate:
+    r"""A customer may file a payment dispute with their bank or other card issuer when they're unsatisfied with their purchase or believe they have been charged incorrectly. For example:  
+    - They didn't receive an order.  
+    - The product they received was different to the commerce store's description.  
+    - They've been the victim of online fraud.  
+    
+    You can use data from the Disputes endpoints to calculate key metrics, such as the number of chargebacks.
+    
+    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for this data type.
+    """
     
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
     r"""Currency of the disputed transaction."""  

@@ -77,6 +77,8 @@ class GetCommerceInfoSourceModifiedDate:
     r"""In the Codat system, company information includes standard commercial details about 
     a linked company, such as their address, phone number, and company registration.
     
+    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=companyInfo) for this data type.
+    
     """
     
     account_balances: Optional[list[GetCommerceInfoSourceModifiedDateAccountBalances]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountBalances'), 'exclude': lambda f: f is None }})
@@ -84,7 +86,7 @@ class GetCommerceInfoSourceModifiedDate:
     addresses: Optional[list[GetCommerceInfoSourceModifiedDateAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
     r"""Addresses associated with the company"""  
     base_currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('baseCurrency'), 'exclude': lambda f: f is None }})
-    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code. e.g. _GBP_.
+    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
     

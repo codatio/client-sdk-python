@@ -177,15 +177,9 @@ class ListCommerceOrders200ApplicationJSONSourceModifiedDateServiceCharges:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListCommerceOrders200ApplicationJSONSourceModifiedDate:
-    r"""Orders contain the transaction details for all products sold by the company, and include details of any payments, service charges, or refunds related to each order.
+    r"""Orders contain the transaction details for all products sold by the company, and include details of any payments, service charges, or refunds related to each order. You can use data from the Orders endpoints to calculate key metrics, such as gross sales values and monthly recurring revenue (MRR).
     
-    From the Orders endpoints you can retrieve:
-    
-    A list of all the orders for a commerce company:
-    `GET /companies/{companyId}/connections/{connectionId}/data/commerce-orders`.
-    The details of an individual order:
-    `GET /companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}`.
-    Note that for refunds `quantity` is a negative value and `unitPrice` is a positive value.
+    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-orders) for this data type.
     
     """
     

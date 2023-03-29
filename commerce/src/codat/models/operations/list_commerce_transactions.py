@@ -57,7 +57,16 @@ class ListCommerceTransactions200ApplicationJSONSourceModifiedDateRecordRef:
     type: ListCommerceTransactions200ApplicationJSONSourceModifiedDateRecordRefTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})  
     
 class ListCommerceTransactions200ApplicationJSONSourceModifiedDateTypeEnum(str, Enum):
-    r"""The type of the platform transaction"""
+    r"""The type of the platform transaction:  
+    - `Unknown`  
+    - `FailedPayout` — Failed transfer of funds from the seller's merchant account to their bank account.  
+    - `Payment` — Credit and debit card payments.  
+    - `PaymentFee` — Payment provider's fee on each card payment.  
+    - `PaymentFeeRefund` — Payment provider's fee that has been refunded to the seller.  
+    - `Payout` — Transfer of funds from the seller's merchant account to their bank account.  
+    - `Refund` — Refunds to a customer's credit or debit card.  
+    - `Transfer` — Secure transfer of funds to the seller's bank account.  
+    """
     PAYMENT = "Payment"
     REFUND = "Refund"
     PAYOUT = "Payout"
@@ -71,14 +80,24 @@ class ListCommerceTransactions200ApplicationJSONSourceModifiedDateTypeEnum(str, 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListCommerceTransactions200ApplicationJSONSourceModifiedDate:
-    r"""A financial transaction recorded in the commerce or point of sale system"""
+    r"""Details of all financial transactions recorded in the commerce or point of sale system are added to the Transactions data type. For example, payments, service charges, and fees.
+    
+    You can use data from the Transactions endpoints to calculate key metrics, such as:  
+    - Transaction volumes  
+    - Average transaction volume  
+    - Average transaction value  
+    - Returns  
+    - Payouts
+    
+    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-transactions) for this data type.
+    """
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique, persistent identifier for this record"""  
     created_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdDate'), 'exclude': lambda f: f is None }})
     r"""The date the entity was created."""  
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code. e.g. _GBP_.
+    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
     
@@ -99,7 +118,16 @@ class ListCommerceTransactions200ApplicationJSONSourceModifiedDate:
     transaction_source_ref: Optional[ListCommerceTransactions200ApplicationJSONSourceModifiedDateRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionSourceRef'), 'exclude': lambda f: f is None }})
     r"""Link to the source event which triggered this transaction"""  
     type: Optional[ListCommerceTransactions200ApplicationJSONSourceModifiedDateTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
-    r"""The type of the platform transaction"""  
+    r"""The type of the platform transaction:  
+    - `Unknown`  
+    - `FailedPayout` — Failed transfer of funds from the seller's merchant account to their bank account.  
+    - `Payment` — Credit and debit card payments.  
+    - `PaymentFee` — Payment provider's fee on each card payment.  
+    - `PaymentFeeRefund` — Payment provider's fee that has been refunded to the seller.  
+    - `Payout` — Transfer of funds from the seller's merchant account to their bank account.  
+    - `Refund` — Refunds to a customer's credit or debit card.  
+    - `Transfer` — Secure transfer of funds to the seller's bank account.  
+    """  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

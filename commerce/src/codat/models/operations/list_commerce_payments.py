@@ -64,7 +64,14 @@ class ListCommercePayments200ApplicationJSONSourceModifiedDateStatusEnum(str, En
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListCommercePayments200ApplicationJSONSourceModifiedDate:
-    r"""A payment made in a commerce platform"""
+    r"""Payments contain details of all payments made by customers to a company, including: amounts, currency used, payment method, payment provider, and payment status.
+    
+    Refunds are recorded as separate, negative payments. Note that a refund can only occur in relation to a payment that has been completed (i.e. has a status of `Paid`). When a customer cancels an order _before_ a payment has been completed, the payment shows as `Cancelled`.
+    
+    You can use data from the Payments endpoints to calculate key metrics, such as gross sales and monthly recurring revenue (MRR).
+    
+    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-payments) for this data type.
+    """
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique, persistent identifier for this record"""  
