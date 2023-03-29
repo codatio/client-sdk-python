@@ -22,8 +22,10 @@ class GetInvoiceRequest:
 class GetInvoiceSourceModifiedDateCustomerRef:
     r"""Reference to the customer the invoice has been issued to."""
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})  
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""`id` from the Customers data type"""  
+    company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})
+    r"""`customerName` from the Customer data type"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -42,8 +44,10 @@ class GetInvoiceSourceModifiedDateLineItemsAccountRef:
 class GetInvoiceSourceModifiedDateLineItemsItemRef:
     r"""Reference to the item the line is linked to."""
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""Unique identifier for the item in the accounting platform."""  
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    r"""Name of the item in the accounting platform."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -54,9 +58,9 @@ class GetInvoiceSourceModifiedDateLineItemsTaxRateRef:
     effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
     r"""Applicable tax rate."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' from the 'taxRates' data type."""  
+    r"""Unique identifier for the tax rate in the accounting platform."""  
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""'name' from the 'taxRates' data type."""  
+    r"""Name of the tax rate in the accounting platform."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -72,8 +76,10 @@ class GetInvoiceSourceModifiedDateLineItemsTrackingCategoryRefs:
 @dataclasses.dataclass
 class GetInvoiceSourceModifiedDateLineItemsTrackingCustomerRef:
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})  
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""`id` from the Customers data type"""  
+    company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})
+    r"""`customerName` from the Customer data type"""  
     
 class GetInvoiceSourceModifiedDateLineItemsTrackingIsBilledToEnum(str, Enum):
     UNKNOWN = "Unknown"
@@ -303,9 +309,13 @@ class GetInvoiceSourceModifiedDate:
     
     > **Invoice PDF downloads**  
     >
-    > You can <a className=\"external\" href=\"https://api.codat.io/swagger/index.html#/Invoices/get_companies__companyId__data_invoices__invoiceId__pdf\" target=\"_blank\">download a PDF version</a> of an invoice for supported integrations.
+    > You can <a className=\"external\" href=\"https://docs.codat.io/accounting-api#/operations/get-invoice-pdf\" target=\"_blank\">download a PDF version</a> of an invoice for supported integrations.
     > 
     > The filename will be invoice-{number}.pdf.
+    
+    > **Referencing an invoice in Sage 50 and ClearBooks**
+    >
+    > In Sage 50 and ClearBooks, you may prefer to use the **invoiceNumber** to identify an invoice rather than the invoice **id**. Each time a draft invoice is submitted or printed, the draft **id** becomes void and a submitted invoice with a new **id** exists in its place. In both platforms, the **invoiceNumber** should remain the same.
     """
     
     amount_due: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amountDue') }})

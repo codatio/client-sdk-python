@@ -69,6 +69,12 @@ class ListTrackingCategories200ApplicationJSONSourceModifiedDate:
     - Assign invoices, bills, credit notes, or bill credit notes to one or more categories.
     - View the categories that a transaction belongs to.
     - View all transactions in a tracking category.
+    
+    > **Example use case**
+    >
+    > Monitor the budget for your annual conference using a tracking category called 'AnnualConference2020' with the **type** set to **Costing**.
+    
+    If a tracking category has a parent category, the ID of that parent category is displayed. There is also a `hasChildren` field that shows whether there are child subcategories nested beneath. 
     """
     
     has_children: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasChildren'), 'exclude': lambda f: f is None }})

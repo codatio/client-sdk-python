@@ -72,13 +72,7 @@ class CreateTransferSourceModifiedDateTrackingCategoryRefs:
 class CreateTransferSourceModifiedDate:
     r"""> View the coverage for transfers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers\" target=\"_blank\">Data coverage explorer</a>.
     
-    From the **Transfers** endpoints, you can:
-    
-    - [Retrieve a list of all transfers for a specified company](https://api.codat.io/swagger/index.html#/Transfers/get_companies__companyId__connections__connectionId__data_transfers)
-    - [Retrieve a single transfer for a specified company](https://api.codat.io/swagger/index.html#/Transfers/get_companies__companyId__connections__connectionId__data_transfers__transferId_) 
-    - [Add a new transfer for a specified company](https://api.codat.io/swagger/index.html#/Transfers/post_companies__companyId__connections__connectionId__push_transfers) 
-    
-    **Transfers** is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
+    A transfer records the movement of money between two bank accounts, or between a bank account and a nominal account. It is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
     """
     
     contact_ref: Optional[CreateTransferSourceModifiedDateContactRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
@@ -200,13 +194,7 @@ class CreateTransfer200ApplicationJSONSourceModifiedDateTrackingCategoryRefs:
 class CreateTransfer200ApplicationJSONSourceModifiedDate:
     r"""> View the coverage for transfers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers\" target=\"_blank\">Data coverage explorer</a>.
     
-    From the **Transfers** endpoints, you can:
-    
-    - [Retrieve a list of all transfers for a specified company](https://api.codat.io/swagger/index.html#/Transfers/get_companies__companyId__connections__connectionId__data_transfers)
-    - [Retrieve a single transfer for a specified company](https://api.codat.io/swagger/index.html#/Transfers/get_companies__companyId__connections__connectionId__data_transfers__transferId_) 
-    - [Add a new transfer for a specified company](https://api.codat.io/swagger/index.html#/Transfers/post_companies__companyId__connections__connectionId__push_transfers) 
-    
-    **Transfers** is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
+    A transfer records the movement of money between two bank accounts, or between a bank account and a nominal account. It is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
     """
     
     contact_ref: Optional[CreateTransfer200ApplicationJSONSourceModifiedDateContactRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
@@ -232,6 +220,51 @@ class CreateTransfer200ApplicationJSONSourceModifiedDate:
     tracking_category_refs: Optional[list[CreateTransfer200ApplicationJSONSourceModifiedDateTrackingCategoryRefs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
     r"""Reference to the tracking categories this transfer is being tracked against."""  
     
+class CreateTransfer200ApplicationJSONDataTypeEnum(str, Enum):
+    r"""The type of data being pushed, eg invoices, customers."""
+    ACCOUNT_TRANSACTIONS = "accountTransactions"
+    BALANCE_SHEET = "balanceSheet"
+    BANK_ACCOUNTS = "bankAccounts"
+    BANK_TRANSACTIONS = "bankTransactions"
+    BILL_CREDIT_NOTES = "billCreditNotes"
+    BILL_PAYMENTS = "billPayments"
+    BILLS = "bills"
+    CASH_FLOW_STATEMENT = "cashFlowStatement"
+    CHART_OF_ACCOUNTS = "chartOfAccounts"
+    COMPANY = "company"
+    CREDIT_NOTES = "creditNotes"
+    CUSTOMERS = "customers"
+    DIRECT_COSTS = "directCosts"
+    DIRECT_INCOMES = "directIncomes"
+    INVOICES = "invoices"
+    ITEMS = "items"
+    JOURNAL_ENTRIES = "journalEntries"
+    JOURNALS = "journals"
+    PAYMENT_METHODS = "paymentMethods"
+    PAYMENTS = "payments"
+    PROFIT_AND_LOSS = "profitAndLoss"
+    PURCHASE_ORDERS = "purchaseOrders"
+    SALES_ORDERS = "salesOrders"
+    SUPPLIERS = "suppliers"
+    TAX_RATES = "taxRates"
+    TRACKING_CATEGORIES = "trackingCategories"
+    TRANSFERS = "transfers"
+    BANKING_ACCOUNT_BALANCES = "banking-accountBalances"
+    BANKING_ACCOUNTS = "banking-accounts"
+    BANKING_TRANSACTION_CATEGORIES = "banking-transactionCategories"
+    BANKING_TRANSACTIONS = "banking-transactions"
+    COMMERCE_COMPANY_INFO = "commerce-companyInfo"
+    COMMERCE_CUSTOMERS = "commerce-customers"
+    COMMERCE_DISPUTES = "commerce-disputes"
+    COMMERCE_LOCATIONS = "commerce-locations"
+    COMMERCE_ORDERS = "commerce-orders"
+    COMMERCE_PAYMENT_METHODS = "commerce-paymentMethods"
+    COMMERCE_PAYMENTS = "commerce-payments"
+    COMMERCE_PRODUCT_CATEGORIES = "commerce-productCategories"
+    COMMERCE_PRODUCTS = "commerce-products"
+    COMMERCE_TAX_COMPONENTS = "commerce-taxComponents"
+    COMMERCE_TRANSACTIONS = "commerce-transactions"
+
 class CreateTransfer200ApplicationJSONStatusEnum(str, Enum):
     r"""The status of the push operation."""
     PENDING = "Pending"
@@ -280,15 +313,9 @@ class CreateTransfer200ApplicationJSON:
     data: Optional[CreateTransfer200ApplicationJSONSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     r"""> View the coverage for transfers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers\" target=\"_blank\">Data coverage explorer</a>.
     
-    From the **Transfers** endpoints, you can:
-    
-    - [Retrieve a list of all transfers for a specified company](https://api.codat.io/swagger/index.html#/Transfers/get_companies__companyId__connections__connectionId__data_transfers)
-    - [Retrieve a single transfer for a specified company](https://api.codat.io/swagger/index.html#/Transfers/get_companies__companyId__connections__connectionId__data_transfers__transferId_) 
-    - [Add a new transfer for a specified company](https://api.codat.io/swagger/index.html#/Transfers/post_companies__companyId__connections__connectionId__push_transfers) 
-    
-    **Transfers** is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
+    A transfer records the movement of money between two bank accounts, or between a bank account and a nominal account. It is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
     """  
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    data_type: Optional[CreateTransfer200ApplicationJSONDataTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     r"""The type of data being pushed, eg invoices, customers."""  
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})  
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is None }})  

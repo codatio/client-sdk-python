@@ -89,13 +89,11 @@ class CreateAccountSourceModifiedDateValidDataTypeLinks:
 class CreateAccountSourceModifiedDate:
     r"""> **Language tip:** Accounts are also referred to as **chart of accounts**, **nominal accounts**, and **general ledger**.
     
-    Explore the <a className=\"external\" href=\"https://api.codat.io/swagger/index.html#/Accounts\" target=\"_blank\">Accounts</a> endpoints in Swagger.
-    
     View the coverage for accounts in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
     
-    Accounts are the categories a business uses to record accounting transactions. From the Accounts endpoints, you can retrieve [a list of all accounts for a specified company](https://api.codat.io/swagger/index.html#/Accounts/Accounts_List). 
+    Accounts are the categories a business uses to record accounting transactions. From the Accounts endpoints, you can retrieve a list of all accounts for a specified company. 
     
     The categories for an account include:
       * Asset
@@ -118,7 +116,7 @@ class CreateAccountSourceModifiedDate:
     type: CreateAccountSourceModifiedDateTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Type of account"""  
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code. e.g. _GBP_.
+    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
     
@@ -267,13 +265,11 @@ class CreateAccount200ApplicationJSONSourceModifiedDateValidDataTypeLinks:
 class CreateAccount200ApplicationJSONSourceModifiedDate:
     r"""> **Language tip:** Accounts are also referred to as **chart of accounts**, **nominal accounts**, and **general ledger**.
     
-    Explore the <a className=\"external\" href=\"https://api.codat.io/swagger/index.html#/Accounts\" target=\"_blank\">Accounts</a> endpoints in Swagger.
-    
     View the coverage for accounts in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
     
-    Accounts are the categories a business uses to record accounting transactions. From the Accounts endpoints, you can retrieve [a list of all accounts for a specified company](https://api.codat.io/swagger/index.html#/Accounts/Accounts_List). 
+    Accounts are the categories a business uses to record accounting transactions. From the Accounts endpoints, you can retrieve a list of all accounts for a specified company. 
     
     The categories for an account include:
       * Asset
@@ -296,7 +292,7 @@ class CreateAccount200ApplicationJSONSourceModifiedDate:
     type: CreateAccount200ApplicationJSONSourceModifiedDateTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Type of account"""  
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code. e.g. _GBP_.
+    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
     
@@ -331,6 +327,51 @@ class CreateAccount200ApplicationJSONSourceModifiedDate:
     valid_datatype_links: Optional[list[CreateAccount200ApplicationJSONSourceModifiedDateValidDataTypeLinks]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validDatatypeLinks'), 'exclude': lambda f: f is None }})
     r"""'The validDatatypeLinks can be used to determine whether an account can be correctly mapped to another object; for example, accounts with a `type` of `income` might only support being used on an Invoice and Direct Income. For more information, see Valid Data Type Links.'"""  
     
+class CreateAccount200ApplicationJSONDataTypeEnum(str, Enum):
+    r"""The type of data being pushed, eg invoices, customers."""
+    ACCOUNT_TRANSACTIONS = "accountTransactions"
+    BALANCE_SHEET = "balanceSheet"
+    BANK_ACCOUNTS = "bankAccounts"
+    BANK_TRANSACTIONS = "bankTransactions"
+    BILL_CREDIT_NOTES = "billCreditNotes"
+    BILL_PAYMENTS = "billPayments"
+    BILLS = "bills"
+    CASH_FLOW_STATEMENT = "cashFlowStatement"
+    CHART_OF_ACCOUNTS = "chartOfAccounts"
+    COMPANY = "company"
+    CREDIT_NOTES = "creditNotes"
+    CUSTOMERS = "customers"
+    DIRECT_COSTS = "directCosts"
+    DIRECT_INCOMES = "directIncomes"
+    INVOICES = "invoices"
+    ITEMS = "items"
+    JOURNAL_ENTRIES = "journalEntries"
+    JOURNALS = "journals"
+    PAYMENT_METHODS = "paymentMethods"
+    PAYMENTS = "payments"
+    PROFIT_AND_LOSS = "profitAndLoss"
+    PURCHASE_ORDERS = "purchaseOrders"
+    SALES_ORDERS = "salesOrders"
+    SUPPLIERS = "suppliers"
+    TAX_RATES = "taxRates"
+    TRACKING_CATEGORIES = "trackingCategories"
+    TRANSFERS = "transfers"
+    BANKING_ACCOUNT_BALANCES = "banking-accountBalances"
+    BANKING_ACCOUNTS = "banking-accounts"
+    BANKING_TRANSACTION_CATEGORIES = "banking-transactionCategories"
+    BANKING_TRANSACTIONS = "banking-transactions"
+    COMMERCE_COMPANY_INFO = "commerce-companyInfo"
+    COMMERCE_CUSTOMERS = "commerce-customers"
+    COMMERCE_DISPUTES = "commerce-disputes"
+    COMMERCE_LOCATIONS = "commerce-locations"
+    COMMERCE_ORDERS = "commerce-orders"
+    COMMERCE_PAYMENT_METHODS = "commerce-paymentMethods"
+    COMMERCE_PAYMENTS = "commerce-payments"
+    COMMERCE_PRODUCT_CATEGORIES = "commerce-productCategories"
+    COMMERCE_PRODUCTS = "commerce-products"
+    COMMERCE_TAX_COMPONENTS = "commerce-taxComponents"
+    COMMERCE_TRANSACTIONS = "commerce-transactions"
+
 class CreateAccount200ApplicationJSONStatusEnum(str, Enum):
     r"""The status of the push operation."""
     PENDING = "Pending"
@@ -379,13 +420,11 @@ class CreateAccount200ApplicationJSON:
     data: Optional[CreateAccount200ApplicationJSONSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     r"""> **Language tip:** Accounts are also referred to as **chart of accounts**, **nominal accounts**, and **general ledger**.
     
-    Explore the <a className=\"external\" href=\"https://api.codat.io/swagger/index.html#/Accounts\" target=\"_blank\">Accounts</a> endpoints in Swagger.
-    
     View the coverage for accounts in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
     
-    Accounts are the categories a business uses to record accounting transactions. From the Accounts endpoints, you can retrieve [a list of all accounts for a specified company](https://api.codat.io/swagger/index.html#/Accounts/Accounts_List). 
+    Accounts are the categories a business uses to record accounting transactions. From the Accounts endpoints, you can retrieve a list of all accounts for a specified company. 
     
     The categories for an account include:
       * Asset
@@ -400,7 +439,7 @@ class CreateAccount200ApplicationJSON:
     > 
     > This approach gives a true representation of the company's accounts whilst preventing distorting financials such as a company's profit and loss and balance sheet reports.
     """  
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    data_type: Optional[CreateAccount200ApplicationJSONDataTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     r"""The type of data being pushed, eg invoices, customers."""  
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})  
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is None }})  

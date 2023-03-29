@@ -15,6 +15,28 @@ class GetCreateChartOfAccountsModelRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
     
+class GetCreateChartOfAccountsModelPushOptionPushOptionChoiceOptionTypeEnum(str, Enum):
+    ARRAY = "Array"
+    OBJECT = "Object"
+    STRING = "String"
+    NUMBER = "Number"
+    BOOLEAN = "Boolean"
+    DATE_TIME = "DateTime"
+    FILE = "File"
+    MULTI_PART = "MultiPart"
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class GetCreateChartOfAccountsModelPushOptionPushOptionChoice:
+    
+    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
+    display_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('displayName'), 'exclude': lambda f: f is None }})  
+    required: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('required'), 'exclude': lambda f: f is None }})  
+    type: Optional[GetCreateChartOfAccountsModelPushOptionPushOptionChoiceOptionTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})  
+    value: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value'), 'exclude': lambda f: f is None }})
+    r"""Allowed value for field."""  
+    
 class GetCreateChartOfAccountsModelPushOptionPushOptionPropertyPushOptionChoiceOptionTypeEnum(str, Enum):
     ARRAY = "Array"
     OBJECT = "Object"
@@ -275,6 +297,23 @@ class GetCreateChartOfAccountsModelPushOptionOptionTypeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
+class GetCreateChartOfAccountsModelPushOptionPushValidationInfoPushFieldValidation:
+    
+    details: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details') }})  
+    field: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('field'), 'exclude': lambda f: f is None }})  
+    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ref'), 'exclude': lambda f: f is None }})  
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class GetCreateChartOfAccountsModelPushOptionPushValidationInfo:
+    
+    information: Optional[list[GetCreateChartOfAccountsModelPushOptionPushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('information'), 'exclude': lambda f: f is None }})  
+    warnings: Optional[list[GetCreateChartOfAccountsModelPushOptionPushValidationInfoPushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings'), 'exclude': lambda f: f is None }})  
+    
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
 class GetCreateChartOfAccountsModelPushOption:
     r"""OK"""
     
@@ -282,7 +321,9 @@ class GetCreateChartOfAccountsModelPushOption:
     required: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('required') }})  
     type: GetCreateChartOfAccountsModelPushOptionOptionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
+    options: Optional[list[GetCreateChartOfAccountsModelPushOptionPushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('options'), 'exclude': lambda f: f is None }})  
     properties: Optional[dict[str, GetCreateChartOfAccountsModelPushOptionPushOptionProperty]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('properties'), 'exclude': lambda f: f is None }})  
+    validation: Optional[GetCreateChartOfAccountsModelPushOptionPushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass

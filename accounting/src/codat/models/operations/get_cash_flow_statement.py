@@ -90,7 +90,7 @@ class GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLine:
 class GetCashFlowStatement200ApplicationJSONCashFlowStatement:
     r"""> View the coverage for cash flow statement in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\" target=\"_blank\">Data coverage explorer</a>.
     
-    > ** Operating activities only**  
+    > **Operating activities only**  
     > 
     > Currently, the cash flow statement shows cash that flows into and out of the company from operating activities *only*. Operating activities generate cash from the sale of goods or services.
     
@@ -141,7 +141,7 @@ class GetCashFlowStatement200ApplicationJSON:
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
     
-    > 📘 Time zones
+    > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
@@ -162,7 +162,7 @@ class GetCashFlowStatement200ApplicationJSON:
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
     
-    > 📘 Time zones
+    > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.

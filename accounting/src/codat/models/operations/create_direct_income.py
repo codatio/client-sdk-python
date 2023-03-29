@@ -34,8 +34,10 @@ class CreateDirectIncomeSourceModifiedDateLineItemsAccountRef:
 class CreateDirectIncomeSourceModifiedDateLineItemsItemRef:
     r"""Reference to the product, service type, or inventory item to which the direct cost is linked."""
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""Unique identifier for the item in the accounting platform."""  
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    r"""Name of the item in the accounting platform."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -46,9 +48,9 @@ class CreateDirectIncomeSourceModifiedDateLineItemsTaxRateRef:
     effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
     r"""Applicable tax rate."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' from the 'taxRates' data type."""  
+    r"""Unique identifier for the tax rate in the accounting platform."""  
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""'name' from the 'taxRates' data type."""  
+    r"""Name of the tax rate in the accounting platform."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -229,12 +231,6 @@ class CreateDirectIncomeSourceModifiedDate:
     - Refunding an item in cash to a contact.
     - Depositing money into a bank account.
     
-    From the Direct Incomes endpoints, you can: 
-    
-    - [Get a list of all direct incomes for a specific company](https://api-uat.codat.io/swagger/index.html#/DirectIncomes/get_companies__companyId__connections__connectionId__data_directIncomes)
-    - [Get a single direct income for a specific company and connection](https://api-uat.codat.io/swagger/index.html#/DirectIncomes/get_companies__companyId__connections__connectionId__data_directIncomes__directIncomeId_)
-    - [Add a new direct income to a specific company's accounting package](https://api-uat.codat.io/swagger/index.html#/DirectIncomes/post_companies__companyId__connections__connectionId__push_directIncomes)
-    
     Direct incomes is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
     
     """
@@ -351,8 +347,10 @@ class CreateDirectIncome200ApplicationJSONSourceModifiedDateLineItemsAccountRef:
 class CreateDirectIncome200ApplicationJSONSourceModifiedDateLineItemsItemRef:
     r"""Reference to the product, service type, or inventory item to which the direct cost is linked."""
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""Unique identifier for the item in the accounting platform."""  
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    r"""Name of the item in the accounting platform."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -363,9 +361,9 @@ class CreateDirectIncome200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef:
     effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
     r"""Applicable tax rate."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' from the 'taxRates' data type."""  
+    r"""Unique identifier for the tax rate in the accounting platform."""  
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""'name' from the 'taxRates' data type."""  
+    r"""Name of the tax rate in the accounting platform."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -546,12 +544,6 @@ class CreateDirectIncome200ApplicationJSONSourceModifiedDate:
     - Refunding an item in cash to a contact.
     - Depositing money into a bank account.
     
-    From the Direct Incomes endpoints, you can: 
-    
-    - [Get a list of all direct incomes for a specific company](https://api-uat.codat.io/swagger/index.html#/DirectIncomes/get_companies__companyId__connections__connectionId__data_directIncomes)
-    - [Get a single direct income for a specific company and connection](https://api-uat.codat.io/swagger/index.html#/DirectIncomes/get_companies__companyId__connections__connectionId__data_directIncomes__directIncomeId_)
-    - [Add a new direct income to a specific company's accounting package](https://api-uat.codat.io/swagger/index.html#/DirectIncomes/post_companies__companyId__connections__connectionId__push_directIncomes)
-    
     Direct incomes is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
     
     """
@@ -609,6 +601,51 @@ class CreateDirectIncome200ApplicationJSONSourceModifiedDate:
     supplemental_data: Optional[CreateDirectIncome200ApplicationJSONSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  
     
+class CreateDirectIncome200ApplicationJSONDataTypeEnum(str, Enum):
+    r"""The type of data being pushed, eg invoices, customers."""
+    ACCOUNT_TRANSACTIONS = "accountTransactions"
+    BALANCE_SHEET = "balanceSheet"
+    BANK_ACCOUNTS = "bankAccounts"
+    BANK_TRANSACTIONS = "bankTransactions"
+    BILL_CREDIT_NOTES = "billCreditNotes"
+    BILL_PAYMENTS = "billPayments"
+    BILLS = "bills"
+    CASH_FLOW_STATEMENT = "cashFlowStatement"
+    CHART_OF_ACCOUNTS = "chartOfAccounts"
+    COMPANY = "company"
+    CREDIT_NOTES = "creditNotes"
+    CUSTOMERS = "customers"
+    DIRECT_COSTS = "directCosts"
+    DIRECT_INCOMES = "directIncomes"
+    INVOICES = "invoices"
+    ITEMS = "items"
+    JOURNAL_ENTRIES = "journalEntries"
+    JOURNALS = "journals"
+    PAYMENT_METHODS = "paymentMethods"
+    PAYMENTS = "payments"
+    PROFIT_AND_LOSS = "profitAndLoss"
+    PURCHASE_ORDERS = "purchaseOrders"
+    SALES_ORDERS = "salesOrders"
+    SUPPLIERS = "suppliers"
+    TAX_RATES = "taxRates"
+    TRACKING_CATEGORIES = "trackingCategories"
+    TRANSFERS = "transfers"
+    BANKING_ACCOUNT_BALANCES = "banking-accountBalances"
+    BANKING_ACCOUNTS = "banking-accounts"
+    BANKING_TRANSACTION_CATEGORIES = "banking-transactionCategories"
+    BANKING_TRANSACTIONS = "banking-transactions"
+    COMMERCE_COMPANY_INFO = "commerce-companyInfo"
+    COMMERCE_CUSTOMERS = "commerce-customers"
+    COMMERCE_DISPUTES = "commerce-disputes"
+    COMMERCE_LOCATIONS = "commerce-locations"
+    COMMERCE_ORDERS = "commerce-orders"
+    COMMERCE_PAYMENT_METHODS = "commerce-paymentMethods"
+    COMMERCE_PAYMENTS = "commerce-payments"
+    COMMERCE_PRODUCT_CATEGORIES = "commerce-productCategories"
+    COMMERCE_PRODUCTS = "commerce-products"
+    COMMERCE_TAX_COMPONENTS = "commerce-taxComponents"
+    COMMERCE_TRANSACTIONS = "commerce-transactions"
+
 class CreateDirectIncome200ApplicationJSONStatusEnum(str, Enum):
     r"""The status of the push operation."""
     PENDING = "Pending"
@@ -667,16 +704,10 @@ class CreateDirectIncome200ApplicationJSON:
     - Refunding an item in cash to a contact.
     - Depositing money into a bank account.
     
-    From the Direct Incomes endpoints, you can: 
-    
-    - [Get a list of all direct incomes for a specific company](https://api-uat.codat.io/swagger/index.html#/DirectIncomes/get_companies__companyId__connections__connectionId__data_directIncomes)
-    - [Get a single direct income for a specific company and connection](https://api-uat.codat.io/swagger/index.html#/DirectIncomes/get_companies__companyId__connections__connectionId__data_directIncomes__directIncomeId_)
-    - [Add a new direct income to a specific company's accounting package](https://api-uat.codat.io/swagger/index.html#/DirectIncomes/post_companies__companyId__connections__connectionId__push_directIncomes)
-    
     Direct incomes is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
     
     """  
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    data_type: Optional[CreateDirectIncome200ApplicationJSONDataTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     r"""The type of data being pushed, eg invoices, customers."""  
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})  
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is None }})  

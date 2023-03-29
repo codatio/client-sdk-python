@@ -98,8 +98,10 @@ class CreateBillPaymentSourceModifiedDateMetadata:
 class CreateBillPaymentSourceModifiedDatePaymentMethodRef:
     r"""The Payment Method to which the payment is linked in the accounting platform."""
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
+    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
+    r"""`id` from the Payment Methods data type"""  
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    r"""`name` from the Payment Methods data type"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -115,8 +117,10 @@ class CreateBillPaymentSourceModifiedDateSupplementalData:
 class CreateBillPaymentSourceModifiedDateSupplierRef:
     r"""Supplier against which the payment is recorded in the accounting platform."""
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is None }})  
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""The supplier's unique ID"""  
+    supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is None }})
+    r"""The supplier's name"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -132,13 +136,13 @@ class CreateBillPaymentSourceModifiedDate:
     
     Bill payments include all accounts payable transaction data. This includes [bills](https://docs.codat.io/accounting-api#/schemas/Bill) and [credit notes against bills](https://docs.codat.io/accounting-api#/schemas/BillCreditNote).
     
-    A bill payment in Codat usually represents an allocation of money within any customer accounts payable account. This includes but is not strictly limited to:
+    A bill payment in Codat usually represents an allocation of money within any customer accounts payable account. This includes, but is not strictly limited to:
     
-    - A payment made against a bill—for example, a credit card payment, cheque payment, or cash payment.
-    - An allocation of a supplier's credit note, to a bill or perhaps a refund.
+    - A payment made against a bill — for example, a credit card payment, cheque payment, or cash payment.
+    - An allocation of a supplier's credit note to a bill or perhaps a refund.
     - A bill payment made directly to an accounts payable account. This could be an overpayment or a prepayment, or a refund of a payment made directly to an accounts payable account.
     
-    Depending on the bill payments which are allowed by the underlying accounting package, some of these types may be combined. Please see the [Example data](#example-data) section for samples of what these cases look like.
+    Depending on the bill payments which are allowed by the underlying accounting package, some of these types may be combined. Please see the example data section for samples of what these cases look like.
     
     In Codat, a bill payment contains details of:
     
@@ -155,7 +159,7 @@ class CreateBillPaymentSourceModifiedDate:
     
     ## Bill payment types
     
-    ## Payment of a bill
+    ### Payment of a bill
     
     A payment paying a single bill should have the following properties:
     
@@ -167,7 +171,7 @@ class CreateBillPaymentSourceModifiedDate:
         - An `id` containing the ID of the bill that was paid.
         - An amount of `-totalAmount` (negative `totalAmount`), indicating that the entirety of the paid amount is allocated to the bill.
     
-    ## Payment of multiple bills
+    ### Payment of multiple bills
     
     It is possible for one payment to pay multiple bills. This can be represented using two possible formats, depending on how the supplier keeps their books:
     
@@ -176,11 +180,11 @@ class CreateBillPaymentSourceModifiedDate:
     
     Each line is the same as those described above, with the **amount** indicating how much of the payment is allocated to the bill. The **amount** on the lines sum to the **totalAmount** on the payment.
     
-    > 🚧 Pushing batch payments to Xero
+    > Pushing batch payments to Xero
     > 
     > When pushing a single bill payment to Xero to pay multiple bills, only the first format is supported—multiple entries in the payment **lines** array.
     
-    ## Payments and refunds on account
+    ### Payments and refunds on account
     
     A payment on account, that is a payment that doesn’t pay a specific bill, has one entry in its lines array.
     
@@ -194,7 +198,7 @@ class CreateBillPaymentSourceModifiedDate:
     
     It is possible to have a payment that is part on account and part allocated to a bill. Each line should follow the examples above.
     
-    ## Using a credit note to pay a bill
+    ### Using a credit note to pay a bill
     
     The payment of a bill using a credit note has one entry in its `lines` array. This **line** has the following properties:
     
@@ -209,7 +213,7 @@ class CreateBillPaymentSourceModifiedDate:
     
     The **amount** field on the **line** equals the **totalAmount** on the payment.
     
-    ## Refunding a credit note
+    ### Refunding a credit note
     
     A bill payment refunding a credit note has one entry in its **lines** array. This line has the following properties:
     
@@ -220,7 +224,7 @@ class CreateBillPaymentSourceModifiedDate:
     
     The **totalAmount** field on the payment equals the line's **amount** field. These are both negative, as this is money leaving accounts payable.
     
-    ## Refunding a payment
+    ### Refunding a payment
     
     If a payment is refunded, for example, when a company overpaid a bill and the overpayment is returned, there are two payment records: 
     
@@ -248,7 +252,7 @@ class CreateBillPaymentSourceModifiedDate:
       - A **type** indicating the type of the link, in this case a `Refund`.
       - An **id** containing the ID of the payment that refunded this line.
     
-    > 📘 Linked payments
+    > Linked payments
     > 
     > Not all accounting packages support linked payments in this way. In these platforms you may see a payment on account and a refund on account.
     
@@ -449,8 +453,10 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDateMetadata:
 class CreateBillPayment200ApplicationJSONSourceModifiedDatePaymentMethodRef:
     r"""The Payment Method to which the payment is linked in the accounting platform."""
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
+    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
+    r"""`id` from the Payment Methods data type"""  
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    r"""`name` from the Payment Methods data type"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -466,8 +472,10 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDateSupplementalData:
 class CreateBillPayment200ApplicationJSONSourceModifiedDateSupplierRef:
     r"""Supplier against which the payment is recorded in the accounting platform."""
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is None }})  
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""The supplier's unique ID"""  
+    supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is None }})
+    r"""The supplier's name"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -483,13 +491,13 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDate:
     
     Bill payments include all accounts payable transaction data. This includes [bills](https://docs.codat.io/accounting-api#/schemas/Bill) and [credit notes against bills](https://docs.codat.io/accounting-api#/schemas/BillCreditNote).
     
-    A bill payment in Codat usually represents an allocation of money within any customer accounts payable account. This includes but is not strictly limited to:
+    A bill payment in Codat usually represents an allocation of money within any customer accounts payable account. This includes, but is not strictly limited to:
     
-    - A payment made against a bill—for example, a credit card payment, cheque payment, or cash payment.
-    - An allocation of a supplier's credit note, to a bill or perhaps a refund.
+    - A payment made against a bill — for example, a credit card payment, cheque payment, or cash payment.
+    - An allocation of a supplier's credit note to a bill or perhaps a refund.
     - A bill payment made directly to an accounts payable account. This could be an overpayment or a prepayment, or a refund of a payment made directly to an accounts payable account.
     
-    Depending on the bill payments which are allowed by the underlying accounting package, some of these types may be combined. Please see the [Example data](#example-data) section for samples of what these cases look like.
+    Depending on the bill payments which are allowed by the underlying accounting package, some of these types may be combined. Please see the example data section for samples of what these cases look like.
     
     In Codat, a bill payment contains details of:
     
@@ -506,7 +514,7 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDate:
     
     ## Bill payment types
     
-    ## Payment of a bill
+    ### Payment of a bill
     
     A payment paying a single bill should have the following properties:
     
@@ -518,7 +526,7 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDate:
         - An `id` containing the ID of the bill that was paid.
         - An amount of `-totalAmount` (negative `totalAmount`), indicating that the entirety of the paid amount is allocated to the bill.
     
-    ## Payment of multiple bills
+    ### Payment of multiple bills
     
     It is possible for one payment to pay multiple bills. This can be represented using two possible formats, depending on how the supplier keeps their books:
     
@@ -527,11 +535,11 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDate:
     
     Each line is the same as those described above, with the **amount** indicating how much of the payment is allocated to the bill. The **amount** on the lines sum to the **totalAmount** on the payment.
     
-    > 🚧 Pushing batch payments to Xero
+    > Pushing batch payments to Xero
     > 
     > When pushing a single bill payment to Xero to pay multiple bills, only the first format is supported—multiple entries in the payment **lines** array.
     
-    ## Payments and refunds on account
+    ### Payments and refunds on account
     
     A payment on account, that is a payment that doesn’t pay a specific bill, has one entry in its lines array.
     
@@ -545,7 +553,7 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDate:
     
     It is possible to have a payment that is part on account and part allocated to a bill. Each line should follow the examples above.
     
-    ## Using a credit note to pay a bill
+    ### Using a credit note to pay a bill
     
     The payment of a bill using a credit note has one entry in its `lines` array. This **line** has the following properties:
     
@@ -560,7 +568,7 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDate:
     
     The **amount** field on the **line** equals the **totalAmount** on the payment.
     
-    ## Refunding a credit note
+    ### Refunding a credit note
     
     A bill payment refunding a credit note has one entry in its **lines** array. This line has the following properties:
     
@@ -571,7 +579,7 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDate:
     
     The **totalAmount** field on the payment equals the line's **amount** field. These are both negative, as this is money leaving accounts payable.
     
-    ## Refunding a payment
+    ### Refunding a payment
     
     If a payment is refunded, for example, when a company overpaid a bill and the overpayment is returned, there are two payment records: 
     
@@ -599,7 +607,7 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDate:
       - A **type** indicating the type of the link, in this case a `Refund`.
       - An **id** containing the ID of the payment that refunded this line.
     
-    > 📘 Linked payments
+    > Linked payments
     > 
     > Not all accounting packages support linked payments in this way. In these platforms you may see a payment on account and a refund on account.
     
@@ -677,6 +685,51 @@ class CreateBillPayment200ApplicationJSONSourceModifiedDate:
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
     r"""Amount of the payment in the payment currency. This value never changes and represents the amount of money that is paid into the supplier's account."""  
     
+class CreateBillPayment200ApplicationJSONDataTypeEnum(str, Enum):
+    r"""The type of data being pushed, eg invoices, customers."""
+    ACCOUNT_TRANSACTIONS = "accountTransactions"
+    BALANCE_SHEET = "balanceSheet"
+    BANK_ACCOUNTS = "bankAccounts"
+    BANK_TRANSACTIONS = "bankTransactions"
+    BILL_CREDIT_NOTES = "billCreditNotes"
+    BILL_PAYMENTS = "billPayments"
+    BILLS = "bills"
+    CASH_FLOW_STATEMENT = "cashFlowStatement"
+    CHART_OF_ACCOUNTS = "chartOfAccounts"
+    COMPANY = "company"
+    CREDIT_NOTES = "creditNotes"
+    CUSTOMERS = "customers"
+    DIRECT_COSTS = "directCosts"
+    DIRECT_INCOMES = "directIncomes"
+    INVOICES = "invoices"
+    ITEMS = "items"
+    JOURNAL_ENTRIES = "journalEntries"
+    JOURNALS = "journals"
+    PAYMENT_METHODS = "paymentMethods"
+    PAYMENTS = "payments"
+    PROFIT_AND_LOSS = "profitAndLoss"
+    PURCHASE_ORDERS = "purchaseOrders"
+    SALES_ORDERS = "salesOrders"
+    SUPPLIERS = "suppliers"
+    TAX_RATES = "taxRates"
+    TRACKING_CATEGORIES = "trackingCategories"
+    TRANSFERS = "transfers"
+    BANKING_ACCOUNT_BALANCES = "banking-accountBalances"
+    BANKING_ACCOUNTS = "banking-accounts"
+    BANKING_TRANSACTION_CATEGORIES = "banking-transactionCategories"
+    BANKING_TRANSACTIONS = "banking-transactions"
+    COMMERCE_COMPANY_INFO = "commerce-companyInfo"
+    COMMERCE_CUSTOMERS = "commerce-customers"
+    COMMERCE_DISPUTES = "commerce-disputes"
+    COMMERCE_LOCATIONS = "commerce-locations"
+    COMMERCE_ORDERS = "commerce-orders"
+    COMMERCE_PAYMENT_METHODS = "commerce-paymentMethods"
+    COMMERCE_PAYMENTS = "commerce-payments"
+    COMMERCE_PRODUCT_CATEGORIES = "commerce-productCategories"
+    COMMERCE_PRODUCTS = "commerce-products"
+    COMMERCE_TAX_COMPONENTS = "commerce-taxComponents"
+    COMMERCE_TRANSACTIONS = "commerce-transactions"
+
 class CreateBillPayment200ApplicationJSONStatusEnum(str, Enum):
     r"""The status of the push operation."""
     PENDING = "Pending"
@@ -733,13 +786,13 @@ class CreateBillPayment200ApplicationJSON:
     
     Bill payments include all accounts payable transaction data. This includes [bills](https://docs.codat.io/accounting-api#/schemas/Bill) and [credit notes against bills](https://docs.codat.io/accounting-api#/schemas/BillCreditNote).
     
-    A bill payment in Codat usually represents an allocation of money within any customer accounts payable account. This includes but is not strictly limited to:
+    A bill payment in Codat usually represents an allocation of money within any customer accounts payable account. This includes, but is not strictly limited to:
     
-    - A payment made against a bill—for example, a credit card payment, cheque payment, or cash payment.
-    - An allocation of a supplier's credit note, to a bill or perhaps a refund.
+    - A payment made against a bill — for example, a credit card payment, cheque payment, or cash payment.
+    - An allocation of a supplier's credit note to a bill or perhaps a refund.
     - A bill payment made directly to an accounts payable account. This could be an overpayment or a prepayment, or a refund of a payment made directly to an accounts payable account.
     
-    Depending on the bill payments which are allowed by the underlying accounting package, some of these types may be combined. Please see the [Example data](#example-data) section for samples of what these cases look like.
+    Depending on the bill payments which are allowed by the underlying accounting package, some of these types may be combined. Please see the example data section for samples of what these cases look like.
     
     In Codat, a bill payment contains details of:
     
@@ -756,7 +809,7 @@ class CreateBillPayment200ApplicationJSON:
     
     ## Bill payment types
     
-    ## Payment of a bill
+    ### Payment of a bill
     
     A payment paying a single bill should have the following properties:
     
@@ -768,7 +821,7 @@ class CreateBillPayment200ApplicationJSON:
         - An `id` containing the ID of the bill that was paid.
         - An amount of `-totalAmount` (negative `totalAmount`), indicating that the entirety of the paid amount is allocated to the bill.
     
-    ## Payment of multiple bills
+    ### Payment of multiple bills
     
     It is possible for one payment to pay multiple bills. This can be represented using two possible formats, depending on how the supplier keeps their books:
     
@@ -777,11 +830,11 @@ class CreateBillPayment200ApplicationJSON:
     
     Each line is the same as those described above, with the **amount** indicating how much of the payment is allocated to the bill. The **amount** on the lines sum to the **totalAmount** on the payment.
     
-    > 🚧 Pushing batch payments to Xero
+    > Pushing batch payments to Xero
     > 
     > When pushing a single bill payment to Xero to pay multiple bills, only the first format is supported—multiple entries in the payment **lines** array.
     
-    ## Payments and refunds on account
+    ### Payments and refunds on account
     
     A payment on account, that is a payment that doesn’t pay a specific bill, has one entry in its lines array.
     
@@ -795,7 +848,7 @@ class CreateBillPayment200ApplicationJSON:
     
     It is possible to have a payment that is part on account and part allocated to a bill. Each line should follow the examples above.
     
-    ## Using a credit note to pay a bill
+    ### Using a credit note to pay a bill
     
     The payment of a bill using a credit note has one entry in its `lines` array. This **line** has the following properties:
     
@@ -810,7 +863,7 @@ class CreateBillPayment200ApplicationJSON:
     
     The **amount** field on the **line** equals the **totalAmount** on the payment.
     
-    ## Refunding a credit note
+    ### Refunding a credit note
     
     A bill payment refunding a credit note has one entry in its **lines** array. This line has the following properties:
     
@@ -821,7 +874,7 @@ class CreateBillPayment200ApplicationJSON:
     
     The **totalAmount** field on the payment equals the line's **amount** field. These are both negative, as this is money leaving accounts payable.
     
-    ## Refunding a payment
+    ### Refunding a payment
     
     If a payment is refunded, for example, when a company overpaid a bill and the overpayment is returned, there are two payment records: 
     
@@ -849,7 +902,7 @@ class CreateBillPayment200ApplicationJSON:
       - A **type** indicating the type of the link, in this case a `Refund`.
       - An **id** containing the ID of the payment that refunded this line.
     
-    > 📘 Linked payments
+    > Linked payments
     > 
     > Not all accounting packages support linked payments in this way. In these platforms you may see a payment on account and a refund on account.
     
@@ -873,7 +926,7 @@ class CreateBillPayment200ApplicationJSON:
     - The currency of the item.
     
     """  
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    data_type: Optional[CreateBillPayment200ApplicationJSONDataTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     r"""The type of data being pushed, eg invoices, customers."""  
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})  
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is None }})  

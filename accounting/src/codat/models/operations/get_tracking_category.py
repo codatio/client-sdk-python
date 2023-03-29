@@ -105,7 +105,7 @@ class GetTrackingCategorySourceModifiedDateSourceModifiedDate:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetTrackingCategorySourceModifiedDate:
-    r"""Success"""
+    r"""The full structure of a specific tracking category including any child or subcategories."""
     
     has_children: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasChildren'), 'exclude': lambda f: f is None }})
     r"""Boolean value indicating whether this category has SubCategories"""  

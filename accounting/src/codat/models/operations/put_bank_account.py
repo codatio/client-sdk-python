@@ -8,8 +8,11 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class PutBankAccountSourceModifiedDateAccountTypeEnum(str, Enum):
-    r"""The type of the account."""
+class PutBankAccountSourceModifiedDateBankAccountTypeEnum(str, Enum):
+    r"""The type of transactions and balances on the account.  
+    For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
+    For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
+    """
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
@@ -36,7 +39,7 @@ class PutBankAccountSourceModifiedDate:
     
     ## Overview
     
-    A list of bank accounts associated with a company and a specific [data connection](https://api.codat.io/swagger/index.html#/Connection/get_companies__companyId__connections__connectionId_).
+    A list of bank accounts associated with a company and a specific data connection.
     
     Bank accounts data includes:
     * The name and ID of the account in the accounting platform.
@@ -55,8 +58,11 @@ class PutBankAccountSourceModifiedDate:
     FreeAgent integrations
     For Credit accounts, only the last four digits are required. For other types, the field is optional.
     """  
-    account_type: Optional[PutBankAccountSourceModifiedDateAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
-    r"""The type of the account."""  
+    account_type: Optional[PutBankAccountSourceModifiedDateBankAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
+    r"""The type of transactions and balances on the account.  
+    For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
+    For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
+    """  
     available_balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('availableBalance'), 'exclude': lambda f: f is None }})
     r"""Total available balance of the bank account as reported by the underlying data source. This may take into account overdrafts or pending transactions for example."""  
     balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'exclude': lambda f: f is None }})
@@ -124,8 +130,11 @@ class PutBankAccount200ApplicationJSONChanges:
     record_ref: Optional[PutBankAccount200ApplicationJSONChangesPushOperationRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})  
     type: Optional[PutBankAccount200ApplicationJSONChangesTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})  
     
-class PutBankAccount200ApplicationJSONSourceModifiedDateAccountTypeEnum(str, Enum):
-    r"""The type of the account."""
+class PutBankAccount200ApplicationJSONSourceModifiedDateBankAccountTypeEnum(str, Enum):
+    r"""The type of transactions and balances on the account.  
+    For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
+    For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
+    """
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
@@ -152,7 +161,7 @@ class PutBankAccount200ApplicationJSONSourceModifiedDate:
     
     ## Overview
     
-    A list of bank accounts associated with a company and a specific [data connection](https://api.codat.io/swagger/index.html#/Connection/get_companies__companyId__connections__connectionId_).
+    A list of bank accounts associated with a company and a specific data connection.
     
     Bank accounts data includes:
     * The name and ID of the account in the accounting platform.
@@ -171,8 +180,11 @@ class PutBankAccount200ApplicationJSONSourceModifiedDate:
     FreeAgent integrations
     For Credit accounts, only the last four digits are required. For other types, the field is optional.
     """  
-    account_type: Optional[PutBankAccount200ApplicationJSONSourceModifiedDateAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
-    r"""The type of the account."""  
+    account_type: Optional[PutBankAccount200ApplicationJSONSourceModifiedDateBankAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
+    r"""The type of transactions and balances on the account.  
+    For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
+    For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
+    """  
     available_balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('availableBalance'), 'exclude': lambda f: f is None }})
     r"""Total available balance of the bank account as reported by the underlying data source. This may take into account overdrafts or pending transactions for example."""  
     balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'exclude': lambda f: f is None }})
@@ -204,6 +216,51 @@ class PutBankAccount200ApplicationJSONSourceModifiedDate:
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     r"""The date on which this record was last modified in the originating system"""  
     
+class PutBankAccount200ApplicationJSONDataTypeEnum(str, Enum):
+    r"""The type of data being pushed, eg invoices, customers."""
+    ACCOUNT_TRANSACTIONS = "accountTransactions"
+    BALANCE_SHEET = "balanceSheet"
+    BANK_ACCOUNTS = "bankAccounts"
+    BANK_TRANSACTIONS = "bankTransactions"
+    BILL_CREDIT_NOTES = "billCreditNotes"
+    BILL_PAYMENTS = "billPayments"
+    BILLS = "bills"
+    CASH_FLOW_STATEMENT = "cashFlowStatement"
+    CHART_OF_ACCOUNTS = "chartOfAccounts"
+    COMPANY = "company"
+    CREDIT_NOTES = "creditNotes"
+    CUSTOMERS = "customers"
+    DIRECT_COSTS = "directCosts"
+    DIRECT_INCOMES = "directIncomes"
+    INVOICES = "invoices"
+    ITEMS = "items"
+    JOURNAL_ENTRIES = "journalEntries"
+    JOURNALS = "journals"
+    PAYMENT_METHODS = "paymentMethods"
+    PAYMENTS = "payments"
+    PROFIT_AND_LOSS = "profitAndLoss"
+    PURCHASE_ORDERS = "purchaseOrders"
+    SALES_ORDERS = "salesOrders"
+    SUPPLIERS = "suppliers"
+    TAX_RATES = "taxRates"
+    TRACKING_CATEGORIES = "trackingCategories"
+    TRANSFERS = "transfers"
+    BANKING_ACCOUNT_BALANCES = "banking-accountBalances"
+    BANKING_ACCOUNTS = "banking-accounts"
+    BANKING_TRANSACTION_CATEGORIES = "banking-transactionCategories"
+    BANKING_TRANSACTIONS = "banking-transactions"
+    COMMERCE_COMPANY_INFO = "commerce-companyInfo"
+    COMMERCE_CUSTOMERS = "commerce-customers"
+    COMMERCE_DISPUTES = "commerce-disputes"
+    COMMERCE_LOCATIONS = "commerce-locations"
+    COMMERCE_ORDERS = "commerce-orders"
+    COMMERCE_PAYMENT_METHODS = "commerce-paymentMethods"
+    COMMERCE_PAYMENTS = "commerce-payments"
+    COMMERCE_PRODUCT_CATEGORIES = "commerce-productCategories"
+    COMMERCE_PRODUCTS = "commerce-products"
+    COMMERCE_TAX_COMPONENTS = "commerce-taxComponents"
+    COMMERCE_TRANSACTIONS = "commerce-transactions"
+
 class PutBankAccount200ApplicationJSONStatusEnum(str, Enum):
     r"""The status of the push operation."""
     PENDING = "Pending"
@@ -260,14 +317,14 @@ class PutBankAccount200ApplicationJSON:
     
     ## Overview
     
-    A list of bank accounts associated with a company and a specific [data connection](https://api.codat.io/swagger/index.html#/Connection/get_companies__companyId__connections__connectionId_).
+    A list of bank accounts associated with a company and a specific data connection.
     
     Bank accounts data includes:
     * The name and ID of the account in the accounting platform.
     * The currency and balance of the account.
     * The sort code and account number.
     """  
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    data_type: Optional[PutBankAccount200ApplicationJSONDataTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     r"""The type of data being pushed, eg invoices, customers."""  
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})  
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is None }})  

@@ -65,8 +65,10 @@ class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsAccountRef:
 class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsItemRef:
     r"""Reference to the product, service type, or inventory item to which the direct cost is linked."""
     
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""Unique identifier for the item in the accounting platform."""  
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    r"""Name of the item in the accounting platform."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -77,9 +79,9 @@ class GetDirectCosts200ApplicationJSONSourceModifiedDateLineItemsTaxRateRef:
     effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
     r"""Applicable tax rate."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' from the 'taxRates' data type."""  
+    r"""Unique identifier for the tax rate in the accounting platform."""  
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""'name' from the 'taxRates' data type."""  
+    r"""Name of the tax rate in the accounting platform."""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -302,7 +304,7 @@ class GetDirectCosts200ApplicationJSONSourceModifiedDateSupplementalData:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetDirectCosts200ApplicationJSONSourceModifiedDate:
-    r"""> **Language tip: ** Direct costs may also be referred to as **Spend transactions**, **Spend money transactions**, or **Payments** in various accounting platforms.
+    r"""> **Language tip:** Direct costs may also be referred to as **Spend transactions**, **Spend money transactions**, or **Payments** in various accounting platforms.
     
     > View the coverage for direct costs in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts\" target=\"_blank\">Data coverage explorer</a>.
     
@@ -313,12 +315,6 @@ class GetDirectCosts200ApplicationJSONSourceModifiedDate:
       * Receiving cash from a refunded item if the refund is made by the supplier
       * Withdrawing money from a bank account 
       * Writing a cheque
-    
-    From the Direct Costs endpoints, you can: 
-    
-      * [Get a list of all direct costs for a specific company ](https://api.codat.io/swagger/index.html#/DirectCosts/get_companies__companyId__connections__connectionId__data_directCosts)
-      * [Get a single direct cost for a specific company ](https://api.codat.io/swagger/index.html#/DirectCosts/get_companies__companyId__connections__connectionId__data_directCosts__directCostId_)
-      * [Add a new direct cost to a specific company's accounting package](https://api.codat.io/swagger/index.html#/DirectCosts/post_companies__companyId__connections__connectionId__push_directCosts)
     
     Direct costs is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
     """

@@ -59,6 +59,7 @@ class ListBankAccountTransactions200ApplicationJSONResultsTransactionsSourceModi
     r"""The date on which this record was last modified in the originating system"""  
     
 class ListBankAccountTransactions200ApplicationJSONResultsTransactionsTransactionTypeEnum(str, Enum):
+    r"""Type of transaction for the bank statement line"""
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
@@ -101,13 +102,14 @@ class ListBankAccountTransactions200ApplicationJSONResultsTransactions:
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
     
-    > 📘 Time zones
+    > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """  
     reconciled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reconciled') }})  
-    transaction_type: ListBankAccountTransactions200ApplicationJSONResultsTransactionsTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})  
+    transaction_type: ListBankAccountTransactions200ApplicationJSONResultsTransactionsTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})
+    r"""Type of transaction for the bank statement line"""  
     counterparty: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('counterparty'), 'exclude': lambda f: f is None }})  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})  

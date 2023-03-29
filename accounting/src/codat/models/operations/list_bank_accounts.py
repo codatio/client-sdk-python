@@ -40,8 +40,11 @@ class ListBankAccounts200ApplicationJSONLinks:
     next: Optional[ListBankAccounts200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
     previous: Optional[ListBankAccounts200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
-class ListBankAccounts200ApplicationJSONSourceModifiedDateAccountTypeEnum(str, Enum):
-    r"""The type of the account."""
+class ListBankAccounts200ApplicationJSONSourceModifiedDateBankAccountTypeEnum(str, Enum):
+    r"""The type of transactions and balances on the account.  
+    For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
+    For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
+    """
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
@@ -68,7 +71,7 @@ class ListBankAccounts200ApplicationJSONSourceModifiedDate:
     
     ## Overview
     
-    A list of bank accounts associated with a company and a specific [data connection](https://api.codat.io/swagger/index.html#/Connection/get_companies__companyId__connections__connectionId_).
+    A list of bank accounts associated with a company and a specific data connection.
     
     Bank accounts data includes:
     * The name and ID of the account in the accounting platform.
@@ -87,8 +90,11 @@ class ListBankAccounts200ApplicationJSONSourceModifiedDate:
     FreeAgent integrations
     For Credit accounts, only the last four digits are required. For other types, the field is optional.
     """  
-    account_type: Optional[ListBankAccounts200ApplicationJSONSourceModifiedDateAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
-    r"""The type of the account."""  
+    account_type: Optional[ListBankAccounts200ApplicationJSONSourceModifiedDateBankAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
+    r"""The type of transactions and balances on the account.  
+    For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
+    For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
+    """  
     available_balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('availableBalance'), 'exclude': lambda f: f is None }})
     r"""Total available balance of the bank account as reported by the underlying data source. This may take into account overdrafts or pending transactions for example."""  
     balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'exclude': lambda f: f is None }})

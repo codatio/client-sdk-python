@@ -17,8 +17,11 @@ class GetBankAccountRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
     
-class GetBankAccountSourceModifiedDateAccountTypeEnum(str, Enum):
-    r"""The type of the account."""
+class GetBankAccountSourceModifiedDateBankAccountTypeEnum(str, Enum):
+    r"""The type of transactions and balances on the account.  
+    For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
+    For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
+    """
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"
@@ -45,7 +48,7 @@ class GetBankAccountSourceModifiedDate:
     
     ## Overview
     
-    A list of bank accounts associated with a company and a specific [data connection](https://api.codat.io/swagger/index.html#/Connection/get_companies__companyId__connections__connectionId_).
+    A list of bank accounts associated with a company and a specific data connection.
     
     Bank accounts data includes:
     * The name and ID of the account in the accounting platform.
@@ -64,8 +67,11 @@ class GetBankAccountSourceModifiedDate:
     FreeAgent integrations
     For Credit accounts, only the last four digits are required. For other types, the field is optional.
     """  
-    account_type: Optional[GetBankAccountSourceModifiedDateAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
-    r"""The type of the account."""  
+    account_type: Optional[GetBankAccountSourceModifiedDateBankAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
+    r"""The type of transactions and balances on the account.  
+    For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
+    For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
+    """  
     available_balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('availableBalance'), 'exclude': lambda f: f is None }})
     r"""Total available balance of the bank account as reported by the underlying data source. This may take into account overdrafts or pending transactions for example."""  
     balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'exclude': lambda f: f is None }})

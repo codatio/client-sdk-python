@@ -78,7 +78,14 @@ class GetCompanyInfoCompanyInfoWebLinks:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetCompanyInfoCompanyInfo:
-    r"""Success"""
+    r"""> View the coverage for company info in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\" target=\"_blank\">Data coverage explorer</a>.
+    
+    Company info provides standard details about a linked company such as their address, phone number, and company registration.
+    
+    > **Company information or companies?**
+    > 
+    > Company information is standard information that is held in the accounting platform about a company. `Companies` is an endpoint that lists businesses in the Codat system that have linked and shared their data sources.
+    """
     
     accounting_platform_ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountingPlatformRef'), 'exclude': lambda f: f is None }})
     r"""Identifier or reference for the company in the accounting platform."""  
@@ -103,7 +110,7 @@ class GetCompanyInfoCompanyInfo:
     source_urls: Optional[dict[str, str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceUrls'), 'exclude': lambda f: f is None }})
     r"""URL addresses for the accounting source.
     
-    For example, for Xero integrations two URLs are returned. These have many potential use cases, such as deep linking.
+    For example, for Xero integrations two URLs are returned. These have many potential use cases, such as [deep linking](https://developer.xero.com/documentation/api-guides/deep-link-xero).
     """  
     tax_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxNumber'), 'exclude': lambda f: f is None }})
     r"""Company tax number."""  
