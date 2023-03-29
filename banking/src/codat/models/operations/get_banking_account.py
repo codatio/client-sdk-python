@@ -28,7 +28,7 @@ class GetBankingAccountSourceModifiedDateAccountBalanceAmounts:
     current: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current'), 'exclude': lambda f: f is None }})
     r"""The balance of the account only including cleared transactions."""  
     limit: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('limit'), 'exclude': lambda f: f is None }})
-    r"""The minimum allowed balance for the account. For example, a $100.00 overdraft would show as a limit of -100.00"""  
+    r"""The minimum allowed balance for the account. For example, a $100.00 overdraft would show as a limit of `-100.00`."""  
     
 class GetBankingAccountSourceModifiedDateAccountIdentifiersTypeEnum(str, Enum):
     r"""Type of account"""
@@ -91,9 +91,11 @@ class GetBankingAccountSourceModifiedDateTypeEnum(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetBankingAccountSourceModifiedDate:
-    r"""An account where payments are made or received, and bank transactions are recorded.
+    r"""This data type provides a list of all the SMB's bank accounts, with rich data like balances, account numbers, and institutions holding the accounts.
     
     Explore our [data coverage](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-accounts).
+    
+    Responses are paged, so you should provide `page` and `pageSize` query parameters in your request. 
     """
     
     balance: GetBankingAccountSourceModifiedDateAccountBalanceAmounts = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})

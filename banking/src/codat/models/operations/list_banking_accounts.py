@@ -51,7 +51,7 @@ class ListBankingAccounts200ApplicationJSONSourceModifiedDateAccountBalanceAmoun
     current: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current'), 'exclude': lambda f: f is None }})
     r"""The balance of the account only including cleared transactions."""  
     limit: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('limit'), 'exclude': lambda f: f is None }})
-    r"""The minimum allowed balance for the account. For example, a $100.00 overdraft would show as a limit of -100.00"""  
+    r"""The minimum allowed balance for the account. For example, a $100.00 overdraft would show as a limit of `-100.00`."""  
     
 class ListBankingAccounts200ApplicationJSONSourceModifiedDateAccountIdentifiersTypeEnum(str, Enum):
     r"""Type of account"""
@@ -114,9 +114,11 @@ class ListBankingAccounts200ApplicationJSONSourceModifiedDateTypeEnum(str, Enum)
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListBankingAccounts200ApplicationJSONSourceModifiedDate:
-    r"""An account where payments are made or received, and bank transactions are recorded.
+    r"""This data type provides a list of all the SMB's bank accounts, with rich data like balances, account numbers, and institutions holding the accounts.
     
     Explore our [data coverage](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-accounts).
+    
+    Responses are paged, so you should provide `page` and `pageSize` query parameters in your request. 
     """
     
     balance: ListBankingAccounts200ApplicationJSONSourceModifiedDateAccountBalanceAmounts = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})
@@ -156,9 +158,11 @@ class ListBankingAccounts200ApplicationJSON:
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
     results: Optional[ListBankingAccounts200ApplicationJSONSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
-    r"""An account where payments are made or received, and bank transactions are recorded.
+    r"""This data type provides a list of all the SMB's bank accounts, with rich data like balances, account numbers, and institutions holding the accounts.
     
     Explore our [data coverage](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-accounts).
+    
+    Responses are paged, so you should provide `page` and `pageSize` query parameters in your request. 
     """  
     
 

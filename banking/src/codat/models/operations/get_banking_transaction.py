@@ -52,6 +52,8 @@ class GetBankingTransactionSourceModifiedDateTransactionCategoryRef:
 class GetBankingTransactionSourceModifiedDate:
     r"""The Banking Transactions data type provides an immutable source of up-to-date information on income and expenditure.
     
+    Responses are paged, so you should provide `page` and `pageSize` query parameters in your request.
+    
     View the coverage for banking transactions in the [Data Coverage Explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-transactions).
     """
     

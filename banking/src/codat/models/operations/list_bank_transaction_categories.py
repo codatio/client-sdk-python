@@ -50,7 +50,10 @@ class ListBankTransactionCategories200ApplicationJSONSourceModifiedDateStatusEnu
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListBankTransactionCategories200ApplicationJSONSourceModifiedDate:
-    r"""The Banking Transaction Categories data type provides a list of hierarchical categories associated with a transaction for greater contextual meaning to transaction activity."""
+    r"""The Banking Transaction Categories data type provides a list of hierarchical categories associated with a transaction for greater contextual meaning to transaction activity.
+    
+    Responses are paged, so you should provide `page` and `pageSize` query parameters in your request.
+    """
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The unique identifier of the bank transaction category."""  
@@ -78,7 +81,10 @@ class ListBankTransactionCategories200ApplicationJSON:
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
     results: Optional[ListBankTransactionCategories200ApplicationJSONSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
-    r"""The Banking Transaction Categories data type provides a list of hierarchical categories associated with a transaction for greater contextual meaning to transaction activity."""  
+    r"""The Banking Transaction Categories data type provides a list of hierarchical categories associated with a transaction for greater contextual meaning to transaction activity.
+    
+    Responses are paged, so you should provide `page` and `pageSize` query parameters in your request.
+    """  
     
 
 @dataclasses.dataclass
