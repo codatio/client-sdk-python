@@ -20,6 +20,7 @@ src/codat/models/operations/get_data_integrity_status.py
 src/codat/models/operations/get_data_integrity_summaries.py
 src/codat/models/operations/get_accounting_marketing_metrics.py
 src/codat/models/operations/get_excel_report.py
+src/codat/models/operations/get_excel_report_post.py
 src/codat/models/operations/make_request_to_download_excel_report.py
 src/codat/models/operations/request_excel_report_for_download.py
 src/codat/models/operations/get_accounts_for_enhanced_balance_sheet.py

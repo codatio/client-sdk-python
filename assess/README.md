@@ -56,8 +56,9 @@ if res.categorised_account is not None:
 
 * `get_accounting_marketing_metrics` - Get the marketing metrics from an accounting source for a given company.
 * `get_excel_report` - Download generated excel report
-* `make_request_to_download_excel_report` - Request an Excel report for download
-* `request_excel_report_for_download` - Request an Excel report for download
+* `get_excel_report_post` - Download generated excel report
+* `make_request_to_download_excel_report` - Get status of Excel report
+* `request_excel_report_for_download` - Generate an Excel report
 
 ### reports
 

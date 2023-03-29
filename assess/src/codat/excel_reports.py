@@ -48,7 +48,7 @@ class ExcelReports:
 
     def get_excel_report(self, request: operations.GetExcelReportRequest) -> operations.GetExcelReportResponse:
         r"""Download generated excel report
-        Download the Excel report to a local drive.
+        Download the previously generated Excel report to a local drive.
         """
         base_url = self._server_url
         
@@ -58,7 +58,7 @@ class ExcelReports:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params)
+        http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetExcelReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -69,8 +69,31 @@ class ExcelReports:
 
         return res
 
+    def get_excel_report_post(self, request: operations.GetExcelReportPostRequest) -> operations.GetExcelReportPostResponse:
+        r"""Download generated excel report
+        Download the previously generated Excel report to a local drive.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetExcelReportPostRequest, base_url, '/data/companies/{companyId}/assess/excel/download', request)
+        
+        query_params = utils.get_query_params(operations.GetExcelReportPostRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetExcelReportPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.body = http_res.content
+
+        return res
+
     def make_request_to_download_excel_report(self, request: operations.MakeRequestToDownloadExcelReportRequest) -> operations.MakeRequestToDownloadExcelReportResponse:
-        r"""Request an Excel report for download
+        r"""Get status of Excel report
         Returns the status of the latest report requested.
         """
         base_url = self._server_url
@@ -94,8 +117,8 @@ class ExcelReports:
         return res
 
     def request_excel_report_for_download(self, request: operations.RequestExcelReportForDownloadRequest) -> operations.RequestExcelReportForDownloadResponse:
-        r"""Request an Excel report for download
-        Request an Excel report for download.
+        r"""Generate an Excel report
+        Generate an Excel report which can subsequently be downloaded.
         """
         base_url = self._server_url
         
