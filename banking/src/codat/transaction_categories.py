@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class TransactionCategories:
@@ -22,13 +22,13 @@ class TransactionCategories:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_bank_transaction_category(self, request: operations.GetBankTransactionCategoryRequest) -> operations.GetBankTransactionCategoryResponse:
+    def get_transaction_category(self, request: operations.GetTransactionCategoryRequest) -> operations.GetTransactionCategoryResponse:
         r"""Get transaction category
         Gets a specified bank transaction category for a given company
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetBankTransactionCategoryRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactionCategories/{transactionCategoryId}', request)
+        url = utils.generate_url(operations.GetTransactionCategoryRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactionCategories/{transactionCategoryId}', request)
         
         
         client = self._security_client
@@ -36,36 +36,36 @@ class TransactionCategories:
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetBankTransactionCategoryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetTransactionCategoryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBankTransactionCategorySourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TransactionCategory])
+                res.transaction_category = out
 
         return res
 
-    def list_bank_transaction_categories(self, request: operations.ListBankTransactionCategoriesRequest) -> operations.ListBankTransactionCategoriesResponse:
+    def list_transaction_categories(self, request: operations.ListTransactionCategoriesRequest) -> operations.ListTransactionCategoriesResponse:
         r"""List all transaction categories
         Gets a list of hierarchical categories associated with a transaction for greater contextual meaning to transactionactivity.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.ListBankTransactionCategoriesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactionCategories', request)
+        url = utils.generate_url(operations.ListTransactionCategoriesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactionCategories', request)
         
-        query_params = utils.get_query_params(operations.ListBankTransactionCategoriesRequest, request)
+        query_params = utils.get_query_params(operations.ListTransactionCategoriesRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListBankTransactionCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListTransactionCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankTransactionCategories200ApplicationJSON])
-                res.list_bank_transaction_categories_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TransactionCategories])
+                res.transaction_categories = out
 
         return res
 
