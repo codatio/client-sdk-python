@@ -9,6 +9,7 @@ from typing import Optional
 class GetExcelReportPostReportTypeEnum(str, Enum):
     r"""The type of report you want to generate and download."""
     AUDIT = "audit"
+    ENHANCED_FINANCIALS = "enhancedFinancials"
 
 
 @dataclasses.dataclass
