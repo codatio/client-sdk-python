@@ -3,35 +3,12 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import datatype_enum as shared_datatype_enum
-from ..shared import pushoperationrecordref as shared_pushoperationrecordref
+from ..shared import pushoperationchange as shared_pushoperationchange
+from ..shared import pushoperationstatus_enum as shared_pushoperationstatus_enum
 from ..shared import validationitem as shared_validationitem
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
 from typing import Optional
-
-class PushOperationSummaryChangesTypeEnum(str, Enum):
-    UNKNOWN = "Unknown"
-    CREATED = "Created"
-    MODIFIED = "Modified"
-    DELETED = "Deleted"
-    ATTACHMENT_UPLOADED = "AttachmentUploaded"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PushOperationSummaryChanges:
-    
-    attachment_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachmentId'), 'exclude': lambda f: f is None }})  
-    record_ref: Optional[shared_pushoperationrecordref.PushOperationRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})  
-    type: Optional[PushOperationSummaryChangesTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})  
-    
-class PushOperationSummaryStatusEnum(str, Enum):
-    r"""The status of the push operation."""
-    PENDING = "Pending"
-    FAILED = "Failed"
-    SUCCESS = "Success"
-    TIMED_OUT = "TimedOut"
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -74,10 +51,10 @@ class PushOperationSummary:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """  
-    status: PushOperationSummaryStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_pushoperationstatus_enum.PushOperationStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The status of the push operation."""  
     status_code: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode') }})  
-    changes: Optional[list[PushOperationSummaryChanges]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes'), 'exclude': lambda f: f is None }})  
+    changes: Optional[list[shared_pushoperationchange.PushOperationChange]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes'), 'exclude': lambda f: f is None }})  
     completed_on_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completedOnUtc'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     

@@ -30,10 +30,13 @@ from .links import *
 from .newcompanysynchronizedwebhook import *
 from .profile import *
 from .pulloperation import *
+from .pushchangetype_enum import *
 from .pushfieldvalidation import *
 from .pushhistoryresponse import *
 from .pushoperation import *
-from .pushoperationrecordref import *
+from .pushoperationchange import *
+from .pushoperationref import *
+from .pushoperationstatus_enum import *
 from .pushoperationstatuschangedwebhook import *
 from .pushoperationsummary import *
 from .pushoperationtimedoutwebhook import *
@@ -51,4 +54,4 @@ from .syncsetting import *
 from .syncsettings import *
 from .validationitem import *
 
-__all__ = ["Branding","BrandingButton","BrandingImage","BrandingLogo","Companies","Company","CompanyDataConnectionStatusChangedWebhook","CompanyDataConnectionStatusChangedWebhookData","CompanyRequestBody","Connection","ConnectionStatusEnum","Connections","DataConnectionError","DataConnectionHistory","DataStatus","DataSyncCompletedWebhook","DataSyncCompletedWebhookData","DataTypeEnum","DataTypeFeature","DatasetDataChangedWebhook","DatasetDataChangedWebhookData","DatasetStatusChangedErrorWebhook","DatasetStatusChangedErrorWebhookData","ErrorMessage","FeatureStateEnum","FeatureTypeEnum","HRef","ImageReference","Integration","Integrations","Links","NewCompanySynchronizedWebhook","Profile","PullOperation","PullOperationStatusEnum","PushFieldValidation","PushHistoryResponse","PushOperation","PushOperationChanges","PushOperationChangesTypeEnum","PushOperationRecordRef","PushOperationStatusChangedWebhook","PushOperationStatusChangedWebhookData","PushOperationStatusEnum","PushOperationSummary","PushOperationSummaryChanges","PushOperationSummaryChangesTypeEnum","PushOperationSummaryStatusEnum","PushOperationSummaryValidation","PushOperationTimedOutWebhook","PushOperationTimedOutWebhookData","PushOperationValidation","PushOption","PushOptionChoice","PushOptionProperty","PushOptionTypeEnum","PushValidationInfo","Rule","RuleNotifiers","Rules","Security","SourceTypeEnum","SupportedFeature","SyncSetting","SyncSettingDataTypeEnum","SyncSettings","ValidationItem"]
+__all__ = ["Branding","BrandingButton","BrandingImage","BrandingLogo","Companies","Company","CompanyDataConnectionStatusChangedWebhook","CompanyDataConnectionStatusChangedWebhookData","CompanyRequestBody","Connection","ConnectionStatusEnum","Connections","DataConnectionError","DataConnectionHistory","DataStatus","DataSyncCompletedWebhook","DataSyncCompletedWebhookData","DataTypeEnum","DataTypeFeature","DatasetDataChangedWebhook","DatasetDataChangedWebhookData","DatasetStatusChangedErrorWebhook","DatasetStatusChangedErrorWebhookData","ErrorMessage","FeatureStateEnum","FeatureTypeEnum","HRef","ImageReference","Integration","Integrations","Links","NewCompanySynchronizedWebhook","Profile","PullOperation","PullOperationStatusEnum","PushChangeTypeEnum","PushFieldValidation","PushHistoryResponse","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatusChangedWebhook","PushOperationStatusChangedWebhookData","PushOperationStatusEnum","PushOperationSummary","PushOperationSummaryValidation","PushOperationTimedOutWebhook","PushOperationTimedOutWebhookData","PushOperationValidation","PushOption","PushOptionChoice","PushOptionProperty","PushOptionTypeEnum","PushValidationInfo","Rule","RuleNotifiers","Rules","Security","SourceTypeEnum","SupportedFeature","SyncSetting","SyncSettingDataTypeEnum","SyncSettings","ValidationItem"]

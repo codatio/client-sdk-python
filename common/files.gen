@@ -73,7 +73,10 @@ src/codat/models/shared/integrations.py
 src/codat/models/shared/pushhistoryresponse.py
 src/codat/models/shared/pushoperationsummary.py
 src/codat/models/shared/validationitem.py
-src/codat/models/shared/pushoperationrecordref.py
+src/codat/models/shared/pushoperationstatus_enum.py
+src/codat/models/shared/pushoperationchange.py
+src/codat/models/shared/pushchangetype_enum.py
+src/codat/models/shared/pushoperationref.py
 src/codat/models/shared/pushoption.py
 src/codat/models/shared/pushvalidationinfo.py
 src/codat/models/shared/pushfieldvalidation.py
