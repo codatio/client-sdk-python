@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Locations:
@@ -22,7 +22,7 @@ class Locations:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_commerce_locations(self, request: operations.ListCommerceLocationsRequest) -> operations.ListCommerceLocationsResponse:
+    def list_locations(self, request: operations.ListLocationsRequest) -> operations.ListLocationsResponse:
         r"""List locations
         Retrieve a list of locations as seen in the commerce platform.
         
@@ -30,7 +30,7 @@ class Locations:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.ListCommerceLocationsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-locations', request)
+        url = utils.generate_url(operations.ListLocationsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-locations', request)
         
         
         client = self._security_client
@@ -38,12 +38,12 @@ class Locations:
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListCommerceLocationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListLocationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommerceLocations200ApplicationJSON])
-                res.list_commerce_locations_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.LocationsResponse])
+                res.locations_response = out
 
         return res
 

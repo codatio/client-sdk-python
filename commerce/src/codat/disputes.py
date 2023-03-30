@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Disputes:
@@ -22,27 +22,27 @@ class Disputes:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_commerce_disputes(self, request: operations.ListCommerceDisputesRequest) -> operations.ListCommerceDisputesResponse:
+    def list_disputes(self, request: operations.ListDisputesRequest) -> operations.ListDisputesResponse:
         r"""List disputes
         List commerce disputes
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.ListCommerceDisputesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-disputes', request)
+        url = utils.generate_url(operations.ListDisputesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-disputes', request)
         
-        query_params = utils.get_query_params(operations.ListCommerceDisputesRequest, request)
+        query_params = utils.get_query_params(operations.ListDisputesRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListCommerceDisputesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListDisputesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommerceDisputes200ApplicationJSON])
-                res.list_commerce_disputes_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Disputes])
+                res.disputes = out
 
         return res
 

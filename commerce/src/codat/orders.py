@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Orders:
@@ -22,27 +22,27 @@ class Orders:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_commerce_orders(self, request: operations.ListCommerceOrdersRequest) -> operations.ListCommerceOrdersResponse:
+    def list_orders(self, request: operations.ListOrdersRequest) -> operations.ListOrdersResponse:
         r"""List orders
         Get a list of orders placed or held on the linked commerce platform
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.ListCommerceOrdersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-orders', request)
+        url = utils.generate_url(operations.ListOrdersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-orders', request)
         
-        query_params = utils.get_query_params(operations.ListCommerceOrdersRequest, request)
+        query_params = utils.get_query_params(operations.ListOrdersRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListCommerceOrdersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListOrdersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommerceOrders200ApplicationJSON])
-                res.list_commerce_orders_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Orders])
+                res.orders = out
 
         return res
 

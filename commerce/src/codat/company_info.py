@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class CompanyInfo:
@@ -22,7 +22,7 @@ class CompanyInfo:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_commerce_info(self, request: operations.GetCommerceInfoRequest) -> operations.GetCommerceInfoResponse:
+    def get_company_info(self, request: operations.GetCompanyInfoRequest) -> operations.GetCompanyInfoResponse:
         r"""Get company info
         Retrieve information about the company, as seen in the commerce platform.
         
@@ -30,7 +30,7 @@ class CompanyInfo:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetCommerceInfoRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-info', request)
+        url = utils.generate_url(operations.GetCompanyInfoRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-info', request)
         
         
         client = self._security_client
@@ -38,12 +38,12 @@ class CompanyInfo:
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetCommerceInfoResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetCompanyInfoResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCommerceInfoSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CompanyInfo])
+                res.company_info = out
 
         return res
 
