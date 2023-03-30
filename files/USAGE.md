@@ -11,13 +11,13 @@ s = codat.Codat(
 
 
 req = operations.DownloadFilesRequest(
-    company_id="89bd9d8d-69a6-474e-8f46-7cc8796ed151",
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     date_="2022-10-23T00:00:00Z",
 )
     
 res = s.files.download_files(req)
 
-if res.status_code == 200:
+if res.data is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

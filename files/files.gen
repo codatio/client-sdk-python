@@ -11,6 +11,7 @@ src/codat/models/operations/download_files.py
 src/codat/models/operations/list_files.py
 src/codat/models/operations/upload_files.py
 src/codat/models/operations/__init__.py
+src/codat/models/shared/file.py
 src/codat/models/shared/security.py
 src/codat/models/shared/__init__.py
 USAGE.md

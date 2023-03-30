@@ -7,10 +7,18 @@ from typing import Optional
 
 
 @dataclasses.dataclass
+class UploadFilesRequestBody:
+    
+    content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})  
+    request_body: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'requestBody' }})  
+    
+
+@dataclasses.dataclass
 class UploadFilesRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
+    request_body: Optional[UploadFilesRequestBody] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }, 'request': { 'media_type': 'multipart/form-data' }})  
     
 
 @dataclasses.dataclass

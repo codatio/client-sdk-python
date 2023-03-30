@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Files:
@@ -40,7 +40,8 @@ class Files:
         res = operations.DownloadFilesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
-            pass
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.data = http_res.content
 
         return res
 
@@ -62,7 +63,7 @@ class Files:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[operations.ListFilesFile]])
+                out = utils.unmarshal_json(http_res.text, Optional[list[shared.File]])
                 res.files = out
 
         return res
@@ -75,10 +76,14 @@ class Files:
         
         url = utils.generate_url(operations.UploadFilesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/files', request)
         
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         
         client = self._security_client
         
-        http_res = client.request('POST', url)
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UploadFilesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
