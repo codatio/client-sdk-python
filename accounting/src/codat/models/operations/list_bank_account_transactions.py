@@ -42,23 +42,7 @@ class ListBankAccountTransactions200ApplicationJSONLinks:
     next: Optional[ListBankAccountTransactions200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
     previous: Optional[ListBankAccountTransactions200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
     
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankAccountTransactions200ApplicationJSONResultsTransactionsModifiedDate:
-    
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in Codat."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankAccountTransactions200ApplicationJSONResultsTransactionsSourceModifiedDate:
-    
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in the originating system"""  
-    
-class ListBankAccountTransactions200ApplicationJSONResultsTransactionsTransactionTypeEnum(str, Enum):
+class ListBankAccountTransactions200ApplicationJSONResultsSourceModifiedDateTransactionTypeEnum(str, Enum):
     r"""Type of transaction for the bank statement line"""
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
@@ -82,7 +66,7 @@ class ListBankAccountTransactions200ApplicationJSONResultsTransactionsTransactio
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListBankAccountTransactions200ApplicationJSONResultsTransactions:
+class ListBankAccountTransactions200ApplicationJSONResultsSourceModifiedDate:
     
     amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount') }})  
     balance: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})  
@@ -108,14 +92,16 @@ class ListBankAccountTransactions200ApplicationJSONResultsTransactions:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """  
     reconciled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reconciled') }})  
-    transaction_type: ListBankAccountTransactions200ApplicationJSONResultsTransactionsTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})
+    transaction_type: ListBankAccountTransactions200ApplicationJSONResultsSourceModifiedDateTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})
     r"""Type of transaction for the bank statement line"""  
     counterparty: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('counterparty'), 'exclude': lambda f: f is None }})  
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[ListBankAccountTransactions200ApplicationJSONResultsTransactionsModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
+    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
+    r"""The date on which this record was last modified in Codat."""  
     reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference'), 'exclude': lambda f: f is None }})  
-    source_modified_date: Optional[ListBankAccountTransactions200ApplicationJSONResultsTransactionsSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
+    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
+    r"""The date on which this record was last modified in the originating system"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -140,8 +126,7 @@ class ListBankAccountTransactions200ApplicationJSONResults:
     """
     
     account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})  
-    contract_version: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contractVersion'), 'exclude': lambda f: f is None }})  
-    transactions: Optional[list[ListBankAccountTransactions200ApplicationJSONResultsTransactions]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})  
+    transactions: Optional[list[ListBankAccountTransactions200ApplicationJSONResultsSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
