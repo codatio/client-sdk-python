@@ -23,7 +23,7 @@ s = codat.Codat(
 
 req = operations.CreateBankFeedRequest(
     request_body=[
-        operations.CreateBankFeedBankFeedBankAccount(
+        shared.BankFeedAccount(
             account_name="deserunt",
             account_number="porro",
             account_type="nulla",
@@ -35,7 +35,7 @@ req = operations.CreateBankFeedRequest(
             sort_code="nulla",
             status="nihil",
         ),
-        operations.CreateBankFeedBankFeedBankAccount(
+        shared.BankFeedAccount(
             account_name="fuga",
             account_number="facilis",
             account_type="eum",
@@ -47,7 +47,7 @@ req = operations.CreateBankFeedRequest(
             sort_code="inventore",
             status="sapiente",
         ),
-        operations.CreateBankFeedBankFeedBankAccount(
+        shared.BankFeedAccount(
             account_name="enim",
             account_number="eum",
             account_type="voluptatum",
@@ -66,7 +66,7 @@ req = operations.CreateBankFeedRequest(
     
 res = s.create_bank_feed(req)
 
-if res.bank_feed_bank_accounts is not None:
+if res.bank_feed_accounts is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

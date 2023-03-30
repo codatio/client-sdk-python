@@ -25,7 +25,7 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.8.2"
+    _sdk_version: str = "0.8.3"
     _gen_version: str = "2.16.5"
 
     def __init__(self,
@@ -85,8 +85,8 @@ class Codat:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[operations.CreateBankFeedBankFeedBankAccount]])
-                res.bank_feed_bank_accounts = out
+                out = utils.unmarshal_json(http_res.text, Optional[list[shared.BankFeedAccount]])
+                res.bank_feed_accounts = out
 
         return res
 
@@ -98,18 +98,17 @@ class Codat:
         
         url = utils.generate_url(operations.GetBankAccountPushOptionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bankAccounts/{accountId}/bankTransactions', request)
         
-        query_params = utils.get_query_params(operations.GetBankAccountPushOptionsRequest, request)
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetBankAccountPushOptionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBankAccountPushOptionsPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -132,8 +131,8 @@ class Codat:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[operations.GetBankFeedsBankFeedBankAccount]])
-                res.bank_feed_bank_accounts = out
+                out = utils.unmarshal_json(http_res.text, Optional[list[shared.BankFeedAccount]])
+                res.bank_feed_accounts = out
 
         return res
 
@@ -156,8 +155,8 @@ class Codat:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankAccountTransactions200ApplicationJSON])
-                res.list_bank_account_transactions_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BankTransactionsResponse])
+                res.bank_transactions_response = out
 
         return res
 
@@ -171,10 +170,10 @@ class Codat:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostBankTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}}/bankTransactions', request)
+        url = utils.generate_url(operations.PostBankTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bank_transactions", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.PostBankTransactionsRequest, request)
@@ -188,8 +187,8 @@ class Codat:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostBankTransactions200ApplicationJSON])
-                res.post_bank_transactions_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateBankTransactionsResponse])
+                res.create_bank_transactions_response = out
 
         return res
 
@@ -199,10 +198,10 @@ class Codat:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.UpdateBankFeedRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{bankAccountId}', request)
+        url = utils.generate_url(operations.UpdateBankFeedRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bank_feed_account", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -215,8 +214,8 @@ class Codat:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateBankFeedBankFeedBankAccount])
-                res.bank_feed_bank_account = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedAccount])
+                res.bank_feed_account = out
 
         return res
 
