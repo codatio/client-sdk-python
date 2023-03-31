@@ -28,7 +28,6 @@ src/codat/models/operations/get_tax_components.py
 src/codat/models/operations/list_transactions.py
 src/codat/models/operations/__init__.py
 src/codat/models/shared/companyinfo.py
-src/codat/models/shared/weblink.py
 src/codat/models/shared/phonenumber.py
 src/codat/models/shared/phonenumbertype_enum.py
 src/codat/models/shared/address.py

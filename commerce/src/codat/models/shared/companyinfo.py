@@ -5,11 +5,28 @@ import dataclasses
 from ..shared import accountbalance as shared_accountbalance
 from ..shared import address as shared_address
 from ..shared import phonenumber as shared_phonenumber
-from ..shared import weblink as shared_weblink
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from typing import Optional
 
+class CompanyInfoWeblinkTypeEnum(str, Enum):
+    r"""The type of the weblink."""
+    WEBSITE = "Website"
+    SOCIAL = "Social"
+    UNKNOWN = "Unknown"
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class CompanyInfoWeblink:
+    r"""Weblink associated with the company."""
+    
+    type: Optional[CompanyInfoWeblinkTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    r"""The type of the weblink."""  
+    url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
+    r"""The full URL for the weblink."""  
+    
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
@@ -109,6 +126,6 @@ class CompanyInfo:
     """  
     source_urls: Optional[dict[str, str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceUrls'), 'exclude': lambda f: f is None }})
     r"""URL addresses for the originating system. For example, potential use cases include 'deeplinking' to the originating system"""  
-    web_links: Optional[list[shared_weblink.WebLink]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webLinks'), 'exclude': lambda f: f is None }})
+    web_links: Optional[list[CompanyInfoWeblink]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webLinks'), 'exclude': lambda f: f is None }})
     r"""Weblinks associated with the company"""  
     
