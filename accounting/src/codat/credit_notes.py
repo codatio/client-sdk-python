@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class CreditNotes:
@@ -23,36 +23,37 @@ class CreditNotes:
         self._gen_version = gen_version
         
     def create_credit_note(self, request: operations.CreateCreditNoteRequest) -> operations.CreateCreditNoteResponse:
-        r"""Update creditNote
-        Posts an updated credit note to the accounting package for a given company.
+        r"""Create credit note
+        Push credit note
+        
         
         Required data may vary by integration. To see what data to post, first call [Get create/update credit note model](https://docs.codat.io/accounting-api#/operations/get-create-update-creditNotes-model).
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support updating a credit note.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support creating a credit note.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.CreateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes/{creditNoteId}', request)
+        url = utils.generate_url(operations.CreateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "credit_note", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateCreditNoteRequest, request)
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateCreditNoteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateCreditNote200ApplicationJSON])
-                res.create_credit_note_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateCreditNoteResponse])
+                res.create_credit_note_response = out
 
         return res
 
@@ -80,7 +81,7 @@ class CreditNotes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateCreditNotesModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -103,8 +104,8 @@ class CreditNotes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreditNoteSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreditNote])
+                res.credit_note = out
 
         return res
 
@@ -127,43 +128,42 @@ class CreditNotes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCreditNotes200ApplicationJSON])
-                res.list_credit_notes_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreditNotes])
+                res.credit_notes = out
 
         return res
 
-    def push_credit_note(self, request: operations.PushCreditNoteRequest) -> operations.PushCreditNoteResponse:
-        r"""Create credit note
-        Push credit note
-        
+    def update_credit_note(self, request: operations.UpdateCreditNoteRequest) -> operations.UpdateCreditNoteResponse:
+        r"""Update creditNote
+        Posts an updated credit note to the accounting package for a given company.
         
         Required data may vary by integration. To see what data to post, first call [Get create/update credit note model](https://docs.codat.io/accounting-api#/operations/get-create-update-creditNotes-model).
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support creating a credit note.
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support updating a credit note.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PushCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes', request)
+        url = utils.generate_url(operations.UpdateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes/{creditNoteId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "credit_note", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(operations.PushCreditNoteRequest, request)
+        query_params = utils.get_query_params(operations.UpdateCreditNoteRequest, request)
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PushCreditNoteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UpdateCreditNoteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PushCreditNote200ApplicationJSON])
-                res.push_credit_note_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.UpdateCreditNoteResponse])
+                res.update_credit_note_response = out
 
         return res
 

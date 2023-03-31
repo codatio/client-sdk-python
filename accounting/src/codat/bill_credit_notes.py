@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class BillCreditNotes:
@@ -37,7 +37,7 @@ class BillCreditNotes:
         url = utils.generate_url(operations.CreateBillCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bill_credit_note", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBillCreditNoteRequest, request)
@@ -51,8 +51,8 @@ class BillCreditNotes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateBillCreditNote200ApplicationJSON])
-                res.create_bill_credit_note_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateBillCreditNoteResponse])
+                res.create_bill_credit_note_response = out
 
         return res
 
@@ -74,8 +74,8 @@ class BillCreditNotes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBillCreditNoteSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BillCreditNote])
+                res.bill_credit_note = out
 
         return res
 
@@ -101,7 +101,7 @@ class BillCreditNotes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateBillCreditNotesModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -125,8 +125,8 @@ class BillCreditNotes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBillCreditNotes200ApplicationJSON])
-                res.list_bill_credit_notes_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BillCreditNotes])
+                res.bill_credit_notes = out
 
         return res
 
@@ -145,7 +145,7 @@ class BillCreditNotes:
         url = utils.generate_url(operations.UpdateBillCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes/{billCreditNoteId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bill_credit_note", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateBillCreditNoteRequest, request)
@@ -159,8 +159,8 @@ class BillCreditNotes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateBillCreditNote200ApplicationJSON])
-                res.update_bill_credit_note_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.UpdateBillCreditNoteResponse])
+                res.update_bill_credit_note_response = out
 
         return res
 

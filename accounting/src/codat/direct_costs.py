@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class DirectCosts:
@@ -37,7 +37,7 @@ class DirectCosts:
         url = utils.generate_url(operations.CreateDirectCostRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "direct_cost", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateDirectCostRequest, request)
@@ -51,8 +51,8 @@ class DirectCosts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateDirectCost200ApplicationJSON])
-                res.create_direct_cost_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateDirectCostResponse])
+                res.create_direct_cost_response = out
 
         return res
 
@@ -73,7 +73,8 @@ class DirectCosts:
         res = operations.DownloadDirectCostAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
-            pass
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.data = http_res.content
 
         return res
 
@@ -101,7 +102,7 @@ class DirectCosts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateDirectCostsModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -124,8 +125,8 @@ class DirectCosts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDirectCostSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.DirectCost])
+                res.direct_cost = out
 
         return res
 
@@ -147,7 +148,7 @@ class DirectCosts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDirectCostAttachmentAttachment])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
                 res.attachment = out
 
         return res
@@ -171,8 +172,8 @@ class DirectCosts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDirectCosts200ApplicationJSON])
-                res.get_direct_costs_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.DirectCosts])
+                res.direct_costs = out
 
         return res
 
@@ -194,26 +195,30 @@ class DirectCosts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListDirectCostAttachmentsAttachments])
-                res.attachments = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
+                res.attachments_dataset = out
 
         return res
 
-    def post_direct_cost_attachment(self, request: operations.PostDirectCostAttachmentRequest) -> operations.PostDirectCostAttachmentResponse:
-        r"""Create direct cost attachment
+    def upload_direct_cost_attachment(self, request: operations.UploadDirectCostAttachmentRequest) -> operations.UploadDirectCostAttachmentResponse:
+        r"""Upload direct cost attachment
         Posts a new direct cost attachment for a given company.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts/{directCostId}/attachment', request)
+        url = utils.generate_url(operations.UploadDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts/{directCostId}/attachment', request)
         
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         
         client = self._security_client
         
-        http_res = client.request('POST', url)
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostDirectCostAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UploadDirectCostAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             pass

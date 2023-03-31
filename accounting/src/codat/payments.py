@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Payments:
@@ -37,7 +37,7 @@ class Payments:
         url = utils.generate_url(operations.CreatePaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/payments', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "payment", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreatePaymentRequest, request)
@@ -51,8 +51,8 @@ class Payments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePayment200ApplicationJSON])
-                res.create_payment_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreatePaymentResponse])
+                res.create_payment_response = out
 
         return res
 
@@ -80,7 +80,7 @@ class Payments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreatePaymentsModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -103,8 +103,8 @@ class Payments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPaymentSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Payment])
+                res.payment = out
 
         return res
 
@@ -127,8 +127,8 @@ class Payments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListPayments200ApplicationJSON])
-                res.list_payments_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Payments])
+                res.payments = out
 
         return res
 

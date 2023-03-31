@@ -3,100 +3,15 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import datatype_enum as shared_datatype_enum
+from ..shared import pushoperationchange as shared_pushoperationchange
+from ..shared import pushoperationstatus_enum as shared_pushoperationstatus_enum
+from ..shared import supplier as shared_supplier
+from ..shared import validation as shared_validation
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
-from typing import Any, Optional
+from typing import Optional
 
-class PutSupplierSourceModifiedDateAddressesTypeEnum(str, Enum):
-    r"""Type of the address."""
-    UNKNOWN = "Unknown"
-    BILLING = "Billing"
-    DELIVERY = "Delivery"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplierSourceModifiedDateAddresses:
-    
-    type: PutSupplierSourceModifiedDateAddressesTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""Type of the address."""  
-    city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city'), 'exclude': lambda f: f is None }})
-    r"""City of the customer address."""  
-    country: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('country'), 'exclude': lambda f: f is None }})
-    r"""Country of the customer address."""  
-    line1: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('line1'), 'exclude': lambda f: f is None }})
-    r"""Line 1 of the customer address."""  
-    line2: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('line2'), 'exclude': lambda f: f is None }})
-    r"""Line 2 of the customer address."""  
-    postal_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('postalCode'), 'exclude': lambda f: f is None }})
-    r"""Postal code or zip code."""  
-    region: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('region'), 'exclude': lambda f: f is None }})
-    r"""Region of the customer address."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplierSourceModifiedDateMetadata:
-    
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
-    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
-    
-class PutSupplierSourceModifiedDateStatusEnum(str, Enum):
-    r"""Status of the supplier."""
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplierSourceModifiedDateSupplementalData:
-    r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""
-    
-    content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplierSourceModifiedDate:
-    r"""> View the coverage for suppliers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers\" target=\"_blank\">Data coverage explorer</a>.
-    
-    ## Overview
-    
-    From the **Suppliers** endpoints, you can retrieve a list of [all the suppliers for a company](https://docs.codat.io/accounting-api#/operations/list-suppliers). Suppliers' data links to accounts payable [bills](https://docs.codat.io/accounting-api#/schemas/Bill).
-    """
-    
-    status: PutSupplierSourceModifiedDateStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""Status of the supplier."""  
-    addresses: Optional[list[PutSupplierSourceModifiedDateAddresses]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
-    r"""An array of Addresses."""  
-    contact_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactName'), 'exclude': lambda f: f is None }})
-    r"""Name of the main contact for the supplier."""  
-    default_currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultCurrency'), 'exclude': lambda f: f is None }})
-    r"""Default currency the supplier's transactional data is recorded in."""  
-    email_address: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('emailAddress'), 'exclude': lambda f: f is None }})
-    r"""Email address that the supplier may be contacted on."""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the supplier, unique to the company in the accounting platform."""  
-    metadata: Optional[PutSupplierSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in Codat."""  
-    phone: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone'), 'exclude': lambda f: f is None }})
-    r"""Phone number that the supplier may be contacted on."""  
-    registration_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('registrationNumber'), 'exclude': lambda f: f is None }})
-    r"""Company number of the supplier. In the UK, this is typically the company registration number issued by Companies House."""  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in the originating system"""  
-    supplemental_data: Optional[PutSupplierSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
-    r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  
-    supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is None }})
-    r"""	
-    Name of the supplier as recorded in the accounting system, typically the company name.
-    """  
-    tax_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxNumber'), 'exclude': lambda f: f is None }})
-    r"""Supplier's company tax number."""  
-    
 
 @dataclasses.dataclass
 class PutSupplierRequest:
@@ -106,237 +21,8 @@ class PutSupplierRequest:
     supplier_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'supplierId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a supplier"""  
     force_update: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'forceUpdate', 'style': 'form', 'explode': True }})  
-    request_body: Optional[PutSupplierSourceModifiedDate] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
+    supplier: Optional[shared_supplier.Supplier] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})  
-    
-class PutSupplier200ApplicationJSONChangesPushOperationReferenceDataTypeEnum(str, Enum):
-    r"""Available Data types"""
-    ACCOUNT_TRANSACTIONS = "accountTransactions"
-    BALANCE_SHEET = "balanceSheet"
-    BANK_ACCOUNTS = "bankAccounts"
-    BANK_TRANSACTIONS = "bankTransactions"
-    BILL_CREDIT_NOTES = "billCreditNotes"
-    BILL_PAYMENTS = "billPayments"
-    BILLS = "bills"
-    CASH_FLOW_STATEMENT = "cashFlowStatement"
-    CHART_OF_ACCOUNTS = "chartOfAccounts"
-    COMPANY = "company"
-    CREDIT_NOTES = "creditNotes"
-    CUSTOMERS = "customers"
-    DIRECT_COSTS = "directCosts"
-    DIRECT_INCOMES = "directIncomes"
-    INVOICES = "invoices"
-    ITEMS = "items"
-    JOURNAL_ENTRIES = "journalEntries"
-    JOURNALS = "journals"
-    PAYMENT_METHODS = "paymentMethods"
-    PAYMENTS = "payments"
-    PROFIT_AND_LOSS = "profitAndLoss"
-    PURCHASE_ORDERS = "purchaseOrders"
-    SALES_ORDERS = "salesOrders"
-    SUPPLIERS = "suppliers"
-    TAX_RATES = "taxRates"
-    TRACKING_CATEGORIES = "trackingCategories"
-    TRANSFERS = "transfers"
-    BANKING_ACCOUNT_BALANCES = "banking-accountBalances"
-    BANKING_ACCOUNTS = "banking-accounts"
-    BANKING_TRANSACTION_CATEGORIES = "banking-transactionCategories"
-    BANKING_TRANSACTIONS = "banking-transactions"
-    COMMERCE_COMPANY_INFO = "commerce-companyInfo"
-    COMMERCE_CUSTOMERS = "commerce-customers"
-    COMMERCE_DISPUTES = "commerce-disputes"
-    COMMERCE_LOCATIONS = "commerce-locations"
-    COMMERCE_ORDERS = "commerce-orders"
-    COMMERCE_PAYMENT_METHODS = "commerce-paymentMethods"
-    COMMERCE_PAYMENTS = "commerce-payments"
-    COMMERCE_PRODUCT_CATEGORIES = "commerce-productCategories"
-    COMMERCE_PRODUCTS = "commerce-products"
-    COMMERCE_TAX_COMPONENTS = "commerce-taxComponents"
-    COMMERCE_TRANSACTIONS = "commerce-transactions"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplier200ApplicationJSONChangesPushOperationReference:
-    
-    data_type: Optional[PutSupplier200ApplicationJSONChangesPushOperationReferenceDataTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Available Data types"""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})  
-    
-class PutSupplier200ApplicationJSONChangesPushChangeTypeEnum(str, Enum):
-    UNKNOWN = "Unknown"
-    CREATED = "Created"
-    MODIFIED = "Modified"
-    DELETED = "Deleted"
-    ATTACHMENT_UPLOADED = "AttachmentUploaded"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplier200ApplicationJSONChanges:
-    
-    attachment_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachmentId'), 'exclude': lambda f: f is None }})  
-    record_ref: Optional[PutSupplier200ApplicationJSONChangesPushOperationReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})  
-    type: Optional[PutSupplier200ApplicationJSONChangesPushChangeTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})  
-    
-class PutSupplier200ApplicationJSONSourceModifiedDateAddressesTypeEnum(str, Enum):
-    r"""Type of the address."""
-    UNKNOWN = "Unknown"
-    BILLING = "Billing"
-    DELIVERY = "Delivery"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplier200ApplicationJSONSourceModifiedDateAddresses:
-    
-    type: PutSupplier200ApplicationJSONSourceModifiedDateAddressesTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""Type of the address."""  
-    city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city'), 'exclude': lambda f: f is None }})
-    r"""City of the customer address."""  
-    country: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('country'), 'exclude': lambda f: f is None }})
-    r"""Country of the customer address."""  
-    line1: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('line1'), 'exclude': lambda f: f is None }})
-    r"""Line 1 of the customer address."""  
-    line2: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('line2'), 'exclude': lambda f: f is None }})
-    r"""Line 2 of the customer address."""  
-    postal_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('postalCode'), 'exclude': lambda f: f is None }})
-    r"""Postal code or zip code."""  
-    region: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('region'), 'exclude': lambda f: f is None }})
-    r"""Region of the customer address."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplier200ApplicationJSONSourceModifiedDateMetadata:
-    
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
-    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
-    
-class PutSupplier200ApplicationJSONSourceModifiedDateStatusEnum(str, Enum):
-    r"""Status of the supplier."""
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplier200ApplicationJSONSourceModifiedDateSupplementalData:
-    r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""
-    
-    content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplier200ApplicationJSONSourceModifiedDate:
-    r"""> View the coverage for suppliers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers\" target=\"_blank\">Data coverage explorer</a>.
-    
-    ## Overview
-    
-    From the **Suppliers** endpoints, you can retrieve a list of [all the suppliers for a company](https://docs.codat.io/accounting-api#/operations/list-suppliers). Suppliers' data links to accounts payable [bills](https://docs.codat.io/accounting-api#/schemas/Bill).
-    """
-    
-    status: PutSupplier200ApplicationJSONSourceModifiedDateStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""Status of the supplier."""  
-    addresses: Optional[list[PutSupplier200ApplicationJSONSourceModifiedDateAddresses]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
-    r"""An array of Addresses."""  
-    contact_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactName'), 'exclude': lambda f: f is None }})
-    r"""Name of the main contact for the supplier."""  
-    default_currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultCurrency'), 'exclude': lambda f: f is None }})
-    r"""Default currency the supplier's transactional data is recorded in."""  
-    email_address: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('emailAddress'), 'exclude': lambda f: f is None }})
-    r"""Email address that the supplier may be contacted on."""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the supplier, unique to the company in the accounting platform."""  
-    metadata: Optional[PutSupplier200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in Codat."""  
-    phone: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone'), 'exclude': lambda f: f is None }})
-    r"""Phone number that the supplier may be contacted on."""  
-    registration_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('registrationNumber'), 'exclude': lambda f: f is None }})
-    r"""Company number of the supplier. In the UK, this is typically the company registration number issued by Companies House."""  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in the originating system"""  
-    supplemental_data: Optional[PutSupplier200ApplicationJSONSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
-    r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  
-    supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is None }})
-    r"""	
-    Name of the supplier as recorded in the accounting system, typically the company name.
-    """  
-    tax_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxNumber'), 'exclude': lambda f: f is None }})
-    r"""Supplier's company tax number."""  
-    
-class PutSupplier200ApplicationJSONDataTypeEnum(str, Enum):
-    r"""The type of data being pushed, eg invoices, customers."""
-    ACCOUNT_TRANSACTIONS = "accountTransactions"
-    BALANCE_SHEET = "balanceSheet"
-    BANK_ACCOUNTS = "bankAccounts"
-    BANK_TRANSACTIONS = "bankTransactions"
-    BILL_CREDIT_NOTES = "billCreditNotes"
-    BILL_PAYMENTS = "billPayments"
-    BILLS = "bills"
-    CASH_FLOW_STATEMENT = "cashFlowStatement"
-    CHART_OF_ACCOUNTS = "chartOfAccounts"
-    COMPANY = "company"
-    CREDIT_NOTES = "creditNotes"
-    CUSTOMERS = "customers"
-    DIRECT_COSTS = "directCosts"
-    DIRECT_INCOMES = "directIncomes"
-    INVOICES = "invoices"
-    ITEMS = "items"
-    JOURNAL_ENTRIES = "journalEntries"
-    JOURNALS = "journals"
-    PAYMENT_METHODS = "paymentMethods"
-    PAYMENTS = "payments"
-    PROFIT_AND_LOSS = "profitAndLoss"
-    PURCHASE_ORDERS = "purchaseOrders"
-    SALES_ORDERS = "salesOrders"
-    SUPPLIERS = "suppliers"
-    TAX_RATES = "taxRates"
-    TRACKING_CATEGORIES = "trackingCategories"
-    TRANSFERS = "transfers"
-    BANKING_ACCOUNT_BALANCES = "banking-accountBalances"
-    BANKING_ACCOUNTS = "banking-accounts"
-    BANKING_TRANSACTION_CATEGORIES = "banking-transactionCategories"
-    BANKING_TRANSACTIONS = "banking-transactions"
-    COMMERCE_COMPANY_INFO = "commerce-companyInfo"
-    COMMERCE_CUSTOMERS = "commerce-customers"
-    COMMERCE_DISPUTES = "commerce-disputes"
-    COMMERCE_LOCATIONS = "commerce-locations"
-    COMMERCE_ORDERS = "commerce-orders"
-    COMMERCE_PAYMENT_METHODS = "commerce-paymentMethods"
-    COMMERCE_PAYMENTS = "commerce-payments"
-    COMMERCE_PRODUCT_CATEGORIES = "commerce-productCategories"
-    COMMERCE_PRODUCTS = "commerce-products"
-    COMMERCE_TAX_COMPONENTS = "commerce-taxComponents"
-    COMMERCE_TRANSACTIONS = "commerce-transactions"
-
-class PutSupplier200ApplicationJSONPushOperationStatusEnum(str, Enum):
-    r"""The status of the push operation."""
-    PENDING = "Pending"
-    FAILED = "Failed"
-    SUCCESS = "Success"
-    TIMED_OUT = "TimedOut"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplier200ApplicationJSONValidationValidationItem:
-    
-    item_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemId'), 'exclude': lambda f: f is None }})  
-    message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})  
-    validator_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validatorName'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class PutSupplier200ApplicationJSONValidation:
-    r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""
-    
-    errors: Optional[list[PutSupplier200ApplicationJSONValidationValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})  
-    warnings: Optional[list[PutSupplier200ApplicationJSONValidationValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -351,26 +37,64 @@ class PutSupplier200ApplicationJSON:
     push_operation_key: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pushOperationKey') }})
     r"""A unique identifier generated by Codat to represent this single push operation. This identifier can be used to track the status of the push, and should be persisted."""  
     requested_on_utc: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('requestedOnUtc') }})
-    r"""The datetime when the push was requested."""  
-    status: PutSupplier200ApplicationJSONPushOperationStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
+    
+    ```
+    2020-10-08T22:40:50Z
+    2021-01-01T00:00:00
+    ```
+    
+    
+    
+    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
+    
+    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
+    - Unqualified local time: `2021-11-15T01:00:00`
+    - UTC time offsets: `2021-11-15T01:00:00-05:00`
+    
+    > Time zones
+    > 
+    > Not all dates from Codat will contain information about time zones.  
+    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
+    """  
+    status: shared_pushoperationstatus_enum.PushOperationStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The status of the push operation."""  
     status_code: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode') }})  
-    changes: Optional[list[PutSupplier200ApplicationJSONChanges]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes'), 'exclude': lambda f: f is None }})  
+    changes: Optional[list[shared_pushoperationchange.PushOperationChange]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes'), 'exclude': lambda f: f is None }})  
     completed_on_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completedOnUtc'), 'exclude': lambda f: f is None }})
-    r"""The datetime when the push was completed, null if Pending."""  
-    data: Optional[PutSupplier200ApplicationJSONSourceModifiedDate] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
+    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
+    
+    ```
+    2020-10-08T22:40:50Z
+    2021-01-01T00:00:00
+    ```
+    
+    
+    
+    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
+    
+    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
+    - Unqualified local time: `2021-11-15T01:00:00`
+    - UTC time offsets: `2021-11-15T01:00:00-05:00`
+    
+    > Time zones
+    > 
+    > Not all dates from Codat will contain information about time zones.  
+    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
+    """  
+    data: Optional[shared_supplier.Supplier] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     r"""> View the coverage for suppliers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers\" target=\"_blank\">Data coverage explorer</a>.
     
     ## Overview
     
     From the **Suppliers** endpoints, you can retrieve a list of [all the suppliers for a company](https://docs.codat.io/accounting-api#/operations/list-suppliers). Suppliers' data links to accounts payable [bills](https://docs.codat.io/accounting-api#/schemas/Bill).
     """  
-    data_type: Optional[PutSupplier200ApplicationJSONDataTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""The type of data being pushed, eg invoices, customers."""  
+    data_type: Optional[shared_datatype_enum.DataTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    r"""Available Data types"""  
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})  
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is None }})  
     timeout_in_seconds: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInSeconds'), 'exclude': lambda f: f is None }})  
-    validation: Optional[PutSupplier200ApplicationJSONValidation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
+    validation: Optional[shared_validation.Validation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""  
     
 

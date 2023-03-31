@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Customers:
@@ -37,7 +37,7 @@ class Customers:
         url = utils.generate_url(operations.CreateCustomerRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/customers', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "customer", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateCustomerRequest, request)
@@ -51,8 +51,8 @@ class Customers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateCustomer200ApplicationJSON])
-                res.create_customer_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateCustomerResponse])
+                res.create_customer_response = out
 
         return res
 
@@ -73,7 +73,8 @@ class Customers:
         res = operations.DownloadCustomerAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
-            pass
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.data = http_res.content
 
         return res
 
@@ -101,7 +102,7 @@ class Customers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateCustomersModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -124,8 +125,8 @@ class Customers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCustomerSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Customer])
+                res.customer = out
 
         return res
 
@@ -147,7 +148,7 @@ class Customers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCustomerAttachmentAttachment])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
                 res.attachment = out
 
         return res
@@ -170,8 +171,8 @@ class Customers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCustomerAttachmentsAttachments])
-                res.attachments = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
+                res.attachments_dataset = out
 
         return res
 
@@ -194,8 +195,8 @@ class Customers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCustomers200ApplicationJSON])
-                res.get_customers_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Customers])
+                res.customers = out
 
         return res
 
@@ -214,7 +215,7 @@ class Customers:
         url = utils.generate_url(operations.UpdateCustomerRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/customers/{customerId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "customer", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateCustomerRequest, request)
@@ -228,8 +229,8 @@ class Customers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateCustomer200ApplicationJSON])
-                res.update_customer_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.UpdateCustomerResponse])
+                res.update_customer_response = out
 
         return res
 

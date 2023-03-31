@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class BankAccountTransactions:
@@ -22,13 +22,45 @@ class BankAccountTransactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_bank_account_push_options(self, request: operations.GetBankAccountPushOptionsRequest) -> operations.GetBankAccountPushOptionsResponse:
+    def create_bank_transactions(self, request: operations.CreateBankTransactionsRequest) -> operations.CreateBankTransactionsResponse:
+        r"""Create bank transactions
+        Posts bank transactions to the accounting package for a given company.
+        
+        > **Supported Integrations**
+        > 
+        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support POST methods.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.CreateBankTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions', request)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "bank_transactions", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        query_params = utils.get_query_params(operations.CreateBankTransactionsRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.CreateBankTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateBankTransactionsResponse])
+                res.create_bank_transactions_response = out
+
+        return res
+
+    def get_create_bank_account_model(self, request: operations.GetCreateBankAccountModelRequest) -> operations.GetCreateBankAccountModelResponse:
         r"""List push options for bank account bank transactions
         Gets the options of pushing bank account transactions.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetBankAccountPushOptionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bankAccounts/{accountId}/bankTransactions', request)
+        url = utils.generate_url(operations.GetCreateBankAccountModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bankAccounts/{accountId}/bankTransactions', request)
         
         
         client = self._security_client
@@ -36,11 +68,11 @@ class BankAccountTransactions:
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetBankAccountPushOptionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetCreateBankAccountModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBankAccountPushOptionsPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -64,8 +96,8 @@ class BankAccountTransactions:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankAccountTransactions200ApplicationJSON])
-                res.list_bank_account_transactions_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BankTransactionsResponse])
+                res.bank_transactions_response = out
 
         return res
 
@@ -88,40 +120,8 @@ class BankAccountTransactions:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankTransactions200ApplicationJSON])
-                res.list_bank_transactions_200_application_json_object = out
-
-        return res
-
-    def post_bank_transactions(self, request: operations.PostBankTransactionsRequest) -> operations.PostBankTransactionsResponse:
-        r"""Create bank transactions
-        Posts bank transactions to the accounting package for a given company.
-        
-        > **Supported Integrations**
-        > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support POST methods.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.PostBankTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions', request)
-        
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(operations.PostBankTransactionsRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.PostBankTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostBankTransactions200ApplicationJSON])
-                res.post_bank_transactions_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BankAccountTransactions])
+                res.bank_account_transactions = out
 
         return res
 

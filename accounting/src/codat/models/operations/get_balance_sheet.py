@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
+from ..shared import balancesheetresponse as shared_balancesheetresponse
 from typing import Optional
 
 
@@ -17,117 +16,12 @@ class GetBalanceSheetRequest:
     start_month: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'startMonth', 'style': 'form', 'explode': True }})  
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetBalanceSheet200ApplicationJSONBalanceSheetReportLineReportLineReportLineReportLine:
-    
-    value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
-    r"""Numerical value of the line item."""  
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the account, unique for the company in the accounting platform."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the report line item."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetBalanceSheet200ApplicationJSONBalanceSheetReportLineReportLineReportLine:
-    
-    value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
-    r"""Numerical value of the line item."""  
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the account, unique for the company in the accounting platform."""  
-    items: Optional[list[GetBalanceSheet200ApplicationJSONBalanceSheetReportLineReportLineReportLineReportLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
-    r"""An array of ReportLine items."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the report line item."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetBalanceSheet200ApplicationJSONBalanceSheetReportLineReportLine:
-    
-    value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
-    r"""Numerical value of the line item."""  
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the account, unique for the company in the accounting platform."""  
-    items: Optional[list[GetBalanceSheet200ApplicationJSONBalanceSheetReportLineReportLineReportLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
-    r"""An array of ReportLine items."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the report line item."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetBalanceSheet200ApplicationJSONBalanceSheetReportLine:
-    r"""ReportLines for assets. For example, fixed and current assets."""
-    
-    value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
-    r"""Numerical value of the line item."""  
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the account, unique for the company in the accounting platform."""  
-    items: Optional[list[GetBalanceSheet200ApplicationJSONBalanceSheetReportLineReportLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
-    r"""An array of ReportLine items."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the report line item."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetBalanceSheet200ApplicationJSONBalanceSheet:
-    r"""> View the coverage for balance sheet in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=balanceSheet\" target=\"_blank\">Data coverage explorer</a>.
-    
-    ## Overview
-    
-    The balance sheet is a snapshot of a company's accounts at a single point in time that provides a statement of the assets, liabilities and equity of an organization. It gives interested parties an idea of the company's financial position, in addition to displaying what the company owns and owes.
-    
-    > **Balance sheet or profit and loss report?**
-    >
-    > A profit and loss report summarises the total revenue, expenses, and profit or loss during a specified time period. A balance sheet report shows the financial position of a company at a specific moment in time.
-    
-    **Structure of this report**
-    This report will reflect the structure and line descriptions that the business has set in their own accounting platform.
-    
-    **History**
-    By default, Codat pulls (up to) 24 months of balance sheets for a company. You can adjust this to fetch more history, where available, by updating the `monthsToSync` value for `balanceSheet` on the [data type settings endpoint](https://docs.codat.io/codat-api#/operations/post-profile-syncSettings).
-    
-    **Want to pull this in a standardised structure?**
-    Our [Enhanced Financials](https://docs.codat.io/assess/reports/enhanced-financials/financials) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
-    """
-    
-    net_assets: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netAssets') }})
-    r"""Value of net assets for a company in their base currency."""  
-    assets: Optional[GetBalanceSheet200ApplicationJSONBalanceSheetReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('assets'), 'exclude': lambda f: f is None }})
-    r"""ReportLines for assets. For example, fixed and current assets."""  
-    date_: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date'), 'exclude': lambda f: f is None }})
-    r"""Point in time when a snapshot of a company's financial position is taken."""  
-    equity: Optional[GetBalanceSheet200ApplicationJSONBalanceSheetReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('equity'), 'exclude': lambda f: f is None }})
-    r"""ReportLines for equities. For example, retained and current year earnings. See below."""  
-    liabilities: Optional[GetBalanceSheet200ApplicationJSONBalanceSheetReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('liabilities'), 'exclude': lambda f: f is None }})
-    r"""ReportLines for liabilities. For example, current liabilities."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetBalanceSheet200ApplicationJSON:
-    r"""Success"""
-    
-    currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
-    r"""Currency of the balance sheet."""  
-    reports: list[GetBalanceSheet200ApplicationJSONBalanceSheet] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
-    r"""An array of BalanceSheet reports."""  
-    earliest_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('earliestAvailableMonth'), 'exclude': lambda f: f is None }})
-    r"""Earliest available monthly report data."""  
-    most_recent_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mostRecentAvailableMonth'), 'exclude': lambda f: f is None }})
-    r"""Most recent available monthly report data."""  
-    
-
 @dataclasses.dataclass
 class GetBalanceSheetResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    get_balance_sheet_200_application_json_object: Optional[GetBalanceSheet200ApplicationJSON] = dataclasses.field(default=None)
+    balance_sheet_response: Optional[shared_balancesheetresponse.BalanceSheetResponse] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

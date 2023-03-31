@@ -21,5 +21,7 @@ class DownloadCustomerAttachmentResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
+    data: Optional[bytes] = dataclasses.field(default=None)
+    r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

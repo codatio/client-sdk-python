@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class DirectIncomes:
@@ -37,7 +37,7 @@ class DirectIncomes:
         url = utils.generate_url(operations.CreateDirectIncomeRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "direct_income", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateDirectIncomeRequest, request)
@@ -51,8 +51,8 @@ class DirectIncomes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateDirectIncome200ApplicationJSON])
-                res.create_direct_income_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateDirectIncomeResponse])
+                res.create_direct_income_response = out
 
         return res
 
@@ -73,7 +73,8 @@ class DirectIncomes:
         res = operations.DownloadDirectIncomeAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
-            pass
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.data = http_res.content
 
         return res
 
@@ -101,7 +102,7 @@ class DirectIncomes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateDirectIncomesModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -124,8 +125,8 @@ class DirectIncomes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDirectIncomeSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.DirectIncome])
+                res.direct_income = out
 
         return res
 
@@ -148,7 +149,7 @@ class DirectIncomes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDirectIncomeAttachmentAttachment])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
                 res.attachment = out
 
         return res
@@ -172,8 +173,8 @@ class DirectIncomes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetDirectIncomes200ApplicationJSON])
-                res.get_direct_incomes_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.DirectIncomes])
+                res.direct_incomes = out
 
         return res
 
@@ -195,26 +196,30 @@ class DirectIncomes:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListDirectIncomeAttachmentsAttachments])
-                res.attachments = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
+                res.attachments_dataset = out
 
         return res
 
-    def post_direct_income_attachment(self, request: operations.PostDirectIncomeAttachmentRequest) -> operations.PostDirectIncomeAttachmentResponse:
+    def upload_direct_income_attachment(self, request: operations.UploadDirectIncomeAttachmentRequest) -> operations.UploadDirectIncomeAttachmentResponse:
         r"""Create direct income attachment
         Posts a new direct income attachment for a given company.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes/{directIncomeId}/attachment', request)
+        url = utils.generate_url(operations.UploadDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes/{directIncomeId}/attachment', request)
         
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         
         client = self._security_client
         
-        http_res = client.request('POST', url)
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostDirectIncomeAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UploadDirectIncomeAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             pass

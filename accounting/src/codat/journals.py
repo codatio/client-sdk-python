@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Journals:
@@ -46,7 +46,7 @@ class Journals:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateJournalsModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -69,8 +69,8 @@ class Journals:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetJournalSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Journal])
+                res.journal = out
 
         return res
 
@@ -93,8 +93,8 @@ class Journals:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListJournals200ApplicationJSON])
-                res.list_journals_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Journals])
+                res.journals = out
 
         return res
 
@@ -113,7 +113,7 @@ class Journals:
         url = utils.generate_url(operations.PushJournalRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journals', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "journal", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.PushJournalRequest, request)

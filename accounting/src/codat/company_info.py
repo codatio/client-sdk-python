@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class CompanyInfo:
@@ -40,8 +40,8 @@ class CompanyInfo:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyInfoCompanyInfo])
-                res.company_info = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CompanyDataset])
+                res.company_dataset = out
 
         return res
 
@@ -63,8 +63,8 @@ class CompanyInfo:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostSyncInfo200ApplicationJSON])
-                res.post_sync_info_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.DataSet])
+                res.data_set = out
 
         return res
 

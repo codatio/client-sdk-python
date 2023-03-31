@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
-from typing import Any, Optional
+from ..shared import journalentries as shared_journalentries
+from typing import Optional
 
 
 @dataclasses.dataclass
@@ -22,189 +21,12 @@ class ListJournalEntriesRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""  
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONLinksHypertextReference:
-    
-    href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONLinks:
-    
-    current: ListJournalEntries200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListJournalEntries200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListJournalEntries200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListJournalEntries200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLinesAccountRef:
-    r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
-    
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' from the Accounts data type."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""'name' from the Accounts data type."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLinesTracking:
-    r"""List of record refs associated with the tracking information for the line (eg to a Tracking Category, or customer etc.)"""
-    
-    record_refs: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLines:
-    
-    net_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netAmount') }})
-    r"""Amount for the journal line. Debit entries are considered positive, and credit entries are considered negative."""  
-    account_ref: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLinesAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
-    r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""  
-    currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    r"""Currency for the journal line item."""  
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Description of the journal line item."""  
-    tracking: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLinesTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
-    r"""List of record refs associated with the tracking information for the line (eg to a Tracking Category, or customer etc.)"""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONSourceModifiedDateJournalRef:
-    r"""Links journal entries to the relevant journal in accounting integrations that use multi-book accounting (multiple journals)."""
-    
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""GUID of the underlying journal."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Journal name, 256 characters max."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONSourceModifiedDateMetadata:
-    
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
-    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONSourceModifiedDateRecordRef:
-    r"""Links to the underlying record or data type.
-    
-    Found on:
-    
-    - Journal entries
-    - Account transactions
-    - Invoices
-    - Transfers
-    """
-    
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Name of the 'dataType'."""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' of the underlying record or data type."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONSourceModifiedDateSupplementalData:
-    r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""
-    
-    content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSONSourceModifiedDate:
-    r"""> **Language tip:** For the top-level record of a company's financial transactions, refer to the [Journals](https://docs.codat.io/accounting-api#/schemas/Journal) data type
-    
-    > View the coverage for journal entries in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journalEntries\" target=\"_blank\">Data coverage explorer</a>.
-    
-    ## Overview
-    
-    A journal entry report shows the entries made in a company's general ledger, or [accounts](https://docs.codat.io/accounting-api#/schemas/Account), when transactions are approved. The journal line items for each journal entry should balance.
-    
-    A journal entry line item is a single transaction line on the journal entry. For example: 
-    
-    - When a journal entry is recording a receipt of cash, the credit to accounts receivable and the debit to cash are separate line items. 
-    - When a company needs to recognise revenue from an annual contract on a monthly basis, on receipt of cash for month one, they make a debit to deferred income and a credit to revenue.
-    
-    In Codat a journal entry contains details of:
-    
-    - The date on which the entry was created and posted.
-    - Itemised lines, including amounts and currency.
-    - A reference to the associated accounts.
-    - A reference to the underlying record. For example, the invoice, bill, or other data type that triggered the posting of the journal entry to the general ledger. 
-    
-    > **Pushing journal entries**  
-    > Codat only supports journal entries in the base currency of the company that are pushed into accounts denominated in the same base currency.
-    """
-    
-    created_on: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdOn'), 'exclude': lambda f: f is None }})
-    r"""Date on which the journal was created in the accounting platform."""  
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Optional description of the journal entry."""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier of the journal entry for the company in the accounting platform."""  
-    journal_lines: Optional[list[ListJournalEntries200ApplicationJSONSourceModifiedDateJournalLines]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalLines'), 'exclude': lambda f: f is None }})
-    r"""An array of journal lines."""  
-    journal_ref: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateJournalRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalRef'), 'exclude': lambda f: f is None }})
-    r"""Links journal entries to the relevant journal in accounting integrations that use multi-book accounting (multiple journals)."""  
-    metadata: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in Codat."""  
-    posted_on: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('postedOn'), 'exclude': lambda f: f is None }})
-    r"""Date on which the journal entry was posted to the accounting platform, and had an impact on the general ledger. This may be different from the creation date.
-    
-    For example, a user creates a journal entry on Monday and saves it as draft, which has no impact on the general ledger. On Thursday, they return to the entry and post it.
-    
-    The **createdOn** date shows as Monday.
-    The **postedOn** date shows as Thursday.
-    Journal entries can also be backdated, so the **postedOn** date may be earlier than the **createdOn** date.
-    """  
-    record_ref: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
-    r"""Links to the underlying record or data type.
-    
-    Found on:
-    
-    - Journal entries
-    - Account transactions
-    - Invoices
-    - Transfers
-    """  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in the originating system"""  
-    supplemental_data: Optional[ListJournalEntries200ApplicationJSONSourceModifiedDateSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
-    r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  
-    updated_on: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedOn'), 'exclude': lambda f: f is None }})
-    r"""Date on which the journal was last updated in the accounting platform."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListJournalEntries200ApplicationJSON:
-    r"""Success"""
-    
-    links: ListJournalEntries200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
-    page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
-    page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
-    total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListJournalEntries200ApplicationJSONSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
-    
-
 @dataclasses.dataclass
 class ListJournalEntriesResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    list_journal_entries_200_application_json_object: Optional[ListJournalEntries200ApplicationJSON] = dataclasses.field(default=None)
+    journal_entries: Optional[shared_journalentries.JournalEntries] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

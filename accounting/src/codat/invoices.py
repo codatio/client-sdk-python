@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Invoices:
@@ -22,6 +22,28 @@ class Invoices:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    def download_invoice_pdf(self, request: operations.DownloadInvoicePdfRequest) -> operations.DownloadInvoicePdfResponse:
+        r"""Get invoice as PDF
+        Get invoice as PDF
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.DownloadInvoicePdfRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}/pdf', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DownloadInvoicePdfResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.data = http_res.content
+
+        return res
+
     def create_invoice(self, request: operations.CreateInvoiceRequest) -> operations.CreateInvoiceResponse:
         r"""Create invoice
         Posts a new invoice to the accounting package for a given company.
@@ -37,7 +59,7 @@ class Invoices:
         url = utils.generate_url(operations.CreateInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "invoice", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateInvoiceRequest, request)
@@ -51,18 +73,18 @@ class Invoices:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateInvoice200ApplicationJSON])
-                res.create_invoice_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateInvoiceResponse])
+                res.create_invoice_response = out
 
         return res
 
-    def donwload_invoice_attachment(self, request: operations.DonwloadInvoiceAttachmentRequest) -> operations.DonwloadInvoiceAttachmentResponse:
+    def download_invoice_attachment(self, request: operations.DownloadInvoiceAttachmentRequest) -> operations.DownloadInvoiceAttachmentResponse:
         r"""Download invoice attachment
         Download invoice attachments
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.DonwloadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download', request)
+        url = utils.generate_url(operations.DownloadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download', request)
         
         
         client = self._security_client
@@ -70,10 +92,11 @@ class Invoices:
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.DonwloadInvoiceAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DownloadInvoiceAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
-            pass
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.data = http_res.content
 
         return res
 
@@ -101,7 +124,7 @@ class Invoices:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateInvoicesModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -124,14 +147,14 @@ class Invoices:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetInvoiceSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Invoice])
+                res.invoice = out
 
         return res
 
     def get_invoice_attachment(self, request: operations.GetInvoiceAttachmentRequest) -> operations.GetInvoiceAttachmentResponse:
         r"""Get invoice attachment
-        Get invoice attachments
+        Get invoice attachment
         """
         base_url = self._server_url
         
@@ -147,7 +170,7 @@ class Invoices:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetInvoiceAttachmentAttachment])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
                 res.attachment = out
 
         return res
@@ -170,29 +193,8 @@ class Invoices:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetInvoiceAttachmentsAttachments])
-                res.attachments = out
-
-        return res
-
-    def get_invoice_pdf(self, request: operations.GetInvoicePdfRequest) -> operations.GetInvoicePdfResponse:
-        r"""Get invoice as PDF
-        Get invoice as PDF
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetInvoicePdfRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}/pdf', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetInvoicePdfResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            pass
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
+                res.attachments_dataset = out
 
         return res
 
@@ -215,29 +217,8 @@ class Invoices:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListInvoices200ApplicationJSON])
-                res.list_invoices_200_application_json_object = out
-
-        return res
-
-    def push_invoice_attachment(self, request: operations.PushInvoiceAttachmentRequest) -> operations.PushInvoiceAttachmentResponse:
-        r"""Push invoice attachment
-        Push invoice attachment
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.PushInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}/attachment', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.PushInvoiceAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            pass
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Invoices])
+                res.invoices = out
 
         return res
 
@@ -256,7 +237,7 @@ class Invoices:
         url = utils.generate_url(operations.UpdateInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "invoice", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateInvoiceRequest, request)
@@ -270,8 +251,33 @@ class Invoices:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateInvoice200ApplicationJSON])
-                res.update_invoice_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.UpdateInvoiceResponse])
+                res.update_invoice_response = out
+
+        return res
+
+    def upload_invoice_attachment(self, request: operations.UploadInvoiceAttachmentRequest) -> operations.UploadInvoiceAttachmentResponse:
+        r"""Push invoice attachment
+        Push invoice attachment
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.UploadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}/attachment', request)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.UploadInvoiceAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            pass
 
         return res
 

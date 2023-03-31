@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
+from ..shared import agedcreditorreport as shared_agedcreditorreport
 from datetime import date
 from typing import Optional
 
@@ -21,110 +20,12 @@ class GetAgedCreditorsReportRequest:
     r"""Date the report is generated up to."""  
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetAgedCreditorsReportAgedCreditorsReportAgedCreditorAgedCurrencyOutstandingAgedOutstandingAmountAmountsOutstandingByDataType:
-    
-    amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
-    r"""The amount outstanding."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of data type with outstanding amount for given period."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetAgedCreditorsReportAgedCreditorsReportAgedCreditorAgedCurrencyOutstandingAgedOutstandingAmount:
-    
-    amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
-    r"""The amount outstanding."""  
-    details: Optional[list[GetAgedCreditorsReportAgedCreditorsReportAgedCreditorAgedCurrencyOutstandingAgedOutstandingAmountAmountsOutstandingByDataType]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})
-    r"""Array of details."""  
-    from_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'exclude': lambda f: f is None }})
-    r"""Start date of period."""  
-    to_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'exclude': lambda f: f is None }})
-    r"""End date of period."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetAgedCreditorsReportAgedCreditorsReportAgedCreditorAgedCurrencyOutstanding:
-    
-    aged_outstanding_amounts: Optional[list[GetAgedCreditorsReportAgedCreditorsReportAgedCreditorAgedCurrencyOutstandingAgedOutstandingAmount]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedOutstandingAmounts'), 'exclude': lambda f: f is None }})
-    r"""Array of outstanding amounts by period."""  
-    currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
-    
-    ## Unknown currencies
-    
-    In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
-    
-    There are only a very small number of edge cases where this currency code is returned by the Codat system.
-    """  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetAgedCreditorsReportAgedCreditorsReportAgedCreditor:
-    
-    aged_currency_outstanding: Optional[list[GetAgedCreditorsReportAgedCreditorsReportAgedCreditorAgedCurrencyOutstanding]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedCurrencyOutstanding'), 'exclude': lambda f: f is None }})
-    r"""Array of aged creditors by currency."""  
-    supplier_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierId'), 'exclude': lambda f: f is None }})
-    r"""Supplier ID of the aged creditor."""  
-    supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is None }})
-    r"""Supplier name of the aged creditor."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetAgedCreditorsReportAgedCreditorsReport:
-    r"""The Aged Creditors report shows the total balance owed by a business to its suppliers over time.
-    
-    You can generate it for a company based on recently synced data from your customers' accounting platforms. The report is available in the **Reports** tab in the Codat portal.
-    
-    Total assets or liabilities are grouped into 30-day periods for each supplier, up to the current date. You can adjust the report date, period length, and number of periods to show on each report. The data can be grouped by customer or currency.
-    
-    > It is not guaranteed that write-offs are included in the Aged Creditors report.
-    
-    ## Underlying data
-    
-    The Aged Creditors report is generated from a set of required data types: [Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier), [Bills](https://docs.codat.io/accounting-api#/schemas/Bill), [Bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote), and [Bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment).
-    
-    To generate the report, the underlying data types must have been synced within 24 hours of each other. Otherwise an error is displayed when you try to run the report. Sync the required data types by clicking the link in the error, and then run the report again.
-    
-    > The Aged Creditor report runs based on the **issue dates** of the underlying data types rather than the due date.
-    
-    ## Accessing the Aged Creditors report in Portal
-    
-    Apart from returning the report via the API as JSON and query, you can also return the Aged Creditors report in the Codat portal.
-    
-    1. In the navigation bar, click **Companies**.
-    2. Click the name of the company you want to generate the report for. The company's data page is displayed.
-    3. Click the **Accounting** tab then click **Reports**.
-    4. Select **Aged Creditors**.
-    5. _(Optional)_ Edit the default reporting parameters.
-       a. You can change the report date in the **Date** box. By default, the report includes transactions that occurred up to, but not including, today's date. To include transactions for today, enter tomorrow's date. 
-       b. In the **Period Length Days** box, select the default period length for each column (the default is 30 days).
-       b. In the **Number of Periods** box, enter the number of periods to show as columns in the report (the default is 4 periods).
-    6. To run the report, click **Load aged creditors**.
-    7. The report is generated and displayed at the bottom of the page.
-    
-    The report will be grouped per supplier and depending on the periods requested. The details indicates whether the amounts owed come from outstanding bills or bill credit notes.
-    """
-    
-    data: Optional[list[GetAgedCreditorsReportAgedCreditorsReportAgedCreditor]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
-    r"""Array of aged debtors."""  
-    generated: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('generated'), 'exclude': lambda f: f is None }})
-    r"""Date and time the report was generated."""  
-    report_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportDate'), 'exclude': lambda f: f is None }})
-    r"""Date the report is generated up to."""  
-    
-
 @dataclasses.dataclass
 class GetAgedCreditorsReportResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    aged_creditors_report: Optional[GetAgedCreditorsReportAgedCreditorsReport] = dataclasses.field(default=None)
+    aged_creditor_report: Optional[shared_agedcreditorreport.AgedCreditorReport] = dataclasses.field(default=None)
     r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

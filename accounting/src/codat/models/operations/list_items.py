@@ -3,9 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
+from ..shared import items1 as shared_items1
 from typing import Optional
 
 
@@ -23,190 +21,12 @@ class ListItemsRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""  
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONLinksHypertextReference:
-    
-    href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONLinks:
-    
-    current: ListItems200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListItems200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListItems200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListItems200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONSourceModifiedDateBillItemAccountRef:
-    r"""Reference of the account to which the item is linked."""
-    
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' from the Accounts data type."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""'name' from the Accounts data type."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONSourceModifiedDateBillItemTaxRateRef:
-    r"""Reference of the tax rate to which the item is linked."""
-    
-    effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
-    r"""Applicable tax rate."""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for the tax rate in the accounting platform."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the tax rate in the accounting platform."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONSourceModifiedDateBillItem:
-    r"""Item details that are only for bills."""
-    
-    account_ref: Optional[ListItems200ApplicationJSONSourceModifiedDateBillItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
-    r"""Reference of the account to which the item is linked."""  
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Short description of the product or service that has been bought by the customer."""  
-    tax_rate_ref: Optional[ListItems200ApplicationJSONSourceModifiedDateBillItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
-    r"""Reference of the tax rate to which the item is linked."""  
-    unit_price: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'exclude': lambda f: f is None }})
-    r"""Unit price of the product or service."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONSourceModifiedDateInvoiceItemAccountRef:
-    r"""Reference of the account to which the item is linked."""
-    
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' from the Accounts data type."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""'name' from the Accounts data type."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONSourceModifiedDateInvoiceItemTaxRateRef:
-    r"""Reference of the tax rate to which the item is linked."""
-    
-    effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
-    r"""Applicable tax rate."""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for the tax rate in the accounting platform."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the tax rate in the accounting platform."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONSourceModifiedDateInvoiceItem:
-    r"""Item details that are only for bills."""
-    
-    account_ref: Optional[ListItems200ApplicationJSONSourceModifiedDateInvoiceItemAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
-    r"""Reference of the account to which the item is linked."""  
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Short description of the product or service that has been bought by the customer."""  
-    tax_rate_ref: Optional[ListItems200ApplicationJSONSourceModifiedDateInvoiceItemTaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
-    r"""Reference of the tax rate to which the item is linked."""  
-    unit_price: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'exclude': lambda f: f is None }})
-    r"""Unit price of the product or service."""  
-    
-class ListItems200ApplicationJSONSourceModifiedDateItemStatusEnum(str, Enum):
-    r"""Current state of the item, either:
-    
-    - `Active`: Available for use
-    - `Archived`: Unavailable
-    - `Unknown`
-    
-    Due to a [limitation in Xero's API](https://docs.codat.io/integrations/accounting/xero/xero-faq#why-do-all-of-my-items-from-xero-have-their-status-as-unknown), all items from Xero are mapped as `Unknown`.
-    """
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONSourceModifiedDateMetadata:
-    
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
-    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
-    
-class ListItems200ApplicationJSONSourceModifiedDateTypeEnum(str, Enum):
-    r"""Type of the item."""
-    UNKNOWN = "Unknown"
-    INVENTORY = "Inventory"
-    NON_INVENTORY = "NonInventory"
-    SERVICE = "Service"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSONSourceModifiedDate:
-    r"""> View the coverage for items in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items\" target=\"_blank\">Data coverage explorer</a>.
-    
-    ## Overview
-    
-    **Items** allow your customers to save and track details of the products and services that they buy and sell.
-    
-    """
-    
-    is_bill_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBillItem') }})
-    r"""Whether you can use this item for bills."""  
-    is_invoice_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isInvoiceItem') }})
-    r"""Whether you can use this item for invoices."""  
-    item_status: ListItems200ApplicationJSONSourceModifiedDateItemStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemStatus') }})
-    r"""Current state of the item, either:
-    
-    - `Active`: Available for use
-    - `Archived`: Unavailable
-    - `Unknown`
-    
-    Due to a [limitation in Xero's API](https://docs.codat.io/integrations/accounting/xero/xero-faq#why-do-all-of-my-items-from-xero-have-their-status-as-unknown), all items from Xero are mapped as `Unknown`.
-    """  
-    type: ListItems200ApplicationJSONSourceModifiedDateTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""Type of the item."""  
-    bill_item: Optional[ListItems200ApplicationJSONSourceModifiedDateBillItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billItem'), 'exclude': lambda f: f is None }})
-    r"""Item details that are only for bills."""  
-    code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
-    r"""Friendly reference for the item."""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the item that is unique to a company in the accounting platform."""  
-    invoice_item: Optional[ListItems200ApplicationJSONSourceModifiedDateInvoiceItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceItem'), 'exclude': lambda f: f is None }})
-    r"""Item details that are only for bills."""  
-    metadata: Optional[ListItems200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in Codat."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the item in the accounting platform."""  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in the originating system"""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListItems200ApplicationJSON:
-    r"""Success"""
-    
-    links: ListItems200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
-    page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
-    page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
-    total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListItems200ApplicationJSONSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
-    
-
 @dataclasses.dataclass
 class ListItemsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    list_items_200_application_json_object: Optional[ListItems200ApplicationJSON] = dataclasses.field(default=None)
+    items: Optional[shared_items1.Items1] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class JournalEntries:
@@ -37,7 +37,7 @@ class JournalEntries:
         url = utils.generate_url(operations.CreateJournalEntryRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journalEntries', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "journal_entry", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateJournalEntryRequest, request)
@@ -51,8 +51,8 @@ class JournalEntries:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateJournalEntry200ApplicationJSON])
-                res.create_journal_entry_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateJournalEntryResponse])
+                res.create_journal_entry_response = out
 
         return res
 
@@ -80,7 +80,7 @@ class JournalEntries:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateJournalEntriesModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -103,8 +103,8 @@ class JournalEntries:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetJournalEntrySourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.JournalEntry])
+                res.journal_entry = out
 
         return res
 
@@ -127,8 +127,8 @@ class JournalEntries:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListJournalEntries200ApplicationJSON])
-                res.list_journal_entries_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.JournalEntries])
+                res.journal_entries = out
 
         return res
 

@@ -18,7 +18,7 @@ req = operations.GetAccountTransactionRequest(
     
 res = s.account_transactions.get_account_transaction(req)
 
-if res.source_modified_date is not None:
+if res.account_transaction is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Suppliers:
@@ -22,7 +22,7 @@ class Suppliers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_suppliers(self, request: operations.CreateSuppliersRequest) -> operations.CreateSuppliersResponse:
+    def create_supplier(self, request: operations.CreateSupplierRequest) -> operations.CreateSupplierResponse:
         r"""Create suppliers
         Push suppliers
         
@@ -34,25 +34,25 @@ class Suppliers:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.CreateSuppliersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/suppliers', request)
+        url = utils.generate_url(operations.CreateSupplierRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/suppliers', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "supplier", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(operations.CreateSuppliersRequest, request)
+        query_params = utils.get_query_params(operations.CreateSupplierRequest, request)
         
         client = self._security_client
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.CreateSuppliersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateSupplierResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateSuppliers200ApplicationJSON])
-                res.create_suppliers_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateSupplierResponse])
+                res.create_supplier_response = out
 
         return res
 
@@ -73,7 +73,8 @@ class Suppliers:
         res = operations.DownloadSupplierAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
-            pass
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.data = http_res.content
 
         return res
 
@@ -101,7 +102,7 @@ class Suppliers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateSuppliersModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -124,8 +125,8 @@ class Suppliers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetSupplierSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Supplier])
+                res.supplier = out
 
         return res
 
@@ -147,7 +148,7 @@ class Suppliers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetSupplierAttachmentAttachment])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
                 res.attachment = out
 
         return res
@@ -170,8 +171,8 @@ class Suppliers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListSupplierAttachmentsAttachments])
-                res.attachments = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
+                res.attachments_dataset = out
 
         return res
 
@@ -194,8 +195,8 @@ class Suppliers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListSuppliers200ApplicationJSON])
-                res.list_suppliers_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Suppliers])
+                res.suppliers = out
 
         return res
 
@@ -214,7 +215,7 @@ class Suppliers:
         url = utils.generate_url(operations.PutSupplierRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/suppliers/{supplierId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "supplier", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.PutSupplierRequest, request)

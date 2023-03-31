@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Bills:
@@ -37,7 +37,7 @@ class Bills:
         url = utils.generate_url(operations.CreateBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bill", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBillRequest, request)
@@ -51,33 +51,12 @@ class Bills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateBill200ApplicationJSON])
-                res.create_bill_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateBillResponse])
+                res.create_bill_response = out
 
         return res
 
-    def create_bill_attachments(self, request: operations.CreateBillAttachmentsRequest) -> operations.CreateBillAttachmentsResponse:
-        r"""Create bill attachments
-        Post bill attachments
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.CreateBillAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.CreateBillAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            pass
-
-        return res
-
-    def delete_companies_company_id_connections_connection_id_push_bills_bill_id(self, request: operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDRequest) -> operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDResponse:
+    def delete_bill(self, request: operations.DeleteBillRequest) -> operations.DeleteBillResponse:
         r"""Delete bill
         Deletes a bill from the accounting package for a given company.
         
@@ -87,7 +66,7 @@ class Bills:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request)
+        url = utils.generate_url(operations.DeleteBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request)
         
         
         client = self._security_client
@@ -95,16 +74,12 @@ class Bills:
         http_res = client.request('DELETE', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DeleteBillResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillsBillID200ApplicationJSON])
-                res.delete_companies_company_id_connections_connection_id_push_bills_bill_id_200_application_json_object = out
-            if utils.match_content_type(content_type, 'application/xml'):
-                res.body = http_res.content
-            if utils.match_content_type(content_type, 'multipart/form-data'):
-                res.body = http_res.content
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOperationSummary])
+                res.push_operation_summary = out
 
         return res
 
@@ -125,7 +100,8 @@ class Bills:
         res = operations.DownloadBillAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
-            pass
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.data = http_res.content
 
         return res
 
@@ -147,8 +123,8 @@ class Bills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBillSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Bill])
+                res.bill = out
 
         return res
 
@@ -170,7 +146,7 @@ class Bills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBillAttachmentAttachment])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
                 res.attachment = out
 
         return res
@@ -193,8 +169,8 @@ class Bills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBillAttachmentsAttachments])
-                res.attachments = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
+                res.attachments_dataset = out
 
         return res
 
@@ -220,7 +196,7 @@ class Bills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdateBillsModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -244,8 +220,8 @@ class Bills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBills200ApplicationJSON])
-                res.list_bills_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Bills])
+                res.bills = out
 
         return res
 
@@ -264,7 +240,7 @@ class Bills:
         url = utils.generate_url(operations.UpdateBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bill", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateBillRequest, request)
@@ -278,8 +254,33 @@ class Bills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateBill200ApplicationJSON])
-                res.update_bill_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.UpdateBillResponse])
+                res.update_bill_response = out
+
+        return res
+
+    def upload_bill_attachments(self, request: operations.UploadBillAttachmentsRequest) -> operations.UploadBillAttachmentsResponse:
+        r"""Upload bill attachments
+        Upload bill attachments
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.UploadBillAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments', request)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.UploadBillAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            pass
 
         return res
 

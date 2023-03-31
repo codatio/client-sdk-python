@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Reports:
@@ -41,8 +41,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAgedCreditorsReportAgedCreditorsReport])
-                res.aged_creditors_report = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AgedCreditorReport])
+                res.aged_creditor_report = out
 
         return res
 
@@ -65,8 +65,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAgedDebtorsReportAgedDebtorsReport])
-                res.aged_debtors_report = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AgedDebtorReport])
+                res.aged_debtor_report = out
 
         return res
 

@@ -3,9 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
+from ..shared import banktransactionsresponse as shared_banktransactionsresponse
 from typing import Optional
 
 
@@ -26,127 +24,12 @@ class ListBankAccountTransactionsRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""  
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankAccountTransactions200ApplicationJSONLinksHypertextReference:
-    
-    href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankAccountTransactions200ApplicationJSONLinks:
-    
-    current: ListBankAccountTransactions200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListBankAccountTransactions200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListBankAccountTransactions200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListBankAccountTransactions200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
-    
-class ListBankAccountTransactions200ApplicationJSONResultsSourceModifiedDateTransactionTypeEnum(str, Enum):
-    r"""Type of transaction for the bank statement line"""
-    UNKNOWN = "Unknown"
-    CREDIT = "Credit"
-    DEBIT = "Debit"
-    INT = "Int"
-    DIV = "Div"
-    FEE = "Fee"
-    SER_CHG = "SerChg"
-    DEP = "Dep"
-    ATM = "Atm"
-    POS = "Pos"
-    XFER = "Xfer"
-    CHECK = "Check"
-    PAYMENT = "Payment"
-    CASH = "Cash"
-    DIRECT_DEP = "DirectDep"
-    DIRECT_DEBIT = "DirectDebit"
-    REPEAT_PMT = "RepeatPmt"
-    OTHER = "Other"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankAccountTransactions200ApplicationJSONResultsSourceModifiedDate:
-    
-    amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount') }})  
-    balance: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})  
-    date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
-    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
-    ```
-    2020-10-08T22:40:50Z
-    2021-01-01T00:00:00
-    ```
-    
-    
-    
-    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
-    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
-    - Unqualified local time: `2021-11-15T01:00:00`
-    - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
-    > Time zones
-    > 
-    > Not all dates from Codat will contain information about time zones.  
-    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
-    reconciled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reconciled') }})  
-    transaction_type: ListBankAccountTransactions200ApplicationJSONResultsSourceModifiedDateTransactionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType') }})
-    r"""Type of transaction for the bank statement line"""  
-    counterparty: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('counterparty'), 'exclude': lambda f: f is None }})  
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in Codat."""  
-    reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference'), 'exclude': lambda f: f is None }})  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in the originating system"""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankAccountTransactions200ApplicationJSONResults:
-    r"""> **Accessing Bank Accounts through Banking API**
-    > 
-    > This datatype was originally used for accessing bank account data both in accounting integrations and open banking aggregators. 
-    >
-    > To view bank account data through the Banking API, please refer to the new datatype [here](https://docs.codat.io/banking-api#/operations/list-all-banking-transactions)
-    
-    > View the coverage for bank transactions in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions\" target=\"_blank\">Data coverage explorer</a>.
-    
-    ## Overview
-    
-    Transactional banking data for a specific company and account.
-    
-    Bank transactions include the:
-    * Amount of the transaction.
-    * Current account balance.
-    * Transaction type, for example, credit, debit, or transfer.
-    """
-    
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})  
-    transactions: Optional[list[ListBankAccountTransactions200ApplicationJSONResultsSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListBankAccountTransactions200ApplicationJSON:
-    r"""Success"""
-    
-    links: ListBankAccountTransactions200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
-    page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
-    page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
-    total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListBankAccountTransactions200ApplicationJSONResults]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
-    
-
 @dataclasses.dataclass
 class ListBankAccountTransactionsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    list_bank_account_transactions_200_application_json_object: Optional[ListBankAccountTransactions200ApplicationJSON] = dataclasses.field(default=None)
+    bank_transactions_response: Optional[shared_banktransactionsresponse.BankTransactionsResponse] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

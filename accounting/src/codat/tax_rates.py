@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class TaxRates:
@@ -40,8 +40,8 @@ class TaxRates:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetTaxRate200ApplicationJSON])
-                res.get_tax_rate_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TaxRate])
+                res.tax_rate = out
 
         return res
 
@@ -64,8 +64,8 @@ class TaxRates:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListTaxRates200ApplicationJSON])
-                res.list_tax_rates_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TaxRates])
+                res.tax_rates = out
 
         return res
 

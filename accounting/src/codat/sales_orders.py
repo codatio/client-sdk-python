@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class SalesOrders:
@@ -40,8 +40,8 @@ class SalesOrders:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetSalesOrderSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SalesOrder])
+                res.sales_order = out
 
         return res
 
@@ -64,8 +64,8 @@ class SalesOrders:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListSalesOrders200ApplicationJSON])
-                res.list_sales_orders_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SalesOrders])
+                res.sales_orders = out
 
         return res
 

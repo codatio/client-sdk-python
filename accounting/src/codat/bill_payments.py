@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class BillPayments:
@@ -37,7 +37,7 @@ class BillPayments:
         url = utils.generate_url(operations.CreateBillPaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billPayments', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bill_payment", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBillPaymentRequest, request)
@@ -51,12 +51,12 @@ class BillPayments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateBillPayment200ApplicationJSON])
-                res.create_bill_payment_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateBillPaymentResponse])
+                res.create_bill_payment_response = out
 
         return res
 
-    def delete_companies_company_id_connections_connection_id_push_bill_payments_bill_payment_id(self, request: operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDRequest) -> operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDResponse:
+    def delete_bill_payment(self, request: operations.DeleteBillPaymentRequest) -> operations.DeleteBillPaymentResponse:
         r"""Delete bill payment
         Deletes a bill payment from the accounting package for a given company.
         
@@ -66,7 +66,7 @@ class BillPayments:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billPayments/{billPaymentId}', request)
+        url = utils.generate_url(operations.DeleteBillPaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billPayments/{billPaymentId}', request)
         
         
         client = self._security_client
@@ -74,12 +74,12 @@ class BillPayments:
         http_res = client.request('DELETE', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DeleteBillPaymentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteCompaniesCompanyIDConnectionsConnectionIDPushBillPaymentsBillPaymentID200ApplicationJSON])
-                res.delete_companies_company_id_connections_connection_id_push_bill_payments_bill_payment_id_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOperationSummary])
+                res.push_operation_summary = out
 
         return res
 
@@ -101,8 +101,8 @@ class BillPayments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBillPaymentsSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BillPayment])
+                res.bill_payment = out
 
         return res
 
@@ -128,7 +128,7 @@ class BillPayments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateBillPaymentsModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -152,8 +152,8 @@ class BillPayments:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBillPayments200ApplicationJSON])
-                res.list_bill_payments_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BillPayments])
+                res.bill_payments = out
 
         return res
 

@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Accounts:
@@ -37,7 +37,7 @@ class Accounts:
         url = utils.generate_url(operations.CreateAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/accounts', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "account", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateAccountRequest, request)
@@ -51,8 +51,8 @@ class Accounts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateAccount200ApplicationJSON])
-                res.create_account_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateAccountResponse])
+                res.create_account_response = out
 
         return res
 
@@ -74,32 +74,8 @@ class Accounts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountSourceModifiedDate])
-                res.source_modified_date = out
-
-        return res
-
-    def get_accounts(self, request: operations.GetAccountsRequest) -> operations.GetAccountsResponse:
-        r"""List accounts
-        Gets the latest accounts for a company
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetAccountsRequest, base_url, '/companies/{companyId}/data/accounts', request)
-        
-        query_params = utils.get_query_params(operations.GetAccountsRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url, params=query_params)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccounts200ApplicationJSON])
-                res.get_accounts_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Account])
+                res.account = out
 
         return res
 
@@ -127,8 +103,32 @@ class Accounts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateChartOfAccountsModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
+
+        return res
+
+    def list_accounts(self, request: operations.ListAccountsRequest) -> operations.ListAccountsResponse:
+        r"""List accounts
+        Gets the latest accounts for a company
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListAccountsRequest, base_url, '/companies/{companyId}/data/accounts', request)
+        
+        query_params = utils.get_query_params(operations.ListAccountsRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Accounts])
+                res.accounts = out
 
         return res
 

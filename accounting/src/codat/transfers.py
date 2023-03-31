@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Transfers:
@@ -37,7 +37,7 @@ class Transfers:
         url = utils.generate_url(operations.CreateTransferRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/transfers', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "transfer", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -50,8 +50,8 @@ class Transfers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateTransfer200ApplicationJSON])
-                res.create_transfer_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateTransferResponse])
+                res.create_transfer_response = out
 
         return res
 
@@ -79,7 +79,7 @@ class Transfers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateTransfersModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -102,8 +102,8 @@ class Transfers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetTransferSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Transfer])
+                res.transfer = out
 
         return res
 
@@ -126,8 +126,8 @@ class Transfers:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListTransfers200ApplicationJSON])
-                res.list_transfers_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Transfers])
+                res.transfers = out
 
         return res
 

@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Financials:
@@ -41,8 +41,8 @@ class Financials:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBalanceSheet200ApplicationJSON])
-                res.get_balance_sheet_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BalanceSheetResponse])
+                res.balance_sheet_response = out
 
         return res
 
@@ -65,8 +65,8 @@ class Financials:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCashFlowStatement200ApplicationJSON])
-                res.get_cash_flow_statement_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CashFlowStatementResponse])
+                res.cash_flow_statement_response = out
 
         return res
 
@@ -89,8 +89,8 @@ class Financials:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetProfitAndLoss200ApplicationJSON])
-                res.get_profit_and_loss_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ProfitAndLossResponse])
+                res.profit_and_loss_response = out
 
         return res
 

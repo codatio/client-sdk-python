@@ -3,9 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
+from ..shared import accounttransactions as shared_accounttransactions
 from typing import Optional
 
 
@@ -24,169 +22,12 @@ class ListAccountTransactionsRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""  
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListAccountTransactions200ApplicationJSONLinksHypertextReference:
-    
-    href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListAccountTransactions200ApplicationJSONLinks:
-    
-    current: ListAccountTransactions200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current') }})  
-    self_: ListAccountTransactions200ApplicationJSONLinksHypertextReference = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self') }})  
-    next: Optional[ListAccountTransactions200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})  
-    previous: Optional[ListAccountTransactions200ApplicationJSONLinksHypertextReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListAccountTransactions200ApplicationJSONSourceModifiedDateBankAccountRef:
-    r"""Reference to the bank account the account transaction is recorded against."""
-    
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Bank account 'id' for the account transaction."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""bank account 'name' for the account transaction."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListAccountTransactions200ApplicationJSONSourceModifiedDateLinesRecordRef:
-    r"""Links an account transaction line to the underlying record that created it."""
-    
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Name of the 'dataType'."""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' of the underlying record or data type."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListAccountTransactions200ApplicationJSONSourceModifiedDateLines:
-    
-    amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
-    r"""Amount in the bill payment currency."""  
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Description of the account transaction."""  
-    record_ref: Optional[ListAccountTransactions200ApplicationJSONSourceModifiedDateLinesRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
-    r"""Links an account transaction line to the underlying record that created it."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListAccountTransactions200ApplicationJSONSourceModifiedDateMetadata:
-    
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
-    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
-    
-class ListAccountTransactions200ApplicationJSONSourceModifiedDateStatusEnum(str, Enum):
-    r"""The status of the account transaction."""
-    UNKNOWN = "Unknown"
-    UNRECONCILED = "Unreconciled"
-    RECONCILED = "Reconciled"
-    VOID = "Void"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListAccountTransactions200ApplicationJSONSourceModifiedDate:
-    r"""> **Language tip:** In Codat, account transactions represent all transactions posted to a bank account within an accounting platform. For bank transactions posted within a banking platform, refer to [Banking transactions](https://docs.codat.io/banking-api#/operations/list-all-banking-transactions).
-    
-    > View the coverage for account transactions in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=accountTransactions\" target=\"_blank\">Data coverage explorer</a>.
-    
-    ## Overview
-    
-    In Codat’s data model, account transactions represent bank activity within an accounting platform. All transactions that go through a bank account are recorded as account transactions.
-    
-    Account transactions are created as a result of different business activities, for example:
-    
-    * Payments: for example, receiving money for payment against an invoice.
-    * Bill payments: for example, spending money for a payment against a bill.
-    * Direct costs: for example, withdrawing money from a bank account, either for cash purposes or to make a payment.
-    * Direct incomes: for example, selling an item directly to a contact and receiving payment at point of sale.
-    * Transfers: for example, transferring money between two bank accounts.
-    
-    Account transactions is the parent data type of [payments](https://docs.codat.io/accounting-api#/schemas/Payment), [bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment), [direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost), [direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome), and [transfers](https://docs.codat.io/accounting-api#/schemas/Transfer).
-    """
-    
-    bank_account_ref: Optional[ListAccountTransactions200ApplicationJSONSourceModifiedDateBankAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccountRef'), 'exclude': lambda f: f is None }})
-    r"""Reference to the bank account the account transaction is recorded against."""  
-    currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
-    
-    ## Unknown currencies
-    
-    In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
-    
-    There are only a very small number of edge cases where this currency code is returned by the Codat system.
-    """  
-    currency_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'exclude': lambda f: f is None }})
-    r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
-    
-    Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
-    
-    Where the currency rate is provided by the underlying accounting platform, it will be available from Codat with the same precision (up to a maximum of 9 decimal places). 
-    
-    For accounting platforms which do not provide an explicit currency rate, it is calculated as `baseCurrency / foreignCurrency` and will be returned to 9 decimal places.
-    
-    ## Examples with base currency of GBP
-    
-    | Foreign Currency | Foreign Amount | Currency Rate | Base Currency Amount (GBP) |
-    | :--------------- | :------------- | :------------ | :------------------------- |
-    | **USD**          | $20            | 0.781         | £15.62                     |
-    | **EUR**          | €20            | 0.885         | £17.70                     |
-    | **RUB**          | ₽20            | 0.011         | £0.22                      |
-    
-    ## Examples with base currency of USD
-    
-    | Foreign Currency | Foreign Amount | Currency Rate | Base Currency Amount (USD) |
-    | :--------------- | :------------- | :------------ | :------------------------- |
-    | **GBP**          | £20            | 1.277         | $25.54                     |
-    | **EUR**          | €20            | 1.134         | $22.68                     |
-    | **RUB**          | ₽20            | 0.015         | $0.30                      |
-    """  
-    date_: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date'), 'exclude': lambda f: f is None }})
-    r"""The date the account transaction was recorded in the platform."""  
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Identifier of the direct cost (unique to the company)."""  
-    lines: Optional[list[ListAccountTransactions200ApplicationJSONSourceModifiedDateLines]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines'), 'exclude': lambda f: f is None }})
-    r"""Array of account transaction lines."""  
-    metadata: Optional[ListAccountTransactions200ApplicationJSONSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in Codat."""  
-    note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
-    r"""Additional information about the account transaction, if available."""  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in the originating system"""  
-    status: Optional[ListAccountTransactions200ApplicationJSONSourceModifiedDateStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
-    r"""The status of the account transaction."""  
-    total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
-    r"""Total amount of the account transactions, inclusive of tax."""  
-    transaction_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionId'), 'exclude': lambda f: f is None }})
-    r"""Identifier of the transaction (unique to the company)."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListAccountTransactions200ApplicationJSON:
-    r"""Success"""
-    
-    links: ListAccountTransactions200ApplicationJSONLinks = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})  
-    page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})  
-    page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})  
-    total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})  
-    results: Optional[list[ListAccountTransactions200ApplicationJSONSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})  
-    
-
 @dataclasses.dataclass
 class ListAccountTransactionsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    list_account_transactions_200_application_json_object: Optional[ListAccountTransactions200ApplicationJSON] = dataclasses.field(default=None)
+    account_transactions: Optional[shared_accounttransactions.AccountTransactions] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

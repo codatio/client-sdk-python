@@ -3,9 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
+from ..shared import cashflowstatementresponse as shared_cashflowstatementresponse
 from typing import Optional
 
 
@@ -17,164 +15,13 @@ class GetCashFlowStatementRequest:
     periods_to_compare: int = dataclasses.field(metadata={'query_param': { 'field_name': 'periodsToCompare', 'style': 'form', 'explode': True }})  
     start_month: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'startMonth', 'style': 'form', 'explode': True }})  
     
-class GetCashFlowStatement200ApplicationJSONReportBasisEnum(str, Enum):
-    r"""Accounting method used when aggregating the report data. In this case, Cash."""
-    UNKNOWN = "Unknown"
-    ACCRUAL = "Accrual"
-    CASH = "Cash"
-
-class GetCashFlowStatement200ApplicationJSONReportInputEnum(str, Enum):
-    r"""Accounting method used to prepare the cash flow statement."""
-    UNKNOWN = "Unknown"
-    INDIRECT = "Indirect"
-    DIRECT = "Direct"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLineReportLineReportLineReportLine:
-    
-    value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
-    r"""Numerical value of the line item."""  
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the account, unique for the company in the accounting platform."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the report line item."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLineReportLineReportLine:
-    
-    value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
-    r"""Numerical value of the line item."""  
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the account, unique for the company in the accounting platform."""  
-    items: Optional[list[GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLineReportLineReportLineReportLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
-    r"""An array of ReportLine items."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the report line item."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLineReportLine:
-    
-    value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
-    r"""Numerical value of the line item."""  
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the account, unique for the company in the accounting platform."""  
-    items: Optional[list[GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLineReportLineReportLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
-    r"""An array of ReportLine items."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the report line item."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLine:
-    r"""ReportLines for cash payments to suppliers for the purchase of goods or services."""
-    
-    value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
-    r"""Numerical value of the line item."""  
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the account, unique for the company in the accounting platform."""  
-    items: Optional[list[GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLineReportLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
-    r"""An array of ReportLine items."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the report line item."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetCashFlowStatement200ApplicationJSONCashFlowStatement:
-    r"""> View the coverage for cash flow statement in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\" target=\"_blank\">Data coverage explorer</a>.
-    
-    > **Operating activities only**  
-    > 
-    > Currently, the cash flow statement shows cash that flows into and out of the company from operating activities *only*. Operating activities generate cash from the sale of goods or services.
-    
-    ## Overview
-    
-    A cash flow statement is a financial report that records all cash that is received or spent by a company during a given period. It gives you a clearer picture of the company’s performance, and their ability to pay creditors and finance growth.
-    
-    > **Cash flow statement or balance sheet?**
-    > 
-    > Look at the cash flow statement to understand a company's ability to pay its bills. Although the balance sheet may show healthy earnings at a specific point in time, the cash flow statement allows you to see whether the company is meeting its financial commitments, such as paying creditors or its employees.
-    """
-    
-    cash_payments: Optional[GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cashPayments'), 'exclude': lambda f: f is None }})
-    r"""ReportLines for cash payments to suppliers for the purchase of goods or services."""  
-    cash_receipts: Optional[GetCashFlowStatement200ApplicationJSONCashFlowStatementReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cashReceipts'), 'exclude': lambda f: f is None }})
-    r"""ReportLines for cash receipts from the sale of goods."""  
-    from_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'exclude': lambda f: f is None }})
-    r"""Start date for the reporting period."""  
-    to_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'exclude': lambda f: f is None }})
-    r"""End date for the reporting period."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetCashFlowStatement200ApplicationJSON:
-    r"""Success"""
-    
-    currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
-    r"""Currency of all values in the cash flow statement."""  
-    report_basis: GetCashFlowStatement200ApplicationJSONReportBasisEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportBasis') }})
-    r"""Accounting method used when aggregating the report data. In this case, Cash."""  
-    report_input: GetCashFlowStatement200ApplicationJSONReportInputEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInput') }})
-    r"""Accounting method used to prepare the cash flow statement."""  
-    reports: list[GetCashFlowStatement200ApplicationJSONCashFlowStatement] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})  
-    earliest_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('earliestAvailableMonth'), 'exclude': lambda f: f is None }})
-    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
-    ```
-    2020-10-08T22:40:50Z
-    2021-01-01T00:00:00
-    ```
-    
-    
-    
-    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
-    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
-    - Unqualified local time: `2021-11-15T01:00:00`
-    - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
-    > Time zones
-    > 
-    > Not all dates from Codat will contain information about time zones.  
-    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
-    most_recent_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mostRecentAvailableMonth'), 'exclude': lambda f: f is None }})
-    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
-    ```
-    2020-10-08T22:40:50Z
-    2021-01-01T00:00:00
-    ```
-    
-    
-    
-    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
-    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
-    - Unqualified local time: `2021-11-15T01:00:00`
-    - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
-    > Time zones
-    > 
-    > Not all dates from Codat will contain information about time zones.  
-    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
-    
 
 @dataclasses.dataclass
 class GetCashFlowStatementResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    get_cash_flow_statement_200_application_json_object: Optional[GetCashFlowStatement200ApplicationJSON] = dataclasses.field(default=None)
+    cash_flow_statement_response: Optional[shared_cashflowstatementresponse.CashFlowStatementResponse] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

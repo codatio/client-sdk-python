@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class TrackingCategories:
@@ -40,8 +40,8 @@ class TrackingCategories:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetTrackingCategorySourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TrackingCategoryTree])
+                res.tracking_category_tree = out
 
         return res
 
@@ -64,8 +64,8 @@ class TrackingCategories:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListTrackingCategories200ApplicationJSON])
-                res.list_tracking_categories_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TrackingCategories])
+                res.tracking_categories = out
 
         return res
 

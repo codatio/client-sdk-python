@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class PurchaseOrders:
@@ -37,7 +37,7 @@ class PurchaseOrders:
         url = utils.generate_url(operations.CreatePurchaseOrderRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/purchaseOrders', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "purchase_order", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreatePurchaseOrderRequest, request)
@@ -51,8 +51,8 @@ class PurchaseOrders:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePurchaseOrder200ApplicationJSON])
-                res.create_purchase_order_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CreatePurchaseOrderResponse])
+                res.create_purchase_order_response = out
 
         return res
 
@@ -80,7 +80,7 @@ class PurchaseOrders:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCreateUpdatePurchaseOrdersModelPushOption])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
 
         return res
@@ -103,8 +103,8 @@ class PurchaseOrders:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetPurchaseOrderSourceModifiedDate])
-                res.source_modified_date = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PurchaseOrder])
+                res.purchase_order = out
 
         return res
 
@@ -127,8 +127,8 @@ class PurchaseOrders:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListPurchaseOrders200ApplicationJSON])
-                res.list_purchase_orders_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PurchaseOrders])
+                res.purchase_orders = out
 
         return res
 
@@ -147,7 +147,7 @@ class PurchaseOrders:
         url = utils.generate_url(operations.UpdatePurchaseOrderRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/purchaseOrders/{purchaseOrderId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "purchase_order", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdatePurchaseOrderRequest, request)
@@ -161,8 +161,8 @@ class PurchaseOrders:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdatePurchaseOrder200ApplicationJSON])
-                res.update_purchase_order_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.UpdatePurchaseOrderResponse])
+                res.update_purchase_order_response = out
 
         return res
 

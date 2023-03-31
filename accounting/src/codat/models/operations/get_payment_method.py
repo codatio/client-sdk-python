@@ -3,9 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
+from ..shared import paymentmethod as shared_paymentmethod
 from typing import Optional
 
 
@@ -16,61 +14,12 @@ class GetPaymentMethodRequest:
     payment_method_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'paymentMethodId', 'style': 'simple', 'explode': False }})  
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetPaymentMethodSourceModifiedDateMetadata:
-    
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is None }})
-    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""  
-    
-class GetPaymentMethodSourceModifiedDateStatusEnum(str, Enum):
-    r"""Status of the Payment Method."""
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
-
-class GetPaymentMethodSourceModifiedDateTypeEnum(str, Enum):
-    r"""Method of payment."""
-    UNKNOWN = "Unknown"
-    CASH = "Cash"
-    CHECK = "Check"
-    CREDIT_CARD = "CreditCard"
-    DEBIT_CARD = "DebitCard"
-    BANK_TRANSFER = "BankTransfer"
-    OTHER = "Other"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetPaymentMethodSourceModifiedDate:
-    r"""> View the coverage for payment methods in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=paymentMethods\" target=\"_blank\">Data coverage explorer</a>.
-    
-    ## Overview
-    
-    A Payment Method represents the payment method(s) used to pay a Bill. Payment Methods are referenced on [Bill Payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) and [Payments](https://docs.codat.io/accounting-api#/schemas/Payment).
-    """
-    
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for the payment method."""  
-    metadata: Optional[GetPaymentMethodSourceModifiedDateMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in Codat."""  
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the payment method."""  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""The date on which this record was last modified in the originating system"""  
-    status: Optional[GetPaymentMethodSourceModifiedDateStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
-    r"""Status of the Payment Method."""  
-    type: Optional[GetPaymentMethodSourceModifiedDateTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
-    r"""Method of payment."""  
-    
-
 @dataclasses.dataclass
 class GetPaymentMethodResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
-    source_modified_date: Optional[GetPaymentMethodSourceModifiedDate] = dataclasses.field(default=None)
+    payment_method: Optional[shared_paymentmethod.PaymentMethod] = dataclasses.field(default=None)
     r"""Success"""  
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     
