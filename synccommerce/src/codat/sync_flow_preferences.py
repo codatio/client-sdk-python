@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class SyncFlowPreferences:
@@ -40,8 +40,8 @@ class SyncFlowPreferences:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetConfigTextSyncFlow200ApplicationJSON])
-                res.get_config_text_sync_flow_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.Localization]])
+                res.localization_info = out
 
         return res
 
@@ -64,8 +64,8 @@ class SyncFlowPreferences:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetSyncFlowURL200ApplicationJSON])
-                res.get_sync_flow_url_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SyncFlowURL])
+                res.sync_flow_url = out
 
         return res
 
@@ -87,12 +87,12 @@ class SyncFlowPreferences:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetVisibleAccounts200ApplicationJSON])
-                res.get_visible_accounts_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.VisibleAccounts])
+                res.visible_accounts = out
 
         return res
 
-    def patch_config_text_sync_flow(self, request: operations.PatchConfigTextSyncFlowRequestBody) -> operations.PatchConfigTextSyncFlowResponse:
+    def update_config_text_sync_flow(self, request: dict[str, shared.Localization]) -> operations.UpdateConfigTextSyncFlowResponse:
         r"""Update preferences for text fields on sync flow
         To enable update of preferences set for the text fields on sync flow.
         """
@@ -110,25 +110,25 @@ class SyncFlowPreferences:
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PatchConfigTextSyncFlowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UpdateConfigTextSyncFlowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PatchConfigTextSyncFlow200ApplicationJSON])
-                res.patch_config_text_sync_flow_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.Localization]])
+                res.localization_info = out
 
         return res
 
-    def patch_visible_accounts_sync_flow(self, request: operations.PatchVisibleAccountsSyncFlowRequest) -> operations.PatchVisibleAccountsSyncFlowResponse:
+    def update_visible_accounts_sync_flow(self, request: operations.UpdateVisibleAccountsSyncFlowRequest) -> operations.UpdateVisibleAccountsSyncFlowResponse:
         r"""Update the visible accounts on Sync Flow
         To enable update of accounts visible preferences set on Sync Flow.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PatchVisibleAccountsSyncFlowRequest, base_url, '/sync/commerce/config/ui/accounts/platform/{commerceKey}', request)
+        url = utils.generate_url(operations.UpdateVisibleAccountsSyncFlowRequest, base_url, '/sync/commerce/config/ui/accounts/platform/{commerceKey}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "visible_accounts", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -137,12 +137,12 @@ class SyncFlowPreferences:
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PatchVisibleAccountsSyncFlowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UpdateVisibleAccountsSyncFlowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PatchVisibleAccountsSyncFlow200ApplicationJSON])
-                res.patch_visible_accounts_sync_flow_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.VisibleAccounts])
+                res.visible_accounts = out
 
         return res
 

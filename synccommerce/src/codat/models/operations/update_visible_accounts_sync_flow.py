@@ -8,14 +8,14 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetVisibleAccountsRequest:
+class UpdateVisibleAccountsSyncFlowRequest:
     
-    client_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'clientId', 'style': 'simple', 'explode': False }})  
-    platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})  
+    commerce_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'commerceKey', 'style': 'simple', 'explode': False }})  
+    visible_accounts: Optional[shared_visibleaccounts.VisibleAccounts] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
     
 
 @dataclasses.dataclass
-class GetVisibleAccountsResponse:
+class UpdateVisibleAccountsSyncFlowResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  

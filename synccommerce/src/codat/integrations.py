@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Integrations:
@@ -43,7 +43,7 @@ class Integrations:
 
         return res
 
-    def get_integrations(self, request: operations.GetIntegrationsRequest) -> operations.GetIntegrationsResponse:
+    def list_integrations(self, request: operations.ListIntegrationsRequest) -> operations.ListIntegrationsResponse:
         r"""List information on Codat's supported integrations
         Retrieve a list of available integrations support by datatype and state of release.
         """
@@ -51,19 +51,19 @@ class Integrations:
         
         url = base_url.removesuffix('/') + '/config/integrations'
         
-        query_params = utils.get_query_params(operations.GetIntegrationsRequest, request)
+        query_params = utils.get_query_params(operations.ListIntegrationsRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetIntegrationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListIntegrationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetIntegrations200ApplicationJSON])
-                res.get_integrations_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Integrations])
+                res.integrations = out
 
         return res
 

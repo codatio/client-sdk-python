@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Configuration:
@@ -22,13 +22,13 @@ class Configuration:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get(self, request: operations.GetRequest) -> operations.GetResponse:
+    def get_configuration(self, request: operations.GetConfigurationRequest) -> operations.GetConfigurationResponse:
         r"""Retrieve config preferences set for a company.
         Retrieve current config preferences.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetRequest, base_url, '/config/companies/{companyId}/sync/commerce', request)
+        url = utils.generate_url(operations.GetConfigurationRequest, base_url, '/config/companies/{companyId}/sync/commerce', request)
         
         
         client = self._security_client
@@ -36,22 +36,22 @@ class Configuration:
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetConfigurationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.Get200ApplicationJSON])
-                res.get_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Configuration])
+                res.configuration = out
 
         return res
 
-    def get_company_commerce_sync_status(self, request: operations.GetCompanyCommerceSyncStatusRequest) -> operations.GetCompanyCommerceSyncStatusResponse:
+    def get_sync_status(self, request: operations.GetSyncStatusRequest) -> operations.GetSyncStatusResponse:
         r"""Get status for a company's syncs
         Check the sync history and sync status for a company.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetCompanyCommerceSyncStatusRequest, base_url, '/meta/companies/{companyId}/sync/commerce/status', request)
+        url = utils.generate_url(operations.GetSyncStatusRequest, base_url, '/meta/companies/{companyId}/sync/commerce/status', request)
         
         
         client = self._security_client
@@ -59,20 +59,20 @@ class Configuration:
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetCompanyCommerceSyncStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetSyncStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             pass
 
         return res
 
-    def post(self, request: operations.PostRequest) -> operations.PostResponse:
+    def set_configuration(self, request: operations.SetConfigurationRequest) -> operations.SetConfigurationResponse:
         r"""Create or update configuration.
         Make changes to configuration preferences.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostRequest, base_url, '/config/companies/{companyId}/sync/commerce', request)
+        url = utils.generate_url(operations.SetConfigurationRequest, base_url, '/config/companies/{companyId}/sync/commerce', request)
         
         
         client = self._security_client
@@ -80,12 +80,12 @@ class Configuration:
         http_res = client.request('POST', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.SetConfigurationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.Post200ApplicationJSON])
-                res.post_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Configuration])
+                res.configuration = out
 
         return res
 

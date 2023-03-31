@@ -8,7 +8,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetConfigTextSyncFlowResponse:
+class UpdateConfigTextSyncFlowResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  

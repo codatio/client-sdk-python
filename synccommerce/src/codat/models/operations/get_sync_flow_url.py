@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
+from ..shared import syncflowurl as shared_syncflowurl
 from typing import Optional
 
 
@@ -19,21 +18,12 @@ class GetSyncFlowURLRequest:
     r"""Identifier for your merchant, can be the merchant name or Codat company id."""  
     
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetSyncFlowURL200ApplicationJSON:
-    r"""Success"""
-    
-    url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
-    r"""Sync flow URL."""  
-    
-
 @dataclasses.dataclass
 class GetSyncFlowURLResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    get_sync_flow_url_200_application_json_object: Optional[GetSyncFlowURL200ApplicationJSON] = dataclasses.field(default=None)
-    r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    sync_flow_url: Optional[shared_syncflowurl.SyncFlowURL] = dataclasses.field(default=None)
+    r"""Success"""  
     
