@@ -9,7 +9,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class PostBankTransactionsRequest:
+class CreateBankTransactionsRequest:
     
     account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for an account"""  
@@ -21,7 +21,7 @@ class PostBankTransactionsRequest:
     
 
 @dataclasses.dataclass
-class PostBankTransactionsResponse:
+class CreateBankTransactionsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  

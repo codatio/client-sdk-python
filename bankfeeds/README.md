@@ -77,10 +77,10 @@ if res.bank_feed_accounts is not None:
 ### Codat SDK
 
 * `create_bank_feed` - Create bank feed bank accounts
-* `get_bank_account_push_options` - List push options for bank account bank transactions
+* `create_bank_transactions` - Create bank transactions
 * `get_bank_feeds` - List bank feed bank accounts
+* `get_create_bank_account_model` - List push options for bank account bank transactions
 * `list_bank_account_transactions` - List bank transactions for bank account
-* `post_bank_transactions` - Create bank transactions
 * `update_bank_feed` - Update bank feed bank account
 <!-- End SDK Available Operations -->
 
