@@ -47,7 +47,7 @@ src/codat/models/operations/__init__.py
 src/codat/models/shared/errormessage.py
 src/codat/models/shared/company.py
 src/codat/models/shared/connection.py
-src/codat/models/shared/connectionstatus_enum.py
+src/codat/models/shared/dataconnectionstatus_enum.py
 src/codat/models/shared/sourcetype_enum.py
 src/codat/models/shared/dataconnectionerror.py
 src/codat/models/shared/companyrequestbody.py
@@ -72,6 +72,7 @@ src/codat/models/shared/brandingbutton.py
 src/codat/models/shared/integrations.py
 src/codat/models/shared/pushhistoryresponse.py
 src/codat/models/shared/pushoperationsummary.py
+src/codat/models/shared/validation.py
 src/codat/models/shared/validationitem.py
 src/codat/models/shared/pushoperationstatus_enum.py
 src/codat/models/shared/pushoperationchange.py
@@ -91,6 +92,7 @@ src/codat/models/shared/rule.py
 src/codat/models/shared/rules.py
 src/codat/models/shared/security.py
 src/codat/models/shared/companydataconnectionstatuschangedwebhook.py
+src/codat/models/shared/connectionstatus_enum.py
 src/codat/models/shared/datasynccompletedwebhook.py
 src/codat/models/shared/datasetdatachangedwebhook.py
 src/codat/models/shared/datasetstatuschangederrorwebhook.py
