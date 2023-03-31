@@ -2,4 +2,4 @@
 
 from .account_categories_updated import *
 
-__all__ = ["AccountCategoriesUpdatedAccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedAccountCategoriesUpdatedWebhookData","AccountCategoriesUpdatedResponse"]
+__all__ = ["AccountCategoriesUpdatedResponse"]

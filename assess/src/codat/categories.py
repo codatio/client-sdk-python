@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Categories:
@@ -40,7 +40,7 @@ class Categories:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountCategoryCategorisedAccount])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CategorisedAccount])
                 res.categorised_account = out
 
         return res
@@ -64,8 +64,8 @@ class Categories:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListAccountsCategories200ApplicationJSON])
-                res.list_accounts_categories_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CategorisedAccounts])
+                res.categorised_accounts = out
 
         return res
 
@@ -87,8 +87,8 @@ class Categories:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[operations.ListAvailableAccountCategoriesChartOfAccountCategory]])
-                res.list_available_account_categories_chart_of_account_category_anies = out
+                out = utils.unmarshal_json(http_res.text, Optional[list[shared.Categories]])
+                res.categories = out
 
         return res
 
@@ -101,7 +101,7 @@ class Categories:
         url = utils.generate_url(operations.UpdateAccountCategoryRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "confirm_category", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -114,7 +114,7 @@ class Categories:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateAccountCategoryCategorisedAccount])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CategorisedAccount])
                 res.categorised_account = out
 
         return res
@@ -128,7 +128,7 @@ class Categories:
         url = utils.generate_url(operations.UpdateAccountsCategoriesRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "confirm_categories", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -141,7 +141,7 @@ class Categories:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[operations.UpdateAccountsCategoriesCategorisedAccount]])
+                out = utils.unmarshal_json(http_res.text, Optional[list[shared.CategorisedAccount]])
                 res.categorised_accounts = out
 
         return res

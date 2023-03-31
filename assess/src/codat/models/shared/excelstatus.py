@@ -2,29 +2,14 @@
 
 from __future__ import annotations
 import dataclasses
-import requests as requests_http
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
 from typing import Optional
 
-class RequestExcelReportForDownloadReportTypeEnum(str, Enum):
-    r"""The type of report you want to generate and download."""
-    AUDIT = "audit"
-    ENHANCED_FINANCIALS = "enhancedFinancials"
-
-
-@dataclasses.dataclass
-class RequestExcelReportForDownloadRequest:
-    
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
-    report_type: RequestExcelReportForDownloadReportTypeEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'reportType', 'style': 'form', 'explode': True }})
-    r"""The type of report you want to generate and download."""  
-    
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestExcelReportForDownload200ApplicationJSON:
+class ExcelStatus:
     r"""OK"""
     
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})  
@@ -55,14 +40,4 @@ class RequestExcelReportForDownload200ApplicationJSON:
     queued: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('queued'), 'exclude': lambda f: f is None }})  
     report_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportType'), 'exclude': lambda f: f is None }})  
     success: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('success'), 'exclude': lambda f: f is None }})  
-    
-
-@dataclasses.dataclass
-class RequestExcelReportForDownloadResponse:
-    
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
-    request_excel_report_for_download_200_application_json_object: Optional[RequestExcelReportForDownload200ApplicationJSON] = dataclasses.field(default=None)
-    r"""OK"""  
     

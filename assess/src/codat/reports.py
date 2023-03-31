@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Reports:
@@ -41,7 +41,7 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountsForEnhancedBalanceSheetEnhancedReport])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.EnhancedReport])
                 res.enhanced_report = out
 
         return res
@@ -65,7 +65,7 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountsForEnhancedProfitAndLossEnhancedReport])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.EnhancedReport])
                 res.enhanced_report = out
 
         return res
@@ -89,8 +89,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCommerceCustomerRetentionMetrics200ApplicationJSON])
-                res.get_commerce_customer_retention_metrics_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 
@@ -113,8 +113,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCommerceLifetimeValueMetrics200ApplicationJSON])
-                res.get_commerce_lifetime_value_metrics_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 
@@ -137,8 +137,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCommerceOrdersMetrics200ApplicationJSON])
-                res.get_commerce_orders_metrics_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 
@@ -161,8 +161,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCommerceRefundsMetrics200ApplicationJSON])
-                res.get_commerce_refunds_metrics_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 
@@ -185,8 +185,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCommerceRevenueMetrics200ApplicationJSON])
-                res.get_commerce_revenue_metrics_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 
@@ -209,8 +209,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetEnhancedBalanceSheet200ApplicationJSON])
-                res.get_enhanced_balance_sheet_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 
@@ -233,13 +233,13 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetEnhancedCashFlowTransactionsEnhancedCashFlowTransactions])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.EnhancedCashFlowTransactions])
                 res.enhanced_cash_flow_transactions = out
 
         return res
 
     def get_enhanced_financial_metrics(self, request: operations.GetEnhancedFinancialMetricsRequest) -> operations.GetEnhancedFinancialMetricsResponse:
-        r"""List finanicial metrics
+        r"""List financial metrics
         Gets all the available financial metrics for a given company, over one or more periods.
         """
         base_url = self._server_url
@@ -257,8 +257,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetEnhancedFinancialMetrics200ApplicationJSON])
-                res.get_enhanced_financial_metrics_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.FinancialMetrics])
+                res.financial_metrics = out
 
         return res
 
@@ -281,7 +281,7 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetEnhancedInvoicesReportEnhancedInvoicesReport])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.EnhancedInvoicesReport])
                 res.enhanced_invoices_report = out
 
         return res
@@ -305,8 +305,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetEnhancedProfitAndLoss200ApplicationJSON])
-                res.get_enhanced_profit_and_loss_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 
@@ -328,8 +328,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRecurringRevenueMetrics200ApplicationJSON])
-                res.get_recurring_revenue_metrics_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 
@@ -351,8 +351,8 @@ class Reports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestRecurringRevenueMetrics200ApplicationJSON])
-                res.request_recurring_revenue_metrics_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 

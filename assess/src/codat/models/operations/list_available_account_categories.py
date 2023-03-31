@@ -3,35 +3,16 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
+from ..shared import categories as shared_categories
 from typing import Optional
 
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ListAvailableAccountCategoriesChartOfAccountCategory:
-    
-    detail_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailType'), 'exclude': lambda f: f is None }})
-    r"""Most granular chart of account type."""  
-    detail_type_description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailTypeDescription'), 'exclude': lambda f: f is None }})
-    r"""A description of the fully categorized (to detail type) account."""  
-    detail_type_display_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailTypeDisplayName'), 'exclude': lambda f: f is None }})
-    r"""Human readable detailType display name."""  
-    subtype: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subtype'), 'exclude': lambda f: f is None }})
-    r"""The account subtype."""  
-    subtype_display_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subtypeDisplayName'), 'exclude': lambda f: f is None }})
-    r"""Human readable subtype display name."""  
-    type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
-    r"""The top level account type."""  
-    
 
 @dataclasses.dataclass
 class ListAvailableAccountCategoriesResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    list_available_account_categories_chart_of_account_category_anies: Optional[list[ListAvailableAccountCategoriesChartOfAccountCategory]] = dataclasses.field(default=None)
+    categories: Optional[list[shared_categories.Categories]] = dataclasses.field(default=None)
     r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

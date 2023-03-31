@@ -54,11 +54,11 @@ if res.categorised_account is not None:
 
 ### excel_reports
 
+* `download_excel_report` - Download generated excel report
+* `generate_excel_report` - Generate an Excel report
 * `get_accounting_marketing_metrics` - Get the marketing metrics from an accounting source for a given company.
 * `get_excel_report` - Download generated excel report
-* `get_excel_report_post` - Download generated excel report
-* `make_request_to_download_excel_report` - Get status of Excel report
-* `request_excel_report_for_download` - Generate an Excel report
+* `get_excel_report_generation_status` - Get status of Excel report
 
 ### reports
 
@@ -71,7 +71,7 @@ if res.categorised_account is not None:
 * `get_commerce_revenue_metrics` - Commerce Revenue Metrics
 * `get_enhanced_balance_sheet` - Enhanced Balance Sheet
 * `get_enhanced_cash_flow_transactions` - Get enhanced cash flow report
-* `get_enhanced_financial_metrics` - List finanicial metrics
+* `get_enhanced_financial_metrics` - List financial metrics
 * `get_enhanced_invoices_report` - Enhanced Invoices Report
 * `get_enhanced_profit_and_loss` - Enhanced Profit and Loss
 * `get_recurring_revenue_metrics` - Get key metrics for subscription revenue

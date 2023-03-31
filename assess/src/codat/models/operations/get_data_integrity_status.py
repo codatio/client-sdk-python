@@ -3,111 +3,17 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
+from ..shared import dataintegritydatatype_enum as shared_dataintegritydatatype_enum
+from ..shared import status as shared_status
 from typing import Optional
-
-class GetDataIntegrityStatusDataTypeEnum(str, Enum):
-    r"""A key for a Codat data type."""
-    BANKING_ACCOUNTS = "banking-accounts"
-    BANKING_TRANSACTIONS = "banking-transactions"
-    BANK_ACCOUNTS = "bankAccounts"
-    ACCOUNT_TRANSACTIONS = "accountTransactions"
 
 
 @dataclasses.dataclass
 class GetDataIntegrityStatusRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
-    data_type: GetDataIntegrityStatusDataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
+    data_type: shared_dataintegritydatatype_enum.DataIntegrityDataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
     r"""A key for a Codat data type."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeAmounts:
-    r"""Only returned for transactions. For accounts, there is nothing returned."""
-    
-    currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
-    
-    ## Unknown currencies
-    
-    In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
-    
-    There are only a very small number of edge cases where this currency code is returned by the Codat system.
-    """  
-    max: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('max'), 'exclude': lambda f: f is None }})
-    r"""Highest value of transaction set."""  
-    min: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('min'), 'exclude': lambda f: f is None }})
-    r"""Lowest value of transaction set."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeConnectionIds:
-    
-    source: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('source'), 'exclude': lambda f: f is None }})
-    r"""An array of strings. The connection IDs for the type specified in the url."""  
-    target: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('target'), 'exclude': lambda f: f is None }})
-    r"""An array of strings. The connection IDs for the type being matched to."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeDates:
-    r"""Only returned for transactions. For accounts, there is nothing returned."""
-    
-    max_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('maxDate'), 'exclude': lambda f: f is None }})
-    r"""Latest date of transaction set."""  
-    max_overlapping_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('maxOverlappingDate'), 'exclude': lambda f: f is None }})
-    r"""Latest date where transactions exist in both account and banking platforms."""  
-    min_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('minDate'), 'exclude': lambda f: f is None }})
-    r"""Earliest date of transaction set."""  
-    min_overlapping_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('minOverlappingDate'), 'exclude': lambda f: f is None }})
-    r"""Earliest date where transactions exist in both accounting and banking platforms."""  
-    
-class GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeStatusInfoCurrentStatusEnum(str, Enum):
-    r"""The current status of the most recently run matching algorithm."""
-    UNKNOWN = "Unknown"
-    DOES_NOT_EXIST = "DoesNotExist"
-    ERROR = "Error"
-    COMPLETE = "Complete"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeStatusInfo:
-    
-    current_status: Optional[GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeStatusInfoCurrentStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currentStatus'), 'exclude': lambda f: f is None }})
-    r"""The current status of the most recently run matching algorithm."""  
-    last_matched: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastMatched'), 'exclude': lambda f: f is None }})
-    r"""The date the matching algorithm last ran against the company’s data type specified."""  
-    status_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusMessage'), 'exclude': lambda f: f is None }})
-    r"""Detailed explanation supporting the status value."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetDataIntegrityStatus200ApplicationJSONDataIntegrityType:
-    
-    amounts: Optional[GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeAmounts] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amounts'), 'exclude': lambda f: f is None }})
-    r"""Only returned for transactions. For accounts, there is nothing returned."""  
-    connection_ids: Optional[GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeConnectionIds] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionIds'), 'exclude': lambda f: f is None }})  
-    dates: Optional[GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeDates] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dates'), 'exclude': lambda f: f is None }})
-    r"""Only returned for transactions. For accounts, there is nothing returned."""  
-    status_info: Optional[GetDataIntegrityStatus200ApplicationJSONDataIntegrityTypeStatusInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusInfo'), 'exclude': lambda f: f is None }})  
-    type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
-    r"""The data type which the data type in the URL has been matched against. For example, if you've matched accountTransactions and banking-transactions, and you call this endpoint with accountTransactions in the URL, this property would be banking-transactions."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class GetDataIntegrityStatus200ApplicationJSON:
-    r"""OK"""
-    
-    metadata: Optional[list[GetDataIntegrityStatus200ApplicationJSONDataIntegrityType]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass
@@ -115,7 +21,7 @@ class GetDataIntegrityStatusResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    get_data_integrity_status_200_application_json_object: Optional[GetDataIntegrityStatus200ApplicationJSON] = dataclasses.field(default=None)
-    r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    status: Optional[shared_status.Status] = dataclasses.field(default=None)
+    r"""OK"""  
     

@@ -3,20 +3,15 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from enum import Enum
+from ..shared import excelreporttype_enum as shared_excelreporttype_enum
 from typing import Optional
-
-class GetExcelReportReportTypeEnum(str, Enum):
-    r"""The type of report you want to generate and download."""
-    AUDIT = "audit"
-    ENHANCED_FINANCIALS = "enhancedFinancials"
 
 
 @dataclasses.dataclass
 class GetExcelReportRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
-    report_type: GetExcelReportReportTypeEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'reportType', 'style': 'form', 'explode': True }})
+    report_type: shared_excelreporttype_enum.ExcelReportTypeEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'reportType', 'style': 'form', 'explode': True }})
     r"""The type of report you want to generate and download."""  
     
 

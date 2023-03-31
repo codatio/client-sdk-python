@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class ExcelReports:
@@ -22,6 +22,53 @@ class ExcelReports:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    def download_excel_report(self, request: operations.DownloadExcelReportRequest) -> operations.DownloadExcelReportResponse:
+        r"""Download generated excel report
+        Download the previously generated Excel report to a local drive.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.DownloadExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel/download', request)
+        
+        query_params = utils.get_query_params(operations.DownloadExcelReportRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DownloadExcelReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.body = http_res.content
+
+        return res
+
+    def generate_excel_report(self, request: operations.GenerateExcelReportRequest) -> operations.GenerateExcelReportResponse:
+        r"""Generate an Excel report
+        Generate an Excel report which can subsequently be downloaded.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GenerateExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
+        
+        query_params = utils.get_query_params(operations.GenerateExcelReportRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GenerateExcelReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ExcelStatus])
+                res.excel_status = out
+
+        return res
+
     def get_accounting_marketing_metrics(self, request: operations.GetAccountingMarketingMetricsRequest) -> operations.GetAccountingMarketingMetricsResponse:
         r"""Get the marketing metrics from an accounting source for a given company.
         Request an Excel report for download.
@@ -41,8 +88,8 @@ class ExcelReports:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountingMarketingMetrics200ApplicationJSON])
-                res.get_accounting_marketing_metrics_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
+                res.report = out
 
         return res
 
@@ -69,74 +116,27 @@ class ExcelReports:
 
         return res
 
-    def get_excel_report_post(self, request: operations.GetExcelReportPostRequest) -> operations.GetExcelReportPostResponse:
-        r"""Download generated excel report
-        Download the previously generated Excel report to a local drive.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetExcelReportPostRequest, base_url, '/data/companies/{companyId}/assess/excel/download', request)
-        
-        query_params = utils.get_query_params(operations.GetExcelReportPostRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url, params=query_params)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetExcelReportPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/octet-stream'):
-                res.body = http_res.content
-
-        return res
-
-    def make_request_to_download_excel_report(self, request: operations.MakeRequestToDownloadExcelReportRequest) -> operations.MakeRequestToDownloadExcelReportResponse:
+    def get_excel_report_generation_status(self, request: operations.GetExcelReportGenerationStatusRequest) -> operations.GetExcelReportGenerationStatusResponse:
         r"""Get status of Excel report
         Returns the status of the latest report requested.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.MakeRequestToDownloadExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
+        url = utils.generate_url(operations.GetExcelReportGenerationStatusRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
         
-        query_params = utils.get_query_params(operations.MakeRequestToDownloadExcelReportRequest, request)
+        query_params = utils.get_query_params(operations.GetExcelReportGenerationStatusRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.MakeRequestToDownloadExcelReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetExcelReportGenerationStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.MakeRequestToDownloadExcelReport200ApplicationJSON])
-                res.make_request_to_download_excel_report_200_application_json_object = out
-
-        return res
-
-    def request_excel_report_for_download(self, request: operations.RequestExcelReportForDownloadRequest) -> operations.RequestExcelReportForDownloadResponse:
-        r"""Generate an Excel report
-        Generate an Excel report which can subsequently be downloaded.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.RequestExcelReportForDownloadRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
-        
-        query_params = utils.get_query_params(operations.RequestExcelReportForDownloadRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url, params=query_params)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.RequestExcelReportForDownloadResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestExcelReportForDownload200ApplicationJSON])
-                res.request_excel_report_for_download_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ExcelStatus])
+                res.excel_status = out
 
         return res
 
