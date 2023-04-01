@@ -4,8 +4,8 @@ from __future__ import annotations
 from enum import Enum
 
 class FeatureStateEnum(str, Enum):
-    RELEASE = "Release"
-    BETA = "Beta"
-    DEPRECATED = "Deprecated"
-    NOT_SUPPORTED = "NotSupported"
-    NOT_IMPLEMENTED = "NotImplemented"
+    RELEASE = 'Release'
+    BETA = 'Beta'
+    DEPRECATED = 'Deprecated'
+    NOT_SUPPORTED = 'NotSupported'
+    NOT_IMPLEMENTED = 'NotImplemented'

@@ -9,48 +9,48 @@ from typing import Optional
 
 class SyncSettingDataTypeEnum(str, Enum):
     r"""Available Data types"""
-    ACCOUNT_TRANSACTIONS = "accountTransactions"
-    BALANCE_SHEET = "balanceSheet"
-    BANK_ACCOUNTS = "bankAccounts"
-    BANK_TRANSACTIONS = "bankTransactions"
-    BILL_CREDIT_NOTES = "billCreditNotes"
-    BILL_PAYMENTS = "billPayments"
-    BILLS = "bills"
-    CASH_FLOW_STATEMENT = "cashFlowStatement"
-    CHART_OF_ACCOUNTS = "chartOfAccounts"
-    COMPANY = "company"
-    CREDIT_NOTES = "creditNotes"
-    CUSTOMERS = "customers"
-    DIRECT_COSTS = "directCosts"
-    DIRECT_INCOMES = "directIncomes"
-    INVOICES = "invoices"
-    ITEMS = "items"
-    JOURNAL_ENTRIES = "journalEntries"
-    JOURNALS = "journals"
-    PAYMENT_METHODS = "paymentMethods"
-    PAYMENTS = "payments"
-    PROFIT_AND_LOSS = "profitAndLoss"
-    PURCHASE_ORDERS = "purchaseOrders"
-    SALES_ORDERS = "salesOrders"
-    SUPPLIERS = "suppliers"
-    TAX_RATES = "taxRates"
-    TRACKING_CATEGORIES = "trackingCategories"
-    TRANSFERS = "transfers"
-    BANKING_ACCOUNT_BALANCES = "banking-accountBalances"
-    BANKING_ACCOUNTS = "banking-accounts"
-    BANKING_TRANSACTION_CATEGORIES = "banking-transactionCategories"
-    BANKING_TRANSACTIONS = "banking-transactions"
-    COMMERCE_COMPANY_INFO = "commerce-companyInfo"
-    COMMERCE_CUSTOMERS = "commerce-customers"
-    COMMERCE_DISPUTES = "commerce-disputes"
-    COMMERCE_LOCATIONS = "commerce-locations"
-    COMMERCE_ORDERS = "commerce-orders"
-    COMMERCE_PAYMENT_METHODS = "commerce-paymentMethods"
-    COMMERCE_PAYMENTS = "commerce-payments"
-    COMMERCE_PRODUCT_CATEGORIES = "commerce-productCategories"
-    COMMERCE_PRODUCTS = "commerce-products"
-    COMMERCE_TAX_COMPONENTS = "commerce-taxComponents"
-    COMMERCE_TRANSACTIONS = "commerce-transactions"
+    ACCOUNT_TRANSACTIONS = 'accountTransactions'
+    BALANCE_SHEET = 'balanceSheet'
+    BANK_ACCOUNTS = 'bankAccounts'
+    BANK_TRANSACTIONS = 'bankTransactions'
+    BILL_CREDIT_NOTES = 'billCreditNotes'
+    BILL_PAYMENTS = 'billPayments'
+    BILLS = 'bills'
+    CASH_FLOW_STATEMENT = 'cashFlowStatement'
+    CHART_OF_ACCOUNTS = 'chartOfAccounts'
+    COMPANY = 'company'
+    CREDIT_NOTES = 'creditNotes'
+    CUSTOMERS = 'customers'
+    DIRECT_COSTS = 'directCosts'
+    DIRECT_INCOMES = 'directIncomes'
+    INVOICES = 'invoices'
+    ITEMS = 'items'
+    JOURNAL_ENTRIES = 'journalEntries'
+    JOURNALS = 'journals'
+    PAYMENT_METHODS = 'paymentMethods'
+    PAYMENTS = 'payments'
+    PROFIT_AND_LOSS = 'profitAndLoss'
+    PURCHASE_ORDERS = 'purchaseOrders'
+    SALES_ORDERS = 'salesOrders'
+    SUPPLIERS = 'suppliers'
+    TAX_RATES = 'taxRates'
+    TRACKING_CATEGORIES = 'trackingCategories'
+    TRANSFERS = 'transfers'
+    BANKING_ACCOUNT_BALANCES = 'banking-accountBalances'
+    BANKING_ACCOUNTS = 'banking-accounts'
+    BANKING_TRANSACTION_CATEGORIES = 'banking-transactionCategories'
+    BANKING_TRANSACTIONS = 'banking-transactions'
+    COMMERCE_COMPANY_INFO = 'commerce-companyInfo'
+    COMMERCE_CUSTOMERS = 'commerce-customers'
+    COMMERCE_DISPUTES = 'commerce-disputes'
+    COMMERCE_LOCATIONS = 'commerce-locations'
+    COMMERCE_ORDERS = 'commerce-orders'
+    COMMERCE_PAYMENT_METHODS = 'commerce-paymentMethods'
+    COMMERCE_PAYMENTS = 'commerce-payments'
+    COMMERCE_PRODUCT_CATEGORIES = 'commerce-productCategories'
+    COMMERCE_PRODUCTS = 'commerce-products'
+    COMMERCE_TAX_COMPONENTS = 'commerce-taxComponents'
+    COMMERCE_TRANSACTIONS = 'commerce-transactions'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -69,7 +69,7 @@ class SyncSetting:
     months_to_sync: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('monthsToSync'), 'exclude': lambda f: f is None }})
     r"""Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only."""  
     sync_from_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncFromUtc'), 'exclude': lambda f: f is None }})
-    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
+    r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
     2020-10-08T22:40:50Z

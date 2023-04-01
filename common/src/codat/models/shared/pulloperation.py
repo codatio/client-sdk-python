@@ -7,29 +7,29 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 
 class PullOperationStatusEnum(str, Enum):
-    INITIAL = "Initial"
-    QUEUED = "Queued"
-    FETCHING = "Fetching"
-    MAP_QUEUED = "MapQueued"
-    MAPPING = "Mapping"
-    COMPLETE = "Complete"
-    FETCH_ERROR = "FetchError"
-    MAP_ERROR = "MapError"
-    INTERNAL_ERROR = "InternalError"
-    PROCESSING_QUEUED = "ProcessingQueued"
-    PROCESSING = "Processing"
-    PROCESSING_ERROR = "ProcessingError"
-    VALIDATION_QUEUED = "ValidationQueued"
-    VALIDATING = "Validating"
-    VALIDATION_ERROR = "ValidationError"
-    AUTH_ERROR = "AuthError"
-    CANCELLED = "Cancelled"
-    ROUTING = "Routing"
-    ROUTING_ERROR = "RoutingError"
-    NOT_SUPPORTED = "NotSupported"
-    RATE_LIMIT_ERROR = "RateLimitError"
-    PERMISSIONS_ERROR = "PermissionsError"
-    PREREQUISITE_NOT_MET = "PrerequisiteNotMet"
+    INITIAL = 'Initial'
+    QUEUED = 'Queued'
+    FETCHING = 'Fetching'
+    MAP_QUEUED = 'MapQueued'
+    MAPPING = 'Mapping'
+    COMPLETE = 'Complete'
+    FETCH_ERROR = 'FetchError'
+    MAP_ERROR = 'MapError'
+    INTERNAL_ERROR = 'InternalError'
+    PROCESSING_QUEUED = 'ProcessingQueued'
+    PROCESSING = 'Processing'
+    PROCESSING_ERROR = 'ProcessingError'
+    VALIDATION_QUEUED = 'ValidationQueued'
+    VALIDATING = 'Validating'
+    VALIDATION_ERROR = 'ValidationError'
+    AUTH_ERROR = 'AuthError'
+    CANCELLED = 'Cancelled'
+    ROUTING = 'Routing'
+    ROUTING_ERROR = 'RoutingError'
+    NOT_SUPPORTED = 'NotSupported'
+    RATE_LIMIT_ERROR = 'RateLimitError'
+    PERMISSIONS_ERROR = 'PermissionsError'
+    PREREQUISITE_NOT_MET = 'PrerequisiteNotMet'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -47,7 +47,7 @@ class PullOperation:
     is_errored: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isErrored') }})  
     progress: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('progress') }})  
     requested: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('requested') }})
-    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
+    r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
     2020-10-08T22:40:50Z

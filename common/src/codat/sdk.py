@@ -26,7 +26,7 @@ class Codat:
     
     [Read about the building blocks of Codat...](https://docs.codat.io/core-concepts/companies)
     
-    [See our OpenAPI spec](https://github.com/codatio/oas) 
+    [See our OpenAPI spec](https://github.com/codatio/oas)
     """
     companies: Companies
     r"""Create and manage your Codat companies."""
@@ -49,8 +49,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.6.4"
-    _gen_version: str = "2.16.5"
+    _sdk_version: str = "0.6.5"
+    _gen_version: str = "2.16.7"
 
     def __init__(self,
                  security: shared.Security = None,

@@ -11,8 +11,8 @@ s = codat.Codat(
 
 
 req = shared.CompanyRequestBody(
-    description="unde",
-    name="deserunt",
+    description="corrupti",
+    name="provident",
 )
     
 res = s.companies.create_company(req)
