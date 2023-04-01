@@ -61,6 +61,10 @@ src/codat/models/shared/feessupplier.py
 src/codat/models/shared/integrations.py
 src/codat/models/shared/integration.py
 src/codat/models/shared/sourcetype_enum.py
+src/codat/models/shared/datatypefeature.py
+src/codat/models/shared/supportedfeature.py
+src/codat/models/shared/featuretype_enum.py
+src/codat/models/shared/featurestate_enum.py
 src/codat/models/shared/syncsummary.py
 src/codat/models/shared/daterange.py
 src/codat/models/shared/synctolatestargs.py

@@ -11,7 +11,10 @@ from .createcompany import *
 from .customer import *
 from .dataconnectionerror import *
 from .dataconnectionstatus_enum import *
+from .datatypefeature import *
 from .daterange import *
+from .featurestate_enum import *
+from .featuretype_enum import *
 from .fees import *
 from .feessupplier import *
 from .grouping import *
@@ -32,6 +35,7 @@ from .payments import *
 from .sales import *
 from .security import *
 from .sourcetype_enum import *
+from .supportedfeature import *
 from .syncflowurl import *
 from .syncsummary import *
 from .synctolatestargs import *
@@ -40,4 +44,4 @@ from .taxratemapping import *
 from .updateconnection import *
 from .visibleaccounts import *
 
-__all__ = ["AccountOption","Companies","Company","ConfigAccount","Configuration","Connection","ConnectionSourceTypeEnum","Connections","CreateCompany","Customer","DataConnectionError","DataConnectionStatusEnum","DateRange","Fees","FeesSupplier","Grouping","GroupingLevels","GroupingPeriod","HalRef","Integration","IntegrationDatatypeFeature","IntegrationDatatypeFeatureDataTypeEnum","IntegrationDatatypeFeatureSupportedFeatures","IntegrationDatatypeFeatureSupportedFeaturesFeatureStateEnum","IntegrationDatatypeFeatureSupportedFeaturesFeatureTypeEnum","Integrations","InvoiceLevelSelection","InvoiceLineLevelSelection","InvoiceStatus","Links","Localization","NewPayments","NewTaxRates","Option","Payments","Sales","Security","SourceTypeEnum","SyncFlowURL","SyncSummary","SyncToLatestArgs","TaxRateAmount","TaxRateMapping","UpdateConnection","VisibleAccounts"]
+__all__ = ["AccountOption","Companies","Company","ConfigAccount","Configuration","Connection","ConnectionSourceTypeEnum","Connections","CreateCompany","Customer","DataConnectionError","DataConnectionStatusEnum","DataTypeFeature","DataTypeFeatureDataTypeEnum","DateRange","FeatureStateEnum","FeatureTypeEnum","Fees","FeesSupplier","Grouping","GroupingLevels","GroupingPeriod","HalRef","Integration","Integrations","InvoiceLevelSelection","InvoiceLineLevelSelection","InvoiceStatus","Links","Localization","NewPayments","NewTaxRates","Option","Payments","Sales","Security","SourceTypeEnum","SupportedFeature","SyncFlowURL","SyncSummary","SyncToLatestArgs","TaxRateAmount","TaxRateMapping","UpdateConnection","VisibleAccounts"]
