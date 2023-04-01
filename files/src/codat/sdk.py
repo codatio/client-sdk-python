@@ -18,7 +18,7 @@ class Codat:
     
     [Read more...](https://docs.codat.io/other/file-upload)
     
-    [See our OpenAPI spec](https://github.com/codatio/oas) 
+    [See our OpenAPI spec](https://github.com/codatio/oas)
     """
     files: Files
     r"""Endpoints to manage uploaded files."""
@@ -27,8 +27,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.8.3"
-    _gen_version: str = "2.16.5"
+    _sdk_version: str = "0.8.4"
+    _gen_version: str = "2.16.7"
 
     def __init__(self,
                  security: shared.Security = None,
