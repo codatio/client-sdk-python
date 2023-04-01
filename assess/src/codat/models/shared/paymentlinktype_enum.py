@@ -4,7 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class PaymentLinkTypeEnum(str, Enum):
-    r"""Types of payment line links, either:  
+    r"""Types of payment line links, either:
     `Unknown`  
     `Unlinked` - Not used  
     `Invoice` - ID refers to the invoice  
@@ -16,13 +16,13 @@ class PaymentLinkTypeEnum(str, Enum):
     `Manual Journal`  
     `Discount` - ID refers to the payment
     """
-    UNKNOWN = "Unknown"
-    UNLINKED = "Unlinked"
-    INVOICE = "Invoice"
-    CREDIT_NOTE = "CreditNote"
-    OTHER = "Other"
-    REFUND = "Refund"
-    PAYMENT = "Payment"
-    PAYMENT_ON_ACCOUNT = "PaymentOnAccount"
-    MANUAL_JOURNAL = "ManualJournal"
-    DISCOUNT = "Discount"
+    UNKNOWN = 'Unknown'
+    UNLINKED = 'Unlinked'
+    INVOICE = 'Invoice'
+    CREDIT_NOTE = 'CreditNote'
+    OTHER = 'Other'
+    REFUND = 'Refund'
+    PAYMENT = 'Payment'
+    PAYMENT_ON_ACCOUNT = 'PaymentOnAccount'
+    MANUAL_JOURNAL = 'ManualJournal'
+    DISCOUNT = 'Discount'

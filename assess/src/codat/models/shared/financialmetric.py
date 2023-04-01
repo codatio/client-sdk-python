@@ -11,9 +11,9 @@ from typing import Optional
 
 class FinancialMetricErrorsTypeEnum(str, Enum):
     r"""Metric level error."""
-    UNCATEGORIZED_ACCOUNTS = "UncategorizedAccounts"
-    MISSING_INPUT_DATA = "MissingInputData"
-    INPUT_DATA_ERROR = "InputDataError"
+    UNCATEGORIZED_ACCOUNTS = 'UncategorizedAccounts'
+    MISSING_INPUT_DATA = 'MissingInputData'
+    INPUT_DATA_ERROR = 'InputDataError'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -28,36 +28,36 @@ class FinancialMetricErrors:
     r"""Metric level error."""  
     
 class FinancialMetricKeyEnum(str, Enum):
-    UNKNOWN = "Unknown"
-    EBITDA = "EBITDA"
-    DEBT_SERVICE_COVERAGE_RATIO = "DebtServiceCoverageRatio"
-    CURRENT_RATIO_QUICK_RATIO = "CurrentRatio QuickRatio"
-    GROSS_PROFIT_MARGIN = "GrossProfitMargin"
-    FIXED_CHARGE_COVERAGE_RATIO = "FixedChargeCoverageRatio"
-    WORKING_CAPITAL = "WorkingCapital"
-    FREE_CASH_FLOW = "FreeCashFlow"
-    NET_PROFIT_MARGIN = "NetProfitMargin"
-    RETURN_ON_ASSETS_RATIO = "ReturnOnAssetsRatio"
-    RETURN_ON_EQUITY_RATIO = "ReturnOnEquityRatio"
-    OPERATING_PROFIT_MARGIN = "OperatingProfitMargin"
-    DEPT_TO_EQUITY = "DeptToEquity"
-    DEBT_TO_ASSETS = "DebtToAssets"
-    INTEREST_COVERAGE_RATIO = "InterestCoverageRatio"
-    CASH_RATIO = "CashRatio"
-    INVENTORY_TURNOVER_RATIO = "InventoryTurnoverRatio"
-    ASSET_TURNOVER_RATIO = "AssetTurnoverRatio"
-    WORKING_CAPITAL_TURNOVER_RATIO = "WorkingCapitalTurnoverRatio"
-    DAYS_SALES_OUTSTANDING = "DaysSalesOutstanding"
-    DAYS_PAYABLES_OUTSTANDING = "DaysPayablesOutstanding"
+    UNKNOWN = 'Unknown'
+    EBITDA = 'EBITDA'
+    DEBT_SERVICE_COVERAGE_RATIO = 'DebtServiceCoverageRatio'
+    CURRENT_RATIO_QUICK_RATIO = 'CurrentRatio QuickRatio'
+    GROSS_PROFIT_MARGIN = 'GrossProfitMargin'
+    FIXED_CHARGE_COVERAGE_RATIO = 'FixedChargeCoverageRatio'
+    WORKING_CAPITAL = 'WorkingCapital'
+    FREE_CASH_FLOW = 'FreeCashFlow'
+    NET_PROFIT_MARGIN = 'NetProfitMargin'
+    RETURN_ON_ASSETS_RATIO = 'ReturnOnAssetsRatio'
+    RETURN_ON_EQUITY_RATIO = 'ReturnOnEquityRatio'
+    OPERATING_PROFIT_MARGIN = 'OperatingProfitMargin'
+    DEPT_TO_EQUITY = 'DeptToEquity'
+    DEBT_TO_ASSETS = 'DebtToAssets'
+    INTEREST_COVERAGE_RATIO = 'InterestCoverageRatio'
+    CASH_RATIO = 'CashRatio'
+    INVENTORY_TURNOVER_RATIO = 'InventoryTurnoverRatio'
+    ASSET_TURNOVER_RATIO = 'AssetTurnoverRatio'
+    WORKING_CAPITAL_TURNOVER_RATIO = 'WorkingCapitalTurnoverRatio'
+    DAYS_SALES_OUTSTANDING = 'DaysSalesOutstanding'
+    DAYS_PAYABLES_OUTSTANDING = 'DaysPayablesOutstanding'
 
 class FinancialMetricMetricUnitEnum(str, Enum):
-    RATIO = "Ratio"
-    MONEY = "Money"
+    RATIO = 'Ratio'
+    MONEY = 'Money'
 
 class FinancialMetricPeriodsErrorsTypeEnum(str, Enum):
     r"""Period error type."""
-    MISSING_ACCOUNT_DATA = "MissingAccountData"
-    DATES_OUT_OF_RANGE = "DatesOutOfRange"
+    MISSING_ACCOUNT_DATA = 'MissingAccountData'
+    DATES_OUT_OF_RANGE = 'DatesOutOfRange'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -93,7 +93,7 @@ class FinancialMetricPeriods:
     to_date: Optional[date] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'encoder': utils.dateisoformat(True), 'decoder': utils.datefromisoformat, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     r"""The date on which the report ends (inclusive of day)."""  
     value: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value'), 'exclude': lambda f: f is None }})
-    r"""The top level metric value that is calculated for the specified period. 
+    r"""The top level metric value that is calculated for the specified period.
     
     If the system cannot calculate for that period, the value will be null. The system will still show the metric inputs.
     """  

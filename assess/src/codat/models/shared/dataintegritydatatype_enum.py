@@ -5,7 +5,7 @@ from enum import Enum
 
 class DataIntegrityDataTypeEnum(str, Enum):
     r"""A key for a Codat data type."""
-    BANKING_ACCOUNTS = "banking-accounts"
-    BANKING_TRANSACTIONS = "banking-transactions"
-    BANK_ACCOUNTS = "bankAccounts"
-    ACCOUNT_TRANSACTIONS = "accountTransactions"
+    BANKING_ACCOUNTS = 'banking-accounts'
+    BANKING_TRANSACTIONS = 'banking-transactions'
+    BANK_ACCOUNTS = 'bankAccounts'
+    ACCOUNT_TRANSACTIONS = 'accountTransactions'

@@ -20,7 +20,7 @@ class Codat:
     
     [Read more...](https://www.codat.io/assess/)
     
-    [See our OpenAPI spec](https://github.com/codatio/oas) 
+    [See our OpenAPI spec](https://github.com/codatio/oas)
     """
     categories: Categories
     r"""Categorisation"""
@@ -35,8 +35,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.9.4"
-    _gen_version: str = "2.16.5"
+    _sdk_version: str = "0.9.5"
+    _gen_version: str = "2.16.7"
 
     def __init__(self,
                  security: shared.Security = None,

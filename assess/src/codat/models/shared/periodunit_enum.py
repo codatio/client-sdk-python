@@ -5,7 +5,7 @@ from enum import Enum
 
 class PeriodUnitEnum(str, Enum):
     r"""The period unit of time returned."""
-    DAY = "Day"
-    WEEK = "Week"
-    MONTH = "Month"
-    YEAR = "Year"
+    DAY = 'Day'
+    WEEK = 'Week'
+    MONTH = 'Month'
+    YEAR = 'Year'

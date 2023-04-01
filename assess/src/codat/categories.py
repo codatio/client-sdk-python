@@ -71,7 +71,7 @@ class Categories:
 
     def list_available_account_categories(self) -> operations.ListAvailableAccountCategoriesResponse:
         r"""List account categories
-        Lists available account categories Codat's categorisation engine can provide. 
+        Lists available account categories Codat's categorisation engine can provide.
         """
         base_url = self._server_url
         

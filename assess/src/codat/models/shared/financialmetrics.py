@@ -10,9 +10,9 @@ from enum import Enum
 from typing import Optional
 
 class FinancialMetricsPeriodUnitEnum(str, Enum):
-    MONTH = "Month"
-    WEEK = "Week"
-    DAY = "Day"
+    MONTH = 'Month'
+    WEEK = 'Week'
+    DAY = 'Day'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

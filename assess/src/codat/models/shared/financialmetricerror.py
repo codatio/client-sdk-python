@@ -8,10 +8,10 @@ from enum import Enum
 from typing import Optional
 
 class FinancialMetricErrorTypeEnum(str, Enum):
-    DATA_NOT_SYNCED = "DataNotSynced"
-    DATA_NOT_SUPPORTED = "DataNotSupported"
-    DATA_SYNC_FAILED = "DataSyncFailed"
-    DATA_TYPE_NOT_ENABLED = "DataTypeNotEnabled"
+    DATA_NOT_SYNCED = 'DataNotSynced'
+    DATA_NOT_SUPPORTED = 'DataNotSupported'
+    DATA_SYNC_FAILED = 'DataSyncFailed'
+    DATA_TYPE_NOT_ENABLED = 'DataTypeNotEnabled'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
