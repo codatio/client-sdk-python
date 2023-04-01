@@ -16,7 +16,7 @@ req = operations.GetCompanyConfigurationRequest(
     
 res = s.configuration.get_company_configuration(req)
 
-if res.get_company_configuration_200_application_json_object is not None:
+if res.company_configuration is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Configuration:
@@ -40,8 +40,8 @@ class Configuration:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyConfiguration200ApplicationJSON])
-                res.get_company_configuration_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CompanyConfiguration])
+                res.company_configuration = out
 
         return res
 
@@ -54,7 +54,7 @@ class Configuration:
         url = utils.generate_url(operations.SaveCompanyConfigurationRequest, base_url, '/companies/{companyId}/sync/expenses/config', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "company_configuration", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -67,12 +67,12 @@ class Configuration:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.SaveCompanyConfiguration200ApplicationJSON])
-                res.save_company_configuration_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CompanyConfiguration])
+                res.company_configuration = out
         elif http_res.status_code == 400:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.SaveCompanyConfiguration400ApplicationJSON])
-                res.save_company_configuration_400_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CodatErrorMessage])
+                res.codat_error_message = out
 
         return res
 

@@ -3,110 +3,16 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from codat import utils
-from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
+from ..shared import createexpenserequest as shared_createexpenserequest
+from ..shared import createexpenseresponse as shared_createexpenseresponse
 from typing import Optional
 
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class CreateExpenseDatasetRequestBodyItemsLinesRecordRef:
-    
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""identifier of linked reference from mapping options."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class CreateExpenseDatasetRequestBodyItemsLines:
-    
-    account_ref: CreateExpenseDatasetRequestBodyItemsLinesRecordRef = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef') }})  
-    net_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netAmount') }})
-    r"""Amount of the line, exclusive of tax."""  
-    tax_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxAmount') }})
-    r"""Amount of tax for the line."""  
-    tax_rate_ref: Optional[CreateExpenseDatasetRequestBodyItemsLinesRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})  
-    tracking_refs: Optional[list[CreateExpenseDatasetRequestBodyItemsLinesRecordRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingRefs'), 'exclude': lambda f: f is None }})  
-    
-class CreateExpenseDatasetRequestBodyItemsTypeEnum(str, Enum):
-    r"""The type of transaction."""
-    PAYMENT = "Payment"
-    REFUND = "Refund"
-    REWARD = "Reward"
-    CHARGEBACK = "Chargeback"
-    TRANSFER_IN = "TransferIn"
-    TRANSFER_OUT = "TransferOut"
-    ADJUSTMENT_IN = "AdjustmentIn"
-    ADJUSTMENT_OUT = "AdjustmentOut"
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class CreateExpenseDatasetRequestBodyItems:
-    
-    currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
-    r"""Currency the transaction was recorded in."""  
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""Your unique idenfier for the transaction."""  
-    issue_date: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate') }})
-    r"""Date of the transaction was recorded."""  
-    type: CreateExpenseDatasetRequestBodyItemsTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""The type of transaction."""  
-    currency_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'exclude': lambda f: f is None }})
-    r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
-    
-    Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
-    
-    Where the currency rate is provided by the underlying accounting platform, it will be available from Codat with the same precision (up to a maximum of 9 decimal places). 
-    
-    For accounting platforms which do not provide an explicit currency rate, it is calculated as `baseCurrency / foreignCurrency` and will be returned to 9 decimal places.
-    
-    ## Examples with base currency of GBP
-    
-    | Foreign Currency | Foreign Amount | Currency Rate | Base Currency Amount (GBP) |
-    | :--------------- | :------------- | :------------ | :------------------------- |
-    | **USD**          | $20            | 0.781         | £15.62                     |
-    | **EUR**          | €20            | 0.885         | £17.70                     |
-    | **RUB**          | ₽20            | 0.011         | £0.22                      |
-    
-    ## Examples with base currency of USD
-    
-    | Foreign Currency | Foreign Amount | Currency Rate | Base Currency Amount (USD) |
-    | :--------------- | :------------- | :------------ | :------------------------- |
-    | **GBP**          | £20            | 1.277         | $25.54                     |
-    | **EUR**          | €20            | 1.134         | $22.68                     |
-    | **RUB**          | ₽20            | 0.015         | $0.30                      |
-    """  
-    lines: Optional[list[CreateExpenseDatasetRequestBodyItemsLines]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines'), 'exclude': lambda f: f is None }})
-    r"""Array of transaction lines."""  
-    merchant_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('merchantName'), 'exclude': lambda f: f is None }})
-    r"""Name of the merchant where the purchase took place"""  
-    notes: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('notes'), 'exclude': lambda f: f is None }})
-    r"""Any private, company notes about the transaction."""  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class CreateExpenseDatasetRequestBody:
-    
-    items: Optional[list[CreateExpenseDatasetRequestBodyItems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})  
-    
 
 @dataclasses.dataclass
 class CreateExpenseDatasetRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
-    request_body: Optional[CreateExpenseDatasetRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
-    
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class CreateExpenseDataset200ApplicationJSON:
-    r"""OK"""
-    
-    dataset_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datasetId'), 'exclude': lambda f: f is None }})
-    r"""Unique id of dataset created"""  
+    create_expense_request: Optional[shared_createexpenserequest.CreateExpenseRequest] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
     
 
 @dataclasses.dataclass
@@ -114,7 +20,7 @@ class CreateExpenseDatasetResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    create_expense_dataset_200_application_json_object: Optional[CreateExpenseDataset200ApplicationJSON] = dataclasses.field(default=None)
+    create_expense_response: Optional[shared_createexpenseresponse.CreateExpenseResponse] = dataclasses.field(default=None)
     r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

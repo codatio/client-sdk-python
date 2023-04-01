@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class MappingOptions:
@@ -40,8 +40,8 @@ class MappingOptions:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetMappingOptions200ApplicationJSON])
-                res.get_mapping_options_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.MappingOptions])
+                res.mapping_options = out
 
         return res
 

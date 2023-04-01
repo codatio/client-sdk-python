@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Connections:
@@ -22,13 +22,13 @@ class Connections:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_partnerexpense_connection(self, request: operations.CreatePartnerexpenseConnectionRequest) -> operations.CreatePartnerexpenseConnectionResponse:
+    def create_partner_expense_connection(self, request: operations.CreatePartnerExpenseConnectionRequest) -> operations.CreatePartnerExpenseConnectionResponse:
         r"""Create Partner Expense connection
         Creates a Partner Expense data connection
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.CreatePartnerexpenseConnectionRequest, base_url, '/companies/{companyId}/sync/expenses/connections/partnerExpense', request)
+        url = utils.generate_url(operations.CreatePartnerExpenseConnectionRequest, base_url, '/companies/{companyId}/sync/expenses/connections/partnerExpense', request)
         
         
         client = self._security_client
@@ -36,12 +36,12 @@ class Connections:
         http_res = client.request('POST', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.CreatePartnerexpenseConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreatePartnerExpenseConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePartnerexpenseConnectionConnection])
-                res.connection = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.DataConnection])
+                res.data_connection = out
 
         return res
 

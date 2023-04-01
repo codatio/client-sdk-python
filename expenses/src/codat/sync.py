@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Sync:
@@ -31,7 +31,7 @@ class Sync:
         url = utils.generate_url(operations.IntiateSyncRequest, base_url, '/companies/{companyId}/sync/expenses/syncs', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "post_sync", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -44,20 +44,12 @@ class Sync:
         
         if http_res.status_code == 202:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.IntiateSync202ApplicationJSON])
-                res.intiate_sync_202_application_json_object = out
-        elif http_res.status_code == 400:
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SyncInitiated])
+                res.sync_initiated = out
+        elif http_res.status_code in [400, 404, 422]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.IntiateSync400ApplicationJSON])
-                res.intiate_sync_400_application_json_object = out
-        elif http_res.status_code == 404:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.IntiateSync404ApplicationJSON])
-                res.intiate_sync_404_application_json_object = out
-        elif http_res.status_code == 422:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.IntiateSync422ApplicationJSON])
-                res.intiate_sync_422_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CodatErrorMessage])
+                res.codat_error_message = out
 
         return res
 

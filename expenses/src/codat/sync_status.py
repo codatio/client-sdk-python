@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class SyncStatus:
@@ -40,8 +40,8 @@ class SyncStatus:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetLastSuccessfulSync200ApplicationJSON])
-                res.get_last_successful_sync_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CompanySyncStatus])
+                res.company_sync_status = out
 
         return res
 
@@ -63,8 +63,8 @@ class SyncStatus:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetLatestSync200ApplicationJSON])
-                res.get_latest_sync_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CompanySyncStatus])
+                res.company_sync_status = out
 
         return res
 
@@ -86,8 +86,8 @@ class SyncStatus:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetSyncByID200ApplicationJSON])
-                res.get_sync_by_id_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CompanySyncStatus])
+                res.company_sync_status = out
 
         return res
 
@@ -109,8 +109,8 @@ class SyncStatus:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[operations.ListSyncs200ApplicationJSON]])
-                res.list_syncs_200_application_json_objects = out
+                out = utils.unmarshal_json(http_res.text, Optional[list[shared.CompanySyncStatus]])
+                res.company_sync_statuses = out
 
         return res
 

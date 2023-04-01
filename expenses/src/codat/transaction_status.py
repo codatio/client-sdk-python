@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class TransactionStatus:
@@ -40,32 +40,32 @@ class TransactionStatus:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[operations.GetSyncTransaction200ApplicationJSON]])
-                res.get_sync_transaction_200_application_json_objects = out
+                out = utils.unmarshal_json(http_res.text, Optional[list[shared.TransactionMetadata]])
+                res.transaction_metadata = out
 
         return res
 
-    def get_sync_transactions(self, request: operations.GetSyncTransactionsRequest) -> operations.GetSyncTransactionsResponse:
+    def list_sync_transactions(self, request: operations.ListSyncTransactionsRequest) -> operations.ListSyncTransactionsResponse:
         r"""Get Sync transactions
         Get's the transactions and status for a sync
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetSyncTransactionsRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions', request)
+        url = utils.generate_url(operations.ListSyncTransactionsRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions', request)
         
-        query_params = utils.get_query_params(operations.GetSyncTransactionsRequest, request)
+        query_params = utils.get_query_params(operations.ListSyncTransactionsRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetSyncTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListSyncTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetSyncTransactions200ApplicationJSON])
-                res.get_sync_transactions_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TransactionMetadataList])
+                res.transaction_metadata_list = out
 
         return res
 
