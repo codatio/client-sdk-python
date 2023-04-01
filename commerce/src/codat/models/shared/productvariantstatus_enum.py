@@ -4,6 +4,6 @@ from __future__ import annotations
 from enum import Enum
 
 class ProductVariantStatusEnum(str, Enum):
-    UNKNOWN = "Unknown"
-    PUBLISHED = "Published"
-    UNPUBLISHED = "Unpublished"
+    UNKNOWN = 'Unknown'
+    PUBLISHED = 'Published'
+    UNPUBLISHED = 'Unpublished'

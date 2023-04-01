@@ -5,8 +5,8 @@ from enum import Enum
 
 class AddressTypeEnum(str, Enum):
     r"""The type of the address"""
-    BILLING = "Billing"
-    DELIVERY = "Delivery"
-    ORDER = "Order"
-    INVENTORY = "Inventory"
-    UNKNOWN = "Unknown"
+    BILLING = 'Billing'
+    DELIVERY = 'Delivery'
+    ORDER = 'Order'
+    INVENTORY = 'Inventory'
+    UNKNOWN = 'Unknown'

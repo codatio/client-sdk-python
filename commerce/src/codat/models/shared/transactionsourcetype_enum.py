@@ -4,8 +4,8 @@ from __future__ import annotations
 from enum import Enum
 
 class TransactionSourceTypeEnum(str, Enum):
-    FEE = "Fee"
-    ORDER = "Order"
-    PAYMENT = "Payment"
-    SERVICE_CHARGE = "ServiceCharge"
-    UNKNOWN = "Unknown"
+    FEE = 'Fee'
+    ORDER = 'Order'
+    PAYMENT = 'Payment'
+    SERVICE_CHARGE = 'ServiceCharge'
+    UNKNOWN = 'Unknown'

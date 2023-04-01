@@ -5,9 +5,9 @@ from enum import Enum
 
 class PaymentStatusEnum(str, Enum):
     r"""Status of the payment"""
-    PENDING = "Pending"
-    AUTHORIZED = "Authorized"
-    PAID = "Paid"
-    FAILED = "Failed"
-    CANCELLED = "Cancelled"
-    UNKNOWN = "Unknown"
+    PENDING = 'Pending'
+    AUTHORIZED = 'Authorized'
+    PAID = 'Paid'
+    FAILED = 'Failed'
+    CANCELLED = 'Cancelled'
+    UNKNOWN = 'Unknown'

@@ -5,15 +5,15 @@ from enum import Enum
 
 class PaymentTypeEnum(str, Enum):
     r"""Status of the payment"""
-    CASH = "Cash"
-    CARD = "Card"
-    INVOICE = "Invoice"
-    ONLINE_CARD = "OnlineCard"
-    SWISH = "Swish"
-    VIPPS = "Vipps"
-    MOBILE = "Mobile"
-    STORE_CREDIT = "StoreCredit"
-    PAYPAL = "Paypal"
-    CUSTOM = "Custom"
-    PREPAID = "Prepaid"
-    UNKNOWN = "Unknown"
+    CASH = 'Cash'
+    CARD = 'Card'
+    INVOICE = 'Invoice'
+    ONLINE_CARD = 'OnlineCard'
+    SWISH = 'Swish'
+    VIPPS = 'Vipps'
+    MOBILE = 'Mobile'
+    STORE_CREDIT = 'StoreCredit'
+    PAYPAL = 'Paypal'
+    CUSTOM = 'Custom'
+    PREPAID = 'Prepaid'
+    UNKNOWN = 'Unknown'

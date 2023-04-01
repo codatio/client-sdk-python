@@ -20,14 +20,14 @@ SERVERS = [
 """Contains the list of servers available to the SDK"""
 
 class Codat:
-    r"""Codat's standardized API for accessing commerce data 
+    r"""Codat's standardized API for accessing commerce data
     Codat's Commerce API allows you to access standardised data from over 11 commerce and POS systems.
     
     Standardize how you connect to your customers’ payment, PoS, and eCommerce systems. Retrieve orders, payouts, payments, and product data in the same way for all the leading commerce platforms.
     
     [Read more...](https://docs.codat.io/commerce-api/overview)
     
-    [See our OpenAPI spec](https://github.com/codatio/oas) 
+    [See our OpenAPI spec](https://github.com/codatio/oas)
     """
     company_info: CompanyInfo
     r"""Retrieve standardized data from linked commerce platforms."""
@@ -52,8 +52,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.9.4"
-    _gen_version: str = "2.16.5"
+    _sdk_version: str = "0.9.5"
+    _gen_version: str = "2.16.7"
 
     def __init__(self,
                  security: shared.Security = None,

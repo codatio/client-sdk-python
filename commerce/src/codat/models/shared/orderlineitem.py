@@ -25,7 +25,6 @@ class OrderLineItem:
     quantity: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity'), 'exclude': lambda f: f is None }})
     r"""Number of units of the product sold.
     For refunds, quantity is a negative value.
-    
     """  
     taxes: Optional[list[shared_taxcomponentallocation.TaxComponentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxes'), 'exclude': lambda f: f is None }})
     r"""Taxes breakdown as applied to order lines."""  

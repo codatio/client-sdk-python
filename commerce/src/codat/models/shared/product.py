@@ -14,7 +14,6 @@ class Product:
     r"""A Product is an item in the company's inventory, and includes information about the price and quantity of all products, and variants thereof, available for sale.
     
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-products) for this data type.
-    
     """
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
@@ -26,7 +25,6 @@ class Product:
     is_gift_card: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isGiftCard'), 'exclude': lambda f: f is None }})
     r"""Whether the product represents a gift card or voucher that
     can be redeemed in the commerce or POS platform
-    
     """  
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""Name of the product in the commerce or POS system"""  
