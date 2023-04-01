@@ -4,7 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class ReportBasisEnum(str, Enum):
-    r"""Accounting method used when aggregating the report data. In this case, Cash."""
-    UNKNOWN = "Unknown"
-    ACCRUAL = "Accrual"
-    CASH = "Cash"
+    r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
+    UNKNOWN = 'Unknown'
+    ACCRUAL = 'Accrual'
+    CASH = 'Cash'

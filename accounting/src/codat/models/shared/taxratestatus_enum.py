@@ -4,11 +4,11 @@ from __future__ import annotations
 from enum import Enum
 
 class TaxRateStatusEnum(str, Enum):
-    r"""Status of the tax rate in the accounting platform.  
+    r"""Status of the tax rate in the accounting platform.
     - `Active` - An active tax rate in use by a company.  
     - `Archived` - A tax rate that has been archived or is inactive in the accounting platform.  
     - `Unknown` - Where the status of the tax rate cannot be determined from the underlying platform.
     """
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
+    UNKNOWN = 'Unknown'
+    ACTIVE = 'Active'
+    ARCHIVED = 'Archived'

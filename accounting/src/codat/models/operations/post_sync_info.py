@@ -18,7 +18,7 @@ class PostSyncInfoResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    data_set: Optional[shared_dataset.DataSet] = dataclasses.field(default=None)
+    dataset: Optional[shared_dataset.Dataset] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

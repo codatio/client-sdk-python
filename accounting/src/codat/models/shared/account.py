@@ -5,61 +5,11 @@ import dataclasses
 from ..shared import accountstatus_enum as shared_accountstatus_enum
 from ..shared import accounttype_enum as shared_accounttype_enum
 from ..shared import metadata as shared_metadata
+from ..shared import validdatatypelinks as shared_validdatatypelinks
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class AccountValidDataTypeLinks:
-    r"""When querying Codat's data model, some data types return `validDatatypeLinks` metadata in the JSON response. This indicates where that object can be used as a reference—a _valid link_—when creating or updating other data.
-    
-    For example, `validDatatypeLinks` might indicate the following references:
-    
-    - Which tax rates are valid to use on the line item of a bill.
-    - Which items can be used when creating an invoice. 
-    
-    You can use `validDatatypeLinks` to present your SMB customers with only valid choices when selecting objects from a list, for example.
-    
-    ## `validDatatypeLinks` example
-    
-    The following example uses the `Accounting.Accounts` data type. It shows that, on the linked integration, this account is valid as the account on a payment or bill payment; and as the account referenced on the line item of a direct income or direct cost. Because there is no valid link to Invoices or Bills, using this account on those data types will result in an error.
-    
-    ```json validDatatypeLinks for an account
-    {
-                \"id\": \"bd9e85e0-0478-433d-ae9f-0b3c4f04bfe4\",
-                \"nominalCode\": \"090\",
-                \"name\": \"Business Bank Account\",
-                #...
-                \"validDatatypeLinks\": [
-                    {
-                        \"property\": \"Id\",
-                        \"links\": [
-                            \"Payment.AccountRef.Id\",
-                            \"BillPayment.AccountRef.Id\",
-                            \"DirectIncome.LineItems.AccountRef.Id\",
-                            \"DirectCost.LineItems.AccountRef.Id\"
-                        ]
-                    }
-                ]
-            }
-    ```
-    
-    
-    
-    ## Support for `validDatatypeLinks`
-    
-    Codat currently supports `validDatatypeLinks` for some data types on our Xero, QuickBooks Online, QuickBooks Desktop, Exact (NL), and Sage Business Cloud integrations. 
-    
-    If you'd like us to extend support to more data types or integrations, suggest or vote for this on our <a href=\"https://portal.productboard.com/codat/5-product-roadmap\">Product Roadmap</a>.
-    """
-    
-    links: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('links'), 'exclude': lambda f: f is None }})
-    r"""Supported `dataTypes` that the record can be linked to."""  
-    property: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('property'), 'exclude': lambda f: f is None }})
-    r"""The property from the account that can be linked."""  
-    
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
@@ -118,7 +68,7 @@ class Account:
     r"""Identifier for the account, unique for the company."""  
     metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
+    r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
     2020-10-08T22:40:50Z
@@ -143,7 +93,7 @@ class Account:
     nominal_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('nominalCode'), 'exclude': lambda f: f is None }})
     r"""Reference given to each nominal account for a business. It ensures money is allocated to the correct account. This code isn't a unique identifier in the Codat system."""  
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
+    r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
     2020-10-08T22:40:50Z
@@ -163,6 +113,6 @@ class Account:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """  
-    valid_datatype_links: Optional[list[AccountValidDataTypeLinks]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validDatatypeLinks'), 'exclude': lambda f: f is None }})
+    valid_datatype_links: Optional[list[shared_validdatatypelinks.ValidDataTypeLinks]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validDatatypeLinks'), 'exclude': lambda f: f is None }})
     r"""'The validDatatypeLinks can be used to determine whether an account can be correctly mapped to another object; for example, accounts with a `type` of `income` might only support being used on an Invoice and Direct Income. For more information, see Valid Data Type Links.'"""  
     

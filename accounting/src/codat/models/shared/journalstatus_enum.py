@@ -5,6 +5,6 @@ from enum import Enum
 
 class JournalStatusEnum(str, Enum):
     r"""Current journal status."""
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
+    UNKNOWN = 'Unknown'
+    ACTIVE = 'Active'
+    ARCHIVED = 'Archived'

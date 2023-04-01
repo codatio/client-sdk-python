@@ -5,9 +5,9 @@ from enum import Enum
 
 class AccountTypeEnum(str, Enum):
     r"""Type of account"""
-    UNKNOWN = "Unknown"
-    ASSET = "Asset"
-    EXPENSE = "Expense"
-    INCOME = "Income"
-    LIABILITY = "Liability"
-    EQUITY = "Equity"
+    UNKNOWN = 'Unknown'
+    ASSET = 'Asset'
+    EXPENSE = 'Expense'
+    INCOME = 'Income'
+    LIABILITY = 'Liability'
+    EQUITY = 'Equity'

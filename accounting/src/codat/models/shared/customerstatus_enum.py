@@ -5,6 +5,6 @@ from enum import Enum
 
 class CustomerStatusEnum(str, Enum):
     r"""Status of customer."""
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
+    UNKNOWN = 'Unknown'
+    ACTIVE = 'Active'
+    ARCHIVED = 'Archived'

@@ -5,6 +5,6 @@ from enum import Enum
 
 class PaymentMethodStatusEnum(str, Enum):
     r"""Status of the Payment Method."""
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
+    UNKNOWN = 'Unknown'
+    ACTIVE = 'Active'
+    ARCHIVED = 'Archived'

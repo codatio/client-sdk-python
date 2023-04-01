@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import cashflowstatementresponse as shared_cashflowstatementresponse
+from ..shared import cashflowstatement1 as shared_cashflowstatement1
 from typing import Optional
 
 
@@ -21,7 +21,7 @@ class GetCashFlowStatementResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    cash_flow_statement_response: Optional[shared_cashflowstatementresponse.CashFlowStatementResponse] = dataclasses.field(default=None)
+    cash_flow_statement: Optional[shared_cashflowstatement1.CashFlowStatement1] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

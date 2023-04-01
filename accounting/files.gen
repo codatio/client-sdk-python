@@ -174,6 +174,7 @@ src/codat/models/shared/validationitem.py
 src/codat/models/shared/pushoperationstatus_enum.py
 src/codat/models/shared/datatype_enum.py
 src/codat/models/shared/account.py
+src/codat/models/shared/validdatatypelinks.py
 src/codat/models/shared/accounttype_enum.py
 src/codat/models/shared/accountstatus_enum.py
 src/codat/models/shared/pushoperationchange.py
@@ -262,14 +263,14 @@ src/codat/models/shared/createdirectincomeresponse.py
 src/codat/models/shared/directincome.py
 src/codat/models/shared/directincomelineitem.py
 src/codat/models/shared/directincomes.py
-src/codat/models/shared/balancesheetresponse.py
+src/codat/models/shared/balancesheet1.py
 src/codat/models/shared/balancesheet.py
 src/codat/models/shared/reportline.py
-src/codat/models/shared/cashflowstatementresponse.py
+src/codat/models/shared/cashflowstatement1.py
 src/codat/models/shared/cashflowstatement.py
 src/codat/models/shared/reportinput_enum.py
 src/codat/models/shared/reportbasis_enum.py
-src/codat/models/shared/profitandlossresponse.py
+src/codat/models/shared/profitandlossreport1.py
 src/codat/models/shared/profitandlossreport.py
 src/codat/models/shared/createinvoiceresponse.py
 src/codat/models/shared/invoice.py
@@ -325,7 +326,6 @@ src/codat/models/shared/supplier.py
 src/codat/models/shared/supplierstatus_enum.py
 src/codat/models/shared/suppliers.py
 src/codat/models/shared/taxrate.py
-src/codat/models/shared/validdatatypelinksitems.py
 src/codat/models/shared/taxratestatus_enum.py
 src/codat/models/shared/taxratecomponent.py
 src/codat/models/shared/taxrates.py

@@ -63,8 +63,8 @@ class CompanyInfo:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.DataSet])
-                res.data_set = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Dataset])
+                res.dataset = out
 
         return res
 

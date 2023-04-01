@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import balancesheetresponse as shared_balancesheetresponse
+from ..shared import balancesheet1 as shared_balancesheet1
 from typing import Optional
 
 
@@ -21,7 +21,7 @@ class GetBalanceSheetResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    balance_sheet_response: Optional[shared_balancesheetresponse.BalanceSheetResponse] = dataclasses.field(default=None)
+    balance_sheet: Optional[shared_balancesheet1.BalanceSheet1] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

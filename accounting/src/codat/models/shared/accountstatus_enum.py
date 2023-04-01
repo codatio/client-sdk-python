@@ -5,7 +5,7 @@ from enum import Enum
 
 class AccountStatusEnum(str, Enum):
     r"""Status of the account"""
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
-    PENDING = "Pending"
+    UNKNOWN = 'Unknown'
+    ACTIVE = 'Active'
+    ARCHIVED = 'Archived'
+    PENDING = 'Pending'

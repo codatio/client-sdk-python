@@ -13,7 +13,7 @@ from typing import Optional
 class PaymentLineLink:
     
     type: shared_paymentlinktype_enum.PaymentLinkTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""Types of payment line links, either:  
+    r"""Types of payment line links, either:
     `Unknown`  
     `Unlinked` - Not used  
     `Invoice` - ID refers to the invoice  
@@ -26,7 +26,7 @@ class PaymentLineLink:
     `Discount` - ID refers to the payment
     """  
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
-    r"""Amount by which the balance of the linked entity is altered, in the currency of the linked entity.  
+    r"""Amount by which the balance of the linked entity is altered, in the currency of the linked entity.
     A negative link amount _reduces_ the outstanding amount on the accounts receivable account.  
     A positive link amount _increases_ the outstanding amount on the accounts receivable account.
     """  

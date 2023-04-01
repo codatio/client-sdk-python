@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import profitandlossresponse as shared_profitandlossresponse
+from ..shared import profitandlossreport1 as shared_profitandlossreport1
 from typing import Optional
 
 
@@ -21,7 +21,7 @@ class GetProfitAndLossResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    profit_and_loss_response: Optional[shared_profitandlossresponse.ProfitAndLossResponse] = dataclasses.field(default=None)
+    profit_and_loss_report: Optional[shared_profitandlossreport1.ProfitAndLossReport1] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

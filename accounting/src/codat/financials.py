@@ -41,8 +41,8 @@ class Financials:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.BalanceSheetResponse])
-                res.balance_sheet_response = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BalanceSheet1])
+                res.balance_sheet = out
 
         return res
 
@@ -65,8 +65,8 @@ class Financials:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.CashFlowStatementResponse])
-                res.cash_flow_statement_response = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.CashFlowStatement1])
+                res.cash_flow_statement = out
 
         return res
 
@@ -89,8 +89,8 @@ class Financials:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ProfitAndLossResponse])
-                res.profit_and_loss_response = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ProfitAndLossReport1])
+                res.profit_and_loss_report = out
 
         return res
 

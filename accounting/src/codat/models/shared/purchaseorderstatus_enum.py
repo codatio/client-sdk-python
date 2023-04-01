@@ -5,8 +5,8 @@ from enum import Enum
 
 class PurchaseOrderStatusEnum(str, Enum):
     r"""Current state of the purchase order"""
-    UNKNOWN = "Unknown"
-    DRAFT = "Draft"
-    OPEN = "Open"
-    CLOSED = "Closed"
-    VOID = "Void"
+    UNKNOWN = 'Unknown'
+    DRAFT = 'Draft'
+    OPEN = 'Open'
+    CLOSED = 'Closed'
+    VOID = 'Void'

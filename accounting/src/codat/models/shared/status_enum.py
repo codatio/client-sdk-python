@@ -5,6 +5,6 @@ from enum import Enum
 
 class StatusEnum(str, Enum):
     r"""Current state of the tracking category."""
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
+    UNKNOWN = 'Unknown'
+    ACTIVE = 'Active'
+    ARCHIVED = 'Archived'

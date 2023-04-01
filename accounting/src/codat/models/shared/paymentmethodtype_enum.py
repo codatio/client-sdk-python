@@ -5,10 +5,10 @@ from enum import Enum
 
 class PaymentMethodTypeEnum(str, Enum):
     r"""Method of payment."""
-    UNKNOWN = "Unknown"
-    CASH = "Cash"
-    CHECK = "Check"
-    CREDIT_CARD = "CreditCard"
-    DEBIT_CARD = "DebitCard"
-    BANK_TRANSFER = "BankTransfer"
-    OTHER = "Other"
+    UNKNOWN = 'Unknown'
+    CASH = 'Cash'
+    CHECK = 'Check'
+    CREDIT_CARD = 'CreditCard'
+    DEBIT_CARD = 'DebitCard'
+    BANK_TRANSFER = 'BankTransfer'
+    OTHER = 'Other'

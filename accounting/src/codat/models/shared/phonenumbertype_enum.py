@@ -5,8 +5,8 @@ from enum import Enum
 
 class PhoneNumberTypeEnum(str, Enum):
     r"""The type of phone number"""
-    PRIMARY = "Primary"
-    LANDLINE = "Landline"
-    MOBILE = "Mobile"
-    FAX = "Fax"
-    UNKNOWN = "Unknown"
+    PRIMARY = 'Primary'
+    LANDLINE = 'Landline'
+    MOBILE = 'Mobile'
+    FAX = 'Fax'
+    UNKNOWN = 'Unknown'

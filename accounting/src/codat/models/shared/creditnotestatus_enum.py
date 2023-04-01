@@ -4,9 +4,9 @@ from __future__ import annotations
 from enum import Enum
 
 class CreditNoteStatusEnum(str, Enum):
-    UNKNOWN = "Unknown"
-    DRAFT = "Draft"
-    SUBMITTED = "Submitted"
-    PAID = "Paid"
-    VOID = "Void"
-    PARTIALLY_PAID = "PartiallyPaid"
+    UNKNOWN = 'Unknown'
+    DRAFT = 'Draft'
+    SUBMITTED = 'Submitted'
+    PAID = 'Paid'
+    VOID = 'Void'
+    PARTIALLY_PAID = 'PartiallyPaid'

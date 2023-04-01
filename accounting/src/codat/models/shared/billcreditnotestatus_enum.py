@@ -5,9 +5,9 @@ from enum import Enum
 
 class BillCreditNoteStatusEnum(str, Enum):
     r"""Current state of the bill credit note"""
-    UNKNOWN = "Unknown"
-    DRAFT = "Draft"
-    SUBMITTED = "Submitted"
-    PAID = "Paid"
-    VOID = "Void"
-    PARTIALLY_PAID = "PartiallyPaid"
+    UNKNOWN = 'Unknown'
+    DRAFT = 'Draft'
+    SUBMITTED = 'Submitted'
+    PAID = 'Paid'
+    VOID = 'Void'
+    PARTIALLY_PAID = 'PartiallyPaid'

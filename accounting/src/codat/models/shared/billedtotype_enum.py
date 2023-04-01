@@ -4,7 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class BilledToTypeEnum(str, Enum):
-    UNKNOWN = "Unknown"
-    NOT_APPLICABLE = "NotApplicable"
-    CUSTOMER = "Customer"
-    PROJECT = "Project"
+    UNKNOWN = 'Unknown'
+    NOT_APPLICABLE = 'NotApplicable'
+    CUSTOMER = 'Customer'
+    PROJECT = 'Project'
