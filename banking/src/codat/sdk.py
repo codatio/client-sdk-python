@@ -22,7 +22,7 @@ class Codat:
     
     [Read more...](https://docs.codat.io/banking-api/overview)
     
-    [See our OpenAPI spec](https://github.com/codatio/oas) 
+    [See our OpenAPI spec](https://github.com/codatio/oas)
     """
     account_balances: AccountBalances
     r"""Balances for a bank account including end-of-day batch balance or running balances per transaction."""
@@ -37,8 +37,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.8.3"
-    _gen_version: str = "2.16.5"
+    _sdk_version: str = "0.8.4"
+    _gen_version: str = "2.16.7"
 
     def __init__(self,
                  security: shared.Security = None,

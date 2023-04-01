@@ -5,10 +5,10 @@ from enum import Enum
 
 class AccountIdentifierTypeEnum(str, Enum):
     r"""Type of account"""
-    ACCOUNT = "Account"
-    CARD = "Card"
-    CREDIT = "Credit"
-    DEPOSITORY = "Depository"
-    INVESTMENT = "Investment"
-    LOAN = "Loan"
-    OTHER = "Other"
+    ACCOUNT = 'Account'
+    CARD = 'Card'
+    CREDIT = 'Credit'
+    DEPOSITORY = 'Depository'
+    INVESTMENT = 'Investment'
+    LOAN = 'Loan'
+    OTHER = 'Other'

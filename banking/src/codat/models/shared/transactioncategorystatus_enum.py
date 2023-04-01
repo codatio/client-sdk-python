@@ -4,6 +4,6 @@ from __future__ import annotations
 from enum import Enum
 
 class TransactionCategoryStatusEnum(str, Enum):
-    UNKNOWN = "Unknown"
-    ACTIVE = "Active"
-    ARCHIVED = "Archived"
+    UNKNOWN = 'Unknown'
+    ACTIVE = 'Active'
+    ARCHIVED = 'Archived'

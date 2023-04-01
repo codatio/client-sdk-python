@@ -27,7 +27,7 @@ req = operations.ListAccountBalancesRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="unde",
+    query="corrupti",
 )
     
 res = s.account_balances.list_account_balances(req)
@@ -38,7 +38,7 @@ if res.account_balances is not None:
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### account_balances
