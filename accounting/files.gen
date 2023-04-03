@@ -167,7 +167,7 @@ src/codat/models/shared/invoiceto.py
 src/codat/models/shared/bankaccountref.py
 src/codat/models/shared/accounttransactions.py
 src/codat/models/shared/links.py
-src/codat/models/shared/href.py
+src/codat/models/shared/halref.py
 src/codat/models/shared/createaccountresponse.py
 src/codat/models/shared/validation.py
 src/codat/models/shared/validationitem.py

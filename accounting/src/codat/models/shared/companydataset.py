@@ -32,7 +32,7 @@ class CompanyDatasetAddresses:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CompanyDatasetPhoneNumbers:
+class CompanyDatasetPhone:
     
     number: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('number') }})
     r"""A phone number."""  
@@ -142,7 +142,7 @@ class CompanyDataset:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """  
-    phone_numbers: Optional[list[CompanyDatasetPhoneNumbers]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phoneNumbers'), 'exclude': lambda f: f is None }})
+    phone_numbers: Optional[list[CompanyDatasetPhone]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phoneNumbers'), 'exclude': lambda f: f is None }})
     r"""An array of phone numbers."""  
     registration_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('registrationNumber'), 'exclude': lambda f: f is None }})
     r"""Registration number given to the linked company by the companies authority in the country of origin. In the UK this is Companies House."""  
