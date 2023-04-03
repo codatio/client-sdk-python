@@ -24,7 +24,9 @@ class Reports:
         
     def get_accounts_for_enhanced_balance_sheet(self, request: operations.GetAccountsForEnhancedBalanceSheetRequest) -> operations.GetAccountsForEnhancedBalanceSheetResponse:
         r"""Enhanced Balance Sheet Accounts
-        Gets a list of accounts with account categories per statement period, specific to balance sheet
+        The Enhanced Balance Sheet Accounts endpoint returns a list of categorized accounts that appear on a company’s Balance Sheet along with a balance per financial statement date.
+        
+        Codat suggests a category for each account automatically, but you can [change it](/docs/assess-categorizing-accounts-ecommerce-lending) to a more suitable one.
         """
         base_url = self._server_url
         
@@ -48,7 +50,9 @@ class Reports:
 
     def get_accounts_for_enhanced_profit_and_loss(self, request: operations.GetAccountsForEnhancedProfitAndLossRequest) -> operations.GetAccountsForEnhancedProfitAndLossResponse:
         r"""Enhanced Profit and Loss Accounts
-        Gets a list of accounts with account categories per statement period, specific to profit and loss
+        The Enhanced Profit and Loss Accounts endpoint returns a list of categorized accounts that appear on a company’s Profit and Loss. It also includes a balance per the financial statement date.
+        
+        Codat suggests a category for each account automatically, but you can [change it](/docs/assess-categorizing-accounts-ecommerce-lending) to a more suitable one.
         """
         base_url = self._server_url
         
@@ -216,7 +220,7 @@ class Reports:
 
     def get_enhanced_cash_flow_transactions(self, request: operations.GetEnhancedCashFlowTransactionsRequest) -> operations.GetEnhancedCashFlowTransactionsResponse:
         r"""Get enhanced cash flow report
-        Gets a list of banking transactions and their categories.
+        The Enhanced Cash Flow Transactions endpoint provides a fully categorized list of banking transactions for a company. Accounts and transaction data are obtained from the company's banking data sources.
         """
         base_url = self._server_url
         

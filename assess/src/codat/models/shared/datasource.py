@@ -12,5 +12,6 @@ from typing import Optional
 @dataclasses.dataclass
 class DataSource:
     
-    accounts: Optional[list[shared_accounts.Accounts]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accounts'), 'exclude': lambda f: f is None }})  
+    accounts: Optional[list[shared_accounts.Accounts]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accounts'), 'exclude': lambda f: f is None }})
+    r"""An array containing bank account data for each connected banking data source that have the following data types enabled: `banking-accounts`, `banking-transactions`."""  
     
