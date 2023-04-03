@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import expensetransactionlines as shared_expensetransactionlines
+from ..shared import expensetransactionline as shared_expensetransactionline
 from codat import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -76,7 +76,7 @@ class ExpenseTransaction:
     | **EUR**          | €20            | 1.134         | $22.68                     |
     | **RUB**          | ₽20            | 0.015         | $0.30                      |
     """  
-    lines: Optional[list[shared_expensetransactionlines.ExpenseTransactionLines]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines'), 'exclude': lambda f: f is None }})
+    lines: Optional[list[shared_expensetransactionline.ExpenseTransactionLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines'), 'exclude': lambda f: f is None }})
     r"""Array of transaction lines."""  
     merchant_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('merchantName'), 'exclude': lambda f: f is None }})
     r"""Name of the merchant where the purchase took place"""  

@@ -38,7 +38,7 @@ src/codat/models/shared/dataconnectionerror.py
 src/codat/models/shared/createexpenseresponse.py
 src/codat/models/shared/createexpenserequest.py
 src/codat/models/shared/expensetransaction.py
-src/codat/models/shared/expensetransactionlines.py
+src/codat/models/shared/expensetransactionline.py
 src/codat/models/shared/recordref.py
 src/codat/models/shared/attachment.py
 src/codat/models/shared/mappingoptions.py

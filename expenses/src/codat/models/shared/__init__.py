@@ -13,7 +13,7 @@ from .dataconnection import *
 from .dataconnectionerror import *
 from .dataconnectionstatus_enum import *
 from .expensetransaction import *
-from .expensetransactionlines import *
+from .expensetransactionline import *
 from .hallink import *
 from .integrationtype_enum import *
 from .mappingoptions import *
@@ -28,4 +28,4 @@ from .transactionmetadata import *
 from .transactionmetadatalist import *
 from .transactionstatus_enum import *
 
-__all__ = ["AccountMappingInfo","AccountMappingInfoAccountTypeEnum","AccountMappingInfoValidTransactionTypesEnum","Attachment","BankAccount","CodatErrorMessage","CodatErrorMessageValidation","CodatErrorMessageValidationErrors","CodatErrorMessageValidationInternals","CodatErrorMessageValidationWarnings","CompanyConfiguration","CompanySyncStatus","CreateExpenseRequest","CreateExpenseResponse","Customer","DataConnection","DataConnectionError","DataConnectionSourceTypeEnum","DataConnectionStatusEnum","ExpenseTransaction","ExpenseTransactionLines","ExpenseTransactionTypeEnum","HalLink","IntegrationTypeEnum","MappingOptions","PostSync","RecordRef","Security","Supplier","SyncInitiated","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypesEnum","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionMetadataListLinks","TransactionStatusEnum"]
+__all__ = ["AccountMappingInfo","AccountMappingInfoAccountTypeEnum","AccountMappingInfoValidTransactionTypesEnum","Attachment","BankAccount","CodatErrorMessage","CodatErrorMessageValidation","CodatErrorMessageValidationErrors","CodatErrorMessageValidationInternals","CodatErrorMessageValidationWarnings","CompanyConfiguration","CompanySyncStatus","CreateExpenseRequest","CreateExpenseResponse","Customer","DataConnection","DataConnectionError","DataConnectionSourceTypeEnum","DataConnectionStatusEnum","ExpenseTransaction","ExpenseTransactionLine","ExpenseTransactionTypeEnum","HalLink","IntegrationTypeEnum","MappingOptions","PostSync","RecordRef","Security","Supplier","SyncInitiated","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypesEnum","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionMetadataListLinks","TransactionStatusEnum"]
