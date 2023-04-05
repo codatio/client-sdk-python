@@ -12,41 +12,41 @@ s = codat.Codat(
 
 req = operations.CreateBankFeedRequest(
     request_body=[
-        operations.CreateBankFeedBankFeedBankAccount(
-            account_name="deserunt",
-            account_number="porro",
-            account_type="nulla",
+        shared.BankFeedAccount(
+            account_name="provident",
+            account_number="distinctio",
+            account_type="quibusdam",
             balance=6027.63,
-            currency="vero",
-            feed_start_date="perspiciatis",
-            id="nulla",
-            modified_date="nihil",
-            sort_code="fuga",
-            status="facilis",
+            currency="nulla",
+            feed_start_date="2022-10-23T00:00:00Z",
+            id="corrupti",
+            modified_date="2022-10-23T00:00:00Z",
+            sort_code="illum",
+            status="vel",
         ),
-        operations.CreateBankFeedBankFeedBankAccount(
-            account_name="eum",
-            account_number="iusto",
-            account_type="ullam",
-            balance=8917.73,
-            currency="inventore",
-            feed_start_date="sapiente",
-            id="enim",
-            modified_date="eum",
-            sort_code="voluptatum",
-            status="autem",
+        shared.BankFeedAccount(
+            account_name="error",
+            account_number="deserunt",
+            account_type="suscipit",
+            balance=4375.87,
+            currency="magnam",
+            feed_start_date="2022-10-23T00:00:00Z",
+            id="debitis",
+            modified_date="2022-10-23T00:00:00Z",
+            sort_code="ipsa",
+            status="delectus",
         ),
-        operations.CreateBankFeedBankFeedBankAccount(
-            account_name="vel",
-            account_number="non",
-            account_type="deleniti",
-            balance=5680.45,
-            currency="reprehenderit",
-            feed_start_date="molestiae",
-            id="quo",
-            modified_date="quasi",
-            sort_code="laboriosam",
-            status="dicta",
+        shared.BankFeedAccount(
+            account_name="tempora",
+            account_number="suscipit",
+            account_type="molestiae",
+            balance=7917.25,
+            currency="placeat",
+            feed_start_date="2022-10-23T00:00:00Z",
+            id="voluptatum",
+            modified_date="2022-10-23T00:00:00Z",
+            sort_code="iusto",
+            status="excepturi",
         ),
     ],
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -55,7 +55,7 @@ req = operations.CreateBankFeedRequest(
     
 res = s.create_bank_feed(req)
 
-if res.bank_feed_bank_accounts is not None:
+if res.bank_feed_accounts is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
