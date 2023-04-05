@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Transactions:
@@ -22,27 +22,27 @@ class Transactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_commerce_transactions(self, request: operations.ListCommerceTransactionsRequest) -> operations.ListCommerceTransactionsResponse:
+    def list_transactions(self, request: operations.ListTransactionsRequest) -> operations.ListTransactionsResponse:
         r"""List transactions
         Details of all financial transactions recorded in the commerce or point of sale system are added to the Transactions data type. For example, payments, service charges, and fees.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.ListCommerceTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-transactions', request)
+        url = utils.generate_url(operations.ListTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-transactions', request)
         
-        query_params = utils.get_query_params(operations.ListCommerceTransactionsRequest, request)
+        query_params = utils.get_query_params(operations.ListTransactionsRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListCommerceTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommerceTransactionsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Transactions])
+                res.transactions = out
 
         return res
 

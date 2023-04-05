@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Payments:
@@ -22,51 +22,51 @@ class Payments:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_commerce_payment_methods(self, request: operations.ListCommercePaymentMethodsRequest) -> operations.ListCommercePaymentMethodsResponse:
+    def list_payment_methods(self, request: operations.ListPaymentMethodsRequest) -> operations.ListPaymentMethodsResponse:
         r"""List payment methods
         Retrieve a list of payment methods, such as card, cash or other online payment methods, as held in the linked commerce platform.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.ListCommercePaymentMethodsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods', request)
+        url = utils.generate_url(operations.ListPaymentMethodsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods', request)
         
-        query_params = utils.get_query_params(operations.ListCommercePaymentMethodsRequest, request)
+        query_params = utils.get_query_params(operations.ListPaymentMethodsRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListCommercePaymentMethodsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListPaymentMethodsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommercePaymentMethodsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PaymentMethods])
+                res.payment_methods = out
 
         return res
 
-    def list_commerce_payments(self, request: operations.ListCommercePaymentsRequest) -> operations.ListCommercePaymentsResponse:
+    def list_payments(self, request: operations.ListPaymentsRequest) -> operations.ListPaymentsResponse:
         r"""List payments
         List commerce payments for the given company & data connection.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.ListCommercePaymentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-payments', request)
+        url = utils.generate_url(operations.ListPaymentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-payments', request)
         
-        query_params = utils.get_query_params(operations.ListCommercePaymentsRequest, request)
+        query_params = utils.get_query_params(operations.ListPaymentsRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListCommercePaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListPaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommercePaymentsLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Payments])
+                res.payments = out
 
         return res
 

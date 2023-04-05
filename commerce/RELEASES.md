@@ -127,3 +127,75 @@ Based on:
 - Speakeasy CLI 1.14.1 https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.7.0] https://pypi.org/project/codat-commerce/0.7.0 - commerce
+
+## 2023-03-23 00:19:51
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.15.0 (2.13.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.7.1] https://pypi.org/project/codat-commerce/0.7.1 - commerce
+
+## 2023-03-24 00:19:06
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.17.0 (2.15.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.8.0] https://pypi.org/project/codat-commerce/0.8.0 - commerce
+
+## 2023-03-25 00:18:25
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.18.7 (2.16.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.9.0] https://pypi.org/project/codat-commerce/0.9.0 - commerce
+
+## 2023-03-28 00:20:05
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.18.9 (2.16.4) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.9.1] https://pypi.org/project/codat-commerce/0.9.1 - commerce
+
+## 2023-03-29 00:22:13
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.19.2 (2.16.5) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.9.2] https://pypi.org/project/codat-commerce/0.9.2 - commerce
+
+## 2023-03-30 00:20:10
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.19.2 (2.16.5) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.9.3] https://pypi.org/project/codat-commerce/0.9.3 - commerce
+
+## 2023-03-31 00:19:34
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.19.2 (2.16.5) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.9.4] https://pypi.org/project/codat-commerce/0.9.4 - commerce
+
+## 2023-04-01 00:20:16
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.19.3 (2.16.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.9.5] https://pypi.org/project/codat-commerce/0.9.5 - commerce
+
+## 2023-04-03 00:19:41
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.19.3 (2.16.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.9.6] https://pypi.org/project/codat-commerce/0.9.6 - commerce

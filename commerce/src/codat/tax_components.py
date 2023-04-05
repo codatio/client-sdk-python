@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class TaxComponents:
@@ -22,13 +22,13 @@ class TaxComponents:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_companies_company_id_connections_connection_id_data_commerce_tax_components(self, request: operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTaxComponentsRequest) -> operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTaxComponentsResponse:
+    def get_tax_components(self, request: operations.GetTaxComponentsRequest) -> operations.GetTaxComponentsResponse:
         r"""List tax components
         This endpoint returns a lits of tax rates from the commerce platform, including tax rate names and values. This supports the mapping of tax rates from the commerce platform to the accounting platform.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTaxComponentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-taxComponents', request)
+        url = utils.generate_url(operations.GetTaxComponentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-taxComponents', request)
         
         
         client = self._security_client
@@ -36,12 +36,12 @@ class TaxComponents:
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTaxComponentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetTaxComponentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompaniesCompanyIDConnectionsConnectionIDDataCommerceTaxComponents200ApplicationJSON])
-                res.get_companies_company_id_connections_connection_id_data_commerce_tax_components_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TaxComponents])
+                res.tax_components = out
 
         return res
 

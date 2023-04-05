@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations
+from codat.models import operations, shared
 from typing import Optional
 
 class Customers:
@@ -22,27 +22,27 @@ class Customers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_commerce_customers(self, request: operations.ListCommerceCustomersRequest) -> operations.ListCommerceCustomersResponse:
+    def list_customers(self, request: operations.ListCustomersRequest) -> operations.ListCustomersResponse:
         r"""List customers
         List all commerce customers for the given company and data connection
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.ListCommerceCustomersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-customers', request)
+        url = utils.generate_url(operations.ListCustomersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-customers', request)
         
-        query_params = utils.get_query_params(operations.ListCommerceCustomersRequest, request)
+        query_params = utils.get_query_params(operations.ListCustomersRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListCommerceCustomersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListCustomersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCommerceCustomersLinks])
-                res.links = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Customers])
+                res.customers = out
 
         return res
 
