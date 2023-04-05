@@ -1,4 +1,6 @@
-# codat-files
+# Files API
+
+Use Codat's Files API to upload your SMB customers' files. 
 
 <!-- Start SDK Installation -->
 ## SDK Installation
