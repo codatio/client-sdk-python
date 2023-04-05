@@ -10,18 +10,18 @@ s = codat.Codat(
 )
 
 
-req = operations.ListBankingAccountBalancesRequest(
-    company_id="unde",
-    connection_id="deserunt",
-    order_by="porro",
-    page=844266,
-    page_size=602763,
-    query="vero",
+req = operations.ListAccountBalancesRequest(
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    order_by="-modifiedDate",
+    page=1,
+    page_size=100,
+    query="corrupti",
 )
     
-res = s.account_balances.list_banking_account_balances(req)
+res = s.account_balances.list_account_balances(req)
 
-if res.links is not None:
+if res.account_balances is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
