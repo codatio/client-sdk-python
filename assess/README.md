@@ -22,9 +22,9 @@ s = codat.Codat(
 
 
 req = operations.GetAccountCategoryRequest(
-    account_id="unde",
-    company_id="deserunt",
-    connection_id="porro",
+    account_id="corrupti",
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
     
 res = s.categories.get_account_category(req)
@@ -35,7 +35,7 @@ if res.categorised_account is not None:
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### categories
@@ -54,10 +54,11 @@ if res.categorised_account is not None:
 
 ### excel_reports
 
+* `download_excel_report` - Download generated excel report
+* `generate_excel_report` - Generate an Excel report
 * `get_accounting_marketing_metrics` - Get the marketing metrics from an accounting source for a given company.
 * `get_excel_report` - Download generated excel report
-* `make_request_to_download_excel_report` - Request an Excel report for download
-* `request_excel_report_for_download` - Request an Excel report for download
+* `get_excel_report_generation_status` - Get status of Excel report
 
 ### reports
 
@@ -70,7 +71,8 @@ if res.categorised_account is not None:
 * `get_commerce_revenue_metrics` - Commerce Revenue Metrics
 * `get_enhanced_balance_sheet` - Enhanced Balance Sheet
 * `get_enhanced_cash_flow_transactions` - Get enhanced cash flow report
-* `get_enhanced_financial_metrics` - List finanicial metrics
+* `get_enhanced_financial_metrics` - List financial metrics
+* `get_enhanced_invoices_report` - Enhanced Invoices Report
 * `get_enhanced_profit_and_loss` - Enhanced Profit and Loss
 * `get_recurring_revenue_metrics` - Get key metrics for subscription revenue
 * `request_recurring_revenue_metrics` - Request production of key subscription revenue metrics
