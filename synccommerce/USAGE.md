@@ -10,14 +10,13 @@ s = codat.Codat(
 )
 
 
-req = operations.AddDataConnectionRequest(
-    request_body="unde",
-    company_id="deserunt",
+req = shared.CreateCompany(
+    name="Bob's Burgers",
 )
     
-res = s.company_management.add_data_connection(req)
+res = s.company_management.create_company(req)
 
-if res.add_data_connection_200_application_json_object is not None:
+if res.company is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
