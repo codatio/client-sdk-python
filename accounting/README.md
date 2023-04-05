@@ -21,41 +21,41 @@ s = codat.Codat(
 )
 
 
-req = operations.GetCreateUpdateAccountTransactionsModelRequest(
-    account_transaction_id="unde",
-    company_id="deserunt",
-    connection_id="porro",
+req = operations.GetAccountTransactionRequest(
+    account_transaction_id="corrupti",
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
     
-res = s.account_transactions.get_create_update_account_transactions_model(req)
+res = s.account_transactions.get_account_transaction(req)
 
-if res.source_modified_date is not None:
+if res.account_transaction is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### account_transactions
 
-* `get_create_update_account_transactions_model` - Get account transaction
+* `get_account_transaction` - Get account transaction
 * `list_account_transactions` - List account transactions
 
 ### accounts
 
 * `create_account` - Create account
 * `get_account` - Get account
-* `get_accounts` - List accounts
 * `get_create_chart_of_accounts_model` - Get create account model
+* `list_accounts` - List accounts
 
 ### bank_account_transactions
 
-* `get_bank_account_push_options` - List push options for bank account bank transactions
+* `create_bank_transactions` - Create bank transactions
+* `get_create_bank_account_model` - List push options for bank account bank transactions
 * `list_bank_account_transactions` - List bank transactions for bank account
 * `list_bank_transactions` - List all bank transactions
-* `post_bank_transactions` - Create bank transactions
 
 ### bank_accounts
 
@@ -64,7 +64,7 @@ if res.source_modified_date is not None:
 * `get_bank_account` - Get bank account
 * `get_create_update_bank_accounts_model` - Get create/update bank account model
 * `list_bank_accounts` - List bank accounts
-* `put_bank_account` - Update bank account
+* `update_bank_account` - Update bank account
 
 ### bill_credit_notes
 
@@ -77,7 +77,7 @@ if res.source_modified_date is not None:
 ### bill_payments
 
 * `create_bill_payment` - Create bill payments
-* `delete_companies_company_id_connections_connection_id_push_bill_payments_bill_payment_id` - Delete bill payment
+* `delete_bill_payment` - Delete bill payment
 * `get_bill_payments` - Get bill payment
 * `get_create_bill_payments_model` - Get create bill payment model
 * `list_bill_payments` - List bill payments
@@ -85,8 +85,7 @@ if res.source_modified_date is not None:
 ### bills
 
 * `create_bill` - Create bill
-* `create_bill_attachments` - Create bill attachments
-* `delete_companies_company_id_connections_connection_id_push_bills_bill_id` - Delete bill
+* `delete_bill` - Delete bill
 * `download_bill_attachment` - Download bill attachment
 * `get_bill` - Get bill
 * `get_bill_attachment` - Get bill attachment
@@ -94,6 +93,7 @@ if res.source_modified_date is not None:
 * `get_create_update_bills_model` - Get create/update bill model
 * `list_bills` - List bills
 * `update_bill` - Update bill
+* `upload_bill_attachments` - Upload bill attachments
 
 ### company_info
 
@@ -102,11 +102,11 @@ if res.source_modified_date is not None:
 
 ### credit_notes
 
-* `create_credit_note` - Update creditNote
+* `create_credit_note` - Create credit note
 * `get_create_update_credit_notes_model` - Get create/update credit note model
 * `get_credit_note` - Get credit note
 * `list_credit_notes` - List credit notes
-* `push_credit_note` - Create credit note
+* `update_credit_note` - Update creditNote
 
 ### customers
 
@@ -128,7 +128,7 @@ if res.source_modified_date is not None:
 * `get_direct_cost_attachment` - Get direct cost attachment
 * `get_direct_costs` - List direct costs
 * `list_direct_cost_attachments` - List direct cost attachments
-* `post_direct_cost_attachment` - Create direct cost attachment
+* `upload_direct_cost_attachment` - Upload direct cost attachment
 
 ### direct_incomes
 
@@ -139,7 +139,7 @@ if res.source_modified_date is not None:
 * `get_direct_income_attachment` - Get direct income attachment
 * `get_direct_incomes` - Get direct incomes
 * `list_direct_income_attachments` - List direct income attachments
-* `post_direct_income_attachment` - Create direct income attachment
+* `upload_direct_income_attachment` - Create direct income attachment
 
 ### financials
 
@@ -149,16 +149,16 @@ if res.source_modified_date is not None:
 
 ### invoices
 
+* `download_invoice_pdf` - Get invoice as PDF
 * `create_invoice` - Create invoice
-* `donwload_invoice_attachment` - Download invoice attachment
+* `download_invoice_attachment` - Download invoice attachment
 * `get_create_update_invoices_model` - Get create/update invoice model
 * `get_invoice` - Get invoice
 * `get_invoice_attachment` - Get invoice attachment
 * `get_invoice_attachments` - Get invoice attachments
-* `get_invoice_pdf` - Get invoice as PDF
 * `list_invoices` - List invoices
-* `push_invoice_attachment` - Push invoice attachment
 * `update_invoice` - Update invoice
+* `upload_invoice_attachment` - Push invoice attachment
 
 ### items
 
@@ -215,7 +215,7 @@ if res.source_modified_date is not None:
 
 ### suppliers
 
-* `create_suppliers` - Create suppliers
+* `create_supplier` - Create suppliers
 * `download_supplier_attachment` - Download supplier attachment
 * `get_create_update_suppliers_model` - Get create/update supplier model
 * `get_supplier` - Get supplier

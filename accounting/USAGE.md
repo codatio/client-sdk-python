@@ -10,15 +10,15 @@ s = codat.Codat(
 )
 
 
-req = operations.GetCreateUpdateAccountTransactionsModelRequest(
-    account_transaction_id="unde",
-    company_id="deserunt",
-    connection_id="porro",
+req = operations.GetAccountTransactionRequest(
+    account_transaction_id="corrupti",
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
     
-res = s.account_transactions.get_create_update_account_transactions_model(req)
+res = s.account_transactions.get_account_transaction(req)
 
-if res.source_modified_date is not None:
+if res.account_transaction is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
