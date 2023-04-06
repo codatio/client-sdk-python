@@ -6,17 +6,17 @@ Embedded accounting integrations for corporate card providers.
 ## SDK Installation
 
 ```bash
-pip install codat-expenses
+pip install codat-sync-for-expenses
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import codat
-from codat.models import operations, shared
+import codatsyncexpenses
+from codatsyncexpenses.models import operations, shared
 
-s = codat.Codat(
+s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
     ),
