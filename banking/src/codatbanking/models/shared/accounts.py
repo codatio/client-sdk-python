@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 from ..shared import account as shared_account
 from ..shared import links as shared_links
-from codat import utils
+from codatbanking import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 

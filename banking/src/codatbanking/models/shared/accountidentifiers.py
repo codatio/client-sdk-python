@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import accountidentifiertype_enum as shared_accountidentifiertype_enum
-from codat import utils
+from codatbanking import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
