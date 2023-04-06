@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations, shared
+from codatfiles.models import operations, shared
 from typing import Optional
 
 class Files:

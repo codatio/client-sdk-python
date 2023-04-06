@@ -1,9 +1,9 @@
 <!-- Start SDK Example Usage -->
 ```python
-import codat
-from codat.models import operations, shared
+import codatfiles
+from codatfiles.models import operations, shared
 
-s = codat.Codat(
+s = codatfiles.CodatFiles(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
     ),

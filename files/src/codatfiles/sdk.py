@@ -3,7 +3,7 @@
 import requests as requests_http
 from . import utils
 from .files import Files
-from codat.models import shared
+from codatfiles.models import shared
 
 SERVERS = [
     "https://api.codat.io",
@@ -11,7 +11,7 @@ SERVERS = [
 ]
 """Contains the list of servers available to the SDK"""
 
-class Codat:
+class CodatFiles:
     r"""An API for uploading and downloading files from 'File Upload' Integrations.
     
     The Accounting file upload, Banking file upload, and Business documents file upload integrations provide simple file upload functionality.
@@ -27,8 +27,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.8.4"
-    _gen_version: str = "2.16.7"
+    _sdk_version: str = "0.9.0"
+    _gen_version: str = "2.17.8"
 
     def __init__(self,
                  security: shared.Security = None,
