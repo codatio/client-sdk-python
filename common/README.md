@@ -11,10 +11,10 @@ pip install codat-common
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import codat
-from codat.models import operations, shared
+import codatcommon
+from codatcommon.models import operations, shared
 
-s = codat.Codat(
+s = codatcommon.CodatCommon(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
     ),
