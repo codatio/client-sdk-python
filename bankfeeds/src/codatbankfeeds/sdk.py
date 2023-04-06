@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations, shared
+from codatbankfeeds.models import operations, shared
 from typing import Optional
 
 SERVERS = [
@@ -11,7 +11,7 @@ SERVERS = [
 ]
 """Contains the list of servers available to the SDK"""
 
-class Codat:
+class CodatBankFeeds:
     r"""Bank Feeds API enables your SMB users to set up bank feeds from accounts in your application to supported accounting platforms.
     
     A bank feed is a connection between a source bank account—in your application—and a target bank account in a supported accounting package.
@@ -25,8 +25,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.8.5"
-    _gen_version: str = "2.16.7"
+    _sdk_version: str = "0.9.0"
+    _gen_version: str = "2.17.8"
 
     def __init__(self,
                  security: shared.Security = None,

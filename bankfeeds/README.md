@@ -6,17 +6,17 @@ Bank Feeds API enables your SMB users to set up bank feeds from accounts in your
 ## SDK Installation
 
 ```bash
-pip install codat-bankfeeds
+pip install codat-bank-feeds
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import codat
-from codat.models import operations, shared
+import codatbankfeeds
+from codatbankfeeds.models import operations, shared
 
-s = codat.Codat(
+s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
     ),
@@ -76,7 +76,7 @@ if res.bank_feed_accounts is not None:
 <!-- Start SDK Available Operations -->
 ## Available Resources and Operations
 
-### Codat SDK
+### CodatBankFeeds SDK
 
 * `create_bank_feed` - Create bank feed bank accounts
 * `create_bank_transactions` - Create bank transactions

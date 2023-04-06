@@ -6,7 +6,7 @@ from ..shared import pushoptionchoice as shared_pushoptionchoice
 from ..shared import pushoptionproperty as shared_pushoptionproperty
 from ..shared import pushoptiontype_enum as shared_pushoptiontype_enum
 from ..shared import pushvalidationinfo as shared_pushvalidationinfo
-from codat import utils
+from codatbankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 

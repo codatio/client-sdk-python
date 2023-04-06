@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 from ..shared import pushchangetype_enum as shared_pushchangetype_enum
 from ..shared import pushoperationref as shared_pushoperationref
-from codat import utils
+from codatbankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
