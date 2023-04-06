@@ -14,10 +14,10 @@ pip install codat-accounting
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import codat
-from codat.models import operations, shared
+import codataccounting
+from codataccounting.models import operations, shared
 
-s = codat.Codat(
+s = codataccounting.CodatAccounting(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
     ),
