@@ -78,6 +78,33 @@ class Invoices:
 
         return res
 
+    def delete_invoice(self, request: operations.DeleteInvoiceRequest) -> operations.DeleteInvoiceResponse:
+        r"""Delete invoice
+        Deletes an invoice from the accounting package for a given company.
+        
+        > **Supported Integrations**
+        > 
+        > This functionality is currently only supported for our QuickBooks Online integration. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.DeleteInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('DELETE', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DeleteInvoiceResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PushOperationSummary])
+                res.push_operation_summary = out
+
+        return res
+
     def download_invoice_attachment(self, request: operations.DownloadInvoiceAttachmentRequest) -> operations.DownloadInvoiceAttachmentResponse:
         r"""Download invoice attachment
         Download invoice attachments

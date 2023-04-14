@@ -154,6 +154,7 @@ if res.account_transaction is not None:
 
 * `download_invoice_pdf` - Get invoice as PDF
 * `create_invoice` - Create invoice
+* `delete_invoice` - Delete invoice
 * `download_invoice_attachment` - Download invoice attachment
 * `get_create_update_invoices_model` - Get create/update invoice model
 * `get_invoice` - Get invoice
@@ -173,6 +174,7 @@ if res.account_transaction is not None:
 ### journal_entries
 
 * `create_journal_entry` - Create journal entry
+* `delete_journal_entry` - Delete journal entry
 * `get_create_journal_entries_model` - Get create journal entry model
 * `get_journal_entry` - Get journal entry
 * `list_journal_entries` - List journal entries

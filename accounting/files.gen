@@ -104,6 +104,7 @@ src/codataccounting/models/operations/get_cash_flow_statement.py
 src/codataccounting/models/operations/get_profit_and_loss.py
 src/codataccounting/models/operations/download_invoice_pdf.py
 src/codataccounting/models/operations/create_invoice.py
+src/codataccounting/models/operations/delete_invoice.py
 src/codataccounting/models/operations/download_invoice_attachment.py
 src/codataccounting/models/operations/get_create_update_invoices_model.py
 src/codataccounting/models/operations/get_invoice.py
@@ -117,6 +118,7 @@ src/codataccounting/models/operations/get_create_items_model.py
 src/codataccounting/models/operations/get_item.py
 src/codataccounting/models/operations/list_items.py
 src/codataccounting/models/operations/create_journal_entry.py
+src/codataccounting/models/operations/delete_journal_entry.py
 src/codataccounting/models/operations/get_create_journalentries_model.py
 src/codataccounting/models/operations/get_journal_entry.py
 src/codataccounting/models/operations/list_journal_entries.py
