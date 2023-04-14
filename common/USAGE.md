@@ -12,7 +12,7 @@ s = codatcommon.CodatCommon(
 
 req = shared.CompanyRequestBody(
     description="corrupti",
-    name="provident",
+    name="Kelvin Sporer",
 )
     
 res = s.companies.create_company(req)
