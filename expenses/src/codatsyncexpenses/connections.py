@@ -22,7 +22,7 @@ class Connections:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_partner_expense_connection(self, request: operations.CreatePartnerExpenseConnectionRequest) -> operations.CreatePartnerExpenseConnectionResponse:
+    def create_partner_expense_connection(self, request: operations.CreatePartnerExpenseConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePartnerExpenseConnectionResponse:
         r"""Create Partner Expense connection
         Creates a Partner Expense data connection
         """
@@ -33,7 +33,20 @@ class Connections:
         
         client = self._security_client
         
-        http_res = client.request('POST', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreatePartnerExpenseConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
