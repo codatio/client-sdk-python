@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import datatype_enum as shared_datatype_enum
-from codat import utils
+from codatbankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 

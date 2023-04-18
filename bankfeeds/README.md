@@ -6,17 +6,17 @@ Bank Feeds API enables your SMB users to set up bank feeds from accounts in your
 ## SDK Installation
 
 ```bash
-pip install codat-bankfeeds
+pip install codat-bank-feeds
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import codat
-from codat.models import operations, shared
+import codatbankfeeds
+from codatbankfeeds.models import operations, shared
 
-s = codat.Codat(
+s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
     ),
@@ -32,34 +32,34 @@ req = operations.CreateBankFeedRequest(
             balance=6027.63,
             currency="nulla",
             feed_start_date="2022-10-23T00:00:00Z",
-            id="corrupti",
+            id="8d69a674-e0f4-467c-8879-6ed151a05dfc",
             modified_date="2022-10-23T00:00:00Z",
-            sort_code="illum",
-            status="vel",
+            sort_code="odit",
+            status="at",
         ),
         shared.BankFeedAccount(
-            account_name="error",
-            account_number="deserunt",
-            account_type="suscipit",
-            balance=4375.87,
-            currency="magnam",
-            feed_start_date="2022-10-23T00:00:00Z",
-            id="debitis",
-            modified_date="2022-10-23T00:00:00Z",
-            sort_code="ipsa",
-            status="delectus",
-        ),
-        shared.BankFeedAccount(
-            account_name="tempora",
-            account_number="suscipit",
+            account_name="at",
+            account_number="maiores",
             account_type="molestiae",
-            balance=7917.25,
-            currency="placeat",
+            balance=7991.59,
+            currency="quod",
             feed_start_date="2022-10-23T00:00:00Z",
-            id="voluptatum",
+            id="78ca1ba9-28fc-4816-b42c-b73920592939",
             modified_date="2022-10-23T00:00:00Z",
-            sort_code="iusto",
-            status="excepturi",
+            sort_code="laboriosam",
+            status="hic",
+        ),
+        shared.BankFeedAccount(
+            account_name="saepe",
+            account_number="fuga",
+            account_type="in",
+            balance=3595.08,
+            currency="iste",
+            feed_start_date="2022-10-23T00:00:00Z",
+            id="6eb10faa-a235-42c5-9559-07aff1a3a2fa",
+            modified_date="2022-10-23T00:00:00Z",
+            sort_code="occaecati",
+            status="numquam",
         ),
     ],
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -76,7 +76,7 @@ if res.bank_feed_accounts is not None:
 <!-- Start SDK Available Operations -->
 ## Available Resources and Operations
 
-### Codat SDK
+### CodatBankFeeds SDK
 
 * `create_bank_feed` - Create bank feed bank accounts
 * `create_bank_transactions` - Create bank transactions

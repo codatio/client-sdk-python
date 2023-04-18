@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations, shared
+from codatbankfeeds.models import operations, shared
 from typing import Optional
 
 SERVERS = [
@@ -11,7 +11,7 @@ SERVERS = [
 ]
 """Contains the list of servers available to the SDK"""
 
-class Codat:
+class CodatBankFeeds:
     r"""Bank Feeds API enables your SMB users to set up bank feeds from accounts in your application to supported accounting platforms.
     
     A bank feed is a connection between a source bank account—in your application—and a target bank account in a supported accounting package.
@@ -25,8 +25,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.8.5"
-    _gen_version: str = "2.16.7"
+    _sdk_version: str = "0.10.1"
+    _gen_version: str = "2.18.1"
 
     def __init__(self,
                  security: shared.Security = None,
@@ -63,7 +63,7 @@ class Codat:
         
     
     
-    def create_bank_feed(self, request: operations.CreateBankFeedRequest) -> operations.CreateBankFeedResponse:
+    def create_bank_feed(self, request: operations.CreateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankFeedResponse:
         r"""Create bank feed bank accounts
         Put BankFeed BankAccounts for a single data source connected to a single company.
         """
@@ -78,7 +78,20 @@ class Codat:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateBankFeedResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -90,7 +103,7 @@ class Codat:
 
         return res
 
-    def create_bank_transactions(self, request: operations.CreateBankTransactionsRequest) -> operations.CreateBankTransactionsResponse:
+    def create_bank_transactions(self, request: operations.CreateBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankTransactionsResponse:
         r"""Create bank transactions
         Posts bank transactions to the accounting package for a given company.
         
@@ -110,7 +123,20 @@ class Codat:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateBankTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -122,7 +148,7 @@ class Codat:
 
         return res
 
-    def get_bank_feeds(self, request: operations.GetBankFeedsRequest) -> operations.GetBankFeedsResponse:
+    def get_bank_feeds(self, request: operations.GetBankFeedsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankFeedsResponse:
         r"""List bank feed bank accounts
         Get BankFeed BankAccounts for a single data source connected to a single company.
         """
@@ -133,7 +159,20 @@ class Codat:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetBankFeedsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -145,7 +184,7 @@ class Codat:
 
         return res
 
-    def get_create_bank_account_model(self, request: operations.GetCreateBankAccountModelRequest) -> operations.GetCreateBankAccountModelResponse:
+    def get_create_bank_account_model(self, request: operations.GetCreateBankAccountModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBankAccountModelResponse:
         r"""List push options for bank account bank transactions
         Gets the options of pushing bank account transactions.
         """
@@ -156,7 +195,20 @@ class Codat:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateBankAccountModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -168,7 +220,7 @@ class Codat:
 
         return res
 
-    def list_bank_account_transactions(self, request: operations.ListBankAccountTransactionsRequest) -> operations.ListBankAccountTransactionsResponse:
+    def list_bank_account_transactions(self, request: operations.ListBankAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountTransactionsResponse:
         r"""List bank transactions for bank account
         Gets bank transactions for a given bank account ID
         """
@@ -180,7 +232,20 @@ class Codat:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListBankAccountTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -192,7 +257,7 @@ class Codat:
 
         return res
 
-    def update_bank_feed(self, request: operations.UpdateBankFeedRequest) -> operations.UpdateBankFeedResponse:
+    def update_bank_feed(self, request: operations.UpdateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankFeedResponse:
         r"""Update bank feed bank account
         Update a single BankFeed BankAccount for a single data source connected to a single company.
         """
@@ -207,7 +272,20 @@ class Codat:
         
         client = self._security_client
         
-        http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PATCH', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateBankFeedResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

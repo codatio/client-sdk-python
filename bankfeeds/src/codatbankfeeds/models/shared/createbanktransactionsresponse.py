@@ -7,7 +7,7 @@ from ..shared import datatype_enum as shared_datatype_enum
 from ..shared import pushoperationchange as shared_pushoperationchange
 from ..shared import pushoperationstatus_enum as shared_pushoperationstatus_enum
 from ..shared import validation as shared_validation
-from codat import utils
+from codatbankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
