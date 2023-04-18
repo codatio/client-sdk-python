@@ -22,7 +22,7 @@ class BillCreditNotes:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_bill_credit_note(self, request: operations.CreateBillCreditNoteRequest) -> operations.CreateBillCreditNoteResponse:
+    def create_bill_credit_note(self, request: operations.CreateBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillCreditNoteResponse:
         r"""Create bill credit note
         Posts a new billCreditNote to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class BillCreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateBillCreditNoteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class BillCreditNotes:
 
         return res
 
-    def get_bill_credit_note(self, request: operations.GetBillCreditNoteRequest) -> operations.GetBillCreditNoteResponse:
+    def get_bill_credit_note(self, request: operations.GetBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillCreditNoteResponse:
         r"""Get bill credit note
         Gets a single billCreditNote corresponding to the given ID.
         """
@@ -67,7 +80,20 @@ class BillCreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetBillCreditNoteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -79,7 +105,7 @@ class BillCreditNotes:
 
         return res
 
-    def get_create_update_bill_credit_notes_model(self, request: operations.GetCreateUpdateBillCreditNotesModelRequest) -> operations.GetCreateUpdateBillCreditNotesModelResponse:
+    def get_create_update_bill_credit_notes_model(self, request: operations.GetCreateUpdateBillCreditNotesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBillCreditNotesModelResponse:
         r"""Get create/update bill credit note model
         Get create/update bill credit note model.
         
@@ -94,7 +120,20 @@ class BillCreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateUpdateBillCreditNotesModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -106,7 +145,7 @@ class BillCreditNotes:
 
         return res
 
-    def list_bill_credit_notes(self, request: operations.ListBillCreditNotesRequest) -> operations.ListBillCreditNotesResponse:
+    def list_bill_credit_notes(self, request: operations.ListBillCreditNotesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillCreditNotesResponse:
         r"""List bill credit notes
         Gets a list of all bill credit notes for a company, with pagination
         """
@@ -118,7 +157,20 @@ class BillCreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListBillCreditNotesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -130,7 +182,7 @@ class BillCreditNotes:
 
         return res
 
-    def update_bill_credit_note(self, request: operations.UpdateBillCreditNoteRequest) -> operations.UpdateBillCreditNoteResponse:
+    def update_bill_credit_note(self, request: operations.UpdateBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBillCreditNoteResponse:
         r"""Update bill credit note
         Posts an updated billCreditNote to the accounting package for a given company.
         
@@ -152,7 +204,20 @@ class BillCreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateBillCreditNoteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

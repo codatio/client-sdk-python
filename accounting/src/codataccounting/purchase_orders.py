@@ -22,7 +22,7 @@ class PurchaseOrders:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_purchase_order(self, request: operations.CreatePurchaseOrderRequest) -> operations.CreatePurchaseOrderResponse:
+    def create_purchase_order(self, request: operations.CreatePurchaseOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePurchaseOrderResponse:
         r"""Create purchase order
         Posts a new purchase order to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class PurchaseOrders:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreatePurchaseOrderResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class PurchaseOrders:
 
         return res
 
-    def get_create_update_purchase_orders_model(self, request: operations.GetCreateUpdatePurchaseOrdersModelRequest) -> operations.GetCreateUpdatePurchaseOrdersModelResponse:
+    def get_create_update_purchase_orders_model(self, request: operations.GetCreateUpdatePurchaseOrdersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdatePurchaseOrdersModelResponse:
         r"""Get create/update purchase order model
         Get create/update purchase order model. Returns the expected data for the request payload.
         
@@ -73,7 +86,20 @@ class PurchaseOrders:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateUpdatePurchaseOrdersModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -85,7 +111,7 @@ class PurchaseOrders:
 
         return res
 
-    def get_purchase_order(self, request: operations.GetPurchaseOrderRequest) -> operations.GetPurchaseOrderResponse:
+    def get_purchase_order(self, request: operations.GetPurchaseOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPurchaseOrderResponse:
         r"""Get purchase order
         Get purchase order
         """
@@ -96,7 +122,20 @@ class PurchaseOrders:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetPurchaseOrderResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -108,7 +147,7 @@ class PurchaseOrders:
 
         return res
 
-    def list_purchase_orders(self, request: operations.ListPurchaseOrdersRequest) -> operations.ListPurchaseOrdersResponse:
+    def list_purchase_orders(self, request: operations.ListPurchaseOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPurchaseOrdersResponse:
         r"""List purchase orders
         Get purchase orders
         """
@@ -120,7 +159,20 @@ class PurchaseOrders:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListPurchaseOrdersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -132,7 +184,7 @@ class PurchaseOrders:
 
         return res
 
-    def update_purchase_order(self, request: operations.UpdatePurchaseOrderRequest) -> operations.UpdatePurchaseOrderResponse:
+    def update_purchase_order(self, request: operations.UpdatePurchaseOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdatePurchaseOrderResponse:
         r"""Update purchase order
         Posts an updated purchase order to the accounting package for a given company.
         
@@ -154,7 +206,20 @@ class PurchaseOrders:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdatePurchaseOrderResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

@@ -22,7 +22,7 @@ class BankAccounts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_bank_account(self, request: operations.CreateBankAccountRequest) -> operations.CreateBankAccountResponse:
+    def create_bank_account(self, request: operations.CreateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankAccountResponse:
         r"""Create bank account
         Posts a new bank account to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class BankAccounts:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class BankAccounts:
 
         return res
 
-    def get_all_bank_account(self, request: operations.GetAllBankAccountRequest) -> operations.GetAllBankAccountResponse:
+    def get_all_bank_account(self, request: operations.GetAllBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAllBankAccountResponse:
         r"""Get bank account
         Gets the bank account for given account ID.
         """
@@ -68,7 +81,20 @@ class BankAccounts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetAllBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -80,7 +106,7 @@ class BankAccounts:
 
         return res
 
-    def get_bank_account(self, request: operations.GetBankAccountRequest) -> operations.GetBankAccountResponse:
+    def get_bank_account(self, request: operations.GetBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankAccountResponse:
         r"""Get bank account
         Gets the bank account with a given ID
         """
@@ -91,7 +117,20 @@ class BankAccounts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -103,7 +142,7 @@ class BankAccounts:
 
         return res
 
-    def get_create_update_bank_accounts_model(self, request: operations.GetCreateUpdateBankAccountsModelRequest) -> operations.GetCreateUpdateBankAccountsModelResponse:
+    def get_create_update_bank_accounts_model(self, request: operations.GetCreateUpdateBankAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBankAccountsModelResponse:
         r"""Get create/update bank account model
         Get create/update bank account model. Returns the expected data for the request payload.
         
@@ -120,7 +159,20 @@ class BankAccounts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateUpdateBankAccountsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -132,7 +184,7 @@ class BankAccounts:
 
         return res
 
-    def list_bank_accounts(self, request: operations.ListBankAccountsRequest) -> operations.ListBankAccountsResponse:
+    def list_bank_accounts(self, request: operations.ListBankAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountsResponse:
         r"""List bank accounts
         Gets the list of bank accounts for a given connection
         """
@@ -144,7 +196,20 @@ class BankAccounts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListBankAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -156,7 +221,7 @@ class BankAccounts:
 
         return res
 
-    def update_bank_account(self, request: operations.UpdateBankAccountRequest) -> operations.UpdateBankAccountResponse:
+    def update_bank_account(self, request: operations.UpdateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankAccountResponse:
         r"""Update bank account
         Posts an updated bank account to the accounting package for a given company.
         
@@ -178,7 +243,20 @@ class BankAccounts:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

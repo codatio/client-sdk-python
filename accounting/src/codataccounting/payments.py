@@ -22,7 +22,7 @@ class Payments:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_payment(self, request: operations.CreatePaymentRequest) -> operations.CreatePaymentResponse:
+    def create_payment(self, request: operations.CreatePaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePaymentResponse:
         r"""Create payment
         Posts a new payment to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class Payments:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreatePaymentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class Payments:
 
         return res
 
-    def get_create_payments_model(self, request: operations.GetCreatePaymentsModelRequest) -> operations.GetCreatePaymentsModelResponse:
+    def get_create_payments_model(self, request: operations.GetCreatePaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreatePaymentsModelResponse:
         r"""Get create payment model
         Get create payment model. Returns the expected data for the request payload.
         
@@ -73,7 +86,20 @@ class Payments:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreatePaymentsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -85,7 +111,7 @@ class Payments:
 
         return res
 
-    def get_payment(self, request: operations.GetPaymentRequest) -> operations.GetPaymentResponse:
+    def get_payment(self, request: operations.GetPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPaymentResponse:
         r"""Get payment
         Get payment
         """
@@ -96,7 +122,20 @@ class Payments:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetPaymentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -108,7 +147,7 @@ class Payments:
 
         return res
 
-    def list_payments(self, request: operations.ListPaymentsRequest) -> operations.ListPaymentsResponse:
+    def list_payments(self, request: operations.ListPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentsResponse:
         r"""List payments
         Gets the latest payments for a company, with pagination
         """
@@ -120,7 +159,20 @@ class Payments:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListPaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

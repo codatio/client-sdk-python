@@ -22,7 +22,7 @@ class AccountTransactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_account_transaction(self, request: operations.GetAccountTransactionRequest) -> operations.GetAccountTransactionResponse:
+    def get_account_transaction(self, request: operations.GetAccountTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountTransactionResponse:
         r"""Get account transaction
         Gets the account transactions for a given company.Gets the specified account transaction for a given company and connection.
         """
@@ -33,7 +33,20 @@ class AccountTransactions:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetAccountTransactionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -45,7 +58,7 @@ class AccountTransactions:
 
         return res
 
-    def list_account_transactions(self, request: operations.ListAccountTransactionsRequest) -> operations.ListAccountTransactionsResponse:
+    def list_account_transactions(self, request: operations.ListAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountTransactionsResponse:
         r"""List account transactions
         Gets the account transactions for a given company.
         """
@@ -57,7 +70,20 @@ class AccountTransactions:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListAccountTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

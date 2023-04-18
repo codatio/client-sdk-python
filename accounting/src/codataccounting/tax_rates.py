@@ -22,7 +22,7 @@ class TaxRates:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_tax_rate(self, request: operations.GetTaxRateRequest) -> operations.GetTaxRateResponse:
+    def get_tax_rate(self, request: operations.GetTaxRateRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxRateResponse:
         r"""Get tax rate
         Gets the specified tax rate for a given company.
         """
@@ -33,7 +33,20 @@ class TaxRates:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetTaxRateResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -45,7 +58,7 @@ class TaxRates:
 
         return res
 
-    def list_tax_rates(self, request: operations.ListTaxRatesRequest) -> operations.ListTaxRatesResponse:
+    def list_tax_rates(self, request: operations.ListTaxRatesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTaxRatesResponse:
         r"""List all tax rates
         Gets the latest tax rates for a given company.
         """
@@ -57,7 +70,20 @@ class TaxRates:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListTaxRatesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

@@ -22,7 +22,7 @@ class Transfers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_transfer(self, request: operations.CreateTransferRequest) -> operations.CreateTransferResponse:
+    def create_transfer(self, request: operations.CreateTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateTransferResponse:
         r"""Create transfer
         Posts a new transfer to the accounting package for a given company.
         
@@ -43,7 +43,20 @@ class Transfers:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateTransferResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -55,7 +68,7 @@ class Transfers:
 
         return res
 
-    def get_create_transfers_model(self, request: operations.GetCreateTransfersModelRequest) -> operations.GetCreateTransfersModelResponse:
+    def get_create_transfers_model(self, request: operations.GetCreateTransfersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateTransfersModelResponse:
         r"""Get create transfer model
         Get create transfer model. Returns the expected data for the request payload.
         
@@ -72,7 +85,20 @@ class Transfers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateTransfersModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -84,7 +110,7 @@ class Transfers:
 
         return res
 
-    def get_transfer(self, request: operations.GetTransferRequest) -> operations.GetTransferResponse:
+    def get_transfer(self, request: operations.GetTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransferResponse:
         r"""Get transfer
         Gets the specified transfer for a given company.
         """
@@ -95,7 +121,20 @@ class Transfers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetTransferResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -107,7 +146,7 @@ class Transfers:
 
         return res
 
-    def list_transfers(self, request: operations.ListTransfersRequest) -> operations.ListTransfersResponse:
+    def list_transfers(self, request: operations.ListTransfersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransfersResponse:
         r"""List transfers
         Gets the transfers for a given company.
         """
@@ -119,7 +158,20 @@ class Transfers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListTransfersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

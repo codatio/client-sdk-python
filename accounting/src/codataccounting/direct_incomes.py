@@ -22,7 +22,7 @@ class DirectIncomes:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_direct_income(self, request: operations.CreateDirectIncomeRequest) -> operations.CreateDirectIncomeResponse:
+    def create_direct_income(self, request: operations.CreateDirectIncomeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDirectIncomeResponse:
         r"""Create direct income
         Posts a new direct income to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class DirectIncomes:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateDirectIncomeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class DirectIncomes:
 
         return res
 
-    def download_direct_income_attachment(self, request: operations.DownloadDirectIncomeAttachmentRequest) -> operations.DownloadDirectIncomeAttachmentResponse:
+    def download_direct_income_attachment(self, request: operations.DownloadDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadDirectIncomeAttachmentResponse:
         r"""Download direct income attachment
         Downloads an attachment for the specified direct income for a given company.
         """
@@ -67,7 +80,20 @@ class DirectIncomes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DownloadDirectIncomeAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -78,7 +104,7 @@ class DirectIncomes:
 
         return res
 
-    def get_create_direct_incomes_model(self, request: operations.GetCreateDirectIncomesModelRequest) -> operations.GetCreateDirectIncomesModelResponse:
+    def get_create_direct_incomes_model(self, request: operations.GetCreateDirectIncomesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateDirectIncomesModelResponse:
         r"""Get create direct income model
         Get create direct income model. Returns the expected data for the request payload.
         
@@ -95,7 +121,20 @@ class DirectIncomes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateDirectIncomesModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -107,7 +146,7 @@ class DirectIncomes:
 
         return res
 
-    def get_direct_income(self, request: operations.GetDirectIncomeRequest) -> operations.GetDirectIncomeResponse:
+    def get_direct_income(self, request: operations.GetDirectIncomeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectIncomeResponse:
         r"""Get direct income
         Gets the specified direct income for a given company and connection.
         """
@@ -118,7 +157,20 @@ class DirectIncomes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetDirectIncomeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -130,7 +182,7 @@ class DirectIncomes:
 
         return res
 
-    def get_direct_income_attachment(self, request: operations.GetDirectIncomeAttachmentRequest) -> operations.GetDirectIncomeAttachmentResponse:
+    def get_direct_income_attachment(self, request: operations.GetDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectIncomeAttachmentResponse:
         r"""Get direct income attachment
         Gets the specified direct income attachment for a given company.
         """
@@ -142,7 +194,20 @@ class DirectIncomes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetDirectIncomeAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -154,7 +219,7 @@ class DirectIncomes:
 
         return res
 
-    def get_direct_incomes(self, request: operations.GetDirectIncomesRequest) -> operations.GetDirectIncomesResponse:
+    def get_direct_incomes(self, request: operations.GetDirectIncomesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectIncomesResponse:
         r"""Get direct incomes
         Gets the direct incomes for a given company.
         """
@@ -166,7 +231,20 @@ class DirectIncomes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetDirectIncomesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -178,7 +256,7 @@ class DirectIncomes:
 
         return res
 
-    def list_direct_income_attachments(self, request: operations.ListDirectIncomeAttachmentsRequest) -> operations.ListDirectIncomeAttachmentsResponse:
+    def list_direct_income_attachments(self, request: operations.ListDirectIncomeAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDirectIncomeAttachmentsResponse:
         r"""List direct income attachments
         Gets all attachments for the specified direct income for a given company.
         """
@@ -189,7 +267,20 @@ class DirectIncomes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListDirectIncomeAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -201,7 +292,7 @@ class DirectIncomes:
 
         return res
 
-    def upload_direct_income_attachment(self, request: operations.UploadDirectIncomeAttachmentRequest) -> operations.UploadDirectIncomeAttachmentResponse:
+    def upload_direct_income_attachment(self, request: operations.UploadDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadDirectIncomeAttachmentResponse:
         r"""Create direct income attachment
         Posts a new direct income attachment for a given company.
         """
@@ -216,7 +307,20 @@ class DirectIncomes:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UploadDirectIncomeAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

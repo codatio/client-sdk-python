@@ -22,7 +22,7 @@ class CreditNotes:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_credit_note(self, request: operations.CreateCreditNoteRequest) -> operations.CreateCreditNoteResponse:
+    def create_credit_note(self, request: operations.CreateCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCreditNoteResponse:
         r"""Create credit note
         Push credit note
         
@@ -45,7 +45,20 @@ class CreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateCreditNoteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -57,7 +70,7 @@ class CreditNotes:
 
         return res
 
-    def get_create_update_credit_notes_model(self, request: operations.GetCreateUpdateCreditNotesModelRequest) -> operations.GetCreateUpdateCreditNotesModelResponse:
+    def get_create_update_credit_notes_model(self, request: operations.GetCreateUpdateCreditNotesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateCreditNotesModelResponse:
         r"""Get create/update credit note model
         Get create/update credit note model. Returns the expected data for the request payload.
         
@@ -74,7 +87,20 @@ class CreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateUpdateCreditNotesModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -86,7 +112,7 @@ class CreditNotes:
 
         return res
 
-    def get_credit_note(self, request: operations.GetCreditNoteRequest) -> operations.GetCreditNoteResponse:
+    def get_credit_note(self, request: operations.GetCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreditNoteResponse:
         r"""Get credit note
         Gets a single creditNote corresponding to the given ID.
         """
@@ -97,7 +123,20 @@ class CreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreditNoteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -109,7 +148,7 @@ class CreditNotes:
 
         return res
 
-    def list_credit_notes(self, request: operations.ListCreditNotesRequest) -> operations.ListCreditNotesResponse:
+    def list_credit_notes(self, request: operations.ListCreditNotesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCreditNotesResponse:
         r"""List credit notes
         Gets a list of all credit notes for a company, with pagination
         """
@@ -121,7 +160,20 @@ class CreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListCreditNotesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -133,7 +185,7 @@ class CreditNotes:
 
         return res
 
-    def update_credit_note(self, request: operations.UpdateCreditNoteRequest) -> operations.UpdateCreditNoteResponse:
+    def update_credit_note(self, request: operations.UpdateCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateCreditNoteResponse:
         r"""Update creditNote
         Posts an updated credit note to the accounting package for a given company.
         
@@ -155,7 +207,20 @@ class CreditNotes:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateCreditNoteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

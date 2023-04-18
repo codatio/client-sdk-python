@@ -22,7 +22,7 @@ class Suppliers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_supplier(self, request: operations.CreateSupplierRequest) -> operations.CreateSupplierResponse:
+    def create_supplier(self, request: operations.CreateSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateSupplierResponse:
         r"""Create suppliers
         Push suppliers
         
@@ -44,7 +44,20 @@ class Suppliers:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateSupplierResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class Suppliers:
 
         return res
 
-    def download_supplier_attachment(self, request: operations.DownloadSupplierAttachmentRequest) -> operations.DownloadSupplierAttachmentResponse:
+    def download_supplier_attachment(self, request: operations.DownloadSupplierAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadSupplierAttachmentResponse:
         r"""Download supplier attachment
         Download supplier attachment
         """
@@ -67,7 +80,20 @@ class Suppliers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DownloadSupplierAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -78,7 +104,7 @@ class Suppliers:
 
         return res
 
-    def get_create_update_suppliers_model(self, request: operations.GetCreateUpdateSuppliersModelRequest) -> operations.GetCreateUpdateSuppliersModelResponse:
+    def get_create_update_suppliers_model(self, request: operations.GetCreateUpdateSuppliersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateSuppliersModelResponse:
         r"""Get create/update supplier model
         Get create/update supplier model. Returns the expected data for the request payload.
         
@@ -95,7 +121,20 @@ class Suppliers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateUpdateSuppliersModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -107,7 +146,7 @@ class Suppliers:
 
         return res
 
-    def get_supplier(self, request: operations.GetSupplierRequest) -> operations.GetSupplierResponse:
+    def get_supplier(self, request: operations.GetSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSupplierResponse:
         r"""Get supplier
         Gets a single supplier corresponding to the given ID.
         """
@@ -118,7 +157,20 @@ class Suppliers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetSupplierResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -130,7 +182,7 @@ class Suppliers:
 
         return res
 
-    def get_supplier_attachment(self, request: operations.GetSupplierAttachmentRequest) -> operations.GetSupplierAttachmentResponse:
+    def get_supplier_attachment(self, request: operations.GetSupplierAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSupplierAttachmentResponse:
         r"""Get supplier attachment
         Get supplier attachment
         """
@@ -141,7 +193,20 @@ class Suppliers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetSupplierAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -153,7 +218,7 @@ class Suppliers:
 
         return res
 
-    def list_supplier_attachments(self, request: operations.ListSupplierAttachmentsRequest) -> operations.ListSupplierAttachmentsResponse:
+    def list_supplier_attachments(self, request: operations.ListSupplierAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSupplierAttachmentsResponse:
         r"""List supplier attachments
         Get supplier attachments
         """
@@ -164,7 +229,20 @@ class Suppliers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListSupplierAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -176,7 +254,7 @@ class Suppliers:
 
         return res
 
-    def list_suppliers(self, request: operations.ListSuppliersRequest) -> operations.ListSuppliersResponse:
+    def list_suppliers(self, request: operations.ListSuppliersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSuppliersResponse:
         r"""List suppliers
         Gets the latest suppliers for a company, with pagination
         """
@@ -188,7 +266,20 @@ class Suppliers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListSuppliersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -200,7 +291,7 @@ class Suppliers:
 
         return res
 
-    def put_supplier(self, request: operations.PutSupplierRequest) -> operations.PutSupplierResponse:
+    def put_supplier(self, request: operations.PutSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.PutSupplierResponse:
         r"""Update supplier
         Push supplier
         
@@ -222,7 +313,20 @@ class Suppliers:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.PutSupplierResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

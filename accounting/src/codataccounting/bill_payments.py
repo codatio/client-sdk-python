@@ -22,7 +22,7 @@ class BillPayments:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_bill_payment(self, request: operations.CreateBillPaymentRequest) -> operations.CreateBillPaymentResponse:
+    def create_bill_payment(self, request: operations.CreateBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillPaymentResponse:
         r"""Create bill payments
         Posts a new bill payment to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class BillPayments:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateBillPaymentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class BillPayments:
 
         return res
 
-    def delete_bill_payment(self, request: operations.DeleteBillPaymentRequest) -> operations.DeleteBillPaymentResponse:
+    def delete_bill_payment(self, request: operations.DeleteBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteBillPaymentResponse:
         r"""Delete bill payment
         Deletes a bill payment from the accounting package for a given company.
         
@@ -71,7 +84,20 @@ class BillPayments:
         
         client = self._security_client
         
-        http_res = client.request('DELETE', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('DELETE', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeleteBillPaymentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -83,7 +109,7 @@ class BillPayments:
 
         return res
 
-    def get_bill_payments(self, request: operations.GetBillPaymentsRequest) -> operations.GetBillPaymentsResponse:
+    def get_bill_payments(self, request: operations.GetBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillPaymentsResponse:
         r"""Get bill payment
         Get a bill payment
         """
@@ -94,7 +120,20 @@ class BillPayments:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetBillPaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -106,7 +145,7 @@ class BillPayments:
 
         return res
 
-    def get_create_bill_payments_model(self, request: operations.GetCreateBillPaymentsModelRequest) -> operations.GetCreateBillPaymentsModelResponse:
+    def get_create_bill_payments_model(self, request: operations.GetCreateBillPaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBillPaymentsModelResponse:
         r"""Get create bill payment model
         Get create bill payment model.
         
@@ -121,7 +160,20 @@ class BillPayments:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateBillPaymentsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -133,7 +185,7 @@ class BillPayments:
 
         return res
 
-    def list_bill_payments(self, request: operations.ListBillPaymentsRequest) -> operations.ListBillPaymentsResponse:
+    def list_bill_payments(self, request: operations.ListBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillPaymentsResponse:
         r"""List bill payments
         Gets the latest billPayments for a company, with pagination
         """
@@ -145,7 +197,20 @@ class BillPayments:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListBillPaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

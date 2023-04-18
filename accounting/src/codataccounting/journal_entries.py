@@ -22,7 +22,7 @@ class JournalEntries:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_journal_entry(self, request: operations.CreateJournalEntryRequest) -> operations.CreateJournalEntryResponse:
+    def create_journal_entry(self, request: operations.CreateJournalEntryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateJournalEntryResponse:
         r"""Create journal entry
         Posts a new journalEntry to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class JournalEntries:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateJournalEntryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class JournalEntries:
 
         return res
 
-    def delete_journal_entry(self, request: operations.DeleteJournalEntryRequest) -> operations.DeleteJournalEntryResponse:
+    def delete_journal_entry(self, request: operations.DeleteJournalEntryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteJournalEntryResponse:
         r"""Delete journal entry
         Deletes a journal entry from the accounting package for a given company.
         
@@ -71,7 +84,20 @@ class JournalEntries:
         
         client = self._security_client
         
-        http_res = client.request('DELETE', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('DELETE', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeleteJournalEntryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -83,7 +109,7 @@ class JournalEntries:
 
         return res
 
-    def get_create_journal_entries_model(self, request: operations.GetCreateJournalEntriesModelRequest) -> operations.GetCreateJournalEntriesModelResponse:
+    def get_create_journal_entries_model(self, request: operations.GetCreateJournalEntriesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateJournalEntriesModelResponse:
         r"""Get create journal entry model
         Get create journal entry model. Returns the expected data for the request payload.
         
@@ -100,7 +126,20 @@ class JournalEntries:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateJournalEntriesModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -112,7 +151,7 @@ class JournalEntries:
 
         return res
 
-    def get_journal_entry(self, request: operations.GetJournalEntryRequest) -> operations.GetJournalEntryResponse:
+    def get_journal_entry(self, request: operations.GetJournalEntryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetJournalEntryResponse:
         r"""Get journal entry
         Gets a single JournalEntry corresponding to the given ID.
         """
@@ -123,7 +162,20 @@ class JournalEntries:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetJournalEntryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -135,7 +187,7 @@ class JournalEntries:
 
         return res
 
-    def list_journal_entries(self, request: operations.ListJournalEntriesRequest) -> operations.ListJournalEntriesResponse:
+    def list_journal_entries(self, request: operations.ListJournalEntriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListJournalEntriesResponse:
         r"""List journal entries
         Gets the latest journal entries for a company, with pagination
         """
@@ -147,7 +199,20 @@ class JournalEntries:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListJournalEntriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

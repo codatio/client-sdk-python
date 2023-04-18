@@ -22,7 +22,7 @@ class Accounts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_account(self, request: operations.CreateAccountRequest) -> operations.CreateAccountResponse:
+    def create_account(self, request: operations.CreateAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateAccountResponse:
         r"""Create account
         Creates a new account for a given company.
         
@@ -44,7 +44,20 @@ class Accounts:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class Accounts:
 
         return res
 
-    def get_account(self, request: operations.GetAccountRequest) -> operations.GetAccountResponse:
+    def get_account(self, request: operations.GetAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountResponse:
         r"""Get account
         Gets a single account corresponding to the given ID.
         """
@@ -67,7 +80,20 @@ class Accounts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -79,7 +105,7 @@ class Accounts:
 
         return res
 
-    def get_create_chart_of_accounts_model(self, request: operations.GetCreateChartOfAccountsModelRequest) -> operations.GetCreateChartOfAccountsModelResponse:
+    def get_create_chart_of_accounts_model(self, request: operations.GetCreateChartOfAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateChartOfAccountsModelResponse:
         r"""Get create account model
         Get create account model. Returns the expected data for the request payload.
         
@@ -96,7 +122,20 @@ class Accounts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateChartOfAccountsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -108,7 +147,7 @@ class Accounts:
 
         return res
 
-    def list_accounts(self, request: operations.ListAccountsRequest) -> operations.ListAccountsResponse:
+    def list_accounts(self, request: operations.ListAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountsResponse:
         r"""List accounts
         Gets the latest accounts for a company
         """
@@ -120,7 +159,20 @@ class Accounts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

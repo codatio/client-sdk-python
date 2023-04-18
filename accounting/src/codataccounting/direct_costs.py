@@ -22,7 +22,7 @@ class DirectCosts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_direct_cost(self, request: operations.CreateDirectCostRequest) -> operations.CreateDirectCostResponse:
+    def create_direct_cost(self, request: operations.CreateDirectCostRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDirectCostResponse:
         r"""Create direct cost
         Posts a new direct cost to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class DirectCosts:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateDirectCostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class DirectCosts:
 
         return res
 
-    def download_direct_cost_attachment(self, request: operations.DownloadDirectCostAttachmentRequest) -> operations.DownloadDirectCostAttachmentResponse:
+    def download_direct_cost_attachment(self, request: operations.DownloadDirectCostAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadDirectCostAttachmentResponse:
         r"""Download direct cost attachment
         Downloads an attachment for the specified direct cost for a given company.
         """
@@ -67,7 +80,20 @@ class DirectCosts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DownloadDirectCostAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -78,7 +104,7 @@ class DirectCosts:
 
         return res
 
-    def get_create_direct_costs_model(self, request: operations.GetCreateDirectCostsModelRequest) -> operations.GetCreateDirectCostsModelResponse:
+    def get_create_direct_costs_model(self, request: operations.GetCreateDirectCostsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateDirectCostsModelResponse:
         r"""Get create direct cost model
         Get create direct cost model. Returns the expected data for the request payload.
         
@@ -95,7 +121,20 @@ class DirectCosts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateDirectCostsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -107,7 +146,7 @@ class DirectCosts:
 
         return res
 
-    def get_direct_cost(self, request: operations.GetDirectCostRequest) -> operations.GetDirectCostResponse:
+    def get_direct_cost(self, request: operations.GetDirectCostRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectCostResponse:
         r"""Get direct cost
         Gets the specified direct cost for a given company.
         """
@@ -118,7 +157,20 @@ class DirectCosts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetDirectCostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -130,7 +182,7 @@ class DirectCosts:
 
         return res
 
-    def get_direct_cost_attachment(self, request: operations.GetDirectCostAttachmentRequest) -> operations.GetDirectCostAttachmentResponse:
+    def get_direct_cost_attachment(self, request: operations.GetDirectCostAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectCostAttachmentResponse:
         r"""Get direct cost attachment
         Gets the specified direct cost attachment for a given company.
         """
@@ -141,7 +193,20 @@ class DirectCosts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetDirectCostAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -153,7 +218,7 @@ class DirectCosts:
 
         return res
 
-    def get_direct_costs(self, request: operations.GetDirectCostsRequest) -> operations.GetDirectCostsResponse:
+    def get_direct_costs(self, request: operations.GetDirectCostsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectCostsResponse:
         r"""List direct costs
         Gets the direct costs for the company.
         """
@@ -165,7 +230,20 @@ class DirectCosts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetDirectCostsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -177,7 +255,7 @@ class DirectCosts:
 
         return res
 
-    def list_direct_cost_attachments(self, request: operations.ListDirectCostAttachmentsRequest) -> operations.ListDirectCostAttachmentsResponse:
+    def list_direct_cost_attachments(self, request: operations.ListDirectCostAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDirectCostAttachmentsResponse:
         r"""List direct cost attachments
         Gets all attachments for the specified direct cost for a given company.
         """
@@ -188,7 +266,20 @@ class DirectCosts:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListDirectCostAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -200,7 +291,7 @@ class DirectCosts:
 
         return res
 
-    def upload_direct_cost_attachment(self, request: operations.UploadDirectCostAttachmentRequest) -> operations.UploadDirectCostAttachmentResponse:
+    def upload_direct_cost_attachment(self, request: operations.UploadDirectCostAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadDirectCostAttachmentResponse:
         r"""Upload direct cost attachment
         Posts a new direct cost attachment for a given company.
         """
@@ -215,7 +306,20 @@ class DirectCosts:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UploadDirectCostAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

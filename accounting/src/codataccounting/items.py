@@ -22,7 +22,7 @@ class Items:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_item(self, request: operations.CreateItemRequest) -> operations.CreateItemResponse:
+    def create_item(self, request: operations.CreateItemRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateItemResponse:
         r"""Create item
         Posts a new item to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class Items:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateItemResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class Items:
 
         return res
 
-    def get_create_items_model(self, request: operations.GetCreateItemsModelRequest) -> operations.GetCreateItemsModelResponse:
+    def get_create_items_model(self, request: operations.GetCreateItemsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateItemsModelResponse:
         r"""Get create item model
         Get create item model. Returns the expected data for the request payload.
         
@@ -73,7 +86,20 @@ class Items:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateItemsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -85,7 +111,7 @@ class Items:
 
         return res
 
-    def get_item(self, request: operations.GetItemRequest) -> operations.GetItemResponse:
+    def get_item(self, request: operations.GetItemRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetItemResponse:
         r"""Get item
         Gets the specified item for a given company.
         """
@@ -96,7 +122,20 @@ class Items:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetItemResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -108,7 +147,7 @@ class Items:
 
         return res
 
-    def list_items(self, request: operations.ListItemsRequest) -> operations.ListItemsResponse:
+    def list_items(self, request: operations.ListItemsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListItemsResponse:
         r"""List items
         Gets the items for a given company.
         """
@@ -120,7 +159,20 @@ class Items:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListItemsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

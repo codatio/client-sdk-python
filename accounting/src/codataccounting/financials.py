@@ -22,7 +22,7 @@ class Financials:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_balance_sheet(self, request: operations.GetBalanceSheetRequest) -> operations.GetBalanceSheetResponse:
+    def get_balance_sheet(self, request: operations.GetBalanceSheetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBalanceSheetResponse:
         r"""Get balance sheet
         Gets the latest balance sheet for a company.
         """
@@ -34,7 +34,20 @@ class Financials:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetBalanceSheetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -46,7 +59,7 @@ class Financials:
 
         return res
 
-    def get_cash_flow_statement(self, request: operations.GetCashFlowStatementRequest) -> operations.GetCashFlowStatementResponse:
+    def get_cash_flow_statement(self, request: operations.GetCashFlowStatementRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCashFlowStatementResponse:
         r"""Get cash flow statement
         Gets the latest cash flow statement for a company.
         """
@@ -58,7 +71,20 @@ class Financials:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCashFlowStatementResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -70,7 +96,7 @@ class Financials:
 
         return res
 
-    def get_profit_and_loss(self, request: operations.GetProfitAndLossRequest) -> operations.GetProfitAndLossResponse:
+    def get_profit_and_loss(self, request: operations.GetProfitAndLossRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetProfitAndLossResponse:
         r"""Get profit and loss
         Gets the latest profit and loss for a company.
         """
@@ -82,7 +108,20 @@ class Financials:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetProfitAndLossResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

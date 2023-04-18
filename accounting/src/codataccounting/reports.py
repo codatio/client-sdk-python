@@ -22,7 +22,7 @@ class Reports:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_aged_creditors_report(self, request: operations.GetAgedCreditorsReportRequest) -> operations.GetAgedCreditorsReportResponse:
+    def get_aged_creditors_report(self, request: operations.GetAgedCreditorsReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAgedCreditorsReportResponse:
         r"""Aged creditors report
         Returns aged creditors report for company that shows the total balance owed by a business to its suppliers over time.
         """
@@ -34,7 +34,20 @@ class Reports:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetAgedCreditorsReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -46,7 +59,7 @@ class Reports:
 
         return res
 
-    def get_aged_debtors_report(self, request: operations.GetAgedDebtorsReportRequest) -> operations.GetAgedDebtorsReportResponse:
+    def get_aged_debtors_report(self, request: operations.GetAgedDebtorsReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAgedDebtorsReportResponse:
         r"""Aged debtors report
         Returns aged debtors report for company that shows the total outstanding balance due from customers to the business over time.
         """
@@ -58,7 +71,20 @@ class Reports:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetAgedDebtorsReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -70,7 +96,7 @@ class Reports:
 
         return res
 
-    def is_aged_creditors_report_available(self, request: operations.IsAgedCreditorsReportAvailableRequest) -> operations.IsAgedCreditorsReportAvailableResponse:
+    def is_aged_creditors_report_available(self, request: operations.IsAgedCreditorsReportAvailableRequest, retries: Optional[utils.RetryConfig] = None) -> operations.IsAgedCreditorsReportAvailableResponse:
         r"""Aged creditors report available
         Indicates whether the aged creditor report is available for the company.
         """
@@ -81,7 +107,20 @@ class Reports:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.IsAgedCreditorsReportAvailableResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -93,7 +132,7 @@ class Reports:
 
         return res
 
-    def is_aged_debtor_report_available(self, request: operations.IsAgedDebtorReportAvailableRequest) -> operations.IsAgedDebtorReportAvailableResponse:
+    def is_aged_debtor_report_available(self, request: operations.IsAgedDebtorReportAvailableRequest, retries: Optional[utils.RetryConfig] = None) -> operations.IsAgedDebtorReportAvailableResponse:
         r"""Aged debtors report available
         Indicates whether the aged debtor report is available for the company.
         """
@@ -104,7 +143,20 @@ class Reports:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.IsAgedDebtorReportAvailableResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

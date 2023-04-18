@@ -22,7 +22,7 @@ class Bills:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_bill(self, request: operations.CreateBillRequest) -> operations.CreateBillResponse:
+    def create_bill(self, request: operations.CreateBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillResponse:
         r"""Create bill
         Posts a new bill to the accounting package for a given company.
         
@@ -44,7 +44,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateBillResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class Bills:
 
         return res
 
-    def delete_bill(self, request: operations.DeleteBillRequest) -> operations.DeleteBillResponse:
+    def delete_bill(self, request: operations.DeleteBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteBillResponse:
         r"""Delete bill
         Deletes a bill from the accounting package for a given company.
         
@@ -71,7 +84,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('DELETE', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('DELETE', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeleteBillResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -83,7 +109,7 @@ class Bills:
 
         return res
 
-    def download_bill_attachment(self, request: operations.DownloadBillAttachmentRequest) -> operations.DownloadBillAttachmentResponse:
+    def download_bill_attachment(self, request: operations.DownloadBillAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadBillAttachmentResponse:
         r"""Download bill attachment
         Download bill attachment
         """
@@ -94,7 +120,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DownloadBillAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -105,7 +144,7 @@ class Bills:
 
         return res
 
-    def get_bill(self, request: operations.GetBillRequest) -> operations.GetBillResponse:
+    def get_bill(self, request: operations.GetBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillResponse:
         r"""Get bill
         Get bill
         """
@@ -116,7 +155,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetBillResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -128,7 +180,7 @@ class Bills:
 
         return res
 
-    def get_bill_attachment(self, request: operations.GetBillAttachmentRequest) -> operations.GetBillAttachmentResponse:
+    def get_bill_attachment(self, request: operations.GetBillAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillAttachmentResponse:
         r"""Get bill attachment
         Get bill attachment
         """
@@ -139,7 +191,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetBillAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -151,7 +216,7 @@ class Bills:
 
         return res
 
-    def get_bill_attachments(self, request: operations.GetBillAttachmentsRequest) -> operations.GetBillAttachmentsResponse:
+    def get_bill_attachments(self, request: operations.GetBillAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillAttachmentsResponse:
         r"""List bill attachments
         Get bill attachments
         """
@@ -162,7 +227,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetBillAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -174,7 +252,7 @@ class Bills:
 
         return res
 
-    def get_create_update_bills_model(self, request: operations.GetCreateUpdateBillsModelRequest) -> operations.GetCreateUpdateBillsModelResponse:
+    def get_create_update_bills_model(self, request: operations.GetCreateUpdateBillsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBillsModelResponse:
         r"""Get create/update bill model
         Get create/update bill model.
         
@@ -189,7 +267,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateUpdateBillsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -201,7 +292,7 @@ class Bills:
 
         return res
 
-    def list_bills(self, request: operations.ListBillsRequest) -> operations.ListBillsResponse:
+    def list_bills(self, request: operations.ListBillsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillsResponse:
         r"""List bills
         Gets the latest bills for a company, with pagination
         """
@@ -213,7 +304,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListBillsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -225,7 +329,7 @@ class Bills:
 
         return res
 
-    def update_bill(self, request: operations.UpdateBillRequest) -> operations.UpdateBillResponse:
+    def update_bill(self, request: operations.UpdateBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBillResponse:
         r"""Update bill
         Posts an updated bill to the accounting package for a given company.
         
@@ -247,7 +351,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateBillResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -259,7 +376,7 @@ class Bills:
 
         return res
 
-    def upload_bill_attachments(self, request: operations.UploadBillAttachmentsRequest) -> operations.UploadBillAttachmentsResponse:
+    def upload_bill_attachments(self, request: operations.UploadBillAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadBillAttachmentsResponse:
         r"""Upload bill attachments
         Upload bill attachments
         """
@@ -274,7 +391,20 @@ class Bills:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UploadBillAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

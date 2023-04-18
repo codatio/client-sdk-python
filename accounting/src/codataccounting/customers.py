@@ -22,7 +22,7 @@ class Customers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_customer(self, request: operations.CreateCustomerRequest) -> operations.CreateCustomerResponse:
+    def create_customer(self, request: operations.CreateCustomerRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCustomerResponse:
         r"""Create customer
         Posts an individual customer for a given company.
         
@@ -44,7 +44,20 @@ class Customers:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateCustomerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -56,7 +69,7 @@ class Customers:
 
         return res
 
-    def download_customer_attachment(self, request: operations.DownloadCustomerAttachmentRequest) -> operations.DownloadCustomerAttachmentResponse:
+    def download_customer_attachment(self, request: operations.DownloadCustomerAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadCustomerAttachmentResponse:
         r"""Download customer attachment
         Download customer attachment
         """
@@ -67,7 +80,20 @@ class Customers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DownloadCustomerAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -78,7 +104,7 @@ class Customers:
 
         return res
 
-    def get_create_update_customers_model(self, request: operations.GetCreateUpdateCustomersModelRequest) -> operations.GetCreateUpdateCustomersModelResponse:
+    def get_create_update_customers_model(self, request: operations.GetCreateUpdateCustomersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateCustomersModelResponse:
         r"""Get create/update customer model
         Get create/update customer model. Returns the expected data for the request payload.
         
@@ -95,7 +121,20 @@ class Customers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateUpdateCustomersModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -107,7 +146,7 @@ class Customers:
 
         return res
 
-    def get_customer(self, request: operations.GetCustomerRequest) -> operations.GetCustomerResponse:
+    def get_customer(self, request: operations.GetCustomerRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCustomerResponse:
         r"""Get customer
         Gets a single customer corresponding to the given ID.
         """
@@ -118,7 +157,20 @@ class Customers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCustomerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -130,7 +182,7 @@ class Customers:
 
         return res
 
-    def get_customer_attachment(self, request: operations.GetCustomerAttachmentRequest) -> operations.GetCustomerAttachmentResponse:
+    def get_customer_attachment(self, request: operations.GetCustomerAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCustomerAttachmentResponse:
         r"""Get customer attachment
         Get  customer attachment
         """
@@ -141,7 +193,20 @@ class Customers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCustomerAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -153,7 +218,7 @@ class Customers:
 
         return res
 
-    def get_customer_attachments(self, request: operations.GetCustomerAttachmentsRequest) -> operations.GetCustomerAttachmentsResponse:
+    def get_customer_attachments(self, request: operations.GetCustomerAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCustomerAttachmentsResponse:
         r"""List customer attachments
         Get customer attachments
         """
@@ -164,7 +229,20 @@ class Customers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCustomerAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -176,7 +254,7 @@ class Customers:
 
         return res
 
-    def get_customers(self, request: operations.GetCustomersRequest) -> operations.GetCustomersResponse:
+    def get_customers(self, request: operations.GetCustomersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCustomersResponse:
         r"""List customers
         Gets the latest customers for a company, with pagination
         """
@@ -188,7 +266,20 @@ class Customers:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCustomersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -200,7 +291,7 @@ class Customers:
 
         return res
 
-    def update_customer(self, request: operations.UpdateCustomerRequest) -> operations.UpdateCustomerResponse:
+    def update_customer(self, request: operations.UpdateCustomerRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateCustomerResponse:
         r"""Update customer
         Posts an updated customer for a given company.
         
@@ -222,7 +313,20 @@ class Customers:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateCustomerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
