@@ -6,7 +6,7 @@ from ..shared import accountbalanceamounts as shared_accountbalanceamounts
 from ..shared import accountidentifiers as shared_accountidentifiers
 from ..shared import accountinstitution as shared_accountinstitution
 from ..shared import accounttype_enum as shared_accounttype_enum
-from codat import utils
+from codatbanking import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 

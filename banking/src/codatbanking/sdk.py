@@ -6,7 +6,7 @@ from .account_balances import AccountBalances
 from .accounts import Accounts
 from .transaction_categories import TransactionCategories
 from .transactions import Transactions
-from codat.models import shared
+from codatbanking.models import shared
 
 SERVERS = [
     "https://api.codat.io",
@@ -14,7 +14,7 @@ SERVERS = [
 ]
 """Contains the list of servers available to the SDK"""
 
-class Codat:
+class CodatBanking:
     r"""Codat's standardized API for accessing banking data.
     Codat's Banking API allows you to access standardised data from over bank accounts via third party providers.
     
@@ -37,8 +37,8 @@ class Codat:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.8.4"
-    _gen_version: str = "2.16.7"
+    _sdk_version: str = "0.10.1"
+    _gen_version: str = "2.18.1"
 
     def __init__(self,
                  security: shared.Security = None,

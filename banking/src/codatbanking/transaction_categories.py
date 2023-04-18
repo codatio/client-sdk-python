@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from codat.models import operations, shared
+from codatbanking.models import operations, shared
 from typing import Optional
 
 class TransactionCategories:
@@ -22,7 +22,7 @@ class TransactionCategories:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_transaction_category(self, request: operations.GetTransactionCategoryRequest) -> operations.GetTransactionCategoryResponse:
+    def get_transaction_category(self, request: operations.GetTransactionCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionCategoryResponse:
         r"""Get transaction category
         Gets a specified bank transaction category for a given company
         """
@@ -33,7 +33,20 @@ class TransactionCategories:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetTransactionCategoryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -45,7 +58,7 @@ class TransactionCategories:
 
         return res
 
-    def list_transaction_categories(self, request: operations.ListTransactionCategoriesRequest) -> operations.ListTransactionCategoriesResponse:
+    def list_transaction_categories(self, request: operations.ListTransactionCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionCategoriesResponse:
         r"""List all transaction categories
         Gets a list of hierarchical categories associated with a transaction for greater contextual meaning to transactionactivity.
         """
@@ -57,7 +70,20 @@ class TransactionCategories:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListTransactionCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
