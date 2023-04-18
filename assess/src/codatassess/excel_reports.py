@@ -22,7 +22,7 @@ class ExcelReports:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def download_excel_report(self, request: operations.DownloadExcelReportRequest) -> operations.DownloadExcelReportResponse:
+    def download_excel_report(self, request: operations.DownloadExcelReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadExcelReportResponse:
         r"""Download generated excel report
         Download the previously generated Excel report to a local drive.
         """
@@ -34,7 +34,20 @@ class ExcelReports:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DownloadExcelReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -45,7 +58,7 @@ class ExcelReports:
 
         return res
 
-    def generate_excel_report(self, request: operations.GenerateExcelReportRequest) -> operations.GenerateExcelReportResponse:
+    def generate_excel_report(self, request: operations.GenerateExcelReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GenerateExcelReportResponse:
         r"""Generate an Excel report
         Generate an Excel report which can subsequently be downloaded.
         """
@@ -57,7 +70,20 @@ class ExcelReports:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GenerateExcelReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -69,7 +95,7 @@ class ExcelReports:
 
         return res
 
-    def get_accounting_marketing_metrics(self, request: operations.GetAccountingMarketingMetricsRequest) -> operations.GetAccountingMarketingMetricsResponse:
+    def get_accounting_marketing_metrics(self, request: operations.GetAccountingMarketingMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountingMarketingMetricsResponse:
         r"""Get the marketing metrics from an accounting source for a given company.
         Request an Excel report for download.
         """
@@ -81,7 +107,20 @@ class ExcelReports:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetAccountingMarketingMetricsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -93,7 +132,7 @@ class ExcelReports:
 
         return res
 
-    def get_excel_report(self, request: operations.GetExcelReportRequest) -> operations.GetExcelReportResponse:
+    def get_excel_report(self, request: operations.GetExcelReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetExcelReportResponse:
         r"""Download generated excel report
         Download the previously generated Excel report to a local drive.
         """
@@ -105,7 +144,20 @@ class ExcelReports:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetExcelReportResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -116,7 +168,7 @@ class ExcelReports:
 
         return res
 
-    def get_excel_report_generation_status(self, request: operations.GetExcelReportGenerationStatusRequest) -> operations.GetExcelReportGenerationStatusResponse:
+    def get_excel_report_generation_status(self, request: operations.GetExcelReportGenerationStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetExcelReportGenerationStatusResponse:
         r"""Get status of Excel report
         Returns the status of the latest report requested.
         """
@@ -128,7 +180,20 @@ class ExcelReports:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetExcelReportGenerationStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

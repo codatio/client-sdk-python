@@ -22,7 +22,7 @@ class Categories:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_account_category(self, request: operations.GetAccountCategoryRequest) -> operations.GetAccountCategoryResponse:
+    def get_account_category(self, request: operations.GetAccountCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountCategoryResponse:
         r"""Get suggested and/or confirmed category for a specific account
         Get category for specific nominal account.
         """
@@ -33,7 +33,20 @@ class Categories:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetAccountCategoryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -45,7 +58,7 @@ class Categories:
 
         return res
 
-    def list_accounts_categories(self, request: operations.ListAccountsCategoriesRequest) -> operations.ListAccountsCategoriesResponse:
+    def list_accounts_categories(self, request: operations.ListAccountsCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountsCategoriesResponse:
         r"""List suggested and confirmed account categories
         Lists suggested and confirmed chart of account categories for the given company and data connection.
         """
@@ -57,7 +70,20 @@ class Categories:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListAccountsCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -69,7 +95,7 @@ class Categories:
 
         return res
 
-    def list_available_account_categories(self) -> operations.ListAvailableAccountCategoriesResponse:
+    def list_available_account_categories(self, retries: Optional[utils.RetryConfig] = None) -> operations.ListAvailableAccountCategoriesResponse:
         r"""List account categories
         Lists available account categories Codat's categorisation engine can provide.
         """
@@ -80,7 +106,20 @@ class Categories:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListAvailableAccountCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -92,7 +131,7 @@ class Categories:
 
         return res
 
-    def update_account_category(self, request: operations.UpdateAccountCategoryRequest) -> operations.UpdateAccountCategoryResponse:
+    def update_account_category(self, request: operations.UpdateAccountCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateAccountCategoryResponse:
         r"""Patch account categories
         Update category for a specific nominal account
         """
@@ -107,7 +146,20 @@ class Categories:
         
         client = self._security_client
         
-        http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PATCH', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateAccountCategoryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -119,7 +171,7 @@ class Categories:
 
         return res
 
-    def update_accounts_categories(self, request: operations.UpdateAccountsCategoriesRequest) -> operations.UpdateAccountsCategoriesResponse:
+    def update_accounts_categories(self, request: operations.UpdateAccountsCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateAccountsCategoriesResponse:
         r"""Confirm categories for accounts
         Comfirms the categories for all or a batch of accounts for a specific connection.
         """
@@ -134,7 +186,20 @@ class Categories:
         
         client = self._security_client
         
-        http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PATCH', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateAccountsCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

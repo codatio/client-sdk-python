@@ -22,7 +22,7 @@ class DataIntegrity:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_data_integrity_details(self, request: operations.GetDataIntegrityDetailsRequest) -> operations.GetDataIntegrityDetailsResponse:
+    def get_data_integrity_details(self, request: operations.GetDataIntegrityDetailsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDataIntegrityDetailsResponse:
         r"""Lists data integrity details for date type
         Gets record-by-record match results for a given company and datatype, optionally restricted by a Codat query string.
         """
@@ -34,7 +34,20 @@ class DataIntegrity:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetDataIntegrityDetailsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -46,7 +59,7 @@ class DataIntegrity:
 
         return res
 
-    def get_data_integrity_status(self, request: operations.GetDataIntegrityStatusRequest) -> operations.GetDataIntegrityStatusResponse:
+    def get_data_integrity_status(self, request: operations.GetDataIntegrityStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDataIntegrityStatusResponse:
         r"""Get data integrity status
         Gets match status for a given company and datatype.
         """
@@ -57,7 +70,20 @@ class DataIntegrity:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetDataIntegrityStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -69,7 +95,7 @@ class DataIntegrity:
 
         return res
 
-    def get_data_integrity_summaries(self, request: operations.GetDataIntegritySummariesRequest) -> operations.GetDataIntegritySummariesResponse:
+    def get_data_integrity_summaries(self, request: operations.GetDataIntegritySummariesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDataIntegritySummariesResponse:
         r"""Get data integrity summary
         Gets match summary for a given company and datatype, optionally restricted by a Codat query string.
         """
@@ -81,7 +107,20 @@ class DataIntegrity:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetDataIntegritySummariesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
