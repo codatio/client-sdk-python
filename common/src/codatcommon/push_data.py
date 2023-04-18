@@ -22,7 +22,7 @@ class PushData:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_company_push_history(self, request: operations.GetCompanyPushHistoryRequest) -> operations.GetCompanyPushHistoryResponse:
+    def get_company_push_history(self, request: operations.GetCompanyPushHistoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyPushHistoryResponse:
         r"""List push operations
         List push operation records.
         """
@@ -34,7 +34,20 @@ class PushData:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCompanyPushHistoryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -46,7 +59,7 @@ class PushData:
 
         return res
 
-    def get_create_update_model_options_by_data_type(self, request: operations.GetCreateUpdateModelOptionsByDataTypeRequest) -> operations.GetCreateUpdateModelOptionsByDataTypeResponse:
+    def get_create_update_model_options_by_data_type(self, request: operations.GetCreateUpdateModelOptionsByDataTypeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateModelOptionsByDataTypeResponse:
         r"""List push options
         This is the generic documentation for creation and updating of data. See the equivalent endpoint for a given data type for more specific information. 
         
@@ -66,7 +79,20 @@ class PushData:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCreateUpdateModelOptionsByDataTypeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -78,7 +104,7 @@ class PushData:
 
         return res
 
-    def get_push_operation(self, request: operations.GetPushOperationRequest) -> operations.GetPushOperationResponse:
+    def get_push_operation(self, request: operations.GetPushOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPushOperationResponse:
         r"""Get push operation
         Retrieve push operation.
         """
@@ -89,7 +115,20 @@ class PushData:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetPushOperationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

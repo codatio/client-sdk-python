@@ -22,7 +22,7 @@ class Settings:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_profile(self) -> operations.GetProfileResponse:
+    def get_profile(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetProfileResponse:
         r"""Get profile
         Fetch your Codat profile.
         """
@@ -33,7 +33,20 @@ class Settings:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetProfileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -49,7 +62,7 @@ class Settings:
 
         return res
 
-    def get_profile_sync_settings(self) -> operations.GetProfileSyncSettingsResponse:
+    def get_profile_sync_settings(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetProfileSyncSettingsResponse:
         r"""Get sync settings
         Retrieve the sync settings for your client. This includes how often data types should be queued to be updated, and how much history should be fetched.
         """
@@ -60,7 +73,20 @@ class Settings:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetProfileSyncSettingsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -76,7 +102,7 @@ class Settings:
 
         return res
 
-    def update_profile(self, request: shared.Profile) -> operations.UpdateProfileResponse:
+    def update_profile(self, request: shared.Profile, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateProfileResponse:
         r"""Update profile
         Update your Codat profile
         """
@@ -91,7 +117,20 @@ class Settings:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateProfileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -107,7 +146,7 @@ class Settings:
 
         return res
 
-    def update_sync_settings(self, request: operations.UpdateSyncSettingsRequestBody) -> operations.UpdateSyncSettingsResponse:
+    def update_sync_settings(self, request: operations.UpdateSyncSettingsRequestBody, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateSyncSettingsResponse:
         r"""Update all sync settings
         Update sync settings for all data types.
         """
@@ -122,7 +161,20 @@ class Settings:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateSyncSettingsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

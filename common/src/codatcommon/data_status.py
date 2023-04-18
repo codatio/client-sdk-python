@@ -22,7 +22,7 @@ class DataStatus:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_company_data_history(self, request: operations.GetCompanyDataHistoryRequest) -> operations.GetCompanyDataHistoryResponse:
+    def get_company_data_history(self, request: operations.GetCompanyDataHistoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyDataHistoryResponse:
         r"""Get pull operations
         Gets the pull operation history (datasets) for a given company.
         """
@@ -34,7 +34,20 @@ class DataStatus:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCompanyDataHistoryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -50,7 +63,7 @@ class DataStatus:
 
         return res
 
-    def get_company_data_status(self, request: operations.GetCompanyDataStatusRequest) -> operations.GetCompanyDataStatusResponse:
+    def get_company_data_status(self, request: operations.GetCompanyDataStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyDataStatusResponse:
         r"""Get data status
         Get the state of each data type for a company
         """
@@ -61,7 +74,20 @@ class DataStatus:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCompanyDataStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -77,7 +103,7 @@ class DataStatus:
 
         return res
 
-    def get_pull_operation(self, request: operations.GetPullOperationRequest) -> operations.GetPullOperationResponse:
+    def get_pull_operation(self, request: operations.GetPullOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPullOperationResponse:
         r"""Get pull operation
         Retrieve information about a single dataset or pull operation.
         """
@@ -88,7 +114,20 @@ class DataStatus:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetPullOperationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

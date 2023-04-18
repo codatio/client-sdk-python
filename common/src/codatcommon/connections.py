@@ -22,7 +22,7 @@ class Connections:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_data_connection(self, request: operations.CreateDataConnectionRequest) -> operations.CreateDataConnectionResponse:
+    def create_data_connection(self, request: operations.CreateDataConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDataConnectionResponse:
         r"""Create a data connection
         Create a data connection for a company
         """
@@ -37,7 +37,20 @@ class Connections:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateDataConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -53,7 +66,7 @@ class Connections:
 
         return res
 
-    def delete_company_connection(self, request: operations.DeleteCompanyConnectionRequest) -> operations.DeleteCompanyConnectionResponse:
+    def delete_company_connection(self, request: operations.DeleteCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyConnectionResponse:
         r"""Delete connection
         Revoke and remove a connection from a company.
         This operation is not reversible - the end user would need to reauthorize a new data connection if you wish to view new data for this company.
@@ -65,7 +78,20 @@ class Connections:
         
         client = self._security_client
         
-        http_res = client.request('DELETE', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('DELETE', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeleteCompanyConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -79,7 +105,7 @@ class Connections:
 
         return res
 
-    def get_company_connection(self, request: operations.GetCompanyConnectionRequest) -> operations.GetCompanyConnectionResponse:
+    def get_company_connection(self, request: operations.GetCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyConnectionResponse:
         r"""Get connection
         Get a single connection for a company
         """
@@ -90,7 +116,20 @@ class Connections:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCompanyConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -106,7 +145,7 @@ class Connections:
 
         return res
 
-    def list_company_connections(self, request: operations.ListCompanyConnectionsRequest) -> operations.ListCompanyConnectionsResponse:
+    def list_company_connections(self, request: operations.ListCompanyConnectionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompanyConnectionsResponse:
         r"""List connections
         List the connections for a company
         """
@@ -118,7 +157,20 @@ class Connections:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListCompanyConnectionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -134,7 +186,7 @@ class Connections:
 
         return res
 
-    def unlink_company_connection(self, request: operations.UnlinkCompanyConnectionRequest) -> operations.UnlinkCompanyConnectionResponse:
+    def unlink_company_connection(self, request: operations.UnlinkCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UnlinkCompanyConnectionResponse:
         r"""Unlink connection
         This allows you to deauthorize a connection, without deleting it from Codat. This means you can still view any data that has previously been pulled into Codat, and also lets you re-authorize in future if your customer wishes to resume sharing their data.
         """
@@ -149,7 +201,20 @@ class Connections:
         
         client = self._security_client
         
-        http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PATCH', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UnlinkCompanyConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -165,7 +230,7 @@ class Connections:
 
         return res
 
-    def update_connection_authorization(self, request: operations.UpdateConnectionAuthorizationRequest) -> operations.UpdateConnectionAuthorizationResponse:
+    def update_connection_authorization(self, request: operations.UpdateConnectionAuthorizationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateConnectionAuthorizationResponse:
         r"""Update authorization
         Update data connection's authorization.
         """
@@ -180,7 +245,20 @@ class Connections:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateConnectionAuthorizationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

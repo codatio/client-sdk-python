@@ -22,7 +22,7 @@ class Companies:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_company(self, request: shared.CompanyRequestBody) -> operations.CreateCompanyResponse:
+    def create_company(self, request: shared.CompanyRequestBody, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
         r"""Create company
         Create a new company
         """
@@ -37,7 +37,20 @@ class Companies:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateCompanyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -53,7 +66,7 @@ class Companies:
 
         return res
 
-    def delete_company(self, request: operations.DeleteCompanyRequest) -> operations.DeleteCompanyResponse:
+    def delete_company(self, request: operations.DeleteCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyResponse:
         r"""Delete a company
         Delete the given company from Codat.
         This operation is not reversible.
@@ -65,7 +78,20 @@ class Companies:
         
         client = self._security_client
         
-        http_res = client.request('DELETE', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('DELETE', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeleteCompanyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -79,7 +105,7 @@ class Companies:
 
         return res
 
-    def get_company(self, request: operations.GetCompanyRequest) -> operations.GetCompanyResponse:
+    def get_company(self, request: operations.GetCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyResponse:
         r"""Get company
         Get metadata for a single company
         """
@@ -90,7 +116,20 @@ class Companies:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCompanyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -106,7 +145,7 @@ class Companies:
 
         return res
 
-    def list_companies(self, request: operations.ListCompaniesRequest) -> operations.ListCompaniesResponse:
+    def list_companies(self, request: operations.ListCompaniesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompaniesResponse:
         r"""List companies
         List all companies that you have created in Codat.
         """
@@ -118,7 +157,20 @@ class Companies:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListCompaniesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -134,7 +186,7 @@ class Companies:
 
         return res
 
-    def update_company(self, request: operations.UpdateCompanyRequest) -> operations.UpdateCompanyResponse:
+    def update_company(self, request: operations.UpdateCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateCompanyResponse:
         r"""Update company
         Updates the given company with a new name and description
         """
@@ -149,7 +201,20 @@ class Companies:
         
         client = self._security_client
         
-        http_res = client.request('PUT', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UpdateCompanyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

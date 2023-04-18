@@ -22,7 +22,7 @@ class Webhooks:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_rule(self, request: shared.Rule) -> operations.CreateRuleResponse:
+    def create_rule(self, request: shared.Rule, retries: Optional[utils.RetryConfig] = None) -> operations.CreateRuleResponse:
         r"""Create webhook
         Create a new webhook configuration
         """
@@ -37,7 +37,20 @@ class Webhooks:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CreateRuleResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -53,7 +66,7 @@ class Webhooks:
 
         return res
 
-    def get_webhook(self, request: operations.GetWebhookRequest) -> operations.GetWebhookResponse:
+    def get_webhook(self, request: operations.GetWebhookRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetWebhookResponse:
         r"""Get webhook
         Get a single webhook
         """
@@ -64,7 +77,20 @@ class Webhooks:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetWebhookResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -80,7 +106,7 @@ class Webhooks:
 
         return res
 
-    def list_rules(self, request: operations.ListRulesRequest) -> operations.ListRulesResponse:
+    def list_rules(self, request: operations.ListRulesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListRulesResponse:
         r"""List webhooks
         List webhooks that you are subscribed to.
         """
@@ -92,7 +118,20 @@ class Webhooks:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListRulesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
