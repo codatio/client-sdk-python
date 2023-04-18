@@ -22,7 +22,7 @@ class TaxComponents:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_tax_components(self, request: operations.GetTaxComponentsRequest) -> operations.GetTaxComponentsResponse:
+    def get_tax_components(self, request: operations.GetTaxComponentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxComponentsResponse:
         r"""List tax components
         This endpoint returns a lits of tax rates from the commerce platform, including tax rate names and values. This supports the mapping of tax rates from the commerce platform to the accounting platform.
         """
@@ -33,7 +33,20 @@ class TaxComponents:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetTaxComponentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

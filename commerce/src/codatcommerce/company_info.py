@@ -22,7 +22,7 @@ class CompanyInfo:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_company_info(self, request: operations.GetCompanyInfoRequest) -> operations.GetCompanyInfoResponse:
+    def get_company_info(self, request: operations.GetCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyInfoResponse:
         r"""Get company info
         Retrieve information about the company, as seen in the commerce platform.
         
@@ -35,7 +35,20 @@ class CompanyInfo:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCompanyInfoResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

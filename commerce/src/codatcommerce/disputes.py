@@ -22,7 +22,7 @@ class Disputes:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_disputes(self, request: operations.ListDisputesRequest) -> operations.ListDisputesResponse:
+    def list_disputes(self, request: operations.ListDisputesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDisputesResponse:
         r"""List disputes
         List commerce disputes
         """
@@ -34,7 +34,20 @@ class Disputes:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListDisputesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
