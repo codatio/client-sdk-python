@@ -22,7 +22,7 @@ class Files:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def download_files(self, request: operations.DownloadFilesRequest) -> operations.DownloadFilesResponse:
+    def download_files(self, request: operations.DownloadFilesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadFilesResponse:
         r"""Download all files for a company
         You can specify a date to download specific files for.
         """
@@ -34,7 +34,20 @@ class Files:
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DownloadFilesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -45,7 +58,7 @@ class Files:
 
         return res
 
-    def list_files(self, request: operations.ListFilesRequest) -> operations.ListFilesResponse:
+    def list_files(self, request: operations.ListFilesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListFilesResponse:
         r"""List all files uploaded by a company
         Returns an array of files that have been uploaded for a given company.
         """
@@ -56,7 +69,20 @@ class Files:
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListFilesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -68,7 +94,7 @@ class Files:
 
         return res
 
-    def upload_files(self, request: operations.UploadFilesRequest) -> operations.UploadFilesResponse:
+    def upload_files(self, request: operations.UploadFilesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadFilesResponse:
         r"""Upload files for a company
         Upload files
         """
@@ -83,7 +109,20 @@ class Files:
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.UploadFilesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
