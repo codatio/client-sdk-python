@@ -37,10 +37,4 @@ src/codatbankfeeds/models/shared/href.py
 src/codatbankfeeds/models/shared/security.py
 src/codatbankfeeds/models/shared/__init__.py
 docs/codatbankfeeds/README.md
-docs/codatbankfeeds/createbankfeed.md
-docs/codatbankfeeds/createbanktransactions.md
-docs/codatbankfeeds/getbankfeeds.md
-docs/codatbankfeeds/getcreatebankaccountmodel.md
-docs/codatbankfeeds/listbankaccounttransactions.md
-docs/codatbankfeeds/updatebankfeed.md
 USAGE.md
