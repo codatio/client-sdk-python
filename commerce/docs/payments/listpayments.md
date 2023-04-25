@@ -1,4 +1,9 @@
-<!-- Start SDK Example Usage -->
+# list_payments
+Available in: `payments`
+
+List commerce payments for the given company & data connection.
+
+## Example Usage
 ```python
 import codatcommerce
 from codatcommerce.models import operations
@@ -10,14 +15,17 @@ s = codatcommerce.CodatCommerce(
 )
 
 
-req = operations.GetCompanyInfoRequest(
+req = operations.ListPaymentsRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    order_by="-modifiedDate",
+    page=1,
+    page_size=100,
+    query="unde",
 )
 
-res = s.company_info.get_company_info(req)
+res = s.payments.list_payments(req)
 
-if res.company_info is not None:
+if res.payments is not None:
     # handle response
 ```
-<!-- End SDK Example Usage -->

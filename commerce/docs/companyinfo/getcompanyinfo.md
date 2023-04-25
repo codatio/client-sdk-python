@@ -1,4 +1,11 @@
-<!-- Start SDK Example Usage -->
+# get_company_info
+Available in: `company_info`
+
+Retrieve information about the company, as seen in the commerce platform.
+
+This may include information like addresses, tax registration details and social media or website information.
+
+## Example Usage
 ```python
 import codatcommerce
 from codatcommerce.models import operations
@@ -20,4 +27,3 @@ res = s.company_info.get_company_info(req)
 if res.company_info is not None:
     # handle response
 ```
-<!-- End SDK Example Usage -->
