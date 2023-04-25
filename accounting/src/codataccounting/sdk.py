@@ -102,8 +102,8 @@ class CodatAccounting:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.12.0"
-    _gen_version: str = "2.21.0"
+    _sdk_version: str = "0.12.1"
+    _gen_version: str = "2.21.1"
 
     def __init__(self,
                  security: shared.Security = None,
