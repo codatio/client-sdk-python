@@ -22,7 +22,7 @@ class AccountBalances:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_account_balances(self, request: operations.ListAccountBalancesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountBalancesResponse:
+    def list(self, request: operations.ListAccountBalancesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountBalancesResponse:
         r"""List account balances
         Gets a list of balances for a bank account including end-of-day batch balance or running balances per transaction.
         """

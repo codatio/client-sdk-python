@@ -22,7 +22,7 @@ class Accounts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_account(self, request: operations.GetAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountResponse:
+    def get(self, request: operations.GetAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountResponse:
         r"""Get account
         Gets a specified bank account for a given company
         """
@@ -58,7 +58,7 @@ class Accounts:
 
         return res
 
-    def list_accounts(self, request: operations.ListAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountsResponse:
+    def list(self, request: operations.ListAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountsResponse:
         r"""List accounts
         Gets a list of all bank accounts of the SMB, with rich data like balances, account numbers and institutions holdingthe accounts.
         """

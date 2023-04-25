@@ -22,7 +22,7 @@ class Transactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_transaction(self, request: operations.GetTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionResponse:
+    def get(self, request: operations.GetTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionResponse:
         r"""Get bank transaction
         Gets a specified bank transaction for a given company
         """
@@ -58,7 +58,7 @@ class Transactions:
 
         return res
 
-    def list_bank_transactions(self, request: operations.ListBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankTransactionsResponse:
+    def list(self, request: operations.ListBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankTransactionsResponse:
         r"""List banking transactions
         Gets a list of transactions incurred by a company across all bank accounts.
         """
@@ -95,7 +95,7 @@ class Transactions:
 
         return res
 
-    def list_transactions(self, request: operations.ListTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionsResponse:
+    def list(self, request: operations.ListTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionsResponse:
         r"""List transactions
         Gets a list of transactions incurred by a bank account.
         """

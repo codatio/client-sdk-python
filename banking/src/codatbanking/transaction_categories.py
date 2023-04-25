@@ -22,7 +22,7 @@ class TransactionCategories:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_transaction_category(self, request: operations.GetTransactionCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionCategoryResponse:
+    def get(self, request: operations.GetTransactionCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionCategoryResponse:
         r"""Get transaction category
         Gets a specified bank transaction category for a given company
         """
@@ -58,7 +58,7 @@ class TransactionCategories:
 
         return res
 
-    def list_transaction_categories(self, request: operations.ListTransactionCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionCategoriesResponse:
+    def list(self, request: operations.ListTransactionCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionCategoriesResponse:
         r"""List all transaction categories
         Gets a list of hierarchical categories associated with a transaction for greater contextual meaning to transactionactivity.
         """

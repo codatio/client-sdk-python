@@ -19,7 +19,7 @@ req = operations.ListAccountBalancesRequest(
     query="corrupti",
 )
 
-res = s.account_balances.list_account_balances(req)
+res = s.account_balances.list(req)
 
 if res.account_balances is not None:
     # handle response
