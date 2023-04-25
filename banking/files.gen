@@ -39,4 +39,17 @@ src/codatbanking/models/shared/transactioncode_enum.py
 src/codatbanking/models/shared/transactions.py
 src/codatbanking/models/shared/security.py
 src/codatbanking/models/shared/__init__.py
+docs/codatbanking/README.md
+docs/accountbalances/README.md
+docs/accountbalances/listaccountbalances.md
+docs/accounts/README.md
+docs/accounts/getaccount.md
+docs/accounts/listaccounts.md
+docs/transactioncategories/README.md
+docs/transactioncategories/gettransactioncategory.md
+docs/transactioncategories/listtransactioncategories.md
+docs/transactions/README.md
+docs/transactions/gettransaction.md
+docs/transactions/listbanktransactions.md
+docs/transactions/listtransactions.md
 USAGE.md
