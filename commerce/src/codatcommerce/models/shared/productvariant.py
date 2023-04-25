@@ -40,7 +40,7 @@ class ProductVariant:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """  
-    inventory: Optional[list[shared_productinventory.ProductInventory]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('inventory'), 'exclude': lambda f: f is None }})
+    inventory: Optional[shared_productinventory.ProductInventory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('inventory'), 'exclude': lambda f: f is None }})
     r"""Information about the total inventory as well as the locations inventory is in."""  
     is_tax_enabled: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isTaxEnabled'), 'exclude': lambda f: f is None }})
     r"""Whether sales taxes are enabled for this product variant."""  
