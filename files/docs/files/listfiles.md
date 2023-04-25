@@ -1,4 +1,9 @@
-<!-- Start SDK Example Usage -->
+# list_files
+Available in: `files`
+
+Returns an array of files that have been uploaded for a given company.
+
+## Example Usage
 ```python
 import codatfiles
 from codatfiles.models import operations
@@ -10,14 +15,12 @@ s = codatfiles.CodatFiles(
 )
 
 
-req = operations.DownloadFilesRequest(
+req = operations.ListFilesRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    date_="2022-10-23T00:00:00Z",
 )
 
-res = s.files.download_files(req)
+res = s.files.list_files(req)
 
-if res.data is not None:
+if res.files is not None:
     # handle response
 ```
-<!-- End SDK Example Usage -->

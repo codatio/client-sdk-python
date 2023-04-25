@@ -1,4 +1,9 @@
-<!-- Start SDK Example Usage -->
+# download_files
+Available in: `files`
+
+You can specify a date to download specific files for.
+
+## Example Usage
 ```python
 import codatfiles
 from codatfiles.models import operations
@@ -20,4 +25,3 @@ res = s.files.download_files(req)
 if res.data is not None:
     # handle response
 ```
-<!-- End SDK Example Usage -->
