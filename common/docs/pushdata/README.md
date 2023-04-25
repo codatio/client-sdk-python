@@ -1,8 +1,108 @@
 # push_data
 
+## Overview
+
 View push options and get push statuses.
 
+### Available Operations
 
-* [get_company_push_history](getcompanypushhistory.md) - List push operations
-* [get_create_update_model_options_by_data_type](getcreateupdatemodeloptionsbydatatype.md) - List push options
-* [get_push_operation](getpushoperation.md) - Get push operation
+* [get_company_push_history](#get_company_push_history) - List push operations
+* [get_create_update_model_options_by_data_type](#get_create_update_model_options_by_data_type) - List push options
+* [get_push_operation](#get_push_operation) - Get push operation
+
+## get_company_push_history
+
+List push operation records.
+
+### Example Usage
+
+```python
+import codatcommon
+from codatcommon.models import operations
+
+s = codatcommon.CodatCommon(
+    security=shared.Security(
+        auth_header="YOUR_API_KEY_HERE",
+    ),
+)
+
+
+req = operations.GetCompanyPushHistoryRequest(
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    order_by="-modifiedDate",
+    page=1,
+    page_size=100,
+    query="deserunt",
+)
+
+res = s.push_data.get_company_push_history(req)
+
+if res.push_history_response is not None:
+    # handle response
+```
+
+## get_create_update_model_options_by_data_type
+
+This is the generic documentation for creation and updating of data. See the equivalent endpoint for a given data type for more specific information. 
+
+Before pushing data into accounting software, it is often necessary to collect some details from the user as to how they would like the data to be inserted. This includes names and amounts on transactional entities, but also factors such as categorisation of entities, which is often handled differently between different accounting packages. A good example of this is specifying where on the balance sheet/profit and loss reports the user would like a newly-created nominal account to appear.
+
+Codat tries not to limit users to pushing to a very limited number of standard categories, so we have implemented "options" endpoints, which allow us to expose to our clients the fields which are required to be pushed for a specific linked company, and the options which may be selected for each field.
+
+
+> **Supported Integrations**
+> 
+> Check out our [Knowledge UI](https://knowledge.codat.io/) for integrations that support push (POST/PUT methods).
+
+### Example Usage
+
+```python
+import codatcommon
+from codatcommon.models import operations, shared
+
+s = codatcommon.CodatCommon(
+    security=shared.Security(
+        auth_header="YOUR_API_KEY_HERE",
+    ),
+)
+
+
+req = operations.GetCreateUpdateModelOptionsByDataTypeRequest(
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    data_type="invoices",
+)
+
+res = s.push_data.get_create_update_model_options_by_data_type(req)
+
+if res.push_option is not None:
+    # handle response
+```
+
+## get_push_operation
+
+Retrieve push operation.
+
+### Example Usage
+
+```python
+import codatcommon
+from codatcommon.models import operations
+
+s = codatcommon.CodatCommon(
+    security=shared.Security(
+        auth_header="YOUR_API_KEY_HERE",
+    ),
+)
+
+
+req = operations.GetPushOperationRequest(
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    push_operation_key="05dfc2dd-f7cc-478c-a1ba-928fc816742c",
+)
+
+res = s.push_data.get_push_operation(req)
+
+if res.push_operation is not None:
+    # handle response
+```

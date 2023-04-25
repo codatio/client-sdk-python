@@ -23,7 +23,7 @@ class Connections:
         self._gen_version = gen_version
         
     def create_data_connection(self, request: operations.CreateDataConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDataConnectionResponse:
-        r"""Create a data connection
+        r"""Create connection
         Create a data connection for a company
         """
         base_url = self._server_url
