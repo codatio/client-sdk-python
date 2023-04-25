@@ -1,4 +1,9 @@
-<!-- Start SDK Example Usage -->
+# get_last_successful_sync
+Available in: `sync_status`
+
+Gets the status of the last successfull sync
+
+## Example Usage
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import operations
@@ -10,13 +15,12 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 
-req = operations.GetCompanyConfigurationRequest(
+req = operations.GetLastSuccessfulSyncRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.configuration.get_company_configuration(req)
+res = s.sync_status.get_last_successful_sync(req)
 
-if res.company_configuration is not None:
+if res.company_sync_status is not None:
     # handle response
 ```
-<!-- End SDK Example Usage -->

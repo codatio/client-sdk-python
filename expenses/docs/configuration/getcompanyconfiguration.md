@@ -1,4 +1,9 @@
-<!-- Start SDK Example Usage -->
+# get_company_configuration
+Available in: `configuration`
+
+Gets a companies expense sync configuration
+
+## Example Usage
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import operations
@@ -19,4 +24,3 @@ res = s.configuration.get_company_configuration(req)
 if res.company_configuration is not None:
     # handle response
 ```
-<!-- End SDK Example Usage -->
