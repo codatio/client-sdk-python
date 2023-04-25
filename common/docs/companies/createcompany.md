@@ -1,4 +1,9 @@
-<!-- Start SDK Example Usage -->
+# create_company
+Available in: `companies`
+
+Create a new company
+
+## Example Usage
 ```python
 import codatcommon
 from codatcommon.models import shared
@@ -12,7 +17,7 @@ s = codatcommon.CodatCommon(
 
 req = shared.CompanyRequestBody(
     description="corrupti",
-    name="Kelvin Sporer",
+    name="Ben Mueller",
 )
 
 res = s.companies.create_company(req)
@@ -20,4 +25,3 @@ res = s.companies.create_company(req)
 if res.company is not None:
     # handle response
 ```
-<!-- End SDK Example Usage -->
