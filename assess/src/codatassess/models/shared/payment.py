@@ -3,12 +3,22 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import accountref as shared_accountref
-from ..shared import customerref as shared_customerref
 from ..shared import paymentline as shared_paymentline
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Any, Optional
 
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class PaymentCustomerRef:
+    r"""Customer the payment is recorded against in the accounting platform."""
+    
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""`id` from the Customers data type"""  
+    company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})
+    r"""`customerName` from the Customer data type"""  
+    
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
@@ -777,7 +787,8 @@ class Payment:
     | **EUR**          | €20            | 1.134         | $22.68                     |
     | **RUB**          | ₽20            | 0.015         | $0.30                      |
     """  
-    customer_ref: Optional[shared_customerref.CustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})  
+    customer_ref: Optional[PaymentCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
+    r"""Customer the payment is recorded against in the accounting platform."""  
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier for the payment, unique to the company in the accounting platform."""  
     lines: Optional[list[shared_paymentline.PaymentLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines'), 'exclude': lambda f: f is None }})
