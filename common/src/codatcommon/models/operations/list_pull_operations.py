@@ -9,7 +9,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetCompanyDataHistoryRequest:
+class ListPullOperationsRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
     page: int = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
@@ -23,7 +23,7 @@ class GetCompanyDataHistoryRequest:
     
 
 @dataclasses.dataclass
-class GetCompanyDataHistoryResponse:
+class ListPullOperationsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  

@@ -5,6 +5,7 @@ from enum import Enum
 
 class FeatureStateEnum(str, Enum):
     RELEASE = 'Release'
+    ALPHA = 'Alpha'
     BETA = 'Beta'
     DEPRECATED = 'Deprecated'
     NOT_SUPPORTED = 'NotSupported'

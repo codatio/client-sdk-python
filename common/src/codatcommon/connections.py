@@ -22,8 +22,8 @@ class Connections:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_data_connection(self, request: operations.CreateDataConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDataConnectionResponse:
-        r"""Create a data connection
+    def create(self, request: operations.CreateDataConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDataConnectionResponse:
+        r"""Create connection
         Create a data connection for a company
         """
         base_url = self._server_url
@@ -66,7 +66,7 @@ class Connections:
 
         return res
 
-    def delete_company_connection(self, request: operations.DeleteCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyConnectionResponse:
+    def delete(self, request: operations.DeleteCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyConnectionResponse:
         r"""Delete connection
         Revoke and remove a connection from a company.
         This operation is not reversible - the end user would need to reauthorize a new data connection if you wish to view new data for this company.
@@ -105,7 +105,7 @@ class Connections:
 
         return res
 
-    def get_company_connection(self, request: operations.GetCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyConnectionResponse:
+    def get(self, request: operations.GetCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyConnectionResponse:
         r"""Get connection
         Get a single connection for a company
         """
@@ -145,7 +145,7 @@ class Connections:
 
         return res
 
-    def list_company_connections(self, request: operations.ListCompanyConnectionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompanyConnectionsResponse:
+    def list(self, request: operations.ListCompanyConnectionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompanyConnectionsResponse:
         r"""List connections
         List the connections for a company
         """
@@ -186,13 +186,13 @@ class Connections:
 
         return res
 
-    def unlink_company_connection(self, request: operations.UnlinkCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UnlinkCompanyConnectionResponse:
+    def unlink_connection(self, request: operations.UnlinkConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UnlinkConnectionResponse:
         r"""Unlink connection
         This allows you to deauthorize a connection, without deleting it from Codat. This means you can still view any data that has previously been pulled into Codat, and also lets you re-authorize in future if your customer wishes to resume sharing their data.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.UnlinkCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
+        url = utils.generate_url(operations.UnlinkConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
@@ -217,7 +217,7 @@ class Connections:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.UnlinkCompanyConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UnlinkConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -230,7 +230,7 @@ class Connections:
 
         return res
 
-    def update_connection_authorization(self, request: operations.UpdateConnectionAuthorizationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateConnectionAuthorizationResponse:
+    def update_authorization(self, request: operations.UpdateConnectionAuthorizationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateConnectionAuthorizationResponse:
         r"""Update authorization
         Update data connection's authorization.
         """
