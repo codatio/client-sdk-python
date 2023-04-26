@@ -100,4 +100,9 @@ src/codatassess/models/shared/accountcategoriesupdatedwebhook.py
 src/codatassess/models/shared/__init__.py
 src/codatassess/models/webhooks/account_categories_updated.py
 src/codatassess/models/webhooks/__init__.py
+docs/codatassess/README.md
+docs/categories/README.md
+docs/dataintegrity/README.md
+docs/excelreports/README.md
+docs/reports/README.md
 USAGE.md
