@@ -1,7 +1,7 @@
 <!-- Start SDK Example Usage -->
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codatsyncexpenses.models import operations
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -13,7 +13,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.GetCompanyConfigurationRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
-    
+
 res = s.configuration.get_company_configuration(req)
 
 if res.company_configuration is not None:

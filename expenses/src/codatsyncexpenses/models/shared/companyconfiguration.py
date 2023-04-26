@@ -7,7 +7,6 @@ from ..shared import customer as shared_customer
 from ..shared import supplier as shared_supplier
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -15,7 +14,7 @@ from typing import Optional
 class CompanyConfiguration:
     r"""Success"""
     
-    bank_account: Optional[shared_bankaccount.BankAccount] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccount'), 'exclude': lambda f: f is None }})  
-    customer: Optional[shared_customer.Customer] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customer'), 'exclude': lambda f: f is None }})  
-    supplier: Optional[shared_supplier.Supplier] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplier'), 'exclude': lambda f: f is None }})  
+    bank_account: shared_bankaccount.BankAccount = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccount') }})  
+    customer: shared_customer.Customer = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customer') }})  
+    supplier: shared_supplier.Supplier = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplier') }})  
     
