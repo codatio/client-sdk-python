@@ -37,7 +37,7 @@ class CodatBanking:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.11.1"
+    _sdk_version: str = "0.11.2"
     _gen_version: str = "2.21.1"
 
     def __init__(self,
