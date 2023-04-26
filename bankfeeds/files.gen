@@ -36,4 +36,5 @@ src/codatbankfeeds/models/shared/links.py
 src/codatbankfeeds/models/shared/href.py
 src/codatbankfeeds/models/shared/security.py
 src/codatbankfeeds/models/shared/__init__.py
+docs/codatbankfeeds/README.md
 USAGE.md
