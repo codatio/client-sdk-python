@@ -6,42 +6,11 @@ View push options and get push statuses.
 
 ### Available Operations
 
-* [get_company_push_history](#get_company_push_history) - List push operations
-* [get_create_update_model_options_by_data_type](#get_create_update_model_options_by_data_type) - List push options
-* [get_push_operation](#get_push_operation) - Get push operation
+* [get_model_options](#get_model_options) - Get push options
+* [get_operation](#get_operation) - Get push operation
+* [list_operations](#list_operations) - List push operations
 
-## get_company_push_history
-
-List push operation records.
-
-### Example Usage
-
-```python
-import codatcommon
-from codatcommon.models import operations
-
-s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
-    ),
-)
-
-
-req = operations.GetCompanyPushHistoryRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
-    page=1,
-    page_size=100,
-    query="deserunt",
-)
-
-res = s.push_data.get_company_push_history(req)
-
-if res.push_history_response is not None:
-    # handle response
-```
-
-## get_create_update_model_options_by_data_type
+## get_model_options
 
 This is the generic documentation for creation and updating of data. See the equivalent endpoint for a given data type for more specific information. 
 
@@ -73,13 +42,13 @@ req = operations.GetCreateUpdateModelOptionsByDataTypeRequest(
     data_type="invoices",
 )
 
-res = s.push_data.get_create_update_model_options_by_data_type(req)
+res = s.push_data.get_model_options(req)
 
 if res.push_option is not None:
     # handle response
 ```
 
-## get_push_operation
+## get_operation
 
 Retrieve push operation.
 
@@ -98,11 +67,42 @@ s = codatcommon.CodatCommon(
 
 req = operations.GetPushOperationRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    push_operation_key="05dfc2dd-f7cc-478c-a1ba-928fc816742c",
+    push_operation_key="a05dfc2d-df7c-4c78-8a1b-a928fc816742",
 )
 
-res = s.push_data.get_push_operation(req)
+res = s.push_data.get_operation(req)
 
 if res.push_operation is not None:
+    # handle response
+```
+
+## list_operations
+
+List push operation records.
+
+### Example Usage
+
+```python
+import codatcommon
+from codatcommon.models import operations
+
+s = codatcommon.CodatCommon(
+    security=shared.Security(
+        auth_header="YOUR_API_KEY_HERE",
+    ),
+)
+
+
+req = operations.GetCompanyPushHistoryRequest(
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    order_by="-modifiedDate",
+    page=1,
+    page_size=100,
+    query="impedit",
+)
+
+res = s.push_data.list_operations(req)
+
+if res.push_history_response is not None:
     # handle response
 ```

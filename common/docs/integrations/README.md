@@ -6,11 +6,11 @@ View and manage your available integrations in Codat.
 
 ### Available Operations
 
-* [get_integration](#get_integration) - Get integration
-* [get_integrations_branding](#get_integrations_branding) - Get branding
-* [list_integrations](#list_integrations) - List integrations
+* [get](#get) - Get integration
+* [get_branding](#get_branding) - Get branding
+* [list](#list) - List integrations
 
-## get_integration
+## get
 
 Get single integration, by platformKey
 
@@ -31,13 +31,13 @@ req = operations.GetIntegrationRequest(
     platform_key="gbol",
 )
 
-res = s.integrations.get_integration(req)
+res = s.integrations.get(req)
 
 if res.integration is not None:
     # handle response
 ```
 
-## get_integrations_branding
+## get_branding
 
 Get branding for platform.
 
@@ -58,13 +58,13 @@ req = operations.GetIntegrationsBrandingRequest(
     platform_key="gbol",
 )
 
-res = s.integrations.get_integrations_branding(req)
+res = s.integrations.get_branding(req)
 
 if res.branding is not None:
     # handle response
 ```
 
-## list_integrations
+## list
 
 List your available integrations
 
@@ -88,7 +88,7 @@ req = operations.ListIntegrationsRequest(
     query="veritatis",
 )
 
-res = s.integrations.list_integrations(req)
+res = s.integrations.list(req)
 
 if res.integrations is not None:
     # handle response

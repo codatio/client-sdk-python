@@ -6,11 +6,11 @@ Manage webhooks, rules and alerts.
 
 ### Available Operations
 
-* [create_rule](#create_rule) - Create webhook
-* [get_webhook](#get_webhook) - Get webhook
-* [list_rules](#list_rules) - List webhooks
+* [create](#create) - Create webhook
+* [get](#get) - Get webhook
+* [list](#list) - List webhooks
 
-## create_rule
+## create
 
 Create a new webhook configuration
 
@@ -34,20 +34,19 @@ req = shared.Rule(
         emails=[
             "info@client.com",
             "info@client.com",
-            "info@client.com",
         ],
         webhook="https://webhook.client.com",
     ),
-    type="dolorem",
+    type="minima",
 )
 
-res = s.webhooks.create_rule(req)
+res = s.webhooks.create(req)
 
 if res.rule is not None:
     # handle response
 ```
 
-## get_webhook
+## get
 
 Get a single webhook
 
@@ -68,13 +67,13 @@ req = operations.GetWebhookRequest(
     rule_id="7318949f-c008-4936-a8ff-10d7ab563fa6",
 )
 
-res = s.webhooks.get_webhook(req)
+res = s.webhooks.get(req)
 
 if res.rule is not None:
     # handle response
 ```
 
-## list_rules
+## list
 
 List webhooks that you are subscribed to.
 
@@ -95,10 +94,10 @@ req = operations.ListRulesRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="culpa",
+    query="excepturi",
 )
 
-res = s.webhooks.list_rules(req)
+res = s.webhooks.list(req)
 
 if res.rules is not None:
     # handle response

@@ -6,42 +6,11 @@ Understand the state of data within Codat.
 
 ### Available Operations
 
-* [get_company_data_history](#get_company_data_history) - Get pull operations
-* [get_company_data_status](#get_company_data_status) - Get data status
+* [get](#get) - Get data status
 * [get_pull_operation](#get_pull_operation) - Get pull operation
+* [list_pull_operations](#list_pull_operations) - Get pull operations
 
-## get_company_data_history
-
-Gets the pull operation history (datasets) for a given company.
-
-### Example Usage
-
-```python
-import codatcommon
-from codatcommon.models import operations
-
-s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
-    ),
-)
-
-
-req = operations.GetCompanyDataHistoryRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
-    page=1,
-    page_size=100,
-    query="quis",
-)
-
-res = s.data_status.get_company_data_history(req)
-
-if res.data_connection_history is not None:
-    # handle response
-```
-
-## get_company_data_status
+## get
 
 Get the state of each data type for a company
 
@@ -62,7 +31,7 @@ req = operations.GetCompanyDataStatusRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.data_status.get_company_data_status(req)
+res = s.data_status.get(req)
 
 if res.data_status_response is not None:
     # handle response
@@ -93,5 +62,36 @@ req = operations.GetPullOperationRequest(
 res = s.data_status.get_pull_operation(req)
 
 if res.pull_operation is not None:
+    # handle response
+```
+
+## list_pull_operations
+
+Gets the pull operation history (datasets) for a given company.
+
+### Example Usage
+
+```python
+import codatcommon
+from codatcommon.models import operations
+
+s = codatcommon.CodatCommon(
+    security=shared.Security(
+        auth_header="YOUR_API_KEY_HERE",
+    ),
+)
+
+
+req = operations.ListPullOperationsRequest(
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    order_by="-modifiedDate",
+    page=1,
+    page_size=100,
+    query="quis",
+)
+
+res = s.data_status.list_pull_operations(req)
+
+if res.data_connection_history is not None:
     # handle response
 ```

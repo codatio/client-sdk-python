@@ -6,13 +6,13 @@ Create and manage your Codat companies.
 
 ### Available Operations
 
-* [create_company](#create_company) - Create company
-* [delete_company](#delete_company) - Delete a company
-* [get_company](#get_company) - Get company
-* [list_companies](#list_companies) - List companies
-* [update_company](#update_company) - Update company
+* [create](#create) - Create company
+* [delete](#delete) - Delete a company
+* [get](#get) - Get company
+* [list](#list) - List companies
+* [update](#update) - Update company
 
-## create_company
+## create
 
 Create a new company
 
@@ -34,13 +34,13 @@ req = shared.CompanyRequestBody(
     name="Ben Mueller",
 )
 
-res = s.companies.create_company(req)
+res = s.companies.create(req)
 
 if res.company is not None:
     # handle response
 ```
 
-## delete_company
+## delete
 
 Delete the given company from Codat.
 This operation is not reversible.
@@ -62,13 +62,13 @@ req = operations.DeleteCompanyRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.companies.delete_company(req)
+res = s.companies.delete(req)
 
 if res.status_code == 200:
     # handle response
 ```
 
-## get_company
+## get
 
 Get metadata for a single company
 
@@ -89,13 +89,13 @@ req = operations.GetCompanyRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.companies.get_company(req)
+res = s.companies.get(req)
 
 if res.company is not None:
     # handle response
 ```
 
-## list_companies
+## list
 
 List all companies that you have created in Codat.
 
@@ -119,13 +119,13 @@ req = operations.ListCompaniesRequest(
     query="iure",
 )
 
-res = s.companies.list_companies(req)
+res = s.companies.list(req)
 
 if res.companies is not None:
     # handle response
 ```
 
-## update_company
+## update
 
 Updates the given company with a new name and description
 
@@ -150,7 +150,7 @@ req = operations.UpdateCompanyRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.companies.update_company(req)
+res = s.companies.update(req)
 
 if res.company is not None:
     # handle response

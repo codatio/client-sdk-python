@@ -15,7 +15,7 @@ req = shared.CompanyRequestBody(
     name="Kelvin Sporer",
 )
 
-res = s.companies.create_company(req)
+res = s.companies.create(req)
 
 if res.company is not None:
     # handle response

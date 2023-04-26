@@ -26,7 +26,7 @@ req = shared.CompanyRequestBody(
     name="Kelvin Sporer",
 )
 
-res = s.companies.create_company(req)
+res = s.companies.create(req)
 
 if res.company is not None:
     # handle response
@@ -39,56 +39,55 @@ if res.company is not None:
 
 ### [companies](docs/companies/README.md)
 
-* [create_company](docs/companies/README.md#create_company) - Create company
-* [delete_company](docs/companies/README.md#delete_company) - Delete a company
-* [get_company](docs/companies/README.md#get_company) - Get company
-* [list_companies](docs/companies/README.md#list_companies) - List companies
-* [update_company](docs/companies/README.md#update_company) - Update company
+* [create](docs/companies/README.md#create) - Create company
+* [delete](docs/companies/README.md#delete) - Delete a company
+* [get](docs/companies/README.md#get) - Get company
+* [list](docs/companies/README.md#list) - List companies
+* [update](docs/companies/README.md#update) - Update company
 
 ### [connections](docs/connections/README.md)
 
-* [create_data_connection](docs/connections/README.md#create_data_connection) - Create connection
-* [delete_company_connection](docs/connections/README.md#delete_company_connection) - Delete connection
-* [get_company_connection](docs/connections/README.md#get_company_connection) - Get connection
-* [list_company_connections](docs/connections/README.md#list_company_connections) - List connections
-* [unlink_company_connection](docs/connections/README.md#unlink_company_connection) - Unlink connection
-* [update_connection_authorization](docs/connections/README.md#update_connection_authorization) - Update authorization
+* [create](docs/connections/README.md#create) - Create connection
+* [delete](docs/connections/README.md#delete) - Delete connection
+* [get](docs/connections/README.md#get) - Get connection
+* [list](docs/connections/README.md#list) - List connections
+* [unlink_connection](docs/connections/README.md#unlink_connection) - Unlink connection
+* [update_authorization](docs/connections/README.md#update_authorization) - Update authorization
 
 ### [data_status](docs/datastatus/README.md)
 
-* [get_company_data_history](docs/datastatus/README.md#get_company_data_history) - Get pull operations
-* [get_company_data_status](docs/datastatus/README.md#get_company_data_status) - Get data status
+* [get](docs/datastatus/README.md#get) - Get data status
 * [get_pull_operation](docs/datastatus/README.md#get_pull_operation) - Get pull operation
+* [list_pull_operations](docs/datastatus/README.md#list_pull_operations) - Get pull operations
 
 ### [integrations](docs/integrations/README.md)
 
-* [get_integration](docs/integrations/README.md#get_integration) - Get integration
-* [get_integrations_branding](docs/integrations/README.md#get_integrations_branding) - Get branding
-* [list_integrations](docs/integrations/README.md#list_integrations) - List integrations
+* [get](docs/integrations/README.md#get) - Get integration
+* [get_branding](docs/integrations/README.md#get_branding) - Get branding
+* [list](docs/integrations/README.md#list) - List integrations
 
 ### [push_data](docs/pushdata/README.md)
 
-* [get_company_push_history](docs/pushdata/README.md#get_company_push_history) - List push operations
-* [get_create_update_model_options_by_data_type](docs/pushdata/README.md#get_create_update_model_options_by_data_type) - List push options
-* [get_push_operation](docs/pushdata/README.md#get_push_operation) - Get push operation
+* [get_model_options](docs/pushdata/README.md#get_model_options) - Get push options
+* [get_operation](docs/pushdata/README.md#get_operation) - Get push operation
+* [list_operations](docs/pushdata/README.md#list_operations) - List push operations
 
 ### [refresh_data](docs/refreshdata/README.md)
 
-* [create_pull_operation](docs/refreshdata/README.md#create_pull_operation) - Queue pull operation
-* [refresh_company_data](docs/refreshdata/README.md#refresh_company_data) - Queue pull operations
+* [all](docs/refreshdata/README.md#all) - Queue pull operations
+* [by_data_type](docs/refreshdata/README.md#by_data_type) - Queue pull operation
 
 ### [settings](docs/settings/README.md)
 
 * [get_profile](docs/settings/README.md#get_profile) - Get profile
-* [get_profile_sync_settings](docs/settings/README.md#get_profile_sync_settings) - Get sync settings
+* [get_sync_settings](docs/settings/README.md#get_sync_settings) - Update all sync settings
 * [update_profile](docs/settings/README.md#update_profile) - Update profile
-* [update_sync_settings](docs/settings/README.md#update_sync_settings) - Update all sync settings
 
 ### [webhooks](docs/webhooks/README.md)
 
-* [create_rule](docs/webhooks/README.md#create_rule) - Create webhook
-* [get_webhook](docs/webhooks/README.md#get_webhook) - Get webhook
-* [list_rules](docs/webhooks/README.md#list_rules) - List webhooks
+* [create](docs/webhooks/README.md#create) - Create webhook
+* [get](docs/webhooks/README.md#get) - Get webhook
+* [list](docs/webhooks/README.md#list) - List webhooks
 <!-- End SDK Available Operations -->
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)

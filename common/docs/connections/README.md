@@ -6,14 +6,14 @@ Manage your companies' data connections.
 
 ### Available Operations
 
-* [create_data_connection](#create_data_connection) - Create connection
-* [delete_company_connection](#delete_company_connection) - Delete connection
-* [get_company_connection](#get_company_connection) - Get connection
-* [list_company_connections](#list_company_connections) - List connections
-* [unlink_company_connection](#unlink_company_connection) - Unlink connection
-* [update_connection_authorization](#update_connection_authorization) - Update authorization
+* [create](#create) - Create connection
+* [delete](#delete) - Delete connection
+* [get](#get) - Get connection
+* [list](#list) - List connections
+* [unlink_connection](#unlink_connection) - Unlink connection
+* [update_authorization](#update_authorization) - Update authorization
 
-## create_data_connection
+## create
 
 Create a data connection for a company
 
@@ -37,13 +37,13 @@ req = operations.CreateDataConnectionRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.connections.create_data_connection(req)
+res = s.connections.create(req)
 
 if res.connection is not None:
     # handle response
 ```
 
-## delete_company_connection
+## delete
 
 Revoke and remove a connection from a company.
 This operation is not reversible - the end user would need to reauthorize a new data connection if you wish to view new data for this company.
@@ -66,13 +66,13 @@ req = operations.DeleteCompanyConnectionRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.connections.delete_company_connection(req)
+res = s.connections.delete(req)
 
 if res.status_code == 200:
     # handle response
 ```
 
-## get_company_connection
+## get
 
 Get a single connection for a company
 
@@ -94,13 +94,13 @@ req = operations.GetCompanyConnectionRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.connections.get_company_connection(req)
+res = s.connections.get(req)
 
 if res.connection is not None:
     # handle response
 ```
 
-## list_company_connections
+## list
 
 List the connections for a company
 
@@ -125,13 +125,13 @@ req = operations.ListCompanyConnectionsRequest(
     query="minus",
 )
 
-res = s.connections.list_company_connections(req)
+res = s.connections.list(req)
 
 if res.connections is not None:
     # handle response
 ```
 
-## unlink_company_connection
+## unlink_connection
 
 This allows you to deauthorize a connection, without deleting it from Codat. This means you can still view any data that has previously been pulled into Codat, and also lets you re-authorize in future if your customer wishes to resume sharing their data.
 
@@ -148,21 +148,21 @@ s = codatcommon.CodatCommon(
 )
 
 
-req = operations.UnlinkCompanyConnectionRequest(
-    request_body=operations.UnlinkCompanyConnectionRequestBody(
+req = operations.UnlinkConnectionRequest(
+    request_body=operations.UnlinkConnectionRequestBody(
         status="placeat",
     ),
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.connections.unlink_company_connection(req)
+res = s.connections.unlink_connection(req)
 
 if res.connection is not None:
     # handle response
 ```
 
-## update_connection_authorization
+## update_authorization
 
 Update data connection's authorization.
 
@@ -189,7 +189,7 @@ req = operations.UpdateConnectionAuthorizationRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.connections.update_connection_authorization(req)
+res = s.connections.update_authorization(req)
 
 if res.connection is not None:
     # handle response
