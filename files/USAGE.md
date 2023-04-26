@@ -1,7 +1,7 @@
 <!-- Start SDK Example Usage -->
 ```python
 import codatfiles
-from codatfiles.models import operations, shared
+from codatfiles.models import operations
 
 s = codatfiles.CodatFiles(
     security=shared.Security(
@@ -12,9 +12,9 @@ s = codatfiles.CodatFiles(
 
 req = operations.DownloadFilesRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    date_="2022-10-23T00:00:00Z",
+    date_="corrupti",
 )
-    
+
 res = s.files.download_files(req)
 
 if res.data is not None:
