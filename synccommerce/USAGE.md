@@ -1,9 +1,9 @@
 <!-- Start SDK Example Usage -->
 ```python
-import codat
-from codat.models import operations, shared
+import codatsynccommerce
+from codatsynccommerce.models import shared
 
-s = codat.Codat(
+s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
         auth_header="YOUR_API_KEY_HERE",
     ),
@@ -13,7 +13,7 @@ s = codat.Codat(
 req = shared.CreateCompany(
     name="Bob's Burgers",
 )
-    
+
 res = s.company_management.create_company(req)
 
 if res.company is not None:
