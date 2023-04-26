@@ -22,7 +22,7 @@ class Orders:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_orders(self, request: operations.ListOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListOrdersResponse:
+    def list(self, request: operations.ListOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListOrdersResponse:
         r"""List orders
         Get a list of orders placed or held on the linked commerce platform
         """

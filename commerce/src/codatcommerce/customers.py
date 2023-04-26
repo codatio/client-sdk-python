@@ -22,7 +22,7 @@ class Customers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_customers(self, request: operations.ListCustomersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCustomersResponse:
+    def list(self, request: operations.ListCustomersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCustomersResponse:
         r"""List customers
         List all commerce customers for the given company and data connection
         """
