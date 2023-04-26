@@ -6,9 +6,9 @@ Retrieve standardized data from linked commerce platforms.
 
 ### Available Operations
 
-* [list_disputes](#list_disputes) - List disputes
+* [list](#list) - List disputes
 
-## list_disputes
+## list
 
 List commerce disputes
 
@@ -34,7 +34,7 @@ req = operations.ListDisputesRequest(
     query="provident",
 )
 
-res = s.disputes.list_disputes(req)
+res = s.disputes.list(req)
 
 if res.disputes is not None:
     # handle response

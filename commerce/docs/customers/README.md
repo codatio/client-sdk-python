@@ -6,9 +6,9 @@ Retrieve standardized data from linked commerce platforms.
 
 ### Available Operations
 
-* [list_customers](#list_customers) - List customers
+* [list](#list) - List customers
 
-## list_customers
+## list
 
 List all commerce customers for the given company and data connection
 
@@ -34,7 +34,7 @@ req = operations.ListCustomersRequest(
     query="corrupti",
 )
 
-res = s.customers.list_customers(req)
+res = s.customers.list(req)
 
 if res.customers is not None:
     # handle response

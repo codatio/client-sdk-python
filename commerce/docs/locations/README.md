@@ -6,9 +6,9 @@ Retrieve standardized data from linked commerce platforms.
 
 ### Available Operations
 
-* [list_locations](#list_locations) - List locations
+* [list](#list) - List locations
 
-## list_locations
+## list
 
 Retrieve a list of locations as seen in the commerce platform.
 
@@ -32,7 +32,7 @@ req = operations.ListLocationsRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.locations.list_locations(req)
+res = s.locations.list(req)
 
 if res.locations_response is not None:
     # handle response

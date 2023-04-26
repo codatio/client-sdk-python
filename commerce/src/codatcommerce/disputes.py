@@ -22,7 +22,7 @@ class Disputes:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_disputes(self, request: operations.ListDisputesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDisputesResponse:
+    def list(self, request: operations.ListDisputesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDisputesResponse:
         r"""List disputes
         List commerce disputes
         """

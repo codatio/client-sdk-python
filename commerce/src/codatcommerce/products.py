@@ -22,44 +22,7 @@ class Products:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def list_product_categories(self, request: operations.ListProductCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListProductCategoriesResponse:
-        r"""List product categories
-        Product categories are used to classify a group of products together, either by type (eg \"Furniture\"), or sometimes by tax profile.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.ListProductCategoriesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-productCategories', request)
-        
-        query_params = utils.get_query_params(operations.ListProductCategoriesRequest, request)
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url, params=query_params)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.ListProductCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ProductCategories])
-                res.product_categories = out
-
-        return res
-
-    def list_products(self, request: operations.ListProductsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListProductsResponse:
+    def list(self, request: operations.ListProductsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListProductsResponse:
         r"""List products
         The Products data type provides the company's product inventory, and includes the price and quantity of all products, and product variants, available for sale.
         """
@@ -93,6 +56,43 @@ class Products:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Products])
                 res.products = out
+
+        return res
+
+    def list_categories(self, request: operations.ListProductCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListProductCategoriesResponse:
+        r"""List product categories
+        Product categories are used to classify a group of products together, either by type (eg \"Furniture\"), or sometimes by tax profile.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListProductCategoriesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-productCategories', request)
+        
+        query_params = utils.get_query_params(operations.ListProductCategoriesRequest, request)
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListProductCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ProductCategories])
+                res.product_categories = out
 
         return res
 

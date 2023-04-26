@@ -6,9 +6,9 @@ Retrieve standardized data from linked commerce platforms.
 
 ### Available Operations
 
-* [list_transactions](#list_transactions) - List transactions
+* [list](#list) - List transactions
 
-## list_transactions
+## list
 
 Details of all financial transactions recorded in the commerce or point of sale system are added to the Transactions data type. For example, payments, service charges, and fees.
 
@@ -34,7 +34,7 @@ req = operations.ListTransactionsRequest(
     query="illum",
 )
 
-res = s.transactions.list_transactions(req)
+res = s.transactions.list(req)
 
 if res.transactions is not None:
     # handle response

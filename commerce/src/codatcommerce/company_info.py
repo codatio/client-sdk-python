@@ -22,7 +22,7 @@ class CompanyInfo:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_company_info(self, request: operations.GetCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyInfoResponse:
+    def get(self, request: operations.GetCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyInfoResponse:
         r"""Get company info
         Retrieve information about the company, as seen in the commerce platform.
         

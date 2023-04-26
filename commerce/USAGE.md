@@ -15,7 +15,7 @@ req = operations.GetCompanyInfoRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.company_info.get_company_info(req)
+res = s.company_info.get(req)
 
 if res.company_info is not None:
     # handle response

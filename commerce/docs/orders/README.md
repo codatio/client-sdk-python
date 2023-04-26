@@ -6,9 +6,9 @@ Retrieve standardized data from linked commerce platforms.
 
 ### Available Operations
 
-* [list_orders](#list_orders) - List orders
+* [list](#list) - List orders
 
-## list_orders
+## list
 
 Get a list of orders placed or held on the linked commerce platform
 
@@ -34,7 +34,7 @@ req = operations.ListOrdersRequest(
     query="distinctio",
 )
 
-res = s.orders.list_orders(req)
+res = s.orders.list(req)
 
 if res.orders is not None:
     # handle response
