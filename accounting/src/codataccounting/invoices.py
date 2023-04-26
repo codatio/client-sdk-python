@@ -22,42 +22,7 @@ class Invoices:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def download_invoice_pdf(self, request: operations.DownloadInvoicePdfRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoicePdfResponse:
-        r"""Get invoice as PDF
-        Get invoice as PDF
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.DownloadInvoicePdfRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}/pdf', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.DownloadInvoicePdfResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/octet-stream'):
-                res.data = http_res.content
-
-        return res
-
-    def create_invoice(self, request: operations.CreateInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateInvoiceResponse:
+    def create(self, request: operations.CreateInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateInvoiceResponse:
         r"""Create invoice
         Posts a new invoice to the accounting package for a given company.
         
@@ -104,7 +69,7 @@ class Invoices:
 
         return res
 
-    def delete_invoice(self, request: operations.DeleteInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteInvoiceResponse:
+    def delete(self, request: operations.DeleteInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteInvoiceResponse:
         r"""Delete invoice
         Deletes an invoice from the accounting package for a given company.
         
@@ -144,7 +109,7 @@ class Invoices:
 
         return res
 
-    def download_invoice_attachment(self, request: operations.DownloadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoiceAttachmentResponse:
+    def download_attachment(self, request: operations.DownloadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoiceAttachmentResponse:
         r"""Download invoice attachment
         Download invoice attachments
         """
@@ -179,7 +144,114 @@ class Invoices:
 
         return res
 
-    def get_create_update_invoices_model(self, request: operations.GetCreateUpdateInvoicesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateInvoicesModelResponse:
+    def download_pdf(self, request: operations.DownloadInvoicePdfRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoicePdfResponse:
+        r"""Get invoice as PDF
+        Get invoice as PDF
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.DownloadInvoicePdfRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}/pdf', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DownloadInvoicePdfResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/octet-stream'):
+                res.data = http_res.content
+
+        return res
+
+    def get(self, request: operations.GetInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetInvoiceResponse:
+        r"""Get invoice
+        Get invoice
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetInvoiceRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetInvoiceResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Invoice])
+                res.invoice = out
+
+        return res
+
+    def get_attachment(self, request: operations.GetInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetInvoiceAttachmentResponse:
+        r"""Get invoice attachment
+        Get invoice attachment
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetInvoiceAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
+                res.attachment = out
+
+        return res
+
+    def get_create_update_model(self, request: operations.GetCreateUpdateInvoicesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateInvoicesModelResponse:
         r"""Get create/update invoice model
         Get create/update invoice model. Returns the expected data for the request payload.
         
@@ -221,115 +293,7 @@ class Invoices:
 
         return res
 
-    def get_invoice(self, request: operations.GetInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetInvoiceResponse:
-        r"""Get invoice
-        Get invoice
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetInvoiceRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetInvoiceResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Invoice])
-                res.invoice = out
-
-        return res
-
-    def get_invoice_attachment(self, request: operations.GetInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetInvoiceAttachmentResponse:
-        r"""Get invoice attachment
-        Get invoice attachment
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetInvoiceAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
-                res.attachment = out
-
-        return res
-
-    def get_invoice_attachments(self, request: operations.GetInvoiceAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetInvoiceAttachmentsResponse:
-        r"""Get invoice attachments
-        Get invoice attachments
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetInvoiceAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetInvoiceAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
-                res.attachments_dataset = out
-
-        return res
-
-    def list_invoices(self, request: operations.ListInvoicesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListInvoicesResponse:
+    def list(self, request: operations.ListInvoicesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListInvoicesResponse:
         r"""List invoices
         Gets the latest invoices for a company, with pagination
         """
@@ -366,7 +330,43 @@ class Invoices:
 
         return res
 
-    def update_invoice(self, request: operations.UpdateInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateInvoiceResponse:
+    def list_attachments(self, request: operations.ListInvoiceAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListInvoiceAttachmentsResponse:
+        r"""List invoice attachments
+        List invoice attachments
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListInvoiceAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListInvoiceAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
+                res.attachments_dataset = out
+
+        return res
+
+    def update(self, request: operations.UpdateInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateInvoiceResponse:
         r"""Update invoice
         Posts an updated invoice to the accounting package for a given company.
         
@@ -413,7 +413,7 @@ class Invoices:
 
         return res
 
-    def upload_invoice_attachment(self, request: operations.UploadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadInvoiceAttachmentResponse:
+    def upload_attachment(self, request: operations.UploadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadInvoiceAttachmentResponse:
         r"""Push invoice attachment
         Push invoice attachment
         """

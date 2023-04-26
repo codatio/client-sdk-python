@@ -22,7 +22,7 @@ class BillCreditNotes:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_bill_credit_note(self, request: operations.CreateBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillCreditNoteResponse:
+    def create(self, request: operations.CreateBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillCreditNoteResponse:
         r"""Create bill credit note
         Posts a new billCreditNote to the accounting package for a given company.
         
@@ -69,7 +69,7 @@ class BillCreditNotes:
 
         return res
 
-    def get_bill_credit_note(self, request: operations.GetBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillCreditNoteResponse:
+    def get(self, request: operations.GetBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillCreditNoteResponse:
         r"""Get bill credit note
         Gets a single billCreditNote corresponding to the given ID.
         """
@@ -105,7 +105,7 @@ class BillCreditNotes:
 
         return res
 
-    def get_create_update_bill_credit_notes_model(self, request: operations.GetCreateUpdateBillCreditNotesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBillCreditNotesModelResponse:
+    def get_create_update_model(self, request: operations.GetCreateUpdateBillCreditNotesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBillCreditNotesModelResponse:
         r"""Get create/update bill credit note model
         Get create/update bill credit note model.
         
@@ -145,7 +145,7 @@ class BillCreditNotes:
 
         return res
 
-    def list_bill_credit_notes(self, request: operations.ListBillCreditNotesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillCreditNotesResponse:
+    def list(self, request: operations.ListBillCreditNotesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillCreditNotesResponse:
         r"""List bill credit notes
         Gets a list of all bill credit notes for a company, with pagination
         """
@@ -182,7 +182,7 @@ class BillCreditNotes:
 
         return res
 
-    def update_bill_credit_note(self, request: operations.UpdateBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBillCreditNoteResponse:
+    def update(self, request: operations.UpdateBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBillCreditNoteResponse:
         r"""Update bill credit note
         Posts an updated billCreditNote to the accounting package for a given company.
         

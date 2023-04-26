@@ -22,7 +22,7 @@ class BankAccountTransactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_bank_transactions(self, request: operations.CreateBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankTransactionsResponse:
+    def create(self, request: operations.CreateBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankTransactionsResponse:
         r"""Create bank transactions
         Posts bank transactions to the accounting package for a given company.
         
@@ -67,7 +67,7 @@ class BankAccountTransactions:
 
         return res
 
-    def get_create_bank_account_model(self, request: operations.GetCreateBankAccountModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBankAccountModelResponse:
+    def get_create_model(self, request: operations.GetCreateBankAccountModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBankAccountModelResponse:
         r"""List push options for bank account bank transactions
         Gets the options of pushing bank account transactions.
         """
@@ -103,7 +103,7 @@ class BankAccountTransactions:
 
         return res
 
-    def list_bank_account_transactions(self, request: operations.ListBankAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountTransactionsResponse:
+    def list(self, request: operations.ListBankAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountTransactionsResponse:
         r"""List bank transactions for bank account
         Gets bank transactions for a given bank account ID
         """
@@ -140,7 +140,7 @@ class BankAccountTransactions:
 
         return res
 
-    def list_bank_transactions(self, request: operations.ListBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankTransactionsResponse:
+    def list_transactions(self, request: operations.ListBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankTransactionsResponse:
         r"""List all bank transactions
         Gets the latest bank transactions for given account ID and company. Doesn't require connection ID.
         """

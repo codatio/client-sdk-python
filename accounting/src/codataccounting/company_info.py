@@ -22,7 +22,7 @@ class CompanyInfo:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_company_info(self, request: operations.GetCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyInfoResponse:
+    def get(self, request: operations.GetCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyInfoResponse:
         r"""Get company info
         Gets the latest basic info for a company.
         """
@@ -58,13 +58,13 @@ class CompanyInfo:
 
         return res
 
-    def post_sync_info(self, request: operations.PostSyncInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.PostSyncInfoResponse:
+    def refresh(self, request: operations.RefreshCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RefreshCompanyInfoResponse:
         r"""Refresh company info
         Initiates the process of synchronising basic info for a company
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostSyncInfoRequest, base_url, '/companies/{companyId}/data/info', request)
+        url = utils.generate_url(operations.RefreshCompanyInfoRequest, base_url, '/companies/{companyId}/data/info', request)
         
         
         client = self._security_client
@@ -85,7 +85,7 @@ class CompanyInfo:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostSyncInfoResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.RefreshCompanyInfoResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

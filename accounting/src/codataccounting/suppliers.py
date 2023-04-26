@@ -22,8 +22,8 @@ class Suppliers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_supplier(self, request: operations.CreateSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateSupplierResponse:
-        r"""Create suppliers
+    def create(self, request: operations.CreateSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateSupplierResponse:
+        r"""Create supplier
         Push suppliers
         
         Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/accounting-api#/operations/get-create-update-suppliers-model).
@@ -69,7 +69,7 @@ class Suppliers:
 
         return res
 
-    def download_supplier_attachment(self, request: operations.DownloadSupplierAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadSupplierAttachmentResponse:
+    def download_attachment(self, request: operations.DownloadSupplierAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadSupplierAttachmentResponse:
         r"""Download supplier attachment
         Download supplier attachment
         """
@@ -104,7 +104,79 @@ class Suppliers:
 
         return res
 
-    def get_create_update_suppliers_model(self, request: operations.GetCreateUpdateSuppliersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateSuppliersModelResponse:
+    def get(self, request: operations.GetSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSupplierResponse:
+        r"""Get supplier
+        Gets a single supplier corresponding to the given ID.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetSupplierRequest, base_url, '/companies/{companyId}/data/suppliers/{supplierId}', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetSupplierResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Supplier])
+                res.supplier = out
+
+        return res
+
+    def get_attachment(self, request: operations.GetSupplierAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSupplierAttachmentResponse:
+        r"""Get supplier attachment
+        Get supplier attachment
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetSupplierAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments/{attachmentId}', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetSupplierAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
+                res.attachment = out
+
+        return res
+
+    def get_create_update_model(self, request: operations.GetCreateUpdateSuppliersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateSuppliersModelResponse:
         r"""Get create/update supplier model
         Get create/update supplier model. Returns the expected data for the request payload.
         
@@ -146,115 +218,7 @@ class Suppliers:
 
         return res
 
-    def get_supplier(self, request: operations.GetSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSupplierResponse:
-        r"""Get supplier
-        Gets a single supplier corresponding to the given ID.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetSupplierRequest, base_url, '/companies/{companyId}/data/suppliers/{supplierId}', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetSupplierResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Supplier])
-                res.supplier = out
-
-        return res
-
-    def get_supplier_attachment(self, request: operations.GetSupplierAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSupplierAttachmentResponse:
-        r"""Get supplier attachment
-        Get supplier attachment
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetSupplierAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments/{attachmentId}', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetSupplierAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
-                res.attachment = out
-
-        return res
-
-    def list_supplier_attachments(self, request: operations.ListSupplierAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSupplierAttachmentsResponse:
-        r"""List supplier attachments
-        Get supplier attachments
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.ListSupplierAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.ListSupplierAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
-                res.attachments_dataset = out
-
-        return res
-
-    def list_suppliers(self, request: operations.ListSuppliersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSuppliersResponse:
+    def list(self, request: operations.ListSuppliersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSuppliersResponse:
         r"""List suppliers
         Gets the latest suppliers for a company, with pagination
         """
@@ -291,9 +255,45 @@ class Suppliers:
 
         return res
 
-    def put_supplier(self, request: operations.PutSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.PutSupplierResponse:
+    def list_attachments(self, request: operations.ListSupplierAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSupplierAttachmentsResponse:
+        r"""List supplier attachments
+        Get supplier attachments
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListSupplierAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListSupplierAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
+                res.attachments_dataset = out
+
+        return res
+
+    def update(self, request: operations.UpdateSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateSupplierResponse:
         r"""Update supplier
-        Push supplier
+        Update supplier
         
         Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/accounting-api#/operations/get-create-update-suppliers-model).
         
@@ -303,13 +303,13 @@ class Suppliers:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PutSupplierRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/suppliers/{supplierId}', request)
+        url = utils.generate_url(operations.UpdateSupplierRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/suppliers/{supplierId}', request)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "supplier", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(operations.PutSupplierRequest, request)
+        query_params = utils.get_query_params(operations.UpdateSupplierRequest, request)
         
         client = self._security_client
         
@@ -329,12 +329,12 @@ class Suppliers:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PutSupplierResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UpdateSupplierResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PutSupplier200ApplicationJSON])
-                res.put_supplier_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.UpdateSupplierResponse])
+                res.update_supplier_response = out
 
         return res
 

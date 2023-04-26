@@ -22,7 +22,7 @@ class TrackingCategories:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_tracking_category(self, request: operations.GetTrackingCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTrackingCategoryResponse:
+    def get(self, request: operations.GetTrackingCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTrackingCategoryResponse:
         r"""Get tracking categories
         Gets the specified tracking categories for a given company.
         """
@@ -58,7 +58,7 @@ class TrackingCategories:
 
         return res
 
-    def list_tracking_categories(self, request: operations.ListTrackingCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTrackingCategoriesResponse:
+    def list(self, request: operations.ListTrackingCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTrackingCategoriesResponse:
         r"""List tracking categories
         Gets the latest tracking categories for a given company.
         """

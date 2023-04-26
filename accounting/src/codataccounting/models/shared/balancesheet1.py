@@ -25,10 +25,10 @@ class BalanceSheet1:
     This report will reflect the structure and line descriptions that the business has set in their own accounting platform.
     
     **History**
-    By default, Codat pulls (up to) 24 months of balance sheets for a company. You can adjust this to fetch more history, where available, by updating the `monthsToSync` value for `balanceSheet` on the [data type settings endpoint](https://docs.codat.io/codat-api#/operations/post-profile-syncSettings).
+    By default, Codat pulls (up to) 24 months of balance sheets for a company. You can adjust this to fetch more history, where available, by updating the `monthsToSync` value for `balanceSheet` on the [data type settings endpoint](https://docs.codat.io/codat-api#/operations/update-sync-settings).
     
     **Want to pull this in a standardised structure?**
-    Our [Enhanced Financials](https://docs.codat.io/assess/reports/enhanced-financials/financials) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
+    Our [Enhanced Financials](https://docs.codat.io/assess/enhanced-financials/overview) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
     """
     
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})

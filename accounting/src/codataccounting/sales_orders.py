@@ -22,7 +22,7 @@ class SalesOrders:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_sales_order(self, request: operations.GetSalesOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSalesOrderResponse:
+    def get(self, request: operations.GetSalesOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSalesOrderResponse:
         r"""Get sales order
         Get sales order
         """
@@ -58,7 +58,7 @@ class SalesOrders:
 
         return res
 
-    def list_sales_orders(self, request: operations.ListSalesOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSalesOrdersResponse:
+    def list(self, request: operations.ListSalesOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSalesOrdersResponse:
         r"""List sales orders
         Get sales orders
         """

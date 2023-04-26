@@ -75,27 +75,7 @@ class BankAccount:
     institution: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('institution'), 'exclude': lambda f: f is None }})
     r"""The institution of the bank account."""  
     metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
-    ```
-    2020-10-08T22:40:50Z
-    2021-01-01T00:00:00
-    ```
-    
-    
-    
-    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
-    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
-    - Unqualified local time: `2021-11-15T01:00:00`
-    - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
-    > Time zones
-    > 
-    > Not all dates from Codat will contain information about time zones.  
-    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
+    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
     nominal_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('nominalCode'), 'exclude': lambda f: f is None }})
     r"""Code used to identify each nominal account for a business."""  
     overdraft_limit: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overdraftLimit'), 'exclude': lambda f: f is None }})
@@ -109,25 +89,5 @@ class BankAccount:
     Xero integrations
     The sort code is only displayed when the currency = GBP and the sort code and account number sum to 14 digits. For non-GBP accounts, this field is not populated.
     """  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
-    ```
-    2020-10-08T22:40:50Z
-    2021-01-01T00:00:00
-    ```
-    
-    
-    
-    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
-    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
-    - Unqualified local time: `2021-11-15T01:00:00`
-    - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
-    > Time zones
-    > 
-    > Not all dates from Codat will contain information about time zones.  
-    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
+    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
     

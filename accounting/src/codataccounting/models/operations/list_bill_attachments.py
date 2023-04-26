@@ -3,22 +3,25 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import dataset as shared_dataset
+from ..shared import attachmentsdataset as shared_attachmentsdataset
 from typing import Optional
 
 
 @dataclasses.dataclass
-class PostSyncInfoRequest:
+class ListBillAttachmentsRequest:
     
+    bill_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'billId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a bill"""  
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
     
 
 @dataclasses.dataclass
-class PostSyncInfoResponse:
+class ListBillAttachmentsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    dataset: Optional[shared_dataset.Dataset] = dataclasses.field(default=None)
+    attachments_dataset: Optional[shared_attachmentsdataset.AttachmentsDataset] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

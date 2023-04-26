@@ -3,12 +3,12 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import directincomes as shared_directincomes
+from ..shared import directcosts as shared_directcosts
 from typing import Optional
 
 
 @dataclasses.dataclass
-class GetDirectIncomesRequest:
+class ListDirectCostsRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
@@ -23,11 +23,11 @@ class GetDirectIncomesRequest:
     
 
 @dataclasses.dataclass
-class GetDirectIncomesResponse:
+class ListDirectCostsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    direct_incomes: Optional[shared_directincomes.DirectIncomes] = dataclasses.field(default=None)
+    direct_costs: Optional[shared_directcosts.DirectCosts] = dataclasses.field(default=None)
     r"""Success"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

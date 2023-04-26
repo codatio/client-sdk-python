@@ -22,7 +22,7 @@ class Payments:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_payment(self, request: operations.CreatePaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePaymentResponse:
+    def create(self, request: operations.CreatePaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePaymentResponse:
         r"""Create payment
         Posts a new payment to the accounting package for a given company.
         
@@ -69,7 +69,43 @@ class Payments:
 
         return res
 
-    def get_create_payments_model(self, request: operations.GetCreatePaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreatePaymentsModelResponse:
+    def get(self, request: operations.GetPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPaymentResponse:
+        r"""Get payment
+        Get payment
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetPaymentRequest, base_url, '/companies/{companyId}/data/payments/{paymentId}', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetPaymentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Payment])
+                res.payment = out
+
+        return res
+
+    def get_create_model(self, request: operations.GetCreatePaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreatePaymentsModelResponse:
         r"""Get create payment model
         Get create payment model. Returns the expected data for the request payload.
         
@@ -111,43 +147,7 @@ class Payments:
 
         return res
 
-    def get_payment(self, request: operations.GetPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPaymentResponse:
-        r"""Get payment
-        Get payment
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetPaymentRequest, base_url, '/companies/{companyId}/data/payments/{paymentId}', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetPaymentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Payment])
-                res.payment = out
-
-        return res
-
-    def list_payments(self, request: operations.ListPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentsResponse:
+    def list(self, request: operations.ListPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentsResponse:
         r"""List payments
         Gets the latest payments for a company, with pagination
         """

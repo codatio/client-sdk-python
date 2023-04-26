@@ -8,7 +8,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetInvoiceAttachmentsRequest:
+class ListInvoiceAttachmentsRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
@@ -17,7 +17,7 @@ class GetInvoiceAttachmentsRequest:
     
 
 @dataclasses.dataclass
-class GetInvoiceAttachmentsResponse:
+class ListInvoiceAttachmentsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  

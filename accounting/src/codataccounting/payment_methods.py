@@ -22,7 +22,7 @@ class PaymentMethods:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_payment_method(self, request: operations.GetPaymentMethodRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPaymentMethodResponse:
+    def get(self, request: operations.GetPaymentMethodRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPaymentMethodResponse:
         r"""Get payment method
         Gets the specified payment method for a given company.
         """
@@ -58,7 +58,7 @@ class PaymentMethods:
 
         return res
 
-    def list_payment_methods(self, request: operations.ListPaymentMethodsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentMethodsResponse:
+    def list(self, request: operations.ListPaymentMethodsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentMethodsResponse:
         r"""List all payment methods
         Gets the payment methods for a given company.
         """

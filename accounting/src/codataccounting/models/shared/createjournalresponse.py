@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 import dataclasses
-import requests as requests_http
 from ..shared import datatype_enum as shared_datatype_enum
 from ..shared import journal as shared_journal
 from ..shared import pushoperationchange as shared_pushoperationchange
@@ -13,18 +12,9 @@ from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
-@dataclasses.dataclass
-class PushJournalRequest:
-    
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
-    journal: Optional[shared_journal.Journal] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
-    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})  
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PushJournal200ApplicationJSON:
+class CreateJournalResponse:
     r"""Success"""
     
     company_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId') }})
@@ -110,14 +100,4 @@ class PushJournal200ApplicationJSON:
     timeout_in_seconds: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInSeconds'), 'exclude': lambda f: f is None }})  
     validation: Optional[shared_validation.Validation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""  
-    
-
-@dataclasses.dataclass
-class PushJournalResponse:
-    
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
-    push_journal_200_application_json_object: Optional[PushJournal200ApplicationJSON] = dataclasses.field(default=None)
-    r"""Success"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

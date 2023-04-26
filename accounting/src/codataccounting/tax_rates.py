@@ -22,7 +22,7 @@ class TaxRates:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_tax_rate(self, request: operations.GetTaxRateRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxRateResponse:
+    def get(self, request: operations.GetTaxRateRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxRateResponse:
         r"""Get tax rate
         Gets the specified tax rate for a given company.
         """
@@ -58,7 +58,7 @@ class TaxRates:
 
         return res
 
-    def list_tax_rates(self, request: operations.ListTaxRatesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTaxRatesResponse:
+    def list(self, request: operations.ListTaxRatesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTaxRatesResponse:
         r"""List all tax rates
         Gets the latest tax rates for a given company.
         """

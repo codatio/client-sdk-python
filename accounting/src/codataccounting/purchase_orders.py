@@ -22,7 +22,7 @@ class PurchaseOrders:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_purchase_order(self, request: operations.CreatePurchaseOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePurchaseOrderResponse:
+    def create(self, request: operations.CreatePurchaseOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePurchaseOrderResponse:
         r"""Create purchase order
         Posts a new purchase order to the accounting package for a given company.
         
@@ -69,7 +69,43 @@ class PurchaseOrders:
 
         return res
 
-    def get_create_update_purchase_orders_model(self, request: operations.GetCreateUpdatePurchaseOrdersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdatePurchaseOrdersModelResponse:
+    def get(self, request: operations.GetPurchaseOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPurchaseOrderResponse:
+        r"""Get purchase order
+        Get purchase order
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetPurchaseOrderRequest, base_url, '/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetPurchaseOrderResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PurchaseOrder])
+                res.purchase_order = out
+
+        return res
+
+    def get_create_update_model(self, request: operations.GetCreateUpdatePurchaseOrdersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdatePurchaseOrdersModelResponse:
         r"""Get create/update purchase order model
         Get create/update purchase order model. Returns the expected data for the request payload.
         
@@ -111,43 +147,7 @@ class PurchaseOrders:
 
         return res
 
-    def get_purchase_order(self, request: operations.GetPurchaseOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPurchaseOrderResponse:
-        r"""Get purchase order
-        Get purchase order
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetPurchaseOrderRequest, base_url, '/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetPurchaseOrderResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.PurchaseOrder])
-                res.purchase_order = out
-
-        return res
-
-    def list_purchase_orders(self, request: operations.ListPurchaseOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPurchaseOrdersResponse:
+    def list(self, request: operations.ListPurchaseOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPurchaseOrdersResponse:
         r"""List purchase orders
         Get purchase orders
         """
@@ -184,7 +184,7 @@ class PurchaseOrders:
 
         return res
 
-    def update_purchase_order(self, request: operations.UpdatePurchaseOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdatePurchaseOrderResponse:
+    def update(self, request: operations.UpdatePurchaseOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdatePurchaseOrderResponse:
         r"""Update purchase order
         Posts an updated purchase order to the accounting package for a given company.
         
