@@ -1,4 +1,19 @@
-<!-- Start SDK Example Usage -->
+# account_balances
+
+## Overview
+
+Balances for a bank account including end-of-day batch balance or running balances per transaction.
+
+### Available Operations
+
+* [list](#list) - List account balances
+
+## list
+
+Gets a list of balances for a bank account including end-of-day batch balance or running balances per transaction.
+
+### Example Usage
+
 ```python
 import codatbanking
 from codatbanking.models import operations
@@ -16,7 +31,7 @@ req = operations.ListAccountBalancesRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="corrupti",
+    query="provident",
 )
 
 res = s.account_balances.list(req)
@@ -24,4 +39,3 @@ res = s.account_balances.list(req)
 if res.account_balances is not None:
     # handle response
 ```
-<!-- End SDK Example Usage -->

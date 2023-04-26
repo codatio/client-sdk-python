@@ -22,7 +22,7 @@ class Transactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_transaction(self, request: operations.GetTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionResponse:
+    def get(self, request: operations.GetTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionResponse:
         r"""Get bank transaction
         Gets a specified bank transaction for a given company
         """
@@ -58,44 +58,7 @@ class Transactions:
 
         return res
 
-    def list_bank_transactions(self, request: operations.ListBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankTransactionsResponse:
-        r"""List banking transactions
-        Gets a list of transactions incurred by a company across all bank accounts.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.ListBankTransactionsRequest, base_url, '/companies/{companyId}/data/banking-transactions', request)
-        
-        query_params = utils.get_query_params(operations.ListBankTransactionsRequest, request)
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url, params=query_params)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.ListBankTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Transactions])
-                res.transactions = out
-
-        return res
-
-    def list_transactions(self, request: operations.ListTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionsResponse:
+    def list(self, request: operations.ListTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionsResponse:
         r"""List transactions
         Gets a list of transactions incurred by a bank account.
         """
