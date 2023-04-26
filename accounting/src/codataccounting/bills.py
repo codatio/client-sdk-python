@@ -22,7 +22,7 @@ class Bills:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_bill(self, request: operations.CreateBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillResponse:
+    def create(self, request: operations.CreateBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillResponse:
         r"""Create bill
         Posts a new bill to the accounting package for a given company.
         
@@ -69,7 +69,7 @@ class Bills:
 
         return res
 
-    def delete_bill(self, request: operations.DeleteBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteBillResponse:
+    def delete(self, request: operations.DeleteBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteBillResponse:
         r"""Delete bill
         Deletes a bill from the accounting package for a given company.
         
@@ -109,7 +109,7 @@ class Bills:
 
         return res
 
-    def download_bill_attachment(self, request: operations.DownloadBillAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadBillAttachmentResponse:
+    def download_attachment(self, request: operations.DownloadBillAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadBillAttachmentResponse:
         r"""Download bill attachment
         Download bill attachment
         """
@@ -144,7 +144,7 @@ class Bills:
 
         return res
 
-    def get_bill(self, request: operations.GetBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillResponse:
+    def get(self, request: operations.GetBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillResponse:
         r"""Get bill
         Get bill
         """
@@ -180,7 +180,7 @@ class Bills:
 
         return res
 
-    def get_bill_attachment(self, request: operations.GetBillAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillAttachmentResponse:
+    def get_attachment(self, request: operations.GetBillAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillAttachmentResponse:
         r"""Get bill attachment
         Get bill attachment
         """
@@ -216,43 +216,7 @@ class Bills:
 
         return res
 
-    def get_bill_attachments(self, request: operations.GetBillAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillAttachmentsResponse:
-        r"""List bill attachments
-        Get bill attachments
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetBillAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetBillAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
-                res.attachments_dataset = out
-
-        return res
-
-    def get_create_update_bills_model(self, request: operations.GetCreateUpdateBillsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBillsModelResponse:
+    def get_create_update_model(self, request: operations.GetCreateUpdateBillsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBillsModelResponse:
         r"""Get create/update bill model
         Get create/update bill model.
         
@@ -292,7 +256,7 @@ class Bills:
 
         return res
 
-    def list_bills(self, request: operations.ListBillsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillsResponse:
+    def list(self, request: operations.ListBillsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillsResponse:
         r"""List bills
         Gets the latest bills for a company, with pagination
         """
@@ -329,7 +293,43 @@ class Bills:
 
         return res
 
-    def update_bill(self, request: operations.UpdateBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBillResponse:
+    def list_attachments(self, request: operations.ListBillAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillAttachmentsResponse:
+        r"""List bill attachments
+        List bill attachments
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListBillAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListBillAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AttachmentsDataset])
+                res.attachments_dataset = out
+
+        return res
+
+    def update(self, request: operations.UpdateBillRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBillResponse:
         r"""Update bill
         Posts an updated bill to the accounting package for a given company.
         
@@ -376,13 +376,13 @@ class Bills:
 
         return res
 
-    def upload_bill_attachments(self, request: operations.UploadBillAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadBillAttachmentsResponse:
-        r"""Upload bill attachments
-        Upload bill attachments
+    def upload_attachment(self, request: operations.UploadBillAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadBillAttachmentResponse:
+        r"""Upload bill attachment
+        Upload bill attachment
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.UploadBillAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments', request)
+        url = utils.generate_url(operations.UploadBillAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments', request)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
@@ -407,7 +407,7 @@ class Bills:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.UploadBillAttachmentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UploadBillAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
 
         return res

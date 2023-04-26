@@ -22,7 +22,7 @@ class BankAccounts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_bank_account(self, request: operations.CreateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankAccountResponse:
+    def create(self, request: operations.CreateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankAccountResponse:
         r"""Create bank account
         Posts a new bank account to the accounting package for a given company.
         
@@ -69,44 +69,7 @@ class BankAccounts:
 
         return res
 
-    def get_all_bank_account(self, request: operations.GetAllBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAllBankAccountResponse:
-        r"""Get bank account
-        Gets the bank account for given account ID.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetAllBankAccountRequest, base_url, '/companies/{companyId}/data/bankAccounts/{accountId}', request)
-        
-        query_params = utils.get_query_params(operations.GetAllBankAccountRequest, request)
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url, params=query_params)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetAllBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.BankStatementAccount])
-                res.bank_statement_account = out
-
-        return res
-
-    def get_bank_account(self, request: operations.GetBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankAccountResponse:
+    def get(self, request: operations.GetBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankAccountResponse:
         r"""Get bank account
         Gets the bank account with a given ID
         """
@@ -142,7 +105,7 @@ class BankAccounts:
 
         return res
 
-    def get_create_update_bank_accounts_model(self, request: operations.GetCreateUpdateBankAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBankAccountsModelResponse:
+    def get_create_update_model(self, request: operations.GetCreateUpdateBankAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBankAccountsModelResponse:
         r"""Get create/update bank account model
         Get create/update bank account model. Returns the expected data for the request payload.
         
@@ -184,7 +147,7 @@ class BankAccounts:
 
         return res
 
-    def list_bank_accounts(self, request: operations.ListBankAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountsResponse:
+    def list(self, request: operations.ListBankAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountsResponse:
         r"""List bank accounts
         Gets the list of bank accounts for a given connection
         """
@@ -221,7 +184,7 @@ class BankAccounts:
 
         return res
 
-    def update_bank_account(self, request: operations.UpdateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankAccountResponse:
+    def update(self, request: operations.UpdateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankAccountResponse:
         r"""Update bank account
         Posts an updated bank account to the accounting package for a given company.
         

@@ -6,12 +6,12 @@ Accounts
 
 ### Available Operations
 
-* [create_account](#create_account) - Create account
-* [get_account](#get_account) - Get account
-* [get_create_chart_of_accounts_model](#get_create_chart_of_accounts_model) - Get create account model
-* [list_accounts](#list_accounts) - List accounts
+* [create](#create) - Create account
+* [get](#get) - Get account
+* [get_create_model](#get_create_model) - Get create account model
+* [list](#list) - List accounts
 
-## create_account
+## create
 
 Creates a new account for a given company.
 
@@ -38,58 +38,66 @@ req = operations.CreateAccountRequest(
     account=shared.Account(
         currency="quibusdam",
         current_balance=6027.63,
-        description="nulla",
-        fully_qualified_category="corrupti",
-        fully_qualified_name="illum",
-        id="69a674e0-f467-4cc8-b96e-d151a05dfc2d",
+        description="Invoices the business has issued but has not yet collected payment on.",
+        fully_qualified_category="Asset.Current",
+        fully_qualified_name="Asset.Current.Accounts Receivable",
+        id="1b6266d1-1e44-46c5-8eb5-a8f98e03124e",
         is_bank_account=False,
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="at",
-        name="Javier Schmidt",
-        nominal_code="totam",
-        source_modified_date="porro",
-        status="Archived",
-        type="Unknown",
+        modified_date="nulla",
+        name="Accounts Receivable",
+        nominal_code="610",
+        source_modified_date="corrupti",
+        status="Active",
+        type="Asset",
         valid_datatype_links=[
             shared.ValidDataTypeLinks(
                 links=[
-                    "occaecati",
-                    "fugit",
-                    "deleniti",
+                    "error",
+                    "deserunt",
                 ],
-                property="hic",
+                property="suscipit",
             ),
             shared.ValidDataTypeLinks(
                 links=[
-                    "totam",
-                    "beatae",
-                    "commodi",
+                    "magnam",
+                    "debitis",
+                ],
+                property="ipsa",
+            ),
+            shared.ValidDataTypeLinks(
+                links=[
+                    "tempora",
+                    "suscipit",
                     "molestiae",
+                    "minus",
                 ],
-                property="modi",
+                property="placeat",
             ),
             shared.ValidDataTypeLinks(
                 links=[
-                    "impedit",
+                    "iusto",
+                    "excepturi",
+                    "nisi",
                 ],
-                property="cum",
+                property="recusandae",
             ),
         ],
     ),
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    timeout_in_minutes=456150,
+    timeout_in_minutes=836079,
 )
 
-res = s.accounts.create_account(req)
+res = s.accounts.create(req)
 
 if res.create_account_response is not None:
     # handle response
 ```
 
-## get_account
+## get
 
 Gets a single account corresponding to the given ID.
 
@@ -111,13 +119,13 @@ req = operations.GetAccountRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.accounts.get_account(req)
+res = s.accounts.get(req)
 
 if res.account is not None:
     # handle response
 ```
 
-## get_create_chart_of_accounts_model
+## get_create_model
 
 Get create account model. Returns the expected data for the request payload.
 
@@ -145,13 +153,13 @@ req = operations.GetCreateChartOfAccountsModelRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.accounts.get_create_chart_of_accounts_model(req)
+res = s.accounts.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
 ```
 
-## list_accounts
+## list
 
 Gets the latest accounts for a company
 
@@ -173,10 +181,10 @@ req = operations.ListAccountsRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="ipsum",
+    query="ab",
 )
 
-res = s.accounts.list_accounts(req)
+res = s.accounts.list(req)
 
 if res.accounts is not None:
     # handle response

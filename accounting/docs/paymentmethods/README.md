@@ -6,10 +6,10 @@ Payment methods
 
 ### Available Operations
 
-* [get_payment_method](#get_payment_method) - Get payment method
-* [list_payment_methods](#list_payment_methods) - List all payment methods
+* [get](#get) - Get payment method
+* [list](#list) - List all payment methods
 
-## get_payment_method
+## get
 
 Gets the specified payment method for a given company.
 
@@ -28,16 +28,16 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPaymentMethodRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    payment_method_id="harum",
+    payment_method_id="ea",
 )
 
-res = s.payment_methods.get_payment_method(req)
+res = s.payment_methods.get(req)
 
 if res.payment_method is not None:
     # handle response
 ```
 
-## list_payment_methods
+## list
 
 Gets the payment methods for a given company.
 
@@ -62,7 +62,7 @@ req = operations.ListPaymentMethodsRequest(
     query="error",
 )
 
-res = s.payment_methods.list_payment_methods(req)
+res = s.payment_methods.list(req)
 
 if res.payment_methods is not None:
     # handle response

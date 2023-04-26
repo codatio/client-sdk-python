@@ -7,24 +7,24 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class UploadBillAttachmentsRequestBody:
+class UploadBillAttachmentRequestBody:
     
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})  
     request_body: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'requestBody' }})  
     
 
 @dataclasses.dataclass
-class UploadBillAttachmentsRequest:
+class UploadBillAttachmentRequest:
     
     bill_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'billId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a bill"""  
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
-    request_body: Optional[UploadBillAttachmentsRequestBody] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }, 'request': { 'media_type': 'multipart/form-data' }})  
+    request_body: Optional[UploadBillAttachmentRequestBody] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }, 'request': { 'media_type': 'multipart/form-data' }})  
     
 
 @dataclasses.dataclass
-class UploadBillAttachmentsResponse:
+class UploadBillAttachmentResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  

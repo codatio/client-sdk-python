@@ -6,13 +6,13 @@ Purchase orders
 
 ### Available Operations
 
-* [create_purchase_order](#create_purchase_order) - Create purchase order
-* [get_create_update_purchase_orders_model](#get_create_update_purchase_orders_model) - Get create/update purchase order model
-* [get_purchase_order](#get_purchase_order) - Get purchase order
-* [list_purchase_orders](#list_purchase_orders) - List purchase orders
-* [update_purchase_order](#update_purchase_order) - Update purchase order
+* [create](#create) - Create purchase order
+* [get](#get) - Get purchase order
+* [get_create_update_model](#get_create_update_model) - Get create/update purchase order model
+* [list](#list) - List purchase orders
+* [update](#update) - Update purchase order
 
-## create_purchase_order
+## create
 
 Posts a new purchase order to the accounting package for a given company.
 
@@ -37,138 +37,150 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
-        currency="et",
-        currency_rate=8193.41,
-        delivery_date="unde",
-        expected_delivery_date="esse",
-        id="80a10c47-b950-440d-ac8b-2a5f002207e4",
-        issue_date="quae",
+        currency="quo",
+        currency_rate=9804.63,
+        delivery_date="maxime",
+        expected_delivery_date="suscipit",
+        id="c0e503f5-6831-4f1d-8ed8-7b28e8afabc9",
+        issue_date="laudantium",
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id="8f90009e-d290-4278-ab4a-e9d64161e915",
-                    name="Patricia Dickens",
+                    id="e241e43b-2342-4417-913e-3f62aa9ae4ae",
+                    name="Lyle Rath",
                 ),
-                description="rerum",
-                discount_amount=1793.89,
-                discount_percentage=7581.19,
+                description="provident",
+                discount_amount=7674.79,
+                discount_percentage=2960.36,
                 item_ref=shared.ItemRef(
-                    id="09b92477-1f56-469e-9b7e-c7626649d84e",
-                    name="Terrence Walter",
+                    id="92c5e8ba-5d4a-4a4a-908b-d380c29aa8dd",
+                    name="Teresa Predovic",
                 ),
-                quantity=9525.87,
-                sub_total=8696.62,
-                tax_amount=1739.26,
+                quantity=6509.18,
+                sub_total=6484.89,
+                tax_amount=2149.29,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=1417.37,
-                    id="76e0b88f-b87d-46fa-9b6e-8dbf812f83b1",
-                    name="Matt Johnston",
+                    effective_tax_rate=623.49,
+                    id="b7b91449-ae69-4c08-8d41-8bb71804f423",
+                    name="Clyde Goldner",
                 ),
-                total_amount=9738.23,
+                total_amount=1897.28,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id="c561929c-ca95-460a-9395-918da1d48e78",
-                        name="Dale Schamberger",
+                        id="f377ac5c-9b7e-493b-aa3c-523105e7c34c",
+                        name="Preston Abernathy",
                     ),
                     shared.TrackingCategoryRef(
-                        id="e1143da9-308b-427a-88af-22184439b3de",
-                        name="Brad Hayes",
-                    ),
-                    shared.TrackingCategoryRef(
-                        id="cce470cd-2147-4b6e-a152-cf01d0d8c3a4",
-                        name="Luther Osinski",
-                    ),
-                    shared.TrackingCategoryRef(
-                        id="f935dfe9-74fa-44b1-a9c0-97eda623442e",
-                        name="Alberta Mills",
+                        id="b812a661-4894-44a8-a908-5075bc253825",
+                        name="Robin Goodwin",
                     ),
                 ],
-                unit_amount=4631.93,
+                unit_amount=7488.6,
             ),
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id="e9984c80-b479-4e89-9923-c18ca8d69c56",
-                    name="Mrs. Terrance Christiansen",
+                    id="0a4e66ea-4757-48d1-b1e2-941818fc679b",
+                    name="Shelley Cronin II",
                 ),
-                description="animi",
-                discount_amount=1643.63,
-                discount_percentage=411.11,
+                description="dolorem",
+                discount_amount=3596.63,
+                discount_percentage=6053.38,
                 item_ref=shared.ItemRef(
-                    id="207e4fae-038c-4d7f-9bc2-cabaf7fc2ccb",
-                    name="Jesus Reinger",
+                    id="b855d015-b62c-48b8-ba38-a8a88c144200",
+                    name="Benjamin Schoen",
                 ),
-                quantity=461.14,
-                sub_total=8366.2,
-                tax_amount=9710.36,
+                quantity=7210.53,
+                sub_total=879.15,
+                tax_amount=6295.87,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=3915.17,
-                    id="8eaedb2e-e70b-4e06-9fb3-6add704080e0",
-                    name="Leonard Wiegand",
+                    effective_tax_rate=9062.13,
+                    id="1ecf8c34-946b-4ba7-a05a-8b4a9ec5b368",
+                    name="Simon Rutherford",
                 ),
-                total_amount=2204.14,
+                total_amount=4247.55,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id="5a034b11-4992-443a-ba69-87a472b709a1",
-                        name="Tracy Thiel",
-                    ),
-                    shared.TrackingCategoryRef(
-                        id="30106853-9ce0-4932-910a-cd15d8cc306b",
-                        name="Irma Huels",
-                    ),
-                    shared.TrackingCategoryRef(
-                        id="d37bd204-a1f3-440b-b36f-677a48519c33",
-                        name="Mr. Eva Marvin",
+                        id="272760e9-66e9-47e0-9410-3347d78ff249",
+                        name="Evelyn Gutkowski",
                     ),
                 ],
-                unit_amount=3069.7,
+                unit_amount=6574.81,
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="deleniti",
-        note="quos",
-        payment_due_date="qui",
-        purchase_order_number="ex",
+        modified_date="soluta",
+        note="excepturi",
+        payment_due_date="voluptates",
+        purchase_order_number="veniam",
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city="Rauton",
-                country="Denmark",
-                line1="porro",
-                line2="nihil",
-                postal_code="81138-2454",
-                region="architecto",
+                city="Marcusboro",
+                country="Palestinian Territory",
+                line1="a",
+                line2="ipsum",
+                postal_code="33428",
+                region="deserunt",
                 type="Billing",
             ),
             contact=shared.ShipToContact(
-                email="Karelle.Treutel18@yahoo.com",
-                name="Roy Simonis",
-                phone="403.667.1809 x09357",
+                email="Maxine96@yahoo.com",
+                name="Ryan Hagenes",
+                phone="272-416-7898 x68731",
             ),
         ),
-        source_modified_date="adipisci",
-        status="Closed",
-        sub_total=5198.96,
+        source_modified_date="qui",
+        status="Open",
+        sub_total=5437.75,
         supplier_ref=shared.SupplierRef(
-            id="7b47040d-0d98-4e9d-82c5-e306f5576f5c",
-            supplier_name="quibusdam",
+            id="14eca016-bc41-4ea1-b42d-4104a25ef71d",
+            supplier_name="debitis",
         ),
-        total_amount=9167.97,
-        total_discount=7367.93,
-        total_tax_amount=57.18,
+        total_amount=3264.43,
+        total_discount=4979.58,
+        total_tax_amount=6690.5,
     ),
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    timeout_in_minutes=178911,
+    timeout_in_minutes=117700,
 )
 
-res = s.purchase_orders.create_purchase_order(req)
+res = s.purchase_orders.create(req)
 
 if res.create_purchase_order_response is not None:
     # handle response
 ```
 
-## get_create_update_purchase_orders_model
+## get
+
+Get purchase order
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="YOUR_API_KEY_HERE",
+    ),
+)
+
+
+req = operations.GetPurchaseOrderRequest(
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    purchase_order_id="architecto",
+)
+
+res = s.purchase_orders.get(req)
+
+if res.purchase_order is not None:
+    # handle response
+```
+
+## get_create_update_model
 
 Get create/update purchase order model. Returns the expected data for the request payload.
 
@@ -196,41 +208,13 @@ req = operations.GetCreateUpdatePurchaseOrdersModelRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.purchase_orders.get_create_update_purchase_orders_model(req)
+res = s.purchase_orders.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
 ```
 
-## get_purchase_order
-
-Get purchase order
-
-### Example Usage
-
-```python
-import codataccounting
-from codataccounting.models import operations
-
-s = codataccounting.CodatAccounting(
-    security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
-    ),
-)
-
-
-req = operations.GetPurchaseOrderRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    purchase_order_id="totam",
-)
-
-res = s.purchase_orders.get_purchase_order(req)
-
-if res.purchase_order is not None:
-    # handle response
-```
-
-## list_purchase_orders
+## list
 
 Get purchase orders
 
@@ -252,16 +236,16 @@ req = operations.ListPurchaseOrdersRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="ea",
+    query="fugiat",
 )
 
-res = s.purchase_orders.list_purchase_orders(req)
+res = s.purchase_orders.list(req)
 
 if res.purchase_orders is not None:
     # handle response
 ```
 
-## update_purchase_order
+## update
 
 Posts an updated purchase order to the accounting package for a given company.
 
@@ -286,122 +270,93 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
-        currency="pariatur",
-        currency_rate=27.26,
-        delivery_date="distinctio",
-        expected_delivery_date="maxime",
-        id="43b18ab3-78f2-4fcf-b81d-df7e088f74ef",
-        issue_date="quis",
+        currency="eum",
+        currency_rate=1110.45,
+        delivery_date="numquam",
+        expected_delivery_date="deserunt",
+        id="4317692e-a486-473d-922b-828a9030660f",
+        issue_date="doloremque",
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id="c9216e89-2631-43bb-afc2-c8d2701096b6",
-                    name="Genevieve Steuber",
+                    id="4c79b4cc-64c2-4b3a-b2c4-88ade62f6aa5",
+                    name="Leona Olson",
                 ),
-                description="amet",
-                discount_amount=9260.74,
-                discount_percentage=963.03,
+                description="eveniet",
+                discount_amount=1787.12,
+                discount_percentage=483.47,
                 item_ref=shared.ItemRef(
-                    id="d9d3b660-334a-411a-a1d5-d2247de9b3d4",
-                    name="Dr. Frances Kutch",
+                    id="83016ca3-4bb8-47d4-b621-27a607d16062",
+                    name="Mrs. Alex Heaney",
                 ),
-                quantity=4290.14,
-                sub_total=5505.38,
-                tax_amount=6701.68,
+                quantity=2049.69,
+                sub_total=8634.15,
+                tax_amount=7188.22,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=5968.46,
-                    id="6bb39878-8398-4eba-9bbf-7143356f6349",
-                    name="Keith Hoeger",
+                    effective_tax_rate=5826.59,
+                    id="ca9f38bd-2be8-4787-8349-3f49aa8465a3",
+                    name="Myrtle Feil",
                 ),
-                total_amount=2761.09,
+                total_amount=6184.81,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id="b211ce46-b951-4652-b158-ca9142f05263",
-                        name="Miss Opal Dickinson",
+                        id="719d1cea-673d-486e-bb35-e49a3135778c",
+                        name="Derek Funk",
                     ),
                     shared.TrackingCategoryRef(
-                        id="d692ffc8-7450-405e-9d3d-934e036f5c38",
-                        name="Brett Hudson",
+                        id="cb0e3ea9-7504-45ba-8f63-b215186ab5e3",
+                        name="Robert Daugherty",
                     ),
                     shared.TrackingCategoryRef(
-                        id="6985530a-2e2a-4ed6-aaf8-63c28d040c69",
-                        name="Marvin Stracke III",
+                        id="14315d15-6829-49e6-9afc-7186ff20b7a7",
+                        name="Elena Wisoky DDS",
                     ),
                 ],
-                unit_amount=9418.45,
-            ),
-            shared.PurchaseOrderLineItem(
-                account_ref=shared.AccountRef(
-                    id="6ebd5ad7-ec73-494f-a5f6-34b3730714e6",
-                    name="Clay Lockman",
-                ),
-                description="debitis",
-                discount_amount=63.56,
-                discount_percentage=5959.44,
-                item_ref=shared.ItemRef(
-                    id="c64d342a-c299-4a6e-9e7a-ef13402e945f",
-                    name="Cindy Koepp",
-                ),
-                quantity=9094.5,
-                sub_total=9428.69,
-                tax_amount=8126.55,
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=9230.35,
-                    id="1198221f-9b1f-47d9-affe-69682aceefb0",
-                    name="Lela Lemke",
-                ),
-                total_amount=750.04,
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id="caabea70-8ed5-4798-9385-d460599d5c33",
-                        name="Shelly Hickle",
-                    ),
-                ],
-                unit_amount=8165.54,
+                unit_amount=6606.02,
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="minima",
-        note="ullam",
-        payment_due_date="dolores",
-        purchase_order_number="accusantium",
+        modified_date="alias",
+        note="at",
+        payment_due_date="dignissimos",
+        purchase_order_number="aliquid",
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city="Torphystead",
-                country="Oman",
-                line1="eos",
-                line2="qui",
-                postal_code="27384",
-                region="nisi",
+                city="South Raheem",
+                country="Bahrain",
+                line1="ex",
+                line2="eius",
+                postal_code="77903",
+                region="veniam",
                 type="Unknown",
             ),
             contact=shared.ShipToContact(
-                email="Jordyn_Hyatt62@yahoo.com",
-                name="Vernon Will",
-                phone="359.660.2503 x4591",
+                email="Augusta31@yahoo.com",
+                name="Heather Simonis",
+                phone="588-271-5141",
             ),
         ),
-        source_modified_date="dolor",
+        source_modified_date="quidem",
         status="Closed",
-        sub_total=4172.21,
+        sub_total=5873.6,
         supplier_ref=shared.SupplierRef(
-            id="86d839fc-9e17-45ff-a906-ae559b72eb67",
-            supplier_name="magnam",
+            id="c3221697-b188-40fc-bb2b-93c15f670bd1",
+            supplier_name="nihil",
         ),
-        total_amount=4246.29,
-        total_discount=361.86,
-        total_tax_amount=2316.09,
+        total_amount=5049.32,
+        total_discount=2535.46,
+        total_tax_amount=5040.97,
     ),
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
     force_update=False,
-    purchase_order_id="sit",
-    timeout_in_minutes=987456,
+    purchase_order_id="sequi",
+    timeout_in_minutes=122858,
 )
 
-res = s.purchase_orders.update_purchase_order(req)
+res = s.purchase_orders.update(req)
 
 if res.update_purchase_order_response is not None:
     # handle response

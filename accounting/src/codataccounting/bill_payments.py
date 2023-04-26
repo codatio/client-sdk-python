@@ -22,7 +22,7 @@ class BillPayments:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_bill_payment(self, request: operations.CreateBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillPaymentResponse:
+    def create(self, request: operations.CreateBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillPaymentResponse:
         r"""Create bill payments
         Posts a new bill payment to the accounting package for a given company.
         
@@ -69,7 +69,7 @@ class BillPayments:
 
         return res
 
-    def delete_bill_payment(self, request: operations.DeleteBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteBillPaymentResponse:
+    def delete(self, request: operations.DeleteBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteBillPaymentResponse:
         r"""Delete bill payment
         Deletes a bill payment from the accounting package for a given company.
         
@@ -109,7 +109,7 @@ class BillPayments:
 
         return res
 
-    def get_bill_payments(self, request: operations.GetBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillPaymentsResponse:
+    def get(self, request: operations.GetBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillPaymentsResponse:
         r"""Get bill payment
         Get a bill payment
         """
@@ -145,7 +145,7 @@ class BillPayments:
 
         return res
 
-    def get_create_bill_payments_model(self, request: operations.GetCreateBillPaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBillPaymentsModelResponse:
+    def get_create_model(self, request: operations.GetCreateBillPaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBillPaymentsModelResponse:
         r"""Get create bill payment model
         Get create bill payment model.
         
@@ -185,7 +185,7 @@ class BillPayments:
 
         return res
 
-    def list_bill_payments(self, request: operations.ListBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillPaymentsResponse:
+    def list(self, request: operations.ListBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillPaymentsResponse:
         r"""List bill payments
         Gets the latest billPayments for a company, with pagination
         """

@@ -22,7 +22,7 @@ class AccountTransactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_account_transaction(self, request: operations.GetAccountTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountTransactionResponse:
+    def get(self, request: operations.GetAccountTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountTransactionResponse:
         r"""Get account transaction
         Returns a specific [account transaction](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
         """
@@ -58,7 +58,7 @@ class AccountTransactions:
 
         return res
 
-    def list_account_transactions(self, request: operations.ListAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountTransactionsResponse:
+    def list(self, request: operations.ListAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountTransactionsResponse:
         r"""List account transactions
         Returns a list of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) for a given company's connection.
         """

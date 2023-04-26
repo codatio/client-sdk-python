@@ -22,7 +22,7 @@ class Accounts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_account(self, request: operations.CreateAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateAccountResponse:
+    def create(self, request: operations.CreateAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateAccountResponse:
         r"""Create account
         Creates a new account for a given company.
         
@@ -69,7 +69,7 @@ class Accounts:
 
         return res
 
-    def get_account(self, request: operations.GetAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountResponse:
+    def get(self, request: operations.GetAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountResponse:
         r"""Get account
         Gets a single account corresponding to the given ID.
         """
@@ -105,7 +105,7 @@ class Accounts:
 
         return res
 
-    def get_create_chart_of_accounts_model(self, request: operations.GetCreateChartOfAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateChartOfAccountsModelResponse:
+    def get_create_model(self, request: operations.GetCreateChartOfAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateChartOfAccountsModelResponse:
         r"""Get create account model
         Get create account model. Returns the expected data for the request payload.
         
@@ -147,7 +147,7 @@ class Accounts:
 
         return res
 
-    def list_accounts(self, request: operations.ListAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountsResponse:
+    def list(self, request: operations.ListAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountsResponse:
         r"""List accounts
         Gets the latest accounts for a company
         """

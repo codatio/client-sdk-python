@@ -6,10 +6,10 @@ Account transactions
 
 ### Available Operations
 
-* [get_account_transaction](#get_account_transaction) - Get account transaction
-* [list_account_transactions](#list_account_transactions) - List account transactions
+* [get](#get) - Get account transaction
+* [list](#list) - List account transactions
 
-## get_account_transaction
+## get
 
 Returns a specific [account transaction](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
 
@@ -32,13 +32,13 @@ req = operations.GetAccountTransactionRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.account_transactions.get_account_transaction(req)
+res = s.account_transactions.get(req)
 
 if res.account_transaction is not None:
     # handle response
 ```
 
-## list_account_transactions
+## list
 
 Returns a list of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) for a given company's connection.
 
@@ -64,7 +64,7 @@ req = operations.ListAccountTransactionsRequest(
     query="distinctio",
 )
 
-res = s.account_transactions.list_account_transactions(req)
+res = s.account_transactions.list(req)
 
 if res.account_transactions is not None:
     # handle response

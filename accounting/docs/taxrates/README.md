@@ -6,10 +6,10 @@ Tax rates
 
 ### Available Operations
 
-* [get_tax_rate](#get_tax_rate) - Get tax rate
-* [list_tax_rates](#list_tax_rates) - List all tax rates
+* [get](#get) - Get tax rate
+* [list](#list) - List all tax rates
 
-## get_tax_rate
+## get
 
 Gets the specified tax rate for a given company.
 
@@ -28,16 +28,16 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetTaxRateRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    tax_rate_id="at",
+    tax_rate_id="inventore",
 )
 
-res = s.tax_rates.get_tax_rate(req)
+res = s.tax_rates.get(req)
 
 if res.tax_rate is not None:
     # handle response
 ```
 
-## list_tax_rates
+## list
 
 Gets the latest tax rates for a given company.
 
@@ -59,10 +59,10 @@ req = operations.ListTaxRatesRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="excepturi",
+    query="eligendi",
 )
 
-res = s.tax_rates.list_tax_rates(req)
+res = s.tax_rates.list(req)
 
 if res.tax_rates is not None:
     # handle response

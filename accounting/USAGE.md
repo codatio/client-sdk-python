@@ -16,7 +16,7 @@ req = operations.GetAccountTransactionRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.account_transactions.get_account_transaction(req)
+res = s.account_transactions.get(req)
 
 if res.account_transaction is not None:
     # handle response

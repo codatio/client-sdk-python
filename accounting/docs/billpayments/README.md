@@ -6,13 +6,13 @@ Bill payments
 
 ### Available Operations
 
-* [create_bill_payment](#create_bill_payment) - Create bill payments
-* [delete_bill_payment](#delete_bill_payment) - Delete bill payment
-* [get_bill_payments](#get_bill_payments) - Get bill payment
-* [get_create_bill_payments_model](#get_create_bill_payments_model) - Get create bill payment model
-* [list_bill_payments](#list_bill_payments) - List bill payments
+* [create](#create) - Create bill payments
+* [delete](#delete) - Delete bill payment
+* [get](#get) - Get bill payment
+* [get_create_model](#get_create_model) - Get create bill payment model
+* [list](#list) - List bill payments
 
-## create_bill_payment
+## create
 
 Posts a new bill payment to the accounting package for a given company.
 
@@ -38,53 +38,71 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id="b7008787-5614-43f5-a6c9-8b55554080d4",
-            name="Celia Rolfson",
+            id="57eb809e-2810-4331-b398-1d4c700b607f",
+            name="Francis McKenzie",
         ),
-        currency="impedit",
-        currency_rate=3947.24,
-        date_="cumque",
-        id="bd6b5f3e-c909-4304-b926-bad2553819b4",
+        currency="dignissimos",
+        currency_rate=2358.34,
+        date_="soluta",
+        id="3d5a8e00-d108-4045-8823-7f342676cffa",
         lines=[
             shared.BillPaymentLine(
-                allocated_on_date="eius",
-                amount=7137.18,
+                allocated_on_date="temporibus",
+                amount=6396.22,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=9154.08,
-                        currency_rate=8227.11,
-                        id="20e56248-fff6-439a-910a-bdcab6267669",
-                        type="Other",
+                        amount=9485.41,
+                        currency_rate=1339.49,
+                        id="ceda7e23-f225-4741-9faf-4b7544e472e8",
+                        type="Unknown",
                     ),
                 ],
             ),
             shared.BillPaymentLine(
-                allocated_on_date="accusamus",
-                amount=682.92,
+                allocated_on_date="odit",
+                amount=5358.02,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=7903.05,
-                        currency_rate=535.29,
-                        id="0221b335-d89a-4cb3-acfd-a8d0c549ef03",
-                        type="Unknown",
+                        amount=4527.3,
+                        currency_rate=6267.07,
+                        id="5b40463a-7d57-45f1-800e-764ad7334ec1",
+                        type="Refund",
                     ),
                     shared.BillPaymentLineLink(
-                        amount=437.15,
-                        currency_rate=2737.32,
-                        id="978a61fa-1cf2-4068-8f77-c1ffc71dca16",
+                        amount=4813.75,
+                        currency_rate=5580.51,
+                        id="1b36a080-88d1-400e-bada-200ef0422eb2",
+                        type="Unlinked",
+                    ),
+                ],
+            ),
+            shared.BillPaymentLine(
+                allocated_on_date="aliquid",
+                amount=2646.49,
+                links=[
+                    shared.BillPaymentLineLink(
+                        amount=9750.95,
+                        currency_rate=5629.48,
+                        id="ab8366c7-23ff-4da9-a06b-ee4825c1fc0e",
+                        type="Unlinked",
+                    ),
+                    shared.BillPaymentLineLink(
+                        amount=1002.51,
+                        currency_rate=3178.98,
+                        id="c80bff91-8544-4ec4-adef-cce8f1977773",
+                        type="ManualJournal",
+                    ),
+                    shared.BillPaymentLineLink(
+                        amount=4235.88,
+                        currency_rate=2086.83,
+                        id="562a7b40-8f05-4e3d-88fd-af313a1f5fd9",
                         type="Bill",
                     ),
                     shared.BillPaymentLineLink(
-                        amount=9824.09,
-                        currency_rate=1530.97,
-                        id="a3c80a97-ff33-44cd-9f85-7a9e61876c6a",
-                        type="PaymentOnAccount",
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=1265.12,
-                        currency_rate=928.51,
-                        id="d29dfc94-d6fe-4cd7-9939-0066a6d2d000",
-                        type="Bill",
+                        amount=1280.21,
+                        currency_rate=3684.91,
+                        id="9c0b36f2-5ea9-444f-bb75-6c11f6c37a51",
+                        type="Unlinked",
                     ),
                 ],
             ),
@@ -92,49 +110,39 @@ req = operations.CreateBillPaymentRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="ullam",
-        note="quis",
+        modified_date="aliquid",
+        note="Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44",
         payment_method_ref=shared.PaymentMethodRef(
-            id="338cec08-6fa2-41e9-952c-b3119167b8e3",
-            name="Julian Stanton I",
+            id="243835bb-c05a-423a-85ce-fc5fde10a0ce",
+            name="Mildred Kautzer",
         ),
-        reference="quaerat",
-        source_modified_date="consequatur",
+        reference="ullam",
+        source_modified_date="architecto",
         supplemental_data=shared.SupplementalData(
             content={
-                "repellendus": {
-                    "quibusdam": "consectetur",
-                    "voluptas": "quaerat",
-                },
-                "earum": {
-                    "assumenda": "dolore",
-                    "enim": "ullam",
-                    "perspiciatis": "alias",
-                    "ex": "quibusdam",
-                },
-                "dicta": {
-                    "commodi": "neque",
+                "perferendis": {
+                    "provident": "cumque",
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id="d48e935c-2c9e-481f-b0be-3e43202d7216",
-            supplier_name="ad",
+            id="6dc5e347-6279-49bf-bbe6-949fb2bb4eca",
+            supplier_name="saepe",
         ),
-        total_amount=4531.98,
+        total_amount=1329.54,
     ),
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    timeout_in_minutes=426594,
+    timeout_in_minutes=423054,
 )
 
-res = s.bill_payments.create_bill_payment(req)
+res = s.bill_payments.create(req)
 
 if res.create_bill_payment_response is not None:
     # handle response
 ```
 
-## delete_bill_payment
+## delete
 
 Deletes a bill payment from the accounting package for a given company.
 
@@ -156,18 +164,18 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id="minima",
-    company_id="sit",
-    connection_id="vel",
+    bill_payment_id="quo",
+    company_id="nesciunt",
+    connection_id="illum",
 )
 
-res = s.bill_payments.delete_bill_payment(req)
+res = s.bill_payments.delete(req)
 
 if res.push_operation_summary is not None:
     # handle response
 ```
 
-## get_bill_payments
+## get
 
 Get a bill payment
 
@@ -185,17 +193,17 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id="laboriosam",
+    bill_payment_id="nemo",
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.bill_payments.get_bill_payments(req)
+res = s.bill_payments.get(req)
 
 if res.bill_payment is not None:
     # handle response
 ```
 
-## get_create_bill_payments_model
+## get_create_model
 
 Get create bill payment model.
 
@@ -221,13 +229,13 @@ req = operations.GetCreateBillPaymentsModelRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.bill_payments.get_create_bill_payments_model(req)
+res = s.bill_payments.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
 ```
 
-## list_bill_payments
+## list
 
 Gets the latest billPayments for a company, with pagination
 
@@ -249,10 +257,10 @@ req = operations.ListBillPaymentsRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="quaerat",
+    query="illum",
 )
 
-res = s.bill_payments.list_bill_payments(req)
+res = s.bill_payments.list(req)
 
 if res.bill_payments is not None:
     # handle response

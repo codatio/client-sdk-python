@@ -6,10 +6,10 @@ Sales orders
 
 ### Available Operations
 
-* [get_sales_order](#get_sales_order) - Get sales order
-* [list_sales_orders](#list_sales_orders) - List sales orders
+* [get](#get) - Get sales order
+* [list](#list) - List sales orders
 
-## get_sales_order
+## get
 
 Get sales order
 
@@ -28,16 +28,16 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetSalesOrderRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    sales_order_id="accusamus",
+    sales_order_id="vel",
 )
 
-res = s.sales_orders.get_sales_order(req)
+res = s.sales_orders.get(req)
 
 if res.sales_order is not None:
     # handle response
 ```
 
-## list_sales_orders
+## list
 
 Get sales orders
 
@@ -59,10 +59,10 @@ req = operations.ListSalesOrdersRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="sunt",
+    query="exercitationem",
 )
 
-res = s.sales_orders.list_sales_orders(req)
+res = s.sales_orders.list(req)
 
 if res.sales_orders is not None:
     # handle response

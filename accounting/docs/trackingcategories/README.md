@@ -6,10 +6,10 @@ Tracking categories
 
 ### Available Operations
 
-* [get_tracking_category](#get_tracking_category) - Get tracking categories
-* [list_tracking_categories](#list_tracking_categories) - List tracking categories
+* [get](#get) - Get tracking categories
+* [list](#list) - List tracking categories
 
-## get_tracking_category
+## get
 
 Gets the specified tracking categories for a given company.
 
@@ -28,16 +28,16 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetTrackingCategoryRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    tracking_category_id="perferendis",
+    tracking_category_id="animi",
 )
 
-res = s.tracking_categories.get_tracking_category(req)
+res = s.tracking_categories.get(req)
 
 if res.tracking_category_tree is not None:
     # handle response
 ```
 
-## list_tracking_categories
+## list
 
 Gets the latest tracking categories for a given company.
 
@@ -59,10 +59,10 @@ req = operations.ListTrackingCategoriesRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="nostrum",
+    query="autem",
 )
 
-res = s.tracking_categories.list_tracking_categories(req)
+res = s.tracking_categories.list(req)
 
 if res.tracking_categories is not None:
     # handle response

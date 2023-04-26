@@ -6,16 +6,16 @@ Suppliers
 
 ### Available Operations
 
-* [create_supplier](#create_supplier) - Create suppliers
-* [download_supplier_attachment](#download_supplier_attachment) - Download supplier attachment
-* [get_create_update_suppliers_model](#get_create_update_suppliers_model) - Get create/update supplier model
-* [get_supplier](#get_supplier) - Get supplier
-* [get_supplier_attachment](#get_supplier_attachment) - Get supplier attachment
-* [list_supplier_attachments](#list_supplier_attachments) - List supplier attachments
-* [list_suppliers](#list_suppliers) - List suppliers
-* [put_supplier](#put_supplier) - Update supplier
+* [create](#create) - Create supplier
+* [download_attachment](#download_attachment) - Download supplier attachment
+* [get](#get) - Get supplier
+* [get_attachment](#get_attachment) - Get supplier attachment
+* [get_create_update_model](#get_create_update_model) - Get create/update supplier model
+* [list](#list) - List suppliers
+* [list_attachments](#list_attachments) - List supplier attachments
+* [update](#update) - Update supplier
 
-## create_supplier
+## create
 
 Push suppliers
 
@@ -42,82 +42,52 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city="South Gavin",
-                country="Saint Lucia",
-                line1="explicabo",
-                line2="expedita",
-                postal_code="89844-4509",
-                region="temporibus",
+                city="Thousand Oaks",
+                country="Papua New Guinea",
+                line1="amet",
+                line2="tempore",
+                postal_code="81317",
+                region="adipisci",
                 type="Unknown",
             ),
-            shared.Addressesitems(
-                city="Blockview",
-                country="Oman",
-                line1="molestiae",
-                line2="harum",
-                postal_code="24520-2256",
-                region="repellat",
-                type="Billing",
-            ),
-            shared.Addressesitems(
-                city="Jeniferton",
-                country="Ukraine",
-                line1="earum",
-                line2="ipsa",
-                postal_code="50506",
-                region="dolores",
-                type="Delivery",
-            ),
         ],
-        contact_name="culpa",
-        default_currency="fugit",
-        email_address="nemo",
-        id="ee6c75af-8a60-4a7a-a346-e0979e5afe60",
+        contact_name="alias",
+        default_currency="occaecati",
+        email_address="perspiciatis",
+        id="83663c66-dcbb-47df-acb0-9c8b408e0713",
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="culpa",
-        phone="776-533-8955 x34331",
-        registration_number="deserunt",
-        source_modified_date="iste",
+        modified_date="molestiae",
+        phone="489.499.8000 x854",
+        registration_number="praesentium",
+        source_modified_date="aperiam",
         status="Archived",
         supplemental_data=shared.SupplementalData(
             content={
-                "eveniet": {
-                    "quae": "voluptates",
-                    "impedit": "sunt",
-                },
-                "optio": {
-                    "occaecati": "officia",
-                    "consectetur": "excepturi",
-                },
-                "fuga": {
-                    "ipsam": "fuga",
-                    "magnam": "assumenda",
-                    "nemo": "id",
-                    "laboriosam": "nostrum",
-                },
-                "expedita": {
-                    "fugiat": "exercitationem",
-                    "veniam": "ea",
+                "doloremque": {
+                    "eius": "odio",
+                    "rerum": "provident",
+                    "nostrum": "perferendis",
+                    "aliquam": "accusantium",
                 },
             },
         ),
-        supplier_name="aspernatur",
-        tax_number="assumenda",
+        supplier_name="possimus",
+        tax_number="vel",
     ),
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    timeout_in_minutes=587240,
+    timeout_in_minutes=796063,
 )
 
-res = s.suppliers.create_supplier(req)
+res = s.suppliers.create(req)
 
 if res.create_supplier_response is not None:
     # handle response
 ```
 
-## download_supplier_attachment
+## download_attachment
 
 Download supplier attachment
 
@@ -141,13 +111,71 @@ req = operations.DownloadSupplierAttachmentRequest(
     supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.suppliers.download_supplier_attachment(req)
+res = s.suppliers.download_attachment(req)
 
 if res.data is not None:
     # handle response
 ```
 
-## get_create_update_suppliers_model
+## get
+
+Gets a single supplier corresponding to the given ID.
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="YOUR_API_KEY_HERE",
+    ),
+)
+
+
+req = operations.GetSupplierRequest(
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+)
+
+res = s.suppliers.get(req)
+
+if res.supplier is not None:
+    # handle response
+```
+
+## get_attachment
+
+Get supplier attachment
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="YOUR_API_KEY_HERE",
+    ),
+)
+
+
+req = operations.GetSupplierAttachmentRequest(
+    attachment_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+)
+
+res = s.suppliers.get_attachment(req)
+
+if res.attachment is not None:
+    # handle response
+```
+
+## get_create_update_model
 
 Get create/update supplier model. Returns the expected data for the request payload.
 
@@ -175,43 +203,15 @@ req = operations.GetCreateUpdateSuppliersModelRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.suppliers.get_create_update_suppliers_model(req)
+res = s.suppliers.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
 ```
 
-## get_supplier
+## list
 
-Gets a single supplier corresponding to the given ID.
-
-### Example Usage
-
-```python
-import codataccounting
-from codataccounting.models import operations
-
-s = codataccounting.CodatAccounting(
-    security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
-    ),
-)
-
-
-req = operations.GetSupplierRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-)
-
-res = s.suppliers.get_supplier(req)
-
-if res.supplier is not None:
-    # handle response
-```
-
-## get_supplier_attachment
-
-Get supplier attachment
+Gets the latest suppliers for a company, with pagination
 
 ### Example Usage
 
@@ -226,20 +226,21 @@ s = codataccounting.CodatAccounting(
 )
 
 
-req = operations.GetSupplierAttachmentRequest(
-    attachment_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+req = operations.ListSuppliersRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    order_by="-modifiedDate",
+    page=1,
+    page_size=100,
+    query="blanditiis",
 )
 
-res = s.suppliers.get_supplier_attachment(req)
+res = s.suppliers.list(req)
 
-if res.attachment is not None:
+if res.suppliers is not None:
     # handle response
 ```
 
-## list_supplier_attachments
+## list_attachments
 
 Get supplier attachments
 
@@ -262,46 +263,15 @@ req = operations.ListSupplierAttachmentsRequest(
     supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.suppliers.list_supplier_attachments(req)
+res = s.suppliers.list_attachments(req)
 
 if res.attachments_dataset is not None:
     # handle response
 ```
 
-## list_suppliers
+## update
 
-Gets the latest suppliers for a company, with pagination
-
-### Example Usage
-
-```python
-import codataccounting
-from codataccounting.models import operations
-
-s = codataccounting.CodatAccounting(
-    security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
-    ),
-)
-
-
-req = operations.ListSuppliersRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
-    page=1,
-    page_size=100,
-    query="expedita",
-)
-
-res = s.suppliers.list_suppliers(req)
-
-if res.suppliers is not None:
-    # handle response
-```
-
-## put_supplier
-
-Push supplier
+Update supplier
 
 Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/accounting-api#/operations/get-create-update-suppliers-model).
 
@@ -322,72 +292,78 @@ s = codataccounting.CodatAccounting(
 )
 
 
-req = operations.PutSupplierRequest(
+req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city="Missoula",
-                country="Tuvalu",
-                line1="eos",
-                line2="facere",
-                postal_code="97933",
-                region="esse",
+                city="Lake Gabriellashire",
+                country="Afghanistan",
+                line1="perferendis",
+                line2="aspernatur",
+                postal_code="04820",
+                region="dolore",
                 type="Billing",
             ),
             shared.Addressesitems(
-                city="New Sabrynachester",
-                country="Malta",
-                line1="quam",
-                line2="ad",
-                postal_code="16550-1516",
-                region="enim",
+                city="Mountain View",
+                country="Armenia",
+                line1="alias",
+                line2="sit",
+                postal_code="98150-1458",
+                region="quidem",
+                type="Unknown",
+            ),
+            shared.Addressesitems(
+                city="Watersfurt",
+                country="Syrian Arab Republic",
+                line1="suscipit",
+                line2="ut",
+                postal_code="40961",
+                region="corporis",
                 type="Unknown",
             ),
         ],
-        contact_name="delectus",
-        default_currency="magnam",
-        email_address="illo",
-        id="cf6796ed-3d72-44c1-8f58-1e98cce3f716",
+        contact_name="alias",
+        default_currency="ratione",
+        email_address="sed",
+        id="3b2c09b9-2477-41f5-a69e-5b7ec7626649",
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="aliquid",
-        phone="286-282-6630",
-        registration_number="optio",
-        source_modified_date="ex",
-        status="Archived",
+        modified_date="possimus",
+        phone="487-692-7981 x1448",
+        registration_number="sit",
+        source_modified_date="expedita",
+        status="Active",
         supplemental_data=shared.SupplementalData(
             content={
-                "alias": {
-                    "assumenda": "totam",
-                    "minima": "explicabo",
-                    "soluta": "ad",
+                "repellat": {
+                    "atque": "iure",
+                    "nulla": "aliquid",
+                    "asperiores": "similique",
                 },
-                "adipisci": {
-                    "nesciunt": "eos",
-                    "placeat": "blanditiis",
-                    "cumque": "dignissimos",
+                "veniam": {
+                    "vel": "earum",
+                    "corrupti": "temporibus",
+                    "libero": "sapiente",
                 },
-                "placeat": {
-                    "eligendi": "esse",
-                },
-                "quasi": {
-                    "accusamus": "inventore",
+                "praesentium": {
+                    "qui": "asperiores",
                 },
             },
         ),
-        supplier_name="voluptas",
-        tax_number="molestiae",
+        supplier_name="blanditiis",
+        tax_number="nesciunt",
     ),
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
     force_update=False,
     supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    timeout_in_minutes=219664,
+    timeout_in_minutes=721212,
 )
 
-res = s.suppliers.put_supplier(req)
+res = s.suppliers.update(req)
 
-if res.put_supplier_200_application_json_object is not None:
+if res.update_supplier_response is not None:
     # handle response
 ```

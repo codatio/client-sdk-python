@@ -6,14 +6,13 @@ Bank accounts
 
 ### Available Operations
 
-* [create_bank_account](#create_bank_account) - Create bank account
-* [get_all_bank_account](#get_all_bank_account) - Get bank account
-* [get_bank_account](#get_bank_account) - Get bank account
-* [get_create_update_bank_accounts_model](#get_create_update_bank_accounts_model) - Get create/update bank account model
-* [list_bank_accounts](#list_bank_accounts) - List bank accounts
-* [update_bank_account](#update_bank_account) - Update bank account
+* [create](#create) - Create bank account
+* [get](#get) - Get bank account
+* [get_create_update_model](#get_create_update_model) - Get create/update bank account model
+* [list](#list) - List bank accounts
+* [update](#update) - Update bank account
 
-## create_bank_account
+## create
 
 Posts a new bank account to the accounting package for a given company.
 
@@ -38,66 +37,37 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name="repellat",
-        account_number="mollitia",
-        account_type="Credit",
-        available_balance=2532.91,
-        balance=4143.69,
-        currency="quam",
-        i_ban="molestiae",
-        id="39251aa5-2c3f-45ad-819d-a1ffe78f097b",
-        institution="perferendis",
+        account_name="natus",
+        account_number="laboriosam",
+        account_type="Debit",
+        available_balance=9025.99,
+        balance=6818.2,
+        currency="in",
+        i_ban="corporis",
+        id="96eb10fa-aa23-452c-9955-907aff1a3a2f",
+        institution="mollitia",
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="doloremque",
-        nominal_code="reprehenderit",
-        overdraft_limit=2828.07,
-        sort_code="maiores",
-        source_modified_date="dicta",
+        modified_date="occaecati",
+        nominal_code="numquam",
+        overdraft_limit=4143.69,
+        sort_code="quam",
+        source_modified_date="molestiae",
     ),
     allow_sync_on_push_complete=False,
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    timeout_in_minutes=359444,
+    timeout_in_minutes=244425,
 )
 
-res = s.bank_accounts.create_bank_account(req)
+res = s.bank_accounts.create(req)
 
 if res.create_bank_account_response is not None:
     # handle response
 ```
 
-## get_all_bank_account
-
-Gets the bank account for given account ID.
-
-### Example Usage
-
-```python
-import codataccounting
-from codataccounting.models import operations
-
-s = codataccounting.CodatAccounting(
-    security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
-    ),
-)
-
-
-req = operations.GetAllBankAccountRequest(
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    query="dolore",
-)
-
-res = s.bank_accounts.get_all_bank_account(req)
-
-if res.bank_statement_account is not None:
-    # handle response
-```
-
-## get_bank_account
+## get
 
 Gets the bank account with a given ID
 
@@ -120,13 +90,13 @@ req = operations.GetBankAccountRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.bank_accounts.get_bank_account(req)
+res = s.bank_accounts.get(req)
 
 if res.bank_account is not None:
     # handle response
 ```
 
-## get_create_update_bank_accounts_model
+## get_create_update_model
 
 Get create/update bank account model. Returns the expected data for the request payload.
 
@@ -154,13 +124,13 @@ req = operations.GetCreateUpdateBankAccountsModelRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.bank_accounts.get_create_update_bank_accounts_model(req)
+res = s.bank_accounts.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
 ```
 
-## list_bank_accounts
+## list
 
 Gets the list of bank accounts for a given connection
 
@@ -183,16 +153,16 @@ req = operations.ListBankAccountsRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="iusto",
+    query="error",
 )
 
-res = s.bank_accounts.list_bank_accounts(req)
+res = s.bank_accounts.list(req)
 
 if res.bank_accounts is not None:
     # handle response
 ```
 
-## update_bank_account
+## update
 
 Posts an updated bank account to the accounting package for a given company.
 
@@ -217,32 +187,32 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name="dicta",
-        account_number="harum",
+        account_name="quia",
+        account_number="quis",
         account_type="Unknown",
-        available_balance=8804.76,
-        balance=4142.63,
-        currency="repudiandae",
-        i_ban="quae",
-        id="3b99d488-e1e9-41e4-90ad-2abd44269802",
-        institution="assumenda",
+        available_balance=6747.52,
+        balance=6563.3,
+        currency="enim",
+        i_ban="odit",
+        id="c3f5ad01-9da1-4ffe-b8f0-97b0074f1547",
+        institution="dicta",
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="ipsam",
-        nominal_code="alias",
-        overdraft_limit=1464.41,
-        sort_code="dolorum",
-        source_modified_date="excepturi",
+        modified_date="harum",
+        nominal_code="enim",
+        overdraft_limit=8804.76,
+        sort_code="commodi",
+        source_modified_date="repudiandae",
     ),
     bank_account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
     force_update=False,
-    timeout_in_minutes=270008,
+    timeout_in_minutes=64147,
 )
 
-res = s.bank_accounts.update_bank_account(req)
+res = s.bank_accounts.update(req)
 
 if res.update_bank_account_response is not None:
     # handle response

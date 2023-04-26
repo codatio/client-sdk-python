@@ -22,7 +22,7 @@ class Transfers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_transfer(self, request: operations.CreateTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateTransferResponse:
+    def create(self, request: operations.CreateTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateTransferResponse:
         r"""Create transfer
         Posts a new transfer to the accounting package for a given company.
         
@@ -68,7 +68,43 @@ class Transfers:
 
         return res
 
-    def get_create_transfers_model(self, request: operations.GetCreateTransfersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateTransfersModelResponse:
+    def get(self, request: operations.GetTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransferResponse:
+        r"""Get transfer
+        Gets the specified transfer for a given company.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetTransferRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}', request)
+        
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetTransferResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Transfer])
+                res.transfer = out
+
+        return res
+
+    def get_create_model(self, request: operations.GetCreateTransfersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateTransfersModelResponse:
         r"""Get create transfer model
         Get create transfer model. Returns the expected data for the request payload.
         
@@ -110,43 +146,7 @@ class Transfers:
 
         return res
 
-    def get_transfer(self, request: operations.GetTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransferResponse:
-        r"""Get transfer
-        Gets the specified transfer for a given company.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetTransferRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}', request)
-        
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetTransferResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Transfer])
-                res.transfer = out
-
-        return res
-
-    def list_transfers(self, request: operations.ListTransfersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransfersResponse:
+    def list(self, request: operations.ListTransfersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransfersResponse:
         r"""List transfers
         Gets the transfers for a given company.
         """

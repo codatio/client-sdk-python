@@ -29,9 +29,9 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetBalanceSheetRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    period_length=690865,
-    periods_to_compare=125404,
-    start_month="facere",
+    period_length=181836,
+    periods_to_compare=754041,
+    start_month="perspiciatis",
 )
 
 res = s.financials.get_balance_sheet(req)
@@ -59,9 +59,9 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetCashFlowStatementRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    period_length=170992,
-    periods_to_compare=446583,
-    start_month="repudiandae",
+    period_length=431723,
+    periods_to_compare=576232,
+    start_month="eligendi",
 )
 
 res = s.financials.get_cash_flow_statement(req)
@@ -89,9 +89,9 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetProfitAndLossRequest(
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    period_length=698306,
-    periods_to_compare=457632,
-    start_month="accusantium",
+    period_length=276507,
+    periods_to_compare=790080,
+    start_month="quod",
 )
 
 res = s.financials.get_profit_and_loss(req)

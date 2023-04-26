@@ -6,13 +6,13 @@ Journal entries
 
 ### Available Operations
 
-* [create_journal_entry](#create_journal_entry) - Create journal entry
-* [delete_journal_entry](#delete_journal_entry) - Delete journal entry
-* [get_create_journal_entries_model](#get_create_journal_entries_model) - Get create journal entry model
-* [get_journal_entry](#get_journal_entry) - Get journal entry
-* [list_journal_entries](#list_journal_entries) - List journal entries
+* [create](#create) - Create journal entry
+* [delete](#delete) - Delete journal entry
+* [get](#get) - Get journal entry
+* [get_create_model](#get_create_model) - Get create journal entry model
+* [list](#list) - List journal entries
 
-## create_journal_entry
+## create
 
 Posts a new journalEntry to the accounting package for a given company.
 
@@ -37,109 +37,146 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
-        created_on="tempora",
-        description="nesciunt",
-        id="fb0a4e66-ea47-4578-9171-e2941818fc67",
+        created_on="delectus",
+        description="id",
+        id="1011a091-b3ec-48b5-b862-de1a9d14fe72",
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id="b6b2f253-59b8-455d-815b-62c8b83a38a8",
-                    name="Dwayne MacGyver I",
+                    id="521f9030-3dfc-4338-b97f-ffa6d1d32090",
+                    name="Salvatore Boyer",
                 ),
-                currency="labore",
-                description="consequuntur",
-                net_amount=317.03,
+                currency="mollitia",
+                description="cumque",
+                net_amount=5632.6,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type="optio",
-                            id="2caeb1ae-1ecf-48c3-8946-bba7a05a8b4a",
+                            data_type="accusamus",
+                            id="1961ce9b-e41c-4869-9d7d-9719d07b200a",
+                        ),
+                        shared.InvoiceTo(
+                            data_type="corporis",
+                            id="8ffd2967-df8f-4d88-aa8e-60be620cd9c5",
+                        ),
+                        shared.InvoiceTo(
+                            data_type="officia",
+                            id="fdd04c37-5251-42be-ae1d-87ecc5fdcea8",
+                        ),
+                        shared.InvoiceTo(
+                            data_type="eveniet",
+                            id="7a883116-62cd-4a6d-b7c1-d86066237d42",
                         ),
                     ],
                 ),
             ),
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id="9ec5b368-8cca-4363-a727-60e966e97e05",
-                    name="Teresa Anderson",
+                    id="27866db8-a749-4e39-8451-1cc75e4f0c00",
+                    name="Patty Harber",
                 ),
-                currency="aliquam",
-                description="esse",
-                net_amount=8634.7,
+                currency="molestiae",
+                description="ipsam",
+                net_amount=5541.62,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type="corrupti",
-                            id="ff249114-5fab-49e5-9a4a-f336664eaa6b",
+                            data_type="nobis",
+                            id="94562f00-6968-45fc-91a1-73d84bbe24f2",
                         ),
                         shared.InvoiceTo(
-                            data_type="sapiente",
-                            id="2ff14e8c-1b35-42ac-8eda-cc5227814eca",
+                            data_type="error",
+                            id="834afb07-35cb-4628-9d4a-29aaa1e16915",
+                        ),
+                        shared.InvoiceTo(
+                            data_type="nisi",
+                            id="f7d2ee20-9505-4bf0-ba93-e94480ca37fb",
+                        ),
+                        shared.InvoiceTo(
+                            data_type="ab",
+                            id="0789032a-c333-4172-a2dd-79ec74ba7e88",
                         ),
                     ],
                 ),
             ),
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id="016bc41e-a134-42d4-904a-25ef71de57a1",
-                    name="Mrs. Janis Keeling",
+                    id="ddb36fd1-ccc3-441c-8657-3474f0a740fb",
+                    name="Sandy Reichel",
                 ),
-                currency="tempora",
-                description="velit",
-                net_amount=1191.73,
+                currency="illo",
+                description="impedit",
+                net_amount=2164.48,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type="laboriosam",
-                            id="92ea4867-3d52-42b8-a8a9-030660f024c7",
+                            data_type="doloremque",
+                            id="9e763995-d808-4bbe-b944-55ebc550a1c4",
                         ),
                         shared.InvoiceTo(
-                            data_type="sint",
-                            id="b4cc64c2-b3a3-42c4-88ad-e62f6aa558a6",
+                            data_type="qui",
+                            id="6b59c836-6fdc-4c13-9582-c1b855e889d9",
+                        ),
+                        shared.InvoiceTo(
+                            data_type="officiis",
+                            id="f932e900-0a13-4ad8-9242-08efd2341189",
+                        ),
+                    ],
+                ),
+            ),
+            shared.JournalLine(
+                account_ref=shared.AccountRef(
+                    id="8e73879e-fbe8-4bae-babb-794536e90351",
+                    name="Rickey Miller",
+                ),
+                currency="adipisci",
+                description="architecto",
+                net_amount=4393.34,
+                tracking=shared.Propertiestracking2(
+                    record_refs=[
+                        shared.InvoiceTo(
+                            data_type="voluptatem",
+                            id="b77a5a53-65a7-49f1-9271-f01c0d361fed",
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id="5e208301-6ca3-44bb-87d4-f62127a607d1",
-            name="Betty Jacobi",
+            id="8dc5effb-453e-4908-9e87-1fdb4d697bdd",
+            name="Sylvester Maggio",
         ),
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="quaerat",
-        posted_on="nostrum",
+        modified_date="repudiandae",
+        posted_on="incidunt",
         record_ref=shared.InvoiceTo(
-            data_type="beatae",
-            id="4c3db9ca-9f38-4bd2-be87-8703493f49aa",
+            data_type="neque",
+            id="734a5d72-d9ed-4d78-9be5-e7afe55297ba",
         ),
-        source_modified_date="laudantium",
+        source_modified_date="laboriosam",
         supplemental_data=shared.SupplementalData(
             content={
-                "ex": {
-                    "mollitia": "sequi",
-                    "eos": "laudantium",
-                },
-                "adipisci": {
-                    "iusto": "natus",
+                "laudantium": {
+                    "repellat": "aliquam",
                 },
             },
         ),
-        updated_on="facilis",
+        updated_on="modi",
     ),
     company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    timeout_in_minutes=465310,
+    timeout_in_minutes=907650,
 )
 
-res = s.journal_entries.create_journal_entry(req)
+res = s.journal_entries.create(req)
 
 if res.create_journal_entry_response is not None:
     # handle response
 ```
 
-## delete_journal_entry
+## delete
 
 Deletes a journal entry from the accounting package for a given company.
 
@@ -166,13 +203,41 @@ req = operations.DeleteJournalEntryRequest(
     journal_entry_id="8a210b68-6988-11ed-a1eb-0242ac120002",
 )
 
-res = s.journal_entries.delete_journal_entry(req)
+res = s.journal_entries.delete(req)
 
 if res.push_operation_summary is not None:
     # handle response
 ```
 
-## get_create_journal_entries_model
+## get
+
+Gets a single JournalEntry corresponding to the given ID.
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="YOUR_API_KEY_HERE",
+    ),
+)
+
+
+req = operations.GetJournalEntryRequest(
+    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    journal_entry_id="dolorem",
+)
+
+res = s.journal_entries.get(req)
+
+if res.journal_entry is not None:
+    # handle response
+```
+
+## get_create_model
 
 Get create journal entry model. Returns the expected data for the request payload.
 
@@ -200,41 +265,13 @@ req = operations.GetCreateJournalEntriesModelRequest(
     connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
 )
 
-res = s.journal_entries.get_create_journal_entries_model(req)
+res = s.journal_entries.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
 ```
 
-## get_journal_entry
-
-Gets a single JournalEntry corresponding to the given ID.
-
-### Example Usage
-
-```python
-import codataccounting
-from codataccounting.models import operations
-
-s = codataccounting.CodatAccounting(
-    security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
-    ),
-)
-
-
-req = operations.GetJournalEntryRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    journal_entry_id="beatae",
-)
-
-res = s.journal_entries.get_journal_entry(req)
-
-if res.journal_entry is not None:
-    # handle response
-```
-
-## list_journal_entries
+## list
 
 Gets the latest journal entries for a company, with pagination
 
@@ -256,10 +293,10 @@ req = operations.ListJournalEntriesRequest(
     order_by="-modifiedDate",
     page=1,
     page_size=100,
-    query="error",
+    query="laborum",
 )
 
-res = s.journal_entries.list_journal_entries(req)
+res = s.journal_entries.list(req)
 
 if res.journal_entries is not None:
     # handle response
