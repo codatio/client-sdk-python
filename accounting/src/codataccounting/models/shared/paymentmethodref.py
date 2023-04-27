@@ -12,7 +12,9 @@ from typing import Optional
 class PaymentMethodRef:
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""`id` from the Payment Methods data type"""  
+
+    r"""`id` from the Payment Methods data type"""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""`name` from the Payment Methods data type"""  
+
+    r"""`name` from the Payment Methods data type"""
     

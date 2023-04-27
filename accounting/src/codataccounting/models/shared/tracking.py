@@ -22,17 +22,21 @@ class TrackingInvoiceTo:
     """
     
     data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Name of the 'dataType'."""  
+
+    r"""Name of the 'dataType'."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' of the underlying record or data type."""  
+
+    r"""'id' of the underlying record or data type."""
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Tracking:
     
-    record_refs: list[shared_invoiceto.InvoiceTo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})  
+    record_refs: list[shared_invoiceto.InvoiceTo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
+
     invoice_to: Optional[TrackingInvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
+
     r"""Links to the underlying record or data type.
     
     Found on:
@@ -41,5 +45,5 @@ class Tracking:
     - Account transactions
     - Invoices
     - Transfers
-    """  
+    """
     

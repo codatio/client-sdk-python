@@ -36,20 +36,28 @@ class BillCreditNote:
     """
     
     discount_percentage: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage') }})
-    r"""Percentage rate of any discount applied to the bill credit note."""  
+
+    r"""Percentage rate of any discount applied to the bill credit note."""
     remaining_credit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('remainingCredit') }})
-    r"""Amount of the bill credit note that is still outstanding."""  
+
+    r"""Amount of the bill credit note that is still outstanding."""
     status: shared_billcreditnotestatus_enum.BillCreditNoteStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""Current state of the bill credit note"""  
+
+    r"""Current state of the bill credit note"""
     sub_total: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal') }})
-    r"""Total amount of the bill credit note, including discounts but excluding tax."""  
+
+    r"""Total amount of the bill credit note, including discounts but excluding tax."""
     total_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount') }})
-    r"""Total amount of credit that has been applied to the business' account with the supplier, including discounts and tax."""  
+
+    r"""Total amount of credit that has been applied to the business' account with the supplier, including discounts and tax."""
     total_discount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalDiscount') }})
-    r"""Total value of any discounts applied."""  
+
+    r"""Total value of any discounts applied."""
     total_tax_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxAmount') }})
-    r"""Amount of tax included in the bill credit note."""  
+
+    r"""Amount of tax included in the bill credit note."""
     allocated_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocatedOnDate'), 'exclude': lambda f: f is None }})
+
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -69,10 +77,12 @@ class BillCreditNote:
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
+    """
     bill_credit_note_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billCreditNoteNumber'), 'exclude': lambda f: f is None }})
-    r"""Friendly reference for the bill credit note."""  
+
+    r"""Friendly reference for the bill credit note."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
+
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
@@ -80,8 +90,9 @@ class BillCreditNote:
     In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
     
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
-    """  
+    """
     currency_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'exclude': lambda f: f is None }})
+
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
     
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -105,10 +116,12 @@ class BillCreditNote:
     | **GBP**          | £20            | 1.277         | $25.54                     |
     | **EUR**          | €20            | 1.134         | $22.68                     |
     | **RUB**          | ₽20            | 0.015         | $0.30                      |
-    """  
+    """
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the bill credit note that is unique to a company in the accounting platform."""  
+
+    r"""Identifier for the bill credit note that is unique to a company in the accounting platform."""
     issue_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate'), 'exclude': lambda f: f is None }})
+
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -128,19 +141,28 @@ class BillCreditNote:
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
+    """
     line_items: Optional[list[shared_billcreditnotelineitem.BillCreditNoteLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems'), 'exclude': lambda f: f is None }})
-    r"""An array of line"""  
-    metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
+
+    r"""An array of line"""
+    metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
+
+    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
+
     note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
-    r"""Any additional information about the bill credit note."""  
+
+    r"""Any additional information about the bill credit note."""
     payment_allocations: Optional[list[shared_items.Items]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations'), 'exclude': lambda f: f is None }})
-    r"""An array of payment allocations."""  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
+
+    r"""An array of payment allocations."""
+    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
+
     supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
-    r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""  
+
+    r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""
     supplier_ref: Optional[shared_supplierref.SupplierRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierRef'), 'exclude': lambda f: f is None }})
-    r"""Reference to the supplier the record relates to."""  
-    withholding_tax: Optional[list[shared_withholdingtaxitems.WithholdingTaxitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})  
+
+    r"""Reference to the supplier the record relates to."""
+    withholding_tax: Optional[list[shared_withholdingtaxitems.WithholdingTaxitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})
+
     

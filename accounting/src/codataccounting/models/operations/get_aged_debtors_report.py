@@ -11,21 +11,29 @@ from typing import Optional
 @dataclasses.dataclass
 class GetAgedDebtorsReportRequest:
     
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+
     number_of_periods: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'numberOfPeriods', 'style': 'form', 'explode': True }})
-    r"""Number of periods to include in the report."""  
+
+    r"""Number of periods to include in the report."""
     period_length_days: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'periodLengthDays', 'style': 'form', 'explode': True }})
-    r"""The length of period in days."""  
+
+    r"""The length of period in days."""
     report_date: Optional[date] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'reportDate', 'style': 'form', 'explode': True }})
-    r"""Date the report is generated up to."""  
+
+    r"""Date the report is generated up to."""
     
 
 @dataclasses.dataclass
 class GetAgedDebtorsReportResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     aged_debtor_report: Optional[shared_ageddebtorreport.AgedDebtorReport] = dataclasses.field(default=None)
-    r"""OK"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""OK"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     

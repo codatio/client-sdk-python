@@ -12,7 +12,9 @@ from typing import Optional
 class CustomerRef:
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""`id` from the Customers data type"""  
+
+    r"""`id` from the Customers data type"""
     company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})
-    r"""`customerName` from the Customer data type"""  
+
+    r"""`customerName` from the Customer data type"""
     

@@ -13,10 +13,13 @@ from typing import Optional
 class AccountTransactionLine:
     
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
-    r"""Amount in the bill payment currency."""  
+
+    r"""Amount in the bill payment currency."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Description of the account transaction."""  
+
+    r"""Description of the account transaction."""
     record_ref: Optional[shared_invoiceto.InvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
+
     r"""Links to the underlying record or data type.
     
     Found on:
@@ -25,5 +28,5 @@ class AccountTransactionLine:
     - Account transactions
     - Invoices
     - Transfers
-    """  
+    """
     

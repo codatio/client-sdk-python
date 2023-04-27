@@ -14,12 +14,17 @@ from typing import Optional
 class JournalLine:
     
     net_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netAmount') }})
-    r"""Amount for the journal line. Debit entries are considered positive, and credit entries are considered negative."""  
+
+    r"""Amount for the journal line. Debit entries are considered positive, and credit entries are considered negative."""
     account_ref: Optional[shared_accountref.AccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
-    r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""  
+
+    r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    r"""Currency for the journal line item."""  
+
+    r"""Currency for the journal line item."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Description of the journal line item."""  
-    tracking: Optional[shared_propertiestracking2.Propertiestracking2] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})  
+
+    r"""Description of the journal line item."""
+    tracking: Optional[shared_propertiestracking2.Propertiestracking2] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
+
     
