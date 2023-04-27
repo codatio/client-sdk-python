@@ -12,17 +12,23 @@ from typing import Optional
 class GetWebhookRequest:
     
     rule_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'ruleId', 'style': 'simple', 'explode': False }})
-    r"""Unique ID of the webhook or rule."""  
+
+    r"""Unique ID of the webhook or rule."""
     
 
 @dataclasses.dataclass
 class GetWebhookResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     rule: Optional[shared_rule.Rule] = dataclasses.field(default=None)
-    r"""OK"""  
+
+    r"""OK"""
     

@@ -11,17 +11,23 @@ from typing import Optional
 @dataclasses.dataclass
 class GetIntegrationRequest:
     
-    platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})  
+    platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
+
     
 
 @dataclasses.dataclass
 class GetIntegrationResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
+
+    r"""Your API request was not properly authorized."""
     integration: Optional[shared_integration.Integration] = dataclasses.field(default=None)
-    r"""OK"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""OK"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     

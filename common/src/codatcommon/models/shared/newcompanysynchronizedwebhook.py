@@ -13,13 +13,18 @@ class NewCompanySynchronizedWebhook:
     r"""Webhook request body to notify that a new company has successfully synchronized at least one dataType for the first time."""
     
     alert_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('alertId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier of the alert."""  
+
+    r"""Unique identifier of the alert."""
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for your SMB in Codat."""  
+
+    r"""Unique identifier for your SMB in Codat."""
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
-    r"""A human readable message about the webhook."""  
+
+    r"""A human readable message about the webhook."""
     rule_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ruleId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for the rule."""  
+
+    r"""Unique identifier for the rule."""
     rule_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ruleType'), 'exclude': lambda f: f is None }})
-    r"""The type of rule."""  
+
+    r"""The type of rule."""
     
