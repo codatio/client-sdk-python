@@ -12,7 +12,9 @@ from typing import Optional
 class Option:
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for the option."""  
+
+    r"""Unique identifier for the option."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name value of the option."""  
+
+    r"""Name value of the option."""
     

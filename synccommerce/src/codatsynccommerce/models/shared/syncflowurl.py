@@ -13,5 +13,6 @@ class SyncFlowURL:
     r"""Success"""
     
     url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
-    r"""Sync flow URL."""  
+
+    r"""Sync flow URL."""
     

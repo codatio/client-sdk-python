@@ -12,7 +12,9 @@ from typing import Optional
 class TaxRateMapping:
     
     selected_accounting_tax_rate_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedAccountingTaxRateId'), 'exclude': lambda f: f is None }})
-    r"""Selected tax rate id from the list of tax rates on the accounting software."""  
+
+    r"""Selected tax rate id from the list of tax rates on the accounting software."""
     selected_commerce_tax_rate_ids: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedCommerceTaxRateIds'), 'exclude': lambda f: f is None }})
-    r"""Selected tax component id from the list of tax components on the commerce software."""  
+
+    r"""Selected tax component id from the list of tax components on the commerce software."""
     

@@ -11,19 +11,26 @@ from typing import Optional
 class GetSyncFlowURLRequest:
     
     accounting_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountingKey', 'style': 'simple', 'explode': False }})
-    r"""Accounting platform key"""  
+
+    r"""Accounting platform key"""
     commerce_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'commerceKey', 'style': 'simple', 'explode': False }})
-    r"""Commerce platform key"""  
+
+    r"""Commerce platform key"""
     merchant_identifier: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'merchantIdentifier', 'style': 'form', 'explode': True }})
-    r"""Identifier for your merchant, can be the merchant name or Codat company id."""  
+
+    r"""Identifier for your merchant, can be the merchant name or Codat company id."""
     
 
 @dataclasses.dataclass
 class GetSyncFlowURLResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     sync_flow_url: Optional[shared_syncflowurl.SyncFlowURL] = dataclasses.field(default=None)
-    r"""Success"""  
+
+    r"""Success"""
     
