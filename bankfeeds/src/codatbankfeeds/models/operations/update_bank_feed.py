@@ -11,18 +11,26 @@ from typing import Optional
 class UpdateBankFeedRequest:
     
     account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountId', 'style': 'simple', 'explode': False }})
-    r"""Unique identifier for an account"""  
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
-    bank_feed_account: Optional[shared_bankfeedaccount.BankFeedAccount] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
+
+    r"""Unique identifier for an account"""
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+
+    bank_feed_account: Optional[shared_bankfeedaccount.BankFeedAccount] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+
     
 
 @dataclasses.dataclass
 class UpdateBankFeedResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     bank_feed_account: Optional[shared_bankfeedaccount.BankFeedAccount] = dataclasses.field(default=None)
-    r"""Success"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""Success"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     
