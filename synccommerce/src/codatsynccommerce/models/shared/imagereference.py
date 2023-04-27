@@ -13,7 +13,9 @@ class ImageReference:
     r"""Image reference."""
     
     alt: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('alt'), 'exclude': lambda f: f is None }})
-    r"""Alternative text when image is not available."""  
+
+    r"""Alternative text when image is not available."""
     src: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('src'), 'exclude': lambda f: f is None }})
-    r"""Source URL for image."""  
+
+    r"""Source URL for image."""
     

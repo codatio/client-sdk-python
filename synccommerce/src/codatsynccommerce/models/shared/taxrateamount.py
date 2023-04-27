@@ -13,7 +13,9 @@ from typing import Optional
 class TaxRateAmount:
     
     selected_tax_rate_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedTaxRateId'), 'exclude': lambda f: f is None }})
-    r"""Selected tax rate id from the list of tax rates on the accounting software."""  
+
+    r"""Selected tax rate id from the list of tax rates on the accounting software."""
     tax_rate_options: Optional[list[shared_option.Option]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateOptions'), 'exclude': lambda f: f is None }})
-    r"""Array of tax rate options object."""  
+
+    r"""Array of tax rate options object."""
     

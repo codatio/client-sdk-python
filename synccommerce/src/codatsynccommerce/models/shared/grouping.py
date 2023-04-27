@@ -13,6 +13,8 @@ from typing import Optional
 @dataclasses.dataclass
 class Grouping:
     
-    grouping_levels: Optional[shared_groupinglevels.GroupingLevels] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('groupingLevels'), 'exclude': lambda f: f is None }})  
-    grouping_period: Optional[shared_groupingperiod.GroupingPeriod] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('groupingPeriod'), 'exclude': lambda f: f is None }})  
+    grouping_levels: Optional[shared_groupinglevels.GroupingLevels] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('groupingLevels'), 'exclude': lambda f: f is None }})
+
+    grouping_period: Optional[shared_groupingperiod.GroupingPeriod] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('groupingPeriod'), 'exclude': lambda f: f is None }})
+
     
