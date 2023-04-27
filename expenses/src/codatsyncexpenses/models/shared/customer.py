@@ -12,5 +12,6 @@ from typing import Optional
 class Customer:
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""id of the customer for all income related activities to be associated to."""  
+
+    r"""id of the customer for all income related activities to be associated to."""
     

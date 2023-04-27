@@ -23,15 +23,21 @@ class TaxRateMappingInfoValidTransactionTypesEnum(str, Enum):
 class TaxRateMappingInfo:
     
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
-    r"""Code for the tax rate from the accounting platform."""  
+
+    r"""Code for the tax rate from the accounting platform."""
     effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
-    r"""Effective tax rate."""  
+
+    r"""Effective tax rate."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier of tax rate."""  
+
+    r"""Unique identifier of tax rate."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the tax rate in the accounting platform."""  
+
+    r"""Name of the tax rate in the accounting platform."""
     total_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxRate'), 'exclude': lambda f: f is None }})
-    r"""Total (not compounded) sum of the components of a tax rate."""  
+
+    r"""Total (not compounded) sum of the components of a tax rate."""
     valid_transaction_types: Optional[list[TaxRateMappingInfoValidTransactionTypesEnum]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes'), 'exclude': lambda f: f is None }})
-    r"""Supported transaction types for the account."""  
+
+    r"""Supported transaction types for the account."""
     
