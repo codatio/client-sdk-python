@@ -17,16 +17,22 @@ class Product:
     """
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""A unique, persistent identifier for this record"""  
+
+    r"""A unique, persistent identifier for this record"""
     categorization: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categorization'), 'exclude': lambda f: f is None }})
-    r"""Retail category that the product is assigned to"""  
+
+    r"""Retail category that the product is assigned to"""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Description of the product recorded in the commerce or point of sale platform."""  
+
+    r"""Description of the product recorded in the commerce or point of sale platform."""
     is_gift_card: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isGiftCard'), 'exclude': lambda f: f is None }})
+
     r"""Whether the product represents a gift card or voucher that
     can be redeemed in the commerce or POS platform
-    """  
+    """
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the product in the commerce or POS system"""  
-    variants: Optional[list[shared_productvariant.ProductVariant]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('variants'), 'exclude': lambda f: f is None }})  
+
+    r"""Name of the product in the commerce or POS system"""
+    variants: Optional[list[shared_productvariant.ProductVariant]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('variants'), 'exclude': lambda f: f is None }})
+
     

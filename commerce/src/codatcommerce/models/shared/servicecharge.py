@@ -14,17 +14,24 @@ from typing import Optional
 class ServiceCharge:
     
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Service charges for this order."""  
+
+    r"""Service charges for this order."""
     quantity: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity'), 'exclude': lambda f: f is None }})
-    r"""The number of times the charge is charged."""  
+
+    r"""The number of times the charge is charged."""
     tax_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxAmount'), 'exclude': lambda f: f is None }})
-    r"""Amount of the service charge that is tax."""  
+
+    r"""Amount of the service charge that is tax."""
     taxes: Optional[list[shared_taxcomponentallocation.TaxComponentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxes'), 'exclude': lambda f: f is None }})
-    r"""Taxes breakdown as applied to service charges."""  
+
+    r"""Taxes breakdown as applied to service charges."""
     tax_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxPercentage'), 'exclude': lambda f: f is None }})
-    r"""Percentage rate (from 0 to 100) of any tax applied to the service charge."""  
+
+    r"""Percentage rate (from 0 to 100) of any tax applied to the service charge."""
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
-    r"""Total service charge, including taxes."""  
+
+    r"""Total service charge, including taxes."""
     type: Optional[shared_servicechargetype_enum.ServiceChargeTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
-    r"""The type of the service charge."""  
+
+    r"""The type of the service charge."""
     
