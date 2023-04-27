@@ -9,17 +9,23 @@ from typing import Optional
 @dataclasses.dataclass
 class DownloadFilesRequest:
     
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+
     date_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'date', 'style': 'form', 'explode': True }})
-    r"""Only download files uploaded on this date"""  
+
+    r"""Only download files uploaded on this date"""
     
 
 @dataclasses.dataclass
 class DownloadFilesResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     data: Optional[bytes] = dataclasses.field(default=None)
-    r"""Success"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""Success"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     
