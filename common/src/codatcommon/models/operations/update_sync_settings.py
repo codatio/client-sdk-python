@@ -17,17 +17,24 @@ class UpdateSyncSettingsRequestBody:
     `syncFromWindow`, `syncFromUTC` & `monthsToSync` only need to be included if you wish to set a value for them.
     """
     
-    client_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('clientId') }})  
-    overrides_defaults: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overridesDefaults') }})  
-    settings: list[shared_syncsetting.SyncSetting] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('settings') }})  
+    client_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('clientId') }})
+
+    overrides_defaults: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overridesDefaults') }})
+
+    settings: list[shared_syncsetting.SyncSetting] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('settings') }})
+
     
 
 @dataclasses.dataclass
 class UpdateSyncSettingsResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     

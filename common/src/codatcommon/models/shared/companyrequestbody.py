@@ -12,7 +12,9 @@ from typing import Optional
 class CompanyRequestBody:
     
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    r"""Name of company being connected."""  
+
+    r"""Name of company being connected."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r"""Additional information about the company. This can be used to store foreign IDs, references, etc."""  
+
+    r"""Additional information about the company. This can be used to store foreign IDs, references, etc."""
     

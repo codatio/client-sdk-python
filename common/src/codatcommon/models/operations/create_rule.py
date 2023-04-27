@@ -11,11 +11,16 @@ from typing import Optional
 @dataclasses.dataclass
 class CreateRuleResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     rule: Optional[shared_rule.Rule] = dataclasses.field(default=None)
-    r"""OK"""  
+
+    r"""OK"""
     
