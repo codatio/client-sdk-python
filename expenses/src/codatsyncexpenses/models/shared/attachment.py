@@ -13,9 +13,12 @@ class Attachment:
     r"""OK"""
     
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})
-    r"""Unique ID of company in Codat"""  
+
+    r"""Unique ID of company in Codat"""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier of attachment"""  
+
+    r"""Unique identifier of attachment"""
     transaction_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier of transaction"""  
+
+    r"""Unique identifier of transaction"""
     

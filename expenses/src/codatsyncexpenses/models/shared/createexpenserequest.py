@@ -12,5 +12,6 @@ from typing import Optional
 @dataclasses.dataclass
 class CreateExpenseRequest:
     
-    items: Optional[list[shared_expensetransaction.ExpenseTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})  
+    items: Optional[list[shared_expensetransaction.ExpenseTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
+
     

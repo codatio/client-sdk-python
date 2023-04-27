@@ -12,5 +12,6 @@ from typing import Optional
 class BankAccount:
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""The id of the account from which purchases are made"""  
+
+    r"""The id of the account from which purchases are made"""
     
