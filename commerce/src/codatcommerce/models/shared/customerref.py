@@ -12,7 +12,9 @@ class CustomerRef:
     r"""Reference to the customer that placed the order."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""The unique identitifer of the customer being referenced"""  
+
+    r"""The unique identitifer of the customer being referenced"""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    r"""Name of the customer being referenced."""  
+
+    r"""Name of the customer being referenced."""
     

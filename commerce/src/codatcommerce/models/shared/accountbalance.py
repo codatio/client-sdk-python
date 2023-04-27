@@ -12,11 +12,15 @@ from typing import Optional
 class AccountBalance:
     
     available: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('available'), 'exclude': lambda f: f is None }})
-    r"""The account's current balance"""  
+
+    r"""The account's current balance"""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    r"""The currency of the account"""  
+
+    r"""The currency of the account"""
     pending: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pending'), 'exclude': lambda f: f is None }})
-    r"""Funds that are not yet available in the balance"""  
+
+    r"""Funds that are not yet available in the balance"""
     reserved: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reserved'), 'exclude': lambda f: f is None }})
-    r"""Funds reserved as holdings"""  
+
+    r"""Funds reserved as holdings"""
     

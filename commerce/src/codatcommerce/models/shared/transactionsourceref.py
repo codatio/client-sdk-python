@@ -12,6 +12,8 @@ from dataclasses_json import Undefined, dataclass_json
 class TransactionSourceRef:
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""The unique identitifer of the record being referenced"""  
-    type: shared_transactionsourcetype_enum.TransactionSourceTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})  
+
+    r"""The unique identitifer of the record being referenced"""
+    type: shared_transactionsourcetype_enum.TransactionSourceTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+
     

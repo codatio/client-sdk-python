@@ -13,5 +13,6 @@ from typing import Optional
 class TaxComponents:
     r"""OK"""
     
-    tax_components: Optional[list[shared_taxcomponent.TaxComponent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxComponents'), 'exclude': lambda f: f is None }})  
+    tax_components: Optional[list[shared_taxcomponent.TaxComponent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxComponents'), 'exclude': lambda f: f is None }})
+
     

@@ -25,8 +25,10 @@ class Transaction:
     """
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""A unique, persistent identifier for this record"""  
+
+    r"""A unique, persistent identifier for this record"""
     created_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdDate'), 'exclude': lambda f: f is None }})
+
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -46,8 +48,9 @@ class Transaction:
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
+    """
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
+
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
@@ -55,9 +58,11 @@ class Transaction:
     In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
     
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
-    """  
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})  
+    """
+    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
+
     source_created_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceCreatedDate'), 'exclude': lambda f: f is None }})
+
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -77,15 +82,20 @@ class Transaction:
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})  
+    """
+    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
+
     sub_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subType'), 'exclude': lambda f: f is None }})
-    r"""Non-standardised transaction type data from the commerce platform"""  
+
+    r"""Non-standardised transaction type data from the commerce platform"""
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
-    r"""The total transaction amount"""  
+
+    r"""The total transaction amount"""
     transaction_source_ref: Optional[shared_transactionsourceref.TransactionSourceRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionSourceRef'), 'exclude': lambda f: f is None }})
-    r"""Link to the source event which triggered this transaction"""  
+
+    r"""Link to the source event which triggered this transaction"""
     type: Optional[shared_transactiontype_enum.TransactionTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+
     r"""The type of the platform transaction:
     - `Unknown`  
     - `FailedPayout` — Failed transfer of funds from the seller's merchant account to their bank account.  
@@ -95,5 +105,5 @@ class Transaction:
     - `Payout` — Transfer of funds from the seller's merchant account to their bank account.  
     - `Refund` — Refunds to a customer's credit or debit card.  
     - `Transfer` — Secure transfer of funds to the seller's bank account.
-    """  
+    """
     
