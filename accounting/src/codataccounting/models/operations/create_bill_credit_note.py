@@ -11,18 +11,26 @@ from typing import Optional
 @dataclasses.dataclass
 class CreateBillCreditNoteRequest:
     
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})  
-    bill_credit_note: Optional[shared_billcreditnote.BillCreditNote] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
-    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})  
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+
+    bill_credit_note: Optional[shared_billcreditnote.BillCreditNote] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+
+    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
+
     
 
 @dataclasses.dataclass
 class CreateBillCreditNoteResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     create_bill_credit_note_response: Optional[shared_createbillcreditnoteresponse.CreateBillCreditNoteResponse] = dataclasses.field(default=None)
-    r"""Success"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""Success"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     

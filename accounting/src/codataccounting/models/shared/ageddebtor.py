@@ -13,9 +13,12 @@ from typing import Optional
 class AgedDebtor:
     
     aged_currency_outstanding: Optional[list[shared_agedcurrencyoutstandingitems.AgedCurrencyOutstandingitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedCurrencyOutstanding'), 'exclude': lambda f: f is None }})
-    r"""Array of aged debtors by currency."""  
+
+    r"""Array of aged debtors by currency."""
     customer_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerId'), 'exclude': lambda f: f is None }})
-    r"""Customer ID of the aged debtor."""  
+
+    r"""Customer ID of the aged debtor."""
     customer_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerName'), 'exclude': lambda f: f is None }})
-    r"""Customer name of the aged debtor."""  
+
+    r"""Customer name of the aged debtor."""
     

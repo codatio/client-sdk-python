@@ -14,11 +14,14 @@ class ShipToContact:
     r"""Details of the named contact at the delivery address."""
     
     email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email'), 'exclude': lambda f: f is None }})
-    r"""Email address of the contact at the delivery address."""  
+
+    r"""Email address of the contact at the delivery address."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the contact at the delivery address."""  
+
+    r"""Name of the contact at the delivery address."""
     phone: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone'), 'exclude': lambda f: f is None }})
-    r"""Phone number of the contact at the delivery address."""  
+
+    r"""Phone number of the contact at the delivery address."""
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -26,7 +29,9 @@ class ShipToContact:
 class ShipTo:
     r"""Delivery details for any goods that have been ordered."""
     
-    address: Optional[shared_addressesitems.Addressesitems] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('address'), 'exclude': lambda f: f is None }})  
+    address: Optional[shared_addressesitems.Addressesitems] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('address'), 'exclude': lambda f: f is None }})
+
     contact: Optional[ShipToContact] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contact'), 'exclude': lambda f: f is None }})
-    r"""Details of the named contact at the delivery address."""  
+
+    r"""Details of the named contact at the delivery address."""
     

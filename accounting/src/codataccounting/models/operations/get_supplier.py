@@ -10,17 +10,23 @@ from typing import Optional
 @dataclasses.dataclass
 class GetSupplierRequest:
     
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})  
+    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+
     supplier_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'supplierId', 'style': 'simple', 'explode': False }})
-    r"""Unique identifier for a supplier"""  
+
+    r"""Unique identifier for a supplier"""
     
 
 @dataclasses.dataclass
 class GetSupplierResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     supplier: Optional[shared_supplier.Supplier] = dataclasses.field(default=None)
-    r"""Success"""  
+
+    r"""Success"""
     

@@ -12,9 +12,11 @@ from typing import Optional
 class AgedCreditorAgedCurrencyOutstandingAgedOutstandingAmountAmountsOutstandingByDataType:
     
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
-    r"""The amount outstanding."""  
+
+    r"""The amount outstanding."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of data type with outstanding amount for given period."""  
+
+    r"""Name of data type with outstanding amount for given period."""
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -22,10 +24,13 @@ class AgedCreditorAgedCurrencyOutstandingAgedOutstandingAmountAmountsOutstanding
 class AgedCreditorAgedCurrencyOutstandingAgedOutstandingAmount:
     
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
-    r"""The amount outstanding."""  
+
+    r"""The amount outstanding."""
     details: Optional[list[AgedCreditorAgedCurrencyOutstandingAgedOutstandingAmountAmountsOutstandingByDataType]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})
-    r"""Array of details."""  
+
+    r"""Array of details."""
     from_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'exclude': lambda f: f is None }})
+
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -45,8 +50,9 @@ class AgedCreditorAgedCurrencyOutstandingAgedOutstandingAmount:
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
+    """
     to_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'exclude': lambda f: f is None }})
+
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -66,7 +72,7 @@ class AgedCreditorAgedCurrencyOutstandingAgedOutstandingAmount:
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
+    """
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -74,8 +80,10 @@ class AgedCreditorAgedCurrencyOutstandingAgedOutstandingAmount:
 class AgedCreditorAgedCurrencyOutstanding:
     
     aged_outstanding_amounts: Optional[list[AgedCreditorAgedCurrencyOutstandingAgedOutstandingAmount]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedOutstandingAmounts'), 'exclude': lambda f: f is None }})
-    r"""Array of outstanding amounts by period."""  
+
+    r"""Array of outstanding amounts by period."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
+
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
@@ -83,7 +91,7 @@ class AgedCreditorAgedCurrencyOutstanding:
     In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
     
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
-    """  
+    """
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -91,9 +99,12 @@ class AgedCreditorAgedCurrencyOutstanding:
 class AgedCreditor:
     
     aged_currency_outstanding: Optional[list[AgedCreditorAgedCurrencyOutstanding]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedCurrencyOutstanding'), 'exclude': lambda f: f is None }})
-    r"""Array of aged creditors by currency."""  
+
+    r"""Array of aged creditors by currency."""
     supplier_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierId'), 'exclude': lambda f: f is None }})
-    r"""Supplier ID of the aged creditor."""  
+
+    r"""Supplier ID of the aged creditor."""
     supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is None }})
-    r"""Supplier name of the aged creditor."""  
+
+    r"""Supplier name of the aged creditor."""
     
