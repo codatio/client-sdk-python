@@ -13,8 +13,10 @@ from typing import Optional
 class DataIntegrityStatusInfo:
     
     current_status: Optional[shared_integritystatus_enum.IntegrityStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currentStatus'), 'exclude': lambda f: f is None }})
-    r"""The current status of the most recently run matching algorithm."""  
+
+    r"""The current status of the most recently run matching algorithm."""
     last_matched: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastMatched'), 'exclude': lambda f: f is None }})
+
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -34,7 +36,8 @@ class DataIntegrityStatusInfo:
     > 
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """  
+    """
     status_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusMessage'), 'exclude': lambda f: f is None }})
-    r"""Detailed explanation supporting the status value."""  
+
+    r"""Detailed explanation supporting the status value."""
     

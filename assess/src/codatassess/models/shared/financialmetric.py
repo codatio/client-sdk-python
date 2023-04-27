@@ -21,11 +21,14 @@ class FinancialMetricErrorsTypeEnum(str, Enum):
 class FinancialMetricErrors:
     
     details: Optional[dict[str, list[str]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})
-    r"""Dictionary list outlining the missing properties or allowed values."""  
+
+    r"""Dictionary list outlining the missing properties or allowed values."""
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
-    r"""Description of the error."""  
+
+    r"""Description of the error."""
     type: Optional[FinancialMetricErrorsTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
-    r"""Metric level error."""  
+
+    r"""Metric level error."""
     
 class FinancialMetricKeyEnum(str, Enum):
     UNKNOWN = 'Unknown'
@@ -65,11 +68,14 @@ class FinancialMetricPeriodsErrorsTypeEnum(str, Enum):
 class FinancialMetricPeriodsErrors:
     
     details: Optional[dict[str, list[str]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})
-    r"""Dictionary list outlining the missing properties or allowed values."""  
+
+    r"""Dictionary list outlining the missing properties or allowed values."""
     massage: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('massage'), 'exclude': lambda f: f is None }})
-    r"""Description of the error."""  
+
+    r"""Description of the error."""
     type: Optional[FinancialMetricPeriodsErrorsTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
-    r"""Period error type."""  
+
+    r"""Period error type."""
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -77,36 +83,48 @@ class FinancialMetricPeriodsErrors:
 class FinancialMetricPeriodsInputs:
     
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""The name of the metric input e.g. “Current Assets”, “Capital Expenditure”."""  
+
+    r"""The name of the metric input e.g. “Current Assets”, “Capital Expenditure”."""
     value: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value'), 'exclude': lambda f: f is None }})
-    r"""The positive or negative number of the input value."""  
+
+    r"""The positive or negative number of the input value."""
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class FinancialMetricPeriods:
     
-    errors: Optional[list[FinancialMetricPeriodsErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})  
+    errors: Optional[list[FinancialMetricPeriodsErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
+
     from_date: Optional[date] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'encoder': utils.dateisoformat(True), 'decoder': utils.datefromisoformat, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
-    r"""The date from which the report starts."""  
-    inputs: Optional[list[FinancialMetricPeriodsInputs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('inputs'), 'exclude': lambda f: f is None }})  
+
+    r"""The date from which the report starts."""
+    inputs: Optional[list[FinancialMetricPeriodsInputs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('inputs'), 'exclude': lambda f: f is None }})
+
     to_date: Optional[date] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'encoder': utils.dateisoformat(True), 'decoder': utils.datefromisoformat, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
-    r"""The date on which the report ends (inclusive of day)."""  
+
+    r"""The date on which the report ends (inclusive of day)."""
     value: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value'), 'exclude': lambda f: f is None }})
+
     r"""The top level metric value that is calculated for the specified period.
     
     If the system cannot calculate for that period, the value will be null. The system will still show the metric inputs.
-    """  
+    """
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class FinancialMetric:
     
-    errors: Optional[list[FinancialMetricErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})  
-    key: Optional[FinancialMetricKeyEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('key'), 'exclude': lambda f: f is None }})  
-    metric_unit: Optional[FinancialMetricMetricUnitEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metricUnit'), 'exclude': lambda f: f is None }})  
+    errors: Optional[list[FinancialMetricErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
+
+    key: Optional[FinancialMetricKeyEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('key'), 'exclude': lambda f: f is None }})
+
+    metric_unit: Optional[FinancialMetricMetricUnitEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metricUnit'), 'exclude': lambda f: f is None }})
+
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Metric name."""  
-    periods: Optional[list[FinancialMetricPeriods]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('periods'), 'exclude': lambda f: f is None }})  
+
+    r"""Metric name."""
+    periods: Optional[list[FinancialMetricPeriods]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('periods'), 'exclude': lambda f: f is None }})
+
     

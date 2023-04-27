@@ -12,6 +12,7 @@ from typing import Optional
 class DataIntegrityByAmount:
     
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
+
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
@@ -19,13 +20,17 @@ class DataIntegrityByAmount:
     In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
     
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
-    """  
+    """
     matched: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matched'), 'exclude': lambda f: f is None }})
-    r"""The sum of the absolute value of transactions of the type specified in the route which have a match."""  
+
+    r"""The sum of the absolute value of transactions of the type specified in the route which have a match."""
     match_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matchPercentage'), 'exclude': lambda f: f is None }})
-    r"""The percentage of the absolute value of transactions of the type specified in the route which have a match."""  
+
+    r"""The percentage of the absolute value of transactions of the type specified in the route which have a match."""
     total: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('total'), 'exclude': lambda f: f is None }})
-    r"""The total of unmatched and matched."""  
+
+    r"""The total of unmatched and matched."""
     unmatched: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unmatched'), 'exclude': lambda f: f is None }})
-    r"""The sum of the absolute value of transactions of the type specified in the route which don't have a match."""  
+
+    r"""The sum of the absolute value of transactions of the type specified in the route which don't have a match."""
     

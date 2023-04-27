@@ -13,5 +13,6 @@ from typing import Optional
 class EnhancedCashFlowItem:
     
     transactions: Optional[list[shared_enhancedcashflowtransaction.EnhancedCashFlowTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
-    r"""An array of transaction data."""  
+
+    r"""An array of transaction data."""
     
