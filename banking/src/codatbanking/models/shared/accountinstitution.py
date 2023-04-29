@@ -13,9 +13,7 @@ class AccountInstitution:
     r"""The bank or other financial institution providing the account."""
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-
     r"""The institution's ID, according to the provider."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-
     r"""The institution's name, according to the underlying provider."""
     
