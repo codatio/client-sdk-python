@@ -11,19 +11,14 @@ from typing import Optional
 class GetIntegrationsBrandingRequest:
     
     platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class GetIntegrationsBrandingResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     branding: Optional[shared_branding.Branding] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

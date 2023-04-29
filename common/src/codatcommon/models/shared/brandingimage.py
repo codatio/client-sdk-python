@@ -13,6 +13,5 @@ from typing import Optional
 class BrandingImage:
     
     image: Optional[shared_imagereference.ImageReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('image'), 'exclude': lambda f: f is None }})
-
     r"""Image reference."""
     

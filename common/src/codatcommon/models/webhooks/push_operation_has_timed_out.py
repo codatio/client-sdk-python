@@ -10,9 +10,6 @@ from typing import Optional
 class PushOperationHasTimedOutResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

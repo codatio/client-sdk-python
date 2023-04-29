@@ -59,23 +59,16 @@ class SyncSetting:
     r"""Describes how often, and how much history, should be fetched for the given data type when a pull operation is queued."""
     
     data_type: SyncSettingDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
-
     r"""Available Data types"""
     fetch_on_first_link: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fetchOnFirstLink') }})
-
     r"""Whether this data type should be queued after a company has authorized a connection."""
     sync_order: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncOrder') }})
-
     sync_schedule: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncSchedule') }})
-
     r"""Number of hours after which this data type should be refreshed."""
     is_locked: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isLocked'), 'exclude': lambda f: f is None }})
-
     months_to_sync: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('monthsToSync'), 'exclude': lambda f: f is None }})
-
     r"""Months of data to fetch, for report data types (`balanceSheet` & `profitAndLoss`) only."""
     sync_from_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncFromUtc'), 'exclude': lambda f: f is None }})
-
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -97,6 +90,5 @@ class SyncSetting:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     sync_from_window: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncFromWindow'), 'exclude': lambda f: f is None }})
-
     r"""Number of months of data to be fetched. Set this *or* `syncFromUTC`"""
     
