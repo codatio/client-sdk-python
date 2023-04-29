@@ -11,21 +11,15 @@ from typing import Optional
 class GetCreditNoteRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     credit_note_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'creditNoteId', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class GetCreditNoteResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     credit_note: Optional[shared_creditnote.CreditNote] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

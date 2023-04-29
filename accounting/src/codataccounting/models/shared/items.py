@@ -13,7 +13,6 @@ from typing import Optional
 class ItemsAllocation:
     
     allocated_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocatedOnDate'), 'exclude': lambda f: f is None }})
-
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -35,7 +34,6 @@ class ItemsAllocation:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
@@ -45,7 +43,6 @@ class ItemsAllocation:
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
     currency_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'exclude': lambda f: f is None }})
-
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
     
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -71,7 +68,6 @@ class ItemsAllocation:
     | **RUB**          | ₽20            | 0.015         | $0.30                      |
     """
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
-
     r"""The total amount that has been allocated."""
     
 
@@ -80,7 +76,5 @@ class ItemsAllocation:
 class Items:
     
     allocation: ItemsAllocation = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocation') }})
-
     payment: shared_paymentallocationpayment.PaymentAllocationPayment = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payment') }})
-
     

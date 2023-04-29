@@ -11,19 +11,14 @@ from typing import Optional
 class GetCompanyInfoRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class GetCompanyInfoResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     company_dataset: Optional[shared_companydataset.CompanyDataset] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

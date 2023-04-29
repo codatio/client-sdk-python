@@ -22,13 +22,10 @@ class Item:
     """
     
     is_bill_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBillItem') }})
-
     r"""Whether you can use this item for bills."""
     is_invoice_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isInvoiceItem') }})
-
     r"""Whether you can use this item for invoices."""
     item_status: shared_itemstatus_enum.ItemStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemStatus') }})
-
     r"""Current state of the item, either:
     
     - `Active`: Available for use
@@ -38,26 +35,17 @@ class Item:
     Due to a [limitation in Xero's API](https://docs.codat.io/integrations/accounting/xero/xero-faq#why-do-all-of-my-items-from-xero-have-their-status-as-unknown), all items from Xero are mapped as `Unknown`.
     """
     type: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-
     bill_item: Optional[shared_billitem.BillItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billItem'), 'exclude': lambda f: f is None }})
-
     r"""Item details that are only for bills."""
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
-
     r"""Friendly reference for the item."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-
     r"""Identifier for the item that is unique to a company in the accounting platform."""
     invoice_item: Optional[shared_invoiceitem.InvoiceItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceItem'), 'exclude': lambda f: f is None }})
-
     r"""Item details that are only for bills."""
     metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
-
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-
     r"""Name of the item in the accounting platform."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-
     

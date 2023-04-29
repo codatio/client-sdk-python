@@ -11,21 +11,15 @@ from typing import Optional
 class GetJournalEntryRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     journal_entry_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'journalEntryId', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class GetJournalEntryResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     journal_entry: Optional[shared_journalentry.JournalEntry] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

@@ -12,15 +12,11 @@ from typing import Optional
 class ReportLine:
     
     value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
-
     r"""Numerical value of the line item."""
     account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-
     r"""Identifier for the account, unique for the company in the accounting platform."""
     items: Optional[list[ReportLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
-
     r"""An array of ReportLine items."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-
     r"""Name of the report line item."""
     

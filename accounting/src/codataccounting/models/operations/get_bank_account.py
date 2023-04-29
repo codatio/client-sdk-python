@@ -11,24 +11,17 @@ from typing import Optional
 class GetBankAccountRequest:
     
     account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountId', 'style': 'simple', 'explode': False }})
-
     r"""Unique identifier for an account"""
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class GetBankAccountResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     bank_account: Optional[shared_bankaccount.BankAccount] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

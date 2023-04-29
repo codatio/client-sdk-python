@@ -13,9 +13,7 @@ class JournalRef:
     r"""Links journal entries to the relevant journal in accounting integrations that use multi-book accounting (multiple journals)."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     r"""GUID of the underlying journal."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-
     r"""Name of journal"""
     
