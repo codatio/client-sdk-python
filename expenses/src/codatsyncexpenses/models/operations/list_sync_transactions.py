@@ -11,15 +11,11 @@ from typing import Optional
 class ListSyncTransactionsRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     page: int = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
-
     r"""Page number. [Read more](https://docs.codat.io/using-the-api/paging)."""
     sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
-
     r"""Unique identifier for a sync."""
     page_size: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
-
     r"""Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging)."""
     
 
@@ -27,12 +23,8 @@ class ListSyncTransactionsRequest:
 class ListSyncTransactionsResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     transaction_metadata_list: Optional[shared_transactionmetadatalist.TransactionMetadataList] = dataclasses.field(default=None)
-
     r"""Success"""
     

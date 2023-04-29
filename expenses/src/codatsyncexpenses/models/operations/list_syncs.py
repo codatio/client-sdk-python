@@ -11,19 +11,14 @@ from typing import Optional
 class ListSyncsRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class ListSyncsResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     company_sync_statuses: Optional[list[shared_companysyncstatus.CompanySyncStatus]] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

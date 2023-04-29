@@ -15,9 +15,6 @@ class CompanyConfiguration:
     r"""Success"""
     
     bank_account: shared_bankaccount.BankAccount = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccount') }})
-
     customer: shared_customer.Customer = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customer') }})
-
     supplier: shared_supplier.Supplier = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplier') }})
-
     
