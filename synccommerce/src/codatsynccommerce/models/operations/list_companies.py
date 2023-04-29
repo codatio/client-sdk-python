@@ -11,16 +11,12 @@ from typing import Optional
 class ListCompaniesRequest:
     
     page: int = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
-
     r"""Page number. [Read more](https://docs.codat.io/using-the-api/paging)."""
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
-
     r"""Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results)."""
     page_size: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
-
     r"""Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging)."""
     query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
-
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
@@ -28,12 +24,8 @@ class ListCompaniesRequest:
 class ListCompaniesResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     companies: Optional[shared_companies.Companies] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

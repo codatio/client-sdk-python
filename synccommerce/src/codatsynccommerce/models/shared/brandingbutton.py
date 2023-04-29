@@ -14,7 +14,5 @@ class BrandingButton:
     r"""Button branding references."""
     
     default: Optional[shared_brandingimage.BrandingImage] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('default'), 'exclude': lambda f: f is None }})
-
     hover: Optional[shared_brandingimage.BrandingImage] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hover'), 'exclude': lambda f: f is None }})
-
     

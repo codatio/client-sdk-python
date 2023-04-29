@@ -11,12 +11,8 @@ from typing import Optional
 class GetConfigTextSyncFlowResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     localization_info: Optional[dict[str, shared_localization.Localization]] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     
