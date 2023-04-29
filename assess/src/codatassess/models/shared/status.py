@@ -14,5 +14,4 @@ class Status:
     r"""OK"""
     
     metadata: Optional[list[shared_dataintegritystatus.DataIntegrityStatus]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
-
     

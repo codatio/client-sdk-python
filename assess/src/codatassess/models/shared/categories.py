@@ -12,21 +12,15 @@ from typing import Optional
 class Categories:
     
     detail_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailType'), 'exclude': lambda f: f is None }})
-
     r"""Most granular chart of account type."""
     detail_type_description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailTypeDescription'), 'exclude': lambda f: f is None }})
-
     r"""A description of the fully categorized (to detail type) account."""
     detail_type_display_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailTypeDisplayName'), 'exclude': lambda f: f is None }})
-
     r"""Human readable detailType display name."""
     subtype: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subtype'), 'exclude': lambda f: f is None }})
-
     r"""The account subtype."""
     subtype_display_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subtypeDisplayName'), 'exclude': lambda f: f is None }})
-
     r"""Human readable subtype display name."""
     type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
-
     r"""The top level account type."""
     

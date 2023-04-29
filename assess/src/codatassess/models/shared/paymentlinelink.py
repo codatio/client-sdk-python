@@ -13,7 +13,6 @@ from typing import Optional
 class PaymentLineLink:
     
     type: shared_paymentlinktype_enum.PaymentLinkTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-
     r"""Types of payment line links, either:
     `Unknown`  
     `Unlinked` - Not used  
@@ -27,13 +26,11 @@ class PaymentLineLink:
     `Discount` - ID refers to the payment
     """
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
-
     r"""Amount by which the balance of the linked entity is altered, in the currency of the linked entity.
     A negative link amount _reduces_ the outstanding amount on the accounts receivable account.  
     A positive link amount _increases_ the outstanding amount on the accounts receivable account.
     """
     currency_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'exclude': lambda f: f is None }})
-
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
     
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -59,6 +56,5 @@ class PaymentLineLink:
     | **RUB**          | ₽20            | 0.015         | $0.30                      |
     """
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-
     r"""Unique identifier of the transaction represented by the link."""
     

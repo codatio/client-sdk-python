@@ -21,7 +21,6 @@ class FinancialMetrics:
     r"""OK"""
     
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
@@ -31,10 +30,7 @@ class FinancialMetrics:
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
     errors: Optional[list[shared_financialmetricerror.FinancialMetricError]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
-
     r"""If there are no errors, an empty array is returned."""
     metrics: Optional[list[shared_financialmetric.FinancialMetric]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metrics'), 'exclude': lambda f: f is None }})
-
     period_unit: Optional[FinancialMetricsPeriodUnitEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('periodUnit'), 'exclude': lambda f: f is None }})
-
     
