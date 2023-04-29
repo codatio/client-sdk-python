@@ -21,10 +21,8 @@ class Order:
     """
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     r"""A unique, persistent identifier for this record"""
     closed_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('closedDate'), 'exclude': lambda f: f is None }})
-
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -46,7 +44,6 @@ class Order:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     country: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('country'), 'exclude': lambda f: f is None }})
-
     r"""The Codat country property is returned as it was provided in the underlying platform by the company without any formatting on our part.
     
     Depending on the platform the value of this property will either be an <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes\" target=\"_blank\">ISO 3166</a> code (2-alpha or 3-alpha) or free-form text returned as a string name in our model. 
@@ -54,7 +51,6 @@ class Order:
     For POST operations against platforms that demand a specific format for the country code, we have documented accepted values in the [options](https://docs.codat.io/codat-api#/operations/get-companies-companyId-connections-connectionId-push) endpoint.
     """
     created_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdDate'), 'exclude': lambda f: f is None }})
-
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -76,39 +72,25 @@ class Order:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-
     customer_ref: Optional[shared_customerref.CustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
-
     r"""Reference to the customer that placed the order."""
     location_ref: Optional[shared_locationref.LocationRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('locationRef'), 'exclude': lambda f: f is None }})
-
     r"""Reference to the geographic location where the order was placed."""
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-
     order_line_items: Optional[list[shared_orderlineitem.OrderLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('orderLineItems'), 'exclude': lambda f: f is None }})
-
     order_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('orderNumber'), 'exclude': lambda f: f is None }})
-
     r"""Friendly reference for the order in the commerce or point of sale platform."""
     payments: Optional[list[shared_paymentref.PaymentRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payments'), 'exclude': lambda f: f is None }})
-
     service_charges: Optional[list[shared_servicecharge.ServiceCharge]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('serviceCharges'), 'exclude': lambda f: f is None }})
-
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
-
     r"""Total amount of the order, including tax, net of any discounts and refunds."""
     total_discount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalDiscount'), 'exclude': lambda f: f is None }})
-
     r"""Total amount of discount applied to the order."""
     total_gratuity: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalGratuity'), 'exclude': lambda f: f is None }})
-
     r"""Extra amount added to a bill."""
     total_refund: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalRefund'), 'exclude': lambda f: f is None }})
-
     r"""Total amount refunded issued by a merchant on an order (always a negative value)."""
     total_tax_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxAmount'), 'exclude': lambda f: f is None }})
-
     r"""Total amount of tax applied to the order."""
     

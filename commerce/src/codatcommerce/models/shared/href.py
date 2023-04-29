@@ -12,5 +12,4 @@ from typing import Optional
 class HRef:
     
     href: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('href'), 'exclude': lambda f: f is None }})
-
     

@@ -16,13 +16,10 @@ class ProductVariant:
     r"""Represents a variation of a product available for sale, for example an item of clothing that may be available for sale in multiple sizes and colors."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     r"""A unique, persistent identifier for this record"""
     barcode: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('barcode'), 'exclude': lambda f: f is None }})
-
     r"""Unique product number of the variant. This might be a barcode, UPC, ISBN, etc."""
     created_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdDate'), 'exclude': lambda f: f is None }})
-
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -44,33 +41,22 @@ class ProductVariant:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     inventory: Optional[shared_productinventory.ProductInventory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('inventory'), 'exclude': lambda f: f is None }})
-
     r"""Information about the total inventory as well as the locations inventory is in."""
     is_tax_enabled: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isTaxEnabled'), 'exclude': lambda f: f is None }})
-
     r"""Whether sales taxes are enabled for this product variant."""
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-
     r"""Name of the product recorded in the commerce or point of sale platform."""
     prices: Optional[list[shared_productprice.ProductPrice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prices'), 'exclude': lambda f: f is None }})
-
     r"""Prices for the product variants in different currencies."""
     shipping_required: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('shippingRequired'), 'exclude': lambda f: f is None }})
-
     r"""Indicates whether or not the product requires physical delivery."""
     sku: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sku'), 'exclude': lambda f: f is None }})
-
     r"""SKU (stock keeping unit) of the variant, as defined by the merchant."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-
     status: Optional[shared_productvariantstatus_enum.ProductVariantStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
-
     unit_of_measure: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitOfMeasure'), 'exclude': lambda f: f is None }})
-
     r"""Unit of measure for the variant, such as `kg` or `meters`."""
     vat_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('vatPercentage'), 'exclude': lambda f: f is None }})
-
     r"""VAT rate for the product variant if sales taxes are enabled."""
     

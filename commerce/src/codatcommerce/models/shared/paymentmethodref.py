@@ -12,9 +12,7 @@ class PaymentMethodRef:
     r"""The payment method the payment is linked to in the commerce platform."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     r"""The unique identitifer of the location being referenced."""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-
     r"""Name of the location being referenced."""
     

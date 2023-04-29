@@ -12,9 +12,7 @@ class ProductRef:
     r"""Reference that links the line item to the correct product details."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     r"""The unique identitifer of the product being referenced."""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-
     r"""Name of the product being referenced."""
     
