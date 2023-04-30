@@ -34,8 +34,8 @@ class CodatSyncCommerce:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.10.3"
-    _gen_version: str = "2.23.3"
+    _sdk_version: str = "0.10.4"
+    _gen_version: str = "2.23.4"
 
     def __init__(self,
                  security: shared.Security = None,
