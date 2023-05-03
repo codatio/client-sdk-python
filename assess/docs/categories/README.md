@@ -30,9 +30,9 @@ s = codatassess.CodatAssess(
 
 
 req = operations.GetAccountCategoryRequest(
-    account_id="provident",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    account_id='provident',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.categories.get_account_category(req)
@@ -59,12 +59,12 @@ s = codatassess.CodatAssess(
 
 
 req = operations.ListAccountsCategoriesRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="distinctio",
+    query='distinctio',
 )
 
 res = s.categories.list_accounts_categories(req)
@@ -116,14 +116,14 @@ s = codatassess.CodatAssess(
 req = operations.UpdateAccountCategoryRequest(
     confirm_category=shared.ConfirmCategory(
         confirmed=shared.AccountCategory(
-            detail_type="quibusdam",
-            subtype="unde",
-            type="nulla",
+            detail_type='quibusdam',
+            subtype='unde',
+            type='nulla',
         ),
     ),
-    account_id="corrupti",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    account_id='corrupti',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.categories.update_account_category(req)
@@ -154,48 +154,48 @@ req = operations.UpdateAccountsCategoriesRequest(
         categories=[
             shared.ConfirmCategoriesCategories(
                 account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
-                    id="69a674e0-f467-4cc8-b96e-d151a05dfc2d",
+                    id='69a674e0-f467-4cc8-b96e-d151a05dfc2d',
                 ),
                 confirmed=shared.AccountCategory(
-                    detail_type="at",
-                    subtype="maiores",
-                    type="molestiae",
+                    detail_type='at',
+                    subtype='maiores',
+                    type='molestiae',
                 ),
             ),
             shared.ConfirmCategoriesCategories(
                 account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
-                    id="cc78ca1b-a928-4fc8-9674-2cb739205929",
+                    id='cc78ca1b-a928-4fc8-9674-2cb739205929',
                 ),
                 confirmed=shared.AccountCategory(
-                    detail_type="dolor",
-                    subtype="natus",
-                    type="laboriosam",
+                    detail_type='dolor',
+                    subtype='natus',
+                    type='laboriosam',
                 ),
             ),
             shared.ConfirmCategoriesCategories(
                 account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
-                    id="fea7596e-b10f-4aaa-a352-c5955907aff1",
+                    id='fea7596e-b10f-4aaa-a352-c5955907aff1',
                 ),
                 confirmed=shared.AccountCategory(
-                    detail_type="mollitia",
-                    subtype="dolorem",
-                    type="culpa",
+                    detail_type='mollitia',
+                    subtype='dolorem',
+                    type='culpa',
                 ),
             ),
             shared.ConfirmCategoriesCategories(
                 account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
-                    id="2fa94677-3925-41aa-92c3-f5ad019da1ff",
+                    id='2fa94677-3925-41aa-92c3-f5ad019da1ff',
                 ),
                 confirmed=shared.AccountCategory(
-                    detail_type="vero",
-                    subtype="nihil",
-                    type="praesentium",
+                    detail_type='vero',
+                    subtype='nihil',
+                    type='praesentium',
                 ),
             ),
         ],
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.categories.update_accounts_categories(req)
