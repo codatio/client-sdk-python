@@ -37,9 +37,9 @@ s = codatcommon.CodatCommon(
 
 
 req = operations.GetCreateUpdateModelOptionsByDataTypeRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    data_type="invoices",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    data_type=shared.DataTypeEnum.INVOICES,
 )
 
 res = s.push_data.get_model_options(req)
@@ -66,8 +66,8 @@ s = codatcommon.CodatCommon(
 
 
 req = operations.GetPushOperationRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    push_operation_key="a05dfc2d-df7c-4c78-8a1b-a928fc816742",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    push_operation_key='a05dfc2d-df7c-4c78-8a1b-a928fc816742',
 )
 
 res = s.push_data.get_operation(req)
@@ -94,11 +94,11 @@ s = codatcommon.CodatCommon(
 
 
 req = operations.GetCompanyPushHistoryRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="impedit",
+    query='impedit',
 )
 
 res = s.push_data.list_operations(req)

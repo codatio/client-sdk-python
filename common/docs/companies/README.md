@@ -30,8 +30,8 @@ s = codatcommon.CodatCommon(
 
 
 req = shared.CompanyRequestBody(
-    description="corrupti",
-    name="Ben Mueller",
+    description='corrupti',
+    name='Ben Mueller',
 )
 
 res = s.companies.create(req)
@@ -59,7 +59,7 @@ s = codatcommon.CodatCommon(
 
 
 req = operations.DeleteCompanyRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.companies.delete(req)
@@ -86,7 +86,7 @@ s = codatcommon.CodatCommon(
 
 
 req = operations.GetCompanyRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.companies.get(req)
@@ -113,10 +113,10 @@ s = codatcommon.CodatCommon(
 
 
 req = operations.ListCompaniesRequest(
-    order_by="-modifiedDate",
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="iure",
+    query='iure',
 )
 
 res = s.companies.list(req)
@@ -144,10 +144,10 @@ s = codatcommon.CodatCommon(
 
 req = operations.UpdateCompanyRequest(
     company_request_body=shared.CompanyRequestBody(
-        description="magnam",
-        name="Larry Windler",
+        description='magnam',
+        name='Larry Windler',
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.companies.update(req)

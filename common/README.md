@@ -22,8 +22,8 @@ s = codatcommon.CodatCommon(
 
 
 req = shared.CompanyRequestBody(
-    description="corrupti",
-    name="Kelvin Sporer",
+    description='corrupti',
+    name='Kelvin Sporer',
 )
 
 res = s.companies.create(req)

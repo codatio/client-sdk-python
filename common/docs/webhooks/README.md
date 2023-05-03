@@ -28,16 +28,16 @@ s = codatcommon.CodatCommon(
 
 
 req = shared.Rule(
-    company_id="39b73b17-cc2e-429e-915d-71654e9dcd1e",
-    id="ff89c50e-a719-4ef5-a182-9917e53927b6",
+    company_id='39b73b17-cc2e-429e-915d-71654e9dcd1e',
+    id='ff89c50e-a719-4ef5-a182-9917e53927b6',
     notifiers=shared.RuleNotifiers(
         emails=[
-            "info@client.com",
-            "info@client.com",
+            'info@client.com',
+            'info@client.com',
         ],
-        webhook="https://webhook.client.com",
+        webhook='https://webhook.client.com',
     ),
-    type="minima",
+    type='minima',
 )
 
 res = s.webhooks.create(req)
@@ -64,7 +64,7 @@ s = codatcommon.CodatCommon(
 
 
 req = operations.GetWebhookRequest(
-    rule_id="7318949f-c008-4936-a8ff-10d7ab563fa6",
+    rule_id='7318949f-c008-4936-a8ff-10d7ab563fa6',
 )
 
 res = s.webhooks.get(req)
@@ -91,10 +91,10 @@ s = codatcommon.CodatCommon(
 
 
 req = operations.ListRulesRequest(
-    order_by="-modifiedDate",
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="excepturi",
+    query='excepturi',
 )
 
 res = s.webhooks.list(req)
