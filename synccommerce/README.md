@@ -24,7 +24,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 
 req = shared.CreateCompany(
-    name="Bob's Burgers",
+    name='Bob's Burgers',
 )
 
 res = s.company_management.create_company(req)

@@ -53,9 +53,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key="vel",
-    commerce_key="error",
-    merchant_identifier="deserunt",
+    accounting_key='vel',
+    commerce_key='error',
+    merchant_identifier='deserunt',
 )
 
 res = s.sync_flow_preferences.get_sync_flow_url(req)
@@ -82,8 +82,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 
 req = operations.GetVisibleAccountsRequest(
-    client_id="674e0f46-7cc8-4796-ad15-1a05dfc2ddf7",
-    platform_key="cc78ca1b-a928-4fc8-9674-2cb739205929",
+    client_id='674e0f46-7cc8-4796-ad15-1a05dfc2ddf7',
+    platform_key='cc78ca1b-a928-4fc8-9674-2cb739205929',
 )
 
 res = s.sync_flow_preferences.get_visible_accounts(req)
@@ -112,7 +112,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = {
     "natus": shared.Localization(
         required=False,
-        text="laboriosam",
+        text='laboriosam',
     ),
 }
 
@@ -142,13 +142,13 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            "saepe",
-            "fuga",
-            "in",
-            "corporis",
+            'saepe',
+            'fuga',
+            'in',
+            'corporis',
         ],
     ),
-    commerce_key="96eb10fa-aa23-452c-9955-907aff1a3a2f",
+    commerce_key='96eb10fa-aa23-452c-9955-907aff1a3a2f',
 )
 
 res = s.sync_flow_preferences.update_visible_accounts_sync_flow(req)
