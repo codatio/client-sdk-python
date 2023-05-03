@@ -29,7 +29,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 
 req = operations.GetLastSuccessfulSyncRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.sync_status.get_last_successful_sync(req)
@@ -56,7 +56,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 
 req = operations.GetLatestSyncRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.sync_status.get_latest_sync(req)
@@ -83,8 +83,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 
 req = operations.GetSyncByIDRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    sync_id="6fb40d5e-b13e-11ed-afa1-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
 )
 
 res = s.sync_status.get_sync_by_id(req)
@@ -111,7 +111,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 
 req = operations.ListSyncsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.sync_status.list_syncs(req)

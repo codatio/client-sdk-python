@@ -26,7 +26,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 
 req = operations.CreatePartnerExpenseConnectionRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.connections.create_partner_expense_connection(req)

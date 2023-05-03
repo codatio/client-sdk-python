@@ -27,9 +27,9 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 
 req = operations.GetSyncTransactionRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    sync_id="6fb40d5e-b13e-11ed-afa1-0242ac120002",
-    transaction_id="336694d8-2dca-4cb5-a28d-3ccb83e55eee",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
+    transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
 )
 
 res = s.transaction_status.get_sync_transaction(req)
@@ -56,10 +56,10 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 
 req = operations.ListSyncTransactionsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    sync_id="6fb40d5e-b13e-11ed-afa1-0242ac120002",
+    sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
 )
 
 res = s.transaction_status.list_sync_transactions(req)
