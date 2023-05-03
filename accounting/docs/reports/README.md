@@ -30,7 +30,7 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetAgedCreditorsReportRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     number_of_periods=12,
     period_length_days=30,
     report_date=dateutil.parser.parse('2022-12-31').date(),
@@ -61,7 +61,7 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetAgedDebtorsReportRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     number_of_periods=12,
     period_length_days=30,
     report_date=dateutil.parser.parse('2022-12-31').date(),
@@ -91,7 +91,7 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.IsAgedCreditorsReportAvailableRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.reports.is_aged_creditors_report_available(req)
@@ -118,7 +118,7 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.IsAgedDebtorReportAvailableRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.reports.is_aged_debtor_report_available(req)

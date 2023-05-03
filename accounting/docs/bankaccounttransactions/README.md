@@ -34,27 +34,27 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankTransactionsRequest(
     bank_transactions=shared.BankTransactions(
-        account_id="quis",
+        account_id='quis',
         transactions=[
             shared.BankTransactionLine(
                 amount=6481.72,
                 balance=202.18,
-                cleared_on_date="ipsam",
-                counterparty="repellendus",
-                description="sapiente",
-                id="c2ddf7cc-78ca-41ba-928f-c816742cb739",
-                modified_date="aspernatur",
+                cleared_on_date='ipsam',
+                counterparty='repellendus',
+                description='sapiente',
+                id='c2ddf7cc-78ca-41ba-928f-c816742cb739',
+                modified_date='aspernatur',
                 reconciled=False,
-                reference="perferendis",
-                source_modified_date="ad",
-                transaction_type="Check",
+                reference='perferendis',
+                source_modified_date='ad',
+                transaction_type=shared.BankTransactionTypeEnum.CHECK,
             ),
         ],
     ),
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     allow_sync_on_push_complete=False,
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     timeout_in_minutes=149675,
 )
 
@@ -82,9 +82,9 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetCreateBankAccountModelRequest(
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.bank_account_transactions.get_create_model(req)
@@ -111,13 +111,13 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    order_by="-modifiedDate",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="iste",
+    query='iste',
 )
 
 res = s.bank_account_transactions.list(req)
@@ -144,12 +144,12 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListBankTransactionsRequest(
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="dolor",
+    query='dolor',
 )
 
 res = s.bank_account_transactions.list_transactions(req)

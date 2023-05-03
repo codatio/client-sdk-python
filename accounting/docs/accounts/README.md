@@ -36,58 +36,58 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateAccountRequest(
     account=shared.Account(
-        currency="quibusdam",
+        currency='quibusdam',
         current_balance=6027.63,
-        description="Invoices the business has issued but has not yet collected payment on.",
-        fully_qualified_category="Asset.Current",
-        fully_qualified_name="Asset.Current.Accounts Receivable",
-        id="1b6266d1-1e44-46c5-8eb5-a8f98e03124e",
+        description='Invoices the business has issued but has not yet collected payment on.',
+        fully_qualified_category='Asset.Current',
+        fully_qualified_name='Asset.Current.Accounts Receivable',
+        id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
         is_bank_account=False,
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="nulla",
-        name="Accounts Receivable",
-        nominal_code="610",
-        source_modified_date="corrupti",
-        status="Active",
-        type="Asset",
+        modified_date='nulla',
+        name='Accounts Receivable',
+        nominal_code='610',
+        source_modified_date='corrupti',
+        status=shared.AccountStatusEnum.ACTIVE,
+        type=shared.AccountTypeEnum.ASSET,
         valid_datatype_links=[
             shared.ValidDataTypeLinks(
                 links=[
-                    "error",
-                    "deserunt",
+                    'error',
+                    'deserunt',
                 ],
-                property="suscipit",
+                property='suscipit',
             ),
             shared.ValidDataTypeLinks(
                 links=[
-                    "magnam",
-                    "debitis",
+                    'magnam',
+                    'debitis',
                 ],
-                property="ipsa",
+                property='ipsa',
             ),
             shared.ValidDataTypeLinks(
                 links=[
-                    "tempora",
-                    "suscipit",
-                    "molestiae",
-                    "minus",
+                    'tempora',
+                    'suscipit',
+                    'molestiae',
+                    'minus',
                 ],
-                property="placeat",
+                property='placeat',
             ),
             shared.ValidDataTypeLinks(
                 links=[
-                    "iusto",
-                    "excepturi",
-                    "nisi",
+                    'iusto',
+                    'excepturi',
+                    'nisi',
                 ],
-                property="recusandae",
+                property='recusandae',
             ),
         ],
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     timeout_in_minutes=836079,
 )
 
@@ -115,8 +115,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetAccountRequest(
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.accounts.get(req)
@@ -149,8 +149,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetCreateChartOfAccountsModelRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.accounts.get_create_model(req)
@@ -177,11 +177,11 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListAccountsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="ab",
+    query='ab',
 )
 
 res = s.accounts.list(req)
