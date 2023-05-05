@@ -22,6 +22,7 @@ class SyncStatus:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_last_successful_sync(self, request: operations.GetLastSuccessfulSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetLastSuccessfulSyncResponse:
         r"""Last successful sync
         Gets the status of the last successfull sync
@@ -58,6 +59,7 @@ class SyncStatus:
 
         return res
 
+    
     def get_latest_sync(self, request: operations.GetLatestSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetLatestSyncResponse:
         r"""Latest sync status
         Gets the latest sync status
@@ -94,6 +96,7 @@ class SyncStatus:
 
         return res
 
+    
     def get_sync_by_id(self, request: operations.GetSyncByIDRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncByIDResponse:
         r"""Get Sync status
         Get the sync status for a specified sync
@@ -130,6 +133,7 @@ class SyncStatus:
 
         return res
 
+    
     def list_syncs(self, request: operations.ListSyncsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSyncsResponse:
         r"""List sync statuses
         Gets a list of sync statuses

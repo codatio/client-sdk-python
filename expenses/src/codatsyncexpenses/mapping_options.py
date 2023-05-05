@@ -22,6 +22,7 @@ class MappingOptions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_mapping_options(self, request: operations.GetMappingOptionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetMappingOptionsResponse:
         r"""Mapping options
         Gets the expense mapping options for a companies accounting software

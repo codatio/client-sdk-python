@@ -22,6 +22,7 @@ class Connections:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create_partner_expense_connection(self, request: operations.CreatePartnerExpenseConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePartnerExpenseConnectionResponse:
         r"""Create Partner Expense connection
         Creates a Partner Expense data connection

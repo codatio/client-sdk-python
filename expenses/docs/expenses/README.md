@@ -25,7 +25,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-
 req = operations.CreateExpenseDatasetRequest(
     create_expense_request=shared.CreateExpenseRequest(
         items=[
@@ -310,7 +309,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.UploadAttachmentRequest(
     request_body=operations.UploadAttachmentRequestBody(

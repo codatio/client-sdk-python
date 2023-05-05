@@ -24,7 +24,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-
 req = operations.IntiateSyncRequest(
     post_sync=shared.PostSync(
         dataset_ids=[
