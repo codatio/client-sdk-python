@@ -22,6 +22,7 @@ class Integrations:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_integration_branding(self, request: operations.GetIntegrationBrandingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetIntegrationBrandingResponse:
         r"""Get branding for an integration
         Retrieve Integration branding assets.
@@ -58,6 +59,7 @@ class Integrations:
 
         return res
 
+    
     def list_integrations(self, request: operations.ListIntegrationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListIntegrationsResponse:
         r"""List information on Codat's supported integrations
         Retrieve a list of available integrations support by datatype and state of release.

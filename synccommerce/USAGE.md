@@ -9,7 +9,6 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = shared.CreateCompany(
     name='Bob's Burgers',
 )

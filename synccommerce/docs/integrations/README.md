@@ -25,7 +25,6 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.GetIntegrationBrandingRequest(
     platform_key='quibusdam',
 )
@@ -51,7 +50,6 @@ s = codatsynccommerce.CodatSyncCommerce(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',

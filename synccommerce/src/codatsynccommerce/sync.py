@@ -22,6 +22,7 @@ class Sync:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def request_sync(self, request: operations.RequestSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncResponse:
         r"""Run a Commerce sync from the last successful sync
         Run a Commerce sync from the last successful sync up to the date provided (optional), otherwise UtcNow is used.
@@ -63,6 +64,7 @@ class Sync:
 
         return res
 
+    
     def request_sync_for_date_range(self, request: operations.RequestSyncForDateRangeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncForDateRangeResponse:
         r"""Run a Commerce sync from a given date range
         Run a Commerce sync from the specified start date to the specified finish date in the request payload.

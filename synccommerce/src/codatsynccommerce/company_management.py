@@ -22,6 +22,7 @@ class CompanyManagement:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create_company(self, request: shared.CreateCompany, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
         r"""Create Sync for Commerce company
         Creates a Codat company with a commerce partner data connection.
@@ -62,6 +63,7 @@ class CompanyManagement:
 
         return res
 
+    
     def create_connection(self, request: operations.CreateConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateConnectionResponse:
         r"""Create connection
         Create a data connection for company.
@@ -102,6 +104,7 @@ class CompanyManagement:
 
         return res
 
+    
     def list_companies(self, request: operations.ListCompaniesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompaniesResponse:
         r"""List companies
         Retrieve a list of all companies the client has created.
@@ -139,6 +142,7 @@ class CompanyManagement:
 
         return res
 
+    
     def list_connections(self, request: operations.ListConnectionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListConnectionsResponse:
         r"""List data connections
         Retrieve previously created data connections.
@@ -176,6 +180,7 @@ class CompanyManagement:
 
         return res
 
+    
     def update_connection(self, request: operations.UpdateConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateConnectionResponse:
         r"""Update data connection
         Update a data connection

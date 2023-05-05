@@ -22,6 +22,7 @@ class Configuration:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_configuration(self, request: operations.GetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigurationResponse:
         r"""Retrieve config preferences set for a company.
         Retrieve current config preferences.
@@ -58,6 +59,7 @@ class Configuration:
 
         return res
 
+    
     def get_sync_status(self, request: operations.GetSyncStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncStatusResponse:
         r"""Get status for a company's syncs
         Check the sync history and sync status for a company.
@@ -90,6 +92,7 @@ class Configuration:
 
         return res
 
+    
     def set_configuration(self, request: operations.SetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.SetConfigurationResponse:
         r"""Create or update configuration.
         Make changes to configuration preferences.

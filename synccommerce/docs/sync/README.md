@@ -26,7 +26,6 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.RequestSyncRequest(
     sync_to_latest_args=shared.SyncToLatestArgs(
         sync_to='nulla',
@@ -55,7 +54,6 @@ s = codatsynccommerce.CodatSyncCommerce(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.RequestSyncForDateRangeRequest(
     date_range=shared.DateRange(

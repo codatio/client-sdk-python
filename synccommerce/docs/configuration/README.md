@@ -26,7 +26,6 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.GetConfigurationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -53,7 +52,6 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.GetSyncStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -79,7 +77,6 @@ s = codatsynccommerce.CodatSyncCommerce(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.SetConfigurationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',

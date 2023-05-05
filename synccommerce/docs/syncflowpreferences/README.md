@@ -51,7 +51,6 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.GetSyncFlowURLRequest(
     accounting_key='vel',
     commerce_key='error',
@@ -80,7 +79,6 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.GetVisibleAccountsRequest(
     client_id='674e0f46-7cc8-4796-ad15-1a05dfc2ddf7',
     platform_key='cc78ca1b-a928-4fc8-9674-2cb739205929',
@@ -107,7 +105,6 @@ s = codatsynccommerce.CodatSyncCommerce(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = {
     "natus": shared.Localization(
@@ -137,7 +134,6 @@ s = codatsynccommerce.CodatSyncCommerce(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(

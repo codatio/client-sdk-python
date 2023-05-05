@@ -28,7 +28,6 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = shared.CreateCompany(
     name='Bob's Burgers',
 )
@@ -54,7 +53,6 @@ s = codatsynccommerce.CodatSyncCommerce(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.CreateConnectionRequest(
     request_body='corrupti',
@@ -82,7 +80,6 @@ s = codatsynccommerce.CodatSyncCommerce(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
@@ -113,7 +110,6 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.ListConnectionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
@@ -143,7 +139,6 @@ s = codatsynccommerce.CodatSyncCommerce(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.UpdateConnectionRequest(
     update_connection=shared.UpdateConnection(
