@@ -263,3 +263,11 @@ Based on:
 - Speakeasy CLI 1.27.0 (2.24.0) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.12.0] https://pypi.org/project/codat-common/0.12.0 - common
+
+## 2023-05-05 00:15:50
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Common.yaml
+- Speakeasy CLI 1.29.0 (2.26.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.13.0] https://pypi.org/project/codat-common/0.13.0 - common

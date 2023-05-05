@@ -22,6 +22,7 @@ class PushData:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_model_options(self, request: operations.GetCreateUpdateModelOptionsByDataTypeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateModelOptionsByDataTypeResponse:
         r"""Get push options
         This is the generic documentation for creation and updating of data. See the equivalent endpoint for a given data type for more specific information. 
@@ -67,6 +68,7 @@ class PushData:
 
         return res
 
+    
     def get_operation(self, request: operations.GetPushOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPushOperationResponse:
         r"""Get push operation
         Retrieve push operation.
@@ -103,6 +105,7 @@ class PushData:
 
         return res
 
+    
     def list_operations(self, request: operations.GetCompanyPushHistoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyPushHistoryResponse:
         r"""List push operations
         List push operation records.

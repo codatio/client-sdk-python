@@ -22,6 +22,7 @@ class RefreshData:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def all(self, request: operations.RefreshCompanyDataRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RefreshCompanyDataResponse:
         r"""Queue pull operations
         Refreshes all data types marked Fetch on first link.
@@ -60,6 +61,7 @@ class RefreshData:
 
         return res
 
+    
     def by_data_type(self, request: operations.CreatePullOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePullOperationResponse:
         r"""Queue pull operation
         Queue a single pull operation for the given company and data type.

@@ -22,6 +22,7 @@ class Connections:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateDataConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDataConnectionResponse:
         r"""Create connection
         Create a data connection for a company
@@ -66,6 +67,7 @@ class Connections:
 
         return res
 
+    
     def delete(self, request: operations.DeleteCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyConnectionResponse:
         r"""Delete connection
         Revoke and remove a connection from a company.
@@ -105,6 +107,7 @@ class Connections:
 
         return res
 
+    
     def get(self, request: operations.GetCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyConnectionResponse:
         r"""Get connection
         Get a single connection for a company
@@ -145,6 +148,7 @@ class Connections:
 
         return res
 
+    
     def list(self, request: operations.ListCompanyConnectionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompanyConnectionsResponse:
         r"""List connections
         List the connections for a company
@@ -186,6 +190,7 @@ class Connections:
 
         return res
 
+    
     def unlink_connection(self, request: operations.UnlinkConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UnlinkConnectionResponse:
         r"""Unlink connection
         This allows you to deauthorize a connection, without deleting it from Codat. This means you can still view any data that has previously been pulled into Codat, and also lets you re-authorize in future if your customer wishes to resume sharing their data.
@@ -230,6 +235,7 @@ class Connections:
 
         return res
 
+    
     def update_authorization(self, request: operations.UpdateConnectionAuthorizationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateConnectionAuthorizationResponse:
         r"""Update authorization
         Update data connection's authorization.

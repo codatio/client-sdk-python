@@ -22,6 +22,7 @@ class Companies:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: shared.CompanyRequestBody, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
         r"""Create company
         Create a new company
@@ -66,6 +67,7 @@ class Companies:
 
         return res
 
+    
     def delete(self, request: operations.DeleteCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyResponse:
         r"""Delete a company
         Delete the given company from Codat.
@@ -105,6 +107,7 @@ class Companies:
 
         return res
 
+    
     def get(self, request: operations.GetCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyResponse:
         r"""Get company
         Get metadata for a single company
@@ -145,6 +148,7 @@ class Companies:
 
         return res
 
+    
     def list(self, request: operations.ListCompaniesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompaniesResponse:
         r"""List companies
         List all companies that you have created in Codat.
@@ -186,6 +190,7 @@ class Companies:
 
         return res
 
+    
     def update(self, request: operations.UpdateCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateCompanyResponse:
         r"""Update company
         Updates the given company with a new name and description

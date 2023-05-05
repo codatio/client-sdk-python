@@ -26,7 +26,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.GetIntegrationRequest(
     platform_key='gbol',
 )
@@ -53,7 +52,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.GetIntegrationsBrandingRequest(
     platform_key='gbol',
 )
@@ -79,7 +77,6 @@ s = codatcommon.CodatCommon(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',

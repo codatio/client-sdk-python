@@ -29,7 +29,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.CreateDataConnectionRequest(
     request_body=operations.CreateDataConnectionRequestBody(
         platform_key='molestiae',
@@ -60,7 +59,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.DeleteCompanyConnectionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -88,7 +86,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.GetCompanyConnectionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -115,7 +112,6 @@ s = codatcommon.CodatCommon(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListCompanyConnectionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -147,7 +143,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.UnlinkConnectionRequest(
     request_body=operations.UnlinkConnectionRequestBody(
         status='placeat',
@@ -177,7 +172,6 @@ s = codatcommon.CodatCommon(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.UpdateConnectionAuthorizationRequest(
     request_body={

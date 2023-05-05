@@ -20,7 +20,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = shared.CompanyRequestBody(
     description='corrupti',
     name='Kelvin Sporer',

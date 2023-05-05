@@ -26,7 +26,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = shared.Rule(
     company_id='39b73b17-cc2e-429e-915d-71654e9dcd1e',
     id='ff89c50e-a719-4ef5-a182-9917e53927b6',
@@ -62,7 +61,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.GetWebhookRequest(
     rule_id='7318949f-c008-4936-a8ff-10d7ab563fa6',
 )
@@ -88,7 +86,6 @@ s = codatcommon.CodatCommon(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListRulesRequest(
     order_by='-modifiedDate',

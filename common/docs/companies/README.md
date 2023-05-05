@@ -28,7 +28,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = shared.CompanyRequestBody(
     description='corrupti',
     name='Ben Mueller',
@@ -57,7 +56,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.DeleteCompanyRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -84,7 +82,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.GetCompanyRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -110,7 +107,6 @@ s = codatcommon.CodatCommon(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
@@ -140,7 +136,6 @@ s = codatcommon.CodatCommon(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.UpdateCompanyRequest(
     company_request_body=shared.CompanyRequestBody(

@@ -25,7 +25,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.RefreshCompanyDataRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -53,7 +52,6 @@ s = codatcommon.CodatCommon(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.CreatePullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',

@@ -22,6 +22,7 @@ class DataStatus:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetCompanyDataStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyDataStatusResponse:
         r"""Get data status
         Get the state of each data type for a company
@@ -62,6 +63,7 @@ class DataStatus:
 
         return res
 
+    
     def get_pull_operation(self, request: operations.GetPullOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPullOperationResponse:
         r"""Get pull operation
         Retrieve information about a single dataset or pull operation.
@@ -102,6 +104,7 @@ class DataStatus:
 
         return res
 
+    
     def list_pull_operations(self, request: operations.ListPullOperationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPullOperationsResponse:
         r"""Get pull operations
         Gets the pull operation history (datasets) for a given company.

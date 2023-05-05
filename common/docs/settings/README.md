@@ -49,7 +49,6 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.UpdateSyncSettingsRequestBody(
     client_id='367f7975-267b-439b-90c6-a6040ee680f3',
     overrides_defaults=False,
@@ -88,7 +87,6 @@ s = codatcommon.CodatCommon(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = shared.Profile(
     alert_auth_header='Bearer tXEiHiRK7XCtI8TNHbpGs1LI1pumdb4Cl1QIo7B2',
