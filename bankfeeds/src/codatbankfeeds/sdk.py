@@ -25,8 +25,8 @@ class CodatBankFeeds:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.14.0"
-    _gen_version: str = "2.24.0"
+    _sdk_version: str = "0.15.0"
+    _gen_version: str = "2.26.0"
 
     def __init__(self,
                  security: shared.Security = None,
@@ -61,6 +61,7 @@ class CodatBankFeeds:
         
 
         
+    
     
     
     def create_bank_feed(self, request: operations.CreateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankFeedResponse:
@@ -103,6 +104,7 @@ class CodatBankFeeds:
 
         return res
 
+    
     def create_bank_transactions(self, request: operations.CreateBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankTransactionsResponse:
         r"""Create bank transactions
         Posts bank transactions to the accounting package for a given company.
@@ -148,6 +150,7 @@ class CodatBankFeeds:
 
         return res
 
+    
     def get_bank_feeds(self, request: operations.GetBankFeedsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankFeedsResponse:
         r"""List bank feed bank accounts
         Get BankFeed BankAccounts for a single data source connected to a single company.
@@ -184,6 +187,7 @@ class CodatBankFeeds:
 
         return res
 
+    
     def get_create_bank_account_model(self, request: operations.GetCreateBankAccountModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBankAccountModelResponse:
         r"""List push options for bank account bank transactions
         Gets the options of pushing bank account transactions.
@@ -220,6 +224,7 @@ class CodatBankFeeds:
 
         return res
 
+    
     def list_bank_account_transactions(self, request: operations.ListBankAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountTransactionsResponse:
         r"""List bank transactions for bank account
         Gets bank transactions for a given bank account ID
@@ -257,6 +262,7 @@ class CodatBankFeeds:
 
         return res
 
+    
     def update_bank_feed(self, request: operations.UpdateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankFeedResponse:
         r"""Update bank feed bank account
         Update a single BankFeed BankAccount for a single data source connected to a single company.

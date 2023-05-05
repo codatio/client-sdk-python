@@ -9,7 +9,6 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-
 req = operations.CreateBankFeedRequest(
     request_body=[
         shared.BankFeedAccount(
