@@ -10,7 +10,7 @@
 
 > **Alpha Release**
 > 
-> We are currently finalizing our design for the typescript client library. Beta release coming very soon!
+> We are currently finalizing our design for the Python client library. Beta release coming very soon!
 
 ## Authentication
 
