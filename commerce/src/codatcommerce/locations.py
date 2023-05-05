@@ -22,6 +22,7 @@ class Locations:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def list(self, request: operations.ListLocationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListLocationsResponse:
         r"""List locations
         Retrieve a list of locations as seen in the commerce platform.

@@ -22,6 +22,7 @@ class Payments:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def list(self, request: operations.ListPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentsResponse:
         r"""List payments
         List commerce payments for the given company & data connection.
@@ -59,6 +60,7 @@ class Payments:
 
         return res
 
+    
     def list_methods(self, request: operations.ListPaymentMethodsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentMethodsResponse:
         r"""List payment methods
         Retrieve a list of payment methods, such as card, cash or other online payment methods, as held in the linked commerce platform.
