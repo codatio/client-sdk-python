@@ -39,7 +39,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetAccountsForEnhancedBalanceSheetRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     number_of_periods=979587,
@@ -70,7 +69,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetAccountsForEnhancedProfitAndLossRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     number_of_periods=120196,
@@ -98,7 +96,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetCommerceCustomerRetentionMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -132,7 +129,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetCommerceLifetimeValueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -164,7 +160,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetCommerceOrdersMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -198,7 +193,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetCommerceRefundsMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -230,7 +224,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetCommerceRevenueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -264,7 +257,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetEnhancedBalanceSheetRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -296,7 +288,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetEnhancedCashFlowTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
@@ -325,7 +316,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetEnhancedFinancialMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -358,7 +348,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetEnhancedInvoicesReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
@@ -387,7 +376,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetEnhancedProfitAndLossRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -420,7 +408,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetRecurringRevenueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -447,7 +434,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.RequestRecurringRevenueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',

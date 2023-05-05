@@ -26,7 +26,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetDataIntegrityDetailsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     data_type=shared.DataIntegrityDataTypeEnum.BANKING_ACCOUNTS,
@@ -58,7 +57,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetDataIntegrityStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     data_type=shared.DataIntegrityDataTypeEnum.BANKING_ACCOUNTS,
@@ -85,7 +83,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetDataIntegritySummariesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',

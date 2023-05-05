@@ -22,6 +22,7 @@ class ExcelReports:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def download_excel_report(self, request: operations.DownloadExcelReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadExcelReportResponse:
         r"""Download generated excel report
         Download the previously generated Excel report to a local drive.
@@ -58,6 +59,7 @@ class ExcelReports:
 
         return res
 
+    
     def generate_excel_report(self, request: operations.GenerateExcelReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GenerateExcelReportResponse:
         r"""Generate an Excel report
         Generate an Excel report which can subsequently be downloaded.
@@ -95,6 +97,7 @@ class ExcelReports:
 
         return res
 
+    
     def get_accounting_marketing_metrics(self, request: operations.GetAccountingMarketingMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountingMarketingMetricsResponse:
         r"""Get the marketing metrics from an accounting source for a given company.
         Request an Excel report for download.
@@ -132,6 +135,7 @@ class ExcelReports:
 
         return res
 
+    
     def get_excel_report(self, request: operations.GetExcelReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetExcelReportResponse:
         r"""Download generated excel report
         Download the previously generated Excel report to a local drive.
@@ -168,6 +172,7 @@ class ExcelReports:
 
         return res
 
+    
     def get_excel_report_generation_status(self, request: operations.GetExcelReportGenerationStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetExcelReportGenerationStatusResponse:
         r"""Get status of Excel report
         Returns the status of the latest report requested.

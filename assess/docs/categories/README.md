@@ -28,7 +28,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetAccountCategoryRequest(
     account_id='provident',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -56,7 +55,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListAccountsCategoriesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -112,7 +110,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.UpdateAccountCategoryRequest(
     confirm_category=shared.ConfirmCategory(
         confirmed=shared.AccountCategory(
@@ -147,7 +144,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.UpdateAccountsCategoriesRequest(
     confirm_categories=shared.ConfirmCategories(

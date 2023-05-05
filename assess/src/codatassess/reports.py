@@ -22,6 +22,7 @@ class Reports:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_accounts_for_enhanced_balance_sheet(self, request: operations.GetAccountsForEnhancedBalanceSheetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountsForEnhancedBalanceSheetResponse:
         r"""Enhanced Balance Sheet Accounts
         The Enhanced Balance Sheet Accounts endpoint returns a list of categorized accounts that appear on a company’s Balance Sheet along with a balance per financial statement date.
@@ -61,6 +62,7 @@ class Reports:
 
         return res
 
+    
     def get_accounts_for_enhanced_profit_and_loss(self, request: operations.GetAccountsForEnhancedProfitAndLossRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountsForEnhancedProfitAndLossResponse:
         r"""Enhanced Profit and Loss Accounts
         The Enhanced Profit and Loss Accounts endpoint returns a list of categorized accounts that appear on a company’s Profit and Loss. It also includes a balance per the financial statement date.
@@ -100,6 +102,7 @@ class Reports:
 
         return res
 
+    
     def get_commerce_customer_retention_metrics(self, request: operations.GetCommerceCustomerRetentionMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceCustomerRetentionMetricsResponse:
         r"""Get the customer retention metrics for a specific company.
         Gets the customer retention metrics for a specific company connection, over one or more periods of time.
@@ -137,6 +140,7 @@ class Reports:
 
         return res
 
+    
     def get_commerce_lifetime_value_metrics(self, request: operations.GetCommerceLifetimeValueMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceLifetimeValueMetricsResponse:
         r"""Get the lifetime value metric for a specific company.
         Gets the lifetime value metric for a specific company connection, over one or more periods of time.
@@ -174,6 +178,7 @@ class Reports:
 
         return res
 
+    
     def get_commerce_orders_metrics(self, request: operations.GetCommerceOrdersMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceOrdersMetricsResponse:
         r"""Get order information for a specific company
         Gets the order information for a specific company connection, over one or more periods of time.
@@ -211,6 +216,7 @@ class Reports:
 
         return res
 
+    
     def get_commerce_refunds_metrics(self, request: operations.GetCommerceRefundsMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceRefundsMetricsResponse:
         r"""Get the refunds information for a specific company
         Gets the refunds information for a specific company connection, over one or more periods of time.
@@ -248,6 +254,7 @@ class Reports:
 
         return res
 
+    
     def get_commerce_revenue_metrics(self, request: operations.GetCommerceRevenueMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceRevenueMetricsResponse:
         r"""Commerce Revenue Metrics
         Get the revenue and revenue growth for a specific company connection, over one or more periods of time.
@@ -285,6 +292,7 @@ class Reports:
 
         return res
 
+    
     def get_enhanced_balance_sheet(self, request: operations.GetEnhancedBalanceSheetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedBalanceSheetResponse:
         r"""Enhanced Balance Sheet
         Gets a fully categorized balance sheet statement for a given company, over one or more period(s).
@@ -322,6 +330,7 @@ class Reports:
 
         return res
 
+    
     def get_enhanced_cash_flow_transactions(self, request: operations.GetEnhancedCashFlowTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedCashFlowTransactionsResponse:
         r"""Get enhanced cash flow report
         The Enhanced Cash Flow Transactions endpoint provides a fully categorized list of banking transactions for a company. Accounts and transaction data are obtained from the company's banking data sources.
@@ -359,6 +368,7 @@ class Reports:
 
         return res
 
+    
     def get_enhanced_financial_metrics(self, request: operations.GetEnhancedFinancialMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedFinancialMetricsResponse:
         r"""List financial metrics
         Gets all the available financial metrics for a given company, over one or more periods.
@@ -396,6 +406,7 @@ class Reports:
 
         return res
 
+    
     def get_enhanced_invoices_report(self, request: operations.GetEnhancedInvoicesReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedInvoicesReportResponse:
         r"""Enhanced Invoices Report
         Gets a list of invoices linked to the corresponding banking transaction
@@ -433,6 +444,7 @@ class Reports:
 
         return res
 
+    
     def get_enhanced_profit_and_loss(self, request: operations.GetEnhancedProfitAndLossRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedProfitAndLossResponse:
         r"""Enhanced Profit and Loss
         Gets a fully categorized profit and loss statement for a given company, over one or more period(s).
@@ -470,6 +482,7 @@ class Reports:
 
         return res
 
+    
     def get_recurring_revenue_metrics(self, request: operations.GetRecurringRevenueMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetRecurringRevenueMetricsResponse:
         r"""Get key metrics for subscription revenue
         Gets key metrics for subscription revenue.
@@ -506,6 +519,7 @@ class Reports:
 
         return res
 
+    
     def request_recurring_revenue_metrics(self, request: operations.RequestRecurringRevenueMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestRecurringRevenueMetricsResponse:
         r"""Request production of key subscription revenue metrics
         Request production of key subscription revenue metrics.

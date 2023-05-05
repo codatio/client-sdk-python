@@ -28,7 +28,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.DownloadExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     report_type=shared.ExcelReportTypeEnum.AUDIT,
@@ -56,7 +55,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GenerateExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     report_type=shared.ExcelReportTypeEnum.ASSESS,
@@ -83,7 +81,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetAccountingMarketingMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -118,7 +115,6 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     report_type=shared.ExcelReportTypeEnum.ASSESS,
@@ -145,7 +141,6 @@ s = codatassess.CodatAssess(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetExcelReportGenerationStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
