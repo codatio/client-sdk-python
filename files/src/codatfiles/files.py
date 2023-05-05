@@ -22,6 +22,7 @@ class Files:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def download_files(self, request: operations.DownloadFilesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadFilesResponse:
         r"""Download all files for a company
         You can specify a date to download specific files for.
@@ -58,6 +59,7 @@ class Files:
 
         return res
 
+    
     def list_files(self, request: operations.ListFilesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListFilesResponse:
         r"""List all files uploaded by a company
         Returns an array of files that have been uploaded for a given company.
@@ -94,6 +96,7 @@ class Files:
 
         return res
 
+    
     def upload_files(self, request: operations.UploadFilesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadFilesResponse:
         r"""Upload files for a company
         Upload files
