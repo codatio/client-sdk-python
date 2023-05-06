@@ -65,7 +65,7 @@ s = codatcommon.CodatCommon(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='a05dfc2d-df7c-4c78-8a1b-a928fc816742',
+    push_operation_key='4e0f467c-c879-46ed-951a-05dfc2ddf7cc',
 )
 
 res = s.push_data.get_operation(req)
@@ -95,7 +95,7 @@ req = operations.GetCompanyPushHistoryRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='impedit',
+    query='esse',
 )
 
 res = s.push_data.list_operations(req)

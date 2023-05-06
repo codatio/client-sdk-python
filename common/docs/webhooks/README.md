@@ -32,11 +32,10 @@ req = shared.Rule(
     notifiers=shared.RuleNotifiers(
         emails=[
             'info@client.com',
-            'info@client.com',
         ],
         webhook='https://webhook.client.com',
     ),
-    type='minima',
+    type='reiciendis',
 )
 
 res = s.webhooks.create(req)
@@ -91,7 +90,7 @@ req = operations.ListRulesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='excepturi',
+    query='est',
 )
 
 res = s.webhooks.list(req)

@@ -82,7 +82,7 @@ req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='veritatis',
+    query='iure',
 )
 
 res = s.integrations.list(req)

@@ -29,8 +29,8 @@ s = codatcommon.CodatCommon(
 )
 
 req = shared.CompanyRequestBody(
-    description='corrupti',
-    name='Ben Mueller',
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
 )
 
 res = s.companies.create(req)
@@ -112,7 +112,7 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='iure',
+    query='corrupti',
 )
 
 res = s.companies.list(req)
@@ -139,8 +139,8 @@ s = codatcommon.CodatCommon(
 
 req = operations.UpdateCompanyRequest(
     company_request_body=shared.CompanyRequestBody(
-        description='magnam',
-        name='Larry Windler',
+        description='Requested early access to the new financing scheme.',
+        name='Bank of Dave',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )

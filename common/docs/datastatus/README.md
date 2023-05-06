@@ -84,7 +84,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quis',
+    query='suscipit',
 )
 
 res = s.data_status.list_pull_operations(req)
