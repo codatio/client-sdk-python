@@ -6,13 +6,15 @@ Manage your Codat instance.
 
 ### Available Operations
 
-* [get_profile](#get_profile) - Get profile
+* [~~get_profile~~](#get_profile) - Get profile :warning: **Deprecated**
 * [get_sync_settings](#get_sync_settings) - Update all sync settings
 * [update_profile](#update_profile) - Update profile
 
-## get_profile
+## ~~get_profile~~
 
 Fetch your Codat profile.
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
