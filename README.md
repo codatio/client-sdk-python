@@ -33,12 +33,14 @@ To get your authorization header from the [Codat Portal](https://signup.codat.io
 
 ## Codat APIs
 
-- [**/Common API**](https://github.com/codatio/client-sdk-python/tree/main/common) - Manage the building blocks of Codat, including companies, connections, and more.
-- [**/Accounting API**](https://github.com/codatio/client-sdk-python/tree/main/accounting) - Access standardized accounting data from our accounting integrations.
-- [**/Banking API**](https://github.com/codatio/client-sdk-python/tree/main/banking) - Access standardized banking data from our banking integrations.
-- [**/Commerce API**](https://github.com/codatio/client-sdk-python/tree/main/commerce) - Access standardized commerce data from our commerce integrations.
-- [**/Bank Feeds API**](https://github.com/codatio/client-sdk-python/tree/main/bankfeeds) - Set up bank feeds from accounts in your application to supported accounting platforms.
-- [**/Assess API**](https://github.com/codatio/client-sdk-python/tree/main/assess) - Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
-- [**/Sync for Commerce API**](https://github.com/codatio/client-sdk-python/tree/main/synccommerce) - Push merchants' data from your ecommerce or point-of-sale (POS) platform into your merchants' accounting platform.
-- [**/Sync for Expenses API**](https://github.com/codatio/client-sdk-python/tree/main/expenses) - Push expenses to accounting platforms.
-- [**/Files API**](https://github.com/codatio/client-sdk-python/tree/main/files) - Capture your SMB's business documents with our file upload functionality.
+| API | Description | PyPi |
+| :- | :- | :- |
+| **[Common API](https://github.com/codatio/client-sdk-python/tree/main/common)** | Manage the building blocks of Codat, including companies, connections, and more. | [@codat/common](https://pypi.org/project/codat-common/) |
+| **[Accounting API](https://github.com/codatio/client-sdk-python/tree/main/accounting)** | Access standardized accounting data from our accounting integrations. | [@codat/accounting](https://pypi.org/project/codat-accounting/) |
+| **[Banking API](https://github.com/codatio/client-sdk-python/tree/main/banking)** | Access standardized banking data from our banking integrations. | [@codat/banking](https://pypi.org/project/codat-banking/) |
+| **[Commerce API](https://github.com/codatio/client-sdk-python/tree/main/commerce)** | Access standardized commerce data from our commerce integrations. | [@codat/commerce](https://pypi.org/project/codat-commerce/) |
+| **[Bank Feeds API](https://github.com/codatio/client-sdk-python/tree/main/bankfeeds)** | Set up bank feeds from accounts in your application to supported accounting platforms. | [@codat/bank-feeds](https://pypi.org/project/codat-bankfeeds/) |
+| **[Assess API](https://github.com/codatio/client-sdk-python/tree/main/assess)** | Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features. | [@codat/assess](https://pypi.org/project/codat-assess/) |
+| **[Sync for Commerce API](https://github.com/codatio/client-sdk-python/tree/main/synccommerce)** | Push merchants' data from your ecommerce or point-of-sale (POS) platform into your merchants' accounting platform. | [@codat/sync-for-commerce](https://pypi.org/project/codat-synccommerce/) |
+| **[Sync for Expenses API](https://github.com/codatio/client-sdk-python/tree/main/expenses)** | Push expenses to accounting platforms. | [@codat/sync-for-expenses](https://pypi.org/project/codat-expenses/) |
+| **[Files API](https://github.com/codatio/client-sdk-python/tree/main/files)** | Capture your SMB's business documents with our file upload functionality. | [@codat/files](https://pypi.org/project/codat-files/) |
