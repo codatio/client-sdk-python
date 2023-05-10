@@ -26,6 +26,8 @@ class ExcelReports:
     def download_excel_report(self, request: operations.DownloadExcelReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadExcelReportResponse:
         r"""Download generated excel report
         Download the previously generated Excel report to a local drive.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         

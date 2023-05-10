@@ -6,15 +6,17 @@ Downloadable reports
 
 ### Available Operations
 
-* [download_excel_report](#download_excel_report) - Download generated excel report
+* [~~download_excel_report~~](#download_excel_report) - Download generated excel report :warning: **Deprecated**
 * [generate_excel_report](#generate_excel_report) - Generate an Excel report
 * [get_accounting_marketing_metrics](#get_accounting_marketing_metrics) - Get the marketing metrics from an accounting source for a given company.
 * [get_excel_report](#get_excel_report) - Download generated excel report
 * [get_excel_report_generation_status](#get_excel_report_generation_status) - Get status of Excel report
 
-## download_excel_report
+## ~~download_excel_report~~
 
 Download the previously generated Excel report to a local drive.
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -30,7 +32,7 @@ s = codatassess.CodatAssess(
 
 req = operations.DownloadExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.AUDIT,
+    report_type=shared.ExcelReportTypeEnum.ENHANCED_FINANCIALS,
 )
 
 res = s.excel_reports.download_excel_report(req)
@@ -57,7 +59,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GenerateExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.ASSESS,
+    report_type=shared.ExcelReportTypeEnum.BANKING,
 )
 
 res = s.excel_reports.generate_excel_report(req)
@@ -117,7 +119,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.ASSESS,
+    report_type=shared.ExcelReportTypeEnum.BANKING,
 )
 
 res = s.excel_reports.get_excel_report(req)
@@ -144,7 +146,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetExcelReportGenerationStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.ASSESS,
+    report_type=shared.ExcelReportTypeEnum.AUDIT,
 )
 
 res = s.excel_reports.get_excel_report_generation_status(req)

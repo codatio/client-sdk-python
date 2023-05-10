@@ -6,15 +6,17 @@ Categorisation
 
 ### Available Operations
 
-* [get_account_category](#get_account_category) - Get suggested and/or confirmed category for a specific account
-* [list_accounts_categories](#list_accounts_categories) - List suggested and confirmed account categories
-* [list_available_account_categories](#list_available_account_categories) - List account categories
-* [update_account_category](#update_account_category) - Patch account categories
-* [update_accounts_categories](#update_accounts_categories) - Confirm categories for accounts
+* [~~get_account_category~~](#get_account_category) - Get suggested and/or confirmed category for a specific account :warning: **Deprecated**
+* [~~list_accounts_categories~~](#list_accounts_categories) - List suggested and confirmed account categories :warning: **Deprecated**
+* [~~list_available_account_categories~~](#list_available_account_categories) - List account categories :warning: **Deprecated**
+* [~~update_account_category~~](#update_account_category) - Patch account categories :warning: **Deprecated**
+* [~~update_accounts_categories~~](#update_accounts_categories) - Confirm categories for accounts :warning: **Deprecated**
 
-## get_account_category
+## ~~get_account_category~~
 
 Get category for specific nominal account.
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -40,9 +42,11 @@ if res.categorised_account is not None:
     # handle response
 ```
 
-## list_accounts_categories
+## ~~list_accounts_categories~~
 
 Lists suggested and confirmed chart of account categories for the given company and data connection.
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -71,9 +75,11 @@ if res.categorised_accounts is not None:
     # handle response
 ```
 
-## list_available_account_categories
+## ~~list_available_account_categories~~
 
 Lists available account categories Codat's categorisation engine can provide. 
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -94,9 +100,11 @@ if res.categories is not None:
     # handle response
 ```
 
-## update_account_category
+## ~~update_account_category~~
 
 Update category for a specific nominal account
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -129,9 +137,11 @@ if res.categorised_account is not None:
     # handle response
 ```
 
-## update_accounts_categories
+## ~~update_accounts_categories~~
 
 Comfirms the categories for all or a batch of accounts for a specific connection.
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

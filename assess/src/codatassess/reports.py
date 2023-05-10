@@ -296,6 +296,8 @@ class Reports:
     def get_enhanced_balance_sheet(self, request: operations.GetEnhancedBalanceSheetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedBalanceSheetResponse:
         r"""Enhanced Balance Sheet
         Gets a fully categorized balance sheet statement for a given company, over one or more period(s).
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
@@ -372,6 +374,8 @@ class Reports:
     def get_enhanced_financial_metrics(self, request: operations.GetEnhancedFinancialMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedFinancialMetricsResponse:
         r"""List financial metrics
         Gets all the available financial metrics for a given company, over one or more periods.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
@@ -448,6 +452,8 @@ class Reports:
     def get_enhanced_profit_and_loss(self, request: operations.GetEnhancedProfitAndLossRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedProfitAndLossResponse:
         r"""Enhanced Profit and Loss
         Gets a fully categorized profit and loss statement for a given company, over one or more period(s).
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         

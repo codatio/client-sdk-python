@@ -91,9 +91,7 @@ src/codatassess/models/shared/enhancedinvoicesreport.py
 src/codatassess/models/shared/enhancedinvoicereportitem.py
 src/codatassess/models/shared/invoicestatus_enum.py
 src/codatassess/models/shared/payment.py
-src/codatassess/models/shared/paymentline.py
-src/codatassess/models/shared/paymentlinelink.py
-src/codatassess/models/shared/paymentlinktype_enum.py
+src/codatassess/models/shared/bankingtransactionref.py
 src/codatassess/models/shared/customerref.py
 src/codatassess/models/shared/security.py
 src/codatassess/models/shared/accountcategoriesupdatedwebhook.py

@@ -13,11 +13,11 @@ Data integrity is important
 * [get_commerce_orders_metrics](#get_commerce_orders_metrics) - Get order information for a specific company
 * [get_commerce_refunds_metrics](#get_commerce_refunds_metrics) - Get the refunds information for a specific company
 * [get_commerce_revenue_metrics](#get_commerce_revenue_metrics) - Commerce Revenue Metrics
-* [get_enhanced_balance_sheet](#get_enhanced_balance_sheet) - Enhanced Balance Sheet
+* [~~get_enhanced_balance_sheet~~](#get_enhanced_balance_sheet) - Enhanced Balance Sheet :warning: **Deprecated**
 * [get_enhanced_cash_flow_transactions](#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
-* [get_enhanced_financial_metrics](#get_enhanced_financial_metrics) - List financial metrics
+* [~~get_enhanced_financial_metrics~~](#get_enhanced_financial_metrics) - List financial metrics :warning: **Deprecated**
 * [get_enhanced_invoices_report](#get_enhanced_invoices_report) - Enhanced Invoices Report
-* [get_enhanced_profit_and_loss](#get_enhanced_profit_and_loss) - Enhanced Profit and Loss
+* [~~get_enhanced_profit_and_loss~~](#get_enhanced_profit_and_loss) - Enhanced Profit and Loss :warning: **Deprecated**
 * [get_recurring_revenue_metrics](#get_recurring_revenue_metrics) - Get key metrics for subscription revenue
 * [request_recurring_revenue_metrics](#request_recurring_revenue_metrics) - Request production of key subscription revenue metrics
 
@@ -241,9 +241,11 @@ if res.report is not None:
     # handle response
 ```
 
-## get_enhanced_balance_sheet
+## ~~get_enhanced_balance_sheet~~
 
 Gets a fully categorized balance sheet statement for a given company, over one or more period(s).
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -301,9 +303,11 @@ if res.enhanced_cash_flow_transactions is not None:
     # handle response
 ```
 
-## get_enhanced_financial_metrics
+## ~~get_enhanced_financial_metrics~~
 
 Gets all the available financial metrics for a given company, over one or more periods.
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -361,9 +365,11 @@ if res.enhanced_invoices_report is not None:
     # handle response
 ```
 
-## get_enhanced_profit_and_loss
+## ~~get_enhanced_profit_and_loss~~
 
 Gets a fully categorized profit and loss statement for a given company, over one or more period(s).
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

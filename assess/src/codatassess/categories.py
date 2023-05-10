@@ -26,6 +26,8 @@ class Categories:
     def get_account_category(self, request: operations.GetAccountCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountCategoryResponse:
         r"""Get suggested and/or confirmed category for a specific account
         Get category for specific nominal account.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
@@ -63,6 +65,8 @@ class Categories:
     def list_accounts_categories(self, request: operations.ListAccountsCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountsCategoriesResponse:
         r"""List suggested and confirmed account categories
         Lists suggested and confirmed chart of account categories for the given company and data connection.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
@@ -101,6 +105,8 @@ class Categories:
     def list_available_account_categories(self, retries: Optional[utils.RetryConfig] = None) -> operations.ListAvailableAccountCategoriesResponse:
         r"""List account categories
         Lists available account categories Codat's categorisation engine can provide.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
@@ -138,6 +144,8 @@ class Categories:
     def update_account_category(self, request: operations.UpdateAccountCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateAccountCategoryResponse:
         r"""Patch account categories
         Update category for a specific nominal account
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
@@ -179,6 +187,8 @@ class Categories:
     def update_accounts_categories(self, request: operations.UpdateAccountsCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateAccountsCategoriesResponse:
         r"""Confirm categories for accounts
         Comfirms the categories for all or a batch of accounts for a specific connection.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
