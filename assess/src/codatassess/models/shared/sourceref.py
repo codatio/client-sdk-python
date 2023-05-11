@@ -13,5 +13,4 @@ class SourceRef:
     r"""A source reference containing the `sourceType` object \\"Banking\\"."""
     
     source_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceType'), 'exclude': lambda f: f is None }})
-
     

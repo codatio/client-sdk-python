@@ -6,6 +6,7 @@ from .accountcategorydeprecated import *
 from .accountcategorylevel import *
 from .accountref import *
 from .accounts import *
+from .bankingtransactionref import *
 from .categories import *
 from .categorisedaccount import *
 from .categorisedaccounts import *
@@ -43,9 +44,6 @@ from .integritystatus_enum import *
 from .invoicestatus_enum import *
 from .links import *
 from .payment import *
-from .paymentline import *
-from .paymentlinelink import *
-from .paymentlinktype_enum import *
 from .periodunit_enum import *
 from .report import *
 from .reportcomponent import *
@@ -60,4 +58,4 @@ from .status import *
 from .summaries import *
 from .transactioncategory import *
 
-__all__ = ["AccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedWebhookData","AccountCategory","AccountCategoryDeprecated","AccountCategoryLevel","AccountRef","Accounts","Categories","CategorisedAccount","CategorisedAccounts","ConfirmCategories","ConfirmCategoriesCategories","ConfirmCategoriesCategoriesAccountRef","ConfirmCategory","CustomerRef","DataIntegrityAmounts","DataIntegrityByAmount","DataIntegrityByCount","DataIntegrityConnectionID","DataIntegrityDataTypeEnum","DataIntegrityDates","DataIntegrityDetails","DataIntegrityMatch","DataIntegrityStatus","DataIntegrityStatusInfo","DataIntegritySummary","DataSource","Details","EnhancedCashFlowItem","EnhancedCashFlowTransaction","EnhancedCashFlowTransactions","EnhancedInvoiceReportItem","EnhancedInvoicesReport","EnhancedInvoicesReportReportItems","EnhancedReport","EnhancedReportAccountCategory","EnhancedReportInfo","EnhancedReportReportItem","ExcelReportTypeEnum","ExcelStatus","FinancialMetric","FinancialMetricError","FinancialMetricErrorTypeEnum","FinancialMetricErrors","FinancialMetricErrorsTypeEnum","FinancialMetricKeyEnum","FinancialMetricMetricUnitEnum","FinancialMetricPeriods","FinancialMetricPeriodsErrors","FinancialMetricPeriodsErrorsTypeEnum","FinancialMetricPeriodsInputs","FinancialMetrics","FinancialMetricsPeriodUnitEnum","HalRef","IntegrityStatusEnum","InvoiceStatusEnum","Links","Payment","PaymentCustomerRef","PaymentLine","PaymentLineLink","PaymentLinkTypeEnum","PaymentMetadata","PaymentPaymentMethodRef","PaymentSupplementalData","PeriodUnitEnum","Report","ReportComponent","ReportComponentMeasure","ReportDimension","ReportDimensionItems","ReportError","ReportInfo","ReportMeasure","Security","SourceRef","Status","Summaries","TransactionCategory"]
+__all__ = ["AccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedWebhookData","AccountCategory","AccountCategoryDeprecated","AccountCategoryLevel","AccountRef","Accounts","BankingTransactionRef","Categories","CategorisedAccount","CategorisedAccounts","ConfirmCategories","ConfirmCategoriesCategories","ConfirmCategoriesCategoriesAccountRef","ConfirmCategory","CustomerRef","DataIntegrityAmounts","DataIntegrityByAmount","DataIntegrityByCount","DataIntegrityConnectionID","DataIntegrityDataTypeEnum","DataIntegrityDates","DataIntegrityDetails","DataIntegrityMatch","DataIntegrityStatus","DataIntegrityStatusInfo","DataIntegritySummary","DataSource","Details","EnhancedCashFlowItem","EnhancedCashFlowTransaction","EnhancedCashFlowTransactions","EnhancedInvoiceReportItem","EnhancedInvoicesReport","EnhancedInvoicesReportReportItems","EnhancedReport","EnhancedReportAccountCategory","EnhancedReportInfo","EnhancedReportReportItem","ExcelReportTypeEnum","ExcelStatus","FinancialMetric","FinancialMetricError","FinancialMetricErrorTypeEnum","FinancialMetricErrors","FinancialMetricErrorsTypeEnum","FinancialMetricKeyEnum","FinancialMetricMetricUnitEnum","FinancialMetricPeriods","FinancialMetricPeriodsErrors","FinancialMetricPeriodsErrorsTypeEnum","FinancialMetricPeriodsInputs","FinancialMetrics","FinancialMetricsPeriodUnitEnum","HalRef","IntegrityStatusEnum","InvoiceStatusEnum","Links","Payment","PeriodUnitEnum","Report","ReportComponent","ReportComponentMeasure","ReportDimension","ReportDimensionItems","ReportError","ReportInfo","ReportMeasure","Security","SourceRef","Status","Summaries","TransactionCategory"]

@@ -22,6 +22,7 @@ class DataIntegrity:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_data_integrity_details(self, request: operations.GetDataIntegrityDetailsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDataIntegrityDetailsResponse:
         r"""Lists data integrity details for date type
         Gets record-by-record match results for a given company and datatype, optionally restricted by a Codat query string.
@@ -59,6 +60,7 @@ class DataIntegrity:
 
         return res
 
+    
     def get_data_integrity_status(self, request: operations.GetDataIntegrityStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDataIntegrityStatusResponse:
         r"""Get data integrity status
         Gets match status for a given company and datatype.
@@ -95,6 +97,7 @@ class DataIntegrity:
 
         return res
 
+    
     def get_data_integrity_summaries(self, request: operations.GetDataIntegritySummariesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDataIntegritySummariesResponse:
         r"""Get data integrity summary
         Gets match summary for a given company and datatype, optionally restricted by a Codat query string.

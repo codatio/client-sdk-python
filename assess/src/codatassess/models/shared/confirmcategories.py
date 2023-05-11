@@ -13,7 +13,6 @@ from typing import Optional
 class ConfirmCategoriesCategoriesAccountRef:
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     r"""A unique, persistent identifier for this record"""
     
 
@@ -22,9 +21,7 @@ class ConfirmCategoriesCategoriesAccountRef:
 class ConfirmCategoriesCategories:
     
     account_ref: Optional[ConfirmCategoriesCategoriesAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
-
     confirmed: Optional[shared_accountcategory.AccountCategory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('confirmed'), 'exclude': lambda f: f is None }})
-
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -32,6 +29,5 @@ class ConfirmCategoriesCategories:
 class ConfirmCategories:
     
     categories: Optional[list[ConfirmCategoriesCategories]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categories'), 'exclude': lambda f: f is None }})
-
     r"""List of confirmed account categories set manually by the user."""
     

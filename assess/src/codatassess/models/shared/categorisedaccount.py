@@ -15,10 +15,7 @@ class CategorisedAccount:
     r"""OK"""
     
     account_ref: Optional[shared_accountref.AccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
-
     r"""An object containing account reference data."""
     confirmed: Optional[shared_accountcategorydeprecated.AccountCategoryDeprecated] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('confirmed'), 'exclude': lambda f: f is None }})
-
     suggested: Optional[shared_accountcategorydeprecated.AccountCategoryDeprecated] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suggested'), 'exclude': lambda f: f is None }})
-
     

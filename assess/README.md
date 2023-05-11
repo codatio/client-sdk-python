@@ -23,11 +23,10 @@ s = codatassess.CodatAssess(
     ),
 )
 
-
 req = operations.GetAccountCategoryRequest(
-    account_id="corrupti",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    account_id='corrupti',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.categories.get_account_category(req)
@@ -43,11 +42,11 @@ if res.categorised_account is not None:
 
 ### [categories](docs/categories/README.md)
 
-* [get_account_category](docs/categories/README.md#get_account_category) - Get suggested and/or confirmed category for a specific account
-* [list_accounts_categories](docs/categories/README.md#list_accounts_categories) - List suggested and confirmed account categories
-* [list_available_account_categories](docs/categories/README.md#list_available_account_categories) - List account categories
-* [update_account_category](docs/categories/README.md#update_account_category) - Patch account categories
-* [update_accounts_categories](docs/categories/README.md#update_accounts_categories) - Confirm categories for accounts
+* [~~get_account_category~~](docs/categories/README.md#get_account_category) - Get suggested and/or confirmed category for a specific account :warning: **Deprecated**
+* [~~list_accounts_categories~~](docs/categories/README.md#list_accounts_categories) - List suggested and confirmed account categories :warning: **Deprecated**
+* [~~list_available_account_categories~~](docs/categories/README.md#list_available_account_categories) - List account categories :warning: **Deprecated**
+* [~~update_account_category~~](docs/categories/README.md#update_account_category) - Patch account categories :warning: **Deprecated**
+* [~~update_accounts_categories~~](docs/categories/README.md#update_accounts_categories) - Confirm categories for accounts :warning: **Deprecated**
 
 ### [data_integrity](docs/dataintegrity/README.md)
 
@@ -57,7 +56,7 @@ if res.categorised_account is not None:
 
 ### [excel_reports](docs/excelreports/README.md)
 
-* [download_excel_report](docs/excelreports/README.md#download_excel_report) - Download generated excel report
+* [~~download_excel_report~~](docs/excelreports/README.md#download_excel_report) - Download generated excel report :warning: **Deprecated**
 * [generate_excel_report](docs/excelreports/README.md#generate_excel_report) - Generate an Excel report
 * [get_accounting_marketing_metrics](docs/excelreports/README.md#get_accounting_marketing_metrics) - Get the marketing metrics from an accounting source for a given company.
 * [get_excel_report](docs/excelreports/README.md#get_excel_report) - Download generated excel report
@@ -72,11 +71,11 @@ if res.categorised_account is not None:
 * [get_commerce_orders_metrics](docs/reports/README.md#get_commerce_orders_metrics) - Get order information for a specific company
 * [get_commerce_refunds_metrics](docs/reports/README.md#get_commerce_refunds_metrics) - Get the refunds information for a specific company
 * [get_commerce_revenue_metrics](docs/reports/README.md#get_commerce_revenue_metrics) - Commerce Revenue Metrics
-* [get_enhanced_balance_sheet](docs/reports/README.md#get_enhanced_balance_sheet) - Enhanced Balance Sheet
+* [~~get_enhanced_balance_sheet~~](docs/reports/README.md#get_enhanced_balance_sheet) - Enhanced Balance Sheet :warning: **Deprecated**
 * [get_enhanced_cash_flow_transactions](docs/reports/README.md#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
-* [get_enhanced_financial_metrics](docs/reports/README.md#get_enhanced_financial_metrics) - List financial metrics
+* [~~get_enhanced_financial_metrics~~](docs/reports/README.md#get_enhanced_financial_metrics) - List financial metrics :warning: **Deprecated**
 * [get_enhanced_invoices_report](docs/reports/README.md#get_enhanced_invoices_report) - Enhanced Invoices Report
-* [get_enhanced_profit_and_loss](docs/reports/README.md#get_enhanced_profit_and_loss) - Enhanced Profit and Loss
+* [~~get_enhanced_profit_and_loss~~](docs/reports/README.md#get_enhanced_profit_and_loss) - Enhanced Profit and Loss :warning: **Deprecated**
 * [get_recurring_revenue_metrics](docs/reports/README.md#get_recurring_revenue_metrics) - Get key metrics for subscription revenue
 * [request_recurring_revenue_metrics](docs/reports/README.md#request_recurring_revenue_metrics) - Request production of key subscription revenue metrics
 <!-- End SDK Available Operations -->

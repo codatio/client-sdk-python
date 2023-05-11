@@ -7,3 +7,6 @@ class ExcelReportTypeEnum(str, Enum):
     r"""The type of report you want to generate and download."""
     ASSESS = 'assess'
     AUDIT = 'audit'
+    ENHANCED_FINANCIALS = 'enhancedFinancials'
+    ENHANCED_INVOICES = 'enhancedInvoices'
+    ENHANCED_CASH_FLOW = 'enhancedCashFlow'

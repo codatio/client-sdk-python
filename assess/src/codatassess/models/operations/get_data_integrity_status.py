@@ -12,9 +12,7 @@ from typing import Optional
 class GetDataIntegrityStatusRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     data_type: shared_dataintegritydatatype_enum.DataIntegrityDataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
-
     r"""A key for a Codat data type."""
     
 
@@ -22,12 +20,8 @@ class GetDataIntegrityStatusRequest:
 class GetDataIntegrityStatusResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     status: Optional[shared_status.Status] = dataclasses.field(default=None)
-
     r"""OK"""
     

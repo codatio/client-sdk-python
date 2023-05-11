@@ -12,9 +12,7 @@ from typing import Optional
 class GenerateExcelReportRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     report_type: shared_excelreporttype_enum.ExcelReportTypeEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'reportType', 'style': 'form', 'explode': True }})
-
     r"""The type of report you want to generate and download."""
     
 
@@ -22,12 +20,8 @@ class GenerateExcelReportRequest:
 class GenerateExcelReportResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     excel_status: Optional[shared_excelstatus.ExcelStatus] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

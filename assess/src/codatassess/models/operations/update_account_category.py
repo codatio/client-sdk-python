@@ -12,26 +12,18 @@ from typing import Optional
 class UpdateAccountCategoryRequest:
     
     account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountId', 'style': 'simple', 'explode': False }})
-
     r"""Nominal account id"""
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-
     confirm_category: Optional[shared_confirmcategory.ConfirmCategory] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-
     
 
 @dataclasses.dataclass
 class UpdateAccountCategoryResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     categorised_account: Optional[shared_categorisedaccount.CategorisedAccount] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

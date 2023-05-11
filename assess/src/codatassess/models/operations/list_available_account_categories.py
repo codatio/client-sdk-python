@@ -11,12 +11,8 @@ from typing import Optional
 class ListAvailableAccountCategoriesResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     categories: Optional[list[shared_categories.Categories]] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     
