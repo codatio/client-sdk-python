@@ -13,9 +13,7 @@ from typing import Optional
 class TaxComponentAllocation:
     
     rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('rate'), 'exclude': lambda f: f is None }})
-
     r"""Tax amount on order line sale as available from source commerce platform."""
     tax_component_ref: Optional[shared_taxcomponentref.TaxComponentRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxComponentRef'), 'exclude': lambda f: f is None }})
-
     r"""Taxes rates reference object depending on the rates being available on source commerce package."""
     

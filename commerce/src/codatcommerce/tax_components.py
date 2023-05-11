@@ -22,9 +22,10 @@ class TaxComponents:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetTaxComponentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxComponentsResponse:
         r"""List tax components
-        This endpoint returns a lits of tax rates from the commerce platform, including tax rate names and values. This supports the mapping of tax rates from the commerce platform to the accounting platform.
+        This endpoint returns a lists of tax rates from the commerce platform, including tax rate names and values. This supports the mapping of tax rates from the commerce platform to the accounting platform.
         """
         base_url = self._server_url
         

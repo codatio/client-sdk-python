@@ -8,5 +8,4 @@ import dataclasses
 class Security:
     
     auth_header: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
-
     

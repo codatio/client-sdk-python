@@ -25,14 +25,13 @@ s = codatcommerce.CodatCommerce(
     ),
 )
 
-
 req = operations.ListProductsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="nulla",
+    query='nulla',
 )
 
 res = s.products.list(req)
@@ -57,14 +56,13 @@ s = codatcommerce.CodatCommerce(
     ),
 )
 
-
 req = operations.ListProductCategoriesRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="corrupti",
+    query='corrupti',
 )
 
 res = s.products.list_categories(req)

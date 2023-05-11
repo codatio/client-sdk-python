@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
+from ..shared import links as shared_links
 from ..shared import taxcomponent as shared_taxcomponent
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -13,6 +14,9 @@ from typing import Optional
 class TaxComponents:
     r"""OK"""
     
-    tax_components: Optional[list[shared_taxcomponent.TaxComponent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxComponents'), 'exclude': lambda f: f is None }})
-
+    links: shared_links.Links = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})
+    page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})
+    page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})
+    total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})
+    results: Optional[list[shared_taxcomponent.TaxComponent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
     

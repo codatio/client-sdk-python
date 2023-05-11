@@ -22,6 +22,7 @@ class Products:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def list(self, request: operations.ListProductsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListProductsResponse:
         r"""List products
         The Products data type provides the company's product inventory, and includes the price and quantity of all products, and product variants, available for sale.
@@ -59,6 +60,7 @@ class Products:
 
         return res
 
+    
     def list_categories(self, request: operations.ListProductCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListProductCategoriesResponse:
         r"""List product categories
         Product categories are used to classify a group of products together, either by type (eg \"Furniture\"), or sometimes by tax profile.
