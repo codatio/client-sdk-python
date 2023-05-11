@@ -38,71 +38,71 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id="57eb809e-2810-4331-b398-1d4c700b607f",
-            name="Francis McKenzie",
+            id='57eb809e-2810-4331-b398-1d4c700b607f',
+            name='Francis McKenzie',
         ),
-        currency="dignissimos",
+        currency='dignissimos',
         currency_rate=2358.34,
-        date_="soluta",
-        id="3d5a8e00-d108-4045-8823-7f342676cffa",
+        date_='soluta',
+        id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
-                allocated_on_date="temporibus",
+                allocated_on_date='temporibus',
                 amount=6396.22,
                 links=[
                     shared.BillPaymentLineLink(
                         amount=9485.41,
                         currency_rate=1339.49,
-                        id="ceda7e23-f225-4741-9faf-4b7544e472e8",
-                        type="Unknown",
+                        id='ceda7e23-f225-4741-9faf-4b7544e472e8',
+                        type=shared.BillPaymentLineLinkTypeEnum.UNKNOWN,
                     ),
                 ],
             ),
             shared.BillPaymentLine(
-                allocated_on_date="odit",
+                allocated_on_date='odit',
                 amount=5358.02,
                 links=[
                     shared.BillPaymentLineLink(
                         amount=4527.3,
                         currency_rate=6267.07,
-                        id="5b40463a-7d57-45f1-800e-764ad7334ec1",
-                        type="Refund",
+                        id='5b40463a-7d57-45f1-800e-764ad7334ec1',
+                        type=shared.BillPaymentLineLinkTypeEnum.REFUND,
                     ),
                     shared.BillPaymentLineLink(
                         amount=4813.75,
                         currency_rate=5580.51,
-                        id="1b36a080-88d1-400e-bada-200ef0422eb2",
-                        type="Unlinked",
+                        id='1b36a080-88d1-400e-bada-200ef0422eb2',
+                        type=shared.BillPaymentLineLinkTypeEnum.UNLINKED,
                     ),
                 ],
             ),
             shared.BillPaymentLine(
-                allocated_on_date="aliquid",
+                allocated_on_date='aliquid',
                 amount=2646.49,
                 links=[
                     shared.BillPaymentLineLink(
                         amount=9750.95,
                         currency_rate=5629.48,
-                        id="ab8366c7-23ff-4da9-a06b-ee4825c1fc0e",
-                        type="Unlinked",
+                        id='ab8366c7-23ff-4da9-a06b-ee4825c1fc0e',
+                        type=shared.BillPaymentLineLinkTypeEnum.UNLINKED,
                     ),
                     shared.BillPaymentLineLink(
                         amount=1002.51,
                         currency_rate=3178.98,
-                        id="c80bff91-8544-4ec4-adef-cce8f1977773",
-                        type="ManualJournal",
+                        id='c80bff91-8544-4ec4-adef-cce8f1977773',
+                        type=shared.BillPaymentLineLinkTypeEnum.MANUAL_JOURNAL,
                     ),
                     shared.BillPaymentLineLink(
                         amount=4235.88,
                         currency_rate=2086.83,
-                        id="562a7b40-8f05-4e3d-88fd-af313a1f5fd9",
-                        type="Bill",
+                        id='562a7b40-8f05-4e3d-88fd-af313a1f5fd9',
+                        type=shared.BillPaymentLineLinkTypeEnum.BILL,
                     ),
                     shared.BillPaymentLineLink(
                         amount=1280.21,
                         currency_rate=3684.91,
-                        id="9c0b36f2-5ea9-444f-bb75-6c11f6c37a51",
-                        type="Unlinked",
+                        id='9c0b36f2-5ea9-444f-bb75-6c11f6c37a51',
+                        type=shared.BillPaymentLineLinkTypeEnum.UNLINKED,
                     ),
                 ],
             ),
@@ -110,29 +110,29 @@ req = operations.CreateBillPaymentRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="aliquid",
-        note="Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44",
+        modified_date='aliquid',
+        note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
         payment_method_ref=shared.PaymentMethodRef(
-            id="243835bb-c05a-423a-85ce-fc5fde10a0ce",
-            name="Mildred Kautzer",
+            id='243835bb-c05a-423a-85ce-fc5fde10a0ce',
+            name='Mildred Kautzer',
         ),
-        reference="ullam",
-        source_modified_date="architecto",
+        reference='ullam',
+        source_modified_date='architecto',
         supplemental_data=shared.SupplementalData(
             content={
                 "perferendis": {
-                    "provident": "cumque",
+                    "provident": 'cumque',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id="6dc5e347-6279-49bf-bbe6-949fb2bb4eca",
-            supplier_name="saepe",
+            id='6dc5e347-6279-49bf-bbe6-949fb2bb4eca',
+            supplier_name='saepe',
         ),
         total_amount=1329.54,
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     timeout_in_minutes=423054,
 )
 
@@ -164,9 +164,9 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id="quo",
-    company_id="nesciunt",
-    connection_id="illum",
+    bill_payment_id='quo',
+    company_id='nesciunt',
+    connection_id='illum',
 )
 
 res = s.bill_payments.delete(req)
@@ -193,8 +193,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id="nemo",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    bill_payment_id='nemo',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.bill_payments.get(req)
@@ -225,8 +225,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetCreateBillPaymentsModelRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.bill_payments.get_create_model(req)
@@ -253,11 +253,11 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListBillPaymentsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="illum",
+    query='illum',
 )
 
 res = s.bill_payments.list(req)

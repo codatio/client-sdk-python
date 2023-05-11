@@ -37,69 +37,69 @@ s = codataccounting.CodatAccounting(
 req = operations.CreatePaymentRequest(
     payment=shared.Payment(
         account_ref=shared.AccountRef(
-            id="2de7b356-2201-4a6a-ab4a-e7b1a5b908d4",
-            name="Jeffery Aufderhar",
+            id='2de7b356-2201-4a6a-ab4a-e7b1a5b908d4',
+            name='Jeffery Aufderhar',
         ),
-        currency="quae",
+        currency='quae',
         currency_rate=6765.76,
         customer_ref=shared.CustomerRef(
-            company_name="fuga",
-            id="35d4a839-f03b-4ab7-bb91-8f0313984507",
+            company_name='fuga',
+            id='35d4a839-f03b-4ab7-bb91-8f0313984507',
         ),
-        date_="officiis",
-        id="0e39c7e2-3ecb-4060-8652-e23a3d6c657e",
+        date_='officiis',
+        id='0e39c7e2-3ecb-4060-8652-e23a3d6c657e',
         lines=[
             shared.PaymentLine(
-                allocated_on_date="quibusdam",
+                allocated_on_date='quibusdam',
                 amount=8936.05,
                 links=[
                     shared.PaymentLineLink(
                         amount=9387.2,
                         currency_rate=4758.76,
-                        id="f002d198-6aa9-49d3-a1d3-2329e45837e8",
-                        type="Discount",
+                        id='f002d198-6aa9-49d3-a1d3-2329e45837e8',
+                        type=shared.PaymentLinkTypeEnum.DISCOUNT,
                     ),
                     shared.PaymentLineLink(
                         amount=1859.89,
                         currency_rate=6377.7,
-                        id="d6bb10e2-55fd-4c48-8d6e-3308675cbf18",
-                        type="CreditNote",
+                        id='d6bb10e2-55fd-4c48-8d6e-3308675cbf18',
+                        type=shared.PaymentLinkTypeEnum.CREDIT_NOTE,
                     ),
                     shared.PaymentLineLink(
                         amount=5604.72,
                         currency_rate=3424.33,
-                        id="6a7e82cd-f9d0-4fc2-82c6-66af3c3f5589",
-                        type="PaymentOnAccount",
+                        id='6a7e82cd-f9d0-4fc2-82c6-66af3c3f5589',
+                        type=shared.PaymentLinkTypeEnum.PAYMENT_ON_ACCOUNT,
                     ),
                 ],
             ),
             shared.PaymentLine(
-                allocated_on_date="accusamus",
+                allocated_on_date='accusamus',
                 amount=6668.05,
                 links=[
                     shared.PaymentLineLink(
                         amount=8213.45,
                         currency_rate=1736.08,
-                        id="64e41e2c-a848-422e-913f-6d9d2ad37c30",
-                        type="Payment",
+                        id='64e41e2c-a848-422e-913f-6d9d2ad37c30',
+                        type=shared.PaymentLinkTypeEnum.PAYMENT,
                     ),
                     shared.PaymentLineLink(
                         amount=5821.15,
                         currency_rate=328.36,
-                        id="77c10b68-7921-463e-a7d4-8860543c0a30",
-                        type="Invoice",
+                        id='77c10b68-7921-463e-a7d4-8860543c0a30',
+                        type=shared.PaymentLinkTypeEnum.INVOICE,
                     ),
                 ],
             ),
             shared.PaymentLine(
-                allocated_on_date="excepturi",
+                allocated_on_date='excepturi',
                 amount=7879.41,
                 links=[
                     shared.PaymentLineLink(
                         amount=8004.56,
                         currency_rate=9757.5,
-                        id="6c0276e7-b21b-4ad9-8d27-43fd6c2a10e6",
-                        type="ManualJournal",
+                        id='6c0276e7-b21b-4ad9-8d27-43fd6c2a10e6',
+                        type=shared.PaymentLinkTypeEnum.MANUAL_JOURNAL,
                     ),
                 ],
             ),
@@ -107,36 +107,36 @@ req = operations.CreatePaymentRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="odit",
-        note="natus",
+        modified_date='odit',
+        note='natus',
         payment_method_ref=shared.PaymentMethodRef(
-            id="78ec256a-5b09-4227-bcc4-7996c977bbc5",
-            name="Jeannie Dibbert",
+            id='78ec256a-5b09-4227-bcc4-7996c977bbc5',
+            name='Jeannie Dibbert',
         ),
-        reference="eos",
-        source_modified_date="quos",
+        reference='eos',
+        source_modified_date='quos',
         supplemental_data=shared.SupplementalData(
             content={
                 "blanditiis": {
-                    "ipsa": "eaque",
-                    "quo": "ad",
+                    "ipsa": 'eaque',
+                    "quo": 'ad',
                 },
                 "atque": {
-                    "eum": "iusto",
-                    "facere": "ea",
-                    "sequi": "voluptates",
-                    "tempora": "similique",
+                    "eum": 'iusto',
+                    "facere": 'ea',
+                    "sequi": 'voluptates',
+                    "tempora": 'similique',
                 },
                 "officia": {
-                    "laboriosam": "quos",
-                    "aliquam": "vel",
+                    "laboriosam": 'quos',
+                    "aliquam": 'vel',
                 },
             },
         ),
         total_amount=2546.16,
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     timeout_in_minutes=321921,
 )
 
@@ -164,8 +164,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetPaymentRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    payment_id="odio",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    payment_id='odio',
 )
 
 res = s.payments.get(req)
@@ -198,8 +198,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetCreatePaymentsModelRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.payments.get_create_model(req)
@@ -226,11 +226,11 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListPaymentsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="omnis",
+    query='omnis',
 )
 
 res = s.payments.list(req)

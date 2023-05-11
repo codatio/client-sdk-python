@@ -37,75 +37,75 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateTransferRequest(
     transfer=shared.Transfer(
         contact_ref=shared.TransferContactRef(
-            data_type="laborum",
-            id="9ffc5619-29cc-4a95-a0a1-395918da1d48",
+            data_type='laborum',
+            id='9ffc5619-29cc-4a95-a0a1-395918da1d48',
         ),
-        date_="recusandae",
+        date_='recusandae',
         deposited_record_refs=[
-            "quas",
-            "officiis",
+            'quas',
+            'officiis',
         ],
-        description="ipsum",
+        description='ipsum',
         from_=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id="cf8e1143-da93-408b-a7a0-8af22184439b",
-                name="Desiree Walsh",
+                id='cf8e1143-da93-408b-a7a0-8af22184439b',
+                name='Desiree Walsh',
             ),
             amount=3395.66,
-            currency="eum",
+            currency='eum',
         ),
-        id="ccce470c-d214-47b6-a615-2cf01d0d8c3a",
+        id='ccce470c-d214-47b6-a615-2cf01d0d8c3a',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="magnam",
-        source_modified_date="facilis",
+        modified_date='magnam',
+        source_modified_date='facilis',
         supplemental_data=shared.SupplementalData(
             content={
                 "laborum": {
-                    "quidem": "repellat",
-                    "molestias": "amet",
+                    "quidem": 'repellat',
+                    "molestias": 'amet',
                 },
                 "veniam": {
-                    "voluptatibus": "vero",
-                    "provident": "iure",
-                    "incidunt": "repellat",
-                    "similique": "ut",
+                    "voluptatibus": 'vero',
+                    "provident": 'iure',
+                    "incidunt": 'repellat',
+                    "similique": 'ut',
                 },
                 "tempore": {
-                    "voluptates": "excepturi",
+                    "voluptates": 'excepturi',
                 },
             },
         ),
         to=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id="c097eda6-2344-42e1-a923-7e9984c80b47",
-                name="Bert Lind V",
+                id='c097eda6-2344-42e1-a923-7e9984c80b47',
+                name='Bert Lind V',
             ),
             amount=1752.16,
-            currency="dolorem",
+            currency='dolorem',
         ),
         tracking_category_refs=[
             shared.TrackingCategoryRef(
-                id="18ca8d69-c568-4921-8fa2-0207e4fae038",
-                name="Carroll Klocko DDS",
+                id='18ca8d69-c568-4921-8fa2-0207e4fae038',
+                name='Carroll Klocko DDS',
             ),
             shared.TrackingCategoryRef(
-                id="c2cabaf7-fc2c-4cba-8bef-0df68eaedb2e",
-                name="Darryl Altenwerth",
+                id='c2cabaf7-fc2c-4cba-8bef-0df68eaedb2e',
+                name='Darryl Altenwerth',
             ),
             shared.TrackingCategoryRef(
-                id="069fb36a-dd70-4408-8e0a-3fc73a5a034b",
-                name="Rebecca Graham",
+                id='069fb36a-dd70-4408-8e0a-3fc73a5a034b',
+                name='Rebecca Graham',
             ),
             shared.TrackingCategoryRef(
-                id="243afa69-87a4-472b-b09a-153e22301068",
-                name="Tracy Monahan",
+                id='243afa69-87a4-472b-b09a-153e22301068',
+                name='Tracy Monahan',
             ),
         ],
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.transfers.create(req)
@@ -132,9 +132,9 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetTransferRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    transfer_id="ipsa",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    transfer_id='ipsa',
 )
 
 res = s.transfers.get(req)
@@ -167,8 +167,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetCreateTransfersModelRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.transfers.get_create_model(req)
@@ -195,12 +195,12 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListTransfersRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="perspiciatis",
+    query='perspiciatis',
 )
 
 res = s.transfers.list(req)

@@ -37,136 +37,136 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
-        created_on="delectus",
-        description="id",
-        id="1011a091-b3ec-48b5-b862-de1a9d14fe72",
+        created_on='delectus',
+        description='id',
+        id='1011a091-b3ec-48b5-b862-de1a9d14fe72',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id="521f9030-3dfc-4338-b97f-ffa6d1d32090",
-                    name="Salvatore Boyer",
+                    id='521f9030-3dfc-4338-b97f-ffa6d1d32090',
+                    name='Salvatore Boyer',
                 ),
-                currency="mollitia",
-                description="cumque",
+                currency='mollitia',
+                description='cumque',
                 net_amount=5632.6,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type="accusamus",
-                            id="1961ce9b-e41c-4869-9d7d-9719d07b200a",
+                            data_type='accusamus',
+                            id='1961ce9b-e41c-4869-9d7d-9719d07b200a',
                         ),
                         shared.InvoiceTo(
-                            data_type="corporis",
-                            id="8ffd2967-df8f-4d88-aa8e-60be620cd9c5",
+                            data_type='corporis',
+                            id='8ffd2967-df8f-4d88-aa8e-60be620cd9c5',
                         ),
                         shared.InvoiceTo(
-                            data_type="officia",
-                            id="fdd04c37-5251-42be-ae1d-87ecc5fdcea8",
+                            data_type='officia',
+                            id='fdd04c37-5251-42be-ae1d-87ecc5fdcea8',
                         ),
                         shared.InvoiceTo(
-                            data_type="eveniet",
-                            id="7a883116-62cd-4a6d-b7c1-d86066237d42",
+                            data_type='eveniet',
+                            id='7a883116-62cd-4a6d-b7c1-d86066237d42',
                         ),
                     ],
                 ),
             ),
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id="27866db8-a749-4e39-8451-1cc75e4f0c00",
-                    name="Patty Harber",
+                    id='27866db8-a749-4e39-8451-1cc75e4f0c00',
+                    name='Patty Harber',
                 ),
-                currency="molestiae",
-                description="ipsam",
+                currency='molestiae',
+                description='ipsam',
                 net_amount=5541.62,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type="nobis",
-                            id="94562f00-6968-45fc-91a1-73d84bbe24f2",
+                            data_type='nobis',
+                            id='94562f00-6968-45fc-91a1-73d84bbe24f2',
                         ),
                         shared.InvoiceTo(
-                            data_type="error",
-                            id="834afb07-35cb-4628-9d4a-29aaa1e16915",
+                            data_type='error',
+                            id='834afb07-35cb-4628-9d4a-29aaa1e16915',
                         ),
                         shared.InvoiceTo(
-                            data_type="nisi",
-                            id="f7d2ee20-9505-4bf0-ba93-e94480ca37fb",
+                            data_type='nisi',
+                            id='f7d2ee20-9505-4bf0-ba93-e94480ca37fb',
                         ),
                         shared.InvoiceTo(
-                            data_type="ab",
-                            id="0789032a-c333-4172-a2dd-79ec74ba7e88",
+                            data_type='ab',
+                            id='0789032a-c333-4172-a2dd-79ec74ba7e88',
                         ),
                     ],
                 ),
             ),
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id="ddb36fd1-ccc3-441c-8657-3474f0a740fb",
-                    name="Sandy Reichel",
+                    id='ddb36fd1-ccc3-441c-8657-3474f0a740fb',
+                    name='Sandy Reichel',
                 ),
-                currency="illo",
-                description="impedit",
+                currency='illo',
+                description='impedit',
                 net_amount=2164.48,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type="doloremque",
-                            id="9e763995-d808-4bbe-b944-55ebc550a1c4",
+                            data_type='doloremque',
+                            id='9e763995-d808-4bbe-b944-55ebc550a1c4',
                         ),
                         shared.InvoiceTo(
-                            data_type="qui",
-                            id="6b59c836-6fdc-4c13-9582-c1b855e889d9",
+                            data_type='qui',
+                            id='6b59c836-6fdc-4c13-9582-c1b855e889d9',
                         ),
                         shared.InvoiceTo(
-                            data_type="officiis",
-                            id="f932e900-0a13-4ad8-9242-08efd2341189",
+                            data_type='officiis',
+                            id='f932e900-0a13-4ad8-9242-08efd2341189',
                         ),
                     ],
                 ),
             ),
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id="8e73879e-fbe8-4bae-babb-794536e90351",
-                    name="Rickey Miller",
+                    id='8e73879e-fbe8-4bae-babb-794536e90351',
+                    name='Rickey Miller',
                 ),
-                currency="adipisci",
-                description="architecto",
+                currency='adipisci',
+                description='architecto',
                 net_amount=4393.34,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type="voluptatem",
-                            id="b77a5a53-65a7-49f1-9271-f01c0d361fed",
+                            data_type='voluptatem',
+                            id='b77a5a53-65a7-49f1-9271-f01c0d361fed',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id="8dc5effb-453e-4908-9e87-1fdb4d697bdd",
-            name="Sylvester Maggio",
+            id='8dc5effb-453e-4908-9e87-1fdb4d697bdd',
+            name='Sylvester Maggio',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="repudiandae",
-        posted_on="incidunt",
+        modified_date='repudiandae',
+        posted_on='incidunt',
         record_ref=shared.InvoiceTo(
-            data_type="neque",
-            id="734a5d72-d9ed-4d78-9be5-e7afe55297ba",
+            data_type='neque',
+            id='734a5d72-d9ed-4d78-9be5-e7afe55297ba',
         ),
-        source_modified_date="laboriosam",
+        source_modified_date='laboriosam',
         supplemental_data=shared.SupplementalData(
             content={
                 "laudantium": {
-                    "repellat": "aliquam",
+                    "repellat": 'aliquam',
                 },
             },
         ),
-        updated_on="modi",
+        updated_on='modi',
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     timeout_in_minutes=907650,
 )
 
@@ -198,9 +198,9 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.DeleteJournalEntryRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    journal_entry_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    journal_entry_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.journal_entries.delete(req)
@@ -227,8 +227,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetJournalEntryRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    journal_entry_id="dolorem",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    journal_entry_id='dolorem',
 )
 
 res = s.journal_entries.get(req)
@@ -261,8 +261,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetCreateJournalEntriesModelRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.journal_entries.get_create_model(req)
@@ -289,11 +289,11 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListJournalEntriesRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="laborum",
+    query='laborum',
 )
 
 res = s.journal_entries.list(req)

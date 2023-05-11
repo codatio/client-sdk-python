@@ -36,22 +36,22 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateJournalRequest(
     journal=shared.Journal(
-        created_on="eos",
+        created_on='eos',
         has_children=False,
-        id="3394a68c-c80d-430f-b721-64d0a91fe9d9",
-        journal_code="autem",
+        id='3394a68c-c80d-430f-b721-64d0a91fe9d9',
+        journal_code='autem',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="minima",
-        name="Sherry Reynolds",
-        parent_id="necessitatibus",
-        source_modified_date="perferendis",
-        status="Unknown",
-        type="doloremque",
+        modified_date='minima',
+        name='Sherry Reynolds',
+        parent_id='necessitatibus',
+        source_modified_date='perferendis',
+        status=shared.JournalStatusEnum.UNKNOWN,
+        type='doloremque',
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     timeout_in_minutes=569651,
 )
 
@@ -79,8 +79,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetJournalRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    journal_id="quod",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    journal_id='quod',
 )
 
 res = s.journals.get(req)
@@ -113,8 +113,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetCreateJournalsModelRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.journals.get_create_model(req)
@@ -141,11 +141,11 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListJournalsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="vel",
+    query='vel',
 )
 
 res = s.journals.list(req)

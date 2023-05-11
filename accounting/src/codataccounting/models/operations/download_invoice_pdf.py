@@ -10,9 +10,7 @@ from typing import Optional
 class DownloadInvoicePdfRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     invoice_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'invoiceId', 'style': 'simple', 'explode': False }})
-
     r"""Unique identifier for an invoice"""
     
 
@@ -20,12 +18,8 @@ class DownloadInvoicePdfRequest:
 class DownloadInvoicePdfResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     data: Optional[bytes] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

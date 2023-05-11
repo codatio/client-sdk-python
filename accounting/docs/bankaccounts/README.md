@@ -37,27 +37,27 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name="natus",
-        account_number="laboriosam",
-        account_type="Debit",
+        account_name='natus',
+        account_number='laboriosam',
+        account_type=shared.BankAccountBankAccountTypeEnum.DEBIT,
         available_balance=9025.99,
         balance=6818.2,
-        currency="in",
-        i_ban="corporis",
-        id="96eb10fa-aa23-452c-9955-907aff1a3a2f",
-        institution="mollitia",
+        currency='in',
+        i_ban='corporis',
+        id='96eb10fa-aa23-452c-9955-907aff1a3a2f',
+        institution='mollitia',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="occaecati",
-        nominal_code="numquam",
+        modified_date='occaecati',
+        nominal_code='numquam',
         overdraft_limit=4143.69,
-        sort_code="quam",
-        source_modified_date="molestiae",
+        sort_code='quam',
+        source_modified_date='molestiae',
     ),
     allow_sync_on_push_complete=False,
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     timeout_in_minutes=244425,
 )
 
@@ -85,9 +85,9 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetBankAccountRequest(
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.bank_accounts.get(req)
@@ -120,8 +120,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetCreateUpdateBankAccountsModelRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.bank_accounts.get_create_update_model(req)
@@ -148,12 +148,12 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListBankAccountsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="error",
+    query='error',
 )
 
 res = s.bank_accounts.list(req)
@@ -187,27 +187,27 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name="quia",
-        account_number="quis",
-        account_type="Unknown",
+        account_name='quia',
+        account_number='quis',
+        account_type=shared.BankAccountBankAccountTypeEnum.UNKNOWN,
         available_balance=6747.52,
         balance=6563.3,
-        currency="enim",
-        i_ban="odit",
-        id="c3f5ad01-9da1-4ffe-b8f0-97b0074f1547",
-        institution="dicta",
+        currency='enim',
+        i_ban='odit',
+        id='c3f5ad01-9da1-4ffe-b8f0-97b0074f1547',
+        institution='dicta',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="harum",
-        nominal_code="enim",
+        modified_date='harum',
+        nominal_code='enim',
         overdraft_limit=8804.76,
-        sort_code="commodi",
-        source_modified_date="repudiandae",
+        sort_code='commodi',
+        source_modified_date='repudiandae',
     ),
-    bank_account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    bank_account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
     timeout_in_minutes=64147,
 )

@@ -11,25 +11,17 @@ from typing import Optional
 class GetProfitAndLossRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     period_length: int = dataclasses.field(metadata={'query_param': { 'field_name': 'periodLength', 'style': 'form', 'explode': True }})
-
     periods_to_compare: int = dataclasses.field(metadata={'query_param': { 'field_name': 'periodsToCompare', 'style': 'form', 'explode': True }})
-
     start_month: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'startMonth', 'style': 'form', 'explode': True }})
-
     
 
 @dataclasses.dataclass
 class GetProfitAndLossResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     profit_and_loss_report: Optional[shared_profitandlossreport1.ProfitAndLossReport1] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

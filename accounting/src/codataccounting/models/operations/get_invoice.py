@@ -11,9 +11,7 @@ from typing import Optional
 class GetInvoiceRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     invoice_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'invoiceId', 'style': 'simple', 'explode': False }})
-
     r"""Unique identifier for an invoice"""
     
 
@@ -21,12 +19,8 @@ class GetInvoiceRequest:
 class GetInvoiceResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     invoice: Optional[shared_invoice.Invoice] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

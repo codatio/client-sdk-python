@@ -27,8 +27,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetTrackingCategoryRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    tracking_category_id="animi",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    tracking_category_id='animi',
 )
 
 res = s.tracking_categories.get(req)
@@ -55,11 +55,11 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListTrackingCategoriesRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="autem",
+    query='autem',
 )
 
 res = s.tracking_categories.list(req)

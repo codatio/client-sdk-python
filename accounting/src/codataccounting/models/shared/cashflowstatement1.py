@@ -29,7 +29,6 @@ class CashFlowStatement1:
     """
     
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
-
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
     ## Unknown currencies
@@ -39,16 +38,12 @@ class CashFlowStatement1:
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
     report_basis: shared_reportbasis_enum.ReportBasisEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportBasis') }})
-
     r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
     report_input: shared_reportinput_enum.ReportInputEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInput') }})
-
     r"""Accounting method used to prepare the cash flow statement."""
     reports: list[shared_cashflowstatement.CashFlowStatement] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
-
     r"""Array of cash flow statements."""
     earliest_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('earliestAvailableMonth'), 'exclude': lambda f: f is None }})
-
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -70,7 +65,6 @@ class CashFlowStatement1:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     most_recent_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mostRecentAvailableMonth'), 'exclude': lambda f: f is None }})
-
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```

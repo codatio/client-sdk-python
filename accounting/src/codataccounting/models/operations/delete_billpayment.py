@@ -11,23 +11,16 @@ from typing import Optional
 class DeleteBillPaymentRequest:
     
     bill_payment_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'billPaymentId', 'style': 'simple', 'explode': False }})
-
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class DeleteBillPaymentResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     push_operation_summary: Optional[shared_pushoperationsummary.PushOperationSummary] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

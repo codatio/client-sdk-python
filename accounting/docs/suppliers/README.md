@@ -42,42 +42,42 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city="Thousand Oaks",
-                country="Papua New Guinea",
-                line1="amet",
-                line2="tempore",
-                postal_code="81317",
-                region="adipisci",
-                type="Unknown",
+                city='Thousand Oaks',
+                country='Papua New Guinea',
+                line1='amet',
+                line2='tempore',
+                postal_code='81317',
+                region='adipisci',
+                type=shared.AddressTypeEnum.UNKNOWN,
             ),
         ],
-        contact_name="alias",
-        default_currency="occaecati",
-        email_address="perspiciatis",
-        id="83663c66-dcbb-47df-acb0-9c8b408e0713",
+        contact_name='alias',
+        default_currency='occaecati',
+        email_address='perspiciatis',
+        id='83663c66-dcbb-47df-acb0-9c8b408e0713',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="molestiae",
-        phone="489.499.8000 x854",
-        registration_number="praesentium",
-        source_modified_date="aperiam",
-        status="Archived",
+        modified_date='molestiae',
+        phone='489.499.8000 x854',
+        registration_number='praesentium',
+        source_modified_date='aperiam',
+        status=shared.SupplierStatusEnum.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
                 "doloremque": {
-                    "eius": "odio",
-                    "rerum": "provident",
-                    "nostrum": "perferendis",
-                    "aliquam": "accusantium",
+                    "eius": 'odio',
+                    "rerum": 'provident',
+                    "nostrum": 'perferendis',
+                    "aliquam": 'accusantium',
                 },
             },
         ),
-        supplier_name="possimus",
-        tax_number="vel",
+        supplier_name='possimus',
+        tax_number='vel',
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     timeout_in_minutes=796063,
 )
 
@@ -105,10 +105,10 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.DownloadSupplierAttachmentRequest(
-    attachment_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    supplier_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.suppliers.download_attachment(req)
@@ -135,8 +135,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetSupplierRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    supplier_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.suppliers.get(req)
@@ -163,10 +163,10 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetSupplierAttachmentRequest(
-    attachment_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    supplier_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.suppliers.get_attachment(req)
@@ -199,8 +199,8 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.GetCreateUpdateSuppliersModelRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.suppliers.get_create_update_model(req)
@@ -227,11 +227,11 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListSuppliersRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="blanditiis",
+    query='blanditiis',
 )
 
 res = s.suppliers.list(req)
@@ -258,9 +258,9 @@ s = codataccounting.CodatAccounting(
 
 
 req = operations.ListSupplierAttachmentsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    supplier_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.suppliers.list_attachments(req)
@@ -296,69 +296,69 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city="Lake Gabriellashire",
-                country="Afghanistan",
-                line1="perferendis",
-                line2="aspernatur",
-                postal_code="04820",
-                region="dolore",
-                type="Billing",
+                city='Lake Gabriellashire',
+                country='Afghanistan',
+                line1='perferendis',
+                line2='aspernatur',
+                postal_code='04820',
+                region='dolore',
+                type=shared.AddressTypeEnum.BILLING,
             ),
             shared.Addressesitems(
-                city="Mountain View",
-                country="Armenia",
-                line1="alias",
-                line2="sit",
-                postal_code="98150-1458",
-                region="quidem",
-                type="Unknown",
+                city='Mountain View',
+                country='Armenia',
+                line1='alias',
+                line2='sit',
+                postal_code='98150-1458',
+                region='quidem',
+                type=shared.AddressTypeEnum.UNKNOWN,
             ),
             shared.Addressesitems(
-                city="Watersfurt",
-                country="Syrian Arab Republic",
-                line1="suscipit",
-                line2="ut",
-                postal_code="40961",
-                region="corporis",
-                type="Unknown",
+                city='Watersfurt',
+                country='Syrian Arab Republic',
+                line1='suscipit',
+                line2='ut',
+                postal_code='40961',
+                region='corporis',
+                type=shared.AddressTypeEnum.UNKNOWN,
             ),
         ],
-        contact_name="alias",
-        default_currency="ratione",
-        email_address="sed",
-        id="3b2c09b9-2477-41f5-a69e-5b7ec7626649",
+        contact_name='alias',
+        default_currency='ratione',
+        email_address='sed',
+        id='3b2c09b9-2477-41f5-a69e-5b7ec7626649',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date="possimus",
-        phone="487-692-7981 x1448",
-        registration_number="sit",
-        source_modified_date="expedita",
-        status="Active",
+        modified_date='possimus',
+        phone='487-692-7981 x1448',
+        registration_number='sit',
+        source_modified_date='expedita',
+        status=shared.SupplierStatusEnum.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
                 "repellat": {
-                    "atque": "iure",
-                    "nulla": "aliquid",
-                    "asperiores": "similique",
+                    "atque": 'iure',
+                    "nulla": 'aliquid',
+                    "asperiores": 'similique',
                 },
                 "veniam": {
-                    "vel": "earum",
-                    "corrupti": "temporibus",
-                    "libero": "sapiente",
+                    "vel": 'earum',
+                    "corrupti": 'temporibus',
+                    "libero": 'sapiente',
                 },
                 "praesentium": {
-                    "qui": "asperiores",
+                    "qui": 'asperiores',
                 },
             },
         ),
-        supplier_name="blanditiis",
-        tax_number="nesciunt",
+        supplier_name='blanditiis',
+        tax_number='nesciunt',
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    supplier_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     timeout_in_minutes=721212,
 )
 

@@ -17,13 +17,8 @@ class Propertiestracking1:
     r"""Categories, and a project and customer, against which the item is tracked."""
     
     category_refs: list[shared_trackingcategoryref.TrackingCategoryRef] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})
-
     is_billed_to: shared_billedtotype_enum1.BilledToTypeEnum1 = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})
-
     is_rebilled_to: shared_billedtotype_enum1.BilledToTypeEnum1 = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
-
     customer_ref: Optional[shared_customerref.CustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
-
     project_ref: Optional[shared_projectref.ProjectRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})
-
     

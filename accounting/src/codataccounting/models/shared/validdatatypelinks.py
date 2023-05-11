@@ -53,9 +53,7 @@ class ValidDataTypeLinks:
     """
     
     links: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('links'), 'exclude': lambda f: f is None }})
-
     r"""Supported `dataTypes` that the record can be linked to."""
     property: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('property'), 'exclude': lambda f: f is None }})
-
     r"""The property from the account that can be linked."""
     

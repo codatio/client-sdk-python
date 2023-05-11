@@ -13,23 +13,16 @@ from typing import Optional
 class ProfitAndLossReport:
     
     gross_profit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('grossProfit') }})
-
     r"""Gross profit of the company in the given date range."""
     net_operating_profit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netOperatingProfit') }})
-
     r"""Net operating profit of the company in the given date range."""
     net_other_income: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netOtherIncome') }})
-
     r"""Net other income of the company in the given date range."""
     net_profit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netProfit') }})
-
     r"""Net profit of the company in the given date range."""
     cost_of_sales: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('costOfSales'), 'exclude': lambda f: f is None }})
-
     expenses: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expenses'), 'exclude': lambda f: f is None }})
-
     from_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'exclude': lambda f: f is None }})
-
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```
@@ -51,13 +44,9 @@ class ProfitAndLossReport:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     income: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('income'), 'exclude': lambda f: f is None }})
-
     other_expenses: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('otherExpenses'), 'exclude': lambda f: f is None }})
-
     other_income: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('otherIncome'), 'exclude': lambda f: f is None }})
-
     to_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('toDate'), 'exclude': lambda f: f is None }})
-
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
     
     ```

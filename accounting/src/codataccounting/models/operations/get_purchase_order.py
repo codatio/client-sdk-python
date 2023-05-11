@@ -11,21 +11,15 @@ from typing import Optional
 class GetPurchaseOrderRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     purchase_order_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'purchaseOrderId', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class GetPurchaseOrderResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     purchase_order: Optional[shared_purchaseorder.PurchaseOrder] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     
