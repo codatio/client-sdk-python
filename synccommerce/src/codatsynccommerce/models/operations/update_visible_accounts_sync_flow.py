@@ -11,21 +11,15 @@ from typing import Optional
 class UpdateVisibleAccountsSyncFlowRequest:
     
     commerce_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'commerceKey', 'style': 'simple', 'explode': False }})
-
     visible_accounts: Optional[shared_visibleaccounts.VisibleAccounts] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-
     
 
 @dataclasses.dataclass
 class UpdateVisibleAccountsSyncFlowResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     visible_accounts: Optional[shared_visibleaccounts.VisibleAccounts] = dataclasses.field(default=None)
-
     r"""Success"""
     

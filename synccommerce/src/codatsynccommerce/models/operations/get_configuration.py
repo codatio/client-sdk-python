@@ -11,19 +11,14 @@ from typing import Optional
 class GetConfigurationRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class GetConfigurationResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     configuration: Optional[shared_configuration.Configuration] = dataclasses.field(default=None)
-
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

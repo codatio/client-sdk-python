@@ -26,9 +26,8 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.GetConfigurationRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.configuration.get_configuration(req)
@@ -53,9 +52,8 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.GetSyncStatusRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.configuration.get_sync_status(req)
@@ -80,9 +78,8 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.SetConfigurationRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.configuration.set_configuration(req)

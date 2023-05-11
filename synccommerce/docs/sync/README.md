@@ -26,12 +26,11 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.RequestSyncRequest(
     sync_to_latest_args=shared.SyncToLatestArgs(
-        sync_to="nulla",
+        sync_to='nulla',
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.sync.request_sync(req)
@@ -56,13 +55,12 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.RequestSyncForDateRangeRequest(
     date_range=shared.DateRange(
-        finish="corrupti",
-        start="illum",
+        finish='corrupti',
+        start='illum',
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.sync.request_sync_for_date_range(req)

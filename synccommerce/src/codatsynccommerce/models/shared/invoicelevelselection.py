@@ -12,9 +12,7 @@ from typing import Optional
 class InvoiceLevelSelection:
     
     group_by_options: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('groupByOptions'), 'exclude': lambda f: f is None }})
-
     r"""Options for grouping sales."""
     selected_group_by_options: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedGroupByOptions'), 'exclude': lambda f: f is None }})
-
     r"""Selected array of grouping options."""
     

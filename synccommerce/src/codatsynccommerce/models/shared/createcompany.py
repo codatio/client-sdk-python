@@ -11,6 +11,5 @@ from dataclasses_json import Undefined, dataclass_json
 class CreateCompany:
     
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-
     r"""Name of the company in Codat with a partner-commerce data connection."""
     

@@ -12,6 +12,5 @@ from typing import Optional
 class UpdateConnection:
     
     status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
-
     r"""The current authorization status of the data connection."""
     

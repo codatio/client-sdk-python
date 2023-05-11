@@ -28,9 +28,8 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = shared.CreateCompany(
-    name="Bob's Burgers",
+    name='Bob's Burgers',
 )
 
 res = s.company_management.create_company(req)
@@ -55,10 +54,9 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.CreateConnectionRequest(
-    request_body="corrupti",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    request_body='corrupti',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.company_management.create_connection(req)
@@ -83,12 +81,11 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.ListCompaniesRequest(
-    order_by="-modifiedDate",
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="provident",
+    query='provident',
 )
 
 res = s.company_management.list_companies(req)
@@ -113,13 +110,12 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.ListConnectionsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    order_by="-modifiedDate",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="distinctio",
+    query='distinctio',
 )
 
 res = s.company_management.list_connections(req)
@@ -144,13 +140,12 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-
 req = operations.UpdateConnectionRequest(
     update_connection=shared.UpdateConnection(
-        status="Linked",
+        status='Linked',
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.company_management.update_connection(req)

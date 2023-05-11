@@ -22,6 +22,7 @@ class SyncFlowPreferences:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_config_text_sync_flow(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigTextSyncFlowResponse:
         r"""Retrieve preferences for text fields on Sync Flow
         To enable retrieval of preferences set for the text fields on Sync Flow.
@@ -58,6 +59,7 @@ class SyncFlowPreferences:
 
         return res
 
+    
     def get_sync_flow_url(self, request: operations.GetSyncFlowURLRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncFlowURLResponse:
         r"""Retrieve sync flow url
         Get a URL for Sync Flow including a one time passcode.
@@ -95,6 +97,7 @@ class SyncFlowPreferences:
 
         return res
 
+    
     def get_visible_accounts(self, request: operations.GetVisibleAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetVisibleAccountsResponse:
         r"""List visible accounts
         Enable retrieval for accounts which are visible on sync flow.
@@ -131,6 +134,7 @@ class SyncFlowPreferences:
 
         return res
 
+    
     def update_config_text_sync_flow(self, request: dict[str, shared.Localization], retries: Optional[utils.RetryConfig] = None) -> operations.UpdateConfigTextSyncFlowResponse:
         r"""Update preferences for text fields on sync flow
         To enable update of preferences set for the text fields on sync flow.
@@ -171,6 +175,7 @@ class SyncFlowPreferences:
 
         return res
 
+    
     def update_visible_accounts_sync_flow(self, request: operations.UpdateVisibleAccountsSyncFlowRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateVisibleAccountsSyncFlowResponse:
         r"""Update the visible accounts on Sync Flow
         To enable update of accounts visible preferences set on Sync Flow.
