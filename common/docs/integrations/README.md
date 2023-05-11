@@ -26,9 +26,8 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.GetIntegrationRequest(
-    platform_key="gbol",
+    platform_key='gbol',
 )
 
 res = s.integrations.get(req)
@@ -53,9 +52,8 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.GetIntegrationsBrandingRequest(
-    platform_key="gbol",
+    platform_key='gbol',
 )
 
 res = s.integrations.get_branding(req)
@@ -80,12 +78,11 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.ListIntegrationsRequest(
-    order_by="-modifiedDate",
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="veritatis",
+    query='iure',
 )
 
 res = s.integrations.list(req)

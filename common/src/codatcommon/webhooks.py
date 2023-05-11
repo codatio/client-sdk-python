@@ -22,6 +22,7 @@ class Webhooks:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: shared.Rule, retries: Optional[utils.RetryConfig] = None) -> operations.CreateRuleResponse:
         r"""Create webhook
         Create a new webhook configuration
@@ -66,6 +67,7 @@ class Webhooks:
 
         return res
 
+    
     def get(self, request: operations.GetWebhookRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetWebhookResponse:
         r"""Get webhook
         Get a single webhook
@@ -106,6 +108,7 @@ class Webhooks:
 
         return res
 
+    
     def list(self, request: operations.ListRulesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListRulesResponse:
         r"""List webhooks
         List webhooks that you are subscribed to.

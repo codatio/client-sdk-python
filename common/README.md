@@ -20,10 +20,9 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = shared.CompanyRequestBody(
-    description="corrupti",
-    name="Kelvin Sporer",
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
 )
 
 res = s.companies.create(req)
@@ -79,7 +78,7 @@ if res.company is not None:
 
 ### [settings](docs/settings/README.md)
 
-* [get_profile](docs/settings/README.md#get_profile) - Get profile
+* [~~get_profile~~](docs/settings/README.md#get_profile) - Get profile :warning: **Deprecated**
 * [get_sync_settings](docs/settings/README.md#get_sync_settings) - Update all sync settings
 * [update_profile](docs/settings/README.md#update_profile) - Update profile
 

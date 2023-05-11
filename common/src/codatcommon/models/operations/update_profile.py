@@ -12,15 +12,10 @@ from typing import Optional
 class UpdateProfileResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-
     r"""Your API request was not properly authorized."""
     profile: Optional[shared_profile.Profile] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

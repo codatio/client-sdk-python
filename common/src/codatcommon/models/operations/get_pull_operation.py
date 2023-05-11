@@ -12,9 +12,7 @@ from typing import Optional
 class GetPullOperationRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     dataset_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'datasetId', 'style': 'simple', 'explode': False }})
-
     r"""Unique ID of a dataset or pull operation."""
     
 
@@ -22,15 +20,10 @@ class GetPullOperationRequest:
 class GetPullOperationResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-
     r"""Your API request was not properly authorized."""
     pull_operation: Optional[shared_pulloperation.PullOperation] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

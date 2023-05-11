@@ -9,10 +9,9 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = shared.CompanyRequestBody(
-    description="corrupti",
-    name="Kelvin Sporer",
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
 )
 
 res = s.companies.create(req)

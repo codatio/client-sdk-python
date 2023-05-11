@@ -12,22 +12,16 @@ from typing import Optional
 class GetCompanyDataStatusRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     
 
 @dataclasses.dataclass
 class GetCompanyDataStatusResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     data_status_response: Optional[dict[str, shared_datastatus.DataStatus]] = dataclasses.field(default=None)
-
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

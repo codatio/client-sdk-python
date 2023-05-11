@@ -25,9 +25,8 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.RefreshCompanyDataRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.refresh_data.all(req)
@@ -54,11 +53,10 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-
 req = operations.CreatePullOperationRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="b7392059-2939-46fe-a759-6eb10faaa235",
-    data_type="invoices",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='8ca1ba92-8fc8-4167-82cb-739205929396',
+    data_type=shared.DataTypeEnum.INVOICES,
 )
 
 res = s.refresh_data.by_data_type(req)

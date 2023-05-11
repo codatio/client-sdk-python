@@ -12,11 +12,8 @@ from typing import Optional
 class GetCreateUpdateModelOptionsByDataTypeRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-
     data_type: shared_datatype_enum.DataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
-
     r"""The key of a Codat data type"""
     
 
@@ -24,12 +21,8 @@ class GetCreateUpdateModelOptionsByDataTypeRequest:
 class GetCreateUpdateModelOptionsByDataTypeResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     push_option: Optional[shared_pushoption.PushOption] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

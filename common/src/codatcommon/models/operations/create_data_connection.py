@@ -15,33 +15,25 @@ from typing import Optional
 class CreateDataConnectionRequestBody:
     
     platform_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformKey'), 'exclude': lambda f: f is None }})
-
     
 
 @dataclasses.dataclass
 class CreateDataConnectionRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     request_body: Optional[CreateDataConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-
     
 
 @dataclasses.dataclass
 class CreateDataConnectionResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
-
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

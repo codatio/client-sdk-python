@@ -22,6 +22,7 @@ class Integrations:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetIntegrationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetIntegrationResponse:
         r"""Get integration
         Get single integration, by platformKey
@@ -62,6 +63,7 @@ class Integrations:
 
         return res
 
+    
     def get_branding(self, request: operations.GetIntegrationsBrandingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetIntegrationsBrandingResponse:
         r"""Get branding
         Get branding for platform.
@@ -98,6 +100,7 @@ class Integrations:
 
         return res
 
+    
     def list(self, request: operations.ListIntegrationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListIntegrationsResponse:
         r"""List integrations
         List your available integrations

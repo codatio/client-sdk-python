@@ -13,24 +13,17 @@ from typing import Optional
 class UpdateCompanyRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-
     company_request_body: Optional[shared_companyrequestbody.CompanyRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-
     
 
 @dataclasses.dataclass
 class UpdateCompanyResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     company: Optional[shared_company.Company] = dataclasses.field(default=None)
-
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     
