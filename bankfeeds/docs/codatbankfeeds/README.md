@@ -35,36 +35,35 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-
 req = operations.CreateBankFeedRequest(
     request_body=[
         shared.BankFeedAccount(
-            account_name="vitae",
-            account_number="laborum",
-            account_type="animi",
+            account_name='vitae',
+            account_number='laborum',
+            account_type='animi',
             balance=3172.02,
-            currency="odit",
-            feed_start_date="quo",
-            id="3f5ad019-da1f-4fe7-8f09-7b0074f15471",
-            modified_date="harum",
-            sort_code="enim",
-            status="accusamus",
+            currency='odit',
+            feed_start_date='quo',
+            id='3f5ad019-da1f-4fe7-8f09-7b0074f15471',
+            modified_date='harum',
+            sort_code='enim',
+            status='accusamus',
         ),
         shared.BankFeedAccount(
-            account_name="commodi",
-            account_number="repudiandae",
-            account_type="quae",
+            account_name='commodi',
+            account_number='repudiandae',
+            account_type='quae',
             balance=2168.22,
-            currency="quidem",
-            feed_start_date="molestias",
-            id="9d488e1e-91e4-450a-92ab-d44269802d50",
-            modified_date="fugit",
-            sort_code="dolorum",
-            status="excepturi",
+            currency='quidem',
+            feed_start_date='molestias',
+            id='9d488e1e-91e4-450a-92ab-d44269802d50',
+            modified_date='fugit',
+            sort_code='dolorum',
+            status='excepturi',
         ),
     ],
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.codat_bank_feeds.create_bank_feed(req)
@@ -93,56 +92,55 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-
 req = operations.CreateBankTransactionsRequest(
     bank_transactions=shared.BankTransactions(
-        account_id="tempora",
+        account_id='tempora',
         transactions=[
             shared.BankTransactionLine(
                 amount=7351.94,
                 balance=2884.76,
-                cleared_on_date="delectus",
-                counterparty="eum",
-                description="non",
-                id="c969e9a3-efa7-47df-b14c-d66ae395efb9",
-                modified_date="nam",
+                cleared_on_date='delectus',
+                counterparty='eum',
+                description='non',
+                id='c969e9a3-efa7-47df-b14c-d66ae395efb9',
+                modified_date='nam',
                 reconciled=False,
-                reference="id",
-                source_modified_date="blanditiis",
-                transaction_type="Pos",
+                reference='id',
+                source_modified_date='blanditiis',
+                transaction_type=shared.BankTransactionTypeEnum.POS,
             ),
             shared.BankTransactionLine(
                 amount=9560.84,
                 balance=2305.33,
-                cleared_on_date="deserunt",
-                counterparty="nisi",
-                description="vel",
-                id="997074ba-4469-4b6e-a141-959890afa563",
-                modified_date="necessitatibus",
+                cleared_on_date='deserunt',
+                counterparty='nisi',
+                description='vel',
+                id='997074ba-4469-4b6e-a141-959890afa563',
+                modified_date='necessitatibus',
                 reconciled=False,
-                reference="odit",
-                source_modified_date="nemo",
-                transaction_type="Credit",
+                reference='odit',
+                source_modified_date='nemo',
+                transaction_type=shared.BankTransactionTypeEnum.CREDIT,
             ),
             shared.BankTransactionLine(
                 amount=4358.65,
                 balance=9840.43,
-                cleared_on_date="debitis",
-                counterparty="eius",
-                description="maxime",
-                id="8b711e5b-7fd2-4ed0-a892-1cddc692601f",
-                modified_date="quidem",
+                cleared_on_date='debitis',
+                counterparty='eius',
+                description='maxime',
+                id='8b711e5b-7fd2-4ed0-a892-1cddc692601f',
+                modified_date='quidem',
                 reconciled=False,
-                reference="ipsam",
-                source_modified_date="voluptate",
-                transaction_type="Dep",
+                reference='ipsam',
+                source_modified_date='voluptate',
+                transaction_type=shared.BankTransactionTypeEnum.DEP,
             ),
         ],
     ),
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     allow_sync_on_push_complete=False,
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     timeout_in_minutes=722056,
 )
 
@@ -168,10 +166,9 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-
 req = operations.GetBankFeedsRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.codat_bank_feeds.get_bank_feeds(req)
@@ -196,11 +193,10 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-
 req = operations.GetCreateBankAccountModelRequest(
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.codat_bank_feeds.get_create_bank_account_model(req)
@@ -225,15 +221,14 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-
 req = operations.ListBankAccountTransactionsRequest(
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    order_by="-modifiedDate",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query="eaque",
+    query='eaque',
 )
 
 res = s.codat_bank_feeds.list_bank_account_transactions(req)
@@ -258,23 +253,22 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-
 req = operations.UpdateBankFeedRequest(
     bank_feed_account=shared.BankFeedAccount(
-        account_name="pariatur",
-        account_number="nemo",
-        account_type="voluptatibus",
+        account_name='pariatur',
+        account_number='nemo',
+        account_type='voluptatibus',
         balance=166.27,
-        currency="fugiat",
-        feed_start_date="amet",
-        id="0c5fbb25-8705-4320-ac73-d5fe9b90c289",
-        modified_date="eaque",
-        sort_code="occaecati",
-        status="rerum",
+        currency='fugiat',
+        feed_start_date='amet',
+        id='0c5fbb25-8705-4320-ac73-d5fe9b90c289',
+        modified_date='eaque',
+        sort_code='occaecati',
+        status='rerum',
     ),
-    account_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-    connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.codat_bank_feeds.update_bank_feed(req)
