@@ -22,6 +22,7 @@ class Configuration:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_company_configuration(self, request: operations.GetCompanyConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyConfigurationResponse:
         r"""Get company configuration
         Gets a companies expense sync configuration
@@ -58,6 +59,7 @@ class Configuration:
 
         return res
 
+    
     def save_company_configuration(self, request: operations.SaveCompanyConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.SaveCompanyConfigurationResponse:
         r"""Set company configuration
         Sets a companies expense sync configuration

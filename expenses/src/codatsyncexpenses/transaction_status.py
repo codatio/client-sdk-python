@@ -22,6 +22,7 @@ class TransactionStatus:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get_sync_transaction(self, request: operations.GetSyncTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncTransactionResponse:
         r"""Get Sync Transaction
         Gets the status of a transaction for a sync
@@ -58,6 +59,7 @@ class TransactionStatus:
 
         return res
 
+    
     def list_sync_transactions(self, request: operations.ListSyncTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSyncTransactionsResponse:
         r"""Get Sync transactions
         Get's the transactions and status for a sync

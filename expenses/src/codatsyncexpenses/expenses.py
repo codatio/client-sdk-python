@@ -22,6 +22,7 @@ class Expenses:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create_expense_dataset(self, request: operations.CreateExpenseDatasetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateExpenseDatasetResponse:
         r"""Create expense-transactions
         Create an expense transaction
@@ -62,6 +63,7 @@ class Expenses:
 
         return res
 
+    
     def upload_attachment(self, request: operations.UploadAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadAttachmentResponse:
         r"""Upload attachment
         Creates an attachment in the accounting software against the given transactionId

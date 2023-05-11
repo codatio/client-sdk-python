@@ -12,6 +12,5 @@ from typing import Optional
 class RecordRef:
     
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-
     r"""identifier of linked reference from mapping options."""
     

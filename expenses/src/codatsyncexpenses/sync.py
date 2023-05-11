@@ -22,6 +22,7 @@ class Sync:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def intiate_sync(self, request: operations.IntiateSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.IntiateSyncResponse:
         r"""Initiate sync
         Initiate sync of pending transactions.

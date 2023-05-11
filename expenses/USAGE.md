@@ -9,9 +9,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-
 req = operations.GetCompanyConfigurationRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.configuration.get_company_configuration(req)

@@ -25,9 +25,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-
 req = operations.GetCompanyConfigurationRequest(
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.configuration.get_company_configuration(req)
@@ -52,20 +51,19 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-
 req = operations.SaveCompanyConfigurationRequest(
     company_configuration=shared.CompanyConfiguration(
         bank_account=shared.BankAccount(
-            id="32",
+            id='32',
         ),
         customer=shared.Customer(
-            id="142",
+            id='142',
         ),
         supplier=shared.Supplier(
-            id="124",
+            id='124',
         ),
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.configuration.save_company_configuration(req)

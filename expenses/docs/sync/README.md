@@ -24,15 +24,14 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-
 req = operations.IntiateSyncRequest(
     post_sync=shared.PostSync(
         dataset_ids=[
-            "96ed151a-05df-4c2d-9f7c-c78ca1ba928f",
-            "c816742c-b739-4205-9293-96fea7596eb1",
+            '96ed151a-05df-4c2d-9f7c-c78ca1ba928f',
+            'c816742c-b739-4205-9293-96fea7596eb1',
         ],
     ),
-    company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.sync.intiate_sync(req)

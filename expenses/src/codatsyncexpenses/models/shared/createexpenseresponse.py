@@ -13,6 +13,5 @@ class CreateExpenseResponse:
     r"""OK"""
     
     dataset_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datasetId'), 'exclude': lambda f: f is None }})
-
     r"""Unique id of dataset created"""
     
