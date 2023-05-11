@@ -32,7 +32,7 @@ s = codatassess.CodatAssess(
 
 req = operations.DownloadExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.ENHANCED_FINANCIALS,
+    report_type=shared.ExcelReportTypeEnum.ENHANCED_INVOICES,
 )
 
 res = s.excel_reports.download_excel_report(req)
@@ -59,7 +59,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GenerateExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.BANKING,
+    report_type=shared.ExcelReportTypeEnum.ENHANCED_FINANCIALS,
 )
 
 res = s.excel_reports.generate_excel_report(req)
@@ -119,7 +119,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.BANKING,
+    report_type=shared.ExcelReportTypeEnum.ENHANCED_FINANCIALS,
 )
 
 res = s.excel_reports.get_excel_report(req)
