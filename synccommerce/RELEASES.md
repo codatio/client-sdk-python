@@ -255,3 +255,11 @@ Based on:
 - Speakeasy CLI 1.29.2 (2.26.2) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.12.2] https://pypi.org/project/codat-sync-for-commerce/0.12.2 - synccommerce
+
+## 2023-05-11 00:07:26
+### Changes
+Based on:
+- OpenAPI Doc 1.1 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Sync-Commerce.yaml
+- Speakeasy CLI 1.30.0 (2.26.3) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.12.3] https://pypi.org/project/codat-sync-for-commerce/0.12.3 - synccommerce
