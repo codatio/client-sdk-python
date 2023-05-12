@@ -35,6 +35,7 @@ class Companies:
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -77,6 +78,8 @@ class Companies:
         
         url = utils.generate_url(operations.DeleteCompanyRequest, base_url, '/companies/{companyId}', request)
         
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -87,7 +90,7 @@ class Companies:
             
 
         def do_request():
-            return client.request('DELETE', url)
+            return client.request('DELETE', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -116,6 +119,8 @@ class Companies:
         
         url = utils.generate_url(operations.GetCompanyRequest, base_url, '/companies/{companyId}', request)
         
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -126,7 +131,7 @@ class Companies:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -157,7 +162,9 @@ class Companies:
         
         url = base_url.removesuffix('/') + '/companies'
         
+        headers = {}
         query_params = utils.get_query_params(operations.ListCompaniesRequest, request)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -168,7 +175,7 @@ class Companies:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -203,6 +210,7 @@ class Companies:
         req_content_type, data, form = utils.serialize_request_body(request, "company_request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

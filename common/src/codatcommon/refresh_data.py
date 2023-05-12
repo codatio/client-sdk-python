@@ -31,6 +31,8 @@ class RefreshData:
         
         url = utils.generate_url(operations.RefreshCompanyDataRequest, base_url, '/companies/{companyId}/data/all', request)
         
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -41,7 +43,7 @@ class RefreshData:
             
 
         def do_request():
-            return client.request('POST', url)
+            return client.request('POST', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -72,7 +74,9 @@ class RefreshData:
         
         url = utils.generate_url(operations.CreatePullOperationRequest, base_url, '/companies/{companyId}/data/queue/{dataType}', request)
         
+        headers = {}
         query_params = utils.get_query_params(operations.CreatePullOperationRequest, request)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -83,7 +87,7 @@ class RefreshData:
             
 
         def do_request():
-            return client.request('POST', url, params=query_params)
+            return client.request('POST', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
