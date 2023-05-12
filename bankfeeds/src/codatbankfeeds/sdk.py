@@ -25,8 +25,8 @@ class CodatBankFeeds:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.15.3"
-    _gen_version: str = "2.26.3"
+    _sdk_version: str = "0.15.4"
+    _gen_version: str = "2.26.4"
 
     def __init__(self,
                  security: shared.Security = None,
@@ -76,6 +76,7 @@ class CodatBankFeeds:
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -122,6 +123,7 @@ class CodatBankFeeds:
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBankTransactionsRequest, request)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -159,6 +161,8 @@ class CodatBankFeeds:
         
         url = utils.generate_url(operations.GetBankFeedsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
         
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -169,7 +173,7 @@ class CodatBankFeeds:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -196,6 +200,8 @@ class CodatBankFeeds:
         
         url = utils.generate_url(operations.GetCreateBankAccountModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bankAccounts/{accountId}/bankTransactions', request)
         
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -206,7 +212,7 @@ class CodatBankFeeds:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -233,7 +239,9 @@ class CodatBankFeeds:
         
         url = utils.generate_url(operations.ListBankAccountTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}/bankTransactions', request)
         
+        headers = {}
         query_params = utils.get_query_params(operations.ListBankAccountTransactionsRequest, request)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -244,7 +252,7 @@ class CodatBankFeeds:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -275,6 +283,7 @@ class CodatBankFeeds:
         req_content_type, data, form = utils.serialize_request_body(request, "bank_feed_account", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
