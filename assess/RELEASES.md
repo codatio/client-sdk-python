@@ -359,3 +359,11 @@ Based on:
 - Speakeasy CLI 1.30.0 (2.26.3) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.16.3] https://pypi.org/project/codat-assess/0.16.3 - assess
+
+## 2023-05-12 00:12:16
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml
+- Speakeasy CLI 1.30.1 (2.26.4) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.16.4] https://pypi.org/project/codat-assess/0.16.4 - assess
