@@ -27,8 +27,8 @@ class CodatFiles:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.15.3"
-    _gen_version: str = "2.26.3"
+    _sdk_version: str = "0.15.4"
+    _gen_version: str = "2.26.4"
 
     def __init__(self,
                  security: shared.Security = None,
