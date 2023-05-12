@@ -31,6 +31,8 @@ class Connections:
         
         url = utils.generate_url(operations.CreatePartnerExpenseConnectionRequest, base_url, '/companies/{companyId}/sync/expenses/connections/partnerExpense', request)
         
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -41,7 +43,7 @@ class Connections:
             
 
         def do_request():
-            return client.request('POST', url)
+            return client.request('POST', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
