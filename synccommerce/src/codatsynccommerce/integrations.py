@@ -30,7 +30,6 @@ class Integrations:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetIntegrationBrandingRequest, base_url, '/config/integrations/{platformKey}/branding', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -69,7 +68,6 @@ class Integrations:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/config/integrations'
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListIntegrationsRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'

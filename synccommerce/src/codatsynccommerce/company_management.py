@@ -30,7 +30,6 @@ class CompanyManagement:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/meta/companies/sync'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -72,7 +71,6 @@ class CompanyManagement:
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateConnectionRequest, base_url, '/meta/companies/{companyId}/connections', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'string')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -114,7 +112,6 @@ class CompanyManagement:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/meta/companies'
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListCompaniesRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -154,7 +151,6 @@ class CompanyManagement:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListConnectionsRequest, base_url, '/meta/companies/{companyId}/connections', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListConnectionsRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -194,7 +190,6 @@ class CompanyManagement:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateConnectionRequest, base_url, '/meta/companies/{companyId}/connections/{connectionId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "update_connection", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
