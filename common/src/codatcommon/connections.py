@@ -30,7 +30,6 @@ class Connections:
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateDataConnectionRequest, base_url, '/companies/{companyId}/connections', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -77,7 +76,6 @@ class Connections:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DeleteCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -118,7 +116,6 @@ class Connections:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -161,7 +158,6 @@ class Connections:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListCompanyConnectionsRequest, base_url, '/companies/{companyId}/connections', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListCompanyConnectionsRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -205,7 +201,6 @@ class Connections:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UnlinkConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -251,7 +246,6 @@ class Connections:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateConnectionAuthorizationRequest, base_url, '/companies/{companyId}/connections/{connectionId}/authorization', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):

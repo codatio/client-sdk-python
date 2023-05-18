@@ -30,7 +30,6 @@ class DataStatus:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCompanyDataStatusRequest, base_url, '/companies/{companyId}/dataStatus', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -73,7 +72,6 @@ class DataStatus:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetPullOperationRequest, base_url, '/companies/{companyId}/data/history/{datasetId}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -116,7 +114,6 @@ class DataStatus:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListPullOperationsRequest, base_url, '/companies/{companyId}/data/history', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListPullOperationsRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'

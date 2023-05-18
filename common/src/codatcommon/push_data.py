@@ -39,7 +39,6 @@ class PushData:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateUpdateModelOptionsByDataTypeRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/{dataType}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -78,7 +77,6 @@ class PushData:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetPushOperationRequest, base_url, '/companies/{companyId}/push/{pushOperationKey}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -117,7 +115,6 @@ class PushData:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCompanyPushHistoryRequest, base_url, '/companies/{companyId}/push', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.GetCompanyPushHistoryRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
