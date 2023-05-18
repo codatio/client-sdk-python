@@ -383,3 +383,11 @@ Based on:
 - Speakeasy CLI 1.33.2 (2.29.0) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.19.0] https://pypi.org/project/codat-commerce/0.19.0 - commerce
+
+## 2023-05-18 00:19:19
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+- Speakeasy CLI 1.34.0 (2.30.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.20.0] https://pypi.org/project/codat-commerce/0.20.0 - commerce

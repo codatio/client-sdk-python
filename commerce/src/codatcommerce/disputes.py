@@ -30,7 +30,6 @@ class Disputes:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListDisputesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-disputes', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListDisputesRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
