@@ -30,7 +30,6 @@ class Companies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/companies'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -77,7 +76,6 @@ class Companies:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DeleteCompanyRequest, base_url, '/companies/{companyId}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -118,7 +116,6 @@ class Companies:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCompanyRequest, base_url, '/companies/{companyId}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -161,7 +158,6 @@ class Companies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/companies'
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListCompaniesRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -205,7 +201,6 @@ class Companies:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateCompanyRequest, base_url, '/companies/{companyId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "company_request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
