@@ -319,3 +319,35 @@ Based on:
 - Speakeasy CLI 1.30.1 (2.26.4) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.15.4] https://pypi.org/project/codat-files/0.15.4 - files
+
+## 2023-05-13 00:00:45
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Files.yaml
+- Speakeasy CLI 1.31.1 (2.27.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.16.0] https://pypi.org/project/codat-files/0.16.0 - files
+
+## 2023-05-16 00:00:40
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Files.yaml
+- Speakeasy CLI 1.32.0 (2.28.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.17.0] https://pypi.org/project/codat-files/0.17.0 - files
+
+## 2023-05-17 00:00:50
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Files.yaml
+- Speakeasy CLI 1.33.2 (2.29.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.18.0] https://pypi.org/project/codat-files/0.18.0 - files
+
+## 2023-05-18 00:01:11
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Files.yaml
+- Speakeasy CLI 1.34.0 (2.30.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.19.0] https://pypi.org/project/codat-files/0.19.0 - files
