@@ -30,7 +30,6 @@ class TaxComponents:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetTaxComponentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-taxComponents', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         

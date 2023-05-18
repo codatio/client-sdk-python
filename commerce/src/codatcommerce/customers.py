@@ -30,7 +30,6 @@ class Customers:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListCustomersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-customers', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListCustomersRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
