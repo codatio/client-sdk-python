@@ -31,7 +31,6 @@ class Sync:
         base_url = self._server_url
         
         url = utils.generate_url(operations.RequestSyncRequest, base_url, '/companies/{companyId}/sync/commerce/latest', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "sync_to_latest_args", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -73,7 +72,6 @@ class Sync:
         base_url = self._server_url
         
         url = utils.generate_url(operations.RequestSyncForDateRangeRequest, base_url, '/meta/companies/{companyId}/sync/commerce/historic', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "date_range", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):

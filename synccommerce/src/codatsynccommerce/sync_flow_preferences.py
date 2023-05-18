@@ -30,7 +30,6 @@ class SyncFlowPreferences:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/sync/commerce/config/ui/text'
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -69,7 +68,6 @@ class SyncFlowPreferences:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetSyncFlowURLRequest, base_url, '/config/sync/commerce/{commerceKey}/{accountingKey}/start', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.GetSyncFlowURLRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -109,7 +107,6 @@ class SyncFlowPreferences:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetVisibleAccountsRequest, base_url, '/clients/{clientId}/config/ui/accounts/platform/{platformKey}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -148,7 +145,6 @@ class SyncFlowPreferences:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/sync/commerce/config/ui/text'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -190,7 +186,6 @@ class SyncFlowPreferences:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateVisibleAccountsSyncFlowRequest, base_url, '/sync/commerce/config/ui/accounts/platform/{commerceKey}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "visible_accounts", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
