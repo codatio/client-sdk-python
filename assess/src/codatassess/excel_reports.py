@@ -32,7 +32,6 @@ class ExcelReports:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DownloadExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel/download', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.DownloadExcelReportRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -71,7 +70,6 @@ class ExcelReports:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GenerateExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.GenerateExcelReportRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -111,7 +109,6 @@ class ExcelReports:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetAccountingMarketingMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accountingMetrics/marketing', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.GetAccountingMarketingMetricsRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -151,7 +148,6 @@ class ExcelReports:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel/download', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.GetExcelReportRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -190,7 +186,6 @@ class ExcelReports:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetExcelReportGenerationStatusRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.GetExcelReportGenerationStatusRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'

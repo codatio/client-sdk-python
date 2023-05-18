@@ -32,7 +32,6 @@ class Categories:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetAccountCategoryRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -73,7 +72,6 @@ class Categories:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListAccountsCategoriesRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListAccountsCategoriesRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -115,7 +113,6 @@ class Categories:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/data/assess/accounts/categories'
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -156,7 +153,6 @@ class Categories:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateAccountCategoryRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "confirm_category", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -200,7 +196,6 @@ class Categories:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateAccountsCategoriesRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "confirm_categories", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
