@@ -3,10 +3,9 @@
 from __future__ import annotations
 from enum import Enum
 
-class AddressTypeEnum(str, Enum):
-    r"""The type of the address"""
-    BILLING = 'Billing'
-    DELIVERY = 'Delivery'
+class TransactionSourceType(str, Enum):
+    FEE = 'Fee'
     ORDER = 'Order'
-    INVENTORY = 'Inventory'
+    PAYMENT = 'Payment'
+    SERVICE_CHARGE = 'ServiceCharge'
     UNKNOWN = 'Unknown'

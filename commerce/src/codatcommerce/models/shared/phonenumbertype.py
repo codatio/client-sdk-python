@@ -3,8 +3,10 @@
 from __future__ import annotations
 from enum import Enum
 
-class PaymentMethodStatusEnum(str, Enum):
-    r"""Status of the Payment Method"""
-    ACTIVE = 'Active'
-    ARCHIVED = 'Archived'
+class PhoneNumberType(str, Enum):
+    r"""The type of phone number"""
+    PRIMARY = 'Primary'
+    LANDLINE = 'Landline'
+    MOBILE = 'Mobile'
+    FAX = 'Fax'
     UNKNOWN = 'Unknown'

@@ -32,6 +32,7 @@ class Payments:
         url = utils.generate_url(operations.ListPaymentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-payments', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListPaymentsRequest, request)
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -71,6 +72,7 @@ class Payments:
         url = utils.generate_url(operations.ListPaymentMethodsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListPaymentMethodsRequest, request)
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client

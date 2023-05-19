@@ -2,14 +2,14 @@
 
 from .accountbalance import *
 from .address import *
-from .addresstype_enum import *
+from .addresstype import *
 from .companyinfo import *
 from .customer import *
 from .customerref import *
 from .customers import *
 from .dispute import *
 from .disputes import *
-from .disputestatus_enum import *
+from .disputestatus import *
 from .href import *
 from .links import *
 from .locationref import *
@@ -23,13 +23,13 @@ from .payment import *
 from .paymentmethod import *
 from .paymentmethodref import *
 from .paymentmethods import *
-from .paymentmethodstatus_enum import *
+from .paymentmethodstatus import *
 from .paymentref import *
 from .payments import *
-from .paymentstatus_enum import *
-from .paymenttype_enum import *
+from .paymentstatus import *
+from .paymenttype import *
 from .phonenumber import *
-from .phonenumbertype_enum import *
+from .phonenumbertype import *
 from .product import *
 from .productcategories import *
 from .productcategory import *
@@ -40,11 +40,11 @@ from .productref import *
 from .products import *
 from .productvariant import *
 from .productvariantref import *
-from .productvariantstatus_enum import *
+from .productvariantstatus import *
 from .recordref import *
 from .security import *
 from .servicecharge import *
-from .servicechargetype_enum import *
+from .servicechargetype import *
 from .taxcomponent import *
 from .taxcomponentallocation import *
 from .taxcomponentref import *
@@ -52,7 +52,7 @@ from .taxcomponents import *
 from .transaction import *
 from .transactions import *
 from .transactionsourceref import *
-from .transactionsourcetype_enum import *
-from .transactiontype_enum import *
+from .transactionsourcetype import *
+from .transactiontype import *
 
-__all__ = ["AccountBalance","Address","AddressTypeEnum","CompanyInfo","CompanyInfoWeblink","CompanyInfoWeblinkTypeEnum","Customer","CustomerRef","Customers","Dispute","DisputeStatusEnum","Disputes","HRef","Links","LocationRef","Locations","LocationsResponse","Order","OrderDiscountAllocation","OrderLineItem","Orders","Payment","PaymentMethod","PaymentMethodRef","PaymentMethodStatusEnum","PaymentMethods","PaymentRef","PaymentStatusEnum","PaymentTypeEnum","Payments","PhoneNumber","PhoneNumberTypeEnum","Product","ProductCategories","ProductCategory","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatusEnum","Products","RecordRef","Security","ServiceCharge","ServiceChargeTypeEnum","TaxComponent","TaxComponentAllocation","TaxComponentRef","TaxComponents","Transaction","TransactionSourceRef","TransactionSourceTypeEnum","TransactionTypeEnum","Transactions"]
+__all__ = ["AccountBalance","Address","AddressType","CompanyInfo","CompanyInfoWeblink","CompanyInfoWeblinkType","Customer","CustomerRef","Customers","Dispute","DisputeStatus","Disputes","HRef","Links","LocationRef","Locations","LocationsResponse","Order","OrderDiscountAllocation","OrderLineItem","Orders","Payment","PaymentMethod","PaymentMethodRef","PaymentMethodStatus","PaymentMethods","PaymentRef","PaymentStatus","PaymentType","Payments","PhoneNumber","PhoneNumberType","Product","ProductCategories","ProductCategory","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatus","Products","RecordRef","Security","ServiceCharge","ServiceChargeType","TaxComponent","TaxComponentAllocation","TaxComponentRef","TaxComponents","Transaction","TransactionSourceRef","TransactionSourceType","TransactionType","Transactions"]

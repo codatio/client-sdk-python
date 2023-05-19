@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class TransactionTypeEnum(str, Enum):
+class TransactionType(str, Enum):
     r"""The type of the platform transaction:
     - `Unknown`  
     - `FailedPayout` — Failed transfer of funds from the seller's merchant account to their bank account.  

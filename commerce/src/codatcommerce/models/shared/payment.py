@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import paymentmethodref as shared_paymentmethodref
-from ..shared import paymentstatus_enum as shared_paymentstatus_enum
+from ..shared import paymentstatus as shared_paymentstatus
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -82,6 +82,6 @@ class Payment:
     payment_provider: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentProvider'), 'exclude': lambda f: f is None }})
     r"""Service provider of the payment, if applicable."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[shared_paymentstatus_enum.PaymentStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[shared_paymentstatus.PaymentStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Status of the payment"""
     

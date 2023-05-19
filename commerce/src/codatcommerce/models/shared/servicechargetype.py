@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class ServiceChargeTypeEnum(str, Enum):
+class ServiceChargeType(str, Enum):
     r"""The type of the service charge."""
     GENERIC = 'Generic'
     SHIPPING = 'Shipping'

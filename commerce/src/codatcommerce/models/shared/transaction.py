@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import transactionsourceref as shared_transactionsourceref
-from ..shared import transactiontype_enum as shared_transactiontype_enum
+from ..shared import transactiontype as shared_transactiontype
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -85,7 +85,7 @@ class Transaction:
     r"""The total transaction amount"""
     transaction_source_ref: Optional[shared_transactionsourceref.TransactionSourceRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionSourceRef'), 'exclude': lambda f: f is None }})
     r"""Link to the source event which triggered this transaction"""
-    type: Optional[shared_transactiontype_enum.TransactionTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[shared_transactiontype.TransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the platform transaction:
     - `Unknown`  
     - `FailedPayout` — Failed transfer of funds from the seller's merchant account to their bank account.  

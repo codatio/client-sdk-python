@@ -3,7 +3,8 @@
 from __future__ import annotations
 from enum import Enum
 
-class ProductVariantStatusEnum(str, Enum):
+class PaymentMethodStatus(str, Enum):
+    r"""Status of the Payment Method"""
+    ACTIVE = 'Active'
+    ARCHIVED = 'Archived'
     UNKNOWN = 'Unknown'
-    PUBLISHED = 'Published'
-    UNPUBLISHED = 'Unpublished'
