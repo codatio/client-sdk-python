@@ -31,7 +31,7 @@ src/codatsynccommerce/models/operations/update_visible_accounts_sync_flow.py
 src/codatsynccommerce/models/operations/__init__.py
 src/codatsynccommerce/models/shared/company.py
 src/codatsynccommerce/models/shared/connection.py
-src/codatsynccommerce/models/shared/dataconnectionstatus_enum.py
+src/codatsynccommerce/models/shared/dataconnectionstatus.py
 src/codatsynccommerce/models/shared/dataconnectionerror.py
 src/codatsynccommerce/models/shared/createcompany.py
 src/codatsynccommerce/models/shared/companies.py
@@ -65,11 +65,11 @@ src/codatsynccommerce/models/shared/imagereference.py
 src/codatsynccommerce/models/shared/brandingbutton.py
 src/codatsynccommerce/models/shared/integrations.py
 src/codatsynccommerce/models/shared/integration.py
-src/codatsynccommerce/models/shared/sourcetype_enum.py
+src/codatsynccommerce/models/shared/sourcetype.py
 src/codatsynccommerce/models/shared/datatypefeature.py
 src/codatsynccommerce/models/shared/supportedfeature.py
-src/codatsynccommerce/models/shared/featuretype_enum.py
-src/codatsynccommerce/models/shared/featurestate_enum.py
+src/codatsynccommerce/models/shared/featuretype.py
+src/codatsynccommerce/models/shared/featurestate.py
 src/codatsynccommerce/models/shared/syncsummary.py
 src/codatsynccommerce/models/shared/daterange.py
 src/codatsynccommerce/models/shared/synctolatestargs.py

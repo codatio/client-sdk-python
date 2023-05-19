@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class SourceTypeEnum(str, Enum):
+class SourceType(str, Enum):
     r"""The type of platform of the connection."""
     ACCOUNTING = 'Accounting'
     BANKING = 'Banking'

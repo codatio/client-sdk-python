@@ -14,11 +14,11 @@ from .connections import *
 from .createcompany import *
 from .customer import *
 from .dataconnectionerror import *
-from .dataconnectionstatus_enum import *
+from .dataconnectionstatus import *
 from .datatypefeature import *
 from .daterange import *
-from .featurestate_enum import *
-from .featuretype_enum import *
+from .featurestate import *
+from .featuretype import *
 from .fees import *
 from .feessupplier import *
 from .grouping import *
@@ -39,7 +39,7 @@ from .option import *
 from .payments import *
 from .sales import *
 from .security import *
-from .sourcetype_enum import *
+from .sourcetype import *
 from .supportedfeature import *
 from .syncflowurl import *
 from .syncsummary import *
@@ -49,4 +49,4 @@ from .taxratemapping import *
 from .updateconnection import *
 from .visibleaccounts import *
 
-__all__ = ["AccountOption","Branding","BrandingButton","BrandingImage","BrandingLogo","Companies","Company","ConfigAccount","Configuration","Connection","ConnectionSourceTypeEnum","Connections","CreateCompany","Customer","DataConnectionError","DataConnectionStatusEnum","DataTypeFeature","DataTypeFeatureDataTypeEnum","DateRange","FeatureStateEnum","FeatureTypeEnum","Fees","FeesSupplier","Grouping","GroupingLevels","GroupingPeriod","HalRef","ImageReference","Integration","Integrations","InvoiceLevelSelection","InvoiceLineLevelSelection","InvoiceStatus","Links","Localization","NewPayments","NewTaxRates","Option","Payments","Sales","Security","SourceTypeEnum","SupportedFeature","SyncFlowURL","SyncSummary","SyncToLatestArgs","TaxRateAmount","TaxRateMapping","UpdateConnection","VisibleAccounts"]
+__all__ = ["AccountOption","Branding","BrandingButton","BrandingImage","BrandingLogo","Companies","Company","ConfigAccount","Configuration","Connection","ConnectionSourceType","Connections","CreateCompany","Customer","DataConnectionError","DataConnectionStatus","DataTypeFeature","DataTypeFeatureDataType","DateRange","FeatureState","FeatureType","Fees","FeesSupplier","Grouping","GroupingLevels","GroupingPeriod","HalRef","ImageReference","Integration","Integrations","InvoiceLevelSelection","InvoiceLineLevelSelection","InvoiceStatus","Links","Localization","NewPayments","NewTaxRates","Option","Payments","Sales","Security","SourceType","SupportedFeature","SyncFlowURL","SyncSummary","SyncToLatestArgs","TaxRateAmount","TaxRateMapping","UpdateConnection","VisibleAccounts"]
