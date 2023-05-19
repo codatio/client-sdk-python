@@ -7,7 +7,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class TaxRateMappingInfoValidTransactionTypesEnum(str, Enum):
+class TaxRateMappingInfoValidTransactionTypes(str, Enum):
     PAYMENT = 'Payment'
     REFUND = 'Refund'
     REWARD = 'Reward'
@@ -32,6 +32,6 @@ class TaxRateMappingInfo:
     r"""Name of the tax rate in the accounting platform."""
     total_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxRate'), 'exclude': lambda f: f is None }})
     r"""Total (not compounded) sum of the components of a tax rate."""
-    valid_transaction_types: Optional[list[TaxRateMappingInfoValidTransactionTypesEnum]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes'), 'exclude': lambda f: f is None }})
+    valid_transaction_types: Optional[list[TaxRateMappingInfoValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes'), 'exclude': lambda f: f is None }})
     r"""Supported transaction types for the account."""
     
