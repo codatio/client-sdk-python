@@ -4,23 +4,23 @@ from .bankfeedaccount import *
 from .banktransactionline import *
 from .banktransactions import *
 from .banktransactionsresponse import *
-from .banktransactiontype_enum import *
+from .banktransactiontype import *
 from .createbanktransactionsresponse import *
-from .datatype_enum import *
+from .datatype import *
 from .href import *
 from .links import *
-from .pushchangetype_enum import *
+from .pushchangetype import *
 from .pushfieldvalidation import *
 from .pushoperationchange import *
 from .pushoperationref import *
-from .pushoperationstatus_enum import *
+from .pushoperationstatus import *
 from .pushoption import *
 from .pushoptionchoice import *
 from .pushoptionproperty import *
-from .pushoptiontype_enum import *
+from .pushoptiontype import *
 from .pushvalidationinfo import *
 from .security import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["BankFeedAccount","BankTransactionLine","BankTransactionTypeEnum","BankTransactions","BankTransactionsResponse","CreateBankTransactionsResponse","DataTypeEnum","HRef","Links","PushChangeTypeEnum","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatusEnum","PushOption","PushOptionChoice","PushOptionProperty","PushOptionTypeEnum","PushValidationInfo","Security","Validation","ValidationItem"]
+__all__ = ["BankFeedAccount","BankTransactionLine","BankTransactionType","BankTransactions","BankTransactionsResponse","CreateBankTransactionsResponse","DataType","HRef","Links","PushChangeType","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Security","Validation","ValidationItem"]

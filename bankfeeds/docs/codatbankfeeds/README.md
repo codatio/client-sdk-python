@@ -78,7 +78,7 @@ Posts bank transactions to the accounting package for a given company.
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support POST methods.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support POST methods.
 
 ### Example Usage
 
@@ -107,7 +107,7 @@ req = operations.CreateBankTransactionsRequest(
                 reconciled=False,
                 reference='id',
                 source_modified_date='blanditiis',
-                transaction_type=shared.BankTransactionTypeEnum.POS,
+                transaction_type=shared.BankTransactionType.POS,
             ),
             shared.BankTransactionLine(
                 amount=9560.84,
@@ -120,7 +120,7 @@ req = operations.CreateBankTransactionsRequest(
                 reconciled=False,
                 reference='odit',
                 source_modified_date='nemo',
-                transaction_type=shared.BankTransactionTypeEnum.CREDIT,
+                transaction_type=shared.BankTransactionType.CREDIT,
             ),
             shared.BankTransactionLine(
                 amount=4358.65,
@@ -133,7 +133,7 @@ req = operations.CreateBankTransactionsRequest(
                 reconciled=False,
                 reference='ipsam',
                 source_modified_date='voluptate',
-                transaction_type=shared.BankTransactionTypeEnum.DEP,
+                transaction_type=shared.BankTransactionType.DEP,
             ),
         ],
     ),

@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class BankTransactionTypeEnum(str, Enum):
+class BankTransactionType(str, Enum):
     r"""Type of transaction for the bank statement line"""
     UNKNOWN = 'Unknown'
     CREDIT = 'Credit'

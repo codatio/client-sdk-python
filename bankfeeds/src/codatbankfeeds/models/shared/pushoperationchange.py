@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import pushchangetype_enum as shared_pushchangetype_enum
+from ..shared import pushchangetype as shared_pushchangetype
 from ..shared import pushoperationref as shared_pushoperationref
 from codatbankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -15,5 +15,5 @@ class PushOperationChange:
     
     attachment_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachmentId'), 'exclude': lambda f: f is None }})
     record_ref: Optional[shared_pushoperationref.PushOperationRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
-    type: Optional[shared_pushchangetype_enum.PushChangeTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[shared_pushchangetype.PushChangeType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     
