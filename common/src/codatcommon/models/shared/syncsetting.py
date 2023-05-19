@@ -7,7 +7,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class SyncSettingDataTypeEnum(str, Enum):
+class SyncSettingDataType(str, Enum):
     r"""Available Data types"""
     ACCOUNT_TRANSACTIONS = 'accountTransactions'
     BALANCE_SHEET = 'balanceSheet'
@@ -58,7 +58,7 @@ class SyncSettingDataTypeEnum(str, Enum):
 class SyncSetting:
     r"""Describes how often, and how much history, should be fetched for the given data type when a pull operation is queued."""
     
-    data_type: SyncSettingDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
+    data_type: SyncSettingDataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
     r"""Available Data types"""
     fetch_on_first_link: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fetchOnFirstLink') }})
     r"""Whether this data type should be queued after a company has authorized a connection."""

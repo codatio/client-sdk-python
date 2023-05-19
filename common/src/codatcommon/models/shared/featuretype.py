@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class FeatureTypeEnum(str, Enum):
+class FeatureType(str, Enum):
     GET = 'Get'
     POST = 'Post'
     CATEGORIZATION = 'Categorization'

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import featurestate_enum as shared_featurestate_enum
-from ..shared import featuretype_enum as shared_featuretype_enum
+from ..shared import featurestate as shared_featurestate
+from ..shared import featuretype as shared_featuretype
 from codatcommon import utils
 from dataclasses_json import Undefined, dataclass_json
 
@@ -12,6 +12,6 @@ from dataclasses_json import Undefined, dataclass_json
 @dataclasses.dataclass
 class SupportedFeature:
     
-    feature_state: shared_featurestate_enum.FeatureStateEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('featureState') }})
-    feature_type: shared_featuretype_enum.FeatureTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('featureType') }})
+    feature_state: shared_featurestate.FeatureState = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('featureState') }})
+    feature_type: shared_featuretype.FeatureType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('featureType') }})
     
