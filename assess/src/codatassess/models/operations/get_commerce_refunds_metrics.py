@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import periodunit_enum as shared_periodunit_enum
+from ..shared import periodunit as shared_periodunit
 from ..shared import report as shared_report
 from typing import Optional
 
@@ -17,7 +17,7 @@ class GetCommerceRefundsMetricsRequest:
     r"""The number of periods to return.  There will be no pagination as a query parameter, however Codat will limit the number of periods to request to 12 periods."""
     period_length: int = dataclasses.field(metadata={'query_param': { 'field_name': 'periodLength', 'style': 'form', 'explode': True }})
     r"""The number of months per period. E.g. 2 = 2 months per period."""
-    period_unit: shared_periodunit_enum.PeriodUnitEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'periodUnit', 'style': 'form', 'explode': True }})
+    period_unit: shared_periodunit.PeriodUnit = dataclasses.field(metadata={'query_param': { 'field_name': 'periodUnit', 'style': 'form', 'explode': True }})
     r"""The period unit of time returned."""
     report_date: str = dataclasses.field(metadata={'query_param': { 'field_name': 'reportDate', 'style': 'form', 'explode': True }})
     r"""The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month."""

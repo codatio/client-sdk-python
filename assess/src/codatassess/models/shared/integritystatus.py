@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class IntegrityStatusEnum(str, Enum):
+class IntegrityStatus(str, Enum):
     r"""The current status of the most recently run matching algorithm."""
     UNKNOWN = 'Unknown'
     DOES_NOT_EXIST = 'DoesNotExist'

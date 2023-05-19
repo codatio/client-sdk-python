@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import dataintegritydatatype_enum as shared_dataintegritydatatype_enum
+from ..shared import dataintegritydatatype as shared_dataintegritydatatype
 from ..shared import details as shared_details
 from typing import Optional
 
@@ -12,7 +12,7 @@ from typing import Optional
 class GetDataIntegrityDetailsRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    data_type: shared_dataintegritydatatype_enum.DataIntegrityDataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
+    data_type: shared_dataintegritydatatype.DataIntegrityDataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
     r"""A key for a Codat data type."""
     page: int = dataclasses.field(metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
     r"""Page number. [Read more](https://docs.codat.io/using-the-api/paging)."""

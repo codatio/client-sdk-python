@@ -7,7 +7,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class FinancialMetricErrorTypeEnum(str, Enum):
+class FinancialMetricErrorType(str, Enum):
     DATA_NOT_SYNCED = 'DataNotSynced'
     DATA_NOT_SUPPORTED = 'DataNotSupported'
     DATA_SYNC_FAILED = 'DataSyncFailed'
@@ -19,5 +19,5 @@ class FinancialMetricErrorTypeEnum(str, Enum):
 class FinancialMetricError:
     
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
-    type: Optional[FinancialMetricErrorTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[FinancialMetricErrorType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     

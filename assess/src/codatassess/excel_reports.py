@@ -34,6 +34,7 @@ class ExcelReports:
         url = utils.generate_url(operations.DownloadExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel/download', request)
         headers = {}
         query_params = utils.get_query_params(operations.DownloadExcelReportRequest, request)
+        headers['Accept'] = 'application/octet-stream'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -72,6 +73,7 @@ class ExcelReports:
         url = utils.generate_url(operations.GenerateExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
         headers = {}
         query_params = utils.get_query_params(operations.GenerateExcelReportRequest, request)
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -111,6 +113,7 @@ class ExcelReports:
         url = utils.generate_url(operations.GetAccountingMarketingMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accountingMetrics/marketing', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetAccountingMarketingMetricsRequest, request)
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -150,6 +153,7 @@ class ExcelReports:
         url = utils.generate_url(operations.GetExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel/download', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetExcelReportRequest, request)
+        headers['Accept'] = 'application/octet-stream'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -188,6 +192,7 @@ class ExcelReports:
         url = utils.generate_url(operations.GetExcelReportGenerationStatusRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetExcelReportGenerationStatusRequest, request)
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client

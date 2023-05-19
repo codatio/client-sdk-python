@@ -9,7 +9,7 @@ from enum import Enum
 from marshmallow import fields
 from typing import Optional
 
-class FinancialMetricErrorsTypeEnum(str, Enum):
+class FinancialMetricErrorsType(str, Enum):
     r"""Metric level error."""
     UNCATEGORIZED_ACCOUNTS = 'UncategorizedAccounts'
     MISSING_INPUT_DATA = 'MissingInputData'
@@ -24,10 +24,10 @@ class FinancialMetricErrors:
     r"""Dictionary list outlining the missing properties or allowed values."""
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
     r"""Description of the error."""
-    type: Optional[FinancialMetricErrorsTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[FinancialMetricErrorsType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""Metric level error."""
     
-class FinancialMetricKeyEnum(str, Enum):
+class FinancialMetricKey(str, Enum):
     UNKNOWN = 'Unknown'
     EBITDA = 'EBITDA'
     DEBT_SERVICE_COVERAGE_RATIO = 'DebtServiceCoverageRatio'
@@ -50,11 +50,11 @@ class FinancialMetricKeyEnum(str, Enum):
     DAYS_SALES_OUTSTANDING = 'DaysSalesOutstanding'
     DAYS_PAYABLES_OUTSTANDING = 'DaysPayablesOutstanding'
 
-class FinancialMetricMetricUnitEnum(str, Enum):
+class FinancialMetricMetricUnit(str, Enum):
     RATIO = 'Ratio'
     MONEY = 'Money'
 
-class FinancialMetricPeriodsErrorsTypeEnum(str, Enum):
+class FinancialMetricPeriodsErrorsType(str, Enum):
     r"""Period error type."""
     MISSING_ACCOUNT_DATA = 'MissingAccountData'
     DATES_OUT_OF_RANGE = 'DatesOutOfRange'
@@ -68,7 +68,7 @@ class FinancialMetricPeriodsErrors:
     r"""Dictionary list outlining the missing properties or allowed values."""
     massage: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('massage'), 'exclude': lambda f: f is None }})
     r"""Description of the error."""
-    type: Optional[FinancialMetricPeriodsErrorsTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[FinancialMetricPeriodsErrorsType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""Period error type."""
     
 
@@ -104,8 +104,8 @@ class FinancialMetricPeriods:
 class FinancialMetric:
     
     errors: Optional[list[FinancialMetricErrors]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
-    key: Optional[FinancialMetricKeyEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('key'), 'exclude': lambda f: f is None }})
-    metric_unit: Optional[FinancialMetricMetricUnitEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metricUnit'), 'exclude': lambda f: f is None }})
+    key: Optional[FinancialMetricKey] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('key'), 'exclude': lambda f: f is None }})
+    metric_unit: Optional[FinancialMetricMetricUnit] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metricUnit'), 'exclude': lambda f: f is None }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""Metric name."""
     periods: Optional[list[FinancialMetricPeriods]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('periods'), 'exclude': lambda f: f is None }})

@@ -103,7 +103,7 @@ req = operations.GetCommerceCustomerRetentionMetricsRequest(
     include_display_names=False,
     number_of_periods=359444,
     period_length=296140,
-    period_unit=shared.PeriodUnitEnum.WEEK,
+    period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
 
@@ -135,7 +135,7 @@ req = operations.GetCommerceLifetimeValueMetricsRequest(
     include_display_names=False,
     number_of_periods=118727,
     period_length=688661,
-    period_unit=shared.PeriodUnitEnum.WEEK,
+    period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
 
@@ -167,7 +167,7 @@ req = operations.GetCommerceOrdersMetricsRequest(
     include_display_names=False,
     number_of_periods=880476,
     period_length=414263,
-    period_unit=shared.PeriodUnitEnum.YEAR,
+    period_unit=shared.PeriodUnit.YEAR,
     report_date='29-09-2020',
 )
 
@@ -199,7 +199,7 @@ req = operations.GetCommerceRefundsMetricsRequest(
     include_display_names=False,
     number_of_periods=64147,
     period_length=216822,
-    period_unit=shared.PeriodUnitEnum.MONTH,
+    period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
 
@@ -231,7 +231,7 @@ req = operations.GetCommerceRevenueMetricsRequest(
     include_display_names=False,
     number_of_periods=565189,
     period_length=566602,
-    period_unit=shared.PeriodUnitEnum.YEAR,
+    period_unit=shared.PeriodUnit.YEAR,
     report_date='29-09-2020',
 )
 

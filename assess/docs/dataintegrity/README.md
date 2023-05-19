@@ -28,7 +28,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetDataIntegrityDetailsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataIntegrityDataTypeEnum.BANKING_ACCOUNTS,
+    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
     order_by='-modifiedDate',
     page=1,
     page_size=100,
@@ -59,7 +59,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetDataIntegrityStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataIntegrityDataTypeEnum.BANKING_ACCOUNTS,
+    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
 )
 
 res = s.data_integrity.get_data_integrity_status(req)
@@ -86,7 +86,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetDataIntegritySummariesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataIntegrityDataTypeEnum.BANKING_ACCOUNTS,
+    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
     query='ipsa',
 )
 

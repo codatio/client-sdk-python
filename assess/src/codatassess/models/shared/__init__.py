@@ -17,7 +17,7 @@ from .dataintegrityamounts import *
 from .dataintegritybyamount import *
 from .dataintegritybycount import *
 from .dataintegrityconnectionid import *
-from .dataintegritydatatype_enum import *
+from .dataintegritydatatype import *
 from .dataintegritydates import *
 from .dataintegritydetails import *
 from .dataintegritymatch import *
@@ -34,17 +34,17 @@ from .enhancedinvoicesreport import *
 from .enhancedreport import *
 from .enhancedreportaccountcategory import *
 from .enhancedreportinfo import *
-from .excelreporttype_enum import *
+from .excelreporttype import *
 from .excelstatus import *
 from .financialmetric import *
 from .financialmetricerror import *
 from .financialmetrics import *
 from .halref import *
-from .integritystatus_enum import *
-from .invoicestatus_enum import *
+from .integritystatus import *
+from .invoicestatus import *
 from .links import *
 from .payment import *
-from .periodunit_enum import *
+from .periodunit import *
 from .report import *
 from .reportcomponent import *
 from .reportcomponentmeasure import *
@@ -58,4 +58,4 @@ from .status import *
 from .summaries import *
 from .transactioncategory import *
 
-__all__ = ["AccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedWebhookData","AccountCategory","AccountCategoryDeprecated","AccountCategoryLevel","AccountRef","Accounts","BankingTransactionRef","Categories","CategorisedAccount","CategorisedAccounts","ConfirmCategories","ConfirmCategoriesCategories","ConfirmCategoriesCategoriesAccountRef","ConfirmCategory","CustomerRef","DataIntegrityAmounts","DataIntegrityByAmount","DataIntegrityByCount","DataIntegrityConnectionID","DataIntegrityDataTypeEnum","DataIntegrityDates","DataIntegrityDetails","DataIntegrityMatch","DataIntegrityStatus","DataIntegrityStatusInfo","DataIntegritySummary","DataSource","Details","EnhancedCashFlowItem","EnhancedCashFlowTransaction","EnhancedCashFlowTransactions","EnhancedInvoiceReportItem","EnhancedInvoicesReport","EnhancedInvoicesReportReportItems","EnhancedReport","EnhancedReportAccountCategory","EnhancedReportInfo","EnhancedReportReportItem","ExcelReportTypeEnum","ExcelStatus","FinancialMetric","FinancialMetricError","FinancialMetricErrorTypeEnum","FinancialMetricErrors","FinancialMetricErrorsTypeEnum","FinancialMetricKeyEnum","FinancialMetricMetricUnitEnum","FinancialMetricPeriods","FinancialMetricPeriodsErrors","FinancialMetricPeriodsErrorsTypeEnum","FinancialMetricPeriodsInputs","FinancialMetrics","FinancialMetricsPeriodUnitEnum","HalRef","IntegrityStatusEnum","InvoiceStatusEnum","Links","Payment","PeriodUnitEnum","Report","ReportComponent","ReportComponentMeasure","ReportDimension","ReportDimensionItems","ReportError","ReportInfo","ReportMeasure","Security","SourceRef","Status","Summaries","TransactionCategory"]
+__all__ = ["AccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedWebhookData","AccountCategory","AccountCategoryDeprecated","AccountCategoryLevel","AccountRef","Accounts","BankingTransactionRef","Categories","CategorisedAccount","CategorisedAccounts","ConfirmCategories","ConfirmCategoriesCategories","ConfirmCategoriesCategoriesAccountRef","ConfirmCategory","CustomerRef","DataIntegrityAmounts","DataIntegrityByAmount","DataIntegrityByCount","DataIntegrityConnectionID","DataIntegrityDataType","DataIntegrityDates","DataIntegrityDetails","DataIntegrityMatch","DataIntegrityStatus","DataIntegrityStatusInfo","DataIntegritySummary","DataSource","Details","EnhancedCashFlowItem","EnhancedCashFlowTransaction","EnhancedCashFlowTransactions","EnhancedInvoiceReportItem","EnhancedInvoicesReport","EnhancedInvoicesReportReportItems","EnhancedReport","EnhancedReportAccountCategory","EnhancedReportInfo","EnhancedReportReportItem","ExcelReportType","ExcelStatus","FinancialMetric","FinancialMetricError","FinancialMetricErrorType","FinancialMetricErrors","FinancialMetricErrorsType","FinancialMetricKey","FinancialMetricMetricUnit","FinancialMetricPeriods","FinancialMetricPeriodsErrors","FinancialMetricPeriodsErrorsType","FinancialMetricPeriodsInputs","FinancialMetrics","FinancialMetricsPeriodUnit","HalRef","IntegrityStatus","InvoiceStatus","Links","Payment","PeriodUnit","Report","ReportComponent","ReportComponentMeasure","ReportDimension","ReportDimensionItems","ReportError","ReportInfo","ReportMeasure","Security","SourceRef","Status","Summaries","TransactionCategory"]

@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class InvoiceStatusEnum(str, Enum):
+class InvoiceStatus(str, Enum):
     r"""Current state of the invoice:
     
     - `Draft` - Invoice hasn't been submitted to the supplier. It may be in a pending state or is scheduled for future submission, for example by email.
