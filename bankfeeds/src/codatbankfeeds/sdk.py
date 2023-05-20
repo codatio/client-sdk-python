@@ -25,7 +25,7 @@ class CodatBankFeeds:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.20.0"
+    _sdk_version: str = "0.20.1"
     _gen_version: str = "2.31.0"
 
     def __init__(self,
