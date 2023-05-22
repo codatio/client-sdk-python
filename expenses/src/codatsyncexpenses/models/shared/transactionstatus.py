@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class TransactionStatusEnum(str, Enum):
+class TransactionStatus(str, Enum):
     r"""Status of the transaction."""
     UNKNOWN = 'Unknown'
     PENDING = 'Pending'

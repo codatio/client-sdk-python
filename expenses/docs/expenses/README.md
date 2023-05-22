@@ -127,7 +127,7 @@ req = operations.CreateExpenseDatasetRequest(
                 ],
                 merchant_name='Amazon UK',
                 notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-                type=shared.ExpenseTransactionTypeEnum.PAYMENT,
+                type=shared.ExpenseTransactionType.PAYMENT,
             ),
             shared.ExpenseTransaction(
                 currency='GBP',
@@ -192,7 +192,7 @@ req = operations.CreateExpenseDatasetRequest(
                 ],
                 merchant_name='Amazon UK',
                 notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-                type=shared.ExpenseTransactionTypeEnum.PAYMENT,
+                type=shared.ExpenseTransactionType.PAYMENT,
             ),
             shared.ExpenseTransaction(
                 currency='GBP',
@@ -281,7 +281,7 @@ req = operations.CreateExpenseDatasetRequest(
                 ],
                 merchant_name='Amazon UK',
                 notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-                type=shared.ExpenseTransactionTypeEnum.PAYMENT,
+                type=shared.ExpenseTransactionType.PAYMENT,
             ),
         ],
     ),

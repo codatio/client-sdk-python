@@ -7,7 +7,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class AccountMappingInfoAccountTypeEnum(str, Enum):
+class AccountMappingInfoAccountType(str, Enum):
     r"""Type of the account."""
     ASSET = 'Asset'
     LIABILITY = 'Liability'
@@ -15,7 +15,7 @@ class AccountMappingInfoAccountTypeEnum(str, Enum):
     EXPENSE = 'Expense'
     EQUITY = 'Equity'
 
-class AccountMappingInfoValidTransactionTypesEnum(str, Enum):
+class AccountMappingInfoValidTransactionTypes(str, Enum):
     PAYMENT = 'Payment'
     REFUND = 'Refund'
     REWARD = 'Reward'
@@ -30,7 +30,7 @@ class AccountMappingInfoValidTransactionTypesEnum(str, Enum):
 @dataclasses.dataclass
 class AccountMappingInfo:
     
-    account_type: Optional[AccountMappingInfoAccountTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
+    account_type: Optional[AccountMappingInfoAccountType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
     r"""Type of the account."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""Currency of the account."""
@@ -38,6 +38,6 @@ class AccountMappingInfo:
     r"""Unique identifier of account."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""Name of the account as it appears in the companies accounting software."""
-    valid_transaction_types: Optional[list[AccountMappingInfoValidTransactionTypesEnum]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes'), 'exclude': lambda f: f is None }})
+    valid_transaction_types: Optional[list[AccountMappingInfoValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes'), 'exclude': lambda f: f is None }})
     r"""Supported transaction types for the account."""
     
