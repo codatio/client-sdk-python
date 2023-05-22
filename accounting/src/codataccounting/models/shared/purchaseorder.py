@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 from ..shared import metadata as shared_metadata
 from ..shared import purchaseorderlineitem as shared_purchaseorderlineitem
-from ..shared import purchaseorderstatus_enum as shared_purchaseorderstatus_enum
+from ..shared import purchaseorderstatus as shared_purchaseorderstatus
 from ..shared import shipto as shared_shipto
 from ..shared import supplierref as shared_supplierref
 from codataccounting import utils
@@ -155,7 +155,7 @@ class PurchaseOrder:
     ship_to: Optional[shared_shipto.ShipTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('shipTo'), 'exclude': lambda f: f is None }})
     r"""Delivery details for any goods that have been ordered."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[shared_purchaseorderstatus_enum.PurchaseOrderStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[shared_purchaseorderstatus.PurchaseOrderStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Current state of the purchase order"""
     sub_total: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal'), 'exclude': lambda f: f is None }})
     r"""Total amount of the purchase order, including discounts but excluding tax."""

@@ -22,6 +22,7 @@ class DirectIncomes:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateDirectIncomeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDirectIncomeResponse:
         r"""Create direct income
         Posts a new direct income to the accounting package for a given company.
@@ -30,17 +31,18 @@ class DirectIncomes:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support creating direct incomes.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support creating direct incomes.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateDirectIncomeRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "direct_income", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateDirectIncomeRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,6 +71,7 @@ class DirectIncomes:
 
         return res
 
+    
     def download_attachment(self, request: operations.DownloadDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadDirectIncomeAttachmentResponse:
         r"""Download direct income attachment
         Downloads an attachment for the specified direct income for a given company.
@@ -76,7 +79,9 @@ class DirectIncomes:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DownloadDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}/download', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/octet-stream'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -87,7 +92,7 @@ class DirectIncomes:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -104,6 +109,7 @@ class DirectIncomes:
 
         return res
 
+    
     def get(self, request: operations.GetDirectIncomeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectIncomeResponse:
         r"""Get direct income
         Gets the specified direct income for a given company and connection.
@@ -111,7 +117,9 @@ class DirectIncomes:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetDirectIncomeRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -122,7 +130,7 @@ class DirectIncomes:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -140,6 +148,7 @@ class DirectIncomes:
 
         return res
 
+    
     def get_attachment(self, request: operations.GetDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectIncomeAttachmentResponse:
         r"""Get direct income attachment
         Gets the specified direct income attachment for a given company.
@@ -147,8 +156,10 @@ class DirectIncomes:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.GetDirectIncomeAttachmentRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -159,7 +170,7 @@ class DirectIncomes:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -177,6 +188,7 @@ class DirectIncomes:
 
         return res
 
+    
     def get_create_model(self, request: operations.GetCreateDirectIncomesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateDirectIncomesModelResponse:
         r"""Get create direct income model
         Get create direct income model. Returns the expected data for the request payload.
@@ -185,12 +197,14 @@ class DirectIncomes:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support creating direct incomes.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support creating direct incomes.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateDirectIncomesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/directIncomes', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -201,7 +215,7 @@ class DirectIncomes:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -219,6 +233,7 @@ class DirectIncomes:
 
         return res
 
+    
     def list(self, request: operations.ListDirectIncomesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDirectIncomesResponse:
         r"""List direct incomes
         Lists the direct incomes for a given company.
@@ -226,8 +241,10 @@ class DirectIncomes:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListDirectIncomesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListDirectIncomesRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -238,7 +255,7 @@ class DirectIncomes:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -256,6 +273,7 @@ class DirectIncomes:
 
         return res
 
+    
     def list_attachments(self, request: operations.ListDirectIncomeAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDirectIncomeAttachmentsResponse:
         r"""List direct income attachments
         Gets all attachments for the specified direct income for a given company.
@@ -263,7 +281,9 @@ class DirectIncomes:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListDirectIncomeAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -274,7 +294,7 @@ class DirectIncomes:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -292,6 +312,7 @@ class DirectIncomes:
 
         return res
 
+    
     def upload_attachment(self, request: operations.UploadDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadDirectIncomeAttachmentResponse:
         r"""Create direct income attachment
         Posts a new direct income attachment for a given company.
@@ -299,11 +320,12 @@ class DirectIncomes:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UploadDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes/{directIncomeId}/attachment', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['Accept'] = '*/*'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

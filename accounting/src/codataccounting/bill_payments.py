@@ -22,6 +22,7 @@ class BillPayments:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillPaymentResponse:
         r"""Create bill payments
         Posts a new bill payment to the accounting package for a given company.
@@ -30,17 +31,18 @@ class BillPayments:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating bill payments.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating bill payments.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateBillPaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billPayments', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "bill_payment", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBillPaymentRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,18 +71,40 @@ class BillPayments:
 
         return res
 
+    
     def delete(self, request: operations.DeleteBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteBillPaymentResponse:
         r"""Delete bill payment
-        Deletes a bill payment from the accounting package for a given company.
+        The _Delete Bill Payments_ endpoint allows you to delete a specified Bill Payment from an accounting platform.
+        
+        ### Process
+        1. Pass the `{billPaymentId}` to the _Delete Bill Payments_ endpoint and store the `pushOperationKey` returned.
+        2. Check the status of the delete operation by checking the status of push operation either via
+            1. [Push operation webhook](/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
+            2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
+        
+           A `Success` status indicates that the Bill Payment object was deleted from the accounting platform.
+        3. (Optional) Check that the Bill Payment was deleted from the accounting platform.
+        
+        ### Effect on related objects
+        Be aware that deleting a Bill Payment from an accounting platform might cause related objects to be modified.
+        
+        ## Integration specifics
+        Integrations that support soft delete do not permanently delete the object in the accounting platform.
+        
+        | Integration | Soft Delete | Details                                                                                             |  
+        |-------------|-------------|-----------------------------------------------------------------------------------------------------|
+        | Oracle NetSuite   | No          | See [here](/integrations/accounting/netsuite/how-deleting-bill-payments-works) to learn more. |
         
         > **Supported Integrations**
-        > 
-        > This functionality is currently only supported for our Oracle NetSuite integration. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+        >
+        > This functionality is currently only supported for our QuickBooks Online abd Oracle NetSuite integrations. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.DeleteBillPaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billPayments/{billPaymentId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -91,7 +115,7 @@ class BillPayments:
             
 
         def do_request():
-            return client.request('DELETE', url)
+            return client.request('DELETE', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -109,14 +133,17 @@ class BillPayments:
 
         return res
 
+    
     def get(self, request: operations.GetBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillPaymentsResponse:
         r"""Get bill payment
-        Get a bill payment
+        Get a bill payment.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetBillPaymentsRequest, base_url, '/companies/{companyId}/data/billPayments/{billPaymentId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -127,7 +154,7 @@ class BillPayments:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -145,18 +172,21 @@ class BillPayments:
 
         return res
 
+    
     def get_create_model(self, request: operations.GetCreateBillPaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBillPaymentsModelResponse:
         r"""Get create bill payment model
         Get create bill payment model.
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating and deleting bill payments.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating and deleting bill payments.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateBillPaymentsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/billPayments', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -167,7 +197,7 @@ class BillPayments:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -185,15 +215,18 @@ class BillPayments:
 
         return res
 
+    
     def list(self, request: operations.ListBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillPaymentsResponse:
         r"""List bill payments
-        Gets the latest billPayments for a company, with pagination
+        Gets the latest billPayments for a company, with pagination.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListBillPaymentsRequest, base_url, '/companies/{companyId}/data/billPayments', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListBillPaymentsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -204,7 +237,7 @@ class BillPayments:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

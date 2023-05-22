@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import addressesitems as shared_addressesitems
-from ..shared import customerstatus_enum as shared_customerstatus_enum
+from ..shared import customerstatus as shared_customerstatus
 from ..shared import phonenumbersitems as shared_phonenumbersitems
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -14,7 +14,7 @@ from typing import Optional
 @dataclasses.dataclass
 class Contact:
     
-    status: shared_customerstatus_enum.CustomerStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_customerstatus.CustomerStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of customer."""
     address: Optional[shared_addressesitems.Addressesitems] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('address'), 'exclude': lambda f: f is None }})
     email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email'), 'exclude': lambda f: f is None }})

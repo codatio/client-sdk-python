@@ -25,10 +25,9 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetPaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_method_id='ea',
+    payment_method_id='ratione',
 )
 
 res = s.payment_methods.get(req)
@@ -53,13 +52,12 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListPaymentMethodsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='error',
+    query='iste',
 )
 
 res = s.payment_methods.list(req)

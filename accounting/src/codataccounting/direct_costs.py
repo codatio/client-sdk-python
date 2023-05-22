@@ -22,6 +22,7 @@ class DirectCosts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateDirectCostRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDirectCostResponse:
         r"""Create direct cost
         Posts a new direct cost to the accounting package for a given company.
@@ -30,17 +31,18 @@ class DirectCosts:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support creating direct costs.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support creating direct costs.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateDirectCostRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "direct_cost", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateDirectCostRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,6 +71,7 @@ class DirectCosts:
 
         return res
 
+    
     def download_attachment(self, request: operations.DownloadDirectCostAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadDirectCostAttachmentResponse:
         r"""Download direct cost attachment
         Downloads an attachment for the specified direct cost for a given company.
@@ -76,7 +79,9 @@ class DirectCosts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DownloadDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}/download', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/octet-stream'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -87,7 +92,7 @@ class DirectCosts:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -104,6 +109,7 @@ class DirectCosts:
 
         return res
 
+    
     def get(self, request: operations.GetDirectCostRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectCostResponse:
         r"""Get direct cost
         Gets the specified direct cost for a given company.
@@ -111,7 +117,9 @@ class DirectCosts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetDirectCostRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -122,7 +130,7 @@ class DirectCosts:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -140,6 +148,7 @@ class DirectCosts:
 
         return res
 
+    
     def get_attachment(self, request: operations.GetDirectCostAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectCostAttachmentResponse:
         r"""Get direct cost attachment
         Gets the specified direct cost attachment for a given company.
@@ -147,7 +156,9 @@ class DirectCosts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -158,7 +169,7 @@ class DirectCosts:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -176,6 +187,7 @@ class DirectCosts:
 
         return res
 
+    
     def get_create_model(self, request: operations.GetCreateDirectCostsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateDirectCostsModelResponse:
         r"""Get create direct cost model
         Get create direct cost model. Returns the expected data for the request payload.
@@ -184,12 +196,14 @@ class DirectCosts:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support creating direct costs.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support creating direct costs.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateDirectCostsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/directCosts', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -200,7 +214,7 @@ class DirectCosts:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -218,6 +232,7 @@ class DirectCosts:
 
         return res
 
+    
     def list(self, request: operations.ListDirectCostsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDirectCostsResponse:
         r"""List direct costs
         Gets the direct costs for the company.
@@ -225,8 +240,10 @@ class DirectCosts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListDirectCostsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListDirectCostsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -237,7 +254,7 @@ class DirectCosts:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -255,6 +272,7 @@ class DirectCosts:
 
         return res
 
+    
     def list_attachments(self, request: operations.ListDirectCostAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDirectCostAttachmentsResponse:
         r"""List direct cost attachments
         Gets all attachments for the specified direct cost for a given company.
@@ -262,7 +280,9 @@ class DirectCosts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListDirectCostAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -273,7 +293,7 @@ class DirectCosts:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -291,6 +311,7 @@ class DirectCosts:
 
         return res
 
+    
     def upload_attachment(self, request: operations.UploadDirectCostAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadDirectCostAttachmentResponse:
         r"""Upload direct cost attachment
         Posts a new direct cost attachment for a given company.
@@ -298,11 +319,12 @@ class DirectCosts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UploadDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts/{directCostId}/attachment', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['Accept'] = '*/*'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

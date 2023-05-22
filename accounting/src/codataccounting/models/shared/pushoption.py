@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 from ..shared import pushoptionchoice as shared_pushoptionchoice
 from ..shared import pushoptionproperty as shared_pushoptionproperty
-from ..shared import pushoptiontype_enum as shared_pushoptiontype_enum
+from ..shared import pushoptiontype as shared_pushoptiontype
 from ..shared import pushvalidationinfo as shared_pushvalidationinfo
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -18,7 +18,7 @@ class PushOption:
     
     display_name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('displayName') }})
     required: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('required') }})
-    type: shared_pushoptiontype_enum.PushOptionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: shared_pushoptiontype.PushOptionType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     options: Optional[list[shared_pushoptionchoice.PushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('options'), 'exclude': lambda f: f is None }})
     properties: Optional[dict[str, shared_pushoptionproperty.PushOptionProperty]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('properties'), 'exclude': lambda f: f is None }})

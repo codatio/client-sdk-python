@@ -22,6 +22,7 @@ class AccountTransactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetAccountTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountTransactionResponse:
         r"""Get account transaction
         Returns a specific [account transaction](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
@@ -29,7 +30,9 @@ class AccountTransactions:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetAccountTransactionRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/accountTransactions/{accountTransactionId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -40,7 +43,7 @@ class AccountTransactions:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -58,15 +61,18 @@ class AccountTransactions:
 
         return res
 
+    
     def list(self, request: operations.ListAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountTransactionsResponse:
         r"""List account transactions
-        Returns a list of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) for a given company's connection.
+        The *List account transactions* endpoint returns a list of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) for a given company's connection.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListAccountTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/accountTransactions', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListAccountTransactionsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -77,7 +83,7 @@ class AccountTransactions:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

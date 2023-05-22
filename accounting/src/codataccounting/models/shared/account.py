@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountstatus_enum as shared_accountstatus_enum
-from ..shared import accounttype_enum as shared_accounttype_enum
+from ..shared import accountstatus as shared_accountstatus
+from ..shared import accounttype as shared_accounttype
 from ..shared import metadata as shared_metadata
 from ..shared import validdatatypelinks as shared_validdatatypelinks
 from codataccounting import utils
@@ -38,9 +38,9 @@ class Account:
     
     is_bank_account: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBankAccount') }})
     r"""Confirms whether the account is a bank account or not."""
-    status: shared_accountstatus_enum.AccountStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_accountstatus.AccountStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of the account"""
-    type: shared_accounttype_enum.AccountTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: shared_accounttype.AccountType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Type of account"""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.

@@ -14,13 +14,13 @@ Bill payments
 
 ## create
 
-Posts a new bill payment to the accounting package for a given company.
+﻿Posts a new bill payment to the accounting package for a given company.
 
 Required data may vary by integration. To see what data to post, first call [Get create bill payment model](https://docs.codat.io/accounting-api#/operations/get-create-billPayments-model).
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating bill payments.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating bill payments.
 
 ### Example Usage
 
@@ -34,75 +34,110 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='57eb809e-2810-4331-b398-1d4c700b607f',
-            name='Francis McKenzie',
+            id='2af03102-d514-4f4c-86f1-8bf9621a6a4f',
+            name='Tamara O'Kon',
         ),
-        currency='dignissimos',
-        currency_rate=2358.34,
-        date_='soluta',
+        currency='eveniet',
+        currency_rate=9351.61,
+        date_='velit',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
-                allocated_on_date='temporibus',
-                amount=6396.22,
+                allocated_on_date='eius',
+                amount=7019.78,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=9485.41,
-                        currency_rate=1339.49,
-                        id='ceda7e23-f225-4741-9faf-4b7544e472e8',
-                        type=shared.BillPaymentLineLinkTypeEnum.UNKNOWN,
+                        amount=4896.85,
+                        currency_rate=3734.49,
+                        id='2c65b344-18e3-4bb9-9c8d-975e0e8419d8',
+                        type=shared.BillPaymentLineLinkType.DISCOUNT,
+                    ),
+                    shared.BillPaymentLineLink(
+                        amount=5379.46,
+                        currency_rate=2649.58,
+                        id='f144f3e0-7edc-4c4a-a5f3-cabd905a972e',
+                        type=shared.BillPaymentLineLinkType.UNKNOWN,
+                    ),
+                    shared.BillPaymentLineLink(
+                        amount=3214.73,
+                        currency_rate=3927.52,
+                        id='728227b2-d309-4470-bf7a-4fa87cf535a6',
+                        type=shared.BillPaymentLineLinkType.DISCOUNT,
+                    ),
+                    shared.BillPaymentLineLink(
+                        amount=6578.62,
+                        currency_rate=9259.94,
+                        id='54ebf60c-321f-4023-b75d-2367fe1a0cc8',
+                        type=shared.BillPaymentLineLinkType.MANUAL_JOURNAL,
                     ),
                 ],
             ),
             shared.BillPaymentLine(
-                allocated_on_date='odit',
-                amount=5358.02,
+                allocated_on_date='maiores',
+                amount=4857.95,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=4527.3,
-                        currency_rate=6267.07,
-                        id='5b40463a-7d57-45f1-800e-764ad7334ec1',
-                        type=shared.BillPaymentLineLinkTypeEnum.REFUND,
+                        amount=9609.33,
+                        currency_rate=455.1,
+                        id='a396d90c-364b-47c1-9dfb-ace188b1c4ee',
+                        type=shared.BillPaymentLineLinkType.UNLINKED,
                     ),
                     shared.BillPaymentLineLink(
-                        amount=4813.75,
-                        currency_rate=5580.51,
-                        id='1b36a080-88d1-400e-bada-200ef0422eb2',
-                        type=shared.BillPaymentLineLinkTypeEnum.UNLINKED,
+                        amount=7726.28,
+                        currency_rate=5582.83,
+                        id='c6ce611f-eeb1-4c7c-bdb6-eec74378ba25',
+                        type=shared.BillPaymentLineLinkType.UNLINKED,
+                    ),
+                    shared.BillPaymentLineLink(
+                        amount=1068.06,
+                        currency_rate=4810.42,
+                        id='747dc915-ad2c-4af5-9d67-23dc0f5ae2f3',
+                        type=shared.BillPaymentLineLinkType.PAYMENT_ON_ACCOUNT,
                     ),
                 ],
             ),
             shared.BillPaymentLine(
-                allocated_on_date='aliquid',
-                amount=2646.49,
+                allocated_on_date='suscipit',
+                amount=6886.49,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=9750.95,
-                        currency_rate=5629.48,
-                        id='ab8366c7-23ff-4da9-a06b-ee4825c1fc0e',
-                        type=shared.BillPaymentLineLinkTypeEnum.UNLINKED,
+                        amount=424.54,
+                        currency_rate=201.41,
+                        id='87875614-3f5a-46c9-8b55-554080d40bca',
+                        type=shared.BillPaymentLineLinkType.REFUND,
                     ),
                     shared.BillPaymentLineLink(
-                        amount=1002.51,
-                        currency_rate=3178.98,
-                        id='c80bff91-8544-4ec4-adef-cce8f1977773',
-                        type=shared.BillPaymentLineLinkTypeEnum.MANUAL_JOURNAL,
+                        amount=7697.89,
+                        currency_rate=3947.24,
+                        id='cbd6b5f3-ec90-4930-8f92-6bad2553819b',
+                        type=shared.BillPaymentLineLinkType.BILL,
+                    ),
+                ],
+            ),
+            shared.BillPaymentLine(
+                allocated_on_date='voluptate',
+                amount=2611.7,
+                links=[
+                    shared.BillPaymentLineLink(
+                        amount=463.84,
+                        currency_rate=9154.08,
+                        id='d20e5624-8fff-4639-a910-abdcab626766',
+                        type=shared.BillPaymentLineLinkType.BILL_PAYMENT,
                     ),
                     shared.BillPaymentLineLink(
-                        amount=4235.88,
-                        currency_rate=2086.83,
-                        id='562a7b40-8f05-4e3d-88fd-af313a1f5fd9',
-                        type=shared.BillPaymentLineLinkTypeEnum.BILL,
+                        amount=3857.6,
+                        currency_rate=8815.68,
+                        id='1ec00221-b335-4d89-acb3-ecfda8d0c549',
+                        type=shared.BillPaymentLineLinkType.MANUAL_JOURNAL,
                     ),
                     shared.BillPaymentLineLink(
-                        amount=1280.21,
-                        currency_rate=3684.91,
-                        id='9c0b36f2-5ea9-444f-bb75-6c11f6c37a51',
-                        type=shared.BillPaymentLineLinkTypeEnum.UNLINKED,
+                        amount=9380.94,
+                        currency_rate=427.63,
+                        id='3004978a-61fa-41cf-a068-8f77c1ffc71d',
+                        type=shared.BillPaymentLineLinkType.MANUAL_JOURNAL,
                     ),
                 ],
             ),
@@ -110,30 +145,30 @@ req = operations.CreateBillPaymentRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='aliquid',
+        modified_date='fuga',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
         payment_method_ref=shared.PaymentMethodRef(
-            id='243835bb-c05a-423a-85ce-fc5fde10a0ce',
-            name='Mildred Kautzer',
+            id='163f2a3c-80a9-47ff-b34c-ddf857a9e618',
+            name='Tonya Sauer',
         ),
-        reference='ullam',
-        source_modified_date='architecto',
+        reference='quidem',
+        source_modified_date='explicabo',
         supplemental_data=shared.SupplementalData(
             content={
-                "perferendis": {
-                    "provident": 'cumque',
+                "nulla": {
+                    "natus": 'illum',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='6dc5e347-6279-49bf-bbe6-949fb2bb4eca',
-            supplier_name='saepe',
+            id='fc94d6fe-cd79-4939-8066-a6d2d0003553',
+            supplier_name='ratione',
         ),
         total_amount=1329.54,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=423054,
+    timeout_in_minutes=555386,
 )
 
 res = s.bill_payments.create(req)
@@ -144,11 +179,30 @@ if res.create_bill_payment_response is not None:
 
 ## delete
 
-Deletes a bill payment from the accounting package for a given company.
+﻿The _Delete Bill Payments_ endpoint allows you to delete a specified Bill Payment from an accounting platform.
+
+### Process
+1. Pass the `{billPaymentId}` to the _Delete Bill Payments_ endpoint and store the `pushOperationKey` returned.
+2. Check the status of the delete operation by checking the status of push operation either via
+    1. [Push operation webhook](/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
+    2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
+
+   A `Success` status indicates that the Bill Payment object was deleted from the accounting platform.
+3. (Optional) Check that the Bill Payment was deleted from the accounting platform.
+
+### Effect on related objects
+Be aware that deleting a Bill Payment from an accounting platform might cause related objects to be modified.
+
+## Integration specifics
+Integrations that support soft delete do not permanently delete the object in the accounting platform.
+
+| Integration | Soft Delete | Details                                                                                             |  
+|-------------|-------------|-----------------------------------------------------------------------------------------------------|
+| Oracle NetSuite   | No          | See [here](/integrations/accounting/netsuite/how-deleting-bill-payments-works) to learn more. |
 
 > **Supported Integrations**
-> 
-> This functionality is currently only supported for our Oracle NetSuite integration. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+>
+> This functionality is currently only supported for our QuickBooks Online abd Oracle NetSuite integrations. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
 
 ### Example Usage
 
@@ -162,11 +216,10 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='quo',
-    company_id='nesciunt',
-    connection_id='illum',
+    bill_payment_id='maxime',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.bill_payments.delete(req)
@@ -177,7 +230,7 @@ if res.push_operation_summary is not None:
 
 ## get
 
-Get a bill payment
+﻿Get a bill payment.
 
 ### Example Usage
 
@@ -191,9 +244,8 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='nemo',
+    bill_payment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -205,11 +257,11 @@ if res.bill_payment is not None:
 
 ## get_create_model
 
-Get create bill payment model.
+﻿Get create bill payment model.
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating and deleting bill payments.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating and deleting bill payments.
 
 ### Example Usage
 
@@ -222,7 +274,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetCreateBillPaymentsModelRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -237,7 +288,7 @@ if res.push_option is not None:
 
 ## list
 
-Gets the latest billPayments for a company, with pagination
+﻿Gets the latest billPayments for a company, with pagination.
 
 ### Example Usage
 
@@ -251,13 +302,12 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListBillPaymentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='illum',
+    query='recusandae',
 )
 
 res = s.bill_payments.list(req)

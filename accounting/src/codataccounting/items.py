@@ -22,6 +22,7 @@ class Items:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateItemRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateItemResponse:
         r"""Create item
         Posts a new item to the accounting package for a given company.
@@ -30,17 +31,18 @@ class Items:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating items.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating items.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateItemRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/items', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "item", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateItemRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,6 +71,7 @@ class Items:
 
         return res
 
+    
     def get(self, request: operations.GetItemRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetItemResponse:
         r"""Get item
         Gets the specified item for a given company.
@@ -76,7 +79,9 @@ class Items:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetItemRequest, base_url, '/companies/{companyId}/data/items/{itemId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -87,7 +92,7 @@ class Items:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -105,6 +110,7 @@ class Items:
 
         return res
 
+    
     def get_create_model(self, request: operations.GetCreateItemsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateItemsModelResponse:
         r"""Get create item model
         Get create item model. Returns the expected data for the request payload.
@@ -113,12 +119,14 @@ class Items:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating items.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating items.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateItemsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/items', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -129,7 +137,7 @@ class Items:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -147,6 +155,7 @@ class Items:
 
         return res
 
+    
     def list(self, request: operations.ListItemsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListItemsResponse:
         r"""List items
         Gets the items for a given company.
@@ -154,8 +163,10 @@ class Items:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListItemsRequest, base_url, '/companies/{companyId}/data/items', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListItemsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -166,7 +177,7 @@ class Items:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

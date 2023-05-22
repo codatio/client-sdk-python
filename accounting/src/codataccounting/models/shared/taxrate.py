@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 from ..shared import metadata as shared_metadata
 from ..shared import taxratecomponent as shared_taxratecomponent
-from ..shared import taxratestatus_enum as shared_taxratestatus_enum
+from ..shared import taxratestatus as shared_taxratestatus
 from ..shared import validdatatypelinks as shared_validdatatypelinks
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -48,7 +48,7 @@ class TaxRate:
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""Codat-augmented name of the tax rate in the accounting platform."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[shared_taxratestatus_enum.TaxRateStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[shared_taxratestatus.TaxRateStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Status of the tax rate in the accounting platform.
     - `Active` - An active tax rate in use by a company.  
     - `Archived` - A tax rate that has been archived or is inactive in the accounting platform.  

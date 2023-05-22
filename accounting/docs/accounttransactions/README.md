@@ -11,7 +11,7 @@ Account transactions
 
 ## get
 
-Returns a specific [account transaction](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
+﻿Returns a specific [account transaction](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
 
 ### Example Usage
 
@@ -24,7 +24,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetAccountTransactionRequest(
     account_transaction_id='provident',
@@ -40,7 +39,8 @@ if res.account_transaction is not None:
 
 ## list
 
-Returns a list of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) for a given company's connection.
+﻿The *List account transactions* endpoint returns a list of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) for a given company's connection.
+
 
 ### Example Usage
 
@@ -53,7 +53,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListAccountTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',

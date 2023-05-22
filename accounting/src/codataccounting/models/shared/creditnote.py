@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import creditnotelineitem as shared_creditnotelineitem
-from ..shared import creditnotestatus_enum as shared_creditnotestatus_enum
+from ..shared import creditnotestatus as shared_creditnotestatus
 from ..shared import customerref as shared_customerref
 from ..shared import items as shared_items
 from ..shared import metadata as shared_metadata
@@ -35,7 +35,7 @@ class CreditNote:
     r"""Percentage rate (from 0 to 100) of discounts applied to the credit note."""
     remaining_credit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('remainingCredit') }})
     r"""Unused balance of totalAmount originally raised."""
-    status: shared_creditnotestatus_enum.CreditNoteStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_creditnotestatus.CreditNoteStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     sub_total: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal') }})
     r"""Value of the credit note, including discounts and excluding tax."""
     total_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount') }})

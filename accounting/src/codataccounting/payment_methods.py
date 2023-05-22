@@ -22,6 +22,7 @@ class PaymentMethods:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetPaymentMethodRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPaymentMethodResponse:
         r"""Get payment method
         Gets the specified payment method for a given company.
@@ -29,7 +30,9 @@ class PaymentMethods:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetPaymentMethodRequest, base_url, '/companies/{companyId}/data/paymentMethods/{paymentMethodId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -40,7 +43,7 @@ class PaymentMethods:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -58,6 +61,7 @@ class PaymentMethods:
 
         return res
 
+    
     def list(self, request: operations.ListPaymentMethodsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentMethodsResponse:
         r"""List all payment methods
         Gets the payment methods for a given company.
@@ -65,8 +69,10 @@ class PaymentMethods:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListPaymentMethodsRequest, base_url, '/companies/{companyId}/data/paymentMethods', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListPaymentMethodsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -77,7 +83,7 @@ class PaymentMethods:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

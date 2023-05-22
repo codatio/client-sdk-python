@@ -22,6 +22,7 @@ class CreditNotes:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCreditNoteResponse:
         r"""Create credit note
         Push credit note
@@ -31,17 +32,18 @@ class CreditNotes:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support creating a credit note.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support creating a credit note.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "credit_note", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateCreditNoteRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -70,6 +72,7 @@ class CreditNotes:
 
         return res
 
+    
     def get(self, request: operations.GetCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreditNoteResponse:
         r"""Get credit note
         Gets a single creditNote corresponding to the given ID.
@@ -77,7 +80,9 @@ class CreditNotes:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreditNoteRequest, base_url, '/companies/{companyId}/data/creditNotes/{creditNoteId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -88,7 +93,7 @@ class CreditNotes:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -106,6 +111,7 @@ class CreditNotes:
 
         return res
 
+    
     def get_create_update_model(self, request: operations.GetCreateUpdateCreditNotesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateCreditNotesModelResponse:
         r"""Get create/update credit note model
         Get create/update credit note model. Returns the expected data for the request payload.
@@ -114,12 +120,14 @@ class CreditNotes:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support creating and updating a credit note.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support creating and updating a credit note.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateUpdateCreditNotesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/creditNotes', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -130,7 +138,7 @@ class CreditNotes:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -148,15 +156,18 @@ class CreditNotes:
 
         return res
 
+    
     def list(self, request: operations.ListCreditNotesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCreditNotesResponse:
         r"""List credit notes
-        Gets a list of all credit notes for a company, with pagination
+        Gets a list of all credit notes for a company, with pagination.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListCreditNotesRequest, base_url, '/companies/{companyId}/data/creditNotes', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListCreditNotesRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -167,7 +178,7 @@ class CreditNotes:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -185,6 +196,7 @@ class CreditNotes:
 
         return res
 
+    
     def update(self, request: operations.UpdateCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateCreditNoteResponse:
         r"""Update creditNote
         Posts an updated credit note to the accounting package for a given company.
@@ -193,17 +205,18 @@ class CreditNotes:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support updating a credit note.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support updating a credit note.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes/{creditNoteId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "credit_note", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateCreditNoteRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

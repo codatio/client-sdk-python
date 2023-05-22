@@ -22,6 +22,7 @@ class Payments:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreatePaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePaymentResponse:
         r"""Create payment
         Posts a new payment to the accounting package for a given company.
@@ -30,17 +31,18 @@ class Payments:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating payments.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating payments.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreatePaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/payments', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "payment", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreatePaymentRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,6 +71,7 @@ class Payments:
 
         return res
 
+    
     def get(self, request: operations.GetPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPaymentResponse:
         r"""Get payment
         Get payment
@@ -76,7 +79,9 @@ class Payments:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetPaymentRequest, base_url, '/companies/{companyId}/data/payments/{paymentId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -87,7 +92,7 @@ class Payments:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -105,6 +110,7 @@ class Payments:
 
         return res
 
+    
     def get_create_model(self, request: operations.GetCreatePaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreatePaymentsModelResponse:
         r"""Get create payment model
         Get create payment model. Returns the expected data for the request payload.
@@ -113,12 +119,14 @@ class Payments:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating payments.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating payments.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreatePaymentsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/payments', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -129,7 +137,7 @@ class Payments:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -147,6 +155,7 @@ class Payments:
 
         return res
 
+    
     def list(self, request: operations.ListPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentsResponse:
         r"""List payments
         Gets the latest payments for a company, with pagination
@@ -154,8 +163,10 @@ class Payments:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListPaymentsRequest, base_url, '/companies/{companyId}/data/payments', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListPaymentsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -166,7 +177,7 @@ class Payments:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

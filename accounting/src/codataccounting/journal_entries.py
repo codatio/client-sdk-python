@@ -22,6 +22,7 @@ class JournalEntries:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateJournalEntryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateJournalEntryResponse:
         r"""Create journal entry
         Posts a new journalEntry to the accounting package for a given company.
@@ -35,12 +36,13 @@ class JournalEntries:
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateJournalEntryRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journalEntries', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "journal_entry", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateJournalEntryRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,9 +71,36 @@ class JournalEntries:
 
         return res
 
+    
     def delete(self, request: operations.DeleteJournalEntryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteJournalEntryResponse:
         r"""Delete journal entry
-        Deletes a journal entry from the accounting package for a given company.
+        > **Use with caution**
+        >
+        >Because Journal Entries underpin every transaction in an accounting platform, deleting a Journal Entry can affect every transaction for a given company.
+        > 
+        > **Before you proceed, make sure you understand the implications of deleting Journal Entries from an accounting perspective.**
+        
+        The _Delete Journal entries_ endpoint allows you to delete a specified Journal entry from an accounting platform.
+        
+        ### Process
+        1. Pass the `{journalEntryId}` to the _Delete Journal Entries_ endpoint and store the `pushOperationKey` returned.
+        2. Check the status of the delete by checking the status of push operation either via
+           1. [Push operation webhook](/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
+           2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation). 
+           
+           A `Success` status indicates that the Journal Entry object was deleted from the accounting platform.
+        3. (Optional) Check that the Journal Entry was deleted from the accounting platform.
+        
+        ### Effect on related objects
+        
+        Be aware that deleting a Journal Entry from an accounting platform might cause related objects to be modified. For example, if you delete the Journal Entry for a paid invoice in QuickBooks Online, the invoice is deleted but the payment against that invoice is not. The payment is converted to a payment on account.
+        
+        ## Integration specifics
+        Integrations that support soft delete do not permanently delete the object in the accounting platform.
+        
+        | Integration | Soft Deleted | 
+        |-------------|--------------|
+        | QuickBooks Online | Yes    |       
         
         > **Supported Integrations**
         > 
@@ -80,7 +109,9 @@ class JournalEntries:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DeleteJournalEntryRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journalEntries/{journalEntryId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -91,7 +122,7 @@ class JournalEntries:
             
 
         def do_request():
-            return client.request('DELETE', url)
+            return client.request('DELETE', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -109,6 +140,7 @@ class JournalEntries:
 
         return res
 
+    
     def get(self, request: operations.GetJournalEntryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetJournalEntryResponse:
         r"""Get journal entry
         Gets a single JournalEntry corresponding to the given ID.
@@ -116,7 +148,9 @@ class JournalEntries:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetJournalEntryRequest, base_url, '/companies/{companyId}/data/journalEntries/{journalEntryId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -127,7 +161,7 @@ class JournalEntries:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -145,6 +179,7 @@ class JournalEntries:
 
         return res
 
+    
     def get_create_model(self, request: operations.GetCreateJournalEntriesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateJournalEntriesModelResponse:
         r"""Get create journal entry model
         Get create journal entry model. Returns the expected data for the request payload.
@@ -158,7 +193,9 @@ class JournalEntries:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateJournalEntriesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/journalEntries', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -169,7 +206,7 @@ class JournalEntries:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -187,15 +224,18 @@ class JournalEntries:
 
         return res
 
+    
     def list(self, request: operations.ListJournalEntriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListJournalEntriesResponse:
         r"""List journal entries
-        Gets the latest journal entries for a company, with pagination
+        Gets the latest journal entries for a company, with pagination.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListJournalEntriesRequest, base_url, '/companies/{companyId}/data/journalEntries', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListJournalEntriesRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -206,7 +246,7 @@ class JournalEntries:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

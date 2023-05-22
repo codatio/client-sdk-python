@@ -4,11 +4,12 @@ from __future__ import annotations
 import dataclasses
 from ..shared import billitem as shared_billitem
 from ..shared import invoiceitem as shared_invoiceitem
-from ..shared import itemstatus_enum as shared_itemstatus_enum
+from ..shared import itemstatus as shared_itemstatus
+from ..shared import itemtype as shared_itemtype
 from ..shared import metadata as shared_metadata
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Any, Optional
+from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -25,7 +26,7 @@ class Item:
     r"""Whether you can use this item for bills."""
     is_invoice_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isInvoiceItem') }})
     r"""Whether you can use this item for invoices."""
-    item_status: shared_itemstatus_enum.ItemStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemStatus') }})
+    item_status: shared_itemstatus.ItemStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemStatus') }})
     r"""Current state of the item, either:
     
     - `Active`: Available for use
@@ -34,7 +35,8 @@ class Item:
     
     Due to a [limitation in Xero's API](https://docs.codat.io/integrations/accounting/xero/xero-faq#why-do-all-of-my-items-from-xero-have-their-status-as-unknown), all items from Xero are mapped as `Unknown`.
     """
-    type: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: shared_itemtype.ItemType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    r"""Type of the item."""
     bill_item: Optional[shared_billitem.BillItem] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billItem'), 'exclude': lambda f: f is None }})
     r"""Item details that are only for bills."""
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})

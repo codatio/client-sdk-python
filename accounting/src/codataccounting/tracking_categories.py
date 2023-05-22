@@ -22,6 +22,7 @@ class TrackingCategories:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetTrackingCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTrackingCategoryResponse:
         r"""Get tracking categories
         Gets the specified tracking categories for a given company.
@@ -29,7 +30,9 @@ class TrackingCategories:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetTrackingCategoryRequest, base_url, '/companies/{companyId}/data/trackingCategories/{trackingCategoryId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -40,7 +43,7 @@ class TrackingCategories:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -58,6 +61,7 @@ class TrackingCategories:
 
         return res
 
+    
     def list(self, request: operations.ListTrackingCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTrackingCategoriesResponse:
         r"""List tracking categories
         Gets the latest tracking categories for a given company.
@@ -65,8 +69,10 @@ class TrackingCategories:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListTrackingCategoriesRequest, base_url, '/companies/{companyId}/data/trackingCategories', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListTrackingCategoriesRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -77,7 +83,7 @@ class TrackingCategories:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

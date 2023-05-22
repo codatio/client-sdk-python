@@ -14,13 +14,14 @@ Journal entries
 
 ## create
 
-Posts a new journalEntry to the accounting package for a given company.
+﻿Posts a new journalEntry to the accounting package for a given company.
 
 Required data may vary by integration. To see what data to post, first call [Get create journal entry model](https://docs.codat.io/accounting-api#/operations/get-create-journalEntries-model).
 
 > **Supported Integrations**
 > 
 > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journalEntries) for integrations that support creating journal entries.
+ 
 
 ### Example Usage
 
@@ -34,140 +35,89 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
-        created_on='delectus',
-        description='id',
-        id='1011a091-b3ec-48b5-b862-de1a9d14fe72',
+        created_on='quibusdam',
+        description='natus',
+        id='8ccf89d3-8611-486e-976c-002facb13ac2',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='521f9030-3dfc-4338-b97f-ffa6d1d32090',
-                    name='Salvatore Boyer',
+                    id='c8143b86-6c57-45a1-a266-8730be37b0e8',
+                    name='Alton Schmitt',
                 ),
-                currency='mollitia',
-                description='cumque',
-                net_amount=5632.6,
+                currency='facere',
+                description='temporibus',
+                net_amount=7790.58,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
-                        shared.InvoiceTo(
-                            data_type='accusamus',
-                            id='1961ce9b-e41c-4869-9d7d-9719d07b200a',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='corporis',
-                            id='8ffd2967-df8f-4d88-aa8e-60be620cd9c5',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='officia',
-                            id='fdd04c37-5251-42be-ae1d-87ecc5fdcea8',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='eveniet',
-                            id='7a883116-62cd-4a6d-b7c1-d86066237d42',
-                        ),
-                    ],
-                ),
-            ),
-            shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='27866db8-a749-4e39-8451-1cc75e4f0c00',
-                    name='Patty Harber',
-                ),
-                currency='molestiae',
-                description='ipsam',
-                net_amount=5541.62,
-                tracking=shared.Propertiestracking2(
-                    record_refs=[
-                        shared.InvoiceTo(
-                            data_type='nobis',
-                            id='94562f00-6968-45fc-91a1-73d84bbe24f2',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='error',
-                            id='834afb07-35cb-4628-9d4a-29aaa1e16915',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='nisi',
-                            id='f7d2ee20-9505-4bf0-ba93-e94480ca37fb',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='ab',
-                            id='0789032a-c333-4172-a2dd-79ec74ba7e88',
-                        ),
-                    ],
-                ),
-            ),
-            shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='ddb36fd1-ccc3-441c-8657-3474f0a740fb',
-                    name='Sandy Reichel',
-                ),
-                currency='illo',
-                description='impedit',
-                net_amount=2164.48,
-                tracking=shared.Propertiestracking2(
-                    record_refs=[
-                        shared.InvoiceTo(
-                            data_type='doloremque',
-                            id='9e763995-d808-4bbe-b944-55ebc550a1c4',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='qui',
-                            id='6b59c836-6fdc-4c13-9582-c1b855e889d9',
-                        ),
                         shared.InvoiceTo(
                             data_type='officiis',
-                            id='f932e900-0a13-4ad8-9242-08efd2341189',
+                            id='69b53510-5050-414d-8a10-5882484c36e9',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='ut',
+                            id='8892782d-34e0-4b8f-80d5-9f57b9f9820b',
                         ),
                     ],
                 ),
             ),
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='8e73879e-fbe8-4bae-babb-794536e90351',
-                    name='Rickey Miller',
+                    id='e07808c3-6c9e-42f7-8344-e00f478eb539',
+                    name='Maxine Dietrich',
                 ),
-                currency='adipisci',
-                description='architecto',
-                net_amount=4393.34,
+                currency='dolore',
+                description='blanditiis',
+                net_amount=9119.94,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='voluptatem',
-                            id='b77a5a53-65a7-49f1-9271-f01c0d361fed',
+                            data_type='delectus',
+                            id='ccb69d54-1b4b-4393-b356-6625bea32201',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='temporibus',
+                            id='ec379c59-8ea1-4d48-85c2-f9e21d90fd53',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='esse',
+                            id='76bfc767-7f0f-4504-a6e4-828fb6daee19',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='cumque',
+                            id='26c0cb61-8c63-431c-abda-b767a444dd0d',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='8dc5effb-453e-4908-9e87-1fdb4d697bdd',
-            name='Sylvester Maggio',
+            id='a0abe58e-b3d5-44ba-9cb3-ad49b8e5c18b',
+            name='Holly Trantow',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='repudiandae',
-        posted_on='incidunt',
+        modified_date='maiores',
+        posted_on='ea',
         record_ref=shared.InvoiceTo(
-            data_type='neque',
-            id='734a5d72-d9ed-4d78-9be5-e7afe55297ba',
+            data_type='incidunt',
+            id='823255be-95c0-4cbc-b2ca-87908d73809a',
         ),
-        source_modified_date='laboriosam',
+        source_modified_date='aut',
         supplemental_data=shared.SupplementalData(
             content={
-                "laudantium": {
-                    "repellat": 'aliquam',
+                "doloribus": {
+                    "eum": 'itaque',
                 },
             },
         ),
-        updated_on='modi',
+        updated_on='unde',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=907650,
+    timeout_in_minutes=148478,
 )
 
 res = s.journal_entries.create(req)
@@ -178,7 +128,33 @@ if res.create_journal_entry_response is not None:
 
 ## delete
 
-Deletes a journal entry from the accounting package for a given company.
+﻿> **Use with caution**
+>
+>Because Journal Entries underpin every transaction in an accounting platform, deleting a Journal Entry can affect every transaction for a given company.
+> 
+> **Before you proceed, make sure you understand the implications of deleting Journal Entries from an accounting perspective.**
+
+The _Delete Journal entries_ endpoint allows you to delete a specified Journal entry from an accounting platform.
+
+### Process
+1. Pass the `{journalEntryId}` to the _Delete Journal Entries_ endpoint and store the `pushOperationKey` returned.
+2. Check the status of the delete by checking the status of push operation either via
+   1. [Push operation webhook](/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
+   2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation). 
+   
+   A `Success` status indicates that the Journal Entry object was deleted from the accounting platform.
+3. (Optional) Check that the Journal Entry was deleted from the accounting platform.
+
+### Effect on related objects
+
+Be aware that deleting a Journal Entry from an accounting platform might cause related objects to be modified. For example, if you delete the Journal Entry for a paid invoice in QuickBooks Online, the invoice is deleted but the payment against that invoice is not. The payment is converted to a payment on account.
+
+## Integration specifics
+Integrations that support soft delete do not permanently delete the object in the accounting platform.
+
+| Integration | Soft Deleted | 
+|-------------|--------------|
+| QuickBooks Online | Yes    |       
 
 > **Supported Integrations**
 > 
@@ -195,7 +171,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -225,10 +200,9 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='dolorem',
+    journal_entry_id='qui',
 )
 
 res = s.journal_entries.get(req)
@@ -239,7 +213,7 @@ if res.journal_entry is not None:
 
 ## get_create_model
 
-Get create journal entry model. Returns the expected data for the request payload.
+﻿Get create journal entry model. Returns the expected data for the request payload.
 
 See the examples for integration-specific indicative models.
 
@@ -259,7 +233,6 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetCreateJournalEntriesModelRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -273,7 +246,7 @@ if res.push_option is not None:
 
 ## list
 
-Gets the latest journal entries for a company, with pagination
+﻿Gets the latest journal entries for a company, with pagination.
 
 ### Example Usage
 
@@ -287,13 +260,12 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListJournalEntriesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='laborum',
+    query='totam',
 )
 
 res = s.journal_entries.list(req)

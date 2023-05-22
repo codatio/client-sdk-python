@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import billpaymentlinelinktype_enum as shared_billpaymentlinelinktype_enum
+from ..shared import billpaymentlinelinktype as shared_billpaymentlinelinktype
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -12,7 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class BillPaymentLineLink:
     
-    type: shared_billpaymentlinelinktype_enum.BillPaymentLineLinkTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: shared_billpaymentlinelinktype.BillPaymentLineLinkType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Types of links to bill payment lines."""
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
     r"""Amount by which the balance of the linked entity is altered, in the currency of the linked entity.

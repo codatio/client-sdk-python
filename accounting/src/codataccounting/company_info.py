@@ -22,6 +22,7 @@ class CompanyInfo:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyInfoResponse:
         r"""Get company info
         Gets the latest basic info for a company.
@@ -29,7 +30,9 @@ class CompanyInfo:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCompanyInfoRequest, base_url, '/companies/{companyId}/data/info', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -40,7 +43,7 @@ class CompanyInfo:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -58,6 +61,7 @@ class CompanyInfo:
 
         return res
 
+    
     def refresh(self, request: operations.RefreshCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RefreshCompanyInfoResponse:
         r"""Refresh company info
         Initiates the process of synchronising basic info for a company
@@ -65,7 +69,9 @@ class CompanyInfo:
         base_url = self._server_url
         
         url = utils.generate_url(operations.RefreshCompanyInfoRequest, base_url, '/companies/{companyId}/data/info', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -76,7 +82,7 @@ class CompanyInfo:
             
 
         def do_request():
-            return client.request('POST', url)
+            return client.request('POST', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

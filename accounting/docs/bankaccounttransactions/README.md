@@ -9,7 +9,6 @@ Bank transactions for bank accounts
 * [create](#create) - Create bank transactions
 * [get_create_model](#get_create_model) - List push options for bank account bank transactions
 * [list](#list) - List bank transactions for bank account
-* [list_transactions](#list_transactions) - List all bank transactions
 
 ## create
 
@@ -17,7 +16,7 @@ Posts bank transactions to the accounting package for a given company.
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support POST methods.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support POST methods.
 
 ### Example Usage
 
@@ -30,7 +29,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.CreateBankTransactionsRequest(
     bank_transactions=shared.BankTransactions(
@@ -47,7 +45,7 @@ req = operations.CreateBankTransactionsRequest(
                 reconciled=False,
                 reference='perferendis',
                 source_modified_date='ad',
-                transaction_type=shared.BankTransactionTypeEnum.CHECK,
+                transaction_type=shared.BankTransactionType.CHECK,
             ),
         ],
     ),
@@ -80,7 +78,6 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetCreateBankAccountModelRequest(
     account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -109,7 +106,6 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListBankAccountTransactionsRequest(
     account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -123,37 +119,5 @@ req = operations.ListBankAccountTransactionsRequest(
 res = s.bank_account_transactions.list(req)
 
 if res.bank_transactions_response is not None:
-    # handle response
-```
-
-## list_transactions
-
-Gets the latest bank transactions for given account ID and company. Doesn't require connection ID.
-
-### Example Usage
-
-```python
-import codataccounting
-from codataccounting.models import operations
-
-s = codataccounting.CodatAccounting(
-    security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
-    ),
-)
-
-
-req = operations.ListBankTransactionsRequest(
-    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-    query='dolor',
-)
-
-res = s.bank_account_transactions.list_transactions(req)
-
-if res.bank_account_transactions is not None:
     # handle response
 ```

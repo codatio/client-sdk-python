@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import addresstype_enum as shared_addresstype_enum
-from ..shared import phonenumbertype_enum as shared_phonenumbertype_enum
+from ..shared import addresstype as shared_addresstype
+from ..shared import phonenumbertype as shared_phonenumbertype
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -14,7 +14,7 @@ from typing import Optional
 @dataclasses.dataclass
 class CompanyDatasetAddresses:
     
-    type: shared_addresstype_enum.AddressTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: shared_addresstype.AddressType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of the address"""
     city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city'), 'exclude': lambda f: f is None }})
     r"""City of the customer address."""
@@ -36,10 +36,10 @@ class CompanyDatasetPhone:
     
     number: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('number') }})
     r"""A phone number."""
-    type: shared_phonenumbertype_enum.PhoneNumberTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: shared_phonenumbertype.PhoneNumberType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of phone number"""
     
-class CompanyDatasetWeblinkTypeEnum(str, Enum):
+class CompanyDatasetWeblinkType(str, Enum):
     r"""The type of the weblink."""
     WEBSITE = 'Website'
     SOCIAL = 'Social'
@@ -51,7 +51,7 @@ class CompanyDatasetWeblinkTypeEnum(str, Enum):
 class CompanyDatasetWeblink:
     r"""Weblink associated with the company."""
     
-    type: Optional[CompanyDatasetWeblinkTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[CompanyDatasetWeblinkType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the weblink."""
     url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
     r"""The full URL for the weblink."""

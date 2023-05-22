@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import paymentlinktype_enum as shared_paymentlinktype_enum
+from ..shared import paymentlinktype as shared_paymentlinktype
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -12,7 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class PaymentLineLink:
     
-    type: shared_paymentlinktype_enum.PaymentLinkTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: shared_paymentlinktype.PaymentLinkType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Types of payment line links, either:
     `Unknown`  
     `Unlinked` - Not used  

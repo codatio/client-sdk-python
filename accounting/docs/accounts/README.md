@@ -13,13 +13,15 @@ Accounts
 
 ## create
 
-Creates a new account for a given company.
+﻿The *Create accounts* endpoint creates a new [accounts](https://docs.codat.io/accounting-api#/schemas/Account) for a given company.
 
 Required data may vary by integration. To see what data to post, first call [Get create account model](https://docs.codat.io/accounting-api#/operations/get-create-chartOfAccounts-model).
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
+
+[Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
 ### Example Usage
 
@@ -32,7 +34,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.CreateAccountRequest(
     account=shared.Account(
@@ -50,8 +51,8 @@ req = operations.CreateAccountRequest(
         name='Accounts Receivable',
         nominal_code='610',
         source_modified_date='corrupti',
-        status=shared.AccountStatusEnum.ACTIVE,
-        type=shared.AccountTypeEnum.ASSET,
+        status=shared.AccountStatus.ACTIVE,
+        type=shared.AccountType.ASSET,
         valid_datatype_links=[
             shared.ValidDataTypeLinks(
                 links=[
@@ -99,7 +100,9 @@ if res.create_account_response is not None:
 
 ## get
 
-Gets a single account corresponding to the given ID.
+﻿The *Get account* endpoint returns a single [accounts](https://docs.codat.io/accounting-api#/schemas/Account) for a given `accountId`.
+
+[Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
 ### Example Usage
 
@@ -112,7 +115,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetAccountRequest(
     account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -127,13 +129,15 @@ if res.account is not None:
 
 ## get_create_model
 
-Get create account model. Returns the expected data for the request payload.
+﻿The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given company and integration.
 
 See the examples for integration-specific indicative models.
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
+
+[Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
 ### Example Usage
 
@@ -146,7 +150,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetCreateChartOfAccountsModelRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -161,7 +164,9 @@ if res.push_option is not None:
 
 ## list
 
-Gets the latest accounts for a company
+﻿The *List accounts* endpoint returns a list of [accounts](https://docs.codat.io/accounting-api#/schemas/Account) for a given company's connection.
+
+[Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
 ### Example Usage
 
@@ -174,7 +179,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListAccountsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',

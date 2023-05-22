@@ -19,7 +19,7 @@ Required data may vary by integration. To see what data to post, first call [Get
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating payments.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating payments.
 
 ### Example Usage
 
@@ -33,73 +33,36 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.CreatePaymentRequest(
     payment=shared.Payment(
         account_ref=shared.AccountRef(
-            id='2de7b356-2201-4a6a-ab4a-e7b1a5b908d4',
-            name='Jeffery Aufderhar',
+            id='def9c765-dfd7-4354-a5cb-94977017a262',
+            name='Monica Reinger',
         ),
-        currency='quae',
-        currency_rate=6765.76,
+        currency='eum',
+        currency_rate=7979.17,
         customer_ref=shared.CustomerRef(
-            company_name='fuga',
-            id='35d4a839-f03b-4ab7-bb91-8f0313984507',
+            company_name='laborum',
+            id='4e999828-79de-4fc0-b239-606cf90ad989',
         ),
-        date_='officiis',
-        id='0e39c7e2-3ecb-4060-8652-e23a3d6c657e',
+        date_='recusandae',
+        id='1a34715a-cda0-444f-aaed-6e13a620e2e9',
         lines=[
             shared.PaymentLine(
-                allocated_on_date='quibusdam',
-                amount=8936.05,
+                allocated_on_date='totam',
+                amount=7539.55,
                 links=[
                     shared.PaymentLineLink(
-                        amount=9387.2,
-                        currency_rate=4758.76,
-                        id='f002d198-6aa9-49d3-a1d3-2329e45837e8',
-                        type=shared.PaymentLinkTypeEnum.DISCOUNT,
+                        amount=3390.23,
+                        currency_rate=7169.63,
+                        id='0486cf39-8a0b-4374-a17d-d95ce3044be4',
+                        type=shared.PaymentLinkType.DISCOUNT,
                     ),
                     shared.PaymentLineLink(
-                        amount=1859.89,
-                        currency_rate=6377.7,
-                        id='d6bb10e2-55fd-4c48-8d6e-3308675cbf18',
-                        type=shared.PaymentLinkTypeEnum.CREDIT_NOTE,
-                    ),
-                    shared.PaymentLineLink(
-                        amount=5604.72,
-                        currency_rate=3424.33,
-                        id='6a7e82cd-f9d0-4fc2-82c6-66af3c3f5589',
-                        type=shared.PaymentLinkTypeEnum.PAYMENT_ON_ACCOUNT,
-                    ),
-                ],
-            ),
-            shared.PaymentLine(
-                allocated_on_date='accusamus',
-                amount=6668.05,
-                links=[
-                    shared.PaymentLineLink(
-                        amount=8213.45,
-                        currency_rate=1736.08,
-                        id='64e41e2c-a848-422e-913f-6d9d2ad37c30',
-                        type=shared.PaymentLinkTypeEnum.PAYMENT,
-                    ),
-                    shared.PaymentLineLink(
-                        amount=5821.15,
-                        currency_rate=328.36,
-                        id='77c10b68-7921-463e-a7d4-8860543c0a30',
-                        type=shared.PaymentLinkTypeEnum.INVOICE,
-                    ),
-                ],
-            ),
-            shared.PaymentLine(
-                allocated_on_date='excepturi',
-                amount=7879.41,
-                links=[
-                    shared.PaymentLineLink(
-                        amount=8004.56,
-                        currency_rate=9757.5,
-                        id='6c0276e7-b21b-4ad9-8d27-43fd6c2a10e6',
-                        type=shared.PaymentLinkTypeEnum.MANUAL_JOURNAL,
+                        amount=7139.18,
+                        currency_rate=2076.75,
+                        id='b31cb503-c314-40d8-b72c-535e1dd6bf64',
+                        type=shared.PaymentLinkType.PAYMENT_ON_ACCOUNT,
                     ),
                 ],
             ),
@@ -107,37 +70,44 @@ req = operations.CreatePaymentRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='odit',
-        note='natus',
+        modified_date='non',
+        note='quis',
         payment_method_ref=shared.PaymentMethodRef(
-            id='78ec256a-5b09-4227-bcc4-7996c977bbc5',
-            name='Jeannie Dibbert',
+            id='4e9831e7-95f0-4e57-b54e-bf2d2b46097e',
+            name='Carlton Grady',
         ),
-        reference='eos',
-        source_modified_date='quos',
+        reference='voluptatum',
+        source_modified_date='quibusdam',
         supplemental_data=shared.SupplementalData(
             content={
-                "blanditiis": {
-                    "ipsa": 'eaque',
-                    "quo": 'ad',
+                "earum": {
+                    "sit": 'cumque',
+                    "quibusdam": 'quibusdam',
                 },
-                "atque": {
-                    "eum": 'iusto',
-                    "facere": 'ea',
-                    "sequi": 'voluptates',
-                    "tempora": 'similique',
+                "inventore": {
+                    "enim": 'perferendis',
+                    "soluta": 'tenetur',
+                    "ipsam": 'dolorum',
                 },
-                "officia": {
-                    "laboriosam": 'quos',
-                    "aliquam": 'vel',
+                "ipsa": {
+                    "soluta": 'impedit',
+                    "quas": 'facilis',
+                    "quam": 'blanditiis',
+                    "commodi": 'eaque',
+                },
+                "similique": {
+                    "voluptates": 'similique',
+                    "autem": 'nobis',
+                    "laboriosam": 'non',
+                    "corporis": 'ab',
                 },
             },
         ),
-        total_amount=2546.16,
+        total_amount=1991.9,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=321921,
+    timeout_in_minutes=179221,
 )
 
 res = s.payments.create(req)
@@ -162,10 +132,9 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='odio',
+    payment_id='repellendus',
 )
 
 res = s.payments.get(req)
@@ -182,7 +151,7 @@ See the examples for integration-specific indicative models.
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating payments.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating payments.
 
 ### Example Usage
 
@@ -195,7 +164,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetCreatePaymentsModelRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -224,13 +192,12 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListPaymentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='omnis',
+    query='ipsam',
 )
 
 res = s.payments.list(req)

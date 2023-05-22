@@ -22,6 +22,7 @@ class SalesOrders:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetSalesOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSalesOrderResponse:
         r"""Get sales order
         Get sales order
@@ -29,7 +30,9 @@ class SalesOrders:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetSalesOrderRequest, base_url, '/companies/{companyId}/data/salesOrders/{salesOrderId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -40,7 +43,7 @@ class SalesOrders:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -58,6 +61,7 @@ class SalesOrders:
 
         return res
 
+    
     def list(self, request: operations.ListSalesOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSalesOrdersResponse:
         r"""List sales orders
         Get sales orders
@@ -65,8 +69,10 @@ class SalesOrders:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListSalesOrdersRequest, base_url, '/companies/{companyId}/data/salesOrders', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListSalesOrdersRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -77,7 +83,7 @@ class SalesOrders:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
