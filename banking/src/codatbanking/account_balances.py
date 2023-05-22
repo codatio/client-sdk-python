@@ -22,6 +22,7 @@ class AccountBalances:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def list(self, request: operations.ListAccountBalancesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountBalancesResponse:
         r"""List account balances
         Gets a list of balances for a bank account including end-of-day batch balance or running balances per transaction.
@@ -29,8 +30,10 @@ class AccountBalances:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListAccountBalancesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-accountBalances', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListAccountBalancesRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -41,7 +44,7 @@ class AccountBalances:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

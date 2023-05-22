@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import transactioncategoryref as shared_transactioncategoryref
-from ..shared import transactioncode_enum as shared_transactioncode_enum
+from ..shared import transactioncode as shared_transactioncode
 from codatbanking import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -48,7 +48,7 @@ class Transaction:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    code: Optional[shared_transactioncode_enum.TransactionCodeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
+    code: Optional[shared_transactioncode.TransactionCode] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
     r"""Code to identify the underlying transaction."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""The description of the bank transaction."""

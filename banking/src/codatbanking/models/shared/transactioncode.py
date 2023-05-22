@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class TransactionCodeEnum(str, Enum):
+class TransactionCode(str, Enum):
     r"""Code to identify the underlying transaction."""
     UNKNOWN = 'Unknown'
     FEE = 'Fee'

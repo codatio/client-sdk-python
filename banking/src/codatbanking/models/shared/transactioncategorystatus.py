@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class TransactionCategoryStatusEnum(str, Enum):
+class TransactionCategoryStatus(str, Enum):
     UNKNOWN = 'Unknown'
     ACTIVE = 'Active'
     ARCHIVED = 'Archived'

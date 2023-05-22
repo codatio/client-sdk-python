@@ -25,7 +25,6 @@ s = codatbanking.CodatBanking(
     ),
 )
 
-
 req = operations.GetAccountRequest(
     account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -53,7 +52,6 @@ s = codatbanking.CodatBanking(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.ListAccountsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
