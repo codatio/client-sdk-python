@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class PushChangeTypeEnum(str, Enum):
+class PushChangeType(str, Enum):
     UNKNOWN = 'Unknown'
     CREATED = 'Created'
     MODIFIED = 'Modified'
