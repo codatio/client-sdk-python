@@ -32,7 +32,7 @@ s = codatassess.CodatAssess(
 
 req = operations.DownloadExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.ENHANCED_INVOICES,
+    report_type=shared.ExcelReportType.ENHANCED_INVOICES,
 )
 
 res = s.excel_reports.download_excel_report(req)
@@ -59,7 +59,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GenerateExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.ENHANCED_FINANCIALS,
+    report_type=shared.ExcelReportType.ENHANCED_FINANCIALS,
 )
 
 res = s.excel_reports.generate_excel_report(req)
@@ -90,7 +90,7 @@ req = operations.GetAccountingMarketingMetricsRequest(
     include_display_names=False,
     number_of_periods=739264,
     period_length=19987,
-    period_unit=shared.PeriodUnitEnum.DAY,
+    period_unit=shared.PeriodUnit.DAY,
     report_date='29-09-2020',
     show_input_values=False,
 )
@@ -119,7 +119,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.ENHANCED_FINANCIALS,
+    report_type=shared.ExcelReportType.ENHANCED_FINANCIALS,
 )
 
 res = s.excel_reports.get_excel_report(req)
@@ -146,7 +146,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetExcelReportGenerationStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypeEnum.AUDIT,
+    report_type=shared.ExcelReportType.AUDIT,
 )
 
 res = s.excel_reports.get_excel_report_generation_status(req)

@@ -33,6 +33,7 @@ class Categories:
         
         url = utils.generate_url(operations.GetAccountCategoryRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/{accountId}/categories', request)
         headers = {}
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -74,6 +75,7 @@ class Categories:
         url = utils.generate_url(operations.ListAccountsCategoriesRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accounts/categories', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListAccountsCategoriesRequest, request)
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -114,6 +116,7 @@ class Categories:
         
         url = base_url.removesuffix('/') + '/data/assess/accounts/categories'
         headers = {}
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -157,6 +160,7 @@ class Categories:
         req_content_type, data, form = utils.serialize_request_body(request, "confirm_category", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -200,6 +204,7 @@ class Categories:
         req_content_type, data, form = utils.serialize_request_body(request, "confirm_categories", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client

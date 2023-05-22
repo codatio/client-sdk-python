@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import customerref as shared_customerref
-from ..shared import invoicestatus_enum as shared_invoicestatus_enum
+from ..shared import invoicestatus as shared_invoicestatus
 from ..shared import payment as shared_payment
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -94,7 +94,7 @@ class EnhancedInvoiceReportItem:
     """
     payments: Optional[list[shared_payment.Payment]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payments'), 'exclude': lambda f: f is None }})
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[shared_invoicestatus_enum.InvoiceStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[shared_invoicestatus.InvoiceStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Current state of the invoice:
     
     - `Draft` - Invoice hasn't been submitted to the supplier. It may be in a pending state or is scheduled for future submission, for example by email.

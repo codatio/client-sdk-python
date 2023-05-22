@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class PeriodUnitEnum(str, Enum):
+class PeriodUnit(str, Enum):
     r"""The period unit of time returned."""
     DAY = 'Day'
     WEEK = 'Week'
