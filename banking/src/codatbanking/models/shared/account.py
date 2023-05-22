@@ -5,7 +5,7 @@ import dataclasses
 from ..shared import accountbalanceamounts as shared_accountbalanceamounts
 from ..shared import accountidentifiers as shared_accountidentifiers
 from ..shared import accountinstitution as shared_accountinstitution
-from ..shared import accounttype_enum as shared_accounttype_enum
+from ..shared import accounttype as shared_accounttype
 from codatbanking import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -33,7 +33,7 @@ class Account:
     r"""The bank or other financial institution providing the account."""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""The name of the account according to the provider."""
-    type: shared_accounttype_enum.AccountTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: shared_accounttype.AccountType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of transactions and balances on the account.
     For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
     For Debit accounts, positive balances are assets, and positive transactions **increase** assets.

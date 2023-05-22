@@ -22,6 +22,7 @@ class TransactionCategories:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetTransactionCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionCategoryResponse:
         r"""Get transaction category
         Gets a specified bank transaction category for a given company
@@ -29,7 +30,9 @@ class TransactionCategories:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetTransactionCategoryRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactionCategories/{transactionCategoryId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -40,7 +43,7 @@ class TransactionCategories:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -58,6 +61,7 @@ class TransactionCategories:
 
         return res
 
+    
     def list(self, request: operations.ListTransactionCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionCategoriesResponse:
         r"""List all transaction categories
         Gets a list of hierarchical categories associated with a transaction for greater contextual meaning to transactionactivity.
@@ -65,8 +69,10 @@ class TransactionCategories:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListTransactionCategoriesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactionCategories', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListTransactionCategoriesRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -77,7 +83,7 @@ class TransactionCategories:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

@@ -22,6 +22,7 @@ class Accounts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountResponse:
         r"""Get account
         Gets a specified bank account for a given company
@@ -29,7 +30,9 @@ class Accounts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-accounts/{accountId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -40,7 +43,7 @@ class Accounts:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -58,6 +61,7 @@ class Accounts:
 
         return res
 
+    
     def list(self, request: operations.ListAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountsResponse:
         r"""List accounts
         Gets a list of all bank accounts of the SMB, with rich data like balances, account numbers and institutions holdingthe accounts.
@@ -65,8 +69,10 @@ class Accounts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListAccountsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-accounts', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListAccountsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -77,7 +83,7 @@ class Accounts:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

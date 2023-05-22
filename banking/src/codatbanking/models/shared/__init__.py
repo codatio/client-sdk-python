@@ -5,10 +5,10 @@ from .accountbalance import *
 from .accountbalanceamounts import *
 from .accountbalances import *
 from .accountidentifiers import *
-from .accountidentifiertype_enum import *
+from .accountidentifiertype import *
 from .accountinstitution import *
 from .accounts import *
-from .accounttype_enum import *
+from .accounttype import *
 from .href import *
 from .links import *
 from .security import *
@@ -16,8 +16,8 @@ from .transaction import *
 from .transactioncategories import *
 from .transactioncategory import *
 from .transactioncategoryref import *
-from .transactioncategorystatus_enum import *
-from .transactioncode_enum import *
+from .transactioncategorystatus import *
+from .transactioncode import *
 from .transactions import *
 
-__all__ = ["Account","AccountBalance","AccountBalanceAmounts","AccountBalances","AccountIdentifierTypeEnum","AccountIdentifiers","AccountInstitution","AccountTypeEnum","Accounts","HRef","Links","Security","Transaction","TransactionCategories","TransactionCategory","TransactionCategoryRef","TransactionCategoryStatusEnum","TransactionCodeEnum","Transactions"]
+__all__ = ["Account","AccountBalance","AccountBalanceAmounts","AccountBalances","AccountIdentifierType","AccountIdentifiers","AccountInstitution","AccountType","Accounts","HRef","Links","Security","Transaction","TransactionCategories","TransactionCategory","TransactionCategoryRef","TransactionCategoryStatus","TransactionCode","Transactions"]

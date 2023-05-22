@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class AccountIdentifierTypeEnum(str, Enum):
+class AccountIdentifierType(str, Enum):
     r"""Type of account"""
     ACCOUNT = 'Account'
     CARD = 'Card'

@@ -22,6 +22,7 @@ class Transactions:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def get(self, request: operations.GetTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionResponse:
         r"""Get bank transaction
         Gets a specified bank transaction for a given company
@@ -29,7 +30,9 @@ class Transactions:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetTransactionRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactions/{transactionId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -40,7 +43,7 @@ class Transactions:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -58,6 +61,7 @@ class Transactions:
 
         return res
 
+    
     def list(self, request: operations.ListTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionsResponse:
         r"""List transactions
         Gets a list of transactions incurred by a bank account.
@@ -65,8 +69,10 @@ class Transactions:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactions', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListTransactionsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -77,7 +83,7 @@ class Transactions:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -87,6 +93,48 @@ class Transactions:
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Transactions])
+                res.transactions = out
+
+        return res
+
+    
+    def list_bank_transactions(self, request: operations.ListBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankTransactionsResponse:
+        r"""List banking transactions
+        Gets a list of transactions incurred by a company across all bank accounts.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible. Use list instead
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListBankTransactionsRequest, base_url, '/companies/{companyId}/data/banking-transactions', request)
+        headers = {}
+        query_params = utils.get_query_params(operations.ListBankTransactionsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListBankTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
