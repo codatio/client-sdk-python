@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import servicechargetype_enum as shared_servicechargetype_enum
+from ..shared import servicechargetype as shared_servicechargetype
 from ..shared import taxcomponentallocation as shared_taxcomponentallocation
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -25,6 +25,6 @@ class ServiceCharge:
     r"""Percentage rate (from 0 to 100) of any tax applied to the service charge."""
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
     r"""Total service charge, including taxes."""
-    type: Optional[shared_servicechargetype_enum.ServiceChargeTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[shared_servicechargetype.ServiceChargeType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the service charge."""
     

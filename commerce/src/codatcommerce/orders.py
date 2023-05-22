@@ -32,6 +32,7 @@ class Orders:
         url = utils.generate_url(operations.ListOrdersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-orders', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListOrdersRequest, request)
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client

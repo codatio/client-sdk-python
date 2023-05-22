@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 from ..shared import productinventory as shared_productinventory
 from ..shared import productprice as shared_productprice
-from ..shared import productvariantstatus_enum as shared_productvariantstatus_enum
+from ..shared import productvariantstatus as shared_productvariantstatus
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -54,7 +54,7 @@ class ProductVariant:
     sku: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sku'), 'exclude': lambda f: f is None }})
     r"""SKU (stock keeping unit) of the variant, as defined by the merchant."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[shared_productvariantstatus_enum.ProductVariantStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[shared_productvariantstatus.ProductVariantStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     unit_of_measure: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitOfMeasure'), 'exclude': lambda f: f is None }})
     r"""Unit of measure for the variant, such as `kg` or `meters`."""
     vat_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('vatPercentage'), 'exclude': lambda f: f is None }})

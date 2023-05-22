@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class PaymentStatusEnum(str, Enum):
+class PaymentStatus(str, Enum):
     r"""Status of the payment"""
     PENDING = 'Pending'
     AUTHORIZED = 'Authorized'
