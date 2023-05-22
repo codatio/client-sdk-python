@@ -22,6 +22,7 @@ class Journals:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateJournalRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateJournalResponse:
         r"""Create journal
         Posts a new journal to the accounting package for a given company.
@@ -30,17 +31,18 @@ class Journals:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support creating journals.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support creating journals.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateJournalRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journals', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "journal", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateJournalRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,6 +71,7 @@ class Journals:
 
         return res
 
+    
     def get(self, request: operations.GetJournalRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetJournalResponse:
         r"""Get journal
         Gets a single journal corresponding to the given ID.
@@ -76,7 +79,9 @@ class Journals:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetJournalRequest, base_url, '/companies/{companyId}/data/journals/{journalId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -87,7 +92,7 @@ class Journals:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -105,6 +110,7 @@ class Journals:
 
         return res
 
+    
     def get_create_model(self, request: operations.GetCreateJournalsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateJournalsModelResponse:
         r"""Get create journal model
         Get create journal model. Returns the expected data for the request payload.
@@ -113,12 +119,14 @@ class Journals:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support creating journals.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support creating journals.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateJournalsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/journals', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -129,7 +137,7 @@ class Journals:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -147,6 +155,7 @@ class Journals:
 
         return res
 
+    
     def list(self, request: operations.ListJournalsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListJournalsResponse:
         r"""List journals
         Gets the latest journals for a company, with pagination
@@ -154,8 +163,10 @@ class Journals:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListJournalsRequest, base_url, '/companies/{companyId}/data/journals', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListJournalsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -166,7 +177,7 @@ class Journals:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

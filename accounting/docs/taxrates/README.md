@@ -25,10 +25,9 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetTaxRateRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tax_rate_id='inventore',
+    tax_rate_id='culpa',
 )
 
 res = s.tax_rates.get(req)
@@ -53,13 +52,12 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListTaxRatesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='eligendi',
+    query='sunt',
 )
 
 res = s.tax_rates.list(req)

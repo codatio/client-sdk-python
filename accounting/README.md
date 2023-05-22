@@ -23,7 +23,6 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetAccountTransactionRequest(
     account_transaction_id='corrupti',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -58,12 +57,11 @@ if res.account_transaction is not None:
 * [create](docs/bankaccounttransactions/README.md#create) - Create bank transactions
 * [get_create_model](docs/bankaccounttransactions/README.md#get_create_model) - List push options for bank account bank transactions
 * [list](docs/bankaccounttransactions/README.md#list) - List bank transactions for bank account
-* [list_transactions](docs/bankaccounttransactions/README.md#list_transactions) - List all bank transactions
 
 ### [bank_accounts](docs/bankaccounts/README.md)
 
 * [create](docs/bankaccounts/README.md#create) - Create bank account
-* [get](docs/bankaccounts/README.md#get) - Get bank account
+* [~~get~~](docs/bankaccounts/README.md#get) - Get bank account :warning: **Deprecated**
 * [get_create_update_model](docs/bankaccounts/README.md#get_create_update_model) - Get create/update bank account model
 * [list](docs/bankaccounts/README.md#list) - List bank accounts
 * [update](docs/bankaccounts/README.md#update) - Update bank account
@@ -143,12 +141,6 @@ if res.account_transaction is not None:
 * [list_attachments](docs/directincomes/README.md#list_attachments) - List direct income attachments
 * [upload_attachment](docs/directincomes/README.md#upload_attachment) - Create direct income attachment
 
-### [financials](docs/financials/README.md)
-
-* [get_balance_sheet](docs/financials/README.md#get_balance_sheet) - Get balance sheet
-* [get_cash_flow_statement](docs/financials/README.md#get_cash_flow_statement) - Get cash flow statement
-* [get_profit_and_loss](docs/financials/README.md#get_profit_and_loss) - Get profit and loss
-
 ### [invoices](docs/invoices/README.md)
 
 * [create](docs/invoices/README.md#create) - Create invoice
@@ -209,6 +201,9 @@ if res.account_transaction is not None:
 
 * [get_aged_creditors_report](docs/reports/README.md#get_aged_creditors_report) - Aged creditors report
 * [get_aged_debtors_report](docs/reports/README.md#get_aged_debtors_report) - Aged debtors report
+* [get_balance_sheet](docs/reports/README.md#get_balance_sheet) - Get balance sheet
+* [get_cash_flow_statement](docs/reports/README.md#get_cash_flow_statement) - Get cash flow statement
+* [get_profit_and_loss](docs/reports/README.md#get_profit_and_loss) - Get profit and loss
 * [is_aged_creditors_report_available](docs/reports/README.md#is_aged_creditors_report_available) - Aged creditors report available
 * [is_aged_debtor_report_available](docs/reports/README.md#is_aged_debtor_report_available) - Aged debtors report available
 

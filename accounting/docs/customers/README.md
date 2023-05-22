@@ -17,13 +17,13 @@ Customers
 
 ## create
 
-Posts an individual customer for a given company.
+﻿Posts an individual customer for a given company.
 
 Required data may vary by integration. To see what data to post, first call [Get create/update customer model](https://docs.codat.io/accounting-api#/operations/get-create-update-customers-model).
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating customers.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating customers.
 
 ### Example Usage
 
@@ -37,104 +37,121 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='Cartwrightstad',
-                country='Ukraine',
-                line1='assumenda',
-                line2='optio',
-                postal_code='94549',
-                region='adipisci',
-                type=shared.AddressTypeEnum.UNKNOWN,
+                city='Port Clevelandtown',
+                country='Turkmenistan',
+                line1='culpa',
+                line2='at',
+                postal_code='10296',
+                region='dolore',
+                type=shared.AddressType.UNKNOWN,
             ),
             shared.Addressesitems(
-                city='Apopka',
-                country='Equatorial Guinea',
-                line1='rerum',
-                line2='nesciunt',
-                postal_code='28807-3440',
-                region='recusandae',
-                type=shared.AddressTypeEnum.DELIVERY,
+                city='Abbyport',
+                country='Philippines',
+                line1='voluptatibus',
+                line2='sequi',
+                postal_code='37221',
+                region='quas',
+                type=shared.AddressType.UNKNOWN,
             ),
             shared.Addressesitems(
-                city='East Martina',
-                country='Svalbard & Jan Mayen Islands',
-                line1='dolor',
-                line2='porro',
-                postal_code='91773-0293',
-                region='quod',
-                type=shared.AddressTypeEnum.UNKNOWN,
+                city='Burdetteland',
+                country='Vietnam',
+                line1='nulla',
+                line2='libero',
+                postal_code='94593',
+                region='unde',
+                type=shared.AddressType.UNKNOWN,
             ),
             shared.Addressesitems(
-                city='Reichelfort',
-                country='South Africa',
-                line1='alias',
-                line2='deserunt',
-                postal_code='15095',
-                region='nemo',
-                type=shared.AddressTypeEnum.BILLING,
+                city='South Paul',
+                country='Lesotho',
+                line1='ab',
+                line2='quo',
+                postal_code='58178-2135',
+                region='temporibus',
+                type=shared.AddressType.UNKNOWN,
             ),
         ],
-        contact_name='reiciendis',
+        contact_name='amet',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Freedaton',
-                    country='Mali',
-                    line1='natus',
-                    line2='culpa',
-                    postal_code='48950-4669',
-                    region='quae',
-                    type=shared.AddressTypeEnum.UNKNOWN,
+                    city='Margaretestad',
+                    country='Burkina Faso',
+                    line1='placeat',
+                    line2='rem',
+                    postal_code='59914',
+                    region='ullam',
+                    type=shared.AddressType.UNKNOWN,
                 ),
-                email='Cristal_Fisher48@hotmail.com',
-                modified_date='unde',
-                name='Alton McKenzie',
+                email='Buster49@hotmail.com',
+                modified_date='quod',
+                name='Marjorie Funk',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='aut',
-                        type=shared.PhoneNumberTypeEnum.LANDLINE,
-                    ),
-                    shared.PhoneNumbersitems(
-                        number='quia',
-                        type=shared.PhoneNumberTypeEnum.FAX,
+                        number='quaerat',
+                        type=shared.PhoneNumberType.LANDLINE,
                     ),
                 ],
-                status=shared.CustomerStatusEnum.ARCHIVED,
+                status=shared.CustomerStatus.ARCHIVED,
+            ),
+            shared.Contact(
+                address=shared.Addressesitems(
+                    city='Howellland',
+                    country='Mayotte',
+                    line1='distinctio',
+                    line2='cum',
+                    postal_code='82083',
+                    region='laborum',
+                    type=shared.AddressType.UNKNOWN,
+                ),
+                email='Warren19@gmail.com',
+                modified_date='autem',
+                name='Edgar Cremin',
+                phone=[
+                    shared.PhoneNumbersitems(
+                        number='velit',
+                        type=shared.PhoneNumberType.LANDLINE,
+                    ),
+                ],
+                status=shared.CustomerStatus.ARCHIVED,
             ),
         ],
-        customer_name='qui',
-        default_currency='commodi',
-        email_address='a',
-        id='d368ba92-16bc-4b41-9835-c73641723133',
+        customer_name='natus',
+        default_currency='minima',
+        email_address='minus',
+        id='9d237397-c785-4b5d-b4f5-00183febdf67',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='recusandae',
-        phone='(802) 568-3142 x77862',
-        registration_number='molestias',
-        source_modified_date='dolores',
-        status=shared.CustomerStatusEnum.UNKNOWN,
+        modified_date='aliquid',
+        phone='510.586.7430 x0316',
+        registration_number='ad',
+        source_modified_date='nisi',
+        status=shared.CustomerStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "minus": {
-                    "odit": 'maxime',
-                    "aspernatur": 'magni',
+                "officiis": {
+                    "minus": 'tempora',
+                    "sequi": 'natus',
+                    "saepe": 'quibusdam',
+                    "corrupti": 'maxime',
                 },
-                "minus": {
-                    "ipsam": 'sequi',
-                    "quaerat": 'accusantium',
+                "aliquam": {
+                    "explicabo": 'eaque',
                 },
             },
         ),
-        tax_number='incidunt',
+        tax_number='hic',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=583959,
+    timeout_in_minutes=276828,
 )
 
 res = s.customers.create(req)
@@ -145,7 +162,7 @@ if res.create_customer_response is not None:
 
 ## download_attachment
 
-Download customer attachment
+﻿Download customer attachment.
 
 ### Example Usage
 
@@ -159,12 +176,11 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.DownloadCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='minima',
+    customer_id='quae',
 )
 
 res = s.customers.download_attachment(req)
@@ -175,7 +191,7 @@ if res.data is not None:
 
 ## get
 
-Gets a single customer corresponding to the given ID.
+﻿Gets a single customer corresponding to the given ID.
 
 ### Example Usage
 
@@ -189,10 +205,9 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='quo',
+    customer_id='eos',
 )
 
 res = s.customers.get(req)
@@ -203,7 +218,7 @@ if res.customer is not None:
 
 ## get_attachment
 
-Get  customer attachment
+﻿Get  customer attachment.
 
 ### Example Usage
 
@@ -217,12 +232,11 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='quis',
+    customer_id='eius',
 )
 
 res = s.customers.get_attachment(req)
@@ -233,13 +247,13 @@ if res.attachment is not None:
 
 ## get_create_update_model
 
-Get create/update customer model. Returns the expected data for the request payload.
+﻿Get create/update customer model. Returns the expected data for the request payload.
 
 See the examples for integration-specific indicative models.
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating and updating customers.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating and updating customers.
 
 ### Example Usage
 
@@ -252,7 +266,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetCreateUpdateCustomersModelRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -267,7 +280,7 @@ if res.push_option is not None:
 
 ## list
 
-Gets the latest customers for a company, with pagination
+﻿Gets the latest customers for a company, with pagination.
 
 ### Example Usage
 
@@ -281,13 +294,12 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListCustomersRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='facere',
+    query='voluptatem',
 )
 
 res = s.customers.list(req)
@@ -298,7 +310,7 @@ if res.customers is not None:
 
 ## list_attachments
 
-List customer attachments
+﻿List customer attachments
 
 ### Example Usage
 
@@ -312,11 +324,10 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListCustomerAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='quidem',
+    customer_id='temporibus',
 )
 
 res = s.customers.list_attachments(req)
@@ -327,13 +338,13 @@ if res.attachments_dataset is not None:
 
 ## update
 
-Posts an updated customer for a given company.
+﻿Posts an updated customer for a given company.
 
 Required data may vary by integration. To see what data to post, first call [Get create/update customer model](https://docs.codat.io/accounting-api#/operations/get-create-update-customers-model).
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support updating customers.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support updating customers.
 
 ### Example Usage
 
@@ -347,148 +358,119 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='Port Eriberto',
-                country='Jersey',
-                line1='quo',
-                line2='vitae',
-                postal_code='26519-5661',
-                region='enim',
-                type=shared.AddressTypeEnum.BILLING,
+                city='New Jayde',
+                country='Nigeria',
+                line1='porro',
+                line2='voluptas',
+                postal_code='27537-1668',
+                region='magni',
+                type=shared.AddressType.UNKNOWN,
             ),
             shared.Addressesitems(
-                city='South San Francisco',
-                country='Sao Tome and Principe',
-                line1='quasi',
-                line2='sint',
-                postal_code='19688',
-                region='eum',
-                type=shared.AddressTypeEnum.UNKNOWN,
-            ),
-            shared.Addressesitems(
-                city='Williamsonfield',
-                country='Samoa',
-                line1='veniam',
-                line2='magnam',
-                postal_code='68300',
-                region='quis',
-                type=shared.AddressTypeEnum.DELIVERY,
+                city='Joanhaven',
+                country='Lebanon',
+                line1='unde',
+                line2='ad',
+                postal_code='62198-2033',
+                region='laboriosam',
+                type=shared.AddressType.BILLING,
             ),
         ],
-        contact_name='reiciendis',
+        contact_name='tenetur',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Lesterview',
-                    country='Burundi',
-                    line1='voluptatem',
-                    line2='voluptas',
-                    postal_code='89160-6192',
-                    region='quia',
-                    type=shared.AddressTypeEnum.DELIVERY,
+                    city='O'Konton',
+                    country='Argentina',
+                    line1='voluptas',
+                    line2='pariatur',
+                    postal_code='01252',
+                    region='ullam',
+                    type=shared.AddressType.UNKNOWN,
                 ),
-                email='Lydia7@gmail.com',
-                modified_date='perferendis',
-                name='Andy Paucek',
+                email='Aurelia.Mraz77@yahoo.com',
+                modified_date='ipsum',
+                name='Carl Pollich IV',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='necessitatibus',
-                        type=shared.PhoneNumberTypeEnum.FAX,
+                        number='incidunt',
+                        type=shared.PhoneNumberType.PRIMARY,
+                    ),
+                    shared.PhoneNumbersitems(
+                        number='nisi',
+                        type=shared.PhoneNumberType.PRIMARY,
                     ),
                 ],
-                status=shared.CustomerStatusEnum.UNKNOWN,
+                status=shared.CustomerStatus.ARCHIVED,
             ),
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='West Ethelyn',
-                    country='Martinique',
-                    line1='ea',
-                    line2='fugiat',
-                    postal_code='59595',
-                    region='reprehenderit',
-                    type=shared.AddressTypeEnum.BILLING,
+                    city='North Cloydton',
+                    country='Austria',
+                    line1='possimus',
+                    line2='perferendis',
+                    postal_code='28760',
+                    region='beatae',
+                    type=shared.AddressType.DELIVERY,
                 ),
-                email='Mittie_Williamson13@gmail.com',
-                modified_date='nam',
-                name='Erik Stehr',
+                email='Mae.Willms66@yahoo.com',
+                modified_date='commodi',
+                name='Tom Gutkowski',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='deserunt',
-                        type=shared.PhoneNumberTypeEnum.MOBILE,
+                        number='id',
+                        type=shared.PhoneNumberType.UNKNOWN,
                     ),
                     shared.PhoneNumbersitems(
-                        number='modi',
-                        type=shared.PhoneNumberTypeEnum.FAX,
-                    ),
-                    shared.PhoneNumbersitems(
-                        number='repellendus',
-                        type=shared.PhoneNumberTypeEnum.MOBILE,
-                    ),
-                    shared.PhoneNumbersitems(
-                        number='unde',
-                        type=shared.PhoneNumberTypeEnum.FAX,
+                        number='molestias',
+                        type=shared.PhoneNumberType.UNKNOWN,
                     ),
                 ],
-                status=shared.CustomerStatusEnum.UNKNOWN,
-            ),
-            shared.Contact(
-                address=shared.Addressesitems(
-                    city='Port Gavinland',
-                    country='Central African Republic',
-                    line1='numquam',
-                    line2='velit',
-                    postal_code='21540',
-                    region='cumque',
-                    type=shared.AddressTypeEnum.DELIVERY,
-                ),
-                email='Josiah19@yahoo.com',
-                modified_date='fuga',
-                name='Miss Don Dach',
-                phone=[
-                    shared.PhoneNumbersitems(
-                        number='nesciunt',
-                        type=shared.PhoneNumberTypeEnum.UNKNOWN,
-                    ),
-                    shared.PhoneNumbersitems(
-                        number='beatae',
-                        type=shared.PhoneNumberTypeEnum.UNKNOWN,
-                    ),
-                ],
-                status=shared.CustomerStatusEnum.UNKNOWN,
+                status=shared.CustomerStatus.ACTIVE,
             ),
         ],
-        customer_name='quo',
-        default_currency='libero',
-        email_address='eaque',
-        id='a0003eb2-2d9b-43a7-8d94-faa741c57d1f',
+        customer_name='occaecati',
+        default_currency='eos',
+        email_address='veniam',
+        id='3c8962f4-896b-4f51-a465-2d3c343d6177',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='vero',
-        phone='(810) 408-1587 x17905',
-        registration_number='nostrum',
-        source_modified_date='labore',
-        status=shared.CustomerStatusEnum.ACTIVE,
+        modified_date='atque',
+        phone='1-935-212-4413 x9410',
+        registration_number='iste',
+        source_modified_date='aut',
+        status=shared.CustomerStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "tenetur": {
-                    "necessitatibus": 'necessitatibus',
-                    "autem": 'natus',
-                    "quasi": 'iure',
+                "error": {
+                    "ipsa": 'dolore',
+                },
+                "labore": {
+                    "ullam": 'quibusdam',
+                    "recusandae": 'ad',
+                    "omnis": 'mollitia',
+                },
+                "placeat": {
+                    "ducimus": 'eaque',
+                    "aliquid": 'ea',
+                },
+                "odio": {
+                    "quisquam": 'delectus',
                 },
             },
         ),
-        tax_number='ex',
+        tax_number='et',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='error',
+    customer_id='optio',
     force_update=False,
-    timeout_in_minutes=535903,
+    timeout_in_minutes=953679,
 )
 
 res = s.customers.update(req)

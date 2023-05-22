@@ -5,9 +5,9 @@ import dataclasses
 from ..shared import addressesitems as shared_addressesitems
 from ..shared import customerref as shared_customerref
 from ..shared import metadata as shared_metadata
-from ..shared import salesorderinvoicestatus_enum as shared_salesorderinvoicestatus_enum
+from ..shared import salesorderinvoicestatus as shared_salesorderinvoicestatus
 from ..shared import salesorderlineitem as shared_salesorderlineitem
-from ..shared import salesorderstatus_enum as shared_salesorderstatus_enum
+from ..shared import salesorderstatus as shared_salesorderstatus
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -108,7 +108,7 @@ class SalesOrder:
     """
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier for the sales order, unique for the company in the accounting platform."""
-    invoicing_status: Optional[shared_salesorderinvoicestatus_enum.SalesOrderInvoiceStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoicingStatus'), 'exclude': lambda f: f is None }})
+    invoicing_status: Optional[shared_salesorderinvoicestatus.SalesOrderInvoiceStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoicingStatus'), 'exclude': lambda f: f is None }})
     r"""If the sales order is converted to an invoice, or will be in future, the invoicingStatus field indicates the current stage of the invoicing process."""
     issue_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -142,7 +142,7 @@ class SalesOrder:
     ship_to: Optional[SalesOrderShipTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('shipTo'), 'exclude': lambda f: f is None }})
     r"""Delivery details for any goods that have been ordered."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[shared_salesorderstatus_enum.SalesOrderStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[shared_salesorderstatus.SalesOrderStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Current state of the sales order."""
     sub_total: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal'), 'exclude': lambda f: f is None }})
     r"""Total amount of the sales order, including discounts but excluding tax."""

@@ -10,7 +10,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class TrackingInvoiceTo:
+class TrackingRecordReference:
     r"""Links to the underlying record or data type.
     
     Found on:
@@ -32,7 +32,7 @@ class TrackingInvoiceTo:
 class Tracking:
     
     record_refs: list[shared_invoiceto.InvoiceTo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
-    invoice_to: Optional[TrackingInvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
+    invoice_to: Optional[TrackingRecordReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
     r"""Links to the underlying record or data type.
     
     Found on:

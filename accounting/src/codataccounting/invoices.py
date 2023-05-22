@@ -22,6 +22,7 @@ class Invoices:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateInvoiceResponse:
         r"""Create invoice
         Posts a new invoice to the accounting package for a given company.
@@ -35,12 +36,13 @@ class Invoices:
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "invoice", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateInvoiceRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,18 +71,42 @@ class Invoices:
 
         return res
 
+    
     def delete(self, request: operations.DeleteInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteInvoiceResponse:
         r"""Delete invoice
-        Deletes an invoice from the accounting package for a given company.
+        The _Delete Invoices_ endpoint allows you to delete a specified Invoice from an accounting platform.
+        
+        ### Process
+        1. Pass the `{invoiceId}` to the _Delete Invoices_ endpoint and store the `pushOperationKey` returned.
+        2. Check the status of the delete operation by checking the status of push operation either via
+            1. [Push operation webhook](/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
+            2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
+        
+           A `Success` status indicates that the Invoice object was deleted from the accounting platform.
+        3. (Optional) Check that the Invoice was deleted from the accounting platform.
+        
+        ### Effect on related objects
+        
+        Be aware that deleting an Invoice from an accounting platform might cause related objects to be modified. For example, if you delete a paid invoice from QuickBooks Online, the invoice is deleted but the payment against that invoice is not. The payment is converted to a payment on account.
+        
+        ## Integration specifics
+        Integrations that support soft delete do not permanently delete the object in the accounting platform.
+        
+        | Integration | Soft Deleted | 
+        |-------------|--------------|
+        | QuickBooks Online | Yes    |     
         
         > **Supported Integrations**
         > 
         > This functionality is currently only supported for our QuickBooks Online integration. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+        > We're increasing support for object deletion across various accounting platforms and data types. You can check our [Accounting API Public Product Roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) for the latest status.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.DeleteInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -91,7 +117,7 @@ class Invoices:
             
 
         def do_request():
-            return client.request('DELETE', url)
+            return client.request('DELETE', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -109,14 +135,17 @@ class Invoices:
 
         return res
 
-    def download_attachment(self, request: operations.DownloadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoiceAttachmentResponse:
+    
+    def download_attachment(self, request: operations.DownloadInvoicesAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoicesAttachmentResponse:
         r"""Download invoice attachment
-        Download invoice attachments
+        Download invoice attachment.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.DownloadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download', request)
-        
+        url = utils.generate_url(operations.DownloadInvoicesAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download', request)
+        headers = {}
+        headers['Accept'] = 'application/octet-stream'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -127,7 +156,7 @@ class Invoices:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -136,7 +165,7 @@ class Invoices:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.DownloadInvoiceAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DownloadInvoicesAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
@@ -144,14 +173,17 @@ class Invoices:
 
         return res
 
+    
     def download_pdf(self, request: operations.DownloadInvoicePdfRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoicePdfResponse:
         r"""Get invoice as PDF
-        Get invoice as PDF
+        Download invoice as a pdf.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.DownloadInvoicePdfRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}/pdf', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/octet-stream'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -162,7 +194,7 @@ class Invoices:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -179,14 +211,17 @@ class Invoices:
 
         return res
 
+    
     def get(self, request: operations.GetInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetInvoiceResponse:
         r"""Get invoice
-        Get invoice
+        Get an invoice.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetInvoiceRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -197,7 +232,7 @@ class Invoices:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -215,14 +250,17 @@ class Invoices:
 
         return res
 
+    
     def get_attachment(self, request: operations.GetInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetInvoiceAttachmentResponse:
         r"""Get invoice attachment
-        Get invoice attachment
+        Get invoice attachment.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -233,7 +271,7 @@ class Invoices:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -251,6 +289,7 @@ class Invoices:
 
         return res
 
+    
     def get_create_update_model(self, request: operations.GetCreateUpdateInvoicesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateInvoicesModelResponse:
         r"""Get create/update invoice model
         Get create/update invoice model. Returns the expected data for the request payload.
@@ -264,7 +303,9 @@ class Invoices:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateUpdateInvoicesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/invoices', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -275,7 +316,7 @@ class Invoices:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -293,15 +334,18 @@ class Invoices:
 
         return res
 
+    
     def list(self, request: operations.ListInvoicesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListInvoicesResponse:
         r"""List invoices
-        Gets the latest invoices for a company, with pagination
+        Gets the latest invoices for a company, with pagination.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListInvoicesRequest, base_url, '/companies/{companyId}/data/invoices', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListInvoicesRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -312,7 +356,7 @@ class Invoices:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -330,6 +374,7 @@ class Invoices:
 
         return res
 
+    
     def list_attachments(self, request: operations.ListInvoiceAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListInvoiceAttachmentsResponse:
         r"""List invoice attachments
         List invoice attachments
@@ -337,7 +382,9 @@ class Invoices:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListInvoiceAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -348,7 +395,7 @@ class Invoices:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -366,6 +413,7 @@ class Invoices:
 
         return res
 
+    
     def update(self, request: operations.UpdateInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateInvoiceResponse:
         r"""Update invoice
         Posts an updated invoice to the accounting package for a given company.
@@ -375,16 +423,18 @@ class Invoices:
         > **Supported Integrations**
         > 
         > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support updating invoices.
+        operationId: update-invoice
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "invoice", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateInvoiceRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -413,18 +463,20 @@ class Invoices:
 
         return res
 
+    
     def upload_attachment(self, request: operations.UploadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadInvoiceAttachmentResponse:
         r"""Push invoice attachment
-        Push invoice attachment
+        Upload invoice attachment.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.UploadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}/attachment', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['Accept'] = '*/*'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

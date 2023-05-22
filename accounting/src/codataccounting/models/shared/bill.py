@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import billlineitem as shared_billlineitem
-from ..shared import billstatus_enum as shared_billstatus_enum
+from ..shared import billstatus as shared_billstatus
 from ..shared import metadata as shared_metadata
 from ..shared import paymentallocationpayment as shared_paymentallocationpayment
 from ..shared import purchaseorderref as shared_purchaseorderref
@@ -125,7 +125,7 @@ class Bill:
     """
     
     issue_date: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate') }})
-    status: shared_billstatus_enum.BillStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_billstatus.BillStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Current state of the bill."""
     sub_total: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal') }})
     r"""Total amount of the bill, excluding any taxes."""

@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import billcreditnotelineitem as shared_billcreditnotelineitem
-from ..shared import billcreditnotestatus_enum as shared_billcreditnotestatus_enum
+from ..shared import billcreditnotestatus as shared_billcreditnotestatus
 from ..shared import items as shared_items
 from ..shared import metadata as shared_metadata
 from ..shared import supplementaldata as shared_supplementaldata
@@ -37,9 +37,7 @@ class BillCreditNote:
     
     discount_percentage: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage') }})
     r"""Percentage rate of any discount applied to the bill credit note."""
-    remaining_credit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('remainingCredit') }})
-    r"""Amount of the bill credit note that is still outstanding."""
-    status: shared_billcreditnotestatus_enum.BillCreditNoteStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_billcreditnotestatus.BillCreditNoteStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Current state of the bill credit note"""
     sub_total: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal') }})
     r"""Total amount of the bill credit note, including discounts but excluding tax."""
@@ -137,6 +135,8 @@ class BillCreditNote:
     r"""Any additional information about the bill credit note."""
     payment_allocations: Optional[list[shared_items.Items]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations'), 'exclude': lambda f: f is None }})
     r"""An array of payment allocations."""
+    remaining_credit: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('remainingCredit'), 'exclude': lambda f: f is None }})
+    r"""Amount of the bill credit note that is still outstanding."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""

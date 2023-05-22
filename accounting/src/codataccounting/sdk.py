@@ -14,7 +14,6 @@ from .credit_notes import CreditNotes
 from .customers import Customers
 from .direct_costs import DirectCosts
 from .direct_incomes import DirectIncomes
-from .financials import Financials
 from .invoices import Invoices
 from .items import Items
 from .journal_entries import JournalEntries
@@ -69,8 +68,6 @@ class CodatAccounting:
     r"""Direct costs"""
     direct_incomes: DirectIncomes
     r"""Direct incomes"""
-    financials: Financials
-    r"""Financials"""
     invoices: Invoices
     r"""Invoices"""
     items: Items
@@ -102,8 +99,8 @@ class CodatAccounting:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.15.0"
-    _gen_version: str = "2.24.0"
+    _sdk_version: str = "0.16.0"
+    _gen_version: str = "2.32.0"
 
     def __init__(self,
                  security: shared.Security = None,
@@ -240,15 +237,6 @@ class CodatAccounting:
         )
         
         self.direct_incomes = DirectIncomes(
-            self._client,
-            self._security_client,
-            self._server_url,
-            self._language,
-            self._sdk_version,
-            self._gen_version
-        )
-        
-        self.financials = Financials(
             self._client,
             self._security_client,
             self._server_url,

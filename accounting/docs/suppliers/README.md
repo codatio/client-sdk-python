@@ -25,6 +25,7 @@ Required data may vary by integration. To see what data to post, first call [Get
 > 
 > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support creating suppliers.
 
+
 ### Example Usage
 
 ```python
@@ -37,48 +38,74 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Thousand Oaks',
-                country='Papua New Guinea',
-                line1='amet',
-                line2='tempore',
-                postal_code='81317',
-                region='adipisci',
-                type=shared.AddressTypeEnum.UNKNOWN,
+                city='Madelynnberg',
+                country='Denmark',
+                line1='culpa',
+                line2='corrupti',
+                postal_code='77168',
+                region='voluptatibus',
+                type=shared.AddressType.BILLING,
+            ),
+            shared.Addressesitems(
+                city='East Isabella',
+                country='British Indian Ocean Territory (Chagos Archipelago)',
+                line1='est',
+                line2='consequatur',
+                postal_code='32501',
+                region='incidunt',
+                type=shared.AddressType.DELIVERY,
+            ),
+            shared.Addressesitems(
+                city='Arlington',
+                country='Mongolia',
+                line1='assumenda',
+                line2='alias',
+                postal_code='74089-9599',
+                region='aut',
+                type=shared.AddressType.DELIVERY,
             ),
         ],
-        contact_name='alias',
-        default_currency='occaecati',
-        email_address='perspiciatis',
-        id='83663c66-dcbb-47df-acb0-9c8b408e0713',
+        contact_name='eaque',
+        default_currency='officiis',
+        email_address='tempora',
+        id='6f225e29-d79d-439d-8790-e2e6014a33d9',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='molestiae',
-        phone='489.499.8000 x854',
-        registration_number='praesentium',
-        source_modified_date='aperiam',
-        status=shared.SupplierStatusEnum.ARCHIVED,
+        modified_date='iusto',
+        phone='717-420-7972',
+        registration_number='doloremque',
+        source_modified_date='necessitatibus',
+        status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "doloremque": {
-                    "eius": 'odio',
-                    "rerum": 'provident',
-                    "nostrum": 'perferendis',
-                    "aliquam": 'accusantium',
+                "dolor": {
+                    "rem": 'eveniet',
+                    "veniam": 'vero',
+                    "dolor": 'occaecati',
+                    "explicabo": 'delectus',
+                },
+                "fugit": {
+                    "dolorum": 'voluptate',
+                },
+                "ducimus": {
+                    "rerum": 'iusto',
+                    "deserunt": 'asperiores',
+                    "ab": 'tempore',
+                    "suscipit": 'neque',
                 },
             },
         ),
-        supplier_name='possimus',
-        tax_number='vel',
+        supplier_name='eveniet',
+        tax_number='placeat',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=796063,
+    timeout_in_minutes=867440,
 )
 
 res = s.suppliers.create(req)
@@ -102,7 +129,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.DownloadSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -133,7 +159,6 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     supplier_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -147,7 +172,7 @@ if res.supplier is not None:
 
 ## get_attachment
 
-Get supplier attachment
+﻿Get supplier attachment.
 
 ### Example Usage
 
@@ -160,7 +185,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -197,7 +221,6 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetCreateUpdateSuppliersModelRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -225,13 +248,12 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListSuppliersRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='blanditiis',
+    query='officiis',
 )
 
 res = s.suppliers.list(req)
@@ -256,7 +278,6 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -277,7 +298,7 @@ Required data may vary by integration. To see what data to post, first call [Get
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support updating suppliers.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support updating suppliers.
 
 ### Example Usage
 
@@ -291,75 +312,62 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Lake Gabriellashire',
-                country='Afghanistan',
-                line1='perferendis',
-                line2='aspernatur',
-                postal_code='04820',
-                region='dolore',
-                type=shared.AddressTypeEnum.BILLING,
-            ),
-            shared.Addressesitems(
-                city='Mountain View',
-                country='Armenia',
-                line1='alias',
-                line2='sit',
-                postal_code='98150-1458',
-                region='quidem',
-                type=shared.AddressTypeEnum.UNKNOWN,
-            ),
-            shared.Addressesitems(
-                city='Watersfurt',
-                country='Syrian Arab Republic',
-                line1='suscipit',
-                line2='ut',
-                postal_code='40961',
-                region='corporis',
-                type=shared.AddressTypeEnum.UNKNOWN,
+                city='Alyceworth',
+                country='Peru',
+                line1='deleniti',
+                line2='consequatur',
+                postal_code='03324-7318',
+                region='ut',
+                type=shared.AddressType.UNKNOWN,
             ),
         ],
-        contact_name='alias',
-        default_currency='ratione',
-        email_address='sed',
-        id='3b2c09b9-2477-41f5-a69e-5b7ec7626649',
+        contact_name='ipsam',
+        default_currency='occaecati',
+        email_address='error',
+        id='55c5c717-6045-497f-b771-9dd8c8482c02',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='possimus',
-        phone='487-692-7981 x1448',
-        registration_number='sit',
-        source_modified_date='expedita',
-        status=shared.SupplierStatusEnum.ACTIVE,
+        modified_date='aliquid',
+        phone='(851) 827-5759 x560',
+        registration_number='deserunt',
+        source_modified_date='impedit',
+        status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "repellat": {
-                    "atque": 'iure',
-                    "nulla": 'aliquid',
-                    "asperiores": 'similique',
+                "perferendis": {
+                    "illum": 'aspernatur',
+                    "officia": 'cumque',
                 },
-                "veniam": {
-                    "vel": 'earum',
-                    "corrupti": 'temporibus',
-                    "libero": 'sapiente',
+                "eveniet": {
+                    "aut": 'minus',
+                    "temporibus": 'repudiandae',
+                    "perferendis": 'aperiam',
                 },
-                "praesentium": {
-                    "qui": 'asperiores',
+                "itaque": {
+                    "necessitatibus": 'quisquam',
+                    "delectus": 'blanditiis',
+                    "inventore": 'quos',
+                },
+                "culpa": {
+                    "amet": 'consequatur',
+                    "dolor": 'saepe',
+                    "sint": 'dolorem',
                 },
             },
         ),
-        supplier_name='blanditiis',
-        tax_number='nesciunt',
+        supplier_name='doloribus',
+        tax_number='sit',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
     supplier_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    timeout_in_minutes=721212,
+    timeout_in_minutes=40967,
 )
 
 res = s.suppliers.update(req)

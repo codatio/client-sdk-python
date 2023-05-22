@@ -5,7 +5,7 @@ import dataclasses
 from ..shared import addressesitems as shared_addressesitems
 from ..shared import metadata as shared_metadata
 from ..shared import supplementaldata as shared_supplementaldata
-from ..shared import supplierstatus_enum as shared_supplierstatus_enum
+from ..shared import supplierstatus as shared_supplierstatus
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -21,7 +21,7 @@ class Supplier:
     From the **Suppliers** endpoints, you can retrieve a list of [all the suppliers for a company](https://docs.codat.io/accounting-api#/operations/list-suppliers). Suppliers' data links to accounts payable [bills](https://docs.codat.io/accounting-api#/schemas/Bill).
     """
     
-    status: shared_supplierstatus_enum.SupplierStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_supplierstatus.SupplierStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of the supplier."""
     addresses: Optional[list[shared_addressesitems.Addressesitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
     r"""An array of Addresses."""

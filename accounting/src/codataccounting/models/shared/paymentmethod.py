@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import metadata as shared_metadata
-from ..shared import paymentmethodstatus_enum as shared_paymentmethodstatus_enum
-from ..shared import paymentmethodtype_enum as shared_paymentmethodtype_enum
+from ..shared import paymentmethodstatus as shared_paymentmethodstatus
+from ..shared import paymentmethodtype as shared_paymentmethodtype
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -27,8 +27,8 @@ class PaymentMethod:
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""Name of the payment method."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[shared_paymentmethodstatus_enum.PaymentMethodStatusEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[shared_paymentmethodstatus.PaymentMethodStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Status of the Payment Method."""
-    type: Optional[shared_paymentmethodtype_enum.PaymentMethodTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[shared_paymentmethodtype.PaymentMethodType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""Method of payment."""
     

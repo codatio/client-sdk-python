@@ -19,7 +19,7 @@ Required data may vary by integration. To see what data to post, first call [Get
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating transfers.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating transfers.
 
 ### Example Usage
 
@@ -33,74 +33,80 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.CreateTransferRequest(
     transfer=shared.Transfer(
         contact_ref=shared.TransferContactRef(
-            data_type='laborum',
-            id='9ffc5619-29cc-4a95-a0a1-395918da1d48',
+            data_type='explicabo',
+            id='1f06d4d1-7852-4d28-be1d-b01d6919f831',
         ),
-        date_='recusandae',
+        date_='nemo',
         deposited_record_refs=[
-            'quas',
-            'officiis',
+            shared.InvoiceTo(
+                data_type='dolorem',
+                id='a84ea7db-15c4-4c15-be6c-d097a675597e',
+            ),
+            shared.InvoiceTo(
+                data_type='cumque',
+                id='beb7982b-af9a-47da-ac29-b938e51a7e6e',
+            ),
+            shared.InvoiceTo(
+                data_type='nulla',
+                id='6f7ff04f-da04-4669-aae8-182403655aa9',
+            ),
         ],
-        description='ipsum',
+        description='consequuntur',
         from_=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='cf8e1143-da93-408b-a7a0-8af22184439b',
-                name='Desiree Walsh',
+                id='3c49919e-bd1c-4f77-9538-cbbfcdf4ece9',
+                name='Jodi Schamberger',
             ),
-            amount=3395.66,
-            currency='eum',
+            amount=7140.11,
+            currency='modi',
         ),
-        id='ccce470c-d214-47b6-a615-2cf01d0d8c3a',
+        id='2c330496-17cb-471d-9c25-0b60c751d2ae',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='magnam',
-        source_modified_date='facilis',
+        modified_date='expedita',
+        source_modified_date='necessitatibus',
         supplemental_data=shared.SupplementalData(
             content={
-                "laborum": {
-                    "quidem": 'repellat',
-                    "molestias": 'amet',
-                },
-                "veniam": {
-                    "voluptatibus": 'vero',
-                    "provident": 'iure',
-                    "incidunt": 'repellat',
-                    "similique": 'ut',
-                },
                 "tempore": {
-                    "voluptates": 'excepturi',
+                    "rem": 'consequuntur',
+                    "molestias": 'officiis',
+                    "qui": 'vel',
+                },
+                "aliquam": {
+                    "ab": 'dolorum',
+                    "veniam": 'officiis',
+                },
+                "minus": {
+                    "corrupti": 'reprehenderit',
+                    "a": 'quam',
+                    "cupiditate": 'incidunt',
                 },
             },
         ),
         to=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='c097eda6-2344-42e1-a923-7e9984c80b47',
-                name='Bert Lind V',
+                id='f04f4144-6f79-43d3-b100-20147cd1b831',
+                name='Amy Price',
             ),
-            amount=1752.16,
-            currency='dolorem',
+            amount=2218.09,
+            currency='voluptates',
         ),
         tracking_category_refs=[
             shared.TrackingCategoryRef(
-                id='18ca8d69-c568-4921-8fa2-0207e4fae038',
-                name='Carroll Klocko DDS',
+                id='8960a0aa-fc7a-4867-8ba5-00a8f4cb72ed',
+                name='Kara Wilderman',
             ),
             shared.TrackingCategoryRef(
-                id='c2cabaf7-fc2c-4cba-8bef-0df68eaedb2e',
-                name='Darryl Altenwerth',
+                id='25d55615-8803-4212-b7b5-9b7154642b9e',
+                name='Stella Schroeder',
             ),
             shared.TrackingCategoryRef(
-                id='069fb36a-dd70-4408-8e0a-3fc73a5a034b',
-                name='Rebecca Graham',
-            ),
-            shared.TrackingCategoryRef(
-                id='243afa69-87a4-472b-b09a-153e22301068',
-                name='Tracy Monahan',
+                id='c3d3ca49-1837-4978-88d1-56f01ae36bb8',
+                name='Jose Adams',
             ),
         ],
     ),
@@ -130,11 +136,10 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetTransferRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transfer_id='ipsa',
+    transfer_id='eveniet',
 )
 
 res = s.transfers.get(req)
@@ -151,7 +156,7 @@ See the examples for integration-specific indicative models.
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating transfers.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating transfers.
 
 ### Example Usage
 
@@ -164,7 +169,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetCreateTransfersModelRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -193,14 +197,13 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListTransfersRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='perspiciatis',
+    query='ratione',
 )
 
 res = s.transfers.list(req)

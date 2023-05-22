@@ -22,6 +22,7 @@ class BankAccounts:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankAccountResponse:
         r"""Create bank account
         Posts a new bank account to the accounting package for a given company.
@@ -35,12 +36,13 @@ class BankAccounts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateBankAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "bank_account", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBankAccountRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,14 +71,19 @@ class BankAccounts:
 
         return res
 
+    
     def get(self, request: operations.GetBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankAccountResponse:
         r"""Get bank account
         Gets the bank account with a given ID
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetBankAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -87,7 +94,7 @@ class BankAccounts:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -105,6 +112,7 @@ class BankAccounts:
 
         return res
 
+    
     def get_create_update_model(self, request: operations.GetCreateUpdateBankAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBankAccountsModelResponse:
         r"""Get create/update bank account model
         Get create/update bank account model. Returns the expected data for the request payload.
@@ -118,7 +126,9 @@ class BankAccounts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateUpdateBankAccountsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bankAccounts', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -129,7 +139,7 @@ class BankAccounts:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -147,6 +157,7 @@ class BankAccounts:
 
         return res
 
+    
     def list(self, request: operations.ListBankAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountsResponse:
         r"""List bank accounts
         Gets the list of bank accounts for a given connection
@@ -154,8 +165,10 @@ class BankAccounts:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListBankAccountsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListBankAccountsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -166,7 +179,7 @@ class BankAccounts:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -184,6 +197,7 @@ class BankAccounts:
 
         return res
 
+    
     def update(self, request: operations.UpdateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankAccountResponse:
         r"""Update bank account
         Posts an updated bank account to the accounting package for a given company.
@@ -192,17 +206,18 @@ class BankAccounts:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support updating bank accounts.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support updating bank accounts.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateBankAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{bankAccountId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "bank_account", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateBankAccountRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

@@ -22,6 +22,7 @@ class Suppliers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateSupplierResponse:
         r"""Create supplier
         Push suppliers
@@ -35,12 +36,13 @@ class Suppliers:
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateSupplierRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/suppliers', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "supplier", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateSupplierRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -69,6 +71,7 @@ class Suppliers:
 
         return res
 
+    
     def download_attachment(self, request: operations.DownloadSupplierAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadSupplierAttachmentResponse:
         r"""Download supplier attachment
         Download supplier attachment
@@ -76,7 +79,9 @@ class Suppliers:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DownloadSupplierAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments/{attachmentId}/download', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/octet-stream'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -87,7 +92,7 @@ class Suppliers:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -104,6 +109,7 @@ class Suppliers:
 
         return res
 
+    
     def get(self, request: operations.GetSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSupplierResponse:
         r"""Get supplier
         Gets a single supplier corresponding to the given ID.
@@ -111,7 +117,9 @@ class Suppliers:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetSupplierRequest, base_url, '/companies/{companyId}/data/suppliers/{supplierId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -122,7 +130,7 @@ class Suppliers:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -140,14 +148,17 @@ class Suppliers:
 
         return res
 
+    
     def get_attachment(self, request: operations.GetSupplierAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSupplierAttachmentResponse:
         r"""Get supplier attachment
-        Get supplier attachment
+        Get supplier attachment.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetSupplierAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments/{attachmentId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -158,7 +169,7 @@ class Suppliers:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -176,6 +187,7 @@ class Suppliers:
 
         return res
 
+    
     def get_create_update_model(self, request: operations.GetCreateUpdateSuppliersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateSuppliersModelResponse:
         r"""Get create/update supplier model
         Get create/update supplier model. Returns the expected data for the request payload.
@@ -189,7 +201,9 @@ class Suppliers:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateUpdateSuppliersModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/suppliers', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -200,7 +214,7 @@ class Suppliers:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -218,6 +232,7 @@ class Suppliers:
 
         return res
 
+    
     def list(self, request: operations.ListSuppliersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSuppliersResponse:
         r"""List suppliers
         Gets the latest suppliers for a company, with pagination
@@ -225,8 +240,10 @@ class Suppliers:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListSuppliersRequest, base_url, '/companies/{companyId}/data/suppliers', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListSuppliersRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -237,7 +254,7 @@ class Suppliers:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -255,6 +272,7 @@ class Suppliers:
 
         return res
 
+    
     def list_attachments(self, request: operations.ListSupplierAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSupplierAttachmentsResponse:
         r"""List supplier attachments
         Get supplier attachments
@@ -262,7 +280,9 @@ class Suppliers:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListSupplierAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/suppliers/{supplierId}/attachments', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -273,7 +293,7 @@ class Suppliers:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -291,6 +311,7 @@ class Suppliers:
 
         return res
 
+    
     def update(self, request: operations.UpdateSupplierRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateSupplierResponse:
         r"""Update supplier
         Update supplier
@@ -299,17 +320,18 @@ class Suppliers:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support updating suppliers.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support updating suppliers.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateSupplierRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/suppliers/{supplierId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "supplier", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateSupplierRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

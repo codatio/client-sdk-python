@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import phonenumbertype_enum as shared_phonenumbertype_enum
+from ..shared import phonenumbertype as shared_phonenumbertype
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 
@@ -13,6 +13,6 @@ class PhoneNumbersitems:
     
     number: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('number') }})
     r"""A phone number."""
-    type: shared_phonenumbertype_enum.PhoneNumberTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: shared_phonenumbertype.PhoneNumberType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of phone number"""
     

@@ -22,6 +22,7 @@ class Transfers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def create(self, request: operations.CreateTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateTransferResponse:
         r"""Create transfer
         Posts a new transfer to the accounting package for a given company.
@@ -30,16 +31,17 @@ class Transfers:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating transfers.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating transfers.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateTransferRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/transfers', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "transfer", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -68,6 +70,7 @@ class Transfers:
 
         return res
 
+    
     def get(self, request: operations.GetTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransferResponse:
         r"""Get transfer
         Gets the specified transfer for a given company.
@@ -75,7 +78,9 @@ class Transfers:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetTransferRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -86,7 +91,7 @@ class Transfers:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -104,6 +109,7 @@ class Transfers:
 
         return res
 
+    
     def get_create_model(self, request: operations.GetCreateTransfersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateTransfersModelResponse:
         r"""Get create transfer model
         Get create transfer model. Returns the expected data for the request payload.
@@ -112,12 +118,14 @@ class Transfers:
         
         > **Supported Integrations**
         > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating transfers.
+        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating transfers.
         """
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetCreateTransfersModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/transfers', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -128,7 +136,7 @@ class Transfers:
             
 
         def do_request():
-            return client.request('GET', url)
+            return client.request('GET', url, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -146,6 +154,7 @@ class Transfers:
 
         return res
 
+    
     def list(self, request: operations.ListTransfersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransfersResponse:
         r"""List transfers
         Gets the transfers for a given company.
@@ -153,8 +162,10 @@ class Transfers:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListTransfersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/transfers', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListTransfersRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -165,7 +176,7 @@ class Transfers:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

@@ -25,7 +25,6 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.GetCompanyInfoRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -51,7 +50,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.RefreshCompanyInfoRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',

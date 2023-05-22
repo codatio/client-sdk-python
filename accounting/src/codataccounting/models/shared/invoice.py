@@ -4,9 +4,10 @@ from __future__ import annotations
 import dataclasses
 from ..shared import customerref as shared_customerref
 from ..shared import invoicelineitem as shared_invoicelineitem
-from ..shared import invoicestatus_enum as shared_invoicestatus_enum
+from ..shared import invoicestatus as shared_invoicestatus
 from ..shared import items as shared_items
 from ..shared import metadata as shared_metadata
+from ..shared import salesorderref as shared_salesorderref
 from ..shared import supplementaldata as shared_supplementaldata
 from ..shared import withholdingtaxitems as shared_withholdingtaxitems
 from codataccounting import utils
@@ -71,7 +72,7 @@ class Invoice:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    status: shared_invoicestatus_enum.InvoiceStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_invoicestatus.InvoiceStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Current state of the invoice:
     
     - `Draft` - Invoice hasn't been submitted to the supplier. It may be in a pending state or is scheduled for future submission, for example by email.
@@ -177,7 +178,7 @@ class Invoice:
     """
     payment_allocations: Optional[list[shared_items.Items]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations'), 'exclude': lambda f: f is None }})
     r"""An array of payment allocations."""
-    sales_order_refs: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('salesOrderRefs'), 'exclude': lambda f: f is None }})
+    sales_order_refs: Optional[list[shared_salesorderref.SalesOrderRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('salesOrderRefs'), 'exclude': lambda f: f is None }})
     r"""List of references to related Sales orders."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     sub_total: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal'), 'exclude': lambda f: f is None }})

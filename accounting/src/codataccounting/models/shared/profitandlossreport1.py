@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import profitandlossreport as shared_profitandlossreport
-from ..shared import reportbasis_enum as shared_reportbasis_enum
+from ..shared import reportbasis as shared_reportbasis
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -38,7 +38,7 @@ class ProfitAndLossReport1:
     
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
     r"""Base currency of the company in which the profit and loss report is presented."""
-    report_basis: shared_reportbasis_enum.ReportBasisEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportBasis') }})
+    report_basis: shared_reportbasis.ReportBasis = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportBasis') }})
     r"""The basis of a report."""
     reports: list[shared_profitandlossreport.ProfitAndLossReport] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
     r"""An array of profit and loss reports."""

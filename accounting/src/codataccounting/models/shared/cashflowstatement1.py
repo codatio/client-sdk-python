@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import cashflowstatement as shared_cashflowstatement
-from ..shared import reportbasis_enum as shared_reportbasis_enum
-from ..shared import reportinput_enum as shared_reportinput_enum
+from ..shared import reportbasis as shared_reportbasis
+from ..shared import reportinput as shared_reportinput
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -37,9 +37,9 @@ class CashFlowStatement1:
     
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    report_basis: shared_reportbasis_enum.ReportBasisEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportBasis') }})
+    report_basis: shared_reportbasis.ReportBasis = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportBasis') }})
     r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
-    report_input: shared_reportinput_enum.ReportInputEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInput') }})
+    report_input: shared_reportinput.ReportInput = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInput') }})
     r"""Accounting method used to prepare the cash flow statement."""
     reports: list[shared_cashflowstatement.CashFlowStatement] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
     r"""Array of cash flow statements."""

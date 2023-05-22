@@ -7,7 +7,7 @@ Bank accounts
 ### Available Operations
 
 * [create](#create) - Create bank account
-* [get](#get) - Get bank account
+* [~~get~~](#get) - Get bank account :warning: **Deprecated**
 * [get_create_update_model](#get_create_update_model) - Get create/update bank account model
 * [list](#list) - List bank accounts
 * [update](#update) - Update bank account
@@ -22,6 +22,7 @@ Required data may vary by integration. To see what data to post, first call []()
 > 
 > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support creating bank accounts.
 
+
 ### Example Usage
 
 ```python
@@ -34,31 +35,30 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='natus',
-        account_number='laboriosam',
-        account_type=shared.BankAccountBankAccountTypeEnum.DEBIT,
-        available_balance=9025.99,
-        balance=6818.2,
-        currency='in',
-        i_ban='corporis',
-        id='96eb10fa-aa23-452c-9955-907aff1a3a2f',
-        institution='mollitia',
+        account_name='dolor',
+        account_number='natus',
+        account_type=shared.BankAccountBankAccountType.CREDIT,
+        available_balance=9437.49,
+        balance=9025.99,
+        currency='fuga',
+        i_ban='in',
+        id='596eb10f-aaa2-4352-8595-5907aff1a3a2',
+        institution='repellat',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='occaecati',
-        nominal_code='numquam',
-        overdraft_limit=4143.69,
-        sort_code='quam',
-        source_modified_date='molestiae',
+        modified_date='mollitia',
+        nominal_code='occaecati',
+        overdraft_limit=2532.91,
+        sort_code='commodi',
+        source_modified_date='quam',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=244425,
+    timeout_in_minutes=474697,
 )
 
 res = s.bank_accounts.create(req)
@@ -67,9 +67,11 @@ if res.create_bank_account_response is not None:
     # handle response
 ```
 
-## get
+## ~~get~~
 
 Gets the bank account with a given ID
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -82,7 +84,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetBankAccountRequest(
     account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -106,6 +107,7 @@ See the examples for integration-specific indicative models.
 > 
 > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support creating and updating bank accounts.
 
+
 ### Example Usage
 
 ```python
@@ -117,7 +119,6 @@ s = codataccounting.CodatAccounting(
         auth_header="YOUR_API_KEY_HERE",
     ),
 )
-
 
 req = operations.GetCreateUpdateBankAccountsModelRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -146,14 +147,13 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.ListBankAccountsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='error',
+    query='velit',
 )
 
 res = s.bank_accounts.list(req)
@@ -170,7 +170,7 @@ Required data may vary by integration. To see what data to post, first call []()
 
 > **Supported Integrations**
 > 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support updating bank accounts.
+> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support updating bank accounts.
 
 ### Example Usage
 
@@ -184,32 +184,31 @@ s = codataccounting.CodatAccounting(
     ),
 )
 
-
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='quia',
-        account_number='quis',
-        account_type=shared.BankAccountBankAccountTypeEnum.UNKNOWN,
-        available_balance=6747.52,
-        balance=6563.3,
-        currency='enim',
-        i_ban='odit',
-        id='c3f5ad01-9da1-4ffe-b8f0-97b0074f1547',
-        institution='dicta',
+        account_name='error',
+        account_number='quia',
+        account_type=shared.BankAccountBankAccountType.CREDIT,
+        available_balance=1103.75,
+        balance=6747.52,
+        currency='animi',
+        i_ban='enim',
+        id='2c3f5ad0-19da-41ff-a78f-097b0074f154',
+        institution='iusto',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='harum',
-        nominal_code='enim',
-        overdraft_limit=8804.76,
-        sort_code='commodi',
-        source_modified_date='repudiandae',
+        modified_date='dicta',
+        nominal_code='harum',
+        overdraft_limit=3179.83,
+        sort_code='accusamus',
+        source_modified_date='commodi',
     ),
     bank_account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=64147,
+    timeout_in_minutes=918236,
 )
 
 res = s.bank_accounts.update(req)
