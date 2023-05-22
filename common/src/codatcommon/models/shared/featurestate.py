@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class FeatureStateEnum(str, Enum):
+class FeatureState(str, Enum):
     RELEASE = 'Release'
     ALPHA = 'Alpha'
     BETA = 'Beta'

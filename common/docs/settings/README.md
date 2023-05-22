@@ -56,7 +56,7 @@ req = operations.UpdateSyncSettingsRequestBody(
     overrides_defaults=False,
     settings=[
         shared.SyncSetting(
-            data_type=shared.SyncSettingDataTypeEnum.INVOICES,
+            data_type=shared.SyncSettingDataType.INVOICES,
             fetch_on_first_link=False,
             is_locked=False,
             months_to_sync=24,
@@ -66,7 +66,7 @@ req = operations.UpdateSyncSettingsRequestBody(
             sync_schedule=24,
         ),
         shared.SyncSetting(
-            data_type=shared.SyncSettingDataTypeEnum.INVOICES,
+            data_type=shared.SyncSettingDataType.INVOICES,
             fetch_on_first_link=False,
             is_locked=False,
             months_to_sync=24,
@@ -76,7 +76,7 @@ req = operations.UpdateSyncSettingsRequestBody(
             sync_schedule=24,
         ),
         shared.SyncSetting(
-            data_type=shared.SyncSettingDataTypeEnum.INVOICES,
+            data_type=shared.SyncSettingDataType.INVOICES,
             fetch_on_first_link=False,
             is_locked=False,
             months_to_sync=24,
@@ -86,7 +86,7 @@ req = operations.UpdateSyncSettingsRequestBody(
             sync_schedule=24,
         ),
         shared.SyncSetting(
-            data_type=shared.SyncSettingDataTypeEnum.INVOICES,
+            data_type=shared.SyncSettingDataType.INVOICES,
             fetch_on_first_link=False,
             is_locked=False,
             months_to_sync=24,

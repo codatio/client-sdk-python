@@ -31,6 +31,7 @@ class Integrations:
         
         url = utils.generate_url(operations.GetIntegrationRequest, base_url, '/integrations/{platformKey}', request)
         headers = {}
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -73,6 +74,7 @@ class Integrations:
         
         url = utils.generate_url(operations.GetIntegrationsBrandingRequest, base_url, '/integrations/{platformKey}/branding', request)
         headers = {}
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -112,6 +114,7 @@ class Integrations:
         url = base_url.removesuffix('/') + '/integrations'
         headers = {}
         query_params = utils.get_query_params(operations.ListIntegrationsRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client

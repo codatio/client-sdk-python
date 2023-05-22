@@ -6,7 +6,7 @@ from codatcommon import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 
-class PullOperationStatusEnum(str, Enum):
+class PullOperationStatus(str, Enum):
     INITIAL = 'Initial'
     QUEUED = 'Queued'
     FETCHING = 'Fetching'
@@ -67,5 +67,5 @@ class PullOperation:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    status: PullOperationStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: PullOperationStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     

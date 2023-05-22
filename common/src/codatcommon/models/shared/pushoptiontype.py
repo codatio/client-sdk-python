@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class PushOptionTypeEnum(str, Enum):
+class PushOptionType(str, Enum):
     ARRAY = 'Array'
     OBJECT = 'Object'
     STRING = 'String'

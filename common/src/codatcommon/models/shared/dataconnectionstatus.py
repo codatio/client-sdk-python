@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class ConnectionStatusEnum(str, Enum):
+class DataConnectionStatus(str, Enum):
     r"""The current authorization status of the data connection."""
     PENDING_AUTH = 'PendingAuth'
     LINKED = 'Linked'

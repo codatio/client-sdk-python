@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import datatype_enum as shared_datatype_enum
+from ..shared import datatype as shared_datatype
 from ..shared import pushoption as shared_pushoption
 from typing import Optional
 
@@ -13,7 +13,7 @@ class GetCreateUpdateModelOptionsByDataTypeRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    data_type: shared_datatype_enum.DataTypeEnum = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
+    data_type: shared_datatype.DataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
     r"""The key of a Codat data type"""
     
 
