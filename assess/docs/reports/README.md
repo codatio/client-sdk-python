@@ -6,20 +6,20 @@ Data integrity is important
 
 ### Available Operations
 
-* [get_accounts_for_enhanced_balance_sheet](#get_accounts_for_enhanced_balance_sheet) - Enhanced Balance Sheet Accounts
-* [get_accounts_for_enhanced_profit_and_loss](#get_accounts_for_enhanced_profit_and_loss) - Enhanced Profit and Loss Accounts
-* [get_commerce_customer_retention_metrics](#get_commerce_customer_retention_metrics) - Get the customer retention metrics for a specific company.
-* [get_commerce_lifetime_value_metrics](#get_commerce_lifetime_value_metrics) - Get the lifetime value metric for a specific company.
-* [get_commerce_orders_metrics](#get_commerce_orders_metrics) - Get order information for a specific company
-* [get_commerce_refunds_metrics](#get_commerce_refunds_metrics) - Get the refunds information for a specific company
-* [get_commerce_revenue_metrics](#get_commerce_revenue_metrics) - Commerce Revenue Metrics
-* [~~get_enhanced_balance_sheet~~](#get_enhanced_balance_sheet) - Enhanced Balance Sheet :warning: **Deprecated**
+* [get_accounts_for_enhanced_balance_sheet](#get_accounts_for_enhanced_balance_sheet) - Get enhanced balance sheet accounts
+* [get_accounts_for_enhanced_profit_and_loss](#get_accounts_for_enhanced_profit_and_loss) - Get enhanced profit and loss accounts
+* [get_commerce_customer_retention_metrics](#get_commerce_customer_retention_metrics) - Get customer retention metrics
+* [get_commerce_lifetime_value_metrics](#get_commerce_lifetime_value_metrics) - Get lifetime value metric
+* [get_commerce_orders_metrics](#get_commerce_orders_metrics) - Get orders report
+* [get_commerce_refunds_metrics](#get_commerce_refunds_metrics) - Get refunds report
+* [get_commerce_revenue_metrics](#get_commerce_revenue_metrics) - Commerce revenue metrics
+* [~~get_enhanced_balance_sheet~~](#get_enhanced_balance_sheet) - Get enhanced balance sheet report :warning: **Deprecated**
 * [get_enhanced_cash_flow_transactions](#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
 * [~~get_enhanced_financial_metrics~~](#get_enhanced_financial_metrics) - List financial metrics :warning: **Deprecated**
-* [get_enhanced_invoices_report](#get_enhanced_invoices_report) - Enhanced Invoices Report
-* [~~get_enhanced_profit_and_loss~~](#get_enhanced_profit_and_loss) - Enhanced Profit and Loss :warning: **Deprecated**
-* [get_recurring_revenue_metrics](#get_recurring_revenue_metrics) - Get key metrics for subscription revenue
-* [request_recurring_revenue_metrics](#request_recurring_revenue_metrics) - Request production of key subscription revenue metrics
+* [get_enhanced_invoices_report](#get_enhanced_invoices_report) - Get enhanced invoices report
+* [~~get_enhanced_profit_and_loss~~](#get_enhanced_profit_and_loss) - Get enhanced profit and loss report :warning: **Deprecated**
+* [get_recurring_revenue_metrics](#get_recurring_revenue_metrics) - Get key subscription revenue metrics
+* [request_recurring_revenue_metrics](#request_recurring_revenue_metrics) - Generate key subscription revenue metrics
 
 ## get_accounts_for_enhanced_balance_sheet
 
@@ -41,7 +41,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetAccountsForEnhancedBalanceSheetRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=979587,
+    number_of_periods=282807,
     report_date='29-09-2020',
 )
 
@@ -71,7 +71,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetAccountsForEnhancedProfitAndLossRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=120196,
+    number_of_periods=979587,
     report_date='29-09-2020',
 )
 
@@ -101,8 +101,8 @@ req = operations.GetCommerceCustomerRetentionMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=359444,
-    period_length=296140,
+    number_of_periods=120196,
+    period_length=359444,
     period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
@@ -133,9 +133,9 @@ req = operations.GetCommerceLifetimeValueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=118727,
-    period_length=688661,
-    period_unit=shared.PeriodUnit.WEEK,
+    number_of_periods=480894,
+    period_length=118727,
+    period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
 
@@ -165,9 +165,9 @@ req = operations.GetCommerceOrdersMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=880476,
-    period_length=414263,
-    period_unit=shared.PeriodUnit.YEAR,
+    number_of_periods=317983,
+    period_length=880476,
+    period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
 
@@ -197,9 +197,9 @@ req = operations.GetCommerceRefundsMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=64147,
-    period_length=216822,
-    period_unit=shared.PeriodUnit.MONTH,
+    number_of_periods=918236,
+    period_length=64147,
+    period_unit=shared.PeriodUnit.DAY,
     report_date='29-09-2020',
 )
 
@@ -229,9 +229,9 @@ req = operations.GetCommerceRevenueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=565189,
-    period_length=566602,
-    period_unit=shared.PeriodUnit.YEAR,
+    number_of_periods=692472,
+    period_length=565189,
+    period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
 
@@ -263,8 +263,8 @@ req = operations.GetEnhancedBalanceSheetRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=265389,
-    period_length=508969,
+    number_of_periods=865103,
+    period_length=265389,
     report_date='29-09-2020',
 )
 
@@ -275,6 +275,10 @@ if res.report is not None:
 ```
 
 ## get_enhanced_cash_flow_transactions
+
+> **Categorization engine**
+> 
+> The categorization engine uses machine learning and has been fully trained against Plaid and TrueLayer banking data sources. It is not fully trained against the Basiq banking data source.
 
 The Enhanced Cash Flow Transactions endpoint provides a fully categorized list of banking transactions for a company. Accounts and transaction data are obtained from the company's banking data sources.
 
@@ -294,7 +298,7 @@ req = operations.GetEnhancedCashFlowTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='rem',
+    query='praesentium',
 )
 
 res = s.reports.get_enhanced_cash_flow_transactions(req)
@@ -324,8 +328,8 @@ s = codatassess.CodatAssess(
 req = operations.GetEnhancedFinancialMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=916723,
-    period_length=93940,
+    number_of_periods=523248,
+    period_length=916723,
     report_date='29-09-2020',
     show_metric_inputs=False,
 )
@@ -356,7 +360,7 @@ req = operations.GetEnhancedInvoicesReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='repudiandae',
+    query='quasi',
 )
 
 res = s.reports.get_enhanced_invoices_report(req)
@@ -387,8 +391,8 @@ req = operations.GetEnhancedProfitAndLossRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=575947,
-    period_length=83112,
+    number_of_periods=921158,
+    period_length=575947,
     report_date='29-09-2020',
 )
 
@@ -427,7 +431,7 @@ if res.report is not None:
 
 ## request_recurring_revenue_metrics
 
-Request production of key subscription revenue metrics.
+Requests production of key subscription revenue metrics.
 
 ### Example Usage
 

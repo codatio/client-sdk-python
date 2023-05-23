@@ -18,7 +18,6 @@ src/codatassess/models/operations/update_accounts_categories.py
 src/codatassess/models/operations/get_data_integrity_details.py
 src/codatassess/models/operations/get_data_integrity_status.py
 src/codatassess/models/operations/get_data_integrity_summaries.py
-src/codatassess/models/operations/download_excel_report.py
 src/codatassess/models/operations/generate_excel_report.py
 src/codatassess/models/operations/get_accounting_marketing_metrics.py
 src/codatassess/models/operations/get_excel_report.py
@@ -63,8 +62,8 @@ src/codatassess/models/shared/summaries.py
 src/codatassess/models/shared/dataintegritysummary.py
 src/codatassess/models/shared/dataintegritybycount.py
 src/codatassess/models/shared/dataintegritybyamount.py
-src/codatassess/models/shared/excelreporttype.py
 src/codatassess/models/shared/excelstatus.py
+src/codatassess/models/shared/excelreporttype.py
 src/codatassess/models/shared/report.py
 src/codatassess/models/shared/reportcomponent.py
 src/codatassess/models/shared/reportcomponentmeasure.py

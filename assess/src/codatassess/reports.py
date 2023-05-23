@@ -24,7 +24,7 @@ class Reports:
         
     
     def get_accounts_for_enhanced_balance_sheet(self, request: operations.GetAccountsForEnhancedBalanceSheetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountsForEnhancedBalanceSheetResponse:
-        r"""Enhanced Balance Sheet Accounts
+        r"""Get enhanced balance sheet accounts
         The Enhanced Balance Sheet Accounts endpoint returns a list of categorized accounts that appear on a company’s Balance Sheet along with a balance per financial statement date.
         
         Codat suggests a category for each account automatically, but you can [change it](/docs/assess-categorizing-accounts-ecommerce-lending) to a more suitable one.
@@ -66,7 +66,7 @@ class Reports:
 
     
     def get_accounts_for_enhanced_profit_and_loss(self, request: operations.GetAccountsForEnhancedProfitAndLossRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountsForEnhancedProfitAndLossResponse:
-        r"""Enhanced Profit and Loss Accounts
+        r"""Get enhanced profit and loss accounts
         The Enhanced Profit and Loss Accounts endpoint returns a list of categorized accounts that appear on a company’s Profit and Loss. It also includes a balance per the financial statement date.
         
         Codat suggests a category for each account automatically, but you can [change it](/docs/assess-categorizing-accounts-ecommerce-lending) to a more suitable one.
@@ -108,7 +108,7 @@ class Reports:
 
     
     def get_commerce_customer_retention_metrics(self, request: operations.GetCommerceCustomerRetentionMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceCustomerRetentionMetricsResponse:
-        r"""Get the customer retention metrics for a specific company.
+        r"""Get customer retention metrics
         Gets the customer retention metrics for a specific company connection, over one or more periods of time.
         """
         base_url = self._server_url
@@ -148,7 +148,7 @@ class Reports:
 
     
     def get_commerce_lifetime_value_metrics(self, request: operations.GetCommerceLifetimeValueMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceLifetimeValueMetricsResponse:
-        r"""Get the lifetime value metric for a specific company.
+        r"""Get lifetime value metric
         Gets the lifetime value metric for a specific company connection, over one or more periods of time.
         """
         base_url = self._server_url
@@ -188,7 +188,7 @@ class Reports:
 
     
     def get_commerce_orders_metrics(self, request: operations.GetCommerceOrdersMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceOrdersMetricsResponse:
-        r"""Get order information for a specific company
+        r"""Get orders report
         Gets the order information for a specific company connection, over one or more periods of time.
         """
         base_url = self._server_url
@@ -228,7 +228,7 @@ class Reports:
 
     
     def get_commerce_refunds_metrics(self, request: operations.GetCommerceRefundsMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceRefundsMetricsResponse:
-        r"""Get the refunds information for a specific company
+        r"""Get refunds report
         Gets the refunds information for a specific company connection, over one or more periods of time.
         """
         base_url = self._server_url
@@ -268,7 +268,7 @@ class Reports:
 
     
     def get_commerce_revenue_metrics(self, request: operations.GetCommerceRevenueMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceRevenueMetricsResponse:
-        r"""Commerce Revenue Metrics
+        r"""Commerce revenue metrics
         Get the revenue and revenue growth for a specific company connection, over one or more periods of time.
         """
         base_url = self._server_url
@@ -308,7 +308,7 @@ class Reports:
 
     
     def get_enhanced_balance_sheet(self, request: operations.GetEnhancedBalanceSheetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedBalanceSheetResponse:
-        r"""Enhanced Balance Sheet
+        r"""Get enhanced balance sheet report
         Gets a fully categorized balance sheet statement for a given company, over one or more period(s).
         
         Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
@@ -351,6 +351,10 @@ class Reports:
     
     def get_enhanced_cash_flow_transactions(self, request: operations.GetEnhancedCashFlowTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedCashFlowTransactionsResponse:
         r"""Get enhanced cash flow report
+        > **Categorization engine**
+        > 
+        > The categorization engine uses machine learning and has been fully trained against Plaid and TrueLayer banking data sources. It is not fully trained against the Basiq banking data source.
+        
         The Enhanced Cash Flow Transactions endpoint provides a fully categorized list of banking transactions for a company. Accounts and transaction data are obtained from the company's banking data sources.
         """
         base_url = self._server_url
@@ -432,7 +436,7 @@ class Reports:
 
     
     def get_enhanced_invoices_report(self, request: operations.GetEnhancedInvoicesReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedInvoicesReportResponse:
-        r"""Enhanced Invoices Report
+        r"""Get enhanced invoices report
         Gets a list of invoices linked to the corresponding banking transaction
         """
         base_url = self._server_url
@@ -472,7 +476,7 @@ class Reports:
 
     
     def get_enhanced_profit_and_loss(self, request: operations.GetEnhancedProfitAndLossRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedProfitAndLossResponse:
-        r"""Enhanced Profit and Loss
+        r"""Get enhanced profit and loss report
         Gets a fully categorized profit and loss statement for a given company, over one or more period(s).
         
         Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
@@ -514,7 +518,7 @@ class Reports:
 
     
     def get_recurring_revenue_metrics(self, request: operations.GetRecurringRevenueMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetRecurringRevenueMetricsResponse:
-        r"""Get key metrics for subscription revenue
+        r"""Get key subscription revenue metrics
         Gets key metrics for subscription revenue.
         """
         base_url = self._server_url
@@ -553,8 +557,8 @@ class Reports:
 
     
     def request_recurring_revenue_metrics(self, request: operations.RequestRecurringRevenueMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestRecurringRevenueMetricsResponse:
-        r"""Request production of key subscription revenue metrics
-        Request production of key subscription revenue metrics.
+        r"""Generate key subscription revenue metrics
+        Requests production of key subscription revenue metrics.
         """
         base_url = self._server_url
         
