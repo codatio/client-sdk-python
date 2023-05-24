@@ -15,9 +15,9 @@ src/codatassess/models/operations/list_accounts_categories.py
 src/codatassess/models/operations/list_available_account_categories.py
 src/codatassess/models/operations/update_account_category.py
 src/codatassess/models/operations/update_accounts_categories.py
-src/codatassess/models/operations/get_data_integrity_details.py
 src/codatassess/models/operations/get_data_integrity_status.py
 src/codatassess/models/operations/get_data_integrity_summaries.py
+src/codatassess/models/operations/list_data_type_data_integrity_details.py
 src/codatassess/models/operations/generate_excel_report.py
 src/codatassess/models/operations/get_accounting_marketing_metrics.py
 src/codatassess/models/operations/get_excel_report.py
@@ -47,10 +47,6 @@ src/codatassess/models/shared/categories.py
 src/codatassess/models/shared/confirmcategory.py
 src/codatassess/models/shared/accountcategory.py
 src/codatassess/models/shared/confirmcategories.py
-src/codatassess/models/shared/details.py
-src/codatassess/models/shared/dataintegritydetails.py
-src/codatassess/models/shared/dataintegritymatch.py
-src/codatassess/models/shared/dataintegritydatatype.py
 src/codatassess/models/shared/status.py
 src/codatassess/models/shared/dataintegritystatus.py
 src/codatassess/models/shared/dataintegritystatusinfo.py
@@ -58,10 +54,14 @@ src/codatassess/models/shared/integritystatus.py
 src/codatassess/models/shared/dataintegritydates.py
 src/codatassess/models/shared/dataintegrityconnectionid.py
 src/codatassess/models/shared/dataintegrityamounts.py
+src/codatassess/models/shared/dataintegritydatatype.py
 src/codatassess/models/shared/summaries.py
 src/codatassess/models/shared/dataintegritysummary.py
 src/codatassess/models/shared/dataintegritybycount.py
 src/codatassess/models/shared/dataintegritybyamount.py
+src/codatassess/models/shared/details.py
+src/codatassess/models/shared/dataintegritydetails.py
+src/codatassess/models/shared/dataintegritymatch.py
 src/codatassess/models/shared/excelstatus.py
 src/codatassess/models/shared/excelreporttype.py
 src/codatassess/models/shared/report.py

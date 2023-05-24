@@ -268,7 +268,7 @@ class Reports:
 
     
     def get_commerce_revenue_metrics(self, request: operations.GetCommerceRevenueMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceRevenueMetricsResponse:
-        r"""Commerce revenue metrics
+        r"""Get commerce revenue metrics
         Get the revenue and revenue growth for a specific company connection, over one or more periods of time.
         """
         base_url = self._server_url

@@ -50,9 +50,9 @@ if res.categorised_account is not None:
 
 ### [data_integrity](docs/dataintegrity/README.md)
 
-* [get_data_integrity_details](docs/dataintegrity/README.md#get_data_integrity_details) - Lists data integrity details for date type
 * [get_data_integrity_status](docs/dataintegrity/README.md#get_data_integrity_status) - Get data integrity status
 * [get_data_integrity_summaries](docs/dataintegrity/README.md#get_data_integrity_summaries) - Get data integrity summary
+* [list_data_type_data_integrity_details](docs/dataintegrity/README.md#list_data_type_data_integrity_details) - List data type data integrity
 
 ### [excel_reports](docs/excelreports/README.md)
 
@@ -69,7 +69,7 @@ if res.categorised_account is not None:
 * [get_commerce_lifetime_value_metrics](docs/reports/README.md#get_commerce_lifetime_value_metrics) - Get lifetime value metric
 * [get_commerce_orders_metrics](docs/reports/README.md#get_commerce_orders_metrics) - Get orders report
 * [get_commerce_refunds_metrics](docs/reports/README.md#get_commerce_refunds_metrics) - Get refunds report
-* [get_commerce_revenue_metrics](docs/reports/README.md#get_commerce_revenue_metrics) - Commerce revenue metrics
+* [get_commerce_revenue_metrics](docs/reports/README.md#get_commerce_revenue_metrics) - Get commerce revenue metrics
 * [~~get_enhanced_balance_sheet~~](docs/reports/README.md#get_enhanced_balance_sheet) - Get enhanced balance sheet report :warning: **Deprecated**
 * [get_enhanced_cash_flow_transactions](docs/reports/README.md#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
 * [~~get_enhanced_financial_metrics~~](docs/reports/README.md#get_enhanced_financial_metrics) - List financial metrics :warning: **Deprecated**

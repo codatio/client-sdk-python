@@ -9,7 +9,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetDataIntegrityDetailsRequest:
+class ListDataTypeDataIntegrityDetailsRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     data_type: shared_dataintegritydatatype.DataIntegrityDataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
@@ -25,7 +25,7 @@ class GetDataIntegrityDetailsRequest:
     
 
 @dataclasses.dataclass
-class GetDataIntegrityDetailsResponse:
+class ListDataTypeDataIntegrityDetailsResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
