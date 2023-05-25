@@ -164,7 +164,7 @@ class Transfers:
         url = utils.generate_url(operations.ListTransfersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/transfers', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListTransfersRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -191,6 +191,14 @@ class Transfers:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Transfers])
                 res.transfers = out
+        elif http_res.status_code in [400, 401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+        elif http_res.status_code == 409:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListTransfers409ApplicationJSON])
+                res.list_transfers_409_application_json_object = out
 
         return res
 

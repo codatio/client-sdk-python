@@ -225,7 +225,7 @@ class BillPayments:
         url = utils.generate_url(operations.ListBillPaymentsRequest, base_url, '/companies/{companyId}/data/billPayments', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListBillPaymentsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -252,6 +252,14 @@ class BillPayments:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.BillPayments])
                 res.bill_payments = out
+        elif http_res.status_code in [400, 401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+        elif http_res.status_code == 409:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBillPayments409ApplicationJSON])
+                res.list_bill_payments_409_application_json_object = out
 
         return res
 
