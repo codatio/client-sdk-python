@@ -33,6 +33,7 @@ src/codatcommerce/models/shared/phonenumbertype.py
 src/codatcommerce/models/shared/address.py
 src/codatcommerce/models/shared/addresstype.py
 src/codatcommerce/models/shared/accountbalance.py
+src/codatcommerce/models/shared/schema.py
 src/codatcommerce/models/shared/customers.py
 src/codatcommerce/models/shared/customer.py
 src/codatcommerce/models/shared/links.py
