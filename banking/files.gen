@@ -19,6 +19,7 @@ src/codatbanking/models/operations/get_transaction.py
 src/codatbanking/models/operations/list_transactions.py
 src/codatbanking/models/operations/list_bank_transactions.py
 src/codatbanking/models/operations/__init__.py
+src/codatbanking/models/shared/schema.py
 src/codatbanking/models/shared/accountbalances.py
 src/codatbanking/models/shared/accountbalance.py
 src/codatbanking/models/shared/accountbalanceamounts.py

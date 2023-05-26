@@ -11,6 +11,7 @@ from .accounts import *
 from .accounttype import *
 from .href import *
 from .links import *
+from .schema import *
 from .security import *
 from .transaction import *
 from .transactioncategories import *
@@ -20,4 +21,4 @@ from .transactioncategorystatus import *
 from .transactioncode import *
 from .transactions import *
 
-__all__ = ["Account","AccountBalance","AccountBalanceAmounts","AccountBalances","AccountIdentifierType","AccountIdentifiers","AccountInstitution","AccountType","Accounts","HRef","Links","Security","Transaction","TransactionCategories","TransactionCategory","TransactionCategoryRef","TransactionCategoryStatus","TransactionCode","Transactions"]
+__all__ = ["Account","AccountBalance","AccountBalanceAmounts","AccountBalances","AccountIdentifierType","AccountIdentifiers","AccountInstitution","AccountType","Accounts","HRef","Links","Schema","Security","Transaction","TransactionCategories","TransactionCategory","TransactionCategoryRef","TransactionCategoryStatus","TransactionCode","Transactions"]
