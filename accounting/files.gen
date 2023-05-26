@@ -157,12 +157,12 @@ src/codataccounting/models/operations/get_transfer.py
 src/codataccounting/models/operations/get_create_transfers_model.py
 src/codataccounting/models/operations/list_transfers.py
 src/codataccounting/models/operations/__init__.py
+src/codataccounting/models/shared/schema.py
 src/codataccounting/models/shared/accounttransaction.py
 src/codataccounting/models/shared/metadata.py
 src/codataccounting/models/shared/accounttransactionline.py
 src/codataccounting/models/shared/invoiceto.py
 src/codataccounting/models/shared/bankaccountref.py
-src/codataccounting/models/shared/schema.py
 src/codataccounting/models/shared/accounttransactions.py
 src/codataccounting/models/shared/links.py
 src/codataccounting/models/shared/halref.py
