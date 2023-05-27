@@ -7,4 +7,4 @@ from .get_create_bank_account_model import *
 from .list_bank_account_transactions import *
 from .update_bank_feed import *
 
-__all__ = ["CreateBankFeedRequest","CreateBankFeedResponse","CreateBankTransactionsRequest","CreateBankTransactionsResponse","GetBankFeedsRequest","GetBankFeedsResponse","GetCreateBankAccountModelRequest","GetCreateBankAccountModelResponse","ListBankAccountTransactionsRequest","ListBankAccountTransactionsResponse","UpdateBankFeedRequest","UpdateBankFeedResponse"]
+__all__ = ["CreateBankFeedRequest","CreateBankFeedResponse","CreateBankTransactionsRequest","CreateBankTransactionsResponse","GetBankFeedsRequest","GetBankFeedsResponse","GetCreateBankAccountModelRequest","GetCreateBankAccountModelResponse","ListBankAccountTransactions409ApplicationJSON","ListBankAccountTransactionsRequest","ListBankAccountTransactionsResponse","UpdateBankFeedRequest","UpdateBankFeedResponse"]

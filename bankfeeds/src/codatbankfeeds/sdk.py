@@ -25,8 +25,8 @@ class CodatBankFeeds:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.21.0"
-    _gen_version: str = "2.32.2"
+    _sdk_version: str = "0.21.1"
+    _gen_version: str = "2.32.7"
 
     def __init__(self,
                  security: shared.Security = None,
@@ -75,7 +75,7 @@ class CodatBankFeeds:
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -102,6 +102,10 @@ class CodatBankFeeds:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[list[shared.BankFeedAccount]])
                 res.bank_feed_accounts = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -110,9 +114,7 @@ class CodatBankFeeds:
         r"""Create bank transactions
         Posts bank transactions to the accounting package for a given company.
         
-        > **Supported Integrations**
-        > 
-        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support POST methods.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) to see which integrations support this endpoint.
         """
         base_url = self._server_url
         
@@ -122,7 +124,7 @@ class CodatBankFeeds:
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBankTransactionsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -149,6 +151,10 @@ class CodatBankFeeds:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateBankTransactionsResponse])
                 res.create_bank_transactions_response = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -161,7 +167,7 @@ class CodatBankFeeds:
         
         url = utils.generate_url(operations.GetBankFeedsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
         headers = {}
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -188,6 +194,10 @@ class CodatBankFeeds:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[list[shared.BankFeedAccount]])
                 res.bank_feed_accounts = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -200,7 +210,7 @@ class CodatBankFeeds:
         
         url = utils.generate_url(operations.GetCreateBankAccountModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bankAccounts/{accountId}/bankTransactions', request)
         headers = {}
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -227,6 +237,10 @@ class CodatBankFeeds:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -240,7 +254,7 @@ class CodatBankFeeds:
         url = utils.generate_url(operations.ListBankAccountTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}/bankTransactions', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListBankAccountTransactionsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -267,6 +281,14 @@ class CodatBankFeeds:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.BankTransactionsResponse])
                 res.bank_transactions_response = out
+        elif http_res.status_code in [400, 401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+        elif http_res.status_code == 409:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListBankAccountTransactions409ApplicationJSON])
+                res.list_bank_account_transactions_409_application_json_object = out
 
         return res
 
@@ -282,7 +304,7 @@ class CodatBankFeeds:
         req_content_type, data, form = utils.serialize_request_body(request, "bank_feed_account", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -309,6 +331,10 @@ class CodatBankFeeds:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedAccount])
                 res.bank_feed_account = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
