@@ -24,7 +24,7 @@ src/codatcommerce/models/operations/list_payments.py
 src/codatcommerce/models/operations/list_payment_methods.py
 src/codatcommerce/models/operations/list_products.py
 src/codatcommerce/models/operations/list_product_categories.py
-src/codatcommerce/models/operations/get_tax_components.py
+src/codatcommerce/models/operations/list_tax_components.py
 src/codatcommerce/models/operations/list_transactions.py
 src/codatcommerce/models/operations/__init__.py
 src/codatcommerce/models/shared/companyinfo.py

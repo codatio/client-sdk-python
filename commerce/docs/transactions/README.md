@@ -30,7 +30,7 @@ req = operations.ListTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='illum',
+    query='vel',
 )
 
 res = s.transactions.list(req)

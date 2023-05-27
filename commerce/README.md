@@ -71,7 +71,7 @@ if res.company_info is not None:
 
 ### [tax_components](docs/taxcomponents/README.md)
 
-* [get](docs/taxcomponents/README.md#get) - List tax components
+* [list](docs/taxcomponents/README.md#list) - List tax components
 
 ### [transactions](docs/transactions/README.md)
 
