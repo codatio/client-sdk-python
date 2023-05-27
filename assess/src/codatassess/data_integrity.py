@@ -31,7 +31,7 @@ class DataIntegrity:
         
         url = utils.generate_url(operations.GetDataIntegrityStatusRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/status', request)
         headers = {}
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -58,6 +58,10 @@ class DataIntegrity:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Status])
                 res.status = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -71,7 +75,7 @@ class DataIntegrity:
         url = utils.generate_url(operations.GetDataIntegritySummariesRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/summaries', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetDataIntegritySummariesRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -98,6 +102,10 @@ class DataIntegrity:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Summaries])
                 res.summaries = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -111,7 +119,7 @@ class DataIntegrity:
         url = utils.generate_url(operations.ListDataTypeDataIntegrityDetailsRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/details', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListDataTypeDataIntegrityDetailsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -138,6 +146,10 @@ class DataIntegrity:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Details])
                 res.details = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 

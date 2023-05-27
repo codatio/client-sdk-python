@@ -47,6 +47,7 @@ src/codatassess/models/shared/categories.py
 src/codatassess/models/shared/confirmcategory.py
 src/codatassess/models/shared/accountcategory.py
 src/codatassess/models/shared/confirmcategories.py
+src/codatassess/models/shared/schema.py
 src/codatassess/models/shared/status.py
 src/codatassess/models/shared/dataintegritystatus.py
 src/codatassess/models/shared/dataintegritystatusinfo.py

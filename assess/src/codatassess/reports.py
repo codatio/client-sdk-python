@@ -34,7 +34,7 @@ class Reports:
         url = utils.generate_url(operations.GetAccountsForEnhancedBalanceSheetRequest, base_url, '/companies/{companyId}/reports/enhancedBalanceSheet/accounts', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetAccountsForEnhancedBalanceSheetRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -61,6 +61,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.EnhancedReport])
                 res.enhanced_report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -76,7 +80,7 @@ class Reports:
         url = utils.generate_url(operations.GetAccountsForEnhancedProfitAndLossRequest, base_url, '/companies/{companyId}/reports/enhancedProfitAndLoss/accounts', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetAccountsForEnhancedProfitAndLossRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -103,6 +107,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.EnhancedReport])
                 res.enhanced_report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -116,7 +124,7 @@ class Reports:
         url = utils.generate_url(operations.GetCommerceCustomerRetentionMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/customerRetention', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetCommerceCustomerRetentionMetricsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -143,6 +151,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -156,7 +168,7 @@ class Reports:
         url = utils.generate_url(operations.GetCommerceLifetimeValueMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/lifetimeValue', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetCommerceLifetimeValueMetricsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -183,6 +195,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -196,7 +212,7 @@ class Reports:
         url = utils.generate_url(operations.GetCommerceOrdersMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/orders', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetCommerceOrdersMetricsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -223,6 +239,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -236,7 +256,7 @@ class Reports:
         url = utils.generate_url(operations.GetCommerceRefundsMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/refunds', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetCommerceRefundsMetricsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -263,6 +283,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -276,7 +300,7 @@ class Reports:
         url = utils.generate_url(operations.GetCommerceRevenueMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/revenue', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetCommerceRevenueMetricsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -303,6 +327,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -318,7 +346,7 @@ class Reports:
         url = utils.generate_url(operations.GetEnhancedBalanceSheetRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/enhancedBalanceSheet', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetEnhancedBalanceSheetRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -345,6 +373,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -362,7 +394,7 @@ class Reports:
         url = utils.generate_url(operations.GetEnhancedCashFlowTransactionsRequest, base_url, '/companies/{companyId}/reports/enhancedCashFlow/transactions', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetEnhancedCashFlowTransactionsRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -389,6 +421,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.EnhancedCashFlowTransactions])
                 res.enhanced_cash_flow_transactions = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -444,7 +480,7 @@ class Reports:
         url = utils.generate_url(operations.GetEnhancedInvoicesReportRequest, base_url, '/companies/{companyId}/reports/enhancedInvoices', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetEnhancedInvoicesReportRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -471,6 +507,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.EnhancedInvoicesReport])
                 res.enhanced_invoices_report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -486,7 +526,7 @@ class Reports:
         url = utils.generate_url(operations.GetEnhancedProfitAndLossRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/enhancedProfitAndLoss', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetEnhancedProfitAndLossRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -513,6 +553,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -525,7 +569,7 @@ class Reports:
         
         url = utils.generate_url(operations.GetRecurringRevenueMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/subscriptions/mrr', request)
         headers = {}
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -552,6 +596,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -564,7 +612,7 @@ class Reports:
         
         url = utils.generate_url(operations.RequestRecurringRevenueMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/subscriptions/process', request)
         headers = {}
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -591,6 +639,10 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 

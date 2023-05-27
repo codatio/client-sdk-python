@@ -5,6 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import periodunit as shared_periodunit
 from ..shared import report as shared_report
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -33,4 +34,6 @@ class GetCommerceLifetimeValueMetricsResponse:
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     report: Optional[shared_report.Report] = dataclasses.field(default=None)
     r"""OK"""
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""
     
