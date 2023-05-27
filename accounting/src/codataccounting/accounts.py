@@ -25,15 +25,15 @@ class Accounts:
     
     def create(self, request: operations.CreateAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateAccountResponse:
         r"""Create account
-        The *Create accounts* endpoint creates a new [accounts](https://docs.codat.io/accounting-api#/schemas/Account) for a given company.
+        The *Create accounts* endpoint creates a new [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given company's connection.
+        
+        [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+        
+        **Integration-specific behaviour**
         
         Required data may vary by integration. To see what data to post, first call [Get create account model](https://docs.codat.io/accounting-api#/operations/get-create-chartOfAccounts-model).
         
-        > **Supported Integrations**
-        > 
-        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
-        
-        [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
         """
         base_url = self._server_url
         
@@ -76,9 +76,11 @@ class Accounts:
     
     def get(self, request: operations.GetAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountResponse:
         r"""Get account
-        The *Get account* endpoint returns a single [accounts](https://docs.codat.io/accounting-api#/schemas/Account) for a given `accountId`.
+        The *Get account* endpoint returns a single [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given `accountId`.
         
         [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = self._server_url
         
@@ -127,13 +129,13 @@ class Accounts:
         r"""Get create account model
         The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given company and integration.
         
-        See the examples for integration-specific indicative models.
-        
-        > **Supported Integrations**
-        > 
-        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
-        
         [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+        
+        **Integration-specific behaviour**
+        
+        See the *response examples* for integration-specific indicative models.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
         """
         base_url = self._server_url
         
@@ -175,6 +177,8 @@ class Accounts:
         The *List accounts* endpoint returns a list of [accounts](https://docs.codat.io/accounting-api#/schemas/Account) for a given company's connection.
         
         [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = self._server_url
         
