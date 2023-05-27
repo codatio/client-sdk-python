@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import errormessage as shared_errormessage
 from ..shared import pushoperation as shared_pushoperation
 from typing import Optional
 
@@ -20,6 +21,8 @@ class GetPushOperationResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""
     push_operation: Optional[shared_pushoperation.PushOperation] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)

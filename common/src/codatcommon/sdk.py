@@ -4,7 +4,6 @@ import requests as requests_http
 from . import utils
 from .companies import Companies
 from .connections import Connections
-from .data_status import DataStatus
 from .integrations import Integrations
 from .push_data import PushData
 from .refresh_data import RefreshData
@@ -32,14 +31,12 @@ class CodatCommon:
     r"""Create and manage your Codat companies."""
     connections: Connections
     r"""Manage your companies' data connections."""
-    data_status: DataStatus
-    r"""Understand the state of data within Codat."""
     integrations: Integrations
     r"""View and manage your available integrations in Codat."""
     push_data: PushData
     r"""View push options and get push statuses."""
     refresh_data: RefreshData
-    r"""Queue pull operations to refresh data in Codat."""
+    r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
     settings: Settings
     r"""Manage your Codat instance."""
     webhooks: Webhooks
@@ -49,8 +46,8 @@ class CodatCommon:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.19.1"
-    _gen_version: str = "2.32.2"
+    _sdk_version: str = "0.19.2"
+    _gen_version: str = "2.32.7"
 
     def __init__(self,
                  security: shared.Security = None,
@@ -97,15 +94,6 @@ class CodatCommon:
         )
         
         self.connections = Connections(
-            self._client,
-            self._security_client,
-            self._server_url,
-            self._language,
-            self._sdk_version,
-            self._gen_version
-        )
-        
-        self.data_status = DataStatus(
             self._client,
             self._security_client,
             self._server_url,

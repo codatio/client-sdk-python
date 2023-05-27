@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import branding as shared_branding
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -20,5 +21,7 @@ class GetIntegrationsBrandingResponse:
     status_code: int = dataclasses.field()
     branding: Optional[shared_branding.Branding] = dataclasses.field(default=None)
     r"""OK"""
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

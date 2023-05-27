@@ -1,6 +1,5 @@
 src/codatcommon/companies.py
 src/codatcommon/connections.py
-src/codatcommon/data_status.py
 src/codatcommon/integrations.py
 src/codatcommon/push_data.py
 src/codatcommon/refresh_data.py
@@ -25,9 +24,6 @@ src/codatcommon/models/operations/get_company_connection.py
 src/codatcommon/models/operations/list_company_connections.py
 src/codatcommon/models/operations/unlink_connection.py
 src/codatcommon/models/operations/update_connection_authorization.py
-src/codatcommon/models/operations/get_company_data_status.py
-src/codatcommon/models/operations/get_pull_operation.py
-src/codatcommon/models/operations/list_pull_operations.py
 src/codatcommon/models/operations/get_integration.py
 src/codatcommon/models/operations/get_integrations_branding.py
 src/codatcommon/models/operations/list_integrations.py
@@ -35,7 +31,10 @@ src/codatcommon/models/operations/get_create_update_model_options_by_data_type.p
 src/codatcommon/models/operations/get_push_operation.py
 src/codatcommon/models/operations/get_company_push_history.py
 src/codatcommon/models/operations/refresh_company_data.py
-src/codatcommon/models/operations/create_pull_operation.py
+src/codatcommon/models/operations/refresh_data_type.py
+src/codatcommon/models/operations/get_company_data_status.py
+src/codatcommon/models/operations/get_pull_operation.py
+src/codatcommon/models/operations/list_pull_operations.py
 src/codatcommon/models/operations/get_profile.py
 src/codatcommon/models/operations/update_sync_settings.py
 src/codatcommon/models/operations/update_profile.py
@@ -54,9 +53,6 @@ src/codatcommon/models/shared/companies.py
 src/codatcommon/models/shared/links.py
 src/codatcommon/models/shared/href.py
 src/codatcommon/models/shared/connections.py
-src/codatcommon/models/shared/datastatus.py
-src/codatcommon/models/shared/pulloperation.py
-src/codatcommon/models/shared/dataconnectionhistory.py
 src/codatcommon/models/shared/integration.py
 src/codatcommon/models/shared/datatypefeature.py
 src/codatcommon/models/shared/supportedfeature.py
@@ -84,6 +80,9 @@ src/codatcommon/models/shared/pushchangetype.py
 src/codatcommon/models/shared/pushoperationref.py
 src/codatcommon/models/shared/pushhistoryresponse.py
 src/codatcommon/models/shared/pushoperationsummary.py
+src/codatcommon/models/shared/pulloperation.py
+src/codatcommon/models/shared/datastatus.py
+src/codatcommon/models/shared/dataconnectionhistory.py
 src/codatcommon/models/shared/profile.py
 src/codatcommon/models/shared/syncsetting.py
 src/codatcommon/models/shared/rule.py
@@ -109,7 +108,6 @@ src/codatcommon/models/webhooks/__init__.py
 docs/codatcommon/README.md
 docs/companies/README.md
 docs/connections/README.md
-docs/datastatus/README.md
 docs/integrations/README.md
 docs/pushdata/README.md
 docs/refreshdata/README.md

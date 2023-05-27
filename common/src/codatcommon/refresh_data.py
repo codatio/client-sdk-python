@@ -6,7 +6,7 @@ from codatcommon.models import operations, shared
 from typing import Optional
 
 class RefreshData:
-    r"""Queue pull operations to refresh data in Codat."""
+    r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
     _client: requests_http.Session
     _security_client: requests_http.Session
     _server_url: str
@@ -24,8 +24,12 @@ class RefreshData:
         
     
     def all(self, request: operations.RefreshCompanyDataRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RefreshCompanyDataResponse:
-        r"""Queue pull operations
-        Refreshes all data types marked Fetch on first link.
+        r"""Refresh all data
+        Refreshes all data types with `fetch on first link` set to `true` for a given company.
+        
+        This is an asynchronous operation, and will bring updated data into Codat from the linked integration for you to view.
+        
+        [Read more](https://docs.codat.io/core-concepts/data-type-settings) about data type settings and `fetch on first link`.
         """
         base_url = self._server_url
         
@@ -56,7 +60,7 @@ class RefreshData:
         
         if http_res.status_code == 204:
             pass
-        elif http_res.status_code in [401, 404]:
+        elif http_res.status_code in [401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -64,17 +68,17 @@ class RefreshData:
         return res
 
     
-    def by_data_type(self, request: operations.CreatePullOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePullOperationResponse:
-        r"""Queue pull operation
-        Queue a single pull operation for the given company and data type.
+    def by_data_type(self, request: operations.RefreshDataTypeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RefreshDataTypeResponse:
+        r"""Refresh data type
+        Refreshes a given data type for a given company.
         
-        This will bring updated data into Codat from the linked integration for you to view.
+        This is an asynchronous operation, and will bring updated data into Codat from the linked integration for you to view.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.CreatePullOperationRequest, base_url, '/companies/{companyId}/data/queue/{dataType}', request)
+        url = utils.generate_url(operations.RefreshDataTypeRequest, base_url, '/companies/{companyId}/data/queue/{dataType}', request)
         headers = {}
-        query_params = utils.get_query_params(operations.CreatePullOperationRequest, request)
+        query_params = utils.get_query_params(operations.RefreshDataTypeRequest, request)
         headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -96,13 +100,143 @@ class RefreshData:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.CreatePullOperationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.RefreshDataTypeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.PullOperation])
                 res.pull_operation = out
-        elif http_res.status_code in [401, 404]:
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+
+        return res
+
+    
+    def get(self, request: operations.GetCompanyDataStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyDataStatusResponse:
+        r"""Get data status
+        Get the state of each data type for a company
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetCompanyDataStatusRequest, base_url, '/companies/{companyId}/dataStatus', request)
+        headers = {}
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCompanyDataStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.DataStatus]])
+                res.data_status_response = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+
+        return res
+
+    
+    def get_pull_operation(self, request: operations.GetPullOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPullOperationResponse:
+        r"""Get pull operation
+        Retrieve information about a single dataset or pull operation.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetPullOperationRequest, base_url, '/companies/{companyId}/data/history/{datasetId}', request)
+        headers = {}
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetPullOperationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PullOperation])
+                res.pull_operation = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+
+        return res
+
+    
+    def list_pull_operations(self, request: operations.ListPullOperationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPullOperationsResponse:
+        r"""List pull operations
+        Gets the pull operation history (datasets) for a given company.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListPullOperationsRequest, base_url, '/companies/{companyId}/data/history', request)
+        headers = {}
+        query_params = utils.get_query_params(operations.ListPullOperationsRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListPullOperationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.DataConnectionHistory])
+                res.data_connection_history = out
+        elif http_res.status_code in [400, 401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
