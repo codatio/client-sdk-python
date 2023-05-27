@@ -11,6 +11,7 @@ src/codatfiles/models/operations/download_files.py
 src/codatfiles/models/operations/list_files.py
 src/codatfiles/models/operations/upload_files.py
 src/codatfiles/models/operations/__init__.py
+src/codatfiles/models/shared/schema.py
 src/codatfiles/models/shared/file.py
 src/codatfiles/models/shared/security.py
 src/codatfiles/models/shared/__init__.py
