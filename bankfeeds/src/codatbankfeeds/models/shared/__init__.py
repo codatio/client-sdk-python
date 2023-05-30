@@ -19,8 +19,9 @@ from .pushoptionchoice import *
 from .pushoptionproperty import *
 from .pushoptiontype import *
 from .pushvalidationinfo import *
+from .schema import *
 from .security import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["BankFeedAccount","BankTransactionLine","BankTransactionType","BankTransactions","BankTransactionsResponse","CreateBankTransactionsResponse","DataType","HRef","Links","PushChangeType","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Security","Validation","ValidationItem"]
+__all__ = ["BankFeedAccount","BankTransactionLine","BankTransactionType","BankTransactions","BankTransactionsResponse","CreateBankTransactionsResponse","DataType","HRef","Links","PushChangeType","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Schema","Security","Validation","ValidationItem"]
