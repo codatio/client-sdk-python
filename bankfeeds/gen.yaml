@@ -7,7 +7,6 @@ management:
 generation:
   sdkClassName: CodatBankFeeds
   singleTagPerOp: false
-  tagNamespacingDisabled: true
   telemetryEnabled: true
 python:
   version: 0.21.1
