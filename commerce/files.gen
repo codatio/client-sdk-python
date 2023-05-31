@@ -27,13 +27,13 @@ src/codatcommerce/models/operations/list_product_categories.py
 src/codatcommerce/models/operations/list_tax_components.py
 src/codatcommerce/models/operations/list_transactions.py
 src/codatcommerce/models/operations/__init__.py
+src/codatcommerce/models/shared/schema.py
 src/codatcommerce/models/shared/companyinfo.py
 src/codatcommerce/models/shared/phonenumber.py
 src/codatcommerce/models/shared/phonenumbertype.py
 src/codatcommerce/models/shared/address.py
 src/codatcommerce/models/shared/addresstype.py
 src/codatcommerce/models/shared/accountbalance.py
-src/codatcommerce/models/shared/schema.py
 src/codatcommerce/models/shared/customers.py
 src/codatcommerce/models/shared/customer.py
 src/codatcommerce/models/shared/links.py
