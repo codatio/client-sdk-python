@@ -21,7 +21,7 @@ from codatbanking.models import operations
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -49,7 +49,7 @@ from codatbanking.models import operations
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
