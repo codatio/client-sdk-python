@@ -32,7 +32,7 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -171,7 +171,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -200,7 +200,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -227,7 +227,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -262,7 +262,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -289,7 +289,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -319,7 +319,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -353,7 +353,7 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
