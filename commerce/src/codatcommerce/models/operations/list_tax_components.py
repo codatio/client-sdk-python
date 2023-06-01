@@ -3,15 +3,15 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import productcategories as shared_productcategories
 from ..shared import schema as shared_schema
+from ..shared import taxcomponents as shared_taxcomponents
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
 @dataclasses.dataclass
-class ListProductCategoriesRequest:
+class ListTaxComponentsRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
@@ -27,7 +27,7 @@ class ListProductCategoriesRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListProductCategories409ApplicationJSON:
+class ListTaxComponents409ApplicationJSON:
     r"""The data type's dataset has not been requested or is still syncing."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
@@ -39,15 +39,15 @@ class ListProductCategories409ApplicationJSON:
     
 
 @dataclasses.dataclass
-class ListProductCategoriesResponse:
+class ListTaxComponentsResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    list_product_categories_409_application_json_object: Optional[ListProductCategories409ApplicationJSON] = dataclasses.field(default=None)
+    list_tax_components_409_application_json_object: Optional[ListTaxComponents409ApplicationJSON] = dataclasses.field(default=None)
     r"""The data type's dataset has not been requested or is still syncing."""
-    product_categories: Optional[shared_productcategories.ProductCategories] = dataclasses.field(default=None)
-    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
+    tax_components: Optional[shared_taxcomponents.TaxComponents] = dataclasses.field(default=None)
+    r"""OK"""
     

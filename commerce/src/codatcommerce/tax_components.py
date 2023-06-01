@@ -23,15 +23,15 @@ class TaxComponents:
         self._gen_version = gen_version
         
     
-    def get(self, request: operations.GetTaxComponentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxComponentsResponse:
-        r"""List tax components
-        This endpoint returns a lists of tax rates from the commerce platform, including tax rate names and values. This supports the mapping of tax rates from the commerce platform to the accounting platform.
+    def get(self, request: operations.GetTaxComponentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxComponentResponse:
+        r"""Get tax component
+        This endpoint returns a specific tax rate from the commerce platform, including tax rate names and values. This supports the mapping of tax rates from the commerce platform to the accounting platform.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetTaxComponentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-taxComponents', request)
+        url = utils.generate_url(operations.GetTaxComponentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-taxComponents/{taxId}', request)
         headers = {}
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -52,12 +52,68 @@ class TaxComponents:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetTaxComponentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetTaxComponentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TaxComponent])
+                res.tax_component = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+        elif http_res.status_code == 409:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetTaxComponent409ApplicationJSON])
+                res.get_tax_component_409_application_json_object = out
+
+        return res
+
+    
+    def list(self, request: operations.ListTaxComponentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTaxComponentsResponse:
+        r"""List tax components
+        This endpoint returns a lists of tax rates from the commerce platform, including tax rate names and values. This supports the mapping of tax rates from the commerce platform to the accounting platform.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListTaxComponentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-taxComponents', request)
+        headers = {}
+        query_params = utils.get_query_params(operations.ListTaxComponentsRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListTaxComponentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TaxComponents])
                 res.tax_components = out
+        elif http_res.status_code in [400, 401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+        elif http_res.status_code == 409:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListTaxComponents409ApplicationJSON])
+                res.list_tax_components_409_application_json_object = out
 
         return res
 

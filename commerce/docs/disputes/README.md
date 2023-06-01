@@ -6,7 +6,36 @@ Retrieve standardized data from linked commerce platforms.
 
 ### Available Operations
 
+* [get](#get) - Get dispute
 * [list](#list) - List disputes
+
+## get
+
+Get a specific commerce dispute.
+
+### Example Usage
+
+```python
+import codatcommerce
+from codatcommerce.models import operations
+
+s = codatcommerce.CodatCommerce(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetDisputeRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    dispute_id='distinctio',
+)
+
+res = s.disputes.get(req)
+
+if res.dispute is not None:
+    # handle response
+```
 
 ## list
 
@@ -20,7 +49,7 @@ from codatcommerce.models import operations
 
 s = codatcommerce.CodatCommerce(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -30,7 +59,7 @@ req = operations.ListDisputesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='provident',
+    query='quibusdam',
 )
 
 res = s.disputes.list(req)

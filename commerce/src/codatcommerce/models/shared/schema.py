@@ -2,25 +2,15 @@
 
 from __future__ import annotations
 import dataclasses
-import requests as requests_http
-from ..shared import companyinfo as shared_companyinfo
-from ..shared import schema as shared_schema
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
-@dataclasses.dataclass
-class GetCompanyInfoRequest:
-    
-    company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetCompanyInfo409ApplicationJSON:
-    r"""The data type's dataset has not been requested or is still syncing."""
+class Schema:
+    r"""Your `query` parameter was not correctly formed"""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
@@ -28,18 +18,4 @@ class GetCompanyInfo409ApplicationJSON:
     error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('error'), 'exclude': lambda f: f is None }})
     service: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('service'), 'exclude': lambda f: f is None }})
     status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
-    
-
-@dataclasses.dataclass
-class GetCompanyInfoResponse:
-    
-    content_type: str = dataclasses.field()
-    status_code: int = dataclasses.field()
-    company_info: Optional[shared_companyinfo.CompanyInfo] = dataclasses.field(default=None)
-    r"""OK"""
-    get_company_info_409_application_json_object: Optional[GetCompanyInfo409ApplicationJSON] = dataclasses.field(default=None)
-    r"""The data type's dataset has not been requested or is still syncing."""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     
