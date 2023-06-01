@@ -415,3 +415,51 @@ Based on:
 - Speakeasy CLI 1.36.1 (2.31.0) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.21.1] https://pypi.org/project/codat-assess/0.21.1 - assess
+
+## 2023-05-23 00:13:03
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml
+- Speakeasy CLI 1.37.5 (2.32.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.22.0] https://pypi.org/project/codat-assess/0.22.0 - assess
+
+## 2023-05-24 00:12:26
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml
+- Speakeasy CLI 1.37.5 (2.32.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.22.1] https://pypi.org/project/codat-assess/0.22.1 - assess
+
+## 2023-05-27 00:13:35
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml
+- Speakeasy CLI 1.38.0 (2.32.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.22.2] https://pypi.org/project/codat-assess/0.22.2 - assess
+
+## 2023-05-31 00:13:50
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml
+- Speakeasy CLI 1.39.0 (2.32.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.22.3] https://pypi.org/project/codat-assess/0.22.3 - assess
+
+## 2023-06-01 00:16:25
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml
+- Speakeasy CLI 1.40.2 (2.34.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.23.0] https://pypi.org/project/codat-assess/0.23.0 - assess
+
+## 2023-06-01 15:43:33
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml
+- Speakeasy CLI 1.40.3 (2.34.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.23.1] https://pypi.org/project/codat-assess/0.23.1 - assess

@@ -6,40 +6,10 @@ Downloadable reports
 
 ### Available Operations
 
-* [~~download_excel_report~~](#download_excel_report) - Download generated excel report :warning: **Deprecated**
-* [generate_excel_report](#generate_excel_report) - Generate an Excel report
-* [get_accounting_marketing_metrics](#get_accounting_marketing_metrics) - Get the marketing metrics from an accounting source for a given company.
-* [get_excel_report](#get_excel_report) - Download generated excel report
-* [get_excel_report_generation_status](#get_excel_report_generation_status) - Get status of Excel report
-
-## ~~download_excel_report~~
-
-Download the previously generated Excel report to a local drive.
-
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```python
-import codatassess
-from codatassess.models import operations, shared
-
-s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
-    ),
-)
-
-req = operations.DownloadExcelReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_INVOICES,
-)
-
-res = s.excel_reports.download_excel_report(req)
-
-if res.body is not None:
-    # handle response
-```
+* [generate_excel_report](#generate_excel_report) - Generate Excel report
+* [get_accounting_marketing_metrics](#get_accounting_marketing_metrics) - Get marketing metrics report
+* [get_excel_report](#get_excel_report) - Download Excel report
+* [get_excel_report_generation_status](#get_excel_report_generation_status) - Get Excel report status
 
 ## generate_excel_report
 
@@ -53,13 +23,13 @@ from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GenerateExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_FINANCIALS,
+    report_type=shared.ExcelReportType.ENHANCED_INVOICES,
 )
 
 res = s.excel_reports.generate_excel_report(req)
@@ -69,6 +39,8 @@ if res.excel_status is not None:
 ```
 
 ## get_accounting_marketing_metrics
+
+Get the marketing metrics from an accounting source for a given company.
 
 Request an Excel report for download.
 
@@ -80,7 +52,7 @@ from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -88,8 +60,8 @@ req = operations.GetAccountingMarketingMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=739264,
-    period_length=19987,
+    number_of_periods=451159,
+    period_length=739264,
     period_unit=shared.PeriodUnit.DAY,
     report_date='29-09-2020',
     show_input_values=False,
@@ -113,13 +85,13 @@ from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GetExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_FINANCIALS,
+    report_type=shared.ExcelReportType.ASSESS,
 )
 
 res = s.excel_reports.get_excel_report(req)
@@ -140,13 +112,13 @@ from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GetExcelReportGenerationStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.AUDIT,
+    report_type=shared.ExcelReportType.ENHANCED_FINANCIALS,
 )
 
 res = s.excel_reports.get_excel_report_generation_status(req)

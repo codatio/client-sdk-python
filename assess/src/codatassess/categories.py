@@ -148,7 +148,7 @@ class Categories:
 
     
     def update_account_category(self, request: operations.UpdateAccountCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateAccountCategoryResponse:
-        r"""Patch account categories
+        r"""Update account categories
         Update category for a specific nominal account
         
         Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible

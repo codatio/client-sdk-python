@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import dataintegritydatatype as shared_dataintegritydatatype
+from ..shared import schema as shared_schema
 from ..shared import status as shared_status
 from typing import Optional
 
@@ -22,6 +23,8 @@ class GetDataIntegrityStatusResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""
     status: Optional[shared_status.Status] = dataclasses.field(default=None)
     r"""OK"""
     

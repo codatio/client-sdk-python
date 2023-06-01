@@ -5,6 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import excelreporttype as shared_excelreporttype
 from ..shared import excelstatus as shared_excelstatus
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -24,4 +25,6 @@ class GenerateExcelReportResponse:
     excel_status: Optional[shared_excelstatus.ExcelStatus] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""
     

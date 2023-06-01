@@ -23,46 +23,6 @@ class DataIntegrity:
         self._gen_version = gen_version
         
     
-    def get_data_integrity_details(self, request: operations.GetDataIntegrityDetailsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDataIntegrityDetailsResponse:
-        r"""Lists data integrity details for date type
-        Gets record-by-record match results for a given company and datatype, optionally restricted by a Codat query string.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetDataIntegrityDetailsRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/details', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.GetDataIntegrityDetailsRequest, request)
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('GET', url, params=query_params, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetDataIntegrityDetailsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Details])
-                res.details = out
-
-        return res
-
-    
     def get_data_integrity_status(self, request: operations.GetDataIntegrityStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDataIntegrityStatusResponse:
         r"""Get data integrity status
         Gets match status for a given company and datatype.
@@ -71,7 +31,7 @@ class DataIntegrity:
         
         url = utils.generate_url(operations.GetDataIntegrityStatusRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/status', request)
         headers = {}
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -98,6 +58,10 @@ class DataIntegrity:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Status])
                 res.status = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 
@@ -111,7 +75,7 @@ class DataIntegrity:
         url = utils.generate_url(operations.GetDataIntegritySummariesRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/summaries', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetDataIntegritySummariesRequest, request)
-        headers['Accept'] = 'application/json'
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -138,6 +102,54 @@ class DataIntegrity:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Summaries])
                 res.summaries = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def list_data_type_data_integrity_details(self, request: operations.ListDataTypeDataIntegrityDetailsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDataTypeDataIntegrityDetailsResponse:
+        r"""List data type data integrity
+        Gets record-by-record match results for a given company and datatype, optionally restricted by a Codat query string.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListDataTypeDataIntegrityDetailsRequest, base_url, '/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/details', request)
+        headers = {}
+        query_params = utils.get_query_params(operations.ListDataTypeDataIntegrityDetailsRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListDataTypeDataIntegrityDetailsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Details])
+                res.details = out
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
 
         return res
 

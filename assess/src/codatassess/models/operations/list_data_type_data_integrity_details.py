@@ -5,11 +5,12 @@ import dataclasses
 import requests as requests_http
 from ..shared import dataintegritydatatype as shared_dataintegritydatatype
 from ..shared import details as shared_details
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
 @dataclasses.dataclass
-class GetDataIntegrityDetailsRequest:
+class ListDataTypeDataIntegrityDetailsRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     data_type: shared_dataintegritydatatype.DataIntegrityDataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
@@ -25,11 +26,13 @@ class GetDataIntegrityDetailsRequest:
     
 
 @dataclasses.dataclass
-class GetDataIntegrityDetailsResponse:
+class ListDataTypeDataIntegrityDetailsResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     details: Optional[shared_details.Details] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""
     
