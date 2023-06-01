@@ -6,6 +6,7 @@ src/codatcommon/refresh_data.py
 src/codatcommon/settings.py
 src/codatcommon/webhooks.py
 src/codatcommon/sdk.py
+.gitignore
 pylintrc
 setup.py
 src/codatcommon/__init__.py
