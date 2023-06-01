@@ -22,52 +22,61 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.CreateBankFeedRequest(
-    request_body=[
-        shared.BankFeedAccount(
-            account_name='provident',
-            account_number='distinctio',
-            account_type='quibusdam',
-            balance=6027.63,
-            currency='nulla',
-            feed_start_date='corrupti',
-            id='d69a674e-0f46-47cc-8796-ed151a05dfc2',
-            modified_date='at',
-            sort_code='at',
-            status='maiores',
-        ),
-        shared.BankFeedAccount(
-            account_name='molestiae',
-            account_number='quod',
-            account_type='quod',
-            balance=4614.79,
-            currency='totam',
-            feed_start_date='porro',
-            id='a1ba928f-c816-4742-8b73-9205929396fe',
-            modified_date='fuga',
-            sort_code='in',
-            status='corporis',
-        ),
-        shared.BankFeedAccount(
-            account_name='iste',
-            account_number='iure',
-            account_type='saepe',
-            balance=6976.31,
-            currency='architecto',
-            feed_start_date='ipsa',
-            id='faaa2352-c595-4590-baff-1a3a2fa94677',
-            modified_date='velit',
-            sort_code='error',
-            status='quia',
-        ),
-    ],
+req = operations.CreateBankTransactionsRequest(
+    bank_transactions=shared.BankTransactions(
+        account_id='corrupti',
+        transactions=[
+            shared.BankTransactionLine(
+                amount=7151.9,
+                balance=8442.66,
+                cleared_on_date='unde',
+                counterparty='nulla',
+                description='corrupti',
+                id='d69a674e-0f46-47cc-8796-ed151a05dfc2',
+                modified_date='at',
+                reconciled=False,
+                reference='at',
+                source_modified_date='maiores',
+                transaction_type=shared.BankTransactionType.ATM,
+            ),
+            shared.BankTransactionLine(
+                amount=7991.59,
+                balance=8009.11,
+                cleared_on_date='esse',
+                counterparty='totam',
+                description='porro',
+                id='a1ba928f-c816-4742-8b73-9205929396fe',
+                modified_date='fuga',
+                reconciled=False,
+                reference='in',
+                source_modified_date='corporis',
+                transaction_type=shared.BankTransactionType.CHECK,
+            ),
+            shared.BankTransactionLine(
+                amount=4370.32,
+                balance=9023.49,
+                cleared_on_date='quidem',
+                counterparty='architecto',
+                description='ipsa',
+                id='faaa2352-c595-4590-baff-1a3a2fa94677',
+                modified_date='velit',
+                reconciled=False,
+                reference='error',
+                source_modified_date='quia',
+                transaction_type=shared.BankTransactionType.SER_CHG,
+            ),
+        ],
+    ),
+    account_id='vitae',
+    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    timeout_in_minutes=674752,
 )
 
-res = s.create_bank_feed(req)
+res = s.create(req)
 
-if res.bank_feed_accounts is not None:
+if res.create_bank_transactions_response is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
@@ -77,12 +86,23 @@ if res.bank_feed_accounts is not None:
 
 ### [CodatBankFeeds SDK](docs/codatbankfeeds/README.md)
 
-* [create_bank_feed](docs/codatbankfeeds/README.md#create_bank_feed) - Create bank feed bank accounts
-* [create_bank_transactions](docs/codatbankfeeds/README.md#create_bank_transactions) - Create bank transactions
-* [get_bank_feeds](docs/codatbankfeeds/README.md#get_bank_feeds) - List bank feed bank accounts
-* [get_create_bank_account_model](docs/codatbankfeeds/README.md#get_create_bank_account_model) - List push options for bank account bank transactions
-* [list_bank_account_transactions](docs/codatbankfeeds/README.md#list_bank_account_transactions) - List bank transactions for bank account
-* [update_bank_feed](docs/codatbankfeeds/README.md#update_bank_feed) - Update bank feed bank account
+* [create](docs/codatbankfeeds/README.md#create) - Create bank transactions
+* [create](docs/codatbankfeeds/README.md#create) - Create bank feed bank accounts
+* [create](docs/codatbankfeeds/README.md#create) - Create connection
+* [create](docs/codatbankfeeds/README.md#create) - Create company
+* [delete](docs/codatbankfeeds/README.md#delete) - Delete connection
+* [delete](docs/codatbankfeeds/README.md#delete) - Delete a company
+* [get](docs/codatbankfeeds/README.md#get) - List push options for bank account bank transactions
+* [get](docs/codatbankfeeds/README.md#get) - List bank feed bank accounts
+* [get](docs/codatbankfeeds/README.md#get) - Get connection
+* [get](docs/codatbankfeeds/README.md#get) - Get company
+* [list](docs/codatbankfeeds/README.md#list) - List bank transactions for bank account
+* [list](docs/codatbankfeeds/README.md#list) - List connections
+* [list](docs/codatbankfeeds/README.md#list) - List companies
+* [proxy](docs/codatbankfeeds/README.md#proxy) - A proxy or passthrough endpoint used to query unsupported third party endpoints.
+* [unlink_connection](docs/codatbankfeeds/README.md#unlink_connection) - Unlink connection
+* [update](docs/codatbankfeeds/README.md#update) - Update bank feed bank account
+* [update](docs/codatbankfeeds/README.md#update) - Update company
 <!-- End SDK Available Operations -->
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
