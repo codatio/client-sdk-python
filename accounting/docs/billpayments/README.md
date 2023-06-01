@@ -36,107 +36,59 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='2af03102-d514-4f4c-86f1-8bf9621a6a4f',
-            name='Tamara O'Kon',
+            id='8502a55e-7f73-4bc8-85e3-20a319f4badf',
+            name='Jesus Kreiger',
         ),
-        currency='eveniet',
-        currency_rate=9351.61,
-        date_='velit',
+        currency='animi',
+        currency_rate=5287.42,
+        date_='aliquid',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
-                allocated_on_date='eius',
-                amount=7019.78,
+                allocated_on_date='facilis',
+                amount=7594.51,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=4896.85,
-                        currency_rate=3734.49,
-                        id='2c65b344-18e3-4bb9-9c8d-975e0e8419d8',
-                        type=shared.BillPaymentLineLinkType.DISCOUNT,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=5379.46,
-                        currency_rate=2649.58,
-                        id='f144f3e0-7edc-4c4a-a5f3-cabd905a972e',
-                        type=shared.BillPaymentLineLinkType.UNKNOWN,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=3214.73,
-                        currency_rate=3927.52,
-                        id='728227b2-d309-4470-bf7a-4fa87cf535a6',
-                        type=shared.BillPaymentLineLinkType.DISCOUNT,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=6578.62,
-                        currency_rate=9259.94,
-                        id='54ebf60c-321f-4023-b75d-2367fe1a0cc8',
-                        type=shared.BillPaymentLineLinkType.MANUAL_JOURNAL,
-                    ),
-                ],
-            ),
-            shared.BillPaymentLine(
-                allocated_on_date='maiores',
-                amount=4857.95,
-                links=[
-                    shared.BillPaymentLineLink(
-                        amount=9609.33,
-                        currency_rate=455.1,
-                        id='a396d90c-364b-47c1-9dfb-ace188b1c4ee',
-                        type=shared.BillPaymentLineLinkType.UNLINKED,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=7726.28,
-                        currency_rate=5582.83,
-                        id='c6ce611f-eeb1-4c7c-bdb6-eec74378ba25',
-                        type=shared.BillPaymentLineLinkType.UNLINKED,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=1068.06,
-                        currency_rate=4810.42,
-                        id='747dc915-ad2c-4af5-9d67-23dc0f5ae2f3',
+                        amount=1782.01,
+                        currency_rate=2993.79,
+                        id='26665816-ddca-48ef-91fc-b4c593ec12cd',
                         type=shared.BillPaymentLineLinkType.PAYMENT_ON_ACCOUNT,
                     ),
-                ],
-            ),
-            shared.BillPaymentLine(
-                allocated_on_date='suscipit',
-                amount=6886.49,
-                links=[
                     shared.BillPaymentLineLink(
-                        amount=424.54,
-                        currency_rate=201.41,
-                        id='87875614-3f5a-46c9-8b55-554080d40bca',
-                        type=shared.BillPaymentLineLinkType.REFUND,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=7697.89,
-                        currency_rate=3947.24,
-                        id='cbd6b5f3-ec90-4930-8f92-6bad2553819b',
-                        type=shared.BillPaymentLineLinkType.BILL,
-                    ),
-                ],
-            ),
-            shared.BillPaymentLine(
-                allocated_on_date='voluptate',
-                amount=2611.7,
-                links=[
-                    shared.BillPaymentLineLink(
-                        amount=463.84,
-                        currency_rate=9154.08,
-                        id='d20e5624-8fff-4639-a910-abdcab626766',
+                        amount=6615.78,
+                        currency_rate=8409.92,
+                        id='0ec7afed-bd80-4df4-88a4-7f9390c58880',
                         type=shared.BillPaymentLineLinkType.BILL_PAYMENT,
                     ),
+                ],
+            ),
+            shared.BillPaymentLine(
+                allocated_on_date='quas',
+                amount=2184.13,
+                links=[
                     shared.BillPaymentLineLink(
-                        amount=3857.6,
-                        currency_rate=8815.68,
-                        id='1ec00221-b335-4d89-acb3-ecfda8d0c549',
+                        amount=6834.9,
+                        currency_rate=7047.32,
+                        id='f9ef3ffd-d9f7-4f07-9af4-d35724cdb0f4',
                         type=shared.BillPaymentLineLinkType.MANUAL_JOURNAL,
                     ),
                     shared.BillPaymentLineLink(
-                        amount=9380.94,
-                        currency_rate=427.63,
-                        id='3004978a-61fa-41cf-a068-8f77c1ffc71d',
-                        type=shared.BillPaymentLineLinkType.MANUAL_JOURNAL,
+                        amount=1776.51,
+                        currency_rate=5556.63,
+                        id='1187d568-44ed-4ed8-9a90-65e628bdfc20',
+                        type=shared.BillPaymentLineLinkType.BILL,
+                    ),
+                    shared.BillPaymentLineLink(
+                        amount=1553.71,
+                        currency_rate=6937.24,
+                        id='6c879923-b7e1-4358-8f7a-e12c6891f82c',
+                        type=shared.BillPaymentLineLinkType.DISCOUNT,
+                    ),
+                    shared.BillPaymentLineLink(
+                        amount=1171.42,
+                        currency_rate=810.53,
+                        id='57172305-377d-4cfa-89df-975e35668609',
+                        type=shared.BillPaymentLineLinkType.UNLINKED,
                     ),
                 ],
             ),
@@ -144,30 +96,44 @@ req = operations.CreateBillPaymentRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='fuga',
+        modified_date='itaque',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
         payment_method_ref=shared.PaymentMethodRef(
-            id='163f2a3c-80a9-47ff-b34c-ddf857a9e618',
-            name='Tonya Sauer',
+            id='9c3ddc5f-111d-4ea1-826d-541a4d190feb',
+            name='Evelyn Kuhlman MD',
         ),
-        reference='quidem',
-        source_modified_date='explicabo',
+        reference='placeat',
+        source_modified_date='quod',
         supplemental_data=shared.SupplementalData(
             content={
-                "nulla": {
-                    "natus": 'illum',
+                "sit": {
+                    "distinctio": 'distinctio',
+                    "assumenda": 'illum',
+                    "soluta": 'magnam',
+                    "laudantium": 'tempora',
+                },
+                "esse": {
+                    "corrupti": 'reiciendis',
+                },
+                "facilis": {
+                    "repudiandae": 'amet',
+                    "natus": 'ab',
+                },
+                "officiis": {
+                    "rerum": 'placeat',
+                    "ab": 'ad',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='fc94d6fe-cd79-4939-8066-a6d2d0003553',
-            supplier_name='ratione',
+            id='8c4c4e54-599e-4a34-a260-e9b200ce78a1',
+            supplier_name='expedita',
         ),
         total_amount=1329.54,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=555386,
+    timeout_in_minutes=842921,
 )
 
 res = s.bill_payments.create(req)
@@ -216,7 +182,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='maxime',
+    bill_payment_id='quos',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -244,7 +210,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    bill_payment_id='maiores',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -306,7 +272,7 @@ req = operations.ListBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='recusandae',
+    query='quidem',
 )
 
 res = s.bill_payments.list(req)

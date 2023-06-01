@@ -5,6 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import bankaccount as shared_bankaccount
 from ..shared import createbankaccountresponse as shared_createbankaccountresponse
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -26,4 +27,6 @@ class CreateBankAccountResponse:
     create_bank_account_response: Optional[shared_createbankaccountresponse.CreateBankAccountResponse] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     

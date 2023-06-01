@@ -94,7 +94,7 @@ req = operations.GetBalanceSheetRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     period_length=4,
     periods_to_compare=20,
-    start_month='ducimus',
+    start_month='tempora',
 )
 
 res = s.reports.get_balance_sheet(req)
@@ -123,7 +123,7 @@ req = operations.GetCashFlowStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     period_length=4,
     periods_to_compare=20,
-    start_month='nemo',
+    start_month='aut',
 )
 
 res = s.reports.get_cash_flow_statement(req)
@@ -152,7 +152,7 @@ req = operations.GetProfitAndLossRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     period_length=4,
     periods_to_compare=20,
-    start_month='illo',
+    start_month='possimus',
 )
 
 res = s.reports.get_profit_and_loss(req)

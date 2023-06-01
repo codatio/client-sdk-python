@@ -5,6 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import createitemresponse as shared_createitemresponse
 from ..shared import item as shared_item
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -25,4 +26,6 @@ class CreateItemResponse:
     create_item_response: Optional[shared_createitemresponse.CreateItemResponse] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     

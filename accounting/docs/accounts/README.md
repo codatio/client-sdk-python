@@ -119,7 +119,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetAccountRequest(
-    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    account_id='ab',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -189,7 +189,7 @@ req = operations.ListAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ab',
+    query='quis',
 )
 
 res = s.accounts.list(req)

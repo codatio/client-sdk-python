@@ -34,33 +34,63 @@ s = codataccounting.CodatAccounting(
 req = operations.CreatePaymentRequest(
     payment=shared.Payment(
         account_ref=shared.AccountRef(
-            id='def9c765-dfd7-4354-a5cb-94977017a262',
-            name='Monica Reinger',
+            id='aa558a65-e208-4301-aca3-4bb87d4f6212',
+            name='Ms. Kristi Jast',
         ),
-        currency='eum',
-        currency_rate=7979.17,
+        currency='architecto',
+        currency_rate=3766.39,
         customer_ref=shared.CustomerRef(
-            company_name='laborum',
-            id='4e999828-79de-4fc0-b239-606cf90ad989',
+            company_name='voluptatem',
+            id='6294514c-3db9-4ca9-b38b-d2be87870349',
         ),
-        date_='recusandae',
-        id='1a34715a-cda0-444f-aaed-6e13a620e2e9',
+        date_='adipisci',
+        id='f49aa846-5a32-4832-b9b7-19d1cea673d8',
         lines=[
             shared.PaymentLine(
-                allocated_on_date='totam',
-                amount=7539.55,
+                allocated_on_date='itaque',
+                amount=1984.56,
                 links=[
                     shared.PaymentLineLink(
-                        amount=3390.23,
-                        currency_rate=7169.63,
-                        id='0486cf39-8a0b-4374-a17d-d95ce3044be4',
-                        type=shared.PaymentLinkType.DISCOUNT,
+                        amount=1976.2,
+                        currency_rate=3400.87,
+                        id='e49a3135-778c-4e54-8acb-0e3ea975045b',
+                        type=shared.PaymentLinkType.PAYMENT,
                     ),
                     shared.PaymentLineLink(
-                        amount=7139.18,
-                        currency_rate=2076.75,
-                        id='b31cb503-c314-40d8-b72c-535e1dd6bf64',
-                        type=shared.PaymentLinkType.PAYMENT_ON_ACCOUNT,
+                        amount=7977.88,
+                        currency_rate=9916.87,
+                        id='63b21518-6ab5-4e3a-8226-14315d156829',
+                        type=shared.PaymentLinkType.REFUND,
+                    ),
+                    shared.PaymentLineLink(
+                        amount=9207.5,
+                        currency_rate=3778.77,
+                        id='1afc7186-ff20-4b7a-b3df-40ca0d7657c1',
+                        type=shared.PaymentLinkType.OTHER,
+                    ),
+                ],
+            ),
+            shared.PaymentLine(
+                allocated_on_date='eius',
+                amount=698.78,
+                links=[
+                    shared.PaymentLineLink(
+                        amount=7083.87,
+                        currency_rate=9823,
+                        id='055271b2-511d-4d60-add1-b28272bc9c32',
+                        type=shared.PaymentLinkType.UNLINKED,
+                    ),
+                    shared.PaymentLineLink(
+                        amount=1125.17,
+                        currency_rate=4058.4,
+                        id='97b1880f-cbb2-4b93-815f-670bd1784831',
+                        type=shared.PaymentLinkType.OTHER,
+                    ),
+                    shared.PaymentLineLink(
+                        amount=3516.07,
+                        currency_rate=2234.48,
+                        id='eeb3b6e2-41c3-4109-9836-63c66dcbb7df',
+                        type=shared.PaymentLinkType.CREDIT_NOTE,
                     ),
                 ],
             ),
@@ -68,44 +98,32 @@ req = operations.CreatePaymentRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='non',
-        note='quis',
+        modified_date='porro',
+        note='soluta',
         payment_method_ref=shared.PaymentMethodRef(
-            id='4e9831e7-95f0-4e57-b54e-bf2d2b46097e',
-            name='Carlton Grady',
+            id='09c8b408-e071-4377-8de4-fee101d9780a',
+            name='Laura Schimmel',
         ),
-        reference='voluptatum',
-        source_modified_date='quibusdam',
+        reference='rerum',
+        source_modified_date='provident',
         supplemental_data=shared.SupplementalData(
             content={
-                "earum": {
-                    "sit": 'cumque',
-                    "quibusdam": 'quibusdam',
+                "perferendis": {
+                    "accusantium": 'possimus',
+                    "vel": 'minus',
                 },
-                "inventore": {
-                    "enim": 'perferendis',
-                    "soluta": 'tenetur',
-                    "ipsam": 'dolorum',
-                },
-                "ipsa": {
-                    "soluta": 'impedit',
-                    "quas": 'facilis',
-                    "quam": 'blanditiis',
-                    "commodi": 'eaque',
-                },
-                "similique": {
-                    "voluptates": 'similique',
-                    "autem": 'nobis',
-                    "laboriosam": 'non',
-                    "corporis": 'ab',
+                "blanditiis": {
+                    "quia": 'similique',
+                    "ipsam": 'a',
+                    "alias": 'perferendis',
                 },
             },
         ),
-        total_amount=1991.9,
+        total_amount=1333.46,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=179221,
+    timeout_in_minutes=152643,
 )
 
 res = s.payments.create(req)
@@ -132,7 +150,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='repellendus',
+    payment_id='sit',
 )
 
 res = s.payments.get(req)
@@ -195,7 +213,7 @@ req = operations.ListPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsam',
+    query='esse',
 )
 
 res = s.payments.list(req)

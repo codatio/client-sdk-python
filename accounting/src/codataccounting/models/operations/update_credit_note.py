@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import creditnote as shared_creditnote
+from ..shared import schema as shared_schema
 from ..shared import updatecreditnoteresponse as shared_updatecreditnoteresponse
 from typing import Optional
 
@@ -26,6 +27,8 @@ class UpdateCreditNoteResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     update_credit_note_response: Optional[shared_updatecreditnoteresponse.UpdateCreditNoteResponse] = dataclasses.field(default=None)
     r"""Success"""
     

@@ -35,28 +35,28 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='dolor',
-        account_number='natus',
-        account_type=shared.BankAccountBankAccountType.CREDIT,
-        available_balance=9437.49,
-        balance=9025.99,
-        currency='fuga',
-        i_ban='in',
-        id='596eb10f-aaa2-4352-8595-5907aff1a3a2',
-        institution='repellat',
+        account_name='iusto',
+        account_number='dicta',
+        account_type=shared.BankAccountBankAccountType.DEBIT,
+        available_balance=3179.83,
+        balance=8804.76,
+        currency='commodi',
+        i_ban='repudiandae',
+        id='13b99d48-8e1e-491e-850a-d2abd4426980',
+        institution='magni',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='mollitia',
-        nominal_code='occaecati',
-        overdraft_limit=2532.91,
-        sort_code='commodi',
-        source_modified_date='quam',
+        modified_date='assumenda',
+        nominal_code='ipsam',
+        overdraft_limit=46.95,
+        sort_code='fugit',
+        source_modified_date='dolorum',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=474697,
+    timeout_in_minutes=569618,
 )
 
 res = s.bank_accounts.create(req)
@@ -84,7 +84,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBankAccountRequest(
-    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    account_id='tempora',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -151,7 +151,7 @@ req = operations.ListBankAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='velit',
+    query='facilis',
 )
 
 res = s.bank_accounts.list(req)
@@ -184,29 +184,29 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='error',
-        account_number='quia',
-        account_type=shared.BankAccountBankAccountType.CREDIT,
-        available_balance=1103.75,
-        balance=6747.52,
-        currency='animi',
-        i_ban='enim',
-        id='2c3f5ad0-19da-41ff-a78f-097b0074f154',
-        institution='iusto',
+        account_name='tempore',
+        account_number='labore',
+        account_type=shared.BankAccountBankAccountType.DEBIT,
+        available_balance=4332.88,
+        balance=2487.53,
+        currency='eligendi',
+        i_ban='sint',
+        id='69e9a3ef-a77d-4fb1-8cd6-6ae395efb9ba',
+        institution='blanditiis',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='dicta',
-        nominal_code='harum',
-        overdraft_limit=3179.83,
-        sort_code='accusamus',
-        source_modified_date='commodi',
+        modified_date='deleniti',
+        nominal_code='sapiente',
+        overdraft_limit=2305.33,
+        sort_code='deserunt',
+        source_modified_date='nisi',
     ),
-    bank_account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    bank_account_id='vel',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=918236,
+    timeout_in_minutes=618809,
 )
 
 res = s.bank_accounts.update(req)

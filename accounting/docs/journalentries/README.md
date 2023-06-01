@@ -35,87 +35,88 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
-        created_on='quibusdam',
-        description='natus',
-        id='8ccf89d3-8611-486e-976c-002facb13ac2',
+        created_on='quas',
+        description='soluta',
+        id='d380c29a-a8dd-471b-9daa-30b7b91449ae',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='c8143b86-6c57-45a1-a266-8730be37b0e8',
-                    name='Alton Schmitt',
+                    id='9c088d41-8bb7-4180-8f42-3d543935f377',
+                    name='Devin Hintz',
                 ),
-                currency='facere',
-                description='temporibus',
-                net_amount=7790.58,
+                currency='nam',
+                description='ducimus',
+                net_amount=8873.03,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='officiis',
-                            id='69b53510-5050-414d-8a10-5882484c36e9',
+                            data_type='velit',
+                            id='b6a3c523-105e-47c3-8cab-0ecb812a6614',
                         ),
                         shared.InvoiceTo(
-                            data_type='ut',
-                            id='8892782d-34e0-4b8f-80d5-9f57b9f9820b',
+                            data_type='atque',
+                            id='944a8e90-8507-45bc-a538-253343fb0a4e',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='autem',
+                            id='6ea47578-d171-4e29-8181-8fc679b6b2f2',
                         ),
                     ],
                 ),
             ),
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='e07808c3-6c9e-42f7-8344-e00f478eb539',
-                    name='Maxine Dietrich',
+                    id='5359b855-d015-4b62-88b8-3a38a8a88c14',
+                    name='Miss Andrea Bartell',
                 ),
-                currency='dolore',
-                description='blanditiis',
-                net_amount=9119.94,
+                currency='maxime',
+                description='deserunt',
+                net_amount=9204.81,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='delectus',
-                            id='ccb69d54-1b4b-4393-b356-6625bea32201',
+                            data_type='et',
+                            id='ae1ecf8c-3494-46bb-a7a0-5a8b4a9ec5b3',
                         ),
                         shared.InvoiceTo(
-                            data_type='temporibus',
-                            id='ec379c59-8ea1-4d48-85c2-f9e21d90fd53',
+                            data_type='eum',
+                            id='88cca363-2727-460e-966e-97e054103347',
                         ),
                         shared.InvoiceTo(
-                            data_type='esse',
-                            id='76bfc767-7f0f-4504-a6e4-828fb6daee19',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='cumque',
-                            id='26c0cb61-8c63-431c-abda-b767a444dd0d',
+                            data_type='pariatur',
+                            id='78ff2491-145f-4ab9-a59a-4af336664eaa',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='a0abe58e-b3d5-44ba-9cb3-ad49b8e5c18b',
-            name='Holly Trantow',
+            id='6bf2ff14-e8c1-4b35-aacc-edacc5227814',
+            name='Mr. Sherman Pfannerstill',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='maiores',
-        posted_on='ea',
+        modified_date='cum',
+        posted_on='quo',
         record_ref=shared.InvoiceTo(
-            data_type='incidunt',
-            id='823255be-95c0-4cbc-b2ca-87908d73809a',
+            data_type='aliquam',
+            id='1ea1342d-4104-4a25-af71-de57a11d614a',
         ),
-        source_modified_date='aut',
+        source_modified_date='tempora',
         supplemental_data=shared.SupplementalData(
             content={
-                "doloribus": {
-                    "eum": 'itaque',
+                "dicta": {
+                    "laboriosam": 'sint',
+                    "dolores": 'repudiandae',
                 },
             },
         ),
-        updated_on='unde',
+        updated_on='fuga',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=148478,
+    timeout_in_minutes=284514,
 )
 
 res = s.journal_entries.create(req)
@@ -173,7 +174,7 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    journal_entry_id='totam',
 )
 
 res = s.journal_entries.delete(req)
@@ -200,7 +201,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='qui',
+    journal_entry_id='laboriosam',
 )
 
 res = s.journal_entries.get(req)
@@ -263,7 +264,7 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='totam',
+    query='esse',
 )
 
 res = s.journal_entries.list(req)

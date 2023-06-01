@@ -5,6 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import createdirectincomeresponse as shared_createdirectincomeresponse
 from ..shared import directincome as shared_directincome
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -25,4 +26,6 @@ class CreateDirectIncomeResponse:
     create_direct_income_response: Optional[shared_createdirectincomeresponse.CreateDirectIncomeResponse] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     

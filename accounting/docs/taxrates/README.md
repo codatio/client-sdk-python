@@ -27,7 +27,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetTaxRateRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tax_rate_id='culpa',
+    tax_rate_id='ex',
 )
 
 res = s.tax_rates.get(req)
@@ -57,7 +57,7 @@ req = operations.ListTaxRatesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sunt',
+    query='unde',
 )
 
 res = s.tax_rates.list(req)

@@ -33,23 +33,23 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateJournalRequest(
     journal=shared.Journal(
-        created_on='cum',
+        created_on='nesciunt',
         has_children=False,
-        id='56065a50-74be-4fb8-af68-49d2b9940436',
-        journal_code='adipisci',
+        id='d522b828-a903-4066-8f02-4c79b4cc64c2',
+        journal_code='libero',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='mollitia',
-        name='Faye Huels',
-        parent_id='voluptatem',
-        source_modified_date='ipsam',
-        status=shared.JournalStatus.UNKNOWN,
-        type='praesentium',
+        modified_date='sequi',
+        name='Philip Connelly',
+        parent_id='voluptatum',
+        source_modified_date='deleniti',
+        status=shared.JournalStatus.ACTIVE,
+        type='facere',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=452831,
+    timeout_in_minutes=894322,
 )
 
 res = s.journals.create(req)
@@ -76,7 +76,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='ea',
+    journal_id='ex',
 )
 
 res = s.journals.get(req)
@@ -139,7 +139,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='eveniet',
+    query='magni',
 )
 
 res = s.journals.list(req)

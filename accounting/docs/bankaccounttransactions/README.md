@@ -30,28 +30,54 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankTransactionsRequest(
     bank_transactions=shared.BankTransactions(
-        account_id='quis',
+        account_id='veritatis',
         transactions=[
             shared.BankTransactionLine(
-                amount=6481.72,
-                balance=202.18,
-                cleared_on_date='ipsam',
-                counterparty='repellendus',
-                description='sapiente',
-                id='c2ddf7cc-78ca-41ba-928f-c816742cb739',
-                modified_date='aspernatur',
+                amount=202.18,
+                balance=3682.41,
+                cleared_on_date='repellendus',
+                counterparty='sapiente',
+                description='quo',
+                id='2ddf7cc7-8ca1-4ba9-a8fc-816742cb7392',
+                modified_date='perferendis',
+                reconciled=False,
+                reference='ad',
+                source_modified_date='natus',
+                transaction_type=shared.BankTransactionType.DEBIT,
+            ),
+            shared.BankTransactionLine(
+                amount=6120.96,
+                balance=2223.21,
+                cleared_on_date='natus',
+                counterparty='laboriosam',
+                description='hic',
+                id='ea7596eb-10fa-4aa2-b52c-5955907aff1a',
+                modified_date='dolorem',
+                reconciled=False,
+                reference='culpa',
+                source_modified_date='consequuntur',
+                transaction_type=shared.BankTransactionType.OTHER,
+            ),
+            shared.BankTransactionLine(
+                amount=6531.08,
+                balance=5818.5,
+                cleared_on_date='numquam',
+                counterparty='commodi',
+                description='quam',
+                id='739251aa-52c3-4f5a-9019-da1ffe78f097',
+                modified_date='cum',
                 reconciled=False,
                 reference='perferendis',
-                source_modified_date='ad',
-                transaction_type=shared.BankTransactionType.CHECK,
+                source_modified_date='doloremque',
+                transaction_type=shared.BankTransactionType.DEP,
             ),
         ],
     ),
-    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    account_id='ut',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=149675,
+    timeout_in_minutes=979587,
 )
 
 res = s.bank_account_transactions.create(req)
@@ -77,7 +103,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetCreateBankAccountModelRequest(
-    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    account_id='dicta',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -105,13 +131,13 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    account_id='corporis',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='iste',
+    query='dolore',
 )
 
 res = s.bank_account_transactions.list(req)
