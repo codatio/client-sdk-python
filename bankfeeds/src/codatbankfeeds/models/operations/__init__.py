@@ -2,9 +2,20 @@
 
 from .create_bank_feed import *
 from .create_bank_transactions import *
+from .create_company import *
+from .create_data_connection import *
+from .delete_company import *
+from .delete_company_connection import *
 from .get_bank_feeds import *
+from .get_company import *
+from .get_company_connection import *
 from .get_create_bank_account_model import *
 from .list_bank_account_transactions import *
+from .list_companies import *
+from .list_company_connections import *
+from .proxy import *
+from .unlink_connection import *
 from .update_bank_feed import *
+from .update_company import *
 
-__all__ = ["CreateBankFeedRequest","CreateBankFeedResponse","CreateBankTransactionsRequest","CreateBankTransactionsResponse","GetBankFeedsRequest","GetBankFeedsResponse","GetCreateBankAccountModelRequest","GetCreateBankAccountModelResponse","ListBankAccountTransactions409ApplicationJSON","ListBankAccountTransactionsRequest","ListBankAccountTransactionsResponse","UpdateBankFeedRequest","UpdateBankFeedResponse"]
+__all__ = ["CreateBankFeedRequest","CreateBankFeedResponse","CreateBankTransactionsRequest","CreateBankTransactionsResponse","CreateCompanyResponse","CreateDataConnectionRequest","CreateDataConnectionRequestBody","CreateDataConnectionResponse","DeleteCompanyConnectionRequest","DeleteCompanyConnectionResponse","DeleteCompanyRequest","DeleteCompanyResponse","GetBankFeedsRequest","GetBankFeedsResponse","GetCompanyConnectionRequest","GetCompanyConnectionResponse","GetCompanyRequest","GetCompanyResponse","GetCreateBankAccountModelRequest","GetCreateBankAccountModelResponse","ListBankAccountTransactions409ApplicationJSON","ListBankAccountTransactionsRequest","ListBankAccountTransactionsResponse","ListCompaniesRequest","ListCompaniesResponse","ListCompanyConnectionsRequest","ListCompanyConnectionsResponse","ProxyRequest","ProxyResponse","UnlinkConnectionRequest","UnlinkConnectionRequestBody","UnlinkConnectionResponse","UpdateBankFeedRequest","UpdateBankFeedResponse","UpdateCompanyRequest","UpdateCompanyResponse"]

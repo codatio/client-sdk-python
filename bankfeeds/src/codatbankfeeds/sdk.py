@@ -3,7 +3,7 @@
 import requests as requests_http
 from . import utils
 from codatbankfeeds.models import operations, shared
-from typing import Optional
+from typing import Any, Optional
 
 SERVERS = [
     "https://api.codat.io",
@@ -25,8 +25,8 @@ class CodatBankFeeds:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.21.1"
-    _gen_version: str = "2.32.7"
+    _sdk_version: str = "0.22.0"
+    _gen_version: str = "2.34.2"
 
     def __init__(self,
                  security: shared.Security = None,
@@ -64,53 +64,7 @@ class CodatBankFeeds:
     
     
     
-    def create_bank_feed(self, request: operations.CreateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankFeedResponse:
-        r"""Create bank feed bank accounts
-        Put BankFeed BankAccounts for a single data source connected to a single company.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.CreateBankFeedRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
-        
-        client = self._security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request('PUT', url, data=data, files=form, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.CreateBankFeedResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.BankFeedAccount]])
-                res.bank_feed_accounts = out
-        elif http_res.status_code in [401, 404, 429]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-
-        return res
-
-    
-    def create_bank_transactions(self, request: operations.CreateBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankTransactionsResponse:
+    def create(self, request: operations.CreateBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankTransactionsResponse:
         r"""Create bank transactions
         Posts bank transactions to the accounting package for a given company.
         
@@ -159,14 +113,17 @@ class CodatBankFeeds:
         return res
 
     
-    def get_bank_feeds(self, request: operations.GetBankFeedsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankFeedsResponse:
-        r"""List bank feed bank accounts
-        Get BankFeed BankAccounts for a single data source connected to a single company.
+    def create(self, request: operations.CreateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankFeedResponse:
+        r"""Create bank feed bank accounts
+        Put BankFeed BankAccounts for a single data source connected to a single company.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetBankFeedsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
+        url = utils.generate_url(operations.CreateBankFeedRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
         headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -179,7 +136,7 @@ class CodatBankFeeds:
             
 
         def do_request():
-            return client.request('GET', url, headers=headers)
+            return client.request('PUT', url, data=data, files=form, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -188,7 +145,7 @@ class CodatBankFeeds:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetBankFeedsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateBankFeedResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -202,7 +159,183 @@ class CodatBankFeeds:
         return res
 
     
-    def get_create_bank_account_model(self, request: operations.GetCreateBankAccountModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBankAccountModelResponse:
+    def create(self, request: operations.CreateDataConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDataConnectionResponse:
+        r"""Create connection
+        Create a data connection for a company
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.CreateDataConnectionRequest, base_url, '/companies/{companyId}/connections', request)
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.CreateDataConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Connection])
+                res.connection = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def create(self, request: shared.CompanyRequestBody, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
+        r"""Create company
+        Create a new company
+        """
+        base_url = self._server_url
+        
+        url = base_url.removesuffix('/') + '/companies'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('POST', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.CreateCompanyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
+                res.company = out
+        elif http_res.status_code in [401, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def delete(self, request: operations.DeleteCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyConnectionResponse:
+        r"""Delete connection
+        Revoke and remove a connection from a company.
+        This operation is not reversible - the end user would need to reauthorize a new data connection if you wish to view new data for this company.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.DeleteCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('DELETE', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DeleteCompanyConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            pass
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def delete(self, request: operations.DeleteCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyResponse:
+        r"""Delete a company
+        Delete the given company from Codat.
+        This operation is not reversible.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.DeleteCompanyRequest, base_url, '/companies/{companyId}', request)
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('DELETE', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DeleteCompanyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 204:
+            pass
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def get(self, request: operations.GetCreateBankAccountModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBankAccountModelResponse:
         r"""List push options for bank account bank transactions
         Gets the options of pushing bank account transactions.
         """
@@ -245,7 +378,136 @@ class CodatBankFeeds:
         return res
 
     
-    def list_bank_account_transactions(self, request: operations.ListBankAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountTransactionsResponse:
+    def get(self, request: operations.GetBankFeedsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankFeedsResponse:
+        r"""List bank feed bank accounts
+        Get BankFeed BankAccounts for a single data source connected to a single company.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetBankFeedsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
+        headers = {}
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetBankFeedsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[list[shared.BankFeedAccount]])
+                res.bank_feed_accounts = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def get(self, request: operations.GetCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyConnectionResponse:
+        r"""Get connection
+        Get a single connection for a company
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
+        headers = {}
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCompanyConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Connection])
+                res.connection = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def get(self, request: operations.GetCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyResponse:
+        r"""Get company
+        Get metadata for a single company
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetCompanyRequest, base_url, '/companies/{companyId}', request)
+        headers = {}
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCompanyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
+                res.company = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def list(self, request: operations.ListBankAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountTransactionsResponse:
         r"""List bank transactions for bank account
         Gets bank transactions for a given bank account ID
         """
@@ -293,7 +555,183 @@ class CodatBankFeeds:
         return res
 
     
-    def update_bank_feed(self, request: operations.UpdateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankFeedResponse:
+    def list(self, request: operations.ListCompanyConnectionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompanyConnectionsResponse:
+        r"""List connections
+        List the connections for a company
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ListCompanyConnectionsRequest, base_url, '/companies/{companyId}/connections', request)
+        headers = {}
+        query_params = utils.get_query_params(operations.ListCompanyConnectionsRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListCompanyConnectionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Connections])
+                res.connections = out
+        elif http_res.status_code in [400, 401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def list(self, request: operations.ListCompaniesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompaniesResponse:
+        r"""List companies
+        List all companies that you have created in Codat.
+        """
+        base_url = self._server_url
+        
+        url = base_url.removesuffix('/') + '/companies'
+        headers = {}
+        query_params = utils.get_query_params(operations.ListCompaniesRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListCompaniesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Companies])
+                res.companies = out
+        elif http_res.status_code in [400, 401, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def proxy(self, request: operations.ProxyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ProxyResponse:
+        r"""A proxy or passthrough endpoint used to query unsupported third party endpoints."""
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.ProxyRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/proxy', request)
+        headers = {}
+        query_params = utils.get_query_params(operations.ProxyRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ProxyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[dict[str, Any]])
+                res.proxy_response = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def unlink_connection(self, request: operations.UnlinkConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UnlinkConnectionResponse:
+        r"""Unlink connection
+        This allows you to deauthorize a connection, without deleting it from Codat. This means you can still view any data that has previously been pulled into Codat, and also lets you re-authorize in future if your customer wishes to resume sharing their data.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.UnlinkConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PATCH', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.UnlinkConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Connection])
+                res.connection = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def update(self, request: operations.UpdateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankFeedResponse:
         r"""Update bank feed bank account
         Update a single BankFeed BankAccount for a single data source connected to a single company.
         """
@@ -331,6 +769,52 @@ class CodatBankFeeds:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedAccount])
                 res.bank_feed_account = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+
+        return res
+
+    
+    def update(self, request: operations.UpdateCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateCompanyResponse:
+        r"""Update company
+        Updates the given company with a new name and description
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.UpdateCompanyRequest, base_url, '/companies/{companyId}', request)
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "company_request_body", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('PUT', url, data=data, files=form, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.UpdateCompanyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
+                res.company = out
         elif http_res.status_code in [401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
