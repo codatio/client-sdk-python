@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import locations as shared_locations
+from ..shared import paymentmethod as shared_paymentmethod
 from ..shared import schema as shared_schema
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -11,15 +11,17 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class ListLocationsRequest:
+class GetPaymentMethodRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    payment_method_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'paymentMethodId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a payment method."""
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListLocations409ApplicationJSON:
+class GetPaymentMethod409ApplicationJSON:
     r"""The data type's dataset has not been requested or is still syncing."""
     
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
@@ -31,15 +33,15 @@ class ListLocations409ApplicationJSON:
     
 
 @dataclasses.dataclass
-class ListLocationsResponse:
+class GetPaymentMethodResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    list_locations_409_application_json_object: Optional[ListLocations409ApplicationJSON] = dataclasses.field(default=None)
+    get_payment_method_409_application_json_object: Optional[GetPaymentMethod409ApplicationJSON] = dataclasses.field(default=None)
     r"""The data type's dataset has not been requested or is still syncing."""
-    locations: Optional[shared_locations.Locations] = dataclasses.field(default=None)
+    payment_method: Optional[shared_paymentmethod.PaymentMethod] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
-    r"""Your `query` parameter was not correctly formed"""
+    r"""Your API request was not properly authorized."""
     

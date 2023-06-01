@@ -45,36 +45,46 @@ if res.company_info is not None:
 
 ### [customers](docs/customers/README.md)
 
+* [get](docs/customers/README.md#get) - Get customer
 * [list](docs/customers/README.md#list) - List customers
 
 ### [disputes](docs/disputes/README.md)
 
+* [get](docs/disputes/README.md#get) - Get dispute
 * [list](docs/disputes/README.md#list) - List disputes
 
 ### [locations](docs/locations/README.md)
 
+* [get](docs/locations/README.md#get) - Get location
 * [list](docs/locations/README.md#list) - List locations
 
 ### [orders](docs/orders/README.md)
 
+* [get](docs/orders/README.md#get) - Get order
 * [list](docs/orders/README.md#list) - List orders
 
 ### [payments](docs/payments/README.md)
 
+* [get](docs/payments/README.md#get) - Get payment
+* [get_method](docs/payments/README.md#get_method) - Get payment method
 * [list](docs/payments/README.md#list) - List payments
 * [list_methods](docs/payments/README.md#list_methods) - List payment methods
 
 ### [products](docs/products/README.md)
 
+* [get](docs/products/README.md#get) - Get product
+* [get_category](docs/products/README.md#get_category) - Get product category
 * [list](docs/products/README.md#list) - List products
 * [list_categories](docs/products/README.md#list_categories) - List product categories
 
 ### [tax_components](docs/taxcomponents/README.md)
 
+* [get](docs/taxcomponents/README.md#get) - Get tax component
 * [list](docs/taxcomponents/README.md#list) - List tax components
 
 ### [transactions](docs/transactions/README.md)
 
+* [get](docs/transactions/README.md#get) - Get transaction
 * [list](docs/transactions/README.md#list) - List transactions
 <!-- End SDK Available Operations -->
 

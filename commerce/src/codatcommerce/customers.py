@@ -23,6 +23,53 @@ class Customers:
         self._gen_version = gen_version
         
     
+    def get(self, request: operations.GetCustomerRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCustomerResponse:
+        r"""Get customer
+        Get a specific commerce customer for the given company and data connection.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetCustomerRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-customers/{customerId}', request)
+        headers = {}
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetCustomerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Customer])
+                res.customer = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+        elif http_res.status_code == 409:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCustomer409ApplicationJSON])
+                res.get_customer_409_application_json_object = out
+
+        return res
+
+    
     def list(self, request: operations.ListCustomersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCustomersResponse:
         r"""List customers
         List all commerce customers for the given company and data connection
@@ -59,7 +106,7 @@ class Customers:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Customers])
                 res.customers = out
-        elif http_res.status_code in [400, 401, 404]:
+        elif http_res.status_code in [400, 401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
                 res.schema = out

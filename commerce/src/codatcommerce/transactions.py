@@ -23,6 +23,53 @@ class Transactions:
         self._gen_version = gen_version
         
     
+    def get(self, request: operations.GetTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionResponse:
+        r"""Get transaction
+        Details of single financial transaction recorded in the commerce or point of sale system. For example, payments, service charges, and fees.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetTransactionRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-transactions/{transactionId}', request)
+        headers = {}
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        
+        client = self._security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', True)
+            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
+            
+
+        def do_request():
+            return client.request('GET', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetTransactionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Transaction])
+                res.transaction = out
+        elif http_res.status_code in [401, 404, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
+                res.schema = out
+        elif http_res.status_code == 409:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetTransaction409ApplicationJSON])
+                res.get_transaction_409_application_json_object = out
+
+        return res
+
+    
     def list(self, request: operations.ListTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionsResponse:
         r"""List transactions
         Details of all financial transactions recorded in the commerce or point of sale system are added to the Transactions data type. For example, payments, service charges, and fees.
@@ -59,7 +106,7 @@ class Transactions:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Transactions])
                 res.transactions = out
-        elif http_res.status_code in [400, 401, 404]:
+        elif http_res.status_code in [400, 401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
                 res.schema = out
