@@ -10,7 +10,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class CreatePullOperationRequest:
+class RefreshDataTypeRequest:
     
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     data_type: shared_datatype.DataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
@@ -20,7 +20,7 @@ class CreatePullOperationRequest:
     
 
 @dataclasses.dataclass
-class CreatePullOperationResponse:
+class RefreshDataTypeResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()

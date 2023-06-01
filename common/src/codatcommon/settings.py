@@ -60,7 +60,7 @@ class Settings:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Profile])
                 res.profile = out
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [401, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -104,7 +104,7 @@ class Settings:
         
         if http_res.status_code == 204:
             pass
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [401, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -150,7 +150,7 @@ class Settings:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Profile])
                 res.profile = out
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [401, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out

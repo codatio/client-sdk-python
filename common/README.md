@@ -53,12 +53,6 @@ if res.company is not None:
 * [unlink_connection](docs/connections/README.md#unlink_connection) - Unlink connection
 * [update_authorization](docs/connections/README.md#update_authorization) - Update authorization
 
-### [data_status](docs/datastatus/README.md)
-
-* [get](docs/datastatus/README.md#get) - Get data status
-* [get_pull_operation](docs/datastatus/README.md#get_pull_operation) - Get pull operation
-* [list_pull_operations](docs/datastatus/README.md#list_pull_operations) - Get pull operations
-
 ### [integrations](docs/integrations/README.md)
 
 * [get](docs/integrations/README.md#get) - Get integration
@@ -73,8 +67,11 @@ if res.company is not None:
 
 ### [refresh_data](docs/refreshdata/README.md)
 
-* [all](docs/refreshdata/README.md#all) - Queue pull operations
-* [by_data_type](docs/refreshdata/README.md#by_data_type) - Queue pull operation
+* [all](docs/refreshdata/README.md#all) - Refresh all data
+* [by_data_type](docs/refreshdata/README.md#by_data_type) - Refresh data type
+* [get](docs/refreshdata/README.md#get) - Get data status
+* [get_pull_operation](docs/refreshdata/README.md#get_pull_operation) - Get pull operation
+* [list_pull_operations](docs/refreshdata/README.md#list_pull_operations) - List pull operations
 
 ### [settings](docs/settings/README.md)
 

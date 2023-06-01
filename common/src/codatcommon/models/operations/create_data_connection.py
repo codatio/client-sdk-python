@@ -32,8 +32,6 @@ class CreateDataConnectionResponse:
     connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""One or more of the resources you referenced could not be found.
-    This might be because your company or data connection id is wrong, or was already deleted.
-    """
+    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

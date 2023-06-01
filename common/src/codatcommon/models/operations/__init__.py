@@ -2,7 +2,6 @@
 
 from .create_company import *
 from .create_data_connection import *
-from .create_pull_operation import *
 from .create_rule import *
 from .delete_company import *
 from .delete_company_connection import *
@@ -23,10 +22,11 @@ from .list_integrations import *
 from .list_pull_operations import *
 from .list_rules import *
 from .refresh_company_data import *
+from .refresh_data_type import *
 from .unlink_connection import *
 from .update_company import *
 from .update_connection_authorization import *
 from .update_profile import *
 from .update_sync_settings import *
 
-__all__ = ["CreateCompanyResponse","CreateDataConnectionRequest","CreateDataConnectionRequestBody","CreateDataConnectionResponse","CreatePullOperationRequest","CreatePullOperationResponse","CreateRuleResponse","DeleteCompanyConnectionRequest","DeleteCompanyConnectionResponse","DeleteCompanyRequest","DeleteCompanyResponse","GetCompanyConnectionRequest","GetCompanyConnectionResponse","GetCompanyDataStatusRequest","GetCompanyDataStatusResponse","GetCompanyPushHistoryRequest","GetCompanyPushHistoryResponse","GetCompanyRequest","GetCompanyResponse","GetCreateUpdateModelOptionsByDataTypeRequest","GetCreateUpdateModelOptionsByDataTypeResponse","GetIntegrationRequest","GetIntegrationResponse","GetIntegrationsBrandingRequest","GetIntegrationsBrandingResponse","GetProfileResponse","GetPullOperationRequest","GetPullOperationResponse","GetPushOperationRequest","GetPushOperationResponse","GetWebhookRequest","GetWebhookResponse","ListCompaniesRequest","ListCompaniesResponse","ListCompanyConnectionsRequest","ListCompanyConnectionsResponse","ListIntegrationsRequest","ListIntegrationsResponse","ListPullOperationsRequest","ListPullOperationsResponse","ListRulesRequest","ListRulesResponse","RefreshCompanyDataRequest","RefreshCompanyDataResponse","UnlinkConnectionRequest","UnlinkConnectionRequestBody","UnlinkConnectionResponse","UpdateCompanyRequest","UpdateCompanyResponse","UpdateConnectionAuthorizationRequest","UpdateConnectionAuthorizationResponse","UpdateProfileResponse","UpdateSyncSettingsRequestBody","UpdateSyncSettingsResponse"]
+__all__ = ["CreateCompanyResponse","CreateDataConnectionRequest","CreateDataConnectionRequestBody","CreateDataConnectionResponse","CreateRuleResponse","DeleteCompanyConnectionRequest","DeleteCompanyConnectionResponse","DeleteCompanyRequest","DeleteCompanyResponse","GetCompanyConnectionRequest","GetCompanyConnectionResponse","GetCompanyDataStatusRequest","GetCompanyDataStatusResponse","GetCompanyPushHistoryRequest","GetCompanyPushHistoryResponse","GetCompanyRequest","GetCompanyResponse","GetCreateUpdateModelOptionsByDataTypeRequest","GetCreateUpdateModelOptionsByDataTypeResponse","GetIntegrationRequest","GetIntegrationResponse","GetIntegrationsBrandingRequest","GetIntegrationsBrandingResponse","GetProfileResponse","GetPullOperationRequest","GetPullOperationResponse","GetPushOperationRequest","GetPushOperationResponse","GetWebhookRequest","GetWebhookResponse","ListCompaniesRequest","ListCompaniesResponse","ListCompanyConnectionsRequest","ListCompanyConnectionsResponse","ListIntegrationsRequest","ListIntegrationsResponse","ListPullOperationsRequest","ListPullOperationsResponse","ListRulesRequest","ListRulesResponse","RefreshCompanyDataRequest","RefreshCompanyDataResponse","RefreshDataTypeRequest","RefreshDataTypeResponse","UnlinkConnectionRequest","UnlinkConnectionRequestBody","UnlinkConnectionResponse","UpdateCompanyRequest","UpdateCompanyResponse","UpdateConnectionAuthorizationRequest","UpdateConnectionAuthorizationResponse","UpdateProfileResponse","UpdateSyncSettingsRequestBody","UpdateSyncSettingsResponse"]
