@@ -1,5 +1,6 @@
 src/codatfiles/files.py
 src/codatfiles/sdk.py
+.gitignore
 pylintrc
 setup.py
 src/codatfiles/__init__.py
