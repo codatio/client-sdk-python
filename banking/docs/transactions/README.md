@@ -29,7 +29,7 @@ s = codatbanking.CodatBanking(
 req = operations.GetTransactionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transaction_id='nulla',
+    transaction_id='corrupti',
 )
 
 res = s.transactions.get(req)
@@ -60,7 +60,7 @@ req = operations.ListTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='corrupti',
+    query='illum',
 )
 
 res = s.transactions.list(req)
@@ -92,7 +92,7 @@ req = operations.ListBankTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='illum',
+    query='vel',
 )
 
 res = s.transactions.list_bank_transactions(req)
