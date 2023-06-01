@@ -40,58 +40,59 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Stephaniastead',
-                country='Swaziland',
-                line1='laudantium',
-                line2='eos',
-                postal_code='38203-9334',
-                region='aliquid',
+                city='Kirkland',
+                country='Netherlands',
+                line1='doloremque',
+                line2='autem',
+                postal_code='25088',
+                region='laudantium',
                 type=shared.AddressType.DELIVERY,
             ),
             shared.Addressesitems(
-                city='Port Rosalinda',
-                country='Turkmenistan',
-                line1='cum',
-                line2='consequatur',
-                postal_code='54807',
-                region='maxime',
+                city='Ankundingfort',
+                country='Kyrgyz Republic',
+                line1='repellendus',
+                line2='beatae',
+                postal_code='42514',
+                region='facilis',
                 type=shared.AddressType.UNKNOWN,
             ),
-            shared.Addressesitems(
-                city='Lake Arnoldo',
-                country='Martinique',
-                line1='id',
-                line2='expedita',
-                postal_code='45919',
-                region='quisquam',
-                type=shared.AddressType.DELIVERY,
-            ),
         ],
-        contact_name='maiores',
-        default_currency='laudantium',
-        email_address='beatae',
-        id='ddf7e088-f74e-4f54-8921-6e8926313bb6',
+        contact_name='cumque',
+        default_currency='doloribus',
+        email_address='minima',
+        id='e6cb6eba-be5e-40b9-9f3b-1358d6a87bb7',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='hic',
-        phone='375-814-0006 x46446',
-        registration_number='fugiat',
-        source_modified_date='laboriosam',
+        modified_date='est',
+        phone='1-869-446-8407 x70355',
+        registration_number='sit',
+        source_modified_date='dignissimos',
         status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "recusandae": {
-                    "pariatur": 'excepturi',
+                "praesentium": {
+                    "incidunt": 'incidunt',
+                    "vitae": 'incidunt',
+                    "nostrum": 'explicabo',
+                },
+                "culpa": {
+                    "voluptatibus": 'ipsa',
+                    "quasi": 'sapiente',
+                    "dolorem": 'quaerat',
+                },
+                "incidunt": {
+                    "cumque": 'vel',
                 },
             },
         ),
-        supplier_name='fugiat',
-        tax_number='ipsum',
+        supplier_name='inventore',
+        tax_number='quidem',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=730689,
+    timeout_in_minutes=894398,
 )
 
 res = s.suppliers.create(req)
@@ -120,7 +121,7 @@ req = operations.DownloadSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='voluptas',
+    supplier_id='quae',
 )
 
 res = s.suppliers.download_attachment(req)
@@ -147,7 +148,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='aliquid',
+    supplier_id='ipsum',
 )
 
 res = s.suppliers.get(req)
@@ -176,7 +177,7 @@ req = operations.GetSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='perferendis',
+    supplier_id='nesciunt',
 )
 
 res = s.suppliers.get_attachment(req)
@@ -239,7 +240,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nesciunt',
+    query='distinctio',
 )
 
 res = s.suppliers.list(req)
@@ -267,7 +268,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='non',
+    supplier_id='dolorum',
 )
 
 res = s.suppliers.list_attachments(req)
@@ -302,60 +303,86 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Carterland',
-                country='Northern Mariana Islands',
-                line1='id',
-                line2='ab',
-                postal_code='38112-4885',
-                region='libero',
+                city='The Hammocks',
+                country='Guinea',
+                line1='neque',
+                line2='eos',
+                postal_code='43139-5315',
+                region='corporis',
                 type=shared.AddressType.UNKNOWN,
             ),
             shared.Addressesitems(
-                city='Enterprise',
-                country='Honduras',
-                line1='quasi',
-                line2='ducimus',
-                postal_code='84456',
-                region='perspiciatis',
+                city='Towson',
+                country='Christmas Island',
+                line1='laudantium',
+                line2='enim',
+                postal_code='88211-1109',
+                region='earum',
+                type=shared.AddressType.BILLING,
+            ),
+            shared.Addressesitems(
+                city='South Electa',
+                country='Saint Lucia',
+                line1='numquam',
+                line2='quae',
+                postal_code='19763-8760',
+                region='eum',
+                type=shared.AddressType.BILLING,
+            ),
+            shared.Addressesitems(
+                city='Littlehaven',
+                country='Cambodia',
+                line1='cupiditate',
+                line2='dicta',
+                postal_code='97500-6166',
+                region='atque',
                 type=shared.AddressType.BILLING,
             ),
         ],
-        contact_name='nobis',
-        default_currency='facilis',
-        email_address='sequi',
-        id='98788398-eba1-4bbf-b143-356f6349a164',
+        contact_name='aliquam',
+        default_currency='perspiciatis',
+        email_address='labore',
+        id='79edd4fc-f7b5-40cf-87f0-8f39271076a2',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='explicabo',
-        phone='671-217-9347 x630',
-        registration_number='vel',
-        source_modified_date='enim',
-        status=shared.SupplierStatus.UNKNOWN,
+        modified_date='dolore',
+        phone='407.690.5799 x0051',
+        registration_number='saepe',
+        source_modified_date='laudantium',
+        status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "beatae": {
-                    "atque": 'optio',
-                    "culpa": 'excepturi',
+                "blanditiis": {
+                    "occaecati": 'natus',
+                    "voluptas": 'optio',
                 },
-                "et": {
-                    "odit": 'reiciendis',
-                    "voluptatem": 'veniam',
+                "totam": {
+                    "odit": 'eos',
+                    "libero": 'eveniet',
+                    "aut": 'similique',
+                    "ipsum": 'maxime',
                 },
-                "consequuntur": {
-                    "dolor": 'quia',
-                    "harum": 'sequi',
+                "tenetur": {
+                    "voluptate": 'blanditiis',
+                    "sint": 'dolorem',
+                },
+                "soluta": {
+                    "fugit": 'neque',
+                    "asperiores": 'corrupti',
+                    "autem": 'autem',
+                    "alias": 'eaque',
                 },
             },
         ),
-        supplier_name='quae',
-        tax_number='porro',
+        supplier_name='minus',
+        tax_number='commodi',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='harum',
-    timeout_in_minutes=868742,
+    supplier_id='inventore',
+    timeout_in_minutes=784398,
 )
 
 res = s.suppliers.update(req)

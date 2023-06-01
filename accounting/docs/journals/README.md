@@ -33,23 +33,23 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateJournalRequest(
     journal=shared.Journal(
-        created_on='nesciunt',
+        created_on='nostrum',
         has_children=False,
-        id='d522b828-a903-4066-8f02-4c79b4cc64c2',
-        journal_code='libero',
+        id='040d6c8b-2a5f-4002-a07e-4048f90009ed',
+        journal_code='consequuntur',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='sequi',
-        name='Philip Connelly',
-        parent_id='voluptatum',
-        source_modified_date='deleniti',
-        status=shared.JournalStatus.ACTIVE,
-        type='facere',
+        modified_date='occaecati',
+        name='Phyllis Koch',
+        parent_id='quidem',
+        source_modified_date='aliquam',
+        status=shared.JournalStatus.ARCHIVED,
+        type='itaque',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=894322,
+    timeout_in_minutes=612118,
 )
 
 res = s.journals.create(req)
@@ -76,7 +76,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='ex',
+    journal_id='pariatur',
 )
 
 res = s.journals.get(req)
@@ -139,7 +139,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='magni',
+    query='suscipit',
 )
 
 res = s.journals.list(req)

@@ -34,63 +34,69 @@ s = codataccounting.CodatAccounting(
 req = operations.CreatePaymentRequest(
     payment=shared.Payment(
         account_ref=shared.AccountRef(
-            id='aa558a65-e208-4301-aca3-4bb87d4f6212',
-            name='Ms. Kristi Jast',
+            id='61e91500-323b-42c0-9b92-4771f5669e5b',
+            name='Tricia Sawayn',
         ),
-        currency='architecto',
-        currency_rate=3766.39,
+        currency='magni',
+        currency_rate=4374.89,
         customer_ref=shared.CustomerRef(
-            company_name='voluptatem',
-            id='6294514c-3db9-4ca9-b38b-d2be87870349',
+            company_name='ea',
+            id='49d84eb9-e4cf-4d22-b6e0-b88fb87d6fa5',
         ),
-        date_='adipisci',
-        id='f49aa846-5a32-4832-b9b7-19d1cea673d8',
+        date_='cum',
+        id='6e8dbf81-2f83-4b1c-a6a9-ffc561929cca',
         lines=[
             shared.PaymentLine(
-                allocated_on_date='itaque',
-                amount=1984.56,
+                allocated_on_date='nemo',
+                amount=3864.41,
                 links=[
                     shared.PaymentLineLink(
-                        amount=1976.2,
-                        currency_rate=3400.87,
-                        id='e49a3135-778c-4e54-8acb-0e3ea975045b',
-                        type=shared.PaymentLinkType.PAYMENT,
-                    ),
-                    shared.PaymentLineLink(
-                        amount=7977.88,
-                        currency_rate=9916.87,
-                        id='63b21518-6ab5-4e3a-8226-14315d156829',
-                        type=shared.PaymentLinkType.REFUND,
-                    ),
-                    shared.PaymentLineLink(
-                        amount=9207.5,
-                        currency_rate=3778.77,
-                        id='1afc7186-ff20-4b7a-b3df-40ca0d7657c1',
-                        type=shared.PaymentLinkType.OTHER,
+                        amount=6814.58,
+                        currency_rate=977.35,
+                        id='395918da-1d48-4e78-a3cf-8e1143da9308',
+                        type=shared.PaymentLinkType.PAYMENT_ON_ACCOUNT,
                     ),
                 ],
             ),
             shared.PaymentLine(
-                allocated_on_date='eius',
-                amount=698.78,
+                allocated_on_date='magni',
+                amount=4682.52,
                 links=[
                     shared.PaymentLineLink(
-                        amount=7083.87,
-                        currency_rate=9823,
-                        id='055271b2-511d-4d60-add1-b28272bc9c32',
-                        type=shared.PaymentLinkType.UNLINKED,
+                        amount=137,
+                        currency_rate=5312.36,
+                        id='af221844-39b3-4de8-b56c-cce470cd2147',
+                        type=shared.PaymentLinkType.PAYMENT,
                     ),
                     shared.PaymentLineLink(
-                        amount=1125.17,
-                        currency_rate=4058.4,
-                        id='97b1880f-cbb2-4b93-815f-670bd1784831',
-                        type=shared.PaymentLinkType.OTHER,
+                        amount=4308.75,
+                        currency_rate=9267.48,
+                        id='6152cf01-d0d8-4c3a-8b9a-5bf935dfe974',
+                        type=shared.PaymentLinkType.DISCOUNT,
                     ),
                     shared.PaymentLineLink(
-                        amount=3516.07,
-                        currency_rate=2234.48,
-                        id='eeb3b6e2-41c3-4109-9836-63c66dcbb7df',
-                        type=shared.PaymentLinkType.CREDIT_NOTE,
+                        amount=6309.83,
+                        currency_rate=2828,
+                        id='b1e9c097-eda6-4234-82e1-a9237e9984c8',
+                        type=shared.PaymentLinkType.UNKNOWN,
+                    ),
+                ],
+            ),
+            shared.PaymentLine(
+                allocated_on_date='facilis',
+                amount=2810.64,
+                links=[
+                    shared.PaymentLineLink(
+                        amount=5745.91,
+                        currency_rate=9051.54,
+                        id='891923c1-8ca8-4d69-8568-9214fa20207e',
+                        type=shared.PaymentLinkType.INVOICE,
+                    ),
+                    shared.PaymentLineLink(
+                        amount=9643.29,
+                        currency_rate=6295.82,
+                        id='e038cd7f-1bc2-4cab-af7f-c2ccba4bef0d',
+                        type=shared.PaymentLinkType.DISCOUNT,
                     ),
                 ],
             ),
@@ -98,32 +104,32 @@ req = operations.CreatePaymentRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='porro',
-        note='soluta',
+        modified_date='nisi',
+        note='voluptatum',
         payment_method_ref=shared.PaymentMethodRef(
-            id='09c8b408-e071-4377-8de4-fee101d9780a',
-            name='Laura Schimmel',
+            id='eaedb2ee-70be-4069-bb36-add704080e0a',
+            name='Lorene Schneider',
         ),
-        reference='rerum',
-        source_modified_date='provident',
+        reference='animi',
+        source_modified_date='ullam',
         supplemental_data=shared.SupplementalData(
             content={
-                "perferendis": {
-                    "accusantium": 'possimus',
-                    "vel": 'minus',
+                "aperiam": {
+                    "aliquam": 'soluta',
                 },
-                "blanditiis": {
-                    "quia": 'similique',
-                    "ipsam": 'a',
-                    "alias": 'perferendis',
+                "inventore": {
+                    "ut": 'sint',
+                },
+                "sint": {
+                    "eius": 'ratione',
                 },
             },
         ),
-        total_amount=1333.46,
+        total_amount=6253.92,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=152643,
+    timeout_in_minutes=979832,
 )
 
 res = s.payments.create(req)
@@ -150,7 +156,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='sit',
+    payment_id='mollitia',
 )
 
 res = s.payments.get(req)
@@ -213,7 +219,7 @@ req = operations.ListPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='esse',
+    query='suscipit',
 )
 
 res = s.payments.list(req)

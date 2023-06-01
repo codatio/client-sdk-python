@@ -188,7 +188,6 @@ src/codataccounting/models/shared/pushoptionchoice.py
 src/codataccounting/models/shared/accounts.py
 src/codataccounting/models/shared/createbanktransactionsresponse.py
 src/codataccounting/models/shared/banktransactions.py
-src/codataccounting/models/shared/banktransactionline.py
 src/codataccounting/models/shared/banktransactiontype.py
 src/codataccounting/models/shared/banktransactionsresponse.py
 src/codataccounting/models/shared/createbankaccountresponse.py

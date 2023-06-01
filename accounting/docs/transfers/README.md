@@ -34,71 +34,63 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateTransferRequest(
     transfer=shared.Transfer(
         contact_ref=shared.TransferContactRef(
-            data_type='maiores',
-            id='c8745005-e9d3-4d93-8e03-6f5c388664f6',
+            data_type='magni',
+            id='73caa911-8b38-4f1b-a1a3-31a54dc10294',
         ),
-        date_='error',
+        date_='reiciendis',
         deposited_record_refs=[
             shared.InvoiceTo(
-                data_type='corporis',
-                id='530a2e2a-ed6a-4af8-a3c2-8d040c69a3d9',
+                data_type='eos',
+                id='fed939ba-8f71-4e29-92c2-0ee1228ac3ad',
             ),
             shared.InvoiceTo(
-                data_type='voluptatem',
-                id='6f6ebd5a-d7ec-4739-8f25-f634b3730714',
+                data_type='optio',
+                id='647d240b-c11e-4a48-a824-ccc6a2f0f5b9',
             ),
             shared.InvoiceTo(
-                data_type='itaque',
-                id='6be8c3e0-9c64-4d34-aac2-99a6e5e7aef1',
+                data_type='quibusdam',
+                id='3cb11a76-87d3-4100-a8e2-b9b0d746d2a7',
             ),
         ],
-        description='amet',
+        description='quisquam',
         from_=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='402e945f-5374-43ef-9e11-98221f9b1f7d',
-                name='Gerard Weimann',
+                id='7d1ea0e7-9fa9-4bbe-9f17-9f650b1e707e',
+                name='Rochelle Grimes',
             ),
-            amount=4322.15,
-            currency='omnis',
+            amount=4097.14,
+            currency='odio',
         ),
-        id='682aceef-b04f-48c5-92ca-abea708ed579',
+        id='13bacce0-72ab-4d61-918d-279c10c18516',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='rem',
-        source_modified_date='facere',
+        modified_date='doloribus',
+        source_modified_date='repellendus',
         supplemental_data=shared.SupplementalData(
             content={
-                "quas": {
-                    "illum": 'labore',
-                    "ea": 'aperiam',
+                "praesentium": {
+                    "repudiandae": 'fugit',
+                    "vel": 'fugit',
+                    "ab": 'quia',
+                },
+                "esse": {
+                    "ea": 'odit',
                 },
             },
         ),
         to=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='599d5c33-4957-46d5-9209-e9a2253b6d76',
-                name='Irma Larkin',
+                id='8fa50396-2867-4e72-b3a6-5024b157f9bb',
+                name='Delia Zulauf',
             ),
-            amount=9345.12,
-            currency='similique',
+            amount=6278.1,
+            currency='ad',
         ),
         tracking_category_refs=[
             shared.TrackingCategoryRef(
-                id='5fd4b39f-8a14-4906-b8f1-3c686d839fc9',
-                name='Joshua Koelpin',
-            ),
-            shared.TrackingCategoryRef(
-                id='fa906ae5-59b7-42eb-a746-030fe18376c2',
-                name='Merle Strosin',
-            ),
-            shared.TrackingCategoryRef(
-                id='76790ed0-c16a-47ba-8784-04489f6770ef',
-                name='Ms. Suzanne Lang MD',
-            ),
-            shared.TrackingCategoryRef(
-                id='2ba25ee6-c75a-4f8a-a0a7-ae346e0979e5',
-                name='Timmy Trantow V',
+                id='871d99b6-61a7-4def-968b-6ccb2822b4a9',
+                name='Roberto Abshire',
             ),
         ],
     ),
@@ -131,7 +123,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetTransferRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transfer_id='impedit',
+    transfer_id='magni',
 )
 
 res = s.transfers.get(req)
@@ -195,7 +187,7 @@ req = operations.ListTransfersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='culpa',
+    query='doloribus',
 )
 
 res = s.transfers.list(req)
