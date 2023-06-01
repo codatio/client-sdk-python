@@ -4,6 +4,7 @@ src/codatsynccommerce/integrations.py
 src/codatsynccommerce/sync.py
 src/codatsynccommerce/sync_flow_preferences.py
 src/codatsynccommerce/sdk.py
+.gitignore
 pylintrc
 setup.py
 src/codatsynccommerce/__init__.py
