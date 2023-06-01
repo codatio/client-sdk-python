@@ -4,4 +4,4 @@ from .download_files import *
 from .list_files import *
 from .upload_files import *
 
-__all__ = ["DownloadFilesRequest","DownloadFilesResponse","ListFilesRequest","ListFilesResponse","UploadFilesRequest","UploadFilesRequestBody","UploadFilesResponse"]
+__all__ = ["DownloadFiles404ApplicationJSON","DownloadFilesRequest","DownloadFilesResponse","ListFiles404ApplicationJSON","ListFilesRequest","ListFilesResponse","UploadFiles404ApplicationJSON","UploadFilesRequest","UploadFilesRequestBody","UploadFilesResponse"]

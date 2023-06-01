@@ -18,7 +18,7 @@ from codatfiles.models import operations
 
 s = codatfiles.CodatFiles(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
