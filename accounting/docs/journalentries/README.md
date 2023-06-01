@@ -14,14 +14,12 @@ Journal entries
 
 ## create
 
-﻿Posts a new journalEntry to the accounting package for a given company.
+Posts a new journalEntry to the accounting package for a given company.
 
 Required data may vary by integration. To see what data to post, first call [Get create journal entry model](https://docs.codat.io/accounting-api#/operations/get-create-journalEntries-model).
 
-> **Supported Integrations**
-> 
-> Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journalEntries) for integrations that support creating journal entries.
- 
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journalEntries) to see which integrations support this endpoint.
+
 
 ### Example Usage
 
@@ -31,93 +29,151 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
-        created_on='quibusdam',
-        description='natus',
-        id='8ccf89d3-8611-486e-976c-002facb13ac2',
+        created_on='corporis',
+        description='omnis',
+        id='b855d015-b62c-48b8-ba38-a8a88c144200',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='c8143b86-6c57-45a1-a266-8730be37b0e8',
-                    name='Alton Schmitt',
+                    id='2caeb1ae-1ecf-48c3-8946-bba7a05a8b4a',
+                    name='Noah Rutherford',
                 ),
-                currency='facere',
-                description='temporibus',
-                net_amount=7790.58,
+                currency='amet',
+                description='eum',
+                net_amount=5102.81,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='officiis',
-                            id='69b53510-5050-414d-8a10-5882484c36e9',
+                            data_type='maxime',
+                            id='ca363272-760e-4966-a97e-054103347d78',
                         ),
                         shared.InvoiceTo(
-                            data_type='ut',
-                            id='8892782d-34e0-4b8f-80d5-9f57b9f9820b',
+                            data_type='asperiores',
+                            id='f2491145-fab9-4e59-a4af-336664eaa6bf',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='dolores',
+                            id='ff14e8c1-b352-4acc-adac-c5227814eca0',
                         ),
                     ],
                 ),
             ),
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='e07808c3-6c9e-42f7-8344-e00f478eb539',
-                    name='Maxine Dietrich',
+                    id='16bc41ea-1342-4d41-84a2-5ef71de57a11',
+                    name='Franklin Brown',
                 ),
-                currency='dolore',
-                description='blanditiis',
-                net_amount=9119.94,
+                currency='tempora',
+                description='velit',
+                net_amount=1191.73,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='delectus',
-                            id='ccb69d54-1b4b-4393-b356-6625bea32201',
+                            data_type='laboriosam',
+                            id='92ea4867-3d52-42b8-a8a9-030660f024c7',
                         ),
                         shared.InvoiceTo(
-                            data_type='temporibus',
-                            id='ec379c59-8ea1-4d48-85c2-f9e21d90fd53',
+                            data_type='sint',
+                            id='b4cc64c2-b3a3-42c4-88ad-e62f6aa558a6',
                         ),
-                        shared.InvoiceTo(
-                            data_type='esse',
-                            id='76bfc767-7f0f-4504-a6e4-828fb6daee19',
-                        ),
+                    ],
+                ),
+            ),
+            shared.JournalLine(
+                account_ref=shared.AccountRef(
+                    id='5e208301-6ca3-44bb-87d4-f62127a607d1',
+                    name='Betty Jacobi',
+                ),
+                currency='quaerat',
+                description='nostrum',
+                net_amount=1080.29,
+                tracking=shared.Propertiestracking2(
+                    record_refs=[
                         shared.InvoiceTo(
                             data_type='cumque',
-                            id='26c0cb61-8c63-431c-abda-b767a444dd0d',
+                            id='3db9ca9f-38bd-42be-8787-03493f49aa84',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='ex',
+                            id='5a328327-9b71-49d1-8ea6-73d86e3b35e4',
+                        ),
+                    ],
+                ),
+            ),
+            shared.JournalLine(
+                account_ref=shared.AccountRef(
+                    id='9a313577-8ce5-44ca-8b0e-3ea975045bac',
+                    name='Nathaniel DuBuque',
+                ),
+                currency='quasi',
+                description='nemo',
+                net_amount=1217.04,
+                tracking=shared.Propertiestracking2(
+                    record_refs=[
+                        shared.InvoiceTo(
+                            data_type='commodi',
+                            id='ab5e3a02-2614-4315-9156-8299e61afc71',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='totam',
+                            id='6ff20b7a-73df-440c-a0d7-657c1641bbf0',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='nostrum',
+                            id='5271b251-1dd6-406d-91b2-8272bc9c3221',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='a0abe58e-b3d5-44ba-9cb3-ad49b8e5c18b',
-            name='Holly Trantow',
+            id='697b1880-fcbb-42b9-bc15-f670bd178483',
+            name='Kristin Herman',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='maiores',
-        posted_on='ea',
+        modified_date='necessitatibus',
+        posted_on='harum',
         record_ref=shared.InvoiceTo(
-            data_type='incidunt',
-            id='823255be-95c0-4cbc-b2ca-87908d73809a',
+            data_type='amet',
+            id='b6e241c3-1099-4836-a3c6-6dcbb7df6cb0',
         ),
-        source_modified_date='aut',
+        source_modified_date='molestias',
         supplemental_data=shared.SupplementalData(
             content={
-                "doloribus": {
-                    "eum": 'itaque',
+                "totam": {
+                    "modi": 'aperiam',
+                    "praesentium": 'recusandae',
+                    "eaque": 'nihil',
+                },
+                "dicta": {
+                    "molestiae": 'in',
+                },
+                "magnam": {
+                    "saepe": 'non',
+                    "a": 'voluptates',
+                    "vero": 'quae',
+                    "doloremque": 'et',
+                },
+                "possimus": {
+                    "esse": 'praesentium',
+                    "aperiam": 'laborum',
+                    "dicta": 'doloremque',
                 },
             },
         ),
-        updated_on='unde',
+        updated_on='minus',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=148478,
+    timeout_in_minutes=260242,
 )
 
 res = s.journal_entries.create(req)
@@ -168,14 +224,14 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    journal_entry_id='odio',
 )
 
 res = s.journal_entries.delete(req)
@@ -196,13 +252,13 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='qui',
+    journal_entry_id='rerum',
 )
 
 res = s.journal_entries.get(req)
@@ -229,7 +285,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -256,7 +312,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -265,7 +321,7 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='totam',
+    query='provident',
 )
 
 res = s.journal_entries.list(req)

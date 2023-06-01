@@ -21,13 +21,13 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GetTrackingCategoryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tracking_category_id='quas',
+    tracking_category_id='consectetur',
 )
 
 res = s.tracking_categories.get(req)
@@ -48,7 +48,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -57,7 +57,7 @@ req = operations.ListTrackingCategoriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='expedita',
+    query='aliquam',
 )
 
 res = s.tracking_categories.list(req)

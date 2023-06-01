@@ -5,6 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import createdirectcostresponse as shared_createdirectcostresponse
 from ..shared import directcost as shared_directcost
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -25,4 +26,6 @@ class CreateDirectCostResponse:
     create_direct_cost_response: Optional[shared_createdirectcostresponse.CreateDirectCostResponse] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     

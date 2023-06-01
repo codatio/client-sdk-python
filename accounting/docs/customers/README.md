@@ -17,13 +17,12 @@ Customers
 
 ## create
 
-﻿Posts an individual customer for a given company.
+Posts an individual customer for a given company.
 
 Required data may vary by integration. To see what data to post, first call [Get create/update customer model](https://docs.codat.io/accounting-api#/operations/get-create-update-customers-model).
 
-> **Supported Integrations**
-> 
-> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating customers.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) to see which integrations support this endpoint.
+
 
 ### Example Usage
 
@@ -33,7 +32,7 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -41,117 +40,142 @@ req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='Port Clevelandtown',
-                country='Turkmenistan',
-                line1='culpa',
-                line2='at',
-                postal_code='10296',
-                region='dolore',
+                city='Kassandrafield',
+                country='Ireland',
+                line1='aut',
+                line2='nisi',
+                postal_code='53357',
+                region='debitis',
                 type=shared.AddressType.UNKNOWN,
             ),
             shared.Addressesitems(
-                city='Abbyport',
-                country='Philippines',
-                line1='voluptatibus',
-                line2='sequi',
-                postal_code='37221',
-                region='quas',
-                type=shared.AddressType.UNKNOWN,
+                city='West Rorystad',
+                country='Martinique',
+                line1='magnam',
+                line2='cupiditate',
+                postal_code='95102-7224',
+                region='hic',
+                type=shared.AddressType.BILLING,
             ),
             shared.Addressesitems(
-                city='Burdetteland',
-                country='Vietnam',
-                line1='nulla',
-                line2='libero',
-                postal_code='94593',
-                region='unde',
-                type=shared.AddressType.UNKNOWN,
+                city='Monroefort',
+                country='Australia',
+                line1='porro',
+                line2='vel',
+                postal_code='92418-7122',
+                region='incidunt',
+                type=shared.AddressType.DELIVERY,
             ),
             shared.Addressesitems(
-                city='South Paul',
-                country='Lesotho',
-                line1='ab',
-                line2='quo',
-                postal_code='58178-2135',
-                region='temporibus',
-                type=shared.AddressType.UNKNOWN,
+                city='Mrazworth',
+                country='Jersey',
+                line1='rem',
+                line2='est',
+                postal_code='70884',
+                region='laborum',
+                type=shared.AddressType.BILLING,
             ),
         ],
-        contact_name='amet',
+        contact_name='soluta',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Margaretestad',
-                    country='Burkina Faso',
-                    line1='placeat',
-                    line2='rem',
-                    postal_code='59914',
-                    region='ullam',
+                    city='Fort Leifmouth',
+                    country='Bulgaria',
+                    line1='ea',
+                    line2='architecto',
+                    postal_code='70835-8147',
+                    region='exercitationem',
                     type=shared.AddressType.UNKNOWN,
                 ),
-                email='Buster49@hotmail.com',
-                modified_date='quod',
-                name='Marjorie Funk',
+                email='Krystel.Jakubowski71@yahoo.com',
+                modified_date='modi',
+                name='Jon Bashirian',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='quaerat',
-                        type=shared.PhoneNumberType.LANDLINE,
+                        number='iusto',
+                        type=shared.PhoneNumberType.PRIMARY,
+                    ),
+                    shared.PhoneNumbersitems(
+                        number='odit',
+                        type=shared.PhoneNumberType.FAX,
+                    ),
+                    shared.PhoneNumbersitems(
+                        number='ducimus',
+                        type=shared.PhoneNumberType.FAX,
+                    ),
+                    shared.PhoneNumbersitems(
+                        number='ducimus',
+                        type=shared.PhoneNumberType.FAX,
                     ),
                 ],
                 status=shared.CustomerStatus.ARCHIVED,
             ),
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Howellland',
-                    country='Mayotte',
-                    line1='distinctio',
-                    line2='cum',
-                    postal_code='82083',
-                    region='laborum',
-                    type=shared.AddressType.UNKNOWN,
+                    city='East Dorcasboro',
+                    country='Saint Helena',
+                    line1='inventore',
+                    line2='ducimus',
+                    postal_code='04558',
+                    region='necessitatibus',
+                    type=shared.AddressType.DELIVERY,
                 ),
-                email='Warren19@gmail.com',
-                modified_date='autem',
-                name='Edgar Cremin',
+                email='Stanley_Zboncak@hotmail.com',
+                modified_date='quam',
+                name='Lee Steuber DDS',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='velit',
+                        number='pariatur',
+                        type=shared.PhoneNumberType.LANDLINE,
+                    ),
+                    shared.PhoneNumbersitems(
+                        number='amet',
+                        type=shared.PhoneNumberType.UNKNOWN,
+                    ),
+                    shared.PhoneNumbersitems(
+                        number='quasi',
+                        type=shared.PhoneNumberType.PRIMARY,
+                    ),
+                    shared.PhoneNumbersitems(
+                        number='rerum',
                         type=shared.PhoneNumberType.LANDLINE,
                     ),
                 ],
                 status=shared.CustomerStatus.ARCHIVED,
             ),
         ],
-        customer_name='natus',
-        default_currency='minima',
-        email_address='minus',
-        id='9d237397-c785-4b5d-b4f5-00183febdf67',
+        customer_name='aliquam',
+        default_currency='voluptates',
+        email_address='alias',
+        id='80aa1041-86ec-4759-a02f-3702c5c8e2d3',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='aliquid',
-        phone='510.586.7430 x0316',
-        registration_number='ad',
-        source_modified_date='nisi',
+        modified_date='consequatur',
+        phone='1-782-202-9622 x40479',
+        registration_number='sequi',
+        source_modified_date='ducimus',
         status=shared.CustomerStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "officiis": {
-                    "minus": 'tempora',
-                    "sequi": 'natus',
-                    "saepe": 'quibusdam',
-                    "corrupti": 'maxime',
+                "ut": {
+                    "sed": 'quas',
+                    "aspernatur": 'laudantium',
                 },
-                "aliquam": {
-                    "explicabo": 'eaque',
+                "fugit": {
+                    "reiciendis": 'nulla',
+                },
+                "libero": {
+                    "hic": 'eum',
                 },
             },
         ),
-        tax_number='hic',
+        tax_number='sint',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=276828,
+    timeout_in_minutes=909351,
 )
 
 res = s.customers.create(req)
@@ -172,7 +196,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -180,7 +204,7 @@ req = operations.DownloadCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='quae',
+    customer_id='veniam',
 )
 
 res = s.customers.download_attachment(req)
@@ -201,13 +225,13 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='eos',
+    customer_id='unde',
 )
 
 res = s.customers.get(req)
@@ -228,7 +252,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -236,7 +260,7 @@ req = operations.GetCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='eius',
+    customer_id='consequuntur',
 )
 
 res = s.customers.get_attachment(req)
@@ -263,7 +287,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -290,7 +314,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -299,7 +323,7 @@ req = operations.ListCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptatem',
+    query='laboriosam',
 )
 
 res = s.customers.list(req)
@@ -320,14 +344,14 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.ListCustomerAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='temporibus',
+    customer_id='iusto',
 )
 
 res = s.customers.list_attachments(req)
@@ -354,7 +378,7 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -362,115 +386,116 @@ req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='New Jayde',
-                country='Nigeria',
-                line1='porro',
-                line2='voluptas',
-                postal_code='27537-1668',
-                region='magni',
+                city='Annabelfort',
+                country='Saint Martin',
+                line1='voluptatum',
+                line2='pariatur',
+                postal_code='78213',
+                region='voluptatum',
+                type=shared.AddressType.DELIVERY,
+            ),
+            shared.Addressesitems(
+                city='East Fridastad',
+                country='Oman',
+                line1='quas',
+                line2='odit',
+                postal_code='50599-1430',
+                region='laborum',
                 type=shared.AddressType.UNKNOWN,
             ),
             shared.Addressesitems(
-                city='Joanhaven',
-                country='Lebanon',
-                line1='unde',
-                line2='ad',
-                postal_code='62198-2033',
-                region='laboriosam',
+                city='West Jeromefield',
+                country='American Samoa',
+                line1='numquam',
+                line2='numquam',
+                postal_code='90329-6305',
+                region='distinctio',
+                type=shared.AddressType.DELIVERY,
+            ),
+            shared.Addressesitems(
+                city='Robbboro',
+                country='Aruba',
+                line1='vero',
+                line2='corporis',
+                postal_code='00962-1494',
+                region='sed',
                 type=shared.AddressType.BILLING,
             ),
         ],
-        contact_name='tenetur',
+        contact_name='natus',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='O'Konton',
-                    country='Argentina',
-                    line1='voluptas',
-                    line2='pariatur',
-                    postal_code='01252',
-                    region='ullam',
-                    type=shared.AddressType.UNKNOWN,
+                    city='East Trystan',
+                    country='Nauru',
+                    line1='minima',
+                    line2='minus',
+                    postal_code='81241-6474',
+                    region='quas',
+                    type=shared.AddressType.BILLING,
                 ),
-                email='Aurelia.Mraz77@yahoo.com',
-                modified_date='ipsum',
-                name='Carl Pollich IV',
+                email='Fay.Stokes97@hotmail.com',
+                modified_date='quis',
+                name='Helen Brown',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='incidunt',
-                        type=shared.PhoneNumberType.PRIMARY,
+                        number='accusamus',
+                        type=shared.PhoneNumberType.FAX,
                     ),
                     shared.PhoneNumbersitems(
-                        number='nisi',
-                        type=shared.PhoneNumberType.PRIMARY,
-                    ),
-                ],
-                status=shared.CustomerStatus.ARCHIVED,
-            ),
-            shared.Contact(
-                address=shared.Addressesitems(
-                    city='North Cloydton',
-                    country='Austria',
-                    line1='possimus',
-                    line2='perferendis',
-                    postal_code='28760',
-                    region='beatae',
-                    type=shared.AddressType.DELIVERY,
-                ),
-                email='Mae.Willms66@yahoo.com',
-                modified_date='commodi',
-                name='Tom Gutkowski',
-                phone=[
-                    shared.PhoneNumbersitems(
-                        number='id',
+                        number='vero',
                         type=shared.PhoneNumberType.UNKNOWN,
                     ),
                     shared.PhoneNumbersitems(
-                        number='molestias',
-                        type=shared.PhoneNumberType.UNKNOWN,
+                        number='ea',
+                        type=shared.PhoneNumberType.MOBILE,
+                    ),
+                    shared.PhoneNumbersitems(
+                        number='aliquid',
+                        type=shared.PhoneNumberType.FAX,
                     ),
                 ],
                 status=shared.CustomerStatus.ACTIVE,
             ),
         ],
-        customer_name='occaecati',
-        default_currency='eos',
-        email_address='veniam',
-        id='3c8962f4-896b-4f51-a465-2d3c343d6177',
+        customer_name='consequuntur',
+        default_currency='accusantium',
+        email_address='autem',
+        id='dab75005-2a56-447e-9c43-9ed8c4320f41',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='atque',
-        phone='1-935-212-4413 x9410',
-        registration_number='iste',
-        source_modified_date='aut',
-        status=shared.CustomerStatus.ACTIVE,
+        modified_date='eos',
+        phone='283-454-6735 x275',
+        registration_number='quaerat',
+        source_modified_date='nobis',
+        status=shared.CustomerStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "error": {
-                    "ipsa": 'dolore',
+                "unde": {
+                    "magni": 'modi',
+                    "atque": 'blanditiis',
+                    "quibusdam": 'odio',
+                    "unde": 'ad',
                 },
-                "labore": {
-                    "ullam": 'quibusdam',
-                    "recusandae": 'ad',
-                    "omnis": 'mollitia',
+                "officia": {
+                    "incidunt": 'aspernatur',
+                    "asperiores": 'maxime',
+                    "dolore": 'accusantium',
                 },
-                "placeat": {
-                    "ducimus": 'eaque',
-                    "aliquid": 'ea',
-                },
-                "odio": {
-                    "quisquam": 'delectus',
+                "corporis": {
+                    "laboriosam": 'omnis',
+                    "tenetur": 'vel',
                 },
             },
         ),
-        tax_number='et',
+        tax_number='iste',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='optio',
+    customer_id='animi',
     force_update=False,
-    timeout_in_minutes=953679,
+    timeout_in_minutes=60491,
 )
 
 res = s.customers.update(req)

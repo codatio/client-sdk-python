@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import bill as shared_bill
+from ..shared import schema as shared_schema
 from ..shared import updatebillresponse as shared_updatebillresponse
 from typing import Optional
 
@@ -27,6 +28,8 @@ class UpdateBillResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     update_bill_response: Optional[shared_updatebillresponse.UpdateBillResponse] = dataclasses.field(default=None)
     r"""Success"""
     

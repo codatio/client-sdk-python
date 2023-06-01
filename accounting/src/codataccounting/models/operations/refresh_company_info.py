@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import dataset as shared_dataset
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -21,4 +22,6 @@ class RefreshCompanyInfoResponse:
     dataset: Optional[shared_dataset.Dataset] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""
     

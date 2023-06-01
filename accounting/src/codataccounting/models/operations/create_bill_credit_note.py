@@ -5,6 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import billcreditnote as shared_billcreditnote
 from ..shared import createbillcreditnoteresponse as shared_createbillcreditnoteresponse
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -25,4 +26,6 @@ class CreateBillCreditNoteResponse:
     create_bill_credit_note_response: Optional[shared_createbillcreditnoteresponse.CreateBillCreditNoteResponse] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     

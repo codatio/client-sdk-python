@@ -5,6 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import createjournalentryresponse as shared_createjournalentryresponse
 from ..shared import journalentry as shared_journalentry
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -25,4 +26,6 @@ class CreateJournalEntryResponse:
     create_journal_entry_response: Optional[shared_createjournalentryresponse.CreateJournalEntryResponse] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     

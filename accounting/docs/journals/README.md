@@ -17,9 +17,7 @@ Posts a new journal to the accounting package for a given company.
 
 Required data may vary by integration. To see what data to post, first call [Get create journal model](https://docs.codat.io/accounting-api#/operations/get-create-journals-model).
 
-> **Supported Integrations**
-> 
-> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support creating journals.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) to see which integrations support this endpoint.
 
 ### Example Usage
 
@@ -29,29 +27,29 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.CreateJournalRequest(
     journal=shared.Journal(
-        created_on='cum',
+        created_on='nostrum',
         has_children=False,
-        id='56065a50-74be-4fb8-af68-49d2b9940436',
-        journal_code='adipisci',
+        id='040d6c8b-2a5f-4002-a07e-4048f90009ed',
+        journal_code='consequuntur',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='mollitia',
-        name='Faye Huels',
-        parent_id='voluptatem',
-        source_modified_date='ipsam',
-        status=shared.JournalStatus.UNKNOWN,
-        type='praesentium',
+        modified_date='occaecati',
+        name='Phyllis Koch',
+        parent_id='quidem',
+        source_modified_date='aliquam',
+        status=shared.JournalStatus.ARCHIVED,
+        type='itaque',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=452831,
+    timeout_in_minutes=612118,
 )
 
 res = s.journals.create(req)
@@ -72,13 +70,13 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='ea',
+    journal_id='pariatur',
 )
 
 res = s.journals.get(req)
@@ -105,7 +103,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -132,7 +130,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -141,7 +139,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='eveniet',
+    query='suscipit',
 )
 
 res = s.journals.list(req)

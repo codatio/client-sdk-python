@@ -14,14 +14,13 @@ Credit notes
 
 ## create
 
-﻿Push credit note
+Push credit note
 
 
 Required data may vary by integration. To see what data to post, first call [Get create/update credit note model](https://docs.codat.io/accounting-api#/operations/get-create-update-creditNotes-model).
 
-> **Supported Integrations**
-> 
-> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support creating a credit note.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) to see which integrations support this endpoint.
+
 
 ### Example Usage
 
@@ -31,264 +30,356 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.CreateCreditNoteRequest(
     credit_note=shared.CreditNote(
-        additional_tax_amount=4169.63,
-        additional_tax_percentage=5118.07,
-        allocated_on_date='est',
-        credit_note_number='consequatur',
-        currency='incidunt',
-        currency_rate=1748.36,
+        additional_tax_amount=7609.42,
+        additional_tax_percentage=2365.88,
+        allocated_on_date='ab',
+        credit_note_number='maxime',
+        currency='porro',
+        currency_rate=1279.53,
         customer_ref=shared.CustomerRef(
-            company_name='labore',
-            id='e00a1d6e-b943-4464-9d03-084fbba5ccef',
+            company_name='reiciendis',
+            id='1fcb51c9-a41f-4fbe-9cbd-795ee65e076c',
         ),
-        discount_percentage=9488.1,
-        id='5cb01fe5-1e52-48a4-9ac8-2b85f8bc2cab',
-        issue_date='laborum',
+        discount_percentage=7903.41,
+        id='7abf616e-a5c7-4164-9934-b90f2e09d19d',
+        issue_date='magni',
         line_items=[
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='da4127dd-597f-4f47-91aa-1bc74b86cecc',
-                    name='Eva Wolf',
+                    id='c2f9e2e1-0594-44b9-b5d2-37a72f90849d',
+                    name='Madeline Waters',
                 ),
-                description='nam',
-                discount_amount=2787.91,
-                discount_percentage=5341.75,
+                description='id',
+                discount_amount=9081.27,
+                discount_percentage=7595.37,
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='48bd6a6f-0441-4d2c-bb80-8094373e0604',
-                    name='Velma Rogahn',
+                    id='b7537cd9-222c-49ff-9749-1aabfa2e761f',
+                    name='Angelica O'Reilly',
                 ),
-                quantity=7386.39,
-                sub_total=6653.11,
-                tax_amount=8566.67,
+                quantity=2893.42,
+                sub_total=3375.7,
+                tax_amount=3985.78,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=214.7,
-                    id='2f2586bc-f152-4558-9aa9-5be6cd02756c',
-                    name='Regina Grady',
+                    effective_tax_rate=8757.66,
+                    id='f1031e68-99f0-4c20-81e2-2cd55cc0584a',
+                    name='Lena Goyette',
                 ),
-                total_amount=2877.97,
+                total_amount=3758.77,
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='2b47e176-3c52-408c-a3e9-802d82f0d45e',
-                            name='Ray Pfannerstill',
+                            id='971fc820-c65b-4037-bb8e-0cc885187e4d',
+                            name='William Graham',
                         ),
-                    ],
-                    customer_ref=shared.CustomerRef(
-                        company_name='ea',
-                        id='74ee5cfc-18ed-4c7f-b87e-32e04b3d3ed0',
-                    ),
-                    is_billed_to=shared.BilledToType1.PROJECT,
-                    is_rebilled_to=shared.BilledToType1.NOT_APPLICABLE,
-                    project_ref=shared.ProjectRef(
-                        id='670ef42b-d3c9-4f1c-8503-f6c39bcd0a62',
-                        name='Edward Wolf',
-                    ),
-                ),
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='f385189a-d7ef-4807-aae0-3f33ca79fb9d',
-                        name='Francis Anderson',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='ba26fd36-8ba9-4216-bcb4-15835c736417',
-                        name='Diana Bogisich',
-                    ),
-                ],
-                unit_amount=9262.29,
-            ),
-            shared.CreditNoteLineItem(
-                account_ref=shared.AccountRef(
-                    id='dc046bc5-163b-4bca-8922-7c42c22c5535',
-                    name='Eva McDermott',
-                ),
-                description='quis',
-                discount_amount=8177.29,
-                discount_percentage=6963.68,
-                is_direct_income=False,
-                item_ref=shared.ItemRef(
-                    id='b3c57c1e-4981-4e8a-a257-ddc1912ebde6',
-                    name='Juana Williamson',
-                ),
-                quantity=3303.58,
-                sub_total=3003.21,
-                tax_amount=4362.35,
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=6168.21,
-                    id='d4015dfa-7962-406b-af2b-0a3e42c1aa01',
-                    name='Laverne Mante',
-                ),
-                total_amount=7755.85,
-                tracking=shared.CreditNoteLineItemTracking(
-                    category_refs=[
                         shared.TrackingCategoryRef(
-                            id='e9135586-d18f-49f9-ba4b-fad2bf7d67ca',
-                            name='Edwin Olson',
+                            id='28c5dddb-46aa-41cf-96d8-28da01319112',
+                            name='Reginald Hackett',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='45c1d81f-2904-42f5-a9b7-aff0ea2216cb',
+                            name='Miss Larry Kunde',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='163e279a-3b08-44da-9925-7d04f40847a7',
+                            name='Lori Sipes',
                         ),
                     ],
                     customer_ref=shared.CustomerRef(
-                        company_name='unde',
-                        id='b41d6124-3531-4870-8f68-b03ad421bd43',
+                        company_name='eius',
+                        id='96cbdeec-f6b9-49bc-a356-2ebfdf55c294',
                     ),
                     is_billed_to=shared.BilledToType1.PROJECT,
                     is_rebilled_to=shared.BilledToType1.UNKNOWN,
                     project_ref=shared.ProjectRef(
-                        id='f0cb0a00-03eb-422d-9b3a-70d94faa741c',
-                        name='Dr. Lydia Spencer',
+                        id='60b06a12-8776-44ee-b6d0-c6d6ed9c73dd',
+                        name='Sheila Grant',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='c2050d38-dc3c-4e18-9472-f9ee69166a8b',
-                        name='Jeff Grimes',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='eac8b3a2-875c-46c1-be60-6d07d2a9c87a',
-                        name='Herman Barrows III',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='661a1d91-36a7-4e8d-9321-3f3f658752db',
-                        name='Stacey Haag',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='9f0a56ce-bcad-4a29-8a79-181c95671663',
-                        name='Miss Tommy Emard',
+                        id='509a8e87-0d3c-45a1-b9c2-42c7b66a1f30',
+                        name='Cody Franey',
                     ),
                 ],
-                unit_amount=4263.08,
+                unit_amount=3480.56,
             ),
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='65163a36-3851-42ab-a521-b9f2e072467b',
-                    name='Miss Homer Gislason',
+                    id='b6719890-f42a-44bb-838d-85b260591d74',
+                    name='Silvia Dietrich',
                 ),
-                description='sit',
-                discount_amount=3356.88,
-                discount_percentage=9426.04,
+                description='quae',
+                discount_amount=3298.36,
+                discount_percentage=5726.33,
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='ab0d650e-df22-4a94-920e-c90ea41d1f46',
-                    name='Jenna Lakin II',
+                    id='c9c3f567-e0e2-4527-a5b1-d62fcdace1f0',
+                    name='Christina Bode',
                 ),
-                quantity=3916.67,
-                sub_total=9957.33,
-                tax_amount=9573.95,
+                quantity=9210.86,
+                sub_total=1621.71,
+                tax_amount=1333.6,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=9524.11,
-                    id='73fdf54f-dd5e-4a95-8339-8dafb42a8d63',
-                    name='Marsha Lueilwitz',
+                    effective_tax_rate=1945.74,
+                    id='9e8f25cd-0d19-4d95-9f43-9e39266cbd95',
+                    name='Clinton Oberbrunner',
                 ),
-                total_amount=8648.87,
+                total_amount=6980.88,
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='039ea5f9-b18a-4244-bd61-9039dacd38ed',
-                            name='Krystal Rolfson',
-                        ),
-                        shared.TrackingCategoryRef(
-                            id='1dc7f1e3-af15-4920-890d-1b4901f2bd89',
-                            name='Everett Ondricka',
-                        ),
-                        shared.TrackingCategoryRef(
-                            id='639da5b7-b690-42b8-81a9-4f643664a8f0',
-                            name='Marlon Leffler',
+                            id='4113695d-1e66-498f-8c45-96217c297767',
+                            name='Edith Frami',
                         ),
                     ],
                     customer_ref=shared.CustomerRef(
-                        company_name='natus',
-                        id='1d732d9f-baf9-4476-a2ae-8dcc50c8a351',
+                        company_name='ad',
+                        id='4038bfb5-971e-4981-9055-7389cedbac7f',
+                    ),
+                    is_billed_to=shared.BilledToType1.PROJECT,
+                    is_rebilled_to=shared.BilledToType1.NOT_APPLICABLE,
+                    project_ref=shared.ProjectRef(
+                        id='39594d66-bc2a-4e48-8632-b9954b6fa220',
+                        name='Crystal Johnson',
+                    ),
+                ),
+                tracking_category_refs=[
+                    shared.TrackingCategoryRef(
+                        id='8553cb10-006b-4ef4-921e-c2053b749366',
+                        name='Wilson Ledner',
+                    ),
+                ],
+                unit_amount=312.92,
+            ),
+            shared.CreditNoteLineItem(
+                account_ref=shared.AccountRef(
+                    id='f2bf1958-8d40-4d03-b3de-ba297be3e90b',
+                    name='Jesus Abshire',
+                ),
+                description='quos',
+                discount_amount=4169.67,
+                discount_percentage=5023.8,
+                is_direct_income=False,
+                item_ref=shared.ItemRef(
+                    id='fd52405c-b331-4d49-af4f-127fb0e0bf1f',
+                    name='Steve Block',
+                ),
+                quantity=4940.93,
+                sub_total=5283.5,
+                tax_amount=8602.82,
+                tax_rate_ref=shared.TaxRateRef(
+                    effective_tax_rate=65.17,
+                    id='acca77ae-b7b7-4021-a520-46b64e99fb0e',
+                    name='Ms. Delores Tromp',
+                ),
+                total_amount=9417.76,
+                tracking=shared.CreditNoteLineItemTracking(
+                    category_refs=[
+                        shared.TrackingCategoryRef(
+                            id='fed5540e-f53a-434a-9b8f-e99731adc05d',
+                            name='Alvin Parker',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='dfb70fb3-8742-490d-b365-61eca16ef894',
+                            name='Kathleen Pollich',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='6eeeb518-c4da-41fa-9355-12f06d4e5b72',
+                            name='James Yost',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='8568a042-4e00-4a1d-aeb9-434645d03084',
+                            name='Malcolm Rempel',
+                        ),
+                    ],
+                    customer_ref=shared.CustomerRef(
+                        company_name='cumque',
+                        id='ceff5cb0-1fe5-41e5-a8a4-5ac82b85f8bc',
                     ),
                     is_billed_to=shared.BilledToType1.UNKNOWN,
                     is_rebilled_to=shared.BilledToType1.PROJECT,
                     project_ref=shared.ProjectRef(
-                        id='73784893-0750-4a00-a966-ec736d431943',
-                        name='Sidney Ruecker',
+                        id='aba8da41-27dd-4597-bf47-11aa1bc74b86',
+                        name='Alonzo Schaefer',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='c92398ed-3d3a-4b7c-a3c5-ca8649a70cfd',
-                        name='Freda Johnson',
+                        id='f77b4848-bd6a-46f0-841d-2c3b80809437',
+                        name='Laverne Bednar II',
+                    ),
+                    shared.TrackingCategoryRef(
+                        id='59bebbad-02f2-4586-bcf1-52558daa95be',
+                        name='Mr. Robyn Stoltenberg',
                     ),
                 ],
-                unit_amount=6125.84,
+                unit_amount=3159.04,
+            ),
+            shared.CreditNoteLineItem(
+                account_ref=shared.AccountRef(
+                    id='6c354aa4-32b4-47e1-b63c-5208c23e9802',
+                    name='Willard Dibbert PhD',
+                ),
+                description='magnam',
+                discount_amount=3401.07,
+                discount_percentage=9204.88,
+                is_direct_income=False,
+                item_ref=shared.ItemRef(
+                    id='b4a8b674-ee5c-4fc1-8edc-7f787e32e04b',
+                    name='Freda Frami',
+                ),
+                quantity=614.71,
+                sub_total=7685.46,
+                tax_amount=3532.32,
+                tax_rate_ref=shared.TaxRateRef(
+                    effective_tax_rate=4271.07,
+                    id='70ef42bd-3c9f-41cc-903f-6c39bcd0a629',
+                    name='Tami McClure',
+                ),
+                total_amount=9704.91,
+                tracking=shared.CreditNoteLineItemTracking(
+                    category_refs=[
+                        shared.TrackingCategoryRef(
+                            id='85189ad7-ef80-47aa-a03f-33ca79fb9de4',
+                            name='Rita Crist',
+                        ),
+                    ],
+                    customer_ref=shared.CustomerRef(
+                        company_name='qui',
+                        id='6fd368ba-9216-4bcb-8158-35c736417231',
+                    ),
+                    is_billed_to=shared.BilledToType1.UNKNOWN,
+                    is_rebilled_to=shared.BilledToType1.UNKNOWN,
+                    project_ref=shared.ProjectRef(
+                        id='edc046bc-5163-4bbc-a492-27c42c22c553',
+                        name='Donna Gottlieb',
+                    ),
+                ),
+                tracking_category_refs=[
+                    shared.TrackingCategoryRef(
+                        id='5dbb3c57-c1e4-4981-a8aa-257ddc1912eb',
+                        name='Rogelio Keebler',
+                    ),
+                    shared.TrackingCategoryRef(
+                        id='fcc5469d-4015-4dfa-b962-06bef2b0a3e4',
+                        name='Robyn Braun',
+                    ),
+                    shared.TrackingCategoryRef(
+                        id='010e9aac-2e91-4355-86d1-8f9f97a4bfad',
+                        name='Juana Zboncak',
+                    ),
+                    shared.TrackingCategoryRef(
+                        id='67ca84ad-99b4-41d6-9243-531870cf68b0',
+                        name='Kristine Shields',
+                    ),
+                ],
+                unit_amount=1067.67,
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='distinctio',
-        note='in',
+        modified_date='rerum',
+        note='repellendus',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
-                    allocated_on_date='voluptatem',
-                    currency='voluptas',
-                    currency_rate=2991.8,
-                    total_amount=3189,
+                    allocated_on_date='nesciunt',
+                    currency='facere',
+                    currency_rate=1047.54,
+                    total_amount=9646.41,
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='1077d19e-a83d-4492-ad14-b8a2c1954545',
-                        name='Austin Hermann',
+                        id='0cb0a000-3eb2-42d9-b3a7-0d94faa741c5',
+                        name='Mona Carroll',
                     ),
-                    currency='cumque',
-                    currency_rate=7659,
-                    id='185ea490-1c7c-443a-92da-a784aba3d230',
-                    note='voluptates',
-                    paid_on_date='nulla',
-                    reference='tenetur',
-                    total_amount=4923.66,
+                    currency='quibusdam',
+                    currency_rate=8045.25,
+                    id='2050d38d-c3ce-4185-872f-9ee69166a8be',
+                    note='adipisci',
+                    paid_on_date='dolore',
+                    reference='tempora',
+                    total_amount=3088.64,
+                ),
+            ),
+            shared.Items(
+                allocation=shared.ItemsAllocation(
+                    allocated_on_date='debitis',
+                    currency='similique',
+                    currency_rate=7807.03,
+                    total_amount=5051.92,
+                ),
+                payment=shared.PaymentAllocationPayment(
+                    account_ref=shared.AccountRef(
+                        id='b3a2875c-6c1f-4e60-ad07-d2a9c87ae50c',
+                        name='Jessie Hirthe V',
+                    ),
+                    currency='veritatis',
+                    currency_rate=8360.84,
+                    id='9136a7e8-d532-413f-bf65-8752db764c59',
+                    note='asperiores',
+                    paid_on_date='doloremque',
+                    reference='id',
+                    total_amount=3349.54,
                 ),
             ),
         ],
-        remaining_credit=2200.49,
-        source_modified_date='totam',
-        status=shared.CreditNoteStatus.UNKNOWN,
-        sub_total=1147.62,
+        remaining_credit=4096.77,
+        source_modified_date='placeat',
+        status=shared.CreditNoteStatus.PARTIALLY_PAID,
+        sub_total=6881.14,
         supplemental_data=shared.SupplementalData(
             content={
-                "beatae": {
-                    "veniam": 'non',
+                "culpa": {
+                    "laborum": 'consequuntur',
+                    "omnis": 'maxime',
+                    "officia": 'iusto',
+                    "natus": 'ab',
                 },
-                "laudantium": {
-                    "rerum": 'nulla',
+                "deleniti": {
+                    "eligendi": 'sint',
                 },
-                "ducimus": {
-                    "repellendus": 'enim',
-                    "voluptas": 'veniam',
-                    "voluptatem": 'quam',
-                    "vel": 'aspernatur',
+                "ipsam": {
+                    "molestiae": 'ab',
+                    "ex": 'iure',
+                },
+                "dolorem": {
+                    "ad": 'ipsum',
+                    "ipsa": 'nam',
+                    "minima": 'vel',
+                    "nisi": 'minima',
                 },
             },
         ),
-        total_amount=850.02,
-        total_discount=7810.03,
-        total_tax_amount=3220.54,
+        total_amount=933.84,
+        total_discount=4177.55,
+        total_tax_amount=2204.55,
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=9851.55,
-                name='Janis Kshlerin',
+                amount=2495.41,
+                name='Grace Lesch Sr.',
             ),
             shared.WithholdingTaxitems(
-                amount=3759.62,
-                name='Natalie Gleichner',
+                amount=6639.81,
+                name='Billy Heathcote MD',
             ),
             shared.WithholdingTaxitems(
-                amount=334.57,
-                name='Mr. Brian Kihn',
+                amount=5936,
+                name='Ms. Craig Turner',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=608208,
+    timeout_in_minutes=302814,
 )
 
 res = s.credit_notes.create(req)
@@ -309,13 +400,13 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GetCreditNoteRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    credit_note_id='commodi',
+    credit_note_id='autem',
 )
 
 res = s.credit_notes.get(req)
@@ -342,7 +433,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -369,7 +460,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -378,7 +469,7 @@ req = operations.ListCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dicta',
+    query='reprehenderit',
 )
 
 res = s.credit_notes.list(req)
@@ -405,307 +496,343 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.UpdateCreditNoteRequest(
     credit_note=shared.CreditNote(
-        additional_tax_amount=8489.26,
-        additional_tax_percentage=1334.52,
-        allocated_on_date='ut',
-        credit_note_number='deserunt',
-        currency='dignissimos',
-        currency_rate=8604.11,
+        additional_tax_amount=6935.09,
+        additional_tax_percentage=5597.16,
+        allocated_on_date='officia',
+        credit_note_number='modi',
+        currency='alias',
+        currency_rate=7216.91,
         customer_ref=shared.CustomerRef(
-            company_name='facilis',
-            id='b8f532d8-92cf-4781-acb5-12c878240bf5',
+            company_name='minus',
+            id='05fab0d6-50ed-4f22-a94d-20ec90ea41d1',
         ),
-        discount_percentage=2743.68,
-        id='8f88f8f1-bf0b-4c8e-9f20-6d5d831d0081',
-        issue_date='voluptatem',
+        discount_percentage=9416.83,
+        id='465e8515-6fff-473f-9f54-fdd5ea954339',
+        issue_date='voluptatum',
         line_items=[
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='0f670667-3f3a-4681-8576-8dce742409a2',
-                    name='Ms. Annette Towne',
+                    id='afb42a8d-6338-48e4-9803-9ea5f9b18a24',
+                    name='Jeannie Schuppe V',
                 ),
                 description='aut',
-                discount_amount=1141.51,
-                discount_percentage=2710.98,
+                discount_amount=2158.13,
+                discount_percentage=6113.61,
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='89a5f63e-3af3-4dd9-9da3-3dcd63483e4a',
-                    name='Amelia Morissette',
+                    id='dacd38ed-0dc6-471d-87f1-e3af15920c90',
+                    name='Stephen Robel',
                 ),
-                quantity=2688.31,
-                sub_total=8278.13,
-                tax_amount=9784.16,
+                quantity=474.01,
+                sub_total=1205.48,
+                tax_amount=9957.13,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=2045.17,
-                    id='7e45b895-5d41-43e1-ba48-2310907bd354',
-                    name='Charles McGlynn',
+                    effective_tax_rate=1728.07,
+                    id='bd89c8a3-2639-4da5-b7b6-902b881a94f6',
+                    name='Annie Huel',
                 ),
-                total_amount=8744.46,
+                total_amount=6534.92,
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='34f02449-d86f-44bb-a0fe-5d911cbfe749',
-                            name='Omar Wolf',
+                            id='f0af8c69-1d73-42d9-bbaf-9476a2ae8dcc',
+                            name='Angela Schroeder',
                         ),
                         shared.TrackingCategoryRef(
-                            id='a27f69e2-c9e6-4d10-a9db-3ad4c6b03108',
-                            name='Seth Schaefer',
+                            id='3512c737-8489-4307-90a0-0e966ec736d4',
+                            name='Stephanie Moen',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='98c783c9-2398-4ed3-93ab-7ca3c5ca8649',
+                            name='Kurt Auer',
                         ),
                     ],
                     customer_ref=shared.CustomerRef(
-                        company_name='in',
-                        id='473082b9-4f2a-4b1f-9567-1e9c326350a4',
-                    ),
-                    is_billed_to=shared.BilledToType1.NOT_APPLICABLE,
-                    is_rebilled_to=shared.BilledToType1.NOT_APPLICABLE,
-                    project_ref=shared.ProjectRef(
-                        id='143789ce-0e99-4159-8d93-a74c0252fe3b',
-                        name='Bridget Greenholt',
-                    ),
-                ),
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='b778ebb6-e1d2-4cf5-82ba-fb2cbc4635d5',
-                        name='Andre Heidenreich',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='028c3e95-1a1e-430f-9a96-6489d7b78673',
-                        name='Peter Feeney Sr.',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='a6b99249-4594-4487-b5c8-43836b86b3cd',
-                        name='Mrs. Marc Grimes',
-                    ),
-                ],
-                unit_amount=223.76,
-            ),
-            shared.CreditNoteLineItem(
-                account_ref=shared.AccountRef(
-                    id='449f9df1-3f4e-4edb-a78b-f606825894ea',
-                    name='Jeanne Farrell',
-                ),
-                description='impedit',
-                discount_amount=4457.32,
-                discount_percentage=1479.33,
-                is_direct_income=False,
-                item_ref=shared.ItemRef(
-                    id='795b7851-48d6-4d54-9e56-35b33bc0f970',
-                    name='Micheal Cummings',
-                ),
-                quantity=5918.35,
-                sub_total=9624.68,
-                tax_amount=2930.13,
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=5170.23,
-                    id='44225e75-b796-4065-80ef-a6f93b90a1b8',
-                    name='Austin Hartmann',
-                ),
-                total_amount=1147.52,
-                tracking=shared.CreditNoteLineItemTracking(
-                    category_refs=[
-                        shared.TrackingCategoryRef(
-                            id='54b739f4-fe77-4210-91f6-558c99c722d2',
-                            name='Lucas Barton',
-                        ),
-                    ],
-                    customer_ref=shared.CustomerRef(
-                        company_name='numquam',
-                        id='087d9caa-e042-4dd7-8aac-9b4caa1cfe9e',
+                        company_name='quibusdam',
+                        id='5d6989b7-2064-4510-b7d1-9ea83d492ed1',
                     ),
                     is_billed_to=shared.BilledToType1.UNKNOWN,
-                    is_rebilled_to=shared.BilledToType1.UNKNOWN,
+                    is_rebilled_to=shared.BilledToType1.PROJECT,
                     project_ref=shared.ProjectRef(
-                        id='df903907-f378-4319-83d4-2e54a8546659',
-                        name='Mr. Kara Hintz',
+                        id='8a2c1954-545e-4955-9cc1-85ea4901c7c4',
+                        name='Harriet Schultz',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='c1471d51-aaa6-4ddf-9abd-6487c5fc2b86',
-                        name='Miss Monique Bartell',
+                        id='a784aba3-d230-4edf-b381-1a115382bd7e',
+                        name='Jon Hodkiewicz IV',
+                    ),
+                    shared.TrackingCategoryRef(
+                        id='621c58f4-d739-4656-8c20-a0711a961d24',
+                        name='Lance Stokes',
+                    ),
+                    shared.TrackingCategoryRef(
+                        id='8f532d89-2cf7-4812-8b51-2c878240bf54',
+                        name='Randal Lockman',
                     ),
                 ],
-                unit_amount=9832.72,
+                unit_amount=5030.15,
             ),
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='69e10015-7630-4bda-bafd-ed84a35a4123',
-                    name='Stewart Bode',
+                    id='f1bf0bc8-e1f2-406d-9d83-1d0081090f67',
+                    name='Loretta Howe',
                 ),
-                description='sequi',
-                discount_amount=3217.24,
-                discount_percentage=6847.17,
+                description='doloribus',
+                discount_amount=1877.7,
+                discount_percentage=6638.67,
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='c26ae33b-ef97-41a8-b46b-ca1106fe965b',
-                    name='Evelyn Braun IV',
+                    id='681c5768-dce7-4424-89a2-15e08601489a',
+                    name='Ora Homenick',
                 ),
-                quantity=7565.71,
-                sub_total=9475.73,
-                tax_amount=5358.76,
+                quantity=2072.02,
+                sub_total=6489.85,
+                tax_amount=9474.2,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=5373.21,
+                    effective_tax_rate=2479.72,
+                    id='dd9dda33-dcd6-4348-be4a-7a98e4df37e4',
+                    name='Pam Leannon',
+                ),
+                total_amount=3422.41,
+                tracking=shared.CreditNoteLineItemTracking(
+                    category_refs=[
+                        shared.TrackingCategoryRef(
+                            id='413e13a4-8231-4090-bbd3-54c092bd734f',
+                            name='Louise Funk',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='d86f4bb2-0fe5-4d91-9cbf-e749caf45a27',
+                            name='Ruben Muller',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='c9e6d10e-9db3-4ad4-86b0-3108d9c33747',
+                            name='Jennifer Ledner',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='94f2ab1f-d567-41e9-8326-350a46714378',
+                            name='Dr. Devin Waters',
+                        ),
+                    ],
+                    customer_ref=shared.CustomerRef(
+                        company_name='error',
+                        id='1594d93a-74c0-4252-be3b-4b4db8b778eb',
+                    ),
+                    is_billed_to=shared.BilledToType1.PROJECT,
+                    is_rebilled_to=shared.BilledToType1.NOT_APPLICABLE,
+                    project_ref=shared.ProjectRef(
+                        id='e1d2cf50-2baf-4b2c-bc46-35d5e65da028',
+                        name='Curtis Thompson',
+                    ),
+                ),
+                tracking_category_refs=[
+                    shared.TrackingCategoryRef(
+                        id='a1e30fda-9664-489d-bb78-673e13a12a6b',
+                        name='Marshall Corkery',
+                    ),
+                ],
+                unit_amount=2959.53,
+            ),
+            shared.CreditNoteLineItem(
+                account_ref=shared.AccountRef(
+                    id='594487f5-c843-4836-b86b-3cdf6415b044',
+                    name='Terrell Muller',
+                ),
+                description='dicta',
+                discount_amount=1911.01,
+                discount_percentage=9646.4,
+                is_direct_income=False,
+                item_ref=shared.ItemRef(
+                    id='4eedbe78-bf60-4682-9894-ea763d5c7279',
+                    name='Lula Koepp',
+                ),
+                quantity=1139.47,
+                sub_total=3005.84,
+                tax_amount=5032.47,
+                tax_rate_ref=shared.TaxRateRef(
+                    effective_tax_rate=8612.36,
+                    id='6d549e56-35b3-43bc-8f97-0c42fc9f4844',
+                    name='Andrea Harris',
+                ),
+                total_amount=3245.72,
+                tracking=shared.CreditNoteLineItemTracking(
+                    category_refs=[
+                        shared.TrackingCategoryRef(
+                            id='796065c0-efa6-4f93-b90a-1b8c95be1254',
+                            name='Jessie Fisher',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='4fe77210-d1f6-4558-899c-722d2bc0f940',
+                            name='Kurt Schuppe',
+                        ),
+                        shared.TrackingCategoryRef(
+                            id='aae042dd-7caa-4c9b-8caa-1cfe9e15df90',
+                            name='Faye Bayer',
+                        ),
+                    ],
+                    customer_ref=shared.CustomerRef(
+                        company_name='amet',
+                        id='7831983d-42e5-44a8-9466-597c50233c14',
+                    ),
+                    is_billed_to=shared.BilledToType1.NOT_APPLICABLE,
+                    is_rebilled_to=shared.BilledToType1.UNKNOWN,
+                    project_ref=shared.ProjectRef(
+                        id='d51aaa6d-df5a-4bd6-887c-5fc2b862a00b',
+                        name='Cary Jones',
+                    ),
+                ),
+                tracking_category_refs=[
+                    shared.TrackingCategoryRef(
+                        id='00157630-bda7-4afd-ad84-a35a41238e1a',
+                        name='Emily Hand',
+                    ),
+                ],
+                unit_amount=1866.88,
+            ),
+            shared.CreditNoteLineItem(
+                account_ref=shared.AccountRef(
+                    id='6ae33bef-971a-48f4-abca-1106fe965b71',
+                    name='Meredith Barrows',
+                ),
+                description='tenetur',
+                discount_amount=5358.76,
+                discount_percentage=5373.21,
+                is_direct_income=False,
+                item_ref=shared.ItemRef(
                     id='ec9f7b99-a550-4a65-aed3-33bb0ce8aa65',
                     name='Victoria Denesik',
                 ),
-                total_amount=5250.89,
+                quantity=5250.89,
+                sub_total=4102.39,
+                tax_amount=8917.7,
+                tax_rate_ref=shared.TaxRateRef(
+                    effective_tax_rate=7430.23,
+                    id='7e14ca56-4089-4150-8970-19a48f88ece7',
+                    name='Mrs. Terrell Mayert',
+                ),
+                total_amount=81.62,
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='eb7e14ca-5640-4891-9009-7019a48f88ec',
-                            name='Ron Ratke',
-                        ),
-                        shared.TrackingCategoryRef(
-                            id='04e01105-d389-4081-a2c6-beb68a0f657b',
-                            name='Teri Abshire',
+                            id='105d3890-8162-4c6b-ab68-a0f657b7d03a',
+                            name='Dr. Carrie Lang',
                         ),
                     ],
                     customer_ref=shared.CustomerRef(
-                        company_name='beatae',
-                        id='480f8de3-0f06-49d8-9061-8d97e1522975',
+                        company_name='at',
+                        id='e30f069d-8106-418d-97e1-52297510da80',
                     ),
                     is_billed_to=shared.BilledToType1.UNKNOWN,
                     is_rebilled_to=shared.BilledToType1.UNKNOWN,
                     project_ref=shared.ProjectRef(
-                        id='da803122-92cc-461c-aa70-2bb97ee102da',
-                        name='Hope Walsh',
+                        id='2292cc61-c2a7-402b-b97e-e102da2de35f',
+                        name='Miss Frankie Bailey',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='8e01bf33-eaab-4454-82ac-1704bf1cc9fc',
-                        name='Katherine Oberbrunner',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='5eb5f0c4-92b5-4744-908a-2267aaee79e3',
-                        name='Fernando Blanda',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='31becb83-d237-48ae-bbfc-23d9450a986a',
-                        name='Faye Hammes',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='c707f06b-28ec-4c86-8923-86f62c969c4c',
-                        name='Rick Predovic',
+                        id='3eaab454-02ac-4170-8bf1-cc9fc61aae5e',
+                        name='Miss Jon Willms',
                     ),
                 ],
-                unit_amount=5207.16,
+                unit_amount=5655.59,
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='error',
-        note='alias',
+        modified_date='qui',
+        note='soluta',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
-                    allocated_on_date='sequi',
-                    currency='sapiente',
-                    currency_rate=8471.37,
-                    total_amount=2026.93,
+                    allocated_on_date='nihil',
+                    currency='ut',
+                    currency_rate=2799.45,
+                    total_amount=8430.46,
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='c81da10f-8c23-4df9-b1da-3edb51fad94a',
-                        name='Roosevelt Marvin',
+                        id='08a2267a-aee7-49e3-871a-d31becb83d23',
+                        name='Cassandra O'Conner',
                     ),
-                    currency='ullam',
-                    currency_rate=1158.79,
-                    id='37726d15-321b-4832-a56d-69180ff60eb9',
-                    note='fuga',
-                    paid_on_date='ex',
-                    reference='autem',
-                    total_amount=3460.72,
+                    currency='facilis',
+                    currency_rate=9571.11,
+                    id='c23d9450-a986-4a49-9bac-707f06b28ecc',
+                    note='atque',
+                    paid_on_date='autem',
+                    reference='eius',
+                    total_amount=5999.15,
                 ),
             ),
             shared.Items(
                 allocation=shared.ItemsAllocation(
-                    allocated_on_date='atque',
-                    currency='saepe',
-                    currency_rate=4320.55,
-                    total_amount=5652.45,
+                    allocated_on_date='sunt',
+                    currency='amet',
+                    currency_rate=5118.79,
+                    total_amount=4131.3,
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='a4b843d3-82db-4ec7-9c68-c60659468ce3',
-                        name='Anita Spinka',
+                        id='f62c969c-4cc6-4b78-890a-3fd3c81da10f',
+                        name='Earnest Crooks',
                     ),
-                    currency='magnam',
-                    currency_rate=5876.67,
-                    id='bf8214c3-37f9-46bb-8c69-e372db1344ba',
-                    note='error',
-                    paid_on_date='doloribus',
-                    reference='reprehenderit',
-                    total_amount=5256.79,
-                ),
-            ),
-            shared.Items(
-                allocation=shared.ItemsAllocation(
-                    allocated_on_date='est',
-                    currency='quis',
-                    currency_rate=7709.69,
-                    total_amount=343.42,
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='ed7aab62-e972-461f-b0c5-8d27b51996b5',
-                        name='Joel Rath DVM',
-                    ),
-                    currency='saepe',
-                    currency_rate=9596.73,
-                    id='712b7a7a-b034-44b1-b106-88deebef897f',
+                    currency='voluptatibus',
+                    currency_rate=6148.15,
+                    id='31da3edb-51fa-4d94-acc9-435137726d15',
                     note='velit',
-                    paid_on_date='fugiat',
-                    reference='pariatur',
-                    total_amount=276.76,
+                    paid_on_date='quia',
+                    reference='dicta',
+                    total_amount=7214.48,
                 ),
             ),
         ],
-        remaining_credit=7998.57,
-        source_modified_date='minus',
-        status=shared.CreditNoteStatus.PARTIALLY_PAID,
-        sub_total=2232.35,
+        remaining_credit=5545.08,
+        source_modified_date='velit',
+        status=shared.CreditNoteStatus.DRAFT,
+        sub_total=6851.1,
         supplemental_data=shared.SupplementalData(
             content={
-                "tenetur": {
-                    "dicta": 'rerum',
+                "aliquid": {
+                    "laboriosam": 'sint',
+                    "architecto": 'totam',
+                    "alias": 'hic',
+                    "tenetur": 'iure',
+                },
+                "consequatur": {
+                    "cum": 'occaecati',
+                    "fuga": 'ex',
+                    "autem": 'nostrum',
+                    "atque": 'saepe',
                 },
             },
         ),
-        total_amount=2054.73,
-        total_discount=9131.52,
-        total_tax_amount=3033.65,
+        total_amount=4320.55,
+        total_discount=5652.45,
+        total_tax_amount=6841.96,
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=30.91,
-                name='Richard Nitzsche Jr.',
+                amount=7212.15,
+                name='Alexander Friesen',
             ),
             shared.WithholdingTaxitems(
-                amount=2752.88,
-                name='Cassandra Kerluke',
-            ),
-            shared.WithholdingTaxitems(
-                amount=4841.4,
-                name='Mr. Sherri Torphy',
-            ),
-            shared.WithholdingTaxitems(
-                amount=2244.51,
-                name='Laura Cronin',
+                amount=5197.99,
+                name='Rosemarie Pollich',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    credit_note_id='cumque',
+    credit_note_id='ducimus',
     force_update=False,
-    timeout_in_minutes=513307,
+    timeout_in_minutes=323612,
 )
 
 res = s.credit_notes.update(req)

@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import createtransferresponse as shared_createtransferresponse
+from ..shared import schema as shared_schema
 from ..shared import transfer as shared_transfer
 from typing import Optional
 
@@ -24,4 +25,6 @@ class CreateTransferResponse:
     create_transfer_response: Optional[shared_createtransferresponse.CreateTransferResponse] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     

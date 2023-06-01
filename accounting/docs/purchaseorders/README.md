@@ -18,9 +18,7 @@ Posts a new purchase order to the accounting package for a given company.
 
 Required data may vary by integration. To see what data to post, first call [Get create/update purchase order model](https://docs.codat.io/accounting-api#/operations/get-create-update-purchaseOrders-model).
 
-> **Supported Integrations**
-> 
-> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=purchaseOrders) for integrations that support creating purchase orders.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=purchaseOrders) to see which integrations support this endpoint.
 
 ### Example Usage
 
@@ -30,201 +28,156 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.CreatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
-        currency='amet',
-        currency_rate=256.85,
-        delivery_date='quos',
-        expected_delivery_date='voluptas',
-        id='c10a856a-19d4-4665-ba97-259875dc0cec',
-        issue_date='facilis',
+        currency='occaecati',
+        currency_rate=5196.11,
+        delivery_date='in',
+        expected_delivery_date='est',
+        id='472b709a-153e-4223-8106-8539ce0932d1',
+        issue_date='aperiam',
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id='78bd248e-c6e8-4b24-8b1c-06c9c0649d2b',
-                    name='Laurence Mraz',
+                    id='cd15d8cc-306b-4786-b3d3-7bd204a1f340',
+                    name='Jean Fahey',
                 ),
-                description='deleniti',
-                discount_amount=8562.89,
-                discount_percentage=8359.95,
+                description='voluptas',
+                discount_amount=4441.02,
+                discount_percentage=4856.38,
                 item_ref=shared.ItemRef(
-                    id='b1665c31-2c7f-4550-9472-1c176292dd78',
-                    name='Mattie Treutel DDS',
+                    id='a48519c3-3749-4028-8882-6bb03c7fd225',
+                    name='Micheal King',
                 ),
-                quantity=9633.21,
-                sub_total=5503.18,
-                tax_amount=7788.66,
+                quantity=1000.75,
+                sub_total=6359.09,
+                tax_amount=5010.45,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=1193.26,
-                    id='41841fe1-f87e-4a10-ba98-06ea1606399e',
-                    name='Jack Kris',
+                    effective_tax_rate=5418.34,
+                    id='ed72a2d4-af41-458a-82d0-f0f58c3b87b4',
+                    name='Dr. Jessica Goldner PhD',
                 ),
-                total_amount=1221.4,
+                total_amount=5697.11,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='58d4ab5b-c80d-4ea7-bfd9-931ec9d106cf',
-                        name='Bobby Schiller',
+                        id='e9d82c5e-306f-4557-af5c-deb0286d0bc4',
+                        name='Maryann Boehm',
                     ),
                     shared.TrackingCategoryRef(
-                        id='ab840a28-ea06-472d-ab73-a34ca434cdb3',
-                        name='Rhonda Medhurst V',
+                        id='b378f2fc-ff81-4ddf-be08-8f74ef54c921',
+                        name='Meghan Lindgren',
+                    ),
+                    shared.TrackingCategoryRef(
+                        id='6313bb6f-c2c8-4d27-8109-6b66ad6e3e1d',
+                        name='Nicolas Emmerich',
                     ),
                 ],
-                unit_amount=9691.25,
+                unit_amount=3972.04,
             ),
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id='252078a1-8a4b-40da-ad4b-5cf0616ee922',
-                    name='Samantha Kuhic',
+                    id='0334a11a-a1d5-4d22-87de-9b3d46170e76',
+                    name='Cameron Metz',
                 ),
-                description='nulla',
-                discount_amount=4354.13,
-                discount_percentage=416.21,
+                description='facilis',
+                discount_amount=1958.51,
+                discount_percentage=6132.25,
                 item_ref=shared.ItemRef(
-                    id='daa0e149-cd1c-4cdd-b62b-bf92390015f2',
-                    name='Cassandra Mann',
+                    id='8788398e-ba1b-4bf7-9433-56f6349a1642',
+                    name='Shelly Quitzon Sr.',
                 ),
-                quantity=9894.06,
-                sub_total=2550.98,
-                tax_amount=9668.03,
+                quantity=7569.85,
+                sub_total=9251.22,
+                tax_amount=3035.46,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=9639.86,
-                    id='eb9bec50-318a-481e-b01d-297f7b456a85',
-                    name='Ms. Casey Heathcote',
+                    effective_tax_rate=4049.25,
+                    id='b951652b-158c-4a91-82f0-52632b31cad6',
+                    name='Wayne Wilkinson',
                 ),
-                total_amount=8073.54,
+                total_amount=5042.69,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='a326341a-cccc-4a66-bd4a-8595c1b32bb2',
-                        name='Edith VonRueden',
+                        id='45005e9d-3d93-44e0-b6f5-c388664f6985',
+                        name='Tracy Bahringer',
                     ),
                     shared.TrackingCategoryRef(
-                        id='31cd6a5b-e749-406b-96c6-36e74d28a481',
-                        name='Miss Velma Murphy',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='41198640-5876-4b30-8711-3de4061082d0',
-                        name='Zachary Effertz',
+                        id='e2aed6aa-f863-4c28-9040-c69a3d906f6e',
+                        name='Josh Heathcote',
                     ),
                 ],
-                unit_amount=5757.79,
+                unit_amount=4666.58,
             ),
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id='cd927a5b-a551-41bb-8370-d9784fb14647',
-                    name='Emily Brakus',
+                    id='ec7394f2-5f63-44b3-b307-14e6be8c3e09',
+                    name='Cecil Hahn',
                 ),
-                description='minima',
-                discount_amount=7006.85,
-                discount_percentage=9129.06,
+                description='aliquam',
+                discount_amount=1723.11,
+                discount_percentage=6784.76,
                 item_ref=shared.ItemRef(
-                    id='61b3f371-7287-44c3-b7c8-d439ec6bd2ca',
-                    name='John Beatty',
+                    id='c299a6e5-e7ae-4f13-802e-945f53743efd',
+                    name='Ryan Berge',
                 ),
-                quantity=4610.28,
-                sub_total=4580.46,
-                tax_amount=7955.57,
+                quantity=1577.51,
+                sub_total=1756.68,
+                tax_amount=716.71,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=4356.49,
-                    id='ebbbc9e9-744c-45b6-85a4-af2fcabccbca',
-                    name='Denise Marks',
+                    effective_tax_rate=9955.38,
+                    id='9b1f7d9a-ffe6-4968-aace-efb04f8c512c',
+                    name='Orlando Reilly',
                 ),
-                total_amount=8858.4,
+                total_amount=4577.97,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='06a6cabe-22a1-41f7-ba75-d8ff4452bed7',
-                        name='Dora Ankunding',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='48c282b8-716c-427f-ab17-5780304c40ac',
-                        name='Lula Gulgowski',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='8254fde3-7724-4350-ad85-a7f8cc2911a6',
-                        name='Cory Toy',
+                        id='8ed5798d-385d-4460-999d-5c3349576d55',
+                        name='Ruth Muller',
                     ),
                 ],
-                unit_amount=7840.43,
-            ),
-            shared.PurchaseOrderLineItem(
-                account_ref=shared.AccountRef(
-                    id='6009f01d-d385-423c-9a4e-bb9fd83f83df',
-                    name='Abraham Anderson',
-                ),
-                description='vel',
-                discount_amount=6843.48,
-                discount_percentage=534.75,
-                item_ref=shared.ItemRef(
-                    id='94e2e9c2-205d-4fe7-a5bf-fbcb86015f21',
-                    name='Mrs. Genevieve Pfannerstill IV',
-                ),
-                quantity=99.38,
-                sub_total=4855.86,
-                tax_amount=9424.35,
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=6764.72,
-                    id='7398247a-8721-47fe-9962-df3eee7c385c',
-                    name='Dr. Ada King MD',
-                ),
-                total_amount=1095.45,
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='8dbcf6e1-9b90-412c-844e-231ba147727d',
-                        name='Nick Hermann',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='2adabf68-00b0-41bc-bc03-2f2c19dbf711',
-                        name='Kristi Mann',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='f21523e3-7136-4521-ba6e-596aa41b9e20',
-                        name='Edna O'Reilly',
-                    ),
-                ],
-                unit_amount=8049.73,
+                unit_amount=6702.81,
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='nesciunt',
-        note='ab',
-        payment_due_date='ullam',
-        purchase_order_number='consectetur',
+        modified_date='eos',
+        note='qui',
+        payment_due_date='corporis',
+        purchase_order_number='neque',
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city='West Melvinaborough',
-                country='Turkey',
-                line1='eaque',
-                line2='dolores',
-                postal_code='62413',
-                region='assumenda',
-                type=shared.AddressType.BILLING,
+                city='Jacobifield',
+                country='Kyrgyz Republic',
+                line1='nisi',
+                line2='veniam',
+                postal_code='53896-8398',
+                region='dolore',
+                type=shared.AddressType.DELIVERY,
             ),
             contact=shared.ShipToContact(
-                email='Bo_Ernser@yahoo.com',
-                name='Lucas Ward',
-                phone='(360) 661-7480 x44002',
+                email='Lauren_Wolf@gmail.com',
+                name='Mrs. Esther Medhurst',
+                phone='912-845-3852 x6975',
             ),
         ),
-        source_modified_date='sequi',
-        status=shared.PurchaseOrderStatus.CLOSED,
-        sub_total=4563.81,
+        source_modified_date='saepe',
+        status=shared.PurchaseOrderStatus.UNKNOWN,
+        sub_total=4594.79,
         supplier_ref=shared.SupplierRef(
-            id='99a2a18d-b129-4dc5-a4ab-b7b10caf244d',
-            supplier_name='itaque',
+            id='5ffa906a-e559-4b72-ab67-46030fe18376',
+            supplier_name='eligendi',
         ),
-        total_amount=1039.82,
-        total_discount=522.31,
-        total_tax_amount=2042.81,
+        total_amount=1311.2,
+        total_discount=7109.21,
+        total_tax_amount=9353.25,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=861729,
+    timeout_in_minutes=870347,
 )
 
 res = s.purchase_orders.create(req)
@@ -245,13 +198,13 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GetPurchaseOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    purchase_order_id='consequatur',
+    purchase_order_id='eveniet',
 )
 
 res = s.purchase_orders.get(req)
@@ -278,7 +231,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -305,7 +258,7 @@ from codataccounting.models import operations
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -314,7 +267,7 @@ req = operations.ListPurchaseOrdersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quos',
+    query='vero',
 )
 
 res = s.purchase_orders.list(req)
@@ -341,150 +294,88 @@ from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.UpdatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
-        currency='ratione',
-        currency_rate=313.23,
-        delivery_date='id',
-        expected_delivery_date='eligendi',
-        id='4d070c4e-396e-4562-85cc-b16373314dad',
-        issue_date='minima',
+        currency='iure',
+        currency_rate=4003.93,
+        delivery_date='dignissimos',
+        expected_delivery_date='perspiciatis',
+        id='0ed0c16a-7ba4-4784-8448-9f6770ef0480',
+        issue_date='occaecati',
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id='b890542e-5a55-4a10-bd8a-c0f482f9e9a5',
-                    name='Mrs. Marianne Dibbert',
+                    id='a2ba25ee-6c75-4af8-a60a-7ae346e0979e',
+                    name='Blanche Will',
                 ),
-                description='dolorum',
-                discount_amount=8885.29,
-                discount_percentage=1224.04,
+                description='consequatur',
+                discount_amount=6343.86,
+                discount_percentage=7740.9,
                 item_ref=shared.ItemRef(
-                    id='22f0bfec-c419-432d-b04b-3ae70934d9eb',
-                    name='Rick O'Reilly',
+                    id='aca645de-9867-4551-a9cc-e61ec2c79a39',
+                    name='Stewart Hintz',
                 ),
-                quantity=9449.55,
-                sub_total=4261.48,
-                tax_amount=9895.04,
+                quantity=8250.33,
+                sub_total=3666.61,
+                tax_amount=6621.26,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=4380.7,
-                    id='1b0652fe-6536-4fb3-8a41-4aa294d64c08',
-                    name='Alan Torp MD',
+                    effective_tax_rate=3870.84,
+                    id='5b4d5562-d9b7-4d9e-ad6f-cf557629db87',
+                    name='Adrienne Donnelly',
                 ),
-                total_amount=5153.47,
+                total_amount=5958.7,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='7151a354-ba1a-46d7-9dc3-9917b844c850',
-                        name='Brandi Moen',
+                        id='282a51f4-1cf6-4796-ad3d-724c18f581e9',
+                        name='Lowell Schimmel',
                     ),
                 ],
-                unit_amount=3811.97,
-            ),
-            shared.PurchaseOrderLineItem(
-                account_ref=shared.AccountRef(
-                    id='2f4946ca-2d72-466c-9763-812723aa03f8',
-                    name='Kristi Bins PhD',
-                ),
-                description='quam',
-                discount_amount=6684.99,
-                discount_percentage=6945.05,
-                item_ref=shared.ItemRef(
-                    id='3e07c05e-13db-488f-991f-98329f91922f',
-                    name='Angelica Nienow IV',
-                ),
-                quantity=7196.87,
-                sub_total=3786.8,
-                tax_amount=3422.36,
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=2715.17,
-                    id='5000a5b3-6a22-42e3-bf77-0a2b42e5edf6',
-                    name='Isabel Dare',
-                ),
-                total_amount=4624.39,
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='c6a710e5-4b47-4ec6-aaf9-bd8327e8f7d3',
-                        name='Alma Brown',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='ebdd822a-f2c1-4679-98a0-a46646ec658e',
-                        name='Gwendolyn Bernhard',
-                    ),
-                ],
-                unit_amount=8534.49,
-            ),
-            shared.PurchaseOrderLineItem(
-                account_ref=shared.AccountRef(
-                    id='e0aee8c7-2213-4f42-9a03-38b71b3d2fd3',
-                    name='Brad Farrell',
-                ),
-                description='accusantium',
-                discount_amount=4920.29,
-                discount_percentage=2368.27,
-                item_ref=shared.ItemRef(
-                    id='088e75ab-7ff2-4a12-bb07-4cd44c23c0b1',
-                    name='Dr. Norma Kuvalis',
-                ),
-                quantity=4240.66,
-                sub_total=5411.69,
-                tax_amount=2221.75,
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=3622.4,
-                    id='b93ced68-7bb4-453f-84af-461c7cb91c79',
-                    name='Stuart Howe',
-                ),
-                total_amount=8904.64,
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='23875a4a-2e87-4d87-b51e-22e77c0e6e11',
-                        name='Dave Lockman',
-                    ),
-                ],
-                unit_amount=1771.68,
+                unit_amount=9716.2,
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='laboriosam',
-        note='pariatur',
-        payment_due_date='minus',
-        purchase_order_number='ipsam',
+        modified_date='esse',
+        note='sunt',
+        payment_due_date='autem',
+        purchase_order_number='aliquid',
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city='Breitenbergton',
-                country='Cuba',
-                line1='voluptatem',
-                line2='suscipit',
-                postal_code='65659',
-                region='aspernatur',
-                type=shared.AddressType.UNKNOWN,
+                city='North Retafurt',
+                country='Argentina',
+                line1='officiis',
+                line2='dolor',
+                postal_code='63074-9905',
+                region='assumenda',
+                type=shared.AddressType.BILLING,
             ),
             contact=shared.ShipToContact(
-                email='Grady78@hotmail.com',
-                name='Ellen Willms V',
-                phone='454.712.0503 x206',
+                email='Brandt23@gmail.com',
+                name='Danny Daugherty',
+                phone='581-840-0803 x42850',
             ),
         ),
-        source_modified_date='dicta',
-        status=shared.PurchaseOrderStatus.DRAFT,
-        sub_total=4036.82,
+        source_modified_date='nostrum',
+        status=shared.PurchaseOrderStatus.CLOSED,
+        sub_total=7098.7,
         supplier_ref=shared.SupplierRef(
-            id='0070c0bc-de7e-450e-a441-101c138b4629',
-            supplier_name='fugit',
+            id='4bedef3c-127c-4390-9955-28250dcbbcd3',
+            supplier_name='facilis',
         ),
-        total_amount=2485.73,
-        total_discount=8394.11,
-        total_tax_amount=3242.71,
+        total_amount=1020.04,
+        total_discount=1677.86,
+        total_tax_amount=1207.36,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    purchase_order_id='sit',
-    timeout_in_minutes=985872,
+    purchase_order_id='tempore',
+    timeout_in_minutes=539092,
 )
 
 res = s.purchase_orders.update(req)

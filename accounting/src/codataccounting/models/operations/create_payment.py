@@ -5,6 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import createpaymentresponse as shared_createpaymentresponse
 from ..shared import payment as shared_payment
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -25,4 +26,6 @@ class CreatePaymentResponse:
     create_payment_response: Optional[shared_createpaymentresponse.CreatePaymentResponse] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     

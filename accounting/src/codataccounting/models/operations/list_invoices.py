@@ -4,6 +4,9 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import invoices as shared_invoices
+from ..shared import schema as shared_schema
+from codataccounting import utils
+from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
@@ -21,6 +24,19 @@ class ListInvoicesRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class ListInvoices409ApplicationJSON:
+    r"""The data type's dataset has not been requested or is still syncing."""
+    
+    can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
+    correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
+    detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})
+    error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('error'), 'exclude': lambda f: f is None }})
+    service: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('service'), 'exclude': lambda f: f is None }})
+    status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
+    
+
 @dataclasses.dataclass
 class ListInvoicesResponse:
     
@@ -28,5 +44,9 @@ class ListInvoicesResponse:
     status_code: int = dataclasses.field()
     invoices: Optional[shared_invoices.Invoices] = dataclasses.field(default=None)
     r"""Success"""
+    list_invoices_409_application_json_object: Optional[ListInvoices409ApplicationJSON] = dataclasses.field(default=None)
+    r"""The data type's dataset has not been requested or is still syncing."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""Your `query` parameter was not correctly formed"""
     

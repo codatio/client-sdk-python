@@ -343,3 +343,67 @@ Based on:
 - Speakeasy CLI 1.37.4 (2.32.0) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.16.0] https://pypi.org/project/codat-accounting/0.16.0 - accounting
+
+## 2023-05-23 00:10:49
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+- Speakeasy CLI 1.37.5 (2.32.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.16.1] https://pypi.org/project/codat-accounting/0.16.1 - accounting
+
+## 2023-05-25 00:11:05
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+- Speakeasy CLI 1.37.11 (2.32.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.16.2] https://pypi.org/project/codat-accounting/0.16.2 - accounting
+
+## 2023-05-26 00:10:48
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+- Speakeasy CLI 1.37.13 (2.32.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.16.3] https://pypi.org/project/codat-accounting/0.16.3 - accounting
+
+## 2023-05-27 00:11:17
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+- Speakeasy CLI 1.38.0 (2.32.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.16.4] https://pypi.org/project/codat-accounting/0.16.4 - accounting
+
+## 2023-05-31 00:11:32
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+- Speakeasy CLI 1.39.0 (2.32.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.16.5] https://pypi.org/project/codat-accounting/0.16.5 - accounting
+
+## 2023-06-01 00:14:25
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+- Speakeasy CLI 1.40.2 (2.34.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.17.0] https://pypi.org/project/codat-accounting/0.17.0 - accounting
+
+## 2023-06-01 15:39:09
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+- Speakeasy CLI 1.40.3 (2.34.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.17.1] https://pypi.org/project/codat-accounting/0.17.1 - accounting
+
+## 2023-06-01 15:43:29
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+- Speakeasy CLI 1.40.3 (2.34.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.17.2] https://pypi.org/project/codat-accounting/0.17.2 - accounting

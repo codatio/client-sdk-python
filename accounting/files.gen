@@ -24,6 +24,7 @@ src/codataccounting/tax_rates.py
 src/codataccounting/tracking_categories.py
 src/codataccounting/transfers.py
 src/codataccounting/sdk.py
+.gitignore
 pylintrc
 setup.py
 src/codataccounting/__init__.py
@@ -157,6 +158,7 @@ src/codataccounting/models/operations/get_transfer.py
 src/codataccounting/models/operations/get_create_transfers_model.py
 src/codataccounting/models/operations/list_transfers.py
 src/codataccounting/models/operations/__init__.py
+src/codataccounting/models/shared/schema.py
 src/codataccounting/models/shared/accounttransaction.py
 src/codataccounting/models/shared/metadata.py
 src/codataccounting/models/shared/accounttransactionline.py
@@ -186,7 +188,6 @@ src/codataccounting/models/shared/pushoptionchoice.py
 src/codataccounting/models/shared/accounts.py
 src/codataccounting/models/shared/createbanktransactionsresponse.py
 src/codataccounting/models/shared/banktransactions.py
-src/codataccounting/models/shared/banktransactionline.py
 src/codataccounting/models/shared/banktransactiontype.py
 src/codataccounting/models/shared/banktransactionsresponse.py
 src/codataccounting/models/shared/createbankaccountresponse.py

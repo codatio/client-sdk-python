@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import ageddebtorreport as shared_ageddebtorreport
+from ..shared import schema as shared_schema
 from datetime import date
 from typing import Optional
 
@@ -28,4 +29,6 @@ class GetAgedDebtorsReportResponse:
     aged_debtor_report: Optional[shared_ageddebtorreport.AgedDebtorReport] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""
     
