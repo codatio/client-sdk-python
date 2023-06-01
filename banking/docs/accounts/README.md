@@ -21,12 +21,12 @@ from codatbanking.models import operations
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
 req = operations.GetAccountRequest(
-    account_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    account_id='distinctio',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -49,7 +49,7 @@ from codatbanking.models import operations
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -59,7 +59,7 @@ req = operations.ListAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='distinctio',
+    query='quibusdam',
 )
 
 res = s.accounts.list(req)
