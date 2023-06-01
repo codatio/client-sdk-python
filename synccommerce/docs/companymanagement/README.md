@@ -24,7 +24,7 @@ from codatsynccommerce.models import shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -50,7 +50,7 @@ from codatsynccommerce.models import operations
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -77,7 +77,7 @@ from codatsynccommerce.models import operations
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -106,7 +106,7 @@ from codatsynccommerce.models import operations
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -136,7 +136,7 @@ from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
