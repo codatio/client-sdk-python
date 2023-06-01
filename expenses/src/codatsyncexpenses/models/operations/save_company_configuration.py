@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import codaterrormessage as shared_codaterrormessage
 from ..shared import companyconfiguration as shared_companyconfiguration
+from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -20,9 +20,9 @@ class SaveCompanyConfigurationResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    codat_error_message: Optional[shared_codaterrormessage.CodatErrorMessage] = dataclasses.field(default=None)
-    r"""Bad Request"""
     company_configuration: Optional[shared_companyconfiguration.CompanyConfiguration] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     

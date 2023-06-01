@@ -6,6 +6,7 @@ src/codatsyncexpenses/sync.py
 src/codatsyncexpenses/sync_status.py
 src/codatsyncexpenses/transaction_status.py
 src/codatsyncexpenses/sdk.py
+.gitignore
 pylintrc
 setup.py
 src/codatsyncexpenses/__init__.py
@@ -27,11 +28,11 @@ src/codatsyncexpenses/models/operations/list_syncs.py
 src/codatsyncexpenses/models/operations/get_sync_transaction.py
 src/codatsyncexpenses/models/operations/list_sync_transactions.py
 src/codatsyncexpenses/models/operations/__init__.py
+src/codatsyncexpenses/models/shared/schema.py
 src/codatsyncexpenses/models/shared/companyconfiguration.py
 src/codatsyncexpenses/models/shared/supplier.py
 src/codatsyncexpenses/models/shared/customer.py
 src/codatsyncexpenses/models/shared/bankaccount.py
-src/codatsyncexpenses/models/shared/codaterrormessage.py
 src/codatsyncexpenses/models/shared/dataconnection.py
 src/codatsyncexpenses/models/shared/dataconnectionstatus.py
 src/codatsyncexpenses/models/shared/dataconnectionerror.py
@@ -46,6 +47,7 @@ src/codatsyncexpenses/models/shared/trackingcategorymappinginfo.py
 src/codatsyncexpenses/models/shared/taxratemappinginfo.py
 src/codatsyncexpenses/models/shared/accountmappinginfo.py
 src/codatsyncexpenses/models/shared/syncinitiated.py
+src/codatsyncexpenses/models/shared/codaterrormessage.py
 src/codatsyncexpenses/models/shared/postsync.py
 src/codatsyncexpenses/models/shared/companysyncstatus.py
 src/codatsyncexpenses/models/shared/transactionmetadata.py
