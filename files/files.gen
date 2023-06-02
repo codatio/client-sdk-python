@@ -1,3 +1,4 @@
+src/codatfiles/sdkconfiguration.py
 src/codatfiles/files.py
 src/codatfiles/sdk.py
 .gitignore
