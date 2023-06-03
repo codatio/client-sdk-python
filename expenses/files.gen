@@ -1,3 +1,4 @@
+src/codatsyncexpenses/sdkconfiguration.py
 src/codatsyncexpenses/configuration.py
 src/codatsyncexpenses/connections.py
 src/codatsyncexpenses/expenses.py
