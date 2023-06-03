@@ -1,3 +1,4 @@
+src/codatcommerce/sdkconfiguration.py
 src/codatcommerce/company_info.py
 src/codatcommerce/customers.py
 src/codatcommerce/disputes.py
