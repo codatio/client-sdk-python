@@ -48,10 +48,8 @@ class CodatFiles:
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
-        if server_idx is None:
-            server_idx = 0
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx,)
+        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx)
        
         self._init_sdks()
     
