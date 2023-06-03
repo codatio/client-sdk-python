@@ -1,3 +1,4 @@
+src/codatsynccommerce/sdkconfiguration.py
 src/codatsynccommerce/company_management.py
 src/codatsynccommerce/configuration.py
 src/codatsynccommerce/integrations.py
