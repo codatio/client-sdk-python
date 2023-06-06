@@ -1,3 +1,4 @@
+src/codatcommon/sdkconfiguration.py
 src/codatcommon/companies.py
 src/codatcommon/connections.py
 src/codatcommon/integrations.py

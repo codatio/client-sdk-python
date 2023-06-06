@@ -28,7 +28,7 @@ class CompanyDataConnectionStatusChangedWebhook:
     r"""Webhook request body for a company's data connection status changed."""
     
     alert_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('alertId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier of the alert."""
+    r"""Unique identifier of the webhook event."""
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for your SMB in Codat."""
     data: Optional[CompanyDataConnectionStatusChangedWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})

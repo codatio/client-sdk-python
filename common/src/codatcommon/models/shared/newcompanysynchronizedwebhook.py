@@ -13,7 +13,7 @@ class NewCompanySynchronizedWebhook:
     r"""Webhook request body to notify that a new company has successfully synchronized at least one dataType for the first time."""
     
     alert_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('alertId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier of the alert."""
+    r"""Unique identifier of the webhook event."""
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for your SMB in Codat."""
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
