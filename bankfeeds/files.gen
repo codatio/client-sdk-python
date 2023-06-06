@@ -1,3 +1,4 @@
+src/codatbankfeeds/sdkconfiguration.py
 src/codatbankfeeds/bank_account_transactions.py
 src/codatbankfeeds/bank_feed_accounts.py
 src/codatbankfeeds/companies.py
