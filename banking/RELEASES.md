@@ -343,3 +343,19 @@ Based on:
 - Speakeasy CLI 1.40.3 (2.34.7) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.16.1] https://pypi.org/project/codat-banking/0.16.1 - banking
+
+## 2023-06-03 00:02:27
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Banking.yaml
+- Speakeasy CLI 1.43.0 (2.35.3) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.17.0] https://pypi.org/project/codat-banking/0.17.0 - banking
+
+## 2023-06-06 20:44:45
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Banking.yaml
+- Speakeasy CLI 1.44.2 (2.35.9) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.17.1] https://pypi.org/project/codat-banking/0.17.1 - banking
