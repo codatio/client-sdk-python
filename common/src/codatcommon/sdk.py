@@ -13,7 +13,7 @@ from codatcommon import utils
 from codatcommon.models import shared
 
 class CodatCommon:
-    r"""Common API
+    r"""Common API: Common API
     An API for the common components of all of Codat's products.
     
     These end points cover creating and managing your companies, data connections, and integrations.
@@ -35,7 +35,7 @@ class CodatCommon:
     settings: Settings
     r"""Manage your Codat instance."""
     webhooks: Webhooks
-    r"""Manage webhooks, rules and alerts."""
+    r"""Manage webhooks, rules, and events."""
 
     sdk_configuration: SDKConfiguration
 

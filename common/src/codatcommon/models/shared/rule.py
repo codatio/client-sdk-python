@@ -18,7 +18,7 @@ class RuleNotifiers:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Rule:
-    r"""Configuration to alert to a url or list of email addresses based on the given type / condition."""
+    r"""Configuration to provide an event notification to a URL or list of email addresses based on the given type or condition."""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     notifiers: RuleNotifiers = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('notifiers') }})

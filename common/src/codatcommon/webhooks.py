@@ -6,7 +6,7 @@ from codatcommon.models import operations, shared
 from typing import Optional
 
 class Webhooks:
-    r"""Manage webhooks, rules and alerts."""
+    r"""Manage webhooks, rules, and events."""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
