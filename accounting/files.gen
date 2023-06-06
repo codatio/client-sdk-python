@@ -1,3 +1,4 @@
+src/codataccounting/sdkconfiguration.py
 src/codataccounting/account_transactions.py
 src/codataccounting/accounts.py
 src/codataccounting/bank_account_transactions.py
