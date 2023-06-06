@@ -15,7 +15,7 @@ from codatcommerce import utils
 from codatcommerce.models import shared
 
 class CodatCommerce:
-    r"""Codat's standardized API for accessing commerce data
+    r"""Commerce API: Codat's standardized API for accessing commerce data
     Codat's Commerce API allows you to access standardised data from over 11 commerce and POS systems.
     
     Standardize how you connect to your customers’ payment, PoS, and eCommerce systems. Retrieve orders, payouts, payments, and product data in the same way for all the leading commerce platforms.
