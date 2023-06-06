@@ -209,7 +209,7 @@ class Connections:
             
 
         def do_request():
-            return client.request('GET', url, params=query_params, headers=headers)
+            return client.request('POST', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
