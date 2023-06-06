@@ -1,3 +1,4 @@
+src/codatassess/sdkconfiguration.py
 src/codatassess/categories.py
 src/codatassess/data_integrity.py
 src/codatassess/excel_reports.py

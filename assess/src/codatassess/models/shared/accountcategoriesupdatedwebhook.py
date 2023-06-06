@@ -21,7 +21,7 @@ class AccountCategoriesUpdatedWebhook:
     r"""Webhook request body for account categories updated."""
     
     alert_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('alertId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier of the alert."""
+    r"""Unique identifier of the webhook event."""
     client_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('clientId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for your client in Codat."""
     client_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('clientName'), 'exclude': lambda f: f is None }})
