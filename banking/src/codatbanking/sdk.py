@@ -10,7 +10,7 @@ from codatbanking import utils
 from codatbanking.models import shared
 
 class CodatBanking:
-    r"""Codat's standardized API for accessing banking data.
+    r"""Banking API: Codat's standardized API for accessing banking data.
     Codat's Banking API allows you to access standardised data from over bank accounts via third party providers.
     
     Standardize how you connect to your customers’ bank accounts. Retrieve bank account and bank transaction data in the same way via our partnerships with Plaid and TrueLayer.
