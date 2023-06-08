@@ -7,8 +7,9 @@ Manage your Codat instance.
 ### Available Operations
 
 * [~~get_profile~~](#get_profile) - Get profile :warning: **Deprecated**
-* [get_sync_settings](#get_sync_settings) - Update all sync settings
+* [get_sync_settings](#get_sync_settings) - Get sync settings
 * [update_profile](#update_profile) - Update profile
+* [update_sync_settings](#update_sync_settings) - Update all sync settings
 
 ## ~~get_profile~~
 
@@ -24,7 +25,7 @@ import codatcommon
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="",
     ),
 )
 
@@ -37,70 +38,24 @@ if res.profile is not None:
 
 ## get_sync_settings
 
-Update sync settings for all data types.
+Retrieve the sync settings for your client. This includes how often data types should be queued to be updated, and how much history should be fetched.
 
 ### Example Usage
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="",
     ),
 )
 
-req = operations.UpdateSyncSettingsRequestBody(
-    client_id='367f7975-267b-439b-90c6-a6040ee680f3',
-    overrides_defaults=False,
-    settings=[
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='saepe',
-            sync_from_window=24,
-            sync_order=681820,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='in',
-            sync_from_window=24,
-            sync_order=359508,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='iste',
-            sync_from_window=24,
-            sync_order=437032,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='saepe',
-            sync_from_window=24,
-            sync_order=697631,
-            sync_schedule=24,
-        ),
-    ],
-)
 
-res = s.settings.get_sync_settings(req)
+res = s.settings.get_sync_settings()
 
-if res.status_code == 200:
+if res.sync_settings is not None:
     # handle response
 ```
 
@@ -116,7 +71,7 @@ from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="",
     ),
 )
 
@@ -130,11 +85,83 @@ req = shared.Profile(
     redirect_url='https://bobs-burgers.{countrySuffix}/{companyId}',
     white_list_urls=[
         'https://bobs-burgers.com',
+        'https://bobs-burgers.com',
+        'https://bobs-burgers.com',
+        'https://bobs-burgers.com',
     ],
 )
 
 res = s.settings.update_profile(req)
 
 if res.profile is not None:
+    # handle response
+```
+
+## update_sync_settings
+
+Update sync settings for all data types.
+
+### Example Usage
+
+```python
+import codatcommon
+from codatcommon.models import operations, shared
+
+s = codatcommon.CodatCommon(
+    security=shared.Security(
+        auth_header="",
+    ),
+)
+
+req = operations.UpdateProfileSyncSettingsRequestBody(
+    client_id='367f7975-267b-439b-90c6-a6040ee680f3',
+    overrides_defaults=False,
+    settings=[
+        shared.SyncSetting(
+            data_type=shared.SyncSettingDataType.INVOICES,
+            fetch_on_first_link=False,
+            is_locked=False,
+            months_to_sync=24,
+            sync_from_utc='2022-10-23T00:00:00.000Z',
+            sync_from_window=24,
+            sync_order=449950,
+            sync_schedule=24,
+        ),
+        shared.SyncSetting(
+            data_type=shared.SyncSettingDataType.INVOICES,
+            fetch_on_first_link=False,
+            is_locked=False,
+            months_to_sync=24,
+            sync_from_utc='2022-10-23T00:00:00.000Z',
+            sync_from_window=24,
+            sync_order=613064,
+            sync_schedule=24,
+        ),
+        shared.SyncSetting(
+            data_type=shared.SyncSettingDataType.INVOICES,
+            fetch_on_first_link=False,
+            is_locked=False,
+            months_to_sync=24,
+            sync_from_utc='2022-10-23T00:00:00.000Z',
+            sync_from_window=24,
+            sync_order=902349,
+            sync_schedule=24,
+        ),
+        shared.SyncSetting(
+            data_type=shared.SyncSettingDataType.INVOICES,
+            fetch_on_first_link=False,
+            is_locked=False,
+            months_to_sync=24,
+            sync_from_utc='2022-10-23T00:00:00.000Z',
+            sync_from_window=24,
+            sync_order=99280,
+            sync_schedule=24,
+        ),
+    ],
+)
+
+res = s.settings.update_sync_settings(req)
+
+if res.status_code == 200:
     # handle response
 ```

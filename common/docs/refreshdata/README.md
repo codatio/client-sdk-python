@@ -28,7 +28,7 @@ from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="",
     ),
 )
 
@@ -56,7 +56,7 @@ from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="",
     ),
 )
 
@@ -84,7 +84,7 @@ from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="",
     ),
 )
 
@@ -110,7 +110,7 @@ from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="",
     ),
 )
 
@@ -137,7 +137,7 @@ from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="",
     ),
 )
 

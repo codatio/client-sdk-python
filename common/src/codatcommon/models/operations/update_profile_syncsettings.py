@@ -12,7 +12,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class UpdateSyncSettingsRequestBody:
+class UpdateProfileSyncSettingsRequestBody:
     r"""Include a `syncSetting` object for each data type.
     `syncFromWindow`, `syncFromUTC` & `monthsToSync` only need to be included if you wish to set a value for them.
     """
@@ -23,7 +23,7 @@ class UpdateSyncSettingsRequestBody:
     
 
 @dataclasses.dataclass
-class UpdateSyncSettingsResponse:
+class UpdateProfileSyncSettingsResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()

@@ -38,8 +38,9 @@ src/codatcommon/models/operations/get_company_data_status.py
 src/codatcommon/models/operations/get_pull_operation.py
 src/codatcommon/models/operations/list_pull_operations.py
 src/codatcommon/models/operations/get_profile.py
-src/codatcommon/models/operations/update_sync_settings.py
+src/codatcommon/models/operations/get_profile_syncsettings.py
 src/codatcommon/models/operations/update_profile.py
+src/codatcommon/models/operations/update_profile_syncsettings.py
 src/codatcommon/models/operations/create_rule.py
 src/codatcommon/models/operations/get_webhook.py
 src/codatcommon/models/operations/list_rules.py
@@ -86,6 +87,7 @@ src/codatcommon/models/shared/pulloperation.py
 src/codatcommon/models/shared/datastatus.py
 src/codatcommon/models/shared/dataconnectionhistory.py
 src/codatcommon/models/shared/profile.py
+src/codatcommon/models/shared/syncsettings.py
 src/codatcommon/models/shared/syncsetting.py
 src/codatcommon/models/shared/rule.py
 src/codatcommon/models/shared/rules.py

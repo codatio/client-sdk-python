@@ -16,7 +16,7 @@ from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
-        auth_header="YOUR_API_KEY_HERE",
+        auth_header="",
     ),
 )
 
@@ -76,8 +76,9 @@ if res.company is not None:
 ### [settings](docs/settings/README.md)
 
 * [~~get_profile~~](docs/settings/README.md#get_profile) - Get profile :warning: **Deprecated**
-* [get_sync_settings](docs/settings/README.md#get_sync_settings) - Update all sync settings
+* [get_sync_settings](docs/settings/README.md#get_sync_settings) - Get sync settings
 * [update_profile](docs/settings/README.md#update_profile) - Update profile
+* [update_sync_settings](docs/settings/README.md#update_sync_settings) - Update all sync settings
 
 ### [webhooks](docs/webhooks/README.md)
 
