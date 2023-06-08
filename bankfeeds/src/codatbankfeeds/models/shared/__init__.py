@@ -9,6 +9,8 @@ from .company import *
 from .companyrequestbody import *
 from .connection import *
 from .connections import *
+from .createbankaccounttransaction import *
+from .createbanktransactions import *
 from .createbanktransactionsresponse import *
 from .dataconnectionerror import *
 from .dataconnectionstatus import *
@@ -30,4 +32,4 @@ from .security import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["BankFeedAccount","BankTransactionType","BankTransactions","BankTransactionsResponse","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","HRef","Links","PushChangeType","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Schema","Security","Validation","ValidationItem"]
+__all__ = ["BankFeedAccount","BankTransactionType","BankTransactions","BankTransactionsResponse","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankAccountTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","HRef","Links","PushChangeType","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Schema","Security","Validation","ValidationItem"]
