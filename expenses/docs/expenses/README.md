@@ -32,7 +32,7 @@ req = operations.CreateExpenseDatasetRequest(
                 currency='GBP',
                 currency_rate=5928.45,
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
-                issue_date='distinctio',
+                issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
                     shared.ExpenseTransactionLine(
                         account_ref=shared.RecordRef(
@@ -133,7 +133,7 @@ req = operations.CreateExpenseDatasetRequest(
                 currency='GBP',
                 currency_rate=4236.55,
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
-                issue_date='error',
+                issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
                     shared.ExpenseTransactionLine(
                         account_ref=shared.RecordRef(
@@ -198,7 +198,7 @@ req = operations.CreateExpenseDatasetRequest(
                 currency='GBP',
                 currency_rate=8917.73,
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
-                issue_date='ipsa',
+                issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
                     shared.ExpenseTransactionLine(
                         account_ref=shared.RecordRef(
