@@ -29,23 +29,34 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateBankTransactionsRequest(
-    bank_transactions=shared.BankTransactions(
-        account_id='molestiae',
-        amount=7991.59,
-        balance=8009.11,
-        cleared_on_date='2022-10-23T00:00:00.000Z',
-        description='totam',
-        id='ca1ba928-fc81-4674-acb7-39205929396f',
-        modified_date='2022-10-23T00:00:00.000Z',
-        reconciled=False,
-        source_modified_date='2022-10-23T00:00:00.000Z',
-        transaction_type=shared.BankTransactionType.ATM,
+    create_bank_transactions=shared.CreateBankTransactions(
+        account_id='architecto',
+        transactions=[
+            shared.CreateBankAccountTransaction(
+                amount=2088.76,
+                date_='2022-10-23T00:00:00.000Z',
+                description='consequuntur',
+                id='fa946773-9251-4aa5-ac3f-5ad019da1ffe',
+            ),
+            shared.CreateBankAccountTransaction(
+                amount=4686.51,
+                date_='2022-10-23T00:00:00.000Z',
+                description='voluptatibus',
+                id='097b0074-f154-471b-9e6e-13b99d488e1e',
+            ),
+            shared.CreateBankAccountTransaction(
+                amount=5759.47,
+                date_='2022-10-23T00:00:00.000Z',
+                description='itaque',
+                id='450ad2ab-d442-4698-82d5-02a94bb4f63c',
+            ),
+        ],
     ),
-    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    account_id='7110701885',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=613064,
+    timeout_in_minutes=396098,
 )
 
 res = s.bank_account_transactions.create(req)
@@ -71,7 +82,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.GetCreateBankAccountModelRequest(
-    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    account_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -105,7 +116,7 @@ req = operations.ListBankAccountTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quidem',
+    query='sint',
 )
 
 res = s.bank_account_transactions.list(req)

@@ -36,8 +36,8 @@ src/codatbankfeeds/models/shared/validation.py
 src/codatbankfeeds/models/shared/validationitem.py
 src/codatbankfeeds/models/shared/pushoperationstatus.py
 src/codatbankfeeds/models/shared/datatype.py
-src/codatbankfeeds/models/shared/banktransactions.py
-src/codatbankfeeds/models/shared/banktransactiontype.py
+src/codatbankfeeds/models/shared/createbanktransactions.py
+src/codatbankfeeds/models/shared/createbankaccounttransaction.py
 src/codatbankfeeds/models/shared/pushoperationchange.py
 src/codatbankfeeds/models/shared/pushchangetype.py
 src/codatbankfeeds/models/shared/pushoperationref.py
@@ -48,6 +48,8 @@ src/codatbankfeeds/models/shared/pushoptiontype.py
 src/codatbankfeeds/models/shared/pushoptionproperty.py
 src/codatbankfeeds/models/shared/pushoptionchoice.py
 src/codatbankfeeds/models/shared/banktransactionsresponse.py
+src/codatbankfeeds/models/shared/banktransactions.py
+src/codatbankfeeds/models/shared/banktransactiontype.py
 src/codatbankfeeds/models/shared/links.py
 src/codatbankfeeds/models/shared/href.py
 src/codatbankfeeds/models/shared/bankfeedaccount.py
