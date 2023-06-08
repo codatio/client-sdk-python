@@ -33,15 +33,15 @@ req = operations.CreateBankTransactionsRequest(
         account_id='molestiae',
         amount=7991.59,
         balance=8009.11,
-        cleared_on_date='esse',
+        cleared_on_date='2022-10-23T00:00:00.000Z',
         description='totam',
         id='ca1ba928-fc81-4674-acb7-39205929396f',
-        modified_date='saepe',
+        modified_date='2022-10-23T00:00:00.000Z',
         reconciled=False,
-        source_modified_date='fuga',
+        source_modified_date='2022-10-23T00:00:00.000Z',
         transaction_type=shared.BankTransactionType.ATM,
     ),
-    account_id='corporis',
+    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -71,7 +71,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.GetCreateBankAccountModelRequest(
-    account_id='iure',
+    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -99,7 +99,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id='saepe',
+    account_id='EILBDVJVNUAGVKRQ',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
