@@ -56,7 +56,7 @@ s = codatassess.CodatAssess(
 req = operations.GetDataIntegritySummariesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-    query='voluptatibus',
+    query='excepturi',
 )
 
 res = s.data_integrity.get_data_integrity_summaries(req)
@@ -87,7 +87,7 @@ req = operations.ListDataTypeDataIntegrityDetailsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsa',
+    query='nisi',
 )
 
 res = s.data_integrity.list_data_type_data_integrity_details(req)

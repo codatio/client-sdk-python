@@ -160,42 +160,42 @@ req = operations.UpdateAccountsCategoriesRequest(
         categories=[
             shared.ConfirmCategoriesCategories(
                 account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
-                    id='69a674e0-f467-4cc8-b96e-d151a05dfc2d',
+                    id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
                 ),
                 confirmed=shared.AccountCategory(
-                    detail_type='at',
-                    subtype='maiores',
+                    detail_type='error',
+                    subtype='deserunt',
+                    type='suscipit',
+                ),
+            ),
+            shared.ConfirmCategoriesCategories(
+                account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
+                    id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+                ),
+                confirmed=shared.AccountCategory(
+                    detail_type='magnam',
+                    subtype='debitis',
+                    type='ipsa',
+                ),
+            ),
+            shared.ConfirmCategoriesCategories(
+                account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
+                    id='EILBDVJVNUAGVKRQ',
+                ),
+                confirmed=shared.AccountCategory(
+                    detail_type='tempora',
+                    subtype='suscipit',
                     type='molestiae',
                 ),
             ),
             shared.ConfirmCategoriesCategories(
                 account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
-                    id='cc78ca1b-a928-4fc8-9674-2cb739205929',
+                    id='EILBDVJVNUAGVKRQ',
                 ),
                 confirmed=shared.AccountCategory(
-                    detail_type='dolor',
-                    subtype='natus',
-                    type='laboriosam',
-                ),
-            ),
-            shared.ConfirmCategoriesCategories(
-                account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
-                    id='fea7596e-b10f-4aaa-a352-c5955907aff1',
-                ),
-                confirmed=shared.AccountCategory(
-                    detail_type='mollitia',
-                    subtype='dolorem',
-                    type='culpa',
-                ),
-            ),
-            shared.ConfirmCategoriesCategories(
-                account_ref=shared.ConfirmCategoriesCategoriesAccountRef(
-                    id='2fa94677-3925-41aa-92c3-f5ad019da1ff',
-                ),
-                confirmed=shared.AccountCategory(
-                    detail_type='vero',
-                    subtype='nihil',
-                    type='praesentium',
+                    detail_type='placeat',
+                    subtype='voluptatum',
+                    type='iusto',
                 ),
             ),
         ],
