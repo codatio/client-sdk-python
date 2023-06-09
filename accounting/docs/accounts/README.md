@@ -37,8 +37,8 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateAccountRequest(
     account=shared.Account(
-        currency='quibusdam',
-        current_balance=6027.63,
+        currency='EUR',
+        current_balance=0,
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
         fully_qualified_name='Asset.Current.Accounts Receivable',
@@ -47,49 +47,41 @@ req = operations.CreateAccountRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='nulla',
+        modified_date='2022-10-23T00:00:00.000Z',
         name='Accounts Receivable',
         nominal_code='610',
-        source_modified_date='corrupti',
+        source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.AccountStatus.ACTIVE,
         type=shared.AccountType.ASSET,
         valid_datatype_links=[
             shared.ValidDataTypeLinks(
                 links=[
+                    'vel',
                     'error',
                     'deserunt',
+                    'suscipit',
                 ],
-                property='suscipit',
+                property='iure',
             ),
             shared.ValidDataTypeLinks(
                 links=[
-                    'magnam',
                     'debitis',
+                    'ipsa',
                 ],
-                property='ipsa',
+                property='delectus',
             ),
             shared.ValidDataTypeLinks(
                 links=[
-                    'tempora',
                     'suscipit',
                     'molestiae',
-                    'minus',
                 ],
-                property='placeat',
-            ),
-            shared.ValidDataTypeLinks(
-                links=[
-                    'iusto',
-                    'excepturi',
-                    'nisi',
-                ],
-                property='recusandae',
+                property='minus',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=836079,
+    timeout_in_minutes=812169,
 )
 
 res = s.accounts.create(req)
@@ -119,7 +111,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetAccountRequest(
-    account_id='ab',
+    account_id='voluptatum',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -189,7 +181,7 @@ req = operations.ListAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quis',
+    query='iusto',
 )
 
 res = s.accounts.list(req)

@@ -35,145 +35,75 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
-        created_on='corporis',
-        description='omnis',
-        id='b855d015-b62c-48b8-ba38-a8a88c144200',
+        created_on='2022-10-23T00:00:00.000Z',
+        description='culpa',
+        id='4b9a5bf9-35df-4e97-8fa4-b1e9c097eda6',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='2caeb1ae-1ecf-48c3-8946-bba7a05a8b4a',
-                    name='Noah Rutherford',
+                    id='3442e1a9-237e-4998-8c80-b479e891923c',
+                    name='Nina Runolfsson',
                 ),
-                currency='amet',
-                description='eum',
-                net_amount=5102.81,
+                currency='facere',
+                description='vel',
+                net_amount=5838.27,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='maxime',
-                            id='ca363272-760e-4966-a97e-054103347d78',
+                            data_type='enim',
+                            id='689214fa-2020-47e4-bae0-38cd7f1bc2ca',
                         ),
                         shared.InvoiceTo(
-                            data_type='asperiores',
-                            id='f2491145-fab9-4e59-a4af-336664eaa6bf',
+                            data_type='nam',
+                            id='af7fc2cc-ba4b-4ef0-9f68-eaedb2ee70be',
                         ),
                         shared.InvoiceTo(
-                            data_type='dolores',
-                            id='ff14e8c1-b352-4acc-adac-c5227814eca0',
-                        ),
-                    ],
-                ),
-            ),
-            shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='16bc41ea-1342-4d41-84a2-5ef71de57a11',
-                    name='Franklin Brown',
-                ),
-                currency='tempora',
-                description='velit',
-                net_amount=1191.73,
-                tracking=shared.Propertiestracking2(
-                    record_refs=[
-                        shared.InvoiceTo(
-                            data_type='laboriosam',
-                            id='92ea4867-3d52-42b8-a8a9-030660f024c7',
+                            data_type='alias',
+                            id='69fb36ad-d704-4080-a0a3-fc73a5a034b1',
                         ),
                         shared.InvoiceTo(
-                            data_type='sint',
-                            id='b4cc64c2-b3a3-42c4-88ad-e62f6aa558a6',
-                        ),
-                    ],
-                ),
-            ),
-            shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='5e208301-6ca3-44bb-87d4-f62127a607d1',
-                    name='Betty Jacobi',
-                ),
-                currency='quaerat',
-                description='nostrum',
-                net_amount=1080.29,
-                tracking=shared.Propertiestracking2(
-                    record_refs=[
-                        shared.InvoiceTo(
-                            data_type='cumque',
-                            id='3db9ca9f-38bd-42be-8787-03493f49aa84',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='ex',
-                            id='5a328327-9b71-49d1-8ea6-73d86e3b35e4',
-                        ),
-                    ],
-                ),
-            ),
-            shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='9a313577-8ce5-44ca-8b0e-3ea975045bac',
-                    name='Nathaniel DuBuque',
-                ),
-                currency='quasi',
-                description='nemo',
-                net_amount=1217.04,
-                tracking=shared.Propertiestracking2(
-                    record_refs=[
-                        shared.InvoiceTo(
-                            data_type='commodi',
-                            id='ab5e3a02-2614-4315-9156-8299e61afc71',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='totam',
-                            id='6ff20b7a-73df-440c-a0d7-657c1641bbf0',
-                        ),
-                        shared.InvoiceTo(
-                            data_type='nostrum',
-                            id='5271b251-1dd6-406d-91b2-8272bc9c3221',
+                            data_type='ab',
+                            id='499243af-a698-47a4-b2b7-09a153e22301',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='697b1880-fcbb-42b9-bc15-f670bd178483',
-            name='Kristin Herman',
+            id='068539ce-0932-4d10-acd1-5d8cc306b786',
+            name='Stanley Swaniawski',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='necessitatibus',
-        posted_on='harum',
+        modified_date='2022-10-23T00:00:00.000Z',
+        posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.InvoiceTo(
-            data_type='amet',
-            id='b6e241c3-1099-4836-a3c6-6dcbb7df6cb0',
+            data_type='sed',
+            id='04a1f340-bb36-4f67-ba48-519c33749028',
         ),
-        source_modified_date='molestias',
+        source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "totam": {
-                    "modi": 'aperiam',
-                    "praesentium": 'recusandae',
-                    "eaque": 'nihil',
+                "quos": {
+                    "ex": 'nam',
                 },
-                "dicta": {
-                    "molestiae": 'in',
+                "distinctio": {
+                    "consectetur": 'porro',
                 },
-                "magnam": {
-                    "saepe": 'non',
-                    "a": 'voluptates',
-                    "vero": 'quae',
-                    "doloremque": 'et',
-                },
-                "possimus": {
-                    "esse": 'praesentium',
-                    "aperiam": 'laborum',
-                    "dicta": 'doloremque',
+                "nihil": {
+                    "possimus": 'consequuntur',
+                    "odit": 'enim',
+                    "debitis": 'dolore',
+                    "in": 'corrupti',
                 },
             },
         ),
-        updated_on='minus',
+        updated_on='2022-10-23T00:00:00.000Z',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=260242,
+    timeout_in_minutes=100075,
 )
 
 res = s.journal_entries.create(req)
@@ -231,7 +161,7 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='odio',
+    journal_entry_id='culpa',
 )
 
 res = s.journal_entries.delete(req)
@@ -258,7 +188,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='rerum',
+    journal_entry_id='blanditiis',
 )
 
 res = s.journal_entries.get(req)
@@ -321,7 +251,7 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='provident',
+    query='atque',
 )
 
 res = s.journal_entries.list(req)

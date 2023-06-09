@@ -29,23 +29,28 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.CreateBankTransactionsRequest(
-    bank_transactions=shared.BankTransactions(
-        account_id='veritatis',
-        amount=6481.72,
-        balance=202.18,
-        cleared_on_date='ipsam',
-        description='repellendus',
-        id='fc2ddf7c-c78c-4a1b-a928-fc816742cb73',
-        modified_date='excepturi',
-        reconciled=False,
-        source_modified_date='aspernatur',
-        transaction_type=shared.BankTransactionType.UNKNOWN,
+    create_bank_transactions=shared.CreateBankTransactions(
+        account_id='excepturi',
+        transactions=[
+            shared.CreateBankAccountTransaction(
+                amount=9255.97,
+                date_='2022-10-23T00:00:00.000Z',
+                description='ab',
+                id='51a05dfc-2ddf-47cc-b8ca-1ba928fc8167',
+            ),
+            shared.CreateBankAccountTransaction(
+                amount=2645.55,
+                date_='2022-10-23T00:00:00.000Z',
+                description='impedit',
+                id='b7392059-2939-46fe-a759-6eb10faaa235',
+            ),
+        ],
     ),
-    account_id='ad',
+    account_id='explicabo',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=617636,
+    timeout_in_minutes=750686,
 )
 
 res = s.bank_account_transactions.create(req)
@@ -71,7 +76,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetCreateBankAccountModelRequest(
-    account_id='sed',
+    account_id='enim',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -99,13 +104,13 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id='iste',
+    account_id='omnis',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dolor',
+    query='nemo',
 )
 
 res = s.bank_account_transactions.list(req)

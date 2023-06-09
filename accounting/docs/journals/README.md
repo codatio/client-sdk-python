@@ -33,23 +33,23 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateJournalRequest(
     journal=shared.Journal(
-        created_on='nostrum',
+        created_on='2022-10-23T00:00:00.000Z',
         has_children=False,
-        id='040d6c8b-2a5f-4002-a07e-4048f90009ed',
-        journal_code='consequuntur',
+        id='d72a2d4a-f415-48ac-ad0f-0f58c3b87b47',
+        journal_code='eaque',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='occaecati',
-        name='Phyllis Koch',
-        parent_id='quidem',
-        source_modified_date='aliquam',
-        status=shared.JournalStatus.ARCHIVED,
-        type='itaque',
+        modified_date='2022-10-23T00:00:00.000Z',
+        name='Elena Anderson',
+        parent_id='quos',
+        source_modified_date='2022-10-23T00:00:00.000Z',
+        status=shared.JournalStatus.ACTIVE,
+        type='fugiat',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=612118,
+    timeout_in_minutes=513534,
 )
 
 res = s.journals.create(req)
@@ -76,7 +76,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='pariatur',
+    journal_id='eos',
 )
 
 res = s.journals.get(req)
@@ -139,7 +139,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='suscipit',
+    query='porro',
 )
 
 res = s.journals.list(req)

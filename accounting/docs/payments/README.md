@@ -34,69 +34,39 @@ s = codataccounting.CodatAccounting(
 req = operations.CreatePaymentRequest(
     payment=shared.Payment(
         account_ref=shared.AccountRef(
-            id='61e91500-323b-42c0-9b92-4771f5669e5b',
-            name='Tricia Sawayn',
+            id='306f5576-f5cd-4eb0-a86d-0bc43b18ab37',
+            name='Darrin Crooks',
         ),
-        currency='magni',
-        currency_rate=4374.89,
+        currency='EUR',
+        currency_rate=9819.74,
         customer_ref=shared.CustomerRef(
-            company_name='ea',
-            id='49d84eb9-e4cf-4d22-b6e0-b88fb87d6fa5',
+            company_name='laudantium',
+            id='1ddf7e08-8f74-4ef5-8c92-16e8926313bb',
         ),
-        date_='cum',
-        id='6e8dbf81-2f83-4b1c-a6a9-ffc561929cca',
+        date_='2022-10-23T00:00:00.000Z',
+        id='fc2c8d27-0109-46b6-aad6-e3e1d9d3b660',
         lines=[
             shared.PaymentLine(
-                allocated_on_date='nemo',
-                amount=3864.41,
+                allocated_on_date='2022-10-23T00:00:00.000Z',
+                amount=3089.27,
                 links=[
                     shared.PaymentLineLink(
-                        amount=6814.58,
-                        currency_rate=977.35,
-                        id='395918da-1d48-4e78-a3cf-8e1143da9308',
-                        type=shared.PaymentLinkType.PAYMENT_ON_ACCOUNT,
-                    ),
-                ],
-            ),
-            shared.PaymentLine(
-                allocated_on_date='magni',
-                amount=4682.52,
-                links=[
-                    shared.PaymentLineLink(
-                        amount=137,
-                        currency_rate=5312.36,
-                        id='af221844-39b3-4de8-b56c-cce470cd2147',
+                        amount=1192.28,
+                        currency_rate=1231.37,
+                        id='aa1d5d22-47de-49b3-9461-70e768a96bb3',
                         type=shared.PaymentLinkType.PAYMENT,
                     ),
                     shared.PaymentLineLink(
-                        amount=4308.75,
-                        currency_rate=9267.48,
-                        id='6152cf01-d0d8-4c3a-8b9a-5bf935dfe974',
-                        type=shared.PaymentLinkType.DISCOUNT,
+                        amount=5218.9,
+                        currency_rate=4416.03,
+                        id='88398eba-1bbf-4714-b356-f6349a164249',
+                        type=shared.PaymentLinkType.PAYMENT_ON_ACCOUNT,
                     ),
                     shared.PaymentLineLink(
-                        amount=6309.83,
-                        currency_rate=2828,
-                        id='b1e9c097-eda6-4234-82e1-a9237e9984c8',
+                        amount=1747.15,
+                        currency_rate=1088.29,
+                        id='1ce46b95-1652-4b15-8ca9-142f052632b3',
                         type=shared.PaymentLinkType.UNKNOWN,
-                    ),
-                ],
-            ),
-            shared.PaymentLine(
-                allocated_on_date='facilis',
-                amount=2810.64,
-                links=[
-                    shared.PaymentLineLink(
-                        amount=5745.91,
-                        currency_rate=9051.54,
-                        id='891923c1-8ca8-4d69-8568-9214fa20207e',
-                        type=shared.PaymentLinkType.INVOICE,
-                    ),
-                    shared.PaymentLineLink(
-                        amount=9643.29,
-                        currency_rate=6295.82,
-                        id='e038cd7f-1bc2-4cab-af7f-c2ccba4bef0d',
-                        type=shared.PaymentLinkType.DISCOUNT,
                     ),
                 ],
             ),
@@ -104,32 +74,34 @@ req = operations.CreatePaymentRequest(
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='nisi',
-        note='voluptatum',
+        modified_date='2022-10-23T00:00:00.000Z',
+        note='harum',
         payment_method_ref=shared.PaymentMethodRef(
-            id='eaedb2ee-70be-4069-bb36-add704080e0a',
-            name='Lorene Schneider',
+            id='d692ffc8-7450-405e-9d3d-934e036f5c38',
+            name='Brett Hudson',
         ),
-        reference='animi',
-        source_modified_date='ullam',
+        reference='ea',
+        source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "aperiam": {
-                    "aliquam": 'soluta',
+                "corporis": {
+                    "ipsum": 'perferendis',
+                    "est": 'fugit',
                 },
-                "inventore": {
-                    "ut": 'sint',
+                "repudiandae": {
+                    "similique": 'repudiandae',
                 },
-                "sint": {
-                    "eius": 'ratione',
+                "assumenda": {
+                    "fuga": 'est',
+                    "tenetur": 'atque',
                 },
             },
         ),
-        total_amount=6253.92,
+        total_amount=4072.09,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=979832,
+    timeout_in_minutes=199180,
 )
 
 res = s.payments.create(req)
@@ -156,7 +128,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='mollitia',
+    payment_id='impedit',
 )
 
 res = s.payments.get(req)
@@ -219,7 +191,7 @@ req = operations.ListPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='suscipit',
+    query='eos',
 )
 
 res = s.payments.list(req)

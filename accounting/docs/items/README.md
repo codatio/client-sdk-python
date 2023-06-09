@@ -35,46 +35,46 @@ req = operations.CreateItemRequest(
     item=shared.Item(
         bill_item=shared.BillItem(
             account_ref=shared.AccountRef(
-                id='e8ab4a9c-492c-45e8-ba5d-4aa4a508bd38',
-                name='Kara Cremin',
+                id='d64161e9-1500-4323-b2c0-9b924771f566',
+                name='Pat Hickle',
             ),
-            description='deserunt',
+            description='saepe',
             tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=5230.55,
-                id='dd71bdda-a30b-47b9-9449-ae69c088d418',
-                name='Ms. Wm Kohler II',
+                effective_tax_rate=7828.51,
+                id='7626649d-84eb-49e4-8fd2-276e0b88fb87',
+                name='Gilbert Zboncak',
             ),
-            unit_price=9965.22,
+            unit_price=7370.08,
         ),
-        code='modi',
-        id='23d54393-5f37-47ac-9c9b-7e93b6a3c523',
+        code='vel',
+        id='e8dbf812-f83b-41ca-aa9f-fc561929cca9',
         invoice_item=shared.InvoiceItem(
             account_ref=shared.AccountRef(
-                id='105e7c34-cab0-4ecb-812a-66148944a8e9',
-                name='Ms. Jennie Hartmann',
+                id='560a1395-918d-4a1d-88e7-8e3cf8e1143d',
+                name='Ms. Wendell Dooley',
             ),
-            description='nam',
+            description='magni',
             tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=7904.63,
-                id='25382533-43fb-40a4-a66e-a47578d171e2',
-                name='Frederick Bogan IV',
+                effective_tax_rate=4682.52,
+                id='a08af221-8443-49b3-9e87-56ccce470cd2',
+                name='Elaine Kihn',
             ),
-            unit_price=9823.15,
+            unit_price=9267.48,
         ),
         is_bill_item=False,
         is_invoice_item=False,
-        item_status=shared.ItemStatus.ARCHIVED,
+        item_status=shared.ItemStatus.ACTIVE,
         metadata=shared.Metadata(
             is_deleted=False,
         ),
-        modified_date='aliquid',
-        name='Shelly Purdy',
-        source_modified_date='quia',
-        type=shared.ItemType.SERVICE,
+        modified_date='2022-10-23T00:00:00.000Z',
+        name='Nicole Schowalter Sr.',
+        source_modified_date='2022-10-23T00:00:00.000Z',
+        type=shared.ItemType.UNKNOWN,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=125551,
+    timeout_in_minutes=873982,
 )
 
 res = s.items.create(req)
@@ -101,7 +101,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetItemRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    item_id='veniam',
+    item_id='voluptatum',
 )
 
 res = s.items.get(req)
@@ -164,7 +164,7 @@ req = operations.ListItemsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dolorem',
+    query='eligendi',
 )
 
 res = s.items.list(req)
