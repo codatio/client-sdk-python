@@ -10,20 +10,22 @@ from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetDisputeRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     dispute_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'disputeId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a dispute."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class GetDispute409ApplicationJSON:
     r"""The data type's dataset has not been requested or is still syncing."""
-    
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
     detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})
@@ -32,9 +34,11 @@ class GetDispute409ApplicationJSON:
     status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
     
 
+
+
+
 @dataclasses.dataclass
 class GetDisputeResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     dispute: Optional[shared_dispute.Dispute] = dataclasses.field(default=None)
@@ -45,3 +49,4 @@ class GetDisputeResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+

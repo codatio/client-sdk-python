@@ -18,17 +18,20 @@ class CompanyInfoWeblinkType(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CompanyInfoWeblink:
     r"""Weblink associated with the company."""
-    
     type: Optional[CompanyInfoWeblinkType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the weblink."""
     url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
     r"""The full URL for the weblink."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CompanyInfo:
     r"""In the Codat system, company information includes standard commercial details about
@@ -36,7 +39,6 @@ class CompanyInfo:
     
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=companyInfo) for this data type.
     """
-    
     account_balances: Optional[list[shared_accountbalance.AccountBalance]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountBalances'), 'exclude': lambda f: f is None }})
     r"""The available and current cash balances for the company's accounts"""
     addresses: Optional[list[shared_address.Address]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
@@ -88,3 +90,4 @@ class CompanyInfo:
     web_links: Optional[list[CompanyInfoWeblink]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webLinks'), 'exclude': lambda f: f is None }})
     r"""Weblinks associated with the company"""
     
+
