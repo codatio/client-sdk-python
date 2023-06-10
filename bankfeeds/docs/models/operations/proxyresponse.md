@@ -1,0 +1,12 @@
+# ProxyResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `content_type`                                                                        | *str*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `proxy_response`                                                                      | dict[str, *Any*]                                                                      | :heavy_minus_sign:                                                                    | Success                                                                               |
+| `status_code`                                                                         | *int*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `raw_response`                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response) | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `schema`                                                                              | [Optional[shared.Schema]](../../models/shared/schema.md)                              | :heavy_minus_sign:                                                                    | Your API request was not properly authorized.                                         |
