@@ -7,9 +7,9 @@ from ..shared import integrations as shared_integrations
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListIntegrationsRequest:
-    
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results)."""
     page: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
@@ -20,12 +20,15 @@ class ListIntegrationsRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
+
+
+
 @dataclasses.dataclass
 class ListIntegrationsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     integrations: Optional[shared_integrations.Integrations] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

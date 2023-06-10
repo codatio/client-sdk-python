@@ -7,19 +7,22 @@ from ..shared import branding as shared_branding
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetIntegrationBrandingRequest:
-    
     platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
     r"""PlatformKey"""
     
 
+
+
+
 @dataclasses.dataclass
 class GetIntegrationBrandingResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     branding: Optional[shared_branding.Branding] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

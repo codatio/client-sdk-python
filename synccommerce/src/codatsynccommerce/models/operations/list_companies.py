@@ -7,9 +7,9 @@ from ..shared import companies as shared_companies
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListCompaniesRequest:
-    
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results)."""
     page: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
@@ -20,12 +20,15 @@ class ListCompaniesRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
+
+
+
 @dataclasses.dataclass
 class ListCompaniesResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     companies: Optional[shared_companies.Companies] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+
