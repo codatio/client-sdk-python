@@ -7,9 +7,9 @@ from ..shared import transactions as shared_transactions
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListBankTransactionsRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results)."""
@@ -21,12 +21,15 @@ class ListBankTransactionsRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
+
+
+
 @dataclasses.dataclass
 class ListBankTransactionsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     transactions: Optional[shared_transactions.Transactions] = dataclasses.field(default=None)
     r"""Success"""
     
+

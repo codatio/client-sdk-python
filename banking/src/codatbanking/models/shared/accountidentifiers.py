@@ -9,10 +9,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class AccountIdentifiers:
     r"""An object containing bank account identification information."""
-    
     type: shared_accountidentifiertype.AccountIdentifierType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Type of account"""
     bank_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankCode'), 'exclude': lambda f: f is None }})
@@ -34,3 +34,4 @@ class AccountIdentifiers:
     subtype: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subtype'), 'exclude': lambda f: f is None }})
     r"""Detailed account category"""
     
+

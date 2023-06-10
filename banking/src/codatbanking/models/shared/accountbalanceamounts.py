@@ -8,10 +8,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class AccountBalanceAmounts:
     r"""Depending on the data provided by the underlying bank, not all balances are always available."""
-    
     available: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('available'), 'exclude': lambda f: f is None }})
     r"""The balance available in the account, including any pending transactions. This doesn't include additional funds available from any overdrafts."""
     current: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current'), 'exclude': lambda f: f is None }})
@@ -19,3 +19,4 @@ class AccountBalanceAmounts:
     limit: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('limit'), 'exclude': lambda f: f is None }})
     r"""The minimum allowed balance for the account. For example, a $100.00 overdraft would show as a limit of `-100.00`."""
     
+
