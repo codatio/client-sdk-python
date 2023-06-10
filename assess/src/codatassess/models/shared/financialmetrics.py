@@ -16,10 +16,10 @@ class FinancialMetricsPeriodUnit(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class FinancialMetrics:
     r"""OK"""
-    
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
@@ -34,3 +34,4 @@ class FinancialMetrics:
     metrics: Optional[list[shared_financialmetric.FinancialMetric]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metrics'), 'exclude': lambda f: f is None }})
     period_unit: Optional[FinancialMetricsPeriodUnit] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('periodUnit'), 'exclude': lambda f: f is None }})
     
+

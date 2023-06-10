@@ -9,9 +9,9 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class Accounts:
-    
     account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountName'), 'exclude': lambda f: f is None }})
     r"""The name of the account according to the provider."""
     account_provider: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountProvider'), 'exclude': lambda f: f is None }})
@@ -34,3 +34,4 @@ class Accounts:
     source_ref: Optional[shared_sourceref.SourceRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceRef'), 'exclude': lambda f: f is None }})
     r"""A source reference containing the `sourceType` object \\"Banking\\"."""
     
+

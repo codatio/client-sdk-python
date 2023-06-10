@@ -9,9 +9,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class EnhancedCashFlowItem:
-    
     transactions: Optional[list[shared_enhancedcashflowtransaction.EnhancedCashFlowTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
     r"""An array of transaction data."""
     
+

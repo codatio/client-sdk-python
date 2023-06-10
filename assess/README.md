@@ -40,43 +40,43 @@ if res.categorised_account is not None:
 ## Available Resources and Operations
 
 
-### [categories](docs/categories/README.md)
+### [categories](docs/sdks/categories/README.md)
 
-* [~~get_account_category~~](docs/categories/README.md#get_account_category) - Get suggested and/or confirmed category for a specific account :warning: **Deprecated**
-* [~~list_accounts_categories~~](docs/categories/README.md#list_accounts_categories) - List suggested and confirmed account categories :warning: **Deprecated**
-* [~~list_available_account_categories~~](docs/categories/README.md#list_available_account_categories) - List account categories :warning: **Deprecated**
-* [~~update_account_category~~](docs/categories/README.md#update_account_category) - Update account categories :warning: **Deprecated**
-* [~~update_accounts_categories~~](docs/categories/README.md#update_accounts_categories) - Confirm categories for accounts :warning: **Deprecated**
+* [~~get_account_category~~](docs/sdks/categories/README.md#get_account_category) - Get suggested and/or confirmed category for a specific account :warning: **Deprecated**
+* [~~list_accounts_categories~~](docs/sdks/categories/README.md#list_accounts_categories) - List suggested and confirmed account categories :warning: **Deprecated**
+* [~~list_available_account_categories~~](docs/sdks/categories/README.md#list_available_account_categories) - List account categories :warning: **Deprecated**
+* [~~update_account_category~~](docs/sdks/categories/README.md#update_account_category) - Update account categories :warning: **Deprecated**
+* [~~update_accounts_categories~~](docs/sdks/categories/README.md#update_accounts_categories) - Confirm categories for accounts :warning: **Deprecated**
 
-### [data_integrity](docs/dataintegrity/README.md)
+### [data_integrity](docs/sdks/dataintegrity/README.md)
 
-* [get_data_integrity_status](docs/dataintegrity/README.md#get_data_integrity_status) - Get data integrity status
-* [get_data_integrity_summaries](docs/dataintegrity/README.md#get_data_integrity_summaries) - Get data integrity summary
-* [list_data_type_data_integrity_details](docs/dataintegrity/README.md#list_data_type_data_integrity_details) - List data type data integrity
+* [get_data_integrity_status](docs/sdks/dataintegrity/README.md#get_data_integrity_status) - Get data integrity status
+* [get_data_integrity_summaries](docs/sdks/dataintegrity/README.md#get_data_integrity_summaries) - Get data integrity summary
+* [list_data_type_data_integrity_details](docs/sdks/dataintegrity/README.md#list_data_type_data_integrity_details) - List data type data integrity
 
-### [excel_reports](docs/excelreports/README.md)
+### [excel_reports](docs/sdks/excelreports/README.md)
 
-* [generate_excel_report](docs/excelreports/README.md#generate_excel_report) - Generate Excel report
-* [get_accounting_marketing_metrics](docs/excelreports/README.md#get_accounting_marketing_metrics) - Get marketing metrics report
-* [get_excel_report](docs/excelreports/README.md#get_excel_report) - Download Excel report
-* [get_excel_report_generation_status](docs/excelreports/README.md#get_excel_report_generation_status) - Get Excel report status
+* [generate_excel_report](docs/sdks/excelreports/README.md#generate_excel_report) - Generate Excel report
+* [get_accounting_marketing_metrics](docs/sdks/excelreports/README.md#get_accounting_marketing_metrics) - Get marketing metrics report
+* [get_excel_report](docs/sdks/excelreports/README.md#get_excel_report) - Download Excel report
+* [get_excel_report_generation_status](docs/sdks/excelreports/README.md#get_excel_report_generation_status) - Get Excel report status
 
-### [reports](docs/reports/README.md)
+### [reports](docs/sdks/reports/README.md)
 
-* [get_accounts_for_enhanced_balance_sheet](docs/reports/README.md#get_accounts_for_enhanced_balance_sheet) - Get enhanced balance sheet accounts
-* [get_accounts_for_enhanced_profit_and_loss](docs/reports/README.md#get_accounts_for_enhanced_profit_and_loss) - Get enhanced profit and loss accounts
-* [get_commerce_customer_retention_metrics](docs/reports/README.md#get_commerce_customer_retention_metrics) - Get customer retention metrics
-* [get_commerce_lifetime_value_metrics](docs/reports/README.md#get_commerce_lifetime_value_metrics) - Get lifetime value metric
-* [get_commerce_orders_metrics](docs/reports/README.md#get_commerce_orders_metrics) - Get orders report
-* [get_commerce_refunds_metrics](docs/reports/README.md#get_commerce_refunds_metrics) - Get refunds report
-* [get_commerce_revenue_metrics](docs/reports/README.md#get_commerce_revenue_metrics) - Get commerce revenue metrics
-* [~~get_enhanced_balance_sheet~~](docs/reports/README.md#get_enhanced_balance_sheet) - Get enhanced balance sheet report :warning: **Deprecated**
-* [get_enhanced_cash_flow_transactions](docs/reports/README.md#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
-* [~~get_enhanced_financial_metrics~~](docs/reports/README.md#get_enhanced_financial_metrics) - List financial metrics :warning: **Deprecated**
-* [get_enhanced_invoices_report](docs/reports/README.md#get_enhanced_invoices_report) - Get enhanced invoices report
-* [~~get_enhanced_profit_and_loss~~](docs/reports/README.md#get_enhanced_profit_and_loss) - Get enhanced profit and loss report :warning: **Deprecated**
-* [get_recurring_revenue_metrics](docs/reports/README.md#get_recurring_revenue_metrics) - Get key subscription revenue metrics
-* [request_recurring_revenue_metrics](docs/reports/README.md#request_recurring_revenue_metrics) - Generate key subscription revenue metrics
+* [get_accounts_for_enhanced_balance_sheet](docs/sdks/reports/README.md#get_accounts_for_enhanced_balance_sheet) - Get enhanced balance sheet accounts
+* [get_accounts_for_enhanced_profit_and_loss](docs/sdks/reports/README.md#get_accounts_for_enhanced_profit_and_loss) - Get enhanced profit and loss accounts
+* [get_commerce_customer_retention_metrics](docs/sdks/reports/README.md#get_commerce_customer_retention_metrics) - Get customer retention metrics
+* [get_commerce_lifetime_value_metrics](docs/sdks/reports/README.md#get_commerce_lifetime_value_metrics) - Get lifetime value metric
+* [get_commerce_orders_metrics](docs/sdks/reports/README.md#get_commerce_orders_metrics) - Get orders report
+* [get_commerce_refunds_metrics](docs/sdks/reports/README.md#get_commerce_refunds_metrics) - Get refunds report
+* [get_commerce_revenue_metrics](docs/sdks/reports/README.md#get_commerce_revenue_metrics) - Get commerce revenue metrics
+* [~~get_enhanced_balance_sheet~~](docs/sdks/reports/README.md#get_enhanced_balance_sheet) - Get enhanced balance sheet report :warning: **Deprecated**
+* [get_enhanced_cash_flow_transactions](docs/sdks/reports/README.md#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
+* [~~get_enhanced_financial_metrics~~](docs/sdks/reports/README.md#get_enhanced_financial_metrics) - List financial metrics :warning: **Deprecated**
+* [get_enhanced_invoices_report](docs/sdks/reports/README.md#get_enhanced_invoices_report) - Get enhanced invoices report
+* [~~get_enhanced_profit_and_loss~~](docs/sdks/reports/README.md#get_enhanced_profit_and_loss) - Get enhanced profit and loss report :warning: **Deprecated**
+* [get_recurring_revenue_metrics](docs/sdks/reports/README.md#get_recurring_revenue_metrics) - Get key subscription revenue metrics
+* [request_recurring_revenue_metrics](docs/sdks/reports/README.md#request_recurring_revenue_metrics) - Generate key subscription revenue metrics
 <!-- End SDK Available Operations -->
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)

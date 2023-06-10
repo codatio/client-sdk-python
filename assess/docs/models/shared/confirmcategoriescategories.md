@@ -1,0 +1,9 @@
+# ConfirmCategoriesCategories
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `account_ref`                                                                                                   | [Optional[ConfirmCategoriesCategoriesAccountRef]](../../models/shared/confirmcategoriescategoriesaccountref.md) | :heavy_minus_sign:                                                                                              | N/A                                                                                                             |
+| `confirmed`                                                                                                     | [Optional[AccountCategory]](../../models/shared/accountcategory.md)                                             | :heavy_minus_sign:                                                                                              | N/A                                                                                                             |

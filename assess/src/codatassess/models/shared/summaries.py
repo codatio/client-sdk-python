@@ -9,9 +9,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class Summaries:
     r"""OK"""
-    
     summaries: Optional[list[shared_dataintegritysummary.DataIntegritySummary]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('summaries'), 'exclude': lambda f: f is None }})
     
+

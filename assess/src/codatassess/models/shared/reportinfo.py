@@ -8,10 +8,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class ReportInfo:
     r"""Report additional information, which is specific to Assess reports"""
-    
     company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is None }})
     r"""The name of the company being queried."""
     generated_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('generatedDate'), 'exclude': lambda f: f is None }})
@@ -25,3 +25,4 @@ class ReportInfo:
     total_results: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults'), 'exclude': lambda f: f is None }})
     r"""The total number of transactions available for a company for the period specified in the query string."""
     
+
