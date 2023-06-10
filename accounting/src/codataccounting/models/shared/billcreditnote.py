@@ -15,6 +15,7 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class BillCreditNote:
     r"""> **Bill credit notes or credit notes?**
@@ -34,7 +35,6 @@ class BillCreditNote:
     * Any allocations of the credit against other records, such as [bills](https://docs.codat.io/accounting-api#/schemas/Bill).
     * The supplier that issued the bill credit note.
     """
-    
     discount_percentage: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage') }})
     r"""Percentage rate of any discount applied to the bill credit note."""
     status: shared_billcreditnotestatus.BillCreditNoteStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
@@ -144,3 +144,4 @@ class BillCreditNote:
     r"""Reference to the supplier the record relates to."""
     withholding_tax: Optional[list[shared_withholdingtaxitems.WithholdingTaxitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})
     
+

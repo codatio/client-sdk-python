@@ -9,17 +9,19 @@ from ..shared import transfer as shared_transfer
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class CreateTransferRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     transfer: Optional[shared_transfer.Transfer] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateTransferResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     create_transfer_response: Optional[shared_createtransferresponse.CreateTransferResponse] = dataclasses.field(default=None)
@@ -28,3 +30,4 @@ class CreateTransferResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""The request made is not valid."""
     
+

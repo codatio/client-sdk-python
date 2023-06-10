@@ -9,6 +9,7 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class BalanceSheet1:
     r"""> View the coverage for balance sheet in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=balanceSheet\\" target=\\"_blank\\">Data coverage explorer</a>.
@@ -30,7 +31,6 @@ class BalanceSheet1:
     **Want to pull this in a standardised structure?**
     Our [Enhanced Financials](https://docs.codat.io/assess/enhanced-financials/overview) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
     """
-    
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
@@ -85,3 +85,4 @@ class BalanceSheet1:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     
+

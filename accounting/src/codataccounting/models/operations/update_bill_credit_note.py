@@ -9,9 +9,9 @@ from ..shared import updatebillcreditnoteresponse as shared_updatebillcreditnote
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class UpdateBillCreditNoteRequest:
-    
     bill_credit_note_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'billCreditNoteId', 'style': 'simple', 'explode': False }})
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
@@ -21,9 +21,11 @@ class UpdateBillCreditNoteRequest:
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
+
+
+
 @dataclasses.dataclass
 class UpdateBillCreditNoteResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -32,3 +34,4 @@ class UpdateBillCreditNoteResponse:
     update_bill_credit_note_response: Optional[shared_updatebillcreditnoteresponse.UpdateBillCreditNoteResponse] = dataclasses.field(default=None)
     r"""Success"""
     
+

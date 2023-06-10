@@ -9,9 +9,9 @@ from datetime import date
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetAgedCreditorsReportRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     number_of_periods: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'numberOfPeriods', 'style': 'form', 'explode': True }})
     r"""Number of periods to include in the report."""
@@ -21,9 +21,11 @@ class GetAgedCreditorsReportRequest:
     r"""Date the report is generated up to."""
     
 
+
+
+
 @dataclasses.dataclass
 class GetAgedCreditorsReportResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     aged_creditor_report: Optional[shared_agedcreditorreport.AgedCreditorReport] = dataclasses.field(default=None)
@@ -32,3 +34,4 @@ class GetAgedCreditorsReportResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+

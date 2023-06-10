@@ -9,9 +9,9 @@ from ..shared import updatebillresponse as shared_updatebillresponse
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class UpdateBillRequest:
-    
     bill_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'billId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a bill"""
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -22,9 +22,11 @@ class UpdateBillRequest:
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
+
+
+
 @dataclasses.dataclass
 class UpdateBillResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -33,3 +35,4 @@ class UpdateBillResponse:
     update_bill_response: Optional[shared_updatebillresponse.UpdateBillResponse] = dataclasses.field(default=None)
     r"""Success"""
     
+

@@ -8,9 +8,9 @@ from ..shared import schema as shared_schema
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetInvoiceAttachmentRequest:
-    
     attachment_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'attachmentId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for an attachment"""
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -19,9 +19,11 @@ class GetInvoiceAttachmentRequest:
     r"""Unique identifier for an invoice"""
     
 
+
+
+
 @dataclasses.dataclass
 class GetInvoiceAttachmentResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     attachment: Optional[shared_attachment.Attachment] = dataclasses.field(default=None)
@@ -30,3 +32,4 @@ class GetInvoiceAttachmentResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+

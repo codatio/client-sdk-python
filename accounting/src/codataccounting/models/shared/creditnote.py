@@ -15,6 +15,7 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreditNote:
     r"""> View the coverage for credit notes in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes\\" target=\\"_blank\\">Data coverage explorer</a>.
@@ -30,7 +31,6 @@ class CreditNote:
     * Payment allocations against the payments type, in this case an invoice.
     * Which customers the credit notes have been issued to.
     """
-    
     discount_percentage: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage') }})
     r"""Percentage rate (from 0 to 100) of discounts applied to the credit note."""
     remaining_credit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('remainingCredit') }})
@@ -139,3 +139,4 @@ class CreditNote:
     r"""Reference to a configured dynamic key value pair that is unique to the accounting platform. This feature is in private beta, contact us if you would like to learn more."""
     withholding_tax: Optional[list[shared_withholdingtaxitems.WithholdingTaxitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})
     
+

@@ -9,9 +9,9 @@ from ..shared import updatepurchaseorderresponse as shared_updatepurchaseorderre
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class UpdatePurchaseOrderRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     purchase_order_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'purchaseOrderId', 'style': 'simple', 'explode': False }})
@@ -21,9 +21,11 @@ class UpdatePurchaseOrderRequest:
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
+
+
+
 @dataclasses.dataclass
 class UpdatePurchaseOrderResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -32,3 +34,4 @@ class UpdatePurchaseOrderResponse:
     update_purchase_order_response: Optional[shared_updatepurchaseorderresponse.UpdatePurchaseOrderResponse] = dataclasses.field(default=None)
     r"""Success"""
     
+

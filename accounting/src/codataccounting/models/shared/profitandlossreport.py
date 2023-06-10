@@ -9,9 +9,9 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class ProfitAndLossReport:
-    
     gross_profit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('grossProfit') }})
     r"""Gross profit of the company in the given date range."""
     net_operating_profit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netOperatingProfit') }})
@@ -68,3 +68,4 @@ class ProfitAndLossReport:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     
+

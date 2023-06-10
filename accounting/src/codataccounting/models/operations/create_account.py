@@ -9,18 +9,20 @@ from ..shared import schema as shared_schema
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class CreateAccountRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     account: Optional[shared_account.Account] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateAccountResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     create_account_response: Optional[shared_createaccountresponse.CreateAccountResponse] = dataclasses.field(default=None)
@@ -29,3 +31,4 @@ class CreateAccountResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""The request made is not valid."""
     
+

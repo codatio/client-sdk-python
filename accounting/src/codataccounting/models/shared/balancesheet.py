@@ -9,9 +9,9 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class BalanceSheet:
-    
     net_assets: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netAssets') }})
     r"""Value of net assets for a company in their base currency."""
     assets: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('assets'), 'exclude': lambda f: f is None }})
@@ -39,3 +39,4 @@ class BalanceSheet:
     equity: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('equity'), 'exclude': lambda f: f is None }})
     liabilities: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('liabilities'), 'exclude': lambda f: f is None }})
     
+

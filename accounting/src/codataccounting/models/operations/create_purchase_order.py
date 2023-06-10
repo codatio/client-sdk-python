@@ -9,18 +9,20 @@ from ..shared import schema as shared_schema
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class CreatePurchaseOrderRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     purchase_order: Optional[shared_purchaseorder.PurchaseOrder] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreatePurchaseOrderResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     create_purchase_order_response: Optional[shared_createpurchaseorderresponse.CreatePurchaseOrderResponse] = dataclasses.field(default=None)
@@ -29,3 +31,4 @@ class CreatePurchaseOrderResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""The request made is not valid."""
     
+

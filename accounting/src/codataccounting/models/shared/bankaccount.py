@@ -19,6 +19,7 @@ class BankAccountBankAccountType(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class BankAccount:
     r"""> **Accessing Bank Accounts through Banking API**
@@ -38,7 +39,6 @@ class BankAccount:
     * The currency and balance of the account.
     * The sort code and account number.
     """
-    
     account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountName'), 'exclude': lambda f: f is None }})
     r"""Name of the bank account in the accounting platform."""
     account_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountNumber'), 'exclude': lambda f: f is None }})
@@ -91,3 +91,4 @@ class BankAccount:
     """
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     
+
