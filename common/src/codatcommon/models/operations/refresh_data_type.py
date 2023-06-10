@@ -9,9 +9,9 @@ from ..shared import pulloperation as shared_pulloperation
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class RefreshDataTypeRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     data_type: shared_datatype.DataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
     r"""The key of a Codat data type"""
@@ -19,9 +19,11 @@ class RefreshDataTypeRequest:
     r"""Optionally, provide a data connection id to only queue pull operations on that connection."""
     
 
+
+
+
 @dataclasses.dataclass
 class RefreshDataTypeResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
@@ -30,3 +32,4 @@ class RefreshDataTypeResponse:
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

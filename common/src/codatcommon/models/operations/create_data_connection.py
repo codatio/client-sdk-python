@@ -11,22 +11,26 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreateDataConnectionRequestBody:
-    
     platform_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformKey'), 'exclude': lambda f: f is None }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateDataConnectionRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     request_body: Optional[CreateDataConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateDataConnectionResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
@@ -35,3 +39,4 @@ class CreateDataConnectionResponse:
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

@@ -10,10 +10,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class Integration:
     r"""An integration that Codat supports"""
-    
     enabled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enabled') }})
     r"""Whether this integration is enabled for your customers to use"""
     key: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('key') }})
@@ -31,3 +31,4 @@ class Integration:
     source_type: Optional[shared_sourcetype.SourceType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceType'), 'exclude': lambda f: f is None }})
     r"""The type of platform of the connection."""
     
+

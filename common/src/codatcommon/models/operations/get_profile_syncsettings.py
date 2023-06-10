@@ -8,9 +8,9 @@ from ..shared import syncsettings as shared_syncsettings
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetProfileSyncSettingsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
@@ -19,3 +19,4 @@ class GetProfileSyncSettingsResponse:
     sync_settings: Optional[shared_syncsettings.SyncSettings] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -8,9 +8,9 @@ from ..shared import profile as shared_profile
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class UpdateProfileResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
@@ -19,3 +19,4 @@ class UpdateProfileResponse:
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+
