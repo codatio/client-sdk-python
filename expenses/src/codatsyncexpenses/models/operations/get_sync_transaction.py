@@ -8,9 +8,9 @@ from ..shared import transactionmetadata as shared_transactionmetadata
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetSyncTransactionRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a sync."""
@@ -18,9 +18,11 @@ class GetSyncTransactionRequest:
     r"""The unique identifier for your SMB's transaction."""
     
 
+
+
+
 @dataclasses.dataclass
 class GetSyncTransactionResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -29,3 +31,4 @@ class GetSyncTransactionResponse:
     transaction_metadata: Optional[list[shared_transactionmetadata.TransactionMetadata]] = dataclasses.field(default=None)
     r"""Success"""
     
+

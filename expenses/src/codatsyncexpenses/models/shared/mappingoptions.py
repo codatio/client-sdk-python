@@ -11,10 +11,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class MappingOptions:
     r"""Success"""
-    
     accounts: Optional[list[shared_accountmappinginfo.AccountMappingInfo]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accounts'), 'exclude': lambda f: f is None }})
     r"""Array of available accounts for mapping."""
     expense_provider: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expenseProvider'), 'exclude': lambda f: f is None }})
@@ -24,3 +24,4 @@ class MappingOptions:
     tracking_categories: Optional[list[shared_trackingcategorymappinginfo.TrackingCategoryMappingInfo]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategories'), 'exclude': lambda f: f is None }})
     r"""Array of available tracking categories for mapping."""
     
+

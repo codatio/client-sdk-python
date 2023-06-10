@@ -8,9 +8,9 @@ from ..shared import transactionmetadatalist as shared_transactionmetadatalist
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListSyncTransactionsRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a sync."""
@@ -20,9 +20,11 @@ class ListSyncTransactionsRequest:
     r"""Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging)."""
     
 
+
+
+
 @dataclasses.dataclass
 class ListSyncTransactionsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -31,3 +33,4 @@ class ListSyncTransactionsResponse:
     transaction_metadata_list: Optional[shared_transactionmetadatalist.TransactionMetadataList] = dataclasses.field(default=None)
     r"""Success"""
     
+

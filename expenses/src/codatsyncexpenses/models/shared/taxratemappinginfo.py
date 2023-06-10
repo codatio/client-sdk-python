@@ -19,9 +19,9 @@ class TaxRateMappingInfoValidTransactionTypes(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class TaxRateMappingInfo:
-    
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
     r"""Code for the tax rate from the accounting platform."""
     effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
@@ -35,3 +35,4 @@ class TaxRateMappingInfo:
     valid_transaction_types: Optional[list[TaxRateMappingInfoValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes'), 'exclude': lambda f: f is None }})
     r"""Supported transaction types for the account."""
     
+

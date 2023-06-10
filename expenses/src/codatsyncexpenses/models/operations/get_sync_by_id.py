@@ -8,17 +8,19 @@ from ..shared import schema as shared_schema
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetSyncByIDRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a sync."""
     
 
+
+
+
 @dataclasses.dataclass
 class GetSyncByIDResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     company_sync_status: Optional[shared_companysyncstatus.CompanySyncStatus] = dataclasses.field(default=None)
@@ -27,3 +29,4 @@ class GetSyncByIDResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+
