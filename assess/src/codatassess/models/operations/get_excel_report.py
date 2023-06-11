@@ -22,7 +22,8 @@ class GetExcelReportRequest:
 @dataclasses.dataclass
 class GetExcelReport200ApplicationOctetStream:
     r"""OK"""
-    pass
+    
+
 
 
 
