@@ -8,9 +8,9 @@ from ..shared import schema as shared_schema
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class CreateCompanyResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     company: Optional[shared_company.Company] = dataclasses.field(default=None)
@@ -19,3 +19,4 @@ class CreateCompanyResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+

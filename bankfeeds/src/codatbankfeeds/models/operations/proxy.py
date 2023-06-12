@@ -7,18 +7,20 @@ from ..shared import schema as shared_schema
 from typing import Any, Optional
 
 
+
 @dataclasses.dataclass
 class ProxyRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     endpoint: str = dataclasses.field(metadata={'query_param': { 'field_name': 'endpoint', 'style': 'form', 'explode': True }})
     r"""The endpoint and query parameters made to the underlying integration."""
     
 
+
+
+
 @dataclasses.dataclass
 class ProxyResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     proxy_response: Optional[dict[str, Any]] = dataclasses.field(default=None)
@@ -27,3 +29,4 @@ class ProxyResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+
