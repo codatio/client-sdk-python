@@ -9,10 +9,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class TrackingCategoryTree:
     r"""The full structure of a specific tracking category including any child or subcategories."""
-    
     has_children: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasChildren'), 'exclude': lambda f: f is None }})
     r"""Boolean value indicating whether this category has SubCategories"""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
@@ -28,3 +28,4 @@ class TrackingCategoryTree:
     sub_categories: Optional[list[TrackingCategoryTree]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subCategories'), 'exclude': lambda f: f is None }})
     r"""A collection of subcategories that are nested beneath this category."""
     
+

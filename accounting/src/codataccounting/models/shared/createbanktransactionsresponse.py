@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import banktransactions as shared_banktransactions
+from ..shared import createbanktransactions as shared_createbanktransactions
 from ..shared import datatype as shared_datatype
 from ..shared import pushoperationchange as shared_pushoperationchange
 from ..shared import pushoperationstatus as shared_pushoperationstatus
@@ -13,10 +13,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreateBankTransactionsResponse:
     r"""Success"""
-    
     company_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId') }})
     r"""Unique identifier for your SMB in Codat."""
     data_connection_key: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionKey') }})
@@ -69,24 +69,7 @@ class CreateBankTransactionsResponse:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    data: Optional[shared_banktransactions.BankTransactions] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
-    r"""> **Accessing Bank Accounts through Banking API**
-    > 
-    > This datatype was originally used for accessing bank account data both in accounting integrations and open banking aggregators. 
-    >
-    > To view bank account data through the Banking API, please refer to the new datatype [here](https://docs.codat.io/banking-api#/operations/list-all-banking-transactions)
-    
-    > View the coverage for bank transactions in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions\" target=\"_blank\">Data coverage explorer</a>.
-    
-    ## Overview
-    
-    Transactional banking data for a specific company and account.
-    
-    Bank transactions include the:
-    * Amount of the transaction.
-    * Current account balance.
-    * Transaction type, for example, credit, debit, or transfer.
-    """
+    data: Optional[shared_createbanktransactions.CreateBankTransactions] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     data_type: Optional[shared_datatype.DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     r"""Available Data types"""
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})
@@ -95,3 +78,4 @@ class CreateBankTransactionsResponse:
     validation: Optional[shared_validation.Validation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""
     
+

@@ -13,6 +13,7 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class PurchaseOrder:
     r"""> View the coverage for purchase orders in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=purchaseOrders\\" target=\\"_blank\\">Data coverage explorer</a>.
@@ -23,7 +24,6 @@ class PurchaseOrder:
     
     This information can be used to provide visibility on a business's expected payables and to track a purchase through the full procurement process.
     """
-    
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
     
@@ -168,3 +168,4 @@ class PurchaseOrder:
     total_tax_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxAmount'), 'exclude': lambda f: f is None }})
     r"""Total amount of tax included in the purchase order."""
     
+

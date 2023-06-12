@@ -8,18 +8,20 @@ from ..shared import schema as shared_schema
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListBillAttachmentsRequest:
-    
     bill_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'billId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a bill"""
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     
 
+
+
+
 @dataclasses.dataclass
 class ListBillAttachmentsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     attachments_dataset: Optional[shared_attachmentsdataset.AttachmentsDataset] = dataclasses.field(default=None)
@@ -28,3 +30,4 @@ class ListBillAttachmentsResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+

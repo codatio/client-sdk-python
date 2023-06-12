@@ -9,6 +9,7 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class AgedCreditorReport:
     r"""The Aged Creditors report shows the total balance owed by a business to its suppliers over time.
@@ -44,7 +45,6 @@ class AgedCreditorReport:
     
     The report will be grouped per supplier and depending on the periods requested. The details indicates whether the amounts owed come from outstanding bills or bill credit notes.
     """
-    
     data: Optional[list[shared_agedcreditor.AgedCreditor]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     r"""Array of aged creditor."""
     generated: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('generated'), 'exclude': lambda f: f is None }})
@@ -90,3 +90,4 @@ class AgedCreditorReport:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     
+

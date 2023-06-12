@@ -9,9 +9,9 @@ from ..shared import updatesupplierresponse as shared_updatesupplierresponse
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class UpdateSupplierRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     supplier_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'supplierId', 'style': 'simple', 'explode': False }})
@@ -22,9 +22,11 @@ class UpdateSupplierRequest:
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
+
+
+
 @dataclasses.dataclass
 class UpdateSupplierResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -33,3 +35,4 @@ class UpdateSupplierResponse:
     update_supplier_response: Optional[shared_updatesupplierresponse.UpdateSupplierResponse] = dataclasses.field(default=None)
     r"""Success"""
     
+

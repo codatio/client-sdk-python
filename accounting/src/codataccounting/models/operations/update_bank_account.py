@@ -9,9 +9,9 @@ from ..shared import updatebankaccountresponse as shared_updatebankaccountrespon
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class UpdateBankAccountRequest:
-    
     bank_account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'bankAccountId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a bank account"""
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -22,9 +22,11 @@ class UpdateBankAccountRequest:
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
+
+
+
 @dataclasses.dataclass
 class UpdateBankAccountResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -33,3 +35,4 @@ class UpdateBankAccountResponse:
     update_bank_account_response: Optional[shared_updatebankaccountresponse.UpdateBankAccountResponse] = dataclasses.field(default=None)
     r"""Success"""
     
+

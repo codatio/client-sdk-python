@@ -13,6 +13,7 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class Item:
     r"""> View the coverage for items in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items\\" target=\\"_blank\\">Data coverage explorer</a>.
@@ -21,7 +22,6 @@ class Item:
     
     **Items** allow your customers to save and track details of the products and services that they buy and sell.
     """
-    
     is_bill_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBillItem') }})
     r"""Whether you can use this item for bills."""
     is_invoice_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isInvoiceItem') }})
@@ -51,3 +51,4 @@ class Item:
     r"""Name of the item in the accounting platform."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     
+
