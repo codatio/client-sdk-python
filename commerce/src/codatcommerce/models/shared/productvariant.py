@@ -11,10 +11,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class ProductVariant:
     r"""Represents a variation of a product available for sale, for example an item of clothing that may be available for sale in multiple sizes and colors."""
-    
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique, persistent identifier for this record"""
     barcode: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('barcode'), 'exclude': lambda f: f is None }})
@@ -60,3 +60,4 @@ class ProductVariant:
     vat_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('vatPercentage'), 'exclude': lambda f: f is None }})
     r"""VAT rate for the product variant if sales taxes are enabled."""
     
+
