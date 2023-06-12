@@ -9,9 +9,9 @@ from ..shared import schema as shared_schema
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListDataTypeDataIntegrityDetailsRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     data_type: shared_dataintegritydatatype.DataIntegrityDataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
     r"""A key for a Codat data type."""
@@ -25,9 +25,11 @@ class ListDataTypeDataIntegrityDetailsRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
+
+
+
 @dataclasses.dataclass
 class ListDataTypeDataIntegrityDetailsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     details: Optional[shared_details.Details] = dataclasses.field(default=None)
@@ -36,3 +38,4 @@ class ListDataTypeDataIntegrityDetailsResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+

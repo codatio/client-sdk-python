@@ -9,9 +9,9 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class DataIntegrityStatusInfo:
-    
     current_status: Optional[shared_integritystatus.IntegrityStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currentStatus'), 'exclude': lambda f: f is None }})
     r"""The current status of the most recently run matching algorithm."""
     last_matched: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastMatched'), 'exclude': lambda f: f is None }})
@@ -38,3 +38,4 @@ class DataIntegrityStatusInfo:
     status_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusMessage'), 'exclude': lambda f: f is None }})
     r"""Detailed explanation supporting the status value."""
     
+

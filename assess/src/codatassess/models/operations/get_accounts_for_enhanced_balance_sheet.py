@@ -8,9 +8,9 @@ from ..shared import schema as shared_schema
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetAccountsForEnhancedBalanceSheetRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     number_of_periods: int = dataclasses.field(metadata={'query_param': { 'field_name': 'numberOfPeriods', 'style': 'form', 'explode': True }})
     r"""The number of periods to return.  There will be no pagination as a query parameter, however Codat will limit the number of periods to request to 12 periods."""
@@ -18,9 +18,11 @@ class GetAccountsForEnhancedBalanceSheetRequest:
     r"""The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month."""
     
 
+
+
+
 @dataclasses.dataclass
 class GetAccountsForEnhancedBalanceSheetResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     enhanced_report: Optional[shared_enhancedreport.EnhancedReport] = dataclasses.field(default=None)
@@ -29,3 +31,4 @@ class GetAccountsForEnhancedBalanceSheetResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+

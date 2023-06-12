@@ -8,9 +8,9 @@ from ..shared import schema as shared_schema
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetEnhancedCashFlowTransactionsRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     page: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
     r"""Page number. [Read more](https://docs.codat.io/using-the-api/paging)."""
@@ -20,9 +20,11 @@ class GetEnhancedCashFlowTransactionsRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
+
+
+
 @dataclasses.dataclass
 class GetEnhancedCashFlowTransactionsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     enhanced_cash_flow_transactions: Optional[shared_enhancedcashflowtransactions.EnhancedCashFlowTransactions] = dataclasses.field(default=None)
@@ -31,3 +33,4 @@ class GetEnhancedCashFlowTransactionsResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     
+

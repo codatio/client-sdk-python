@@ -10,9 +10,9 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class EnhancedCashFlowTransaction:
-    
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
     r"""The bank transaction amount."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
@@ -45,3 +45,4 @@ class EnhancedCashFlowTransaction:
     r"""A source reference containing the `sourceType` object \\"Banking\\"."""
     transaction_category: Optional[shared_transactioncategory.TransactionCategory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionCategory'), 'exclude': lambda f: f is None }})
     
+

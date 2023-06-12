@@ -7,9 +7,9 @@ from ..shared import categorisedaccounts as shared_categorisedaccounts
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListAccountsCategoriesRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
@@ -22,12 +22,15 @@ class ListAccountsCategoriesRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
+
+
+
 @dataclasses.dataclass
 class ListAccountsCategoriesResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     categorised_accounts: Optional[shared_categorisedaccounts.CategorisedAccounts] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

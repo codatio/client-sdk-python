@@ -9,9 +9,9 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class Payment:
-    
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
     banking_transaction_refs: Optional[list[shared_bankingtransactionref.BankingTransactionRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankingTransactionRefs'), 'exclude': lambda f: f is None }})
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
@@ -73,3 +73,4 @@ class Payment:
     r"""ID of the invoice, which may be a GUID but it may be something else depending on the accounting platform"""
     payment_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentType'), 'exclude': lambda f: f is None }})
     
+
