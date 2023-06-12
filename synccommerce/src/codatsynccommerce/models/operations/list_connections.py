@@ -7,9 +7,9 @@ from ..shared import connections as shared_connections
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListConnectionsRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results)."""
@@ -21,12 +21,15 @@ class ListConnectionsRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
+
+
+
 @dataclasses.dataclass
 class ListConnectionsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     connections: Optional[shared_connections.Connections] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

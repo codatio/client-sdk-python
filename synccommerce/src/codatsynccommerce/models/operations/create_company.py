@@ -7,12 +7,13 @@ from ..shared import company as shared_company
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class CreateCompanyResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     company: Optional[shared_company.Company] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+
