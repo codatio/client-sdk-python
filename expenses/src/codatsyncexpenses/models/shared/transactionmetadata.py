@@ -10,9 +10,9 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class TransactionMetadata:
-    
     integration_type: Optional[shared_integrationtype.IntegrationType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('integrationType'), 'exclude': lambda f: f is None }})
     r"""Type of transaction that has been processed e.g. Expense or Bank Feed."""
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
@@ -22,3 +22,4 @@ class TransactionMetadata:
     transaction_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionId'), 'exclude': lambda f: f is None }})
     r"""Your unique idenfier of the transaction."""
     
+

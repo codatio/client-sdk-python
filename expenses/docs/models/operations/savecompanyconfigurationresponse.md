@@ -1,0 +1,12 @@
+# SaveCompanyConfigurationResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `company_configuration`                                                               | [Optional[shared.CompanyConfiguration]](../../models/shared/companyconfiguration.md)  | :heavy_minus_sign:                                                                    | Success                                                                               |
+| `content_type`                                                                        | *str*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `status_code`                                                                         | *int*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `raw_response`                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response) | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `schema`                                                                              | [Optional[shared.Schema]](../../models/shared/schema.md)                              | :heavy_minus_sign:                                                                    | The request made is not valid.                                                        |
