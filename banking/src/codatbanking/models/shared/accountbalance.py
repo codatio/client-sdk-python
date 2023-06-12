@@ -9,6 +9,7 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class AccountBalance:
     r"""The Banking Account Balances data type provides a list of balances for a bank account including end-of-day batch balance or running balances per transaction.
@@ -21,7 +22,6 @@ class AccountBalance:
     > 
     > Whilst you can choose to sync hourly, this may incur usage charges from Plaid or TrueLayer.
     """
-    
     account_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId') }})
     r"""The unique identifier of the account."""
     balance: shared_accountbalanceamounts.AccountBalanceAmounts = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})
@@ -50,3 +50,4 @@ class AccountBalance:
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     
+

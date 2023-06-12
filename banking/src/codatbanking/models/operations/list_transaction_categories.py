@@ -10,9 +10,9 @@ from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListTransactionCategoriesRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
@@ -25,11 +25,13 @@ class ListTransactionCategoriesRequest:
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class ListTransactionCategories409ApplicationJSON:
     r"""The data type's dataset has not been requested or is still syncing."""
-    
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
     detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})
@@ -38,9 +40,11 @@ class ListTransactionCategories409ApplicationJSON:
     status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
     
 
+
+
+
 @dataclasses.dataclass
 class ListTransactionCategoriesResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     list_transaction_categories_409_application_json_object: Optional[ListTransactionCategories409ApplicationJSON] = dataclasses.field(default=None)
@@ -51,3 +55,4 @@ class ListTransactionCategoriesResponse:
     transaction_categories: Optional[shared_transactioncategories.TransactionCategories] = dataclasses.field(default=None)
     r"""Success"""
     
+

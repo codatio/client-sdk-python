@@ -10,6 +10,7 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class Transaction:
     r"""The Banking Transactions data type provides an immutable source of up-to-date information on income and expenditure.
@@ -18,7 +19,6 @@ class Transaction:
     
     View the coverage for banking transactions in the [Data Coverage Explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-transactions).
     """
-    
     account_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId') }})
     r"""The unique identifier of the bank account."""
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
@@ -80,3 +80,4 @@ class Transaction:
     transaction_category_ref: Optional[shared_transactioncategoryref.TransactionCategoryRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionCategoryRef'), 'exclude': lambda f: f is None }})
     r"""An object of bank transaction category reference data."""
     
+
