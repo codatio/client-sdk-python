@@ -54,10 +54,10 @@ class SyncSettingDataType(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class SyncSetting:
     r"""Describes how often, and how much history, should be fetched for the given data type when a pull operation is queued."""
-    
     data_type: SyncSettingDataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
     r"""Available Data types"""
     fetch_on_first_link: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fetchOnFirstLink') }})
@@ -92,3 +92,4 @@ class SyncSetting:
     sync_from_window: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncFromWindow'), 'exclude': lambda f: f is None }})
     r"""Number of months of data to be fetched. Set this *or* `syncFromUTC`"""
     
+

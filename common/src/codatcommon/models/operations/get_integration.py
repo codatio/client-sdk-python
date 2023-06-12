@@ -8,15 +8,17 @@ from ..shared import integration as shared_integration
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetIntegrationRequest:
-    
     platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
     
 
+
+
+
 @dataclasses.dataclass
 class GetIntegrationResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
@@ -25,3 +27,4 @@ class GetIntegrationResponse:
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

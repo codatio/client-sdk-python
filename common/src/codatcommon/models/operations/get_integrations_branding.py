@@ -8,15 +8,17 @@ from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetIntegrationsBrandingRequest:
-    
     platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
     
 
+
+
+
 @dataclasses.dataclass
 class GetIntegrationsBrandingResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     branding: Optional[shared_branding.Branding] = dataclasses.field(default=None)
@@ -25,3 +27,4 @@ class GetIntegrationsBrandingResponse:
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

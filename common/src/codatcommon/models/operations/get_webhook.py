@@ -8,16 +8,18 @@ from ..shared import rule as shared_rule
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class GetWebhookRequest:
-    
     rule_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'ruleId', 'style': 'simple', 'explode': False }})
     r"""Unique ID of the webhook or rule."""
     
 
+
+
+
 @dataclasses.dataclass
 class GetWebhookResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
@@ -26,3 +28,4 @@ class GetWebhookResponse:
     rule: Optional[shared_rule.Rule] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -17,8 +17,9 @@ class SDKConfiguration:
     server_url: str = ''
     server_idx: int = 0
     language: str = 'python'
-    sdk_version: str = '0.21.1'
-    gen_version: str = '2.35.9'
+    openapi_doc_version: str = '2.1.0'
+    sdk_version: str = '0.23.2'
+    gen_version: str = '2.39.2'
 
     def get_server_details(self) -> tuple[str, dict[str, str]]:
         if self.server_url:
