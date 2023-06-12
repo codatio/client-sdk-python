@@ -9,21 +9,23 @@ from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class DownloadFilesRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     date_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'date', 'style': 'form', 'explode': True }})
     r"""Only download files uploaded on this date"""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class DownloadFiles404ApplicationJSON:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
-    
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
     detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})
@@ -32,9 +34,11 @@ class DownloadFiles404ApplicationJSON:
     status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
     
 
+
+
+
 @dataclasses.dataclass
 class DownloadFilesResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     data: Optional[bytes] = dataclasses.field(default=None)
@@ -47,3 +51,4 @@ class DownloadFilesResponse:
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
     r"""The request made is not valid."""
     
+

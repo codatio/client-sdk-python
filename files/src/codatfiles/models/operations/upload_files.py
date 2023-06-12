@@ -9,28 +9,32 @@ from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class UploadFilesRequestBody:
-    
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
     request_body: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'requestBody' }})
     
 
+
+
+
 @dataclasses.dataclass
 class UploadFilesRequest:
-    
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     request_body: Optional[UploadFilesRequestBody] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }, 'request': { 'media_type': 'multipart/form-data' }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class UploadFiles404ApplicationJSON:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
-    
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
     detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})
@@ -39,9 +43,11 @@ class UploadFiles404ApplicationJSON:
     status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
     
 
+
+
+
 @dataclasses.dataclass
 class UploadFilesResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -52,3 +58,4 @@ class UploadFilesResponse:
     This might be because your company or data connection id is wrong, or was already deleted.
     """
     
+
