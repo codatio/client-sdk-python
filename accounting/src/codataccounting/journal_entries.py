@@ -36,9 +36,7 @@ class JournalEntries:
         
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
+            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
@@ -109,9 +107,7 @@ class JournalEntries:
         
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
+            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('DELETE', url, headers=headers)
@@ -152,9 +148,7 @@ class JournalEntries:
         
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
+            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
@@ -205,9 +199,7 @@ class JournalEntries:
         
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
+            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
@@ -249,9 +241,7 @@ class JournalEntries:
         
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(500, 60000, 1.5, 3600000)
-            
+            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)

@@ -53,6 +53,9 @@ class BillLineItem:
     tracking: Optional[shared_propertiestracking.Propertiestracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
     r"""Categories, and a project and customer, against which the item is tracked."""
     tracking_category_refs: Optional[list[shared_trackingcategoryref.TrackingCategoryRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
-    r"""Collection of categories against which this item is tracked."""
+    r"""Collection of categories against which this item is tracked.
+    
+    Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible
+    """
     
 

@@ -54,6 +54,9 @@ class DirectCostLineItem:
     r"""Total amount of the line, including tax."""
     tracking: Optional[shared_tracking.Tracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
     tracking_category_refs: Optional[list[shared_trackingcategoryref.TrackingCategoryRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
-    r"""Collection of categories against which this direct cost is tracked."""
+    r"""Collection of categories against which this direct cost is tracked.
+    
+    Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible
+    """
     
 
