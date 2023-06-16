@@ -4,7 +4,6 @@ src/codatassess/data_integrity.py
 src/codatassess/excel_reports.py
 src/codatassess/reports.py
 src/codatassess/sdk.py
-.gitignore
 pylintrc
 setup.py
 src/codatassess/__init__.py
