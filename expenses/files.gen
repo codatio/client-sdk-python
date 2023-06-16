@@ -7,7 +7,6 @@ src/codatsyncexpenses/sync.py
 src/codatsyncexpenses/sync_status.py
 src/codatsyncexpenses/transaction_status.py
 src/codatsyncexpenses/sdk.py
-.gitignore
 pylintrc
 setup.py
 src/codatsyncexpenses/__init__.py
