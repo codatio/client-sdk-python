@@ -4,7 +4,6 @@ src/codatbanking/accounts.py
 src/codatbanking/transaction_categories.py
 src/codatbanking/transactions.py
 src/codatbanking/sdk.py
-.gitignore
 pylintrc
 setup.py
 src/codatbanking/__init__.py
