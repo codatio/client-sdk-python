@@ -9,7 +9,6 @@ src/codatcommerce/products.py
 src/codatcommerce/tax_components.py
 src/codatcommerce/transactions.py
 src/codatcommerce/sdk.py
-.gitignore
 pylintrc
 setup.py
 src/codatcommerce/__init__.py
