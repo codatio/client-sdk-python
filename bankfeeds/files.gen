@@ -4,7 +4,6 @@ src/codatbankfeeds/bank_feed_accounts.py
 src/codatbankfeeds/companies.py
 src/codatbankfeeds/connections.py
 src/codatbankfeeds/sdk.py
-.gitignore
 pylintrc
 setup.py
 src/codatbankfeeds/__init__.py
