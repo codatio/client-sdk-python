@@ -25,7 +25,6 @@ src/codataccounting/tax_rates.py
 src/codataccounting/tracking_categories.py
 src/codataccounting/transfers.py
 src/codataccounting/sdk.py
-.gitignore
 pylintrc
 setup.py
 src/codataccounting/__init__.py
