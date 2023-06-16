@@ -455,3 +455,35 @@ Based on:
 - Speakeasy CLI 1.47.1 (2.39.2) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.23.2] https://pypi.org/project/codat-common/0.23.2 - common
+
+## 2023-06-14 00:17:27
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Common.yaml
+- Speakeasy CLI 1.47.2 (2.39.8) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.23.3] https://pypi.org/project/codat-common/0.23.3 - common
+
+## 2023-06-15 00:19:19
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Common.yaml
+- Speakeasy CLI 1.47.4 (2.40.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.24.0] https://pypi.org/project/codat-common/0.24.0 - common
+
+## 2023-06-16 00:18:43
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Common.yaml
+- Speakeasy CLI 1.48.0 (2.41.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.25.0] https://pypi.org/project/codat-common/0.25.0 - common
+
+## 2023-06-16 11:03:44
+### Changes
+Based on:
+- OpenAPI Doc 2.1.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Common.yaml
+- Speakeasy CLI 1.48.0 (2.41.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.25.1] https://pypi.org/project/codat-common/0.25.1 - common
