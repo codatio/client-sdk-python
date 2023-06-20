@@ -6,8 +6,8 @@ Initiate a sync of Sync for Commerce company data into their respective accounti
 
 ### Available Operations
 
-* [request_sync](#request_sync) - Run a Commerce sync from the last successful sync
-* [request_sync_for_date_range](#request_sync_for_date_range) - Run a Commerce sync from a given date range
+* [request_sync](#request_sync) - Sync new
+* [request_sync_for_date_range](#request_sync_for_date_range) - Sync range
 
 ## request_sync
 
@@ -69,9 +69,11 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.RequestSyncForDateRangeRequest(
-    date_range=shared.DateRange(
-        finish='2022-10-23T00:00:00.000Z',
-        start='2022-10-23T00:00:00.000Z',
+    sync_range=shared.SyncRange(
+        date_range=shared.SyncRangeDateRange(
+            finish='2022-10-23T00:00:00.000Z',
+            start='2022-10-23T00:00:00.000Z',
+        ),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )

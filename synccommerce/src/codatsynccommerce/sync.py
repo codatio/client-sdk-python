@@ -14,7 +14,7 @@ class Sync:
         
     
     def request_sync(self, request: operations.RequestSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncResponse:
-        r"""Run a Commerce sync from the last successful sync
+        r"""Sync new
         Run a Commerce sync from the last successful sync up to the date provided (optional), otherwise UtcNow is used.
         If there was no previously successful sync, the start date in the config is used.
         """
@@ -55,14 +55,14 @@ class Sync:
 
     
     def request_sync_for_date_range(self, request: operations.RequestSyncForDateRangeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncForDateRangeResponse:
-        r"""Run a Commerce sync from a given date range
+        r"""Sync range
         Run a Commerce sync from the specified start date to the specified finish date in the request payload.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.RequestSyncForDateRangeRequest, base_url, '/meta/companies/{companyId}/sync/commerce/historic', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "date_range", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "sync_range", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

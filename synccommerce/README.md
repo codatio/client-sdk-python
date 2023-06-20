@@ -58,8 +58,8 @@ if res.company is not None:
 
 ### [sync](docs/sdks/sync/README.md)
 
-* [request_sync](docs/sdks/sync/README.md#request_sync) - Run a Commerce sync from the last successful sync
-* [request_sync_for_date_range](docs/sdks/sync/README.md#request_sync_for_date_range) - Run a Commerce sync from a given date range
+* [request_sync](docs/sdks/sync/README.md#request_sync) - Sync new
+* [request_sync_for_date_range](docs/sdks/sync/README.md#request_sync_for_date_range) - Sync range
 
 ### [sync_flow_preferences](docs/sdks/syncflowpreferences/README.md)
 
