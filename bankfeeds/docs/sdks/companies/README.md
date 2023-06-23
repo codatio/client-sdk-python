@@ -14,7 +14,11 @@ Create and manage your Codat companies.
 
 ## create
 
-Create a new company
+﻿Creates a new company that can be used to assign connections to. 
+
+If forbidden characters (see `name` pattern) are present in the request, a company will be created with the forbidden characters removed. For example, `Company (Codat[1])` with be created as `Company Codat1`.
+
+
 
 ### Example Usage
 
@@ -54,8 +58,8 @@ if res.company is not None:
 
 ## delete
 
-Delete the given company from Codat.
-This operation is not reversible.
+﻿
+Permanently deletes a company, its connections and any cached data. This operation is irreversible. If the company ID does not exist an error is returned.
 
 ### Example Usage
 
@@ -94,7 +98,7 @@ if res.status_code == 200:
 
 ## get
 
-Get metadata for a single company
+﻿Returns the company for a valid identifier. If the identifier is for a deleted company, a not found response is returned.
 
 ### Example Usage
 
@@ -133,7 +137,7 @@ if res.company is not None:
 
 ## list
 
-List all companies that you have created in Codat.
+﻿Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/codat-api#/schemas/Connection) related to the company.
 
 ### Example Usage
 
@@ -175,7 +179,7 @@ if res.companies is not None:
 
 ## update
 
-Updates the given company with a new name and description
+﻿Updates both the name and description of the company.
 
 ### Example Usage
 

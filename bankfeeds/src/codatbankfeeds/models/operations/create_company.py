@@ -17,6 +17,6 @@ class CreateCompanyResponse:
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
+    r"""The request made is not valid."""
     
 
