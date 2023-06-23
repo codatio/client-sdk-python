@@ -15,7 +15,9 @@ class Companies:
     
     def create(self, request: shared.CompanyRequestBody, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
         r"""Create company
-        Create a new company
+        Creates a new company that can be used to assign connections to. 
+        
+        If forbidden characters (see `name` pattern) are present in the request, a company will be created with the forbidden characters removed. For example, `Company (Codat[1])` with be created as `Company Codat1`.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -49,7 +51,7 @@ class Companies:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
                 res.company = out
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [400, 401, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -59,8 +61,7 @@ class Companies:
     
     def delete(self, request: operations.DeleteCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyResponse:
         r"""Delete a company
-        Delete the given company from Codat.
-        This operation is not reversible.
+        Permanently deletes a company, its connections and any cached data. This operation is irreversible. If the company ID does not exist an error is returned.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -99,7 +100,7 @@ class Companies:
     
     def get(self, request: operations.GetCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyResponse:
         r"""Get company
-        Get metadata for a single company
+        Returns the company for a valid identifier. If the identifier is for a deleted company, a not found response is returned.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -140,7 +141,7 @@ class Companies:
     
     def list(self, request: operations.ListCompaniesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompaniesResponse:
         r"""List companies
-        List all companies that you have created in Codat.
+        Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/codat-api#/schemas/Connection) related to the company.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -182,7 +183,7 @@ class Companies:
     
     def update(self, request: operations.UpdateCompanyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateCompanyResponse:
         r"""Update company
-        Updates the given company with a new name and description
+        Updates both the name and description of the company.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

@@ -16,7 +16,7 @@ class CreateCompanyResponse:
     company: Optional[shared_company.Company] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
+    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 
