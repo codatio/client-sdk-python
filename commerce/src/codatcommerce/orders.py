@@ -60,7 +60,11 @@ class Orders:
     
     def list(self, request: operations.ListOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListOrdersResponse:
         r"""List orders
-        Get a list of orders placed or held on the linked commerce platform
+        The *List orders* endpoint returns a list of [orders](https://docs.codat.io/commerce-api#/schemas/Order) for a given company's connection.
+        
+        [Orders](https://docs.codat.io/commerce-api#/schemas/Order) contain the transaction details for all products sold by the company.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

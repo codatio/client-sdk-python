@@ -60,7 +60,11 @@ class Disputes:
     
     def list(self, request: operations.ListDisputesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDisputesResponse:
         r"""List disputes
-        List commerce disputes
+        The *List disputes* endpoint returns a list of [disputes](https://docs.codat.io/commerce-api#/schemas/Dispute) for a given company's connection.
+        
+        [Disputes](https://docs.codat.io/commerce-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

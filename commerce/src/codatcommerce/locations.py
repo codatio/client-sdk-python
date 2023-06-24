@@ -62,9 +62,11 @@ class Locations:
     
     def list(self, request: operations.ListLocationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListLocationsResponse:
         r"""List locations
-        Retrieve a list of locations as seen in the commerce platform.
+        The *List locations* endpoint returns a list of [locations](https://docs.codat.io/commerce-api#/schemas/Location) for a given company's connection.
         
-        A `location` is a geographic place at which stocks of products may be held, or from where orders were placed.
+        [Locations](https://docs.codat.io/commerce-api#/schemas/Location) hold information on the geographic location at which stocks of [products](https://docs.codat.io/commerce-api#/schemas/Product) may be held or where [orders](https://docs.codat.io/commerce-api#/schemas/Order) were placed.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
