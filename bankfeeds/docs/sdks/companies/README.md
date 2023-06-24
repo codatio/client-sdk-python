@@ -155,7 +155,7 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='delectus',
+    query='laborum',
 )
 
 res = s.companies.list(req)
