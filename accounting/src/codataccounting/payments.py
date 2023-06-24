@@ -156,7 +156,11 @@ class Payments:
     
     def list(self, request: operations.ListPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentsResponse:
         r"""List payments
-        Gets the latest payments for a company, with pagination
+        The *List payments* endpoint returns a list of [payments](https://docs.codat.io/accounting-api#/schemas/Payment) for a given company's connection.
+        
+        [Payments](https://docs.codat.io/accounting-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

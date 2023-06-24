@@ -237,7 +237,11 @@ class Customers:
     
     def list(self, request: operations.ListCustomersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCustomersResponse:
         r"""List customers
-        Gets the latest customers for a company, with pagination.
+        The *List customers* endpoint returns a list of [customers](https://docs.codat.io/accounting-api#/schemas/Customers) for a given company's connection.
+        
+        [Customers](https://docs.codat.io/accounting-api#/schemas/Customers) are people or organizations that buy goods or services from the SMB.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

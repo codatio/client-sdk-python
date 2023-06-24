@@ -227,7 +227,11 @@ class JournalEntries:
     
     def list(self, request: operations.ListJournalEntriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListJournalEntriesResponse:
         r"""List journal entries
-        Gets the latest journal entries for a company, with pagination.
+        The *List journal entries* endpoint returns a list of [journal entries](https://docs.codat.io/accounting-api#/schemas/JournalEntry) for a given company's connection.
+        
+        [Journal entries](https://docs.codat.io/accounting-api#/schemas/JournalEntry) are  made in a company's general ledger, or accounts, when transactions are approved.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

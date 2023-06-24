@@ -59,8 +59,12 @@ class PaymentMethods:
 
     
     def list(self, request: operations.ListPaymentMethodsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentMethodsResponse:
-        r"""List all payment methods
-        Gets the payment methods for a given company.
+        r"""List payment methods
+        The *List payment methods* endpoint returns a list of [payment methods](https://docs.codat.io/accounting-api#/schemas/PaymentMethod) for a given company's connection.
+        
+        [Payment methods](https://docs.codat.io/accounting-api#/schemas/PaymentMethod) are used to pay a Bill. Payment Methods are referenced on [Bill Payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) and [Payments](https://docs.codat.io/accounting-api#/schemas/Payment).
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

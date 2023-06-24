@@ -218,7 +218,11 @@ class BillPayments:
     
     def list(self, request: operations.ListBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillPaymentsResponse:
         r"""List bill payments
-        Gets the latest billPayments for a company, with pagination.
+        The *List bill payments* endpoint returns a list of [bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) for a given company's connection.
+        
+        [Bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

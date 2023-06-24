@@ -51,7 +51,12 @@ if res.tracking_category_tree is not None:
 
 ## list
 
-Gets the latest tracking categories for a given company.
+The *List tracking categories* endpoint returns a list of [tracking categories](https://docs.codat.io/accounting-api#/schemas/TrackingCategory) for a given company's connection.
+
+[Tracking categories](https://docs.codat.io/accounting-api#/schemas/TrackingCategory) are used to monitor cost centres and control budgets that sit outside the standard set of accounts.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+    
 
 ### Example Usage
 

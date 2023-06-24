@@ -61,6 +61,10 @@ class AccountTransactions:
     def list(self, request: operations.ListAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountTransactionsResponse:
         r"""List account transactions
         The *List account transactions* endpoint returns a list of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) for a given company's connection.
+        
+        [Account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) represent bank activity within an accounting platform. All transactions that go through a bank account are recorded as account transactions.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

@@ -60,7 +60,11 @@ class TrackingCategories:
     
     def list(self, request: operations.ListTrackingCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTrackingCategoriesResponse:
         r"""List tracking categories
-        Gets the latest tracking categories for a given company.
+        The *List tracking categories* endpoint returns a list of [tracking categories](https://docs.codat.io/accounting-api#/schemas/TrackingCategory) for a given company's connection.
+        
+        [Tracking categories](https://docs.codat.io/accounting-api#/schemas/TrackingCategory) are used to monitor cost centres and control budgets that sit outside the standard set of accounts.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
