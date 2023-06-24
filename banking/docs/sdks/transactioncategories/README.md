@@ -7,7 +7,7 @@ Hierarchical categories associated with a transaction for greater contextual mea
 ### Available Operations
 
 * [get](#get) - Get transaction category
-* [list](#list) - List all transaction categories
+* [list](#list) - List transaction categories
 
 ## get
 
@@ -52,7 +52,12 @@ if res.transaction_category is not None:
 
 ## list
 
-Gets a list of hierarchical categories associated with a transaction for greater contextual meaning to transactionactivity.
+The *List transaction categories* endpoint returns a list of [transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) for a given company's connection.
+
+[Transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+    
 
 ### Example Usage
 

@@ -51,8 +51,12 @@ class TransactionCategories:
 
     
     def list(self, request: operations.ListTransactionCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionCategoriesResponse:
-        r"""List all transaction categories
-        Gets a list of hierarchical categories associated with a transaction for greater contextual meaning to transactionactivity.
+        r"""List transaction categories
+        The *List transaction categories* endpoint returns a list of [transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) for a given company's connection.
+        
+        [Transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

@@ -54,7 +54,7 @@ if res.account_balances is not None:
 ### [transaction_categories](docs/sdks/transactioncategories/README.md)
 
 * [get](docs/sdks/transactioncategories/README.md#get) - Get transaction category
-* [list](docs/sdks/transactioncategories/README.md#list) - List all transaction categories
+* [list](docs/sdks/transactioncategories/README.md#list) - List transaction categories
 
 ### [transactions](docs/sdks/transactions/README.md)
 

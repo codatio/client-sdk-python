@@ -52,7 +52,11 @@ class Accounts:
     
     def list(self, request: operations.ListAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountsResponse:
         r"""List accounts
-        Gets a list of all bank accounts of the SMB, with rich data like balances, account numbers and institutions holdingthe accounts.
+        The *List accounts* endpoint returns a list of [accounts](https://docs.codat.io/banking-api#/schemas/Account) for a given company's connection.
+        
+        [Accounts](https://docs.codat.io/banking-api#/schemas/Account) are financial accounts maintained by a bank or other financial institution.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
