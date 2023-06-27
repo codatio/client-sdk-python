@@ -61,7 +61,7 @@ if res.account_transaction is not None:
 ### [bank_accounts](docs/sdks/bankaccounts/README.md)
 
 * [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
-* [~~get~~](docs/sdks/bankaccounts/README.md#get) - Get bank account :warning: **Deprecated**
+* [get](docs/sdks/bankaccounts/README.md#get) - Get bank account
 * [get_create_update_model](docs/sdks/bankaccounts/README.md#get_create_update_model) - Get create/update bank account model
 * [list](docs/sdks/bankaccounts/README.md#list) - List bank accounts
 * [update](docs/sdks/bankaccounts/README.md#update) - Update bank account

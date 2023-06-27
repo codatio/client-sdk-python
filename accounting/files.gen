@@ -99,7 +99,7 @@ src/codataccounting/models/operations/list_direct_income_attachments.py
 src/codataccounting/models/operations/upload_direct_income_attachment.py
 src/codataccounting/models/operations/create_invoice.py
 src/codataccounting/models/operations/delete_invoice.py
-src/codataccounting/models/operations/download_invoices_attachment.py
+src/codataccounting/models/operations/download_invoice_attachment.py
 src/codataccounting/models/operations/download_invoice_pdf.py
 src/codataccounting/models/operations/get_invoice.py
 src/codataccounting/models/operations/get_invoice_attachment.py
@@ -528,8 +528,8 @@ docs/models/operations/createinvoicerequest.md
 docs/models/operations/createinvoiceresponse.md
 docs/models/operations/deleteinvoicerequest.md
 docs/models/operations/deleteinvoiceresponse.md
-docs/models/operations/downloadinvoicesattachmentrequest.md
-docs/models/operations/downloadinvoicesattachmentresponse.md
+docs/models/operations/downloadinvoiceattachmentrequest.md
+docs/models/operations/downloadinvoiceattachmentresponse.md
 docs/models/operations/downloadinvoicepdfrequest.md
 docs/models/operations/downloadinvoicepdfresponse.md
 docs/models/operations/getinvoicerequest.md

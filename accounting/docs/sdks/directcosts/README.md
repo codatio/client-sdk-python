@@ -17,11 +17,16 @@ Direct costs
 
 ## create
 
-Posts a new direct cost to the accounting package for a given company.
+The *Create direct cost* endpoint creates a new [direct cost](https://docs.codat.io/accounting-api#/schemas/DirectCost) for a given company's connection.
+
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+
+**Integration-specific behaviour**
 
 Required data may vary by integration. To see what data to post, first call [Get create direct cost model](https://docs.codat.io/accounting-api#/operations/get-create-directCosts-model).
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) to see which integrations support this endpoint.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support creating an account.
+
 
 ### Example Usage
 
@@ -384,7 +389,12 @@ if res.create_direct_cost_response is not None:
 
 ## download_attachment
 
-Downloads an attachment for the specified direct cost for a given company.
+The *Download direct cost attachment* endpoint downloads a specific attachment for a given `directCostId` and `attachmentId`.
+
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support downloading a direct cost attachment.
+
 
 ### Example Usage
 
@@ -426,7 +436,14 @@ if res.data is not None:
 
 ## get
 
-Gets the specified direct cost for a given company.
+The *Get direct cost* endpoint returns a single direct cost for a given directCostId.
+
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support getting a specific direct cost.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+
 
 ### Example Usage
 
@@ -467,7 +484,12 @@ if res.direct_cost is not None:
 
 ## get_attachment
 
-Gets the specified direct cost attachment for a given company.
+The *Get direct cost attachment* endpoint returns a specific attachment for a given `directCostId` and `attachmentId`.
+
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support getting a direct cost attachment.
+
 
 ### Example Usage
 
@@ -509,13 +531,16 @@ if res.attachment is not None:
 
 ## get_create_model
 
-Get create direct cost model. Returns the expected data for the request payload.
+The *Get create direct cost model* endpoint returns the expected data for the request payload when creating a [direct cost](https://docs.codat.io/accounting-api#/schemas/DirectCost) for a given company and integration.
 
-See the examples for integration-specific indicative models.
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
-> **Supported Integrations**
-> 
-> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support creating direct costs.
+**Integration-specific behaviour**
+
+See the *response examples* for integration-specific indicative models.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support creating a direct cost.
+
 
 ### Example Usage
 
@@ -604,7 +629,12 @@ if res.direct_costs is not None:
 
 ## list_attachments
 
-Gets all attachments for the specified direct cost for a given company.
+The *List direct cost attachments* endpoint returns a list of attachments avialable to download for given `directCostId`.
+
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support listing direct cost attachments.
+
 
 ### Example Usage
 
@@ -645,7 +675,16 @@ if res.attachments_dataset is not None:
 
 ## upload_attachment
 
-Posts a new direct cost attachment for a given company.
+The *Upload direct cost attachment* endpoint uploads an attachment and assigns it against a specific `directCostId`.
+
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+
+**Integration-specific behaviour**
+
+For more details on supported file types by integration see [Attachments](https://docs.codat.io/accounting-api#/schemas/Attachment).
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support uploading a direct cost attachment.
+
 
 ### Example Usage
 

@@ -15,11 +15,15 @@ class Invoices:
     
     def create(self, request: operations.CreateInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateInvoiceResponse:
         r"""Create invoice
-        Posts a new invoice to the accounting package for a given company.
+        The *Create invoice* endpoint creates a new [invoice](https://docs.codat.io/accounting-api#/schemas/Invoice) for a given company's connection.
+        
+        [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+        
+        **Integration-specific behaviour**
         
         Required data may vary by integration. To see what data to post, first call [Get create/update invoice model](https://docs.codat.io/accounting-api#/operations/get-create-update-invoices-model).
         
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) to see which integrations support this endpoint.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -128,13 +132,17 @@ class Invoices:
         return res
 
     
-    def download_attachment(self, request: operations.DownloadInvoicesAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoicesAttachmentResponse:
+    def download_attachment(self, request: operations.DownloadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoiceAttachmentResponse:
         r"""Download invoice attachment
-        Download invoice attachment.
+        The *Download invoice attachment* endpoint downloads a specific attachment for a given `invoiceId` and `attachmentId`.
+        
+        [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support downloading an invoice attachment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.DownloadInvoicesAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download', request)
+        url = utils.generate_url(operations.DownloadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download', request)
         headers = {}
         headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
@@ -155,7 +163,7 @@ class Invoices:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.DownloadInvoicesAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DownloadInvoiceAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
@@ -206,7 +214,13 @@ class Invoices:
     
     def get(self, request: operations.GetInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetInvoiceResponse:
         r"""Get invoice
-        Get an invoice.
+        The *Get invoice* endpoint returns a single invoice for a given invoiceId.
+        
+        [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support getting a specific invoice.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -251,7 +265,11 @@ class Invoices:
     
     def get_attachment(self, request: operations.GetInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetInvoiceAttachmentResponse:
         r"""Get invoice attachment
-        Get invoice attachment.
+        The *Get invoice attachment* endpoint returns a specific attachment for a given `invoiceId` and `attachmentId`.
+        
+        [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support getting an invoice attachment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -292,13 +310,15 @@ class Invoices:
     
     def get_create_update_model(self, request: operations.GetCreateUpdateInvoicesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateInvoicesModelResponse:
         r"""Get create/update invoice model
-        Get create/update invoice model. Returns the expected data for the request payload.
+        The *Get create/update invoice model* endpoint returns the expected data for the request payload when creating and updating an [invoice](https://docs.codat.io/accounting-api#/schemas/Invoice) for a given company and integration.
         
-        See the examples for integration-specific indicative models.
+        [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
         
-        > **Supported Integrations**
-        > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support creating and updating invoices.
+        **Integration-specific behaviour**
+        
+        See the *response examples* for integration-specific indicative models.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support creating and updating an invoice.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -389,7 +409,11 @@ class Invoices:
     
     def list_attachments(self, request: operations.ListInvoiceAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListInvoiceAttachmentsResponse:
         r"""List invoice attachments
-        List invoice attachments
+        The *List invoice attachments* endpoint returns a list of attachments avialable to download for given `invoiceId`.
+        
+        [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support listing invoice attachments.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -430,14 +454,15 @@ class Invoices:
     
     def update(self, request: operations.UpdateInvoiceRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateInvoiceResponse:
         r"""Update invoice
-        Posts an updated invoice to the accounting package for a given company.
+        The *Update invoice* endpoint updates an existing [invoice](https://docs.codat.io/accounting-api#/schemas/Invoice) for a given company's connection.
+        
+        [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+        
+        **Integration-specific behaviour**
         
         Required data may vary by integration. To see what data to post, first call [Get create/update invoice model](https://docs.codat.io/accounting-api#/operations/get-create-update-invoices-model).
         
-        > **Supported Integrations**
-        > 
-        > Check out our [Knowledge UI](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support updating invoices.
-        operationId: update-invoice
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -482,7 +507,15 @@ class Invoices:
     
     def upload_attachment(self, request: operations.UploadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadInvoiceAttachmentResponse:
         r"""Push invoice attachment
-        Upload invoice attachment.
+        The *Upload invoice attachment* endpoint uploads an attachment and assigns it against a specific `invoiceId`.
+        
+        [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+        
+        **Integration-specific behaviour**
+        
+        For more details on supported file types by integration see [Attachments](https://docs.codat.io/accounting-api#/schemas/Attachment).
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support uploading an invoice attachment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

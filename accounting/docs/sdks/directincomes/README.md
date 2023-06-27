@@ -17,11 +17,16 @@ Direct incomes
 
 ## create
 
-Posts a new direct income to the accounting package for a given company.
+The *Create direct income* endpoint creates a new [direct income](https://docs.codat.io/accounting-api#/schemas/DirectIncome) for a given company's connection.
+
+[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+
+**Integration-specific behaviour**
 
 Required data may vary by integration. To see what data to post, first call [Get create direct income model](https://docs.codat.io/accounting-api#/operations/get-create-directIncomes-model).
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) to see which integrations support this endpoint.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support creating an account.
+
 
 ### Example Usage
 
@@ -219,7 +224,12 @@ if res.create_direct_income_response is not None:
 
 ## download_attachment
 
-Downloads an attachment for the specified direct income for a given company.
+The *Download direct income attachment* endpoint downloads a specific attachment for a given `directIncomeId` and `attachmentId`.
+
+[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support downloading a direct income attachment.
+
 
 ### Example Usage
 
@@ -261,7 +271,14 @@ if res.data is not None:
 
 ## get
 
-Gets the specified direct income for a given company and connection.
+The *Get direct income* endpoint returns a single direct income for a given directIncomeId.
+
+[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support getting a specific direct income.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+
 
 ### Example Usage
 
@@ -302,7 +319,12 @@ if res.direct_income is not None:
 
 ## get_attachment
 
-Gets the specified direct income attachment for a given company.
+The *Get direct income attachment* endpoint returns a specific attachment for a given `directIncomeId` and `attachmentId`.
+
+[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support getting a direct income attachment.
+
 
 ### Example Usage
 
@@ -345,13 +367,16 @@ if res.attachment is not None:
 
 ## get_create_model
 
-Get create direct income model. Returns the expected data for the request payload.
+The *Get create direct income model* endpoint returns the expected data for the request payload when creating a [direct income](https://docs.codat.io/accounting-api#/schemas/DirectIncome) for a given company and integration.
 
-See the examples for integration-specific indicative models.
+[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
 
-> **Supported Integrations**
-> 
-> Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support creating direct incomes.
+**Integration-specific behaviour**
+
+See the *response examples* for integration-specific indicative models.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support creating a direct income.
+
 
 ### Example Usage
 
@@ -440,7 +465,12 @@ if res.direct_incomes is not None:
 
 ## list_attachments
 
-Gets all attachments for the specified direct income for a given company.
+The *List direct income attachments* endpoint returns a list of attachments avialable to download for given `directIncomeId`.
+
+[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support listing direct income attachments.
+
 
 ### Example Usage
 
@@ -481,7 +511,16 @@ if res.attachments_dataset is not None:
 
 ## upload_attachment
 
-Posts a new direct income attachment for a given company.
+The *Upload direct income attachment* endpoint uploads an attachment and assigns it against a specific `directIncomeId`.
+
+[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+
+**Integration-specific behaviour**
+
+For more details on supported file types by integration see [Attachments](https://docs.codat.io/accounting-api#/schemas/Attachment).
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support uploading a direct income attachment.
+
 
 ### Example Usage
 
