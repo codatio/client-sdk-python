@@ -15,7 +15,13 @@ class Orders:
     
     def get(self, request: operations.GetOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetOrderResponse:
         r"""Get order
-        Get a specific order placed or held on the linked commerce platform.
+        The *Get order* endpoint returns a single order for a given orderId.
+        
+        [Orders](https://docs.codat.io/commerce-api#/schemas/Order) contain the transaction details for all products sold by the company.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-orders) for integrations that support getting a specific order.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

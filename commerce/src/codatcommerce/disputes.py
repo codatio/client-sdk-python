@@ -15,7 +15,13 @@ class Disputes:
     
     def get(self, request: operations.GetDisputeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDisputeResponse:
         r"""Get dispute
-        Get a specific commerce dispute.
+        The *Get dispute* endpoint returns a single dispute for a given disputeId.
+        
+        [Disputes](https://docs.codat.io/commerce-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for integrations that support getting a specific dispute.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

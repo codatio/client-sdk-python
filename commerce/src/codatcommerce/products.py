@@ -15,7 +15,13 @@ class Products:
     
     def get(self, request: operations.GetProductRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetProductResponse:
         r"""Get product
-        The Products data type provides the company's product inventory, and includes the price and quantity of all products, and product variants, available for sale.
+        The *Get product* endpoint returns a single product for a given productId.
+        
+        [Products](https://docs.codat.io/commerce-api#/schemas/Product) are items in the company's inventory that are available for sale.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-products) for integrations that support getting a specific product.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -60,7 +66,13 @@ class Products:
     
     def get_category(self, request: operations.GetProductCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetProductCategoryResponse:
         r"""Get product category
-        Product categories are used to classify a group of products together, either by type (e.g. \"Furniture\") or sometimes by tax profile.
+        The *Get product* endpoint returns a single product for a given productId.
+        
+        [Product categories](https://docs.codat.io/commerce-api#/schemas/ProductCategory) are used to classify a group of products together, either by type (e.g. \"Furniture\"), or sometimes by tax profile.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-productCategories) for integrations that support getting a specific product.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
