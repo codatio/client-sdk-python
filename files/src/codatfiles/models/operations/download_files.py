@@ -14,7 +14,7 @@ from typing import Optional
 class DownloadFilesRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     date_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'date', 'style': 'form', 'explode': True }})
-    r"""Only download files uploaded on this date"""
+    r"""Only download files uploaded on this date."""
     
 
 
