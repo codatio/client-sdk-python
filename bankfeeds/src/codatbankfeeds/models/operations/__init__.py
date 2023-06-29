@@ -11,7 +11,7 @@ from .get_bank_account_mapping import *
 from .get_bank_feeds import *
 from .get_company import *
 from .get_company_connection import *
-from .get_create_bank_account_model import *
+from .get_create_bank_transactions_model import *
 from .list_bank_account_transactions import *
 from .list_companies import *
 from .list_company_connections import *
@@ -20,4 +20,4 @@ from .unlink_connection import *
 from .update_bank_feed import *
 from .update_company import *
 
-__all__ = ["CreateBankAccountMappingRequest","CreateBankAccountMappingResponse","CreateBankFeedRequest","CreateBankFeedResponse","CreateBankTransactionsRequest","CreateBankTransactionsResponse","CreateCompanyResponse","CreateDataConnectionRequest","CreateDataConnectionRequestBody","CreateDataConnectionResponse","DeleteCompanyConnectionRequest","DeleteCompanyConnectionResponse","DeleteCompanyRequest","DeleteCompanyResponse","GetBankAccountMappingRequest","GetBankAccountMappingResponse","GetBankFeedsRequest","GetBankFeedsResponse","GetCompanyConnectionRequest","GetCompanyConnectionResponse","GetCompanyRequest","GetCompanyResponse","GetCreateBankAccountModelRequest","GetCreateBankAccountModelResponse","ListBankAccountTransactions409ApplicationJSON","ListBankAccountTransactionsRequest","ListBankAccountTransactionsResponse","ListCompaniesRequest","ListCompaniesResponse","ListCompanyConnectionsRequest","ListCompanyConnectionsResponse","ProxyRequest","ProxyResponse","UnlinkConnectionRequest","UnlinkConnectionRequestBody","UnlinkConnectionResponse","UpdateBankFeedRequest","UpdateBankFeedResponse","UpdateCompanyRequest","UpdateCompanyResponse"]
+__all__ = ["CreateBankAccountMappingRequest","CreateBankAccountMappingResponse","CreateBankFeedRequest","CreateBankFeedResponse","CreateBankTransactionsRequest","CreateBankTransactionsResponse","CreateCompanyResponse","CreateDataConnectionRequest","CreateDataConnectionRequestBody","CreateDataConnectionResponse","DeleteCompanyConnectionRequest","DeleteCompanyConnectionResponse","DeleteCompanyRequest","DeleteCompanyResponse","GetBankAccountMappingRequest","GetBankAccountMappingResponse","GetBankFeedsRequest","GetBankFeedsResponse","GetCompanyConnectionRequest","GetCompanyConnectionResponse","GetCompanyRequest","GetCompanyResponse","GetCreateBankTransactionsModelRequest","GetCreateBankTransactionsModelResponse","ListBankAccountTransactions409ApplicationJSON","ListBankAccountTransactionsRequest","ListBankAccountTransactionsResponse","ListCompaniesRequest","ListCompaniesResponse","ListCompanyConnectionsRequest","ListCompanyConnectionsResponse","ProxyRequest","ProxyResponse","UnlinkConnectionRequest","UnlinkConnectionRequestBody","UnlinkConnectionResponse","UpdateBankFeedRequest","UpdateBankFeedResponse","UpdateCompanyRequest","UpdateCompanyResponse"]

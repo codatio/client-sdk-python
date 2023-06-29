@@ -10,7 +10,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetCreateBankAccountModelRequest:
+class GetCreateBankTransactionsModelRequest:
     account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for an account"""
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -21,7 +21,7 @@ class GetCreateBankAccountModelRequest:
 
 
 @dataclasses.dataclass
-class GetCreateBankAccountModelResponse:
+class GetCreateBankTransactionsModelResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     push_option: Optional[shared_pushoption.PushOption] = dataclasses.field(default=None)
