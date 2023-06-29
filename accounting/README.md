@@ -54,9 +54,9 @@ if res.account_transaction is not None:
 
 ### [bank_account_transactions](docs/sdks/bankaccounttransactions/README.md)
 
-* [create](docs/sdks/bankaccounttransactions/README.md#create) - Create bank transactions
-* [get_create_model](docs/sdks/bankaccounttransactions/README.md#get_create_model) - List push options for bank account bank transactions
-* [list](docs/sdks/bankaccounttransactions/README.md#list) - List bank transactions for bank account
+* [create](docs/sdks/bankaccounttransactions/README.md#create) - Create bank account transactions
+* [get_create_model](docs/sdks/bankaccounttransactions/README.md#get_create_model) - Get create bank account transactions model
+* [list](docs/sdks/bankaccounttransactions/README.md#list) - List bank account transactions
 
 ### [bank_accounts](docs/sdks/bankaccounts/README.md)
 
