@@ -6,13 +6,13 @@ Bank feed bank accounts
 
 ### Available Operations
 
-* [create](#create) - Create bank feed bank accounts
+* [create](#create) - Create a bank feed bank account
 * [get](#get) - List bank feed bank accounts
 * [update](#update) - Update bank feed bank account
 
 ## create
 
-Put BankFeed BankAccounts for a single data source connected to a single company.
+Post a BankFeed BankAccount for a single data source connected to a single company.
 
 ### Example Usage
 
@@ -27,27 +27,25 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateBankFeedRequest(
-    request_body=[
-        shared.BankFeedAccount(
-            account_name='doloremque',
-            account_number='reprehenderit',
-            account_type='ut',
-            balance=9795.87,
-            currency='GBP',
-            feed_start_date='2022-10-23T00:00:00.000Z',
-            id='471b5e6e-13b9-49d4-88e1-e91e450ad2ab',
-            modified_date='2022-10-23T00:00:00.000Z',
-            sort_code='labore',
-            status='modi',
-        ),
-    ],
+    bank_feed_account=shared.BankFeedAccount(
+        account_name='maiores',
+        account_number='dicta',
+        account_type='corporis',
+        balance=2961.4,
+        currency='USD',
+        feed_start_date='2022-10-23T00:00:00.000Z',
+        id='b5e6e13b-99d4-488e-9e91-e450ad2abd44',
+        modified_date='2022-10-23T00:00:00.000Z',
+        sort_code='aliquid',
+        status='cupiditate',
+    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.bank_feed_accounts.create(req)
 
-if res.bank_feed_accounts is not None:
+if res.bank_feed_account is not None:
     # handle response
 ```
 
@@ -122,18 +120,18 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.UpdateBankFeedRequest(
     bank_feed_account=shared.BankFeedAccount(
-        account_name='qui',
-        account_number='aliquid',
-        account_type='cupiditate',
-        balance=5528.22,
-        currency='GBP',
+        account_name='quos',
+        account_number='perferendis',
+        account_type='magni',
+        balance=8289.4,
+        currency='USD',
         feed_start_date='2022-10-23T00:00:00.000Z',
-        id='d502a94b-b4f6-43c9-a9e9-a3efa77dfb14',
+        id='2a94bb4f-63c9-469e-9a3e-fa77dfb14cd6',
         modified_date='2022-10-23T00:00:00.000Z',
-        sort_code='facere',
-        status='ea',
+        sort_code='laborum',
+        status='accusamus',
     ),
-    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

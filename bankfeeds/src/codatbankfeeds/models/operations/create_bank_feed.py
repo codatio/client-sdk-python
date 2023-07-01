@@ -13,7 +13,7 @@ from typing import Optional
 class CreateBankFeedRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    request_body: Optional[list[shared_bankfeedaccount.BankFeedAccount]] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    bank_feed_account: Optional[shared_bankfeedaccount.BankFeedAccount] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 
@@ -23,10 +23,10 @@ class CreateBankFeedRequest:
 class CreateBankFeedResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    bank_feed_accounts: Optional[list[shared_bankfeedaccount.BankFeedAccount]] = dataclasses.field(default=None)
+    bank_feed_account: Optional[shared_bankfeedaccount.BankFeedAccount] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
+    r"""The request made is not valid."""
     
 

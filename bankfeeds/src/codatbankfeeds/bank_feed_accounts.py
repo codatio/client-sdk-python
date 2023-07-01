@@ -14,14 +14,14 @@ class BankFeedAccounts:
         
     
     def create(self, request: operations.CreateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankFeedResponse:
-        r"""Create bank feed bank accounts
-        Put BankFeed BankAccounts for a single data source connected to a single company.
+        r"""Create a bank feed bank account
+        Post a BankFeed BankAccount for a single data source connected to a single company.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.CreateBankFeedRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bank_feed_account", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json;q=1, application/json;q=0'
@@ -34,7 +34,7 @@ class BankFeedAccounts:
             retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
-            return client.request('PUT', url, data=data, files=form, headers=headers)
+            return client.request('POST', url, data=data, files=form, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -47,9 +47,9 @@ class BankFeedAccounts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.BankFeedAccount]])
-                res.bank_feed_accounts = out
-        elif http_res.status_code in [401, 404, 429]:
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedAccount])
+                res.bank_feed_account = out
+        elif http_res.status_code in [400, 401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
                 res.schema = out

@@ -41,35 +41,39 @@ req = operations.CreateBankTransactionsRequest(
         transactions=[
             shared.CreateBankAccountTransaction(
                 amount=4236.55,
+                balance=6235.64,
                 date_='2022-10-23T00:00:00.000Z',
-                description='deserunt',
-                id='674e0f46-7cc8-4796-ad15-1a05dfc2ddf7',
+                description='suscipit',
+                id='74e0f467-cc87-496e-9151-a05dfc2ddf7c',
             ),
             shared.CreateBankAccountTransaction(
-                amount=7991.59,
+                amount=8009.11,
+                balance=4614.79,
                 date_='2022-10-23T00:00:00.000Z',
-                description='esse',
-                id='8ca1ba92-8fc8-4167-82cb-739205929396',
+                description='porro',
+                id='a1ba928f-c816-4742-8b73-9205929396fe',
             ),
             shared.CreateBankAccountTransaction(
-                amount=9437.49,
+                amount=6818.2,
+                balance=4499.5,
                 date_='2022-10-23T00:00:00.000Z',
-                description='fuga',
-                id='7596eb10-faaa-4235-ac59-55907aff1a3a',
+                description='iste',
+                id='6eb10faa-a235-42c5-9559-07aff1a3a2fa',
             ),
             shared.CreateBankAccountTransaction(
-                amount=1613.09,
+                amount=5818.5,
+                balance=2532.91,
                 date_='2022-10-23T00:00:00.000Z',
-                description='mollitia',
-                id='94677392-51aa-452c-bf5a-d019da1ffe78',
+                description='quam',
+                id='739251aa-52c3-4f5a-9019-da1ffe78f097',
             ),
         ],
     ),
-    account_id='EILBDVJVNUAGVKRQ',
+    account_id='7110701885',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=55714,
+    timeout_in_minutes=19987,
 )
 
 res = s.bank_account_transactions.create(req)
@@ -117,7 +121,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='7110701885',
+    account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -171,7 +175,7 @@ req = operations.ListBankAccountTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='cum',
+    query='ut',
 )
 
 res = s.bank_account_transactions.list(req)

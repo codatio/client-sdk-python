@@ -56,7 +56,7 @@ if res.account_mapping_result is not None:
 
 ### [bank_feed_accounts](docs/sdks/bankfeedaccounts/README.md)
 
-* [create](docs/sdks/bankfeedaccounts/README.md#create) - Create bank feed bank accounts
+* [create](docs/sdks/bankfeedaccounts/README.md#create) - Create a bank feed bank account
 * [get](docs/sdks/bankfeedaccounts/README.md#get) - List bank feed bank accounts
 * [update](docs/sdks/bankfeedaccounts/README.md#update) - Update bank feed bank account
 
