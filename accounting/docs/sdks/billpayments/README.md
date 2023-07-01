@@ -40,71 +40,47 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='99171b51-c1bd-4b1c-b4b8-88ebdfc4ccca',
-            name='Tracy Reinger',
+            id='929921ae-fb9f-458c-8d86-e68e4be05601',
+            name='Shawna Hamill',
         ),
-        currency='EUR',
-        currency_rate=8022.16,
+        currency='USD',
+        currency_rate=4585.03,
         date_='2022-10-23T00:00:00.000Z',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=8662.92,
+                amount=3361.02,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=9274.9,
-                        currency_rate=837.91,
-                        id='0873e42b-006d-4678-878b-a8581a58208c',
-                        type=shared.BillPaymentLineLinkType.OTHER,
+                        amount=8806.79,
+                        currency_rate=7746.84,
+                        id='fef66ef1-caa3-4383-82be-b477373c8d72',
+                        type=shared.BillPaymentLineLinkType.DISCOUNT,
                     ),
                     shared.BillPaymentLineLink(
-                        amount=2864.53,
-                        currency_rate=9580.68,
-                        id='efa9c95f-2eac-4556-9d30-7cfee81206e2',
-                        type=shared.BillPaymentLineLinkType.BILL_PAYMENT,
+                        amount=4269.04,
+                        currency_rate=3008.24,
+                        id='d1db1f2c-4310-4661-a963-49e1cf9e06e3',
+                        type=shared.BillPaymentLineLinkType.PAYMENT_ON_ACCOUNT,
                     ),
                     shared.BillPaymentLineLink(
-                        amount=1227.44,
-                        currency_rate=2001.9,
-                        id='fa4a41c4-80d3-4f21-b2af-03102d514f4c',
-                        type=shared.BillPaymentLineLinkType.REFUND,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=4044.22,
-                        currency_rate=9980.23,
-                        id='18bf9621-a6a4-4f77-a87e-e3e4be752c65',
-                        type=shared.BillPaymentLineLinkType.REFUND,
-                    ),
-                ],
-            ),
-            shared.BillPaymentLine(
-                allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=2848.85,
-                links=[
-                    shared.BillPaymentLineLink(
-                        amount=1039.88,
-                        currency_rate=5069.66,
-                        id='e3bb91c8-d975-4e0e-8419-d8f84f144f3e',
+                        amount=2503.98,
+                        currency_rate=2244.67,
+                        id='7000ae6b-6bc9-4b8f-b59e-ac55a9741d31',
                         type=shared.BillPaymentLineLinkType.UNKNOWN,
                     ),
-                    shared.BillPaymentLineLink(
-                        amount=4587.23,
-                        currency_rate=8913.02,
-                        id='dcc4aa5f-3cab-4d90-9a97-2e056728227b',
-                        type=shared.BillPaymentLineLinkType.UNLINKED,
-                    ),
                 ],
             ),
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=1998.79,
+                amount=3220.17,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=5751.39,
-                        currency_rate=2913.89,
-                        id='70bf7a4f-a87c-4f53-9a6f-ae54ebf60c32',
-                        type=shared.BillPaymentLineLinkType.UNLINKED,
+                        amount=6113.28,
+                        currency_rate=4030.26,
+                        id='5bb8a720-2611-4435-a139-dbc2259b1abd',
+                        type=shared.BillPaymentLineLinkType.PAYMENT_ON_ACCOUNT,
                     ),
                 ],
             ),
@@ -115,41 +91,38 @@ req = operations.CreateBillPaymentRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
         payment_method_ref=shared.PaymentMethodRef(
-            id='023b75d2-367f-4e1a-8cc8-df79f0a396d9',
-            name='Leticia Donnelly',
+            id='c070e108-4cb0-4672-91ad-879eeb9665b8',
+            name='Cecelia Wiza',
         ),
-        reference='expedita',
+        reference='alias',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "sunt": {
-                    "nulla": 'maiores',
-                    "distinctio": 'mollitia',
+                "fuga": {
+                    "accusantium": 'expedita',
+                    "officiis": 'eos',
+                    "quibusdam": 'odio',
+                    "praesentium": 'odit',
                 },
-                "impedit": {
-                    "et": 'quas',
-                    "blanditiis": 'cum',
-                    "dicta": 'impedit',
-                    "tempora": 'eveniet',
+                "explicabo": {
+                    "error": 'earum',
+                    "adipisci": 'recusandae',
                 },
-                "repudiandae": {
-                    "impedit": 'quas',
-                },
-                "impedit": {
-                    "eligendi": 'recusandae',
-                    "ex": 'beatae',
+                "similique": {
+                    "quidem": 'quis',
+                    "beatae": 'unde',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='1feeb1c7-cbdb-46ee-8743-78ba25317747',
-            supplier_name='nulla',
+            id='7f92443d-a7ce-452b-895c-537c6454efb0',
+            supplier_name='libero',
         ),
         total_amount=1329.54,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=771406,
+    timeout_in_minutes=189753,
 )
 
 res = s.bill_payments.create(req)
@@ -213,7 +186,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='cupiditate',
+    bill_payment_id='labore',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -261,7 +234,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='illo',
+    bill_payment_id='totam',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -359,7 +332,7 @@ req = operations.ListBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='exercitationem',
+    query='occaecati',
 )
 
 res = s.bill_payments.list(req)

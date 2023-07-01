@@ -40,42 +40,59 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='culpa',
-        id='4b9a5bf9-35df-4e97-8fa4-b1e9c097eda6',
+        description='laudantium',
+        id='89d9ef93-2e90-400a-93ad-8124208efd23',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='3442e1a9-237e-4998-8c80-b479e891923c',
-                    name='Nina Runolfsson',
+                    id='11898e73-879e-4fbe-8bae-babb794536e9',
+                    name='Miss Shannon Hauck',
                 ),
-                currency='facere',
-                description='vel',
-                net_amount=5838.27,
+                currency='unde',
+                description='odio',
+                net_amount=4332.19,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='enim',
-                            id='689214fa-2020-47e4-bae0-38cd7f1bc2ca',
+                            data_type='architecto',
+                            id='720b77a5-a536-45a7-9f15-271f01c0d361',
+                        ),
+                    ],
+                ),
+            ),
+            shared.JournalLine(
+                account_ref=shared.AccountRef(
+                    id='fed8dc5e-ffb4-453e-9089-e871fdb4d697',
+                    name='Bryant Strosin',
+                ),
+                currency='molestias',
+                description='corrupti',
+                net_amount=3623.77,
+                tracking=shared.Propertiestracking2(
+                    record_refs=[
+                        shared.InvoiceTo(
+                            data_type='incidunt',
+                            id='3734a5d7-2d9e-4dd7-85be-5e7afe55297b',
                         ),
                         shared.InvoiceTo(
-                            data_type='nam',
-                            id='af7fc2cc-ba4b-4ef0-9f68-eaedb2ee70be',
+                            data_type='mollitia',
+                            id='6281f44e-3a23-4394-a68c-c80d30ff7216',
                         ),
                         shared.InvoiceTo(
-                            data_type='alias',
-                            id='69fb36ad-d704-4080-a0a3-fc73a5a034b1',
+                            data_type='quaerat',
+                            id='d0a91fe9-d965-453b-89e0-009c6692de7b',
                         ),
                         shared.InvoiceTo(
-                            data_type='ab',
-                            id='499243af-a698-47a4-b2b7-09a153e22301',
+                            data_type='ipsum',
+                            id='562201a6-aab4-4ae7-b1a5-b908d4e30491',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='068539ce-0932-4d10-acd1-5d8cc306b786',
-            name='Stanley Swaniawski',
+            id='aa35d4a8-39f0-43ba-b77b-918f03139845',
+            name='Dr. Delores Towne',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -83,23 +100,14 @@ req = operations.CreateJournalEntryRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.InvoiceTo(
-            data_type='sed',
-            id='04a1f340-bb36-4f67-ba48-519c33749028',
+            data_type='quam',
+            id='e23ecb06-0465-42e2-ba3d-6c657e9de8f7',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "quos": {
-                    "ex": 'nam',
-                },
-                "distinctio": {
-                    "consectetur": 'porro',
-                },
-                "nihil": {
-                    "possimus": 'consequuntur',
-                    "odit": 'enim',
-                    "debitis": 'dolore',
-                    "in": 'corrupti',
+                "consequatur": {
+                    "fugiat": 'veritatis',
                 },
             },
         ),
@@ -107,7 +115,7 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=100075,
+    timeout_in_minutes=526773,
 )
 
 res = s.journal_entries.create(req)
@@ -180,7 +188,7 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='culpa',
+    journal_entry_id='ex',
 )
 
 res = s.journal_entries.delete(req)
@@ -227,7 +235,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='blanditiis',
+    journal_entry_id='dolorum',
 )
 
 res = s.journal_entries.get(req)
@@ -324,7 +332,7 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='atque',
+    query='officia',
 )
 
 res = s.journal_entries.list(req)

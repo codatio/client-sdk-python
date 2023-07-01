@@ -41,23 +41,25 @@ req = operations.CreateBankTransactionsRequest(
         transactions=[
             shared.CreateBankAccountTransaction(
                 amount=9255.97,
+                balance=8360.79,
                 date_='2022-10-23T00:00:00.000Z',
-                description='ab',
-                id='51a05dfc-2ddf-47cc-b8ca-1ba928fc8167',
+                description='quis',
+                id='1a05dfc2-ddf7-4cc7-8ca1-ba928fc81674',
             ),
             shared.CreateBankAccountTransaction(
-                amount=2645.55,
+                amount=1863.32,
+                balance=7742.34,
                 date_='2022-10-23T00:00:00.000Z',
-                description='impedit',
-                id='b7392059-2939-46fe-a759-6eb10faaa235',
+                description='esse',
+                id='39205929-396f-4ea7-996e-b10faaa2352c',
             ),
         ],
     ),
-    account_id='explicabo',
+    account_id='enim',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=750686,
+    timeout_in_minutes=607831,
 )
 
 res = s.bank_account_transactions.create(req)
@@ -105,7 +107,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='enim',
+    account_id='nemo',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -153,13 +155,13 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id='omnis',
+    account_id='minima',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nemo',
+    query='excepturi',
 )
 
 res = s.bank_account_transactions.list(req)

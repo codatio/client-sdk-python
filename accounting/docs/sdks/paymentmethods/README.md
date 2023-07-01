@@ -34,7 +34,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_method_id='nostrum',
+    payment_method_id='dignissimos',
 )
 
 res = s.payment_methods.get(req)
@@ -82,7 +82,7 @@ req = operations.ListPaymentMethodsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='officiis',
+    query='exercitationem',
 )
 
 res = s.payment_methods.list(req)

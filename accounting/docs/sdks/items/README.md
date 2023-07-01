@@ -40,46 +40,46 @@ req = operations.CreateItemRequest(
     item=shared.Item(
         bill_item=shared.BillItem(
             account_ref=shared.AccountRef(
-                id='d64161e9-1500-4323-b2c0-9b924771f566',
-                name='Pat Hickle',
+                id='9834afb0-735c-4b62-85d4-a29aaa1e1691',
+                name='Alma Ziemann',
             ),
-            description='saepe',
+            description='aspernatur',
             tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=7828.51,
-                id='7626649d-84eb-49e4-8fd2-276e0b88fb87',
-                name='Gilbert Zboncak',
+                effective_tax_rate=9264.79,
+                id='e209505b-f03a-493e-9448-0ca37fb10789',
+                name='Emily Considine',
             ),
-            unit_price=7370.08,
+            unit_price=2261.31,
         ),
-        code='vel',
-        id='e8dbf812-f83b-41ca-aa9f-fc561929cca9',
+        code='amet',
+        id='3172e2dd-79ec-474b-a7e8-8ddb36fd1ccc',
         invoice_item=shared.InvoiceItem(
             account_ref=shared.AccountRef(
-                id='560a1395-918d-4a1d-88e7-8e3cf8e1143d',
-                name='Ms. Wendell Dooley',
+                id='341c8657-3474-4f0a-b40f-b4ab441c3a09',
+                name='Claude Johns',
             ),
-            description='magni',
+            description='omnis',
             tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=4682.52,
-                id='a08af221-8443-49b3-9e87-56ccce470cd2',
-                name='Elaine Kihn',
+                effective_tax_rate=3289.22,
+                id='d808bbe7-9445-45eb-8550-a1c426b59c83',
+                name='Terri Zemlak',
             ),
-            unit_price=9267.48,
+            unit_price=7934.38,
         ),
         is_bill_item=False,
         is_invoice_item=False,
-        item_status=shared.ItemStatus.ACTIVE,
+        item_status=shared.ItemStatus.UNKNOWN,
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Nicole Schowalter Sr.',
+        name='Ida Lemke',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        type=shared.ItemType.UNKNOWN,
+        type=shared.ItemType.NON_INVENTORY,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=873982,
+    timeout_in_minutes=554193,
 )
 
 res = s.items.create(req)
@@ -126,7 +126,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetItemRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    item_id='voluptatum',
+    item_id='veniam',
 )
 
 res = s.items.get(req)
@@ -223,7 +223,7 @@ req = operations.ListItemsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='eligendi',
+    query='ad',
 )
 
 res = s.items.list(req)

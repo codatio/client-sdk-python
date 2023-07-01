@@ -44,60 +44,45 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Syracuse',
-                country='Turks and Caicos Islands',
-                line1='sit',
-                line2='aut',
-                postal_code='87647',
-                region='hic',
-                type=shared.AddressType.BILLING,
-            ),
-            shared.Addressesitems(
-                city='Connieland',
-                country='Panama',
-                line1='eveniet',
-                line2='quis',
-                postal_code='57305',
-                region='quam',
-                type=shared.AddressType.UNKNOWN,
-            ),
-            shared.Addressesitems(
-                city='North Van',
-                country='Austria',
-                line1='aliquid',
-                line2='maiores',
-                postal_code='77933',
-                region='officia',
-                type=shared.AddressType.BILLING,
+                city='East Lionel',
+                country='Wallis and Futuna',
+                line1='mollitia',
+                line2='suscipit',
+                postal_code='54624-1740',
+                region='iste',
+                type=shared.AddressType.DELIVERY,
             ),
         ],
-        contact_name='ex',
-        default_currency='voluptatum',
-        email_address='iure',
-        id='143c9790-5ff7-497a-9da6-64b7e778a74b',
+        contact_name='vitae',
+        default_currency='minima',
+        email_address='ipsum',
+        id='e2230106-8539-4ce0-932d-10acd15d8cc3',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='culpa',
+        registration_number='quidem',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "consequuntur": {
-                    "libero": 'eum',
-                    "ad": 'totam',
-                    "laboriosam": 'fugit',
+                "libero": {
+                    "at": 'amet',
+                },
+                "ducimus": {
+                    "fugiat": 'sed',
+                    "aut": 'ut',
+                    "similique": 'quae',
                 },
             },
         ),
-        supplier_name='illum',
-        tax_number='odit',
+        supplier_name='doloribus',
+        tax_number='ipsum',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=681125,
+    timeout_in_minutes=293648,
 )
 
 res = s.suppliers.create(req)
@@ -144,7 +129,7 @@ req = operations.DownloadSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='velit',
+    supplier_id='accusantium',
 )
 
 res = s.suppliers.download_attachment(req)
@@ -191,7 +176,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='veritatis',
+    supplier_id='nam',
 )
 
 res = s.suppliers.get(req)
@@ -238,7 +223,7 @@ req = operations.GetSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='doloribus',
+    supplier_id='rerum',
 )
 
 res = s.suppliers.get_attachment(req)
@@ -335,7 +320,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='molestias',
+    query='dolor',
 )
 
 res = s.suppliers.list(req)
@@ -381,7 +366,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='distinctio',
+    supplier_id='ex',
 )
 
 res = s.suppliers.list_attachments(req)
@@ -432,43 +417,78 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Lake Lukas',
-                country='Hungary',
-                line1='harum',
-                line2='placeat',
-                postal_code='74922-2111',
-                region='voluptates',
-                type=shared.AddressType.BILLING,
+                city='South Jeanette',
+                country='Palau',
+                line1='eius',
+                line2='praesentium',
+                postal_code='05722',
+                region='quam',
+                type=shared.AddressType.UNKNOWN,
+            ),
+            shared.Addressesitems(
+                city='Alexanderville',
+                country='Martinique',
+                line1='aliquam',
+                line2='deleniti',
+                postal_code='14770-2749',
+                region='possimus',
+                type=shared.AddressType.UNKNOWN,
+            ),
+            shared.Addressesitems(
+                city='West Solonboro',
+                country='Jordan',
+                line1='corrupti',
+                line2='iusto',
+                postal_code='65588',
+                region='in',
+                type=shared.AddressType.UNKNOWN,
+            ),
+            shared.Addressesitems(
+                city='Christiansenhaven',
+                country='Eritrea',
+                line1='est',
+                line2='repellat',
+                postal_code='03567',
+                region='magni',
+                type=shared.AddressType.DELIVERY,
             ),
         ],
-        contact_name='mollitia',
-        default_currency='veniam',
-        email_address='at',
-        id='ee1acd72-a899-481b-98fe-682e1c2dbe23',
+        contact_name='doloremque',
+        default_currency='sapiente',
+        email_address='sit',
+        id='f58c3b87-b470-440d-8d98-e9d82c5e306f',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='voluptatum',
+        registration_number='molestiae',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.ACTIVE,
+        status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "magnam": {
-                    "facere": 'beatae',
-                    "consequuntur": 'sed',
+                "quisquam": {
+                    "voluptates": 'cum',
+                    "consequatur": 'eos',
+                    "totam": 'ea',
+                    "pariatur": 'alias',
+                },
+                "distinctio": {
+                    "aliquam": 'adipisci',
+                    "harum": 'veritatis',
+                    "quas": 'id',
+                    "expedita": 'ipsum',
                 },
             },
         ),
-        supplier_name='minus',
-        tax_number='provident',
+        supplier_name='molestiae',
+        tax_number='corrupti',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='doloribus',
-    timeout_in_minutes=396101,
+    supplier_id='sapiente',
+    timeout_in_minutes=161205,
 )
 
 res = s.suppliers.update(req)

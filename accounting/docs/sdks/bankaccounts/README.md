@@ -38,28 +38,28 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='minima',
-        account_number='excepturi',
-        account_type=shared.BankAccountBankAccountType.UNKNOWN,
-        available_balance=4386.01,
-        balance=6342.74,
-        currency='EUR',
-        i_ban='sapiente',
-        id='1a3a2fa9-4677-4392-91aa-52c3f5ad019d',
-        institution='laborum',
+        account_name='accusantium',
+        account_number='iure',
+        account_type=shared.BankAccountBankAccountType.CREDIT,
+        available_balance=9883.74,
+        balance=9589.5,
+        currency='GBP',
+        i_ban='mollitia',
+        id='3a2fa946-7739-4251-aa52-c3f5ad019da1',
+        institution='reiciendis',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='reiciendis',
-        overdraft_limit=9764.6,
-        sort_code='vero',
+        nominal_code='vero',
+        overdraft_limit=4686.51,
+        sort_code='praesentium',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=509624,
+    timeout_in_minutes=55714,
 )
 
 res = s.bank_accounts.create(req)
@@ -105,7 +105,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBankAccountRequest(
-    account_id='voluptatibus',
+    account_id='omnis',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -205,7 +205,7 @@ req = operations.ListBankAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsa',
+    query='voluptate',
 )
 
 res = s.bank_accounts.list(req)
@@ -254,29 +254,29 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='omnis',
-        account_number='voluptate',
-        account_type=shared.BankAccountBankAccountType.DEBIT,
-        available_balance=199.87,
-        balance=391.87,
-        currency='USD',
-        i_ban='ut',
-        id='f15471b5-e6e1-43b9-9d48-8e1e91e450ad',
-        institution='explicabo',
+        account_name='cum',
+        account_number='perferendis',
+        account_type=shared.BankAccountBankAccountType.UNKNOWN,
+        available_balance=4417.11,
+        balance=2828.07,
+        currency='EUR',
+        i_ban='dicta',
+        id='5471b5e6-e13b-499d-888e-1e91e450ad2a',
+        institution='distinctio',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='distinctio',
-        overdraft_limit=8413.86,
-        sort_code='labore',
+        nominal_code='labore',
+        overdraft_limit=2647.3,
+        sort_code='qui',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
-    bank_account_id='qui',
+    bank_account_id='cupiditate',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=397821,
+    timeout_in_minutes=552822,
 )
 
 res = s.bank_accounts.update(req)

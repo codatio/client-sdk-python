@@ -34,7 +34,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetSalesOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    sales_order_id='officia',
+    sales_order_id='sint',
 )
 
 res = s.sales_orders.get(req)
@@ -82,7 +82,7 @@ req = operations.ListSalesOrdersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='mollitia',
+    query='sint',
 )
 
 res = s.sales_orders.list(req)
