@@ -18,7 +18,8 @@ src/codatbankfeeds/models/operations/create_bank_transactions.py
 src/codatbankfeeds/models/operations/get_create_bank_transactions_model.py
 src/codatbankfeeds/models/operations/list_bank_account_transactions.py
 src/codatbankfeeds/models/operations/create_bank_feed.py
-src/codatbankfeeds/models/operations/get_bank_feeds.py
+src/codatbankfeeds/models/operations/list_bank_feeds.py
+src/codatbankfeeds/models/operations/put_bank_feed.py
 src/codatbankfeeds/models/operations/update_bank_feed.py
 src/codatbankfeeds/models/operations/create_company.py
 src/codatbankfeeds/models/operations/delete_company.py
@@ -89,8 +90,10 @@ docs/models/operations/listbankaccounttransactions409applicationjson.md
 docs/models/operations/listbankaccounttransactionsresponse.md
 docs/models/operations/createbankfeedrequest.md
 docs/models/operations/createbankfeedresponse.md
-docs/models/operations/getbankfeedsrequest.md
-docs/models/operations/getbankfeedsresponse.md
+docs/models/operations/listbankfeedsrequest.md
+docs/models/operations/listbankfeedsresponse.md
+docs/models/operations/putbankfeedrequest.md
+docs/models/operations/putbankfeedresponse.md
 docs/models/operations/updatebankfeedrequest.md
 docs/models/operations/updatebankfeedresponse.md
 docs/models/operations/createcompanyresponse.md

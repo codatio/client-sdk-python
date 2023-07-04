@@ -33,7 +33,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateDataConnectionRequest(
     request_body=operations.CreateDataConnectionRequestBody(
-        platform_key='enim',
+        platform_key='facilis',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -159,7 +159,7 @@ req = operations.ListCompanyConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='accusamus',
+    query='perspiciatis',
 )
 
 res = s.connections.list(req)
@@ -183,7 +183,9 @@ if res.connections is not None:
 
 ## proxy
 
-A proxy or passthrough endpoint used to query unsupported third party endpoints.
+﻿The *Proxy* endpoint can be used to generate credentials from QuickBooks Online for authentication of the Bank Feed in their portal.
+
+See the example provided for the `endpoint` query parameter when generating credentials for QuickBooks Online.
 
 ### Example Usage
 
@@ -240,7 +242,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.UnlinkConnectionRequest(
     request_body=operations.UnlinkConnectionRequestBody(
-        status='delectus',
+        status='voluptatem',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

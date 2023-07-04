@@ -184,7 +184,9 @@ class Connections:
     
     def proxy(self, request: operations.ProxyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ProxyResponse:
         r"""Proxy
-        A proxy or passthrough endpoint used to query unsupported third party endpoints.
+        The *Proxy* endpoint can be used to generate credentials from QuickBooks Online for authentication of the Bank Feed in their portal.
+        
+        See the example provided for the `endpoint` query parameter when generating credentials for QuickBooks Online.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -201,7 +203,7 @@ class Connections:
             retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
-            return client.request('POST', url, params=query_params, headers=headers)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
