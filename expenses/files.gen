@@ -18,6 +18,7 @@ src/codatsyncexpenses/models/operations/get_company_configuration.py
 src/codatsyncexpenses/models/operations/save_company_configuration.py
 src/codatsyncexpenses/models/operations/create_partner_expense_connection.py
 src/codatsyncexpenses/models/operations/create_expense_dataset.py
+src/codatsyncexpenses/models/operations/update_expense_dataset.py
 src/codatsyncexpenses/models/operations/upload_attachment.py
 src/codatsyncexpenses/models/operations/get_mapping_options.py
 src/codatsyncexpenses/models/operations/intiate_sync.py
@@ -41,6 +42,7 @@ src/codatsyncexpenses/models/shared/createexpenserequest.py
 src/codatsyncexpenses/models/shared/expensetransaction.py
 src/codatsyncexpenses/models/shared/expensetransactionline.py
 src/codatsyncexpenses/models/shared/recordref.py
+src/codatsyncexpenses/models/shared/updateexpenserequest.py
 src/codatsyncexpenses/models/shared/attachment.py
 src/codatsyncexpenses/models/shared/mappingoptions.py
 src/codatsyncexpenses/models/shared/trackingcategorymappinginfo.py
@@ -75,6 +77,9 @@ docs/models/operations/createpartnerexpenseconnectionrequest.md
 docs/models/operations/createpartnerexpenseconnectionresponse.md
 docs/models/operations/createexpensedatasetrequest.md
 docs/models/operations/createexpensedatasetresponse.md
+docs/models/operations/updateexpensedatasetrequest.md
+docs/models/operations/updateexpensedataset202applicationjson.md
+docs/models/operations/updateexpensedatasetresponse.md
 docs/models/operations/uploadattachmentrequestbody.md
 docs/models/operations/uploadattachmentrequest.md
 docs/models/operations/uploadattachmentresponse.md
@@ -109,6 +114,7 @@ docs/models/shared/expensetransactiontype.md
 docs/models/shared/expensetransaction.md
 docs/models/shared/expensetransactionline.md
 docs/models/shared/recordref.md
+docs/models/shared/updateexpenserequest.md
 docs/models/shared/attachment.md
 docs/models/shared/mappingoptions.md
 docs/models/shared/trackingcategorymappinginfo.md
