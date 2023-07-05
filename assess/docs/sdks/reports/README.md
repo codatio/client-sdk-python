@@ -18,7 +18,9 @@ Data integrity is important
 * [~~get_enhanced_financial_metrics~~](#get_enhanced_financial_metrics) - List financial metrics :warning: **Deprecated**
 * [get_enhanced_invoices_report](#get_enhanced_invoices_report) - Get enhanced invoices report
 * [~~get_enhanced_profit_and_loss~~](#get_enhanced_profit_and_loss) - Get enhanced profit and loss report :warning: **Deprecated**
+* [get_loan_summary](#get_loan_summary) - Get enhanced loan summaries
 * [get_recurring_revenue_metrics](#get_recurring_revenue_metrics) - Get key subscription revenue metrics
+* [list_loan_transactions](#list_loan_transactions) - List enhanced loan transactions
 * [request_recurring_revenue_metrics](#request_recurring_revenue_metrics) - Generate key subscription revenue metrics
 
 ## get_accounts_for_enhanced_balance_sheet
@@ -558,6 +560,45 @@ if res.report is not None:
 **[operations.GetEnhancedProfitAndLossResponse](../../models/operations/getenhancedprofitandlossresponse.md)**
 
 
+## get_loan_summary
+
+Get enhanced loan summaries
+
+### Example Usage
+
+```python
+import codatassess
+from codatassess.models import operations
+
+s = codatassess.CodatAssess(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetLoanSummaryRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+)
+
+res = s.reports.get_loan_summary(req)
+
+if res.loan_summary is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.GetLoanSummaryRequest](../../models/operations/getloansummaryrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
+
+
+### Response
+
+**[operations.GetLoanSummaryResponse](../../models/operations/getloansummaryresponse.md)**
+
+
 ## get_recurring_revenue_metrics
 
 Gets key metrics for subscription revenue.
@@ -596,6 +637,46 @@ if res.report is not None:
 ### Response
 
 **[operations.GetRecurringRevenueMetricsResponse](../../models/operations/getrecurringrevenuemetricsresponse.md)**
+
+
+## list_loan_transactions
+
+List enhanced loan transactions
+
+### Example Usage
+
+```python
+import codatassess
+from codatassess.models import operations
+
+s = codatassess.CodatAssess(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.ListLoanTransactionsRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.ListLoanTransactionsSourceType.BANKING,
+)
+
+res = s.reports.list_loan_transactions(req)
+
+if res.loan_transactions is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.ListLoanTransactionsRequest](../../models/operations/listloantransactionsrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
+
+
+### Response
+
+**[operations.ListLoanTransactionsResponse](../../models/operations/listloantransactionsresponse.md)**
 
 
 ## request_recurring_revenue_metrics
