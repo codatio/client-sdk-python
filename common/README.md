@@ -80,6 +80,11 @@ if res.company is not None:
 * [update_profile](docs/sdks/settings/README.md#update_profile) - Update profile
 * [update_sync_settings](docs/sdks/settings/README.md#update_sync_settings) - Update all sync settings
 
+### [supplemental_data](docs/sdks/supplementaldata/README.md)
+
+* [configure](docs/sdks/supplementaldata/README.md#configure) - Configure
+* [get_configuration](docs/sdks/supplementaldata/README.md#get_configuration) - Get configuration
+
 ### [webhooks](docs/sdks/webhooks/README.md)
 
 * [create](docs/sdks/webhooks/README.md#create) - Create webhook

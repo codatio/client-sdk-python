@@ -8,6 +8,7 @@ from .push_data import PushData
 from .refresh_data import RefreshData
 from .sdkconfiguration import SDKConfiguration
 from .settings import Settings
+from .supplemental_data import SupplementalData
 from .webhooks import Webhooks
 from codatcommon import utils
 from codatcommon.models import shared
@@ -34,6 +35,8 @@ class CodatCommon:
     r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
     settings: Settings
     r"""Manage your Codat instance."""
+    supplemental_data: SupplementalData
+    r"""View and configure supplemental data for supported data types."""
     webhooks: Webhooks
     r"""Manage webhooks, rules, and events."""
 
@@ -79,5 +82,6 @@ class CodatCommon:
         self.push_data = PushData(self.sdk_configuration)
         self.refresh_data = RefreshData(self.sdk_configuration)
         self.settings = Settings(self.sdk_configuration)
+        self.supplemental_data = SupplementalData(self.sdk_configuration)
         self.webhooks = Webhooks(self.sdk_configuration)
     
