@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import paymentmethodstatus as shared_paymentmethodstatus
+from ..shared import supplementaldata as shared_supplementaldata
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -24,5 +25,10 @@ class PaymentMethod:
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     status: Optional[shared_paymentmethodstatus.PaymentMethodStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Status of the Payment Method"""
+    supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    r"""Supplemental data is additional data you can include in our standard data types.
+    
+    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/additional-data) about supplemental data.
+    """
     
 
