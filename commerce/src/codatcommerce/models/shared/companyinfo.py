@@ -5,7 +5,6 @@ import dataclasses
 from ..shared import accountbalance as shared_accountbalance
 from ..shared import address as shared_address
 from ..shared import phonenumber as shared_phonenumber
-from ..shared import supplementaldata as shared_supplementaldata
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -88,11 +87,6 @@ class CompanyInfo:
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     source_urls: Optional[dict[str, str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceUrls'), 'exclude': lambda f: f is None }})
     r"""URL addresses for the originating system. For example, potential use cases include 'deeplinking' to the originating system"""
-    supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
-    r"""Supplemental data is additional data you can include in our standard data types.
-    
-    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/additional-data) about supplemental data.
-    """
     web_links: Optional[list[CompanyInfoWeblink]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webLinks'), 'exclude': lambda f: f is None }})
     r"""Weblinks associated with the company"""
     

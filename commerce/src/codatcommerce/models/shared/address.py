@@ -5,20 +5,7 @@ import dataclasses
 from ..shared import addresstype as shared_addresstype
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Any, Optional
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class AddressSupplementalData:
-    r"""Supplemental data is additional data you can include in our standard data types.
-    
-    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/additional-data) about supplemental data.
-    """
-    content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})
-    
-
+from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -37,11 +24,6 @@ class Address:
     r"""The postal (or zip) code for the address"""
     region: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('region'), 'exclude': lambda f: f is None }})
     r"""The fourth line of the address, or region"""
-    supplemental_data: Optional[AddressSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
-    r"""Supplemental data is additional data you can include in our standard data types.
-    
-    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/additional-data) about supplemental data.
-    """
     type: Optional[shared_addresstype.AddressType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the address"""
     

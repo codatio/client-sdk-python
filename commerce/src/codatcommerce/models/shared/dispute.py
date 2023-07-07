@@ -3,7 +3,6 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import disputestatus as shared_disputestatus
-from ..shared import supplementaldata as shared_supplementaldata
 from ..shared import transactionsourceref as shared_transactionsourceref
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -84,11 +83,6 @@ class Dispute:
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     status: Optional[shared_disputestatus.DisputeStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Current status of the dispute"""
-    supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
-    r"""Supplemental data is additional data you can include in our standard data types.
-    
-    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/additional-data) about supplemental data.
-    """
     total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
     r"""Total transaction amount that is under dispute."""
     
