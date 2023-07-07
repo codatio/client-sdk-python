@@ -15,11 +15,15 @@ class BillCreditNotes:
     
     def create(self, request: operations.CreateBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillCreditNoteResponse:
         r"""Create bill credit note
-        Posts a new billCreditNote to the accounting package for a given company.
+        The *Create bill credit note* endpoint creates a new [bill credit note](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) for a given company's connection.
+        
+        [Bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) are issued by a supplier for the purpose of recording credit.
+        
+        **Integration-specific behaviour**
         
         Required data may vary by integration. To see what data to post, first call [Get create/update bill credit note model](https://docs.codat.io/accounting-api#/operations/get-create-update-billCreditNotes-model).
         
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) to see which integrations support this endpoint.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -64,7 +68,13 @@ class BillCreditNotes:
     
     def get(self, request: operations.GetBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillCreditNoteResponse:
         r"""Get bill credit note
-        Gets a single billCreditNote corresponding to the given ID.
+        The *Get bill credit note* endpoint returns a single bill credit note for a given billCreditNoteId.
+        
+        [Bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) are issued by a supplier for the purpose of recording credit.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support getting a specific bill credit note.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -109,11 +119,15 @@ class BillCreditNotes:
     
     def get_create_update_model(self, request: operations.GetCreateUpdateBillCreditNotesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBillCreditNotesModelResponse:
         r"""Get create/update bill credit note model
-        Get create/update bill credit note model.
+        The *Get create/update bill credit note model* endpoint returns the expected data for the request payload when creating and updating a [bill credit note](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) for a given company and integration.
         
-        > **Supported Integrations**
-        > 
-        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support creating and updating bill credit notes.
+        [Bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) are issued by a supplier for the purpose of recording credit.
+        
+        **Integration-specific behaviour**
+        
+        See the *response examples* for integration-specific indicative models.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support creating and updating a bill credit note.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -154,7 +168,11 @@ class BillCreditNotes:
     
     def list(self, request: operations.ListBillCreditNotesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillCreditNotesResponse:
         r"""List bill credit notes
-        Gets a list of all bill credit notes for a company, with pagination.
+        The *List bill credit notes* endpoint returns a list of [bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) for a given company's connection.
+        
+        [Bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) are issued by a supplier for the purpose of recording credit.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -200,13 +218,15 @@ class BillCreditNotes:
     
     def update(self, request: operations.UpdateBillCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBillCreditNoteResponse:
         r"""Update bill credit note
-        Posts an updated billCreditNote to the accounting package for a given company.
+        The *Update bill credit note* endpoint updates an existing [bill credit note](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) for a given company's connection.
+        
+        [Bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) are issued by a supplier for the purpose of recording credit.
+        
+        **Integration-specific behaviour**
         
         Required data may vary by integration. To see what data to post, first call [Get create/update bill credit note model](https://docs.codat.io/accounting-api#/operations/get-create-update-billCreditNotes-model).
         
-        > **Supported Integrations**
-        > 
-        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support updating bill credit notes.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

@@ -15,11 +15,15 @@ class Customers:
     
     def create(self, request: operations.CreateCustomerRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCustomerResponse:
         r"""Create customer
-        Posts an individual customer for a given company.
+        The *Create customer* endpoint creates a new [customer](https://docs.codat.io/accounting-api#/schemas/Customer) for a given company's connection.
+        
+        [Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+        
+        **Integration-specific behaviour**
         
         Required data may vary by integration. To see what data to post, first call [Get create/update customer model](https://docs.codat.io/accounting-api#/operations/get-create-update-customers-model).
         
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) to see which integrations support this endpoint.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -64,7 +68,11 @@ class Customers:
     
     def download_attachment(self, request: operations.DownloadCustomerAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadCustomerAttachmentResponse:
         r"""Download customer attachment
-        Download customer attachment.
+        The *Download customer attachment* endpoint downloads a specific attachment for a given `customerId` and `attachmentId`.
+        
+        [Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support downloading a customer attachment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -104,7 +112,13 @@ class Customers:
     
     def get(self, request: operations.GetCustomerRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCustomerResponse:
         r"""Get customer
-        Gets a single customer corresponding to the given ID.
+        The *Get customer* endpoint returns a single customer for a given customerId.
+        
+        [Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support getting a specific customer.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -149,7 +163,11 @@ class Customers:
     
     def get_attachment(self, request: operations.GetCustomerAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCustomerAttachmentResponse:
         r"""Get customer attachment
-        Get  customer attachment.
+        The *Get customer attachment* endpoint returns a specific attachment for a given `customerId` and `attachmentId`.
+        
+        [Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support getting a customer attachment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -190,13 +208,15 @@ class Customers:
     
     def get_create_update_model(self, request: operations.GetCreateUpdateCustomersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateCustomersModelResponse:
         r"""Get create/update customer model
-        Get create/update customer model. Returns the expected data for the request payload.
+        The *Get create/update customer model* endpoint returns the expected data for the request payload when creating and updating a [customer](https://docs.codat.io/accounting-api#/schemas/Customer) for a given company and integration.
         
-        See the examples for integration-specific indicative models.
+        [Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
         
-        > **Supported Integrations**
-        > 
-        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating and updating customers.
+        **Integration-specific behaviour**
+        
+        See the *response examples* for integration-specific indicative models.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating and updating a customer.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -237,7 +257,11 @@ class Customers:
     
     def list(self, request: operations.ListCustomersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCustomersResponse:
         r"""List customers
-        Gets the latest customers for a company, with pagination.
+        The *List customers* endpoint returns a list of [customers](https://docs.codat.io/accounting-api#/schemas/Customer) for a given company's connection.
+        
+        [Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -283,7 +307,11 @@ class Customers:
     
     def list_attachments(self, request: operations.ListCustomerAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCustomerAttachmentsResponse:
         r"""List customer attachments
-        List customer attachments
+        The *List customer attachments* endpoint returns a list of attachments avialable to download for given `customerId`.
+        
+        [Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support listing customer attachments.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -324,13 +352,15 @@ class Customers:
     
     def update(self, request: operations.UpdateCustomerRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateCustomerResponse:
         r"""Update customer
-        Posts an updated customer for a given company.
+        The *Update customer* endpoint updates an existing [customer](https://docs.codat.io/accounting-api#/schemas/Customer) for a given company's connection.
+        
+        [Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+        
+        **Integration-specific behaviour**
         
         Required data may vary by integration. To see what data to post, first call [Get create/update customer model](https://docs.codat.io/accounting-api#/operations/get-create-update-customers-model).
         
-        > **Supported Integrations**
-        > 
-        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support updating customers.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

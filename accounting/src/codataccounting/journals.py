@@ -15,11 +15,15 @@ class Journals:
     
     def create(self, request: operations.CreateJournalRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateJournalResponse:
         r"""Create journal
-        Posts a new journal to the accounting package for a given company.
+        The *Create journal* endpoint creates a new [journal](https://docs.codat.io/accounting-api#/schemas/Journal) for a given company's connection.
+        
+        [Journals](https://docs.codat.io/accounting-api#/schemas/Journal) are used to record all the financial transactions of a company.
+        
+        **Integration-specific behaviour**
         
         Required data may vary by integration. To see what data to post, first call [Get create journal model](https://docs.codat.io/accounting-api#/operations/get-create-journals-model).
         
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) to see which integrations support this endpoint.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -64,7 +68,13 @@ class Journals:
     
     def get(self, request: operations.GetJournalRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetJournalResponse:
         r"""Get journal
-        Gets a single journal corresponding to the given ID.
+        The *Get journal* endpoint returns a single journal for a given journalId.
+        
+        [Journals](https://docs.codat.io/accounting-api#/schemas/Journal) are used to record all the financial transactions of a company.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support getting a specific journal.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -109,13 +119,15 @@ class Journals:
     
     def get_create_model(self, request: operations.GetCreateJournalsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateJournalsModelResponse:
         r"""Get create journal model
-        Get create journal model. Returns the expected data for the request payload.
+        The *Get create journal model* endpoint returns the expected data for the request payload when creating a [journal](https://docs.codat.io/accounting-api#/schemas/Journal) for a given company and integration.
         
-        See the examples for integration-specific indicative models.
+        [Journals](https://docs.codat.io/accounting-api#/schemas/Journal) are used to record all the financial transactions of a company.
         
-        > **Supported Integrations**
-        > 
-        > Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support creating journals.
+        **Integration-specific behaviour**
+        
+        See the *response examples* for integration-specific indicative models.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support creating a journal.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -156,7 +168,11 @@ class Journals:
     
     def list(self, request: operations.ListJournalsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListJournalsResponse:
         r"""List journals
-        Gets the latest journals for a company, with pagination
+        The *List journals* endpoint returns a list of [journals](https://docs.codat.io/accounting-api#/schemas/Journal) for a given company's connection.
+        
+        [Journals](https://docs.codat.io/accounting-api#/schemas/Journal) are used to record all the financial transactions of a company.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

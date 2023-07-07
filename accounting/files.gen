@@ -39,7 +39,7 @@ src/codataccounting/models/operations/get_account.py
 src/codataccounting/models/operations/get_create_chartofaccounts_model.py
 src/codataccounting/models/operations/list_accounts.py
 src/codataccounting/models/operations/create_bank_transactions.py
-src/codataccounting/models/operations/get_create_bank_account_model.py
+src/codataccounting/models/operations/get_create_bank_transactions_model.py
 src/codataccounting/models/operations/list_bank_account_transactions.py
 src/codataccounting/models/operations/create_bank_account.py
 src/codataccounting/models/operations/get_bank_account.py
@@ -99,7 +99,7 @@ src/codataccounting/models/operations/list_direct_income_attachments.py
 src/codataccounting/models/operations/upload_direct_income_attachment.py
 src/codataccounting/models/operations/create_invoice.py
 src/codataccounting/models/operations/delete_invoice.py
-src/codataccounting/models/operations/download_invoices_attachment.py
+src/codataccounting/models/operations/download_invoice_attachment.py
 src/codataccounting/models/operations/download_invoice_pdf.py
 src/codataccounting/models/operations/get_invoice.py
 src/codataccounting/models/operations/get_invoice_attachment.py
@@ -387,8 +387,8 @@ docs/models/operations/listaccounts409applicationjson.md
 docs/models/operations/listaccountsresponse.md
 docs/models/operations/createbanktransactionsrequest.md
 docs/models/operations/createbanktransactionsresponse.md
-docs/models/operations/getcreatebankaccountmodelrequest.md
-docs/models/operations/getcreatebankaccountmodelresponse.md
+docs/models/operations/getcreatebanktransactionsmodelrequest.md
+docs/models/operations/getcreatebanktransactionsmodelresponse.md
 docs/models/operations/listbankaccounttransactionsrequest.md
 docs/models/operations/listbankaccounttransactions409applicationjson.md
 docs/models/operations/listbankaccounttransactionsresponse.md
@@ -528,8 +528,8 @@ docs/models/operations/createinvoicerequest.md
 docs/models/operations/createinvoiceresponse.md
 docs/models/operations/deleteinvoicerequest.md
 docs/models/operations/deleteinvoiceresponse.md
-docs/models/operations/downloadinvoicesattachmentrequest.md
-docs/models/operations/downloadinvoicesattachmentresponse.md
+docs/models/operations/downloadinvoiceattachmentrequest.md
+docs/models/operations/downloadinvoiceattachmentresponse.md
 docs/models/operations/downloadinvoicepdfrequest.md
 docs/models/operations/downloadinvoicepdfresponse.md
 docs/models/operations/getinvoicerequest.md

@@ -11,7 +11,14 @@ Tax rates
 
 ## get
 
-Gets the specified tax rate for a given company.
+The *Get tax rate* endpoint returns a single tax rate for a given taxRateId.
+
+[Tax rates](https://docs.codat.io/accounting-api#/schemas/TaxRate) are a set of taxes and associated rates within the SMB's accounting package.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=taxRates) for integrations that support getting a specific tax rate.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+
 
 ### Example Usage
 
@@ -27,7 +34,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetTaxRateRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tax_rate_id='iusto',
+    tax_rate_id='asperiores',
 )
 
 res = s.tax_rates.get(req)
@@ -51,7 +58,12 @@ if res.tax_rate is not None:
 
 ## list
 
-Gets the latest tax rates for a given company.
+The *List tax rates* endpoint returns a list of [tax rates](https://docs.codat.io/accounting-api#/schemas/TaxRate) for a given company's connection.
+
+[Tax rates](https://docs.codat.io/accounting-api#/schemas/TaxRate) are a set of taxes and associated rates within the SMB's accounting package.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+    
 
 ### Example Usage
 
@@ -70,7 +82,7 @@ req = operations.ListTaxRatesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='vel',
+    query='quisquam',
 )
 
 res = s.tax_rates.list(req)

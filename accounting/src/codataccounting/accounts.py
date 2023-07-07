@@ -15,7 +15,7 @@ class Accounts:
     
     def create(self, request: operations.CreateAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateAccountResponse:
         r"""Create account
-        The *Create accounts* endpoint creates a new [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given company's connection.
+        The *Create account* endpoint creates a new [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given company's connection.
         
         [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
         
@@ -68,9 +68,11 @@ class Accounts:
     
     def get(self, request: operations.GetAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountResponse:
         r"""Get account
-        The *Get account* endpoint returns a single [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given `accountId`.
+        The *Get account* endpoint returns a single account for a given accountId.
         
         [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+        
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support getting a specific account.
         
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """

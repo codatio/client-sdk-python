@@ -54,14 +54,14 @@ if res.account_transaction is not None:
 
 ### [bank_account_transactions](docs/sdks/bankaccounttransactions/README.md)
 
-* [create](docs/sdks/bankaccounttransactions/README.md#create) - Create bank transactions
-* [get_create_model](docs/sdks/bankaccounttransactions/README.md#get_create_model) - List push options for bank account bank transactions
-* [list](docs/sdks/bankaccounttransactions/README.md#list) - List bank transactions for bank account
+* [create](docs/sdks/bankaccounttransactions/README.md#create) - Create bank account transactions
+* [get_create_model](docs/sdks/bankaccounttransactions/README.md#get_create_model) - Get create bank account transactions model
+* [list](docs/sdks/bankaccounttransactions/README.md#list) - List bank account transactions
 
 ### [bank_accounts](docs/sdks/bankaccounts/README.md)
 
 * [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
-* [~~get~~](docs/sdks/bankaccounts/README.md#get) - Get bank account :warning: **Deprecated**
+* [get](docs/sdks/bankaccounts/README.md#get) - Get bank account
 * [get_create_update_model](docs/sdks/bankaccounts/README.md#get_create_update_model) - Get create/update bank account model
 * [list](docs/sdks/bankaccounts/README.md#list) - List bank accounts
 * [update](docs/sdks/bankaccounts/README.md#update) - Update bank account
@@ -180,7 +180,7 @@ if res.account_transaction is not None:
 ### [payment_methods](docs/sdks/paymentmethods/README.md)
 
 * [get](docs/sdks/paymentmethods/README.md#get) - Get payment method
-* [list](docs/sdks/paymentmethods/README.md#list) - List all payment methods
+* [list](docs/sdks/paymentmethods/README.md#list) - List payment methods
 
 ### [payments](docs/sdks/payments/README.md)
 
