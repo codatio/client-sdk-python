@@ -39,7 +39,7 @@ class ConfigureSupplementalDataRequest:
     data_type: ConfigureSupplementalDataDataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
     r"""Data types that support supplemental data"""
     platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
-    request_body: Optional[dict[str, shared_supplementaldataconfiguration.SupplementalDataConfiguration]] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    supplemental_data_configuration: Optional[shared_supplementaldataconfiguration.SupplementalDataConfiguration] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     r"""The configuration for the specified platform and data type."""
     
 

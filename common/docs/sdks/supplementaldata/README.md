@@ -31,20 +31,22 @@ s = codatcommon.CodatCommon(
 )
 
 req = operations.ConfigureSupplementalDataRequest(
-    request_body={
-        "reiciendis": shared.SupplementalDataConfiguration(
-            data_source='est',
-            pull_data={
-                "laborum": 'dolores',
-                "dolorem": 'corporis',
-                "explicabo": 'nobis',
-            },
-            push_data={
-                "omnis": 'nemo',
-                "minima": 'excepturi',
-            },
-        ),
-    },
+    supplemental_data_configuration=shared.SupplementalDataConfiguration(
+        supplemental_data_config={
+            "reiciendis": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
+                data_source='est',
+                pull_data={
+                    "laborum": 'dolores',
+                    "dolorem": 'corporis',
+                    "explicabo": 'nobis',
+                },
+                push_data={
+                    "omnis": 'nemo',
+                    "minima": 'excepturi',
+                },
+            ),
+        },
+    ),
     data_type=operations.ConfigureSupplementalDataDataType.INVOICES,
     platform_key='accusantium',
 )

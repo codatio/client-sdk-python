@@ -51,7 +51,7 @@ class GetSupplementalDataConfigurationResponse:
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    supplemental_data_configuration: Optional[dict[str, shared_supplementaldataconfiguration.SupplementalDataConfiguration]] = dataclasses.field(default=None)
+    supplemental_data_configuration: Optional[shared_supplementaldataconfiguration.SupplementalDataConfiguration] = dataclasses.field(default=None)
     r"""OK"""
     
 

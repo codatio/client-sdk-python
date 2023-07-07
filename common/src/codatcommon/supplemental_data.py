@@ -26,7 +26,7 @@ class SupplementalData:
         
         url = utils.generate_url(operations.ConfigureSupplementalDataRequest, base_url, '/integrations/{platformKey}/datatypes/{dataType}/supplementalDataConfig', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "supplemental_data_configuration", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -93,7 +93,7 @@ class SupplementalData:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.SupplementalDataConfiguration]])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SupplementalDataConfiguration])
                 res.supplemental_data_configuration = out
         elif http_res.status_code in [401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
