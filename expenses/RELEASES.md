@@ -527,3 +527,83 @@ Based on:
 - Speakeasy CLI 1.48.0 (2.41.1) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.27.1] https://pypi.org/project/codat-sync-for-expenses/0.27.1 - expenses
+
+## 2023-06-20 00:13:59
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.49.0 (2.41.4) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.27.2] https://pypi.org/project/codat-sync-for-expenses/0.27.2 - expenses
+
+## 2023-06-21 00:14:42
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.49.1 (2.41.5) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.27.3] https://pypi.org/project/codat-sync-for-expenses/0.27.3 - expenses
+
+## 2023-06-23 00:17:48
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.50.1 (2.43.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.28.0] https://pypi.org/project/codat-sync-for-expenses/0.28.0 - expenses
+
+## 2023-06-27 00:17:56
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.51.1 (2.50.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.29.0] https://pypi.org/project/codat-sync-for-expenses/0.29.0 - expenses
+
+## 2023-06-29 00:16:50
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.51.3 (2.52.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.30.0] https://pypi.org/project/codat-sync-for-expenses/0.30.0 - expenses
+
+## 2023-07-01 00:18:44
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.52.0 (2.55.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.31.0] https://pypi.org/project/codat-sync-for-expenses/0.31.0 - expenses
+
+## 2023-07-04 00:16:58
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.52.0 (2.55.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.31.1] https://pypi.org/project/codat-sync-for-expenses/0.31.1 - expenses
+
+## 2023-07-06 00:17:28
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.52.2 (2.57.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.32.0] https://pypi.org/project/codat-sync-for-expenses/0.32.0 - expenses
+
+## 2023-07-07 00:16:55
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.53.0 (2.58.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.33.0] https://pypi.org/project/codat-sync-for-expenses/0.33.0 - expenses
+
+## 2023-07-07 09:23:21
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Expenses.yaml
+- Speakeasy CLI 1.53.0 (2.58.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.33.1] https://pypi.org/project/codat-sync-for-expenses/0.33.1 - expenses

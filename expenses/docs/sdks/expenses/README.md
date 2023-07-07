@@ -7,6 +7,7 @@ Create expense datasets and upload receipts.
 ### Available Operations
 
 * [create_expense_dataset](#create_expense_dataset) - Create expense-transactions
+* [update_expense_dataset](#update_expense_dataset) - Update expense-transactions
 * [upload_attachment](#upload_attachment) - Upload attachment
 
 ## create_expense_dataset
@@ -307,6 +308,133 @@ if res.create_expense_response is not None:
 **[operations.CreateExpenseDatasetResponse](../../models/operations/createexpensedatasetresponse.md)**
 
 
+## update_expense_dataset
+
+Update an expense transaction
+
+### Example Usage
+
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import operations, shared
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.UpdateExpenseDatasetRequest(
+    update_expense_request=shared.UpdateExpenseRequest(
+        currency='GBP',
+        issue_date='2022-06-28T00:00:00.000Z',
+        lines=[
+            shared.ExpenseTransactionLine(
+                account_ref=shared.RecordRef(
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
+                net_amount=110.42,
+                tax_amount=14.43,
+                tax_rate_ref=shared.RecordRef(
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
+                tracking_refs=[
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                ],
+            ),
+            shared.ExpenseTransactionLine(
+                account_ref=shared.RecordRef(
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
+                net_amount=110.42,
+                tax_amount=14.43,
+                tax_rate_ref=shared.RecordRef(
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
+                tracking_refs=[
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                ],
+            ),
+            shared.ExpenseTransactionLine(
+                account_ref=shared.RecordRef(
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
+                net_amount=110.42,
+                tax_amount=14.43,
+                tax_rate_ref=shared.RecordRef(
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
+                tracking_refs=[
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                ],
+            ),
+            shared.ExpenseTransactionLine(
+                account_ref=shared.RecordRef(
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
+                net_amount=110.42,
+                tax_amount=14.43,
+                tax_rate_ref=shared.RecordRef(
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
+                tracking_refs=[
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                    shared.RecordRef(
+                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                    ),
+                ],
+            ),
+        ],
+        merchant_name='Amazon UK',
+        notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
+        type='recusandae',
+    ),
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
+)
+
+res = s.expenses.update_expense_dataset(req)
+
+if res.update_expense_dataset_202_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.UpdateExpenseDatasetRequest](../../models/operations/updateexpensedatasetrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
+
+
+### Response
+
+**[operations.UpdateExpenseDatasetResponse](../../models/operations/updateexpensedatasetresponse.md)**
+
+
 ## upload_attachment
 
 Creates an attachment in the accounting software against the given transactionId
@@ -325,8 +453,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UploadAttachmentRequest(
     request_body=operations.UploadAttachmentRequestBody(
-        content='placeat'.encode(),
-        request_body='voluptatum',
+        content='temporibus'.encode(),
+        request_body='ab',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',

@@ -49,6 +49,7 @@ if res.company_configuration is not None:
 ### [expenses](docs/sdks/expenses/README.md)
 
 * [create_expense_dataset](docs/sdks/expenses/README.md#create_expense_dataset) - Create expense-transactions
+* [update_expense_dataset](docs/sdks/expenses/README.md#update_expense_dataset) - Update expense-transactions
 * [upload_attachment](docs/sdks/expenses/README.md#upload_attachment) - Upload attachment
 
 ### [mapping_options](docs/sdks/mappingoptions/README.md)
