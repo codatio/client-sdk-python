@@ -15,7 +15,9 @@ class Connections:
     
     def create(self, request: operations.CreateDataConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDataConnectionResponse:
         r"""Create connection
-        Create a data connection for a company
+        Creates a connection for the company by providing a valid `platformKey`. 
+        
+        Use the [List Integrations](https://docs.codat.io/codat-api#/operations/list-integrations) endpoint to access valid platform keys.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -60,7 +62,7 @@ class Connections:
     def delete(self, request: operations.DeleteCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyConnectionResponse:
         r"""Delete connection
         Revoke and remove a connection from a company.
-        This operation is not reversible - the end user would need to reauthorize a new data connection if you wish to view new data for this company.
+        This operation is not reversible. The end user would need to reauthorize a new data connection if you wish to view new data for this company.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -99,7 +101,7 @@ class Connections:
     
     def get(self, request: operations.GetCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyConnectionResponse:
         r"""Get connection
-        Get a single connection for a company
+        Returns a specific connection for a company when valid identifiers are provided. If the identifiers are for a deleted company and/or connection, a not found response is returned.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -140,7 +142,7 @@ class Connections:
     
     def list(self, request: operations.ListCompanyConnectionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompanyConnectionsResponse:
         r"""List connections
-        List the connections for a company
+        List the connections for a company.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -182,7 +184,9 @@ class Connections:
     
     def proxy(self, request: operations.ProxyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ProxyResponse:
         r"""Proxy
-        A proxy or passthrough endpoint used to query unsupported third party endpoints.
+        The *Proxy* endpoint can be used to generate credentials from QuickBooks Online for authentication of the Bank Feed in their portal.
+        
+        See the example provided for the `endpoint` query parameter when generating credentials for QuickBooks Online.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -199,7 +203,7 @@ class Connections:
             retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
-            return client.request('POST', url, params=query_params, headers=headers)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

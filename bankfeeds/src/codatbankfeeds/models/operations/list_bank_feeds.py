@@ -10,23 +10,22 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class CreateBankFeedRequest:
+class ListBankFeedsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    bank_feed_account: Optional[shared_bankfeedaccount.BankFeedAccount] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 
 
 
 @dataclasses.dataclass
-class CreateBankFeedResponse:
+class ListBankFeedsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    bank_feed_account: Optional[shared_bankfeedaccount.BankFeedAccount] = dataclasses.field(default=None)
+    bank_feed_accounts: Optional[list[shared_bankfeedaccount.BankFeedAccount]] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
+    r"""Your API request was not properly authorized."""
     
 

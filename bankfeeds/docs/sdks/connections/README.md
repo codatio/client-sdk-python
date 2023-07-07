@@ -15,7 +15,9 @@ Manage your companies' data connections.
 
 ## create
 
-Create a data connection for a company
+﻿Creates a connection for the company by providing a valid `platformKey`. 
+
+Use the [List Integrations](https://docs.codat.io/codat-api#/operations/list-integrations) endpoint to access valid platform keys. 
 
 ### Example Usage
 
@@ -31,7 +33,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateDataConnectionRequest(
     request_body=operations.CreateDataConnectionRequestBody(
-        platform_key='quaerat',
+        platform_key='facilis',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -57,8 +59,8 @@ if res.connection is not None:
 
 ## delete
 
-Revoke and remove a connection from a company.
-This operation is not reversible - the end user would need to reauthorize a new data connection if you wish to view new data for this company.
+﻿Revoke and remove a connection from a company.
+This operation is not reversible. The end user would need to reauthorize a new data connection if you wish to view new data for this company.
 
 ### Example Usage
 
@@ -98,7 +100,7 @@ if res.status_code == 200:
 
 ## get
 
-Get a single connection for a company
+﻿Returns a specific connection for a company when valid identifiers are provided. If the identifiers are for a deleted company and/or connection, a not found response is returned.
 
 ### Example Usage
 
@@ -138,7 +140,7 @@ if res.connection is not None:
 
 ## list
 
-List the connections for a company
+﻿List the connections for a company.
 
 ### Example Usage
 
@@ -157,7 +159,7 @@ req = operations.ListCompanyConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quos',
+    query='perspiciatis',
 )
 
 res = s.connections.list(req)
@@ -181,7 +183,9 @@ if res.connections is not None:
 
 ## proxy
 
-A proxy or passthrough endpoint used to query unsupported third party endpoints.
+﻿The *Proxy* endpoint can be used to generate credentials from QuickBooks Online for authentication of the Bank Feed in their portal.
+
+See the example provided for the `endpoint` query parameter when generating credentials for QuickBooks Online.
 
 ### Example Usage
 
@@ -222,7 +226,7 @@ if res.proxy_response is not None:
 
 ## unlink_connection
 
-This allows you to deauthorize a connection, without deleting it from Codat. This means you can still view any data that has previously been pulled into Codat, and also lets you re-authorize in future if your customer wishes to resume sharing their data.
+﻿This allows you to deauthorize a connection, without deleting it from Codat. This means you can still view any data that has previously been pulled into Codat, and also lets you re-authorize in future if your customer wishes to resume sharing their data.
 
 ### Example Usage
 
@@ -238,7 +242,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.UnlinkConnectionRequest(
     request_body=operations.UnlinkConnectionRequestBody(
-        status='aliquid',
+        status='voluptatem',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

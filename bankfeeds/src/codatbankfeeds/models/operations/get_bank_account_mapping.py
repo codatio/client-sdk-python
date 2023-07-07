@@ -3,16 +3,14 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import pushoption as shared_pushoption
+from ..shared import bankfeedmappings as shared_bankfeedmappings
 from ..shared import schema as shared_schema
 from typing import Optional
 
 
 
 @dataclasses.dataclass
-class GetCreateBankAccountModelRequest:
-    account_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'accountId', 'style': 'simple', 'explode': False }})
-    r"""Unique identifier for an account"""
+class GetBankAccountMappingRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     
@@ -21,10 +19,10 @@ class GetCreateBankAccountModelRequest:
 
 
 @dataclasses.dataclass
-class GetCreateBankAccountModelResponse:
+class GetBankAccountMappingResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    push_option: Optional[shared_pushoption.PushOption] = dataclasses.field(default=None)
+    bank_feed_mappings: Optional[shared_bankfeedmappings.BankFeedMappings] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)

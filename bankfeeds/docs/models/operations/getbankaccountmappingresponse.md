@@ -1,12 +1,12 @@
-# GetCreateBankAccountModelResponse
+# GetBankAccountMappingResponse
 
 
 ## Fields
 
 | Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `bank_feed_mappings`                                                                  | [Optional[shared.BankFeedMappings]](../../models/shared/bankfeedmappings.md)          | :heavy_minus_sign:                                                                    | Success                                                                               |
 | `content_type`                                                                        | *str*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `push_option`                                                                         | [Optional[shared.PushOption]](../../models/shared/pushoption.md)                      | :heavy_minus_sign:                                                                    | Success                                                                               |
 | `status_code`                                                                         | *int*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
 | `raw_response`                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response) | :heavy_minus_sign:                                                                    | N/A                                                                                   |
 | `schema`                                                                              | [Optional[shared.Schema]](../../models/shared/schema.md)                              | :heavy_minus_sign:                                                                    | Your API request was not properly authorized.                                         |

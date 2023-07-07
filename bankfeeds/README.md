@@ -22,40 +22,19 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.CreateBankTransactionsRequest(
-    create_bank_transactions=shared.CreateBankTransactions(
-        account_id='corrupti',
-        transactions=[
-            shared.CreateBankAccountTransaction(
-                amount=7151.9,
-                date_='2022-10-23T00:00:00.000Z',
-                description='unde',
-                id='d8d69a67-4e0f-4467-8c87-96ed151a05df',
-            ),
-            shared.CreateBankAccountTransaction(
-                amount=7781.57,
-                date_='2022-10-23T00:00:00.000Z',
-                description='at',
-                id='df7cc78c-a1ba-4928-bc81-6742cb739205',
-            ),
-            shared.CreateBankAccountTransaction(
-                amount=6176.36,
-                date_='2022-10-23T00:00:00.000Z',
-                description='iste',
-                id='396fea75-96eb-410f-aaa2-352c5955907a',
-            ),
-        ],
+req = operations.CreateBankAccountMappingRequest(
+    bank_feed_account_mapping=shared.BankFeedAccountMapping(
+        feed_start_date='2022-10-23T00:00:00.000Z',
+        source_account_id='provident',
+        target_account_id='distinctio',
     ),
-    account_id='EILBDVJVNUAGVKRQ',
-    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=958950,
 )
 
-res = s.bank_account_transactions.create(req)
+res = s.bank_account_mapping.create(req)
 
-if res.create_bank_transactions_response is not None:
+if res.account_mapping_result is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
@@ -64,17 +43,23 @@ if res.create_bank_transactions_response is not None:
 ## Available Resources and Operations
 
 
+### [bank_account_mapping](docs/sdks/bankaccountmapping/README.md)
+
+* [create](docs/sdks/bankaccountmapping/README.md#create) - Create bank feed bank account mapping
+* [get](docs/sdks/bankaccountmapping/README.md#get) - List bank feed account mappings
+
 ### [bank_account_transactions](docs/sdks/bankaccounttransactions/README.md)
 
-* [create](docs/sdks/bankaccounttransactions/README.md#create) - Create bank transactions
-* [get](docs/sdks/bankaccounttransactions/README.md#get) - List push options for bank account bank transactions
-* [list](docs/sdks/bankaccounttransactions/README.md#list) - List bank transactions for bank account
+* [create](docs/sdks/bankaccounttransactions/README.md#create) - Create bank account transactions
+* [get_create_model](docs/sdks/bankaccounttransactions/README.md#get_create_model) - Get create bank account transactions model
+* [list](docs/sdks/bankaccounttransactions/README.md#list) - List bank account transactions
 
 ### [bank_feed_accounts](docs/sdks/bankfeedaccounts/README.md)
 
-* [create](docs/sdks/bankfeedaccounts/README.md#create) - Create bank feed bank accounts
-* [get](docs/sdks/bankfeedaccounts/README.md#get) - List bank feed bank accounts
-* [update](docs/sdks/bankfeedaccounts/README.md#update) - Update bank feed bank account
+* [create](docs/sdks/bankfeedaccounts/README.md#create) - Create a bank feed bank account
+* [list](docs/sdks/bankfeedaccounts/README.md#list) - List bank feed bank accounts
+* [~~put_bank_feed~~](docs/sdks/bankfeedaccounts/README.md#put_bank_feed) - Create bank feed bank accounts :warning: **Deprecated**
+* [~~update~~](docs/sdks/bankfeedaccounts/README.md#update) - Update bank feed bank account :warning: **Deprecated**
 
 ### [companies](docs/sdks/companies/README.md)
 
