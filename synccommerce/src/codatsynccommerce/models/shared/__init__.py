@@ -42,6 +42,7 @@ from .security import *
 from .sourcetype import *
 from .supportedfeature import *
 from .syncflowurl import *
+from .syncrange import *
 from .syncsummary import *
 from .synctolatestargs import *
 from .taxrateamount import *
@@ -49,4 +50,4 @@ from .taxratemapping import *
 from .updateconnection import *
 from .visibleaccounts import *
 
-__all__ = ["AccountOption","Branding","BrandingButton","BrandingImage","BrandingLogo","Companies","Company","ConfigAccount","Configuration","Connection","ConnectionSourceType","Connections","CreateCompany","Customer","DataConnectionError","DataConnectionStatus","DataTypeFeature","DataTypeFeatureDataType","DateRange","FeatureState","FeatureType","Fees","FeesSupplier","Grouping","GroupingLevels","GroupingPeriod","HalRef","ImageReference","Integration","Integrations","InvoiceLevelSelection","InvoiceLineLevelSelection","InvoiceStatus","Links","Localization","NewPayments","NewTaxRates","Option","Payments","Sales","Security","SourceType","SupportedFeature","SyncFlowURL","SyncSummary","SyncToLatestArgs","TaxRateAmount","TaxRateMapping","UpdateConnection","VisibleAccounts"]
+__all__ = ["AccountOption","Branding","BrandingButton","BrandingImage","BrandingLogo","Companies","Company","ConfigAccount","Configuration","Connection","ConnectionSourceType","Connections","CreateCompany","Customer","DataConnectionError","DataConnectionStatus","DataTypeFeature","DataTypeFeatureDataType","DateRange","FeatureState","FeatureType","Fees","FeesSupplier","Grouping","GroupingLevels","GroupingPeriod","HalRef","ImageReference","Integration","Integrations","InvoiceLevelSelection","InvoiceLineLevelSelection","InvoiceStatus","Links","Localization","NewPayments","NewTaxRates","Option","Payments","Sales","Security","SourceType","SupportedFeature","SyncFlowURL","SyncRange","SyncRangeDateRange","SyncSummary","SyncToLatestArgs","TaxRateAmount","TaxRateMapping","UpdateConnection","VisibleAccounts"]

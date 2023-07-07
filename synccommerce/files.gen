@@ -18,10 +18,10 @@ src/codatsynccommerce/models/operations/list_companies.py
 src/codatsynccommerce/models/operations/list_connections.py
 src/codatsynccommerce/models/operations/update_connection.py
 src/codatsynccommerce/models/operations/get_configuration.py
-src/codatsynccommerce/models/operations/get_sync_status.py
 src/codatsynccommerce/models/operations/set_configuration.py
 src/codatsynccommerce/models/operations/get_integration_branding.py
 src/codatsynccommerce/models/operations/list_integrations.py
+src/codatsynccommerce/models/operations/get_sync_status.py
 src/codatsynccommerce/models/operations/request_sync.py
 src/codatsynccommerce/models/operations/request_sync_for_date_range.py
 src/codatsynccommerce/models/operations/get_config_text_sync_flow.py
@@ -74,6 +74,7 @@ src/codatsynccommerce/models/shared/featurestate.py
 src/codatsynccommerce/models/shared/syncsummary.py
 src/codatsynccommerce/models/shared/daterange.py
 src/codatsynccommerce/models/shared/synctolatestargs.py
+src/codatsynccommerce/models/shared/syncrange.py
 src/codatsynccommerce/models/shared/localization.py
 src/codatsynccommerce/models/shared/syncflowurl.py
 src/codatsynccommerce/models/shared/visibleaccounts.py
@@ -98,14 +99,14 @@ docs/models/operations/updateconnectionrequest.md
 docs/models/operations/updateconnectionresponse.md
 docs/models/operations/getconfigurationrequest.md
 docs/models/operations/getconfigurationresponse.md
-docs/models/operations/getsyncstatusrequest.md
-docs/models/operations/getsyncstatusresponse.md
 docs/models/operations/setconfigurationrequest.md
 docs/models/operations/setconfigurationresponse.md
 docs/models/operations/getintegrationbrandingrequest.md
 docs/models/operations/getintegrationbrandingresponse.md
 docs/models/operations/listintegrationsrequest.md
 docs/models/operations/listintegrationsresponse.md
+docs/models/operations/getsyncstatusrequest.md
+docs/models/operations/getsyncstatusresponse.md
 docs/models/operations/requestsyncrequest.md
 docs/models/operations/requestsyncresponse.md
 docs/models/operations/requestsyncfordaterangerequest.md
@@ -164,6 +165,8 @@ docs/models/shared/featurestate.md
 docs/models/shared/syncsummary.md
 docs/models/shared/daterange.md
 docs/models/shared/synctolatestargs.md
+docs/models/shared/syncrangedaterange.md
+docs/models/shared/syncrange.md
 docs/models/shared/localization.md
 docs/models/shared/syncflowurl.md
 docs/models/shared/visibleaccounts.md

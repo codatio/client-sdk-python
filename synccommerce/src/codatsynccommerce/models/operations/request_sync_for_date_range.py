@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import daterange as shared_daterange
+from ..shared import syncrange as shared_syncrange
 from ..shared import syncsummary as shared_syncsummary
 from typing import Optional
 
@@ -12,7 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class RequestSyncForDateRangeRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    date_range: Optional[shared_daterange.DateRange] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    sync_range: Optional[shared_syncrange.SyncRange] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 

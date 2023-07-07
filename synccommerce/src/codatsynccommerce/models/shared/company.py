@@ -12,7 +12,12 @@ from typing import Optional
 
 @dataclasses.dataclass
 class Company:
-    r"""A company in Codat represent a small or medium sized business, whose data you wish to share"""
+    r"""In Codat, a company represents a business sharing access to their data. Each company can have multiple [connections](https://docs.codat.io/codat-api#/schemas/Connection) to different data sources such as one connection to [Xero](https://docs.codat.io/integrations/accounting/xero/accounting-xero) for accounting data, two connections to [Plaid](https://docs.codat.io/integrations/banking/plaid/banking-plaid) for two bank accounts and a connection to [Zettle](https://docs.codat.io/integrations/commerce/zettle/commerce-zettle) for POS data.
+    
+    Typically each company is one of your customers.
+    
+    When you create a company, you can specify a `name` and we will automatically generate a unique `id` for the company. You can also add a `description` to store any additional information about the company.
+    """
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier for your SMB in Codat."""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
