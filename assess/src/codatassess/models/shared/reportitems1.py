@@ -13,6 +13,7 @@ class ReportItemsLoanTransactionType(str, Enum):
     INVESTMENT = 'Investment'
     REPAYMENT = 'Repayment'
     INTEREST = 'Interest'
+    ACCURED_INTEREST = 'AccuredInterest'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

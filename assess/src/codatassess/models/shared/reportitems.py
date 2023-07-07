@@ -13,7 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class ReportItems:
     balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'exclude': lambda f: f is None }})
-    r"""The total loan investments minus the total loan repayments for that company."""
+    r"""The loan outstanding balance.  This may not equal totalDrawdowns - totalRepayments due to interest which has been accrued."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""The description of the object being referred to. E.g. the account."""
     record_ref: Optional[shared_recordref.RecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
@@ -38,9 +38,9 @@ class ReportItems:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    total_investments: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalInvestments'), 'exclude': lambda f: f is None }})
-    r"""The total loan investments for that company."""
+    total_drawdowns: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalDrawdowns'), 'exclude': lambda f: f is None }})
+    r"""The total loan drawdowns."""
     total_repayments: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalRepayments'), 'exclude': lambda f: f is None }})
-    r"""The total loan repayments for that company."""
+    r"""The total loan repayments which includes capital plus any interest."""
     
 
