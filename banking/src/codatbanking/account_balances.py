@@ -15,7 +15,11 @@ class AccountBalances:
     
     def list(self, request: operations.ListAccountBalancesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountBalancesResponse:
         r"""List account balances
-        Gets a list of balances for a bank account including end-of-day batch balance or running balances per transaction.
+        The *List account balances* endpoint returns a list of [account balances](https://docs.codat.io/banking-api#/schemas/AccountBalance) for a given company's connection.
+        
+        [Account balances](https://docs.codat.io/banking-api#/schemas/AccountBalance) are balances for a bank account, including end-of-day batch balance or running balances per transaction.
+        
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
