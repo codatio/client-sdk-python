@@ -51,7 +51,7 @@ if res.account_mapping_result is not None:
 ### [bank_account_transactions](docs/sdks/bankaccounttransactions/README.md)
 
 * [create](docs/sdks/bankaccounttransactions/README.md#create) - Create bank account transactions
-* [get](docs/sdks/bankaccounttransactions/README.md#get) - Get create bank account transactions model
+* [get_create_model](docs/sdks/bankaccounttransactions/README.md#get_create_model) - Get create bank account transactions model
 * [list](docs/sdks/bankaccounttransactions/README.md#list) - List bank account transactions
 
 ### [bank_feed_accounts](docs/sdks/bankfeedaccounts/README.md)
