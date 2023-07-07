@@ -48,7 +48,6 @@ if res.company is not None:
 ### [configuration](docs/sdks/configuration/README.md)
 
 * [get_configuration](docs/sdks/configuration/README.md#get_configuration) - Retrieve config preferences set for a company.
-* [get_sync_status](docs/sdks/configuration/README.md#get_sync_status) - Get status for a company's syncs
 * [set_configuration](docs/sdks/configuration/README.md#set_configuration) - Create or update configuration.
 
 ### [integrations](docs/sdks/integrations/README.md)
@@ -58,6 +57,7 @@ if res.company is not None:
 
 ### [sync](docs/sdks/sync/README.md)
 
+* [get_sync_status](docs/sdks/sync/README.md#get_sync_status) - Get status for a company's syncs
 * [request_sync](docs/sdks/sync/README.md#request_sync) - Sync new
 * [request_sync_for_date_range](docs/sdks/sync/README.md#request_sync_for_date_range) - Sync range
 
