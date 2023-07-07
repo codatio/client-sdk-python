@@ -42,15 +42,24 @@ from .financialmetrics import *
 from .halref import *
 from .integritystatus import *
 from .invoicestatus import *
+from .itemref import *
 from .links import *
+from .loanref import *
+from .loansummary import *
+from .loansummaryreportinfo import *
+from .loantransactions import *
+from .loantransactionsreportinfo import *
 from .payment import *
 from .periodunit import *
+from .recordref import *
 from .report import *
 from .reportcomponent import *
 from .reportcomponentmeasure import *
 from .reportdimension import *
 from .reporterror import *
 from .reportinfo import *
+from .reportitems import *
+from .reportitems1 import *
 from .reportmeasure import *
 from .schema import *
 from .security import *
@@ -59,4 +68,4 @@ from .status import *
 from .summaries import *
 from .transactioncategory import *
 
-__all__ = ["AccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedWebhookData","AccountCategory","AccountCategoryDeprecated","AccountCategoryLevel","AccountRef","Accounts","BankingTransactionRef","Categories","CategorisedAccount","CategorisedAccounts","ConfirmCategories","ConfirmCategoriesCategories","ConfirmCategoriesCategoriesAccountRef","ConfirmCategory","CustomerRef","DataIntegrityAmounts","DataIntegrityByAmount","DataIntegrityByCount","DataIntegrityConnectionID","DataIntegrityDataType","DataIntegrityDates","DataIntegrityDetails","DataIntegrityMatch","DataIntegrityStatus","DataIntegrityStatusInfo","DataIntegritySummary","DataSource","Details","EnhancedCashFlowItem","EnhancedCashFlowTransaction","EnhancedCashFlowTransactions","EnhancedInvoiceReportItem","EnhancedInvoicesReport","EnhancedInvoicesReportReportItems","EnhancedReport","EnhancedReportAccountCategory","EnhancedReportInfo","EnhancedReportReportItem","ExcelReportType","ExcelStatus","FinancialMetric","FinancialMetricError","FinancialMetricErrorType","FinancialMetricErrors","FinancialMetricErrorsType","FinancialMetricKey","FinancialMetricMetricUnit","FinancialMetricPeriods","FinancialMetricPeriodsErrors","FinancialMetricPeriodsErrorsType","FinancialMetricPeriodsInputs","FinancialMetrics","FinancialMetricsPeriodUnit","HalRef","IntegrityStatus","InvoiceStatus","Links","Payment","PeriodUnit","Report","ReportComponent","ReportComponentMeasure","ReportDimension","ReportDimensionItems","ReportError","ReportInfo","ReportMeasure","Schema","Security","SourceRef","Status","Summaries","TransactionCategory"]
+__all__ = ["AccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedWebhookData","AccountCategory","AccountCategoryDeprecated","AccountCategoryLevel","AccountRef","Accounts","BankingTransactionRef","Categories","CategorisedAccount","CategorisedAccounts","ConfirmCategories","ConfirmCategoriesCategories","ConfirmCategoriesCategoriesAccountRef","ConfirmCategory","CustomerRef","DataIntegrityAmounts","DataIntegrityByAmount","DataIntegrityByCount","DataIntegrityConnectionID","DataIntegrityDataType","DataIntegrityDates","DataIntegrityDetails","DataIntegrityMatch","DataIntegrityStatus","DataIntegrityStatusInfo","DataIntegritySummary","DataSource","Details","EnhancedCashFlowItem","EnhancedCashFlowTransaction","EnhancedCashFlowTransactions","EnhancedInvoiceReportItem","EnhancedInvoicesReport","EnhancedInvoicesReportReportItems","EnhancedReport","EnhancedReportAccountCategory","EnhancedReportInfo","EnhancedReportReportItem","ExcelReportType","ExcelStatus","FinancialMetric","FinancialMetricError","FinancialMetricErrorType","FinancialMetricErrors","FinancialMetricErrorsType","FinancialMetricKey","FinancialMetricMetricUnit","FinancialMetricPeriods","FinancialMetricPeriodsErrors","FinancialMetricPeriodsErrorsType","FinancialMetricPeriodsInputs","FinancialMetrics","FinancialMetricsPeriodUnit","HalRef","IntegrityStatus","InvoiceStatus","ItemRef","Links","LoanRef","LoanSummary","LoanSummaryReportInfo","LoanTransactions","LoanTransactionsReportInfo","Payment","PeriodUnit","RecordRef","RecordRefIntegrationType","RecordRefRecordRefType","Report","ReportComponent","ReportComponentMeasure","ReportDimension","ReportDimensionItems","ReportError","ReportInfo","ReportItems","ReportItems1","ReportItemsLoanTransactionType","ReportMeasure","Schema","Security","SourceRef","Status","Summaries","TransactionCategory"]

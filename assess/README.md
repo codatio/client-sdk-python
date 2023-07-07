@@ -75,7 +75,9 @@ if res.categorised_account is not None:
 * [~~get_enhanced_financial_metrics~~](docs/sdks/reports/README.md#get_enhanced_financial_metrics) - List financial metrics :warning: **Deprecated**
 * [get_enhanced_invoices_report](docs/sdks/reports/README.md#get_enhanced_invoices_report) - Get enhanced invoices report
 * [~~get_enhanced_profit_and_loss~~](docs/sdks/reports/README.md#get_enhanced_profit_and_loss) - Get enhanced profit and loss report :warning: **Deprecated**
+* [get_loan_summary](docs/sdks/reports/README.md#get_loan_summary) - Get enhanced loan summaries
 * [get_recurring_revenue_metrics](docs/sdks/reports/README.md#get_recurring_revenue_metrics) - Get key subscription revenue metrics
+* [list_loan_transactions](docs/sdks/reports/README.md#list_loan_transactions) - List enhanced loan transactions
 * [request_recurring_revenue_metrics](docs/sdks/reports/README.md#request_recurring_revenue_metrics) - Generate key subscription revenue metrics
 <!-- End SDK Available Operations -->
 
