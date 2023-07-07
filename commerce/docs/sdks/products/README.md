@@ -13,7 +13,14 @@ Retrieve standardized data from linked commerce platforms.
 
 ## get
 
-The Products data type provides the company's product inventory, and includes the price and quantity of all products, and product variants, available for sale.
+The *Get product* endpoint returns a single product for a given productId.
+
+[Products](https://docs.codat.io/commerce-api#/schemas/Product) are items in the company's inventory that are available for sale.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-products) for integrations that support getting a specific product.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+
 
 ### Example Usage
 
@@ -54,7 +61,14 @@ if res.product is not None:
 
 ## get_category
 
-Product categories are used to classify a group of products together, either by type (e.g. "Furniture") or sometimes by tax profile.
+The *Get product* endpoint returns a single product for a given productId.
+
+[Product categories](https://docs.codat.io/commerce-api#/schemas/ProductCategory) are used to classify a group of products together, either by type (e.g. "Furniture"), or sometimes by tax profile.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-productCategories) for integrations that support getting a specific product.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+
 
 ### Example Usage
 
@@ -95,7 +109,12 @@ if res.product_category is not None:
 
 ## list
 
-The Products data type provides the company's product inventory, and includes the price and quantity of all products, and product variants, available for sale.
+The *List products* endpoint returns a list of [products](https://docs.codat.io/commerce-api#/schemas/Product) for a given company's connection.
+
+[Products](https://docs.codat.io/commerce-api#/schemas/Product) are items in the company's inventory that are available for sale.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+    
 
 ### Example Usage
 
@@ -139,7 +158,12 @@ if res.products is not None:
 
 ## list_categories
 
-Product categories are used to classify a group of products together, either by type (eg "Furniture"), or sometimes by tax profile.
+The *List product categories* endpoint returns a list of [product categories](https://docs.codat.io/commerce-api#/schemas/ProductCategory) for a given company's connection.
+
+[Product categories](https://docs.codat.io/commerce-api#/schemas/ProductCategory) are used to classify a group of products together, either by type (e.g. "Furniture"), or sometimes by tax profile.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+    
 
 ### Example Usage
 
