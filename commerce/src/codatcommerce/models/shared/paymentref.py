@@ -73,8 +73,8 @@ class PaymentRef:
     r"""Service provider of the payment, if applicable."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     status: Optional[shared_paymentstatus.PaymentStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
-    r"""Status of the payment"""
+    r"""Status of the payment."""
     type: Optional[shared_paymenttype.PaymentType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
-    r"""Status of the payment"""
+    r"""Type of payment."""
     
 
