@@ -311,50 +311,6 @@ class Reports:
         return res
 
     
-    def get_enhanced_balance_sheet(self, request: operations.GetEnhancedBalanceSheetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedBalanceSheetResponse:
-        r"""Get enhanced balance sheet report
-        Gets a fully categorized balance sheet statement for a given company, over one or more period(s).
-        
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetEnhancedBalanceSheetRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/enhancedBalanceSheet', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.GetEnhancedBalanceSheetRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
-
-        def do_request():
-            return client.request('GET', url, params=query_params, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetEnhancedBalanceSheetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
-                res.report = out
-        elif http_res.status_code in [401, 404]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-
-        return res
-
-    
     def get_enhanced_cash_flow_transactions(self, request: operations.GetEnhancedCashFlowTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedCashFlowTransactionsResponse:
         r"""Get enhanced cash flow report
         > **Categorization engine**
@@ -401,46 +357,6 @@ class Reports:
         return res
 
     
-    def get_enhanced_financial_metrics(self, request: operations.GetEnhancedFinancialMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedFinancialMetricsResponse:
-        r"""List financial metrics
-        Gets all the available financial metrics for a given company, over one or more periods.
-        
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetEnhancedFinancialMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/financialMetrics', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.GetEnhancedFinancialMetricsRequest, request)
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
-
-        def do_request():
-            return client.request('GET', url, params=query_params, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetEnhancedFinancialMetricsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.FinancialMetrics])
-                res.financial_metrics = out
-
-        return res
-
-    
     def get_enhanced_invoices_report(self, request: operations.GetEnhancedInvoicesReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedInvoicesReportResponse:
         r"""Get enhanced invoices report
         Gets a list of invoices linked to the corresponding banking transaction
@@ -475,50 +391,6 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.EnhancedInvoicesReport])
                 res.enhanced_invoices_report = out
-        elif http_res.status_code in [401, 404]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-
-        return res
-
-    
-    def get_enhanced_profit_and_loss(self, request: operations.GetEnhancedProfitAndLossRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedProfitAndLossResponse:
-        r"""Get enhanced profit and loss report
-        Gets a fully categorized profit and loss statement for a given company, over one or more period(s).
-        
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetEnhancedProfitAndLossRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/enhancedProfitAndLoss', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.GetEnhancedProfitAndLossRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
-
-        def do_request():
-            return client.request('GET', url, params=query_params, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetEnhancedProfitAndLossResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
-                res.report = out
         elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])

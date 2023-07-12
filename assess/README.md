@@ -15,7 +15,7 @@ pip install codat-assess
 <!-- Start SDK Example Usage -->
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
@@ -23,15 +23,14 @@ s = codatassess.CodatAssess(
     ),
 )
 
-req = operations.GetAccountCategoryRequest(
-    account_id='corrupti',
+req = operations.GetDataIntegrityStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
 )
 
-res = s.categories.get_account_category(req)
+res = s.data_integrity.get_data_integrity_status(req)
 
-if res.categorised_account is not None:
+if res.status is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
@@ -39,14 +38,6 @@ if res.categorised_account is not None:
 <!-- Start SDK Available Operations -->
 ## Available Resources and Operations
 
-
-### [categories](docs/sdks/categories/README.md)
-
-* [~~get_account_category~~](docs/sdks/categories/README.md#get_account_category) - Get suggested and/or confirmed category for a specific account :warning: **Deprecated**
-* [~~list_accounts_categories~~](docs/sdks/categories/README.md#list_accounts_categories) - List suggested and confirmed account categories :warning: **Deprecated**
-* [~~list_available_account_categories~~](docs/sdks/categories/README.md#list_available_account_categories) - List account categories :warning: **Deprecated**
-* [~~update_account_category~~](docs/sdks/categories/README.md#update_account_category) - Update account categories :warning: **Deprecated**
-* [~~update_accounts_categories~~](docs/sdks/categories/README.md#update_accounts_categories) - Confirm categories for accounts :warning: **Deprecated**
 
 ### [data_integrity](docs/sdks/dataintegrity/README.md)
 
@@ -70,11 +61,8 @@ if res.categorised_account is not None:
 * [get_commerce_orders_metrics](docs/sdks/reports/README.md#get_commerce_orders_metrics) - Get orders report
 * [get_commerce_refunds_metrics](docs/sdks/reports/README.md#get_commerce_refunds_metrics) - Get refunds report
 * [get_commerce_revenue_metrics](docs/sdks/reports/README.md#get_commerce_revenue_metrics) - Get commerce revenue metrics
-* [~~get_enhanced_balance_sheet~~](docs/sdks/reports/README.md#get_enhanced_balance_sheet) - Get enhanced balance sheet report :warning: **Deprecated**
 * [get_enhanced_cash_flow_transactions](docs/sdks/reports/README.md#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
-* [~~get_enhanced_financial_metrics~~](docs/sdks/reports/README.md#get_enhanced_financial_metrics) - List financial metrics :warning: **Deprecated**
 * [get_enhanced_invoices_report](docs/sdks/reports/README.md#get_enhanced_invoices_report) - Get enhanced invoices report
-* [~~get_enhanced_profit_and_loss~~](docs/sdks/reports/README.md#get_enhanced_profit_and_loss) - Get enhanced profit and loss report :warning: **Deprecated**
 * [get_loan_summary](docs/sdks/reports/README.md#get_loan_summary) - Get enhanced loan summaries
 * [get_recurring_revenue_metrics](docs/sdks/reports/README.md#get_recurring_revenue_metrics) - Get key subscription revenue metrics
 * [list_loan_transactions](docs/sdks/reports/README.md#list_loan_transactions) - List enhanced loan transactions
