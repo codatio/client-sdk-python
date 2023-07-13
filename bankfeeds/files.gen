@@ -36,7 +36,7 @@ src/codatbankfeeds/models/operations/__init__.py
 src/codatbankfeeds/models/shared/schema.py
 src/codatbankfeeds/models/shared/accountmappingresult.py
 src/codatbankfeeds/models/shared/bankfeedaccountmapping.py
-src/codatbankfeeds/models/shared/bankfeedmappings.py
+src/codatbankfeeds/models/shared/bankfeedmapping.py
 src/codatbankfeeds/models/shared/targetaccountoption.py
 src/codatbankfeeds/models/shared/createbanktransactionsresponse.py
 src/codatbankfeeds/models/shared/validation.py
@@ -122,8 +122,7 @@ docs/models/operations/unlinkconnectionresponse.md
 docs/models/shared/schema.md
 docs/models/shared/accountmappingresult.md
 docs/models/shared/bankfeedaccountmapping.md
-docs/models/shared/bankfeedmappingsbankfeedmapping.md
-docs/models/shared/bankfeedmappings.md
+docs/models/shared/bankfeedmapping.md
 docs/models/shared/targetaccountoption.md
 docs/models/shared/createbanktransactionsresponse.md
 docs/models/shared/validation.md

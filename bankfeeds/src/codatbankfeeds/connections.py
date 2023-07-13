@@ -16,7 +16,7 @@ class Connections:
     def create(self, request: operations.CreateDataConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDataConnectionResponse:
         r"""Create connection
         Creates a connection for the company by providing a valid `platformKey`. 
-        
+
         Use the [List Integrations](https://docs.codat.io/codat-api#/operations/list-integrations) endpoint to access valid platform keys.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -185,7 +185,7 @@ class Connections:
     def proxy(self, request: operations.ProxyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ProxyResponse:
         r"""Proxy
         The *Proxy* endpoint can be used to generate credentials from QuickBooks Online for authentication of the Bank Feed in their portal.
-        
+
         See the example provided for the `endpoint` query parameter when generating credentials for QuickBooks Online.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

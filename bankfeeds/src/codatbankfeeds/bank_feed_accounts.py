@@ -60,7 +60,7 @@ class BankFeedAccounts:
     def list(self, request: operations.ListBankFeedsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankFeedsResponse:
         r"""List bank feed bank accounts
         The *List bank feed bank accounts* endpoint returns a list of [bank feed accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) for a given company's connection.
-        
+
         [Bank feed accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) are the bank's bank account from which transactions are synced into the accounting platform.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -90,8 +90,8 @@ class BankFeedAccounts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.BankFeedAccount]])
-                res.bank_feed_accounts = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedAccount])
+                res.bank_feed_account = out
         elif http_res.status_code in [401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
@@ -103,7 +103,7 @@ class BankFeedAccounts:
     def put_bank_feed(self, request: operations.PutBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.PutBankFeedResponse:
         r"""Create bank feed bank accounts
         Put BankFeed BankAccounts for a single data source connected to a single company.
-        
+
         Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -149,8 +149,6 @@ class BankFeedAccounts:
     def update(self, request: operations.UpdateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankFeedResponse:
         r"""Update bank feed bank account
         The *Update bank feed bank account* endpoint updates a single bank feed bank account for a single data source connected to a single company.
-        
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

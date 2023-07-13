@@ -9,7 +9,7 @@ Bank feed bank accounts
 * [create](#create) - Create a bank feed bank account
 * [list](#list) - List bank feed bank accounts
 * [~~put_bank_feed~~](#put_bank_feed) - Create bank feed bank accounts :warning: **Deprecated**
-* [~~update~~](#update) - Update bank feed bank account :warning: **Deprecated**
+* [update](#update) - Update bank feed bank account
 
 ## create
 
@@ -90,7 +90,7 @@ req = operations.ListBankFeedsRequest(
 
 res = s.bank_feed_accounts.list(req)
 
-if res.bank_feed_accounts is not None:
+if res.bank_feed_account is not None:
     # handle response
 ```
 
@@ -187,11 +187,9 @@ if res.bank_feed_accounts is not None:
 **[operations.PutBankFeedResponse](../../models/operations/putbankfeedresponse.md)**
 
 
-## ~~update~~
+## update
 
 ﻿The *Update bank feed bank account* endpoint updates a single bank feed bank account for a single data source connected to a single company.
-
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

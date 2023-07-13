@@ -16,13 +16,13 @@ class BankAccountTransactions:
     def create(self, request: operations.CreateBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankTransactionsResponse:
         r"""Create bank account transactions
         The *Create bank account transactions* endpoint creates new [bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) for a given company's connection.
-        
+
         [Bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) are records of monetary amounts that have moved in and out of an SMB's bank account.
-        
+
         **Integration-specific behaviour**
-        
+
         Required data may vary by integration. To see what data to post, first call [Get create bank transaction model](https://docs.codat.io/bank-feeds-api#/operations/get-create-bankTransactions-model).
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support creating a bank account transactions.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -69,13 +69,13 @@ class BankAccountTransactions:
     def get_create_model(self, request: operations.GetCreateBankTransactionsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBankTransactionsModelResponse:
         r"""Get create bank account transactions model
         The *Get create bank account transactions model* endpoint returns the expected data for the request payload when creating [bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) for a given company and integration.
-        
+
         [Bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) are records of monetary amounts that have moved in and out of an SMB's bank account.
-        
+
         **Integration-specific behaviour**
-        
+
         See the *response examples* for integration-specific indicative models.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support creating an bank transaction.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -118,11 +118,11 @@ class BankAccountTransactions:
     def list(self, request: operations.ListBankAccountTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountTransactionsResponse:
         r"""List bank account transactions
         The *List account bank transactions* endpoint returns a list of [bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) for a given company's connection.
-        
+
         [Bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) are records of monetary amounts that have moved in and out of an SMB's bank account.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support listing bank transactions.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

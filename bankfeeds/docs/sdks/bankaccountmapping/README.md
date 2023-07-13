@@ -87,7 +87,7 @@ req = operations.GetBankAccountMappingRequest(
 
 res = s.bank_account_mapping.get(req)
 
-if res.bank_feed_mappings is not None:
+if res.bank_feed_mapping is not None:
     # handle response
 ```
 

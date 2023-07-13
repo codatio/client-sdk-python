@@ -16,7 +16,7 @@ class Companies:
     def create(self, request: shared.CompanyRequestBody, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
         r"""Create company
         Creates a new company that can be used to assign connections to. 
-        
+
         If forbidden characters (see `name` pattern) are present in the request, a company will be created with the forbidden characters removed. For example, `Company (Codat[1])` with be created as `Company Codat1`.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

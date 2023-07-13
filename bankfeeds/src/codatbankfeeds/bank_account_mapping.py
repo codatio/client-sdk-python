@@ -16,11 +16,11 @@ class BankAccountMapping:
     def create(self, request: operations.CreateBankAccountMappingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankAccountMappingResponse:
         r"""Create bank feed bank account mapping
         The *Create bank account mapping* endpoint creates a new mapping between a source bank account and a potential account in the accounting platform (target account).
-        
+
         A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
-        
+
         To find valid target account options, first call list bank feed account mappings.
-        
+
         This endpoint is only needed if building an account management UI.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -66,9 +66,9 @@ class BankAccountMapping:
     def get(self, request: operations.GetBankAccountMappingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankAccountMappingResponse:
         r"""List bank feed account mappings
         The *List bank account mappings* endpoint returns information about a source bank account and any current or potential target mapping accounts.
-        
+
         A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
-        
+
         This endpoint is only needed if building an account management UI.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -98,8 +98,8 @@ class BankAccountMapping:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedMappings])
-                res.bank_feed_mappings = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedMapping])
+                res.bank_feed_mapping = out
         elif http_res.status_code in [401, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])

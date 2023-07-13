@@ -59,7 +59,7 @@ if res.account_mapping_result is not None:
 * [create](docs/sdks/bankfeedaccounts/README.md#create) - Create a bank feed bank account
 * [list](docs/sdks/bankfeedaccounts/README.md#list) - List bank feed bank accounts
 * [~~put_bank_feed~~](docs/sdks/bankfeedaccounts/README.md#put_bank_feed) - Create bank feed bank accounts :warning: **Deprecated**
-* [~~update~~](docs/sdks/bankfeedaccounts/README.md#update) - Update bank feed bank account :warning: **Deprecated**
+* [update](docs/sdks/bankfeedaccounts/README.md#update) - Update bank feed bank account
 
 ### [companies](docs/sdks/companies/README.md)
 
