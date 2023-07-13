@@ -16,7 +16,7 @@ from typing import Optional
 @dataclasses.dataclass
 class Report:
     r"""Assess reports follow a consistent structure. Reports contain four sections of information:
-    
+
     1. Report definition information such as:
       a. The report info (e.g. enhanced_profit_and_loss).
       b. The display name of the report (e.g. Enhanced Profit and Loss).
@@ -29,13 +29,13 @@ class Report:
       b. The type of the measure (e.g. currency, percentage).
       c. The unit of the measure (e.g. %, GBP).
     4. The data for the report. When the *includeDisplayName* parameter is set to *true*, it shows the *dimensionDisplayName* and *itemDisplayName* to make the data human-readable. The default setting for *includeDisplayName* is *false*.
-    
+
     Reports can be rendered as follows (ordering is implicit rather than explicit):
-    
+
     ![A table showing an example of how a report can be rendered](https://files.readme.io/1fa20ca-Report1.png)
-    
+
     # Data model
-    
+
     ## Dimensions
     """
     dimensions: Optional[list[shared_reportdimension.ReportDimension]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dimensions'), 'exclude': lambda f: f is None }})

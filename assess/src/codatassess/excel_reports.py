@@ -58,7 +58,7 @@ class ExcelReports:
     def get_accounting_marketing_metrics(self, request: operations.GetAccountingMarketingMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountingMarketingMetricsResponse:
         r"""Get marketing metrics report
         Get the marketing metrics from an accounting source for a given company.
-        
+
         Request an Excel report for download.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
