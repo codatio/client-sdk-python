@@ -16,11 +16,11 @@ class Transactions:
     def get(self, request: operations.GetTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionResponse:
         r"""Get bank transaction
         The *Get transaction* endpoint returns a single transaction for a given transactionId.
-        
+
         [Transactions](https://docs.codat.io/banking-api#/schemas/Transaction) provide an immutable source of up-to-date information on income and expenditure.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-transactions) for integrations that support getting a specific transaction.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -59,9 +59,9 @@ class Transactions:
     def list(self, request: operations.ListTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionsResponse:
         r"""List transactions
         The *List transactions* endpoint returns a list of [transactions](https://docs.codat.io/banking-api#/schemas/Transaction) for a given company's connection.
-        
+
         [Transactions](https://docs.codat.io/banking-api#/schemas/Transaction) provide an immutable source of up-to-date information on income and expenditure.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -109,11 +109,11 @@ class Transactions:
     def list_bank_transactions(self, request: operations.ListBankTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankTransactionsResponse:
         r"""List banking transactions
         The *List transactions* endpoint returns a list of [transactions](https://docs.codat.io/banking-api#/schemas/Transaction) for a given company's connection.
-        
+
         [Transactions](https://docs.codat.io/banking-api#/schemas/Transaction) provide an immutable source of up-to-date information on income and expenditure.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
-        
+
         Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible. Use list instead
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
