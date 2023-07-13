@@ -16,11 +16,11 @@ class Orders:
     def get(self, request: operations.GetOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetOrderResponse:
         r"""Get order
         The *Get order* endpoint returns a single order for a given orderId.
-        
+
         [Orders](https://docs.codat.io/commerce-api#/schemas/Order) contain the transaction details for all products sold by the company.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-orders) for integrations that support getting a specific order.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -67,9 +67,9 @@ class Orders:
     def list(self, request: operations.ListOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListOrdersResponse:
         r"""List orders
         The *List orders* endpoint returns a list of [orders](https://docs.codat.io/commerce-api#/schemas/Order) for a given company's connection.
-        
+
         [Orders](https://docs.codat.io/commerce-api#/schemas/Order) contain the transaction details for all products sold by the company.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

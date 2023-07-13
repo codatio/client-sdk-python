@@ -36,7 +36,7 @@ class CompanyInfoWeblink:
 class CompanyInfo:
     r"""In the Codat system, company information includes standard commercial details about
     a linked company, such as their address, phone number, and company registration.
-    
+
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=companyInfo) for this data type.
     """
     account_balances: Optional[list[shared_accountbalance.AccountBalance]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountBalances'), 'exclude': lambda f: f is None }})
@@ -45,11 +45,11 @@ class CompanyInfo:
     r"""Addresses associated with the company"""
     base_currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('baseCurrency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
-    
+
     ## Unknown currencies
-    
+
     In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
-    
+
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
     commerce_platform_ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('commercePlatformRef'), 'exclude': lambda f: f is None }})
@@ -60,20 +60,20 @@ class CompanyInfo:
     r"""The name of the company"""
     created_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
+
     ```
     2020-10-08T22:40:50Z
     2021-01-01T00:00:00
     ```
-    
-    
-    
+
+
+
     When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
+
     - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
+
     > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  

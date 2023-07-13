@@ -16,11 +16,11 @@ class Products:
     def get(self, request: operations.GetProductRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetProductResponse:
         r"""Get product
         The *Get product* endpoint returns a single product for a given productId.
-        
+
         [Products](https://docs.codat.io/commerce-api#/schemas/Product) are items in the company's inventory that are available for sale.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-products) for integrations that support getting a specific product.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -67,11 +67,11 @@ class Products:
     def get_category(self, request: operations.GetProductCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetProductCategoryResponse:
         r"""Get product category
         The *Get product* endpoint returns a single product for a given productId.
-        
+
         [Product categories](https://docs.codat.io/commerce-api#/schemas/ProductCategory) are used to classify a group of products together, either by type (e.g. \"Furniture\"), or sometimes by tax profile.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-productCategories) for integrations that support getting a specific product.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -118,9 +118,9 @@ class Products:
     def list(self, request: operations.ListProductsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListProductsResponse:
         r"""List products
         The *List products* endpoint returns a list of [products](https://docs.codat.io/commerce-api#/schemas/Product) for a given company's connection.
-        
+
         [Products](https://docs.codat.io/commerce-api#/schemas/Product) are items in the company's inventory that are available for sale.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -168,9 +168,9 @@ class Products:
     def list_categories(self, request: operations.ListProductCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListProductCategoriesResponse:
         r"""List product categories
         The *List product categories* endpoint returns a list of [product categories](https://docs.codat.io/commerce-api#/schemas/ProductCategory) for a given company's connection.
-        
+
         [Product categories](https://docs.codat.io/commerce-api#/schemas/ProductCategory) are used to classify a group of products together, either by type (e.g. \"Furniture\"), or sometimes by tax profile.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

@@ -16,11 +16,11 @@ class Payments:
     def get(self, request: operations.GetPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPaymentResponse:
         r"""Get payment
         The *Get payment* endpoint returns a single payment for a given paymentId.
-        
+
         [Payments](https://docs.codat.io/commerce-api#/schemas/Payment) contain details of all payments made by customers to the company.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-payments) for integrations that support getting a specific payment.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -67,11 +67,11 @@ class Payments:
     def get_method(self, request: operations.GetPaymentMethodRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPaymentMethodResponse:
         r"""Get payment method
         The *Get payment method* endpoint returns a single payment method for a given paymentMethodId.
-        
+
         [Payment methods](https://docs.codat.io/commerce-api#/schemas/PaymentMethod) represent the payment method(s) used to make payments.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-paymentMethods) for integrations that support getting a specific payment method.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -118,9 +118,9 @@ class Payments:
     def list(self, request: operations.ListPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentsResponse:
         r"""List payments
         The *List payments* endpoint returns a list of [payments](https://docs.codat.io/commerce-api#/schemas/Payment) for a given company's connection.
-        
+
         [Payments](https://docs.codat.io/commerce-api#/schemas/Payment) contain details of all payments made by customers to the company.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -168,9 +168,9 @@ class Payments:
     def list_methods(self, request: operations.ListPaymentMethodsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPaymentMethodsResponse:
         r"""List payment methods
         The *List payment methods* endpoint returns a list of [payment methods](https://docs.codat.io/commerce-api#/schemas/PaymentMethod) for a given company's connection.
-        
+
         [Payment methods](https://docs.codat.io/commerce-api#/schemas/PaymentMethod) represent the payment method(s) used to make payments.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

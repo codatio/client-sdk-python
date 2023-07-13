@@ -16,11 +16,11 @@ class TaxComponents:
     def get(self, request: operations.GetTaxComponentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxComponentResponse:
         r"""Get tax component
         The *Get tax* endpoint returns a single tax for a given taxId.
-        
+
         [Tax components](https://docs.codat.io/commerce-api#/schemas/TaxComponent) are tax rates from the commerce platform, including tax rate's name and value.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-taxComponents) for integrations that support getting a specific tax.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -67,9 +67,9 @@ class TaxComponents:
     def list(self, request: operations.ListTaxComponentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTaxComponentsResponse:
         r"""List tax components
         The *List tax components* endpoint returns a list of [tax components](https://docs.codat.io/commerce-api#/schemas/TaxComponent) for a given company's connection.
-        
+
         [Tax components](https://docs.codat.io/commerce-api#/schemas/TaxComponent) are tax rates from the commerce platform, including tax rate's name and value.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

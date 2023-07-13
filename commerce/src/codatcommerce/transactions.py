@@ -16,11 +16,11 @@ class Transactions:
     def get(self, request: operations.GetTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionResponse:
         r"""Get transaction
         The *Get transaction* endpoint returns a single transaction for a given transactionId.
-        
+
         [Transactions](https://docs.codat.io/commerce-api#/schemas/Transaction) detail all financial affairs recorded in the commerce or point of sale system.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-transactions) for integrations that support getting a specific transaction.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -67,9 +67,9 @@ class Transactions:
     def list(self, request: operations.ListTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionsResponse:
         r"""List transactions
         The *List transactions* endpoint returns a list of [transactions](https://docs.codat.io/commerce-api#/schemas/Transaction) for a given company's connection.
-        
+
         [Transactions](https://docs.codat.io/commerce-api#/schemas/Transaction) detail all financial affairs recorded in the commerce or point of sale system.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

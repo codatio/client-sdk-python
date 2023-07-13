@@ -13,7 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class Product:
     r"""A Product is an item in the company's inventory, and includes information about the price and quantity of all products, and variants thereof, available for sale.
-    
+
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-products) for this data type.
     """
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})

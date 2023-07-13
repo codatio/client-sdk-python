@@ -16,7 +16,7 @@ class CompanyInfo:
     def get(self, request: operations.GetCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyInfoResponse:
         r"""Get company info
         Retrieve information about the company, as seen in the commerce platform.
-        
+
         This may include information like addresses, tax registration details and social media or website information.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
