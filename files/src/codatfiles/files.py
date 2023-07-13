@@ -106,9 +106,9 @@ class Files:
     def upload_files(self, request: operations.UploadFilesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadFilesResponse:
         r"""Upload files for a company
         The *Upload files* endpoint uploads multiple files provided by the SMB to Codat. This may include personal identity documents, pitch decks, contracts, or files with accounting and banking data.
-        
+
         Uploaded files must meet the following requirements:
-        
+
         - Up to 20 files can be uploaded at a time.
         - PDF, XLS, XLSX, XLSB, CSV, DOC, DOCX, PPT, PPTX, JPEG, JPG, and PNG files can be uploaded.
         - Each file can be up to 10MB in size.
