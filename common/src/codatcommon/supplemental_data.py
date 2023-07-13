@@ -16,9 +16,9 @@ class SupplementalData:
     def configure(self, request: operations.ConfigureSupplementalDataRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ConfigureSupplementalDataResponse:
         r"""Configure
         The *Configure* endpoint allows you to maintain or change configuration required to return supplemental data for each integration and data type combination.
-        
+
         [Supplemental data](https://docs.codat.io/using-the-api/additional-data) is additional data you can include in Codat's standard data types.
-        
+
         **Integration-specific behaviour**
         See the *examples* for integration-specific frequently requested properties.
         """
@@ -63,7 +63,7 @@ class SupplementalData:
     def get_configuration(self, request: operations.GetSupplementalDataConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSupplementalDataConfigurationResponse:
         r"""Get configuration
         The *Get configuration* endpoint returns supplemental data configuration previously created for each integration and data type combination.
-        
+
         [Supplemental data](https://docs.codat.io/using-the-api/additional-data) is additional data you can include in Codat's standard data types.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
