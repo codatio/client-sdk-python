@@ -16,11 +16,11 @@ class TaxRates:
     def get(self, request: operations.GetTaxRateRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxRateResponse:
         r"""Get tax rate
         The *Get tax rate* endpoint returns a single tax rate for a given taxRateId.
-        
+
         [Tax rates](https://docs.codat.io/accounting-api#/schemas/TaxRate) are a set of taxes and associated rates within the SMB's accounting package.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=taxRates) for integrations that support getting a specific tax rate.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -67,9 +67,9 @@ class TaxRates:
     def list(self, request: operations.ListTaxRatesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTaxRatesResponse:
         r"""List all tax rates
         The *List tax rates* endpoint returns a list of [tax rates](https://docs.codat.io/accounting-api#/schemas/TaxRate) for a given company's connection.
-        
+
         [Tax rates](https://docs.codat.io/accounting-api#/schemas/TaxRate) are a set of taxes and associated rates within the SMB's accounting package.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

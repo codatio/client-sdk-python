@@ -18,7 +18,7 @@ from typing import Optional
 class DirectCostLineItem:
     quantity: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity') }})
     r"""Number of units of goods or services received.
-    
+
     Note: If the platform does not provide this information, the quantity will be mapped as 1.
     """
     unit_amount: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitAmount') }})
@@ -40,9 +40,9 @@ class DirectCostLineItem:
     r"""Amount of tax for the line."""
     tax_rate_ref: Optional[shared_taxrateref.TaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     r"""Data types that reference a tax rate, for example invoice and bill line items, use a taxRateRef that includes the ID and name of the linked tax rate.
-    
+
     Found on:
-    
+
     - Bill line items
     - Bill Credit Note line items
     - Credit Note line items
@@ -55,7 +55,7 @@ class DirectCostLineItem:
     tracking: Optional[shared_tracking.Tracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
     tracking_category_refs: Optional[list[shared_trackingcategoryref.TrackingCategoryRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
     r"""Collection of categories against which this direct cost is tracked.
-    
+
     Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible
     """
     

@@ -12,7 +12,7 @@ from typing import Any, Optional
 @dataclasses.dataclass
 class SupplementalData:
     r"""Supplemental data is additional data you can include in our standard data types.
-    
+
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/additional-data) about supplemental data.
     """
     content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})

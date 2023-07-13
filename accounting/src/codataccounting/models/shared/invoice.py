@@ -24,27 +24,27 @@ class Invoice:
     > We distinguish between invoices where the company *owes money* vs. *is owed money*. If the company issued an invoice, and is owed money (accounts receivable) we call this an Invoice.
     >
     > See [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) for the accounts payable equivalent of bills.
-    
+
     View the coverage for invoices in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices\" target=\"_blank\">Data coverage explorer</a>.
-    
+
     ## Overview
-    
+
     An invoice is an itemized record of goods sold or services provided to a [customer](https://docs.codat.io/accounting-api#/schemas/Customer).
-    
+
     In Codat, an invoice contains details of:
-    
+
     - The timeline of the invoice—when it was raised, marked as paid, last edited, and so on.
     - How much the invoice is for, what portion of the invoice is tax or discounts, and what currency the amounts are represented in. 
     - Who the invoice has been raised to; the _customer_.
     - The breakdown of what the invoice is for; the _line items_.
     - Any [payments](https://docs.codat.io/accounting-api#/schemas/Payment) assigned to the invoice; the _payment allocations_.
-    
+
     > **Invoice PDF downloads**  
     >
     > You can <a className=\"external\" href=\"https://docs.codat.io/accounting-api#/operations/get-invoice-pdf\" target=\"_blank\">download a PDF version</a> of an invoice for supported integrations.
     > 
     > The filename will be invoice-{number}.pdf.
-    
+
     > **Referencing an invoice in Sage 50 and ClearBooks**
     >
     > In Sage 50 and ClearBooks, you may prefer to use the **invoiceNumber** to identify an invoice rather than the invoice **id**. Each time a draft invoice is submitted or printed, the draft **id** becomes void and a submitted invoice with a new **id** exists in its place. In both platforms, the **invoiceNumber** should remain the same.
@@ -53,20 +53,20 @@ class Invoice:
     r"""Amount outstanding on the invoice."""
     issue_date: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate') }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
+
     ```
     2020-10-08T22:40:50Z
     2021-01-01T00:00:00
     ```
-    
-    
-    
+
+
+
     When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
+
     - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
+
     > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  
@@ -74,7 +74,7 @@ class Invoice:
     """
     status: shared_invoicestatus.InvoiceStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Current state of the invoice:
-    
+
     - `Draft` - Invoice hasn't been submitted to the supplier. It may be in a pending state or is scheduled for future submission, for example by email.
     - `Submitted` - Invoice is no longer a draft. It has been processed and, or, sent to the customer. In this state, it will impact the ledger. It also has no payments made against it (amountDue == totalAmount).
     - `PartiallyPaid` - The balance paid against the invoice is positive, but less than the total invoice amount (0 < amountDue < totalAmount).
@@ -89,34 +89,34 @@ class Invoice:
     additional_tax_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalTaxPercentage'), 'exclude': lambda f: f is None }})
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
-    
+
     ## Unknown currencies
-    
+
     In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
-    
+
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
     currency_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'exclude': lambda f: f is None }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
-    
+
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
-    
+
     It is not possible to perform the currency conversion with two or more non-base currencies participating in the transaction. For example, if a company's base currency is USD, and it has a bill issued in EUR, then the bill payment must happen in USD or EUR.
-    
+
     Where the currency rate is provided by the underlying accounting platform, it will be available from Codat with the same precision (up to a maximum of 9 decimal places). 
-    
+
     For accounting platforms which do not provide an explicit currency rate, it is calculated as `baseCurrency / foreignCurrency` and will be returned to 9 decimal places.
-    
+
     ## Examples with base currency of GBP
-    
+
     | Foreign Currency | Foreign Amount | Currency Rate | Base Currency Amount (GBP) |
     | :--------------- | :------------- | :------------ | :------------------------- |
     | **USD**          | $20            | 0.781         | £15.62                     |
     | **EUR**          | €20            | 0.885         | £17.70                     |
     | **RUB**          | ₽20            | 0.011         | £0.22                      |
-    
+
     ## Examples with base currency of USD
-    
+
     | Foreign Currency | Foreign Amount | Currency Rate | Base Currency Amount (USD) |
     | :--------------- | :------------- | :------------ | :------------------------- |
     | **GBP**          | £20            | 1.277         | $25.54                     |
@@ -128,20 +128,20 @@ class Invoice:
     r"""Percentage rate (from 0 to 100) of discounts applied to the invoice. For example: A 5% discount will return a value of `5`, not `0.05`."""
     due_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dueDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
+
     ```
     2020-10-08T22:40:50Z
     2021-01-01T00:00:00
     ```
-    
-    
-    
+
+
+
     When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
+
     - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
+
     > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  
@@ -159,20 +159,20 @@ class Invoice:
     r"""Any additional information about the invoice. Where possible, Codat links to a data field in the accounting platform that is publicly available. This means that the contents of the note field are included when an invoice is emailed from the accounting platform to the customer."""
     paid_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paidOnDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
+
     ```
     2020-10-08T22:40:50Z
     2021-01-01T00:00:00
     ```
-    
-    
-    
+
+
+
     When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
+
     - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
+
     > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  
@@ -187,7 +187,7 @@ class Invoice:
     r"""Total amount of the invoice excluding any taxes."""
     supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Supplemental data is additional data you can include in our standard data types.
-    
+
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/additional-data) about supplemental data.
     """
     total_discount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalDiscount'), 'exclude': lambda f: f is None }})

@@ -16,13 +16,13 @@ class Items:
     def create(self, request: operations.CreateItemRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateItemResponse:
         r"""Create item
         The *Create item* endpoint creates a new [item](https://docs.codat.io/accounting-api#/schemas/Item) for a given company's connection.
-        
+
         [Items](https://docs.codat.io/accounting-api#/schemas/Item) allow your customers to save and track details of the products and services that they buy and sell.
-        
+
         **Integration-specific behaviour**
-        
+
         Required data may vary by integration. To see what data to post, first call [Get create item model](https://docs.codat.io/accounting-api#/operations/get-create-items-model).
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -69,11 +69,11 @@ class Items:
     def get(self, request: operations.GetItemRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetItemResponse:
         r"""Get item
         The *Get item* endpoint returns a single item for a given itemId.
-        
+
         [Items](https://docs.codat.io/accounting-api#/schemas/Item) allow your customers to save and track details of the products and services that they buy and sell.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support getting a specific item.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -120,13 +120,13 @@ class Items:
     def get_create_model(self, request: operations.GetCreateItemsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateItemsModelResponse:
         r"""Get create item model
         The *Get create item model* endpoint returns the expected data for the request payload when creating an [item](https://docs.codat.io/accounting-api#/schemas/Item) for a given company and integration.
-        
+
         [Items](https://docs.codat.io/accounting-api#/schemas/Item) allow your customers to save and track details of the products and services that they buy and sell.
-        
+
         **Integration-specific behaviour**
-        
+
         See the *response examples* for integration-specific indicative models.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating an item.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -169,9 +169,9 @@ class Items:
     def list(self, request: operations.ListItemsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListItemsResponse:
         r"""List items
         The *List items* endpoint returns a list of [items](https://docs.codat.io/accounting-api#/schemas/Item) for a given company's connection.
-        
+
         [Items](https://docs.codat.io/accounting-api#/schemas/Item) allow your customers to save and track details of the products and services that they buy and sell.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

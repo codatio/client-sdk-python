@@ -16,13 +16,13 @@ class BankAccounts:
     def create(self, request: operations.CreateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankAccountResponse:
         r"""Create bank account
         The *Create bank account* endpoint creates a new [bank account](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company's connection.
-        
+
         [Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
-        
+
         **Integration-specific behaviour**
-        
+
         Required data may vary by integration. To see what data to post, first call [Get create/update bank account model](https://docs.codat.io/accounting-api#/operations/get-create-update-bankAccounts-model).
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -69,11 +69,11 @@ class BankAccounts:
     def get(self, request: operations.GetBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBankAccountResponse:
         r"""Get bank account
         The *Get bank account* endpoint returns a single account for a given accountId.
-        
+
         [Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support getting a specific bank account.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -120,13 +120,13 @@ class BankAccounts:
     def get_create_update_model(self, request: operations.GetCreateUpdateBankAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBankAccountsModelResponse:
         r"""Get create/update bank account model
         The *Get create/update bank account model* endpoint returns the expected data for the request payload when creating and updating a [bank account](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company and integration.
-        
+
         [Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
-        
+
         **Integration-specific behaviour**
-        
+
         See the *response examples* for integration-specific indicative models.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support creating and updating a bank account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -169,9 +169,9 @@ class BankAccounts:
     def list(self, request: operations.ListBankAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankAccountsResponse:
         r"""List bank accounts
         The *List bank accounts* endpoint returns a list of [bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company's connection.
-        
+
         [Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -219,13 +219,13 @@ class BankAccounts:
     def update(self, request: operations.UpdateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankAccountResponse:
         r"""Update bank account
         The *Update bank account* endpoint updates an existing [bank account](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company's connection.
-        
+
         [Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
-        
+
         **Integration-specific behaviour**
-        
+
         Required data may vary by integration. To see what data to post, first call [Get create/update bank account model](https://docs.codat.io/accounting-api#/operations/get-create-update-bankAccounts-model).
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

@@ -16,13 +16,13 @@ class BillPayments:
     def create(self, request: operations.CreateBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBillPaymentResponse:
         r"""Create bill payments
         The *Create bill payment* endpoint creates a new [bill payment](https://docs.codat.io/accounting-api#/schemas/BillPayment) for a given company's connection.
-        
+
         [Bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
-        
+
         **Integration-specific behaviour**
-        
+
         Required data may vary by integration. To see what data to post, first call [Get create bill payment model](https://docs.codat.io/accounting-api#/operations/get-create-billPayments-model).
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -69,28 +69,28 @@ class BillPayments:
     def delete(self, request: operations.DeleteBillPaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteBillPaymentResponse:
         r"""Delete bill payment
         The *Delete bill payment* endpoint allows you to delete a specified bill payment from an accounting platform.
-        
+
         [Bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
-        
+
         ### Process
         1. Pass the `{billPaymentId}` to the *Delete bill payment* endpoint and store the `pushOperationKey` returned.
         2. Check the status of the delete operation by checking the status of push operation either via
             1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
             2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
-        
+
            A `Success` status indicates that the bill payment object was deleted from the accounting platform.
         3. (Optional) Check that the bill payment was deleted from the accounting platform.
-        
+
         ### Effect on related objects
         Be aware that deleting a bill payment from an accounting platform might cause related objects to be modified.
-        
+
         ## Integration specifics
         Integrations that support soft delete do not permanently delete the object in the accounting platform.
-        
+
         | Integration | Soft Delete | Details                                                                                             |  
         |-------------|-------------|-----------------------------------------------------------------------------------------------------|
         | Oracle NetSuite   | No          | See [here](/integrations/accounting/netsuite/how-deleting-bill-payments-works) to learn more. |
-        
+
         > **Supported Integrations**
         >
         > This functionality is currently only supported for our QuickBooks Online abd Oracle NetSuite integrations. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
@@ -135,11 +135,11 @@ class BillPayments:
     def get(self, request: operations.GetBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetBillPaymentsResponse:
         r"""Get bill payment
         The *Get bill payment* endpoint returns a single bill payment for a given billPaymentId.
-        
+
         [Bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support getting a specific bill payment.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -186,13 +186,13 @@ class BillPayments:
     def get_create_model(self, request: operations.GetCreateBillPaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateBillPaymentsModelResponse:
         r"""Get create bill payment model
         The *Get create bill payment model* endpoint returns the expected data for the request payload when creating a [bill payment](https://docs.codat.io/accounting-api#/schemas/BillPayment) for a given company and integration.
-        
+
         [Bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
-        
+
         **Integration-specific behaviour**
-        
+
         See the *response examples* for integration-specific indicative models.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating a bill payment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -235,9 +235,9 @@ class BillPayments:
     def list(self, request: operations.ListBillPaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBillPaymentsResponse:
         r"""List bill payments
         The *List bill payments* endpoint returns a list of [bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) for a given company's connection.
-        
+
         [Bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

@@ -16,13 +16,13 @@ class Transfers:
     def create(self, request: operations.CreateTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateTransferResponse:
         r"""Create transfer
         The *Create transfer* endpoint creates a new [transfer](https://docs.codat.io/accounting-api#/schemas/Transfer) for a given company's connection.
-        
+
         [Transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) record the movement of money between two bank accounts, or between a bank account and a nominal account.
-        
+
         **Integration-specific behaviour**
-        
+
         Required data may vary by integration. To see what data to post, first call [Get create transfer model](https://docs.codat.io/accounting-api#/operations/get-create-transfers-model).
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -68,11 +68,11 @@ class Transfers:
     def get(self, request: operations.GetTransferRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransferResponse:
         r"""Get transfer
         The *Get transfer* endpoint returns a single transfer for a given transferId.
-        
+
         [Transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) record the movement of money between two bank accounts, or between a bank account and a nominal account.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support getting a specific transfer.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -119,13 +119,13 @@ class Transfers:
     def get_create_model(self, request: operations.GetCreateTransfersModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateTransfersModelResponse:
         r"""Get create transfer model
         The *Get create transfer model* endpoint returns the expected data for the request payload when creating a [transfer](https://docs.codat.io/accounting-api#/schemas/Transfer) for a given company and integration.
-        
+
         [Transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) record the movement of money between two bank accounts, or between a bank account and a nominal account.
-        
+
         **Integration-specific behaviour**
-        
+
         See the *response examples* for integration-specific indicative models.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support creating a transfer.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -168,9 +168,9 @@ class Transfers:
     def list(self, request: operations.ListTransfersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransfersResponse:
         r"""List transfers
         The *List transfers* endpoint returns a list of [transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) for a given company's connection.
-        
+
         [Transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) record the movement of money between two bank accounts, or between a bank account and a nominal account.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

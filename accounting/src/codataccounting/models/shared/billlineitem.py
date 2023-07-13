@@ -26,7 +26,7 @@ class BillLineItem:
     r"""Friendly name of the goods or services received."""
     discount_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountAmount'), 'exclude': lambda f: f is None }})
     r"""Numerical value of any discounts applied.
-    
+
     Do not use to apply discounts in Oracle NetSuite—see Oracle NetSuite integration reference.
     """
     discount_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage'), 'exclude': lambda f: f is None }})
@@ -38,9 +38,9 @@ class BillLineItem:
     r"""Amount of tax for the line."""
     tax_rate_ref: Optional[shared_taxrateref.TaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     r"""Data types that reference a tax rate, for example invoice and bill line items, use a taxRateRef that includes the ID and name of the linked tax rate.
-    
+
     Found on:
-    
+
     - Bill line items
     - Bill Credit Note line items
     - Credit Note line items
@@ -54,7 +54,7 @@ class BillLineItem:
     r"""Categories, and a project and customer, against which the item is tracked."""
     tracking_category_refs: Optional[list[shared_trackingcategoryref.TrackingCategoryRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
     r"""Collection of categories against which this item is tracked.
-    
+
     Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible
     """
     

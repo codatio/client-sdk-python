@@ -18,9 +18,9 @@ class AccountTransactionLine:
     r"""Description of the account transaction."""
     record_ref: Optional[shared_invoiceto.InvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
     r"""Links to the underlying record or data type.
-    
+
     Found on:
-    
+
     - Journal entries
     - Account transactions
     - Invoices

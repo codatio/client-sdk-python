@@ -12,9 +12,9 @@ from typing import Optional
 @dataclasses.dataclass
 class InvoiceTo:
     r"""Links to the underlying record or data type.
-    
+
     Found on:
-    
+
     - Journal entries
     - Account transactions
     - Invoices

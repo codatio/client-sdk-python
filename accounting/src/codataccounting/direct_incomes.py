@@ -16,13 +16,13 @@ class DirectIncomes:
     def create(self, request: operations.CreateDirectIncomeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDirectIncomeResponse:
         r"""Create direct income
         The *Create direct income* endpoint creates a new [direct income](https://docs.codat.io/accounting-api#/schemas/DirectIncome) for a given company's connection.
-        
+
         [Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-        
+
         **Integration-specific behaviour**
-        
+
         Required data may vary by integration. To see what data to post, first call [Get create direct income model](https://docs.codat.io/accounting-api#/operations/get-create-directIncomes-model).
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -69,9 +69,9 @@ class DirectIncomes:
     def download_attachment(self, request: operations.DownloadDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadDirectIncomeAttachmentResponse:
         r"""Download direct income attachment
         The *Download direct income attachment* endpoint downloads a specific attachment for a given `directIncomeId` and `attachmentId`.
-        
+
         [Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support downloading a direct income attachment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -113,11 +113,11 @@ class DirectIncomes:
     def get(self, request: operations.GetDirectIncomeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectIncomeResponse:
         r"""Get direct income
         The *Get direct income* endpoint returns a single direct income for a given directIncomeId.
-        
+
         [Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support getting a specific direct income.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -164,9 +164,9 @@ class DirectIncomes:
     def get_attachment(self, request: operations.GetDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDirectIncomeAttachmentResponse:
         r"""Get direct income attachment
         The *Get direct income attachment* endpoint returns a specific attachment for a given `directIncomeId` and `attachmentId`.
-        
+
         [Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support getting a direct income attachment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -210,13 +210,13 @@ class DirectIncomes:
     def get_create_model(self, request: operations.GetCreateDirectIncomesModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateDirectIncomesModelResponse:
         r"""Get create direct income model
         The *Get create direct income model* endpoint returns the expected data for the request payload when creating a [direct income](https://docs.codat.io/accounting-api#/schemas/DirectIncome) for a given company and integration.
-        
+
         [Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-        
+
         **Integration-specific behaviour**
-        
+
         See the *response examples* for integration-specific indicative models.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support creating a direct income.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -259,9 +259,9 @@ class DirectIncomes:
     def list(self, request: operations.ListDirectIncomesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDirectIncomesResponse:
         r"""List direct incomes
         The *List direct incomes* endpoint returns a list of [direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) for a given company's connection.
-        
+
         [Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -309,9 +309,9 @@ class DirectIncomes:
     def list_attachments(self, request: operations.ListDirectIncomeAttachmentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListDirectIncomeAttachmentsResponse:
         r"""List direct income attachments
         The *List direct income attachments* endpoint returns a list of attachments available to download for given `directIncomeId`.
-        
+
         [Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support listing direct income attachments.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -354,13 +354,13 @@ class DirectIncomes:
     def upload_attachment(self, request: operations.UploadDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadDirectIncomeAttachmentResponse:
         r"""Create direct income attachment
         The *Upload direct income attachment* endpoint uploads an attachment and assigns it against a specific `directIncomeId`.
-        
+
         [Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-        
+
         **Integration-specific behaviour**
-        
+
         For more details on supported file types by integration see [Attachments](https://docs.codat.io/accounting-api#/schemas/Attachment).
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support uploading a direct income attachment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
