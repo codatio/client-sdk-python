@@ -18,7 +18,7 @@ This may include information like addresses, tax registration details and social
 
 ```python
 import codatcommerce
-from codatcommerce.models import operations
+from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
     security=shared.Security(

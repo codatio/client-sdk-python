@@ -13,9 +13,11 @@ pip install codat-commerce
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codatcommerce
-from codatcommerce.models import operations
+from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
     security=shared.Security(
