@@ -23,7 +23,7 @@ Use the [List Integrations](https://docs.codat.io/codat-api#/operations/list-int
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -66,7 +66,7 @@ This operation is not reversible. The end user would need to reauthorize a new d
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -106,7 +106,7 @@ if res.status_code == 200:
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -146,7 +146,7 @@ if res.connection is not None:
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -189,7 +189,7 @@ if res.connections is not None:
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -232,7 +232,7 @@ Update data connection's authorization.
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(

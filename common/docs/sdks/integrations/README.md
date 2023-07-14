@@ -18,7 +18,7 @@ Get single integration, by platformKey
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -57,7 +57,7 @@ Get branding for platform.
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -96,7 +96,7 @@ List your available integrations
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(

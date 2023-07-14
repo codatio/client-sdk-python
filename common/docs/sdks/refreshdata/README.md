@@ -24,7 +24,7 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -106,7 +106,7 @@ Get the state of each data type for a company
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -145,7 +145,7 @@ Retrieve information about a single dataset or pull operation.
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -185,7 +185,7 @@ Gets the pull operation history (datasets) for a given company.
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(

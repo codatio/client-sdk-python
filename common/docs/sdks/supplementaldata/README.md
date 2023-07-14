@@ -80,7 +80,7 @@ The *Get configuration* endpoint returns supplemental data configuration previou
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
