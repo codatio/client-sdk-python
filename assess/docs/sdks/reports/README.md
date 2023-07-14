@@ -30,7 +30,7 @@ Codat suggests a category for each account automatically, but you can [change it
 
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
@@ -73,7 +73,7 @@ Codat suggests a category for each account automatically, but you can [change it
 
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
@@ -343,7 +343,7 @@ The Enhanced Cash Flow Transactions endpoint provides a fully categorized list o
 
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
@@ -385,7 +385,7 @@ Gets a list of invoices linked to the corresponding banking transaction
 
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
@@ -427,7 +427,7 @@ Get enhanced loan summaries
 
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
@@ -466,7 +466,7 @@ Gets key metrics for subscription revenue.
 
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
@@ -506,7 +506,7 @@ List enhanced loan transactions
 
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
@@ -546,7 +546,7 @@ Requests production of key subscription revenue metrics.
 
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
