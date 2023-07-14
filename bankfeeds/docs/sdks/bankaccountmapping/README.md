@@ -72,7 +72,7 @@ This endpoint is only needed if building an account management UI.
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(

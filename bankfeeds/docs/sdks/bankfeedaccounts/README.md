@@ -75,7 +75,7 @@ if res.bank_feed_account is not None:
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(

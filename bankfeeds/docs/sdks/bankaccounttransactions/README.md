@@ -112,7 +112,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -160,7 +160,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
