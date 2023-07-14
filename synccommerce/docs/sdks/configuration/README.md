@@ -17,7 +17,7 @@ Retrieve current config preferences.
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -56,7 +56,7 @@ Make changes to configuration preferences.
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(

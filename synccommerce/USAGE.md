@@ -1,4 +1,6 @@
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codatsynccommerce
 from codatsynccommerce.models import shared

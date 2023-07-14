@@ -12,6 +12,8 @@ pip install codat-sync-for-commerce
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codatsynccommerce
 from codatsynccommerce.models import shared

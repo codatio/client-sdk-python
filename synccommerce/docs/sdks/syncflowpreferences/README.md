@@ -20,7 +20,7 @@ To enable retrieval of preferences set for the text fields on Sync Flow.
 
 ```python
 import codatsynccommerce
-
+from codatsynccommerce.models import shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -55,7 +55,7 @@ Get a URL for Sync Flow including a one time passcode.
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -96,7 +96,7 @@ Enable retrieval for accounts which are visible on sync flow.
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
