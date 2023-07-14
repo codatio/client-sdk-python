@@ -13,7 +13,7 @@ class Webhooks:
         self.sdk_configuration = sdk_config
         
     
-    def create(self, request: shared.Rule, retries: Optional[utils.RetryConfig] = None) -> operations.CreateRuleResponse:
+    def create(self, request: shared.CreateRule, retries: Optional[utils.RetryConfig] = None) -> operations.CreateRuleResponse:
         r"""Create webhook
         Create a new webhook configuration
         """

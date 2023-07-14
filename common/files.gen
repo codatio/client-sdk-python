@@ -93,6 +93,7 @@ src/codatcommon/models/shared/syncsettings.py
 src/codatcommon/models/shared/syncsetting.py
 src/codatcommon/models/shared/supplementaldataconfiguration.py
 src/codatcommon/models/shared/rule.py
+src/codatcommon/models/shared/createrule.py
 src/codatcommon/models/shared/rules.py
 src/codatcommon/models/shared/security.py
 src/codatcommon/models/shared/companydataconnectionstatuschangedwebhook.py
@@ -234,6 +235,8 @@ docs/models/shared/supplementaldataconfigurationsupplementaldatasourceconfigurat
 docs/models/shared/supplementaldataconfiguration.md
 docs/models/shared/rulenotifiers.md
 docs/models/shared/rule.md
+docs/models/shared/createrulenotifiers.md
+docs/models/shared/createrule.md
 docs/models/shared/rules.md
 docs/models/shared/security.md
 docs/models/shared/companydataconnectionstatuschangedwebhookdata.md
