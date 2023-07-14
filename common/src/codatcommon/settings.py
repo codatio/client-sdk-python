@@ -16,7 +16,7 @@ class Settings:
     def get_profile(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetProfileResponse:
         r"""Get profile
         Fetch your Codat profile.
-        
+
         Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

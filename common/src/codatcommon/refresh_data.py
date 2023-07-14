@@ -16,9 +16,9 @@ class RefreshData:
     def all(self, request: operations.RefreshCompanyDataRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RefreshCompanyDataResponse:
         r"""Refresh all data
         Refreshes all data types with `fetch on first link` set to `true` for a given company.
-        
+
         This is an asynchronous operation, and will bring updated data into Codat from the linked integration for you to view.
-        
+
         [Read more](https://docs.codat.io/core-concepts/data-type-settings) about data type settings and `fetch on first link`.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -59,7 +59,7 @@ class RefreshData:
     def by_data_type(self, request: operations.RefreshDataTypeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RefreshDataTypeResponse:
         r"""Refresh data type
         Refreshes a given data type for a given company.
-        
+
         This is an asynchronous operation, and will bring updated data into Codat from the linked integration for you to view.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

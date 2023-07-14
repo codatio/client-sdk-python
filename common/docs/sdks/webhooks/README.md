@@ -26,10 +26,9 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-req = shared.Rule(
+req = shared.CreateRule(
     company_id='39b73b17-cc2e-429e-915d-71654e9dcd1e',
-    id='ff89c50e-a719-4ef5-a182-9917e53927b6',
-    notifiers=shared.RuleNotifiers(
+    notifiers=shared.CreateRuleNotifiers(
         emails=[
             'info@client.com',
             'info@client.com',
@@ -50,7 +49,7 @@ if res.rule is not None:
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [shared.Rule](../../models/shared/rule.md)                          | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `request`                                                           | [shared.CreateRule](../../models/shared/createrule.md)              | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 
@@ -67,7 +66,7 @@ Get a single webhook
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -106,7 +105,7 @@ List webhooks that you are subscribed to.
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(

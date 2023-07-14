@@ -65,7 +65,7 @@ Permanently deletes a company, its connections and any cached data. This operati
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -104,7 +104,7 @@ if res.status_code == 200:
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -143,7 +143,7 @@ if res.company is not None:
 
 ```python
 import codatcommon
-from codatcommon.models import operations
+from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(

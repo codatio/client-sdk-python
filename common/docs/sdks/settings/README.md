@@ -21,7 +21,7 @@ Fetch your Codat profile.
 
 ```python
 import codatcommon
-
+from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(
@@ -56,7 +56,7 @@ Retrieve the sync settings for your client. This includes how often data types s
 
 ```python
 import codatcommon
-
+from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
     security=shared.Security(

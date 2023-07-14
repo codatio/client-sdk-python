@@ -10,6 +10,8 @@ pip install codat-common
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codatcommon
 from codatcommon.models import shared
