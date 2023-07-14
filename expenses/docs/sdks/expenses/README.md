@@ -443,7 +443,7 @@ Creates an attachment in the accounting software against the given transactionId
 
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations
+from codatsyncexpenses.models import operations, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(

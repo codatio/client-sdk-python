@@ -17,7 +17,7 @@ Gets a companies expense sync configuration
 
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations
+from codatsyncexpenses.models import operations, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
