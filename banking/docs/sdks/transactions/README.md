@@ -25,7 +25,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatbanking
-from codatbanking.models import operations
+from codatbanking.models import operations, shared
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
@@ -71,7 +71,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatbanking
-from codatbanking.models import operations
+from codatbanking.models import operations, shared
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
@@ -122,7 +122,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatbanking
-from codatbanking.models import operations
+from codatbanking.models import operations, shared
 
 s = codatbanking.CodatBanking(
     security=shared.Security(

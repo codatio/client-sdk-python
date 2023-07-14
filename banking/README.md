@@ -12,9 +12,11 @@ pip install codat-banking
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codatbanking
-from codatbanking.models import operations
+from codatbanking.models import operations, shared
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
