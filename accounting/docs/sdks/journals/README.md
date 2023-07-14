@@ -91,7 +91,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -140,7 +140,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -185,7 +185,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
