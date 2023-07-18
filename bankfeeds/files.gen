@@ -9,6 +9,7 @@ pylintrc
 setup.py
 src/codatbankfeeds/__init__.py
 src/codatbankfeeds/models/__init__.py
+src/codatbankfeeds/models/errors/sdkerror.py
 src/codatbankfeeds/utils/__init__.py
 src/codatbankfeeds/utils/retries.py
 src/codatbankfeeds/utils/utils.py
@@ -69,6 +70,7 @@ src/codatbankfeeds/models/shared/companies.py
 src/codatbankfeeds/models/shared/connections.py
 src/codatbankfeeds/models/shared/security.py
 src/codatbankfeeds/models/shared/__init__.py
+src/codatbankfeeds/models/errors/__init__.py
 docs/sdks/codatbankfeeds/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/bankaccountmapping/README.md
