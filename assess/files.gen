@@ -7,6 +7,7 @@ pylintrc
 setup.py
 src/codatassess/__init__.py
 src/codatassess/models/__init__.py
+src/codatassess/models/errors/sdkerror.py
 src/codatassess/utils/__init__.py
 src/codatassess/utils/retries.py
 src/codatassess/utils/utils.py
@@ -90,6 +91,7 @@ src/codatassess/models/shared/accountcategoriesupdatedwebhook.py
 src/codatassess/models/shared/__init__.py
 src/codatassess/models/webhooks/account_categories_updated.py
 src/codatassess/models/webhooks/__init__.py
+src/codatassess/models/errors/__init__.py
 docs/sdks/codatassess/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/dataintegrity/README.md
