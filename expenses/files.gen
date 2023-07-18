@@ -11,6 +11,7 @@ pylintrc
 setup.py
 src/codatsyncexpenses/__init__.py
 src/codatsyncexpenses/models/__init__.py
+src/codatsyncexpenses/models/errors/sdkerror.py
 src/codatsyncexpenses/utils/__init__.py
 src/codatsyncexpenses/utils/retries.py
 src/codatsyncexpenses/utils/utils.py
@@ -66,6 +67,7 @@ src/codatsyncexpenses/models/webhooks/sync_complete.py
 src/codatsyncexpenses/models/webhooks/sync_failed.py
 src/codatsyncexpenses/models/webhooks/sync_started.py
 src/codatsyncexpenses/models/webhooks/__init__.py
+src/codatsyncexpenses/models/errors/__init__.py
 docs/sdks/codatsyncexpenses/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/configuration/README.md
