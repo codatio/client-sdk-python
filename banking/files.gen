@@ -8,6 +8,7 @@ pylintrc
 setup.py
 src/codatbanking/__init__.py
 src/codatbanking/models/__init__.py
+src/codatbanking/models/errors/sdkerror.py
 src/codatbanking/utils/__init__.py
 src/codatbanking/utils/retries.py
 src/codatbanking/utils/utils.py
@@ -41,6 +42,7 @@ src/codatbanking/models/shared/transactioncode.py
 src/codatbanking/models/shared/transactions.py
 src/codatbanking/models/shared/security.py
 src/codatbanking/models/shared/__init__.py
+src/codatbanking/models/errors/__init__.py
 docs/sdks/codatbanking/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/accountbalances/README.md
