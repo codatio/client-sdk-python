@@ -29,6 +29,7 @@ pylintrc
 setup.py
 src/codataccounting/__init__.py
 src/codataccounting/models/__init__.py
+src/codataccounting/models/errors/sdkerror.py
 src/codataccounting/utils/__init__.py
 src/codataccounting/utils/retries.py
 src/codataccounting/utils/utils.py
@@ -341,6 +342,7 @@ src/codataccounting/models/shared/transferaccount.py
 src/codataccounting/models/shared/transfers.py
 src/codataccounting/models/shared/security.py
 src/codataccounting/models/shared/__init__.py
+src/codataccounting/models/errors/__init__.py
 docs/sdks/codataccounting/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/accounttransactions/README.md
