@@ -9,6 +9,7 @@ pylintrc
 setup.py
 src/codatsynccommerce/__init__.py
 src/codatsynccommerce/models/__init__.py
+src/codatsynccommerce/models/errors/sdkerror.py
 src/codatsynccommerce/utils/__init__.py
 src/codatsynccommerce/utils/retries.py
 src/codatsynccommerce/utils/utils.py
@@ -80,6 +81,7 @@ src/codatsynccommerce/models/shared/syncflowurl.py
 src/codatsynccommerce/models/shared/visibleaccounts.py
 src/codatsynccommerce/models/shared/security.py
 src/codatsynccommerce/models/shared/__init__.py
+src/codatsynccommerce/models/errors/__init__.py
 docs/sdks/codatsynccommerce/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/companymanagement/README.md

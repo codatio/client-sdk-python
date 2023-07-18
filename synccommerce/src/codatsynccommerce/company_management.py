@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatsynccommerce import utils
-from codatsynccommerce.models import operations, shared
+from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
 class CompanyManagement:
@@ -49,6 +49,8 @@ class CompanyManagement:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
                 res.company = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -89,6 +91,8 @@ class CompanyManagement:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Connection])
                 res.connection = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -127,6 +131,8 @@ class CompanyManagement:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Companies])
                 res.companies = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -165,6 +171,8 @@ class CompanyManagement:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Connections])
                 res.connections = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -205,6 +213,8 @@ class CompanyManagement:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Connection])
                 res.connection = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

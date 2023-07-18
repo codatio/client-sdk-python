@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatsynccommerce import utils
-from codatsynccommerce.models import operations, shared
+from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
 class SyncFlowPreferences:
@@ -46,6 +46,8 @@ class SyncFlowPreferences:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.Localization]])
                 res.localization_info = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -84,6 +86,8 @@ class SyncFlowPreferences:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.SyncFlowURL])
                 res.sync_flow_url = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -121,6 +125,8 @@ class SyncFlowPreferences:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.VisibleAccounts])
                 res.visible_accounts = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -161,6 +167,8 @@ class SyncFlowPreferences:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.Localization]])
                 res.localization_info = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -201,6 +209,8 @@ class SyncFlowPreferences:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.VisibleAccounts])
                 res.visible_accounts = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
