@@ -12,6 +12,7 @@ pylintrc
 setup.py
 src/codatcommon/__init__.py
 src/codatcommon/models/__init__.py
+src/codatcommon/models/errors/sdkerror.py
 src/codatcommon/utils/__init__.py
 src/codatcommon/utils/retries.py
 src/codatcommon/utils/utils.py
@@ -113,6 +114,7 @@ src/codatcommon/models/webhooks/new_company_synchronized.py
 src/codatcommon/models/webhooks/push_operation_has_timed_out.py
 src/codatcommon/models/webhooks/push_operation_status_has_changed.py
 src/codatcommon/models/webhooks/__init__.py
+src/codatcommon/models/errors/__init__.py
 docs/sdks/codatcommon/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/companies/README.md
