@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatcommerce import utils
-from codatcommerce.models import operations, shared
+from codatcommerce.models import errors, operations, shared
 from typing import Optional
 
 class CompanyInfo:
@@ -48,14 +48,20 @@ class CompanyInfo:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CompanyInfo])
                 res.company_info = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
                 res.schema = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 409:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.GetCompanyInfo409ApplicationJSON])
                 res.get_company_info_409_application_json_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

@@ -13,6 +13,7 @@ pylintrc
 setup.py
 src/codatcommerce/__init__.py
 src/codatcommerce/models/__init__.py
+src/codatcommerce/models/errors/sdkerror.py
 src/codatcommerce/utils/__init__.py
 src/codatcommerce/utils/retries.py
 src/codatcommerce/utils/utils.py
@@ -94,6 +95,7 @@ src/codatcommerce/models/shared/transactiontype.py
 src/codatcommerce/models/shared/transactions.py
 src/codatcommerce/models/shared/security.py
 src/codatcommerce/models/shared/__init__.py
+src/codatcommerce/models/errors/__init__.py
 docs/sdks/codatcommerce/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/companyinfo/README.md
