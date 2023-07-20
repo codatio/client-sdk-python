@@ -155,7 +155,7 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='omnis',
+    query='ipsa',
 )
 
 res = s.companies.list(req)
