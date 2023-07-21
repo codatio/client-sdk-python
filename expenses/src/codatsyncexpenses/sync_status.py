@@ -15,7 +15,7 @@ class SyncStatus:
     
     def get_last_successful_sync(self, request: operations.GetLastSuccessfulSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetLastSuccessfulSyncResponse:
         r"""Last successful sync
-        Gets the status of the last successfull sync
+        Gets the status of the last successful sync
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

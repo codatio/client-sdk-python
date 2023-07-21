@@ -30,6 +30,10 @@ req = operations.CreateExpenseDatasetRequest(
     create_expense_request=shared.CreateExpenseRequest(
         items=[
             shared.ExpenseTransaction(
+                contact_ref=shared.ContactRef(
+                    contact_type=shared.ContactRefContactType.SUPPLIER,
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
                 currency='GBP',
                 currency_rate=5928.45,
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
@@ -131,6 +135,10 @@ req = operations.CreateExpenseDatasetRequest(
                 type=shared.ExpenseTransactionType.PAYMENT,
             ),
             shared.ExpenseTransaction(
+                contact_ref=shared.ContactRef(
+                    contact_type=shared.ContactRefContactType.SUPPLIER,
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
                 currency='GBP',
                 currency_rate=4236.55,
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
@@ -196,6 +204,10 @@ req = operations.CreateExpenseDatasetRequest(
                 type=shared.ExpenseTransactionType.PAYMENT,
             ),
             shared.ExpenseTransaction(
+                contact_ref=shared.ContactRef(
+                    contact_type=shared.ContactRefContactType.SUPPLIER,
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
                 currency='GBP',
                 currency_rate=8917.73,
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
@@ -326,30 +338,14 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UpdateExpenseDatasetRequest(
     update_expense_request=shared.UpdateExpenseRequest(
+        contact_ref=shared.ContactRef(
+            contact_type=shared.ContactRefContactType.SUPPLIER,
+            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+        ),
         currency='GBP',
+        currency_rate=8121.69,
         issue_date='2022-06-28T00:00:00.000Z',
         lines=[
-            shared.ExpenseTransactionLine(
-                account_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                net_amount=110.42,
-                tax_amount=14.43,
-                tax_rate_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                tracking_refs=[
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                ],
-            ),
             shared.ExpenseTransactionLine(
                 account_ref=shared.RecordRef(
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',

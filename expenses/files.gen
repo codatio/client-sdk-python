@@ -43,6 +43,7 @@ src/codatsyncexpenses/models/shared/createexpenserequest.py
 src/codatsyncexpenses/models/shared/expensetransaction.py
 src/codatsyncexpenses/models/shared/expensetransactionline.py
 src/codatsyncexpenses/models/shared/recordref.py
+src/codatsyncexpenses/models/shared/contactref.py
 src/codatsyncexpenses/models/shared/updateexpenserequest.py
 src/codatsyncexpenses/models/shared/attachment.py
 src/codatsyncexpenses/models/shared/mappingoptions.py
@@ -123,6 +124,8 @@ docs/models/shared/expensetransactiontype.md
 docs/models/shared/expensetransaction.md
 docs/models/shared/expensetransactionline.md
 docs/models/shared/recordref.md
+docs/models/shared/contactrefcontacttype.md
+docs/models/shared/contactref.md
 docs/models/shared/updateexpenserequest.md
 docs/models/shared/attachment.md
 docs/models/shared/mappingoptions.md
