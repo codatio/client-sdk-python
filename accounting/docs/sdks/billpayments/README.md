@@ -40,46 +40,52 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='929921ae-fb9f-458c-8d86-e68e4be05601',
-            name='Shawna Hamill',
+            id='23b75d23-67fe-41a0-8c8d-f79f0a396d90',
+            name='Jimmy Jerde',
         ),
         currency='USD',
-        currency_rate=4585.03,
+        currency_rate=7898.7,
         date_='2022-10-23T00:00:00.000Z',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=3361.02,
+                amount=9792.71,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=8806.79,
-                        currency_rate=7746.84,
-                        id='fef66ef1-caa3-4383-82be-b477373c8d72',
-                        type=shared.BillPaymentLineLinkType.DISCOUNT,
+                        amount=6496.57,
+                        currency_rate=7709.97,
+                        id='e188b1c4-ee2c-48c6-8e61-1feeb1c7cbdb',
+                        type=shared.BillPaymentLineLinkType.OTHER,
                     ),
                     shared.BillPaymentLineLink(
-                        amount=4269.04,
-                        currency_rate=3008.24,
-                        id='d1db1f2c-4310-4661-a963-49e1cf9e06e3',
-                        type=shared.BillPaymentLineLinkType.PAYMENT_ON_ACCOUNT,
+                        amount=9064.95,
+                        currency_rate=9347.82,
+                        id='c74378ba-2531-4774-bdc9-15ad2caf5dd6',
+                        type=shared.BillPaymentLineLinkType.CREDIT_NOTE,
                     ),
                     shared.BillPaymentLineLink(
-                        amount=2503.98,
-                        currency_rate=2244.67,
-                        id='7000ae6b-6bc9-4b8f-b59e-ac55a9741d31',
-                        type=shared.BillPaymentLineLinkType.UNKNOWN,
+                        amount=1274.99,
+                        currency_rate=2337.08,
+                        id='dc0f5ae2-f3a6-4b70-8878-756143f5a6c9',
+                        type=shared.BillPaymentLineLinkType.BILL_PAYMENT,
                     ),
                 ],
             ),
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=3220.17,
+                amount=3661.47,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=6113.28,
-                        currency_rate=4030.26,
-                        id='5bb8a720-2611-4435-a139-dbc2259b1abd',
+                        amount=3712.13,
+                        currency_rate=3289.54,
+                        id='4080d40b-cacc-46cb-96b5-f3ec909304f9',
+                        type=shared.BillPaymentLineLinkType.UNLINKED,
+                    ),
+                    shared.BillPaymentLineLink(
+                        amount=4258.17,
+                        currency_rate=7403.47,
+                        id='ad255381-9b47-44b0-ad20-e56248fff639',
                         type=shared.BillPaymentLineLinkType.PAYMENT_ON_ACCOUNT,
                     ),
                 ],
@@ -91,38 +97,43 @@ req = operations.CreateBillPaymentRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
         payment_method_ref=shared.PaymentMethodRef(
-            id='c070e108-4cb0-4672-91ad-879eeb9665b8',
-            name='Cecelia Wiza',
+            id='10abdcab-6267-4669-ae1e-c00221b335d8',
+            name='Donnie Romaguera',
         ),
-        reference='alias',
+        reference='debitis',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "fuga": {
-                    "accusantium": 'expedita',
-                    "officiis": 'eos',
-                    "quibusdam": 'odio',
-                    "praesentium": 'odit',
+                "temporibus": {
+                    "atque": 'quibusdam',
+                    "sit": 'quo',
+                    "veniam": 'aliquam',
                 },
-                "explicabo": {
-                    "error": 'earum',
-                    "adipisci": 'recusandae',
+                "provident": {
+                    "earum": 'doloremque',
+                    "ipsum": 'alias',
+                    "doloremque": 'tempora',
+                    "perspiciatis": 'quam',
                 },
-                "similique": {
-                    "quidem": 'quis',
-                    "beatae": 'unde',
+                "atque": {
+                    "ex": 'architecto',
+                    "a": 'laborum',
+                    "veritatis": 'quod',
+                },
+                "a": {
+                    "accusantium": 'commodi',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='7f92443d-a7ce-452b-895c-537c6454efb0',
-            supplier_name='libero',
+            id='88f77c1f-fc71-4dca-963f-2a3c80a97ff3',
+            supplier_name='adipisci',
         ),
         total_amount=1329.54,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=189753,
+    timeout_in_minutes=250298,
 )
 
 res = s.bill_payments.create(req)
@@ -186,7 +197,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='labore',
+    bill_payment_id='optio',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -234,7 +245,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='totam',
+    bill_payment_id='illum',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -332,7 +343,7 @@ req = operations.ListBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='occaecati',
+    query='at',
 )
 
 res = s.bill_payments.list(req)

@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 from ..shared import billedtotype1 as shared_billedtotype1
 from ..shared import customerref as shared_customerref
+from ..shared import invoiceto as shared_invoiceto
 from ..shared import projectref as shared_projectref
 from ..shared import trackingcategoryref as shared_trackingcategoryref
 from codataccounting import utils
@@ -21,5 +22,10 @@ class Propertiestracking1:
     is_rebilled_to: shared_billedtotype1.BilledToType1 = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
     customer_ref: Optional[shared_customerref.CustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
     project_ref: Optional[shared_projectref.ProjectRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})
+    record_ref: Optional[shared_invoiceto.InvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
+    r"""Links the current record to the underlying record or data type that created it.
+
+    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
+    """
     
 

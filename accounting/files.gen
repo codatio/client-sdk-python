@@ -52,6 +52,7 @@ src/codataccounting/models/operations/get_bill_credit_note.py
 src/codataccounting/models/operations/get_create_update_billcreditnotes_model.py
 src/codataccounting/models/operations/list_bill_credit_notes.py
 src/codataccounting/models/operations/update_bill_credit_note.py
+src/codataccounting/models/operations/upload_billcreditnote_attachment.py
 src/codataccounting/models/operations/create_bill_payment.py
 src/codataccounting/models/operations/delete_billpayment.py
 src/codataccounting/models/operations/get_bill_payments.py
@@ -418,6 +419,9 @@ docs/models/operations/listbillcreditnotes409applicationjson.md
 docs/models/operations/listbillcreditnotesresponse.md
 docs/models/operations/updatebillcreditnoterequest.md
 docs/models/operations/updatebillcreditnoteresponse.md
+docs/models/operations/uploadbillcreditnoteattachmentrequestbody.md
+docs/models/operations/uploadbillcreditnoteattachmentrequest.md
+docs/models/operations/uploadbillcreditnoteattachmentresponse.md
 docs/models/operations/createbillpaymentrequest.md
 docs/models/operations/createbillpaymentresponse.md
 docs/models/operations/deletebillpaymentrequest.md

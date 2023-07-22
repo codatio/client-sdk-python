@@ -44,158 +44,136 @@ req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='San Antonio',
-                country='New Zealand',
-                line1='architecto',
-                line2='iure',
-                postal_code='95623-0684',
-                region='nisi',
-                type=shared.AddressType.DELIVERY,
+                city='New Jerrell',
+                country='Mauritius',
+                line1='aperiam',
+                line2='fugit',
+                postal_code='27161',
+                region='facere',
+                type=shared.AddressType.BILLING,
+            ),
+            shared.Addressesitems(
+                city='DuBuquetown',
+                country='Tanzania',
+                line1='excepturi',
+                line2='dicta',
+                postal_code='93098',
+                region='animi',
+                type=shared.AddressType.UNKNOWN,
+            ),
+            shared.Addressesitems(
+                city='Port Kaci',
+                country='Reunion',
+                line1='quasi',
+                line2='quidem',
+                postal_code='33615-1707',
+                region='quo',
+                type=shared.AddressType.UNKNOWN,
             ),
         ],
-        contact_name='officiis',
+        contact_name='libero',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Hilllton',
-                    country='Mauritius',
-                    line1='impedit',
-                    line2='modi',
-                    postal_code='61968-2330',
-                    region='odit',
+                    city='Elwinborough',
+                    country='Honduras',
+                    line1='nisi',
+                    line2='labore',
+                    postal_code='71802-2557',
+                    region='consequatur',
                     type=shared.AddressType.DELIVERY,
                 ),
-                email='Gina93@gmail.com',
+                email='Monica44@gmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Lance Cruickshank DVM',
+                name='Bert Vandervort',
                 phone=[
-                    shared.PhoneNumbersitems(
-                        number='+44 25691 154789',
-                        type=shared.PhoneNumberType.MOBILE,
-                    ),
                     shared.PhoneNumbersitems(
                         number='(877) 492-8687',
-                        type=shared.PhoneNumberType.MOBILE,
-                    ),
-                ],
-                status=shared.CustomerStatus.ACTIVE,
-            ),
-            shared.Contact(
-                address=shared.Addressesitems(
-                    city='Adamsboro',
-                    country='Chile',
-                    line1='labore',
-                    line2='earum',
-                    postal_code='06184',
-                    region='voluptates',
-                    type=shared.AddressType.DELIVERY,
-                ),
-                email='Domenick41@yahoo.com',
-                modified_date='2022-10-23T00:00:00.000Z',
-                name='Cristina Beer V',
-                phone=[
-                    shared.PhoneNumbersitems(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.FAX,
-                    ),
-                    shared.PhoneNumbersitems(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.FAX,
-                    ),
-                ],
-                status=shared.CustomerStatus.ACTIVE,
-            ),
-            shared.Contact(
-                address=shared.Addressesitems(
-                    city='Runolfssonside',
-                    country='Uruguay',
-                    line1='tenetur',
-                    line2='ipsam',
-                    postal_code='70098-3083',
-                    region='aspernatur',
-                    type=shared.AddressType.BILLING,
-                ),
-                email='Diana_Hammes@yahoo.com',
-                modified_date='2022-10-23T00:00:00.000Z',
-                name='Verna Lang',
-                phone=[
-                    shared.PhoneNumbersitems(
-                        number='01224 658 999',
                         type=shared.PhoneNumberType.UNKNOWN,
                     ),
                     shared.PhoneNumbersitems(
-                        number='+44 25691 154789',
-                        type=shared.PhoneNumberType.UNKNOWN,
-                    ),
-                    shared.PhoneNumbersitems(
-                        number='(877) 492-8687',
+                        number='01224 658 999',
                         type=shared.PhoneNumberType.FAX,
                     ),
-                ],
-                status=shared.CustomerStatus.ARCHIVED,
-            ),
-            shared.Contact(
-                address=shared.Addressesitems(
-                    city='Reychester',
-                    country='French Guiana',
-                    line1='veritatis',
-                    line2='fugit',
-                    postal_code='88364',
-                    region='hic',
-                    type=shared.AddressType.DELIVERY,
-                ),
-                email='Jaden62@gmail.com',
-                modified_date='2022-10-23T00:00:00.000Z',
-                name='Verna Sauer',
-                phone=[
                     shared.PhoneNumbersitems(
                         number='(877) 492-8687',
                         type=shared.PhoneNumberType.LANDLINE,
                     ),
-                    shared.PhoneNumbersitems(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.UNKNOWN,
-                    ),
-                    shared.PhoneNumbersitems(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.FAX,
-                    ),
                 ],
                 status=shared.CustomerStatus.ACTIVE,
             ),
+            shared.Contact(
+                address=shared.Addressesitems(
+                    city='Preciousport',
+                    country='Tuvalu',
+                    line1='illum',
+                    line2='laborum',
+                    postal_code='25804-9694',
+                    region='nisi',
+                    type=shared.AddressType.DELIVERY,
+                ),
+                email='Annetta69@hotmail.com',
+                modified_date='2022-10-23T00:00:00.000Z',
+                name='Carmen Toy Sr.',
+                phone=[
+                    shared.PhoneNumbersitems(
+                        number='01224 658 999',
+                        type=shared.PhoneNumberType.MOBILE,
+                    ),
+                ],
+                status=shared.CustomerStatus.UNKNOWN,
+            ),
+            shared.Contact(
+                address=shared.Addressesitems(
+                    city='Dearborn Heights',
+                    country='Ethiopia',
+                    line1='sequi',
+                    line2='et',
+                    postal_code='89337',
+                    region='magnam',
+                    type=shared.AddressType.UNKNOWN,
+                ),
+                email='Darlene.Herman@gmail.com',
+                modified_date='2022-10-23T00:00:00.000Z',
+                name='Amos Brown',
+                phone=[
+                    shared.PhoneNumbersitems(
+                        number='+44 25691 154789',
+                        type=shared.PhoneNumberType.UNKNOWN,
+                    ),
+                ],
+                status=shared.CustomerStatus.UNKNOWN,
+            ),
         ],
-        customer_name='incidunt',
+        customer_name='culpa',
         default_currency='EUR',
-        email_address='nihil',
-        id='7b4848bd-6a6f-4044-9d2c-3b808094373e',
+        email_address='quod',
+        id='c9904c51-95b8-4648-8efa-78f1e2d3b901',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='1-223-679-7768 x019',
-        registration_number='sunt',
+        phone='631-766-2766',
+        registration_number='inventore',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.ACTIVE,
+        status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "quidem": {
-                    "a": 'et',
-                    "ipsam": 'eos',
-                    "exercitationem": 'minima',
-                    "laudantium": 'quibusdam',
+                "ab": {
+                    "pariatur": 'excepturi',
                 },
-                "fuga": {
-                    "excepturi": 'corporis',
-                    "nam": 'itaque',
-                    "suscipit": 'porro',
+                "enim": {
+                    "dolore": 'sunt',
+                    "nisi": 'molestias',
+                    "impedit": 'quasi',
                 },
             },
         ),
-        tax_number='nulla',
+        tax_number='nesciunt',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=10447,
+    timeout_in_minutes=547077,
 )
 
 res = s.customers.create(req)
@@ -242,7 +220,7 @@ req = operations.DownloadCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='qui',
+    customer_id='in',
 )
 
 res = s.customers.download_attachment(req)
@@ -289,7 +267,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='in',
+    customer_id='quia',
 )
 
 res = s.customers.get(req)
@@ -336,7 +314,7 @@ req = operations.GetCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='enim',
+    customer_id='odio',
 )
 
 res = s.customers.get_attachment(req)
@@ -433,7 +411,7 @@ req = operations.ListCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='vel',
+    query='dicta',
 )
 
 res = s.customers.list(req)
@@ -479,7 +457,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListCustomerAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='impedit',
+    customer_id='eveniet',
 )
 
 res = s.customers.list_attachments(req)
@@ -530,154 +508,110 @@ req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='West Marcelina',
-                country='Palestinian Territory',
-                line1='labore',
-                line2='adipisci',
-                postal_code='73480',
-                region='esse',
-                type=shared.AddressType.BILLING,
+                city='Tamarafurt',
+                country='Montserrat',
+                line1='debitis',
+                line2='non',
+                postal_code='00571',
+                region='optio',
+                type=shared.AddressType.DELIVERY,
             ),
         ],
-        contact_name='amet',
+        contact_name='minima',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='East Abdul',
-                    country='Libyan Arab Jamahiriya',
-                    line1='eligendi',
-                    line2='qui',
-                    postal_code='95501',
-                    region='repellendus',
-                    type=shared.AddressType.BILLING,
+                    city='Rancho Cucamonga',
+                    country='Spain',
+                    line1='aliquid',
+                    line2='alias',
+                    postal_code='16459-8156',
+                    region='occaecati',
+                    type=shared.AddressType.DELIVERY,
                 ),
-                email='Verona.Abshire34@gmail.com',
+                email='Tod_Waters@gmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Ray Pfannerstill',
+                name='Renee Littel',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='(877) 492-8687',
-                        type=shared.PhoneNumberType.LANDLINE,
-                    ),
-                    shared.PhoneNumbersitems(
-                        number='01224 658 999',
+                        number='+44 25691 154789',
                         type=shared.PhoneNumberType.UNKNOWN,
                     ),
-                ],
-                status=shared.CustomerStatus.ACTIVE,
-            ),
-            shared.Contact(
-                address=shared.Addressesitems(
-                    city='Windlerfort',
-                    country='Brazil',
-                    line1='rem',
-                    line2='itaque',
-                    postal_code='74945-4921',
-                    region='recusandae',
-                    type=shared.AddressType.UNKNOWN,
-                ),
-                email='May.Donnelly89@gmail.com',
-                modified_date='2022-10-23T00:00:00.000Z',
-                name='Myra Hermann',
-                phone=[
                     shared.PhoneNumbersitems(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.UNKNOWN,
+                        number='+44 25691 154789',
+                        type=shared.PhoneNumberType.FAX,
                     ),
-                ],
-                status=shared.CustomerStatus.UNKNOWN,
-            ),
-            shared.Contact(
-                address=shared.Addressesitems(
-                    city='Lake Roxaneburgh',
-                    country='Sao Tome and Principe',
-                    line1='iste',
-                    line2='earum',
-                    postal_code='77302',
-                    region='repellat',
-                    type=shared.AddressType.BILLING,
-                ),
-                email='Columbus_Moore82@hotmail.com',
-                modified_date='2022-10-23T00:00:00.000Z',
-                name='Duane Dibbert DVM',
-                phone=[
                     shared.PhoneNumbersitems(
                         number='(877) 492-8687',
                         type=shared.PhoneNumberType.MOBILE,
                     ),
                     shared.PhoneNumbersitems(
                         number='01224 658 999',
-                        type=shared.PhoneNumberType.PRIMARY,
-                    ),
-                    shared.PhoneNumbersitems(
-                        number='(877) 492-8687',
-                        type=shared.PhoneNumberType.LANDLINE,
+                        type=shared.PhoneNumberType.UNKNOWN,
                     ),
                 ],
                 status=shared.CustomerStatus.UNKNOWN,
             ),
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Lexifurt',
-                    country='Somalia',
-                    line1='molestiae',
-                    line2='officiis',
-                    postal_code='50466-9029',
-                    region='dolorem',
-                    type=shared.AddressType.UNKNOWN,
+                    city='Canton',
+                    country='Republic of Korea',
+                    line1='quas',
+                    line2='tenetur',
+                    postal_code='64448-2483',
+                    region='dicta',
+                    type=shared.AddressType.DELIVERY,
                 ),
-                email='Lizeth_Kuhlman@hotmail.com',
+                email='Wendell_Zulauf@gmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Nicolas Walker I',
+                name='Gustavo Schinner',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.FAX,
+                        number='+44 25691 154789',
+                        type=shared.PhoneNumberType.LANDLINE,
                     ),
                 ],
-                status=shared.CustomerStatus.UNKNOWN,
+                status=shared.CustomerStatus.ARCHIVED,
             ),
         ],
-        customer_name='commodi',
-        default_currency='EUR',
-        email_address='temporibus',
-        id='368ba921-6bcb-4415-835c-73641723133e',
+        customer_name='natus',
+        default_currency='USD',
+        email_address='veniam',
+        id='b9bdf219-0abd-49bb-8c27-25ec2659ce02',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='224-783-1427 x78625',
-        registration_number='dolores',
+        phone='620-835-9945',
+        registration_number='voluptates',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.ACTIVE,
+        status=shared.CustomerStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "non": {
-                    "maxime": 'aspernatur',
+                "blanditiis": {
+                    "quibusdam": 'possimus',
+                    "maiores": 'est',
+                    "optio": 'voluptate',
                 },
-                "magni": {
-                    "minima": 'ipsam',
-                    "sequi": 'quaerat',
-                    "accusantium": 'incidunt',
-                    "cupiditate": 'minima',
+                "nostrum": {
+                    "enim": 'ipsa',
+                    "ipsa": 'quaerat',
                 },
-                "quo": {
-                    "facere": 'quidem',
-                    "harum": 'adipisci',
+                "nesciunt": {
+                    "optio": 'eum',
                 },
-                "optio": {
-                    "reprehenderit": 'quo',
-                    "vitae": 'voluptates',
+                "commodi": {
+                    "quia": 'facilis',
                 },
             },
         ),
-        tax_number='tempora',
+        tax_number='magnam',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='iste',
+    customer_id='dolor',
     force_update=False,
-    timeout_in_minutes=560736,
+    timeout_in_minutes=588801,
 )
 
 res = s.customers.update(req)

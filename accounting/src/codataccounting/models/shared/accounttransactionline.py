@@ -17,14 +17,9 @@ class AccountTransactionLine:
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Description of the account transaction."""
     record_ref: Optional[shared_invoiceto.InvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
-    r"""Links to the underlying record or data type.
+    r"""Links the current record to the underlying record or data type that created it.
 
-    Found on:
-
-    - Journal entries
-    - Account transactions
-    - Invoices
-    - Transfers
+    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
     """
     
 

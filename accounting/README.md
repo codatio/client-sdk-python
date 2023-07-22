@@ -75,6 +75,7 @@ if res.account_transaction is not None:
 * [get_create_update_model](docs/sdks/billcreditnotes/README.md#get_create_update_model) - Get create/update bill credit note model
 * [list](docs/sdks/billcreditnotes/README.md#list) - List bill credit notes
 * [update](docs/sdks/billcreditnotes/README.md#update) - Update bill credit note
+* [upload_attachment](docs/sdks/billcreditnotes/README.md#upload_attachment) - Push invoice attachment
 
 ### [bill_payments](docs/sdks/billpayments/README.md)
 

@@ -37,29 +37,36 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='excepturi',
+        account_id='veritatis',
         transactions=[
             shared.CreateBankAccountTransaction(
-                amount=9255.97,
-                balance=8360.79,
+                amount=202.18,
+                balance=3682.41,
                 date_='2022-10-23T00:00:00.000Z',
-                description='quis',
-                id='1a05dfc2-ddf7-4cc7-8ca1-ba928fc81674',
+                description='sapiente',
+                id='c2ddf7cc-78ca-41ba-928f-c816742cb739',
             ),
             shared.CreateBankAccountTransaction(
-                amount=1863.32,
-                balance=7742.34,
+                amount=1352.18,
+                balance=187.89,
                 date_='2022-10-23T00:00:00.000Z',
-                description='esse',
-                id='39205929-396f-4ea7-996e-b10faaa2352c',
+                description='natus',
+                id='29396fea-7596-4eb1-8faa-a2352c595590',
+            ),
+            shared.CreateBankAccountTransaction(
+                amount=4386.01,
+                balance=6342.74,
+                date_='2022-10-23T00:00:00.000Z',
+                description='sapiente',
+                id='1a3a2fa9-4677-4392-91aa-52c3f5ad019d',
             ),
         ],
     ),
-    account_id='enim',
+    account_id='laborum',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=607831,
+    timeout_in_minutes=96098,
 )
 
 res = s.bank_account_transactions.create(req)
@@ -107,7 +114,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='nemo',
+    account_id='reiciendis',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -155,13 +162,13 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id='minima',
+    account_id='voluptatibus',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='excepturi',
+    query='vero',
 )
 
 res = s.bank_account_transactions.list(req)
