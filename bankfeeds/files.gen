@@ -62,7 +62,6 @@ src/codatbankfeeds/models/shared/banktransactiontype.py
 src/codatbankfeeds/models/shared/links.py
 src/codatbankfeeds/models/shared/href.py
 src/codatbankfeeds/models/shared/bankfeedaccount.py
-src/codatbankfeeds/models/shared/pushoperation.py
 src/codatbankfeeds/models/shared/company.py
 src/codatbankfeeds/models/shared/connection.py
 src/codatbankfeeds/models/shared/dataconnectionstatus.py
@@ -152,7 +151,6 @@ docs/models/shared/banktransactiontype.md
 docs/models/shared/links.md
 docs/models/shared/href.md
 docs/models/shared/bankfeedaccount.md
-docs/models/shared/pushoperation.md
 docs/models/shared/company.md
 docs/models/shared/connectionsourcetype.md
 docs/models/shared/connection.md

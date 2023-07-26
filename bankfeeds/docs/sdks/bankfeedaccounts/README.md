@@ -83,26 +83,14 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.DeleteBankFeedBankAccountRequest(
-    bank_feed_account=shared.BankFeedAccount(
-        account_name='quos',
-        account_number='perferendis',
-        account_type='magni',
-        balance=8289.4,
-        currency='USD',
-        feed_start_date='2022-10-23T00:00:00.000Z',
-        id='2a94bb4f-63c9-469e-9a3e-fa77dfb14cd6',
-        modified_date='2022-10-23T00:00:00.000Z',
-        sort_code='laborum',
-        status='accusamus',
-    ),
-    account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    account_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.bank_feed_accounts.delete(req)
 
-if res.push_operation is not None:
+if res.status_code == 200:
     # handle response
 ```
 
@@ -184,40 +172,16 @@ s = codatbankfeeds.CodatBankFeeds(
 req = operations.PutBankFeedRequest(
     request_body=[
         shared.BankFeedAccount(
-            account_name='enim',
-            account_number='accusamus',
-            account_type='delectus',
-            balance=6925.32,
-            currency='USD',
-            feed_start_date='2022-10-23T00:00:00.000Z',
-            id='a88f3a66-9970-474b-a446-9b6e21419598',
-            modified_date='2022-10-23T00:00:00.000Z',
-            sort_code='accusantium',
-            status='mollitia',
-        ),
-        shared.BankFeedAccount(
-            account_name='reiciendis',
-            account_number='mollitia',
-            account_type='ad',
-            balance=4314.18,
+            account_name='magni',
+            account_number='assumenda',
+            account_type='ipsam',
+            balance=46.95,
             currency='GBP',
             feed_start_date='2022-10-23T00:00:00.000Z',
-            id='2516fe4c-8b71-41e5-b7fd-2ed028921cdd',
+            id='94bb4f63-c969-4e9a-befa-77dfb14cd66a',
             modified_date='2022-10-23T00:00:00.000Z',
-            sort_code='ea',
-            status='excepturi',
-        ),
-        shared.BankFeedAccount(
-            account_name='odit',
-            account_number='ea',
-            account_type='accusantium',
-            balance=691.67,
-            currency='EUR',
-            feed_start_date='2022-10-23T00:00:00.000Z',
-            id='576b0d5f-0d30-4c5f-bb25-87053202c73d',
-            modified_date='2022-10-23T00:00:00.000Z',
-            sort_code='hic',
-            status='recusandae',
+            sort_code='non',
+            status='occaecati',
         ),
     ],
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -261,18 +225,18 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.UpdateBankFeedRequest(
     bank_feed_account=shared.BankFeedAccount(
-        account_name='omnis',
-        account_number='facilis',
-        account_type='perspiciatis',
-        balance=318.38,
-        currency='EUR',
+        account_name='enim',
+        account_number='accusamus',
+        account_type='delectus',
+        balance=6925.32,
+        currency='USD',
         feed_start_date='2022-10-23T00:00:00.000Z',
-        id='8909b3fe-49a8-4d9c-bf48-633323f9b77f',
+        id='a88f3a66-9970-474b-a446-9b6e21419598',
         modified_date='2022-10-23T00:00:00.000Z',
-        sort_code='dolorum',
-        status='numquam',
+        sort_code='accusantium',
+        status='mollitia',
     ),
-    account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    account_id='EILBDVJVNUAGVKRQ',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
