@@ -294,7 +294,7 @@ class BillCreditNotes:
 
     
     def upload_attachment(self, request: operations.UploadBillCreditNoteAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadBillCreditNoteAttachmentResponse:
-        r"""Push invoice attachment
+        r"""Upload bill credit note attachment
         ---
         stoplight-id: c26f5b1b19168
         ---

@@ -11,7 +11,7 @@ Bill credit notes
 * [get_create_update_model](#get_create_update_model) - Get create/update bill credit note model
 * [list](#list) - List bill credit notes
 * [update](#update) - Update bill credit note
-* [upload_attachment](#upload_attachment) - Push invoice attachment
+* [upload_attachment](#upload_attachment) - Upload bill credit note attachment
 
 ## create
 
