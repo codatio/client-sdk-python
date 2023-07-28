@@ -27,7 +27,7 @@ class Locations:
         
         url = utils.generate_url(operations.GetLocationRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-locations/{locationId}', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -82,7 +82,7 @@ class Locations:
         
         url = utils.generate_url(operations.ListLocationsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-locations', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
