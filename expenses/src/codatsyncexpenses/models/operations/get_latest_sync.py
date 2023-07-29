@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import companysyncstatus as shared_companysyncstatus
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -23,8 +23,8 @@ class GetLatestSyncResponse:
     status_code: int = dataclasses.field()
     company_sync_status: Optional[shared_companysyncstatus.CompanySyncStatus] = dataclasses.field(default=None)
     r"""Success"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 

@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import createexpenserequest as shared_createexpenserequest
 from ..shared import createexpenseresponse as shared_createexpenseresponse
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -25,8 +25,8 @@ class CreateExpenseDatasetResponse:
     status_code: int = dataclasses.field()
     create_expense_response: Optional[shared_createexpenseresponse.CreateExpenseResponse] = dataclasses.field(default=None)
     r"""OK"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 

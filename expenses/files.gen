@@ -30,7 +30,7 @@ src/codatsyncexpenses/models/operations/list_syncs.py
 src/codatsyncexpenses/models/operations/get_sync_transaction.py
 src/codatsyncexpenses/models/operations/list_sync_transactions.py
 src/codatsyncexpenses/models/operations/__init__.py
-src/codatsyncexpenses/models/shared/schema.py
+src/codatsyncexpenses/models/shared/errormessage.py
 src/codatsyncexpenses/models/shared/companyconfiguration.py
 src/codatsyncexpenses/models/shared/supplier.py
 src/codatsyncexpenses/models/shared/customer.py
@@ -45,6 +45,7 @@ src/codatsyncexpenses/models/shared/expensetransactionline.py
 src/codatsyncexpenses/models/shared/recordref.py
 src/codatsyncexpenses/models/shared/contactref.py
 src/codatsyncexpenses/models/shared/updateexpenserequest.py
+src/codatsyncexpenses/models/shared/expensetype.py
 src/codatsyncexpenses/models/shared/attachment.py
 src/codatsyncexpenses/models/shared/mappingoptions.py
 src/codatsyncexpenses/models/shared/trackingcategorymappinginfo.py
@@ -109,7 +110,7 @@ docs/models/operations/getsynctransactionrequest.md
 docs/models/operations/getsynctransactionresponse.md
 docs/models/operations/listsynctransactionsrequest.md
 docs/models/operations/listsynctransactionsresponse.md
-docs/models/shared/schema.md
+docs/models/shared/errormessage.md
 docs/models/shared/companyconfiguration.md
 docs/models/shared/supplier.md
 docs/models/shared/customer.md
@@ -127,6 +128,7 @@ docs/models/shared/recordref.md
 docs/models/shared/contactrefcontacttype.md
 docs/models/shared/contactref.md
 docs/models/shared/updateexpenserequest.md
+docs/models/shared/expensetype.md
 docs/models/shared/attachment.md
 docs/models/shared/mappingoptions.md
 docs/models/shared/trackingcategorymappinginfo.md

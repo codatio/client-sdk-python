@@ -13,14 +13,15 @@ from .customer import *
 from .dataconnection import *
 from .dataconnectionerror import *
 from .dataconnectionstatus import *
+from .errormessage import *
 from .expensetransaction import *
 from .expensetransactionline import *
+from .expensetype import *
 from .hallink import *
 from .integrationtype import *
 from .mappingoptions import *
 from .postsync import *
 from .recordref import *
-from .schema import *
 from .security import *
 from .supplier import *
 from .synccompletewebhook import *
@@ -34,4 +35,4 @@ from .transactionmetadatalist import *
 from .transactionstatus import *
 from .updateexpenserequest import *
 
-__all__ = ["AccountMappingInfo","AccountMappingInfoAccountType","AccountMappingInfoValidTransactionTypes","Attachment","BankAccount","CodatErrorMessage","CodatErrorMessageValidation","CodatErrorMessageValidationErrors","CodatErrorMessageValidationInternals","CodatErrorMessageValidationWarnings","CompanyConfiguration","CompanySyncStatus","ContactRef","ContactRefContactType","CreateExpenseRequest","CreateExpenseResponse","Customer","DataConnection","DataConnectionError","DataConnectionSourceType","DataConnectionStatus","ExpenseTransaction","ExpenseTransactionLine","ExpenseTransactionType","HalLink","IntegrationType","MappingOptions","PostSync","RecordRef","Schema","Security","Supplier","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncInitiated","SyncStartedWebhook","SyncStartedWebhookData","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionMetadataListLinks","TransactionStatus","UpdateExpenseRequest"]
+__all__ = ["AccountMappingInfo","AccountMappingInfoAccountType","AccountMappingInfoValidTransactionTypes","Attachment","BankAccount","CodatErrorMessage","CodatErrorMessageValidation","CodatErrorMessageValidationErrors","CodatErrorMessageValidationInternals","CodatErrorMessageValidationWarnings","CompanyConfiguration","CompanySyncStatus","ContactRef","ContactRefContactType","CreateExpenseRequest","CreateExpenseResponse","Customer","DataConnection","DataConnectionError","DataConnectionSourceType","DataConnectionStatus","ErrorMessage","ExpenseTransaction","ExpenseTransactionLine","ExpenseTransactionType","ExpenseType","HalLink","IntegrationType","MappingOptions","PostSync","RecordRef","Security","Supplier","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncInitiated","SyncStartedWebhook","SyncStartedWebhookData","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionMetadataListLinks","TransactionStatus","UpdateExpenseRequest"]
