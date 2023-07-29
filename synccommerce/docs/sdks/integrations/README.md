@@ -26,7 +26,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetIntegrationBrandingRequest(
-    platform_key='quibusdam',
+    platform_key='corrupti',
 )
 
 res = s.integrations.get_integration_branding(req)
@@ -68,7 +68,7 @@ req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='unde',
+    query='illum',
 )
 
 res = s.integrations.list_integrations(req)

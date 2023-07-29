@@ -5,25 +5,23 @@ from codatsynccommerce import utils
 from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
-class Sync:
-    r"""Initiate a sync of Sync for Commerce company data into their respective accounting software."""
+class Connections:
+    r"""Create new and manage existing Sync for Commerce companies using the Sync flow UI."""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
         self.sdk_configuration = sdk_config
         
     
-    def request_sync(self, request: operations.RequestSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncResponse:
-        r"""Initiate new sync
-        Run a Commerce sync from the last successful sync up to the date provided (optional), otherwise UtcNow is used.\r\nIf there was no previously successful sync, the start date in the config is used.
+    def get_sync_flow_url(self, request: operations.GetSyncFlowURLRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncFlowURLResponse:
+        r"""Retrieve sync flow url
+        Get a URL for Sync Flow including a one time passcode.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.RequestSyncRequest, base_url, '/companies/{companyId}/sync/commerce/latest', request)
+        url = utils.generate_url(operations.GetSyncFlowURLRequest, base_url, '/config/sync/commerce/{commerceKey}/{accountingKey}/start', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "sync_to_latest_args", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
+        query_params = utils.get_query_params(operations.GetSyncFlowURLRequest, request)
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
@@ -34,7 +32,7 @@ class Sync:
             retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
-            return client.request('POST', url, data=data, files=form, headers=headers)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -43,29 +41,27 @@ class Sync:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.RequestSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetSyncFlowURLResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.SyncSummary])
-                res.sync_summary = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SyncFlowURL])
+                res.sync_flow_url = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
-    def request_sync_for_date_range(self, request: operations.RequestSyncForDateRangeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncForDateRangeResponse:
-        r"""Initiate sync for specific range
-        Initiate a sync for the specified start date to the specified finish date in the request payload.
+    def list_companies(self, request: operations.ListCompaniesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompaniesResponse:
+        r"""List companies
+        Returns a list of companies.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.RequestSyncForDateRangeRequest, base_url, '/meta/companies/{companyId}/sync/commerce/historic', request)
+        url = base_url + '/companies'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "sync_range", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
+        query_params = utils.get_query_params(operations.ListCompaniesRequest, request)
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
@@ -76,7 +72,7 @@ class Sync:
             retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
-            return client.request('POST', url, data=data, files=form, headers=headers)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -85,12 +81,12 @@ class Sync:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.RequestSyncForDateRangeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListCompaniesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.SyncSummary])
-                res.sync_summary = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Companies])
+                res.companies = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 

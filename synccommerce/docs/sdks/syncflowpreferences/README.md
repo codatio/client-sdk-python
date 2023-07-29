@@ -6,15 +6,14 @@ Configure preferences for any given Sync for Commerce company using sync flow.
 
 ### Available Operations
 
-* [get_config_text_sync_flow](#get_config_text_sync_flow) - Retrieve preferences for text fields on Sync Flow
-* [get_sync_flow_url](#get_sync_flow_url) - Retrieve sync flow url
+* [get_config_text_sync_flow](#get_config_text_sync_flow) - Get preferences for text fields
 * [get_visible_accounts](#get_visible_accounts) - List visible accounts
-* [update_config_text_sync_flow](#update_config_text_sync_flow) - Update preferences for text fields on sync flow
-* [update_visible_accounts_sync_flow](#update_visible_accounts_sync_flow) - Update the visible accounts on Sync Flow
+* [update_config_text_sync_flow](#update_config_text_sync_flow) - Update preferences for text fields
+* [update_visible_accounts_sync_flow](#update_visible_accounts_sync_flow) - Update visible accounts
 
 ## get_config_text_sync_flow
 
-To enable retrieval of preferences set for the text fields on Sync Flow.
+Return preferences set for the text fields on sync flow.
 
 ### Example Usage
 
@@ -47,50 +46,9 @@ if res.localization_info is not None:
 **[operations.GetConfigTextSyncFlowResponse](../../models/operations/getconfigtextsyncflowresponse.md)**
 
 
-## get_sync_flow_url
-
-Get a URL for Sync Flow including a one time passcode.
-
-### Example Usage
-
-```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
-
-s = codatsynccommerce.CodatSyncCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-)
-
-req = operations.GetSyncFlowURLRequest(
-    accounting_key='vel',
-    commerce_key='error',
-    merchant_identifier='deserunt',
-)
-
-res = s.sync_flow_preferences.get_sync_flow_url(req)
-
-if res.sync_flow_url is not None:
-    # handle response
-```
-
-### Parameters
-
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.GetSyncFlowURLRequest](../../models/operations/getsyncflowurlrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
-
-
-### Response
-
-**[operations.GetSyncFlowURLResponse](../../models/operations/getsyncflowurlresponse.md)**
-
-
 ## get_visible_accounts
 
-Enable retrieval for accounts which are visible on sync flow.
+Return accounts which are visible on sync flow.
 
 ### Example Usage
 
@@ -130,7 +88,7 @@ if res.visible_accounts is not None:
 
 ## update_config_text_sync_flow
 
-To enable update of preferences set for the text fields on sync flow.
+Set preferences for the text fields on sync flow.
 
 ### Example Usage
 
@@ -172,7 +130,7 @@ if res.localization_info is not None:
 
 ## update_visible_accounts_sync_flow
 
-To enable update of accounts visible preferences set on Sync Flow.
+Update which accounts are visible on sync flow.
 
 ### Example Usage
 

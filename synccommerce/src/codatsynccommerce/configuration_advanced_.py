@@ -5,7 +5,7 @@ from codatsynccommerce import utils
 from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
-class Configuration:
+class ConfigurationAdvanced:
     r"""Expressively configure preferences for any given Sync for Commerce company."""
     sdk_configuration: SDKConfiguration
 
@@ -14,8 +14,8 @@ class Configuration:
         
     
     def get_configuration(self, request: operations.GetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigurationResponse:
-        r"""Retrieve config preferences set for a company.
-        Retrieve current config preferences.
+        r"""Get company configuration
+        Returns a company's commerce sync configuration'.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -53,8 +53,8 @@ class Configuration:
 
     
     def set_configuration(self, request: operations.SetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.SetConfigurationResponse:
-        r"""Create or update configuration.
-        Make changes to configuration preferences.
+        r"""Set configuration.
+        Sets a company's commerce sync configuration'.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

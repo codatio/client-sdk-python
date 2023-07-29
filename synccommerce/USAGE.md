@@ -3,7 +3,7 @@
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import shared
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -11,13 +11,13 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-req = shared.CreateCompany(
-    name='Bob's Burgers',
+req = operations.GetConfigurationRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.company_management.create_company(req)
+res = s.configuration_advanced.get_configuration(req)
 
-if res.company is not None:
+if res.configuration is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
