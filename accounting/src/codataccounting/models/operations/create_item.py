@@ -4,8 +4,8 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import createitemresponse as shared_createitemresponse
+from ..shared import errormessage as shared_errormessage
 from ..shared import item as shared_item
-from ..shared import schema as shared_schema
 from typing import Optional
 
 
@@ -27,8 +27,8 @@ class CreateItemResponse:
     status_code: int = dataclasses.field()
     create_item_response: Optional[shared_createitemresponse.CreateItemResponse] = dataclasses.field(default=None)
     r"""Success"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 
