@@ -18,6 +18,7 @@ from .createbanktransactionsresponse import *
 from .dataconnectionerror import *
 from .dataconnectionstatus import *
 from .datatype import *
+from .errormessage import *
 from .href import *
 from .links import *
 from .pushchangetype import *
@@ -30,10 +31,9 @@ from .pushoptionchoice import *
 from .pushoptionproperty import *
 from .pushoptiontype import *
 from .pushvalidationinfo import *
-from .schema import *
 from .security import *
 from .targetaccountoption import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["AccountMappingResult","BankFeedAccount","BankFeedAccountMapping","BankFeedMapping","BankTransactionType","BankTransactions","BankTransactionsResponse","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankAccountTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","HRef","Links","PushChangeType","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Schema","Security","TargetAccountOption","Validation","ValidationItem"]
+__all__ = ["AccountMappingResult","BankFeedAccount","BankFeedAccountMapping","BankFeedMapping","BankTransactionType","BankTransactions","BankTransactionsResponse","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankAccountTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","ErrorMessage","HRef","Links","PushChangeType","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Security","TargetAccountOption","Validation","ValidationItem"]

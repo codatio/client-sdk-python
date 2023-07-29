@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import connection as shared_connection
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from codatbankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -36,8 +36,8 @@ class UnlinkConnectionResponse:
     status_code: int = dataclasses.field()
     connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
     r"""OK"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 

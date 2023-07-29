@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import companies as shared_companies
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -30,8 +30,8 @@ class ListCompaniesResponse:
     status_code: int = dataclasses.field()
     companies: Optional[shared_companies.Companies] = dataclasses.field(default=None)
     r"""OK"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 
