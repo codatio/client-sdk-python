@@ -2,6 +2,7 @@
 
 from .accountcategoriesupdatedwebhook import *
 from .accountcategorylevel import *
+from .accountref import *
 from .accounts import *
 from .bankingtransactionref import *
 from .customerref import *
@@ -26,6 +27,7 @@ from .enhancedinvoicesreport import *
 from .enhancedreport import *
 from .enhancedreportaccountcategory import *
 from .enhancedreportinfo import *
+from .errormessage import *
 from .excelreporttype import *
 from .excelstatus import *
 from .halref import *
@@ -50,11 +52,10 @@ from .reportinfo import *
 from .reportitems import *
 from .reportitems1 import *
 from .reportmeasure import *
-from .schema import *
 from .security import *
 from .sourceref import *
 from .status import *
 from .summaries import *
 from .transactioncategory import *
 
-__all__ = ["AccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedWebhookData","AccountCategoryLevel","Accounts","BankingTransactionRef","CustomerRef","DataIntegrityAmounts","DataIntegrityByAmount","DataIntegrityByCount","DataIntegrityConnectionID","DataIntegrityDataType","DataIntegrityDates","DataIntegrityDetails","DataIntegrityMatch","DataIntegrityStatus","DataIntegrityStatusInfo","DataIntegritySummary","DataSource","Details","EnhancedCashFlowItem","EnhancedCashFlowTransaction","EnhancedCashFlowTransactions","EnhancedInvoiceReportItem","EnhancedInvoicesReport","EnhancedInvoicesReportReportItems","EnhancedReport","EnhancedReportAccountCategory","EnhancedReportInfo","EnhancedReportReportItem","ExcelReportType","ExcelStatus","HalRef","IntegrityStatus","InvoiceStatus","ItemRef","Links","LoanRef","LoanSummary","LoanSummaryReportInfo","LoanTransactions","LoanTransactionsReportInfo","Payment","PeriodUnit","RecordRef","RecordRefIntegrationType","RecordRefRecordRefType","Report","ReportComponent","ReportComponentMeasure","ReportDimension","ReportDimensionItems","ReportError","ReportInfo","ReportItems","ReportItems1","ReportItemsLoanTransactionType","ReportMeasure","Schema","Security","SourceRef","Status","Summaries","TransactionCategory"]
+__all__ = ["AccountCategoriesUpdatedWebhook","AccountCategoriesUpdatedWebhookData","AccountCategoryLevel","AccountRef","Accounts","BankingTransactionRef","CustomerRef","DataIntegrityAmounts","DataIntegrityByAmount","DataIntegrityByCount","DataIntegrityConnectionID","DataIntegrityDataType","DataIntegrityDates","DataIntegrityDetails","DataIntegrityMatch","DataIntegrityStatus","DataIntegrityStatusInfo","DataIntegritySummary","DataSource","Details","EnhancedCashFlowItem","EnhancedCashFlowTransaction","EnhancedCashFlowTransactions","EnhancedInvoiceReportItem","EnhancedInvoicesReport","EnhancedInvoicesReportReportItems","EnhancedReport","EnhancedReportAccountCategory","EnhancedReportInfo","EnhancedReportReportItem","ErrorMessage","ExcelReportType","ExcelStatus","HalRef","IntegrityStatus","InvoiceStatus","ItemRef","Links","LoanRef","LoanSummary","LoanSummaryReportInfo","LoanTransactions","LoanTransactionsReportInfo","Payment","PeriodUnit","RecordRef","RecordRefIntegrationType","RecordRefRecordRefType","Report","ReportComponent","ReportComponentMeasure","ReportDimension","ReportDimensionItems","ReportError","ReportInfo","ReportItems","ReportItems1","ReportItemsLoanTransactionType","ReportMeasure","Security","SourceRef","Status","Summaries","TransactionCategory"]

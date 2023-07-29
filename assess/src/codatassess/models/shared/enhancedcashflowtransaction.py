@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
+from ..shared import accountref as shared_accountref
 from ..shared import sourceref as shared_sourceref
 from ..shared import transactioncategory as shared_transactioncategory
 from codatassess import utils
@@ -13,6 +14,8 @@ from typing import Optional
 
 @dataclasses.dataclass
 class EnhancedCashFlowTransaction:
+    account_ref: Optional[shared_accountref.AccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    r"""An account reference containing the account id and name."""
     amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
     r"""The bank transaction amount."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
@@ -41,6 +44,8 @@ class EnhancedCashFlowTransaction:
     r"""The description of the bank transaction."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""The unique identifier of the bank transaction."""
+    platform_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformName'), 'exclude': lambda f: f is None }})
+    r"""Returns the payment processor responsible for the transaction."""
     source_ref: Optional[shared_sourceref.SourceRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceRef'), 'exclude': lambda f: f is None }})
     r"""A source reference containing the `sourceType` object \\"Banking\\"."""
     transaction_category: Optional[shared_transactioncategory.TransactionCategory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionCategory'), 'exclude': lambda f: f is None }})

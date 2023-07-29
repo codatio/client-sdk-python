@@ -32,7 +32,6 @@ src/codatassess/models/operations/get_recurring_revenue_metrics.py
 src/codatassess/models/operations/list_loan_transactions.py
 src/codatassess/models/operations/request_recurring_revenue_metrics.py
 src/codatassess/models/operations/__init__.py
-src/codatassess/models/shared/schema.py
 src/codatassess/models/shared/status.py
 src/codatassess/models/shared/dataintegritystatus.py
 src/codatassess/models/shared/dataintegritystatusinfo.py
@@ -40,6 +39,7 @@ src/codatassess/models/shared/integritystatus.py
 src/codatassess/models/shared/dataintegritydates.py
 src/codatassess/models/shared/dataintegrityconnectionid.py
 src/codatassess/models/shared/dataintegrityamounts.py
+src/codatassess/models/shared/errormessage.py
 src/codatassess/models/shared/dataintegritydatatype.py
 src/codatassess/models/shared/summaries.py
 src/codatassess/models/shared/dataintegritysummary.py
@@ -68,6 +68,7 @@ src/codatassess/models/shared/enhancedcashflowitem.py
 src/codatassess/models/shared/enhancedcashflowtransaction.py
 src/codatassess/models/shared/transactioncategory.py
 src/codatassess/models/shared/sourceref.py
+src/codatassess/models/shared/accountref.py
 src/codatassess/models/shared/reportinfo.py
 src/codatassess/models/shared/datasource.py
 src/codatassess/models/shared/accounts.py
@@ -140,7 +141,6 @@ docs/models/operations/listloantransactionsrequest.md
 docs/models/operations/listloantransactionsresponse.md
 docs/models/operations/requestrecurringrevenuemetricsrequest.md
 docs/models/operations/requestrecurringrevenuemetricsresponse.md
-docs/models/shared/schema.md
 docs/models/shared/status.md
 docs/models/shared/dataintegritystatus.md
 docs/models/shared/dataintegritystatusinfo.md
@@ -148,6 +148,7 @@ docs/models/shared/integritystatus.md
 docs/models/shared/dataintegritydates.md
 docs/models/shared/dataintegrityconnectionid.md
 docs/models/shared/dataintegrityamounts.md
+docs/models/shared/errormessage.md
 docs/models/shared/dataintegritydatatype.md
 docs/models/shared/summaries.md
 docs/models/shared/dataintegritysummary.md
@@ -178,6 +179,7 @@ docs/models/shared/enhancedcashflowitem.md
 docs/models/shared/enhancedcashflowtransaction.md
 docs/models/shared/transactioncategory.md
 docs/models/shared/sourceref.md
+docs/models/shared/accountref.md
 docs/models/shared/reportinfo.md
 docs/models/shared/datasource.md
 docs/models/shared/accounts.md
