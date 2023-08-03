@@ -71,6 +71,6 @@ class Company:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     platform: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platform'), 'exclude': lambda f: f is None }})
-    r"""Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible"""
+    r"""Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible."""
     
 

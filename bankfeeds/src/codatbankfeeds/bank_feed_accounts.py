@@ -155,7 +155,7 @@ class BankFeedAccounts:
         r"""Create bank feed bank accounts
         Put BankFeed BankAccounts for a single data source connected to a single company.
 
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
+        Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
