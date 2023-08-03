@@ -116,7 +116,7 @@ class Transactions:
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
 
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible. Use list instead
+        Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible. Use list instead.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
