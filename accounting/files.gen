@@ -159,6 +159,7 @@ src/codataccounting/models/operations/create_transfer.py
 src/codataccounting/models/operations/get_transfer.py
 src/codataccounting/models/operations/get_create_transfers_model.py
 src/codataccounting/models/operations/list_transfers.py
+src/codataccounting/models/operations/upload_transfer_attachment.py
 src/codataccounting/models/operations/__init__.py
 src/codataccounting/models/shared/errormessage.py
 src/codataccounting/models/shared/accounttransaction.py
@@ -629,6 +630,9 @@ docs/models/operations/getcreatetransfersmodelrequest.md
 docs/models/operations/getcreatetransfersmodelresponse.md
 docs/models/operations/listtransfersrequest.md
 docs/models/operations/listtransfersresponse.md
+docs/models/operations/uploadtransferattachmentrequestbody.md
+docs/models/operations/uploadtransferattachmentrequest.md
+docs/models/operations/uploadtransferattachmentresponse.md
 docs/models/shared/errormessage.md
 docs/models/shared/accounttransactionstatus.md
 docs/models/shared/accounttransaction.md

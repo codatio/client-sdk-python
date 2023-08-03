@@ -13,7 +13,7 @@ from typing import Optional
 class TrackingCategoryRef:
     r"""References a category against which the item is tracked.
 
-    Deprecated: this class will be removed in a future release, please migrate away from it as soon as possible
+    Deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
     """
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})

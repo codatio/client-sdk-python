@@ -10,6 +10,7 @@ Transfers
 * [get](#get) - Get transfer
 * [get_create_model](#get_create_model) - Get create transfer model
 * [list](#list) - List transfers
+* [upload_attachment](#upload_attachment) - Push invoice attachment
 
 ## create
 
@@ -283,4 +284,58 @@ if res.transfers is not None:
 ### Response
 
 **[operations.ListTransfersResponse](../../models/operations/listtransfersresponse.md)**
+
+
+## upload_attachment
+
+The *Upload transfer attachment* endpoint uploads an attachment and assigns it against a specific `transferId`.
+
+[Transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) are issued by a supplier for the purpose of recording transfer.
+
+**Integration-specific behaviour**
+
+For more details on supported file types by integration see [Attachments](https://docs.codat.io/accounting-api#/schemas/Attachment).
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support uploading a transfer attachment.
+
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations, shared
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.UploadTransferAttachmentRequest(
+    request_body=operations.UploadTransferAttachmentRequestBody(
+        content='eveniet'.encode(),
+        request_body='expedita',
+    ),
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    transfer_id='consequatur',
+)
+
+res = s.transfers.upload_attachment(req)
+
+if res.status_code == 200:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [operations.UploadTransferAttachmentRequest](../../models/operations/uploadtransferattachmentrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
+
+
+### Response
+
+**[operations.UploadTransferAttachmentResponse](../../models/operations/uploadtransferattachmentresponse.md)**
 

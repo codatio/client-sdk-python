@@ -68,7 +68,7 @@ class BillCreditNoteLineItem:
     tracking_category_refs: Optional[list[shared_trackingcategoryref.TrackingCategoryRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
     r"""Reference to the tracking categories to which the line item is linked.
 
-    Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible
+    Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
     """
     
 
