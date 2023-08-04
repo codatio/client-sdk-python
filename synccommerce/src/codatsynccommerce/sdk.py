@@ -8,13 +8,17 @@ from .integrations import Integrations
 from .sdkconfiguration import SDKConfiguration
 from .sync import Sync
 from .sync_flow_preferences import SyncFlowPreferences
-from .sync_status import SyncStatus
 from codatsynccommerce import utils
 from codatsynccommerce.models import shared
 
 class CodatSyncCommerce:
-    r"""Sync for Commerce API: The API for Sync for Commerce. Sync for Commerce is an API and a set of supporting tools. It has been built to enable e-commerce, point of sale platforms to provide high-quality integrations with numerous accounting platform through standardized API, seamlessly transforming business sale's data into accounting artefacts.
-    [Read More...](https://docs.codat.io/sfc/overview)
+    r"""Sync for Commerce API: The API for Sync for Commerce.
+
+    Sync for Commerce is an API and a set of supporting tools built to enable e-commerce and point of sale platforms to provide high-quality integrations with numerous accounting platform through standardized API, seamlessly transforming business sale's data into accounting artefacts.
+
+    [Read More...](https://docs.codat.io/commerce/overview)
+
+    <!-- Not seeing the end points you're expecting? We've reorganized our products, and you may be using a [different version of Sync for Commerce](https://docs.codat.io/sync-for-commerce-v1-api#/). -->
     """
     configuration_advanced: ConfigurationAdvanced
     r"""Expressively configure preferences for any given Sync for Commerce company."""
@@ -25,11 +29,9 @@ class CodatSyncCommerce:
     integrations: Integrations
     r"""View useful information about codat's integrations."""
     sync: Sync
-    r"""Initiate a sync of Sync for Commerce company data into their respective accounting software."""
+    r"""Initiate and monitor the sync of company data into accounting software."""
     sync_flow_preferences: SyncFlowPreferences
     r"""Configure preferences for any given Sync for Commerce company using sync flow."""
-    sync_status: SyncStatus
-    r"""Status of the sync between commerce company data into their respective accounting software."""
 
     sdk_configuration: SDKConfiguration
 
@@ -73,5 +75,4 @@ class CodatSyncCommerce:
         self.integrations = Integrations(self.sdk_configuration)
         self.sync = Sync(self.sdk_configuration)
         self.sync_flow_preferences = SyncFlowPreferences(self.sdk_configuration)
-        self.sync_status = SyncStatus(self.sdk_configuration)
     
