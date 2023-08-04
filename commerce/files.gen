@@ -49,7 +49,7 @@ src/codatcommerce/models/shared/accountbalance.py
 src/codatcommerce/models/shared/customer.py
 src/codatcommerce/models/shared/customers.py
 src/codatcommerce/models/shared/links.py
-src/codatcommerce/models/shared/href.py
+src/codatcommerce/models/shared/halref.py
 src/codatcommerce/models/shared/dispute.py
 src/codatcommerce/models/shared/disputestatus.py
 src/codatcommerce/models/shared/transactionsourceref.py
@@ -162,7 +162,7 @@ docs/models/shared/accountbalance.md
 docs/models/shared/customer.md
 docs/models/shared/customers.md
 docs/models/shared/links.md
-docs/models/shared/href.md
+docs/models/shared/halref.md
 docs/models/shared/dispute.md
 docs/models/shared/disputestatus.md
 docs/models/shared/transactionsourceref.md

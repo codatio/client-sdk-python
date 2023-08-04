@@ -11,7 +11,7 @@ from .dispute import *
 from .disputes import *
 from .disputestatus import *
 from .errormessage import *
-from .href import *
+from .halref import *
 from .links import *
 from .location import *
 from .locationref import *
@@ -56,4 +56,4 @@ from .transactionsourceref import *
 from .transactionsourcetype import *
 from .transactiontype import *
 
-__all__ = ["AccountBalance","Address","AddressType","CompanyInfo","CompanyInfoWeblink","CompanyInfoWeblinkType","Customer","CustomerRef","Customers","Dispute","DisputeStatus","Disputes","ErrorMessage","HRef","Links","Location","LocationRef","Locations","Order","OrderDiscountAllocation","OrderLineItem","OrderSupplementalData","Orders","Payment","PaymentMethod","PaymentMethodRef","PaymentMethodStatus","PaymentMethods","PaymentRef","PaymentStatus","PaymentType","Payments","PhoneNumber","PhoneNumberType","Product","ProductCategories","ProductCategory","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatus","Products","RecordRef","Security","ServiceCharge","ServiceChargeType","TaxComponent","TaxComponentAllocation","TaxComponentRef","TaxComponents","Transaction","TransactionSourceRef","TransactionSourceType","TransactionType","Transactions"]
+__all__ = ["AccountBalance","Address","AddressType","CompanyInfo","CompanyInfoWeblink","CompanyInfoWeblinkType","Customer","CustomerRef","Customers","Dispute","DisputeStatus","Disputes","ErrorMessage","HalRef","Links","Location","LocationRef","Locations","Order","OrderDiscountAllocation","OrderLineItem","OrderSupplementalData","Orders","Payment","PaymentMethod","PaymentMethodRef","PaymentMethodStatus","PaymentMethods","PaymentRef","PaymentStatus","PaymentType","Payments","PhoneNumber","PhoneNumberType","Product","ProductCategories","ProductCategory","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatus","Products","RecordRef","Security","ServiceCharge","ServiceChargeType","TaxComponent","TaxComponentAllocation","TaxComponentRef","TaxComponents","Transaction","TransactionSourceRef","TransactionSourceType","TransactionType","Transactions"]
