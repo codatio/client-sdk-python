@@ -6,6 +6,8 @@ from .bank_account_transactions import BankAccountTransactions
 from .bank_feed_accounts import BankFeedAccounts
 from .companies import Companies
 from .connections import Connections
+from .push_data import PushData
+from .refresh_data import RefreshData
 from .sdkconfiguration import SDKConfiguration
 from codatbankfeeds import utils
 from codatbankfeeds.models import shared
@@ -13,7 +15,7 @@ from codatbankfeeds.models import shared
 class CodatBankFeeds:
     r"""Bank Feeds API: Bank Feeds API enables your SMB users to set up bank feeds from accounts in your application to supported accounting platforms.
 
-    A bank feed is a connection between a source bank account—in your application—and a target bank account in a supported accounting package.
+    A bank feed is a connection between a source bank account�in your application and a target bank account in a supported accounting package.
 
     [Read more...](https://docs.codat.io/bank-feeds-api/overview)
 
@@ -29,6 +31,10 @@ class CodatBankFeeds:
     r"""Create and manage your Codat companies."""
     connections: Connections
     r"""Manage your companies' data connections."""
+    push_data: PushData
+    r"""View push options and get push statuses."""
+    refresh_data: RefreshData
+    r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
 
     sdk_configuration: SDKConfiguration
 
@@ -71,4 +77,6 @@ class CodatBankFeeds:
         self.bank_feed_accounts = BankFeedAccounts(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
+        self.push_data = PushData(self.sdk_configuration)
+        self.refresh_data = RefreshData(self.sdk_configuration)
     

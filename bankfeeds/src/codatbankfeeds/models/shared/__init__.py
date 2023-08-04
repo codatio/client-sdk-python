@@ -16,13 +16,18 @@ from .createbankaccounttransaction import *
 from .createbanktransactions import *
 from .createbanktransactionsresponse import *
 from .dataconnectionerror import *
+from .dataconnectionhistory import *
 from .dataconnectionstatus import *
+from .datastatus import *
 from .datatype import *
 from .errormessage import *
-from .href import *
+from .halref import *
 from .links import *
+from .pulloperation import *
 from .pushchangetype import *
 from .pushfieldvalidation import *
+from .pushhistoryresponse import *
+from .pushoperation import *
 from .pushoperationchange import *
 from .pushoperationref import *
 from .pushoperationstatus import *
@@ -36,4 +41,4 @@ from .targetaccountoption import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["AccountMappingResult","BankFeedAccount","BankFeedAccountMapping","BankFeedMapping","BankTransactionType","BankTransactions","BankTransactionsResponse","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankAccountTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","ErrorMessage","HRef","Links","PushChangeType","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Security","TargetAccountOption","Validation","ValidationItem"]
+__all__ = ["AccountMappingResult","BankFeedAccount","BankFeedAccountMapping","BankFeedMapping","BankTransactionType","BankTransactions","BankTransactionsResponse","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankAccountTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionHistory","DataConnectionStatus","DataStatus","DataType","ErrorMessage","HalRef","Links","PullOperation","PullOperationStatus","PushChangeType","PushFieldValidation","PushHistoryResponse","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Security","TargetAccountOption","Validation","ValidationItem"]
