@@ -25,14 +25,18 @@ s = codatassess.CodatAssess(
     ),
 )
 
-req = operations.GetDataIntegrityStatusRequest(
+req = operations.ListDataTypeDataIntegrityDetailsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
+    order_by='-modifiedDate',
+    page=1,
+    page_size=100,
+    query='corrupti',
 )
 
-res = s.data_integrity.get_data_integrity_status(req)
+res = s.data_integrity.details(req)
 
-if res.status is not None:
+if res.details is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
@@ -43,9 +47,9 @@ if res.status is not None:
 
 ### [data_integrity](docs/sdks/dataintegrity/README.md)
 
-* [get_data_integrity_status](docs/sdks/dataintegrity/README.md#get_data_integrity_status) - Get data integrity status
-* [get_data_integrity_summaries](docs/sdks/dataintegrity/README.md#get_data_integrity_summaries) - Get data integrity summary
-* [list_data_type_data_integrity_details](docs/sdks/dataintegrity/README.md#list_data_type_data_integrity_details) - List data type data integrity
+* [details](docs/sdks/dataintegrity/README.md#details) - List data type data integrity
+* [status](docs/sdks/dataintegrity/README.md#status) - Get data integrity status
+* [summary](docs/sdks/dataintegrity/README.md#summary) - Get data integrity summary
 
 ### [excel_reports](docs/sdks/excelreports/README.md)
 

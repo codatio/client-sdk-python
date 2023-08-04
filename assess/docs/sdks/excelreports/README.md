@@ -29,7 +29,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GenerateExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_INVOICES,
+    report_type=shared.ExcelReportType.ENHANCED_CASH_FLOW,
 )
 
 res = s.excel_reports.generate_excel_report(req)
@@ -73,9 +73,9 @@ req = operations.GetAccountingMarketingMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=844266,
-    period_length=602763,
-    period_unit=shared.PeriodUnit.YEAR,
+    number_of_periods=602763,
+    period_length=857946,
+    period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
     show_input_values=False,
 )
@@ -117,7 +117,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_FINANCIALS,
+    report_type=shared.ExcelReportType.ENHANCED_CASH_FLOW,
 )
 
 res = s.excel_reports.get_excel_report(req)
@@ -157,7 +157,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetExcelReportGenerationStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_CASH_FLOW,
+    report_type=shared.ExcelReportType.ENHANCED_FINANCIALS,
 )
 
 res = s.excel_reports.get_excel_report_generation_status(req)

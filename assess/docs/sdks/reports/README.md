@@ -40,7 +40,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetAccountsForEnhancedBalanceSheetRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=423655,
+    number_of_periods=623564,
     report_date='29-09-2020',
 )
 
@@ -83,7 +83,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetAccountsForEnhancedProfitAndLossRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=623564,
+    number_of_periods=645894,
     report_date='29-09-2020',
 )
 
@@ -126,8 +126,8 @@ req = operations.GetCommerceCustomerRetentionMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=645894,
-    period_length=384382,
+    number_of_periods=384382,
+    period_length=437587,
     period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
@@ -171,9 +171,9 @@ req = operations.GetCommerceLifetimeValueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=297534,
-    period_length=891773,
-    period_unit=shared.PeriodUnit.DAY,
+    number_of_periods=891773,
+    period_length=56713,
+    period_unit=shared.PeriodUnit.YEAR,
     report_date='29-09-2020',
 )
 
@@ -216,8 +216,8 @@ req = operations.GetCommerceOrdersMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=963663,
-    period_length=272656,
+    number_of_periods=272656,
+    period_length=383441,
     period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
@@ -261,9 +261,9 @@ req = operations.GetCommerceRefundsMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=477665,
-    period_length=791725,
-    period_unit=shared.PeriodUnit.YEAR,
+    number_of_periods=791725,
+    period_length=812169,
+    period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
 
@@ -306,9 +306,9 @@ req = operations.GetCommerceRevenueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=528895,
-    period_length=479977,
-    period_unit=shared.PeriodUnit.MONTH,
+    number_of_periods=479977,
+    period_length=568045,
+    period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
 
@@ -355,7 +355,7 @@ req = operations.GetEnhancedCashFlowTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='nisi',
+    query='recusandae',
 )
 
 res = s.reports.get_enhanced_cash_flow_transactions(req)
@@ -397,7 +397,7 @@ req = operations.GetEnhancedInvoicesReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='recusandae',
+    query='temporibus',
 )
 
 res = s.reports.get_enhanced_invoices_report(req)
@@ -516,7 +516,7 @@ s = codatassess.CodatAssess(
 
 req = operations.ListLoanTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.ListLoanTransactionsSourceType.ACCOUNTING,
+    source_type=operations.ListLoanTransactionsSourceType.BANKING,
 )
 
 res = s.reports.list_loan_transactions(req)
