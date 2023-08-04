@@ -26,7 +26,7 @@ src/codatbanking/models/shared/accountbalances.py
 src/codatbanking/models/shared/accountbalance.py
 src/codatbanking/models/shared/accountbalanceamounts.py
 src/codatbanking/models/shared/links.py
-src/codatbanking/models/shared/href.py
+src/codatbanking/models/shared/halref.py
 src/codatbanking/models/shared/account.py
 src/codatbanking/models/shared/accounttype.py
 src/codatbanking/models/shared/accountinstitution.py
@@ -71,7 +71,7 @@ docs/models/shared/accountbalances.md
 docs/models/shared/accountbalance.md
 docs/models/shared/accountbalanceamounts.md
 docs/models/shared/links.md
-docs/models/shared/href.md
+docs/models/shared/halref.md
 docs/models/shared/account.md
 docs/models/shared/accounttype.md
 docs/models/shared/accountinstitution.md
