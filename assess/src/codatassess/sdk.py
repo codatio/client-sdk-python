@@ -17,11 +17,11 @@ class CodatAssess:
     [See our OpenAPI spec](https://github.com/codatio/oas)
     """
     data_integrity: DataIntegrity
-    r"""Data integrity is important"""
+    r"""Match mutable accounting data with immutable banking data to increase confidence in financial data"""
     excel_reports: ExcelReports
     r"""Downloadable reports"""
     reports: Reports
-    r"""Data integrity is important"""
+    r"""Enriched reports and analyses of financial data"""
 
     sdk_configuration: SDKConfiguration
 

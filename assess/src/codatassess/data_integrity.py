@@ -6,7 +6,7 @@ from codatassess.models import errors, operations, shared
 from typing import Optional
 
 class DataIntegrity:
-    r"""Data integrity is important"""
+    r"""Match mutable accounting data with immutable banking data to increase confidence in financial data"""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:

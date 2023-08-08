@@ -6,7 +6,7 @@ from codatassess.models import errors, operations, shared
 from typing import Optional
 
 class Reports:
-    r"""Data integrity is important"""
+    r"""Enriched reports and analyses of financial data"""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
