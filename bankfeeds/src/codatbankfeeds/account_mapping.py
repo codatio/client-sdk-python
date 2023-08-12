@@ -5,8 +5,8 @@ from codatbankfeeds import utils
 from codatbankfeeds.models import errors, operations, shared
 from typing import Optional
 
-class BankAccountMapping:
-    r"""Bank feed bank account mapping"""
+class AccountMapping:
+    r"""Bank feed bank account mapping."""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:

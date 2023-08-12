@@ -4,9 +4,6 @@ from .accountmappingresult import *
 from .bankfeedaccount import *
 from .bankfeedaccountmapping import *
 from .bankfeedmapping import *
-from .banktransactions import *
-from .banktransactionsresponse import *
-from .banktransactiontype import *
 from .companies import *
 from .company import *
 from .companyrequestbody import *
@@ -16,29 +13,20 @@ from .createbankaccounttransaction import *
 from .createbanktransactions import *
 from .createbanktransactionsresponse import *
 from .dataconnectionerror import *
-from .dataconnectionhistory import *
 from .dataconnectionstatus import *
-from .datastatus import *
 from .datatype import *
 from .errormessage import *
 from .halref import *
 from .links import *
-from .pulloperation import *
 from .pushchangetype import *
-from .pushfieldvalidation import *
 from .pushhistoryresponse import *
 from .pushoperation import *
 from .pushoperationchange import *
 from .pushoperationref import *
 from .pushoperationstatus import *
-from .pushoption import *
-from .pushoptionchoice import *
-from .pushoptionproperty import *
-from .pushoptiontype import *
-from .pushvalidationinfo import *
 from .security import *
 from .targetaccountoption import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["AccountMappingResult","BankFeedAccount","BankFeedAccountMapping","BankFeedMapping","BankTransactionType","BankTransactions","BankTransactionsResponse","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankAccountTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionHistory","DataConnectionStatus","DataStatus","DataType","ErrorMessage","HalRef","Links","PullOperation","PullOperationStatus","PushChangeType","PushFieldValidation","PushHistoryResponse","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Security","TargetAccountOption","Validation","ValidationItem"]
+__all__ = ["AccountMappingResult","BankFeedAccount","BankFeedAccountMapping","BankFeedMapping","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankAccountTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","ErrorMessage","HalRef","Links","PushChangeType","PushHistoryResponse","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","Security","TargetAccountOption","Validation","ValidationItem"]

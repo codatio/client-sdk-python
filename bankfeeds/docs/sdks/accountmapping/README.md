@@ -1,8 +1,8 @@
-# bank_account_mapping
+# account_mapping
 
 ## Overview
 
-Bank feed bank account mapping
+Bank feed bank account mapping.
 
 ### Available Operations
 
@@ -41,7 +41,7 @@ req = operations.CreateBankAccountMappingRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.bank_account_mapping.create(req)
+res = s.account_mapping.create(req)
 
 if res.account_mapping_result is not None:
     # handle response
@@ -85,7 +85,7 @@ req = operations.GetBankAccountMappingRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.bank_account_mapping.get(req)
+res = s.account_mapping.get(req)
 
 if res.bank_feed_mapping is not None:
     # handle response
