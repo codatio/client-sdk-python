@@ -5,6 +5,7 @@ import dataclasses
 from ..shared import accountref as shared_accountref
 from ..shared import billedtotype1 as shared_billedtotype1
 from ..shared import customerref as shared_customerref
+from ..shared import invoiceto as shared_invoiceto
 from ..shared import itemref as shared_itemref
 from ..shared import projectref as shared_projectref
 from ..shared import taxrateref as shared_taxrateref
@@ -24,6 +25,11 @@ class CreditNoteLineItemTracking:
     is_rebilled_to: shared_billedtotype1.BilledToType1 = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
     customer_ref: Optional[shared_customerref.CustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
     project_ref: Optional[shared_projectref.ProjectRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})
+    record_ref: Optional[shared_invoiceto.InvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
+    r"""Links the current record to the underlying record or data type that created it.
+
+    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
+    """
     
 
 
@@ -52,9 +58,9 @@ class CreditNoteLineItem:
     r"""Amount of tax associated with the line item."""
     tax_rate_ref: Optional[shared_taxrateref.TaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     r"""Data types that reference a tax rate, for example invoice and bill line items, use a taxRateRef that includes the ID and name of the linked tax rate.
-    
+
     Found on:
-    
+
     - Bill line items
     - Bill Credit Note line items
     - Credit Note line items
@@ -68,8 +74,8 @@ class CreditNoteLineItem:
     r"""Categories, and a project and customer, against which the item is tracked."""
     tracking_category_refs: Optional[list[shared_trackingcategoryref.TrackingCategoryRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs'), 'exclude': lambda f: f is None }})
     r"""Reference to the tracking categories to which the line item is linked.
-    
-    Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible
+
+    Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
     """
     
 

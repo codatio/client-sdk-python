@@ -40,31 +40,31 @@ req = operations.CreateItemRequest(
     item=shared.Item(
         bill_item=shared.BillItem(
             account_ref=shared.AccountRef(
-                id='9834afb0-735c-4b62-85d4-a29aaa1e1691',
-                name='Alma Ziemann',
+                id='4b1e9c09-7eda-4623-842e-1a9237e9984c',
+                name='Michael Quigley',
             ),
-            description='aspernatur',
+            description='sint',
             tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=9264.79,
-                id='e209505b-f03a-493e-9448-0ca37fb10789',
-                name='Emily Considine',
+                effective_tax_rate=9051.54,
+                id='891923c1-8ca8-4d69-8568-9214fa20207e',
+                name='Marta Murphy I',
             ),
-            unit_price=2261.31,
+            unit_price=5291.71,
         ),
-        code='amet',
-        id='3172e2dd-79ec-474b-a7e8-8ddb36fd1ccc',
+        code='eligendi',
+        id='d7f1bc2c-abaf-47fc-accb-a4bef0df68ea',
         invoice_item=shared.InvoiceItem(
             account_ref=shared.AccountRef(
-                id='341c8657-3474-4f0a-b40f-b4ab441c3a09',
-                name='Claude Johns',
+                id='edb2ee70-be06-49fb-b6ad-d704080e0a3f',
+                name='Arnold Ernser',
             ),
-            description='omnis',
+            description='similique',
             tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=3289.22,
-                id='d808bbe7-9445-45eb-8550-a1c426b59c83',
-                name='Terri Zemlak',
+                effective_tax_rate=465.74,
+                id='34b11499-243a-4fa6-987a-472b709a153e',
+                name='Mr. Theresa Fay III',
             ),
-            unit_price=7934.38,
+            unit_price=5221.85,
         ),
         is_bill_item=False,
         is_invoice_item=False,
@@ -73,13 +73,13 @@ req = operations.CreateItemRequest(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Ida Lemke',
+        name='Ms. Delbert Turner',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        type=shared.ItemType.NON_INVENTORY,
+        type=shared.ItemType.SERVICE,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=554193,
+    timeout_in_minutes=111385,
 )
 
 res = s.items.create(req)
@@ -116,7 +116,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -126,7 +126,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetItemRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    item_id='veniam',
+    item_id='aperiam',
 )
 
 res = s.items.get(req)
@@ -165,7 +165,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -210,7 +210,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -223,7 +223,7 @@ req = operations.ListItemsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ad',
+    query='animi',
 )
 
 res = s.items.list(req)

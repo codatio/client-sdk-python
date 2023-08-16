@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codataccounting import utils
-from codataccounting.models import operations, shared
+from codataccounting.models import errors, operations, shared
 from typing import Optional
 
 class Items:
@@ -16,13 +16,13 @@ class Items:
     def create(self, request: operations.CreateItemRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateItemResponse:
         r"""Create item
         The *Create item* endpoint creates a new [item](https://docs.codat.io/accounting-api#/schemas/Item) for a given company's connection.
-        
+
         [Items](https://docs.codat.io/accounting-api#/schemas/Item) allow your customers to save and track details of the products and services that they buy and sell.
-        
+
         **Integration-specific behaviour**
-        
+
         Required data may vary by integration. To see what data to post, first call [Get create item model](https://docs.codat.io/accounting-api#/operations/get-create-items-model).
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -33,7 +33,7 @@ class Items:
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateItemRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -58,10 +58,14 @@ class Items:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateItemResponse])
                 res.create_item_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -69,18 +73,18 @@ class Items:
     def get(self, request: operations.GetItemRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetItemResponse:
         r"""Get item
         The *Get item* endpoint returns a single item for a given itemId.
-        
+
         [Items](https://docs.codat.io/accounting-api#/schemas/Item) allow your customers to save and track details of the products and services that they buy and sell.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support getting a specific item.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetItemRequest, base_url, '/companies/{companyId}/data/items/{itemId}', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -105,14 +109,14 @@ class Items:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Item])
                 res.item = out
-        elif http_res.status_code in [401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetItem409ApplicationJSON])
-                res.get_item_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -120,20 +124,20 @@ class Items:
     def get_create_model(self, request: operations.GetCreateItemsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateItemsModelResponse:
         r"""Get create item model
         The *Get create item model* endpoint returns the expected data for the request payload when creating an [item](https://docs.codat.io/accounting-api#/schemas/Item) for a given company and integration.
-        
+
         [Items](https://docs.codat.io/accounting-api#/schemas/Item) allow your customers to save and track details of the products and services that they buy and sell.
-        
+
         **Integration-specific behaviour**
-        
+
         See the *response examples* for integration-specific indicative models.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items) for integrations that support creating an item.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetCreateItemsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/items', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -158,10 +162,14 @@ class Items:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
                 res.push_option = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -169,9 +177,9 @@ class Items:
     def list(self, request: operations.ListItemsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListItemsResponse:
         r"""List items
         The *List items* endpoint returns a list of [items](https://docs.codat.io/accounting-api#/schemas/Item) for a given company's connection.
-        
+
         [Items](https://docs.codat.io/accounting-api#/schemas/Item) allow your customers to save and track details of the products and services that they buy and sell.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -179,7 +187,7 @@ class Items:
         url = utils.generate_url(operations.ListItemsRequest, base_url, '/companies/{companyId}/data/items', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListItemsRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -204,14 +212,14 @@ class Items:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Items1])
                 res.items = out
-        elif http_res.status_code in [400, 401, 404]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401, 404, 409]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListItems409ApplicationJSON])
-                res.list_items_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

@@ -32,9 +32,9 @@ class PurchaseOrderLineItem:
     r"""Amount of tax for the line."""
     tax_rate_ref: Optional[shared_taxrateref.TaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     r"""Data types that reference a tax rate, for example invoice and bill line items, use a taxRateRef that includes the ID and name of the linked tax rate.
-    
+
     Found on:
-    
+
     - Bill line items
     - Bill Credit Note line items
     - Credit Note line items

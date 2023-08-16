@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codataccounting import utils
-from codataccounting.models import operations, shared
+from codataccounting.models import errors, operations, shared
 from typing import Optional
 
 class Reports:
@@ -22,7 +22,7 @@ class Reports:
         url = utils.generate_url(operations.GetAgedCreditorsReportRequest, base_url, '/companies/{companyId}/reports/agedCreditor', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetAgedCreditorsReportRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -47,10 +47,14 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.AgedCreditorReport])
                 res.aged_creditor_report = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -64,7 +68,7 @@ class Reports:
         url = utils.generate_url(operations.GetAgedDebtorsReportRequest, base_url, '/companies/{companyId}/reports/agedDebtor', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetAgedDebtorsReportRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -89,10 +93,14 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.AgedDebtorReport])
                 res.aged_debtor_report = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -106,7 +114,7 @@ class Reports:
         url = utils.generate_url(operations.GetBalanceSheetRequest, base_url, '/companies/{companyId}/data/financials/balanceSheet', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetBalanceSheetRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -131,14 +139,14 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.BalanceSheet1])
                 res.balance_sheet = out
-        elif http_res.status_code in [401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetBalanceSheet409ApplicationJSON])
-                res.get_balance_sheet_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -152,7 +160,7 @@ class Reports:
         url = utils.generate_url(operations.GetCashFlowStatementRequest, base_url, '/companies/{companyId}/data/financials/cashFlowStatement', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetCashFlowStatementRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -177,14 +185,14 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CashFlowStatement1])
                 res.cash_flow_statement = out
-        elif http_res.status_code in [401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCashFlowStatement409ApplicationJSON])
-                res.get_cash_flow_statement_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -198,7 +206,7 @@ class Reports:
         url = utils.generate_url(operations.GetProfitAndLossRequest, base_url, '/companies/{companyId}/data/financials/profitAndLoss', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetProfitAndLossRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -223,14 +231,14 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ProfitAndLossReport1])
                 res.profit_and_loss_report = out
-        elif http_res.status_code in [401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetProfitAndLoss409ApplicationJSON])
-                res.get_profit_and_loss_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -268,6 +276,8 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[bool])
                 res.is_aged_creditors_report_available_200_application_json_boolean = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -305,6 +315,8 @@ class Reports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[bool])
                 res.is_aged_debtor_report_available_200_application_json_boolean = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

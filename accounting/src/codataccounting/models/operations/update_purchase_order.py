@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import errormessage as shared_errormessage
 from ..shared import purchaseorder as shared_purchaseorder
-from ..shared import schema as shared_schema
 from ..shared import updatepurchaseorderresponse as shared_updatepurchaseorderresponse
 from typing import Optional
 
@@ -28,9 +28,9 @@ class UpdatePurchaseOrderRequest:
 class UpdatePurchaseOrderResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     update_purchase_order_response: Optional[shared_updatepurchaseorderresponse.UpdatePurchaseOrderResponse] = dataclasses.field(default=None)
     r"""Success"""
     
