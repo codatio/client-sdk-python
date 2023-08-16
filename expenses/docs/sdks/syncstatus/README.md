@@ -13,13 +13,13 @@ Check the status of ongoing or previous expense syncs.
 
 ## get_last_successful_sync
 
-Gets the status of the last successfull sync
+Gets the status of the last successful sync
 
 ### Example Usage
 
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations
+from codatsyncexpenses.models import operations, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -58,7 +58,7 @@ Gets the latest sync status
 
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations
+from codatsyncexpenses.models import operations, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -97,7 +97,7 @@ Get the sync status for a specified sync
 
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations
+from codatsyncexpenses.models import operations, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -137,7 +137,7 @@ Gets a list of sync statuses
 
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations
+from codatsyncexpenses.models import operations, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(

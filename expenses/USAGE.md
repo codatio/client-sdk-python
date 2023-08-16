@@ -1,7 +1,9 @@
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations
+from codatsyncexpenses.models import operations, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
