@@ -17,7 +17,7 @@ Gets the status of a transaction for a sync
 
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations
+from codatsyncexpenses.models import operations, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -58,7 +58,7 @@ Get's the transactions and status for a sync
 
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import operations
+from codatsyncexpenses.models import operations, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
