@@ -1,4 +1,6 @@
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codatbankfeeds
 from codatbankfeeds.models import operations, shared
@@ -19,7 +21,7 @@ req = operations.CreateBankAccountMappingRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.bank_account_mapping.create(req)
+res = s.account_mapping.create(req)
 
 if res.account_mapping_result is not None:
     # handle response

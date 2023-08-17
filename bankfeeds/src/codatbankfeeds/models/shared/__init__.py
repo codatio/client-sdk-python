@@ -3,10 +3,7 @@
 from .accountmappingresult import *
 from .bankfeedaccount import *
 from .bankfeedaccountmapping import *
-from .bankfeedmappings import *
-from .banktransactions import *
-from .banktransactionsresponse import *
-from .banktransactiontype import *
+from .bankfeedmapping import *
 from .companies import *
 from .company import *
 from .companyrequestbody import *
@@ -18,22 +15,18 @@ from .createbanktransactionsresponse import *
 from .dataconnectionerror import *
 from .dataconnectionstatus import *
 from .datatype import *
-from .href import *
+from .errormessage import *
+from .halref import *
 from .links import *
 from .pushchangetype import *
-from .pushfieldvalidation import *
+from .pushhistoryresponse import *
+from .pushoperation import *
 from .pushoperationchange import *
 from .pushoperationref import *
 from .pushoperationstatus import *
-from .pushoption import *
-from .pushoptionchoice import *
-from .pushoptionproperty import *
-from .pushoptiontype import *
-from .pushvalidationinfo import *
-from .schema import *
 from .security import *
 from .targetaccountoption import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["AccountMappingResult","BankFeedAccount","BankFeedAccountMapping","BankFeedMappings","BankFeedMappingsBankFeedMapping","BankTransactionType","BankTransactions","BankTransactionsResponse","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankAccountTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","HRef","Links","PushChangeType","PushFieldValidation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Schema","Security","TargetAccountOption","Validation","ValidationItem"]
+__all__ = ["AccountMappingResult","BankFeedAccount","BankFeedAccountMapping","BankFeedMapping","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankAccountTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","ErrorMessage","HalRef","Links","PushChangeType","PushHistoryResponse","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","Security","TargetAccountOption","Validation","ValidationItem"]

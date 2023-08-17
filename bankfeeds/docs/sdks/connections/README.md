@@ -23,7 +23,7 @@ Use the [List Integrations](https://docs.codat.io/codat-api#/operations/list-int
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -33,7 +33,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateDataConnectionRequest(
     request_body=operations.CreateDataConnectionRequestBody(
-        platform_key='facilis',
+        platform_key='illum',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -66,7 +66,7 @@ This operation is not reversible. The end user would need to reauthorize a new d
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -106,7 +106,7 @@ if res.status_code == 200:
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -146,7 +146,7 @@ if res.connection is not None:
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -159,7 +159,7 @@ req = operations.ListCompanyConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='perspiciatis',
+    query='vel',
 )
 
 res = s.connections.list(req)
@@ -191,7 +191,7 @@ See the example provided for the `endpoint` query parameter when generating cred
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -232,7 +232,7 @@ if res.proxy_response is not None:
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -242,7 +242,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.UnlinkConnectionRequest(
     request_body=operations.UnlinkConnectionRequestBody(
-        status='voluptatem',
+        status='error',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

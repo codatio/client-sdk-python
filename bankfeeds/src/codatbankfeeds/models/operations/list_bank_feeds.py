@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import bankfeedaccount as shared_bankfeedaccount
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -22,10 +22,10 @@ class ListBankFeedsRequest:
 class ListBankFeedsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    bank_feed_accounts: Optional[list[shared_bankfeedaccount.BankFeedAccount]] = dataclasses.field(default=None)
+    bank_feed_account: Optional[shared_bankfeedaccount.BankFeedAccount] = dataclasses.field(default=None)
     r"""Success"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 

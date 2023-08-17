@@ -15,10 +15,10 @@ class AccountMappingResult:
     error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Error'), 'exclude': lambda f: f is None }})
     r"""Error returned during the post request"""
     source_account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceAccountId'), 'exclude': lambda f: f is None }})
-    r"""Unique ID for the source account"""
+    r"""Unique ID for the source account."""
     status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Status'), 'exclude': lambda f: f is None }})
-    r"""Status of the POST request"""
+    r"""Status of the POST request."""
     target_account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountId'), 'exclude': lambda f: f is None }})
-    r"""Unique ID for the target account"""
+    r"""Unique ID for the target account."""
     
 
