@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatassess import utils
-from codatassess.models import operations, shared
+from codatassess.models import errors, operations, shared
 from typing import Optional
 
 class ExcelReports:
@@ -22,7 +22,7 @@ class ExcelReports:
         url = utils.generate_url(operations.GenerateExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
         headers = {}
         query_params = utils.get_query_params(operations.GenerateExcelReportRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -47,10 +47,14 @@ class ExcelReports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ExcelStatus])
                 res.excel_status = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -58,7 +62,7 @@ class ExcelReports:
     def get_accounting_marketing_metrics(self, request: operations.GetAccountingMarketingMetricsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountingMarketingMetricsResponse:
         r"""Get marketing metrics report
         Get the marketing metrics from an accounting source for a given company.
-        
+
         Request an Excel report for download.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -66,7 +70,7 @@ class ExcelReports:
         url = utils.generate_url(operations.GetAccountingMarketingMetricsRequest, base_url, '/data/companies/{companyId}/connections/{connectionId}/assess/accountingMetrics/marketing', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetAccountingMarketingMetricsRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -91,10 +95,14 @@ class ExcelReports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Report])
                 res.report = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -132,10 +140,14 @@ class ExcelReports:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
                 res.body = http_res.content
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -149,7 +161,7 @@ class ExcelReports:
         url = utils.generate_url(operations.GetExcelReportGenerationStatusRequest, base_url, '/data/companies/{companyId}/assess/excel', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetExcelReportGenerationStatusRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -174,10 +186,14 @@ class ExcelReports:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ExcelStatus])
                 res.excel_status = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

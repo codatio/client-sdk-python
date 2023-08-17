@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import dataintegritydatatype as shared_dataintegritydatatype
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from ..shared import summaries as shared_summaries
 from typing import Optional
 
@@ -26,9 +26,9 @@ class GetDataIntegritySummariesRequest:
 class GetDataIntegritySummariesResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     summaries: Optional[shared_summaries.Summaries] = dataclasses.field(default=None)
     r"""OK"""
     

@@ -12,8 +12,8 @@ from typing import Optional
 @dataclasses.dataclass
 class TransactionCategory:
     confidence: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('confidence'), 'exclude': lambda f: f is None }})
-    r"""Returns the confidence of the suggested category for the transaction."""
+    r"""Returns the confidence of the suggested category for the transaction. The value is between 0 and 100."""
     levels: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('levels'), 'exclude': lambda f: f is None }})
-    r"""An array of category levels against an individual transaction."""
+    r"""The suggested category is an ordered array of category levels where each element (or level) is a subcategory of the previous element (or level)."""
     
 

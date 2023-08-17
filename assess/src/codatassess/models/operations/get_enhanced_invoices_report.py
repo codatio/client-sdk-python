@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import enhancedinvoicesreport as shared_enhancedinvoicesreport
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -29,8 +29,8 @@ class GetEnhancedInvoicesReportResponse:
     status_code: int = dataclasses.field()
     enhanced_invoices_report: Optional[shared_enhancedinvoicesreport.EnhancedInvoicesReport] = dataclasses.field(default=None)
     r"""OK"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 
