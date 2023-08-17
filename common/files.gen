@@ -12,6 +12,7 @@ pylintrc
 setup.py
 src/codatcommon/__init__.py
 src/codatcommon/models/__init__.py
+src/codatcommon/models/errors/sdkerror.py
 src/codatcommon/utils/__init__.py
 src/codatcommon/utils/retries.py
 src/codatcommon/utils/utils.py
@@ -56,7 +57,7 @@ src/codatcommon/models/shared/dataconnectionerror.py
 src/codatcommon/models/shared/companyrequestbody.py
 src/codatcommon/models/shared/companies.py
 src/codatcommon/models/shared/links.py
-src/codatcommon/models/shared/href.py
+src/codatcommon/models/shared/halref.py
 src/codatcommon/models/shared/connections.py
 src/codatcommon/models/shared/integration.py
 src/codatcommon/models/shared/datatypefeature.py
@@ -113,6 +114,7 @@ src/codatcommon/models/webhooks/new_company_synchronized.py
 src/codatcommon/models/webhooks/push_operation_has_timed_out.py
 src/codatcommon/models/webhooks/push_operation_status_has_changed.py
 src/codatcommon/models/webhooks/__init__.py
+src/codatcommon/models/errors/__init__.py
 docs/sdks/codatcommon/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/companies/README.md
@@ -194,7 +196,7 @@ docs/models/shared/dataconnectionerror.md
 docs/models/shared/companyrequestbody.md
 docs/models/shared/companies.md
 docs/models/shared/links.md
-docs/models/shared/href.md
+docs/models/shared/halref.md
 docs/models/shared/connections.md
 docs/models/shared/integration.md
 docs/models/shared/datatypefeature.md

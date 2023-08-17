@@ -16,9 +16,9 @@ class Profile:
     redirect_url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('redirectUrl') }})
     alert_auth_header: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('alertAuthHeader'), 'exclude': lambda f: f is None }})
     api_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('apiKey'), 'exclude': lambda f: f is None }})
-    r"""Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible"""
+    r"""Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible."""
     confirm_company_name: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('confirmCompanyName'), 'exclude': lambda f: f is None }})
-    r"""Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible"""
+    r"""Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible."""
     icon_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('iconUrl'), 'exclude': lambda f: f is None }})
     logo_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logoUrl'), 'exclude': lambda f: f is None }})
     white_list_urls: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('whiteListUrls'), 'exclude': lambda f: f is None }})
