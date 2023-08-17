@@ -18,7 +18,7 @@ The *Download files* endpoint downloads all files that have  been uploaded by to
 
 ```python
 import codatfiles
-from codatfiles.models import operations
+from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
     security=shared.Security(
@@ -58,7 +58,7 @@ if res.data is not None:
 
 ```python
 import codatfiles
-from codatfiles.models import operations
+from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
     security=shared.Security(
@@ -103,7 +103,7 @@ Uploaded files must meet the following requirements:
 
 ```python
 import codatfiles
-from codatfiles.models import operations
+from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
     security=shared.Security(

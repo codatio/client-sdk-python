@@ -12,9 +12,11 @@ pip install codat-files
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codatfiles
-from codatfiles.models import operations
+from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
     security=shared.Security(
