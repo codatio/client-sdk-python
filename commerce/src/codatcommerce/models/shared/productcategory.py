@@ -13,7 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class ProductCategory:
     r"""Product categories are used to classify a group of products together, either by type (e.g. \\"Furniture\\"), or sometimes by tax profile.
-    
+
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-productCategories) for this data type.
     """
     ancestor_refs: Optional[list[shared_recordref.RecordRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ancestorRefs'), 'exclude': lambda f: f is None }})

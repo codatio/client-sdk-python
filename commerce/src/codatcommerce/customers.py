@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatcommerce import utils
-from codatcommerce.models import operations, shared
+from codatcommerce.models import errors, operations, shared
 from typing import Optional
 
 class Customers:
@@ -16,18 +16,18 @@ class Customers:
     def get(self, request: operations.GetCustomerRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCustomerResponse:
         r"""Get customer
         The *Get customer* endpoint returns a single customer for a given customerId.
-        
+
         [Customers](https://docs.codat.io/commerce-api#/schemas/Customer) are people or organizations that place orders, make payments and receive goods and/or services from the SMB.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-customers) for integrations that support getting a specific customer.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetCustomerRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-customers/{customerId}', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -52,14 +52,14 @@ class Customers:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Customer])
                 res.customer = out
-        elif http_res.status_code in [401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetCustomer409ApplicationJSON])
-                res.get_customer_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -67,9 +67,9 @@ class Customers:
     def list(self, request: operations.ListCustomersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCustomersResponse:
         r"""List customers
         The *List customers* endpoint returns a list of [customers](https://docs.codat.io/commerce-api#/schemas/Customer) for a given company's connection.
-        
+
         [Customers](https://docs.codat.io/commerce-api#/schemas/Customer) are people or organizations that place orders, make payments and recieve goods and/or services from the SMB.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -77,7 +77,7 @@ class Customers:
         url = utils.generate_url(operations.ListCustomersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-customers', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListCustomersRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -102,14 +102,14 @@ class Customers:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Customers])
                 res.customers = out
-        elif http_res.status_code in [400, 401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListCustomers409ApplicationJSON])
-                res.list_customers_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
