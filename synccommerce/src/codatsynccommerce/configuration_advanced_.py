@@ -2,10 +2,10 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatsynccommerce import utils
-from codatsynccommerce.models import operations, shared
+from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
-class Configuration:
+class ConfigurationAdvanced:
     r"""Expressively configure preferences for any given Sync for Commerce company."""
     sdk_configuration: SDKConfiguration
 
@@ -14,8 +14,8 @@ class Configuration:
         
     
     def get_configuration(self, request: operations.GetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigurationResponse:
-        r"""Retrieve config preferences set for a company.
-        Retrieve current config preferences.
+        r"""Get company configuration
+        Returns a company's commerce sync configuration'.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -46,13 +46,15 @@ class Configuration:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Configuration])
                 res.configuration = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
     def set_configuration(self, request: operations.SetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.SetConfigurationResponse:
-        r"""Create or update configuration.
-        Make changes to configuration preferences.
+        r"""Set configuration.
+        Sets a company's commerce sync configuration'.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -83,6 +85,8 @@ class Configuration:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Configuration])
                 res.configuration = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

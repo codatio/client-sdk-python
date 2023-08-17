@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatsynccommerce import utils
-from codatsynccommerce.models import operations, shared
+from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
 class SyncFlowPreferences:
@@ -14,8 +14,8 @@ class SyncFlowPreferences:
         
     
     def get_config_text_sync_flow(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigTextSyncFlowResponse:
-        r"""Retrieve preferences for text fields on Sync Flow
-        To enable retrieval of preferences set for the text fields on Sync Flow.
+        r"""Get preferences for text fields
+        Return preferences set for the text fields on sync flow.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -46,51 +46,15 @@ class SyncFlowPreferences:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.Localization]])
                 res.localization_info = out
-
-        return res
-
-    
-    def get_sync_flow_url(self, request: operations.GetSyncFlowURLRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncFlowURLResponse:
-        r"""Retrieve sync flow url
-        Get a URL for Sync Flow including a one time passcode.
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetSyncFlowURLRequest, base_url, '/config/sync/commerce/{commerceKey}/{accountingKey}/start', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.GetSyncFlowURLRequest, request)
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
-
-        def do_request():
-            return client.request('GET', url, params=query_params, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetSyncFlowURLResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.SyncFlowURL])
-                res.sync_flow_url = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
     def get_visible_accounts(self, request: operations.GetVisibleAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetVisibleAccountsResponse:
         r"""List visible accounts
-        Enable retrieval for accounts which are visible on sync flow.
+        Return accounts which are visible on sync flow.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -121,13 +85,15 @@ class SyncFlowPreferences:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.VisibleAccounts])
                 res.visible_accounts = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
     def update_config_text_sync_flow(self, request: dict[str, shared.Localization], retries: Optional[utils.RetryConfig] = None) -> operations.UpdateConfigTextSyncFlowResponse:
-        r"""Update preferences for text fields on sync flow
-        To enable update of preferences set for the text fields on sync flow.
+        r"""Update preferences for text fields
+        Set preferences for the text fields on sync flow.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -161,13 +127,15 @@ class SyncFlowPreferences:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.Localization]])
                 res.localization_info = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
     def update_visible_accounts_sync_flow(self, request: operations.UpdateVisibleAccountsSyncFlowRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateVisibleAccountsSyncFlowResponse:
-        r"""Update the visible accounts on Sync Flow
-        To enable update of accounts visible preferences set on Sync Flow.
+        r"""Update visible accounts
+        Update which accounts are visible on sync flow.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -201,6 +169,8 @@ class SyncFlowPreferences:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.VisibleAccounts])
                 res.visible_accounts = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

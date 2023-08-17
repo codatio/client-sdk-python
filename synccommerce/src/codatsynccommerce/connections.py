@@ -5,62 +5,23 @@ from codatsynccommerce import utils
 from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
-class Integrations:
-    r"""View useful information about codat's integrations."""
+class Connections:
+    r"""Create new and manage existing Sync for Commerce companies using the Sync flow UI."""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
         self.sdk_configuration = sdk_config
         
     
-    def get_integration_branding(self, request: operations.GetIntegrationBrandingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetIntegrationBrandingResponse:
-        r"""Get branding for an integration
-        Retrieve Integration branding assets.
+    def get_sync_flow_url(self, request: operations.GetSyncFlowURLRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncFlowURLResponse:
+        r"""Retrieve sync flow url
+        Get a URL for Sync Flow including a one time passcode.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetIntegrationBrandingRequest, base_url, '/config/integrations/{platformKey}/branding', request)
+        url = utils.generate_url(operations.GetSyncFlowURLRequest, base_url, '/config/sync/commerce/{commerceKey}/{accountingKey}/start', request)
         headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
-
-        def do_request():
-            return client.request('GET', url, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetIntegrationBrandingResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Branding])
-                res.branding = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-
-        return res
-
-    
-    def list_integrations(self, request: operations.ListIntegrationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListIntegrationsResponse:
-        r"""List information on Codat's supported integrations
-        Retrieve a list of available integrations support by datatype and state of release.
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = base_url + '/config/integrations'
-        headers = {}
-        query_params = utils.get_query_params(operations.ListIntegrationsRequest, request)
+        query_params = utils.get_query_params(operations.GetSyncFlowURLRequest, request)
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
@@ -80,12 +41,52 @@ class Integrations:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListIntegrationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetSyncFlowURLResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Integrations])
-                res.integrations = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SyncFlowURL])
+                res.sync_flow_url = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def list_companies(self, request: operations.ListCompaniesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompaniesResponse:
+        r"""List companies
+        Returns a list of companies.
+        """
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/companies'
+        headers = {}
+        query_params = utils.get_query_params(operations.ListCompaniesRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        retry_config = retries
+        if retry_config is None:
+            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+
+        def do_request():
+            return client.request('GET', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListCompaniesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Companies])
+                res.companies = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 

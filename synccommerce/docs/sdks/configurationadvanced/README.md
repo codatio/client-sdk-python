@@ -1,4 +1,4 @@
-# configuration
+# configuration_advanced
 
 ## Overview
 
@@ -6,18 +6,18 @@ Expressively configure preferences for any given Sync for Commerce company.
 
 ### Available Operations
 
-* [get_configuration](#get_configuration) - Retrieve config preferences set for a company.
-* [set_configuration](#set_configuration) - Create or update configuration.
+* [get_configuration](#get_configuration) - Get company configuration
+* [set_configuration](#set_configuration) - Set configuration.
 
 ## get_configuration
 
-Retrieve current config preferences.
+Returns a company's commerce sync configuration'.
 
 ### Example Usage
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -29,7 +29,7 @@ req = operations.GetConfigurationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.configuration.get_configuration(req)
+res = s.configuration_advanced.get_configuration(req)
 
 if res.configuration is not None:
     # handle response
@@ -50,13 +50,13 @@ if res.configuration is not None:
 
 ## set_configuration
 
-Make changes to configuration preferences.
+Sets a company's commerce sync configuration'.
 
 ### Example Usage
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -68,7 +68,7 @@ req = operations.SetConfigurationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.configuration.set_configuration(req)
+res = s.configuration_advanced.set_configuration(req)
 
 if res.configuration is not None:
     # handle response

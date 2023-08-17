@@ -2,23 +2,23 @@
 
 ## Overview
 
-Initiate a sync of Sync for Commerce company data into their respective accounting software.
+Initiate and monitor the sync of company data into accounting software.
 
 ### Available Operations
 
-* [get_sync_status](#get_sync_status) - Get status for a company's syncs
-* [request_sync](#request_sync) - Sync new
-* [request_sync_for_date_range](#request_sync_for_date_range) - Sync range
+* [get_sync_status](#get_sync_status) - Get sync status
+* [request_sync](#request_sync) - Initiate new sync
+* [request_sync_for_date_range](#request_sync_for_date_range) - Initiate sync for specific range
 
 ## get_sync_status
 
-Check the sync history and sync status for a company.
+Gets a list of sync statuses.
 
 ### Example Usage
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -51,8 +51,7 @@ if res.status_code == 200:
 
 ## request_sync
 
-Run a Commerce sync from the last successful sync up to the date provided (optional), otherwise UtcNow is used.
-If there was no previously successful sync, the start date in the config is used.
+Run a Commerce sync from the last successful sync up to the date provided (optional), otherwise UtcNow is used.\r\nIf there was no previously successful sync, the start date in the config is used.
 
 ### Example Usage
 
@@ -94,7 +93,7 @@ if res.sync_summary is not None:
 
 ## request_sync_for_date_range
 
-Run a Commerce sync from the specified start date to the specified finish date in the request payload.
+Initiate a sync for the specified start date to the specified finish date in the request payload.
 
 ### Example Usage
 

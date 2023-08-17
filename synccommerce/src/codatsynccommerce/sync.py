@@ -2,11 +2,11 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatsynccommerce import utils
-from codatsynccommerce.models import operations, shared
+from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
 class Sync:
-    r"""Initiate a sync of Sync for Commerce company data into their respective accounting software."""
+    r"""Initiate and monitor the sync of company data into accounting software."""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
@@ -14,8 +14,8 @@ class Sync:
         
     
     def get_sync_status(self, request: operations.GetSyncStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncStatusResponse:
-        r"""Get status for a company's syncs
-        Check the sync history and sync status for a company.
+        r"""Get sync status
+        Gets a list of sync statuses.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -47,9 +47,8 @@ class Sync:
 
     
     def request_sync(self, request: operations.RequestSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncResponse:
-        r"""Sync new
-        Run a Commerce sync from the last successful sync up to the date provided (optional), otherwise UtcNow is used.
-        If there was no previously successful sync, the start date in the config is used.
+        r"""Initiate new sync
+        Run a Commerce sync from the last successful sync up to the date provided (optional), otherwise UtcNow is used.\r\nIf there was no previously successful sync, the start date in the config is used.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -83,13 +82,15 @@ class Sync:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.SyncSummary])
                 res.sync_summary = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
     def request_sync_for_date_range(self, request: operations.RequestSyncForDateRangeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncForDateRangeResponse:
-        r"""Sync range
-        Run a Commerce sync from the specified start date to the specified finish date in the request payload.
+        r"""Initiate sync for specific range
+        Initiate a sync for the specified start date to the specified finish date in the request payload.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -123,6 +124,8 @@ class Sync:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.SyncSummary])
                 res.sync_summary = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

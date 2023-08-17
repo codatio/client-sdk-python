@@ -17,7 +17,7 @@ Retrieve Integration branding assets.
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -26,7 +26,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetIntegrationBrandingRequest(
-    platform_key='quibusdam',
+    platform_key='corrupti',
 )
 
 res = s.integrations.get_integration_branding(req)
@@ -56,7 +56,7 @@ Retrieve a list of available integrations support by datatype and state of relea
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -68,7 +68,7 @@ req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='unde',
+    query='illum',
 )
 
 res = s.integrations.list_integrations(req)
