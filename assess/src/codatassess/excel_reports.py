@@ -3,7 +3,12 @@
 from .sdkconfiguration import SDKConfiguration
 from codatassess import utils
 from codatassess.models import errors, operations, shared
+from enum import Enum
 from typing import Optional
+
+class GetExcelReportAcceptEnum(str, Enum):
+    APPLICATION_JSON = "application/json"
+    APPLICATION_OCTET_STREAM = "application/octet-stream"
 
 class ExcelReports:
     r"""Downloadable reports"""
@@ -107,7 +112,7 @@ class ExcelReports:
         return res
 
     
-    def get_excel_report(self, request: operations.GetExcelReportRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetExcelReportResponse:
+    def get_excel_report(self, request: operations.GetExcelReportRequest, retries: Optional[utils.RetryConfig] = None, accept_header_override: Optional[GetExcelReportAcceptEnum] = None) -> operations.GetExcelReportResponse:
         r"""Download Excel report
         Download the previously generated Excel report to a local drive.
         """
@@ -116,7 +121,10 @@ class ExcelReports:
         url = utils.generate_url(operations.GetExcelReportRequest, base_url, '/data/companies/{companyId}/assess/excel/download', request)
         headers = {}
         query_params = utils.get_query_params(operations.GetExcelReportRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
+        if accept_header_override is not None:
+            headers['Accept'] = accept_header_override.value
+        else:
+            headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
