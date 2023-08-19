@@ -3,7 +3,12 @@
 from .sdkconfiguration import SDKConfiguration
 from codatfiles import utils
 from codatfiles.models import errors, operations, shared
+from enum import Enum
 from typing import Optional
+
+class DownloadFilesAcceptEnum(str, Enum):
+    APPLICATION_JSON = "application/json"
+    APPLICATION_OCTET_STREAM = "application/octet-stream"
 
 class Files:
     r"""Endpoints to manage uploaded files."""
@@ -13,7 +18,7 @@ class Files:
         self.sdk_configuration = sdk_config
         
     
-    def download_files(self, request: operations.DownloadFilesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadFilesResponse:
+    def download_files(self, request: operations.DownloadFilesRequest, retries: Optional[utils.RetryConfig] = None, accept_header_override: Optional[DownloadFilesAcceptEnum] = None) -> operations.DownloadFilesResponse:
         r"""Download all files for a company
         The *Download files* endpoint downloads all files that have  been uploaded by to SMB to Codat. A `date` may be specified to download any files uploaded on the date provided.
         """
@@ -22,7 +27,10 @@ class Files:
         url = utils.generate_url(operations.DownloadFilesRequest, base_url, '/companies/{companyId}/files/download', request)
         headers = {}
         query_params = utils.get_query_params(operations.DownloadFilesRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
+        if accept_header_override is not None:
+            headers['Accept'] = accept_header_override.value
+        else:
+            headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
