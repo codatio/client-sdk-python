@@ -529,3 +529,13 @@ Based on:
 - [python v0.31.0] synccommerce
 ### Releases
 - [PyPI v0.31.0] https://pypi.org/project/codat-sync-for-commerce/0.31.0 - synccommerce
+
+## 2023-08-19 00:06:56
+### Changes
+Based on:
+- OpenAPI Doc 1.1 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Sync-Commerce.yaml
+- Speakeasy CLI 1.74.3 (2.86.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.31.1] synccommerce
+### Releases
+- [PyPI v0.31.1] https://pypi.org/project/codat-sync-for-commerce/0.31.1 - synccommerce
