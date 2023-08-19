@@ -3,7 +3,12 @@
 from .sdkconfiguration import SDKConfiguration
 from codataccounting import utils
 from codataccounting.models import errors, operations, shared
+from enum import Enum
 from typing import Optional
+
+class DownloadAttachmentAcceptEnum(str, Enum):
+    APPLICATION_JSON = "application/json"
+    APPLICATION_OCTET_STREAM = "application/octet-stream"
 
 class Invoices:
     r"""Invoices"""
@@ -142,7 +147,7 @@ class Invoices:
         return res
 
     
-    def download_attachment(self, request: operations.DownloadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadInvoiceAttachmentResponse:
+    def download_attachment(self, request: operations.DownloadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None, accept_header_override: Optional[DownloadAttachmentAcceptEnum] = None) -> operations.DownloadInvoiceAttachmentResponse:
         r"""Download invoice attachment
         The *Download invoice attachment* endpoint downloads a specific attachment for a given `invoiceId` and `attachmentId`.
 
@@ -154,7 +159,10 @@ class Invoices:
         
         url = utils.generate_url(operations.DownloadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
+        if accept_header_override is not None:
+            headers['Accept'] = accept_header_override.value
+        else:
+            headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client

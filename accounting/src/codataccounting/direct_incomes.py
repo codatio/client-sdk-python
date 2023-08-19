@@ -3,7 +3,12 @@
 from .sdkconfiguration import SDKConfiguration
 from codataccounting import utils
 from codataccounting.models import errors, operations, shared
+from enum import Enum
 from typing import Optional
+
+class DownloadAttachmentAcceptEnum(str, Enum):
+    APPLICATION_JSON = "application/json"
+    APPLICATION_OCTET_STREAM = "application/octet-stream"
 
 class DirectIncomes:
     r"""Direct incomes"""
@@ -70,7 +75,7 @@ class DirectIncomes:
         return res
 
     
-    def download_attachment(self, request: operations.DownloadDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadDirectIncomeAttachmentResponse:
+    def download_attachment(self, request: operations.DownloadDirectIncomeAttachmentRequest, retries: Optional[utils.RetryConfig] = None, accept_header_override: Optional[DownloadAttachmentAcceptEnum] = None) -> operations.DownloadDirectIncomeAttachmentResponse:
         r"""Download direct income attachment
         The *Download direct income attachment* endpoint downloads a specific attachment for a given `directIncomeId` and `attachmentId`.
 
@@ -82,7 +87,10 @@ class DirectIncomes:
         
         url = utils.generate_url(operations.DownloadDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}/download', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
+        if accept_header_override is not None:
+            headers['Accept'] = accept_header_override.value
+        else:
+            headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client

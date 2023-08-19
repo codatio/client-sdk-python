@@ -609,3 +609,13 @@ Based on:
 - [python v0.29.0] accounting
 ### Releases
 - [PyPI v0.29.0] https://pypi.org/project/codat-accounting/0.29.0 - accounting
+
+## 2023-08-19 00:10:02
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+- Speakeasy CLI 1.74.3 (2.86.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.29.1] accounting
+### Releases
+- [PyPI v0.29.1] https://pypi.org/project/codat-accounting/0.29.1 - accounting
