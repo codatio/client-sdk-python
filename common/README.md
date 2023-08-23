@@ -77,8 +77,11 @@ if res.company is not None:
 
 ### [settings](docs/sdks/settings/README.md)
 
+* [create_api_key](docs/sdks/settings/README.md#create_api_key) - Create API key
+* [delete_api_key](docs/sdks/settings/README.md#delete_api_key) - Delete api key
 * [~~get_profile~~](docs/sdks/settings/README.md#get_profile) - Get profile :warning: **Deprecated**
 * [get_sync_settings](docs/sdks/settings/README.md#get_sync_settings) - Get sync settings
+* [list_api_keys](docs/sdks/settings/README.md#list_api_keys) - List API keys
 * [update_profile](docs/sdks/settings/README.md#update_profile) - Update profile
 * [update_sync_settings](docs/sdks/settings/README.md#update_sync_settings) - Update all sync settings
 
