@@ -439,7 +439,7 @@ class Reports:
         r"""Get enhanced loan summaries"""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetLoanSummaryRequest, base_url, '/data/companies/{companyId}/assess/reports/enhancedLiabilities/loan', request)
+        url = utils.generate_url(operations.GetLoanSummaryRequest, base_url, '/companies/{companyId}/reports/enhancedLiabilities/loan', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
@@ -527,7 +527,7 @@ class Reports:
         r"""List enhanced loan transactions"""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.ListLoanTransactionsRequest, base_url, '/data/companies/{companyId}/assess/reports/enhancedLiabilities/loan/transactions', request)
+        url = utils.generate_url(operations.ListLoanTransactionsRequest, base_url, '/companies/{companyId}/reports/enhancedLiabilities/loan/transactions', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListLoanTransactionsRequest, request)
         headers['Accept'] = 'application/json'
