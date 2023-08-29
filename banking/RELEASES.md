@@ -561,3 +561,13 @@ Based on:
 - [python v0.29.0] banking
 ### Releases
 - [PyPI v0.29.0] https://pypi.org/project/codat-banking/0.29.0 - banking
+
+## 2023-08-29 00:03:07
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Banking.yaml
+- Speakeasy CLI 1.74.17 (2.88.5) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.29.1] banking
+### Releases
+- [PyPI v0.29.1] https://pypi.org/project/codat-banking/0.29.1 - banking
