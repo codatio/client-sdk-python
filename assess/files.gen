@@ -51,6 +51,7 @@ src/codatassess/models/shared/dataintegritysummary.py
 src/codatassess/models/shared/dataintegritybycount.py
 src/codatassess/models/shared/dataintegritybyamount.py
 src/codatassess/models/shared/excelstatus.py
+src/codatassess/models/shared/excelreporttypes.py
 src/codatassess/models/shared/excelreporttype.py
 src/codatassess/models/shared/report.py
 src/codatassess/models/shared/reportcomponent.py
@@ -160,6 +161,7 @@ docs/models/shared/dataintegritysummary.md
 docs/models/shared/dataintegritybycount.md
 docs/models/shared/dataintegritybyamount.md
 docs/models/shared/excelstatus.md
+docs/models/shared/excelreporttypes.md
 docs/models/shared/excelreporttype.md
 docs/models/shared/report.md
 docs/models/shared/reportcomponent.md
