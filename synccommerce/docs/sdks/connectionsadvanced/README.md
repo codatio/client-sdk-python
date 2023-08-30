@@ -67,7 +67,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.CreateConnectionRequest(
-    request_body='unde',
+    request_body='suscipit',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -111,7 +111,7 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nulla',
+    query='iure',
 )
 
 res = s.connections_advanced.list_connections(req)

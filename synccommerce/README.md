@@ -48,6 +48,7 @@ if res.configuration is not None:
 
 * [get_sync_flow_url](docs/sdks/connections/README.md#get_sync_flow_url) - Retrieve sync flow url
 * [list_companies](docs/sdks/connections/README.md#list_companies) - List companies
+* [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
 
 ### [connections_advanced](docs/sdks/connectionsadvanced/README.md)
 

@@ -18,6 +18,7 @@ src/codatsynccommerce/models/operations/get_configuration.py
 src/codatsynccommerce/models/operations/set_configuration.py
 src/codatsynccommerce/models/operations/get_sync_flow_url.py
 src/codatsynccommerce/models/operations/list_companies.py
+src/codatsynccommerce/models/operations/update_connection_authorization.py
 src/codatsynccommerce/models/operations/create_company.py
 src/codatsynccommerce/models/operations/create_connection.py
 src/codatsynccommerce/models/operations/list_connections.py
@@ -100,6 +101,8 @@ docs/models/operations/getsyncflowurlrequest.md
 docs/models/operations/getsyncflowurlresponse.md
 docs/models/operations/listcompaniesrequest.md
 docs/models/operations/listcompaniesresponse.md
+docs/models/operations/updateconnectionauthorizationrequest.md
+docs/models/operations/updateconnectionauthorizationresponse.md
 docs/models/operations/createcompanyresponse.md
 docs/models/operations/createconnectionrequest.md
 docs/models/operations/createconnectionresponse.md
