@@ -7,7 +7,7 @@ View useful information about codat's integrations.
 ### Available Operations
 
 * [get_integration_branding](#get_integration_branding) - Get branding for an integration
-* [list_integrations](#list_integrations) - List information on Codat's supported integrations
+* [list_integrations](#list_integrations) - List integrations
 
 ## get_integration_branding
 
@@ -50,7 +50,7 @@ if res.branding is not None:
 
 ## list_integrations
 
-Retrieve a list of available integrations support by datatype and state of release.
+Retrieve a list of available integrations support by data type and state of release.
 
 ### Example Usage
 

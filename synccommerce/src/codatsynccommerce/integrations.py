@@ -53,8 +53,8 @@ class Integrations:
 
     
     def list_integrations(self, request: operations.ListIntegrationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListIntegrationsResponse:
-        r"""List information on Codat's supported integrations
-        Retrieve a list of available integrations support by datatype and state of release.
+        r"""List integrations
+        Retrieve a list of available integrations support by data type and state of release.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
