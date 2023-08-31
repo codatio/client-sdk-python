@@ -161,3 +161,4 @@ docs/models/shared/syncstartedwebhook.md
 docs/models/webhooks/synccompleteresponse.md
 docs/models/webhooks/syncfailedresponse.md
 docs/models/webhooks/syncstartedresponse.md
+.gitattributes
