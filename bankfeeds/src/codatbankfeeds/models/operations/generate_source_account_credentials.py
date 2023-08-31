@@ -3,30 +3,30 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import bankaccountcredentials as shared_bankaccountcredentials
 from ..shared import errormessage as shared_errormessage
-from typing import Any, Optional
+from typing import Optional
 
 
 
 @dataclasses.dataclass
-class ProxyRequest:
+class GenerateSourceAccountCredentialsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    endpoint: str = dataclasses.field(metadata={'query_param': { 'field_name': 'endpoint', 'style': 'form', 'explode': True }})
-    r"""The endpoint and query parameters made to the underlying integration."""
+    request_body: bytes = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 
 
 
 @dataclasses.dataclass
-class ProxyResponse:
+class GenerateSourceAccountCredentialsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    bank_account_credentials: Optional[shared_bankaccountcredentials.BankAccountCredentials] = dataclasses.field(default=None)
+    r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
-    proxy_response: Optional[dict[str, Any]] = dataclasses.field(default=None)
-    r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 

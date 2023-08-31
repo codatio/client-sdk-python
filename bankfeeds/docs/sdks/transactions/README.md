@@ -37,29 +37,22 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='dolorem',
+        account_id='corporis',
         transactions=[
             shared.CreateBankAccountTransaction(
-                amount=1289.26,
-                balance=7506.86,
+                amount=7506.86,
+                balance=3154.28,
                 date_='2022-10-23T00:00:00.000Z',
-                description='omnis',
-                id='55907aff-1a3a-42fa-9467-739251aa52c3',
-            ),
-            shared.CreateBankAccountTransaction(
-                amount=9495.72,
-                balance=3687.25,
-                date_='2022-10-23T00:00:00.000Z',
-                description='possimus',
-                id='019da1ff-e78f-4097-b007-4f15471b5e6e',
+                description='nemo',
+                id='5907aff1-a3a2-4fa9-8677-39251aa52c3f',
             ),
         ],
     ),
-    account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=216822,
+    timeout_in_minutes=662527,
 )
 
 res = s.transactions.create(req)
@@ -99,7 +92,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='b99d488e-1e91-4e45-8ad2-abd44269802d',
+    push_operation_key='d019da1f-fe78-4f09-bb00-74f15471b5e6',
 )
 
 res = s.transactions.get_operation(req)
@@ -142,7 +135,7 @@ req = operations.GetCompanyPushHistoryRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsam',
+    query='repudiandae',
 )
 
 res = s.transactions.list_operations(req)

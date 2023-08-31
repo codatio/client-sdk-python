@@ -10,7 +10,6 @@ Manage your companies' data connections.
 * [delete](#delete) - Delete connection
 * [get](#get) - Get connection
 * [list](#list) - List connections
-* [proxy](#proxy) - Proxy
 * [unlink_connection](#unlink_connection) - Unlink connection
 
 ## create
@@ -179,49 +178,6 @@ if res.connections is not None:
 ### Response
 
 **[operations.ListCompanyConnectionsResponse](../../models/operations/listcompanyconnectionsresponse.md)**
-
-
-## proxy
-
-﻿The *Proxy* endpoint can be used to generate credentials from QuickBooks Online for authentication of the Bank Feed in their portal.
-
-See the example provided for the `endpoint` query parameter when generating credentials for QuickBooks Online.
-
-### Example Usage
-
-```python
-import codatbankfeeds
-from codatbankfeeds.models import operations, shared
-
-s = codatbankfeeds.CodatBankFeeds(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-)
-
-req = operations.ProxyRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    endpoint='generatecredentials?dataconnectionid={connectionId}',
-)
-
-res = s.connections.proxy(req)
-
-if res.proxy_response is not None:
-    # handle response
-```
-
-### Parameters
-
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [operations.ProxyRequest](../../models/operations/proxyrequest.md)  | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
-
-### Response
-
-**[operations.ProxyResponse](../../models/operations/proxyresponse.md)**
 
 
 ## unlink_connection

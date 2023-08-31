@@ -64,13 +64,14 @@ if res.account_mapping_result is not None:
 * [delete](docs/sdks/connections/README.md#delete) - Delete connection
 * [get](docs/sdks/connections/README.md#get) - Get connection
 * [list](docs/sdks/connections/README.md#list) - List connections
-* [proxy](docs/sdks/connections/README.md#proxy) - Proxy
 * [unlink_connection](docs/sdks/connections/README.md#unlink_connection) - Unlink connection
 
 ### [source_accounts](docs/sdks/sourceaccounts/README.md)
 
 * [create](docs/sdks/sourceaccounts/README.md#create) - Create a bank feed bank account
-* [delete](docs/sdks/sourceaccounts/README.md#delete) - delete bank feed bank account
+* [delete](docs/sdks/sourceaccounts/README.md#delete) - Delete bank feed bank account
+* [delete_credentials](docs/sdks/sourceaccounts/README.md#delete_credentials) - Delete all source account credentials
+* [generate_source_account_credentials](docs/sdks/sourceaccounts/README.md#generate_source_account_credentials) - Generate source account credentials
 * [list](docs/sdks/sourceaccounts/README.md#list) - List bank feed bank accounts
 * [update](docs/sdks/sourceaccounts/README.md#update) - Update bank feed bank account
 

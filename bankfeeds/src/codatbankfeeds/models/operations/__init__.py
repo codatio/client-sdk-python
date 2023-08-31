@@ -6,8 +6,10 @@ from .create_bank_transactions import *
 from .create_company import *
 from .create_data_connection import *
 from .delete_bank_feed_bank_account import *
+from .delete_bank_feed_credentials import *
 from .delete_company import *
 from .delete_company_connection import *
+from .generate_source_account_credentials import *
 from .get_bank_account_mapping import *
 from .get_company import *
 from .get_company_connection import *
@@ -16,9 +18,8 @@ from .get_push_operation import *
 from .list_bank_feeds import *
 from .list_companies import *
 from .list_company_connections import *
-from .proxy import *
 from .unlink_connection import *
 from .update_bank_feed import *
 from .update_company import *
 
-__all__ = ["CreateBankAccountMappingRequest","CreateBankAccountMappingResponse","CreateBankFeedRequest","CreateBankFeedResponse","CreateBankTransactionsRequest","CreateBankTransactionsResponse","CreateCompanyResponse","CreateDataConnectionRequest","CreateDataConnectionRequestBody","CreateDataConnectionResponse","DeleteBankFeedBankAccountRequest","DeleteBankFeedBankAccountResponse","DeleteCompanyConnectionRequest","DeleteCompanyConnectionResponse","DeleteCompanyRequest","DeleteCompanyResponse","GetBankAccountMappingRequest","GetBankAccountMappingResponse","GetCompanyConnectionRequest","GetCompanyConnectionResponse","GetCompanyPushHistoryRequest","GetCompanyPushHistoryResponse","GetCompanyRequest","GetCompanyResponse","GetPushOperationRequest","GetPushOperationResponse","ListBankFeedsRequest","ListBankFeedsResponse","ListCompaniesRequest","ListCompaniesResponse","ListCompanyConnectionsRequest","ListCompanyConnectionsResponse","ProxyRequest","ProxyResponse","UnlinkConnectionRequest","UnlinkConnectionRequestBody","UnlinkConnectionResponse","UpdateBankFeedRequest","UpdateBankFeedResponse","UpdateCompanyRequest","UpdateCompanyResponse"]
+__all__ = ["CreateBankAccountMappingRequest","CreateBankAccountMappingResponse","CreateBankFeedRequest","CreateBankFeedResponse","CreateBankTransactionsRequest","CreateBankTransactionsResponse","CreateCompanyResponse","CreateDataConnectionRequest","CreateDataConnectionRequestBody","CreateDataConnectionResponse","DeleteBankFeedBankAccountRequest","DeleteBankFeedBankAccountResponse","DeleteBankFeedCredentialsRequest","DeleteBankFeedCredentialsResponse","DeleteCompanyConnectionRequest","DeleteCompanyConnectionResponse","DeleteCompanyRequest","DeleteCompanyResponse","GenerateSourceAccountCredentialsRequest","GenerateSourceAccountCredentialsResponse","GetBankAccountMappingRequest","GetBankAccountMappingResponse","GetCompanyConnectionRequest","GetCompanyConnectionResponse","GetCompanyPushHistoryRequest","GetCompanyPushHistoryResponse","GetCompanyRequest","GetCompanyResponse","GetPushOperationRequest","GetPushOperationResponse","ListBankFeedsRequest","ListBankFeedsResponse","ListCompaniesRequest","ListCompaniesResponse","ListCompanyConnectionsRequest","ListCompanyConnectionsResponse","UnlinkConnectionRequest","UnlinkConnectionRequestBody","UnlinkConnectionResponse","UpdateBankFeedRequest","UpdateBankFeedResponse","UpdateCompanyRequest","UpdateCompanyResponse"]
