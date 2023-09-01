@@ -10,7 +10,7 @@ Manage your companies' data connections.
 * [delete](#delete) - Delete connection
 * [get](#get) - Get connection
 * [list](#list) - List connections
-* [unlink_connection](#unlink_connection) - Unlink connection
+* [unlink](#unlink) - Unlink connection
 * [update_authorization](#update_authorization) - Update authorization
 
 ## create
@@ -31,8 +31,8 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-req = operations.CreateDataConnectionRequest(
-    request_body=operations.CreateDataConnectionRequestBody(
+req = operations.CreateConnectionRequest(
+    request_body=operations.CreateConnectionRequestBody(
         platform_key='provident',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -46,15 +46,15 @@ if res.connection is not None:
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.CreateDataConnectionRequest](../../models/operations/createdataconnectionrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.CreateConnectionRequest](../../models/operations/createconnectionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
 
 ### Response
 
-**[operations.CreateDataConnectionResponse](../../models/operations/createdataconnectionresponse.md)**
+**[operations.CreateConnectionResponse](../../models/operations/createconnectionresponse.md)**
 
 
 ## delete
@@ -74,7 +74,7 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-req = operations.DeleteCompanyConnectionRequest(
+req = operations.DeleteConnectionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -87,15 +87,15 @@ if res.status_code == 200:
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                              | [operations.DeleteCompanyConnectionRequest](../../models/operations/deletecompanyconnectionrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
-| `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.DeleteConnectionRequest](../../models/operations/deleteconnectionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
 
 ### Response
 
-**[operations.DeleteCompanyConnectionResponse](../../models/operations/deletecompanyconnectionresponse.md)**
+**[operations.DeleteConnectionResponse](../../models/operations/deleteconnectionresponse.md)**
 
 
 ## get
@@ -114,7 +114,7 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-req = operations.GetCompanyConnectionRequest(
+req = operations.GetConnectionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -127,15 +127,15 @@ if res.connection is not None:
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.GetCompanyConnectionRequest](../../models/operations/getcompanyconnectionrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.GetConnectionRequest](../../models/operations/getconnectionrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
 
 ### Response
 
-**[operations.GetCompanyConnectionResponse](../../models/operations/getcompanyconnectionresponse.md)**
+**[operations.GetConnectionResponse](../../models/operations/getconnectionresponse.md)**
 
 
 ## list
@@ -154,7 +154,7 @@ s = codatcommon.CodatCommon(
     ),
 )
 
-req = operations.ListCompanyConnectionsRequest(
+req = operations.ListConnectionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
     page=1,
@@ -170,18 +170,18 @@ if res.connections is not None:
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [operations.ListCompanyConnectionsRequest](../../models/operations/listcompanyconnectionsrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `retries`                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.ListConnectionsRequest](../../models/operations/listconnectionsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
 
 
 ### Response
 
-**[operations.ListCompanyConnectionsResponse](../../models/operations/listcompanyconnectionsresponse.md)**
+**[operations.ListConnectionsResponse](../../models/operations/listconnectionsresponse.md)**
 
 
-## unlink_connection
+## unlink
 
 ﻿This allows you to deauthorize a connection, without deleting it from Codat. This means you can still view any data that has previously been pulled into Codat, and also lets you re-authorize in future if your customer wishes to resume sharing their data.
 
@@ -205,7 +205,7 @@ req = operations.UnlinkConnectionRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.connections.unlink_connection(req)
+res = s.connections.unlink(req)
 
 if res.connection is not None:
     # handle response
