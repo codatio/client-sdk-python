@@ -1,20 +1,19 @@
-# company_management
+# advanced_controls
 
 ## Overview
 
-Create new and manage existing Sync for Commerce companies.
+Advanced company management and sync preferences.
 
 ### Available Operations
 
-* [create_company](#create_company) - Create Sync for Commerce company
-* [create_connection](#create_connection) - Create connection
+* [create_company](#create_company) - Create company
+* [get_configuration](#get_configuration) - Get company configuration
 * [list_companies](#list_companies) - List companies
-* [list_connections](#list_connections) - List data connections
-* [update_connection](#update_connection) - Update data connection
+* [set_configuration](#set_configuration) - Set configuration
 
 ## create_company
 
-Creates a Codat company with a commerce partner data connection.
+Creates a Codat company..
 
 ### Example Usage
 
@@ -32,7 +31,7 @@ req = shared.CreateCompany(
     name='Bob's Burgers',
 )
 
-res = s.company_management.create_company(req)
+res = s.advanced_controls.create_company(req)
 
 if res.company is not None:
     # handle response
@@ -51,15 +50,15 @@ if res.company is not None:
 **[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)**
 
 
-## create_connection
+## get_configuration
 
-Create a data connection for company.
+Returns a company's commerce sync configuration'.
 
 ### Example Usage
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -67,14 +66,13 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-req = operations.CreateConnectionRequest(
-    request_body='corrupti',
+req = operations.GetConfigurationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.company_management.create_connection(req)
+res = s.advanced_controls.get_configuration(req)
 
-if res.connection is not None:
+if res.configuration is not None:
     # handle response
 ```
 
@@ -82,24 +80,24 @@ if res.connection is not None:
 
 | Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.CreateConnectionRequest](../../models/operations/createconnectionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `request`                                                                                | [operations.GetConfigurationRequest](../../models/operations/getconfigurationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
 
 ### Response
 
-**[operations.CreateConnectionResponse](../../models/operations/createconnectionresponse.md)**
+**[operations.GetConfigurationResponse](../../models/operations/getconfigurationresponse.md)**
 
 
 ## list_companies
 
-Retrieve a list of all companies the client has created.
+Returns a list of companies.
 
 ### Example Usage
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import operations
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -111,10 +109,10 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='provident',
+    query='corrupti',
 )
 
-res = s.company_management.list_companies(req)
+res = s.advanced_controls.list_companies(req)
 
 if res.companies is not None:
     # handle response
@@ -133,52 +131,9 @@ if res.companies is not None:
 **[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)**
 
 
-## list_connections
+## set_configuration
 
-Retrieve previously created data connections.
-
-### Example Usage
-
-```python
-import codatsynccommerce
-from codatsynccommerce.models import operations
-
-s = codatsynccommerce.CodatSyncCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-)
-
-req = operations.ListConnectionsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-    query='distinctio',
-)
-
-res = s.company_management.list_connections(req)
-
-if res.connections is not None:
-    # handle response
-```
-
-### Parameters
-
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.ListConnectionsRequest](../../models/operations/listconnectionsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
-
-
-### Response
-
-**[operations.ListConnectionsResponse](../../models/operations/listconnectionsresponse.md)**
-
-
-## update_connection
-
-Update a data connection
+Sets a company's commerce sync configuration.
 
 ### Example Usage
 
@@ -192,17 +147,13 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-req = operations.UpdateConnectionRequest(
-    update_connection=shared.UpdateConnection(
-        status='Linked',
-    ),
+req = operations.SetConfigurationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.company_management.update_connection(req)
+res = s.advanced_controls.set_configuration(req)
 
-if res.connection is not None:
+if res.configuration is not None:
     # handle response
 ```
 
@@ -210,11 +161,11 @@ if res.connection is not None:
 
 | Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.UpdateConnectionRequest](../../models/operations/updateconnectionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `request`                                                                                | [operations.SetConfigurationRequest](../../models/operations/setconfigurationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
 
 ### Response
 
-**[operations.UpdateConnectionResponse](../../models/operations/updateconnectionresponse.md)**
+**[operations.SetConfigurationResponse](../../models/operations/setconfigurationresponse.md)**
 
