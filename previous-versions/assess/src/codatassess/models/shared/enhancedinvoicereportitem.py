@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import customerref as shared_customerref
 from ..shared import invoicestatus as shared_invoicestatus
+from ..shared import lendingcustomerref as shared_lendingcustomerref
 from ..shared import payment as shared_payment
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -17,30 +17,30 @@ class EnhancedInvoiceReportItem:
     amount_due: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amountDue'), 'exclude': lambda f: f is None }})
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
-    
+
     ## Unknown currencies
-    
+
     In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction. 
-    
+
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    customer_ref: Optional[shared_customerref.CustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
+    customer_ref: Optional[shared_lendingcustomerref.LendingCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
     due_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dueDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
+
     ```
     2020-10-08T22:40:50Z
     2021-01-01T00:00:00
     ```
-    
-    
-    
+
+
+
     When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
+
     - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
+
     > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  
@@ -51,20 +51,20 @@ class EnhancedInvoiceReportItem:
     invoice_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceNumber'), 'exclude': lambda f: f is None }})
     issue_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
+
     ```
     2020-10-08T22:40:50Z
     2021-01-01T00:00:00
     ```
-    
-    
-    
+
+
+
     When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
+
     - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
+
     > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  
@@ -73,20 +73,20 @@ class EnhancedInvoiceReportItem:
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     paid_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paidOnDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-    
+
     ```
     2020-10-08T22:40:50Z
     2021-01-01T00:00:00
     ```
-    
-    
-    
+
+
+
     When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-    
+
     - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
     - Unqualified local time: `2021-11-15T01:00:00`
     - UTC time offsets: `2021-11-15T01:00:00-05:00`
-    
+
     > Time zones
     > 
     > Not all dates from Codat will contain information about time zones.  
@@ -96,7 +96,7 @@ class EnhancedInvoiceReportItem:
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     status: Optional[shared_invoicestatus.InvoiceStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Current state of the invoice:
-    
+
     - `Draft` - Invoice hasn't been submitted to the supplier. It may be in a pending state or is scheduled for future submission, for example by email.
     - `Submitted` - Invoice is no longer a draft. It has been processed and, or, sent to the customer. In this state, it will impact the ledger. It also has no payments made against it (amountDue == totalAmount).
     - `PartiallyPaid` - The balance paid against the invoice is positive, but less than the total invoice amount (0 < amountDue < totalAmount).
