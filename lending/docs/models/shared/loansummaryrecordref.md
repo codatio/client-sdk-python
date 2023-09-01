@@ -1,0 +1,11 @@
+# LoanSummaryRecordRef
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `data_connection_id`                                                                      | *Optional[str]*                                                                           | :heavy_minus_sign:                                                                        | The dataConnectionId the object being referred to is associated with.                     |
+| `id`                                                                                      | *Optional[str]*                                                                           | :heavy_minus_sign:                                                                        | The id of the object being referred to.                                                   |
+| `integration_type`                                                                        | [Optional[LoanSummaryIntegrationType]](../../models/shared/loansummaryintegrationtype.md) | :heavy_minus_sign:                                                                        | The integration type begin referred to.                                                   |
+| `record_ref_type`                                                                         | [Optional[LoanSummaryRecordRefType]](../../models/shared/loansummaryrecordreftype.md)     | :heavy_minus_sign:                                                                        | The datatype being referred to.                                                           |
