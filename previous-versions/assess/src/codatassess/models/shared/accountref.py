@@ -11,10 +11,10 @@ from typing import Optional
 
 @dataclasses.dataclass
 class AccountRef:
-    r"""An object containing account reference data."""
+    r"""An account reference containing the account id and name."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""'id' from the Accounts data type."""
+    r"""The id of the account."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""'name' from the Accounts data type."""
+    r"""The name of the account."""
     
 

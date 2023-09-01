@@ -1,7 +1,9 @@
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codatassess
-from codatassess.models import operations
+from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
     security=shared.Security(
@@ -9,15 +11,18 @@ s = codatassess.CodatAssess(
     ),
 )
 
-req = operations.GetAccountCategoryRequest(
-    account_id='corrupti',
+req = operations.ListDataTypeDataIntegrityDetailsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
+    order_by='-modifiedDate',
+    page=1,
+    page_size=100,
+    query='corrupti',
 )
 
-res = s.categories.get_account_category(req)
+res = s.data_integrity.details(req)
 
-if res.categorised_account is not None:
+if res.details is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
