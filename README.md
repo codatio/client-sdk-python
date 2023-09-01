@@ -42,5 +42,5 @@ To get your authorization header from the Codat Portal:
 
 | Library | Description | PyPI |
 | :- | :- | :- |
-| **[Accounting](https://github.com/codatio/client-sdk-python/tree/main/legacy/accounting)** | Access standardized accounting data from our accounting integrations.. | [codat-accounting](https://pypi.org/project/codat-accounting) |
+| **[Accounting](https://github.com/codatio/client-sdk-python/tree/main/previous-versions/accounting)** | Access standardized accounting data from our accounting integrations.. | [codat-accounting](https://pypi.org/project/codat-accounting) |
             
