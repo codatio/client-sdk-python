@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import createbanktransactions as shared_createbanktransactions
 from ..shared import createbanktransactionsresponse as shared_createbanktransactionsresponse
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -30,8 +30,8 @@ class CreateBankTransactionsResponse:
     status_code: int = dataclasses.field()
     create_bank_transactions_response: Optional[shared_createbanktransactionsresponse.CreateBankTransactionsResponse] = dataclasses.field(default=None)
     r"""Success"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 

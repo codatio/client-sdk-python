@@ -3,9 +3,9 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountmappingresult as shared_accountmappingresult
 from ..shared import bankfeedaccountmapping as shared_bankfeedaccountmapping
-from ..shared import schema as shared_schema
+from ..shared import bankfeedaccountmappingresponse as shared_bankfeedaccountmappingresponse
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -24,10 +24,10 @@ class CreateBankAccountMappingRequest:
 class CreateBankAccountMappingResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    account_mapping_result: Optional[shared_accountmappingresult.AccountMappingResult] = dataclasses.field(default=None)
+    bank_feed_account_mapping_response: Optional[shared_bankfeedaccountmappingresponse.BankFeedAccountMappingResponse] = dataclasses.field(default=None)
     r"""Success"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 
