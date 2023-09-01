@@ -13,13 +13,13 @@ class Expenses:
         self.sdk_configuration = sdk_config
         
     
-    def create_expense_dataset(self, request: operations.CreateExpenseDatasetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateExpenseDatasetResponse:
-        r"""Create expense-transactions
+    def create(self, request: operations.CreateExpenseTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateExpenseTransactionResponse:
+        r"""Create expense transaction
         Create an expense transaction
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.CreateExpenseDatasetRequest, base_url, '/companies/{companyId}/sync/expenses/data/expense-transactions', request)
+        url = utils.generate_url(operations.CreateExpenseTransactionRequest, base_url, '/companies/{companyId}/sync/expenses/data/expense-transactions', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "create_expense_request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -43,7 +43,7 @@ class Expenses:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.CreateExpenseDatasetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateExpenseTransactionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -61,13 +61,13 @@ class Expenses:
         return res
 
     
-    def update_expense_dataset(self, request: operations.UpdateExpenseDatasetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateExpenseDatasetResponse:
+    def update(self, request: operations.UpdateExpenseTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateExpenseTransactionResponse:
         r"""Update expense-transactions
         Update an expense transaction
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.UpdateExpenseDatasetRequest, base_url, '/companies/{companyId}/sync/expenses/expense-transactions/{transactionId}', request)
+        url = utils.generate_url(operations.UpdateExpenseTransactionRequest, base_url, '/companies/{companyId}/sync/expenses/expense-transactions/{transactionId}', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "update_expense_request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -91,12 +91,12 @@ class Expenses:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.UpdateExpenseDatasetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UpdateExpenseTransactionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 202:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateExpenseDataset202ApplicationJSON])
-                res.update_expense_dataset_202_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.UpdateExpenseResponse])
+                res.update_expense_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401, 404, 422, 429]:
@@ -109,13 +109,13 @@ class Expenses:
         return res
 
     
-    def upload_attachment(self, request: operations.UploadAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadAttachmentResponse:
+    def upload_attachment(self, request: operations.UploadExpenseAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadExpenseAttachmentResponse:
         r"""Upload attachment
         Creates an attachment in the accounting software against the given transactionId
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.UploadAttachmentRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}/attachments', request)
+        url = utils.generate_url(operations.UploadExpenseAttachmentRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}/attachments', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -139,7 +139,7 @@ class Expenses:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.UploadAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UploadExpenseAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

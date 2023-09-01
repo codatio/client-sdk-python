@@ -2,14 +2,15 @@
 
 ## Overview
 
-Companies sync configuration.
+Manage mapping options and sync configuration.
 
 ### Available Operations
 
-* [get_company_configuration](#get_company_configuration) - Get company configuration
-* [save_company_configuration](#save_company_configuration) - Set company configuration
+* [get](#get) - Get company configuration
+* [get_mapping_options](#get_mapping_options) - Mapping options
+* [set](#set) - Set company configuration
 
-## get_company_configuration
+## get
 
 Gets a companies expense sync configuration
 
@@ -29,7 +30,7 @@ req = operations.GetCompanyConfigurationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.configuration.get_company_configuration(req)
+res = s.configuration.get(req)
 
 if res.company_configuration is not None:
     # handle response
@@ -48,7 +49,46 @@ if res.company_configuration is not None:
 **[operations.GetCompanyConfigurationResponse](../../models/operations/getcompanyconfigurationresponse.md)**
 
 
-## save_company_configuration
+## get_mapping_options
+
+Gets the expense mapping options for a companies accounting software
+
+### Example Usage
+
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import operations, shared
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetMappingOptionsRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+)
+
+res = s.configuration.get_mapping_options(req)
+
+if res.mapping_options is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [operations.GetMappingOptionsRequest](../../models/operations/getmappingoptionsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `retries`                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                           | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
+
+
+### Response
+
+**[operations.GetMappingOptionsResponse](../../models/operations/getmappingoptionsresponse.md)**
+
+
+## set
 
 Sets a companies expense sync configuration
 
@@ -64,7 +104,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-req = operations.SaveCompanyConfigurationRequest(
+req = operations.SetCompanyConfigurationRequest(
     company_configuration=shared.CompanyConfiguration(
         bank_account=shared.BankAccount(
             id='32',
@@ -79,7 +119,7 @@ req = operations.SaveCompanyConfigurationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.configuration.save_company_configuration(req)
+res = s.configuration.set(req)
 
 if res.company_configuration is not None:
     # handle response
@@ -87,13 +127,13 @@ if res.company_configuration is not None:
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                | [operations.SaveCompanyConfigurationRequest](../../models/operations/savecompanyconfigurationrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-| `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                              | [operations.SetCompanyConfigurationRequest](../../models/operations/setcompanyconfigurationrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
 
 ### Response
 
-**[operations.SaveCompanyConfigurationResponse](../../models/operations/savecompanyconfigurationresponse.md)**
+**[operations.SetCompanyConfigurationResponse](../../models/operations/setcompanyconfigurationresponse.md)**
 

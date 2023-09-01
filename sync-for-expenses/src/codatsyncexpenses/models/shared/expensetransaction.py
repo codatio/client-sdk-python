@@ -9,6 +9,16 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+
+@dataclasses.dataclass
+class ExpenseTransactionBankAccountReference:
+    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
+    r"""Identifier of the bank account."""
+    
+
+
 class ExpenseTransactionType(str, Enum):
     r"""The type of transaction."""
     PAYMENT = 'Payment'
@@ -52,6 +62,7 @@ class ExpenseTransaction:
     """
     type: ExpenseTransactionType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of transaction."""
+    bank_account_ref: Optional[ExpenseTransactionBankAccountReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccountRef'), 'exclude': lambda f: f is None }})
     contact_ref: Optional[shared_contactref.ContactRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
     currency_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'exclude': lambda f: f is None }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.

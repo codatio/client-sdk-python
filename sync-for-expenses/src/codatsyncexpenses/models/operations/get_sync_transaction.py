@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
-from ..shared import transactionmetadata as shared_transactionmetadata
+from ..shared import transaction as shared_transaction
 from typing import Optional
 
 
@@ -28,7 +28,7 @@ class GetSyncTransactionResponse:
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    transaction_metadata: Optional[list[shared_transactionmetadata.TransactionMetadata]] = dataclasses.field(default=None)
+    transaction: Optional[shared_transaction.Transaction] = dataclasses.field(default=None)
     r"""Success"""
     
 

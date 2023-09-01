@@ -6,11 +6,11 @@ Create expense datasets and upload receipts.
 
 ### Available Operations
 
-* [create_expense_dataset](#create_expense_dataset) - Create expense-transactions
-* [update_expense_dataset](#update_expense_dataset) - Update expense-transactions
+* [create](#create) - Create expense transaction
+* [update](#update) - Update expense-transactions
 * [upload_attachment](#upload_attachment) - Upload attachment
 
-## create_expense_dataset
+## create
 
 Create an expense transaction
 
@@ -26,16 +26,19 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-req = operations.CreateExpenseDatasetRequest(
+req = operations.CreateExpenseTransactionRequest(
     create_expense_request=shared.CreateExpenseRequest(
         items=[
             shared.ExpenseTransaction(
+                bank_account_ref=shared.ExpenseTransactionBankAccountReference(
+                    id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
+                ),
                 contact_ref=shared.ContactRef(
                     contact_type=shared.ContactRefContactType.SUPPLIER,
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
                 currency='GBP',
-                currency_rate=5928.45,
+                currency_rate=4614.79,
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
                 issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
@@ -73,15 +76,6 @@ req = operations.CreateExpenseDatasetRequest(
                             shared.RecordRef(
                                 id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                             ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
                         ],
                     ),
                     shared.ExpenseTransactionLine(
@@ -115,9 +109,6 @@ req = operations.CreateExpenseDatasetRequest(
                             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                         ),
                         tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
                             shared.RecordRef(
                                 id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                             ),
@@ -135,12 +126,15 @@ req = operations.CreateExpenseDatasetRequest(
                 type=shared.ExpenseTransactionType.PAYMENT,
             ),
             shared.ExpenseTransaction(
+                bank_account_ref=shared.ExpenseTransactionBankAccountReference(
+                    id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
+                ),
                 contact_ref=shared.ContactRef(
                     contact_type=shared.ContactRefContactType.SUPPLIER,
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
                 currency='GBP',
-                currency_rate=4236.55,
+                currency_rate=5820.2,
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
                 issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
@@ -160,18 +154,6 @@ req = operations.CreateExpenseDatasetRequest(
                             shared.RecordRef(
                                 id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                             ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
                             shared.RecordRef(
                                 id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                             ),
@@ -190,6 +172,33 @@ req = operations.CreateExpenseDatasetRequest(
                             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                         ),
                         tracking_refs=[
+                            shared.RecordRef(
+                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                            ),
+                            shared.RecordRef(
+                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                            ),
+                            shared.RecordRef(
+                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                            ),
+                            shared.RecordRef(
+                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                            ),
+                        ],
+                    ),
+                    shared.ExpenseTransactionLine(
+                        account_ref=shared.RecordRef(
+                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                        ),
+                        net_amount=110.42,
+                        tax_amount=14.43,
+                        tax_rate_ref=shared.RecordRef(
+                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                        ),
+                        tracking_refs=[
+                            shared.RecordRef(
+                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                            ),
                             shared.RecordRef(
                                 id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                             ),
@@ -204,12 +213,15 @@ req = operations.CreateExpenseDatasetRequest(
                 type=shared.ExpenseTransactionType.PAYMENT,
             ),
             shared.ExpenseTransaction(
+                bank_account_ref=shared.ExpenseTransactionBankAccountReference(
+                    id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
+                ),
                 contact_ref=shared.ContactRef(
                     contact_type=shared.ContactRefContactType.SUPPLIER,
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
                 currency='GBP',
-                currency_rate=8917.73,
+                currency_rate=1059.07,
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
                 issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
@@ -244,6 +256,36 @@ req = operations.CreateExpenseDatasetRequest(
                             shared.RecordRef(
                                 id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                             ),
+                        ],
+                    ),
+                ],
+                merchant_name='Amazon UK',
+                notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
+                type=shared.ExpenseTransactionType.PAYMENT,
+            ),
+            shared.ExpenseTransaction(
+                bank_account_ref=shared.ExpenseTransactionBankAccountReference(
+                    id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
+                ),
+                contact_ref=shared.ContactRef(
+                    contact_type=shared.ContactRefContactType.SUPPLIER,
+                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                ),
+                currency='GBP',
+                currency_rate=7742.34,
+                id='4d7c6929-7770-412b-91bb-44d3bc71d111',
+                issue_date='2022-10-23T00:00:00.000Z',
+                lines=[
+                    shared.ExpenseTransactionLine(
+                        account_ref=shared.RecordRef(
+                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                        ),
+                        net_amount=110.42,
+                        tax_amount=14.43,
+                        tax_rate_ref=shared.RecordRef(
+                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
+                        ),
+                        tracking_refs=[
                             shared.RecordRef(
                                 id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                             ),
@@ -259,27 +301,6 @@ req = operations.CreateExpenseDatasetRequest(
                             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                         ),
                         tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
                             shared.RecordRef(
                                 id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                             ),
@@ -301,7 +322,7 @@ req = operations.CreateExpenseDatasetRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.expenses.create_expense_dataset(req)
+res = s.expenses.create(req)
 
 if res.create_expense_response is not None:
     # handle response
@@ -309,18 +330,18 @@ if res.create_expense_response is not None:
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.CreateExpenseDatasetRequest](../../models/operations/createexpensedatasetrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [operations.CreateExpenseTransactionRequest](../../models/operations/createexpensetransactionrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
 
 ### Response
 
-**[operations.CreateExpenseDatasetResponse](../../models/operations/createexpensedatasetresponse.md)**
+**[operations.CreateExpenseTransactionResponse](../../models/operations/createexpensetransactionresponse.md)**
 
 
-## update_expense_dataset
+## update
 
 Update an expense transaction
 
@@ -336,55 +357,19 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-req = operations.UpdateExpenseDatasetRequest(
+req = operations.UpdateExpenseTransactionRequest(
     update_expense_request=shared.UpdateExpenseRequest(
+        bank_account_ref=shared.UpdateExpenseRequestBankAccountReference(
+            id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
+        ),
         contact_ref=shared.ContactRef(
             contact_type=shared.ContactRefContactType.SUPPLIER,
             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
         ),
         currency='GBP',
-        currency_rate=8121.69,
+        currency_rate=1352.18,
         issue_date='2022-06-28T00:00:00.000Z',
         lines=[
-            shared.ExpenseTransactionLine(
-                account_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                net_amount=110.42,
-                tax_amount=14.43,
-                tax_rate_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                tracking_refs=[
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                ],
-            ),
-            shared.ExpenseTransactionLine(
-                account_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                net_amount=110.42,
-                tax_amount=14.43,
-                tax_rate_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                tracking_refs=[
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                ],
-            ),
             shared.ExpenseTransactionLine(
                 account_ref=shared.RecordRef(
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
@@ -406,29 +391,29 @@ req = operations.UpdateExpenseDatasetRequest(
         ],
         merchant_name='Amazon UK',
         notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type=shared.ExpenseType.PAYMENT,
+        type='natus',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
 )
 
-res = s.expenses.update_expense_dataset(req)
+res = s.expenses.update(req)
 
-if res.update_expense_dataset_202_application_json_object is not None:
+if res.update_expense_response is not None:
     # handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.UpdateExpenseDatasetRequest](../../models/operations/updateexpensedatasetrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [operations.UpdateExpenseTransactionRequest](../../models/operations/updateexpensetransactionrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
 
 ### Response
 
-**[operations.UpdateExpenseDatasetResponse](../../models/operations/updateexpensedatasetresponse.md)**
+**[operations.UpdateExpenseTransactionResponse](../../models/operations/updateexpensetransactionresponse.md)**
 
 
 ## upload_attachment
@@ -447,10 +432,10 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-req = operations.UploadAttachmentRequest(
-    request_body=operations.UploadAttachmentRequestBody(
-        content='recusandae'.encode(),
-        request_body='temporibus',
+req = operations.UploadExpenseAttachmentRequest(
+    request_body=operations.UploadExpenseAttachmentRequestBody(
+        content='sed'.encode(),
+        request_body='iste',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
@@ -465,13 +450,13 @@ if res.attachment is not None:
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.UploadAttachmentRequest](../../models/operations/uploadattachmentrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                              | [operations.UploadExpenseAttachmentRequest](../../models/operations/uploadexpenseattachmentrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
 
 ### Response
 
-**[operations.UploadAttachmentResponse](../../models/operations/uploadattachmentresponse.md)**
+**[operations.UploadExpenseAttachmentResponse](../../models/operations/uploadexpenseattachmentresponse.md)**
 

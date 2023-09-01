@@ -4,10 +4,19 @@ from __future__ import annotations
 import dataclasses
 from ..shared import contactref as shared_contactref
 from ..shared import expensetransactionline as shared_expensetransactionline
-from ..shared import expensetype as shared_expensetype
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import Any, Optional
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+
+@dataclasses.dataclass
+class UpdateExpenseRequestBankAccountReference:
+    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
+    r"""Identifier of the bank account."""
+    
+
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -16,8 +25,8 @@ from typing import Optional
 class UpdateExpenseRequest:
     issue_date: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('issueDate') }})
     r"""Date the transaction was recorded."""
-    type: shared_expensetype.ExpenseType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""The type of transaction."""
+    type: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    bank_account_ref: Optional[UpdateExpenseRequestBankAccountReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccountRef'), 'exclude': lambda f: f is None }})
     contact_ref: Optional[shared_contactref.ContactRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""Currency the transaction was recorded in."""
