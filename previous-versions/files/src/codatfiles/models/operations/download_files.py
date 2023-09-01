@@ -3,9 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import schema as shared_schema
-from codatfiles import utils
-from dataclasses_json import Undefined, dataclass_json
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -19,23 +17,6 @@ class DownloadFilesRequest:
 
 
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class DownloadFiles404ApplicationJSON:
-    r"""One or more of the resources you referenced could not be found.
-    This might be because your company or data connection id is wrong, or was already deleted.
-    """
-    can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
-    correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
-    detailed_error_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('detailedErrorCode'), 'exclude': lambda f: f is None }})
-    error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('error'), 'exclude': lambda f: f is None }})
-    service: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('service'), 'exclude': lambda f: f is None }})
-    status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
-    
-
-
-
 
 @dataclasses.dataclass
 class DownloadFilesResponse:
@@ -43,12 +24,8 @@ class DownloadFilesResponse:
     status_code: int = dataclasses.field()
     data: Optional[bytes] = dataclasses.field(default=None)
     r"""Success"""
-    download_files_404_application_json_object: Optional[DownloadFiles404ApplicationJSON] = dataclasses.field(default=None)
-    r"""One or more of the resources you referenced could not be found.
-    This might be because your company or data connection id is wrong, or was already deleted.
-    """
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 
