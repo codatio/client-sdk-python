@@ -52,7 +52,7 @@ if res.company is not None:
 * [delete](docs/sdks/connections/README.md#delete) - Delete connection
 * [get](docs/sdks/connections/README.md#get) - Get connection
 * [list](docs/sdks/connections/README.md#list) - List connections
-* [unlink_connection](docs/sdks/connections/README.md#unlink_connection) - Unlink connection
+* [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 * [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
 
 ### [integrations](docs/sdks/integrations/README.md)

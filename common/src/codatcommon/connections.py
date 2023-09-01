@@ -13,7 +13,7 @@ class Connections:
         self.sdk_configuration = sdk_config
         
     
-    def create(self, request: operations.CreateDataConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDataConnectionResponse:
+    def create(self, request: operations.CreateConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateConnectionResponse:
         r"""Create connection
         Creates a connection for the company by providing a valid `platformKey`. 
 
@@ -21,7 +21,7 @@ class Connections:
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.CreateDataConnectionRequest, base_url, '/companies/{companyId}/connections', request)
+        url = utils.generate_url(operations.CreateConnectionRequest, base_url, '/companies/{companyId}/connections', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -45,7 +45,7 @@ class Connections:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.CreateDataConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -63,14 +63,14 @@ class Connections:
         return res
 
     
-    def delete(self, request: operations.DeleteCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteCompanyConnectionResponse:
+    def delete(self, request: operations.DeleteConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteConnectionResponse:
         r"""Delete connection
         Revoke and remove a connection from a company.
         This operation is not reversible. The end user would need to reauthorize a new data connection if you wish to view new data for this company.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.DeleteCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
+        url = utils.generate_url(operations.DeleteConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
@@ -91,7 +91,7 @@ class Connections:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.DeleteCompanyConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DeleteConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             pass
@@ -105,13 +105,13 @@ class Connections:
         return res
 
     
-    def get(self, request: operations.GetCompanyConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyConnectionResponse:
+    def get(self, request: operations.GetConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetConnectionResponse:
         r"""Get connection
         Returns a specific connection for a company when valid identifiers are provided. If the identifiers are for a deleted company and/or connection, a not found response is returned.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetCompanyConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
+        url = utils.generate_url(operations.GetConnectionRequest, base_url, '/companies/{companyId}/connections/{connectionId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
@@ -132,7 +132,7 @@ class Connections:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetCompanyConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetConnectionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -150,15 +150,15 @@ class Connections:
         return res
 
     
-    def list(self, request: operations.ListCompanyConnectionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompanyConnectionsResponse:
+    def list(self, request: operations.ListConnectionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListConnectionsResponse:
         r"""List connections
         List the connections for a company.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.ListCompanyConnectionsRequest, base_url, '/companies/{companyId}/connections', request)
+        url = utils.generate_url(operations.ListConnectionsRequest, base_url, '/companies/{companyId}/connections', request)
         headers = {}
-        query_params = utils.get_query_params(operations.ListCompanyConnectionsRequest, request)
+        query_params = utils.get_query_params(operations.ListConnectionsRequest, request)
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
@@ -178,7 +178,7 @@ class Connections:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListCompanyConnectionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListConnectionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -196,7 +196,7 @@ class Connections:
         return res
 
     
-    def unlink_connection(self, request: operations.UnlinkConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UnlinkConnectionResponse:
+    def unlink(self, request: operations.UnlinkConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UnlinkConnectionResponse:
         r"""Unlink connection
         This allows you to deauthorize a connection, without deleting it from Codat. This means you can still view any data that has previously been pulled into Codat, and also lets you re-authorize in future if your customer wishes to resume sharing their data.
         """
