@@ -4,13 +4,13 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
-from ..shared import pushhistoryresponse as shared_pushhistoryresponse
+from ..shared import listpushoperations as shared_listpushoperations
 from typing import Optional
 
 
 
 @dataclasses.dataclass
-class GetCompanyPushHistoryRequest:
+class ListCreateOperationsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results)."""
@@ -26,12 +26,12 @@ class GetCompanyPushHistoryRequest:
 
 
 @dataclasses.dataclass
-class GetCompanyPushHistoryResponse:
+class ListCreateOperationsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
-    push_history_response: Optional[shared_pushhistoryresponse.PushHistoryResponse] = dataclasses.field(default=None)
+    list_push_operations: Optional[shared_listpushoperations.ListPushOperations] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

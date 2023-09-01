@@ -7,8 +7,8 @@ Transactions represent debits and credits from a source account.
 ### Available Operations
 
 * [create](#create) - Create bank account transactions
-* [get_operation](#get_operation) - Get push operation
-* [list_operations](#list_operations) - List push operations
+* [get_create_operation](#get_create_operation) - Get create operation
+* [list_create_operations](#list_create_operations) - List create operations
 
 ## create
 
@@ -74,7 +74,7 @@ if res.create_bank_transactions_response is not None:
 **[operations.CreateBankTransactionsResponse](../../models/operations/createbanktransactionsresponse.md)**
 
 
-## get_operation
+## get_create_operation
 
 Retrieve push operation.
 
@@ -90,12 +90,12 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.GetPushOperationRequest(
+req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     push_operation_key='d019da1f-fe78-4f09-bb00-74f15471b5e6',
 )
 
-res = s.transactions.get_operation(req)
+res = s.transactions.get_create_operation(req)
 
 if res.push_operation is not None:
     # handle response
@@ -103,20 +103,20 @@ if res.push_operation is not None:
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.GetPushOperationRequest](../../models/operations/getpushoperationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.GetCreateOperationRequest](../../models/operations/getcreateoperationrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
 
 ### Response
 
-**[operations.GetPushOperationResponse](../../models/operations/getpushoperationresponse.md)**
+**[operations.GetCreateOperationResponse](../../models/operations/getcreateoperationresponse.md)**
 
 
-## list_operations
+## list_create_operations
 
-List push operation records.
+List create operations.
 
 ### Example Usage
 
@@ -130,7 +130,7 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.GetCompanyPushHistoryRequest(
+req = operations.ListCreateOperationsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     order_by='-modifiedDate',
     page=1,
@@ -138,21 +138,21 @@ req = operations.GetCompanyPushHistoryRequest(
     query='repudiandae',
 )
 
-res = s.transactions.list_operations(req)
+res = s.transactions.list_create_operations(req)
 
-if res.push_history_response is not None:
+if res.list_push_operations is not None:
     # handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `request`                                                                                          | [operations.GetCompanyPushHistoryRequest](../../models/operations/getcompanypushhistoryrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
-| `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.ListCreateOperationsRequest](../../models/operations/listcreateoperationsrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
 
 ### Response
 
-**[operations.GetCompanyPushHistoryResponse](../../models/operations/getcompanypushhistoryresponse.md)**
+**[operations.ListCreateOperationsResponse](../../models/operations/listcreateoperationsresponse.md)**
 

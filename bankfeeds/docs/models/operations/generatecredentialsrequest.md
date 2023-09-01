@@ -1,9 +1,10 @@
-# GetPushOperationRequest
+# GenerateCredentialsRequest
 
 
 ## Fields
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `request_body`                       | *bytes*                              | :heavy_check_mark:                   | N/A                                  |                                      |
 | `company_id`                         | *str*                                | :heavy_check_mark:                   | N/A                                  | 8a210b68-6988-11ed-a1eb-0242ac120002 |
-| `push_operation_key`                 | *str*                                | :heavy_check_mark:                   | Push operation key.                  |                                      |
+| `connection_id`                      | *str*                                | :heavy_check_mark:                   | N/A                                  | 2e9d2c44-f675-40ba-8049-353bfcb5e171 |

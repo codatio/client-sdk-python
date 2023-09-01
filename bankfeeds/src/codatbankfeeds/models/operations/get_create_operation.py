@@ -3,40 +3,30 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import connection as shared_connection
 from ..shared import errormessage as shared_errormessage
-from codatbankfeeds import utils
-from dataclasses_json import Undefined, dataclass_json
+from ..shared import pushoperation as shared_pushoperation
 from typing import Optional
 
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class CreateDataConnectionRequestBody:
-    platform_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformKey'), 'exclude': lambda f: f is None }})
-    
-
-
-
-
-@dataclasses.dataclass
-class CreateDataConnectionRequest:
+class GetCreateOperationRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    request_body: Optional[CreateDataConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    push_operation_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'pushOperationKey', 'style': 'simple', 'explode': False }})
+    r"""Push operation key."""
     
 
 
 
 
 @dataclasses.dataclass
-class CreateDataConnectionResponse:
+class GetCreateOperationResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
-    r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
+    push_operation: Optional[shared_pushoperation.PushOperation] = dataclasses.field(default=None)
+    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 

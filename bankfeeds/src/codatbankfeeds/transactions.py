@@ -70,13 +70,13 @@ class Transactions:
         return res
 
     
-    def get_operation(self, request: operations.GetPushOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPushOperationResponse:
-        r"""Get push operation
+    def get_create_operation(self, request: operations.GetCreateOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateOperationResponse:
+        r"""Get create operation
         Retrieve push operation.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetPushOperationRequest, base_url, '/companies/{companyId}/push/{pushOperationKey}', request)
+        url = utils.generate_url(operations.GetCreateOperationRequest, base_url, '/companies/{companyId}/push/{pushOperationKey}', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
@@ -97,7 +97,7 @@ class Transactions:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetPushOperationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetCreateOperationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -115,15 +115,15 @@ class Transactions:
         return res
 
     
-    def list_operations(self, request: operations.GetCompanyPushHistoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCompanyPushHistoryResponse:
-        r"""List push operations
-        List push operation records.
+    def list_create_operations(self, request: operations.ListCreateOperationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCreateOperationsResponse:
+        r"""List create operations
+        List create operations.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetCompanyPushHistoryRequest, base_url, '/companies/{companyId}/push', request)
+        url = utils.generate_url(operations.ListCreateOperationsRequest, base_url, '/companies/{companyId}/push', request)
         headers = {}
-        query_params = utils.get_query_params(operations.GetCompanyPushHistoryRequest, request)
+        query_params = utils.get_query_params(operations.ListCreateOperationsRequest, request)
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
@@ -143,12 +143,12 @@ class Transactions:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetCompanyPushHistoryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListCreateOperationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.PushHistoryResponse])
-                res.push_history_response = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ListPushOperations])
+                res.list_push_operations = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401, 404, 429]:

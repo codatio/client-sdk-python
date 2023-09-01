@@ -10,7 +10,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class AccountMappingResult:
+class BankFeedAccountMappingResponse:
     r"""The result from POSTing a Bank Account mapping."""
     error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Error'), 'exclude': lambda f: f is None }})
     r"""Error returned during the post request"""

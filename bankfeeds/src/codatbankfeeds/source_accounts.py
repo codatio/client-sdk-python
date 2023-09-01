@@ -147,7 +147,7 @@ class SourceAccounts:
         return res
 
     
-    def generate_source_account_credentials(self, request: operations.GenerateSourceAccountCredentialsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GenerateSourceAccountCredentialsResponse:
+    def generate_credentials(self, request: operations.GenerateCredentialsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GenerateCredentialsResponse:
         r"""Generate source account credentials
         The _Generate Bank Account Credentials_ endpoint can be used to generate credentials for QuickBooks Online to use for authentication of the Bank Feed in their portal, each time this is used a new set of credentials will be generated.
 
@@ -155,7 +155,7 @@ class SourceAccounts:
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GenerateSourceAccountCredentialsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials', request)
+        url = utils.generate_url(operations.GenerateCredentialsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -181,7 +181,7 @@ class SourceAccounts:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GenerateSourceAccountCredentialsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GenerateCredentialsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

@@ -23,7 +23,7 @@ req = operations.CreateBankAccountMappingRequest(
 
 res = s.account_mapping.create(req)
 
-if res.account_mapping_result is not None:
+if res.bank_feed_account_mapping_response is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

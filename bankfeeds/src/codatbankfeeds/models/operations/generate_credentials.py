@@ -3,27 +3,28 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import connection as shared_connection
+from ..shared import bankaccountcredentials as shared_bankaccountcredentials
 from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
 
 @dataclasses.dataclass
-class GetCompanyConnectionRequest:
+class GenerateCredentialsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    request_body: bytes = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 
 
 
 @dataclasses.dataclass
-class GetCompanyConnectionResponse:
+class GenerateCredentialsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
-    r"""OK"""
+    bank_account_credentials: Optional[shared_bankaccountcredentials.BankAccountCredentials] = dataclasses.field(default=None)
+    r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)

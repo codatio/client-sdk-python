@@ -9,7 +9,7 @@ Source accounts act as a bridge to bank accounts in accounting software.
 * [create](#create) - Create a bank feed bank account
 * [delete](#delete) - Delete bank feed bank account
 * [delete_credentials](#delete_credentials) - Delete all source account credentials
-* [generate_source_account_credentials](#generate_source_account_credentials) - Generate source account credentials
+* [generate_credentials](#generate_credentials) - Generate source account credentials
 * [list](#list) - List bank feed bank accounts
 * [update](#update) - Update bank feed bank account
 
@@ -150,7 +150,7 @@ if res.status_code == 200:
 **[operations.DeleteBankFeedCredentialsResponse](../../models/operations/deletebankfeedcredentialsresponse.md)**
 
 
-## generate_source_account_credentials
+## generate_credentials
 
 ﻿The _Generate Bank Account Credentials_ endpoint can be used to generate credentials for QuickBooks Online to use for authentication of the Bank Feed in their portal, each time this is used a new set of credentials will be generated.
 
@@ -169,13 +169,13 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.GenerateSourceAccountCredentialsRequest(
+req = operations.GenerateCredentialsRequest(
     request_body='occaecati'.encode(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.source_accounts.generate_source_account_credentials(req)
+res = s.source_accounts.generate_credentials(req)
 
 if res.bank_account_credentials is not None:
     # handle response
@@ -183,15 +183,15 @@ if res.bank_account_credentials is not None:
 
 ### Parameters
 
-| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                | [operations.GenerateSourceAccountCredentialsRequest](../../models/operations/generatesourceaccountcredentialsrequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
-| `retries`                                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                         | :heavy_minus_sign:                                                                                                       | Configuration to override the default retry behavior of the client.                                                      |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.GenerateCredentialsRequest](../../models/operations/generatecredentialsrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
 
 ### Response
 
-**[operations.GenerateSourceAccountCredentialsResponse](../../models/operations/generatesourceaccountcredentialsresponse.md)**
+**[operations.GenerateCredentialsResponse](../../models/operations/generatecredentialsresponse.md)**
 
 
 ## list
