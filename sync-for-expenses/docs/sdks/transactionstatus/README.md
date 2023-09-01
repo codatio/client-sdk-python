@@ -6,10 +6,10 @@ Retrieve the status of transactions within a sync.
 
 ### Available Operations
 
-* [get_sync_transaction](#get_sync_transaction) - Get Sync Transaction
-* [list_sync_transactions](#list_sync_transactions) - Get Sync transactions
+* [get](#get) - Get Sync Transaction
+* [list](#list) - List sync transactions
 
-## get_sync_transaction
+## get
 
 Gets the status of a transaction for a sync
 
@@ -31,9 +31,9 @@ req = operations.GetSyncTransactionRequest(
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
 )
 
-res = s.transaction_status.get_sync_transaction(req)
+res = s.transaction_status.get(req)
 
-if res.transaction_metadata is not None:
+if res.transaction is not None:
     # handle response
 ```
 
@@ -50,9 +50,9 @@ if res.transaction_metadata is not None:
 **[operations.GetSyncTransactionResponse](../../models/operations/getsynctransactionresponse.md)**
 
 
-## list_sync_transactions
+## list
 
-Get's the transactions and status for a sync
+Gets the transactions and status for a sync
 
 ### Example Usage
 
@@ -73,9 +73,9 @@ req = operations.ListSyncTransactionsRequest(
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
 )
 
-res = s.transaction_status.list_sync_transactions(req)
+res = s.transaction_status.list(req)
 
-if res.transaction_metadata_list is not None:
+if res.transactions is not None:
     # handle response
 ```
 

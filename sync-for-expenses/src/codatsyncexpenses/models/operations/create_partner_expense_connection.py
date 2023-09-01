@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import dataconnection as shared_dataconnection
+from ..shared import connection as shared_connection
 from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
@@ -21,7 +21,7 @@ class CreatePartnerExpenseConnectionRequest:
 class CreatePartnerExpenseConnectionResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    data_connection: Optional[shared_dataconnection.DataConnection] = dataclasses.field(default=None)
+    connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
