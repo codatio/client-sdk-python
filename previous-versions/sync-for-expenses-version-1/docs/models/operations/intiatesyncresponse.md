@@ -1,0 +1,12 @@
+# IntiateSyncResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `content_type`                                                                        | *str*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `error_message`                                                                       | [Optional[shared.ErrorMessage]](../../models/shared/errormessage.md)                  | :heavy_minus_sign:                                                                    | If model is incorrect                                                                 |
+| `status_code`                                                                         | *int*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `raw_response`                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response) | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `sync_initiated`                                                                      | [Optional[shared.SyncInitiated]](../../models/shared/syncinitiated.md)                | :heavy_minus_sign:                                                                    | Returns the newly created SyncId                                                      |
