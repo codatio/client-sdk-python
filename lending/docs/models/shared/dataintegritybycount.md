@@ -1,0 +1,11 @@
+# DataIntegrityByCount
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `match_percentage`                                                                 | *Optional[float]*                                                                  | :heavy_minus_sign:                                                                 | The percentage of records of the type specified in the route which have a match.   |
+| `matched`                                                                          | *Optional[float]*                                                                  | :heavy_minus_sign:                                                                 | The number of records of the type specified in the route which do have a match.    |
+| `total`                                                                            | *Optional[float]*                                                                  | :heavy_minus_sign:                                                                 | The total of unmatched and matched.                                                |
+| `unmatched`                                                                        | *Optional[float]*                                                                  | :heavy_minus_sign:                                                                 | The number of records of the type specified in the route which don't have a match. |
