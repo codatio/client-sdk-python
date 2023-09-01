@@ -5,32 +5,21 @@ import dataclasses
 import requests as requests_http
 from ..shared import connection as shared_connection
 from ..shared import errormessage as shared_errormessage
-from codatcommon import utils
-from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
 
 
-@dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class CreateDataConnectionRequestBody:
-    platform_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformKey'), 'exclude': lambda f: f is None }})
-    
-
-
-
-
-@dataclasses.dataclass
-class CreateDataConnectionRequest:
+class GetConnectionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    request_body: Optional[CreateDataConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     
 
 
 
 
 @dataclasses.dataclass
-class CreateDataConnectionResponse:
+class GetConnectionResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)

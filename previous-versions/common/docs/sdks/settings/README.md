@@ -6,16 +6,116 @@ Manage your Codat instance.
 
 ### Available Operations
 
+* [create_api_key](#create_api_key) - Create API key
+* [delete_api_key](#delete_api_key) - Delete api key
 * [~~get_profile~~](#get_profile) - Get profile :warning: **Deprecated**
 * [get_sync_settings](#get_sync_settings) - Get sync settings
+* [list_api_keys](#list_api_keys) - List API keys
 * [update_profile](#update_profile) - Update profile
 * [update_sync_settings](#update_sync_settings) - Update all sync settings
+
+## create_api_key
+
+Use the *Create API keys* endpoint to generate a new API key for your client.
+
+[API keys](https://docs.codat.io/codat-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
+
+You can [read more](https://docs.codat.io/using-the-api/authentication) about authentication at Codat and managing API keys via the Portal UI or API.
+
+### Tips and pitfalls
+
+* Your first API key is created for you. Access this key via [Codat's Portal](https://app.codat.io/developers/api-keys).
+* If you require multiple API keys, perform multiple calls to the *Create API keys* endpoint. 
+* The number of API keys is limited to 10. If you have reached the maximum amount of keys, use the *Delete API key* endpoint to delete an unused key first.
+
+### Example Usage
+
+```python
+import codatcommon
+from codatcommon.models import shared
+
+s = codatcommon.CodatCommon(
+    security=shared.Security(
+        auth_header="",
+    ),
+)
+
+req = shared.CreateAPIKey(
+    name='azure-invoice-finance-processor',
+)
+
+res = s.settings.create_api_key(req)
+
+if res.api_key_details is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [shared.CreateAPIKey](../../models/shared/createapikey.md)          | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+
+### Response
+
+**[operations.CreateAPIKeyResponse](../../models/operations/createapikeyresponse.md)**
+
+
+## delete_api_key
+
+Use the *Delete API keys* endpoint to delete an existing API key, providing its valid `id` as a parameter. Note that this operation is not reversible.
+
+[API keys](https://docs.codat.io/accounting-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
+
+You can [read more](https://docs.codat.io/using-the-api/authentication) about authentication at Codat and managing API keys via the Portal UI or API.
+
+### Tips and pitfalls
+
+* It is possible to delete the last remaining API key. If this happens, a new key can be created via the [API key management page](https://app.codat.io/developers/api-keys) of the Portal.
+* It is possible to delete the API key used to authenticate the *Delete API key* request.
+
+### Example Usage
+
+```python
+import codatcommon
+from codatcommon.models import operations, shared
+
+s = codatcommon.CodatCommon(
+    security=shared.Security(
+        auth_header="",
+    ),
+)
+
+req = operations.DeleteAPIKeyRequest(
+    api_key_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+)
+
+res = s.settings.delete_api_key(req)
+
+if res.status_code == 200:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.DeleteAPIKeyRequest](../../models/operations/deleteapikeyrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `retries`                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                               | Configuration to override the default retry behavior of the client.              |
+
+
+### Response
+
+**[operations.DeleteAPIKeyResponse](../../models/operations/deleteapikeyresponse.md)**
+
 
 ## ~~get_profile~~
 
 Fetch your Codat profile.
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -81,6 +181,45 @@ if res.sync_settings is not None:
 ### Response
 
 **[operations.GetProfileSyncSettingsResponse](../../models/operations/getprofilesyncsettingsresponse.md)**
+
+
+## list_api_keys
+
+Use the *List API keys* endpoint to return a list of all API keys that currently exist for your client. This includes keys created via the Portal UI or the *Create API keys* endpoint.
+
+[API keys](https://docs.codat.io/accounting-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
+
+You can [read more](https://docs.codat.io/using-the-api/authentication) about authentication at Codat and managing API keys via the Portal UI or API.
+
+### Example Usage
+
+```python
+import codatcommon
+from codatcommon.models import shared
+
+s = codatcommon.CodatCommon(
+    security=shared.Security(
+        auth_header="",
+    ),
+)
+
+
+res = s.settings.list_api_keys()
+
+if res.api_keys is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+
+### Response
+
+**[operations.ListAPIKeysResponse](../../models/operations/listapikeysresponse.md)**
 
 
 ## update_profile

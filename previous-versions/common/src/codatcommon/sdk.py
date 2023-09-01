@@ -14,7 +14,7 @@ from codatcommon import utils
 from codatcommon.models import shared
 
 class CodatCommon:
-    r"""Common API: Common API
+    r"""Platform API: Platform API
     An API for the common components of all of Codat's products.
 
     These end points cover creating and managing your companies, data connections, and integrations.
