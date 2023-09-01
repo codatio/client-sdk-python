@@ -65,7 +65,7 @@ Permanently deletes a company, its connections and any cached data. This operati
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -104,7 +104,7 @@ if res.status_code == 200:
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -137,13 +137,13 @@ if res.company is not None:
 
 ## list
 
-﻿Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/codat-api#/schemas/Connection) related to the company.
+﻿Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/bank-feeds-api#/schemas/Connection) related to the company.
 
 ### Example Usage
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations
+from codatbankfeeds.models import operations, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -155,7 +155,7 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='omnis',
+    query='corrupti',
 )
 
 res = s.companies.list(req)
