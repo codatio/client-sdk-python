@@ -5,12 +5,12 @@ management:
   speakeasyVersion: 1.53.0
   generationVersion: 2.58.0
 generation:
-  sdkClassName: CodatAccounting
+  sdkClassName: CodatSyncPayables
   singleTagPerOp: false
   telemetryEnabled: true
 python:
-  version: 0.28.1
+  version: 0.0.0
   author: Codat
-  description: Access standardized accounting data from our accounting integrations.
+  description: Streamline your customers' accounts payable workflow.
   maxMethodParams: 0
-  packageName: codat-accounting
+  packageName: codat-sync-for-payables

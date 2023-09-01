@@ -5,12 +5,13 @@ management:
   speakeasyVersion: 1.53.0
   generationVersion: 2.58.0
 generation:
-  sdkClassName: CodatFiles
+  sdkClassName: CodatSyncCommerce
   singleTagPerOp: false
   telemetryEnabled: true
 python:
   version: 0.0.0
   author: Codat
-  description: Use Codat's Files API to upload your SMB customers' files.
+  description: Push merchants' data from your ecommerce or point-of-sale (POS) platform
+    into your merchants' accounting platform.
   maxMethodParams: 0
-  packageName: codat-files
+  packageName: codat-sync-for-commerce-version-1
