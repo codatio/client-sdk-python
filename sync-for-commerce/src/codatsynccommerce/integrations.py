@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatsynccommerce import utils
-from codatsynccommerce.models import operations, shared
+from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
 class Integrations:
@@ -13,7 +13,7 @@ class Integrations:
         self.sdk_configuration = sdk_config
         
     
-    def get_integration_branding(self, request: operations.GetIntegrationBrandingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetIntegrationBrandingResponse:
+    def get_branding(self, request: operations.GetIntegrationBrandingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetIntegrationBrandingResponse:
         r"""Get branding for an integration
         Retrieve Integration branding assets.
         """
@@ -46,13 +46,15 @@ class Integrations:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Branding])
                 res.branding = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
-    def list_integrations(self, request: operations.ListIntegrationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListIntegrationsResponse:
-        r"""List information on Codat's supported integrations
-        Retrieve a list of available integrations support by datatype and state of release.
+    def list(self, request: operations.ListIntegrationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListIntegrationsResponse:
+        r"""List integrations
+        Retrieve a list of available integrations support by data type and state of release.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -84,6 +86,8 @@ class Integrations:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Integrations])
                 res.integrations = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
