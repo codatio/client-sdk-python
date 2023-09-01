@@ -1,0 +1,13 @@
+# MappingOptions
+
+Success
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             | Example                                                                                 |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `accounts`                                                                              | list[[AccountMappingInfo](../../models/shared/accountmappinginfo.md)]                   | :heavy_minus_sign:                                                                      | Array of available accounts for mapping.                                                |                                                                                         |
+| `expense_provider`                                                                      | *Optional[str]*                                                                         | :heavy_minus_sign:                                                                      | Name of the expense integration.                                                        | Partner Expense                                                                         |
+| `tax_rates`                                                                             | list[[TaxRateMappingInfo](../../models/shared/taxratemappinginfo.md)]                   | :heavy_minus_sign:                                                                      | Array of available tax rates for mapping.                                               |                                                                                         |
+| `tracking_categories`                                                                   | list[[TrackingCategoryMappingInfo](../../models/shared/trackingcategorymappinginfo.md)] | :heavy_minus_sign:                                                                      | Array of available tracking categories for mapping.                                     |                                                                                         |
