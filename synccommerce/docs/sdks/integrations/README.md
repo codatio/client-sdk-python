@@ -6,10 +6,10 @@ View useful information about codat's integrations.
 
 ### Available Operations
 
-* [get_integration_branding](#get_integration_branding) - Get branding for an integration
-* [list_integrations](#list_integrations) - List integrations
+* [get_branding](#get_branding) - Get branding for an integration
+* [list](#list) - List integrations
 
-## get_integration_branding
+## get_branding
 
 Retrieve Integration branding assets.
 
@@ -29,7 +29,7 @@ req = operations.GetIntegrationBrandingRequest(
     platform_key='magnam',
 )
 
-res = s.integrations.get_integration_branding(req)
+res = s.integrations.get_branding(req)
 
 if res.branding is not None:
     # handle response
@@ -48,7 +48,7 @@ if res.branding is not None:
 **[operations.GetIntegrationBrandingResponse](../../models/operations/getintegrationbrandingresponse.md)**
 
 
-## list_integrations
+## list
 
 Retrieve a list of available integrations support by data type and state of release.
 
@@ -71,7 +71,7 @@ req = operations.ListIntegrationsRequest(
     query='debitis',
 )
 
-res = s.integrations.list_integrations(req)
+res = s.integrations.list(req)
 
 if res.integrations is not None:
     # handle response

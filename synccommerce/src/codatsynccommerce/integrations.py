@@ -13,7 +13,7 @@ class Integrations:
         self.sdk_configuration = sdk_config
         
     
-    def get_integration_branding(self, request: operations.GetIntegrationBrandingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetIntegrationBrandingResponse:
+    def get_branding(self, request: operations.GetIntegrationBrandingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetIntegrationBrandingResponse:
         r"""Get branding for an integration
         Retrieve Integration branding assets.
         """
@@ -52,7 +52,7 @@ class Integrations:
         return res
 
     
-    def list_integrations(self, request: operations.ListIntegrationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListIntegrationsResponse:
+    def list(self, request: operations.ListIntegrationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListIntegrationsResponse:
         r"""List integrations
         Retrieve a list of available integrations support by data type and state of release.
         """

@@ -13,7 +13,7 @@ class Sync:
         self.sdk_configuration = sdk_config
         
     
-    def get_sync_status(self, request: operations.GetSyncStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncStatusResponse:
+    def get_status(self, request: operations.GetSyncStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncStatusResponse:
         r"""Get sync status
         Gets a list of sync statuses.
         """
@@ -46,7 +46,7 @@ class Sync:
         return res
 
     
-    def request_sync(self, request: operations.RequestSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncResponse:
+    def request(self, request: operations.RequestSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncResponse:
         r"""Initiate new sync
         Run a Commerce sync from the last successful sync up to the date provided (optional), otherwise UtcNow is used.\r\nIf there was no previously successful sync, the start date in the config is used.
         """
@@ -88,7 +88,7 @@ class Sync:
         return res
 
     
-    def request_sync_for_date_range(self, request: operations.RequestSyncForDateRangeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncForDateRangeResponse:
+    def request_for_date_range(self, request: operations.RequestSyncForDateRangeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RequestSyncForDateRangeResponse:
         r"""Initiate sync for specific range
         Initiate a sync for the specified start date to the specified finish date in the request payload.
         """

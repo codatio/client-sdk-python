@@ -6,11 +6,11 @@ Initiate and monitor the sync of company data into accounting software.
 
 ### Available Operations
 
-* [get_sync_status](#get_sync_status) - Get sync status
-* [request_sync](#request_sync) - Initiate new sync
-* [request_sync_for_date_range](#request_sync_for_date_range) - Initiate sync for specific range
+* [get_status](#get_status) - Get sync status
+* [request](#request) - Initiate new sync
+* [request_for_date_range](#request_for_date_range) - Initiate sync for specific range
 
-## get_sync_status
+## get_status
 
 Gets a list of sync statuses.
 
@@ -30,7 +30,7 @@ req = operations.GetSyncStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.sync.get_sync_status(req)
+res = s.sync.get_status(req)
 
 if res.status_code == 200:
     # handle response
@@ -49,7 +49,7 @@ if res.status_code == 200:
 **[operations.GetSyncStatusResponse](../../models/operations/getsyncstatusresponse.md)**
 
 
-## request_sync
+## request
 
 Run a Commerce sync from the last successful sync up to the date provided (optional), otherwise UtcNow is used.\r\nIf there was no previously successful sync, the start date in the config is used.
 
@@ -72,7 +72,7 @@ req = operations.RequestSyncRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.sync.request_sync(req)
+res = s.sync.request(req)
 
 if res.sync_summary is not None:
     # handle response
@@ -91,7 +91,7 @@ if res.sync_summary is not None:
 **[operations.RequestSyncResponse](../../models/operations/requestsyncresponse.md)**
 
 
-## request_sync_for_date_range
+## request_for_date_range
 
 Initiate a sync for the specified start date to the specified finish date in the request payload.
 
@@ -117,7 +117,7 @@ req = operations.RequestSyncForDateRangeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.sync.request_sync_for_date_range(req)
+res = s.sync.request_for_date_range(req)
 
 if res.sync_summary is not None:
     # handle response
