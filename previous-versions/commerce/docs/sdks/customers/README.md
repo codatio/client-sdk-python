@@ -24,7 +24,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatcommerce
-from codatcommerce.models import operations
+from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
     security=shared.Security(
@@ -70,7 +70,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatcommerce
-from codatcommerce.models import operations
+from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
     security=shared.Security(

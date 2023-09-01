@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatcommerce import utils
-from codatcommerce.models import operations, shared
+from codatcommerce.models import errors, operations, shared
 from typing import Optional
 
 class TaxComponents:
@@ -16,18 +16,18 @@ class TaxComponents:
     def get(self, request: operations.GetTaxComponentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTaxComponentResponse:
         r"""Get tax component
         The *Get tax* endpoint returns a single tax for a given taxId.
-        
+
         [Tax components](https://docs.codat.io/commerce-api#/schemas/TaxComponent) are tax rates from the commerce platform, including tax rate's name and value.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-taxComponents) for integrations that support getting a specific tax.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetTaxComponentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-taxComponents/{taxId}', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -52,14 +52,14 @@ class TaxComponents:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TaxComponent])
                 res.tax_component = out
-        elif http_res.status_code in [401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetTaxComponent409ApplicationJSON])
-                res.get_tax_component_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -67,9 +67,9 @@ class TaxComponents:
     def list(self, request: operations.ListTaxComponentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTaxComponentsResponse:
         r"""List tax components
         The *List tax components* endpoint returns a list of [tax components](https://docs.codat.io/commerce-api#/schemas/TaxComponent) for a given company's connection.
-        
+
         [Tax components](https://docs.codat.io/commerce-api#/schemas/TaxComponent) are tax rates from the commerce platform, including tax rate's name and value.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -77,7 +77,7 @@ class TaxComponents:
         url = utils.generate_url(operations.ListTaxComponentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-taxComponents', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListTaxComponentsRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -102,14 +102,14 @@ class TaxComponents:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TaxComponents])
                 res.tax_components = out
-        elif http_res.status_code in [400, 401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListTaxComponents409ApplicationJSON])
-                res.list_tax_components_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

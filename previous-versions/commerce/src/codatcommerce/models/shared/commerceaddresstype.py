@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class AddressType(str, Enum):
+class CommerceAddressType(str, Enum):
     r"""The type of the address"""
     BILLING = 'Billing'
     DELIVERY = 'Delivery'

@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatcommerce import utils
-from codatcommerce.models import operations, shared
+from codatcommerce.models import errors, operations, shared
 from typing import Optional
 
 class Orders:
@@ -16,18 +16,18 @@ class Orders:
     def get(self, request: operations.GetOrderRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetOrderResponse:
         r"""Get order
         The *Get order* endpoint returns a single order for a given orderId.
-        
+
         [Orders](https://docs.codat.io/commerce-api#/schemas/Order) contain the transaction details for all products sold by the company.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-orders) for integrations that support getting a specific order.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetOrderRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -52,14 +52,14 @@ class Orders:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Order])
                 res.order = out
-        elif http_res.status_code in [401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrder409ApplicationJSON])
-                res.get_order_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -67,9 +67,9 @@ class Orders:
     def list(self, request: operations.ListOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListOrdersResponse:
         r"""List orders
         The *List orders* endpoint returns a list of [orders](https://docs.codat.io/commerce-api#/schemas/Order) for a given company's connection.
-        
+
         [Orders](https://docs.codat.io/commerce-api#/schemas/Order) contain the transaction details for all products sold by the company.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -77,7 +77,7 @@ class Orders:
         url = utils.generate_url(operations.ListOrdersRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-orders', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListOrdersRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -102,14 +102,14 @@ class Orders:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Orders])
                 res.orders = out
-        elif http_res.status_code in [400, 401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListOrders409ApplicationJSON])
-                res.list_orders_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
