@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import addresstype as shared_addresstype
+from ..shared import commerceaddresstype as shared_commerceaddresstype
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -24,7 +24,7 @@ class Address:
     r"""The postal (or zip) code for the address"""
     region: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('region'), 'exclude': lambda f: f is None }})
     r"""The fourth line of the address, or region"""
-    type: Optional[shared_addresstype.AddressType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[shared_commerceaddresstype.CommerceAddressType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the address"""
     
 

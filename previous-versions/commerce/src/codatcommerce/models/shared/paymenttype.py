@@ -4,7 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class PaymentType(str, Enum):
-    r"""Status of the payment"""
+    r"""Type of payment."""
     CASH = 'Cash'
     CARD = 'Card'
     INVOICE = 'Invoice'

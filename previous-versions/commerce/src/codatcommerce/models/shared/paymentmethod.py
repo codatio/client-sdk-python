@@ -13,7 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class PaymentMethod:
     r"""A Payment Method represents the payment method(s) used to make payments.
-    
+
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-paymentMethods) for this data type.
     """
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
