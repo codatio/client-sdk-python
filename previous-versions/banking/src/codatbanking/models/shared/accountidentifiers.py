@@ -17,7 +17,7 @@ class AccountIdentifiers:
     r"""Type of account"""
     bank_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankCode'), 'exclude': lambda f: f is None }})
     r"""The local (usually national) routing number for the account.
-    
+
     This is known by different names in different countries:
     * BSB code (Australia)
     * routing number (Canada, USA)
