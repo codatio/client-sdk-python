@@ -40,21 +40,21 @@ req = operations.CreateJournalRequest(
     journal=shared.Journal(
         created_on='2022-10-23T00:00:00.000Z',
         has_children=False,
-        id='9d3a1d32-329e-4458-b7e8-f2ad6bb10e25',
-        journal_code='ipsam',
+        id='a1f340bb-36f6-477a-8851-9c3374902848',
+        journal_code='quos',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Noel Gutmann PhD',
-        parent_id='voluptas',
+        name='Mrs. Candice Rau',
+        parent_id='nihil',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.JournalStatus.UNKNOWN,
-        type='ipsum',
+        status=shared.JournalStatus.ARCHIVED,
+        type='consequuntur',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=56059,
+    timeout_in_minutes=142769,
 )
 
 res = s.journals.create(req)
@@ -91,7 +91,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -101,7 +101,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='totam',
+    journal_id='enim',
 )
 
 res = s.journals.get(req)
@@ -140,7 +140,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -185,7 +185,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -198,7 +198,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='aliquid',
+    query='debitis',
 )
 
 res = s.journals.list(req)

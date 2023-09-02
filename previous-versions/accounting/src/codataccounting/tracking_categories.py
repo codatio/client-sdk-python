@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codataccounting import utils
-from codataccounting.models import operations, shared
+from codataccounting.models import errors, operations, shared
 from typing import Optional
 
 class TrackingCategories:
@@ -16,18 +16,18 @@ class TrackingCategories:
     def get(self, request: operations.GetTrackingCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTrackingCategoryResponse:
         r"""Get tracking categories
         The *Get tracking category* endpoint returns a single tracking category for a given trackingCategoryId.
-        
+
         [Tracking categories](https://docs.codat.io/accounting-api#/schemas/TrackingCategory) are used to monitor cost centres and control budgets that sit outside the standard set of accounts.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=trackingCategories) for integrations that support getting a specific tracking category.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetTrackingCategoryRequest, base_url, '/companies/{companyId}/data/trackingCategories/{trackingCategoryId}', request)
         headers = {}
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -52,14 +52,14 @@ class TrackingCategories:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TrackingCategoryTree])
                 res.tracking_category_tree = out
-        elif http_res.status_code in [401, 404, 429]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 404, 409, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetTrackingCategory409ApplicationJSON])
-                res.get_tracking_category_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -67,9 +67,9 @@ class TrackingCategories:
     def list(self, request: operations.ListTrackingCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTrackingCategoriesResponse:
         r"""List tracking categories
         The *List tracking categories* endpoint returns a list of [tracking categories](https://docs.codat.io/accounting-api#/schemas/TrackingCategory) for a given company's connection.
-        
+
         [Tracking categories](https://docs.codat.io/accounting-api#/schemas/TrackingCategory) are used to monitor cost centres and control budgets that sit outside the standard set of accounts.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -77,7 +77,7 @@ class TrackingCategories:
         url = utils.generate_url(operations.ListTrackingCategoriesRequest, base_url, '/companies/{companyId}/data/trackingCategories', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListTrackingCategoriesRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -102,14 +102,14 @@ class TrackingCategories:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TrackingCategories])
                 res.tracking_categories = out
-        elif http_res.status_code in [400, 401, 404]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401, 404, 409]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListTrackingCategories409ApplicationJSON])
-                res.list_tracking_categories_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

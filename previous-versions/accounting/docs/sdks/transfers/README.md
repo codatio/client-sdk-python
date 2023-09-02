@@ -10,6 +10,7 @@ Transfers
 * [get](#get) - Get transfer
 * [get_create_model](#get_create_model) - Get create transfer model
 * [list](#list) - List transfers
+* [upload_attachment](#upload_attachment) - Push invoice attachment
 
 ## create
 
@@ -39,38 +40,30 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateTransferRequest(
     transfer=shared.Transfer(
         contact_ref=shared.TransferContactRef(
-            data_type='laudantium',
-            id='1ddf7e08-8f74-4ef5-8c92-16e8926313bb',
+            data_type='quos',
+            id='732be509-c508-4713-9f06-f0bce55a8687',
         ),
         date_='2022-10-23T00:00:00.000Z',
         deposited_record_refs=[
             shared.InvoiceTo(
-                data_type='quo',
-                id='2c8d2701-096b-466a-96e3-e1d9d3b66033',
+                data_type='journalEntry',
+                id='c97905ff-797a-45da-a64b-7e778a74baaa',
             ),
             shared.InvoiceTo(
-                data_type='quaerat',
-                id='a11aa1d5-d224-47de-9b3d-46170e768a96',
-            ),
-            shared.InvoiceTo(
-                data_type='nobis',
-                id='b3987883-98eb-4a1b-bf71-43356f6349a1',
-            ),
-            shared.InvoiceTo(
-                data_type='voluptas',
-                id='4249b211-ce46-4b95-9652-b158ca9142f0',
+                data_type='journalEntry',
+                id='832bb658-62d2-4a31-b9b1-4aa6bdec7f44',
             ),
         ],
-        description='veniam',
+        description='dolore',
         from_=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='2632b31c-ad69-42ff-8874-5005e9d3d934',
-                name='Kevin Franecki',
+                id='232e9a5d-ee1a-4cd7-aa89-981b58fe682e',
+                name='Jasmine Collins',
             ),
-            amount=3566.2,
-            currency='EUR',
+            amount=8972.88,
+            currency='GBP',
         ),
-        id='388664f6-9855-430a-ae2a-ed6aaf863c28',
+        id='3d58e824-7d12-42c9-b676-78fa27958367',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
@@ -78,30 +71,25 @@ req = operations.CreateTransferRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "aut": {
-                    "vel": 'perspiciatis',
-                    "id": 'amet',
-                    "pariatur": 'iste',
-                    "voluptatem": 'voluptas',
-                },
-                "hic": {
-                    "officiis": 'soluta',
-                    "at": 'nostrum',
+                "facere": {
+                    "aut": 'iusto',
+                    "excepturi": 'doloremque',
+                    "natus": 'ea',
                 },
             },
         ),
         to=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='ad7ec739-4f25-4f63-8b37-30714e6be8c3',
-                name='Michael Mertz',
+                id='faeb8648-0730-4d8f-8b89-d9ca6075656f',
+                name='James Trantow',
             ),
-            amount=3122.98,
-            currency='EUR',
+            amount=4052.87,
+            currency='USD',
         ),
         tracking_category_refs=[
             shared.TrackingCategoryRef(
-                id='42ac299a-6e5e-47ae-b134-02e945f53743',
-                name='Moses Schulist Jr.',
+                id='55e2d06a-3070-4d6e-a97f-581fabaaa7d8',
+                name='Frances Barrows',
             ),
         ],
     ),
@@ -143,7 +131,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -154,7 +142,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetTransferRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transfer_id='sint',
+    transfer_id='eaque',
 )
 
 res = s.transfers.get(req)
@@ -193,7 +181,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -238,7 +226,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -252,7 +240,7 @@ req = operations.ListTransfersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='praesentium',
+    query='quam',
 )
 
 res = s.transfers.list(req)
@@ -272,4 +260,58 @@ if res.transfers is not None:
 ### Response
 
 **[operations.ListTransfersResponse](../../models/operations/listtransfersresponse.md)**
+
+
+## upload_attachment
+
+The *Upload transfer attachment* endpoint uploads an attachment and assigns it against a specific `transferId`.
+
+[Transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) are issued by a supplier for the purpose of recording transfer.
+
+**Integration-specific behaviour**
+
+For more details on supported file types by integration see [Attachments](https://docs.codat.io/accounting-api#/schemas/Attachment).
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support uploading a transfer attachment.
+
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations, shared
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.UploadTransferAttachmentRequest(
+    request_body=operations.UploadTransferAttachmentRequestBody(
+        content='laboriosam'.encode(),
+        request_body='asperiores',
+    ),
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    transfer_id='delectus',
+)
+
+res = s.transfers.upload_attachment(req)
+
+if res.status_code == 200:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [operations.UploadTransferAttachmentRequest](../../models/operations/uploadtransferattachmentrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
+
+
+### Response
+
+**[operations.UploadTransferAttachmentResponse](../../models/operations/uploadtransferattachmentresponse.md)**
 

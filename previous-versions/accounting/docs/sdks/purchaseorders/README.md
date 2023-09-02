@@ -39,92 +39,84 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
-        currency='EUR',
-        currency_rate=5759.77,
+        currency='USD',
+        currency_rate=9054.35,
         delivery_date='2022-10-23T00:00:00.000Z',
         expected_delivery_date='2022-10-23T00:00:00.000Z',
-        id='5075bc25-3825-4334-bfb0-a4e66ea47578',
+        id='5ffa906a-e559-4b72-ab67-46030fe18376',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id='71e29418-18fc-4679-b6b2-f25359b855d0',
-                    name='Cathy Powlowski',
+                    id='bedee767-90ed-40c1-aa7b-a478404489f6',
+                    name='Courtney Bednar',
                 ),
-                description='eligendi',
-                discount_amount=5505.76,
-                discount_percentage=7374.84,
+                description='ipsa',
+                discount_amount=3059.71,
+                discount_percentage=5075.68,
                 item_ref=shared.ItemRef(
-                    id='83a38a8a-88c1-4442-80c2-caeb1ae1ecf8',
-                    name='Chad Gislason',
+                    id='091a2ba2-5ee6-4c75-af8a-60a7ae346e09',
+                    name='Misty Toy',
                 ),
-                quantity=4159.24,
-                sub_total=6882.17,
-                tax_amount=6973.55,
+                quantity=9569.24,
+                sub_total=8931.29,
+                tax_amount=4306.16,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=6797.33,
-                    id='7a05a8b4-a9ec-45b3-a88c-ca363272760e',
-                    name='Chester Johnson',
+                    effective_tax_rate=72.7,
+                    id='acaca645-de98-4675-91a9-cce61ec2c79a',
+                    name='Miriam Pfannerstill',
                 ),
-                total_amount=4684.82,
+                total_amount=6840.34,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='05410334-7d78-4ff2-8911-45fab9e59a4a',
-                        name='Nathan Fay',
+                        id='d5a65b4d-5562-4d9b-bd9e-2d6fcf557629',
+                        name='Kerry Lockman',
                     ),
                     shared.TrackingCategoryRef(
-                        id='64eaa6bf-2ff1-44e8-81b3-52accedacc52',
-                        name='Mrs. Charlene Little',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='ca016bc4-1ea1-4342-9410-4a25ef71de57',
-                        name='Keith Bradtke',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='14a43176-92ea-4486-b3d5-22b828a90306',
-                        name='Mr. Michelle Zemlak',
+                        id='c3a89028-2a51-4f41-8f67-96ed3d724c18',
+                        name='Dr. Leon Ledner',
                     ),
                 ],
-                unit_amount=7532.31,
+                unit_amount=5132.8,
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='sint',
+        note='minus',
         payment_due_date='2022-10-23T00:00:00.000Z',
-        purchase_order_number='ut',
+        purchase_order_number='consectetur',
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city='Runteview',
-                country='French Guiana',
-                line1='eligendi',
-                line2='magni',
-                postal_code='16117-2556',
-                region='facere',
-                type=shared.AddressType.DELIVERY,
+                city='La Habra',
+                country='British Indian Ocean Territory (Chagos Archipelago)',
+                line1='autem',
+                line2='aliquid',
+                postal_code='08608',
+                region='dolor',
+                type=shared.AccountingAddressType.DELIVERY,
             ),
             contact=shared.ShipToContact(
-                email='Cathrine_Wisoky@yahoo.com',
-                name='Jon Heller',
-                phone='1-491-252-0038 x612',
+                email='Giles.Bogan99@yahoo.com',
+                name='James Marvin',
+                phone='(373) 362-1857 x481',
             ),
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.PurchaseOrderStatus.CLOSED,
-        sub_total=5615.97,
+        status=shared.PurchaseOrderStatus.OPEN,
+        sub_total=958.62,
         supplier_ref=shared.SupplierRef(
-            id='7d4f6212-7a60-47d1-a062-94514c3db9ca',
-            supplier_name='omnis',
+            id='0e1673d9-05cb-44be-9ef3-c127c3909955',
+            supplier_name='consequuntur',
         ),
-        total_amount=9600.37,
-        total_discount=2360.34,
-        total_tax_amount=5514.18,
+        total_amount=5021.78,
+        total_discount=1730.52,
+        total_tax_amount=3712.26,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=694759,
+    timeout_in_minutes=57599,
 )
 
 res = s.purchase_orders.create(req)
@@ -161,7 +153,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -171,7 +163,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPurchaseOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    purchase_order_id='at',
+    purchase_order_id='pariatur',
 )
 
 res = s.purchase_orders.get(req)
@@ -210,7 +202,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -255,7 +247,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -268,7 +260,7 @@ req = operations.ListPurchaseOrdersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quia',
+    query='maxime',
 )
 
 res = s.purchase_orders.list(req)
@@ -318,151 +310,118 @@ s = codataccounting.CodatAccounting(
 req = operations.UpdatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
         currency='EUR',
-        currency_rate=8782.83,
+        currency_rate=7439.49,
         delivery_date='2022-10-23T00:00:00.000Z',
         expected_delivery_date='2022-10-23T00:00:00.000Z',
-        id='8703493f-49aa-4846-9a32-83279b719d1c',
+        id='3b121b88-c1ee-45e7-a061-391cc8fa0b7d',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id='673d86e3-b35e-449a-b135-778ce54cacb0',
-                    name='Chris Terry',
+                    id='64926b0c-f5e6-4cb6-abab-e5e0b99f3b13',
+                    name='Billie Stokes',
                 ),
-                description='ducimus',
-                discount_amount=3264.82,
-                discount_percentage=276.36,
+                description='corrupti',
+                discount_amount=4401.02,
+                discount_percentage=7240.6,
                 item_ref=shared.ItemRef(
-                    id='45bacf63-b215-4186-ab5e-3a022614315d',
-                    name='Bernice Jakubowski',
+                    id='b7aecbe5-69d7-40cb-8699-07f989441452',
+                    name='Mr. Perry Wiza',
                 ),
-                quantity=5766.94,
-                sub_total=5813.68,
-                tax_amount=9207.5,
+                quantity=2102.37,
+                sub_total=3116.04,
+                tax_amount=2769.43,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=3778.77,
-                    id='1afc7186-ff20-4b7a-b3df-40ca0d7657c1',
-                    name='Esther Bernier',
+                    effective_tax_rate=1795.24,
+                    id='c61be133-bacd-4e53-ab65-26f862853fe2',
+                    name='Ronnie McKenzie',
                 ),
-                total_amount=9823,
+                total_amount=2499.78,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='55271b25-11dd-4606-9d1b-28272bc9c322',
-                        name='Tara Marquardt',
+                        id='2231fe66-64c4-41d2-bba5-cba069b8d291',
+                        name='Percy Renner Jr.',
                     ),
                 ],
-                unit_amount=822.04,
+                unit_amount=6653.38,
             ),
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id='880fcbb2-b93c-415f-a70b-d1784831653e',
-                    name='Kerry Farrell',
+                    id='2aa87494-79ed-4d4f-8f7b-50cf87f08f39',
+                    name='Ms. Joy Blick',
                 ),
-                description='vero',
-                discount_amount=1407.83,
-                discount_percentage=3102.85,
+                description='culpa',
+                discount_amount=1832.7,
+                discount_percentage=2964.52,
                 item_ref=shared.ItemRef(
-                    id='1c310998-3663-4c66-9cbb-7df6cb09c8b4',
-                    name='Ms. Irma Walter I',
+                    id='b40c8f08-bff1-4081-a88f-86996c8e22be',
+                    name='Marguerite Emmerich',
                 ),
-                quantity=4775.18,
-                sub_total=4482.26,
-                tax_amount=2986.6,
+                quantity=2955.55,
+                sub_total=4539.1,
+                tax_amount=5001.01,
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=8337.81,
-                    id='e4fee101-d978-40a1-8c47-b95040d6c8b2',
-                    name='Mr. Roberto Wilkinson',
+                    effective_tax_rate=5720.7,
+                    id='3bd23f86-600c-461c-b834-273caa9118b3',
+                    name='Emilio Bogisich',
                 ),
-                total_amount=1526.43,
+                total_amount=810,
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='7e4048f9-0009-4ed2-9027-8eb4ae9d6416',
-                        name='Mrs. Delia Moore Jr.',
+                        id='331a54dc-1029-44f9-afed-939ba8f71e29',
+                        name='Adam Schroeder DVM',
+                    ),
+                    shared.TrackingCategoryRef(
+                        id='e1228ac3-adc6-447d-a40b-c11ea482824c',
+                        name='Gregg Jacobs',
+                    ),
+                    shared.TrackingCategoryRef(
+                        id='f0f5b9d3-cb11-4a76-87d3-100e8e2b9b0d',
+                        name='Bertha Hudson',
                     ),
                 ],
-                unit_amount=1887.19,
-            ),
-            shared.PurchaseOrderLineItem(
-                account_ref=shared.AccountRef(
-                    id='23b2c09b-9247-471f-9669-e5b7ec762664',
-                    name='Woodrow Littel',
-                ),
-                description='tempore',
-                discount_amount=5923.78,
-                discount_percentage=9275.83,
-                item_ref=shared.ItemRef(
-                    id='4cfd2276-e0b8-48fb-87d6-fa5b6e8dbf81',
-                    name='Nettie Kuvalis',
-                ),
-                quantity=809.04,
-                sub_total=7530.97,
-                tax_amount=6568.11,
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=4189.32,
-                    id='a9ffc561-929c-4ca9-960a-1395918da1d4',
-                    name='Rolando Kovacek',
-                ),
-                total_amount=2178.8,
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='f8e1143d-a930-48b2-ba08-af22184439b3',
-                        name='Rolando Lesch',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='6ccce470-cd21-447b-ae61-52cf01d0d8c3',
-                        name='Clifford Quigley',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='5bf935df-e974-4fa4-b1e9-c097eda62344',
-                        name='Alexis Braun',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='237e9984-c80b-4479-a891-923c18ca8d69',
-                        name='Jon Jacobs',
-                    ),
-                ],
-                unit_amount=1303.91,
+                unit_amount=6766.65,
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='tempora',
+        note='quisquam',
         payment_due_date='2022-10-23T00:00:00.000Z',
-        purchase_order_number='animi',
+        purchase_order_number='fugiat',
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city='North Caylatown',
-                country='Japan',
-                line1='officiis',
-                line2='eius',
-                postal_code='69025-7849',
-                region='ab',
-                type=shared.AddressType.DELIVERY,
+                city='Fort Mariannatown',
+                country='Turkey',
+                line1='quam',
+                line2='iste',
+                postal_code='65779-3904',
+                region='sint',
+                type=shared.AccountingAddressType.DELIVERY,
             ),
             contact=shared.ShipToContact(
-                email='Cicero_Schowalter67@hotmail.com',
-                name='Cody Zemlak',
-                phone='876-479-9089 x35968',
+                email='Flossie.Bailey93@yahoo.com',
+                name='Margaret Kutch',
+                phone='1-425-541-2767 x78041',
             ),
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.PurchaseOrderStatus.CLOSED,
-        sub_total=1625.48,
+        sub_total=8436.48,
         supplier_ref=shared.SupplierRef(
-            id='ee70be06-9fb3-46ad-9704-080e0a3fc73a',
-            supplier_name='ullam',
+            id='61918d27-9c10-4c18-916f-d78be2621272',
+            supplier_name='ea',
         ),
-        total_amount=6283.94,
-        total_discount=465.74,
-        total_tax_amount=2391.23,
+        total_amount=1382.52,
+        total_discount=5494.57,
+        total_tax_amount=9854.77,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    purchase_order_id='aliquam',
-    timeout_in_minutes=744576,
+    purchase_order_id='officia',
+    timeout_in_minutes=352126,
 )
 
 res = s.purchase_orders.update(req)

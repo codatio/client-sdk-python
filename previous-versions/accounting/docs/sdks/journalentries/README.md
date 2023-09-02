@@ -40,59 +40,76 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='laudantium',
-        id='89d9ef93-2e90-400a-93ad-8124208efd23',
+        description='illum',
+        id='290278eb-4ae9-4d64-961e-91500323b2c0',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='11898e73-879e-4fbe-8bae-babb794536e9',
-                    name='Miss Shannon Hauck',
+                    id='b924771f-5669-4e5b-bec7-626649d84eb9',
+                    name='Jesus Runte',
                 ),
-                currency='unde',
-                description='odio',
-                net_amount=4332.19,
+                currency='dolores',
+                description='odit',
+                net_amount=4764.38,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='architecto',
-                            id='720b77a5-a536-45a7-9f15-271f01c0d361',
+                            data_type='transfer',
+                            id='0b88fb87-d6fa-45b6-a8db-f812f83b1ca6',
+                        ),
+                        shared.InvoiceTo(
+                            data_type='accountTransaction',
+                            id='9ffc5619-29cc-4a95-a0a1-395918da1d48',
                         ),
                     ],
                 ),
             ),
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='fed8dc5e-ffb4-453e-9089-e871fdb4d697',
-                    name='Bryant Strosin',
+                    id='e78e3cf8-e114-43da-9308-b27a08af2218',
+                    name='Bertha Fay',
                 ),
-                currency='molestias',
-                description='corrupti',
-                net_amount=3623.77,
+                currency='nesciunt',
+                description='illum',
+                net_amount=9253.93,
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='incidunt',
-                            id='3734a5d7-2d9e-4dd7-85be-5e7afe55297b',
+                            data_type='invoice',
+                            id='56ccce47-0cd2-4147-b6e6-152cf01d0d8c',
                         ),
                         shared.InvoiceTo(
-                            data_type='mollitia',
-                            id='6281f44e-3a23-4394-a68c-c80d30ff7216',
+                            data_type='journalEntry',
+                            id='a4b9a5bf-935d-4fe9-b4fa-4b1e9c097eda',
                         ),
                         shared.InvoiceTo(
-                            data_type='quaerat',
-                            id='d0a91fe9-d965-453b-89e0-009c6692de7b',
+                            data_type='invoice',
+                            id='23442e1a-9237-4e99-84c8-0b479e891923',
                         ),
+                    ],
+                ),
+            ),
+            shared.JournalLine(
+                account_ref=shared.AccountRef(
+                    id='c18ca8d6-9c56-4892-94fa-20207e4fae03',
+                    name='Colin Schultz',
+                ),
+                currency='ab',
+                description='cum',
+                net_amount=7949.86,
+                tracking=shared.Propertiestracking2(
+                    record_refs=[
                         shared.InvoiceTo(
-                            data_type='ipsum',
-                            id='562201a6-aab4-4ae7-b1a5-b908d4e30491',
+                            data_type='transfer',
+                            id='abaf7fc2-ccba-44be-b0df-68eaedb2ee70',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='aa35d4a8-39f0-43ba-b77b-918f03139845',
-            name='Dr. Delores Towne',
+            id='be069fb3-6add-4704-880e-0a3fc73a5a03',
+            name='Mrs. Patty Block',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -100,14 +117,29 @@ req = operations.CreateJournalEntryRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.InvoiceTo(
-            data_type='quam',
-            id='e23ecb06-0465-42e2-ba3d-6c657e9de8f7',
+            data_type='invoice',
+            id='3afa6987-a472-4b70-9a15-3e2230106853',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "consequatur": {
-                    "fugiat": 'veritatis',
+                "saepe": {
+                    "perspiciatis": 'consectetur',
+                },
+                "eos": {
+                    "vitae": 'aperiam',
+                    "animi": 'quisquam',
+                    "possimus": 'vitae',
+                    "ad": 'quibusdam',
+                },
+                "praesentium": {
+                    "quisquam": 'ipsum',
+                    "perferendis": 'ex',
+                    "quidem": 'esse',
+                    "praesentium": 'nisi',
+                },
+                "libero": {
+                    "at": 'amet',
                 },
             },
         ),
@@ -115,7 +147,7 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=526773,
+    timeout_in_minutes=690696,
 )
 
 res = s.journal_entries.create(req)
@@ -177,7 +209,7 @@ Integrations that support soft delete do not permanently delete the object in th
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -188,7 +220,7 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='ex',
+    journal_entry_id='fugiat',
 )
 
 res = s.journal_entries.delete(req)
@@ -225,7 +257,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -235,7 +267,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='dolorum',
+    journal_entry_id='sed',
 )
 
 res = s.journal_entries.get(req)
@@ -274,7 +306,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -319,7 +351,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -332,7 +364,7 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='officia',
+    query='aut',
 )
 
 res = s.journal_entries.list(req)

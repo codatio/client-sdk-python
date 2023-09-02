@@ -39,69 +39,111 @@ s = codataccounting.CodatAccounting(
 req = operations.CreatePaymentRequest(
     payment=shared.Payment(
         account_ref=shared.AccountRef(
-            id='cbf18685-6a7e-482c-9f9d-0fc282c666af',
-            name='Jacquelyn Dicki',
+            id='871a88ed-72a2-4d4a-b415-8ac2d0f0f58c',
+            name='Pam Leannon',
         ),
-        currency='USD',
-        currency_rate=5194.41,
-        customer_ref=shared.CustomerRef(
-            company_name='provident',
-            id='bea5d264-e41e-42ca-8482-2e513f6d9d2a',
+        currency='GBP',
+        currency_rate=4766.68,
+        customer_ref=shared.AccountingCustomerRef(
+            company_name='eaque',
+            id='40d0d98e-9d82-4c5e-b06f-5576f5cdeb02',
         ),
         date_='2022-10-23T00:00:00.000Z',
-        id='37c30990-77c1-40b6-8792-163e67d48860',
+        id='6d0bc43b-18ab-4378-b2fc-ff81ddf7e088',
         lines=[
             shared.PaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=2316.11,
+                amount=2892.95,
                 links=[
                     shared.PaymentLineLink(
-                        amount=470,
-                        currency_rate=6419.14,
-                        id='3049c3cf-6c02-476e-bb21-bad90d2743fd',
+                        amount=9630.72,
+                        currency_rate=3403.92,
+                        id='4c9216e8-9263-413b-b6fc-2c8d2701096b',
                         type=shared.PaymentLinkType.OTHER,
                     ),
                     shared.PaymentLineLink(
-                        amount=7649.53,
-                        currency_rate=1702.52,
-                        id='a10e6c29-78ec-4256-a5b0-9227fcc47996',
-                        type=shared.PaymentLinkType.PAYMENT_ON_ACCOUNT,
+                        amount=4190.01,
+                        currency_rate=6641.93,
+                        id='d6e3e1d9-d3b6-4603-b4a1-1aa1d5d2247d',
+                        type=shared.PaymentLinkType.MANUAL_JOURNAL,
                     ),
                     shared.PaymentLineLink(
-                        amount=5744.03,
-                        currency_rate=4585.85,
-                        id='7bbc57f3-8928-4a86-80c5-8d67d63e4aa5',
-                        type=shared.PaymentLinkType.CREDIT_NOTE,
+                        amount=5974.19,
+                        currency_rate=7299.26,
+                        id='3d46170e-768a-496b-b398-788398eba1bb',
+                        type=shared.PaymentLinkType.DISCOUNT,
                     ),
                     shared.PaymentLineLink(
-                        amount=5547.96,
-                        currency_rate=3030.69,
-                        id='64579cfc-6c0e-4503-b568-31f1d8ed87b2',
-                        type=shared.PaymentLinkType.REFUND,
+                        amount=4939.36,
+                        currency_rate=676.61,
+                        id='43356f63-49a1-4642-89b2-11ce46b95165',
+                        type=shared.PaymentLinkType.UNLINKED,
                     ),
                 ],
             ),
             shared.PaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=5394.5,
+                amount=1068.42,
                 links=[
                     shared.PaymentLineLink(
-                        amount=9515.01,
-                        currency_rate=6325.21,
-                        id='bc986e24-1e43-4b23-8241-7d13e3f62aa9',
-                        type=shared.PaymentLinkType.PAYMENT,
+                        amount=5418.42,
+                        currency_rate=7604.45,
+                        id='a9142f05-2632-4b31-8ad6-92ffc8745005',
+                        type=shared.PaymentLinkType.DISCOUNT,
                     ),
                     shared.PaymentLineLink(
-                        amount=9236.58,
-                        currency_rate=2889.02,
-                        id='ae8ab4a9-c492-4c5e-8ba5-d4aa4a508bd3',
-                        type=shared.PaymentLinkType.REFUND,
+                        amount=6124.56,
+                        currency_rate=8634.66,
+                        id='3d934e03-6f5c-4388-a64f-6985530a2e2a',
+                        type=shared.PaymentLinkType.DISCOUNT,
+                    ),
+                ],
+            ),
+            shared.PaymentLine(
+                allocated_on_date='2022-10-23T00:00:00.000Z',
+                amount=4284.76,
+                links=[
+                    shared.PaymentLineLink(
+                        amount=6672.29,
+                        currency_rate=9471.82,
+                        id='863c28d0-40c6-49a3-9906-f6ebd5ad7ec7',
+                        type=shared.PaymentLinkType.INVOICE,
                     ),
                     shared.PaymentLineLink(
-                        amount=544.9,
-                        currency_rate=7608.41,
-                        id='29aa8dd7-1bdd-4aa3-8b7b-91449ae69c08',
-                        type=shared.PaymentLinkType.REFUND,
+                        amount=5908.32,
+                        currency_rate=2922.91,
+                        id='f25f634b-3730-4714-a6be-8c3e09c64d34',
+                        type=shared.PaymentLinkType.UNLINKED,
+                    ),
+                    shared.PaymentLineLink(
+                        amount=6784.76,
+                        currency_rate=8087.97,
+                        id='299a6e5e-7aef-4134-82e9-45f53743efde',
+                        type=shared.PaymentLinkType.UNKNOWN,
+                    ),
+                ],
+            ),
+            shared.PaymentLine(
+                allocated_on_date='2022-10-23T00:00:00.000Z',
+                amount=5754.71,
+                links=[
+                    shared.PaymentLineLink(
+                        amount=1577.51,
+                        currency_rate=1756.68,
+                        id='1f9b1f7d-9aff-4e69-a82a-ceefb04f8c51',
+                        type=shared.PaymentLinkType.UNLINKED,
+                    ),
+                    shared.PaymentLineLink(
+                        amount=8001.68,
+                        currency_rate=6586.25,
+                        id='abea708e-d579-48d3-85d4-60599d5c3349',
+                        type=shared.PaymentLinkType.CREDIT_NOTE,
+                    ),
+                    shared.PaymentLineLink(
+                        amount=4904.31,
+                        currency_rate=4326.34,
+                        id='d55209e9-a225-43b6-9765-886eeae5fd4b',
+                        type=shared.PaymentLinkType.INVOICE,
                     ),
                 ],
             ),
@@ -110,40 +152,28 @@ req = operations.CreatePaymentRequest(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='labore',
-        payment_method_ref=shared.PaymentMethodRef(
-            id='18bb7180-4f42-43d5-8393-5f377ac5c9b7',
-            name='Joey Frami',
-        ),
-        reference='id',
+        note='voluptatibus',
+        payment_method_ref='totam',
+        reference='mollitia',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "minima": {
-                    "amet": 'quasi',
+                "provident": {
+                    "aliquid": 'in',
                 },
-                "doloremque": {
-                    "recusandae": 'iusto',
-                    "impedit": 'dolor',
-                },
-                "quaerat": {
-                    "deserunt": 'distinctio',
-                    "alias": 'voluptates',
-                    "optio": 'libero',
-                    "voluptatum": 'beatae',
-                },
-                "explicabo": {
-                    "laboriosam": 'ea',
-                    "beatae": 'eius',
-                    "atque": 'unde',
+                "quos": {
+                    "sunt": 'dolor',
+                    "quisquam": 'commodi',
+                    "laudantium": 'laboriosam',
+                    "repellendus": 'quos',
                 },
             },
         ),
-        total_amount=2811.64,
+        total_amount=2068.12,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=302190,
+    timeout_in_minutes=608738,
 )
 
 res = s.payments.create(req)
@@ -180,7 +210,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -190,7 +220,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='fuga',
+    payment_id='earum',
 )
 
 res = s.payments.get(req)
@@ -229,7 +259,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -274,7 +304,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -287,7 +317,7 @@ req = operations.ListPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptatum',
+    query='eligendi',
 )
 
 res = s.payments.list(req)

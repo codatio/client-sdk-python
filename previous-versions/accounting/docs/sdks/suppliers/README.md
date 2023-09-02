@@ -44,45 +44,61 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='East Lionel',
-                country='Wallis and Futuna',
-                line1='mollitia',
-                line2='suscipit',
-                postal_code='54624-1740',
-                region='iste',
-                type=shared.AddressType.DELIVERY,
+                city='Jaimeside',
+                country='Kenya',
+                line1='aspernatur',
+                line2='nam',
+                postal_code='64301',
+                region='labore',
+                type=shared.AccountingAddressType.DELIVERY,
+            ),
+            shared.Addressesitems(
+                city='West Jasminworth',
+                country='Mexico',
+                line1='libero',
+                line2='nobis',
+                postal_code='99416',
+                region='ad',
+                type=shared.AccountingAddressType.UNKNOWN,
+            ),
+            shared.Addressesitems(
+                city='Jarretland',
+                country='Taiwan',
+                line1='unde',
+                line2='provident',
+                postal_code='34064-8990',
+                region='commodi',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='vitae',
-        default_currency='minima',
-        email_address='ipsum',
-        id='e2230106-8539-4ce0-932d-10acd15d8cc3',
+        contact_name='nam',
+        default_currency='vel',
+        email_address='impedit',
+        id='cb2822b4-a985-40ed-af4a-1e9c4ae55140',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='quidem',
+        registration_number='corporis',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.ACTIVE,
+        status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "libero": {
-                    "at": 'amet',
+                "earum": {
+                    "consequatur": 'nesciunt',
                 },
-                "ducimus": {
-                    "fugiat": 'sed',
-                    "aut": 'ut',
-                    "similique": 'quae',
+                "porro": {
+                    "asperiores": 'aut',
                 },
             },
         ),
-        supplier_name='doloribus',
-        tax_number='ipsum',
+        supplier_name='consequuntur',
+        tax_number='natus',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=293648,
+    timeout_in_minutes=305162,
 )
 
 res = s.suppliers.create(req)
@@ -117,7 +133,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -129,7 +145,7 @@ req = operations.DownloadSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='accusantium',
+    supplier_id='architecto',
 )
 
 res = s.suppliers.download_attachment(req)
@@ -166,7 +182,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -176,7 +192,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='nam',
+    supplier_id='excepturi',
 )
 
 res = s.suppliers.get(req)
@@ -211,7 +227,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -223,7 +239,7 @@ req = operations.GetSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='rerum',
+    supplier_id='sed',
 )
 
 res = s.suppliers.get_attachment(req)
@@ -262,7 +278,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -307,7 +323,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -320,7 +336,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dolor',
+    query='enim',
 )
 
 res = s.suppliers.list(req)
@@ -355,7 +371,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -366,7 +382,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='ex',
+    supplier_id='architecto',
 )
 
 res = s.suppliers.list_attachments(req)
@@ -417,78 +433,63 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='South Jeanette',
+                city='Turnerside',
+                country='Falkland Islands (Malvinas)',
+                line1='dicta',
+                line2='quo',
+                postal_code='56923-5949',
+                region='beatae',
+                type=shared.AccountingAddressType.DELIVERY,
+            ),
+            shared.Addressesitems(
+                city='Boston',
                 country='Palau',
-                line1='eius',
-                line2='praesentium',
-                postal_code='05722',
-                region='quam',
-                type=shared.AddressType.UNKNOWN,
+                line1='adipisci',
+                line2='a',
+                postal_code='11734',
+                region='omnis',
+                type=shared.AccountingAddressType.DELIVERY,
             ),
             shared.Addressesitems(
-                city='Alexanderville',
-                country='Martinique',
-                line1='aliquam',
-                line2='deleniti',
-                postal_code='14770-2749',
-                region='possimus',
-                type=shared.AddressType.UNKNOWN,
-            ),
-            shared.Addressesitems(
-                city='West Solonboro',
-                country='Jordan',
-                line1='corrupti',
-                line2='iusto',
-                postal_code='65588',
-                region='in',
-                type=shared.AddressType.UNKNOWN,
-            ),
-            shared.Addressesitems(
-                city='Christiansenhaven',
-                country='Eritrea',
-                line1='est',
-                line2='repellat',
-                postal_code='03567',
-                region='magni',
-                type=shared.AddressType.DELIVERY,
+                city='Lake Harley',
+                country='Cambodia',
+                line1='aliquid',
+                line2='voluptatem',
+                postal_code='18760',
+                region='quis',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='doloremque',
-        default_currency='sapiente',
-        email_address='sit',
-        id='f58c3b87-b470-440d-8d98-e9d82c5e306f',
+        contact_name='unde',
+        default_currency='quos',
+        email_address='rem',
+        id='c6720c31-03f1-4a40-80f3-ec8688fd8ec6',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='(877) 492-8687',
-        registration_number='molestiae',
+        phone='01224 658 999',
+        registration_number='consequatur',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.ARCHIVED,
+        status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "quisquam": {
-                    "voluptates": 'cum',
-                    "consequatur": 'eos',
-                    "totam": 'ea',
-                    "pariatur": 'alias',
-                },
-                "distinctio": {
-                    "aliquam": 'adipisci',
-                    "harum": 'veritatis',
-                    "quas": 'id',
-                    "expedita": 'ipsum',
+                "rem": {
+                    "alias": 'officia',
+                    "mollitia": 'animi',
+                    "officiis": 'vero',
+                    "repudiandae": 'sit',
                 },
             },
         ),
-        supplier_name='molestiae',
-        tax_number='corrupti',
+        supplier_name='aut',
+        tax_number='labore',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='sapiente',
-    timeout_in_minutes=161205,
+    supplier_id='accusamus',
+    timeout_in_minutes=719170,
 )
 
 res = s.suppliers.update(req)

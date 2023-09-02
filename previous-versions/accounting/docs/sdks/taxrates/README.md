@@ -24,7 +24,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -34,7 +34,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetTaxRateRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tax_rate_id='asperiores',
+    tax_rate_id='dolorum',
 )
 
 res = s.tax_rates.get(req)
@@ -69,7 +69,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -82,7 +82,7 @@ req = operations.ListTaxRatesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quisquam',
+    query='voluptate',
 )
 
 res = s.tax_rates.list(req)

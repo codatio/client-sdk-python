@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import customer as shared_customer
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from ..shared import updatecustomerresponse as shared_updatecustomerresponse
 from typing import Optional
 
@@ -28,9 +28,9 @@ class UpdateCustomerRequest:
 class UpdateCustomerResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     update_customer_response: Optional[shared_updatecustomerresponse.UpdateCustomerResponse] = dataclasses.field(default=None)
     r"""Success"""
     

@@ -12,17 +12,12 @@ from typing import Optional
 
 @dataclasses.dataclass
 class TrackingRecordReference:
-    r"""Links to the underlying record or data type.
-    
-    Found on:
-    
-    - Journal entries
-    - Account transactions
-    - Invoices
-    - Transfers
+    r"""Links the current record to the underlying record or data type that created it.
+
+    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
     """
     data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Name of the 'dataType'."""
+    r"""Allowed name of the 'dataType'."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""'id' of the underlying record or data type."""
     
@@ -35,14 +30,9 @@ class TrackingRecordReference:
 class Tracking:
     record_refs: list[shared_invoiceto.InvoiceTo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
     invoice_to: Optional[TrackingRecordReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
-    r"""Links to the underlying record or data type.
-    
-    Found on:
-    
-    - Journal entries
-    - Account transactions
-    - Invoices
-    - Transfers
+    r"""Links the current record to the underlying record or data type that created it.
+
+    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
     """
     
 
