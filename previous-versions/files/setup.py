@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-files",
-    version="0.1.1",
+    version="0.1.2",
     author="Codat",
     description="Use Codat's Files API to upload your SMB customers' files.",
     long_description=long_description,
