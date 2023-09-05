@@ -29,7 +29,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = shared.CreateCompany(
-    name='Bob's Burgers',
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
 )
 
 res = s.company_management.create_company(req)
@@ -194,7 +195,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.UpdateConnectionRequest(
     update_connection=shared.UpdateConnection(
-        status='Linked',
+        status=shared.DataConnectionStatus.LINKED,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

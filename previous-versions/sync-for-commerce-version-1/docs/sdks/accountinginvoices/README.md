@@ -97,7 +97,7 @@ req = operations.CreateAccountingInvoiceRequest(
                     ),
                     is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.PROJECT,
-                    project_ref=shared.TrackingProjectRef(
+                    project_ref=shared.TrackingProjectReference(
                         id='6ce611fe-eb1c-47cb-9b6e-ec74378ba253',
                         name='Heidi Koch',
                     ),

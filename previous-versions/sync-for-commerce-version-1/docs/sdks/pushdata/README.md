@@ -27,7 +27,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='afd2315b-ba65-4016-8e06-f5bf6ae591bc',
+    push_operation_key='fd2315bb-a650-4164-a06f-5bf6ae591bc8',
 )
 
 res = s.push_data.get_operation(req)
@@ -70,12 +70,12 @@ req = operations.GetCompanyPushHistoryRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='praesentium',
+    query='facilis',
 )
 
 res = s.push_data.list_operations(req)
 
-if res.push_history_response is not None:
+if res.push_operations is not None:
     # handle response
 ```
 

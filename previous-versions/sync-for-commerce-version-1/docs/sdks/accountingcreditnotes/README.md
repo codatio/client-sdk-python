@@ -96,7 +96,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.UNKNOWN,
-                    project_ref=shared.CreditNoteLineItemTrackingProjectRef(
+                    project_ref=shared.CreditNoteLineItemTrackingProjectReference(
                         id='80d1ba77-a89e-4bf7-b7ae-4203ce5e6a95',
                         name='Dr. Jimmie Murphy',
                     ),
@@ -164,7 +164,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.PROJECT,
                     is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
-                    project_ref=shared.CreditNoteLineItemTrackingProjectRef(
+                    project_ref=shared.CreditNoteLineItemTrackingProjectReference(
                         id='c7af515c-c413-4aa6-baae-8d67864dbb67',
                         name='Lela Shields',
                     ),
@@ -216,7 +216,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.PROJECT,
                     is_rebilled_to=shared.BilledToType.UNKNOWN,
-                    project_ref=shared.CreditNoteLineItemTrackingProjectRef(
+                    project_ref=shared.CreditNoteLineItemTrackingProjectReference(
                         id='012563f9-4e29-4e97-be92-2a57a15be3e0',
                         name='Ms. Melissa Larson',
                     ),

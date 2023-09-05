@@ -64,9 +64,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key='voluptas',
-    commerce_key='expedita',
-    merchant_identifier='voluptas',
+    accounting_key='expedita',
+    commerce_key='voluptas',
+    merchant_identifier='maiores',
 )
 
 res = s.sync_flow_preferences.get_sync_flow_url(req)
@@ -105,8 +105,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetVisibleAccountsRequest(
-    client_id='f66fef02-0e9f-4443-b425-7b992c8dbda6',
-    platform_key='a61efa21-9825-48fd-8a9e-ba47f7d3ef04',
+    client_id='66fef020-e9f4-443b-8257-b992c8dbda6a',
+    platform_key='61efa219-8258-4fd0-a9eb-a47f7d3ef049',
 )
 
 res = s.sync_flow_preferences.get_visible_accounts(req)
@@ -145,17 +145,13 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "aliquid": shared.Localization(
+    "dolore": shared.Localization(
         required=False,
-        text='dolore',
+        text='voluptatem',
     ),
-    "voluptatem": shared.Localization(
+    "illum": shared.Localization(
         required=False,
-        text='illum',
-    ),
-    "laboriosam": shared.Localization(
-        required=False,
-        text='culpa',
+        text='laboriosam',
     ),
 }
 
@@ -197,10 +193,12 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
+            'dicta',
             'atque',
+            'ratione',
         ],
     ),
-    platform_key='31c87adf-596f-4df1-ad83-7ae80c1c19c9',
+    platform_key='1c87adf5-96fd-4f1a-9837-ae80c1c19c95',
 )
 
 res = s.sync_flow_preferences.update_visible_accounts_sync_flow(req)
