@@ -14,7 +14,6 @@ from .createaccountresponse import *
 from .createjournalentryresponse import *
 from .createjournalresponse import *
 from .dataconnectionerror import *
-from .dataconnectionhistory import *
 from .dataconnectionstatus import *
 from .datastatus import *
 from .datatype import *
@@ -30,14 +29,14 @@ from .journalstatus import *
 from .links import *
 from .metadata import *
 from .pulloperation import *
+from .pulloperations import *
 from .pushchangetype import *
 from .pushfieldvalidation import *
-from .pushhistoryresponse import *
 from .pushoperation import *
 from .pushoperationchange import *
 from .pushoperationref import *
+from .pushoperations import *
 from .pushoperationstatus import *
-from .pushoperationsummary import *
 from .pushoption import *
 from .pushoptionchoice import *
 from .pushoptionproperty import *
@@ -52,4 +51,4 @@ from .trackingcategorytree import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["Account","AccountMetadata","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","Accounts","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateAccountResponse","CreateJournalEntryResponse","CreateJournalResponse","DataConnectionError","DataConnectionHistory","DataConnectionStatus","DataStatus","DataType","ErrorMessage","HalRef","Journal","JournalEntries","JournalEntry","JournalEntryRecordReference","JournalEntrySupplementalData","JournalLine","JournalLineTracking","JournalRef","JournalStatus","Journals","Links","Metadata","PullOperation","PullOperationStatus","PushChangeType","PushFieldValidation","PushHistoryResponse","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperationSummary","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","Security","Status","TrackingCategories","TrackingCategory","TrackingCategoryTree","Validation","ValidationItem"]
+__all__ = ["Account","AccountMetadata","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","Accounts","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateAccountResponse","CreateJournalEntryResponse","CreateJournalResponse","DataConnectionError","DataConnectionStatus","DataStatus","DataType","ErrorMessage","HalRef","Journal","JournalEntries","JournalEntry","JournalEntryRecordReference","JournalEntrySupplementalData","JournalLine","JournalLineTracking","JournalRef","JournalStatus","Journals","Links","Metadata","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","Security","Status","TrackingCategories","TrackingCategory","TrackingCategoryTree","Validation","ValidationItem"]

@@ -6,13 +6,15 @@ Asynchronously retrieve data from an integration to refresh data in Codat.
 
 ### Available Operations
 
-* [get](#get) - Get data status
+* [get_data_status](#get_data_status) - Get data status
 * [get_pull_operation](#get_pull_operation) - Get pull operation
+* [get_push_operation](#get_push_operation) - Get push operation
+* [list](#list) - List push operations
 * [list_pull_operations](#list_pull_operations) - List pull operations
 * [refresh_all_data_types](#refresh_all_data_types) - Refresh all data
 * [refresh_data_type](#refresh_data_type) - Refresh data type
 
-## get
+## get_data_status
 
 Get the state of each data type for a company
 
@@ -32,7 +34,7 @@ req = operations.GetDataStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.manage_data.get(req)
+res = s.manage_data.get_data_status(req)
 
 if res.data_status_response is not None:
     # handle response
@@ -91,6 +93,89 @@ if res.pull_operation is not None:
 **[operations.GetPullOperationResponse](../../models/operations/getpulloperationresponse.md)**
 
 
+## get_push_operation
+
+Retrieve push operation.
+
+### Example Usage
+
+```python
+import codatsyncpayroll
+from codatsyncpayroll.models import operations, shared
+
+s = codatsyncpayroll.CodatSyncPayroll(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetPushOperationRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    push_operation_key='25870532-02c7-43d5-be9b-90c28909b3fe',
+)
+
+res = s.manage_data.get_push_operation(req)
+
+if res.push_operation is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.GetPushOperationRequest](../../models/operations/getpushoperationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
+
+
+### Response
+
+**[operations.GetPushOperationResponse](../../models/operations/getpushoperationresponse.md)**
+
+
+## list
+
+List push operation records.
+
+### Example Usage
+
+```python
+import codatsyncpayroll
+from codatsyncpayroll.models import operations, shared
+
+s = codatsyncpayroll.CodatSyncPayroll(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.ListPushOperationsRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    order_by='-modifiedDate',
+    page=1,
+    page_size=100,
+    query='modi',
+)
+
+res = s.manage_data.list(req)
+
+if res.push_operations is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.ListPushOperationsRequest](../../models/operations/listpushoperationsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
+
+
+### Response
+
+**[operations.ListPushOperationsResponse](../../models/operations/listpushoperationsresponse.md)**
+
+
 ## list_pull_operations
 
 Gets the pull operation history (datasets) for a given company.
@@ -112,12 +197,12 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='libero',
+    query='iste',
 )
 
 res = s.manage_data.list_pull_operations(req)
 
-if res.data_connection_history is not None:
+if res.pull_operations is not None:
     # handle response
 ```
 
@@ -197,7 +282,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='b2587053-202c-473d-9fe9-b90c28909b3f',
+    connection_id='a8d9cbf4-8633-4323-b9b7-7f3a4100674e',
     data_type=shared.DataType.INVOICES,
 )
 
