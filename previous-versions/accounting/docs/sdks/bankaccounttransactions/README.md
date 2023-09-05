@@ -173,7 +173,7 @@ req = operations.ListBankAccountTransactionsRequest(
 
 res = s.bank_account_transactions.list(req)
 
-if res.bank_transactions_response is not None:
+if res.bank_transactions is not None:
     # handle response
 ```
 

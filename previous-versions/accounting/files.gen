@@ -192,7 +192,6 @@ src/codataccounting/models/shared/accounts.py
 src/codataccounting/models/shared/createbanktransactionsresponse.py
 src/codataccounting/models/shared/createbanktransactions.py
 src/codataccounting/models/shared/createbankaccounttransaction.py
-src/codataccounting/models/shared/banktransactionsresponse.py
 src/codataccounting/models/shared/banktransactions.py
 src/codataccounting/models/shared/banktransactiontype.py
 src/codataccounting/models/shared/createbankaccountresponse.py
@@ -666,7 +665,7 @@ docs/models/shared/accounts.md
 docs/models/shared/createbanktransactionsresponse.md
 docs/models/shared/createbanktransactions.md
 docs/models/shared/createbankaccounttransaction.md
-docs/models/shared/banktransactionsresponse.md
+docs/models/shared/banktransactionssourcemodifieddate.md
 docs/models/shared/banktransactions.md
 docs/models/shared/banktransactiontype.md
 docs/models/shared/createbankaccountresponse.md
@@ -715,7 +714,7 @@ docs/models/shared/attachment.md
 docs/models/shared/bills.md
 docs/models/shared/attachmentsdataset.md
 docs/models/shared/updatebillresponse.md
-docs/models/shared/companydatasetaddresses.md
+docs/models/shared/companydatasetaccountingaddress.md
 docs/models/shared/companydatasetphone.md
 docs/models/shared/companydatasetweblinktype.md
 docs/models/shared/companydatasetweblink.md

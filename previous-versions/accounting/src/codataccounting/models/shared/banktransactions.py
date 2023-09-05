@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import banktransactiontype as shared_banktransactiontype
+from ..shared import links as shared_links
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -11,7 +12,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class BankTransactions:
+class BankTransactionsSourceModifiedDate:
     r"""> **Accessing Bank Accounts through Banking API**
     > 
     > This datatype was originally used for accessing bank account data both in accounting integrations and open banking aggregators. 
@@ -60,5 +61,19 @@ class BankTransactions:
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     transaction_type: Optional[shared_banktransactiontype.BankTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType'), 'exclude': lambda f: f is None }})
     r"""Type of transaction for the bank statement line"""
+    
+
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+
+@dataclasses.dataclass
+class BankTransactions:
+    r"""Success"""
+    links: shared_links.Links = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})
+    page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})
+    page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})
+    total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})
+    results: Optional[list[BankTransactionsSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
     
 

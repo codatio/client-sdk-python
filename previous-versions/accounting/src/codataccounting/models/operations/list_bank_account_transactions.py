@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import banktransactionsresponse as shared_banktransactionsresponse
+from ..shared import banktransactions as shared_banktransactions
 from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
@@ -32,7 +32,7 @@ class ListBankAccountTransactionsRequest:
 class ListBankAccountTransactionsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    bank_transactions_response: Optional[shared_banktransactionsresponse.BankTransactionsResponse] = dataclasses.field(default=None)
+    bank_transactions: Optional[shared_banktransactions.BankTransactions] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
