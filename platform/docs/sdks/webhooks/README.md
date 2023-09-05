@@ -41,7 +41,7 @@ req = shared.CreateRule(
 
 res = s.webhooks.create(req)
 
-if res.rule is not None:
+if res.webhook is not None:
     # handle response
 ```
 
@@ -80,7 +80,7 @@ req = operations.GetWebhookRequest(
 
 res = s.webhooks.get(req)
 
-if res.rule is not None:
+if res.webhook is not None:
     # handle response
 ```
 
@@ -122,7 +122,7 @@ req = operations.ListRulesRequest(
 
 res = s.webhooks.list(req)
 
-if res.rules is not None:
+if res.webhooks is not None:
     # handle response
 ```
 
