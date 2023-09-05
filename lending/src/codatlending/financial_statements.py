@@ -5,7 +5,7 @@ from codatlending import utils
 from codatlending.models import errors, operations, shared
 from typing import Optional
 
-class Financials:
+class FinancialStatements:
     r"""Financial data and reports from a linked accounting platform."""
     sdk_configuration: SDKConfiguration
 

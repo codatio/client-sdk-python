@@ -1,4 +1,4 @@
-# financials
+# financial_statements
 
 ## Overview
 
@@ -38,11 +38,11 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingAccountRequest(
-    account_id='qui',
+    account_id='impedit',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.financials.get_account(req)
+res = s.financial_statements.get_account(req)
 
 if res.accounting_account is not None:
     # handle response
@@ -84,7 +84,7 @@ req = operations.GetAccountingBalanceSheetRequest(
     start_month='2022-10-23T00:00:00.000Z',
 )
 
-res = s.financials.get_balance_sheet(req)
+res = s.financial_statements.get_balance_sheet(req)
 
 if res.accounting_balance_sheet is not None:
     # handle response
@@ -126,7 +126,7 @@ req = operations.GetAccountingCashFlowStatementRequest(
     start_month='2022-10-23T00:00:00.000Z',
 )
 
-res = s.financials.get_cash_flow_statement(req)
+res = s.financial_statements.get_cash_flow_statement(req)
 
 if res.accounting_cash_flow_statement is not None:
     # handle response
@@ -165,11 +165,11 @@ s = codatlending.CodatLending(
 
 req = operations.GetEnhancedBalanceSheetAccountsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=456150,
+    number_of_periods=216550,
     report_date='29-09-2020',
 )
 
-res = s.financials.get_enhanced_balance_sheet_accounts(req)
+res = s.financial_statements.get_enhanced_balance_sheet_accounts(req)
 
 if res.enhanced_financial_report is not None:
     # handle response
@@ -208,11 +208,11 @@ s = codatlending.CodatLending(
 
 req = operations.GetEnhancedProfitAndLossAccountsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=216550,
+    number_of_periods=568434,
     report_date='29-09-2020',
 )
 
-res = s.financials.get_enhanced_profit_and_loss_accounts(req)
+res = s.financial_statements.get_enhanced_profit_and_loss_accounts(req)
 
 if res.enhanced_financial_report is not None:
     # handle response
@@ -254,7 +254,7 @@ req = operations.GetAccountingProfitAndLossRequest(
     start_month='2022-10-23T00:00:00.000Z',
 )
 
-res = s.financials.get_profit_and_loss(req)
+res = s.financial_statements.get_profit_and_loss(req)
 
 if res.accounting_profit_and_loss_report is not None:
     # handle response
@@ -298,10 +298,10 @@ req = operations.ListAccountingAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='aspernatur',
+    query='perferendis',
 )
 
-res = s.financials.list_accounts(req)
+res = s.financial_statements.list_accounts(req)
 
 if res.accounting_accounts is not None:
     # handle response

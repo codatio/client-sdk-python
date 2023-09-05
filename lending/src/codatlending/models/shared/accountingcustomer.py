@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountingaddress as shared_accountingaddress
+from ..shared import addressesitems as shared_addressesitems
 from ..shared import contact as shared_contact
 from ..shared import customerstatus as shared_customerstatus
 from ..shared import metadata as shared_metadata
@@ -26,7 +26,7 @@ class AccountingCustomer:
     """
     status: shared_customerstatus.CustomerStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of customer."""
-    addresses: Optional[list[shared_accountingaddress.AccountingAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
+    addresses: Optional[list[shared_addressesitems.Addressesitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
     r"""An array of Addresses."""
     contact_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactName'), 'exclude': lambda f: f is None }})
     r"""Name of the main contact for the identified customer."""

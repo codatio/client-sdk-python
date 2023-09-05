@@ -11,7 +11,7 @@ from .connections import Connections
 from .data_integrity import DataIntegrity
 from .excel_reports import ExcelReports
 from .file_upload import FileUpload
-from .financials import Financials
+from .financial_statements import FinancialStatements
 from .liabilities import Liabilities
 from .manage_data import ManageData
 from .sales import Sales
@@ -21,11 +21,9 @@ from codatlending import utils
 from codatlending.models import shared
 
 class CodatLending:
-    r"""Lending API: An API for uploading and downloading files from 'File Upload' Integrations.
+    r"""Lending API: Our Lending API helps you make smarter credit decisions on small businesses by enabling you to pull your customers' latest data from accounting, banking, and commerce platforms they are already using. It also includes features to help providers verify the accuracy of data and process it more efficiently.
 
-    The Accounting file upload, Banking file upload, and Business documents file upload integrations provide simple file upload functionality.
-
-    [Read more...](https://docs.codat.io/other/file-upload)
+    The Lending API is built on top of the latest accounting, commerce, and banking data, providing you with the most important data points you need to get a full picture of SMB creditworthiness and make a comprehensive assessment of your customers.
 
     [See our OpenAPI spec](https://github.com/codatio/oas)
     """
@@ -49,7 +47,7 @@ class CodatLending:
     r"""Downloadable reports"""
     file_upload: FileUpload
     r"""Endpoints to manage uploaded files."""
-    financials: Financials
+    financial_statements: FinancialStatements
     r"""Financial data and reports from a linked accounting platform."""
     liabilities: Liabilities
     r"""Debt and other liabilities."""
@@ -106,7 +104,7 @@ class CodatLending:
         self.data_integrity = DataIntegrity(self.sdk_configuration)
         self.excel_reports = ExcelReports(self.sdk_configuration)
         self.file_upload = FileUpload(self.sdk_configuration)
-        self.financials = Financials(self.sdk_configuration)
+        self.financial_statements = FinancialStatements(self.sdk_configuration)
         self.liabilities = Liabilities(self.sdk_configuration)
         self.manage_data = ManageData(self.sdk_configuration)
         self.sales = Sales(self.sdk_configuration)

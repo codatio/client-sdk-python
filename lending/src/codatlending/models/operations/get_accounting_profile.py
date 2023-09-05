@@ -10,7 +10,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetAccountingCompanyInfoRequest:
+class GetAccountingProfileRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     
 
@@ -18,7 +18,7 @@ class GetAccountingCompanyInfoRequest:
 
 
 @dataclasses.dataclass
-class GetAccountingCompanyInfoResponse:
+class GetAccountingProfileResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     accounting_company_info: Optional[shared_accountingcompanyinfo.AccountingCompanyInfo] = dataclasses.field(default=None)

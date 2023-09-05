@@ -10,7 +10,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetCommerceCompanyInfoRequest:
+class GetCommerceProfileRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     
@@ -19,7 +19,7 @@ class GetCommerceCompanyInfoRequest:
 
 
 @dataclasses.dataclass
-class GetCommerceCompanyInfoResponse:
+class GetCommerceProfileResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     commerce_company_info: Optional[shared_commercecompanyinfo.CommerceCompanyInfo] = dataclasses.field(default=None)

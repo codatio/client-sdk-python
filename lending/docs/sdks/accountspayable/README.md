@@ -46,7 +46,7 @@ s = codatlending.CodatLending(
 
 req = operations.DownloadAccountingBillAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    bill_id='nulla',
+    bill_id='corrupti',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -95,7 +95,7 @@ req = operations.DownloadAccountingSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='corrupti',
+    supplier_id='illum',
 )
 
 res = s.accounts_payable.download_supplier_attachment(req)
@@ -184,7 +184,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillRequest(
-    bill_id='illum',
+    bill_id='vel',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -230,7 +230,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingBillAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    bill_id='vel',
+    bill_id='error',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -278,7 +278,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillCreditNoteRequest(
-    bill_credit_note_id='error',
+    bill_credit_note_id='deserunt',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -325,7 +325,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillPaymentRequest(
-    bill_payment_id='deserunt',
+    bill_payment_id='suscipit',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -373,7 +373,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='suscipit',
+    supplier_id='iure',
 )
 
 res = s.accounts_payable.get_supplier(req)
@@ -420,7 +420,7 @@ req = operations.GetAccountingSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='iure',
+    supplier_id='magnam',
 )
 
 res = s.accounts_payable.get_supplier_attachment(req)
@@ -503,7 +503,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.ListAccountingBillAttachmentsRequest(
-    bill_id='magnam',
+    bill_id='debitis',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -553,7 +553,7 @@ req = operations.ListAccountingBillCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='debitis',
+    query='ipsa',
 )
 
 res = s.accounts_payable.list_bill_credit_notes(req)
@@ -601,7 +601,7 @@ req = operations.ListAccountingBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsa',
+    query='delectus',
 )
 
 res = s.accounts_payable.list_bill_payments(req)
@@ -649,7 +649,7 @@ req = operations.ListAccountingBillsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='delectus',
+    query='tempora',
 )
 
 res = s.accounts_payable.list_bills(req)
@@ -695,7 +695,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='tempora',
+    supplier_id='suscipit',
 )
 
 res = s.accounts_payable.list_supplier_attachments(req)
@@ -743,7 +743,7 @@ req = operations.ListAccountingSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='suscipit',
+    query='molestiae',
 )
 
 res = s.accounts_payable.list_suppliers(req)

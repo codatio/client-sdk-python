@@ -56,7 +56,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='accusantium',
+    customer_id='iure',
 )
 
 res = s.sales.get_customer(req)
@@ -126,8 +126,8 @@ req = operations.GetCommerceCustomerRetentionMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=438601,
-    period_length=634274,
+    number_of_periods=634274,
+    period_length=988374,
     period_unit=shared.PeriodUnit.YEAR,
     report_date='29-09-2020',
 )
@@ -177,7 +177,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceDisputeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    dispute_id='sapiente',
+    dispute_id='architecto',
 )
 
 res = s.sales.get_dispute(req)
@@ -241,9 +241,9 @@ req = operations.GetCommerceLifetimeValueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=102044,
-    period_length=652790,
-    period_unit=shared.PeriodUnit.DAY,
+    number_of_periods=652790,
+    period_length=208876,
+    period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
 
@@ -292,7 +292,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceLocationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    location_id='culpa',
+    location_id='consequuntur',
 )
 
 res = s.sales.get_location(req)
@@ -340,7 +340,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    order_id='consequuntur',
+    order_id='repellat',
 )
 
 res = s.sales.get_order(req)
@@ -405,9 +405,9 @@ req = operations.GetCommerceOrdersReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=995300,
-    period_length=653108,
-    period_unit=shared.PeriodUnit.MONTH,
+    number_of_periods=653108,
+    period_length=581850,
+    period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
 
@@ -456,7 +456,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommercePaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_id='numquam',
+    payment_id='commodi',
 )
 
 res = s.sales.get_payment(req)
@@ -504,7 +504,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommercePaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_method_id='commodi',
+    payment_method_id='quam',
 )
 
 res = s.sales.get_payment_method(req)
@@ -552,7 +552,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceProductRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    product_id='quam',
+    product_id='molestiae',
 )
 
 res = s.sales.get_product(req)
@@ -600,7 +600,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceProductCategoryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    product_id='molestiae',
+    product_id='velit',
 )
 
 res = s.sales.get_product_category(req)
@@ -666,9 +666,9 @@ req = operations.GetCommerceRefundsMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=244425,
-    period_length=623510,
-    period_unit=shared.PeriodUnit.DAY,
+    number_of_periods=623510,
+    period_length=158969,
+    period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
 
@@ -711,8 +711,8 @@ req = operations.GetCommerceRevenueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=338007,
-    period_length=110375,
+    number_of_periods=110375,
+    period_length=674752,
     period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
@@ -762,7 +762,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceTransactionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transaction_id='animi',
+    transaction_id='enim',
 )
 
 res = s.sales.get_transaction(req)
@@ -811,7 +811,7 @@ req = operations.ListCommerceCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='enim',
+    query='odit',
 )
 
 res = s.sales.list_customers(req)
@@ -860,7 +860,7 @@ req = operations.ListCommerceDisputesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='odit',
+    query='quo',
 )
 
 res = s.sales.list_disputes(req)
@@ -954,7 +954,7 @@ req = operations.ListCommerceOrdersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quo',
+    query='sequi',
 )
 
 res = s.sales.list_orders(req)
@@ -1003,7 +1003,7 @@ req = operations.ListCommercePaymentMethodsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sequi',
+    query='tenetur',
 )
 
 res = s.sales.list_payment_methods(req)
@@ -1052,7 +1052,7 @@ req = operations.ListCommercePaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='tenetur',
+    query='ipsam',
 )
 
 res = s.sales.list_payments(req)
@@ -1101,7 +1101,7 @@ req = operations.ListCommerceProductCategoriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsam',
+    query='id',
 )
 
 res = s.sales.list_product_categories(req)
@@ -1150,7 +1150,7 @@ req = operations.ListCommerceProductsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='id',
+    query='possimus',
 )
 
 res = s.sales.list_products(req)
@@ -1199,7 +1199,7 @@ req = operations.ListCommerceTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='possimus',
+    query='aut',
 )
 
 res = s.sales.list_transactions(req)

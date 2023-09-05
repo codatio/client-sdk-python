@@ -55,7 +55,7 @@ req = operations.DownloadAccountingCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='molestiae',
+    customer_id='minus',
 )
 
 res = s.accounts_receivable.download_customer_attachment(req)
@@ -102,7 +102,7 @@ req = operations.DownloadAccountingDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='minus',
+    direct_income_id='placeat',
 )
 
 res = s.accounts_receivable.download_direct_income_attachment(req)
@@ -149,7 +149,7 @@ req = operations.DownloadAccountingInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='placeat',
+    invoice_id='voluptatum',
 )
 
 res = s.accounts_receivable.download_invoice_attachment(req)
@@ -189,7 +189,7 @@ s = codatlending.CodatLending(
 
 req = operations.DownloadAccountingInvoicePdfRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='voluptatum',
+    invoice_id='iusto',
 )
 
 res = s.accounts_receivable.download_invoice_pdf(req)
@@ -279,7 +279,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingCreditNoteRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    credit_note_id='iusto',
+    credit_note_id='excepturi',
 )
 
 res = s.accounts_receivable.get_credit_note(req)
@@ -326,7 +326,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='excepturi',
+    customer_id='nisi',
 )
 
 res = s.accounts_receivable.get_customer(req)
@@ -373,7 +373,7 @@ req = operations.GetAccountingCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='nisi',
+    customer_id='recusandae',
 )
 
 res = s.accounts_receivable.get_customer_attachment(req)
@@ -421,7 +421,7 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingDirectIncomeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='recusandae',
+    direct_income_id='temporibus',
 )
 
 res = s.accounts_receivable.get_direct_income(req)
@@ -468,8 +468,8 @@ req = operations.GetAccountingDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='temporibus',
-    timeout_in_minutes=71036,
+    direct_income_id='ab',
+    timeout_in_minutes=337396,
 )
 
 res = s.accounts_receivable.get_direct_income_attachment(req)
@@ -511,7 +511,7 @@ req = operations.GetEnhancedInvoicesReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='quis',
+    query='veritatis',
 )
 
 res = s.accounts_receivable.get_enhanced_invoices_report(req)
@@ -558,7 +558,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='veritatis',
+    invoice_id='deserunt',
 )
 
 res = s.accounts_receivable.get_invoice(req)
@@ -605,7 +605,7 @@ req = operations.GetAccountingInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='deserunt',
+    invoice_id='perferendis',
 )
 
 res = s.accounts_receivable.get_invoice_attachment(req)
@@ -652,7 +652,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='perferendis',
+    payment_id='ipsam',
 )
 
 res = s.accounts_receivable.get_payment(req)
@@ -739,7 +739,7 @@ req = operations.ListAccountingCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsam',
+    query='repellendus',
 )
 
 res = s.accounts_receivable.list_credit_notes(req)
@@ -785,7 +785,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingCustomerAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='repellendus',
+    customer_id='sapiente',
 )
 
 res = s.accounts_receivable.list_customer_attachments(req)
@@ -833,7 +833,7 @@ req = operations.ListAccountingCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sapiente',
+    query='quo',
 )
 
 res = s.accounts_receivable.list_customers(req)
@@ -879,7 +879,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingDirectIncomeAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='quo',
+    direct_income_id='odit',
 )
 
 res = s.accounts_receivable.list_direct_income_attachments(req)
@@ -928,7 +928,7 @@ req = operations.ListAccountingDirectIncomesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='odit',
+    query='at',
 )
 
 res = s.accounts_receivable.list_direct_incomes(req)
@@ -1022,7 +1022,7 @@ req = operations.ListAccountingInvoicesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='at',
+    query='maiores',
 )
 
 res = s.accounts_receivable.list_invoices(req)
@@ -1070,7 +1070,7 @@ req = operations.ListAccountingPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='maiores',
+    query='molestiae',
 )
 
 res = s.accounts_receivable.list_payments(req)

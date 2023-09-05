@@ -39,7 +39,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetBankingAccountRequest(
-    account_id='molestiae',
+    account_id='quod',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -137,7 +137,7 @@ s = codatlending.CodatLending(
 req = operations.GetBankingTransactionCategoryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transaction_category_id='quod',
+    transaction_category_id='esse',
 )
 
 res = s.cash_flow.get_bank_transaction_category(req)
@@ -183,7 +183,7 @@ req = operations.GetEnhancedCashFlowTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='esse',
+    query='totam',
 )
 
 res = s.cash_flow.get_enhanced_cash_flow_transactions(req)
@@ -232,7 +232,7 @@ req = operations.ListBankingAccountBalancesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='totam',
+    query='porro',
 )
 
 res = s.cash_flow.list_bank_account_balances(req)
@@ -281,7 +281,7 @@ req = operations.ListBankingAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='porro',
+    query='dolorum',
 )
 
 res = s.cash_flow.list_bank_accounts(req)
@@ -330,7 +330,7 @@ req = operations.ListBankingTransactionCategoriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dolorum',
+    query='dicta',
 )
 
 res = s.cash_flow.list_bank_transaction_categories(req)
@@ -379,7 +379,7 @@ req = operations.ListBankingTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dicta',
+    query='nam',
 )
 
 res = s.cash_flow.list_bank_transactions(req)
