@@ -20,11 +20,11 @@ class CodatSyncExpenses:
     enable corporate card and expense management platforms to provide high-quality
     integrations with multiple accounting platforms through a standardized API.
 
-
     [Read more...](https://docs.codat.io/sync-for-expenses/overview)
 
-
     [See our OpenAPI spec](https://github.com/codatio/oas)
+
+    Not seeing what you expect? [See the main Sync for Commerce API](https://docs.codat.io/sync-for-commerce-api).
     """
     companies: Companies
     r"""Create and manage your Codat companies."""
