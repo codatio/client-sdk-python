@@ -126,7 +126,7 @@ req = operations.GetCompanyPushHistoryRequest(
 
 res = s.push_data.list_operations(req)
 
-if res.push_history_response is not None:
+if res.push_operations is not None:
     # handle response
 ```
 

@@ -120,7 +120,7 @@ req = operations.GetCompanyDataStatusRequest(
 
 res = s.refresh_data.get(req)
 
-if res.data_status_response is not None:
+if res.data_statuses is not None:
     # handle response
 ```
 
@@ -203,7 +203,7 @@ req = operations.ListPullOperationsRequest(
 
 res = s.refresh_data.list_pull_operations(req)
 
-if res.data_connection_history is not None:
+if res.pull_operations is not None:
     # handle response
 ```
 
