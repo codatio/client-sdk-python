@@ -37,92 +37,59 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='nam',
-        id='dc41ff5d-4e2a-4e4f-b5cb-35d17638f1ed',
+        description='culpa',
+        id='bcdc91fa-abdd-488e-b1f6-c48252d7771e',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='78359ecc-5cb8-460f-8cd5-80ba73810e4f',
-                    name='Don Hagenes',
+                    id='fd074009-ef8d-429d-a1dd-7097b5da08c5',
+                    name='Ora Olson',
                 ),
-                currency='magni',
-                description='excepturi',
-                net_amount=4576.85,
+                currency='odio',
+                description='atque',
+                net_amount=6288.11,
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
-                            data_type='transfer',
-                            id='3b1dd3bb-ce24-47b7-a84e-ff50126d71cf',
+                            data_type='journalEntry',
+                            id='6e19bafe-ca61-4914-9814-0b64ff8ae170',
+                        ),
+                    ],
+                ),
+            ),
+            shared.JournalLine(
+                account_ref=shared.AccountRef(
+                    id='ef03b5f3-7e4a-4a86-8555-966732aa5dcb',
+                    name='Ella Lang',
+                ),
+                currency='expedita',
+                description='in',
+                net_amount=526.59,
+                tracking=shared.JournalLineTracking(
+                    record_refs=[
+                        shared.RecordRef(
+                            data_type='accountTransaction',
+                            id='cfd5fb6e-91b9-4a9f-b484-6e2c3309db05',
                         ),
                         shared.RecordRef(
-                            data_type='transfer',
-                            id='bd0eb74b-8421-4953-b44b-d3c43159d33e',
+                            data_type='journalEntry',
+                            id='6d9e75ca-006f-4539-ac11-a25a8bf92f97',
                         ),
                         shared.RecordRef(
                             data_type='invoice',
-                            id='953c0011-3986-43aa-81e6-c31cc2f1fcb5',
-                        ),
-                        shared.RecordRef(
-                            data_type='journalEntry',
-                            id='c9a41ffb-e9cb-4d79-9ee6-5e076cc7abf6',
-                        ),
-                    ],
-                ),
-            ),
-            shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='16ea5c71-6419-434b-90f2-e09d19d2fc2f',
-                    name='Merle Cormier Jr.',
-                ),
-                currency='nemo',
-                description='provident',
-                net_amount=2529.57,
-                tracking=shared.JournalLineTracking(
-                    record_refs=[
-                        shared.RecordRef(
-                            data_type='accountTransaction',
-                            id='935d237a-72f9-4084-9d6a-ed4aecb7537c',
-                        ),
-                        shared.RecordRef(
-                            data_type='transfer',
-                            id='9222c9ff-5749-41aa-bfa2-e761f0ca4d45',
-                        ),
-                    ],
-                ),
-            ),
-            shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='6ef1031e-6899-4f0c-a001-e22cd55cc058',
-                    name='Hattie Botsford',
-                ),
-                currency='possimus',
-                description='nihil',
-                net_amount=3758.77,
-                tracking=shared.JournalLineTracking(
-                    record_refs=[
-                        shared.RecordRef(
-                            data_type='accountTransaction',
-                            id='71fc820c-65b0-437b-b8e0-cc885187e4de',
-                        ),
-                        shared.RecordRef(
-                            data_type='journalEntry',
-                            id='4af28c5d-ddb4-46aa-9cfd-6d828da01319',
-                        ),
-                        shared.RecordRef(
-                            data_type='journalEntry',
-                            id='12964664-5c1d-481f-a904-2f569b7aff0e',
+                            id='28ad9a9f-8bf8-4221-9253-59d98387f7a7',
                         ),
                         shared.RecordRef(
                             data_type='accountTransaction',
-                            id='2216cbe0-71bc-4163-a279-a3b084da9925',
+                            id='cd72cd24-84da-4217-a9f2-ac41ef5725f1',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='7d04f408-47a7-442d-8449-6cbdeecf6b99',
-            name='Wilbert Jerde',
+            id='169ac1e4-1d8a-423c-a3e3-4f2dfa4a197f',
+            name='Betsy Walter',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -130,18 +97,19 @@ req = operations.CreateJournalEntryRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.JournalEntryRecordReference(
-            data_type='transfer',
-            id='bfdf55c2-94c0-460b-86a1-287764eef6d0',
+            data_type='invoice',
+            id='1fe17120-9985-43e9-b543-d854439ee224',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "temporibus": {
-                    "itaque": 'nulla',
-                    "excepturi": 'quod',
+                "accusantium": {
+                    "aliquam": 'dolorem',
+                    "expedita": 'impedit',
                 },
-                "in": {
-                    "temporibus": 'temporibus',
+                "architecto": {
+                    "magnam": 'vitae',
+                    "quos": 'atque',
                 },
             },
         ),
@@ -149,7 +117,7 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=247927,
+    timeout_in_minutes=125488,
 )
 
 res = s.journal_entries.create(req)

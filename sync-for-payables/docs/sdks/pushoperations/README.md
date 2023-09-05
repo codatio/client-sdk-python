@@ -27,7 +27,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='c9c3f567-e0e2-4527-a5b1-d62fcdace1f0',
+    push_operation_key='78359ecc-5cb8-460f-8cd5-80ba73810e4f',
 )
 
 res = s.push_operations.get(req)
@@ -70,7 +70,7 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sunt',
+    query='necessitatibus',
 )
 
 res = s.push_operations.list(req)

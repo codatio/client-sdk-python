@@ -40,51 +40,58 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
-            shared.SupplierAddresses(
-                city='South Pollyshire',
-                country='Cayman Islands',
-                line1='aspernatur',
-                line2='sequi',
-                postal_code='85913-7808',
-                region='inventore',
-                type=shared.AccountingAddressType.BILLING,
+            shared.SupplierAccountingAddress(
+                city='West Jacey',
+                country='Central African Republic',
+                line1='excepturi',
+                line2='esse',
+                postal_code='82708-8277',
+                region='impedit',
+                type=shared.AccountingAddressType.DELIVERY,
+            ),
+            shared.SupplierAccountingAddress(
+                city='West Jaquanchester',
+                country='Kenya',
+                line1='aliquid',
+                line2='blanditiis',
+                postal_code='99930',
+                region='beatae',
+                type=shared.AccountingAddressType.UNKNOWN,
             ),
         ],
-        contact_name='quibusdam',
-        default_currency='excepturi',
-        email_address='nostrum',
-        id='9f439e39-266c-4bd9-9f7a-a2b24113695d',
+        contact_name='laboriosam',
+        default_currency='temporibus',
+        email_address='in',
+        id='1cffbd0e-b74b-4842-9953-b44bd3c43159',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='01224 658 999',
-        registration_number='nisi',
+        phone='+44 25691 154789',
+        registration_number='velit',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.ACTIVE,
+        status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "repellat": {
-                    "eligendi": 'quaerat',
-                    "veniam": 'perspiciatis',
-                    "commodi": 'dolores',
-                    "dicta": 'molestiae',
+                "nostrum": {
+                    "quod": 'consequatur',
                 },
-                "maxime": {
-                    "molestias": 'quam',
+                "accusantium": {
+                    "illo": 'amet',
                 },
-                "molestiae": {
-                    "voluptate": 'eum',
-                    "consectetur": 'velit',
+                "occaecati": {
+                    "aliquid": 'sequi',
+                    "culpa": 'fuga',
+                    "modi": 'et',
                 },
             },
         ),
-        supplier_name='tempora',
-        tax_number='aspernatur',
+        supplier_name='eveniet',
+        tax_number='aliquid',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=323569,
+    timeout_in_minutes=760942,
 )
 
 res = s.suppliers.create(req)
@@ -131,7 +138,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='incidunt',
+    supplier_id='adipisci',
 )
 
 res = s.suppliers.get(req)
@@ -228,7 +235,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='alias',
+    query='ab',
 )
 
 res = s.suppliers.list(req)
@@ -278,48 +285,75 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
-            shared.SupplierAddresses(
-                city='Murlworth',
-                country='Portugal',
-                line1='minima',
-                line2='cupiditate',
-                postal_code='08550',
-                region='perspiciatis',
+            shared.SupplierAccountingAddress(
+                city='Champlinworth',
+                country='Brazil',
+                line1='hic',
+                line2='porro',
+                postal_code='31756-2099',
+                region='distinctio',
+                type=shared.AccountingAddressType.DELIVERY,
+            ),
+            shared.SupplierAccountingAddress(
+                city='Schmittchester',
+                country='Sri Lanka',
+                line1='iure',
+                line2='natus',
+                postal_code='99438',
+                region='doloremque',
+                type=shared.AccountingAddressType.BILLING,
+            ),
+            shared.SupplierAccountingAddress(
+                city='Oswaldofield',
+                country='Kyrgyz Republic',
+                line1='mollitia',
+                line2='quidem',
+                postal_code='41396-3740',
+                region='vel',
                 type=shared.AccountingAddressType.UNKNOWN,
             ),
+            shared.SupplierAccountingAddress(
+                city='New Dellboro',
+                country='Saint Barthelemy',
+                line1='occaecati',
+                line2='sit',
+                postal_code='18058-0681',
+                region='a',
+                type=shared.AccountingAddressType.DELIVERY,
+            ),
         ],
-        contact_name='corporis',
-        default_currency='ullam',
-        email_address='molestiae',
-        id='389cedba-c7fd-4a39-994d-66bc2ae48063',
+        contact_name='explicabo',
+        default_currency='delectus',
+        email_address='natus',
+        id='e2e10594-4b93-45d2-b7a7-2f90849d6aed',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='01224 658 999',
-        registration_number='iste',
+        phone='(877) 492-8687',
+        registration_number='eveniet',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "libero": {
-                    "voluptatibus": 'id',
-                    "qui": 'explicabo',
+                "nemo": {
+                    "esse": 'placeat',
                 },
-                "accusantium": {
-                    "nesciunt": 'commodi',
-                    "molestias": 'atque',
+                "at": {
+                    "eos": 'odit',
+                    "quia": 'maxime',
+                    "excepturi": 'sapiente',
                 },
             },
         ),
-        supplier_name='explicabo',
-        tax_number='totam',
+        supplier_name='maiores',
+        tax_number='exercitationem',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='ipsam',
-    timeout_in_minutes=367727,
+    supplier_id='ducimus',
+    timeout_in_minutes=293512,
 )
 
 res = s.suppliers.update(req)

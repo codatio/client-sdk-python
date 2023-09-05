@@ -40,21 +40,21 @@ req = operations.CreateJournalRequest(
     journal=shared.Journal(
         created_on='2022-10-23T00:00:00.000Z',
         has_children=False,
-        id='571509a8-e870-4d3c-9a1f-9c242c7b66a1',
-        journal_code='reiciendis',
+        id='56e85da7-832e-4abd-a17c-3b0d51a44bf0',
+        journal_code='architecto',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Sadie Kulas',
-        parent_id='repellat',
+        name='Ismael Lockman III',
+        parent_id='temporibus',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.JournalStatus.ARCHIVED,
-        type='ea',
+        status=shared.JournalStatus.ACTIVE,
+        type='alias',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=477222,
+    timeout_in_minutes=514234,
 )
 
 res = s.journals.create(req)
@@ -101,7 +101,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='vitae',
+    journal_id='qui',
 )
 
 res = s.journals.get(req)
@@ -198,7 +198,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='excepturi',
+    query='libero',
 )
 
 res = s.journals.list(req)

@@ -81,7 +81,7 @@ req = operations.CreateBillCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.PROJECT,
                     is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
-                    project_ref=shared.BillCreditNoteLineItemTrackingProjectRef(
+                    project_ref=shared.BillCreditNoteLineItemTrackingProjectReference(
                         id='6ae395ef-b9ba-488f-ba66-997074ba4469',
                         name='Duane Thiel II',
                     ),
@@ -128,7 +128,7 @@ req = operations.CreateBillCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.CUSTOMER,
-                    project_ref=shared.BillCreditNoteLineItemTrackingProjectRef(
+                    project_ref=shared.BillCreditNoteLineItemTrackingProjectReference(
                         id='d2322715-bf0c-4bb1-a31b-8b90f3443a11',
                         name='Miss Billie Ward',
                     ),
@@ -187,7 +187,7 @@ req = operations.CreateBillCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.CUSTOMER,
                     is_rebilled_to=shared.BilledToType.CUSTOMER,
-                    project_ref=shared.BillCreditNoteLineItemTrackingProjectRef(
+                    project_ref=shared.BillCreditNoteLineItemTrackingProjectReference(
                         id='e8d67864-dbb6-475f-95e6-0b375ed4f6fb',
                         name='Dr. Terence Gulgowski',
                     ),
@@ -234,7 +234,7 @@ req = operations.CreateBillCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.PROJECT,
-                    project_ref=shared.BillCreditNoteLineItemTrackingProjectRef(
+                    project_ref=shared.BillCreditNoteLineItemTrackingProjectReference(
                         id='881ead4f-0e10-4125-a3f9-4e29e973e922',
                         name='Leo Kiehn II',
                     ),
@@ -627,7 +627,7 @@ req = operations.UpdateBillCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.CUSTOMER,
                     is_rebilled_to=shared.BilledToType.UNKNOWN,
-                    project_ref=shared.BillCreditNoteLineItemTrackingProjectRef(
+                    project_ref=shared.BillCreditNoteLineItemTrackingProjectReference(
                         id='3ea055b1-97cd-444e-af52-d82d3513bb6f',
                         name='Mattie Raynor',
                     ),
