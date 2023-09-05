@@ -1,13 +1,9 @@
 # connections
 
-## Overview
-
-Create new and manage existing Sync for Commerce companies using the Sync flow UI.
-
 ### Available Operations
 
 * [create](#create) - Create connection
-* [get_sync_flow_url](#get_sync_flow_url) - Retrieve sync flow url
+* [get_sync_flow_url](#get_sync_flow_url) - Start new sync flow
 * [list](#list) - List connections
 * [update_authorization](#update_authorization) - Update authorization
 * [update_connection](#update_connection) - Update connection
@@ -58,7 +54,7 @@ if res.connection is not None:
 
 ## get_sync_flow_url
 
-Get a URL for Sync Flow including a one time passcode.
+Create a new company and connections. Get a URL for Sync Flow, including a one time passcode.
 
 ### Example Usage
 
@@ -203,7 +199,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.UpdateConnectionRequest(
     update_connection=shared.UpdateConnection(
-        status='Linked',
+        status=shared.DataConnectionStatus.LINKED,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

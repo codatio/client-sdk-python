@@ -1,4 +1,4 @@
-# sync_flow_preferences
+# sync_flow_settings
 
 ## Overview
 
@@ -28,7 +28,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 
-res = s.sync_flow_preferences.get_config_text_sync_flow()
+res = s.sync_flow_settings.get_config_text_sync_flow()
 
 if res.localization_info is not None:
     # handle response
@@ -63,11 +63,11 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetVisibleAccountsRequest(
-    client_id='67cc8796-ed15-41a0-9dfc-2ddf7cc78ca1',
-    platform_key='ba928fc8-1674-42cb-b392-05929396fea7',
+    client_id='7cc8796e-d151-4a05-9fc2-ddf7cc78ca1b',
+    platform_key='a928fc81-6742-4cb7-b920-5929396fea75',
 )
 
-res = s.sync_flow_preferences.get_visible_accounts(req)
+res = s.sync_flow_settings.get_visible_accounts(req)
 
 if res.visible_accounts is not None:
     # handle response
@@ -103,17 +103,21 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "iste": shared.Localization(
+    "iure": shared.Localization(
         required=False,
-        text='iure',
+        text='saepe',
     ),
-    "saepe": shared.Localization(
+    "quidem": shared.Localization(
         required=False,
-        text='quidem',
+        text='architecto',
+    ),
+    "ipsa": shared.Localization(
+        required=False,
+        text='reiciendis',
     ),
 }
 
-res = s.sync_flow_preferences.update_config_text_sync_flow(req)
+res = s.sync_flow_settings.update_config_text_sync_flow(req)
 
 if res.localization_info is not None:
     # handle response
@@ -151,13 +155,15 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'ipsa',
+            'mollitia',
+            'laborum',
+            'dolores',
         ],
     ),
-    platform_key='faaa2352-c595-4590-baff-1a3a2fa94677',
+    platform_key='352c5955-907a-4ff1-a3a2-fa9467739251',
 )
 
-res = s.sync_flow_preferences.update_visible_accounts_sync_flow(req)
+res = s.sync_flow_settings.update_visible_accounts_sync_flow(req)
 
 if res.visible_accounts is not None:
     # handle response

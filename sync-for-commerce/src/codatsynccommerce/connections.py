@@ -6,7 +6,6 @@ from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
 class Connections:
-    r"""Create new and manage existing Sync for Commerce companies using the Sync flow UI."""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
@@ -64,8 +63,8 @@ class Connections:
 
     
     def get_sync_flow_url(self, request: operations.GetSyncFlowURLRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncFlowURLResponse:
-        r"""Retrieve sync flow url
-        Get a URL for Sync Flow including a one time passcode.
+        r"""Start new sync flow
+        Create a new company and connections. Get a URL for Sync Flow, including a one time passcode.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
