@@ -6,16 +6,36 @@ Source accounts act as a bridge to bank accounts in accounting software.
 
 ### Available Operations
 
-* [create](#create) - Create a bank feed bank account
-* [delete](#delete) - Delete bank feed bank account
+* [create](#create) - Create source account
+* [delete](#delete) - Delete source account
 * [delete_credentials](#delete_credentials) - Delete all source account credentials
 * [generate_credentials](#generate_credentials) - Generate source account credentials
-* [list](#list) - List bank feed bank accounts
-* [update](#update) - Update bank feed bank account
+* [list](#list) - List source accounts
+* [update](#update) - Update source account
 
 ## create
 
-Post a BankFeed BankAccount for a single data source connected. to a single company.
+The _Create Source Account_ endpoint allows you to create a representation of a bank account within Codat's domain. This source account can later be mapped to a target account in your accounting software.
+
+#### Account Mapping Variability
+
+The method of mapping this source account to your target account varies depending on the accounting package you use.
+
+#### Mapping Options:
+
+1. **API Mapping**: Integrate the mapping journey directly into your application for a seamless user experience.
+2. **Codat UI Mapping**: If you prefer a quicker setup, you can utilize Codat's provided user interface for mapping.
+3. **Accounting Platform Mapping**: For some accounting software, the mapping process must be conducted within the software itself.
+
+### Integration specific behaviour
+
+| Bank Feed Integration | API Mapping | Codat UI Mapping | Accounting Platform Mapping |
+| --------------------- | ----------- | ---------------- | --------------------------- |
+| Xero                  | ✅          | ✅               |                             |
+| FreeAgent             | ✅          | ✅               |                             |
+| QuickBooks Online     |             |                  | ✅                          |
+| Sage                  |             |                  | ✅                          |
+
 
 ### Example Usage
 
@@ -29,8 +49,8 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.CreateBankFeedRequest(
-    bank_feed_account=shared.BankFeedAccount(
+req = operations.CreateSourceAccountRequest(
+    source_account=shared.SourceAccount(
         account_name='deserunt',
         account_number='suscipit',
         account_type='iure',
@@ -48,28 +68,29 @@ req = operations.CreateBankFeedRequest(
 
 res = s.source_accounts.create(req)
 
-if res.bank_feed_account is not None:
+if res.source_account is not None:
     # handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.CreateBankFeedRequest](../../models/operations/createbankfeedrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.CreateSourceAccountRequest](../../models/operations/createsourceaccountrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
 
 ### Response
 
-**[operations.CreateBankFeedResponse](../../models/operations/createbankfeedresponse.md)**
+**[operations.CreateSourceAccountResponse](../../models/operations/createsourceaccountresponse.md)**
 
 
 ## delete
 
-The *delete bank feed bank account* endpoint enables you to remove a source account.
+The _Delete source account_ endpoint enables you to remove a source account.
 
 Removing a source account will also remove any mapping between the source bank feed bank accounts and the target bankfeed bank account.
+
 
 ### Example Usage
 
@@ -83,7 +104,7 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.DeleteBankFeedBankAccountRequest(
+req = operations.DeleteSourceAccountRequest(
     account_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -97,15 +118,15 @@ if res.status_code == 200:
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                  | [operations.DeleteBankFeedBankAccountRequest](../../models/operations/deletebankfeedbankaccountrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-| `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.DeleteSourceAccountRequest](../../models/operations/deletesourceaccountrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
 
 ### Response
 
-**[operations.DeleteBankFeedBankAccountResponse](../../models/operations/deletebankfeedbankaccountresponse.md)**
+**[operations.DeleteSourceAccountResponse](../../models/operations/deletesourceaccountresponse.md)**
 
 
 ## delete_credentials
@@ -196,10 +217,9 @@ if res.bank_account_credentials is not None:
 
 ## list
 
-﻿The *List bank feed bank accounts* endpoint returns a list of [bank feed accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) for a given company's connection.
+﻿The _List source accounts_ endpoint returns a list of [source accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) for a given company's connection.
 
-[Bank feed accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) are the bank's bank account from which transactions are synced into the accounting platform.
-
+[source accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) are the bank's bank account within Codat's domain from which transactions are synced into the accounting platform.
 
 
 ### Example Usage
@@ -214,33 +234,34 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.ListBankFeedsRequest(
+req = operations.ListSourceAccountsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.source_accounts.list(req)
 
-if res.bank_feed_account is not None:
+if res.source_account is not None:
     # handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.ListBankFeedsRequest](../../models/operations/listbankfeedsrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.ListSourceAccountsRequest](../../models/operations/listsourceaccountsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
 
 ### Response
 
-**[operations.ListBankFeedsResponse](../../models/operations/listbankfeedsresponse.md)**
+**[operations.ListSourceAccountsResponse](../../models/operations/listsourceaccountsresponse.md)**
 
 
 ## update
 
-﻿The *Update bank feed bank account* endpoint updates a single bank feed bank account for a single data source connected to a single company.
+﻿The _Update source account_ endpoint updates a single source account for a single data connection connected to a single company.
+
 
 ### Example Usage
 
@@ -254,8 +275,8 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.UpdateBankFeedRequest(
-    bank_feed_account=shared.BankFeedAccount(
+req = operations.UpdateSourceAccountRequest(
+    source_account=shared.SourceAccount(
         account_name='fugit',
         account_number='deleniti',
         account_type='hic',
@@ -274,19 +295,19 @@ req = operations.UpdateBankFeedRequest(
 
 res = s.source_accounts.update(req)
 
-if res.bank_feed_account is not None:
+if res.source_account is not None:
     # handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.UpdateBankFeedRequest](../../models/operations/updatebankfeedrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.UpdateSourceAccountRequest](../../models/operations/updatesourceaccountrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
 
 ### Response
 
-**[operations.UpdateBankFeedResponse](../../models/operations/updatebankfeedresponse.md)**
+**[operations.UpdateSourceAccountResponse](../../models/operations/updatesourceaccountresponse.md)**
 

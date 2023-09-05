@@ -6,15 +6,15 @@ Transactions represent debits and credits from a source account.
 
 ### Available Operations
 
-* [create](#create) - Create bank account transactions
+* [create](#create) - Create bank transactions
 * [get_create_operation](#get_create_operation) - Get create operation
 * [list_create_operations](#list_create_operations) - List create operations
 
 ## create
 
-﻿The *Create bank account transactions* endpoint creates new [bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) for a given company's connection.
+﻿The *Create bank transactions* endpoint creates new [bank transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) for a given company's connection.
 
-[Bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) are records of monetary amounts that have moved in and out of an SMB's bank account.
+[Bank transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) are records of monetary amounts that have moved in and out of an SMB's bank account.
 
 **Integration-specific behaviour**
 
@@ -36,10 +36,10 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateBankTransactionsRequest(
-    create_bank_transactions=shared.CreateBankTransactions(
+    request_body=operations.CreateBankTransactionsCreateBankAccountTransactions(
         account_id='corporis',
         transactions=[
-            shared.CreateBankAccountTransaction(
+            shared.Onecompanies1Percent7BcompanyIDPercent7D1connections1Percent7BconnectionIDPercent7D1push1bankAccounts1Percent7BaccountIDPercent7D1bankTransactionsPostRequestBodyContentApplication1jsonSchemaDefinitionsCreateBankAccountTransaction(
                 amount=7506.86,
                 balance=3154.28,
                 date_='2022-10-23T00:00:00.000Z',
@@ -140,7 +140,7 @@ req = operations.ListCreateOperationsRequest(
 
 res = s.transactions.list_create_operations(req)
 
-if res.list_push_operations is not None:
+if res.push_operations is not None:
     # handle response
 ```
 

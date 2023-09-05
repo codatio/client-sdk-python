@@ -1,12 +1,12 @@
-# ListBankFeedsResponse
+# ListSourceAccountsResponse
 
 
 ## Fields
 
 | Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `bank_feed_account`                                                                   | [Optional[shared.BankFeedAccount]](../../models/shared/bankfeedaccount.md)            | :heavy_minus_sign:                                                                    | Success                                                                               |
 | `content_type`                                                                        | *str*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
 | `error_message`                                                                       | [Optional[shared.ErrorMessage]](../../models/shared/errormessage.md)                  | :heavy_minus_sign:                                                                    | Your API request was not properly authorized.                                         |
+| `source_account`                                                                      | [Optional[shared.SourceAccount]](../../models/shared/sourceaccount.md)                | :heavy_minus_sign:                                                                    | Success                                                                               |
 | `status_code`                                                                         | *int*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
 | `raw_response`                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response) | :heavy_minus_sign:                                                                    | N/A                                                                                   |

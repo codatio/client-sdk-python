@@ -14,7 +14,7 @@ class AccountMapping:
         
     
     def create(self, request: operations.CreateBankAccountMappingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankAccountMappingResponse:
-        r"""Create bank feed bank account mapping
+        r"""Create bank feed account mapping
         The *Create bank account mapping* endpoint creates a new mapping between a source bank account and a potential account in the accounting platform (target account).
 
         A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
@@ -27,7 +27,7 @@ class AccountMapping:
         
         url = utils.generate_url(operations.CreateBankAccountMappingRequest, base_url, '/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bank_feed_account_mapping", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

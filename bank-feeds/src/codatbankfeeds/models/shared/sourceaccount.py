@@ -10,10 +10,10 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class BankFeedAccount:
+class SourceAccount:
     r"""The target bank account in a supported accounting package for ingestion into a bank feed."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""Unique ID for the bank feed account"""
+    r"""Unique ID for the bank account"""
     account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountName'), 'exclude': lambda f: f is None }})
     r"""The bank account name"""
     account_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountNumber'), 'exclude': lambda f: f is None }})

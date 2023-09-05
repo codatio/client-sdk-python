@@ -3,10 +3,22 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createbanktransactions as shared_createbanktransactions
 from ..shared import createbanktransactionsresponse as shared_createbanktransactionsresponse
 from ..shared import errormessage as shared_errormessage
+from ..shared import onecompanies_1percent_7bcompanyidpercent_7d_1connections_1percent_7bconnectionidpercent_7d_1push_1bankaccounts_1percent_7baccountidpercent_7d_1banktransactions_post_requestbody_content_application_1json_schema_definitions_createbankaccounttransaction as shared_onecompanies_1percent_7bcompanyidpercent_7d_1connections_1percent_7bconnectionidpercent_7d_1push_1bankaccounts_1percent_7baccountidpercent_7d_1banktransactions_post_requestbody_content_application_1json_schema_definitions_createbankaccounttransaction
+from codatbankfeeds import utils
+from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+
+@dataclasses.dataclass
+class CreateBankTransactionsCreateBankAccountTransactions:
+    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
+    transactions: Optional[list[shared_onecompanies_1percent_7bcompanyidpercent_7d_1connections_1percent_7bconnectionidpercent_7d_1push_1bankaccounts_1percent_7baccountidpercent_7d_1banktransactions_post_requestbody_content_application_1json_schema_definitions_createbankaccounttransaction.Onecompanies1Percent7BcompanyIDPercent7D1connections1Percent7BconnectionIDPercent7D1push1bankAccounts1Percent7BaccountIDPercent7D1bankTransactionsPostRequestBodyContentApplication1jsonSchemaDefinitionsCreateBankAccountTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
+    
+
 
 
 
@@ -17,7 +29,7 @@ class CreateBankTransactionsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     allow_sync_on_push_complete: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'allowSyncOnPushComplete', 'style': 'form', 'explode': True }})
-    create_bank_transactions: Optional[shared_createbanktransactions.CreateBankTransactions] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    request_body: Optional[CreateBankTransactionsCreateBankAccountTransactions] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     
 
