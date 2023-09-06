@@ -16,10 +16,10 @@ Data from a linked accounting platform representing money owed to the business f
 * [get_customer_attachment](#get_customer_attachment) - Get customer attachment
 * [get_direct_income](#get_direct_income) - Get direct income
 * [get_direct_income_attachment](#get_direct_income_attachment) - Get direct income attachment
-* [get_enhanced_invoices_report](#get_enhanced_invoices_report) - Get enhanced invoices report
 * [get_invoice](#get_invoice) - Get invoice
 * [get_invoice_attachment](#get_invoice_attachment) - Get invoice attachment
 * [get_payment](#get_payment) - Get payment
+* [get_reconciled_invoices](#get_reconciled_invoices) - Get reconciled invoices
 * [is_aged_debtor_report_available](#is_aged_debtor_report_available) - Aged debtors report available
 * [list_credit_notes](#list_credit_notes) - List credit notes
 * [list_customer_attachments](#list_customer_attachments) - List customer attachments
@@ -491,48 +491,6 @@ if res.accounting_attachment is not None:
 **[operations.GetAccountingDirectIncomeAttachmentResponse](../../models/operations/getaccountingdirectincomeattachmentresponse.md)**
 
 
-## get_enhanced_invoices_report
-
-Gets a list of invoices linked to the corresponding banking transaction
-
-### Example Usage
-
-```python
-import codatlending
-from codatlending.models import operations, shared
-
-s = codatlending.CodatLending(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-)
-
-req = operations.GetEnhancedInvoicesReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    page=1,
-    page_size=100,
-    query='veritatis',
-)
-
-res = s.accounts_receivable.get_enhanced_invoices_report(req)
-
-if res.enhanced_invoices_report is not None:
-    # handle response
-```
-
-### Parameters
-
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                  | [operations.GetEnhancedInvoicesReportRequest](../../models/operations/getenhancedinvoicesreportrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-| `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
-
-
-### Response
-
-**[operations.GetEnhancedInvoicesReportResponse](../../models/operations/getenhancedinvoicesreportresponse.md)**
-
-
 ## get_invoice
 
 The *Get invoice* endpoint returns a single invoice for a given invoiceId.
@@ -558,7 +516,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='deserunt',
+    invoice_id='veritatis',
 )
 
 res = s.accounts_receivable.get_invoice(req)
@@ -605,7 +563,7 @@ req = operations.GetAccountingInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='perferendis',
+    invoice_id='deserunt',
 )
 
 res = s.accounts_receivable.get_invoice_attachment(req)
@@ -652,7 +610,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='ipsam',
+    payment_id='perferendis',
 )
 
 res = s.accounts_receivable.get_payment(req)
@@ -672,6 +630,48 @@ if res.accounting_payment is not None:
 ### Response
 
 **[operations.GetAccountingPaymentResponse](../../models/operations/getaccountingpaymentresponse.md)**
+
+
+## get_reconciled_invoices
+
+Gets a list of invoices linked to the corresponding banking transaction
+
+### Example Usage
+
+```python
+import codatlending
+from codatlending.models import operations, shared
+
+s = codatlending.CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetReconciledInvoicesRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    page=1,
+    page_size=100,
+    query='ipsam',
+)
+
+res = s.accounts_receivable.get_reconciled_invoices(req)
+
+if res.enhanced_invoices_report is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.GetReconciledInvoicesRequest](../../models/operations/getreconciledinvoicesrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
+
+
+### Response
+
+**[operations.GetReconciledInvoicesResponse](../../models/operations/getreconciledinvoicesresponse.md)**
 
 
 ## is_aged_debtor_report_available

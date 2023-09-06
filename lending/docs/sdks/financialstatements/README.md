@@ -9,8 +9,8 @@ Financial data and reports from a linked accounting platform.
 * [get_account](#get_account) - Get account
 * [get_balance_sheet](#get_balance_sheet) - Get balance sheet
 * [get_cash_flow_statement](#get_cash_flow_statement) - Get cash flow statement
-* [get_enhanced_balance_sheet_accounts](#get_enhanced_balance_sheet_accounts) - Get enhanced balance sheet accounts
-* [get_enhanced_profit_and_loss_accounts](#get_enhanced_profit_and_loss_accounts) - Get enhanced profit and loss accounts
+* [get_categorized_balance_sheet](#get_categorized_balance_sheet) - Get categorized balance sheet statement
+* [get_categorized_profit_and_loss](#get_categorized_profit_and_loss) - Get categorized profit and loss statement
 * [get_profit_and_loss](#get_profit_and_loss) - Get profit and loss
 * [list_accounts](#list_accounts) - List accounts
 
@@ -145,7 +145,7 @@ if res.accounting_cash_flow_statement is not None:
 **[operations.GetAccountingCashFlowStatementResponse](../../models/operations/getaccountingcashflowstatementresponse.md)**
 
 
-## get_enhanced_balance_sheet_accounts
+## get_categorized_balance_sheet
 
 ﻿The *Get enhanced balance sheet accounts* endpoint returns a list of categorized accounts that appear on a company’s Balance Sheet along with a balance per financial statement date.
 
@@ -163,13 +163,13 @@ s = codatlending.CodatLending(
     ),
 )
 
-req = operations.GetEnhancedBalanceSheetAccountsRequest(
+req = operations.GetCategorizedBalanceSheetStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     number_of_periods=216550,
     report_date='29-09-2020',
 )
 
-res = s.financial_statements.get_enhanced_balance_sheet_accounts(req)
+res = s.financial_statements.get_categorized_balance_sheet(req)
 
 if res.enhanced_financial_report is not None:
     # handle response
@@ -177,18 +177,18 @@ if res.enhanced_financial_report is not None:
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                              | [operations.GetEnhancedBalanceSheetAccountsRequest](../../models/operations/getenhancedbalancesheetaccountsrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
-| `retries`                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                                     | Configuration to override the default retry behavior of the client.                                                    |
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                      | [operations.GetCategorizedBalanceSheetStatementRequest](../../models/operations/getcategorizedbalancesheetstatementrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `retries`                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                               | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |
 
 
 ### Response
 
-**[operations.GetEnhancedBalanceSheetAccountsResponse](../../models/operations/getenhancedbalancesheetaccountsresponse.md)**
+**[operations.GetCategorizedBalanceSheetStatementResponse](../../models/operations/getcategorizedbalancesheetstatementresponse.md)**
 
 
-## get_enhanced_profit_and_loss_accounts
+## get_categorized_profit_and_loss
 
 ﻿The *Get enhanced profit and loss accounts* endpoint returns a list of categorized accounts that appear on a company’s Profit and Loss statement. It also includes a balance as of the financial statement date.
 
@@ -206,13 +206,13 @@ s = codatlending.CodatLending(
     ),
 )
 
-req = operations.GetEnhancedProfitAndLossAccountsRequest(
+req = operations.GetCategorizedProfitAndLossStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     number_of_periods=568434,
     report_date='29-09-2020',
 )
 
-res = s.financial_statements.get_enhanced_profit_and_loss_accounts(req)
+res = s.financial_statements.get_categorized_profit_and_loss(req)
 
 if res.enhanced_financial_report is not None:
     # handle response
@@ -220,15 +220,15 @@ if res.enhanced_financial_report is not None:
 
 ### Parameters
 
-| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                | [operations.GetEnhancedProfitAndLossAccountsRequest](../../models/operations/getenhancedprofitandlossaccountsrequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
-| `retries`                                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                         | :heavy_minus_sign:                                                                                                       | Configuration to override the default retry behavior of the client.                                                      |
+| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                        | [operations.GetCategorizedProfitAndLossStatementRequest](../../models/operations/getcategorizedprofitandlossstatementrequest.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
+| `retries`                                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                 | :heavy_minus_sign:                                                                                                               | Configuration to override the default retry behavior of the client.                                                              |
 
 
 ### Response
 
-**[operations.GetEnhancedProfitAndLossAccountsResponse](../../models/operations/getenhancedprofitandlossaccountsresponse.md)**
+**[operations.GetCategorizedProfitAndLossStatementResponse](../../models/operations/getcategorizedprofitandlossstatementresponse.md)**
 
 
 ## get_profit_and_loss

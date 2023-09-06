@@ -1,4 +1,4 @@
-# GetEnhancedProfitAndLossAccountsRequest
+# GetCategorizedBalanceSheetStatementRequest
 
 
 ## Fields

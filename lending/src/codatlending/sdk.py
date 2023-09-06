@@ -4,7 +4,7 @@ import requests as requests_http
 from .accounting_bank_data import AccountingBankData
 from .accounts_payable import AccountsPayable
 from .accounts_receivable import AccountsReceivable
-from .cash_flow import CashFlow
+from .banking import Banking
 from .companies import Companies
 from .company_info import CompanyInfo
 from .connections import Connections
@@ -25,7 +25,29 @@ class CodatLending:
 
     The Lending API is built on top of the latest accounting, commerce, and banking data, providing you with the most important data points you need to get a full picture of SMB creditworthiness and make a comprehensive assessment of your customers.
 
-    [See our OpenAPI spec](https://github.com/codatio/oas)
+    [Explore product](https://docs.codat.io/bank-feeds-api/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
+
+    ---
+
+    ## Endpoints
+
+    | Endpoints            | Description                                                                                                |
+    |:---------------------|:-----------------------------------------------------------------------------------------------------------|
+    | Companies            | Create and manage your SMB users' companies.                                                               |
+    | Connections          | Create new and manage existing data connections for a company.                                             |
+    | Company info         | View company profile from the source platform.                                                             |
+    | Accounts payable     | Data from a linked accounting platform representing money the business owes money to its suppliers.        |
+    | Accounts receivable  | Data from a linked accounting platform representing money owed to the business for sold goods or services. |
+    | Transactions         | Data from a linked accounting platform representing transactions.                                          |
+    | Financial statements | Financial data and reports from a linked accounting platform.                                              |
+    | Banking              | Retrieve banking data from linked bank accounts.                                                           |
+    | Sales                | Retrieve standardized sales data from a linked commerce platform.                                          |
+    | Liabilities          | Debt and other liabilities.                                                                                |
+    | Data integrity       | Match mutable accounting data with immutable banking data to increase confidence in financial data.        |
+    | Excel reports        | Download reports in Excel format.                                                                          |
+    | Categories           | Manage Codat's automatic account categorization functionality.                                             |
+    | Manage data          | Control how data is retrieved from an integration.                                                         |
+    | File upload          | Endpoints to manage uploaded files.                                                                        |
     """
     accounting_bank_data: AccountingBankData
     r"""Access bank transactions from an accounting platform."""
@@ -33,7 +55,7 @@ class CodatLending:
     r"""Data from a linked accounting platform representing money the business owes money to its suppliers."""
     accounts_receivable: AccountsReceivable
     r"""Data from a linked accounting platform representing money owed to the business for sold goods or services."""
-    cash_flow: CashFlow
+    banking: Banking
     r"""Retrieve banking data from linked bank accounts."""
     companies: Companies
     r"""Create and manage your Codat companies."""
@@ -97,7 +119,7 @@ class CodatLending:
         self.accounting_bank_data = AccountingBankData(self.sdk_configuration)
         self.accounts_payable = AccountsPayable(self.sdk_configuration)
         self.accounts_receivable = AccountsReceivable(self.sdk_configuration)
-        self.cash_flow = CashFlow(self.sdk_configuration)
+        self.banking = Banking(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
         self.company_info = CompanyInfo(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
