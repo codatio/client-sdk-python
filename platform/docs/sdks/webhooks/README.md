@@ -31,12 +31,10 @@ req = shared.CreateRule(
     notifiers=shared.CreateRuleNotifiers(
         emails=[
             'info@client.com',
-            'info@client.com',
-            'info@client.com',
         ],
         webhook='https://webhook.client.com',
     ),
-    type='doloribus',
+    type='iste',
 )
 
 res = s.webhooks.create(req)
@@ -117,7 +115,7 @@ req = operations.ListRulesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sapiente',
+    query='iure',
 )
 
 res = s.webhooks.list(req)
