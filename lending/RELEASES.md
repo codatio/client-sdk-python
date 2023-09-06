@@ -39,3 +39,13 @@ Based on:
 - [python v0.1.3] lending
 ### Releases
 - [PyPI v0.1.3] https://pypi.org/project/codat-lending/0.1.3 - lending
+
+## 2023-09-06 14:22:42
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Lending.yaml
+- Speakeasy CLI 1.78.9 (2.96.9) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.2.0] lending
+### Releases
+- [PyPI v0.2.0] https://pypi.org/project/codat-lending/0.2.0 - lending
