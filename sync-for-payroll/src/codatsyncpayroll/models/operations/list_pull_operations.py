@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import dataconnectionhistory as shared_dataconnectionhistory
 from ..shared import errormessage as shared_errormessage
+from ..shared import pulloperations as shared_pulloperations
 from typing import Optional
 
 
@@ -29,10 +29,10 @@ class ListPullOperationsRequest:
 class ListPullOperationsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    data_connection_history: Optional[shared_dataconnectionhistory.DataConnectionHistory] = dataclasses.field(default=None)
-    r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
+    pull_operations: Optional[shared_pulloperations.PullOperations] = dataclasses.field(default=None)
+    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 

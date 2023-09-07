@@ -7,7 +7,6 @@ from .connections import Connections
 from .journal_entries import JournalEntries
 from .journals import Journals
 from .manage_data import ManageData
-from .push_operations import PushOperations
 from .sdkconfiguration import SDKConfiguration
 from .tracking_categories import TrackingCategories
 from codatsyncpayroll import utils
@@ -32,8 +31,6 @@ class CodatSyncPayroll:
     r"""Journals"""
     manage_data: ManageData
     r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
-    push_operations: PushOperations
-    r"""Access create, update and delete operations made to an SMB's data connection."""
     tracking_categories: TrackingCategories
     r"""Tracking categories"""
 
@@ -79,6 +76,5 @@ class CodatSyncPayroll:
         self.journal_entries = JournalEntries(self.sdk_configuration)
         self.journals = Journals(self.sdk_configuration)
         self.manage_data = ManageData(self.sdk_configuration)
-        self.push_operations = PushOperations(self.sdk_configuration)
         self.tracking_categories = TrackingCategories(self.sdk_configuration)
     
