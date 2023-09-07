@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import billpayment as shared_billpayment
 from ..shared import createbillpaymentresponse as shared_createbillpaymentresponse
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -27,8 +27,8 @@ class CreateBillPaymentResponse:
     status_code: int = dataclasses.field()
     create_bill_payment_response: Optional[shared_createbillpaymentresponse.CreateBillPaymentResponse] = dataclasses.field(default=None)
     r"""Success"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 

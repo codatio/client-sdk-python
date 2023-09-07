@@ -38,28 +38,28 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='accusantium',
-        account_number='iure',
-        account_type=shared.BankAccountBankAccountType.CREDIT,
-        available_balance=9883.74,
-        balance=9589.5,
-        currency='GBP',
-        i_ban='mollitia',
-        id='3a2fa946-7739-4251-aa52-c3f5ad019da1',
-        institution='reiciendis',
+        account_name='deleniti',
+        account_number='hic',
+        account_type=shared.BankAccountBankAccountType.DEBIT,
+        available_balance=5218.48,
+        balance=1059.07,
+        currency='USD',
+        i_ban='molestiae',
+        id='42cb7392-0592-4939-afea-7596eb10faaa',
+        institution='dolores',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='vero',
-        overdraft_limit=4686.51,
-        sort_code='praesentium',
+        nominal_code='corporis',
+        overdraft_limit=1289.26,
+        sort_code='nobis',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=55714,
+    timeout_in_minutes=607831,
 )
 
 res = s.bank_accounts.create(req)
@@ -96,7 +96,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -105,7 +105,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBankAccountRequest(
-    account_id='omnis',
+    account_id='nemo',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -146,7 +146,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -191,7 +191,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -205,7 +205,7 @@ req = operations.ListBankAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptate',
+    query='minima',
 )
 
 res = s.bank_accounts.list(req)
@@ -254,29 +254,29 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='cum',
-        account_number='perferendis',
-        account_type=shared.BankAccountBankAccountType.UNKNOWN,
-        available_balance=4417.11,
-        balance=2828.07,
+        account_name='excepturi',
+        account_number='accusantium',
+        account_type=shared.BankAccountBankAccountType.CREDIT,
+        available_balance=6342.74,
+        balance=9883.74,
         currency='EUR',
-        i_ban='dicta',
-        id='5471b5e6-e13b-499d-888e-1e91e450ad2a',
-        institution='distinctio',
+        i_ban='architecto',
+        id='a3a2fa94-6773-4925-9aa5-2c3f5ad019da',
+        institution='quasi',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='labore',
-        overdraft_limit=2647.3,
-        sort_code='qui',
+        nominal_code='voluptatibus',
+        overdraft_limit=8781.94,
+        sort_code='nihil',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
-    bank_account_id='cupiditate',
+    bank_account_id='voluptatibus',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=552822,
+    timeout_in_minutes=55714,
 )
 
 res = s.bank_accounts.update(req)
