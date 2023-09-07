@@ -112,7 +112,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dolor',
+    query='quis',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -197,7 +197,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='96fea759-6eb1-40fa-aa23-52c5955907af',
+    connection_id='1a05dfc2-ddf7-4cc7-8ca1-ba928fc81674',
     data_type=shared.DataType.INVOICES,
 )
 

@@ -42,7 +42,7 @@ req = operations.CreateSupplierRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=673660,
+    timeout_in_minutes=358152,
 )
 
 res = s.suppliers.create(req)
@@ -137,7 +137,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='reiciendis',
+    query='nobis',
 )
 
 res = s.suppliers.list(req)
@@ -191,8 +191,8 @@ req = operations.UpdateSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='EILBDVJVNUAGVKRQ',
-    timeout_in_minutes=878194,
+    supplier_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    timeout_in_minutes=607831,
 )
 
 res = s.suppliers.update(req)
