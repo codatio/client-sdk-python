@@ -35,7 +35,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommerceCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='in',
+    customer_id='repudiandae',
 )
 
 res = s.commerce_customers.get_commerce_customer(req)
@@ -84,7 +84,7 @@ req = operations.ListCommerceCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='delectus',
+    query='accusantium',
 )
 
 res = s.commerce_customers.list_commerce_customers(req)

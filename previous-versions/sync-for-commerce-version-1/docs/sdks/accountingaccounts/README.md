@@ -37,11 +37,11 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingAccountRequest(
     accounting_account=shared.AccountingAccount(
-        currency='USD',
+        currency='EUR',
         current_balance=0,
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
-        fully_qualified_name='Fixed Asset',
+        fully_qualified_name='Cash On Hand',
         id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
         is_bank_account=False,
         metadata=shared.AccountingAccountMetadata(
@@ -56,24 +56,15 @@ req = operations.CreateAccountingAccountRequest(
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'nisi',
-                    'recusandae',
-                    'temporibus',
+                    'suscipit',
                 ],
-                property='ab',
-            ),
-            shared.AccountingAccountValidDataTypeLinks(
-                links=[
-                    'veritatis',
-                    'deserunt',
-                ],
-                property='perferendis',
+                property='iure',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=368241,
+    timeout_in_minutes=297534,
 )
 
 res = s.accounting_accounts.create_accounting_account(req)
@@ -119,7 +110,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetAccountingAccountRequest(
-    account_id='repellendus',
+    account_id='debitis',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -167,7 +158,7 @@ req = operations.ListAccountingAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sapiente',
+    query='ipsa',
 )
 
 res = s.accounting_accounts.list_accounting_accounts(req)

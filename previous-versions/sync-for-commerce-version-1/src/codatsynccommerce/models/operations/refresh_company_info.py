@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingdataset as shared_accountingdataset
+from ..shared import dataset as shared_dataset
 from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
@@ -21,7 +21,7 @@ class RefreshCompanyInfoRequest:
 class RefreshCompanyInfoResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    accounting_dataset: Optional[shared_accountingdataset.AccountingDataset] = dataclasses.field(default=None)
+    dataset: Optional[shared_dataset.Dataset] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
