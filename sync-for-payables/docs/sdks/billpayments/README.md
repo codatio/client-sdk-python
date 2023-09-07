@@ -7,6 +7,7 @@ Bill payments
 ### Available Operations
 
 * [create](#create) - Create bill payments
+* [delete](#delete) - Delete bill payment
 * [get](#get) - Get bill payment
 * [get_create_model](#get_create_model) - Get create bill payment model
 * [list](#list) - List bill payments
@@ -39,35 +40,23 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='18544ec4-2def-4cce-8f19-77773e63562a',
-            name='Ms. Verna Gislason',
+            id='756082d6-8ea1-49f1-9170-51339d08086a',
+            name='Mrs. Priscilla Fritsch',
         ),
         currency='GBP',
-        currency_rate=3314.52,
+        currency_rate=7710.89,
         date_='2022-10-23T00:00:00.000Z',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=3071.73,
+                amount=120.36,
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=9847.73,
-                        currency_rate=8518.09,
-                        id='af313a1f-5fd9-4425-9c0b-36f25ea944f3',
-                        type=shared.BillPaymentLineLinkType.REFUND,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=4483.86,
-                        currency_rate=3296.51,
-                        id='6c11f6c3-7a51-4262-8383-5bbc05a23a45',
-                        type=shared.BillPaymentLineLinkType.MANUAL_JOURNAL,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=9322.5,
-                        currency_rate=9555.69,
-                        id='c5fde10a-0ce2-4169-a510-019c6dc5e347',
-                        type=shared.BillPaymentLineLinkType.OTHER,
+                        amount=4910.25,
+                        currency_rate=1154.84,
+                        id='f93f5f06-42da-4c7a-b515-cc413aa63aae',
+                        type=shared.BillPaymentLineLinkType.BILL_PAYMENT,
                     ),
                 ],
             ),
@@ -77,38 +66,25 @@ req = operations.CreateBillPaymentRequest(
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
-        payment_method_ref='odio',
-        reference='natus',
+        payment_method_ref='vel',
+        reference='ducimus',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "doloribus": {
-                    "quidem": 'itaque',
-                    "laboriosam": 'unde',
-                    "modi": 'perspiciatis',
-                },
-                "hic": {
-                    "aspernatur": 'libero',
-                    "nam": 'incidunt',
-                    "recusandae": 'quod',
-                },
-                "id": {
-                    "autem": 'quo',
-                    "nesciunt": 'illum',
-                    "nemo": 'illum',
-                    "facilis": 'non',
+                "vel": {
+                    "labore": 'possimus',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='adebd5da-ea4c-4506-a8aa-94c02644cf5e',
-            supplier_name='unde',
+            id='bb675fd5-e60b-4375-ad4f-6fbee41f3331',
+            supplier_name='dignissimos',
         ),
         total_amount=1329.54,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=860311,
+    timeout_in_minutes=950953,
 )
 
 res = s.bill_payments.create(req)
@@ -128,6 +104,68 @@ if res.create_bill_payment_response is not None:
 ### Response
 
 **[operations.CreateBillPaymentResponse](../../models/operations/createbillpaymentresponse.md)**
+
+
+## delete
+
+﻿The *Delete bill payment* endpoint allows you to delete a specified bill payment from an accounting platform.
+
+[Bill payments](https://docs.codat.io/sync-for-payables-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
+
+### Process
+1. Pass the `{billPaymentId}` to the *Delete bill payment* endpoint and store the `pushOperationKey` returned.
+2. Check the status of the delete operation by checking the status of push operation either via
+    1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
+    2. [Push operation status endpoint](https://docs.codat.io/sync-for-payables-api#/operations/get-push-operation).
+
+   A `Success` status indicates that the bill payment object was deleted from the accounting platform.
+3. (Optional) Check that the bill payment was deleted from the accounting platform.
+
+### Effect on related objects
+Be aware that deleting a bill payment from an accounting platform might cause related objects to be modified.
+
+## Integration specifics
+Integrations that support soft delete do not permanently delete the object in the accounting platform.
+
+| Integration | Soft Delete | Details                                                                                             |  
+|-------------|-------------|-----------------------------------------------------------------------------------------------------|
+| Oracle NetSuite   | No          | See [here](/integrations/accounting/netsuite/accounting-netsuite-how-deleting-bill-payments-works) to learn more. |
+
+
+### Example Usage
+
+```python
+import codatsyncpayables
+from codatsyncpayables.models import operations, shared
+
+s = codatsyncpayables.CodatSyncPayables(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.DeleteBillPaymentRequest(
+    bill_payment_id='debitis',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+)
+
+res = s.bill_payments.delete(req)
+
+if res.push_operation is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [operations.DeleteBillPaymentRequest](../../models/operations/deletebillpaymentrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `retries`                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                           | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
+
+
+### Response
+
+**[operations.DeleteBillPaymentResponse](../../models/operations/deletebillpaymentresponse.md)**
 
 
 ## get
@@ -154,7 +192,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='error',
+    bill_payment_id='consectetur',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -252,7 +290,7 @@ req = operations.ListBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='mollitia',
+    query='corporis',
 )
 
 res = s.bill_payments.list(req)
