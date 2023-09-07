@@ -3,14 +3,14 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import enhancedinvoicesreport as shared_enhancedinvoicesreport
+from ..shared import enhancedcashflowtransactions as shared_enhancedcashflowtransactions
 from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
 
 @dataclasses.dataclass
-class GetEnhancedInvoicesReportRequest:
+class GetCategorizedBankStatementRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     page: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
     r"""Page number. [Read more](https://docs.codat.io/using-the-api/paging)."""
@@ -24,10 +24,10 @@ class GetEnhancedInvoicesReportRequest:
 
 
 @dataclasses.dataclass
-class GetEnhancedInvoicesReportResponse:
+class GetCategorizedBankStatementResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    enhanced_invoices_report: Optional[shared_enhancedinvoicesreport.EnhancedInvoicesReport] = dataclasses.field(default=None)
+    enhanced_cash_flow_transactions: Optional[shared_enhancedcashflowtransactions.EnhancedCashFlowTransactions] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""

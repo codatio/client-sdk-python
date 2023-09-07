@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountingaddress as shared_accountingaddress
+from ..shared import addressesitems as shared_addressesitems
 from ..shared import metadata as shared_metadata
 from ..shared import supplementaldata as shared_supplementaldata
 from ..shared import supplierstatus as shared_supplierstatus
@@ -23,7 +23,7 @@ class AccountingSupplier:
     """
     status: shared_supplierstatus.SupplierStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of the supplier."""
-    addresses: Optional[list[shared_accountingaddress.AccountingAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
+    addresses: Optional[list[shared_addressesitems.Addressesitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
     r"""An array of Addresses."""
     contact_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactName'), 'exclude': lambda f: f is None }})
     r"""Name of the main contact for the supplier."""
@@ -43,7 +43,7 @@ class AccountingSupplier:
     supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Supplemental data is additional data you can include in our standard data types.
 
-    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/additional-data) about supplemental data.
+    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
     supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is None }})
     r"""Name of the supplier as recorded in the accounting system, typically the company name."""

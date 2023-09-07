@@ -1,4 +1,4 @@
-# cash_flow
+# banking
 
 ## Overview
 
@@ -9,7 +9,7 @@ Retrieve banking data from linked bank accounts.
 * [get_bank_account](#get_bank_account) - Get account
 * [get_bank_transaction](#get_bank_transaction) - Get bank transaction
 * [get_bank_transaction_category](#get_bank_transaction_category) - Get transaction category
-* [get_enhanced_cash_flow_transactions](#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
+* [get_categorized_bank_statement](#get_categorized_bank_statement) - Get categorized bank statement
 * [list_bank_account_balances](#list_bank_account_balances) - List account balances
 * [list_bank_accounts](#list_bank_accounts) - List accounts
 * [list_bank_transaction_categories](#list_bank_transaction_categories) - List transaction categories
@@ -44,7 +44,7 @@ req = operations.GetBankingAccountRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.cash_flow.get_bank_account(req)
+res = s.banking.get_bank_account(req)
 
 if res.banking_account is not None:
     # handle response
@@ -92,7 +92,7 @@ req = operations.GetBankingTransactionRequest(
     transaction_id='quod',
 )
 
-res = s.cash_flow.get_bank_transaction(req)
+res = s.banking.get_bank_transaction(req)
 
 if res.banking_transaction is not None:
     # handle response
@@ -140,7 +140,7 @@ req = operations.GetBankingTransactionCategoryRequest(
     transaction_category_id='quod',
 )
 
-res = s.cash_flow.get_bank_transaction_category(req)
+res = s.banking.get_bank_transaction_category(req)
 
 if res.banking_transaction_category is not None:
     # handle response
@@ -159,7 +159,7 @@ if res.banking_transaction_category is not None:
 **[operations.GetBankingTransactionCategoryResponse](../../models/operations/getbankingtransactioncategoryresponse.md)**
 
 
-## get_enhanced_cash_flow_transactions
+## get_categorized_bank_statement
 
 > **Categorization engine**
 > 
@@ -179,14 +179,14 @@ s = codatlending.CodatLending(
     ),
 )
 
-req = operations.GetEnhancedCashFlowTransactionsRequest(
+req = operations.GetCategorizedBankStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
     query='esse',
 )
 
-res = s.cash_flow.get_enhanced_cash_flow_transactions(req)
+res = s.banking.get_categorized_bank_statement(req)
 
 if res.enhanced_cash_flow_transactions is not None:
     # handle response
@@ -194,15 +194,15 @@ if res.enhanced_cash_flow_transactions is not None:
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                              | [operations.GetEnhancedCashFlowTransactionsRequest](../../models/operations/getenhancedcashflowtransactionsrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
-| `retries`                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                                     | Configuration to override the default retry behavior of the client.                                                    |
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                      | [operations.GetCategorizedBankStatementRequest](../../models/operations/getcategorizedbankstatementrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+| `retries`                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                               | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |
 
 
 ### Response
 
-**[operations.GetEnhancedCashFlowTransactionsResponse](../../models/operations/getenhancedcashflowtransactionsresponse.md)**
+**[operations.GetCategorizedBankStatementResponse](../../models/operations/getcategorizedbankstatementresponse.md)**
 
 
 ## list_bank_account_balances
@@ -235,7 +235,7 @@ req = operations.ListBankingAccountBalancesRequest(
     query='totam',
 )
 
-res = s.cash_flow.list_bank_account_balances(req)
+res = s.banking.list_bank_account_balances(req)
 
 if res.banking_account_balances is not None:
     # handle response
@@ -284,7 +284,7 @@ req = operations.ListBankingAccountsRequest(
     query='porro',
 )
 
-res = s.cash_flow.list_bank_accounts(req)
+res = s.banking.list_bank_accounts(req)
 
 if res.banking_accounts is not None:
     # handle response
@@ -333,7 +333,7 @@ req = operations.ListBankingTransactionCategoriesRequest(
     query='dolorum',
 )
 
-res = s.cash_flow.list_bank_transaction_categories(req)
+res = s.banking.list_bank_transaction_categories(req)
 
 if res.banking_transaction_categories is not None:
     # handle response
@@ -382,7 +382,7 @@ req = operations.ListBankingTransactionsRequest(
     query='dicta',
 )
 
-res = s.cash_flow.list_bank_transactions(req)
+res = s.banking.list_bank_transactions(req)
 
 if res.banking_transactions is not None:
     # handle response

@@ -2,12 +2,34 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountingaddress as shared_accountingaddress
+from ..shared import accountingaddresstype as shared_accountingaddresstype
 from ..shared import phonenumbertype as shared_phonenumbertype
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+
+@dataclasses.dataclass
+class AccountingCompanyInfoAccountingAddress:
+    type: shared_accountingaddresstype.AccountingAddressType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    r"""The type of the address"""
+    city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city'), 'exclude': lambda f: f is None }})
+    r"""City of the customer address."""
+    country: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('country'), 'exclude': lambda f: f is None }})
+    r"""Country of the customer address."""
+    line1: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('line1'), 'exclude': lambda f: f is None }})
+    r"""Line 1 of the customer address."""
+    line2: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('line2'), 'exclude': lambda f: f is None }})
+    r"""Line 2 of the customer address."""
+    postal_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('postalCode'), 'exclude': lambda f: f is None }})
+    r"""Postal code or zip code."""
+    region: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('region'), 'exclude': lambda f: f is None }})
+    r"""Region of the customer address."""
+    
+
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -55,7 +77,7 @@ class AccountingCompanyInfo:
     """
     accounting_platform_ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountingPlatformRef'), 'exclude': lambda f: f is None }})
     r"""Identifier or reference for the company in the accounting platform."""
-    addresses: Optional[list[shared_accountingaddress.AccountingAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
+    addresses: Optional[list[AccountingCompanyInfoAccountingAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
     r"""An array of Addresses."""
     base_currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('baseCurrency'), 'exclude': lambda f: f is None }})
     r"""Currency set in the accounting platform of the linked company. Used by the currency rate."""

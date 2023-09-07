@@ -10,7 +10,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetEnhancedProfitAndLossAccountsRequest:
+class GetCategorizedBalanceSheetStatementRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     report_date: str = dataclasses.field(metadata={'query_param': { 'field_name': 'reportDate', 'style': 'form', 'explode': True }})
     r"""The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month."""
@@ -22,7 +22,7 @@ class GetEnhancedProfitAndLossAccountsRequest:
 
 
 @dataclasses.dataclass
-class GetEnhancedProfitAndLossAccountsResponse:
+class GetCategorizedBalanceSheetStatementResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     enhanced_financial_report: Optional[shared_enhancedfinancialreport.EnhancedFinancialReport] = dataclasses.field(default=None)

@@ -13,13 +13,13 @@ class CompanyInfo:
         self.sdk_configuration = sdk_config
         
     
-    def from_accounting_platform(self, request: operations.GetAccountingCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountingCompanyInfoResponse:
-        r"""Get company info
+    def get_accounting_profile(self, request: operations.GetAccountingProfileRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountingProfileResponse:
+        r"""Get company accounting profile
         Gets the latest basic info for a company.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetAccountingCompanyInfoRequest, base_url, '/companies/{companyId}/data/info', request)
+        url = utils.generate_url(operations.GetAccountingProfileRequest, base_url, '/companies/{companyId}/data/info', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
@@ -40,7 +40,7 @@ class CompanyInfo:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetAccountingCompanyInfoResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetAccountingProfileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -58,15 +58,15 @@ class CompanyInfo:
         return res
 
     
-    def from_commerce_platform(self, request: operations.GetCommerceCompanyInfoRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceCompanyInfoResponse:
-        r"""Get company info
+    def get_commerce_profile(self, request: operations.GetCommerceProfileRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceProfileResponse:
+        r"""Get company commerce profile
         Retrieve information about the company, as seen in the commerce platform.
 
         This may include information like addresses, tax registration details and social media or website information.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetCommerceCompanyInfoRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-info', request)
+        url = utils.generate_url(operations.GetCommerceProfileRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-info', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
@@ -87,7 +87,7 @@ class CompanyInfo:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetCommerceCompanyInfoResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetCommerceProfileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
