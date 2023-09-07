@@ -28,7 +28,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = shared.CreateCompany(
-    name='Bob's Burgers',
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
 )
 
 res = s.advanced_controls.create_company(req)

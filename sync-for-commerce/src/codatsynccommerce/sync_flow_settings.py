@@ -5,7 +5,7 @@ from codatsynccommerce import utils
 from codatsynccommerce.models import errors, operations, shared
 from typing import Optional
 
-class SyncFlowPreferences:
+class SyncFlowSettings:
     r"""Configure preferences for any given Sync for Commerce company using sync flow."""
     sdk_configuration: SDKConfiguration
 
