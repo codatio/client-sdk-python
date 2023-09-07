@@ -47,8 +47,8 @@ class Webhooks:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Rule])
-                res.rule = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Webhook])
+                res.webhook = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 429]:
@@ -92,8 +92,8 @@ class Webhooks:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Rule])
-                res.rule = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Webhook])
+                res.webhook = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:
@@ -138,8 +138,8 @@ class Webhooks:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Rules])
-                res.rules = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Webhooks])
+                res.webhooks = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401, 404, 429]:
