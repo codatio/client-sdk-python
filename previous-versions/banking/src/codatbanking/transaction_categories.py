@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from codatbanking import utils
-from codatbanking.models import operations, shared
+from codatbanking.models import errors, operations, shared
 from typing import Optional
 
 class TransactionCategories:
@@ -16,11 +16,11 @@ class TransactionCategories:
     def get(self, request: operations.GetTransactionCategoryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetTransactionCategoryResponse:
         r"""Get transaction category
         The *Get transaction category* endpoint returns a single transaction category for a given transactionCategoryId.
-        
+
         [Transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
-        
+
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-transactionCategories) for integrations that support getting a specific transaction category.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -52,6 +52,8 @@ class TransactionCategories:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TransactionCategory])
                 res.transaction_category = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -59,9 +61,9 @@ class TransactionCategories:
     def list(self, request: operations.ListTransactionCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListTransactionCategoriesResponse:
         r"""List transaction categories
         The *List transaction categories* endpoint returns a list of [transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) for a given company's connection.
-        
+
         [Transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
-        
+
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -69,7 +71,7 @@ class TransactionCategories:
         url = utils.generate_url(operations.ListTransactionCategoriesRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/banking-transactionCategories', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListTransactionCategoriesRequest, request)
-        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
@@ -94,14 +96,14 @@ class TransactionCategories:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TransactionCategories])
                 res.transaction_categories = out
-        elif http_res.status_code in [400, 401, 404]:
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401, 404, 409]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Schema])
-                res.schema = out
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ListTransactionCategories409ApplicationJSON])
-                res.list_transaction_categories_409_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
