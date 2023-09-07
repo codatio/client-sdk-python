@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import Any, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -17,7 +17,7 @@ class AccountBalance:
     r"""The currency of the account"""
     pending: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pending'), 'exclude': lambda f: f is None }})
     r"""Funds that are not yet available in the balance"""
-    reserved: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reserved'), 'exclude': lambda f: f is None }})
+    reserved: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reserved'), 'exclude': lambda f: f is None }})
     r"""Funds reserved as holdings"""
     
 
