@@ -9,7 +9,7 @@ generation:
   singleTagPerOp: false
   telemetryEnabled: true
 python:
-  version: 0.35.0
+  version: 1.0.0
   author: Codat
   description: Push expenses to accounting platforms.
   maxMethodParams: 0
