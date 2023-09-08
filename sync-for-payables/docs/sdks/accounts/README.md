@@ -29,6 +29,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codatsyncpayables
 from codatsyncpayables.models import operations, shared
+from decimal import Decimal
 
 s = codatsyncpayables.CodatSyncPayables(
     security=shared.Security(
@@ -38,11 +39,11 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.CreateAccountRequest(
     account=shared.Account(
-        currency='USD',
-        current_balance=0,
+        currency='EUR',
+        current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
-        fully_qualified_name='Fixed Asset',
+        fully_qualified_name='Cash On Hand',
         id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
         is_bank_account=False,
         metadata=shared.Metadata(
@@ -57,24 +58,15 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.AccountValidDataTypeLinks(
                 links=[
-                    'nisi',
-                    'recusandae',
-                    'temporibus',
+                    'suscipit',
                 ],
-                property='ab',
-            ),
-            shared.AccountValidDataTypeLinks(
-                links=[
-                    'veritatis',
-                    'deserunt',
-                ],
-                property='perferendis',
+                property='iure',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=368241,
+    timeout_in_minutes=297534,
 )
 
 res = s.accounts.create(req)
@@ -120,7 +112,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetAccountRequest(
-    account_id='repellendus',
+    account_id='debitis',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -145,15 +137,15 @@ if res.account is not None:
 
 ## get_create_model
 
-﻿  The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/sync-for-payables-api#/schemas/Account) for a given company and integration.
-    
-    [Accounts](https://docs.codat.io/sync-for-payables-api#/schemas/Account) are the categories a business uses to record accounting transactions.
-    
-    **Integration-specific behaviour**
-    
-    See the *response examples* for integration-specific indicative models.
-    
-    Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
+﻿The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/sync-for-payables-api#/schemas/Account) for a given company and integration.
+
+[Accounts](https://docs.codat.io/sync-for-payables-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+
+**Integration-specific behaviour**
+
+See the *response examples* for integration-specific indicative models.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
 
 
 ### Example Usage
@@ -217,7 +209,7 @@ req = operations.ListAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sapiente',
+    query='ipsa',
 )
 
 res = s.accounts.list(req)
