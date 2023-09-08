@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -11,7 +12,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class TransactionCategory:
-    confidence: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('confidence'), 'exclude': lambda f: f is None }})
+    confidence: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('confidence'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Returns the confidence of the suggested category for the transaction. The value is between 0 and 100."""
     levels: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('levels'), 'exclude': lambda f: f is None }})
     r"""The suggested category is an ordered array of category levels where each element (or level) is a subcategory of the previous element (or level)."""

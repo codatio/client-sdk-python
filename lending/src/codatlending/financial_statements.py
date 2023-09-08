@@ -5,7 +5,7 @@ from codatlending import utils
 from codatlending.models import errors, operations, shared
 from typing import Optional
 
-class Financials:
+class FinancialStatements:
     r"""Financial data and reports from a linked accounting platform."""
     sdk_configuration: SDKConfiguration
 
@@ -32,9 +32,13 @@ class Financials:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
@@ -78,9 +82,13 @@ class Financials:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -124,9 +132,13 @@ class Financials:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -156,25 +168,29 @@ class Financials:
         return res
 
     
-    def get_enhanced_balance_sheet_accounts(self, request: operations.GetEnhancedBalanceSheetAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedBalanceSheetAccountsResponse:
-        r"""Get enhanced balance sheet accounts
+    def get_categorized_balance_sheet(self, request: operations.GetCategorizedBalanceSheetStatementRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCategorizedBalanceSheetStatementResponse:
+        r"""Get categorized balance sheet statement
         The *Get enhanced balance sheet accounts* endpoint returns a list of categorized accounts that appear on a company’s Balance Sheet along with a balance per financial statement date.
 
         Codat suggests a category for each account automatically, but you can [change it](https://docs.codat.io/lending/enhanced-financials/overview#categorize-accounts) to a more suitable one.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetEnhancedBalanceSheetAccountsRequest, base_url, '/companies/{companyId}/reports/enhancedBalanceSheet/accounts', request)
+        url = utils.generate_url(operations.GetCategorizedBalanceSheetStatementRequest, base_url, '/companies/{companyId}/reports/enhancedBalanceSheet/accounts', request)
         headers = {}
-        query_params = utils.get_query_params(operations.GetEnhancedBalanceSheetAccountsRequest, request)
+        query_params = utils.get_query_params(operations.GetCategorizedBalanceSheetStatementRequest, request)
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -186,7 +202,7 @@ class Financials:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetEnhancedBalanceSheetAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetCategorizedBalanceSheetStatementResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -204,25 +220,29 @@ class Financials:
         return res
 
     
-    def get_enhanced_profit_and_loss_accounts(self, request: operations.GetEnhancedProfitAndLossAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetEnhancedProfitAndLossAccountsResponse:
-        r"""Get enhanced profit and loss accounts
+    def get_categorized_profit_and_loss(self, request: operations.GetCategorizedProfitAndLossStatementRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCategorizedProfitAndLossStatementResponse:
+        r"""Get categorized profit and loss statement
         The *Get enhanced profit and loss accounts* endpoint returns a list of categorized accounts that appear on a company’s Profit and Loss statement. It also includes a balance as of the financial statement date.
 
         Codat suggests a category for each account automatically, but you can [change it](https://docs.codat.io/lending/enhanced-financials/overview#categorize-accounts) to a more suitable one.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetEnhancedProfitAndLossAccountsRequest, base_url, '/companies/{companyId}/reports/enhancedProfitAndLoss/accounts', request)
+        url = utils.generate_url(operations.GetCategorizedProfitAndLossStatementRequest, base_url, '/companies/{companyId}/reports/enhancedProfitAndLoss/accounts', request)
         headers = {}
-        query_params = utils.get_query_params(operations.GetEnhancedProfitAndLossAccountsRequest, request)
+        query_params = utils.get_query_params(operations.GetCategorizedProfitAndLossStatementRequest, request)
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -234,7 +254,7 @@ class Financials:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetEnhancedProfitAndLossAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetCategorizedProfitAndLossStatementResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -266,9 +286,13 @@ class Financials:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -316,9 +340,13 @@ class Financials:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)

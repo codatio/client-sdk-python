@@ -6,10 +6,10 @@ View company information fetched from the source platform.
 
 ### Available Operations
 
-* [from_accounting_platform](#from_accounting_platform) - Get company info
-* [from_commerce_platform](#from_commerce_platform) - Get company info
+* [get_accounting_profile](#get_accounting_profile) - Get company accounting profile
+* [get_commerce_profile](#get_commerce_profile) - Get company commerce profile
 
-## from_accounting_platform
+## get_accounting_profile
 
 Gets the latest basic info for a company.
 
@@ -25,11 +25,11 @@ s = codatlending.CodatLending(
     ),
 )
 
-req = operations.GetAccountingCompanyInfoRequest(
+req = operations.GetAccountingProfileRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.company_info.from_accounting_platform(req)
+res = s.company_info.get_accounting_profile(req)
 
 if res.accounting_company_info is not None:
     # handle response
@@ -37,18 +37,18 @@ if res.accounting_company_info is not None:
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                | [operations.GetAccountingCompanyInfoRequest](../../models/operations/getaccountingcompanyinforequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-| `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.GetAccountingProfileRequest](../../models/operations/getaccountingprofilerequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
 
 ### Response
 
-**[operations.GetAccountingCompanyInfoResponse](../../models/operations/getaccountingcompanyinforesponse.md)**
+**[operations.GetAccountingProfileResponse](../../models/operations/getaccountingprofileresponse.md)**
 
 
-## from_commerce_platform
+## get_commerce_profile
 
 Retrieve information about the company, as seen in the commerce platform.
 
@@ -66,12 +66,12 @@ s = codatlending.CodatLending(
     ),
 )
 
-req = operations.GetCommerceCompanyInfoRequest(
+req = operations.GetCommerceProfileRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.company_info.from_commerce_platform(req)
+res = s.company_info.get_commerce_profile(req)
 
 if res.commerce_company_info is not None:
     # handle response
@@ -79,13 +79,13 @@ if res.commerce_company_info is not None:
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [operations.GetCommerceCompanyInfoRequest](../../models/operations/getcommercecompanyinforequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `retries`                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.GetCommerceProfileRequest](../../models/operations/getcommerceprofilerequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
 
 ### Response
 
-**[operations.GetCommerceCompanyInfoResponse](../../models/operations/getcommercecompanyinforesponse.md)**
+**[operations.GetCommerceProfileResponse](../../models/operations/getcommerceprofileresponse.md)**
 

@@ -14,7 +14,7 @@ class Liabilities:
         
     
     def get_loan_summary(self, request: operations.GetLoanSummaryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetLoanSummaryResponse:
-        r"""Get enhanced loan summaries
+        r"""Get loan summaries
         The *Get enhanced loan summaries* endpoint returns a summary by integration type of all loans identified in each integration.
 
         The endpoint returns a list of a company's [loan summaries](https://docs.codat.io/lending-api#/schemas/LoanSummary) for each valid data connection.
@@ -30,9 +30,13 @@ class Liabilities:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
@@ -63,7 +67,7 @@ class Liabilities:
 
     
     def list_loan_transactions(self, request: operations.ListLoanTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListLoanTransactionsResponse:
-        r"""List enhanced loan transactions
+        r"""List loan transactions
         The *List enhanced loan transactions* endpoint returns all [loan transactions](https://docs.codat.io/lending-api#/schemas/LoanTransactions) identified from a company's accounting, banking, and commerce integrations.
 
         This detail gives analysts a better idea of the loan obligations a company may have.
@@ -80,9 +84,13 @@ class Liabilities:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)

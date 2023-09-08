@@ -6,8 +6,8 @@ Debt and other liabilities.
 
 ### Available Operations
 
-* [get_loan_summary](#get_loan_summary) - Get enhanced loan summaries
-* [list_loan_transactions](#list_loan_transactions) - List enhanced loan transactions
+* [get_loan_summary](#get_loan_summary) - Get loan summaries
+* [list_loan_transactions](#list_loan_transactions) - List loan transactions
 
 ## get_loan_summary
 

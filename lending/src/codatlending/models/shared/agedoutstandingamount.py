@@ -5,6 +5,7 @@ import dataclasses
 from ..shared import agedoutstandingamountdetail as shared_agedoutstandingamountdetail
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -12,7 +13,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class AgedOutstandingAmount:
-    amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
+    amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""The amount outstanding."""
     details: Optional[list[shared_agedoutstandingamountdetail.AgedOutstandingAmountDetail]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})
     r"""Array of details."""
