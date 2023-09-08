@@ -7,7 +7,6 @@ from .connections import Connections
 from .journal_entries import JournalEntries
 from .journals import Journals
 from .manage_data import ManageData
-from .push_operations import PushOperations
 from .sdkconfiguration import SDKConfiguration
 from .tracking_categories import TrackingCategories
 from codatsyncpayroll import utils
@@ -32,8 +31,6 @@ class CodatSyncPayroll:
     r"""Journals"""
     manage_data: ManageData
     r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
-    push_operations: PushOperations
-    r"""Access create, update and delete operations made to an SMB's data connection."""
     tracking_categories: TrackingCategories
     r"""Tracking categories"""
 
@@ -44,7 +41,8 @@ class CodatSyncPayroll:
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: dict[str, str] = None,
-                 client: requests_http.Session = None
+                 client: requests_http.Session = None,
+                 retry_config: utils.RetryConfig = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
@@ -57,7 +55,9 @@ class CodatSyncPayroll:
         :param url_params: Parameters to optionally template the server URL with
         :type url_params: dict[str, str]
         :param client: The requests.Session HTTP client to use for all operations
-        :type client: requests_http.Session        
+        :type client: requests_http.Session
+        :param retry_config: The utils.RetryConfig to use globally
+        :type retry_config: utils.RetryConfig
         """
         if client is None:
             client = requests_http.Session()
@@ -68,7 +68,7 @@ class CodatSyncPayroll:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx)
+        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
@@ -79,6 +79,5 @@ class CodatSyncPayroll:
         self.journal_entries = JournalEntries(self.sdk_configuration)
         self.journals = Journals(self.sdk_configuration)
         self.manage_data = ManageData(self.sdk_configuration)
-        self.push_operations = PushOperations(self.sdk_configuration)
         self.tracking_categories = TrackingCategories(self.sdk_configuration)
     

@@ -4,6 +4,7 @@
 ```python
 import codatsyncpayroll
 from codatsyncpayroll.models import operations, shared
+from decimal import Decimal
 
 s = codatsyncpayroll.CodatSyncPayroll(
     security=shared.Security(
@@ -14,7 +15,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 req = operations.CreateAccountRequest(
     account=shared.Account(
         currency='USD',
-        current_balance=0,
+        current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
         fully_qualified_name='Fixed Asset',
@@ -32,31 +33,15 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.AccountValidDataTypeLinks(
                 links=[
-                    'corrupti',
-                    'illum',
-                    'vel',
-                    'error',
+                    'unde',
                 ],
-                property='deserunt',
-            ),
-            shared.AccountValidDataTypeLinks(
-                links=[
-                    'iure',
-                    'magnam',
-                ],
-                property='debitis',
-            ),
-            shared.AccountValidDataTypeLinks(
-                links=[
-                    'delectus',
-                ],
-                property='tempora',
+                property='nulla',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=383441,
+    timeout_in_minutes=544883,
 )
 
 res = s.accounts.create(req)

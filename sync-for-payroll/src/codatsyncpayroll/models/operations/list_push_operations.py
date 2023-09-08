@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
-from ..shared import pushhistoryresponse as shared_pushhistoryresponse
+from ..shared import pushoperations as shared_pushoperations
 from typing import Optional
 
 
@@ -31,7 +31,7 @@ class ListPushOperationsResponse:
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
-    push_history_response: Optional[shared_pushhistoryresponse.PushHistoryResponse] = dataclasses.field(default=None)
+    push_operations: Optional[shared_pushoperations.PushOperations] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
