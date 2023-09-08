@@ -42,7 +42,7 @@ req = operations.CreateCustomerRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=870013,
+    timeout_in_minutes=383441,
 )
 
 res = s.customers.create(req)
@@ -89,7 +89,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='at',
+    customer_id='molestiae',
 )
 
 res = s.customers.get(req)
@@ -137,7 +137,7 @@ req = operations.ListCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='maiores',
+    query='minus',
 )
 
 res = s.customers.list(req)
@@ -190,9 +190,9 @@ req = operations.UpdateCustomerRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='molestiae',
+    customer_id='placeat',
     force_update=False,
-    timeout_in_minutes=799159,
+    timeout_in_minutes=528895,
 )
 
 res = s.customers.update(req)

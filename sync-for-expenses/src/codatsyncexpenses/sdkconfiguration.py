@@ -3,6 +3,8 @@
 import requests
 from dataclasses import dataclass
 
+from .utils.retries import RetryConfig
+
 
 SERVERS = [
     'https://api.codat.io',
@@ -17,8 +19,9 @@ class SDKConfiguration:
     server_idx: int = 0
     language: str = 'python'
     openapi_doc_version: str = 'prealpha'
-    sdk_version: str = '0.35.0'
-    gen_version: str = '2.91.4'
+    sdk_version: str = '1.1.0'
+    gen_version: str = '2.107.0'
+    retry_config: RetryConfig = None
 
     def get_server_details(self) -> tuple[str, dict[str, str]]:
         if self.server_url:

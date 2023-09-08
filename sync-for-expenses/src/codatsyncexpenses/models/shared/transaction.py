@@ -13,7 +13,6 @@ from typing import Optional
 
 @dataclasses.dataclass
 class Transaction:
-    r"""Success"""
     integration_type: Optional[shared_integrationtype.IntegrationType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('integrationType'), 'exclude': lambda f: f is None }})
     r"""Type of transaction that has been processed e.g. Expense or Bank Feed."""
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
