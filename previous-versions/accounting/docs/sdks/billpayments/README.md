@@ -30,6 +30,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codataccounting
 from codataccounting.models import operations, shared
+from decimal import Decimal
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -40,47 +41,23 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='929921ae-fb9f-458c-8d86-e68e4be05601',
-            name='Shawna Hamill',
+            id='6555ba3c-2874-44ed-93b8-8f3a8d8f5c0b',
+            name='Faith Cole',
         ),
         currency='USD',
-        currency_rate=4585.03,
+        currency_rate=Decimal('7090.72'),
         date_='2022-10-23T00:00:00.000Z',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=3361.02,
+                amount=Decimal('2927.94'),
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=8806.79,
-                        currency_rate=7746.84,
-                        id='fef66ef1-caa3-4383-82be-b477373c8d72',
-                        type=shared.BillPaymentLineLinkType.DISCOUNT,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=4269.04,
-                        currency_rate=3008.24,
-                        id='d1db1f2c-4310-4661-a963-49e1cf9e06e3',
-                        type=shared.BillPaymentLineLinkType.PAYMENT_ON_ACCOUNT,
-                    ),
-                    shared.BillPaymentLineLink(
-                        amount=2503.98,
-                        currency_rate=2244.67,
-                        id='7000ae6b-6bc9-4b8f-b59e-ac55a9741d31',
-                        type=shared.BillPaymentLineLinkType.UNKNOWN,
-                    ),
-                ],
-            ),
-            shared.BillPaymentLine(
-                allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=3220.17,
-                links=[
-                    shared.BillPaymentLineLink(
-                        amount=6113.28,
-                        currency_rate=4030.26,
-                        id='5bb8a720-2611-4435-a139-dbc2259b1abd',
-                        type=shared.BillPaymentLineLinkType.PAYMENT_ON_ACCOUNT,
+                        amount=Decimal('6719.07'),
+                        currency_rate=Decimal('1523.54'),
+                        id='76b26916-fe1f-408f-8294-e3698f447f60',
+                        type=shared.BillPaymentLineLinkType.BILL,
                     ),
                 ],
             ),
@@ -90,39 +67,25 @@ req = operations.CreateBillPaymentRequest(
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
-        payment_method_ref=shared.PaymentMethodRef(
-            id='c070e108-4cb0-4672-91ad-879eeb9665b8',
-            name='Cecelia Wiza',
-        ),
-        reference='alias',
+        payment_method_ref='praesentium',
+        reference='facilis',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "fuga": {
-                    "accusantium": 'expedita',
-                    "officiis": 'eos',
-                    "quibusdam": 'odio',
-                    "praesentium": 'odit',
-                },
-                "explicabo": {
-                    "error": 'earum',
-                    "adipisci": 'recusandae',
-                },
-                "similique": {
-                    "quidem": 'quis',
-                    "beatae": 'unde',
+                "incidunt": {
+                    "ipsam": 'debitis',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='7f92443d-a7ce-452b-895c-537c6454efb0',
-            supplier_name='libero',
+            id='80ca55ef-d20e-4457-a185-8b6a89fbe3a5',
+            supplier_name='officia',
         ),
-        total_amount=1329.54,
+        total_amount=Decimal('1329.54'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=189753,
+    timeout_in_minutes=676243,
 )
 
 res = s.bill_payments.create(req)
@@ -177,7 +140,7 @@ Integrations that support soft delete do not permanently delete the object in th
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -186,7 +149,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='labore',
+    bill_payment_id='corrupti',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -225,7 +188,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -234,7 +197,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='totam',
+    bill_payment_id='accusamus',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -274,7 +237,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -319,7 +282,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -332,7 +295,7 @@ req = operations.ListBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='occaecati',
+    query='tempora',
 )
 
 res = s.bill_payments.list(req)

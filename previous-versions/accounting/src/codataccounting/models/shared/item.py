@@ -17,9 +17,9 @@ from typing import Optional
 @dataclasses.dataclass
 class Item:
     r"""> View the coverage for items in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=items\\" target=\\"_blank\\">Data coverage explorer</a>.
-    
+
     ## Overview
-    
+
     **Items** allow your customers to save and track details of the products and services that they buy and sell.
     """
     is_bill_item: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBillItem') }})
@@ -28,11 +28,11 @@ class Item:
     r"""Whether you can use this item for invoices."""
     item_status: shared_itemstatus.ItemStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemStatus') }})
     r"""Current state of the item, either:
-    
+
     - `Active`: Available for use
     - `Archived`: Unavailable
     - `Unknown`
-    
+
     Due to a [limitation in Xero's API](https://docs.codat.io/integrations/accounting/xero/xero-faq#why-do-all-of-my-items-from-xero-have-their-status-as-unknown), all items from Xero are mapped as `Unknown`.
     """
     type: shared_itemtype.ItemType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
