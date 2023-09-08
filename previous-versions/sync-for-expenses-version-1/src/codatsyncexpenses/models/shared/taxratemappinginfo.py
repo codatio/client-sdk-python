@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from enum import Enum
 from typing import Optional
 
@@ -24,13 +25,13 @@ class TaxRateMappingInfoValidTransactionTypes(str, Enum):
 class TaxRateMappingInfo:
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
     r"""Code for the tax rate from the accounting platform."""
-    effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
+    effective_tax_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Effective tax rate."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Unique identifier of tax rate."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""Name of the tax rate in the accounting platform."""
-    total_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxRate'), 'exclude': lambda f: f is None }})
+    total_tax_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Total (not compounded) sum of the components of a tax rate."""
     valid_transaction_types: Optional[list[TaxRateMappingInfoValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes'), 'exclude': lambda f: f is None }})
     r"""Supported transaction types for the account."""

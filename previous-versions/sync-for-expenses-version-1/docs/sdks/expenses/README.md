@@ -19,6 +19,7 @@ Create an expense transaction
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import operations, shared
+from decimal import Decimal
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -35,7 +36,7 @@ req = operations.CreateExpenseDatasetRequest(
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
                 currency='GBP',
-                currency_rate=8579.46,
+                currency_rate=Decimal('6027.63'),
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
                 issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
@@ -43,258 +44,12 @@ req = operations.CreateExpenseDatasetRequest(
                         account_ref=shared.RecordRef(
                             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                         ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
+                        net_amount=Decimal('110.42'),
+                        tax_amount=Decimal('14.43'),
                         tax_rate_ref=shared.RecordRef(
                             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                         ),
                         tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                ],
-                merchant_name='Amazon UK',
-                notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-                type=shared.ExpenseTransactionType.PAYMENT,
-            ),
-            shared.ExpenseTransaction(
-                contact_ref=shared.ContactRef(
-                    contact_type=shared.ContactRefContactType.SUPPLIER,
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                currency='GBP',
-                currency_rate=4375.87,
-                id='4d7c6929-7770-412b-91bb-44d3bc71d111',
-                issue_date='2022-10-23T00:00:00.000Z',
-                lines=[
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                ],
-                merchant_name='Amazon UK',
-                notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-                type=shared.ExpenseTransactionType.PAYMENT,
-            ),
-            shared.ExpenseTransaction(
-                contact_ref=shared.ContactRef(
-                    contact_type=shared.ContactRefContactType.SUPPLIER,
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                currency='GBP',
-                currency_rate=4776.65,
-                id='4d7c6929-7770-412b-91bb-44d3bc71d111',
-                issue_date='2022-10-23T00:00:00.000Z',
-                lines=[
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=110.42,
-                        tax_amount=14.43,
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
                             shared.RecordRef(
                                 id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                             ),
@@ -338,6 +93,7 @@ Update an expense transaction
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import operations, shared
+from decimal import Decimal
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -352,73 +108,19 @@ req = operations.UpdateExpenseDatasetRequest(
             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
         ),
         currency='GBP',
-        currency_rate=9255.97,
+        currency_rate=Decimal('5448.83'),
         issue_date='2022-06-28T00:00:00.000Z',
         lines=[
             shared.ExpenseTransactionLine(
                 account_ref=shared.RecordRef(
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
-                net_amount=110.42,
-                tax_amount=14.43,
+                net_amount=Decimal('110.42'),
+                tax_amount=Decimal('14.43'),
                 tax_rate_ref=shared.RecordRef(
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
                 tracking_refs=[
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                ],
-            ),
-            shared.ExpenseTransactionLine(
-                account_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                net_amount=110.42,
-                tax_amount=14.43,
-                tax_rate_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                tracking_refs=[
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                ],
-            ),
-            shared.ExpenseTransactionLine(
-                account_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                net_amount=110.42,
-                tax_amount=14.43,
-                tax_rate_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                tracking_refs=[
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                ],
-            ),
-            shared.ExpenseTransactionLine(
-                account_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                net_amount=110.42,
-                tax_amount=14.43,
-                tax_rate_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                tracking_refs=[
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
                     shared.RecordRef(
                         id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                     ),
@@ -427,7 +129,7 @@ req = operations.UpdateExpenseDatasetRequest(
         ],
         merchant_name='Amazon UK',
         notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type='perferendis',
+        type='illum',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
@@ -470,8 +172,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UploadAttachmentRequest(
     request_body=operations.UploadAttachmentRequestBody(
-        content='ipsam'.encode(),
-        request_body='repellendus',
+        content='vel'.encode(),
+        request_body='error',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
