@@ -13,7 +13,6 @@ from typing import Optional
 
 @dataclasses.dataclass
 class SyncSummary:
-    r"""Success"""
     commerce_sync_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('commerceSyncId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for the sync in Codat."""
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})

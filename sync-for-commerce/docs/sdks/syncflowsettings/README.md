@@ -1,4 +1,4 @@
-# sync_flow_preferences
+# sync_flow_settings
 
 ## Overview
 
@@ -28,7 +28,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 
-res = s.sync_flow_preferences.get_config_text_sync_flow()
+res = s.sync_flow_settings.get_config_text_sync_flow()
 
 if res.localization_info is not None:
     # handle response
@@ -63,11 +63,11 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetVisibleAccountsRequest(
-    client_id='67cc8796-ed15-41a0-9dfc-2ddf7cc78ca1',
-    platform_key='ba928fc8-1674-42cb-b392-05929396fea7',
+    client_id='e0f467cc-8796-4ed1-91a0-5dfc2ddf7cc7',
+    platform_key='8ca1ba92-8fc8-4167-82cb-739205929396',
 )
 
-res = s.sync_flow_preferences.get_visible_accounts(req)
+res = s.sync_flow_settings.get_visible_accounts(req)
 
 if res.visible_accounts is not None:
     # handle response
@@ -103,17 +103,13 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "iste": shared.Localization(
+    "hic": shared.Localization(
         required=False,
-        text='iure',
-    ),
-    "saepe": shared.Localization(
-        required=False,
-        text='quidem',
+        text='saepe',
     ),
 }
 
-res = s.sync_flow_preferences.update_config_text_sync_flow(req)
+res = s.sync_flow_settings.update_config_text_sync_flow(req)
 
 if res.localization_info is not None:
     # handle response
@@ -151,13 +147,13 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'ipsa',
+            'fuga',
         ],
     ),
-    platform_key='faaa2352-c595-4590-baff-1a3a2fa94677',
+    platform_key='7596eb10-faaa-4235-ac59-55907aff1a3a',
 )
 
-res = s.sync_flow_preferences.update_visible_accounts_sync_flow(req)
+res = s.sync_flow_settings.update_visible_accounts_sync_flow(req)
 
 if res.visible_accounts is not None:
     # handle response
