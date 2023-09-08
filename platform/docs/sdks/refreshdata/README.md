@@ -75,7 +75,7 @@ s = codatplatform.CodatPlatform(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='78ca1ba9-28fc-4816-b42c-b73920592939',
+    connection_id='df7cc78c-a1ba-4928-bc81-6742cb739205',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -120,7 +120,7 @@ req = operations.GetCompanyDataStatusRequest(
 
 res = s.refresh_data.get(req)
 
-if res.data_status_response is not None:
+if res.data_statuses is not None:
     # handle response
 ```
 
@@ -198,12 +198,12 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='laboriosam',
+    query='natus',
 )
 
 res = s.refresh_data.list_pull_operations(req)
 
-if res.data_connection_history is not None:
+if res.pull_operations is not None:
     # handle response
 ```
 
