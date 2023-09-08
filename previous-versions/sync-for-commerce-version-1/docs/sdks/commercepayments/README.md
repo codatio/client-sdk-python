@@ -37,7 +37,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommercePaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_id='ullam',
+    payment_id='quibusdam',
 )
 
 res = s.commerce_payments.get_commerce_payment(req)
@@ -85,7 +85,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommercePaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_method_id='ullam',
+    payment_method_id='odio',
 )
 
 res = s.commerce_payments.get_method(req)
@@ -134,7 +134,7 @@ req = operations.ListCommercePaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='doloremque',
+    query='praesentium',
 )
 
 res = s.commerce_payments.list_commerce_payments(req)
@@ -183,7 +183,7 @@ req = operations.ListCommercePaymentMethodsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='est',
+    query='odit',
 )
 
 res = s.commerce_payments.list_methods(req)

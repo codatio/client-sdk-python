@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -20,6 +21,6 @@ class ProductPrice:
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    unit_price: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'exclude': lambda f: f is None }})
+    unit_price: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     
 

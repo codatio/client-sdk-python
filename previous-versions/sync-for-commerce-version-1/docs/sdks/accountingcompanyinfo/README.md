@@ -70,7 +70,7 @@ req = operations.RefreshCompanyInfoRequest(
 
 res = s.accounting_company_info.refresh(req)
 
-if res.accounting_dataset is not None:
+if res.dataset is not None:
     # handle response
 ```
 

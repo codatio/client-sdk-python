@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -24,7 +25,7 @@ class ItemsTaxComponentRef:
 
 @dataclasses.dataclass
 class Taxesitems:
-    rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('rate'), 'exclude': lambda f: f is None }})
+    rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('rate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Tax amount on order line sale as available from source commerce platform."""
     tax_component_ref: Optional[ItemsTaxComponentRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxComponentRef'), 'exclude': lambda f: f is None }})
     r"""Taxes rates reference object depending on the rates being available on source commerce package."""
