@@ -720,7 +720,7 @@ class AccountsReceivable:
     
     def get_reconciled_invoices(self, request: operations.GetReconciledInvoicesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetReconciledInvoicesResponse:
         r"""Get reconciled invoices
-        Gets a list of invoices linked to the corresponding banking transaction
+        The _Get reconciled invoices_ endpoint gets a list of invoices linked to the corresponding banking transaction
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

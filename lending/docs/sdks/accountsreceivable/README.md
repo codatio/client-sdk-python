@@ -634,7 +634,7 @@ if res.accounting_payment is not None:
 
 ## get_reconciled_invoices
 
-Gets a list of invoices linked to the corresponding banking transaction
+The _Get reconciled invoices_ endpoint gets a list of invoices linked to the corresponding banking transaction
 
 ### Example Usage
 
