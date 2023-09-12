@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
 from ..shared import webhooks as shared_webhooks
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -26,6 +26,7 @@ class ListRulesRequest:
 
 @dataclasses.dataclass
 class ListRulesResponse:
+    next: Callable[[], Optional[ListRulesResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)

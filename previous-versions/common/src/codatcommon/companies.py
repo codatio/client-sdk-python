@@ -3,7 +3,8 @@
 from .sdkconfiguration import SDKConfiguration
 from codatcommon import utils
 from codatcommon.models import errors, operations, shared
-from typing import Optional
+from jsonpath import JSONPath
+from typing import Any, Dict, Optional
 
 class Companies:
     r"""Create and manage your Codat companies."""
@@ -192,8 +193,26 @@ class Companies:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCompaniesResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCompaniesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list(
+                request=operations.ListCompaniesRequest(
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCompaniesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

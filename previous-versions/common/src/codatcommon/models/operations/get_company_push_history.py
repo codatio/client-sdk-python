@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
 from ..shared import pushoperations as shared_pushoperations
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -27,6 +27,7 @@ class GetCompanyPushHistoryRequest:
 
 @dataclasses.dataclass
 class GetCompanyPushHistoryResponse:
+    next: Callable[[], Optional[GetCompanyPushHistoryResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
