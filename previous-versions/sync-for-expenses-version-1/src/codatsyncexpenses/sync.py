@@ -13,13 +13,13 @@ class Sync:
         self.sdk_configuration = sdk_config
         
     
-    def intiate_sync(self, request: operations.IntiateSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.IntiateSyncResponse:
+    def initiate_sync(self, request: operations.InitiateSyncRequest, retries: Optional[utils.RetryConfig] = None) -> operations.InitiateSyncResponse:
         r"""Initiate sync
         Initiate sync of pending transactions.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.IntiateSyncRequest, base_url, '/companies/{companyId}/sync/expenses/syncs', request)
+        url = utils.generate_url(operations.InitiateSyncRequest, base_url, '/companies/{companyId}/sync/expenses/syncs', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "post_sync", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -47,7 +47,7 @@ class Sync:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.IntiateSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.InitiateSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 202:
             if utils.match_content_type(content_type, 'application/json'):

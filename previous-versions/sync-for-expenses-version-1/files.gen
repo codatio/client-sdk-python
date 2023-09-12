@@ -33,7 +33,7 @@ src/codatsyncexpenses/models/operations/create_expense_dataset.py
 src/codatsyncexpenses/models/operations/update_expense_dataset.py
 src/codatsyncexpenses/models/operations/upload_attachment.py
 src/codatsyncexpenses/models/operations/get_mapping_options.py
-src/codatsyncexpenses/models/operations/intiate_sync.py
+src/codatsyncexpenses/models/operations/initiate_sync.py
 src/codatsyncexpenses/models/operations/get_last_successful_sync.py
 src/codatsyncexpenses/models/operations/get_latest_sync.py
 src/codatsyncexpenses/models/operations/get_sync_by_id.py
@@ -132,8 +132,8 @@ docs/models/operations/uploadattachmentrequest.md
 docs/models/operations/uploadattachmentresponse.md
 docs/models/operations/getmappingoptionsrequest.md
 docs/models/operations/getmappingoptionsresponse.md
-docs/models/operations/intiatesyncrequest.md
-docs/models/operations/intiatesyncresponse.md
+docs/models/operations/initiatesyncrequest.md
+docs/models/operations/initiatesyncresponse.md
 docs/models/operations/getlastsuccessfulsyncrequest.md
 docs/models/operations/getlastsuccessfulsyncresponse.md
 docs/models/operations/getlatestsyncrequest.md

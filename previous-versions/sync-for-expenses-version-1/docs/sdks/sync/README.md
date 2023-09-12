@@ -6,9 +6,9 @@ Triggering a new sync of expenses to accounting software.
 
 ### Available Operations
 
-* [intiate_sync](#intiate_sync) - Initiate sync
+* [initiate_sync](#initiate_sync) - Initiate sync
 
-## intiate_sync
+## initiate_sync
 
 Initiate sync of pending transactions.
 
@@ -24,7 +24,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
     ),
 )
 
-req = operations.IntiateSyncRequest(
+req = operations.InitiateSyncRequest(
     post_sync=shared.PostSync(
         dataset_ids=[
             'a674e0f4-67cc-4879-aed1-51a05dfc2ddf',
@@ -33,7 +33,7 @@ req = operations.IntiateSyncRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.sync.intiate_sync(req)
+res = s.sync.initiate_sync(req)
 
 if res.sync_initiated is not None:
     # handle response
@@ -41,13 +41,13 @@ if res.sync_initiated is not None:
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.IntiateSyncRequest](../../models/operations/intiatesyncrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `retries`                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)               | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.InitiateSyncRequest](../../models/operations/initiatesyncrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `retries`                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                               | Configuration to override the default retry behavior of the client.              |
 
 
 ### Response
 
-**[operations.IntiateSyncResponse](../../models/operations/intiatesyncresponse.md)**
+**[operations.InitiateSyncResponse](../../models/operations/initiatesyncresponse.md)**
 
