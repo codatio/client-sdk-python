@@ -3,7 +3,8 @@
 from .sdkconfiguration import SDKConfiguration
 from codatsyncexpenses import utils
 from codatsyncexpenses.models import errors, operations, shared
-from typing import Optional
+from jsonpath import JSONPath
+from typing import Any, Dict, Optional
 
 class TransactionStatus:
     r"""Retrieve the status of transactions within a sync."""
@@ -93,8 +94,26 @@ class TransactionStatus:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListSyncTransactionsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListSyncTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list(
+                request=operations.ListSyncTransactionsRequest(
+                    company_id=request.company_id,
+                    sync_id=request.sync_id,
+                    page=request.page,
+                    page_size=request.page_size,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListSyncTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

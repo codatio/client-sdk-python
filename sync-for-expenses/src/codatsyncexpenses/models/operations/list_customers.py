@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import customers as shared_customers
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -27,6 +27,7 @@ class ListCustomersRequest:
 
 @dataclasses.dataclass
 class ListCustomersResponse:
+    next: Callable[[], Optional[ListCustomersResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     customers: Optional[shared_customers.Customers] = dataclasses.field(default=None)
