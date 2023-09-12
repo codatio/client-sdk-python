@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-sync-for-payables",
-    version="0.2.0",
+    version="0.2.1",
     author="Codat",
     description="Streamline your customers' accounts payable workflow.",
     long_description=long_description,

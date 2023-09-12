@@ -41,40 +41,40 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Fort Virgilfurt',
-                country='Sweden',
-                line1='officia',
-                line2='sed',
-                postal_code='09902',
-                region='qui',
+                city='Adityastad',
+                country='Lithuania',
+                line1='repellendus',
+                line2='veritatis',
+                postal_code='09968',
+                region='officia',
                 type=shared.AccountingAddressType.UNKNOWN,
             ),
         ],
-        contact_name='necessitatibus',
-        default_currency='harum',
-        email_address='explicabo',
-        id='164cf9ab-8366-4c72-bffd-a9e06bee4825',
+        contact_name='voluptatem',
+        default_currency='alias',
+        email_address='eveniet',
+        id='f0422eb2-164c-4f9a-b836-6c723ffda9e0',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='+44 25691 154789',
-        registration_number='voluptatibus',
+        phone='01224 658 999',
+        registration_number='recusandae',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "officiis": {
-                    "architecto": 'architecto',
+                "rem": {
+                    "quia": 'ullam',
                 },
             },
         ),
-        supplier_name='enim',
-        tax_number='optio',
+        supplier_name='quisquam',
+        tax_number='dicta',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=525951,
+    timeout_in_minutes=973017,
 )
 
 res = s.suppliers.create(req)
@@ -121,7 +121,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='perferendis',
+    supplier_id='eligendi',
 )
 
 res = s.suppliers.get(req)
@@ -218,7 +218,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='facilis',
+    query='quae',
 )
 
 res = s.suppliers.list(req)
@@ -269,42 +269,42 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Wauwatosa',
-                country='Nauru',
-                line1='dicta',
-                line2='quos',
-                postal_code='22982',
-                region='consequuntur',
+                city='Bountiful',
+                country='Bhutan',
+                line1='enim',
+                line2='optio',
+                postal_code='07996-1532',
+                region='modi',
                 type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='vero',
-        default_currency='doloribus',
-        email_address='impedit',
-        id='ce8f1977-773e-4635-a2a7-b408f05e3d48',
+        contact_name='maxime',
+        default_currency='modi',
+        email_address='consequuntur',
+        id='defcce8f-1977-4773-a635-62a7b408f05e',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='01224 658 999',
-        registration_number='est',
+        registration_number='aliquam',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "vitae": {
-                    "nesciunt": 'similique',
+                "fugiat": {
+                    "est": 'delectus',
                 },
             },
         ),
-        supplier_name='illo',
-        tax_number='repellat',
+        supplier_name='velit',
+        tax_number='vitae',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='nemo',
-    timeout_in_minutes=987890,
+    supplier_id='nesciunt',
+    timeout_in_minutes=630832,
 )
 
 res = s.suppliers.update(req)

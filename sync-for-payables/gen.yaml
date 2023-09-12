@@ -1,24 +1,25 @@
 configVersion: 1.0.0
 management:
-  docChecksum: f10cb6c3b42af48edde29dfe420f6a68
+  docChecksum: 299d49c3bea217209c7297db9ab7b9f7
   docVersion: 3.0.0
-  speakeasyVersion: 1.82.0
-  generationVersion: 2.107.0
+  speakeasyVersion: 1.82.5
+  generationVersion: 2.108.3
 generation:
   sdkClassName: CodatSyncPayables
   singleTagPerOp: false
   telemetryEnabled: true
 features:
   python:
-    core: 2.85.3
+    core: 2.85.4
     deprecations: 2.81.1
     examples: 2.81.2
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
     nameOverrides: 2.81.1
+    pagination: 2.81.2
     retries: 2.82.0
 python:
-  version: 0.2.0
+  version: 0.2.1
   author: Codat
   description: Streamline your customers' accounts payable workflow.
   maxMethodParams: 0

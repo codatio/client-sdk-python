@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
 from ..shared import trackingcategories as shared_trackingcategories
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -27,6 +27,7 @@ class ListTrackingCategoriesRequest:
 
 @dataclasses.dataclass
 class ListTrackingCategoriesResponse:
+    next: Callable[[], Optional[ListTrackingCategoriesResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
