@@ -6,6 +6,10 @@
 
 ```bash
 pip install codat-banking
+```## SDK Installation
+
+```bash
+pip install codat-banking
 ```<!-- Start SDK Installation -->
 
 <!-- End SDK Installation -->
@@ -36,11 +40,57 @@ res = s.account_balances.list(req)
 
 if res.account_balances is not None:
     # handle response
+```
+
+```python
+import codatbanking
+from codatbanking.models import operations, shared
+
+s = codatbanking.CodatBanking(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.ListAccountBalancesRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
+    page=1,
+    page_size=100,
+    query='corrupti',
+)
+
+res = s.account_balances.list(req)
+
+if res.account_balances is not None:
+    # handle response
 ```<!-- Start SDK Example Usage -->
 
 <!-- End SDK Example Usage -->
 
 ## Available Resources and Operations
+
+
+### [account_balances](docs/sdks/accountbalances/README.md)
+
+* [list](docs/sdks/accountbalances/README.md#list) - List account balances
+
+### [accounts](docs/sdks/accounts/README.md)
+
+* [get](docs/sdks/accounts/README.md#get) - Get account
+* [list](docs/sdks/accounts/README.md#list) - List accounts
+
+### [transaction_categories](docs/sdks/transactioncategories/README.md)
+
+* [get](docs/sdks/transactioncategories/README.md#get) - Get transaction category
+* [list](docs/sdks/transactioncategories/README.md#list) - List transaction categories
+
+### [transactions](docs/sdks/transactions/README.md)
+
+* [get](docs/sdks/transactions/README.md#get) - Get bank transaction
+* [list](docs/sdks/transactions/README.md#list) - List transactions
+* [~~list_bank_transactions~~](docs/sdks/transactions/README.md#list_bank_transactions) - List banking transactions :warning: **Deprecated** Use `list` instead.## Available Resources and Operations
 
 
 ### [account_balances](docs/sdks/accountbalances/README.md)

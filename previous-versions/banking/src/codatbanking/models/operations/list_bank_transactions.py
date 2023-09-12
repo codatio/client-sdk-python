@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import transactions as shared_transactions
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -26,6 +26,7 @@ class ListBankTransactionsRequest:
 
 @dataclasses.dataclass
 class ListBankTransactionsResponse:
+    next: Callable[[], Optional[ListBankTransactionsResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
