@@ -34,7 +34,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetTrackingCategoryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tracking_category_id='excepturi',
+    tracking_category_id='natus',
 )
 
 res = s.tracking_categories.get(req)
@@ -82,7 +82,7 @@ req = operations.ListTrackingCategoriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='odit',
+    query='magni',
 )
 
 res = s.tracking_categories.list(req)

@@ -41,30 +41,30 @@ s = codatsyncpayroll.CodatSyncPayroll(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='placeat',
-        id='8796ed15-1a05-4dfc-addf-7cc78ca1ba92',
+        description='debitis',
+        id='0f467cc8-796e-4d15-9a05-dfc2ddf7cc78',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='8fc81674-2cb7-4392-8592-9396fea7596e',
-                    name='Roger Beier',
+                    id='ca1ba928-fc81-4674-acb7-39205929396f',
+                    name='Wilbur Kirlin',
                 ),
-                currency='mollitia',
-                description='laborum',
-                net_amount=Decimal('1709.09'),
+                currency='iure',
+                description='saepe',
+                net_amount=Decimal('6976.31'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
                             data_type='journalEntry',
-                            id='52c59559-07af-4f1a-ba2f-a9467739251a',
+                            id='0faaa235-2c59-4559-87af-f1a3a2fa9467',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='a52c3f5a-d019-4da1-bfe7-8f097b0074f1',
-            name='Miss Valerie Kshlerin',
+            id='739251aa-52c3-4f5a-9019-da1ffe78f097',
+            name='Thomas Batz',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -72,14 +72,14 @@ req = operations.CreateJournalEntryRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.JournalEntryRecordReference(
-            data_type='transfer',
-            id='13b99d48-8e1e-491e-850a-d2abd4426980',
+            data_type='invoice',
+            id='471b5e6e-13b9-49d4-88e1-e91e450ad2ab',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.JournalEntrySupplementalData(
             content={
-                "assumenda": {
-                    "ipsam": 'alias',
+                "labore": {
+                    "modi": 'qui',
                 },
             },
         ),
@@ -87,7 +87,7 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=677817,
+    timeout_in_minutes=586513,
 )
 
 res = s.journal_entries.create(req)
@@ -156,7 +156,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='excepturi',
+    journal_entry_id='quos',
 )
 
 res = s.journal_entries.delete(req)
@@ -203,7 +203,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='tempora',
+    journal_entry_id='perferendis',
 )
 
 res = s.journal_entries.get(req)
@@ -300,7 +300,7 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='facilis',
+    query='magni',
 )
 
 res = s.journal_entries.list(req)

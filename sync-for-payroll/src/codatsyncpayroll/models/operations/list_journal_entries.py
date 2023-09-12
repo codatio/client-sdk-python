@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
 from ..shared import journalentries as shared_journalentries
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -27,6 +27,7 @@ class ListJournalEntriesRequest:
 
 @dataclasses.dataclass
 class ListJournalEntriesResponse:
+    next: Callable[[], Optional[ListJournalEntriesResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)

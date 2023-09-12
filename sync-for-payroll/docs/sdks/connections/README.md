@@ -32,7 +32,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.CreateConnectionRequest(
     request_body=operations.CreateConnectionRequestBody(
-        platform_key='tempora',
+        platform_key='deserunt',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -198,7 +198,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.UnlinkConnectionRequest(
     request_body=operations.UnlinkConnectionRequestBody(
-        status='molestiae',
+        status='iure',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

@@ -47,6 +47,7 @@ src/codatsyncpayroll/models/operations/refresh_all_data_types.py
 src/codatsyncpayroll/models/operations/refresh_data_type.py
 src/codatsyncpayroll/models/operations/get_tracking_category.py
 src/codatsyncpayroll/models/operations/list_tracking_categories.py
+src/codatsyncpayroll/models/operations/get_accounting_profile.py
 src/codatsyncpayroll/models/operations/__init__.py
 src/codatsyncpayroll/models/shared/errormessage.py
 src/codatsyncpayroll/models/shared/createaccountresponse.py
@@ -97,11 +98,13 @@ src/codatsyncpayroll/models/shared/trackingcategorytree.py
 src/codatsyncpayroll/models/shared/status.py
 src/codatsyncpayroll/models/shared/trackingcategories.py
 src/codatsyncpayroll/models/shared/trackingcategory.py
+src/codatsyncpayroll/models/shared/onecompanies_1percent_7bcompanyidpercent_7d_1data_1info_get_responses_200_content_application_1json_schema_properties_phonenumbers_items_definitions_phonenumbertype.py
+src/codatsyncpayroll/models/shared/onecompanies_1percent_7bcompanyidpercent_7d_1data_1info_get_responses_200_content_application_1json_schema_properties_addresses_items_definitions_accountingaddresstype.py
 src/codatsyncpayroll/models/shared/security.py
 src/codatsyncpayroll/models/shared/__init__.py
 src/codatsyncpayroll/models/errors/__init__.py
-docs/sdks/codatsyncpayroll/README.md
 docs/models/utils/retryconfig.md
+docs/sdks/codatsyncpayroll/README.md
 docs/sdks/accounts/README.md
 docs/sdks/companies/README.md
 docs/sdks/connections/README.md
@@ -175,6 +178,13 @@ docs/models/operations/gettrackingcategoryrequest.md
 docs/models/operations/gettrackingcategoryresponse.md
 docs/models/operations/listtrackingcategoriesrequest.md
 docs/models/operations/listtrackingcategoriesresponse.md
+docs/models/operations/getaccountingprofilerequest.md
+docs/models/operations/getaccountingprofilecompanyinformationaccountingaddress.md
+docs/models/operations/getaccountingprofilecompanyinformationphone.md
+docs/models/operations/getaccountingprofilecompanyinformationweblinktype.md
+docs/models/operations/getaccountingprofilecompanyinformationweblink.md
+docs/models/operations/getaccountingprofilecompanyinformation.md
+docs/models/operations/getaccountingprofileresponse.md
 docs/models/shared/errormessage.md
 docs/models/shared/createaccountresponse.md
 docs/models/shared/validation.md
@@ -231,5 +241,7 @@ docs/models/shared/trackingcategorytree.md
 docs/models/shared/status.md
 docs/models/shared/trackingcategories.md
 docs/models/shared/trackingcategory.md
+docs/models/shared/onecompanies1percent7bcompanyidpercent7d1data1infogetresponses200contentapplication1jsonschemapropertiesphonenumbersitemsdefinitionsphonenumbertype.md
+docs/models/shared/onecompanies1percent7bcompanyidpercent7d1data1infogetresponses200contentapplication1jsonschemapropertiesaddressesitemsdefinitionsaccountingaddresstype.md
 docs/models/shared/security.md
 .gitattributes

@@ -28,6 +28,8 @@ from .journals import *
 from .journalstatus import *
 from .links import *
 from .metadata import *
+from .onecompanies_1percent_7bcompanyidpercent_7d_1data_1info_get_responses_200_content_application_1json_schema_properties_addresses_items_definitions_accountingaddresstype import *
+from .onecompanies_1percent_7bcompanyidpercent_7d_1data_1info_get_responses_200_content_application_1json_schema_properties_phonenumbers_items_definitions_phonenumbertype import *
 from .pulloperation import *
 from .pulloperations import *
 from .pushchangetype import *
@@ -51,4 +53,4 @@ from .trackingcategorytree import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["Account","AccountMetadata","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","Accounts","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateAccountResponse","CreateJournalEntryResponse","CreateJournalResponse","DataConnectionError","DataConnectionStatus","DataStatus","DataType","ErrorMessage","HalRef","Journal","JournalEntries","JournalEntry","JournalEntryRecordReference","JournalEntrySupplementalData","JournalLine","JournalLineTracking","JournalRef","JournalStatus","Journals","Links","Metadata","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","Security","Status","TrackingCategories","TrackingCategory","TrackingCategoryTree","Validation","ValidationItem"]
+__all__ = ["Account","AccountMetadata","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","Accounts","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateAccountResponse","CreateJournalEntryResponse","CreateJournalResponse","DataConnectionError","DataConnectionStatus","DataStatus","DataType","ErrorMessage","HalRef","Journal","JournalEntries","JournalEntry","JournalEntryRecordReference","JournalEntrySupplementalData","JournalLine","JournalLineTracking","JournalRef","JournalStatus","Journals","Links","Metadata","Onecompanies1Percent7BcompanyIDPercent7D1data1infoGetResponses200ContentApplication1jsonSchemaPropertiesAddressesItemsDefinitionsAccountingAddressType","Onecompanies1Percent7BcompanyIDPercent7D1data1infoGetResponses200ContentApplication1jsonSchemaPropertiesPhoneNumbersItemsDefinitionsPhoneNumberType","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","Security","Status","TrackingCategories","TrackingCategory","TrackingCategoryTree","Validation","ValidationItem"]
