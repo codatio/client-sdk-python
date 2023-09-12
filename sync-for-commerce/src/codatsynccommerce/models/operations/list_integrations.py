@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import integrations as shared_integrations
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -25,6 +25,7 @@ class ListIntegrationsRequest:
 
 @dataclasses.dataclass
 class ListIntegrationsResponse:
+    next: Callable[[], Optional[ListIntegrationsResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     integrations: Optional[shared_integrations.Integrations] = dataclasses.field(default=None)
