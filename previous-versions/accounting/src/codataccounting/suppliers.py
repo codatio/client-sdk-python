@@ -4,7 +4,8 @@ from .sdkconfiguration import SDKConfiguration
 from codataccounting import utils
 from codataccounting.models import errors, operations, shared
 from enum import Enum
-from typing import Optional
+from jsonpath import JSONPath
+from typing import Any, Dict, Optional
 
 class DownloadAttachmentAcceptEnum(str, Enum):
     APPLICATION_JSON = "application/json"
@@ -334,8 +335,27 @@ class Suppliers:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListSuppliersResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListSuppliersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list(
+                request=operations.ListSuppliersRequest(
+                    company_id=request.company_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListSuppliersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

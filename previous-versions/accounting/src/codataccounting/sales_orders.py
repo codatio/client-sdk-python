@@ -3,7 +3,8 @@
 from .sdkconfiguration import SDKConfiguration
 from codataccounting import utils
 from codataccounting.models import errors, operations, shared
-from typing import Optional
+from jsonpath import JSONPath
+from typing import Any, Dict, Optional
 
 class SalesOrders:
     r"""Sales orders"""
@@ -103,8 +104,27 @@ class SalesOrders:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListSalesOrdersResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListSalesOrdersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list(
+                request=operations.ListSalesOrdersRequest(
+                    company_id=request.company_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListSalesOrdersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

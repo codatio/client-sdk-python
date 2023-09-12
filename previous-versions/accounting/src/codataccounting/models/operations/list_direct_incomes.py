@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import directincomes as shared_directincomes
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -28,6 +28,7 @@ class ListDirectIncomesRequest:
 
 @dataclasses.dataclass
 class ListDirectIncomesResponse:
+    next: Callable[[], Optional[ListDirectIncomesResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     direct_incomes: Optional[shared_directincomes.DirectIncomes] = dataclasses.field(default=None)

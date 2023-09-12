@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import directcosts as shared_directcosts
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -28,6 +28,7 @@ class ListDirectCostsRequest:
 
 @dataclasses.dataclass
 class ListDirectCostsResponse:
+    next: Callable[[], Optional[ListDirectCostsResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     direct_costs: Optional[shared_directcosts.DirectCosts] = dataclasses.field(default=None)

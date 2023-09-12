@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import accounttransactions as shared_accounttransactions
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -28,6 +28,7 @@ class ListAccountTransactionsRequest:
 
 @dataclasses.dataclass
 class ListAccountTransactionsResponse:
+    next: Callable[[], Optional[ListAccountTransactionsResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     account_transactions: Optional[shared_accounttransactions.AccountTransactions] = dataclasses.field(default=None)
