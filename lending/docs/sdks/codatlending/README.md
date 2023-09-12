@@ -21,7 +21,7 @@ The Lending API is built on top of the latest accounting, commerce, and banking 
 | Accounts receivable  | Data from a linked accounting platform representing money owed to the business for sold goods or services. |
 | Transactions         | Data from a linked accounting platform representing transactions.                                          |
 | Financial statements | Financial data and reports from a linked accounting platform.                                              |
-| Banking              | Retrieve banking data from linked bank accounts.                                                           |
+| Bank statements              | Retrieve banking data from linked bank accounts.                                                           |
 | Sales                | Retrieve standardized sales data from a linked commerce platform.                                          |
 | Liabilities          | Debt and other liabilities.                                                                                |
 | Data integrity       | Match mutable accounting data with immutable banking data to increase confidence in financial data.        |
@@ -31,4 +31,44 @@ The Lending API is built on top of the latest accounting, commerce, and banking 
 | File upload          | Endpoints to manage uploaded files.                                                                        |
 
 ### Available Operations
+
+* [get_accounting_profile](#get_accounting_profile) - Get company accounting profile
+
+## get_accounting_profile
+
+Gets the latest basic info for a company.
+
+### Example Usage
+
+```python
+import codatlending
+from codatlending.models import operations, shared
+
+s = codatlending.CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetAccountingProfileRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+)
+
+res = s.codat_lending.get_accounting_profile(req)
+
+if res.accounting_company_info is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.GetAccountingProfileRequest](../../models/operations/getaccountingprofilerequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
+
+
+### Response
+
+**[operations.GetAccountingProfileResponse](../../models/operations/getaccountingprofileresponse.md)**
 

@@ -3,7 +3,8 @@
 from .sdkconfiguration import SDKConfiguration
 from codatlending import utils
 from codatlending.models import errors, operations, shared
-from typing import Optional
+from jsonpath import JSONPath
+from typing import Any, Dict, Optional
 
 class Sales:
     r"""Retrieve standardized sales data from a linked commerce platform."""
@@ -909,8 +910,28 @@ class Sales:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommerceCustomersResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommerceCustomersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_customers(
+                request=operations.ListCommerceCustomersRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommerceCustomersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -963,8 +984,28 @@ class Sales:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommerceDisputesResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommerceDisputesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_disputes(
+                request=operations.ListCommerceDisputesRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommerceDisputesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1016,8 +1057,24 @@ class Sales:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommerceLocationsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommerceLocationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_locations(
+                request=operations.ListCommerceLocationsRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommerceLocationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1070,8 +1127,28 @@ class Sales:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommerceOrdersResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommerceOrdersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_orders(
+                request=operations.ListCommerceOrdersRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommerceOrdersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1124,8 +1201,28 @@ class Sales:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommercePaymentMethodsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommercePaymentMethodsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_payment_methods(
+                request=operations.ListCommercePaymentMethodsRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommercePaymentMethodsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1178,8 +1275,28 @@ class Sales:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommercePaymentsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommercePaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_payments(
+                request=operations.ListCommercePaymentsRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommercePaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1232,8 +1349,28 @@ class Sales:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommerceProductCategoriesResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommerceProductCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_product_categories(
+                request=operations.ListCommerceProductCategoriesRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommerceProductCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1286,8 +1423,28 @@ class Sales:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommerceProductsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommerceProductsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_products(
+                request=operations.ListCommerceProductsRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommerceProductsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1340,8 +1497,28 @@ class Sales:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommerceTransactionsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommerceTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_transactions(
+                request=operations.ListCommerceTransactionsRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommerceTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

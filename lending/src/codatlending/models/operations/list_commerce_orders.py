@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import commerceorders as shared_commerceorders
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -28,6 +28,7 @@ class ListCommerceOrdersRequest:
 
 @dataclasses.dataclass
 class ListCommerceOrdersResponse:
+    next: Callable[[], Optional[ListCommerceOrdersResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     commerce_orders: Optional[shared_commerceorders.CommerceOrders] = dataclasses.field(default=None)

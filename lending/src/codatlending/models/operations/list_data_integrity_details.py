@@ -6,7 +6,7 @@ import requests as requests_http
 from ..shared import dataintegritydatatype as shared_dataintegritydatatype
 from ..shared import dataintegritydetails as shared_dataintegritydetails
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -30,6 +30,7 @@ class ListDataIntegrityDetailsRequest:
 
 @dataclasses.dataclass
 class ListDataIntegrityDetailsResponse:
+    next: Callable[[], Optional[ListDataIntegrityDetailsResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     data_integrity_details: Optional[shared_dataintegritydetails.DataIntegrityDetails] = dataclasses.field(default=None)

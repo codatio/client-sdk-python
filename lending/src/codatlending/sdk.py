@@ -4,7 +4,7 @@ import requests as requests_http
 from .accounting_bank_data import AccountingBankData
 from .accounts_payable import AccountsPayable
 from .accounts_receivable import AccountsReceivable
-from .banking import Banking
+from .bank_statements import BankStatements
 from .companies import Companies
 from .company_info import CompanyInfo
 from .connections import Connections
@@ -18,7 +18,8 @@ from .sales import Sales
 from .sdkconfiguration import SDKConfiguration
 from .transactions import Transactions
 from codatlending import utils
-from codatlending.models import shared
+from codatlending.models import errors, operations, shared
+from typing import Optional
 
 class CodatLending:
     r"""Lending API: Our Lending API helps you make smarter credit decisions on small businesses by enabling you to pull your customers' latest data from accounting, banking, and commerce platforms they are already using. It also includes features to help providers verify the accuracy of data and process it more efficiently.
@@ -40,7 +41,7 @@ class CodatLending:
     | Accounts receivable  | Data from a linked accounting platform representing money owed to the business for sold goods or services. |
     | Transactions         | Data from a linked accounting platform representing transactions.                                          |
     | Financial statements | Financial data and reports from a linked accounting platform.                                              |
-    | Banking              | Retrieve banking data from linked bank accounts.                                                           |
+    | Bank statements              | Retrieve banking data from linked bank accounts.                                                           |
     | Sales                | Retrieve standardized sales data from a linked commerce platform.                                          |
     | Liabilities          | Debt and other liabilities.                                                                                |
     | Data integrity       | Match mutable accounting data with immutable banking data to increase confidence in financial data.        |
@@ -55,7 +56,7 @@ class CodatLending:
     r"""Data from a linked accounting platform representing money the business owes money to its suppliers."""
     accounts_receivable: AccountsReceivable
     r"""Data from a linked accounting platform representing money owed to the business for sold goods or services."""
-    banking: Banking
+    bank_statements: BankStatements
     r"""Retrieve banking data from linked bank accounts."""
     companies: Companies
     r"""Create and manage your Codat companies."""
@@ -122,7 +123,7 @@ class CodatLending:
         self.accounting_bank_data = AccountingBankData(self.sdk_configuration)
         self.accounts_payable = AccountsPayable(self.sdk_configuration)
         self.accounts_receivable = AccountsReceivable(self.sdk_configuration)
-        self.banking = Banking(self.sdk_configuration)
+        self.bank_statements = BankStatements(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
         self.company_info = CompanyInfo(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
@@ -134,4 +135,53 @@ class CodatLending:
         self.manage_data = ManageData(self.sdk_configuration)
         self.sales = Sales(self.sdk_configuration)
         self.transactions = Transactions(self.sdk_configuration)
+    
+    def get_accounting_profile(self, request: operations.GetAccountingProfileRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountingProfileResponse:
+        r"""Get company accounting profile
+        Gets the latest basic info for a company.
+        """
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GetAccountingProfileRequest, base_url, '/companies/{companyId}/data/info', request)
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        global_retry_config = self.sdk_configuration.retry_config
+        retry_config = retries
+        if retry_config is None:
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+
+        def do_request():
+            return client.request('GET', url, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetAccountingProfileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AccountingCompanyInfo])
+                res.accounting_company_info = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 404, 409, 429]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
     

@@ -38,7 +38,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingAccountRequest(
-    account_id='qui',
+    account_id='modi',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -165,7 +165,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetCategorizedBalanceSheetStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=456150,
+    number_of_periods=736918,
     report_date='29-09-2020',
 )
 
@@ -208,7 +208,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetCategorizedProfitAndLossStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=216550,
+    number_of_periods=456150,
     report_date='29-09-2020',
 )
 
@@ -298,7 +298,7 @@ req = operations.ListAccountingAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='aspernatur',
+    query='excepturi',
 )
 
 res = s.financial_statements.list_accounts(req)

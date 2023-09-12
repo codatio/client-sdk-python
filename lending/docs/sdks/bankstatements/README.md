@@ -1,4 +1,4 @@
-# banking
+# bank_statements
 
 ## Overview
 
@@ -39,12 +39,12 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetBankingAccountRequest(
-    account_id='molestiae',
+    account_id='maiores',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.banking.get_bank_account(req)
+res = s.bank_statements.get_bank_account(req)
 
 if res.banking_account is not None:
     # handle response
@@ -89,10 +89,10 @@ s = codatlending.CodatLending(
 req = operations.GetBankingTransactionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transaction_id='quod',
+    transaction_id='molestiae',
 )
 
-res = s.banking.get_bank_transaction(req)
+res = s.bank_statements.get_bank_transaction(req)
 
 if res.banking_transaction is not None:
     # handle response
@@ -140,7 +140,7 @@ req = operations.GetBankingTransactionCategoryRequest(
     transaction_category_id='quod',
 )
 
-res = s.banking.get_bank_transaction_category(req)
+res = s.bank_statements.get_bank_transaction_category(req)
 
 if res.banking_transaction_category is not None:
     # handle response
@@ -183,10 +183,10 @@ req = operations.GetCategorizedBankStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='esse',
+    query='quod',
 )
 
-res = s.banking.get_categorized_bank_statement(req)
+res = s.bank_statements.get_categorized_bank_statement(req)
 
 if res.enhanced_cash_flow_transactions is not None:
     # handle response
@@ -232,10 +232,10 @@ req = operations.ListBankingAccountBalancesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='totam',
+    query='esse',
 )
 
-res = s.banking.list_bank_account_balances(req)
+res = s.bank_statements.list_bank_account_balances(req)
 
 if res.banking_account_balances is not None:
     # handle response
@@ -281,10 +281,10 @@ req = operations.ListBankingAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='porro',
+    query='totam',
 )
 
-res = s.banking.list_bank_accounts(req)
+res = s.bank_statements.list_bank_accounts(req)
 
 if res.banking_accounts is not None:
     # handle response
@@ -330,10 +330,10 @@ req = operations.ListBankingTransactionCategoriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dolorum',
+    query='porro',
 )
 
-res = s.banking.list_bank_transaction_categories(req)
+res = s.bank_statements.list_bank_transaction_categories(req)
 
 if res.banking_transaction_categories is not None:
     # handle response
@@ -379,10 +379,10 @@ req = operations.ListBankingTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dicta',
+    query='dolorum',
 )
 
-res = s.banking.list_bank_transactions(req)
+res = s.bank_statements.list_bank_transactions(req)
 
 if res.banking_transactions is not None:
     # handle response

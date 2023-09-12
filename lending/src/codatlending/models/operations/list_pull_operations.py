@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
 from ..shared import pulloperations as shared_pulloperations
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -27,6 +27,7 @@ class ListPullOperationsRequest:
 
 @dataclasses.dataclass
 class ListPullOperationsResponse:
+    next: Callable[[], Optional[ListPullOperationsResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)

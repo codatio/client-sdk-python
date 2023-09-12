@@ -45,7 +45,7 @@ req = operations.DownloadAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='aut',
+    direct_cost_id='possimus',
 )
 
 res = s.transactions.download_direct_cost_attachment(req)
@@ -91,7 +91,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingAccountTransactionRequest(
-    account_transaction_id='quasi',
+    account_transaction_id='aut',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -141,7 +141,7 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingDirectCostRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='error',
+    direct_cost_id='quasi',
 )
 
 res = s.transactions.get_direct_cost(req)
@@ -188,7 +188,7 @@ req = operations.GetAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='temporibus',
+    direct_cost_id='error',
 )
 
 res = s.transactions.get_direct_cost_attachment(req)
@@ -235,7 +235,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='laborum',
+    journal_id='temporibus',
 )
 
 res = s.transactions.get_journal(req)
@@ -282,7 +282,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='quasi',
+    journal_entry_id='laborum',
 )
 
 res = s.transactions.get_journal_entry(req)
@@ -330,7 +330,7 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingTransferRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transfer_id='reiciendis',
+    transfer_id='quasi',
 )
 
 res = s.transactions.get_transfer(req)
@@ -379,7 +379,7 @@ req = operations.ListAccountingAccountTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptatibus',
+    query='reiciendis',
 )
 
 res = s.transactions.list_account_transactions(req)
@@ -425,7 +425,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingDirectCostAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='vero',
+    direct_cost_id='voluptatibus',
 )
 
 res = s.transactions.list_direct_cost_attachments(req)
@@ -474,7 +474,7 @@ req = operations.ListAccountingDirectCostsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nihil',
+    query='vero',
 )
 
 res = s.transactions.list_direct_costs(req)
@@ -522,7 +522,7 @@ req = operations.ListAccountingJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='praesentium',
+    query='nihil',
 )
 
 res = s.transactions.list_journal_entries(req)
@@ -570,7 +570,7 @@ req = operations.ListAccountingJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptatibus',
+    query='praesentium',
 )
 
 res = s.transactions.list_journals(req)
@@ -619,7 +619,7 @@ req = operations.ListAccountingTransfersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsa',
+    query='voluptatibus',
 )
 
 res = s.transactions.list_transfers(req)

@@ -4,7 +4,8 @@ from .sdkconfiguration import SDKConfiguration
 from codatlending import utils
 from codatlending.models import errors, operations, shared
 from enum import Enum
-from typing import Optional
+from jsonpath import JSONPath
+from typing import Any, Dict, Optional
 
 class DownloadCustomerAttachmentAcceptEnum(str, Enum):
     APPLICATION_JSON = "application/json"
@@ -720,7 +721,7 @@ class AccountsReceivable:
     
     def get_reconciled_invoices(self, request: operations.GetReconciledInvoicesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetReconciledInvoicesResponse:
         r"""Get reconciled invoices
-        The _Get reconciled invoices_ endpoint gets a list of invoices linked to the corresponding banking transaction
+        Gets a list of invoices linked to the corresponding banking transaction
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -749,8 +750,30 @@ class AccountsReceivable:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.GetReconciledInvoicesResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            page = request.page
+            new_page = page + 1
+            
 
-        res = operations.GetReconciledInvoicesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if not http_res.text:
+                return None
+            results = JSONPath("$.reportItems").parse(body)
+            if len(results) == 0 or len(results[0]) == 0:
+                return None
+
+            return self.get_reconciled_invoices(
+                request=operations.GetReconciledInvoicesRequest(
+                    company_id=request.company_id,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.GetReconciledInvoicesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -846,8 +869,27 @@ class AccountsReceivable:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListAccountingCreditNotesResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListAccountingCreditNotesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_credit_notes(
+                request=operations.ListAccountingCreditNotesRequest(
+                    company_id=request.company_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListAccountingCreditNotesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -953,8 +995,27 @@ class AccountsReceivable:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListAccountingCustomersResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListAccountingCustomersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_customers(
+                request=operations.ListAccountingCustomersRequest(
+                    company_id=request.company_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListAccountingCustomersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1060,8 +1121,28 @@ class AccountsReceivable:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListAccountingDirectIncomesResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListAccountingDirectIncomesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_direct_incomes(
+                request=operations.ListAccountingDirectIncomesRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListAccountingDirectIncomesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1167,8 +1248,27 @@ class AccountsReceivable:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListAccountingInvoicesResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListAccountingInvoicesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_invoices(
+                request=operations.ListAccountingInvoicesRequest(
+                    company_id=request.company_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListAccountingInvoicesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -1221,8 +1321,27 @@ class AccountsReceivable:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListAccountingPaymentsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListAccountingPaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_payments(
+                request=operations.ListAccountingPaymentsRequest(
+                    company_id=request.company_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListAccountingPaymentsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

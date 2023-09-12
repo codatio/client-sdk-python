@@ -3,9 +3,10 @@
 from .sdkconfiguration import SDKConfiguration
 from codatlending import utils
 from codatlending.models import errors, operations, shared
-from typing import Optional
+from jsonpath import JSONPath
+from typing import Any, Dict, Optional
 
-class Banking:
+class BankStatements:
     r"""Retrieve banking data from linked bank accounts."""
     sdk_configuration: SDKConfiguration
 
@@ -195,8 +196,30 @@ class Banking:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.GetCategorizedBankStatementResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            page = request.page
+            new_page = page + 1
+            
 
-        res = operations.GetCategorizedBankStatementResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if not http_res.text:
+                return None
+            results = JSONPath("$.reportItems").parse(body)
+            if len(results) == 0 or len(results[0]) == 0:
+                return None
+
+            return self.get_categorized_bank_statement(
+                request=operations.GetCategorizedBankStatementRequest(
+                    company_id=request.company_id,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.GetCategorizedBankStatementResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -249,8 +272,28 @@ class Banking:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListBankingAccountBalancesResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListBankingAccountBalancesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_bank_account_balances(
+                request=operations.ListBankingAccountBalancesRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListBankingAccountBalancesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -303,8 +346,28 @@ class Banking:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListBankingAccountsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListBankingAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_bank_accounts(
+                request=operations.ListBankingAccountsRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListBankingAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -357,8 +420,28 @@ class Banking:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListBankingTransactionCategoriesResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListBankingTransactionCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_bank_transaction_categories(
+                request=operations.ListBankingTransactionCategoriesRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListBankingTransactionCategoriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -411,8 +494,28 @@ class Banking:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListBankingTransactionsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListBankingTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_bank_transactions(
+                request=operations.ListBankingTransactionsRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                    order_by=request.order_by,
+                    page=request.page,
+                    page_size=request.page_size,
+                    query=request.query,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListBankingTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

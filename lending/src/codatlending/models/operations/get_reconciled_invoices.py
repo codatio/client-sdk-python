@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import enhancedinvoicesreport as shared_enhancedinvoicesreport
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -25,6 +25,7 @@ class GetReconciledInvoicesRequest:
 
 @dataclasses.dataclass
 class GetReconciledInvoicesResponse:
+    next: Callable[[], Optional[GetReconciledInvoicesResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     enhanced_invoices_report: Optional[shared_enhancedinvoicesreport.EnhancedInvoicesReport] = dataclasses.field(default=None)

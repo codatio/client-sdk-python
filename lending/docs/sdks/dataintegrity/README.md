@@ -34,7 +34,7 @@ req = operations.ListDataIntegrityDetailsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deleniti',
+    query='fugit',
 )
 
 res = s.data_integrity.details(req)
@@ -126,7 +126,7 @@ s = codatlending.CodatLending(
 req = operations.GetDataIntegritySummariesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-    query='hic',
+    query='deleniti',
 )
 
 res = s.data_integrity.summaries(req)

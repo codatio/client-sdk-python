@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import enhancedcashflowtransactions as shared_enhancedcashflowtransactions
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -25,6 +25,7 @@ class GetCategorizedBankStatementRequest:
 
 @dataclasses.dataclass
 class GetCategorizedBankStatementResponse:
+    next: Callable[[], Optional[GetCategorizedBankStatementResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     enhanced_cash_flow_transactions: Optional[shared_enhancedcashflowtransactions.EnhancedCashFlowTransactions] = dataclasses.field(default=None)
