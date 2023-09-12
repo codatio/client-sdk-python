@@ -6,6 +6,10 @@
 
 ```bash
 pip install codat-files
+```## SDK Installation
+
+```bash
+pip install codat-files
 ```<!-- Start SDK Installation -->
 
 <!-- End SDK Installation -->
@@ -32,11 +36,39 @@ res = s.files.download_files(req)
 
 if res.data is not None:
     # handle response
+```
+
+```python
+import codatfiles
+from codatfiles.models import operations, shared
+
+s = codatfiles.CodatFiles(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.DownloadFilesRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    date_='2022-10-23T00:00:00.000Z',
+)
+
+res = s.files.download_files(req)
+
+if res.data is not None:
+    # handle response
 ```<!-- Start SDK Example Usage -->
 
 <!-- End SDK Example Usage -->
 
 ## Available Resources and Operations
+
+
+### [files](docs/sdks/files/README.md)
+
+* [download_files](docs/sdks/files/README.md#download_files) - Download all files for a company
+* [list_files](docs/sdks/files/README.md#list_files) - List all files uploaded by a company
+* [upload_files](docs/sdks/files/README.md#upload_files) - Upload files for a company## Available Resources and Operations
 
 
 ### [files](docs/sdks/files/README.md)
