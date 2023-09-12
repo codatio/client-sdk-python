@@ -3,7 +3,8 @@
 from .sdkconfiguration import SDKConfiguration
 from codatsynccommerce import utils
 from codatsynccommerce.models import errors, operations, shared
-from typing import Optional
+from jsonpath import JSONPath
+from typing import Any, Dict, Optional
 
 class CommerceLocations:
     r"""Retrieve standardized data from linked commerce platforms."""
@@ -102,8 +103,24 @@ class CommerceLocations:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.ListCommerceLocationsResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("").parse(body)
 
-        res = operations.ListCommerceLocationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.list_commerce_locations(
+                request=operations.ListCommerceLocationsRequest(
+                    company_id=request.company_id,
+                    connection_id=request.connection_id,
+                ),
+                retries=retries,
+            )
+
+        res = operations.ListCommerceLocationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

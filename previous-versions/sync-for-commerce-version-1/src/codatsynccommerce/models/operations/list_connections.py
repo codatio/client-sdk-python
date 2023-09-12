@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import connections as shared_connections
-from typing import Optional
+from typing import Callable, Optional
 
 
 
@@ -26,6 +26,7 @@ class ListConnectionsRequest:
 
 @dataclasses.dataclass
 class ListConnectionsResponse:
+    next: Callable[[], Optional[ListConnectionsResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     connections: Optional[shared_connections.Connections] = dataclasses.field(default=None)
