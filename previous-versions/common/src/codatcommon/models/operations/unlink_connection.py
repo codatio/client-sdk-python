@@ -5,18 +5,8 @@ import dataclasses
 import requests as requests_http
 from ..shared import connection as shared_connection
 from ..shared import errormessage as shared_errormessage
-from codatcommon import utils
-from dataclasses_json import Undefined, dataclass_json
+from ..shared import updateconnectionstatus as shared_updateconnectionstatus
 from typing import Optional
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class UnlinkConnectionRequestBody:
-    status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
-    
-
 
 
 
@@ -24,7 +14,7 @@ class UnlinkConnectionRequestBody:
 class UnlinkConnectionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    request_body: Optional[UnlinkConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    update_connection_status: Optional[shared_updateconnectionstatus.UpdateConnectionStatus] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 
