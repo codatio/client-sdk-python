@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import connection as shared_connection
+from ..shared import dataconnectionstatus as shared_dataconnectionstatus
 from ..shared import errormessage as shared_errormessage
 from codatsyncpayables import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -13,8 +14,9 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class UnlinkConnectionRequestBody:
-    status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+class UnlinkConnectionUpdateConnection:
+    status: Optional[shared_dataconnectionstatus.DataConnectionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    r"""The current authorization status of the data connection."""
     
 
 
@@ -24,7 +26,7 @@ class UnlinkConnectionRequestBody:
 class UnlinkConnectionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
-    request_body: Optional[UnlinkConnectionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    request_body: Optional[UnlinkConnectionUpdateConnection] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 

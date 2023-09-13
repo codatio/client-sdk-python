@@ -6,6 +6,7 @@ from .bill_credit_notes import BillCreditNotes
 from .bill_payments import BillPayments
 from .bills import Bills
 from .companies import Companies
+from .company_info import CompanyInfo
 from .connections import Connections
 from .journal_entries import JournalEntries
 from .journals import Journals
@@ -17,15 +18,36 @@ from .suppliers import Suppliers
 from .tax_rates import TaxRates
 from .tracking_categories import TrackingCategories
 from codatsyncpayables import utils
-from codatsyncpayables.models import errors, operations, shared
-from typing import Optional
+from codatsyncpayables.models import shared
 
 class CodatSyncPayables:
     r"""Sync for Payables: The API for Sync for Payables.
 
     Sync for Payables is an API and a set of supporting tools built to help integrate with your customers' accounting software, and keep their supplier information, invoices, and payments in sync.
 
-    [Read More...](https://docs.codat.io/payables/overview)
+    [Explore product](https://docs.codat.io/payables/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
+
+    ---
+
+    ## Endpoints
+
+    | Endpoints            | Description                                                                                                |
+    |:---------------------|:-----------------------------------------------------------------------------------------------------------|
+    | Companies            | Create and manage your SMB users' companies.                                                               |
+    | Connections          | Create new and manage existing data connections for a company.                                             |
+    | Accounts             | Get, create, and update Accounts                                                           |
+    | Bills                | Get, create, and update Bills                                                                          |
+    | Bill credit notes    | Get, create, and update Bill credit notes                                                              |
+    | Bill payments        | Get, create, and update Bill payments                                                                  |
+    | Journals             | Get, create, and update Journals                                                                       |
+    | Journal entries      | Get, create, and update Journal entries                                                                |
+    | Payment methods      | Get, create, and update Payment methods                                                                |
+    | Suppliers            | Get, create, and update Suppliers                                                                      |
+    | Tax rates            | Get, create, and update Tax rates                                                                      |
+    | Tracking categories  | Get, create, and update Tracking categories                                                            |
+    | Push operations      | View historic push operations                                                         |
+    | Company info         | View company profile from the source platform.                                                             |
+    | Manage data          | Control how data is retrieved from an integration.                                                         |
     """
     accounts: Accounts
     r"""Accounts"""
@@ -37,6 +59,8 @@ class CodatSyncPayables:
     r"""Bills"""
     companies: Companies
     r"""Create and manage your Codat companies."""
+    company_info: CompanyInfo
+    r"""View company information fetched from the source platform."""
     connections: Connections
     r"""Manage your companies' data connections."""
     journal_entries: JournalEntries
@@ -100,6 +124,7 @@ class CodatSyncPayables:
         self.bill_payments = BillPayments(self.sdk_configuration)
         self.bills = Bills(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
+        self.company_info = CompanyInfo(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
         self.journal_entries = JournalEntries(self.sdk_configuration)
         self.journals = Journals(self.sdk_configuration)
@@ -109,53 +134,4 @@ class CodatSyncPayables:
         self.suppliers = Suppliers(self.sdk_configuration)
         self.tax_rates = TaxRates(self.sdk_configuration)
         self.tracking_categories = TrackingCategories(self.sdk_configuration)
-    
-    def get_accounting_profile(self, request: operations.GetAccountingProfileRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountingProfileResponse:
-        r"""Get company accounting profile
-        Gets the latest basic info for a company.
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetAccountingProfileRequest, base_url, '/companies/{companyId}/data/info', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.security_client
-        
-        global_retry_config = self.sdk_configuration.retry_config
-        retry_config = retries
-        if retry_config is None:
-            if global_retry_config:
-                retry_config = global_retry_config
-            else:
-                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
-
-        def do_request():
-            return client.request('GET', url, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetAccountingProfileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountingProfileCompanyInformation])
-                res.company_information = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 409, 429]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-
-        return res
-
     

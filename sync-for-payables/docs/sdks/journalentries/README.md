@@ -38,30 +38,30 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='nostrum',
-        id='fc95fa88-970e-4189-9bb3-0fcb33ea055b',
+        description='animi',
+        id='88970e18-9dbb-430f-8b33-ea055b197cd4',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='197cd44e-2f52-4d82-9351-3bb6f48b656b',
-                    name='Carroll Purdy',
+                    id='4e2f52d8-2d35-413b-b6f4-8b656bcdb35f',
+                    name='Russell Toy',
                 ),
-                currency='voluptatibus',
-                description='voluptatibus',
-                net_amount=Decimal('1623.58'),
+                currency='eos',
+                description='reprehenderit',
+                net_amount=Decimal('3455.06'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
-                            data_type='transfer',
-                            id='4b27537a-8cd9-4e73-99c1-77d525f77b11',
+                            data_type='journalEntry',
+                            id='7a8cd9e7-319c-4177-9525-f77b114eeb52',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='4eeb52ff-785f-4c37-814d-4c98e0c2bb89',
-            name='Ira Kulas',
+            id='ff785fc3-7814-4d4c-98e0-c2bb89eb75da',
+            name='Elmer Emard',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -69,14 +69,14 @@ req = operations.CreateJournalEntryRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.JournalEntryRecordReference(
-            data_type='invoice',
-            id='36c60050-3d8b-4b31-980f-739ae9e057eb',
+            data_type='journalEntry',
+            id='503d8bb3-1180-4f73-9ae9-e057eb809e28',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "aperiam": {
-                    "sint": 'accusamus',
+                "voluptatem": {
+                    "velit": 'dolor',
                 },
             },
         ),
@@ -84,7 +84,7 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=520081,
+    timeout_in_minutes=953676,
 )
 
 res = s.journal_entries.create(req)

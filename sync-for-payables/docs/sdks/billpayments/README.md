@@ -41,23 +41,23 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='4bdb04f1-5756-4082-968e-a19f1d170513',
-            name='Ms. Cora Spencer IV',
+            id='756082d6-8ea1-49f1-9170-51339d08086a',
+            name='Mrs. Priscilla Fritsch',
         ),
-        currency='USD',
-        currency_rate=Decimal('6498.32'),
+        currency='GBP',
+        currency_rate=Decimal('7710.89'),
         date_='2022-10-23T00:00:00.000Z',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=Decimal('2519.41'),
+                amount=Decimal('120.36'),
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=Decimal('324.65'),
-                        currency_rate=Decimal('2211.61'),
-                        id='94c26071-f93f-45f0-a42d-ac7af515cc41',
-                        type=shared.BillPaymentLineLinkType.BILL,
+                        amount=Decimal('4910.25'),
+                        currency_rate=Decimal('1154.84'),
+                        id='f93f5f06-42da-4c7a-b515-cc413aa63aae',
+                        type=shared.BillPaymentLineLinkType.BILL_PAYMENT,
                     ),
                 ],
             ),
@@ -67,25 +67,25 @@ req = operations.CreateBillPaymentRequest(
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
-        payment_method_ref='id',
-        reference='suscipit',
+        payment_method_ref='vel',
+        reference='ducimus',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "culpa": {
-                    "est": 'recusandae',
+                "vel": {
+                    "labore": 'possimus',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='8d67864d-bb67-45fd-9e60-b375ed4f6fbe',
-            supplier_name='necessitatibus',
+            id='bb675fd5-e60b-4375-ad4f-6fbee41f3331',
+            supplier_name='dignissimos',
         ),
         total_amount=Decimal('1329.54'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=296556,
+    timeout_in_minutes=950953,
 )
 
 res = s.bill_payments.create(req)
@@ -146,7 +146,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='sunt',
+    bill_payment_id='debitis',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -193,7 +193,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='asperiores',
+    bill_payment_id='consectetur',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -291,7 +291,7 @@ req = operations.ListBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='adipisci',
+    query='corporis',
 )
 
 res = s.bill_payments.list(req)

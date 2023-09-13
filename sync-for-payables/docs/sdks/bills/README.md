@@ -45,123 +45,123 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.CreateBillRequest(
     bill=shared.Bill(
-        amount_due=Decimal('2494.2'),
-        currency='GBP',
-        currency_rate=Decimal('1059.06'),
+        amount_due=Decimal('6897.68'),
+        currency='USD',
+        currency_rate=Decimal('583.56'),
         due_date='2022-10-23T00:00:00.000Z',
-        id='fe35b60e-b1ea-4426-955b-a3c28744ed53',
+        id='b1ea4265-55ba-43c2-8744-ed53b88f3a8d',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillLineItem(
                 account_ref=shared.AccountRef(
-                    id='88f3a8d8-f5c0-4b2f-afb7-b194a276b269',
-                    name='Laurie Willms DVM',
+                    id='f5c0b2f2-fb7b-4194-a276-b26916fe1f08',
+                    name='Troy Cormier',
                 ),
-                description='perferendis',
-                discount_amount=Decimal('5468.85'),
-                discount_percentage=Decimal('9795.74'),
+                description='necessitatibus',
+                discount_amount=Decimal('2155.29'),
+                discount_percentage=Decimal('4067.33'),
                 is_direct_cost=False,
                 item_ref=shared.ItemRef(
-                    id='4294e369-8f44-47f6-83e8-b445e80ca55e',
-                    name='Dr. Jody Cummings',
+                    id='98f447f6-03e8-4b44-9e80-ca55efd20e45',
+                    name='Cecelia Braun',
                 ),
-                quantity=Decimal('3299.35'),
-                sub_total=Decimal('4461.35'),
-                tax_amount=Decimal('8892.34'),
+                quantity=Decimal('5106.29'),
+                sub_total=Decimal('7400.98'),
+                tax_amount=Decimal('3868.27'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('1046.27'),
-                    id='858b6a89-fbe3-4a5a-a8e4-824d0ab40750',
-                    name='Willard Walker IV',
+                    effective_tax_rate=Decimal('6805.15'),
+                    id='89fbe3a5-aa8e-4482-8d0a-b4075088e518',
+                    name='Jane Bailey',
                 ),
-                total_amount=Decimal('4059.42'),
+                total_amount=Decimal('9061.72'),
                 tracking=shared.Tracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='2065e904-f3b1-4194-b8ab-f603a79f9dfe',
-                            name='Monique Predovic',
+                            id='904f3b11-94b8-4abf-a03a-79f9dfe0ab7d',
+                            name='Max O'Connell DDS',
                         ),
                     ],
                     customer_ref=shared.TrackingCustomerRef(
-                        company_name='fuga',
-                        id='8a50ce18-7f86-4bc1-b3d6-89eee9526f8d',
+                        company_name='repudiandae',
+                        id='187f86bc-173d-4689-aee9-526f8d986e88',
                     ),
-                    is_billed_to=shared.BilledToType.CUSTOMER,
-                    is_rebilled_to=shared.BilledToType.CUSTOMER,
+                    is_billed_to=shared.BilledToType.UNKNOWN,
+                    is_rebilled_to=shared.BilledToType.PROJECT,
                     project_ref=shared.TrackingProjectReference(
-                        id='6e881ead-4f0e-4101-a563-f94e29e973e9',
-                        name='Beverly Olson',
+                        id='ad4f0e10-1256-43f9-8e29-e973e922a57a',
+                        name='Ana Predovic',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='a15be3e0-6080-47e2-b6e3-ab8845f0597a',
-                        name='Linda Wuckert',
+                        id='e060807e-2b6e-43ab-8845-f0597a60ff2a',
+                        name='Joanne Parisian DVM',
                     ),
                 ],
-                unit_amount=Decimal('6638.66'),
+                unit_amount=Decimal('6072.49'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='dolore',
+        note='molestiae',
         payment_allocations=[
             shared.BillPaymentAllocation(
                 allocation=shared.BillPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='GBP',
-                    currency_rate=Decimal('632.07'),
-                    total_amount=Decimal('9257.03'),
+                    currency_rate=Decimal('6330.62'),
+                    total_amount=Decimal('2384.13'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='94764a3e-865e-4795-af92-51a5a9da660f',
-                        name='Dustin King',
+                        id='e865e795-6f92-451a-9a9d-a660ff57bfaa',
+                        name='Edwin Wolf',
                     ),
-                    currency='USD',
-                    currency_rate=Decimal('6720.41'),
-                    id='d4f9efc1-b451-42c1-8326-48dc2f615199',
-                    note='earum',
+                    currency='EUR',
+                    currency_rate=Decimal('7645.62'),
+                    id='1b4512c1-0326-448d-82f6-15199ebfd0e9',
+                    note='maiores',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='hic',
-                    total_amount=Decimal('8481.51'),
+                    reference='aliquid',
+                    total_amount=Decimal('7809.31'),
                 ),
             ),
         ],
         purchase_order_refs=[
             shared.BillPurchaseOrderReference(
-                id='0e9fe6c6-32ca-43ae-9011-7996312fde04',
-                purchase_order_number='nihil',
+                id='632ca3ae-d011-4799-a312-fde04771778f',
+                purchase_order_number='reiciendis',
             ),
         ],
-        reference='molestiae',
+        reference='vel',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.BillStatus.PARTIALLY_PAID,
-        sub_total=Decimal('4570.59'),
+        status=shared.BillStatus.DRAFT,
+        sub_total=Decimal('396.5'),
         supplemental_data=shared.BillSupplementalData(
             content={
-                "praesentium": {
-                    "maiores": 'reiciendis',
+                "dicta": {
+                    "odio": 'tempora',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='61d01747-6360-4a15-9b6a-660659a1adea',
-            supplier_name='laborum',
+            id='76360a15-db6a-4660-a59a-1adeaab5851d',
+            supplier_name='ex',
         ),
-        tax_amount=Decimal('7263.43'),
-        total_amount=Decimal('3240.83'),
+        tax_amount=Decimal('7758.03'),
+        total_amount=Decimal('4053.73'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('5369.23'),
-                name='Gloria Skiles',
+                amount=Decimal('2811.53'),
+                name='Lula Bartell',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=405373,
+    timeout_in_minutes=399660,
 )
 
 res = s.bills.create(req)
@@ -227,7 +227,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.DeleteBillRequest(
-    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    bill_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -274,7 +274,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.DownloadBillAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    bill_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -467,7 +467,7 @@ req = operations.ListBillsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='molestias',
+    query='rerum',
 )
 
 res = s.bills.list(req)
@@ -563,125 +563,125 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.UpdateBillRequest(
     bill=shared.Bill(
-        amount_due=Decimal('3996.6'),
+        amount_due=Decimal('6347.86'),
         currency='GBP',
-        currency_rate=Decimal('5308.6'),
+        currency_rate=Decimal('9591.43'),
         due_date='2022-10-23T00:00:00.000Z',
-        id='1baa0fe1-ade0-408e-af8c-5f350d8cdb5a',
+        id='1ade008e-6f8c-45f3-90d8-cdb5a3418143',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillLineItem(
                 account_ref=shared.AccountRef(
-                    id='41814301-0421-4813-9520-8ece7e253b66',
-                    name='Miss Oscar Heller',
+                    id='10421813-d520-48ec-a7e2-53b668451c6c',
+                    name='Mrs. Kate Cronin',
                 ),
-                description='nobis',
-                discount_amount=Decimal('3883.19'),
-                discount_percentage=Decimal('9272.12'),
+                description='quasi',
+                discount_amount=Decimal('3925.69'),
+                discount_percentage=Decimal('8711.03'),
                 is_direct_cost=False,
                 item_ref=shared.ItemRef(
-                    id='205e16de-ab3f-4ec9-978a-64584273a841',
-                    name='Clint Carroll',
+                    id='eab3fec9-578a-4645-8427-3a8418d16230',
+                    name='Miss Dominick Rogahn',
                 ),
-                quantity=Decimal('2330.78'),
-                sub_total=Decimal('468.06'),
-                tax_amount=Decimal('5854.32'),
+                quantity=Decimal('5790.11'),
+                sub_total=Decimal('6128.67'),
+                tax_amount=Decimal('1700.99'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('9707.32'),
-                    id='b0929921-aefb-49f5-8c4d-86e68e4be056',
-                    name='Frances Franey',
+                    effective_tax_rate=Decimal('813.69'),
+                    id='aefb9f58-c4d8-46e6-8e4b-e056013f59da',
+                    name='Ida Kilback',
                 ),
-                total_amount=Decimal('5752.13'),
+                total_amount=Decimal('5718.44'),
                 tracking=shared.Tracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='da757a59-ecfe-4f66-af1c-aa3383c2beb4',
-                            name='Colleen Dickinson',
+                            id='ecfef66e-f1ca-4a33-83c2-beb477373c8d',
+                            name='Christina Wolf',
                         ),
                     ],
                     customer_ref=shared.TrackingCustomerRef(
-                        company_name='quo',
-                        id='8d72f64d-1db1-4f2c-8310-661e96349e1c',
+                        company_name='quibusdam',
+                        id='1db1f2c4-3106-461e-9634-9e1cf9e06e3a',
                     ),
-                    is_billed_to=shared.BilledToType.PROJECT,
-                    is_rebilled_to=shared.BilledToType.CUSTOMER,
+                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_rebilled_to=shared.BilledToType.UNKNOWN,
                     project_ref=shared.TrackingProjectReference(
-                        id='e06e3a43-7000-4ae6-b6bc-9b8f759eac55',
-                        name='Jeremiah Koch PhD',
+                        id='7000ae6b-6bc9-4b8f-b59e-ac55a9741d31',
+                        name='Florence Hand',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='31135296-5bb8-4a72-8261-1435e139dbc2',
-                        name='Bernice Moen MD',
+                        id='65bb8a72-0261-4143-9e13-9dbc2259b1ab',
+                        name='Oliver Luettgen IV',
                     ),
                 ],
-                unit_amount=Decimal('7278.88'),
+                unit_amount=Decimal('573.2'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='officia',
+        note='inventore',
         payment_allocations=[
             shared.BillPaymentAllocation(
                 allocation=shared.BillPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='EUR',
-                    currency_rate=Decimal('257.56'),
-                    total_amount=Decimal('4793.85'),
+                    currency='USD',
+                    currency_rate=Decimal('2928.88'),
+                    total_amount=Decimal('7551.06'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='0e1084cb-0672-4d1a-9879-eeb9665b85ef',
-                        name='Josh Abshire',
+                        id='b0672d1a-d879-4eeb-9665-b85efbd02bae',
+                        name='Mamie Torp',
                     ),
-                    currency='EUR',
-                    currency_rate=Decimal('9195.08'),
-                    id='0be2d782-259e-43ea-8b51-97f92443da7c',
-                    note='necessitatibus',
+                    currency='USD',
+                    currency_rate=Decimal('5101.28'),
+                    id='2259e3ea-4b51-497f-9244-3da7ce52b895',
+                    note='placeat',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='qui',
-                    total_amount=Decimal('7088.98'),
+                    reference='neque',
+                    total_amount=Decimal('4468.77'),
                 ),
             ),
         ],
         purchase_order_refs=[
             shared.BillPurchaseOrderReference(
-                id='895c537c-6454-4efb-8b34-896c3ca5acfb',
-                purchase_order_number='vero',
+                id='c6454efb-0b34-4896-83ca-5acfbe2fd570',
+                purchase_order_number='odio',
             ),
         ],
-        reference='odit',
+        reference='minima',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.BillStatus.DRAFT,
-        sub_total=Decimal('3628.88'),
+        status=shared.BillStatus.PARTIALLY_PAID,
+        sub_total=Decimal('5678.46'),
         supplemental_data=shared.BillSupplementalData(
             content={
-                "reprehenderit": {
-                    "aperiam": 'odio',
+                "dolores": {
+                    "error": 'veritatis',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='57792917-7dea-4c64-aecb-573409e3eb1e',
-            supplier_name='veniam',
+            id='77deac64-6ecb-4573-809e-3eb1e5a2b12e',
+            supplier_name='nobis',
         ),
-        tax_amount=Decimal('6592.68'),
-        total_amount=Decimal('1753.72'),
+        tax_amount=Decimal('568.77'),
+        total_amount=Decimal('4973.57'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('7249.94'),
-                name='Louise Tromp IV',
+                amount=Decimal('9804.86'),
+                name='Joyce Howe',
             ),
         ],
     ),
-    bill_id='EILBDVJVNUAGVKRQ',
+    bill_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=87382,
+    timeout_in_minutes=578210,
 )
 
 res = s.bills.update(req)
@@ -730,10 +730,10 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.UploadBillAttachmentRequest(
     request_body=operations.UploadBillAttachmentRequestBody(
-        content='quasi'.encode(),
-        request_body='laboriosam',
+        content='nemo'.encode(),
+        request_body='aliquam',
     ),
-    bill_id='EILBDVJVNUAGVKRQ',
+    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

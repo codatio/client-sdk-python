@@ -40,21 +40,21 @@ req = operations.CreateJournalRequest(
     journal=shared.Journal(
         created_on='2022-10-23T00:00:00.000Z',
         has_children=False,
-        id='0331f398-1d4c-4700-b607-f3c93c73b9da',
-        journal_code='amet',
+        id='981d4c70-0b60-47f3-893c-73b9da3f2ced',
+        journal_code='laborum',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Angelica Waters',
-        parent_id='dignissimos',
+        name='Clarence Feeney Sr.',
+        parent_id='exercitationem',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.JournalStatus.UNKNOWN,
-        type='consectetur',
+        type='ab',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=995816,
+    timeout_in_minutes=72754,
 )
 
 res = s.journals.create(req)
@@ -101,7 +101,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='explicabo',
+    journal_id='hic',
 )
 
 res = s.journals.get(req)
@@ -198,7 +198,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='explicabo',
+    query='deserunt',
 )
 
 res = s.journals.list(req)
