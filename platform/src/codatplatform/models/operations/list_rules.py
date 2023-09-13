@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
-from ..shared import rules as shared_rules
+from ..shared import webhooks as shared_webhooks
 from typing import Optional
 
 
@@ -31,7 +31,7 @@ class ListRulesResponse:
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    rules: Optional[shared_rules.Rules] = dataclasses.field(default=None)
+    webhooks: Optional[shared_webhooks.Webhooks] = dataclasses.field(default=None)
     r"""OK"""
     
 

@@ -26,7 +26,6 @@ class SupplementalDataConfigurationSupplementalDataSourceConfiguration:
 
 @dataclasses.dataclass
 class SupplementalDataConfiguration:
-    r"""OK"""
     supplemental_data_config: Optional[dict[str, SupplementalDataConfigurationSupplementalDataSourceConfiguration]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalDataConfig'), 'exclude': lambda f: f is None }})
     
 
