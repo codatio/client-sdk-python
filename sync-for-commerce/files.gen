@@ -3,7 +3,7 @@ src/codatsynccommerce/advanced_controls.py
 src/codatsynccommerce/connections.py
 src/codatsynccommerce/integrations.py
 src/codatsynccommerce/sync.py
-src/codatsynccommerce/sync_flow_preferences.py
+src/codatsynccommerce/sync_flow_settings.py
 src/codatsynccommerce/sdk.py
 pylintrc
 setup.py
@@ -80,8 +80,8 @@ src/codatsynccommerce/models/shared/supportedfeature.py
 src/codatsynccommerce/models/shared/featuretype.py
 src/codatsynccommerce/models/shared/featurestate.py
 src/codatsynccommerce/models/shared/companysyncstatus.py
+src/codatsynccommerce/models/shared/syncstatus.py
 src/codatsynccommerce/models/shared/syncsummary.py
-src/codatsynccommerce/models/shared/daterange.py
 src/codatsynccommerce/models/shared/synctolatestargs.py
 src/codatsynccommerce/models/shared/syncrange.py
 src/codatsynccommerce/models/shared/localization.py
@@ -95,7 +95,7 @@ docs/sdks/advancedcontrols/README.md
 docs/sdks/connections/README.md
 docs/sdks/integrations/README.md
 docs/sdks/sync/README.md
-docs/sdks/syncflowpreferences/README.md
+docs/sdks/syncflowsettings/README.md
 USAGE.md
 docs/models/operations/createcompanyresponse.md
 docs/models/operations/getconfigurationrequest.md
@@ -179,14 +179,15 @@ docs/models/shared/brandingbutton.md
 docs/models/shared/integrations.md
 docs/models/shared/integration.md
 docs/models/shared/sourcetype.md
-docs/models/shared/datatypefeaturedatatype.md
+docs/models/shared/datatypefeaturedatatypes.md
 docs/models/shared/datatypefeature.md
 docs/models/shared/supportedfeature.md
 docs/models/shared/featuretype.md
 docs/models/shared/featurestate.md
 docs/models/shared/companysyncstatus.md
+docs/models/shared/syncstatus.md
+docs/models/shared/syncsummarysyncdaterangeutc.md
 docs/models/shared/syncsummary.md
-docs/models/shared/daterange.md
 docs/models/shared/synctolatestargs.md
 docs/models/shared/syncrangedaterange.md
 docs/models/shared/syncrange.md

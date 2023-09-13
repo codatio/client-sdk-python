@@ -6,7 +6,7 @@ Initiate and monitor the sync of company data into accounting software.
 
 ### Available Operations
 
-* [get](#get) - Get Sync status
+* [get](#get) - Get sync status
 * [get_last_successful_sync](#get_last_successful_sync) - Last successful sync
 * [get_latest_sync](#get_latest_sync) - Latest sync status
 * [get_status](#get_status) - Get sync status
@@ -154,7 +154,7 @@ req = operations.GetSyncStatusRequest(
 
 res = s.sync.get_status(req)
 
-if res.status_code == 200:
+if res.sync_status is not None:
     # handle response
 ```
 

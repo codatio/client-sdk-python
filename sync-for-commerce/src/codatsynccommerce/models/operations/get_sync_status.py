@@ -3,7 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from typing import Optional
+from ..shared import syncstatus as shared_syncstatus
+from typing import Any, Optional
 
 
 
@@ -19,6 +20,12 @@ class GetSyncStatusRequest:
 class GetSyncStatusResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    bad_request: Optional[Any] = dataclasses.field(default=None)
+    r"""Bad Request"""
+    not_found: Optional[Any] = dataclasses.field(default=None)
+    r"""Not Found"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    sync_status: Optional[shared_syncstatus.SyncStatus] = dataclasses.field(default=None)
+    r"""Success"""
     
 
