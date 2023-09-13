@@ -27,7 +27,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='afd2315b-ba65-4016-8e06-f5bf6ae591bc',
+    push_operation_key='97f92443-da7c-4e52-b895-c537c6454efb',
 )
 
 res = s.push_data.get_operation(req)
@@ -70,12 +70,12 @@ req = operations.GetCompanyPushHistoryRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='praesentium',
+    query='aperiam',
 )
 
 res = s.push_data.list_operations(req)
 
-if res.push_history_response is not None:
+if res.push_operations is not None:
     # handle response
 ```
 

@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import company as shared_company
-from ..shared import companyrequestbody as shared_companyrequestbody
+from ..shared import createcompany as shared_createcompany
 from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
@@ -13,7 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class UpdateCompanyRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    company_request_body: Optional[shared_companyrequestbody.CompanyRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    create_company: Optional[shared_createcompany.CreateCompany] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 

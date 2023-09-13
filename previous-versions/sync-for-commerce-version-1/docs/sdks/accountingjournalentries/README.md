@@ -26,6 +26,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codatsynccommerce
 from codatsynccommerce.models import operations, shared
+from decimal import Decimal
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -36,34 +37,30 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.CreateAccountingJournalEntryRequest(
     accounting_journal_entry=shared.AccountingJournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='excepturi',
-        id='e81f30be-3e43-4202-9721-657650664187',
+        description='pariatur',
+        id='e008e6f8-c5f3-450d-8cdb-5a3418143010',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='d9d21f9a-d030-4c4e-8c11-a0836429068b',
-                    name='Pedro Armstrong',
+                    id='421813d5-208e-4ce7-a253-b668451c6c6e',
+                    name='Helen Heller III',
                 ),
-                currency='quaerat',
-                description='corporis',
-                net_amount=8843.25,
+                currency='at',
+                description='vero',
+                net_amount=Decimal('6675.93'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
-                            data_type='transfer',
-                            id='73bc845e-320a-4319-b4ba-df947c9a867b',
-                        ),
-                        shared.RecordRef(
-                            data_type='transfer',
-                            id='42426665-816d-4dca-8ef5-1fcb4c593ec1',
+                            data_type='accountTransaction',
+                            id='3fec9578-a645-4842-b3a8-418d162309fb',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.AccountingJournalEntryJournalReference(
-            id='2cdaad0e-c7af-4edb-980d-f448a47f9390',
-            name='Derek Lubowitz',
+            id='0929921a-efb9-4f58-84d8-6e68e4be0560',
+            name='Sheila Wolff',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -71,15 +68,14 @@ req = operations.CreateAccountingJournalEntryRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.AccountingJournalEntryRecordReference(
-            data_type='accountTransaction',
-            id='3dabf9ef-3ffd-4d9f-bf07-9af4d35724cd',
+            data_type='invoice',
+            id='57a59ecf-ef66-4ef1-8aa3-383c2beb4773',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "reiciendis": {
-                    "vero": 'eos',
-                    "quas": 'quasi',
+                "neque": {
+                    "quo": 'deleniti',
                 },
             },
         ),
@@ -87,7 +83,7 @@ req = operations.CreateAccountingJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=509799,
+    timeout_in_minutes=437814,
 )
 
 res = s.accounting_journal_entries.create_accounting_journal_entry(req)

@@ -75,7 +75,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='bdef3612-b63c-4205-bda8-40774a68a9a3',
+    connection_id='b34896c3-ca5a-4cfb-a2fd-570757792917',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -198,12 +198,12 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ad',
+    query='voluptate',
 )
 
 res = s.refresh_data.list_pull_operations(req)
 
-if res.data_connection_history is not None:
+if res.pull_operations is not None:
     # handle response
 ```
 

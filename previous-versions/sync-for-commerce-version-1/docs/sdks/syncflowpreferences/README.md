@@ -64,9 +64,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key='voluptas',
-    commerce_key='expedita',
-    merchant_identifier='voluptas',
+    accounting_key='optio',
+    commerce_key='ex',
+    merchant_identifier='quaerat',
 )
 
 res = s.sync_flow_preferences.get_sync_flow_url(req)
@@ -105,8 +105,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetVisibleAccountsRequest(
-    client_id='f66fef02-0e9f-4443-b425-7b992c8dbda6',
-    platform_key='a61efa21-9825-48fd-8a9e-ba47f7d3ef04',
+    client_id='6ecb5734-09e3-4eb1-a5a2-b12eb07f116d',
+    platform_key='b99545fc-95fa-4889-b0e1-89dbb30fcb33',
 )
 
 res = s.sync_flow_preferences.get_visible_accounts(req)
@@ -145,17 +145,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "aliquid": shared.Localization(
+    "saepe": shared.Localization(
         required=False,
-        text='dolore',
-    ),
-    "voluptatem": shared.Localization(
-        required=False,
-        text='illum',
-    ),
-    "laboriosam": shared.Localization(
-        required=False,
-        text='culpa',
+        text='deserunt',
     ),
 }
 
@@ -197,10 +189,10 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'atque',
+            'doloremque',
         ],
     ),
-    platform_key='31c87adf-596f-4df1-ad83-7ae80c1c19c9',
+    platform_key='55b197cd-44e2-4f52-982d-3513bb6f48b6',
 )
 
 res = s.sync_flow_preferences.update_visible_accounts_sync_flow(req)
