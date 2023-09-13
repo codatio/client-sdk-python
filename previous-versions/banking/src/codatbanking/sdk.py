@@ -12,11 +12,11 @@ from codatbanking.models import shared
 class CodatBanking:
     r"""Banking API: Codat's standardized API for accessing banking data.
     Codat's Banking API allows you to access standardised data from over bank accounts via third party providers.
-    
+
     Standardize how you connect to your customers’ bank accounts. Retrieve bank account and bank transaction data in the same way via our partnerships with Plaid and TrueLayer.
-    
+
     [Read more...](https://docs.codat.io/banking-api/overview)
-    
+
     [See our OpenAPI spec](https://github.com/codatio/oas)
     """
     account_balances: AccountBalances
@@ -35,7 +35,8 @@ class CodatBanking:
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: dict[str, str] = None,
-                 client: requests_http.Session = None
+                 client: requests_http.Session = None,
+                 retry_config: utils.RetryConfig = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
@@ -48,7 +49,9 @@ class CodatBanking:
         :param url_params: Parameters to optionally template the server URL with
         :type url_params: dict[str, str]
         :param client: The requests.Session HTTP client to use for all operations
-        :type client: requests_http.Session        
+        :type client: requests_http.Session
+        :param retry_config: The utils.RetryConfig to use globally
+        :type retry_config: utils.RetryConfig
         """
         if client is None:
             client = requests_http.Session()
@@ -59,7 +62,7 @@ class CodatBanking:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx)
+        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     

@@ -8,7 +8,7 @@ An immutable source of up-to-date information on income and expenditure.
 
 * [get](#get) - Get bank transaction
 * [list](#list) - List transactions
-* [~~list_bank_transactions~~](#list_bank_transactions) - List banking transactions :warning: **Deprecated** - Use `list` instead.
+* [~~list_bank_transactions~~](#list_bank_transactions) - List banking transactions :warning: **Deprecated** Use `list` instead.
 
 ## get
 
@@ -25,7 +25,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatbanking
-from codatbanking.models import operations
+from codatbanking.models import operations, shared
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
@@ -71,7 +71,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatbanking
-from codatbanking.models import operations
+from codatbanking.models import operations, shared
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
@@ -116,13 +116,13 @@ The *List transactions* endpoint returns a list of [transactions](https://docs.c
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
     
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible. Use `list` instead.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible. Use `list` instead.
 
 ### Example Usage
 
 ```python
 import codatbanking
-from codatbanking.models import operations
+from codatbanking.models import operations, shared
 
 s = codatbanking.CodatBanking(
     security=shared.Security(
