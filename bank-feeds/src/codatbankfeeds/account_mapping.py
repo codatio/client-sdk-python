@@ -14,7 +14,7 @@ class AccountMapping:
         
     
     def create(self, request: operations.CreateBankAccountMappingRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankAccountMappingResponse:
-        r"""Create bank feed bank account mapping
+        r"""Create bank feed account mapping
         The *Create bank account mapping* endpoint creates a new mapping between a source bank account and a potential account in the accounting platform (target account).
 
         A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
@@ -27,7 +27,7 @@ class AccountMapping:
         
         url = utils.generate_url(operations.CreateBankAccountMappingRequest, base_url, '/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bank_feed_account_mapping", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -35,9 +35,13 @@ class AccountMapping:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('POST', url, data=data, files=form, headers=headers)
@@ -84,9 +88,13 @@ class AccountMapping:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)

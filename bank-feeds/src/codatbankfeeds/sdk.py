@@ -15,9 +15,19 @@ class CodatBankFeeds:
 
     A bank feed is a connection between a source bank account in your application and a target bank account in a supported accounting package.
 
-    [Read more...](https://docs.codat.io/bank-feeds-api/overview)
+    [Explore product](https://docs.codat.io/bank-feeds-api/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
 
-    [See our OpenAPI spec](https://github.com/codatio/oas)
+    ---
+
+    ## Endpoints
+
+    | Endpoints | Description |
+    | :- | :- |
+    | Companies | Create and manage your SMB users' companies. |
+    | Connections | Create new and manage existing data connections for a company. |
+    | Source accounts | Provide and manage lists of source bank accounts.   |
+    | Transactions | Create new bank account transactions for a company's connections, and see previous operations. |
+    | Account mapping | Extra functionality for building an account management UI |
     """
     account_mapping: AccountMapping
     r"""Bank feed bank account mapping."""
@@ -37,7 +47,8 @@ class CodatBankFeeds:
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: dict[str, str] = None,
-                 client: requests_http.Session = None
+                 client: requests_http.Session = None,
+                 retry_config: utils.RetryConfig = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
@@ -50,7 +61,9 @@ class CodatBankFeeds:
         :param url_params: Parameters to optionally template the server URL with
         :type url_params: dict[str, str]
         :param client: The requests.Session HTTP client to use for all operations
-        :type client: requests_http.Session        
+        :type client: requests_http.Session
+        :param retry_config: The utils.RetryConfig to use globally
+        :type retry_config: utils.RetryConfig
         """
         if client is None:
             client = requests_http.Session()
@@ -61,7 +74,7 @@ class CodatBankFeeds:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx)
+        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
