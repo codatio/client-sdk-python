@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-sync-for-expenses",
-    version="1.1.1",
+    version="1.1.2",
     author="Codat",
     description="Push expenses to accounting platforms.",
     long_description=long_description,
