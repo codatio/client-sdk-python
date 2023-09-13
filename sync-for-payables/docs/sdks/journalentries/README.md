@@ -27,6 +27,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codatsyncpayables
 from codatsyncpayables.models import operations, shared
+from decimal import Decimal
 
 s = codatsyncpayables.CodatSyncPayables(
     security=shared.Security(
@@ -37,92 +38,30 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='nam',
-        id='dc41ff5d-4e2a-4e4f-b5cb-35d17638f1ed',
+        description='animi',
+        id='88970e18-9dbb-430f-8b33-ea055b197cd4',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='78359ecc-5cb8-460f-8cd5-80ba73810e4f',
-                    name='Don Hagenes',
+                    id='4e2f52d8-2d35-413b-b6f4-8b656bcdb35f',
+                    name='Russell Toy',
                 ),
-                currency='magni',
-                description='excepturi',
-                net_amount=4576.85,
+                currency='eos',
+                description='reprehenderit',
+                net_amount=Decimal('3455.06'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
-                            data_type='transfer',
-                            id='3b1dd3bb-ce24-47b7-a84e-ff50126d71cf',
-                        ),
-                        shared.RecordRef(
-                            data_type='transfer',
-                            id='bd0eb74b-8421-4953-b44b-d3c43159d33e',
-                        ),
-                        shared.RecordRef(
-                            data_type='invoice',
-                            id='953c0011-3986-43aa-81e6-c31cc2f1fcb5',
-                        ),
-                        shared.RecordRef(
                             data_type='journalEntry',
-                            id='c9a41ffb-e9cb-4d79-9ee6-5e076cc7abf6',
-                        ),
-                    ],
-                ),
-            ),
-            shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='16ea5c71-6419-434b-90f2-e09d19d2fc2f',
-                    name='Merle Cormier Jr.',
-                ),
-                currency='nemo',
-                description='provident',
-                net_amount=2529.57,
-                tracking=shared.JournalLineTracking(
-                    record_refs=[
-                        shared.RecordRef(
-                            data_type='accountTransaction',
-                            id='935d237a-72f9-4084-9d6a-ed4aecb7537c',
-                        ),
-                        shared.RecordRef(
-                            data_type='transfer',
-                            id='9222c9ff-5749-41aa-bfa2-e761f0ca4d45',
-                        ),
-                    ],
-                ),
-            ),
-            shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='6ef1031e-6899-4f0c-a001-e22cd55cc058',
-                    name='Hattie Botsford',
-                ),
-                currency='possimus',
-                description='nihil',
-                net_amount=3758.77,
-                tracking=shared.JournalLineTracking(
-                    record_refs=[
-                        shared.RecordRef(
-                            data_type='accountTransaction',
-                            id='71fc820c-65b0-437b-b8e0-cc885187e4de',
-                        ),
-                        shared.RecordRef(
-                            data_type='journalEntry',
-                            id='4af28c5d-ddb4-46aa-9cfd-6d828da01319',
-                        ),
-                        shared.RecordRef(
-                            data_type='journalEntry',
-                            id='12964664-5c1d-481f-a904-2f569b7aff0e',
-                        ),
-                        shared.RecordRef(
-                            data_type='accountTransaction',
-                            id='2216cbe0-71bc-4163-a279-a3b084da9925',
+                            id='7a8cd9e7-319c-4177-9525-f77b114eeb52',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='7d04f408-47a7-442d-8449-6cbdeecf6b99',
-            name='Wilbert Jerde',
+            id='ff785fc3-7814-4d4c-98e0-c2bb89eb75da',
+            name='Elmer Emard',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -130,18 +69,14 @@ req = operations.CreateJournalEntryRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.JournalEntryRecordReference(
-            data_type='transfer',
-            id='bfdf55c2-94c0-460b-86a1-287764eef6d0',
+            data_type='journalEntry',
+            id='503d8bb3-1180-4f73-9ae9-e057eb809e28',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "temporibus": {
-                    "itaque": 'nulla',
-                    "excepturi": 'quod',
-                },
-                "in": {
-                    "temporibus": 'temporibus',
+                "voluptatem": {
+                    "velit": 'dolor',
                 },
             },
         ),
@@ -149,7 +84,7 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=247927,
+    timeout_in_minutes=953676,
 )
 
 res = s.journal_entries.create(req)
