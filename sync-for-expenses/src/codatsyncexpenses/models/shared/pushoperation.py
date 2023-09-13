@@ -15,7 +15,6 @@ from typing import Optional
 
 @dataclasses.dataclass
 class PushOperation:
-    r"""OK"""
     company_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId') }})
     r"""Unique identifier for your SMB in Codat."""
     data_connection_key: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionKey') }})

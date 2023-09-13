@@ -27,7 +27,7 @@ class CodatSyncExpenses:
 
     [See our OpenAPI spec](https://github.com/codatio/oas)
 
-    <!-- Not seeing the end points you're expecting? We've reorganized our products, and you may be using a [different version of Sync for Commerce](https://docs.codat.io/sync-for-expenses-v1-api#/). -->
+    Not seeing the endpoints you're expecting? We've [reorganized our products](https://docs.codat.io/updates/230901-new-products), and you may be using a [different version of Sync for Commerce](https://docs.codat.io/sync-for-expenses-v1-api#/).
     """
     accounts: Accounts
     r"""Accounts"""
@@ -59,7 +59,8 @@ class CodatSyncExpenses:
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: dict[str, str] = None,
-                 client: requests_http.Session = None
+                 client: requests_http.Session = None,
+                 retry_config: utils.RetryConfig = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
@@ -72,7 +73,9 @@ class CodatSyncExpenses:
         :param url_params: Parameters to optionally template the server URL with
         :type url_params: dict[str, str]
         :param client: The requests.Session HTTP client to use for all operations
-        :type client: requests_http.Session        
+        :type client: requests_http.Session
+        :param retry_config: The utils.RetryConfig to use globally
+        :type retry_config: utils.RetryConfig
         """
         if client is None:
             client = requests_http.Session()
@@ -83,7 +86,7 @@ class CodatSyncExpenses:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx)
+        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
