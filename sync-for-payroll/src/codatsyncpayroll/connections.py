@@ -31,9 +31,13 @@ class Connections:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('POST', url, data=data, files=form, headers=headers)
@@ -77,9 +81,13 @@ class Connections:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('DELETE', url, headers=headers)
@@ -118,9 +126,13 @@ class Connections:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
@@ -164,9 +176,13 @@ class Connections:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -212,9 +228,13 @@ class Connections:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('PATCH', url, data=data, files=form, headers=headers)
