@@ -5,6 +5,7 @@ import dataclasses
 from ..shared import reportline as shared_reportline
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -12,7 +13,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class BalanceSheet:
-    net_assets: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netAssets') }})
+    net_assets: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netAssets'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Value of net assets for a company in their base currency."""
     assets: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('assets'), 'exclude': lambda f: f is None }})
     date_: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date'), 'exclude': lambda f: f is None }})

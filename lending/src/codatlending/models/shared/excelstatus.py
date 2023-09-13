@@ -12,7 +12,6 @@ from typing import Optional
 
 @dataclasses.dataclass
 class ExcelStatus:
-    r"""OK"""
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})
     r"""Error details in case the report generation request was unsuccessful."""
     file_size: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fileSize'), 'exclude': lambda f: f is None }})
