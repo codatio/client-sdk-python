@@ -23,7 +23,7 @@ Returns aged creditors report for company that shows the total balance owed by a
 ```python
 import codataccounting
 import dateutil.parser
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -66,7 +66,7 @@ Returns aged debtors report for company that shows the total outstanding balance
 ```python
 import codataccounting
 import dateutil.parser
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -108,7 +108,7 @@ Gets the latest balance sheet for a company.
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -150,7 +150,7 @@ Gets the latest cash flow statement for a company.
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -192,7 +192,7 @@ Gets the latest profit and loss for a company.
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -234,7 +234,7 @@ Indicates whether the aged creditor report is available for the company.
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -273,7 +273,7 @@ Indicates whether the aged debtor report is available for the company.
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(

@@ -29,6 +29,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codataccounting
 from codataccounting.models import operations, shared
+from decimal import Decimal
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -39,10 +40,10 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateAccountRequest(
     account=shared.Account(
         currency='EUR',
-        current_balance=0,
+        current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
-        fully_qualified_name='Asset.Current.Accounts Receivable',
+        fully_qualified_name='Fixed Asset',
         id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
         is_bank_account=False,
         metadata=shared.Metadata(
@@ -57,32 +58,15 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.ValidDataTypeLinks(
                 links=[
-                    'vel',
-                    'error',
-                    'deserunt',
-                    'suscipit',
+                    'illum',
                 ],
-                property='iure',
-            ),
-            shared.ValidDataTypeLinks(
-                links=[
-                    'debitis',
-                    'ipsa',
-                ],
-                property='delectus',
-            ),
-            shared.ValidDataTypeLinks(
-                links=[
-                    'suscipit',
-                    'molestiae',
-                ],
-                property='minus',
+                property='vel',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=812169,
+    timeout_in_minutes=623564,
 )
 
 res = s.accounts.create(req)
@@ -119,7 +103,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -128,7 +112,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetAccountRequest(
-    account_id='voluptatum',
+    account_id='deserunt',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -168,7 +152,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -212,7 +196,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -225,7 +209,7 @@ req = operations.ListAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='iusto',
+    query='suscipit',
 )
 
 res = s.accounts.list(req)

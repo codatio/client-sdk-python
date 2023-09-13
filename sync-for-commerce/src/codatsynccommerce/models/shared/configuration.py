@@ -15,7 +15,6 @@ from typing import Optional
 
 @dataclasses.dataclass
 class Configuration:
-    r"""Success"""
     fees: Optional[shared_fees.Fees] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fees'), 'exclude': lambda f: f is None }})
     new_payments: Optional[shared_newpayments.NewPayments] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('newPayments'), 'exclude': lambda f: f is None }})
     payments: Optional[shared_payments.Payments] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payments'), 'exclude': lambda f: f is None }})

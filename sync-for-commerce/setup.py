@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-sync-for-commerce",
-    version="0.31.0",
+    version="1.1.0",
     author="Codat",
     description="Push merchants' data from your ecommerce or point-of-sale (POS) platform into your merchants' accounting platform.",
     long_description=long_description,

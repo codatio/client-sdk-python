@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import createcreditnoteresponse as shared_createcreditnoteresponse
 from ..shared import creditnote as shared_creditnote
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
@@ -27,8 +27,8 @@ class CreateCreditNoteResponse:
     status_code: int = dataclasses.field()
     create_credit_note_response: Optional[shared_createcreditnoteresponse.CreateCreditNoteResponse] = dataclasses.field(default=None)
     r"""Success"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 
