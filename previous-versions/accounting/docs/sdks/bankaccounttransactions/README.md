@@ -28,6 +28,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codataccounting
 from codataccounting.models import operations, shared
+from decimal import Decimal
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -37,29 +38,22 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='excepturi',
+        account_id='iure',
         transactions=[
             shared.CreateBankAccountTransaction(
-                amount=9255.97,
-                balance=8360.79,
+                amount=Decimal('2975.34'),
+                balance=Decimal('8917.73'),
                 date_='2022-10-23T00:00:00.000Z',
-                description='quis',
-                id='1a05dfc2-ddf7-4cc7-8ca1-ba928fc81674',
-            ),
-            shared.CreateBankAccountTransaction(
-                amount=1863.32,
-                balance=7742.34,
-                date_='2022-10-23T00:00:00.000Z',
-                description='esse',
-                id='39205929-396f-4ea7-996e-b10faaa2352c',
+                description='delectus',
+                id='467cc879-6ed1-451a-85df-c2ddf7cc78ca',
             ),
         ],
     ),
-    account_id='enim',
+    account_id='dicta',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=607831,
+    timeout_in_minutes=720633,
 )
 
 res = s.bank_account_transactions.create(req)
@@ -98,7 +92,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -107,7 +101,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='nemo',
+    account_id='officia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -146,7 +140,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -155,18 +149,18 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id='minima',
+    account_id='occaecati',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='excepturi',
+    query='fugit',
 )
 
 res = s.bank_account_transactions.list(req)
 
-if res.bank_transactions_response is not None:
+if res.bank_transactions is not None:
     # handle response
 ```
 

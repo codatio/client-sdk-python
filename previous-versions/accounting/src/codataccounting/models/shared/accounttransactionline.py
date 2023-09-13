@@ -5,6 +5,7 @@ import dataclasses
 from ..shared import invoiceto as shared_invoiceto
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -12,19 +13,14 @@ from typing import Optional
 
 @dataclasses.dataclass
 class AccountTransactionLine:
-    amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
+    amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Amount in the bill payment currency."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Description of the account transaction."""
     record_ref: Optional[shared_invoiceto.InvoiceTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
-    r"""Links to the underlying record or data type.
-    
-    Found on:
-    
-    - Journal entries
-    - Account transactions
-    - Invoices
-    - Transfers
+    r"""Links the current record to the underlying record or data type that created it.
+
+    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
     """
     
 
