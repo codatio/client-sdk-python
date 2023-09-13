@@ -11,7 +11,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class IntiateSyncRequest:
+class InitiateSyncRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     post_sync: Optional[shared_postsync.PostSync] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
@@ -20,7 +20,7 @@ class IntiateSyncRequest:
 
 
 @dataclasses.dataclass
-class IntiateSyncResponse:
+class InitiateSyncResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
