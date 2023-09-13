@@ -18,7 +18,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 0.1.0
+  version: 0.28.1
   author: Codat
   description: Access standardized accounting data from our accounting integrations.
   maxMethodParams: 0
