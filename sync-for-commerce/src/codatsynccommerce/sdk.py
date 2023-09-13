@@ -2,6 +2,7 @@
 
 import requests as requests_http
 from .advanced_controls import AdvancedControls
+from .companies import Companies
 from .connections import Connections
 from .integrations import Integrations
 from .sdkconfiguration import SDKConfiguration
@@ -21,6 +22,8 @@ class CodatSyncCommerce:
     """
     advanced_controls: AdvancedControls
     r"""Advanced company management and sync preferences."""
+    companies: Companies
+    r"""Create new and manage existing Sync for Commerce companies using the Sync flow UI."""
     connections: Connections
     integrations: Integrations
     r"""View useful information about codat's integrations."""
@@ -69,6 +72,7 @@ class CodatSyncCommerce:
     
     def _init_sdks(self):
         self.advanced_controls = AdvancedControls(self.sdk_configuration)
+        self.companies = Companies(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
         self.integrations = Integrations(self.sdk_configuration)
         self.sync = Sync(self.sdk_configuration)
