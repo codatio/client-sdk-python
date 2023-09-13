@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import connectionstatus as shared_connectionstatus
+from ..shared import dataconnectionstatus as shared_dataconnectionstatus
 from codatcommon import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -14,9 +14,9 @@ from typing import Optional
 class CompanyDataConnectionStatusChangedWebhookData:
     data_connection_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for a company's data connection."""
-    new_status: Optional[shared_connectionstatus.ConnectionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('newStatus'), 'exclude': lambda f: f is None }})
+    new_status: Optional[shared_dataconnectionstatus.DataConnectionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('newStatus'), 'exclude': lambda f: f is None }})
     r"""The current authorization status of the data connection."""
-    old_status: Optional[shared_connectionstatus.ConnectionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oldStatus'), 'exclude': lambda f: f is None }})
+    old_status: Optional[shared_dataconnectionstatus.DataConnectionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oldStatus'), 'exclude': lambda f: f is None }})
     r"""The current authorization status of the data connection."""
     platform_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformKey'), 'exclude': lambda f: f is None }})
     r"""A unique 4-letter key to represent a platform in each integration. View [accounting](https://docs.codat.io/integrations/accounting/accounting-platform-keys), [banking](https://docs.codat.io/integrations/banking/banking-platform-keys), and [commerce](https://docs.codat.io/integrations/commerce/commerce-platform-keys) platform keys."""
