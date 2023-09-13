@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import createbankaccounttransaction as shared_createbankaccounttransaction
+from ..shared import createbanktransaction as shared_createbanktransaction
 from codatbankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -13,6 +13,6 @@ from typing import Optional
 @dataclasses.dataclass
 class CreateBankTransactions:
     account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    transactions: Optional[list[shared_createbankaccounttransaction.CreateBankAccountTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
+    transactions: Optional[list[shared_createbanktransaction.CreateBankTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
     
 

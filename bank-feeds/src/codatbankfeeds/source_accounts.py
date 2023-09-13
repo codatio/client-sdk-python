@@ -13,15 +13,34 @@ class SourceAccounts:
         self.sdk_configuration = sdk_config
         
     
-    def create(self, request: operations.CreateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankFeedResponse:
-        r"""Create a bank feed bank account
-        Post a BankFeed BankAccount for a single data source connected. to a single company.
+    def create(self, request: operations.CreateSourceAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateSourceAccountResponse:
+        r"""Create source account
+        The _Create Source Account_ endpoint allows you to create a representation of a bank account within Codat's domain. The company can then map the source account to an existing or new target account in their accounting software.
+
+        #### Account Mapping Variability
+
+        The method of mapping the source account to the target account varies depending on the accounting package your company uses.
+
+        #### Mapping Options:
+
+        1. **API Mapping**: Integrate the mapping journey directly into your application for a seamless user experience.
+        2. **Codat UI Mapping**: If you prefer a quicker setup, you can utilize Codat's provided user interface for mapping.
+        3. **Accounting Platform Mapping**: For some accounting software, the mapping process must be conducted within the software itself.
+
+        ### Integration specific behaviour
+
+        | Bank Feed Integration | API Mapping | Codat UI Mapping | Accounting Platform Mapping |
+        | --------------------- | ----------- | ---------------- | --------------------------- |
+        | Xero                  | ✅          | ✅               |                             |
+        | FreeAgent             | ✅          | ✅               |                             |
+        | QuickBooks Online     |             |                  | ✅                          |
+        | Sage                  |             |                  | ✅                          |
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.CreateBankFeedRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
+        url = utils.generate_url(operations.CreateSourceAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bank_feed_account", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "source_account", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -29,9 +48,13 @@ class SourceAccounts:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('POST', url, data=data, files=form, headers=headers)
@@ -43,12 +66,12 @@ class SourceAccounts:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.CreateBankFeedResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateSourceAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedAccount])
-                res.bank_feed_account = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SourceAccount])
+                res.source_account = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401, 404, 429]:
@@ -61,24 +84,28 @@ class SourceAccounts:
         return res
 
     
-    def delete(self, request: operations.DeleteBankFeedBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteBankFeedBankAccountResponse:
-        r"""Delete bank feed bank account
-        The *delete bank feed bank account* endpoint enables you to remove a source account.
+    def delete(self, request: operations.DeleteSourceAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteSourceAccountResponse:
+        r"""Delete source account
+        The _Delete source account_ endpoint enables you to remove a source account.
 
         Removing a source account will also remove any mapping between the source bank feed bank accounts and the target bankfeed bank account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.DeleteBankFeedBankAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}', request)
+        url = utils.generate_url(operations.DeleteSourceAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('DELETE', url, headers=headers)
@@ -90,7 +117,7 @@ class SourceAccounts:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.DeleteBankFeedBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DeleteSourceAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 204:
             pass
@@ -119,9 +146,13 @@ class SourceAccounts:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('DELETE', url, headers=headers)
@@ -167,9 +198,13 @@ class SourceAccounts:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('POST', url, data=data, files=form, headers=headers)
@@ -199,24 +234,28 @@ class SourceAccounts:
         return res
 
     
-    def list(self, request: operations.ListBankFeedsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankFeedsResponse:
-        r"""List bank feed bank accounts
-        The *List bank feed bank accounts* endpoint returns a list of [bank feed accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) for a given company's connection.
+    def list(self, request: operations.ListSourceAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSourceAccountsResponse:
+        r"""List source accounts
+        The _List source accounts_ endpoint returns a list of [source accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) for a given company's connection.
 
-        [Bank feed accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) are the bank's bank account from which transactions are synced into the accounting platform.
+        [source accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) are the bank's bank account within Codat's domain from which transactions are synced into the accounting platform.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.ListBankFeedsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
+        url = utils.generate_url(operations.ListSourceAccountsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
@@ -228,12 +267,12 @@ class SourceAccounts:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ListBankFeedsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListSourceAccountsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedAccount])
-                res.bank_feed_account = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SourceAccount])
+                res.source_account = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:
@@ -246,15 +285,15 @@ class SourceAccounts:
         return res
 
     
-    def update(self, request: operations.UpdateBankFeedRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateBankFeedResponse:
-        r"""Update bank feed bank account
-        The *Update bank feed bank account* endpoint updates a single bank feed bank account for a single data source connected to a single company.
+    def update(self, request: operations.UpdateSourceAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateSourceAccountResponse:
+        r"""Update source account
+        The _Update source account_ endpoint updates a single source account for a single data connection connected to a single company.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.UpdateBankFeedRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}', request)
+        url = utils.generate_url(operations.UpdateSourceAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bank_feed_account", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "source_account", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -262,9 +301,13 @@ class SourceAccounts:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('PATCH', url, data=data, files=form, headers=headers)
@@ -276,12 +319,12 @@ class SourceAccounts:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.UpdateBankFeedResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.UpdateSourceAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.BankFeedAccount])
-                res.bank_feed_account = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SourceAccount])
+                res.source_account = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:

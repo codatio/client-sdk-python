@@ -4,8 +4,8 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
-from ..shared import listpushoperations as shared_listpushoperations
-from typing import Optional
+from ..shared import pushoperations as shared_pushoperations
+from typing import Callable, Optional
 
 
 
@@ -27,11 +27,12 @@ class ListCreateOperationsRequest:
 
 @dataclasses.dataclass
 class ListCreateOperationsResponse:
+    next: Callable[[], Optional[ListCreateOperationsResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
-    list_push_operations: Optional[shared_listpushoperations.ListPushOperations] = dataclasses.field(default=None)
+    push_operations: Optional[shared_pushoperations.PushOperations] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
