@@ -11,13 +11,19 @@ s = codatlending.CodatLending(
     ),
 )
 
-req = operations.GetAccountingProfileRequest(
+req = operations.ListAccountingBankAccountTransactionsRequest(
+    account_id='corrupti',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
+    page=1,
+    page_size=100,
+    query='provident',
 )
 
-res = s.get_accounting_profile(req)
+res = s.accounting_bank_data.list_transactions(req)
 
-if res.accounting_company_info is not None:
+if res.accounting_bank_transactions is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

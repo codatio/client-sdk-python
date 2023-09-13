@@ -11,7 +11,7 @@ class DownloadAcceptEnum(str, Enum):
     APPLICATION_OCTET_STREAM = "application/octet-stream"
 
 class ExcelReports:
-    r"""Downloadable reports"""
+    r"""Download reports in Excel format."""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
