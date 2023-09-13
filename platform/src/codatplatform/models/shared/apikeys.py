@@ -12,7 +12,6 @@ from typing import Optional
 
 @dataclasses.dataclass
 class APIKeys:
-    r"""Success"""
     results: Optional[list[shared_apikeydetails.APIKeyDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
     
 

@@ -21,7 +21,7 @@ class GetCompanyDataStatusRequest:
 class GetCompanyDataStatusResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    data_status_response: Optional[dict[str, shared_datastatus.DataStatus]] = dataclasses.field(default=None)
+    data_statuses: Optional[dict[str, shared_datastatus.DataStatus]] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
