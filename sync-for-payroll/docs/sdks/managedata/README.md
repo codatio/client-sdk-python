@@ -111,7 +111,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='88f3a669-9707-44ba-8469-b6e214195989',
+    push_operation_key='97074ba4-469b-46e2-9419-59890afa563e',
 )
 
 res = s.manage_data.get_push_operation(req)
@@ -154,7 +154,7 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='accusantium',
+    query='odit',
 )
 
 res = s.manage_data.list(req)
@@ -197,7 +197,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='mollitia',
+    query='nemo',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -282,7 +282,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='fa563e25-16fe-44c8-b711-e5b7fd2ed028',
+    connection_id='16fe4c8b-711e-45b7-bd2e-d028921cddc6',
     data_type=shared.DataType.INVOICES,
 )
 

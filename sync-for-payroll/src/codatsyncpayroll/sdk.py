@@ -3,6 +3,7 @@
 import requests as requests_http
 from .accounts import Accounts
 from .companies import Companies
+from .company_info import CompanyInfo
 from .connections import Connections
 from .journal_entries import JournalEntries
 from .journals import Journals
@@ -10,20 +11,36 @@ from .manage_data import ManageData
 from .sdkconfiguration import SDKConfiguration
 from .tracking_categories import TrackingCategories
 from codatsyncpayroll import utils
-from codatsyncpayroll.models import errors, operations, shared
-from typing import Optional
+from codatsyncpayroll.models import shared
 
 class CodatSyncPayroll:
     r"""Sync for Payroll: The API for Sync for Payroll.
 
     Sync for Payroll is an API and a set of supporting tools built to help integrate your customers' payroll data from their HR and payroll platforms into their accounting platforms and to support its reconciliation.
 
-    [Read More...](https://docs.codat.io/payroll/overview)
+    [Explore product](https://docs.codat.io/payroll/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
+
+    ---
+
+    ## Endpoints
+
+    | Endpoints            | Description                                                                                                |
+    |:---------------------|:-----------------------------------------------------------------------------------------------------------|
+    | Companies            | Create and manage your SMB users' companies.                                                               |
+    | Connections          | Create new and manage existing data connections for a company.                                             |
+    | Accounts             | Get, create, and update Accounts.                                                           |
+    | Journal entries      | Get, create, and update Journal entries.                                                           |
+    | Journals             | Get, create, and update Journals.                                                           |
+    | Tracking categories  | Get, create, and update Tracking Categories for additional categorization of payroll components.                                                           |
+    | Company info         | View company profile from the source platform.                                                             |
+    | Manage data          | Control how data is retrieved from an integration.                                                         |
     """
     accounts: Accounts
     r"""Accounts"""
     companies: Companies
     r"""Create and manage your Codat companies."""
+    company_info: CompanyInfo
+    r"""View company information fetched from the source platform."""
     connections: Connections
     r"""Manage your companies' data connections."""
     journal_entries: JournalEntries
@@ -76,58 +93,10 @@ class CodatSyncPayroll:
     def _init_sdks(self):
         self.accounts = Accounts(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
+        self.company_info = CompanyInfo(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
         self.journal_entries = JournalEntries(self.sdk_configuration)
         self.journals = Journals(self.sdk_configuration)
         self.manage_data = ManageData(self.sdk_configuration)
         self.tracking_categories = TrackingCategories(self.sdk_configuration)
-    
-    def get_accounting_profile(self, request: operations.GetAccountingProfileRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountingProfileResponse:
-        r"""Get company accounting profile
-        Gets the latest basic info for a company.
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetAccountingProfileRequest, base_url, '/companies/{companyId}/data/info', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.security_client
-        
-        global_retry_config = self.sdk_configuration.retry_config
-        retry_config = retries
-        if retry_config is None:
-            if global_retry_config:
-                retry_config = global_retry_config
-            else:
-                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
-
-        def do_request():
-            return client.request('GET', url, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '408',
-            '429',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetAccountingProfileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetAccountingProfileCompanyInformation])
-                res.company_information = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 409, 429]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-
-        return res
-
     
