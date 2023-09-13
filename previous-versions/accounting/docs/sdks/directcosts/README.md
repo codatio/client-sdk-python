@@ -19,7 +19,7 @@ Direct costs
 
 The *Create direct cost* endpoint creates a new [direct cost](https://docs.codat.io/accounting-api#/schemas/DirectCost) for a given company's connection.
 
-[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are the expenses associated with a business' operations. For example, purchases of raw materials that are paid off at the point of the purchase and service fees are considered direct costs.
 
 **Integration-specific behaviour**
 
@@ -33,6 +33,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codataccounting
 from codataccounting.models import operations, shared
+from decimal import Decimal
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -43,128 +44,100 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateDirectCostRequest(
     direct_cost=shared.DirectCost(
         contact_ref=shared.ContactRef(
-            data_type='beatae',
-            id='e8aa257d-dc19-412e-bde6-4bfcc5469d40',
+            data_type='maxime',
+            id='af5dd672-3dc0-4f5a-a2f3-a6b700878756',
         ),
         currency='GBP',
-        currency_rate=3383.08,
-        id='dfa79620-6bef-42b0-a3e4-2c1aa010e9aa',
+        currency_rate=Decimal('3086.58'),
+        id='3f5a6c98-b555-4540-80d4-0bcacc6cbd6b',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.DirectCostLineItem(
                 account_ref=shared.AccountRef(
-                    id='e9135586-d18f-49f9-ba4b-fad2bf7d67ca',
-                    name='Edwin Olson',
+                    id='f3ec9093-04f9-426b-ad25-53819b474b0e',
+                    name='Steve Barrows',
                 ),
-                description='unde',
-                discount_amount=7121.86,
-                discount_percentage=2626.11,
+                description='ea',
+                discount_amount=Decimal('1799.06'),
+                discount_percentage=Decimal('3052.67'),
                 item_ref=shared.ItemRef(
-                    id='1d612435-3187-40cf-a8b0-3ad421bd43d1',
-                    name='Larry Sanford MD',
+                    id='8fff639a-910a-4bdc-ab62-676696e1ec00',
+                    name='Kathryn Bruen',
                 ),
-                quantity=393.88,
-                sub_total=81.99,
-                tax_amount=210.15,
+                quantity=Decimal('2274.31'),
+                sub_total=Decimal('3466.08'),
+                tax_amount=Decimal('8470.18'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=2214.8,
-                    id='eb22d9b3-a70d-494f-aa74-1c57d1fedc20',
-                    name='Michelle Sipes',
+                    effective_tax_rate=Decimal('5065.32'),
+                    id='9acb3ecf-da8d-40c5-89ef-03004978a61f',
+                    name='Peter Schmitt',
                 ),
-                total_amount=8630.37,
+                total_amount=Decimal('349.89'),
                 tracking=shared.Tracking(
                     invoice_to=shared.TrackingRecordReference(
-                        data_type='quo',
-                        id='3ce18547-2f9e-4e69-966a-8be3444eac8b',
+                        data_type='invoice',
+                        id='88f77c1f-fc71-4dca-963f-2a3c80a97ff3',
                     ),
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='laborum',
-                            id='2875c6c1-fe60-46d0-bd2a-9c87ae50c166',
+                            data_type='journalEntry',
+                            id='4cddf857-a9e6-4187-ac6a-b21d29dfc94d',
                         ),
                     ],
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='1a1d9136-a7e8-4d53-a13f-3f658752db76',
-                        name='Jody Hegmann',
-                    ),
-                    shared.TrackingCategoryRef(
-                        id='0a56cebc-ada2-49ca-b918-1c95671663c5',
-                        name='Cynthia Reichert',
+                        id='6fecd799-3900-466a-ad2d-000355338cec',
+                        name='Lena Kerluke',
                     ),
                 ],
-                unit_amount=3905.83,
+                unit_amount=Decimal('1440.58'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='et',
+        note='necessitatibus',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='USD',
-                    currency_rate=2495.41,
-                    total_amount=3829.28,
+                    currency='GBP',
+                    currency_rate=Decimal('3690.99'),
+                    total_amount=Decimal('1631.81'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='38512ab2-521b-49f2-a072-467b8a40bc05',
-                        name='Dr. Omar Reinger',
-                    ),
-                    currency='USD',
-                    currency_rate=196.1,
-                    id='edf22a94-d20e-4c90-aa41-d1f465e85156',
-                    note='repellat',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='a',
-                    total_amount=4778.26,
-                ),
-            ),
-            shared.Items(
-                allocation=shared.ItemsAllocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='EUR',
-                    currency_rate=8372.02,
-                    total_amount=9459.21,
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='54fdd5ea-9543-4398-9afb-42a8d63388e4',
-                        name='Casey Anderson',
+                        id='cb311916-7b8e-43c8-9b03-408d6d364ffd',
+                        name='Jill Hermann III',
                     ),
                     currency='EUR',
-                    currency_rate=6353.96,
-                    id='5f9b18a2-44fd-4619-839d-acd38ed0dc67',
-                    note='et',
+                    currency_rate=Decimal('1168.67'),
+                    id='263d48e9-35c2-4c9e-81f3-0be3e43202d7',
+                    note='magni',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='optio',
-                    total_amount=4654.86,
+                    reference='aliquid',
+                    total_amount=Decimal('3216.97'),
                 ),
             ),
         ],
-        reference='delectus',
+        reference='voluptate',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        sub_total=8783.61,
+        sub_total=Decimal('3249.99'),
         supplemental_data=shared.SupplementalData(
             content={
-                "culpa": {
-                    "quasi": 'veniam',
-                    "provident": 'consequuntur',
-                    "aut": 'maxime',
-                    "provident": 'aperiam',
+                "sit": {
+                    "vel": 'laboriosam',
                 },
             },
         ),
-        tax_amount=8337.06,
-        total_amount=664.08,
+        tax_amount=Decimal('3112.47'),
+        total_amount=Decimal('941.22'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=741454,
+    timeout_in_minutes=525223,
 )
 
 res = s.direct_costs.create(req)
@@ -199,7 +172,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -211,7 +184,7 @@ req = operations.DownloadDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='magnam',
+    direct_cost_id='dignissimos',
 )
 
 res = s.direct_costs.download_attachment(req)
@@ -248,7 +221,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -259,7 +232,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetDirectCostRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='natus',
+    direct_cost_id='doloremque',
 )
 
 res = s.direct_costs.get(req)
@@ -294,7 +267,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -306,7 +279,7 @@ req = operations.GetDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='aperiam',
+    direct_cost_id='assumenda',
 )
 
 res = s.direct_costs.get_attachment(req)
@@ -345,7 +318,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -390,7 +363,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -404,7 +377,7 @@ req = operations.ListDirectCostsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dicta',
+    query='provident',
 )
 
 res = s.direct_costs.list(req)
@@ -439,7 +412,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -450,7 +423,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListDirectCostAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='repellat',
+    direct_cost_id='facere',
 )
 
 res = s.direct_costs.list_attachments(req)
@@ -489,7 +462,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(
@@ -499,12 +472,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadDirectCostAttachmentRequest(
     request_body=operations.UploadDirectCostAttachmentRequestBody(
-        content='dolores'.encode(),
-        request_body='harum',
+        content='sed'.encode(),
+        request_body='inventore',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='quibusdam',
+    direct_cost_id='voluptatibus',
 )
 
 res = s.direct_costs.upload_attachment(req)

@@ -32,11 +32,11 @@ from codataccounting.models import shared
 
 class CodatAccounting:
     r"""Accounting API: A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
-    
+
     Standardize how you connect to your customers’ accounting software. View, create, update, and delete data in the same way for all the leading accounting platforms.
-    
+
     [Read more...](https://docs.codat.io/accounting-api/overview)
-    
+
     [See our OpenAPI spec](https://github.com/codatio/oas)
     """
     account_transactions: AccountTransactions
@@ -97,7 +97,8 @@ class CodatAccounting:
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: dict[str, str] = None,
-                 client: requests_http.Session = None
+                 client: requests_http.Session = None,
+                 retry_config: utils.RetryConfig = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
@@ -110,7 +111,9 @@ class CodatAccounting:
         :param url_params: Parameters to optionally template the server URL with
         :type url_params: dict[str, str]
         :param client: The requests.Session HTTP client to use for all operations
-        :type client: requests_http.Session        
+        :type client: requests_http.Session
+        :param retry_config: The utils.RetryConfig to use globally
+        :type retry_config: utils.RetryConfig
         """
         if client is None:
             client = requests_http.Session()
@@ -121,7 +124,7 @@ class CodatAccounting:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx)
+        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     

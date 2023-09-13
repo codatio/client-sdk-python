@@ -8,6 +8,7 @@ from ..shared import taxratestatus as shared_taxratestatus
 from ..shared import validdatatypelinks as shared_validdatatypelinks
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -16,18 +17,18 @@ from typing import Optional
 @dataclasses.dataclass
 class TaxRate:
     r"""> View the coverage for tax rates in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=taxRates\\" target=\\"_blank\\">Data coverage explorer</a>.
-    
+
     ## Overview
-    
+
     Accounting systems typically store a set of taxes and associated rates within the accounting package. This means that users don't have to look up or remember the rates for each type of tax. For example, applying the tax \"UK sales VAT\" to line items of an invoice adds the correct rate of 20%. 
-    
+
     ### Tax components
-    
+
     In some cases, a tax is made up of multiple sub taxes, often called _components_ of the tax.  For example, you may have an item that is charged a tax rate called \"City import tax (8%)\" that has two components: 
-    
+
     - A city tax of 5%  
     - An import tax of 3%
-    
+
     > **Effective tax rates**  
     > - Where there are multiple components of a tax, each component may be calculated on the original amount and added together. Alternatively, one tax may be calculated on the sub-total of the original amount plus another tax, which is referred to as _compounding_. When there is compounding, the effective tax rate is the rate that, if applied to the original amount, would result in the total amount of tax with compounding.  
     >
@@ -39,7 +40,7 @@ class TaxRate:
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
     r"""Code for the tax rate from the accounting platform."""
     components: Optional[list[shared_taxratecomponent.TaxRateComponent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('components'), 'exclude': lambda f: f is None }})
-    effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
+    effective_tax_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""See Effective tax rates description."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier for the tax rate, unique for the company in the accounting platform."""
@@ -54,7 +55,7 @@ class TaxRate:
     - `Archived` - A tax rate that has been archived or is inactive in the accounting platform.  
     - `Unknown` - Where the status of the tax rate cannot be determined from the underlying platform.
     """
-    total_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxRate'), 'exclude': lambda f: f is None }})
+    total_tax_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Total (not compounded) sum of the components of a tax rate."""
     valid_datatype_links: Optional[list[shared_validdatatypelinks.ValidDataTypeLinks]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validDatatypeLinks'), 'exclude': lambda f: f is None }})
     

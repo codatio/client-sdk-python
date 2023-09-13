@@ -1,7 +1,9 @@
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import codataccounting
-from codataccounting.models import operations
+from codataccounting.models import operations, shared
 
 s = codataccounting.CodatAccounting(
     security=shared.Security(

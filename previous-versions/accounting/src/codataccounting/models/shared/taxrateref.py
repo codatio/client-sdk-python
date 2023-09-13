@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -12,9 +13,9 @@ from typing import Optional
 @dataclasses.dataclass
 class TaxRateRef:
     r"""Data types that reference a tax rate, for example invoice and bill line items, use a taxRateRef that includes the ID and name of the linked tax rate.
-    
+
     Found on:
-    
+
     - Bill line items
     - Bill Credit Note line items
     - Credit Note line items
@@ -22,7 +23,7 @@ class TaxRateRef:
     - Invoice line items
     - Items
     """
-    effective_tax_rate: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'exclude': lambda f: f is None }})
+    effective_tax_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('effectiveTaxRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Applicable tax rate."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for the tax rate in the accounting platform."""

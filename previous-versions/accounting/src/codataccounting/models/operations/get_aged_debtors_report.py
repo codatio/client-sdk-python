@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import ageddebtorreport as shared_ageddebtorreport
-from ..shared import schema as shared_schema
+from ..shared import errormessage as shared_errormessage
 from datetime import date
 from typing import Optional
 
@@ -30,8 +30,8 @@ class GetAgedDebtorsReportResponse:
     status_code: int = dataclasses.field()
     aged_debtor_report: Optional[shared_ageddebtorreport.AgedDebtorReport] = dataclasses.field(default=None)
     r"""OK"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 
