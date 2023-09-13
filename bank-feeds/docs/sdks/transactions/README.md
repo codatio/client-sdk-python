@@ -6,15 +6,15 @@ Transactions represent debits and credits from a source account.
 
 ### Available Operations
 
-* [create](#create) - Create bank account transactions
+* [create](#create) - Create bank transactions
 * [get_create_operation](#get_create_operation) - Get create operation
 * [list_create_operations](#list_create_operations) - List create operations
 
 ## create
 
-﻿The *Create bank account transactions* endpoint creates new [bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) for a given company's connection.
+﻿The *Create bank transactions* endpoint creates new [bank transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) for a given company's connection.
 
-[Bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) are records of monetary amounts that have moved in and out of an SMB's bank account.
+[Bank transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) are records of monetary amounts that have moved in and out of an SMB's bank account.
 
 **Integration-specific behaviour**
 
@@ -28,6 +28,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codatbankfeeds
 from codatbankfeeds.models import operations, shared
+from decimal import Decimal
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -39,20 +40,20 @@ req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
         account_id='corporis',
         transactions=[
-            shared.CreateBankAccountTransaction(
-                amount=7506.86,
-                balance=3154.28,
+            shared.CreateBankTransaction(
+                amount=Decimal('1289.26'),
+                balance=Decimal('7506.86'),
                 date_='2022-10-23T00:00:00.000Z',
-                description='nemo',
-                id='5907aff1-a3a2-4fa9-8677-39251aa52c3f',
+                description='omnis',
+                id='55907aff-1a3a-42fa-9467-739251aa52c3',
             ),
         ],
     ),
-    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    account_id='EILBDVJVNUAGVKRQ',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=662527,
+    timeout_in_minutes=368725,
 )
 
 res = s.transactions.create(req)
@@ -92,7 +93,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='d019da1f-fe78-4f09-bb00-74f15471b5e6',
+    push_operation_key='ad019da1-ffe7-48f0-97b0-074f15471b5e',
 )
 
 res = s.transactions.get_create_operation(req)
@@ -135,12 +136,12 @@ req = operations.ListCreateOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='repudiandae',
+    query='commodi',
 )
 
 res = s.transactions.list_create_operations(req)
 
-if res.list_push_operations is not None:
+if res.push_operations is not None:
     # handle response
 ```
 

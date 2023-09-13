@@ -6,7 +6,7 @@ Bank feed bank account mapping.
 
 ### Available Operations
 
-* [create](#create) - Create bank feed bank account mapping
+* [create](#create) - Create bank feed account mapping
 * [get](#get) - List bank feed account mappings
 
 ## create
@@ -32,7 +32,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateBankAccountMappingRequest(
-    bank_feed_account_mapping=shared.BankFeedAccountMapping(
+    request_body=operations.CreateBankAccountMappingBankFeedAccountMapping(
         feed_start_date='2022-10-23T00:00:00.000Z',
         source_account_id='unde',
         target_account_id='nulla',

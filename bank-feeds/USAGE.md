@@ -12,7 +12,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateBankAccountMappingRequest(
-    bank_feed_account_mapping=shared.BankFeedAccountMapping(
+    request_body=operations.CreateBankAccountMappingBankFeedAccountMapping(
         feed_start_date='2022-10-23T00:00:00.000Z',
         source_account_id='provident',
         target_account_id='distinctio',
