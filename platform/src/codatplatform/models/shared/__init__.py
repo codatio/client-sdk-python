@@ -12,7 +12,6 @@ from .companydataconnectionstatuschangedwebhook import *
 from .companyrequestbody import *
 from .connection import *
 from .connections import *
-from .connectionstatus import *
 from .createapikey import *
 from .createrule import *
 from .dataconnectionerror import *
@@ -55,9 +54,10 @@ from .supplementaldataconfiguration import *
 from .supportedfeature import *
 from .syncsetting import *
 from .syncsettings import *
+from .updateconnectionstatus import *
 from .validation import *
 from .validationitem import *
 from .webhook import *
 from .webhooks import *
 
-__all__ = ["APIKeyDetails","APIKeys","Branding","BrandingButton","BrandingImage","BrandingLogo","Companies","Company","CompanyDataConnectionStatusChangedWebhook","CompanyDataConnectionStatusChangedWebhookData","CompanyRequestBody","Connection","ConnectionStatus","Connections","CreateAPIKey","CreateRule","CreateRuleNotifiers","DataConnectionError","DataConnectionStatus","DataStatus","DataSyncCompletedWebhook","DataSyncCompletedWebhookData","DataType","DataTypeFeature","DatasetDataChangedWebhook","DatasetDataChangedWebhookData","DatasetStatusChangedErrorWebhook","DatasetStatusChangedErrorWebhookData","ErrorMessage","FeatureState","FeatureType","HalRef","ImageReference","Integration","Integrations","Links","NewCompanySynchronizedWebhook","Profile","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperationStatusChangedWebhook","PushOperationStatusChangedWebhookData","PushOperationTimedOutWebhook","PushOperationTimedOutWebhookData","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Security","SourceType","SupplementalDataConfiguration","SupplementalDataConfigurationSupplementalDataSourceConfiguration","SupportedFeature","SyncSetting","SyncSettingDataTypes","SyncSettings","Validation","ValidationItem","Webhook","WebhookNotifiers","Webhooks"]
+__all__ = ["APIKeyDetails","APIKeys","Branding","BrandingButton","BrandingImage","BrandingLogo","Companies","Company","CompanyDataConnectionStatusChangedWebhook","CompanyDataConnectionStatusChangedWebhookData","CompanyRequestBody","Connection","Connections","CreateAPIKey","CreateRule","CreateRuleNotifiers","DataConnectionError","DataConnectionStatus","DataStatus","DataSyncCompletedWebhook","DataSyncCompletedWebhookData","DataType","DataTypeFeature","DatasetDataChangedWebhook","DatasetDataChangedWebhookData","DatasetStatusChangedErrorWebhook","DatasetStatusChangedErrorWebhookData","ErrorMessage","FeatureState","FeatureType","HalRef","ImageReference","Integration","Integrations","Links","NewCompanySynchronizedWebhook","Profile","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperationStatusChangedWebhook","PushOperationStatusChangedWebhookData","PushOperationTimedOutWebhook","PushOperationTimedOutWebhookData","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","Security","SourceType","SupplementalDataConfiguration","SupplementalDataConfigurationSupplementalDataSourceConfiguration","SupportedFeature","SyncSetting","SyncSettingDataTypes","SyncSettings","UpdateConnectionStatus","Validation","ValidationItem","Webhook","WebhookNotifiers","Webhooks"]
