@@ -6,6 +6,7 @@ from .bill_credit_notes import BillCreditNotes
 from .bill_payments import BillPayments
 from .bills import Bills
 from .companies import Companies
+from .company_info import CompanyInfo
 from .connections import Connections
 from .journal_entries import JournalEntries
 from .journals import Journals
@@ -24,7 +25,29 @@ class CodatSyncPayables:
 
     Sync for Payables is an API and a set of supporting tools built to help integrate with your customers' accounting software, and keep their supplier information, invoices, and payments in sync.
 
-    [Read More...](https://docs.codat.io/payables/overview)
+    [Explore product](https://docs.codat.io/payables/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
+
+    ---
+
+    ## Endpoints
+
+    | Endpoints            | Description                                                                                                |
+    |:---------------------|:-----------------------------------------------------------------------------------------------------------|
+    | Companies            | Create and manage your SMB users' companies.                                                               |
+    | Connections          | Create new and manage existing data connections for a company.                                             |
+    | Accounts             | Get, create, and update Accounts                                                           |
+    | Bills                | Get, create, and update Bills                                                                          |
+    | Bill credit notes    | Get, create, and update Bill credit notes                                                              |
+    | Bill payments        | Get, create, and update Bill payments                                                                  |
+    | Journals             | Get, create, and update Journals                                                                       |
+    | Journal entries      | Get, create, and update Journal entries                                                                |
+    | Payment methods      | Get, create, and update Payment methods                                                                |
+    | Suppliers            | Get, create, and update Suppliers                                                                      |
+    | Tax rates            | Get, create, and update Tax rates                                                                      |
+    | Tracking categories  | Get, create, and update Tracking categories                                                            |
+    | Push operations      | View historic push operations                                                         |
+    | Company info         | View company profile from the source platform.                                                             |
+    | Manage data          | Control how data is retrieved from an integration.                                                         |
     """
     accounts: Accounts
     r"""Accounts"""
@@ -36,6 +59,8 @@ class CodatSyncPayables:
     r"""Bills"""
     companies: Companies
     r"""Create and manage your Codat companies."""
+    company_info: CompanyInfo
+    r"""View company information fetched from the source platform."""
     connections: Connections
     r"""Manage your companies' data connections."""
     journal_entries: JournalEntries
@@ -62,7 +87,8 @@ class CodatSyncPayables:
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: dict[str, str] = None,
-                 client: requests_http.Session = None
+                 client: requests_http.Session = None,
+                 retry_config: utils.RetryConfig = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
@@ -75,7 +101,9 @@ class CodatSyncPayables:
         :param url_params: Parameters to optionally template the server URL with
         :type url_params: dict[str, str]
         :param client: The requests.Session HTTP client to use for all operations
-        :type client: requests_http.Session        
+        :type client: requests_http.Session
+        :param retry_config: The utils.RetryConfig to use globally
+        :type retry_config: utils.RetryConfig
         """
         if client is None:
             client = requests_http.Session()
@@ -86,7 +114,7 @@ class CodatSyncPayables:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx)
+        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
@@ -96,6 +124,7 @@ class CodatSyncPayables:
         self.bill_payments = BillPayments(self.sdk_configuration)
         self.bills = Bills(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
+        self.company_info = CompanyInfo(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
         self.journal_entries = JournalEntries(self.sdk_configuration)
         self.journals = Journals(self.sdk_configuration)
