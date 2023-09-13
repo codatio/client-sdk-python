@@ -5,6 +5,7 @@ import dataclasses
 from ..shared import reportline as shared_reportline
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -12,13 +13,13 @@ from typing import Optional
 
 @dataclasses.dataclass
 class ProfitAndLossReport:
-    gross_profit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('grossProfit') }})
+    gross_profit: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('grossProfit'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Gross profit of the company in the given date range."""
-    net_operating_profit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netOperatingProfit') }})
+    net_operating_profit: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netOperatingProfit'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Net operating profit of the company in the given date range."""
-    net_other_income: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netOtherIncome') }})
+    net_other_income: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netOtherIncome'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Net other income of the company in the given date range."""
-    net_profit: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netProfit') }})
+    net_profit: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('netProfit'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Net profit of the company in the given date range."""
     cost_of_sales: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('costOfSales'), 'exclude': lambda f: f is None }})
     expenses: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expenses'), 'exclude': lambda f: f is None }})

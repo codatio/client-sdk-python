@@ -5,6 +5,7 @@ import dataclasses
 from ..shared import recordref as shared_recordref
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -12,7 +13,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class AccountTransactionLine:
-    amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
+    amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Amount in the bill payment currency."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Description of the account transaction."""

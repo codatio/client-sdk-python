@@ -6,12 +6,12 @@ Debt and other liabilities.
 
 ### Available Operations
 
-* [get_loan_summary](#get_loan_summary) - Get enhanced loan summaries
-* [list_loan_transactions](#list_loan_transactions) - List enhanced loan transactions
+* [get_loan_summary](#get_loan_summary) - Get loan summaries
+* [list_loan_transactions](#list_loan_transactions) - List loan transactions
 
 ## get_loan_summary
 
-﻿The *Get enhanced loan summaries* endpoint returns a summary by integration type of all loans identified in each integration.
+The *Get loan summaries* endpoint returns a summary by integration type of all loans identified in each integration.
 
 The endpoint returns a list of a company's [loan summaries](https://docs.codat.io/lending-api#/schemas/LoanSummary) for each valid data connection.
 
@@ -55,7 +55,7 @@ if res.loan_summary is not None:
 
 ## list_loan_transactions
 
-﻿The *List enhanced loan transactions* endpoint returns all [loan transactions](https://docs.codat.io/lending-api#/schemas/LoanTransactions) identified from a company's accounting, banking, and commerce integrations.
+The *List loan transactions* endpoint returns all [loan transactions](https://docs.codat.io/lending-api#/schemas/LoanTransactions) identified from a company's accounting, banking, and commerce integrations.
 
 This detail gives analysts a better idea of the loan obligations a company may have.
 
@@ -76,7 +76,7 @@ s = codatlending.CodatLending(
 
 req = operations.ListLoanTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.ListLoanTransactionsSourceType.BANKING,
+    source_type=operations.ListLoanTransactionsSourceType.COMMERCE,
 )
 
 res = s.liabilities.list_loan_transactions(req)

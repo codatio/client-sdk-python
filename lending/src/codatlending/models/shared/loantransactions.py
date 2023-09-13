@@ -13,7 +13,6 @@ from typing import Any, Optional
 
 @dataclasses.dataclass
 class LoanTransactions:
-    r"""OK"""
     errors: Optional[list[Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
     r"""If there are no errors, an empty array is returned."""
     report_info: Optional[shared_loantransactionsreportinfo.LoanTransactionsReportInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInfo'), 'exclude': lambda f: f is None }})

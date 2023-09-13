@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -11,7 +12,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class ReportLine:
-    value: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
+    value: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Numerical value of the line item."""
     account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
     r"""Identifier for the account, unique for the company in the accounting platform."""
