@@ -11,7 +11,6 @@ from typing import Optional
 
 @dataclasses.dataclass
 class CompanySyncStatus:
-    r"""Success"""
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for your SMB in Codat."""
     data_pushed: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataPushed'), 'exclude': lambda f: f is None }})
