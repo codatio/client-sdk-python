@@ -17,7 +17,6 @@ from .accountingcreatepaymentresponse import *
 from .accountingcreditnote import *
 from .accountingcustomer import *
 from .accountingcustomerref import *
-from .accountingdataset import *
 from .accountingdirectincome import *
 from .accountinginvoice import *
 from .accountingjournalentry import *
@@ -50,7 +49,6 @@ from .commercetransaction import *
 from .commercetransactions import *
 from .companies import *
 from .company import *
-from .companyrequestbody import *
 from .configaccount import *
 from .configuration import *
 from .connection import *
@@ -62,8 +60,8 @@ from .creditnotestatus import *
 from .customer import *
 from .customerstatus import *
 from .dataconnectionerror import *
-from .dataconnectionhistory import *
 from .dataconnectionstatus import *
+from .dataset import *
 from .datastatus import *
 from .datatype import *
 from .datatypefeature import *
@@ -119,13 +117,13 @@ from .productvariant import *
 from .productvariantref import *
 from .productvariantstatus import *
 from .pulloperation import *
+from .pulloperations import *
 from .pushchangetype import *
-from .pushhistoryresponse import *
 from .pushoperation import *
 from .pushoperationchange import *
 from .pushoperationref import *
+from .pushoperations import *
 from .pushoperationstatus import *
-from .pushoperationsummary import *
 from .recordref import *
 from .sales import *
 from .security import *
@@ -154,4 +152,4 @@ from .visibleaccounts import *
 from .weblinksitems import *
 from .withholdingtaxitems import *
 
-__all__ = ["AccountBalance","AccountOption","AccountRef","AccountStatus","AccountType","AccountingAccount","AccountingAccountMetadata","AccountingAccountValidDataTypeLinks","AccountingAccounts","AccountingAddressType","AccountingBankAccount","AccountingBankAccountBankAccountType","AccountingBankAccounts","AccountingCompanyDataset","AccountingCompanyDatasetAddresses","AccountingCompanyDatasetPhone","AccountingCompanyDatasetWeblink","AccountingCompanyDatasetWeblinkType","AccountingCreateAccountResponse","AccountingCreateCreditNoteResponse","AccountingCreateCustomerResponse","AccountingCreateDirectIncomeResponse","AccountingCreateInvoiceResponse","AccountingCreateJournalEntryResponse","AccountingCreatePaymentResponse","AccountingCreditNote","AccountingCustomer","AccountingCustomerRef","AccountingDataset","AccountingDatasetStatus","AccountingDirectIncome","AccountingDirectIncomeContactRef","AccountingInvoice","AccountingInvoicePaymentAllocation","AccountingInvoicePaymentAllocationAllocation","AccountingInvoiceSalesOrderReference","AccountingInvoiceWithholdingTax","AccountingJournalEntry","AccountingJournalEntryJournalReference","AccountingJournalEntryRecordReference","AccountingPayment","BilledToType","Branding","BrandingButton","BrandingImage","BrandingLogo","CommerceAddressType","CommerceCompanyInfo","CommerceCustomer","CommerceCustomerAddress","CommerceCustomerRef","CommerceCustomers","CommerceLocation","CommerceLocations","CommerceOrder","CommerceOrderSupplementalData","CommerceOrders","CommercePayment","CommercePaymentMethod","CommercePaymentMethods","CommercePayments","CommerceProduct","CommerceProducts","CommerceTransaction","CommerceTransactions","Companies","Company","CompanyRequestBody","ConfigAccount","Configuration","Connection","ConnectionSourceType","Connections","Contact","CreateCompany","CreditNoteLineItem","CreditNoteLineItemTracking","CreditNoteLineItemTrackingProjectRef","CreditNoteStatus","Customer","CustomerStatus","DataConnectionError","DataConnectionHistory","DataConnectionStatus","DataStatus","DataType","DataTypeFeature","DataTypeFeatureDataType","DateRange","DirectIncomeLineItem","DirectIncomeLineItemItemReference","DirectIncomeLineItemTaxRateReference","DirectIncomeLineItemTrackingCategoryRefs","ErrorMessage","FeatureState","FeatureType","Fees","FeesSupplier","Grouping","GroupingLevels","GroupingPeriod","HalRef","ImageReference","Integration","Integrations","InvoiceLevelSelection","InvoiceLineItem","InvoiceLineLevelSelection","InvoiceStatus","InvoiceStatus1","ItemRef","Items","Items1","ItemsAllocation","ItemsTaxComponentRef","ItemsType","JournalLine","JournalLineTracking","Links","Localization","LocationRef","Metadata","NewPayments","NewTaxRates","Option","OrderDiscountAllocation","OrderLineItem","PaymentAllocationPayment","PaymentAllocationsitems","PaymentLine","PaymentLineLink","PaymentLinkType","PaymentMethodStatus","PaymentRef","PaymentStatus","PaymentType","Payments","PhoneNumberType","PhoneNumbersitems","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatus","PullOperation","PullOperationStatus","PushChangeType","PushHistoryResponse","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperationSummary","RecordRef","Sales","Security","ServiceCharge","ServiceChargeTaxComponentAllocation","ServiceChargeTaxComponentAllocationTaxComponentRef","ServiceChargeType","SourceType","SupplementalData","SupportedFeature","SyncFlowURL","SyncRange","SyncRangeDateRange","SyncSummary","SyncToLatestArgs","TaxRateAmount","TaxRateMapping","TaxRateRef","Taxesitems","Tracking","TrackingCategoryRefsitems","TrackingProjectRef","TransactionSourceRef","TransactionSourceType","TransactionType","UpdateConnection","Validation","ValidationItem","VisibleAccounts","WebLinksitems","WithholdingTaxitems"]
+__all__ = ["AccountBalance","AccountOption","AccountRef","AccountStatus","AccountType","AccountingAccount","AccountingAccountMetadata","AccountingAccountValidDataTypeLinks","AccountingAccounts","AccountingAddressType","AccountingBankAccount","AccountingBankAccountBankAccountType","AccountingBankAccounts","AccountingCompanyDataset","AccountingCompanyDatasetAccountingAddress","AccountingCompanyDatasetPhone","AccountingCompanyDatasetWeblink","AccountingCompanyDatasetWeblinkType","AccountingCreateAccountResponse","AccountingCreateCreditNoteResponse","AccountingCreateCustomerResponse","AccountingCreateDirectIncomeResponse","AccountingCreateInvoiceResponse","AccountingCreateJournalEntryResponse","AccountingCreatePaymentResponse","AccountingCreditNote","AccountingCustomer","AccountingCustomerRef","AccountingDirectIncome","AccountingDirectIncomeContactRef","AccountingInvoice","AccountingInvoicePaymentAllocation","AccountingInvoicePaymentAllocationAllocation","AccountingInvoiceSalesOrderReference","AccountingInvoiceWithholdingTax","AccountingJournalEntry","AccountingJournalEntryJournalReference","AccountingJournalEntryRecordReference","AccountingPayment","BilledToType","Branding","BrandingButton","BrandingImage","BrandingLogo","CommerceAddressType","CommerceCompanyInfo","CommerceCustomer","CommerceCustomerAddress","CommerceCustomerRef","CommerceCustomers","CommerceLocation","CommerceLocations","CommerceOrder","CommerceOrderSupplementalData","CommerceOrders","CommercePayment","CommercePaymentMethod","CommercePaymentMethods","CommercePayments","CommerceProduct","CommerceProducts","CommerceTransaction","CommerceTransactions","Companies","Company","ConfigAccount","Configuration","Connection","ConnectionSourceType","Connections","Contact","CreateCompany","CreditNoteLineItem","CreditNoteLineItemTracking","CreditNoteLineItemTrackingProjectReference","CreditNoteStatus","Customer","CustomerStatus","DataConnectionError","DataConnectionStatus","DataStatus","DataType","DataTypeFeature","DataTypeFeatureDataTypes","Dataset","DatasetStatus","DateRange","DirectIncomeLineItem","DirectIncomeLineItemItemReference","DirectIncomeLineItemTaxRateReference","DirectIncomeLineItemTrackingCategoryRefs","ErrorMessage","FeatureState","FeatureType","Fees","FeesSupplier","Grouping","GroupingLevels","GroupingPeriod","HalRef","ImageReference","Integration","Integrations","InvoiceLevelSelection","InvoiceLineItem","InvoiceLineLevelSelection","InvoiceStatus","InvoiceStatus1","ItemRef","Items","Items1","ItemsAllocation","ItemsTaxComponentRef","ItemsType","JournalLine","JournalLineTracking","Links","Localization","LocationRef","Metadata","NewPayments","NewTaxRates","Option","OrderDiscountAllocation","OrderLineItem","PaymentAllocationPayment","PaymentAllocationsitems","PaymentLine","PaymentLineLink","PaymentLinkType","PaymentMethodStatus","PaymentRef","PaymentStatus","PaymentType","Payments","PhoneNumberType","PhoneNumbersitems","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatus","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","RecordRef","Sales","Security","ServiceCharge","ServiceChargeTaxComponentAllocation","ServiceChargeTaxComponentAllocationTaxComponentRef","ServiceChargeType","SourceType","SupplementalData","SupportedFeature","SyncFlowURL","SyncRange","SyncRangeDateRange","SyncSummary","SyncToLatestArgs","TaxRateAmount","TaxRateMapping","TaxRateRef","Taxesitems","Tracking","TrackingCategoryRefsitems","TrackingProjectReference","TransactionSourceRef","TransactionSourceType","TransactionType","UpdateConnection","Validation","ValidationItem","VisibleAccounts","WebLinksitems","WithholdingTaxitems"]

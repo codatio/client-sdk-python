@@ -1,4 +1,4 @@
-# CommerceOrders
+# PullOperations
 
 
 ## Fields
@@ -8,5 +8,5 @@
 | `links`                                                     | [Links](../../models/shared/links.md)                       | :heavy_check_mark:                                          | N/A                                                         |
 | `page_number`                                               | *int*                                                       | :heavy_check_mark:                                          | N/A                                                         |
 | `page_size`                                                 | *int*                                                       | :heavy_check_mark:                                          | N/A                                                         |
-| `results`                                                   | list[[CommerceOrder](../../models/shared/commerceorder.md)] | :heavy_minus_sign:                                          | N/A                                                         |
+| `results`                                                   | list[[PullOperation](../../models/shared/pulloperation.md)] | :heavy_minus_sign:                                          | N/A                                                         |
 | `total_results`                                             | *int*                                                       | :heavy_check_mark:                                          | N/A                                                         |

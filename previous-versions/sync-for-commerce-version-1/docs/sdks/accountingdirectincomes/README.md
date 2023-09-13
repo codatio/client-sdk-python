@@ -26,6 +26,7 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codatsynccommerce
 from codatsynccommerce.models import operations, shared
+from decimal import Decimal
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -36,192 +37,88 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.CreateAccountingDirectIncomeRequest(
     accounting_direct_income=shared.AccountingDirectIncome(
         contact_ref=shared.AccountingDirectIncomeContactRef(
-            data_type='nisi',
-            id='f48b656b-cdb3-45ff-ae4b-27537a8cd9e7',
+            data_type='tempora',
+            id='5626d436-813f-416d-9f5f-ce6c556146c3',
         ),
-        currency='GBP',
-        currency_rate=1180.41,
-        id='9c177d52-5f77-4b11-8eeb-52ff785fc378',
+        currency='EUR',
+        currency_rate=Decimal('1324.87'),
+        id='50fb008c-42e1-441a-ac36-6c8dd6b14429',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.DirectIncomeLineItem(
                 account_ref=shared.AccountRef(
-                    id='d4c98e0c-2bb8-49eb-b5da-d636c600503d',
-                    name='Willis Rippin Sr.',
+                    id='7474778a-7bd4-466d-a8c1-0ab3cdca4251',
+                    name='William Goodwin',
                 ),
-                description='laudantium',
-                discount_amount=407.1,
-                discount_percentage=9384.12,
+                description='aspernatur',
+                discount_amount=Decimal('1970.54'),
+                discount_percentage=Decimal('7791.92'),
                 item_ref=shared.DirectIncomeLineItemItemReference(
-                    id='739ae9e0-57eb-4809-a281-0331f3981d4c',
-                    name='Donna Aufderhar',
+                    id='7e0bc717-8e47-496f-aa70-c688282aa482',
+                    name='Sue Corkery',
                 ),
-                quantity=467.91,
-                sub_total=4894.59,
-                tax_amount=9980.26,
+                quantity=Decimal('1871.31'),
+                sub_total=Decimal('1294.12'),
+                tax_amount=Decimal('9039.84'),
                 tax_rate_ref=shared.DirectIncomeLineItemTaxRateReference(
-                    effective_tax_rate=2436.78,
-                    id='c93c73b9-da3f-42ce-9a7e-23f2257411fa',
-                    name='Kyle Reichel',
+                    effective_tax_rate=Decimal('5789.22'),
+                    id='817ee17c-be61-4e6b-bb95-bc0ab3c20c4f',
+                    name='Joy Labadie',
                 ),
-                total_amount=2883,
+                total_amount=Decimal('8577.23'),
                 tracking_category_refs=[
                     shared.DirectIncomeLineItemTrackingCategoryRefs(
-                        id='e472e802-857a-45b4-8463-a7d575f1400e',
-                        name='Gertrude Gerhold',
-                    ),
-                    shared.DirectIncomeLineItemTrackingCategoryRefs(
-                        id='7334ec1b-781b-436a-8808-8d100efada20',
-                        name='Mrs. Olive Weissnat',
+                        id='871f99dd-2efd-4121-aa6f-1e674bdb04f1',
+                        name='Delores Hermiston IV',
                     ),
                 ],
-                unit_amount=1858.97,
-            ),
-            shared.DirectIncomeLineItem(
-                account_ref=shared.AccountRef(
-                    id='eb2164cf-9ab8-4366-8723-ffda9e06bee4',
-                    name='Howard Hermann DVM',
-                ),
-                description='eligendi',
-                discount_amount=620.35,
-                discount_percentage=8850.22,
-                item_ref=shared.DirectIncomeLineItemItemReference(
-                    id='115c80bf-f918-4544-ac42-defcce8f1977',
-                    name='Lydia Douglas',
-                ),
-                quantity=2086.83,
-                sub_total=3577.58,
-                tax_amount=3753.5,
-                tax_rate_ref=shared.DirectIncomeLineItemTaxRateReference(
-                    effective_tax_rate=1636.84,
-                    id='a7b408f0-5e3d-448f-9af3-13a1f5fd9425',
-                    name='Lucas Abbott',
-                ),
-                total_amount=4124.33,
-                tracking_category_refs=[
-                    shared.DirectIncomeLineItemTrackingCategoryRefs(
-                        id='25ea944f-3b75-46c1-9f6c-37a512624383',
-                        name='Kristy Quigley II',
-                    ),
-                    shared.DirectIncomeLineItemTrackingCategoryRefs(
-                        id='a23a45ce-fc5f-4de1-8a0c-e2169e510019',
-                        name='Elmer Spinka',
-                    ),
-                    shared.DirectIncomeLineItemTrackingCategoryRefs(
-                        id='e3476279-9bfb-4be6-949f-b2bb4ecae6c3',
-                        name='Maurice Stanton',
-                    ),
-                    shared.DirectIncomeLineItemTrackingCategoryRefs(
-                        id='adebd5da-ea4c-4506-a8aa-94c02644cf5e',
-                        name='Drew Mraz',
-                    ),
-                ],
-                unit_amount=3442.89,
+                unit_amount=Decimal('1852.32'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='corrupti',
+        note='ex',
         payment_allocations=[
             shared.PaymentAllocationsitems(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
-                    currency_rate=986.1,
-                    total_amount=6472.18,
+                    currency_rate=Decimal('6802.7'),
+                    total_amount=Decimal('996.15'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='c600dec0-01ac-4802-a2ec-09ff8f0f816f',
-                        name='Lee Gibson',
+                        id='9f1d1705-1339-4d08-886a-1840394c2607',
+                        name='Elisa Mosciski',
                     ),
-                    currency='EUR',
-                    currency_rate=946.97,
-                    id='3e902c14-125b-4096-8a66-8151a472af92',
-                    note='nesciunt',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='quis',
-                    total_amount=5861.08,
-                ),
-            ),
-            shared.PaymentAllocationsitems(
-                allocation=shared.ItemsAllocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='USD',
-                    currency_rate=9804.1,
-                    total_amount=5120.81,
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='3f350cf8-76ff-4b90-9c6e-cbb4e243cf78',
-                        name='Jerald Wilkinson',
-                    ),
-                    currency='EUR',
-                    currency_rate=8615.91,
-                    id='a53e5ae6-e0ac-4184-82b9-c247c88373a4',
-                    note='perferendis',
+                    currency_rate=Decimal('9903.45'),
+                    id='0642dac7-af51-45cc-813a-a63aae8d6786',
+                    note='labore',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='architecto',
-                    total_amount=5646.27,
-                ),
-            ),
-            shared.PaymentAllocationsitems(
-                allocation=shared.ItemsAllocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
-                    currency_rate=9829.91,
-                    total_amount=2050.11,
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='2e550557-56f5-4d56-90bd-0af2dfe13db4',
-                        name='Elmer Champlin',
-                    ),
-                    currency='EUR',
-                    currency_rate=2425.31,
-                    id='f8941aeb-c0b8-40a6-924d-3b2ecfcc8f89',
-                    note='corporis',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='illo',
-                    total_amount=142.51,
+                    reference='facilis',
+                    total_amount=Decimal('7382.27'),
                 ),
             ),
         ],
-        reference='doloribus',
+        reference='commodi',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        sub_total=8698.48,
+        sub_total=Decimal('3605.45'),
         supplemental_data=shared.SupplementalData(
             content={
-                "neque": {
-                    "vel": 'sapiente',
-                    "mollitia": 'quae',
-                    "quos": 'aperiam',
-                    "non": 'voluptates',
-                },
-                "ad": {
-                    "quisquam": 'quas',
-                    "consequuntur": 'maiores',
-                },
-                "inventore": {
-                    "laudantium": 'est',
-                    "dolor": 'aliquid',
-                },
-                "consectetur": {
-                    "rem": 'voluptatum',
-                    "ducimus": 'adipisci',
-                    "recusandae": 'tempora',
-                    "blanditiis": 'numquam',
+                "reiciendis": {
+                    "assumenda": 'nemo',
                 },
             },
         ),
-        tax_amount=1963.74,
-        total_amount=5323.2,
+        tax_amount=Decimal('9249.67'),
+        total_amount=Decimal('3975.33'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=27078,
+    timeout_in_minutes=46007,
 )
 
 res = s.accounting_direct_incomes.create_accounting_direct_income(req)

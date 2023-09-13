@@ -106,7 +106,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.UpdateCompanyRequest(
-    company_request_body=shared.CompanyRequestBody(
+    create_company=shared.CreateCompany(
         description='Requested early access to the new financing scheme.',
         name='Bank of Dave',
     ),
