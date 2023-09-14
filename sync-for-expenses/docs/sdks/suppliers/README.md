@@ -38,11 +38,42 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
-        id='124',
+        addresses=[
+            shared.SupplierAccountingAddress(
+                city='Kohlerberg',
+                country='Faroe Islands',
+                line1='qui',
+                line2='cupiditate',
+                postal_code='87165-2117',
+                region='facilis',
+                type=shared.AccountingAddressType.BILLING,
+            ),
+        ],
+        contact_name='quam',
+        default_currency='molestias',
+        email_address='temporibus',
+        id='2322715b-f0cb-4b1e-b1b8-b90f3443a110',
+        metadata=shared.Metadata(
+            is_deleted=False,
+        ),
+        modified_date='2022-10-23T00:00:00.000Z',
+        phone='01224 658 999',
+        registration_number='consequatur',
+        source_modified_date='2022-10-23T00:00:00.000Z',
+        status=shared.SupplierStatus.ARCHIVED,
+        supplemental_data=shared.SupplierSupplementalData(
+            content={
+                "porro": {
+                    "doloribus": 'ut',
+                },
+            },
+        ),
+        supplier_name='facilis',
+        tax_number='cupiditate',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=358152,
+    timeout_in_minutes=181631,
 )
 
 res = s.suppliers.create(req)
@@ -137,7 +168,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nobis',
+    query='laudantium',
 )
 
 res = s.suppliers.list(req)
@@ -186,13 +217,44 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
-        id='124',
+        addresses=[
+            shared.SupplierAccountingAddress(
+                city='Krisworth',
+                country='Senegal',
+                line1='vero',
+                line2='omnis',
+                postal_code='29428',
+                region='tenetur',
+                type=shared.AccountingAddressType.BILLING,
+            ),
+        ],
+        contact_name='hic',
+        default_currency='distinctio',
+        email_address='quod',
+        id='7abd74dd-39c0-4f5d-acff-7c70a45626d4',
+        metadata=shared.Metadata(
+            is_deleted=False,
+        ),
+        modified_date='2022-10-23T00:00:00.000Z',
+        phone='(877) 492-8687',
+        registration_number='laudantium',
+        source_modified_date='2022-10-23T00:00:00.000Z',
+        status=shared.SupplierStatus.UNKNOWN,
+        supplemental_data=shared.SupplierSupplementalData(
+            content={
+                "maiores": {
+                    "quasi": 'ex',
+                },
+            },
+        ),
+        supplier_name='nulla',
+        tax_number='excepturi',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
-    timeout_in_minutes=607831,
+    supplier_id='EILBDVJVNUAGVKRQ',
+    timeout_in_minutes=343605,
 )
 
 res = s.suppliers.update(req)

@@ -38,11 +38,65 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.CreateCustomerRequest(
     customer=shared.Customer(
-        id='142',
+        addresses=[
+            shared.Items(
+                city='West Christa',
+                country='Iceland',
+                line1='cupiditate',
+                line2='quos',
+                postal_code='18301',
+                region='dolorum',
+                type=shared.AccountingAddressType.BILLING,
+            ),
+        ],
+        contact_name='tempora',
+        contacts=[
+            shared.Contact(
+                address=shared.Items(
+                    city='Riceboro',
+                    country='Vanuatu',
+                    line1='eum',
+                    line2='non',
+                    postal_code='53585-6289',
+                    region='dolorum',
+                    type=shared.AccountingAddressType.BILLING,
+                ),
+                email='Rose.Wolff29@yahoo.com',
+                modified_date='2022-10-23T00:00:00.000Z',
+                name='Nathaniel Hyatt',
+                phone=[
+                    shared.ContactPhone(
+                        number='+44 25691 154789',
+                        type=shared.PhoneNumberType.MOBILE,
+                    ),
+                ],
+                status=shared.CustomerStatus.UNKNOWN,
+            ),
+        ],
+        customer_name='accusamus',
+        default_currency='EUR',
+        email_address='quidem',
+        id='9ba88f3a-6699-4707-8ba4-469b6e214195',
+        metadata=shared.Metadata(
+            is_deleted=False,
+        ),
+        modified_date='2022-10-23T00:00:00.000Z',
+        phone='606-963-4281 x3049',
+        registration_number='debitis',
+        source_modified_date='2022-10-23T00:00:00.000Z',
+        status=shared.CustomerStatus.ARCHIVED,
+        supplemental_data=shared.SupplementalData(
+            content={
+                "deleniti": {
+                    "facilis": 'in',
+                },
+            },
+        ),
+        tax_number='architecto',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=383441,
+    timeout_in_minutes=99569,
 )
 
 res = s.customers.create(req)
@@ -89,7 +143,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='molestiae',
+    customer_id='repudiandae',
 )
 
 res = s.customers.get(req)
@@ -137,7 +191,7 @@ req = operations.ListCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='minus',
+    query='ullam',
 )
 
 res = s.customers.list(req)
@@ -186,13 +240,67 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
-        id='142',
+        addresses=[
+            shared.Items(
+                city='Kossworth',
+                country='Sudan',
+                line1='sed',
+                line2='saepe',
+                postal_code='01561-1788',
+                region='maxime',
+                type=shared.AccountingAddressType.BILLING,
+            ),
+        ],
+        contact_name='excepturi',
+        contacts=[
+            shared.Contact(
+                address=shared.Items(
+                    city='South Alexanneton',
+                    country='Wallis and Futuna',
+                    line1='quidem',
+                    line2='ipsam',
+                    postal_code='47083',
+                    region='voluptatibus',
+                    type=shared.AccountingAddressType.UNKNOWN,
+                ),
+                email='Darian.Anderson94@hotmail.com',
+                modified_date='2022-10-23T00:00:00.000Z',
+                name='Ernest Hayes',
+                phone=[
+                    shared.ContactPhone(
+                        number='+44 25691 154789',
+                        type=shared.PhoneNumberType.LANDLINE,
+                    ),
+                ],
+                status=shared.CustomerStatus.UNKNOWN,
+            ),
+        ],
+        customer_name='eos',
+        default_currency='GBP',
+        email_address='dolores',
+        id='c73d5fe9-b90c-4289-89b3-fe49a8d9cbf4',
+        metadata=shared.Metadata(
+            is_deleted=False,
+        ),
+        modified_date='2022-10-23T00:00:00.000Z',
+        phone='1-322-329-5744 x926',
+        registration_number='numquam',
+        source_modified_date='2022-10-23T00:00:00.000Z',
+        status=shared.CustomerStatus.UNKNOWN,
+        supplemental_data=shared.SupplementalData(
+            content={
+                "ipsa": {
+                    "iure": 'odio',
+                },
+            },
+        ),
+        tax_number='quaerat',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='placeat',
+    customer_id='accusamus',
     force_update=False,
-    timeout_in_minutes=528895,
+    timeout_in_minutes=696344,
 )
 
 res = s.customers.update(req)
