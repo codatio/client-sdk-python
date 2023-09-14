@@ -7,7 +7,6 @@ from .accounts_payable_suppliers import AccountsPayableSuppliers
 from .sdkconfiguration import SDKConfiguration
 
 class AccountsPayable:
-    r"""Data from a linked accounting platform representing money the business owes money to its suppliers."""
     bill_credit_notes: AccountsPayableBillCreditNotes
     bill_payments: AccountsPayableBillPayments
     bills: AccountsPayableBills
