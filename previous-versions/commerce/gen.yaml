@@ -17,7 +17,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 0.2.0
+  version: 0.3.0
   author: Codat
   description: Access standardized commerce data from our commerce integrations.
   maxMethodParams: 0
