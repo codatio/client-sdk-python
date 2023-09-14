@@ -29,7 +29,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillCreditNoteRequest(
-    bill_credit_note_id='placeat',
+    bill_credit_note_id='molestiae',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -78,7 +78,7 @@ req = operations.ListAccountingBillCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptatum',
+    query='minus',
 )
 
 res = s.accounts_payable_bill_credit_notes.list(req)

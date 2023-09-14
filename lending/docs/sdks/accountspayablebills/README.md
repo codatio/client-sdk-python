@@ -2,9 +2,58 @@
 
 ### Available Operations
 
+* [download_attachment](#download_attachment) - Download bill attachment
 * [get](#get) - Get bill
+* [get_attachment](#get_attachment) - Get bill attachment
 * [list](#list) - List bills
 * [list_attachments](#list_attachments) - List bill attachments
+
+## download_attachment
+
+The *Download bill attachment* endpoint downloads a specific attachment for a given `billId` and `attachmentId`.
+
+[Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support downloading a bill attachment.
+
+
+### Example Usage
+
+```python
+import codatlending
+from codatlending.models import operations, shared
+
+s = codatlending.CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.DownloadAccountingBillAttachmentRequest(
+    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    bill_id='iusto',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+)
+
+res = s.accounts_payable_bills.download_attachment(req)
+
+if res.data is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                | [operations.DownloadAccountingBillAttachmentRequest](../../models/operations/downloadaccountingbillattachmentrequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `retries`                                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                         | :heavy_minus_sign:                                                                                                       | Configuration to override the default retry behavior of the client.                                                      |
+
+
+### Response
+
+**[operations.DownloadAccountingBillAttachmentResponse](../../models/operations/downloadaccountingbillattachmentresponse.md)**
+
 
 ## get
 
@@ -30,7 +79,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillRequest(
-    bill_id='nisi',
+    bill_id='excepturi',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -51,6 +100,53 @@ if res.accounting_bill is not None:
 ### Response
 
 **[operations.GetAccountingBillResponse](../../models/operations/getaccountingbillresponse.md)**
+
+
+## get_attachment
+
+The *Get bill attachment* endpoint returns a specific attachment for a given `billId` and `attachmentId`.
+
+[Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support getting a bill attachment.
+
+
+### Example Usage
+
+```python
+import codatlending
+from codatlending.models import operations, shared
+
+s = codatlending.CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetAccountingBillAttachmentRequest(
+    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    bill_id='nisi',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+)
+
+res = s.accounts_payable_bills.get_attachment(req)
+
+if res.accounting_attachment is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                      | [operations.GetAccountingBillAttachmentRequest](../../models/operations/getaccountingbillattachmentrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+| `retries`                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                               | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |
+
+
+### Response
+
+**[operations.GetAccountingBillAttachmentResponse](../../models/operations/getaccountingbillattachmentresponse.md)**
 
 
 ## list

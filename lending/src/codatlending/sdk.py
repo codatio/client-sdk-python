@@ -51,8 +51,6 @@ class CodatLending:
     """
     accounting_bank_data: AccountingBankData
     r"""Access bank transactions from an accounting platform."""
-    accounts_payable: AccountsPayable
-    r"""Data from a linked accounting platform representing money the business owes money to its suppliers."""
     companies: Companies
     r"""Create and manage your Codat companies."""
     company_info: CompanyInfo
@@ -67,10 +65,7 @@ class CodatLending:
     r"""Endpoints to manage uploaded files."""
     liabilities: Liabilities
     r"""Debt and other liabilities."""
-    accounting_bank_data: AccountingBankData
-    r"""Access bank transactions from an accounting platform."""
     accounts_payable: AccountsPayable
-    r"""Data from a linked accounting platform representing money the business owes money to its suppliers."""
     accounts_receivable: AccountsReceivable
     banking: Banking
     financial_statements: FinancialStatements
@@ -118,7 +113,6 @@ class CodatLending:
     
     def _init_sdks(self):
         self.accounting_bank_data = AccountingBankData(self.sdk_configuration)
-        self.accounts_payable = AccountsPayable(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
         self.company_info = CompanyInfo(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
@@ -126,7 +120,6 @@ class CodatLending:
         self.excel_reports = ExcelReports(self.sdk_configuration)
         self.file_upload = FileUpload(self.sdk_configuration)
         self.liabilities = Liabilities(self.sdk_configuration)
-        self.accounting_bank_data = AccountingBankData(self.sdk_configuration)
         self.accounts_payable = AccountsPayable(self.sdk_configuration)
         self.accounts_receivable = AccountsReceivable(self.sdk_configuration)
         self.banking = Banking(self.sdk_configuration)

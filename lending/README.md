@@ -49,10 +49,10 @@ if res.accounting_bank_transactions is not None:
 
 * [list_transactions](docs/sdks/accountingbankdata/README.md#list_transactions) - List bank account transactions
 
-### [accounts_payable](docs/sdks/accountspayable/README.md)
+### [accounting_bank_data_accounts](docs/sdks/accountingbankdataaccounts/README.md)
 
-* [download_bill_attachment](docs/sdks/accountspayable/README.md#download_bill_attachment) - Download bill attachment
-* [get_bill_attachment](docs/sdks/accountspayable/README.md#get_bill_attachment) - Get bill attachment
+* [get](docs/sdks/accountingbankdataaccounts/README.md#get) - Get bank account
+* [list](docs/sdks/accountingbankdataaccounts/README.md#list) - List bank accounts
 
 ### [companies](docs/sdks/companies/README.md)
 
@@ -99,12 +99,6 @@ if res.accounting_bank_transactions is not None:
 * [list_loan_transactions](docs/sdks/liabilities/README.md#list_loan_transactions) - List loan transactions
 
 
-### [accounting_bank_data_accounts](docs/sdks/accountingbankdataaccounts/README.md)
-
-* [get](docs/sdks/accountingbankdataaccounts/README.md#get) - Get bank account
-* [list](docs/sdks/accountingbankdataaccounts/README.md#list) - List bank accounts
-
-
 ### [accounts_payable_bill_credit_notes](docs/sdks/accountspayablebillcreditnotes/README.md)
 
 * [get](docs/sdks/accountspayablebillcreditnotes/README.md#get) - Get bill credit note
@@ -117,7 +111,9 @@ if res.accounting_bank_transactions is not None:
 
 ### [accounts_payable_bills](docs/sdks/accountspayablebills/README.md)
 
+* [download_attachment](docs/sdks/accountspayablebills/README.md#download_attachment) - Download bill attachment
 * [get](docs/sdks/accountspayablebills/README.md#get) - Get bill
+* [get_attachment](docs/sdks/accountspayablebills/README.md#get_attachment) - Get bill attachment
 * [list](docs/sdks/accountspayablebills/README.md#list) - List bills
 * [list_attachments](docs/sdks/accountspayablebills/README.md#list_attachments) - List bill attachments
 
