@@ -1,4 +1,4 @@
-# commerce_company_info
+# CommerceCompanyInfo
 
 ## Overview
 

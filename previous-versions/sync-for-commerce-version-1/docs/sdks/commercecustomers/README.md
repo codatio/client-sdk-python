@@ -1,4 +1,4 @@
-# commerce_customers
+# CommerceCustomers
 
 ## Overview
 

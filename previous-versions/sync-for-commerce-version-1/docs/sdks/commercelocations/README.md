@@ -1,4 +1,4 @@
-# commerce_locations
+# CommerceLocations
 
 ## Overview
 

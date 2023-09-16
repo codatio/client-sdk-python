@@ -1,4 +1,4 @@
-# commerce_orders
+# CommerceOrders
 
 ## Overview
 
