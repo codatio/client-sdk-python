@@ -1,4 +1,4 @@
-# company_info
+# CompanyInfo
 
 ## Overview
 

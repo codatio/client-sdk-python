@@ -1,4 +1,4 @@
-# journal_entries
+# JournalEntries
 
 ## Overview
 
