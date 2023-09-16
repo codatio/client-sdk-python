@@ -1,4 +1,4 @@
-# sales_orders
+# SalesOrders
 
 ## Overview
 
