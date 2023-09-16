@@ -40,7 +40,7 @@ if res.data is not None:
 ## Available Resources and Operations
 
 
-### [files](docs/sdks/files/README.md)
+### [Files](docs/sdks/files/README.md)
 
 * [download_files](docs/sdks/files/README.md#download_files) - Download all files for a company
 * [list_files](docs/sdks/files/README.md#list_files) - List all files uploaded by a company
