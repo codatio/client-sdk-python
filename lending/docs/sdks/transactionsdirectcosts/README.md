@@ -1,4 +1,4 @@
-# transactions_direct_costs
+# Transactions.DirectCosts
 
 ### Available Operations
 
@@ -36,7 +36,7 @@ req = operations.DownloadAccountingDirectCostAttachmentRequest(
     direct_cost_id='temporibus',
 )
 
-res = s.transactions_direct_costs.download_attachment(req)
+res = s.transactions.direct_costs.download_attachment(req)
 
 if res.data is not None:
     # handle response
@@ -84,7 +84,7 @@ req = operations.GetAccountingDirectCostRequest(
     direct_cost_id='laborum',
 )
 
-res = s.transactions_direct_costs.get(req)
+res = s.transactions.direct_costs.get(req)
 
 if res.accounting_direct_cost is not None:
     # handle response
@@ -131,7 +131,7 @@ req = operations.GetAccountingDirectCostAttachmentRequest(
     direct_cost_id='quasi',
 )
 
-res = s.transactions_direct_costs.get_attachment(req)
+res = s.transactions.direct_costs.get_attachment(req)
 
 if res.accounting_attachment is not None:
     # handle response
@@ -180,7 +180,7 @@ req = operations.ListAccountingDirectCostsRequest(
     query='reiciendis',
 )
 
-res = s.transactions_direct_costs.list(req)
+res = s.transactions.direct_costs.list(req)
 
 if res.accounting_direct_costs is not None:
     # handle response
@@ -226,7 +226,7 @@ req = operations.ListAccountingDirectCostAttachmentsRequest(
     direct_cost_id='voluptatibus',
 )
 
-res = s.transactions_direct_costs.list_attachments(req)
+res = s.transactions.direct_costs.list_attachments(req)
 
 if res.attachments is not None:
     # handle response

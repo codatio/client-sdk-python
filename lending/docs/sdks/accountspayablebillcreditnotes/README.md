@@ -1,4 +1,4 @@
-# accounts_payable_bill_credit_notes
+# AccountsPayable.BillCreditNotes
 
 ### Available Operations
 
@@ -33,7 +33,7 @@ req = operations.GetAccountingBillCreditNoteRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.accounts_payable_bill_credit_notes.get(req)
+res = s.accounts_payable.bill_credit_notes.get(req)
 
 if res.accounting_bill_credit_note is not None:
     # handle response
@@ -81,7 +81,7 @@ req = operations.ListAccountingBillCreditNotesRequest(
     query='minus',
 )
 
-res = s.accounts_payable_bill_credit_notes.list(req)
+res = s.accounts_payable.bill_credit_notes.list(req)
 
 if res.accounting_bill_credit_notes is not None:
     # handle response

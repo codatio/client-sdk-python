@@ -1,4 +1,4 @@
-# accounts_payable_bills
+# AccountsPayable.Bills
 
 ### Available Operations
 
@@ -36,7 +36,7 @@ req = operations.DownloadAccountingBillAttachmentRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.accounts_payable_bills.download_attachment(req)
+res = s.accounts_payable.bills.download_attachment(req)
 
 if res.data is not None:
     # handle response
@@ -83,7 +83,7 @@ req = operations.GetAccountingBillRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.accounts_payable_bills.get(req)
+res = s.accounts_payable.bills.get(req)
 
 if res.accounting_bill is not None:
     # handle response
@@ -130,7 +130,7 @@ req = operations.GetAccountingBillAttachmentRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.accounts_payable_bills.get_attachment(req)
+res = s.accounts_payable.bills.get_attachment(req)
 
 if res.accounting_attachment is not None:
     # handle response
@@ -178,7 +178,7 @@ req = operations.ListAccountingBillsRequest(
     query='recusandae',
 )
 
-res = s.accounts_payable_bills.list(req)
+res = s.accounts_payable.bills.list(req)
 
 if res.accounting_bills is not None:
     # handle response
@@ -224,7 +224,7 @@ req = operations.ListAccountingBillAttachmentsRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.accounts_payable_bills.list_attachments(req)
+res = s.accounts_payable.bills.list_attachments(req)
 
 if res.attachments is not None:
     # handle response

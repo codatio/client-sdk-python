@@ -1,4 +1,4 @@
-# financial_statements_cash_flow
+# FinancialStatements.CashFlow
 
 ### Available Operations
 
@@ -27,7 +27,7 @@ req = operations.GetAccountingCashFlowStatementRequest(
     start_month='2022-10-23T00:00:00.000Z',
 )
 
-res = s.financial_statements_cash_flow.get(req)
+res = s.financial_statements.cash_flow.get(req)
 
 if res.accounting_cash_flow_statement is not None:
     # handle response

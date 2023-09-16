@@ -1,4 +1,4 @@
-# financial_statements_profit_and_loss
+# FinancialStatements.ProfitAndLoss
 
 ### Available Operations
 
@@ -28,7 +28,7 @@ req = operations.GetAccountingProfitAndLossRequest(
     start_month='2022-10-23T00:00:00.000Z',
 )
 
-res = s.financial_statements_profit_and_loss.get(req)
+res = s.financial_statements.profit_and_loss.get(req)
 
 if res.accounting_profit_and_loss_report is not None:
     # handle response
@@ -71,7 +71,7 @@ req = operations.GetCategorizedProfitAndLossStatementRequest(
     report_date='29-09-2020',
 )
 
-res = s.financial_statements_profit_and_loss.get_categorized_accounts(req)
+res = s.financial_statements.profit_and_loss.get_categorized_accounts(req)
 
 if res.enhanced_financial_report is not None:
     # handle response

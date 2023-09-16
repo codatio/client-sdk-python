@@ -1,4 +1,4 @@
-# accounts_receivable_payments
+# AccountsReceivable.Payments
 
 ### Available Operations
 
@@ -33,7 +33,7 @@ req = operations.GetAccountingPaymentRequest(
     payment_id='deleniti',
 )
 
-res = s.accounts_receivable_payments.get(req)
+res = s.accounts_receivable.payments.get(req)
 
 if res.accounting_payment is not None:
     # handle response
@@ -81,7 +81,7 @@ req = operations.ListAccountingPaymentsRequest(
     query='hic',
 )
 
-res = s.accounts_receivable_payments.list(req)
+res = s.accounts_receivable.payments.list(req)
 
 if res.accounting_payments is not None:
     # handle response

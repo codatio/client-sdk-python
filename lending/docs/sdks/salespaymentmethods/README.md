@@ -1,4 +1,4 @@
-# sales_payment_methods
+# Sales.PaymentMethods
 
 ### Available Operations
 
@@ -34,7 +34,7 @@ req = operations.GetCommercePaymentMethodRequest(
     payment_method_id='velit',
 )
 
-res = s.sales_payment_methods.get(req)
+res = s.sales.payment_methods.get(req)
 
 if res.commerce_payment_method is not None:
     # handle response
@@ -83,7 +83,7 @@ req = operations.ListCommercePaymentMethodsRequest(
     query='error',
 )
 
-res = s.sales_payment_methods.list(req)
+res = s.sales.payment_methods.list(req)
 
 if res.commerce_payment_methods is not None:
     # handle response
