@@ -42,50 +42,50 @@ if res.company_info is not None:
 ## Available Resources and Operations
 
 
-### [company_info](docs/sdks/companyinfo/README.md)
+### [CompanyInfo](docs/sdks/companyinfo/README.md)
 
 * [get](docs/sdks/companyinfo/README.md#get) - Get company info
 
-### [customers](docs/sdks/customers/README.md)
+### [Customers](docs/sdks/customers/README.md)
 
 * [get](docs/sdks/customers/README.md#get) - Get customer
 * [list](docs/sdks/customers/README.md#list) - List customers
 
-### [disputes](docs/sdks/disputes/README.md)
+### [Disputes](docs/sdks/disputes/README.md)
 
 * [get](docs/sdks/disputes/README.md#get) - Get dispute
 * [list](docs/sdks/disputes/README.md#list) - List disputes
 
-### [locations](docs/sdks/locations/README.md)
+### [Locations](docs/sdks/locations/README.md)
 
 * [get](docs/sdks/locations/README.md#get) - Get location
 * [list](docs/sdks/locations/README.md#list) - List locations
 
-### [orders](docs/sdks/orders/README.md)
+### [Orders](docs/sdks/orders/README.md)
 
 * [get](docs/sdks/orders/README.md#get) - Get order
 * [list](docs/sdks/orders/README.md#list) - List orders
 
-### [payments](docs/sdks/payments/README.md)
+### [Payments](docs/sdks/payments/README.md)
 
 * [get](docs/sdks/payments/README.md#get) - Get payment
 * [get_method](docs/sdks/payments/README.md#get_method) - Get payment method
 * [list](docs/sdks/payments/README.md#list) - List payments
 * [list_methods](docs/sdks/payments/README.md#list_methods) - List payment methods
 
-### [products](docs/sdks/products/README.md)
+### [Products](docs/sdks/products/README.md)
 
 * [get](docs/sdks/products/README.md#get) - Get product
 * [get_category](docs/sdks/products/README.md#get_category) - Get product category
 * [list](docs/sdks/products/README.md#list) - List products
 * [list_categories](docs/sdks/products/README.md#list_categories) - List product categories
 
-### [tax_components](docs/sdks/taxcomponents/README.md)
+### [TaxComponents](docs/sdks/taxcomponents/README.md)
 
 * [get](docs/sdks/taxcomponents/README.md#get) - Get tax component
 * [list](docs/sdks/taxcomponents/README.md#list) - List tax components
 
-### [transactions](docs/sdks/transactions/README.md)
+### [Transactions](docs/sdks/transactions/README.md)
 
 * [get](docs/sdks/transactions/README.md#get) - Get transaction
 * [list](docs/sdks/transactions/README.md#list) - List transactions
