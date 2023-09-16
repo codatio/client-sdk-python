@@ -45,20 +45,20 @@ if res.details is not None:
 ## Available Resources and Operations
 
 
-### [data_integrity](docs/sdks/dataintegrity/README.md)
+### [DataIntegrity](docs/sdks/dataintegrity/README.md)
 
 * [details](docs/sdks/dataintegrity/README.md#details) - List data type data integrity
 * [status](docs/sdks/dataintegrity/README.md#status) - Get data integrity status
 * [summary](docs/sdks/dataintegrity/README.md#summary) - Get data integrity summary
 
-### [excel_reports](docs/sdks/excelreports/README.md)
+### [ExcelReports](docs/sdks/excelreports/README.md)
 
 * [generate_excel_report](docs/sdks/excelreports/README.md#generate_excel_report) - Generate Excel report
 * [get_accounting_marketing_metrics](docs/sdks/excelreports/README.md#get_accounting_marketing_metrics) - Get marketing metrics report
 * [get_excel_report](docs/sdks/excelreports/README.md#get_excel_report) - Download Excel report
 * [get_excel_report_generation_status](docs/sdks/excelreports/README.md#get_excel_report_generation_status) - Get Excel report status
 
-### [reports](docs/sdks/reports/README.md)
+### [Reports](docs/sdks/reports/README.md)
 
 * [get_accounts_for_enhanced_balance_sheet](docs/sdks/reports/README.md#get_accounts_for_enhanced_balance_sheet) - Get enhanced balance sheet accounts
 * [get_accounts_for_enhanced_profit_and_loss](docs/sdks/reports/README.md#get_accounts_for_enhanced_profit_and_loss) - Get enhanced profit and loss accounts

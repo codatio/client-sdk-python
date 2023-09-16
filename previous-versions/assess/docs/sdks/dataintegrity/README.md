@@ -1,4 +1,4 @@
-# data_integrity
+# DataIntegrity
 
 ## Overview
 
