@@ -1,4 +1,4 @@
-# account_mapping
+# AccountMapping
 
 ## Overview
 
