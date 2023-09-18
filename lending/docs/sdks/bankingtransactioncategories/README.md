@@ -1,4 +1,4 @@
-# banking_transaction_categories
+# Banking.TransactionCategories
 
 ### Available Operations
 
@@ -34,7 +34,7 @@ req = operations.GetBankingTransactionCategoryRequest(
     transaction_category_id='molestiae',
 )
 
-res = s.banking_transaction_categories.get(req)
+res = s.banking.transaction_categories.get(req)
 
 if res.banking_transaction_category is not None:
     # handle response
@@ -83,7 +83,7 @@ req = operations.ListBankingTransactionCategoriesRequest(
     query='modi',
 )
 
-res = s.banking_transaction_categories.list(req)
+res = s.banking.transaction_categories.list(req)
 
 if res.banking_transaction_categories is not None:
     # handle response

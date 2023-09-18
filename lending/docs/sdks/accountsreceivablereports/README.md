@@ -1,4 +1,4 @@
-# accounts_receivable_reports
+# AccountsReceivable.Reports
 
 ### Available Operations
 
@@ -31,7 +31,7 @@ req = operations.GetAccountingAgedCreditorsReportRequest(
     report_date=dateutil.parser.parse('2022-12-31').date(),
 )
 
-res = s.accounts_receivable_reports.get_aged_creditors(req)
+res = s.accounts_receivable.reports.get_aged_creditors(req)
 
 if res.accounting_aged_creditor_report is not None:
     # handle response
@@ -74,7 +74,7 @@ req = operations.GetAccountingAgedDebtorsReportRequest(
     report_date=dateutil.parser.parse('2022-12-31').date(),
 )
 
-res = s.accounts_receivable_reports.get_aged_debtors(req)
+res = s.accounts_receivable.reports.get_aged_debtors(req)
 
 if res.accounting_aged_debtor_report is not None:
     # handle response
@@ -113,7 +113,7 @@ req = operations.IsAgedCreditorsReportAvailableRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.accounts_receivable_reports.is_aged_creditors_available(req)
+res = s.accounts_receivable.reports.is_aged_creditors_available(req)
 
 if res.is_aged_creditors_report_available_200_application_json_boolean is not None:
     # handle response
@@ -152,7 +152,7 @@ req = operations.IsAgedDebtorsReportAvailableRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.accounts_receivable_reports.is_aged_debtors_available(req)
+res = s.accounts_receivable.reports.is_aged_debtors_available(req)
 
 if res.is_aged_debtors_report_available_200_application_json_boolean is not None:
     # handle response

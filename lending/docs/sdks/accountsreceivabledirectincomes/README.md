@@ -1,4 +1,4 @@
-# accounts_receivable_direct_incomes
+# AccountsReceivable.DirectIncomes
 
 ### Available Operations
 
@@ -36,7 +36,7 @@ req = operations.DownloadAccountingDirectIncomeAttachmentRequest(
     direct_income_id='maiores',
 )
 
-res = s.accounts_receivable_direct_incomes.download_attachment(req)
+res = s.accounts_receivable.direct_incomes.download_attachment(req)
 
 if res.data is not None:
     # handle response
@@ -84,7 +84,7 @@ req = operations.GetAccountingDirectIncomeRequest(
     direct_income_id='molestiae',
 )
 
-res = s.accounts_receivable_direct_incomes.get(req)
+res = s.accounts_receivable.direct_incomes.get(req)
 
 if res.accounting_direct_income is not None:
     # handle response
@@ -132,7 +132,7 @@ req = operations.GetAccountingDirectIncomeAttachmentRequest(
     timeout_in_minutes=800911,
 )
 
-res = s.accounts_receivable_direct_incomes.get_attachment(req)
+res = s.accounts_receivable.direct_incomes.get_attachment(req)
 
 if res.accounting_attachment is not None:
     # handle response
@@ -181,7 +181,7 @@ req = operations.ListAccountingDirectIncomesRequest(
     query='esse',
 )
 
-res = s.accounts_receivable_direct_incomes.list(req)
+res = s.accounts_receivable.direct_incomes.list(req)
 
 if res.accounting_direct_incomes is not None:
     # handle response
@@ -227,7 +227,7 @@ req = operations.ListAccountingDirectIncomeAttachmentsRequest(
     direct_income_id='totam',
 )
 
-res = s.accounts_receivable_direct_incomes.list_attachments(req)
+res = s.accounts_receivable.direct_incomes.list_attachments(req)
 
 if res.attachments is not None:
     # handle response

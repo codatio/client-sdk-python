@@ -1,4 +1,4 @@
-# accounts_payable
+# AccountsPayable
 
 ### Available Operations
 

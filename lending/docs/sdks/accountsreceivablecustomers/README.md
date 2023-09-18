@@ -1,4 +1,4 @@
-# accounts_receivable_customers
+# AccountsReceivable.Customers
 
 ### Available Operations
 
@@ -36,7 +36,7 @@ req = operations.DownloadAccountingCustomerAttachmentRequest(
     customer_id='sapiente',
 )
 
-res = s.accounts_receivable_customers.download_attachment(req)
+res = s.accounts_receivable.customers.download_attachment(req)
 
 if res.data is not None:
     # handle response
@@ -83,7 +83,7 @@ req = operations.GetAccountingCustomerRequest(
     customer_id='quo',
 )
 
-res = s.accounts_receivable_customers.get(req)
+res = s.accounts_receivable.customers.get(req)
 
 if res.accounting_customer is not None:
     # handle response
@@ -130,7 +130,7 @@ req = operations.GetAccountingCustomerAttachmentRequest(
     customer_id='odit',
 )
 
-res = s.accounts_receivable_customers.get_attachment(req)
+res = s.accounts_receivable.customers.get_attachment(req)
 
 if res.accounting_attachment is not None:
     # handle response
@@ -178,7 +178,7 @@ req = operations.ListAccountingCustomersRequest(
     query='at',
 )
 
-res = s.accounts_receivable_customers.list(req)
+res = s.accounts_receivable.customers.list(req)
 
 if res.accounting_customers is not None:
     # handle response
@@ -224,7 +224,7 @@ req = operations.ListAccountingCustomerAttachmentsRequest(
     customer_id='at',
 )
 
-res = s.accounts_receivable_customers.list_attachments(req)
+res = s.accounts_receivable.customers.list_attachments(req)
 
 if res.attachments is not None:
     # handle response

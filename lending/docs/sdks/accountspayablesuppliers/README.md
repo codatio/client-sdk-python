@@ -1,4 +1,4 @@
-# accounts_payable_suppliers
+# AccountsPayable.Suppliers
 
 ### Available Operations
 
@@ -36,7 +36,7 @@ req = operations.DownloadAccountingSupplierAttachmentRequest(
     supplier_id='ab',
 )
 
-res = s.accounts_payable_suppliers.download_attachment(req)
+res = s.accounts_payable.suppliers.download_attachment(req)
 
 if res.data is not None:
     # handle response
@@ -83,7 +83,7 @@ req = operations.GetAccountingSupplierRequest(
     supplier_id='quis',
 )
 
-res = s.accounts_payable_suppliers.get(req)
+res = s.accounts_payable.suppliers.get(req)
 
 if res.accounting_supplier is not None:
     # handle response
@@ -130,7 +130,7 @@ req = operations.GetAccountingSupplierAttachmentRequest(
     supplier_id='veritatis',
 )
 
-res = s.accounts_payable_suppliers.get_attachment(req)
+res = s.accounts_payable.suppliers.get_attachment(req)
 
 if res.accounting_attachment is not None:
     # handle response
@@ -178,7 +178,7 @@ req = operations.ListAccountingSuppliersRequest(
     query='deserunt',
 )
 
-res = s.accounts_payable_suppliers.list(req)
+res = s.accounts_payable.suppliers.list(req)
 
 if res.accounting_suppliers is not None:
     # handle response
@@ -224,7 +224,7 @@ req = operations.ListAccountingSupplierAttachmentsRequest(
     supplier_id='perferendis',
 )
 
-res = s.accounts_payable_suppliers.list_attachments(req)
+res = s.accounts_payable.suppliers.list_attachments(req)
 
 if res.attachments is not None:
     # handle response

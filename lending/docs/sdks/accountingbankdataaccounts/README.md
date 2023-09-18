@@ -1,4 +1,4 @@
-# accounting_bank_data_accounts
+# AccountingBankData.Accounts
 
 ### Available Operations
 
@@ -34,7 +34,7 @@ req = operations.GetAccountingBankAccountRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.accounting_bank_data_accounts.get(req)
+res = s.accounting_bank_data.accounts.get(req)
 
 if res.accounting_bank_account is not None:
     # handle response
@@ -83,7 +83,7 @@ req = operations.ListAccountingBankAccountsRequest(
     query='nulla',
 )
 
-res = s.accounting_bank_data_accounts.list(req)
+res = s.accounting_bank_data.accounts.list(req)
 
 if res.accounting_bank_accounts is not None:
     # handle response

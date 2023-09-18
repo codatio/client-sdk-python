@@ -1,4 +1,4 @@
-# manage_data_pull_operations
+# ManageData.PullOperations
 
 ### Available Operations
 
@@ -26,7 +26,7 @@ req = operations.GetPullOperationRequest(
     dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
 )
 
-res = s.manage_data_pull_operations.get(req)
+res = s.manage_data.pull_operations.get(req)
 
 if res.pull_operation is not None:
     # handle response
@@ -69,7 +69,7 @@ req = operations.ListPullOperationsRequest(
     query='natus',
 )
 
-res = s.manage_data_pull_operations.list(req)
+res = s.manage_data.pull_operations.list(req)
 
 if res.pull_operations is not None:
     # handle response

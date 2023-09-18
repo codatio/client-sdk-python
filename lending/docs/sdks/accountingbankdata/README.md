@@ -1,4 +1,4 @@
-# accounting_bank_data
+# AccountingBankData
 
 ## Overview
 

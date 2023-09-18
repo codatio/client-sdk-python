@@ -1,4 +1,4 @@
-# AccountingCompanyInfoWeblinkType
+# WebLinkType
 
 The type of the weblink.
 

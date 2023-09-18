@@ -1,4 +1,4 @@
-# accounts_payable_bill_payments
+# AccountsPayable.BillPayments
 
 ### Available Operations
 
@@ -33,7 +33,7 @@ req = operations.GetAccountingBillPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.accounts_payable_bill_payments.get(req)
+res = s.accounts_payable.bill_payments.get(req)
 
 if res.accounting_bill_payment is not None:
     # handle response
@@ -81,7 +81,7 @@ req = operations.ListAccountingBillPaymentsRequest(
     query='voluptatum',
 )
 
-res = s.accounts_payable_bill_payments.list(req)
+res = s.accounts_payable.bill_payments.list(req)
 
 if res.accounting_bill_payments is not None:
     # handle response

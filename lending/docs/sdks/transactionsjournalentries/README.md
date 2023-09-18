@@ -1,4 +1,4 @@
-# transactions_journal_entries
+# Transactions.JournalEntries
 
 ### Available Operations
 
@@ -33,7 +33,7 @@ req = operations.GetAccountingJournalEntryRequest(
     journal_entry_id='vero',
 )
 
-res = s.transactions_journal_entries.get(req)
+res = s.transactions.journal_entries.get(req)
 
 if res.accounting_journal_entry is not None:
     # handle response
@@ -81,7 +81,7 @@ req = operations.ListAccountingJournalEntriesRequest(
     query='nihil',
 )
 
-res = s.transactions_journal_entries.list(req)
+res = s.transactions.journal_entries.list(req)
 
 if res.accounting_journal_entries is not None:
     # handle response
