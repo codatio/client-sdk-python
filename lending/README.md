@@ -45,16 +45,16 @@ if res.accounting_bank_transactions is not None:
 ## Available Resources and Operations
 
 
-### [accounting_bank_data](docs/sdks/accountingbankdata/README.md)
+### [AccountingBankData](docs/sdks/accountingbankdata/README.md)
 
 * [list_transactions](docs/sdks/accountingbankdata/README.md#list_transactions) - List bank account transactions
 
-### [accounting_bank_data_accounts](docs/sdks/accountingbankdataaccounts/README.md)
+### [AccountingBankData.Accounts](docs/sdks/accountingbankdataaccounts/README.md)
 
 * [get](docs/sdks/accountingbankdataaccounts/README.md#get) - Get bank account
 * [list](docs/sdks/accountingbankdataaccounts/README.md#list) - List bank accounts
 
-### [companies](docs/sdks/companies/README.md)
+### [Companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
@@ -62,12 +62,12 @@ if res.accounting_bank_transactions is not None:
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [company_info](docs/sdks/companyinfo/README.md)
+### [CompanyInfo](docs/sdks/companyinfo/README.md)
 
 * [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
 * [get_commerce_profile](docs/sdks/companyinfo/README.md#get_commerce_profile) - Get company commerce profile
 
-### [connections](docs/sdks/connections/README.md)
+### [Connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [delete](docs/sdks/connections/README.md#delete) - Delete connection
@@ -75,41 +75,41 @@ if res.accounting_bank_transactions is not None:
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [data_integrity](docs/sdks/dataintegrity/README.md)
+### [DataIntegrity](docs/sdks/dataintegrity/README.md)
 
 * [details](docs/sdks/dataintegrity/README.md#details) - List data integrity details
 * [status](docs/sdks/dataintegrity/README.md#status) - Get data integrity status
 * [summaries](docs/sdks/dataintegrity/README.md#summaries) - Get data integrity summaries
 
-### [excel_reports](docs/sdks/excelreports/README.md)
+### [ExcelReports](docs/sdks/excelreports/README.md)
 
 * [download](docs/sdks/excelreports/README.md#download) - Download Excel report
 * [generate](docs/sdks/excelreports/README.md#generate) - Generate Excel report
 * [get_status](docs/sdks/excelreports/README.md#get_status) - Get Excel report status
 
-### [file_upload](docs/sdks/fileupload/README.md)
+### [FileUpload](docs/sdks/fileupload/README.md)
 
 * [download](docs/sdks/fileupload/README.md#download) - Download all files for a company
 * [list_uploaded](docs/sdks/fileupload/README.md#list_uploaded) - List all files uploaded by a company
 * [upload](docs/sdks/fileupload/README.md#upload) - Upload files for a company
 
-### [liabilities](docs/sdks/liabilities/README.md)
+### [Liabilities](docs/sdks/liabilities/README.md)
 
 * [get_loan_summary](docs/sdks/liabilities/README.md#get_loan_summary) - Get loan summaries
 * [list_loan_transactions](docs/sdks/liabilities/README.md#list_loan_transactions) - List loan transactions
 
 
-### [accounts_payable_bill_credit_notes](docs/sdks/accountspayablebillcreditnotes/README.md)
+### [AccountsPayable.BillCreditNotes](docs/sdks/accountspayablebillcreditnotes/README.md)
 
 * [get](docs/sdks/accountspayablebillcreditnotes/README.md#get) - Get bill credit note
 * [list](docs/sdks/accountspayablebillcreditnotes/README.md#list) - List bill credit notes
 
-### [accounts_payable_bill_payments](docs/sdks/accountspayablebillpayments/README.md)
+### [AccountsPayable.BillPayments](docs/sdks/accountspayablebillpayments/README.md)
 
 * [get](docs/sdks/accountspayablebillpayments/README.md#get) - Get bill payment
 * [list](docs/sdks/accountspayablebillpayments/README.md#list) - List bill payments
 
-### [accounts_payable_bills](docs/sdks/accountspayablebills/README.md)
+### [AccountsPayable.Bills](docs/sdks/accountspayablebills/README.md)
 
 * [download_attachment](docs/sdks/accountspayablebills/README.md#download_attachment) - Download bill attachment
 * [get](docs/sdks/accountspayablebills/README.md#get) - Get bill
@@ -117,7 +117,7 @@ if res.accounting_bank_transactions is not None:
 * [list](docs/sdks/accountspayablebills/README.md#list) - List bills
 * [list_attachments](docs/sdks/accountspayablebills/README.md#list_attachments) - List bill attachments
 
-### [accounts_payable_suppliers](docs/sdks/accountspayablesuppliers/README.md)
+### [AccountsPayable.Suppliers](docs/sdks/accountspayablesuppliers/README.md)
 
 * [download_attachment](docs/sdks/accountspayablesuppliers/README.md#download_attachment) - Download supplier attachment
 * [get](docs/sdks/accountspayablesuppliers/README.md#get) - Get supplier
@@ -126,12 +126,12 @@ if res.accounting_bank_transactions is not None:
 * [list_attachments](docs/sdks/accountspayablesuppliers/README.md#list_attachments) - List supplier attachments
 
 
-### [accounts_receivable_credit_notes](docs/sdks/accountsreceivablecreditnotes/README.md)
+### [AccountsReceivable.CreditNotes](docs/sdks/accountsreceivablecreditnotes/README.md)
 
 * [get](docs/sdks/accountsreceivablecreditnotes/README.md#get) - Get credit note
 * [list](docs/sdks/accountsreceivablecreditnotes/README.md#list) - List credit notes
 
-### [accounts_receivable_customers](docs/sdks/accountsreceivablecustomers/README.md)
+### [AccountsReceivable.Customers](docs/sdks/accountsreceivablecustomers/README.md)
 
 * [download_attachment](docs/sdks/accountsreceivablecustomers/README.md#download_attachment) - Download customer attachment
 * [get](docs/sdks/accountsreceivablecustomers/README.md#get) - Get customer
@@ -139,7 +139,7 @@ if res.accounting_bank_transactions is not None:
 * [list](docs/sdks/accountsreceivablecustomers/README.md#list) - List customers
 * [list_attachments](docs/sdks/accountsreceivablecustomers/README.md#list_attachments) - List customer attachments
 
-### [accounts_receivable_direct_incomes](docs/sdks/accountsreceivabledirectincomes/README.md)
+### [AccountsReceivable.DirectIncomes](docs/sdks/accountsreceivabledirectincomes/README.md)
 
 * [download_attachment](docs/sdks/accountsreceivabledirectincomes/README.md#download_attachment) - Download direct income attachment
 * [get](docs/sdks/accountsreceivabledirectincomes/README.md#get) - Get direct income
@@ -147,7 +147,7 @@ if res.accounting_bank_transactions is not None:
 * [list](docs/sdks/accountsreceivabledirectincomes/README.md#list) - List direct incomes
 * [list_attachments](docs/sdks/accountsreceivabledirectincomes/README.md#list_attachments) - List direct income attachments
 
-### [accounts_receivable_invoices](docs/sdks/accountsreceivableinvoices/README.md)
+### [AccountsReceivable.Invoices](docs/sdks/accountsreceivableinvoices/README.md)
 
 * [download_attachment](docs/sdks/accountsreceivableinvoices/README.md#download_attachment) - Download invoice attachment
 * [download_pdf](docs/sdks/accountsreceivableinvoices/README.md#download_pdf) - Get invoice as PDF
@@ -157,12 +157,12 @@ if res.accounting_bank_transactions is not None:
 * [list_attachments](docs/sdks/accountsreceivableinvoices/README.md#list_attachments) - List invoice attachments
 * [list_reconciled](docs/sdks/accountsreceivableinvoices/README.md#list_reconciled) - List reconciled invoices
 
-### [accounts_receivable_payments](docs/sdks/accountsreceivablepayments/README.md)
+### [AccountsReceivable.Payments](docs/sdks/accountsreceivablepayments/README.md)
 
 * [get](docs/sdks/accountsreceivablepayments/README.md#get) - Get payment
 * [list](docs/sdks/accountsreceivablepayments/README.md#list) - List payments
 
-### [accounts_receivable_reports](docs/sdks/accountsreceivablereports/README.md)
+### [AccountsReceivable.Reports](docs/sdks/accountsreceivablereports/README.md)
 
 * [get_aged_creditors](docs/sdks/accountsreceivablereports/README.md#get_aged_creditors) - Aged creditors report
 * [get_aged_debtors](docs/sdks/accountsreceivablereports/README.md#get_aged_debtors) - Aged debtors report
@@ -170,7 +170,7 @@ if res.accounting_bank_transactions is not None:
 * [is_aged_debtors_available](docs/sdks/accountsreceivablereports/README.md#is_aged_debtors_available) - Aged debtors report available
 
 
-### [banking_account_balances](docs/sdks/bankingaccountbalances/README.md)
+### [Banking.AccountBalances](docs/sdks/bankingaccountbalances/README.md)
 
 * [list](docs/sdks/bankingaccountbalances/README.md#list) - List account balances
 
@@ -179,11 +179,11 @@ if res.accounting_bank_transactions is not None:
 * [get](docs/sdks/bankingaccounts/README.md#get) - Get account
 * [list](docs/sdks/bankingaccounts/README.md#list) - List accounts
 
-### [banking_categorized_statement](docs/sdks/bankingcategorizedstatement/README.md)
+### [Banking.CategorizedStatement](docs/sdks/bankingcategorizedstatement/README.md)
 
 * [get](docs/sdks/bankingcategorizedstatement/README.md#get) - Get categorized bank statement
 
-### [banking_transaction_categories](docs/sdks/bankingtransactioncategories/README.md)
+### [Banking.TransactionCategories](docs/sdks/bankingtransactioncategories/README.md)
 
 * [get](docs/sdks/bankingtransactioncategories/README.md#get) - Get transaction category
 * [list](docs/sdks/bankingtransactioncategories/README.md#list) - List transaction categories
@@ -194,35 +194,35 @@ if res.accounting_bank_transactions is not None:
 * [list](docs/sdks/bankingtransactions/README.md#list) - List transactions
 
 
-### [financial_statements_accounts](docs/sdks/financialstatementsaccounts/README.md)
+### [FinancialStatements.Accounts](docs/sdks/financialstatementsaccounts/README.md)
 
 * [get](docs/sdks/financialstatementsaccounts/README.md#get) - Get account
 * [list](docs/sdks/financialstatementsaccounts/README.md#list) - List accounts
 
-### [financial_statements_balance_sheet](docs/sdks/financialstatementsbalancesheet/README.md)
+### [FinancialStatements.BalanceSheet](docs/sdks/financialstatementsbalancesheet/README.md)
 
 * [get](docs/sdks/financialstatementsbalancesheet/README.md#get) - Get balance sheet
 * [get_categorized_accounts](docs/sdks/financialstatementsbalancesheet/README.md#get_categorized_accounts) - Get categorized balance sheet statement
 
-### [financial_statements_cash_flow](docs/sdks/financialstatementscashflow/README.md)
+### [FinancialStatements.CashFlow](docs/sdks/financialstatementscashflow/README.md)
 
 * [get](docs/sdks/financialstatementscashflow/README.md#get) - Get cash flow statement
 
-### [financial_statements_profit_and_loss](docs/sdks/financialstatementsprofitandloss/README.md)
+### [FinancialStatements.ProfitAndLoss](docs/sdks/financialstatementsprofitandloss/README.md)
 
 * [get](docs/sdks/financialstatementsprofitandloss/README.md#get) - Get profit and loss
 * [get_categorized_accounts](docs/sdks/financialstatementsprofitandloss/README.md#get_categorized_accounts) - Get categorized profit and loss statement
 
-### [manage_data](docs/sdks/managedata/README.md)
+### [ManageData](docs/sdks/managedata/README.md)
 
 * [get_status](docs/sdks/managedata/README.md#get_status) - Get data status
 
-### [manage_data_pull_operations](docs/sdks/managedatapulloperations/README.md)
+### [ManageData.PullOperations](docs/sdks/managedatapulloperations/README.md)
 
 * [get](docs/sdks/managedatapulloperations/README.md#get) - Get pull operation
 * [list](docs/sdks/managedatapulloperations/README.md#list) - List pull operations
 
-### [manage_data_refresh](docs/sdks/managedatarefresh/README.md)
+### [ManageData.Refresh](docs/sdks/managedatarefresh/README.md)
 
 * [all_data_types](docs/sdks/managedatarefresh/README.md#all_data_types) - Refresh all data
 * [data_type](docs/sdks/managedatarefresh/README.md#data_type) - Refresh data type
@@ -254,7 +254,7 @@ if res.accounting_bank_transactions is not None:
 * [get](docs/sdks/salesorders/README.md#get) - Get order
 * [list](docs/sdks/salesorders/README.md#list) - List orders
 
-### [sales_payment_methods](docs/sdks/salespaymentmethods/README.md)
+### [Sales.PaymentMethods](docs/sdks/salespaymentmethods/README.md)
 
 * [get](docs/sdks/salespaymentmethods/README.md#get) - Get payment method
 * [list](docs/sdks/salespaymentmethods/README.md#list) - List payment methods
@@ -264,7 +264,7 @@ if res.accounting_bank_transactions is not None:
 * [get](docs/sdks/salespayments/README.md#get) - Get payment
 * [list](docs/sdks/salespayments/README.md#list) - List payments
 
-### [sales_product_categories](docs/sdks/salesproductcategories/README.md)
+### [Sales.ProductCategories](docs/sdks/salesproductcategories/README.md)
 
 * [get](docs/sdks/salesproductcategories/README.md#get) - Get product category
 * [list](docs/sdks/salesproductcategories/README.md#list) - List product categories
@@ -285,12 +285,12 @@ if res.accounting_bank_transactions is not None:
 * [list](docs/sdks/salestransactions/README.md#list) - List transactions
 
 
-### [transactions_account_transactions](docs/sdks/transactionsaccounttransactions/README.md)
+### [Transactions.AccountTransactions](docs/sdks/transactionsaccounttransactions/README.md)
 
 * [get](docs/sdks/transactionsaccounttransactions/README.md#get) - Get account transaction
 * [list](docs/sdks/transactionsaccounttransactions/README.md#list) - List account transactions
 
-### [transactions_direct_costs](docs/sdks/transactionsdirectcosts/README.md)
+### [Transactions.DirectCosts](docs/sdks/transactionsdirectcosts/README.md)
 
 * [download_attachment](docs/sdks/transactionsdirectcosts/README.md#download_attachment) - Download direct cost attachment
 * [get](docs/sdks/transactionsdirectcosts/README.md#get) - Get direct cost
@@ -298,7 +298,7 @@ if res.accounting_bank_transactions is not None:
 * [list](docs/sdks/transactionsdirectcosts/README.md#list) - List direct costs
 * [list_attachments](docs/sdks/transactionsdirectcosts/README.md#list_attachments) - List direct cost attachments
 
-### [transactions_journal_entries](docs/sdks/transactionsjournalentries/README.md)
+### [Transactions.JournalEntries](docs/sdks/transactionsjournalentries/README.md)
 
 * [get](docs/sdks/transactionsjournalentries/README.md#get) - Get journal entry
 * [list](docs/sdks/transactionsjournalentries/README.md#list) - List journal entries

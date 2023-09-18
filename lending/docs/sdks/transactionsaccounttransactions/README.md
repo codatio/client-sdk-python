@@ -1,4 +1,4 @@
-# transactions_account_transactions
+# Transactions.AccountTransactions
 
 ### Available Operations
 
@@ -34,7 +34,7 @@ req = operations.GetAccountingAccountTransactionRequest(
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
-res = s.transactions_account_transactions.get(req)
+res = s.transactions.account_transactions.get(req)
 
 if res.accounting_account_transaction is not None:
     # handle response
@@ -83,7 +83,7 @@ req = operations.ListAccountingAccountTransactionsRequest(
     query='error',
 )
 
-res = s.transactions_account_transactions.list(req)
+res = s.transactions.account_transactions.list(req)
 
 if res.accounting_account_transactions is not None:
     # handle response

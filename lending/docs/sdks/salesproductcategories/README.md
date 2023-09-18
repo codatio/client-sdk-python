@@ -1,4 +1,4 @@
-# sales_product_categories
+# Sales.ProductCategories
 
 ### Available Operations
 
@@ -34,7 +34,7 @@ req = operations.GetCommerceProductCategoryRequest(
     product_id='vitae',
 )
 
-res = s.sales_product_categories.get(req)
+res = s.sales.product_categories.get(req)
 
 if res.commerce_product_category is not None:
     # handle response
@@ -83,7 +83,7 @@ req = operations.ListCommerceProductCategoriesRequest(
     query='laborum',
 )
 
-res = s.sales_product_categories.list(req)
+res = s.sales.product_categories.list(req)
 
 if res.commerce_product_categories is not None:
     # handle response

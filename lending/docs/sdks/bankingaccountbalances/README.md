@@ -1,4 +1,4 @@
-# banking_account_balances
+# Banking.AccountBalances
 
 ### Available Operations
 
@@ -34,7 +34,7 @@ req = operations.ListBankingAccountBalancesRequest(
     query='optio',
 )
 
-res = s.banking_account_balances.list(req)
+res = s.banking.account_balances.list(req)
 
 if res.banking_account_balances is not None:
     # handle response

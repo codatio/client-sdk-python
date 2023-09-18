@@ -7,7 +7,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class ItemsType(str, Enum):
+class WebLinkType(str, Enum):
     r"""The type of the weblink."""
     WEBSITE = 'Website'
     SOCIAL = 'Social'
@@ -17,9 +17,9 @@ class ItemsType(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class WebLinksitems:
+class WebLink:
     r"""Weblink associated with the company."""
-    type: Optional[ItemsType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[WebLinkType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the weblink."""
     url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
     r"""The full URL for the weblink."""

@@ -1,4 +1,4 @@
-# accounts_receivable_credit_notes
+# AccountsReceivable.CreditNotes
 
 ### Available Operations
 
@@ -33,7 +33,7 @@ req = operations.GetAccountingCreditNoteRequest(
     credit_note_id='ipsam',
 )
 
-res = s.accounts_receivable_credit_notes.get(req)
+res = s.accounts_receivable.credit_notes.get(req)
 
 if res.accounting_credit_note is not None:
     # handle response
@@ -81,7 +81,7 @@ req = operations.ListAccountingCreditNotesRequest(
     query='repellendus',
 )
 
-res = s.accounts_receivable_credit_notes.list(req)
+res = s.accounts_receivable.credit_notes.list(req)
 
 if res.accounting_credit_notes is not None:
     # handle response

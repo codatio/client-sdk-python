@@ -1,4 +1,4 @@
-# manage_data_refresh
+# ManageData.Refresh
 
 ### Available Operations
 
@@ -29,7 +29,7 @@ req = operations.RefreshAllDataTypesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.manage_data_refresh.all_data_types(req)
+res = s.manage_data.refresh.all_data_types(req)
 
 if res.status_code == 200:
     # handle response
@@ -72,7 +72,7 @@ req = operations.RefreshDataTypeRequest(
     data_type=shared.DataType.INVOICES,
 )
 
-res = s.manage_data_refresh.data_type(req)
+res = s.manage_data.refresh.data_type(req)
 
 if res.pull_operation is not None:
     # handle response

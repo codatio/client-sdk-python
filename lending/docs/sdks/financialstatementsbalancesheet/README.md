@@ -1,4 +1,4 @@
-# financial_statements_balance_sheet
+# FinancialStatements.BalanceSheet
 
 ### Available Operations
 
@@ -28,7 +28,7 @@ req = operations.GetAccountingBalanceSheetRequest(
     start_month='2022-10-23T00:00:00.000Z',
 )
 
-res = s.financial_statements_balance_sheet.get(req)
+res = s.financial_statements.balance_sheet.get(req)
 
 if res.accounting_balance_sheet is not None:
     # handle response
@@ -71,7 +71,7 @@ req = operations.GetCategorizedBalanceSheetStatementRequest(
     report_date='29-09-2020',
 )
 
-res = s.financial_statements_balance_sheet.get_categorized_accounts(req)
+res = s.financial_statements.balance_sheet.get_categorized_accounts(req)
 
 if res.enhanced_financial_report is not None:
     # handle response

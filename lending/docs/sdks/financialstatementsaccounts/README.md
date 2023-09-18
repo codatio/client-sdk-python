@@ -1,4 +1,4 @@
-# financial_statements_accounts
+# FinancialStatements.Accounts
 
 ### Available Operations
 
@@ -33,7 +33,7 @@ req = operations.GetAccountingAccountRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
-res = s.financial_statements_accounts.get(req)
+res = s.financial_statements.accounts.get(req)
 
 if res.accounting_account is not None:
     # handle response
@@ -80,7 +80,7 @@ req = operations.ListAccountingAccountsRequest(
     query='esse',
 )
 
-res = s.financial_statements_accounts.list(req)
+res = s.financial_statements.accounts.list(req)
 
 if res.accounting_accounts is not None:
     # handle response

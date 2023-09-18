@@ -6,9 +6,9 @@ from ..shared import accountingcustomerref as shared_accountingcustomerref
 from ..shared import accountingpaymentallocation as shared_accountingpaymentallocation
 from ..shared import invoicelineitem as shared_invoicelineitem
 from ..shared import invoicestatus as shared_invoicestatus
+from ..shared import items as shared_items
 from ..shared import metadata as shared_metadata
 from ..shared import supplementaldata as shared_supplementaldata
-from ..shared import withholdingtaxitems as shared_withholdingtaxitems
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -202,6 +202,6 @@ class AccountingInvoice:
     """
     total_discount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalDiscount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Numerical value of discounts applied to the invoice."""
-    withholding_tax: Optional[list[shared_withholdingtaxitems.WithholdingTaxitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})
+    withholding_tax: Optional[list[shared_items.Items]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})
     
 

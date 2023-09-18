@@ -1,4 +1,4 @@
-# accounts_receivable_invoices
+# AccountsReceivable.Invoices
 
 ### Available Operations
 
@@ -38,7 +38,7 @@ req = operations.DownloadAccountingInvoiceAttachmentRequest(
     invoice_id='porro',
 )
 
-res = s.accounts_receivable_invoices.download_attachment(req)
+res = s.accounts_receivable.invoices.download_attachment(req)
 
 if res.data is not None:
     # handle response
@@ -78,7 +78,7 @@ req = operations.DownloadAccountingInvoicePdfRequest(
     invoice_id='dolorum',
 )
 
-res = s.accounts_receivable_invoices.download_pdf(req)
+res = s.accounts_receivable.invoices.download_pdf(req)
 
 if res.data is not None:
     # handle response
@@ -124,7 +124,7 @@ req = operations.GetAccountingInvoiceRequest(
     invoice_id='dicta',
 )
 
-res = s.accounts_receivable_invoices.get(req)
+res = s.accounts_receivable.invoices.get(req)
 
 if res.accounting_invoice is not None:
     # handle response
@@ -171,7 +171,7 @@ req = operations.GetAccountingInvoiceAttachmentRequest(
     invoice_id='nam',
 )
 
-res = s.accounts_receivable_invoices.get_attachment(req)
+res = s.accounts_receivable.invoices.get_attachment(req)
 
 if res.accounting_attachment is not None:
     # handle response
@@ -225,7 +225,7 @@ req = operations.ListAccountingInvoicesRequest(
     query='officia',
 )
 
-res = s.accounts_receivable_invoices.list(req)
+res = s.accounts_receivable.invoices.list(req)
 
 if res.accounting_invoices is not None:
     # handle response
@@ -271,7 +271,7 @@ req = operations.ListAccountingInvoiceAttachmentsRequest(
     invoice_id='occaecati',
 )
 
-res = s.accounts_receivable_invoices.list_attachments(req)
+res = s.accounts_receivable.invoices.list_attachments(req)
 
 if res.attachments is not None:
     # handle response
@@ -313,7 +313,7 @@ req = operations.ListReconciledInvoicesRequest(
     query='fugit',
 )
 
-res = s.accounts_receivable_invoices.list_reconciled(req)
+res = s.accounts_receivable.invoices.list_reconciled(req)
 
 if res.enhanced_invoices_report is not None:
     # handle response

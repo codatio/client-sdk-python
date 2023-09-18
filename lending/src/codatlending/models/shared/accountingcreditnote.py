@@ -6,9 +6,9 @@ from ..shared import accountingcustomerref as shared_accountingcustomerref
 from ..shared import accountingpaymentallocation as shared_accountingpaymentallocation
 from ..shared import creditnotelineitem as shared_creditnotelineitem
 from ..shared import creditnotestatus as shared_creditnotestatus
+from ..shared import items as shared_items
 from ..shared import metadata as shared_metadata
 from ..shared import supplementaldata as shared_supplementaldata
-from ..shared import withholdingtaxitems as shared_withholdingtaxitems
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -143,6 +143,6 @@ class AccountingCreditNote:
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    withholding_tax: Optional[list[shared_withholdingtaxitems.WithholdingTaxitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})
+    withholding_tax: Optional[list[shared_items.Items]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})
     
 
