@@ -68,11 +68,11 @@ if res.create_account_response is not None:
 ## Available Resources and Operations
 
 
-### [accounts](docs/sdks/accounts/README.md)
+### [Accounts](docs/sdks/accounts/README.md)
 
 * [create](docs/sdks/accounts/README.md#create) - Create account
 
-### [companies](docs/sdks/companies/README.md)
+### [Companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
@@ -80,13 +80,13 @@ if res.create_account_response is not None:
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [configuration](docs/sdks/configuration/README.md)
+### [Configuration](docs/sdks/configuration/README.md)
 
 * [get](docs/sdks/configuration/README.md#get) - Get company configuration
 * [get_mapping_options](docs/sdks/configuration/README.md#get_mapping_options) - Mapping options
 * [set](docs/sdks/configuration/README.md#set) - Set company configuration
 
-### [connections](docs/sdks/connections/README.md)
+### [Connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [create_partner_expense_connection](docs/sdks/connections/README.md#create_partner_expense_connection) - Create Partner Expense connection
@@ -95,20 +95,20 @@ if res.create_account_response is not None:
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [customers](docs/sdks/customers/README.md)
+### [Customers](docs/sdks/customers/README.md)
 
 * [create](docs/sdks/customers/README.md#create) - Create customer
 * [get](docs/sdks/customers/README.md#get) - Get customer
 * [list](docs/sdks/customers/README.md#list) - List customers
 * [update](docs/sdks/customers/README.md#update) - Update customer
 
-### [expenses](docs/sdks/expenses/README.md)
+### [Expenses](docs/sdks/expenses/README.md)
 
 * [create](docs/sdks/expenses/README.md#create) - Create expense transaction
 * [update](docs/sdks/expenses/README.md#update) - Update expense-transactions
 * [upload_attachment](docs/sdks/expenses/README.md#upload_attachment) - Upload attachment
 
-### [manage_data](docs/sdks/managedata/README.md)
+### [ManageData](docs/sdks/managedata/README.md)
 
 * [get](docs/sdks/managedata/README.md#get) - Get data status
 * [get_pull_operation](docs/sdks/managedata/README.md#get_pull_operation) - Get pull operation
@@ -116,19 +116,19 @@ if res.create_account_response is not None:
 * [refresh_all_data_types](docs/sdks/managedata/README.md#refresh_all_data_types) - Refresh all data
 * [refresh_data_type](docs/sdks/managedata/README.md#refresh_data_type) - Refresh data type
 
-### [push_operations](docs/sdks/pushoperations/README.md)
+### [PushOperations](docs/sdks/pushoperations/README.md)
 
 * [get](docs/sdks/pushoperations/README.md#get) - Get push operation
 * [list](docs/sdks/pushoperations/README.md#list) - List push operations
 
-### [suppliers](docs/sdks/suppliers/README.md)
+### [Suppliers](docs/sdks/suppliers/README.md)
 
 * [create](docs/sdks/suppliers/README.md#create) - Create supplier
 * [get](docs/sdks/suppliers/README.md#get) - Get supplier
 * [list](docs/sdks/suppliers/README.md#list) - List suppliers
 * [update](docs/sdks/suppliers/README.md#update) - Update supplier
 
-### [sync](docs/sdks/sync/README.md)
+### [Sync](docs/sdks/sync/README.md)
 
 * [get](docs/sdks/sync/README.md#get) - Get Sync status
 * [get_last_successful_sync](docs/sdks/sync/README.md#get_last_successful_sync) - Last successful sync
@@ -136,7 +136,7 @@ if res.create_account_response is not None:
 * [initiate_sync](docs/sdks/sync/README.md#initiate_sync) - Initiate sync
 * [list](docs/sdks/sync/README.md#list) - List sync statuses
 
-### [transaction_status](docs/sdks/transactionstatus/README.md)
+### [TransactionStatus](docs/sdks/transactionstatus/README.md)
 
 * [get](docs/sdks/transactionstatus/README.md#get) - Get Sync Transaction
 * [list](docs/sdks/transactionstatus/README.md#list) - List sync transactions

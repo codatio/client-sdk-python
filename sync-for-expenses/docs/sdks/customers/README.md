@@ -1,4 +1,4 @@
-# customers
+# Customers
 
 ## Overview
 
@@ -40,63 +40,63 @@ req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Items(
-                city='West Christa',
-                country='Iceland',
-                line1='cupiditate',
-                line2='quos',
-                postal_code='18301',
-                region='dolorum',
+                city='New Humberto',
+                country='Trinidad and Tobago',
+                line1='quidem',
+                line2='architecto',
+                postal_code='96661',
+                region='dolorem',
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='tempora',
+        contact_name='explicabo',
         contacts=[
             shared.Contact(
                 address=shared.Items(
-                    city='Riceboro',
-                    country='Vanuatu',
-                    line1='eum',
-                    line2='non',
-                    postal_code='53585-6289',
-                    region='dolorum',
-                    type=shared.AccountingAddressType.BILLING,
+                    city='Halvorsonstead',
+                    country='Guinea',
+                    line1='minima',
+                    line2='excepturi',
+                    postal_code='46991',
+                    region='mollitia',
+                    type=shared.AccountingAddressType.UNKNOWN,
                 ),
-                email='Rose.Wolff29@yahoo.com',
+                email='Caroline_Ziemann@yahoo.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Nathaniel Hyatt',
+                name='Claudia Krajcik',
                 phone=[
                     shared.ContactPhone(
                         number='+44 25691 154789',
-                        type=shared.PhoneNumberType.MOBILE,
+                        type=shared.PhoneNumberType.LANDLINE,
                     ),
                 ],
                 status=shared.CustomerStatus.UNKNOWN,
             ),
         ],
-        customer_name='accusamus',
-        default_currency='EUR',
-        email_address='quidem',
-        id='9ba88f3a-6699-4707-8ba4-469b6e214195',
+        customer_name='laborum',
+        default_currency='USD',
+        email_address='enim',
+        id='2c3f5ad0-19da-41ff-a78f-097b0074f154',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='606-963-4281 x3049',
-        registration_number='debitis',
+        phone='(738) 590-2655',
+        registration_number='pariatur',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.ARCHIVED,
+        status=shared.CustomerStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "deleniti": {
-                    "facilis": 'in',
+                "rem": {
+                    "voluptates": 'quasi',
                 },
             },
         ),
-        tax_number='architecto',
+        tax_number='repudiandae',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=99569,
+    timeout_in_minutes=575947,
 )
 
 res = s.customers.create(req)
@@ -143,7 +143,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='repudiandae',
+    customer_id='veritatis',
 )
 
 res = s.customers.get(req)
@@ -191,7 +191,7 @@ req = operations.ListCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ullam',
+    query='itaque',
 )
 
 res = s.customers.list(req)
@@ -242,65 +242,65 @@ req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Items(
-                city='Kossworth',
-                country='Sudan',
-                line1='sed',
-                line2='saepe',
-                postal_code='01561-1788',
-                region='maxime',
-                type=shared.AccountingAddressType.BILLING,
+                city='West Adele',
+                country='Norway',
+                line1='quibusdam',
+                line2='explicabo',
+                postal_code='78221-3550',
+                region='magni',
+                type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='excepturi',
+        contact_name='ipsam',
         contacts=[
             shared.Contact(
                 address=shared.Items(
-                    city='South Alexanneton',
-                    country='Wallis and Futuna',
-                    line1='quidem',
-                    line2='ipsam',
-                    postal_code='47083',
-                    region='voluptatibus',
-                    type=shared.AccountingAddressType.UNKNOWN,
+                    city='East Marianostead',
+                    country='Estonia',
+                    line1='facilis',
+                    line2='tempore',
+                    postal_code='94275',
+                    region='aliquid',
+                    type=shared.AccountingAddressType.BILLING,
                 ),
-                email='Darian.Anderson94@hotmail.com',
+                email='Kianna89@hotmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Ernest Hayes',
+                name='Arnold Kirlin',
                 phone=[
                     shared.ContactPhone(
-                        number='+44 25691 154789',
-                        type=shared.PhoneNumberType.LANDLINE,
+                        number='01224 658 999',
+                        type=shared.PhoneNumberType.PRIMARY,
                     ),
                 ],
                 status=shared.CustomerStatus.UNKNOWN,
             ),
         ],
-        customer_name='eos',
-        default_currency='GBP',
-        email_address='dolores',
-        id='c73d5fe9-b90c-4289-89b3-fe49a8d9cbf4',
+        customer_name='cumque',
+        default_currency='EUR',
+        email_address='ea',
+        id='6ae395ef-b9ba-488f-ba66-997074ba4469',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='1-322-329-5744 x926',
-        registration_number='numquam',
+        phone='1-911-405-3555 x069',
+        registration_number='mollitia',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.UNKNOWN,
+        status=shared.CustomerStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "ipsa": {
-                    "iure": 'odio',
+                "dolor": {
+                    "necessitatibus": 'odit',
                 },
             },
         ),
-        tax_number='quaerat',
+        tax_number='nemo',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='accusamus',
+    customer_id='quasi',
     force_update=False,
-    timeout_in_minutes=696344,
+    timeout_in_minutes=435865,
 )
 
 res = s.customers.update(req)

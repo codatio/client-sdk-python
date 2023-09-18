@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 from ..shared import bankaccount as shared_bankaccount
-from ..shared import customer as shared_customer
-from ..shared import supplier as shared_supplier
+from ..shared import customerdetails as shared_customerdetails
+from ..shared import supplierdetails as shared_supplierdetails
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
 
@@ -14,21 +14,7 @@ from dataclasses_json import Undefined, dataclass_json
 @dataclasses.dataclass
 class CompanyConfiguration:
     bank_account: shared_bankaccount.BankAccount = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccount') }})
-    customer: shared_customer.Customer = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customer') }})
-    r"""> View the coverage for customers in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers\\" target=\\"_blank\\">Data coverage explorer</a>.
-
-    ## Overview
-
-    A customer is a person or organisation that buys goods or services. From the Customers endpoints, you can retrieve a [list of all the customers of a company](https://api.codat.io/swagger/index.html#/Customers/get_companies__companyId__data_customers).
-
-    Customers' data links to accounts receivable [invoices](https://docs.codat.io/accounting-api#/schemas/Invoice).
-    """
-    supplier: shared_supplier.Supplier = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplier') }})
-    r"""> View the coverage for suppliers in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers\\" target=\\"_blank\\">Data coverage explorer</a>.
-
-    ## Overview
-
-    From the **Suppliers** endpoints, you can retrieve a list of [all the suppliers for a company](https://docs.codat.io/accounting-api#/operations/list-suppliers). Suppliers' data links to accounts payable [bills](https://docs.codat.io/accounting-api#/schemas/Bill).
-    """
+    customer: shared_customerdetails.CustomerDetails = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customer') }})
+    supplier: shared_supplierdetails.SupplierDetails = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplier') }})
     
 

@@ -1,4 +1,4 @@
-# suppliers
+# Suppliers
 
 ## Overview
 
@@ -40,40 +40,40 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Kohlerberg',
-                country='Faroe Islands',
-                line1='qui',
-                line2='cupiditate',
-                postal_code='87165-2117',
-                region='facilis',
+                city='Purdystead',
+                country='Antarctica (the territory South of 60 deg S)',
+                line1='porro',
+                line2='consequuntur',
+                postal_code='60562-9926',
+                region='dolorum',
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='quam',
-        default_currency='molestias',
-        email_address='temporibus',
-        id='2322715b-f0cb-4b1e-b1b8-b90f3443a110',
+        contact_name='pariatur',
+        default_currency='provident',
+        email_address='nobis',
+        id='bf486333-23f9-4b77-b3a4-100674ebf692',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='01224 658 999',
-        registration_number='consequatur',
+        phone='+44 25691 154789',
+        registration_number='fugiat',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "porro": {
-                    "doloribus": 'ut',
+                "dolorum": {
+                    "iusto": 'voluptate',
                 },
             },
         ),
-        supplier_name='facilis',
-        tax_number='cupiditate',
+        supplier_name='dolorum',
+        tax_number='deleniti',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=181631,
+    timeout_in_minutes=607045,
 )
 
 res = s.suppliers.create(req)
@@ -120,7 +120,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    supplier_id='EILBDVJVNUAGVKRQ',
 )
 
 res = s.suppliers.get(req)
@@ -168,7 +168,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='laudantium',
+    query='distinctio',
 )
 
 res = s.suppliers.list(req)
@@ -219,42 +219,42 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Krisworth',
-                country='Senegal',
-                line1='vero',
-                line2='omnis',
-                postal_code='29428',
-                region='tenetur',
+                city='Lake Havasu City',
+                country='Croatia',
+                line1='voluptate',
+                line2='id',
+                postal_code='21027-8393',
+                region='deserunt',
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='hic',
-        default_currency='distinctio',
-        email_address='quod',
-        id='7abd74dd-39c0-4f5d-acff-7c70a45626d4',
+        contact_name='minima',
+        default_currency='repellendus',
+        email_address='totam',
+        id='a0d446ce-2af7-4a73-8f3b-e453f870b326',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='laudantium',
+        registration_number='deserunt',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "maiores": {
-                    "quasi": 'ex',
+                "incidunt": {
+                    "qui": 'cupiditate',
                 },
             },
         ),
-        supplier_name='nulla',
-        tax_number='excepturi',
+        supplier_name='maxime',
+        tax_number='pariatur',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='EILBDVJVNUAGVKRQ',
-    timeout_in_minutes=343605,
+    supplier_id='7110701885',
+    timeout_in_minutes=117531,
 )
 
 res = s.suppliers.update(req)

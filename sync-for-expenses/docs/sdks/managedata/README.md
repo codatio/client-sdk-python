@@ -1,4 +1,4 @@
-# manage_data
+# ManageData
 
 ## Overview
 
@@ -112,7 +112,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='fugiat',
+    query='in',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -197,7 +197,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='1ba77a89-ebf7-437a-a420-3ce5e6a95d8a',
+    connection_id='11e5b7fd-2ed0-4289-a1cd-dc692601fb57',
     data_type=shared.DataType.INVOICES,
 )
 
