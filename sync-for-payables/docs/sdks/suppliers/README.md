@@ -1,4 +1,4 @@
-# suppliers
+# Suppliers
 
 ## Overview
 
@@ -40,7 +40,7 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
-            shared.SupplierAccountingAddress(
+            shared.Address(
                 city='Fort Virgilfurt',
                 country='Sweden',
                 line1='officia',
@@ -268,7 +268,7 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
-            shared.SupplierAccountingAddress(
+            shared.Address(
                 city='Wauwatosa',
                 country='Nauru',
                 line1='dicta',

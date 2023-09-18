@@ -6,7 +6,7 @@ from .accountref import *
 from .accounts import *
 from .accountstatus import *
 from .accounttype import *
-from .addressesitems import *
+from .address import *
 from .attachment import *
 from .attachments import *
 from .bill import *
@@ -23,8 +23,13 @@ from .billpaymentlinelinktype import *
 from .billpayments import *
 from .bills import *
 from .billstatus import *
+from .clientratelimitreachedwebhook import *
+from .clientratelimitreachedwebhookdata import *
+from .clientratelimitresetwebhook import *
+from .clientratelimitresetwebhookdata import *
 from .companies import *
 from .company import *
+from .companyinfo import *
 from .companyrequestbody import *
 from .connection import *
 from .connections import *
@@ -51,12 +56,13 @@ from .journals import *
 from .journalstatus import *
 from .links import *
 from .metadata import *
-from .onecompanies_1percent_7bcompanyidpercent_7d_1data_1info_get_responses_200_content_application_1json_schema_properties_phonenumbers_items_definitions_phonenumbertype import *
 from .paymentallocationpayment import *
 from .paymentmethod import *
 from .paymentmethods import *
 from .paymentmethodstatus import *
 from .paymentmethodtype import *
+from .phonenumber import *
+from .phonenumbertype import *
 from .pulloperation import *
 from .pulloperations import *
 from .pushchangetype import *
@@ -95,6 +101,7 @@ from .updatesupplierresponse import *
 from .validation import *
 from .validationitem import *
 from .validdatatypelinksitems import *
+from .weblink import *
 from .withholdingtaxitems import *
 
-__all__ = ["Account","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","AccountingAddressType","Accounts","Addressesitems","Attachment","Attachments","Bill","BillCreditNote","BillCreditNoteLineItem","BillCreditNoteLineItemItemReference","BillCreditNoteLineItemTracking","BillCreditNoteLineItemTrackingCustomerRef","BillCreditNoteLineItemTrackingProjectReference","BillCreditNoteStatus","BillCreditNotes","BillLineItem","BillPayment","BillPaymentAllocation","BillPaymentAllocationAllocation","BillPaymentLine","BillPaymentLineLink","BillPaymentLineLinkType","BillPayments","BillPurchaseOrderReference","BillStatus","BillSupplementalData","BillWithholdingTax","BilledToType","Bills","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateAccountResponse","CreateBillCreditNoteResponse","CreateBillPaymentResponse","CreateBillResponse","CreateJournalEntryResponse","CreateJournalResponse","CreateSupplierResponse","DataConnectionError","DataConnectionStatus","DataStatus","DataType","ErrorMessage","HalRef","ItemRef","Items","ItemsAllocation","Journal","JournalEntry","JournalEntryRecordReference","JournalLine","JournalLineTracking","JournalRef","JournalStatus","Journals","Links","Metadata","Onecompanies1Percent7BcompanyIDPercent7D1data1infoGetResponses200ContentApplication1jsonSchemaPropertiesPhoneNumbersItemsDefinitionsPhoneNumberType","PaymentAllocationPayment","PaymentMethod","PaymentMethodStatus","PaymentMethodType","PaymentMethods","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","Security","Status","SupplementalData","Supplier","SupplierAccountingAddress","SupplierRef","SupplierStatus","Suppliers","TaxRate","TaxRateComponent","TaxRateRef","TaxRateStatus","TaxRates","Tracking","TrackingCategories","TrackingCategory","TrackingCategoryRef","TrackingCategoryTree","TrackingCustomerRef","TrackingProjectReference","UpdateBillCreditNoteResponse","UpdateBillResponse","UpdateSupplierResponse","ValidDatatypeLinksitems","Validation","ValidationItem","WithholdingTaxitems"]
+__all__ = ["Account","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","AccountingAddressType","Accounts","Address","Attachment","Attachments","Bill","BillCreditNote","BillCreditNoteLineItem","BillCreditNoteLineItemItemReference","BillCreditNoteLineItemTracking","BillCreditNoteLineItemTrackingCustomerRef","BillCreditNoteLineItemTrackingProjectReference","BillCreditNoteStatus","BillCreditNotes","BillLineItem","BillPayment","BillPaymentAllocation","BillPaymentAllocationAllocation","BillPaymentLine","BillPaymentLineLink","BillPaymentLineLinkType","BillPayments","BillPurchaseOrderReference","BillStatus","BillSupplementalData","BillWithholdingTax","BilledToType","Bills","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyInfo","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateAccountResponse","CreateBillCreditNoteResponse","CreateBillPaymentResponse","CreateBillResponse","CreateJournalEntryResponse","CreateJournalResponse","CreateSupplierResponse","DataConnectionError","DataConnectionStatus","DataStatus","DataType","ErrorMessage","HalRef","ItemRef","Items","ItemsAllocation","Journal","JournalEntry","JournalEntryRecordReference","JournalLine","JournalLineTracking","JournalRef","JournalStatus","Journals","Links","Metadata","PaymentAllocationPayment","PaymentMethod","PaymentMethodStatus","PaymentMethodType","PaymentMethods","PhoneNumber","PhoneNumberType","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","Security","Status","SupplementalData","Supplier","SupplierRef","SupplierStatus","Suppliers","TaxRate","TaxRateComponent","TaxRateRef","TaxRateStatus","TaxRates","Tracking","TrackingCategories","TrackingCategory","TrackingCategoryRef","TrackingCategoryTree","TrackingCustomerRef","TrackingProjectReference","UpdateBillCreditNoteResponse","UpdateBillResponse","UpdateSupplierResponse","ValidDatatypeLinksitems","Validation","ValidationItem","WebLink","WebLinkType","WithholdingTaxitems"]

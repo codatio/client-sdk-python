@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class Onecompanies1Percent7BcompanyIDPercent7D1data1infoGetResponses200ContentApplication1jsonSchemaPropertiesPhoneNumbersItemsDefinitionsPhoneNumberType(str, Enum):
+class PhoneNumberType(str, Enum):
     r"""The type of phone number"""
     PRIMARY = 'Primary'
     LANDLINE = 'Landline'

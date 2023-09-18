@@ -1,4 +1,4 @@
-# tracking_categories
+# TrackingCategories
 
 ## Overview
 

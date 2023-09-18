@@ -68,14 +68,14 @@ if res.create_account_response is not None:
 ## Available Resources and Operations
 
 
-### [accounts](docs/sdks/accounts/README.md)
+### [Accounts](docs/sdks/accounts/README.md)
 
 * [create](docs/sdks/accounts/README.md#create) - Create account
 * [get](docs/sdks/accounts/README.md#get) - Get account
 * [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
 * [list](docs/sdks/accounts/README.md#list) - List accounts
 
-### [bill_credit_notes](docs/sdks/billcreditnotes/README.md)
+### [BillCreditNotes](docs/sdks/billcreditnotes/README.md)
 
 * [create](docs/sdks/billcreditnotes/README.md#create) - Create bill credit note
 * [get](docs/sdks/billcreditnotes/README.md#get) - Get bill credit note
@@ -83,7 +83,7 @@ if res.create_account_response is not None:
 * [list](docs/sdks/billcreditnotes/README.md#list) - List bill credit notes
 * [update](docs/sdks/billcreditnotes/README.md#update) - Update bill credit note
 
-### [bill_payments](docs/sdks/billpayments/README.md)
+### [BillPayments](docs/sdks/billpayments/README.md)
 
 * [create](docs/sdks/billpayments/README.md#create) - Create bill payments
 * [delete](docs/sdks/billpayments/README.md#delete) - Delete bill payment
@@ -91,7 +91,7 @@ if res.create_account_response is not None:
 * [get_create_model](docs/sdks/billpayments/README.md#get_create_model) - Get create bill payment model
 * [list](docs/sdks/billpayments/README.md#list) - List bill payments
 
-### [bills](docs/sdks/bills/README.md)
+### [Bills](docs/sdks/bills/README.md)
 
 * [create](docs/sdks/bills/README.md#create) - Create bill
 * [delete](docs/sdks/bills/README.md#delete) - Delete bill
@@ -104,7 +104,7 @@ if res.create_account_response is not None:
 * [update](docs/sdks/bills/README.md#update) - Update bill
 * [upload_attachment](docs/sdks/bills/README.md#upload_attachment) - Upload bill attachment
 
-### [companies](docs/sdks/companies/README.md)
+### [Companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
@@ -112,11 +112,11 @@ if res.create_account_response is not None:
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [company_info](docs/sdks/companyinfo/README.md)
+### [CompanyInfo](docs/sdks/companyinfo/README.md)
 
 * [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
 
-### [connections](docs/sdks/connections/README.md)
+### [Connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [delete](docs/sdks/connections/README.md#delete) - Delete connection
@@ -124,19 +124,19 @@ if res.create_account_response is not None:
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [journal_entries](docs/sdks/journalentries/README.md)
+### [JournalEntries](docs/sdks/journalentries/README.md)
 
 * [create](docs/sdks/journalentries/README.md#create) - Create journal entry
 * [get_create_model](docs/sdks/journalentries/README.md#get_create_model) - Get create journal entry model
 
-### [journals](docs/sdks/journals/README.md)
+### [Journals](docs/sdks/journals/README.md)
 
 * [create](docs/sdks/journals/README.md#create) - Create journal
 * [get](docs/sdks/journals/README.md#get) - Get journal
 * [get_create_model](docs/sdks/journals/README.md#get_create_model) - Get create journal model
 * [list](docs/sdks/journals/README.md#list) - List journals
 
-### [manage_data](docs/sdks/managedata/README.md)
+### [ManageData](docs/sdks/managedata/README.md)
 
 * [get](docs/sdks/managedata/README.md#get) - Get data status
 * [get_pull_operation](docs/sdks/managedata/README.md#get_pull_operation) - Get pull operation
@@ -144,17 +144,17 @@ if res.create_account_response is not None:
 * [refresh_all_data_types](docs/sdks/managedata/README.md#refresh_all_data_types) - Refresh all data
 * [refresh_data_type](docs/sdks/managedata/README.md#refresh_data_type) - Refresh data type
 
-### [payment_methods](docs/sdks/paymentmethods/README.md)
+### [PaymentMethods](docs/sdks/paymentmethods/README.md)
 
 * [get](docs/sdks/paymentmethods/README.md#get) - Get payment method
 * [list](docs/sdks/paymentmethods/README.md#list) - List payment methods
 
-### [push_operations](docs/sdks/pushoperations/README.md)
+### [PushOperations](docs/sdks/pushoperations/README.md)
 
 * [get](docs/sdks/pushoperations/README.md#get) - Get push operation
 * [list](docs/sdks/pushoperations/README.md#list) - List push operations
 
-### [suppliers](docs/sdks/suppliers/README.md)
+### [Suppliers](docs/sdks/suppliers/README.md)
 
 * [create](docs/sdks/suppliers/README.md#create) - Create supplier
 * [get](docs/sdks/suppliers/README.md#get) - Get supplier
@@ -162,12 +162,12 @@ if res.create_account_response is not None:
 * [list](docs/sdks/suppliers/README.md#list) - List suppliers
 * [update](docs/sdks/suppliers/README.md#update) - Update supplier
 
-### [tax_rates](docs/sdks/taxrates/README.md)
+### [TaxRates](docs/sdks/taxrates/README.md)
 
 * [get](docs/sdks/taxrates/README.md#get) - Get tax rate
 * [list](docs/sdks/taxrates/README.md#list) - List all tax rates
 
-### [tracking_categories](docs/sdks/trackingcategories/README.md)
+### [TrackingCategories](docs/sdks/trackingcategories/README.md)
 
 * [get](docs/sdks/trackingcategories/README.md#get) - Get tracking categories
 * [list](docs/sdks/trackingcategories/README.md#list) - List tracking categories

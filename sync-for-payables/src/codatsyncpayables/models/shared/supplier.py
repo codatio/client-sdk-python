@@ -2,35 +2,13 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountingaddresstype as shared_accountingaddresstype
+from ..shared import address as shared_address
 from ..shared import metadata as shared_metadata
 from ..shared import supplementaldata as shared_supplementaldata
 from ..shared import supplierstatus as shared_supplierstatus
 from codatsyncpayables import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class SupplierAccountingAddress:
-    type: shared_accountingaddresstype.AccountingAddressType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""The type of the address"""
-    city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city'), 'exclude': lambda f: f is None }})
-    r"""City of the customer address."""
-    country: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('country'), 'exclude': lambda f: f is None }})
-    r"""Country of the customer address."""
-    line1: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('line1'), 'exclude': lambda f: f is None }})
-    r"""Line 1 of the customer address."""
-    line2: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('line2'), 'exclude': lambda f: f is None }})
-    r"""Line 2 of the customer address."""
-    postal_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('postalCode'), 'exclude': lambda f: f is None }})
-    r"""Postal code or zip code."""
-    region: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('region'), 'exclude': lambda f: f is None }})
-    r"""Region of the customer address."""
-    
-
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -45,7 +23,7 @@ class Supplier:
     """
     status: shared_supplierstatus.SupplierStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of the supplier."""
-    addresses: Optional[list[SupplierAccountingAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
+    addresses: Optional[list[shared_address.Address]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
     r"""An array of Addresses."""
     contact_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactName'), 'exclude': lambda f: f is None }})
     r"""Name of the main contact for the supplier."""
