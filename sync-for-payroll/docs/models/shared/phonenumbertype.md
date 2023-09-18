@@ -1,4 +1,4 @@
-# Onecompanies1Percent7BcompanyIDPercent7D1data1infoGetResponses200ContentApplication1jsonSchemaPropertiesPhoneNumbersItemsDefinitionsPhoneNumberType
+# PhoneNumberType
 
 The type of phone number
 
