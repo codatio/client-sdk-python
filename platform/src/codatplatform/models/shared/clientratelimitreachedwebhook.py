@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import datasynccompletedwebhookdata as shared_datasynccompletedwebhookdata
+from ..shared import clientratelimitreachedwebhookdata as shared_clientratelimitreachedwebhookdata
 from codatplatform import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -11,19 +11,15 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class DataSyncCompletedWebhook:
-    r"""Webhook request body to notify the completion of a data sync."""
+class ClientRateLimitReachedWebhook:
+    r"""Webhook request body for a client that has reached their rate limit."""
     alert_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('AlertId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier of the webhook event."""
     client_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ClientId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for your client in Codat."""
     client_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ClientName'), 'exclude': lambda f: f is None }})
     r"""Name of your client in Codat."""
-    company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('CompanyId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for your SMB in Codat."""
-    data: Optional[shared_datasynccompletedwebhookdata.DataSyncCompletedWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Data'), 'exclude': lambda f: f is None }})
-    data_connection_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('DataConnectionId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for a company's data connection."""
+    data: Optional[shared_clientratelimitreachedwebhookdata.ClientRateLimitReachedWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Data'), 'exclude': lambda f: f is None }})
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Message'), 'exclude': lambda f: f is None }})
     r"""A human readable message about the webhook."""
     rule_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RuleId'), 'exclude': lambda f: f is None }})

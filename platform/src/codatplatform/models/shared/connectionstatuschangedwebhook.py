@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import datasynccompletedwebhookdata as shared_datasynccompletedwebhookdata
+from ..shared import connectionstatuschangedwebhookdata as shared_connectionstatuschangedwebhookdata
 from codatplatform import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -11,8 +11,8 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class DataSyncCompletedWebhook:
-    r"""Webhook request body to notify the completion of a data sync."""
+class ConnectionStatusChangedWebhook:
+    r"""Webhook request body for a company's data connection status changed."""
     alert_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('AlertId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier of the webhook event."""
     client_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ClientId'), 'exclude': lambda f: f is None }})
@@ -21,7 +21,7 @@ class DataSyncCompletedWebhook:
     r"""Name of your client in Codat."""
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('CompanyId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for your SMB in Codat."""
-    data: Optional[shared_datasynccompletedwebhookdata.DataSyncCompletedWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Data'), 'exclude': lambda f: f is None }})
+    data: Optional[shared_connectionstatuschangedwebhookdata.ConnectionStatusChangedWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Data'), 'exclude': lambda f: f is None }})
     data_connection_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('DataConnectionId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for a company's data connection."""
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Message'), 'exclude': lambda f: f is None }})

@@ -11,7 +11,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class CompanyDataConnectionStatusChangedWebhookData:
+class ConnectionStatusChangedWebhookData:
     data_connection_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnectionId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for a company's data connection."""
     new_status: Optional[shared_dataconnectionstatus.DataConnectionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('newStatus'), 'exclude': lambda f: f is None }})
@@ -20,25 +20,5 @@ class CompanyDataConnectionStatusChangedWebhookData:
     r"""The current authorization status of the data connection."""
     platform_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformKey'), 'exclude': lambda f: f is None }})
     r"""A unique 4-letter key to represent a platform in each integration. View [accounting](https://docs.codat.io/integrations/accounting/accounting-platform-keys), [banking](https://docs.codat.io/integrations/banking/banking-platform-keys), and [commerce](https://docs.codat.io/integrations/commerce/commerce-platform-keys) platform keys."""
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class CompanyDataConnectionStatusChangedWebhook:
-    r"""Webhook request body for a company's data connection status changed."""
-    alert_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('AlertId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier of the webhook event."""
-    company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('CompanyId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for your SMB in Codat."""
-    data: Optional[CompanyDataConnectionStatusChangedWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Data'), 'exclude': lambda f: f is None }})
-    message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Message'), 'exclude': lambda f: f is None }})
-    r"""A human readable message about the webhook."""
-    rule_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RuleId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for the rule."""
-    type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Type'), 'exclude': lambda f: f is None }})
-    r"""The type of rule."""
     
 

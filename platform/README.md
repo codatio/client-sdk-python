@@ -40,7 +40,7 @@ if res.company is not None:
 ## Available Resources and Operations
 
 
-### [companies](docs/sdks/companies/README.md)
+### [Companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
@@ -48,7 +48,7 @@ if res.company is not None:
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [connections](docs/sdks/connections/README.md)
+### [Connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [delete](docs/sdks/connections/README.md#delete) - Delete connection
@@ -57,19 +57,19 @@ if res.company is not None:
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 * [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
 
-### [integrations](docs/sdks/integrations/README.md)
+### [Integrations](docs/sdks/integrations/README.md)
 
 * [get](docs/sdks/integrations/README.md#get) - Get integration
 * [get_branding](docs/sdks/integrations/README.md#get_branding) - Get branding
 * [list](docs/sdks/integrations/README.md#list) - List integrations
 
-### [push_data](docs/sdks/pushdata/README.md)
+### [PushData](docs/sdks/pushdata/README.md)
 
 * [get_model_options](docs/sdks/pushdata/README.md#get_model_options) - Get push options
 * [get_operation](docs/sdks/pushdata/README.md#get_operation) - Get push operation
 * [list_operations](docs/sdks/pushdata/README.md#list_operations) - List push operations
 
-### [refresh_data](docs/sdks/refreshdata/README.md)
+### [RefreshData](docs/sdks/refreshdata/README.md)
 
 * [all](docs/sdks/refreshdata/README.md#all) - Refresh all data
 * [by_data_type](docs/sdks/refreshdata/README.md#by_data_type) - Refresh data type
@@ -77,7 +77,7 @@ if res.company is not None:
 * [get_pull_operation](docs/sdks/refreshdata/README.md#get_pull_operation) - Get pull operation
 * [list_pull_operations](docs/sdks/refreshdata/README.md#list_pull_operations) - List pull operations
 
-### [settings](docs/sdks/settings/README.md)
+### [Settings](docs/sdks/settings/README.md)
 
 * [create_api_key](docs/sdks/settings/README.md#create_api_key) - Create API key
 * [delete_api_key](docs/sdks/settings/README.md#delete_api_key) - Delete api key
@@ -87,12 +87,12 @@ if res.company is not None:
 * [update_profile](docs/sdks/settings/README.md#update_profile) - Update profile
 * [update_sync_settings](docs/sdks/settings/README.md#update_sync_settings) - Update all sync settings
 
-### [supplemental_data](docs/sdks/supplementaldata/README.md)
+### [SupplementalData](docs/sdks/supplementaldata/README.md)
 
 * [configure](docs/sdks/supplementaldata/README.md#configure) - Configure
 * [get_configuration](docs/sdks/supplementaldata/README.md#get_configuration) - Get configuration
 
-### [webhooks](docs/sdks/webhooks/README.md)
+### [Webhooks](docs/sdks/webhooks/README.md)
 
 * [create](docs/sdks/webhooks/README.md#create) - Create webhook
 * [get](docs/sdks/webhooks/README.md#get) - Get webhook
