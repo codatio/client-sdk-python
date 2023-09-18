@@ -1,4 +1,4 @@
-# company_info
+# CompanyInfo
 
 ## Overview
 
@@ -30,7 +30,7 @@ req = operations.GetAccountingProfileRequest(
 
 res = s.company_info.get_accounting_profile(req)
 
-if res.company_information is not None:
+if res.company_info is not None:
     # handle response
 ```
 
