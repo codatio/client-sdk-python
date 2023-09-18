@@ -40,14 +40,14 @@ if res.company is not None:
 ## Available Resources and Operations
 
 
-### [advanced_controls](docs/sdks/advancedcontrols/README.md)
+### [AdvancedControls](docs/sdks/advancedcontrols/README.md)
 
 * [create_company](docs/sdks/advancedcontrols/README.md#create_company) - Create company
 * [get_configuration](docs/sdks/advancedcontrols/README.md#get_configuration) - Get company configuration
 * [list_companies](docs/sdks/advancedcontrols/README.md#list_companies) - List companies
 * [set_configuration](docs/sdks/advancedcontrols/README.md#set_configuration) - Set configuration
 
-### [connections](docs/sdks/connections/README.md)
+### [Connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [get_sync_flow_url](docs/sdks/connections/README.md#get_sync_flow_url) - Start new sync flow
@@ -55,12 +55,12 @@ if res.company is not None:
 * [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
 * [update_connection](docs/sdks/connections/README.md#update_connection) - Update connection
 
-### [integrations](docs/sdks/integrations/README.md)
+### [Integrations](docs/sdks/integrations/README.md)
 
 * [get_branding](docs/sdks/integrations/README.md#get_branding) - Get branding for an integration
 * [list](docs/sdks/integrations/README.md#list) - List integrations
 
-### [sync](docs/sdks/sync/README.md)
+### [Sync](docs/sdks/sync/README.md)
 
 * [get](docs/sdks/sync/README.md#get) - Get sync status
 * [get_last_successful_sync](docs/sdks/sync/README.md#get_last_successful_sync) - Last successful sync
@@ -70,7 +70,7 @@ if res.company is not None:
 * [request](docs/sdks/sync/README.md#request) - Initiate new sync
 * [request_for_date_range](docs/sdks/sync/README.md#request_for_date_range) - Initiate sync for specific range
 
-### [sync_flow_settings](docs/sdks/syncflowsettings/README.md)
+### [SyncFlowSettings](docs/sdks/syncflowsettings/README.md)
 
 * [get_config_text_sync_flow](docs/sdks/syncflowsettings/README.md#get_config_text_sync_flow) - Get preferences for text fields
 * [get_visible_accounts](docs/sdks/syncflowsettings/README.md#get_visible_accounts) - List visible accounts

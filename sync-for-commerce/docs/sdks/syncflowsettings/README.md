@@ -1,4 +1,4 @@
-# sync_flow_settings
+# SyncFlowSettings
 
 ## Overview
 

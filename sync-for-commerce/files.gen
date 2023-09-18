@@ -87,7 +87,10 @@ src/codatsynccommerce/models/shared/syncrange.py
 src/codatsynccommerce/models/shared/localization.py
 src/codatsynccommerce/models/shared/visibleaccounts.py
 src/codatsynccommerce/models/shared/security.py
+src/codatsynccommerce/models/shared/syncconnectiondeletedwebhook.py
 src/codatsynccommerce/models/shared/__init__.py
+src/codatsynccommerce/models/webhooks/sync_connection_deleted.py
+src/codatsynccommerce/models/webhooks/__init__.py
 src/codatsynccommerce/models/errors/__init__.py
 docs/sdks/codatsynccommerce/README.md
 docs/models/utils/retryconfig.md
@@ -194,4 +197,6 @@ docs/models/shared/syncrange.md
 docs/models/shared/localization.md
 docs/models/shared/visibleaccounts.md
 docs/models/shared/security.md
+docs/models/shared/syncconnectiondeletedwebhook.md
+docs/models/webhooks/syncconnectiondeletedresponse.md
 .gitattributes
