@@ -1,4 +1,4 @@
-# push_operations
+# PushOperations
 
 ## Overview
 
@@ -27,7 +27,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='0d446ce2-af7a-473c-b3be-453f870b326b',
+    push_operation_key='6b0d5f0d-30c5-4fbb-a587-053202c73d5f',
 )
 
 res = s.push_operations.get(req)
@@ -70,7 +70,7 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptas',
+    query='recusandae',
 )
 
 res = s.push_operations.list(req)
