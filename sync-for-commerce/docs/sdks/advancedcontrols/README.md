@@ -1,4 +1,4 @@
-# advanced_controls
+# AdvancedControls
 
 ## Overview
 
