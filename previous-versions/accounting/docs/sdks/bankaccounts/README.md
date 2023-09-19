@@ -1,4 +1,4 @@
-# bank_accounts
+# BankAccounts
 
 ## Overview
 

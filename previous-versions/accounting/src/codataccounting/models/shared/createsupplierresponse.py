@@ -44,7 +44,7 @@ class CreateSupplierResponse:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     status: shared_pushoperationstatus.PushOperationStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""The status of the push operation."""
+    r"""The current status of the push operation."""
     status_code: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode') }})
     changes: Optional[list[shared_pushoperationchange.PushOperationChange]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes'), 'exclude': lambda f: f is None }})
     r"""Contains a single entry that communicates which record has changed and the manner in which it changed."""

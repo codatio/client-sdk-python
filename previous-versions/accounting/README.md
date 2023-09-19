@@ -43,25 +43,25 @@ if res.account_transaction is not None:
 ## Available Resources and Operations
 
 
-### [account_transactions](docs/sdks/accounttransactions/README.md)
+### [AccountTransactions](docs/sdks/accounttransactions/README.md)
 
 * [get](docs/sdks/accounttransactions/README.md#get) - Get account transaction
 * [list](docs/sdks/accounttransactions/README.md#list) - List account transactions
 
-### [accounts](docs/sdks/accounts/README.md)
+### [Accounts](docs/sdks/accounts/README.md)
 
 * [create](docs/sdks/accounts/README.md#create) - Create account
 * [get](docs/sdks/accounts/README.md#get) - Get account
 * [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
 * [list](docs/sdks/accounts/README.md#list) - List accounts
 
-### [bank_account_transactions](docs/sdks/bankaccounttransactions/README.md)
+### [BankAccountTransactions](docs/sdks/bankaccounttransactions/README.md)
 
 * [create](docs/sdks/bankaccounttransactions/README.md#create) - Create bank account transactions
 * [get_create_model](docs/sdks/bankaccounttransactions/README.md#get_create_model) - Get create bank account transactions model
 * [list](docs/sdks/bankaccounttransactions/README.md#list) - List bank account transactions
 
-### [bank_accounts](docs/sdks/bankaccounts/README.md)
+### [BankAccounts](docs/sdks/bankaccounts/README.md)
 
 * [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
 * [get](docs/sdks/bankaccounts/README.md#get) - Get bank account
@@ -69,7 +69,7 @@ if res.account_transaction is not None:
 * [list](docs/sdks/bankaccounts/README.md#list) - List bank accounts
 * [update](docs/sdks/bankaccounts/README.md#update) - Update bank account
 
-### [bill_credit_notes](docs/sdks/billcreditnotes/README.md)
+### [BillCreditNotes](docs/sdks/billcreditnotes/README.md)
 
 * [create](docs/sdks/billcreditnotes/README.md#create) - Create bill credit note
 * [get](docs/sdks/billcreditnotes/README.md#get) - Get bill credit note
@@ -78,7 +78,7 @@ if res.account_transaction is not None:
 * [update](docs/sdks/billcreditnotes/README.md#update) - Update bill credit note
 * [upload_attachment](docs/sdks/billcreditnotes/README.md#upload_attachment) - Upload bill credit note attachment
 
-### [bill_payments](docs/sdks/billpayments/README.md)
+### [BillPayments](docs/sdks/billpayments/README.md)
 
 * [create](docs/sdks/billpayments/README.md#create) - Create bill payments
 * [delete](docs/sdks/billpayments/README.md#delete) - Delete bill payment
@@ -86,7 +86,7 @@ if res.account_transaction is not None:
 * [get_create_model](docs/sdks/billpayments/README.md#get_create_model) - Get create bill payment model
 * [list](docs/sdks/billpayments/README.md#list) - List bill payments
 
-### [bills](docs/sdks/bills/README.md)
+### [Bills](docs/sdks/bills/README.md)
 
 * [create](docs/sdks/bills/README.md#create) - Create bill
 * [delete](docs/sdks/bills/README.md#delete) - Delete bill
@@ -99,12 +99,12 @@ if res.account_transaction is not None:
 * [update](docs/sdks/bills/README.md#update) - Update bill
 * [upload_attachment](docs/sdks/bills/README.md#upload_attachment) - Upload bill attachment
 
-### [company_info](docs/sdks/companyinfo/README.md)
+### [CompanyInfo](docs/sdks/companyinfo/README.md)
 
 * [get](docs/sdks/companyinfo/README.md#get) - Get company info
 * [refresh](docs/sdks/companyinfo/README.md#refresh) - Refresh company info
 
-### [credit_notes](docs/sdks/creditnotes/README.md)
+### [CreditNotes](docs/sdks/creditnotes/README.md)
 
 * [create](docs/sdks/creditnotes/README.md#create) - Create credit note
 * [get](docs/sdks/creditnotes/README.md#get) - Get credit note
@@ -112,7 +112,7 @@ if res.account_transaction is not None:
 * [list](docs/sdks/creditnotes/README.md#list) - List credit notes
 * [update](docs/sdks/creditnotes/README.md#update) - Update creditNote
 
-### [customers](docs/sdks/customers/README.md)
+### [Customers](docs/sdks/customers/README.md)
 
 * [create](docs/sdks/customers/README.md#create) - Create customer
 * [download_attachment](docs/sdks/customers/README.md#download_attachment) - Download customer attachment
@@ -123,7 +123,7 @@ if res.account_transaction is not None:
 * [list_attachments](docs/sdks/customers/README.md#list_attachments) - List customer attachments
 * [update](docs/sdks/customers/README.md#update) - Update customer
 
-### [direct_costs](docs/sdks/directcosts/README.md)
+### [DirectCosts](docs/sdks/directcosts/README.md)
 
 * [create](docs/sdks/directcosts/README.md#create) - Create direct cost
 * [download_attachment](docs/sdks/directcosts/README.md#download_attachment) - Download direct cost attachment
@@ -134,7 +134,7 @@ if res.account_transaction is not None:
 * [list_attachments](docs/sdks/directcosts/README.md#list_attachments) - List direct cost attachments
 * [upload_attachment](docs/sdks/directcosts/README.md#upload_attachment) - Upload direct cost attachment
 
-### [direct_incomes](docs/sdks/directincomes/README.md)
+### [DirectIncomes](docs/sdks/directincomes/README.md)
 
 * [create](docs/sdks/directincomes/README.md#create) - Create direct income
 * [download_attachment](docs/sdks/directincomes/README.md#download_attachment) - Download direct income attachment
@@ -145,7 +145,7 @@ if res.account_transaction is not None:
 * [list_attachments](docs/sdks/directincomes/README.md#list_attachments) - List direct income attachments
 * [upload_attachment](docs/sdks/directincomes/README.md#upload_attachment) - Create direct income attachment
 
-### [invoices](docs/sdks/invoices/README.md)
+### [Invoices](docs/sdks/invoices/README.md)
 
 * [create](docs/sdks/invoices/README.md#create) - Create invoice
 * [delete](docs/sdks/invoices/README.md#delete) - Delete invoice
@@ -159,14 +159,14 @@ if res.account_transaction is not None:
 * [update](docs/sdks/invoices/README.md#update) - Update invoice
 * [upload_attachment](docs/sdks/invoices/README.md#upload_attachment) - Push invoice attachment
 
-### [items](docs/sdks/items/README.md)
+### [Items](docs/sdks/items/README.md)
 
 * [create](docs/sdks/items/README.md#create) - Create item
 * [get](docs/sdks/items/README.md#get) - Get item
 * [get_create_model](docs/sdks/items/README.md#get_create_model) - Get create item model
 * [list](docs/sdks/items/README.md#list) - List items
 
-### [journal_entries](docs/sdks/journalentries/README.md)
+### [JournalEntries](docs/sdks/journalentries/README.md)
 
 * [create](docs/sdks/journalentries/README.md#create) - Create journal entry
 * [delete](docs/sdks/journalentries/README.md#delete) - Delete journal entry
@@ -174,26 +174,26 @@ if res.account_transaction is not None:
 * [get_create_model](docs/sdks/journalentries/README.md#get_create_model) - Get create journal entry model
 * [list](docs/sdks/journalentries/README.md#list) - List journal entries
 
-### [journals](docs/sdks/journals/README.md)
+### [Journals](docs/sdks/journals/README.md)
 
 * [create](docs/sdks/journals/README.md#create) - Create journal
 * [get](docs/sdks/journals/README.md#get) - Get journal
 * [get_create_model](docs/sdks/journals/README.md#get_create_model) - Get create journal model
 * [list](docs/sdks/journals/README.md#list) - List journals
 
-### [payment_methods](docs/sdks/paymentmethods/README.md)
+### [PaymentMethods](docs/sdks/paymentmethods/README.md)
 
 * [get](docs/sdks/paymentmethods/README.md#get) - Get payment method
 * [list](docs/sdks/paymentmethods/README.md#list) - List payment methods
 
-### [payments](docs/sdks/payments/README.md)
+### [Payments](docs/sdks/payments/README.md)
 
 * [create](docs/sdks/payments/README.md#create) - Create payment
 * [get](docs/sdks/payments/README.md#get) - Get payment
 * [get_create_model](docs/sdks/payments/README.md#get_create_model) - Get create payment model
 * [list](docs/sdks/payments/README.md#list) - List payments
 
-### [purchase_orders](docs/sdks/purchaseorders/README.md)
+### [PurchaseOrders](docs/sdks/purchaseorders/README.md)
 
 * [create](docs/sdks/purchaseorders/README.md#create) - Create purchase order
 * [get](docs/sdks/purchaseorders/README.md#get) - Get purchase order
@@ -201,7 +201,7 @@ if res.account_transaction is not None:
 * [list](docs/sdks/purchaseorders/README.md#list) - List purchase orders
 * [update](docs/sdks/purchaseorders/README.md#update) - Update purchase order
 
-### [reports](docs/sdks/reports/README.md)
+### [Reports](docs/sdks/reports/README.md)
 
 * [get_aged_creditors_report](docs/sdks/reports/README.md#get_aged_creditors_report) - Aged creditors report
 * [get_aged_debtors_report](docs/sdks/reports/README.md#get_aged_debtors_report) - Aged debtors report
@@ -211,12 +211,12 @@ if res.account_transaction is not None:
 * [is_aged_creditors_report_available](docs/sdks/reports/README.md#is_aged_creditors_report_available) - Aged creditors report available
 * [is_aged_debtor_report_available](docs/sdks/reports/README.md#is_aged_debtor_report_available) - Aged debtors report available
 
-### [sales_orders](docs/sdks/salesorders/README.md)
+### [SalesOrders](docs/sdks/salesorders/README.md)
 
 * [get](docs/sdks/salesorders/README.md#get) - Get sales order
 * [list](docs/sdks/salesorders/README.md#list) - List sales orders
 
-### [suppliers](docs/sdks/suppliers/README.md)
+### [Suppliers](docs/sdks/suppliers/README.md)
 
 * [create](docs/sdks/suppliers/README.md#create) - Create supplier
 * [download_attachment](docs/sdks/suppliers/README.md#download_attachment) - Download supplier attachment
@@ -227,17 +227,17 @@ if res.account_transaction is not None:
 * [list_attachments](docs/sdks/suppliers/README.md#list_attachments) - List supplier attachments
 * [update](docs/sdks/suppliers/README.md#update) - Update supplier
 
-### [tax_rates](docs/sdks/taxrates/README.md)
+### [TaxRates](docs/sdks/taxrates/README.md)
 
 * [get](docs/sdks/taxrates/README.md#get) - Get tax rate
 * [list](docs/sdks/taxrates/README.md#list) - List all tax rates
 
-### [tracking_categories](docs/sdks/trackingcategories/README.md)
+### [TrackingCategories](docs/sdks/trackingcategories/README.md)
 
 * [get](docs/sdks/trackingcategories/README.md#get) - Get tracking categories
 * [list](docs/sdks/trackingcategories/README.md#list) - List tracking categories
 
-### [transfers](docs/sdks/transfers/README.md)
+### [Transfers](docs/sdks/transfers/README.md)
 
 * [create](docs/sdks/transfers/README.md#create) - Create transfer
 * [get](docs/sdks/transfers/README.md#get) - Get transfer

@@ -1,4 +1,4 @@
-# direct_incomes
+# DirectIncomes
 
 ## Overview
 
