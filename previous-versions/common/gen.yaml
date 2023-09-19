@@ -1,17 +1,25 @@
 configVersion: 1.0.0
 management:
-  docChecksum: '00000000000000000000000000000000'
-  docVersion: 2.1.0
-  speakeasyVersion: 1.53.0
-  generationVersion: 2.58.0
+  docChecksum: 22588f231182e4787ffec29bd112d175
+  docVersion: 3.0.0
+  speakeasyVersion: 1.87.0
+  generationVersion: 2.116.0
 generation:
   sdkClassName: CodatCommon
   singleTagPerOp: false
   telemetryEnabled: true
+features:
+  python:
+    core: 2.85.5
+    deprecations: 2.81.1
+    examples: 2.81.2
+    globalSecurity: 2.81.1
+    globalServerURLs: 2.82.0
+    nameOverrides: 2.81.1
+    retries: 2.82.0
 python:
-  version: 0.33.1
+  version: 0.34.0
   author: Codat
-  description: Manage the building blocks of Codat, including companies, connections,
-    and more.
+  description: Manage the building blocks of Codat, including companies, connections, and more.
   maxMethodParams: 0
   packageName: codat-common
