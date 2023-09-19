@@ -92,6 +92,7 @@ src/codatassess/models/shared/itemref.py
 src/codatassess/models/shared/loantransactionsreportinfo.py
 src/codatassess/models/shared/security.py
 src/codatassess/models/shared/accountcategoriesupdatedwebhook.py
+src/codatassess/models/shared/accountcategoriesupdatedwebhookdata.py
 src/codatassess/models/shared/__init__.py
 src/codatassess/models/webhooks/account_categories_updated.py
 src/codatassess/models/webhooks/__init__.py
@@ -206,7 +207,7 @@ docs/models/shared/loanref.md
 docs/models/shared/itemref.md
 docs/models/shared/loantransactionsreportinfo.md
 docs/models/shared/security.md
-docs/models/shared/accountcategoriesupdatedwebhookdata.md
 docs/models/shared/accountcategoriesupdatedwebhook.md
+docs/models/shared/accountcategoriesupdatedwebhookdata.md
 docs/models/webhooks/accountcategoriesupdatedresponse.md
 .gitattributes
