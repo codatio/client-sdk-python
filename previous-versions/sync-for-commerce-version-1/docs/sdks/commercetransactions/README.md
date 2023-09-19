@@ -1,4 +1,4 @@
-# commerce_transactions
+# CommerceTransactions
 
 ## Overview
 

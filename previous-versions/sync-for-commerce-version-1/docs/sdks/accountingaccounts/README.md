@@ -1,4 +1,4 @@
-# accounting_accounts
+# AccountingAccounts
 
 ## Overview
 

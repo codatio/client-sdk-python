@@ -1,4 +1,4 @@
-# accounting_credit_notes
+# AccountingCreditNotes
 
 ## Overview
 
