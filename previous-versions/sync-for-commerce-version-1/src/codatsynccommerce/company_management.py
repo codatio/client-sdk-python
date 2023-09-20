@@ -67,7 +67,7 @@ class CompanyManagement:
         
         url = utils.generate_url(operations.CreateConnectionRequest, base_url, '/meta/companies/{companyId}/connections', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'string')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
