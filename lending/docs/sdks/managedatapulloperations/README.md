@@ -66,7 +66,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='natus',
+    query='consequuntur',
 )
 
 res = s.manage_data.pull_operations.list(req)
