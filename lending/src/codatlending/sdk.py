@@ -13,6 +13,7 @@ from .excel_reports import ExcelReports
 from .file_upload import FileUpload
 from .financial_statements import FinancialStatements
 from .liabilities import Liabilities
+from .loan_writeback import LoanWriteback
 from .manage_data import ManageData
 from .sales import Sales
 from .sdkconfiguration import SDKConfiguration
@@ -69,6 +70,7 @@ class CodatLending:
     accounts_receivable: AccountsReceivable
     banking: Banking
     financial_statements: FinancialStatements
+    loan_writeback: LoanWriteback
     manage_data: ManageData
     sales: Sales
     transactions: Transactions
@@ -124,6 +126,7 @@ class CodatLending:
         self.accounts_receivable = AccountsReceivable(self.sdk_configuration)
         self.banking = Banking(self.sdk_configuration)
         self.financial_statements = FinancialStatements(self.sdk_configuration)
+        self.loan_writeback = LoanWriteback(self.sdk_configuration)
         self.manage_data = ManageData(self.sdk_configuration)
         self.sales = Sales(self.sdk_configuration)
         self.transactions = Transactions(self.sdk_configuration)

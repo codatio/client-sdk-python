@@ -213,6 +213,42 @@ if res.accounting_bank_transactions is not None:
 * [get](docs/sdks/financialstatementsprofitandloss/README.md#get) - Get profit and loss
 * [get_categorized_accounts](docs/sdks/financialstatementsprofitandloss/README.md#get_categorized_accounts) - Get categorized profit and loss statement
 
+
+### [LoanWriteback.Accounts](docs/sdks/loanwritebackaccounts/README.md)
+
+* [create](docs/sdks/loanwritebackaccounts/README.md#create) - Create account
+* [get_create_model](docs/sdks/loanwritebackaccounts/README.md#get_create_model) - Get create account model
+
+### [LoanWriteback.BankAccounts](docs/sdks/loanwritebackbankaccounts/README.md)
+
+* [create](docs/sdks/loanwritebackbankaccounts/README.md#create) - Create bank account
+* [get_create_update_model](docs/sdks/loanwritebackbankaccounts/README.md#get_create_update_model) - Get create/update bank account model
+
+### [LoanWriteback.BankTransactions](docs/sdks/loanwritebackbanktransactions/README.md)
+
+* [create](docs/sdks/loanwritebackbanktransactions/README.md#create) - Create bank account transactions
+* [get_create_model](docs/sdks/loanwritebackbanktransactions/README.md#get_create_model) - Get create bank account transactions model
+
+### [LoanWriteback.CreateOperations](docs/sdks/loanwritebackcreateoperations/README.md)
+
+* [get](docs/sdks/loanwritebackcreateoperations/README.md#get) - Get create operation
+* [list](docs/sdks/loanwritebackcreateoperations/README.md#list) - List create operations
+
+### [LoanWriteback.DirectCosts](docs/sdks/loanwritebackdirectcosts/README.md)
+
+* [create](docs/sdks/loanwritebackdirectcosts/README.md#create) - Create direct cost
+* [get_create_model](docs/sdks/loanwritebackdirectcosts/README.md#get_create_model) - Get create direct cost model
+
+### [LoanWriteback.Suppliers](docs/sdks/loanwritebacksuppliers/README.md)
+
+* [create](docs/sdks/loanwritebacksuppliers/README.md#create) - Create supplier
+* [get_create_update_model](docs/sdks/loanwritebacksuppliers/README.md#get_create_update_model) - Get create/update supplier model
+
+### [LoanWriteback.Transfers](docs/sdks/loanwritebacktransfers/README.md)
+
+* [create](docs/sdks/loanwritebacktransfers/README.md#create) - Create transfer
+* [get_create_model](docs/sdks/loanwritebacktransfers/README.md#get_create_model) - Get create transfer model
+
 ### [ManageData](docs/sdks/managedata/README.md)
 
 * [get_status](docs/sdks/managedata/README.md#get_status) - Get data status

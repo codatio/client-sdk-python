@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='vero',
+    journal_entry_id='vitae',
 )
 
 res = s.transactions.journal_entries.get(req)
@@ -78,7 +78,7 @@ req = operations.ListAccountingJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nihil',
+    query='accusamus',
 )
 
 res = s.transactions.journal_entries.list(req)

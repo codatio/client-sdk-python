@@ -33,7 +33,7 @@ req = operations.DownloadAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='temporibus',
+    direct_cost_id='harum',
 )
 
 res = s.transactions.direct_costs.download_attachment(req)
@@ -81,7 +81,7 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingDirectCostRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='laborum',
+    direct_cost_id='laboriosam',
 )
 
 res = s.transactions.direct_costs.get(req)
@@ -128,7 +128,7 @@ req = operations.GetAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='quasi',
+    direct_cost_id='ipsa',
 )
 
 res = s.transactions.direct_costs.get_attachment(req)
@@ -177,7 +177,7 @@ req = operations.ListAccountingDirectCostsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='reiciendis',
+    query='voluptates',
 )
 
 res = s.transactions.direct_costs.list(req)
@@ -223,7 +223,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingDirectCostAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='voluptatibus',
+    direct_cost_id='libero',
 )
 
 res = s.transactions.direct_costs.list_attachments(req)
