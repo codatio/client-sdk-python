@@ -1,4 +1,4 @@
-# direct_costs
+# DirectCosts
 
 ## Overview
 
