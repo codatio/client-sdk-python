@@ -76,7 +76,9 @@ src/codatsyncexpenses/models/shared/integrationtype.py
 src/codatsyncexpenses/models/shared/transactionmetadatalist.py
 src/codatsyncexpenses/models/shared/security.py
 src/codatsyncexpenses/models/shared/synccompletewebhook.py
+src/codatsyncexpenses/models/shared/synccompletewebhookdata.py
 src/codatsyncexpenses/models/shared/syncfailedwebhook.py
+src/codatsyncexpenses/models/shared/syncfailedwebhookdata.py
 src/codatsyncexpenses/models/shared/syncstartedwebhook.py
 src/codatsyncexpenses/models/shared/__init__.py
 src/codatsyncexpenses/models/webhooks/sync_complete.py
@@ -186,10 +188,10 @@ docs/models/shared/transactionstatus.md
 docs/models/shared/integrationtype.md
 docs/models/shared/transactionmetadatalist.md
 docs/models/shared/security.md
-docs/models/shared/synccompletewebhookdata.md
 docs/models/shared/synccompletewebhook.md
-docs/models/shared/syncfailedwebhookdata.md
+docs/models/shared/synccompletewebhookdata.md
 docs/models/shared/syncfailedwebhook.md
+docs/models/shared/syncfailedwebhookdata.md
 docs/models/shared/syncstartedwebhookdata.md
 docs/models/shared/syncstartedwebhook.md
 docs/models/webhooks/synccompleteresponse.md
