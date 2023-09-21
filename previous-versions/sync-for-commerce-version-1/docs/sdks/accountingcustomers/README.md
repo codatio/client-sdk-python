@@ -1,4 +1,4 @@
-# accounting_customers
+# AccountingCustomers
 
 ## Overview
 

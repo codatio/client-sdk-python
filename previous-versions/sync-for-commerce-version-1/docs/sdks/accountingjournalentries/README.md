@@ -1,4 +1,4 @@
-# accounting_journal_entries
+# AccountingJournalEntries
 
 ## Overview
 

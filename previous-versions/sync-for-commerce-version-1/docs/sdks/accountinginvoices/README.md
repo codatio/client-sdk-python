@@ -1,4 +1,4 @@
-# accounting_invoices
+# AccountingInvoices
 
 ## Overview
 

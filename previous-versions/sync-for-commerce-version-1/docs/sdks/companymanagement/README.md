@@ -1,4 +1,4 @@
-# company_management
+# CompanyManagement
 
 ## Overview
 
