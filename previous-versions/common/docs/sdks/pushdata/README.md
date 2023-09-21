@@ -1,4 +1,4 @@
-# push_data
+# PushData
 
 ## Overview
 
@@ -78,7 +78,7 @@ s = codatcommon.CodatCommon(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='74e0f467-cc87-496e-9151-a05dfc2ddf7c',
+    push_operation_key='d69a674e-0f46-47cc-8796-ed151a05dfc2',
 )
 
 res = s.push_data.get_operation(req)
@@ -121,12 +121,12 @@ req = operations.GetCompanyPushHistoryRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quod',
+    query='at',
 )
 
 res = s.push_data.list_operations(req)
 
-if res.push_history_response is not None:
+if res.push_operations is not None:
     # handle response
 ```
 

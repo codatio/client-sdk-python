@@ -1,4 +1,4 @@
-# settings
+# Settings
 
 ## Overview
 
@@ -248,9 +248,6 @@ req = shared.Profile(
     redirect_url='https://bobs-burgers.{countrySuffix}/{companyId}',
     white_list_urls=[
         'https://bobs-burgers.com',
-        'https://bobs-burgers.com',
-        'https://bobs-burgers.com',
-        'https://bobs-burgers.com',
     ],
 )
 
@@ -294,43 +291,13 @@ req = operations.UpdateProfileSyncSettingsRequestBody(
     overrides_defaults=False,
     settings=[
         shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
+            data_type=shared.SyncSettingDataTypes.INVOICES,
             fetch_on_first_link=False,
             is_locked=False,
             months_to_sync=24,
             sync_from_utc='2022-10-23T00:00:00.000Z',
             sync_from_window=24,
-            sync_order=449950,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=613064,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=902349,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=99280,
+            sync_order=612096,
             sync_schedule=24,
         ),
     ],
