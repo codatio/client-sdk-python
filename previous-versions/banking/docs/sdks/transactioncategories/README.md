@@ -1,4 +1,4 @@
-# transaction_categories
+# TransactionCategories
 
 ## Overview
 
