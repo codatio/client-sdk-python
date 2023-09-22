@@ -42,58 +42,58 @@ req = operations.CreateBillCreditNoteRequest(
     bill_credit_note=shared.BillCreditNote(
         allocated_on_date='2022-10-23T00:00:00.000Z',
         bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
-        currency='GBP',
-        currency_rate=Decimal('3834.41'),
+        currency='USD',
+        currency_rate=Decimal('3927.85'),
         discount_percentage=Decimal('0'),
         id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillCreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='cc8796ed-151a-405d-bc2d-df7cc78ca1ba',
-                    name='Wayne Lind',
+                    id='d151a05d-fc2d-4df7-8c78-ca1ba928fc81',
+                    name='Tanya Gleason',
                 ),
-                description='totam',
-                discount_amount=Decimal('1059.07'),
-                discount_percentage=Decimal('4146.62'),
+                description='cum',
+                discount_amount=Decimal('4561.5'),
+                discount_percentage=Decimal('2165.5'),
                 item_ref=shared.BillCreditNoteLineItemItemReference(
-                    id='742cb739-2059-4293-96fe-a7596eb10faa',
-                    name='Ernest Ebert',
+                    id='92059293-96fe-4a75-96eb-10faaa2352c5',
+                    name='Corey Hane III',
                 ),
-                quantity=Decimal('7506.86'),
-                sub_total=Decimal('3154.28'),
-                tax_amount=Decimal('6078.31'),
+                quantity=Decimal('6342.74'),
+                sub_total=Decimal('9883.74'),
+                tax_amount=Decimal('9589.5'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('3637.11'),
-                    id='5907aff1-a3a2-4fa9-8677-39251aa52c3f',
-                    name='Mr. Alberta Schuster',
+                    effective_tax_rate=Decimal('1020.44'),
+                    id='a3a2fa94-6773-4925-9aa5-2c3f5ad019da',
+                    name='Johanna Wolf',
                 ),
-                total_amount=Decimal('8379.45'),
+                total_amount=Decimal('5096.24'),
                 tracking=shared.BillCreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='a1ffe78f-097b-4007-8f15-471b5e6e13b9',
-                            name='Ervin Gleason',
+                            id='f097b007-4f15-4471-b5e6-e13b99d488e1',
+                            name='Kirk Boehm',
                         ),
                     ],
                     customer_ref=shared.BillCreditNoteLineItemTrackingCustomerRef(
-                        company_name='voluptates',
-                        id='1e91e450-ad2a-4bd4-8269-802d502a94bb',
+                        company_name='enim',
+                        id='0ad2abd4-4269-4802-9502-a94bb4f63c96',
                     ),
-                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_billed_to=shared.BilledToType.CUSTOMER,
                     is_rebilled_to=shared.BilledToType.PROJECT,
                     project_ref=shared.BillCreditNoteLineItemTrackingProjectReference(
-                        id='63c969e9-a3ef-4a77-9fb1-4cd66ae395ef',
-                        name='Rene Reinger',
+                        id='9a3efa77-dfb1-44cd-a6ae-395efb9ba88f',
+                        name='Sandy Huels',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='8f3a6699-7074-4ba4-869b-6e2141959890',
-                        name='Abel O'Hara',
+                        id='97074ba4-469b-46e2-9419-59890afa563e',
+                        name='Vivian Boyle',
                     ),
                 ],
-                unit_amount=Decimal('2212.62'),
+                unit_amount=Decimal('8919.24'),
             ),
         ],
         metadata=shared.Metadata(
@@ -106,21 +106,21 @@ req = operations.CreateBillCreditNoteRequest(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='USD',
-                    currency_rate=Decimal('972.6'),
-                    total_amount=Decimal('4358.65'),
+                    currency_rate=Decimal('7038.89'),
+                    total_amount=Decimal('4479.26'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='fe4c8b71-1e5b-47fd-aed0-28921cddc692',
-                        name='Donna Bernhard',
+                        id='11e5b7fd-2ed0-4289-a1cd-dc692601fb57',
+                        name='Candice Beatty',
                     ),
-                    currency='USD',
-                    currency_rate=Decimal('4535.43'),
-                    id='6b0d5f0d-30c5-4fbb-a587-053202c73d5f',
-                    note='recusandae',
+                    currency='EUR',
+                    currency_rate=Decimal('166.27'),
+                    id='d30c5fbb-2587-4053-a02c-73d5fe9b90c2',
+                    note='blanditiis',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='facilis',
-                    total_amount=Decimal('5966.56'),
+                    reference='eaque',
+                    total_amount=Decimal('5772.29'),
                 ),
             ),
         ],
@@ -130,28 +130,28 @@ req = operations.CreateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "porro": {
-                    "consequuntur": 'blanditiis',
+                "adipisci": {
+                    "asperiores": 'earum',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='909b3fe4-9a8d-49cb-b486-33323f9b77f3',
-            supplier_name='dolorum',
+            id='49a8d9cb-f486-4333-a3f9-b77f3a410067',
+            supplier_name='quaerat',
         ),
         total_amount=Decimal('805.78'),
         total_discount=Decimal('0'),
         total_tax_amount=Decimal('0'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('2543.56'),
-                name='Melissa Bednar',
+                amount=Decimal('8810.05'),
+                name='Jan Hodkiewicz',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=311796,
+    timeout_in_minutes=542499,
 )
 
 res = s.bill_credit_notes.create(req)
@@ -197,7 +197,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetBillCreditNoteRequest(
-    bill_credit_note_id='accusamus',
+    bill_credit_note_id='sit',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -295,7 +295,7 @@ req = operations.ListBillCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quidem',
+    query='fugiat',
 )
 
 res = s.bill_credit_notes.list(req)
@@ -347,58 +347,58 @@ req = operations.UpdateBillCreditNoteRequest(
     bill_credit_note=shared.BillCreditNote(
         allocated_on_date='2022-10-23T00:00:00.000Z',
         bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
-        currency='USD',
-        currency_rate=Decimal('6176.58'),
+        currency='EUR',
+        currency_rate=Decimal('6793.93'),
         discount_percentage=Decimal('0'),
         id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillCreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='80d1ba77-a89e-4bf7-b7ae-4203ce5e6a95',
-                    name='Dr. Jimmie Murphy',
+                    id='7a89ebf7-37ae-4420-bce5-e6a95d8a0d44',
+                    name='Bernadette Torp',
                 ),
-                description='tempora',
-                discount_amount=Decimal('4254.51'),
-                discount_percentage=Decimal('7980.47'),
+                description='a',
+                discount_amount=Decimal('4561.3'),
+                discount_percentage=Decimal('6874.88'),
                 item_ref=shared.BillCreditNoteLineItemItemReference(
-                    id='e2af7a73-cf3b-4e45-bf87-0b326b5a7342',
-                    name='Simon Stracke MD',
+                    id='73cf3be4-53f8-470b-b26b-5a73429cdb1a',
+                    name='Randall Cole',
                 ),
-                quantity=Decimal('5173.79'),
-                sub_total=Decimal('2768.94'),
-                tax_amount=Decimal('1320.68'),
+                quantity=Decimal('7044.74'),
+                sub_total=Decimal('3960.6'),
+                tax_amount=Decimal('4631.5'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('1749.09'),
-                    id='bb679d23-2271-45bf-8cbb-1e31b8b90f34',
-                    name='Mr. Josephine Pagac V',
+                    effective_tax_rate=Decimal('5654.21'),
+                    id='d2322715-bf0c-4bb1-a31b-8b90f3443a11',
+                    name='Miss Billie Ward',
                 ),
-                total_amount=Decimal('9295.3'),
+                total_amount=Decimal('7851.53'),
                 tracking=shared.BillCreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='0adcf4b9-2187-49fc-a953-f73ef7fbc7ab',
-                            name='Allan Greenholt',
+                            id='f4b92187-9fce-4953-b73e-f7fbc7abd74d',
+                            name='Earl Mosciski DVM',
                         ),
                     ],
                     customer_ref=shared.BillCreditNoteLineItemTrackingCustomerRef(
-                        company_name='sequi',
-                        id='9c0f5d2c-ff7c-470a-8562-6d436813f16d',
+                        company_name='exercitationem',
+                        id='d2cff7c7-0a45-4626-9436-813f16d9f5fc',
                     ),
-                    is_billed_to=shared.BilledToType.CUSTOMER,
-                    is_rebilled_to=shared.BilledToType.PROJECT,
+                    is_billed_to=shared.BilledToType.PROJECT,
+                    is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
                     project_ref=shared.BillCreditNoteLineItemTrackingProjectReference(
-                        id='5fce6c55-6146-4c3e-a50f-b008c42e141a',
-                        name='Clark Franecki',
+                        id='c556146c-3e25-40fb-808c-42e141aac366',
+                        name='Clifton Simonis',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='c8dd6b14-4290-4747-8778-a7bd466d28c1',
-                        name='Amelia Predovic',
+                        id='b1442907-4747-478a-bbd4-66d28c10ab3c',
+                        name='Salvatore Parker',
                     ),
                 ],
-                unit_amount=Decimal('8472.76'),
+                unit_amount=Decimal('3738.13'),
             ),
         ],
         metadata=shared.Metadata(
@@ -411,21 +411,21 @@ req = operations.UpdateBillCreditNoteRequest(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='GBP',
-                    currency_rate=Decimal('1783.67'),
-                    total_amount=Decimal('3738.13'),
+                    currency_rate=Decimal('2728.22'),
+                    total_amount=Decimal('8920.5'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='1904e523-c7e0-4bc7-978e-4796f2a70c68',
-                        name='Eugene Leuschke',
+                        id='523c7e0b-c717-48e4-b96f-2a70c688282a',
+                        name='Randall Lindgren',
                     ),
                     currency='USD',
-                    currency_rate=Decimal('2775.96'),
-                    id='82562f22-2e98-417e-a17c-be61e6b7b95b',
-                    note='eligendi',
+                    currency_rate=Decimal('1470.14'),
+                    id='f222e981-7ee1-47cb-a61e-6b7b95bc0ab3',
+                    note='cumque',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='culpa',
-                    total_amount=Decimal('7313.98'),
+                    reference='consequatur',
+                    total_amount=Decimal('7963.92'),
                 ),
             ),
         ],
@@ -435,30 +435,30 @@ req = operations.UpdateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "cumque": {
-                    "consequuntur": 'consequatur',
+                "sapiente": {
+                    "consectetur": 'esse',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='c4f3789f-d871-4f99-9d2e-fd121aa6f1e6',
-            supplier_name='in',
+            id='89fd871f-99dd-42ef-9121-aa6f1e674bdb',
+            supplier_name='accusantium',
         ),
         total_amount=Decimal('805.78'),
         total_discount=Decimal('0'),
         total_tax_amount=Decimal('0'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('2586.84'),
-                name='Mrs. Gilberto Roberts',
+                amount=Decimal('3069.86'),
+                name='Samuel Hermiston',
             ),
         ],
     ),
-    bill_credit_note_id='dicta',
+    bill_credit_note_id='nisi',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=355369,
+    timeout_in_minutes=16328,
 )
 
 res = s.bill_credit_notes.update(req)

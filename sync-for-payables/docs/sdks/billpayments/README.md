@@ -41,23 +41,23 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='756082d6-8ea1-49f1-9170-51339d08086a',
-            name='Mrs. Priscilla Fritsch',
+            id='82d68ea1-9f1d-4170-9133-9d08086a1840',
+            name='Toni Fritsch',
         ),
-        currency='GBP',
-        currency_rate=Decimal('7710.89'),
+        currency='USD',
+        currency_rate=Decimal('120.36'),
         date_='2022-10-23T00:00:00.000Z',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=Decimal('120.36'),
+                amount=Decimal('9816.4'),
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=Decimal('4910.25'),
-                        currency_rate=Decimal('1154.84'),
-                        id='f93f5f06-42da-4c7a-b515-cc413aa63aae',
-                        type=shared.BillPaymentLineLinkType.BILL_PAYMENT,
+                        amount=Decimal('6184.8'),
+                        currency_rate=Decimal('2446.51'),
+                        id='f5f0642d-ac7a-4f51-9cc4-13aa63aae8d6',
+                        type=shared.BillPaymentLineLinkType.CREDIT_NOTE,
                     ),
                 ],
             ),
@@ -68,24 +68,24 @@ req = operations.CreateBillPaymentRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
         payment_method_ref='vel',
-        reference='ducimus',
+        reference='labore',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "vel": {
-                    "labore": 'possimus',
+                "facilis": {
+                    "cum": 'commodi',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='bb675fd5-e60b-4375-ad4f-6fbee41f3331',
-            supplier_name='dignissimos',
+            id='75fd5e60-b375-4ed4-b6fb-ee41f33317fe',
+            supplier_name='consectetur',
         ),
         total_amount=Decimal('1329.54'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=950953,
+    timeout_in_minutes=358107,
 )
 
 res = s.bill_payments.create(req)
@@ -146,7 +146,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='debitis',
+    bill_payment_id='harum',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -193,7 +193,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='consectetur',
+    bill_payment_id='laboriosam',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -291,7 +291,7 @@ req = operations.ListBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='corporis',
+    query='ipsa',
 )
 
 res = s.bill_payments.list(req)

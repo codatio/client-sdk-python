@@ -112,7 +112,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='delectus',
+    query='repudiandae',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -197,7 +197,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='4b7544e4-72e8-4028-97a5-b40463a7d575',
+    connection_id='472e8028-57a5-4b40-863a-7d575f1400e7',
     data_type=shared.DataType.INVOICES,
 )
 
