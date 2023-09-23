@@ -111,7 +111,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='97074ba4-469b-46e2-9419-59890afa563e',
+    push_operation_key='a4469b6e-2141-4959-890a-fa563e2516fe',
 )
 
 res = s.manage_data.get_push_operation(req)
@@ -154,7 +154,7 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='odit',
+    query='eius',
 )
 
 res = s.manage_data.list(req)
@@ -197,7 +197,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nemo',
+    query='maxime',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -282,7 +282,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='16fe4c8b-711e-45b7-bd2e-d028921cddc6',
+    connection_id='8b711e5b-7fd2-4ed0-a892-1cddc692601f',
     data_type=shared.DataType.INVOICES,
 )
 

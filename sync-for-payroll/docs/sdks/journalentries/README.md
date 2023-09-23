@@ -41,30 +41,30 @@ s = codatsyncpayroll.CodatSyncPayroll(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='placeat',
-        id='8796ed15-1a05-4dfc-addf-7cc78ca1ba92',
+        description='ab',
+        id='51a05dfc-2ddf-47cc-b8ca-1ba928fc8167',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='8fc81674-2cb7-4392-8592-9396fea7596e',
-                    name='Roger Beier',
+                    id='42cb7392-0592-4939-afea-7596eb10faaa',
+                    name='Connie Herzog',
                 ),
-                currency='mollitia',
-                description='laborum',
-                net_amount=Decimal('1709.09'),
+                currency='enim',
+                description='omnis',
+                net_amount=Decimal('3637.11'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
-                            data_type='journalEntry',
-                            id='52c59559-07af-4f1a-ba2f-a9467739251a',
+                            data_type='invoice',
+                            id='907aff1a-3a2f-4a94-a773-9251aa52c3f5',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='a52c3f5a-d019-4da1-bfe7-8f097b0074f1',
-            name='Miss Valerie Kshlerin',
+            id='ad019da1-ffe7-48f0-97b0-074f15471b5e',
+            name='Elvira Bergnaum',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -73,13 +73,13 @@ req = operations.CreateJournalEntryRequest(
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.JournalEntryRecordReference(
             data_type='transfer',
-            id='13b99d48-8e1e-491e-850a-d2abd4426980',
+            id='488e1e91-e450-4ad2-abd4-4269802d502a',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.JournalEntrySupplementalData(
             content={
-                "assumenda": {
-                    "ipsam": 'alias',
+                "tempora": {
+                    "facilis": 'tempore',
                 },
             },
         ),
@@ -87,7 +87,7 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=677817,
+    timeout_in_minutes=962189,
 )
 
 res = s.journal_entries.create(req)
@@ -156,7 +156,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='excepturi',
+    journal_entry_id='eum',
 )
 
 res = s.journal_entries.delete(req)
@@ -203,7 +203,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='tempora',
+    journal_entry_id='non',
 )
 
 res = s.journal_entries.get(req)
@@ -300,7 +300,7 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='facilis',
+    query='eligendi',
 )
 
 res = s.journal_entries.list(req)
