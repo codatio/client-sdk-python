@@ -40,40 +40,40 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Purdystead',
-                country='Antarctica (the territory South of 60 deg S)',
-                line1='porro',
-                line2='consequuntur',
-                postal_code='60562-9926',
-                region='dolorum',
+                city='Beattystead',
+                country='Peru',
+                line1='adipisci',
+                line2='asperiores',
+                postal_code='26658-5779',
+                region='quaerat',
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='pariatur',
-        default_currency='provident',
-        email_address='nobis',
-        id='bf486333-23f9-4b77-b3a4-100674ebf692',
+        contact_name='aliquid',
+        default_currency='dolorem',
+        email_address='dolorem',
+        id='323f9b77-f3a4-4100-a74e-bf69280d1ba7',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='+44 25691 154789',
-        registration_number='fugiat',
+        phone='01224 658 999',
+        registration_number='deleniti',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "dolorum": {
-                    "iusto": 'voluptate',
+                "distinctio": {
+                    "asperiores": 'nihil',
                 },
             },
         ),
-        supplier_name='dolorum',
-        tax_number='deleniti',
+        supplier_name='ipsum',
+        tax_number='voluptate',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=607045,
+    timeout_in_minutes=663078,
 )
 
 res = s.suppliers.create(req)
@@ -168,7 +168,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='distinctio',
+    query='eius',
 )
 
 res = s.suppliers.list(req)
@@ -219,42 +219,42 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Lake Havasu City',
-                country='Croatia',
-                line1='voluptate',
-                line2='id',
-                postal_code='21027-8393',
-                region='deserunt',
-                type=shared.AccountingAddressType.BILLING,
+                city='North Daphnefort',
+                country='Thailand',
+                line1='ad',
+                line2='saepe',
+                postal_code='65385',
+                region='similique',
+                type=shared.AccountingAddressType.UNKNOWN,
             ),
         ],
-        contact_name='minima',
-        default_currency='repellendus',
-        email_address='totam',
-        id='a0d446ce-2af7-4a73-8f3b-e453f870b326',
+        contact_name='at',
+        default_currency='quaerat',
+        email_address='tempora',
+        id='6ce2af7a-73cf-43be-853f-870b326b5a73',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='(877) 492-8687',
-        registration_number='deserunt',
+        phone='+44 25691 154789',
+        registration_number='cupiditate',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "incidunt": {
-                    "qui": 'cupiditate',
+                "soluta": {
+                    "dicta": 'laborum',
                 },
             },
         ),
-        supplier_name='maxime',
-        tax_number='pariatur',
+        supplier_name='totam',
+        tax_number='incidunt',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='7110701885',
-    timeout_in_minutes=117531,
+    supplier_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    timeout_in_minutes=174909,
 )
 
 res = s.suppliers.update(req)

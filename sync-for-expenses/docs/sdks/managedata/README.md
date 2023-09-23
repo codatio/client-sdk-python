@@ -112,7 +112,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='in',
+    query='repellat',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -197,7 +197,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='11e5b7fd-2ed0-4289-a1cd-dc692601fb57',
+    connection_id='d2ed0289-21cd-4dc6-9260-1fb576b0d5f0',
     data_type=shared.DataType.INVOICES,
 )
 

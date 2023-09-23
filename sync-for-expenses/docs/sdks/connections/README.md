@@ -33,7 +33,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.CreateConnectionRequest(
     request_body=operations.CreateConnectionRequestBody(
-        platform_key='saepe',
+        platform_key='quidem',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -198,7 +198,7 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='fuga',
+    query='architecto',
 )
 
 res = s.connections.list(req)
@@ -238,7 +238,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UnlinkConnectionRequest(
     request_body=operations.UnlinkConnectionUpdateConnection(
-        status=shared.DataConnectionStatus.LINKED,
+        status=shared.DataConnectionStatus.PENDING_AUTH,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

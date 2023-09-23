@@ -27,7 +27,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='6b0d5f0d-30c5-4fbb-a587-053202c73d5f',
+    push_operation_key='d30c5fbb-2587-4053-a02c-73d5fe9b90c2',
 )
 
 res = s.push_operations.get(req)
@@ -70,7 +70,7 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='recusandae',
+    query='blanditiis',
 )
 
 res = s.push_operations.list(req)
