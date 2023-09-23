@@ -108,7 +108,7 @@ class Bills:
 
         > **Supported Integrations**
         > 
-        > This functionality is currently only supported for our QuickBooks Online abd Oracle NetSuite integrations. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+        > This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

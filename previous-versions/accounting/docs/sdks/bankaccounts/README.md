@@ -39,28 +39,28 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='deleniti',
-        account_number='hic',
-        account_type=shared.BankAccountBankAccountType.DEBIT,
-        available_balance=Decimal('5218.48'),
-        balance=Decimal('1059.07'),
+        account_name='hic',
+        account_number='optio',
+        account_type=shared.BankAccountBankAccountType.CREDIT,
+        available_balance=Decimal('1059.07'),
+        balance=Decimal('4146.62'),
         currency='USD',
-        i_ban='molestiae',
-        id='42cb7392-0592-4939-afea-7596eb10faaa',
-        institution='dolores',
+        i_ban='modi',
+        id='2cb73920-5929-4396-bea7-596eb10faaa2',
+        institution='dolorem',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='corporis',
-        overdraft_limit=Decimal('1289.26'),
-        sort_code='nobis',
+        nominal_code='explicabo',
+        overdraft_limit=Decimal('7506.86'),
+        sort_code='enim',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=607831,
+    timeout_in_minutes=363711,
 )
 
 res = s.bank_accounts.create(req)
@@ -106,7 +106,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBankAccountRequest(
-    account_id='nemo',
+    account_id='minima',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -206,7 +206,7 @@ req = operations.ListBankAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='minima',
+    query='excepturi',
 )
 
 res = s.bank_accounts.list(req)
@@ -256,29 +256,29 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='excepturi',
-        account_number='accusantium',
+        account_name='accusantium',
+        account_number='iure',
         account_type=shared.BankAccountBankAccountType.CREDIT,
-        available_balance=Decimal('6342.74'),
-        balance=Decimal('9883.74'),
-        currency='EUR',
-        i_ban='architecto',
-        id='a3a2fa94-6773-4925-9aa5-2c3f5ad019da',
-        institution='quasi',
+        available_balance=Decimal('9883.74'),
+        balance=Decimal('9589.5'),
+        currency='GBP',
+        i_ban='mollitia',
+        id='3a2fa946-7739-4251-aa52-c3f5ad019da1',
+        institution='reiciendis',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='voluptatibus',
-        overdraft_limit=Decimal('8781.94'),
-        sort_code='nihil',
+        nominal_code='vero',
+        overdraft_limit=Decimal('4686.51'),
+        sort_code='praesentium',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
-    bank_account_id='voluptatibus',
+    bank_account_id='ipsa',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=55714,
+    timeout_in_minutes=604846,
 )
 
 res = s.bank_accounts.update(req)
