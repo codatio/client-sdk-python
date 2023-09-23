@@ -33,23 +33,23 @@ s = codatlending.CodatLending(
 
 req = operations.CreateBankTransactionsRequest(
     accounting_create_bank_transactions=shared.AccountingCreateBankTransactions(
-        account_id='vitae',
+        account_id='animi',
         transactions=[
             shared.CreateBankAccountTransaction(
-                amount=Decimal('6747.52'),
-                balance=Decimal('6563.3'),
+                amount=Decimal('3172.02'),
+                balance=Decimal('1381.83'),
                 date_='2022-10-23T00:00:00.000Z',
-                description='odit',
-                id='c3f5ad01-9da1-4ffe-b8f0-97b0074f1547',
+                description='sequi',
+                id='f5ad019d-a1ff-4e78-b097-b0074f15471b',
             ),
         ],
     ),
-    account_id='dicta',
+    account_id='enim',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=688661,
+    timeout_in_minutes=880476,
 )
 
 res = s.loan_writeback.bank_transactions.create(req)
@@ -97,7 +97,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='enim',
+    account_id='commodi',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

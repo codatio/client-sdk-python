@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='deleniti',
+    payment_id='optio',
 )
 
 res = s.accounts_receivable.payments.get(req)
@@ -78,7 +78,7 @@ req = operations.ListAccountingPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='hic',
+    query='totam',
 )
 
 res = s.accounts_receivable.payments.list(req)

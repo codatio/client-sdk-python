@@ -31,7 +31,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    order_id='facere',
+    order_id='numquam',
 )
 
 res = s.sales.orders.get(req)
@@ -80,7 +80,7 @@ req = operations.ListCommerceOrdersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='numquam',
+    query='doloribus',
 )
 
 res = s.sales.orders.list(req)

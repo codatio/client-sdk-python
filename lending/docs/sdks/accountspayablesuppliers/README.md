@@ -33,7 +33,7 @@ req = operations.DownloadAccountingSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='ab',
+    supplier_id='veritatis',
 )
 
 res = s.accounts_payable.suppliers.download_attachment(req)
@@ -80,7 +80,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='quis',
+    supplier_id='deserunt',
 )
 
 res = s.accounts_payable.suppliers.get(req)
@@ -127,7 +127,7 @@ req = operations.GetAccountingSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='veritatis',
+    supplier_id='perferendis',
 )
 
 res = s.accounts_payable.suppliers.get_attachment(req)
@@ -175,7 +175,7 @@ req = operations.ListAccountingSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deserunt',
+    query='ipsam',
 )
 
 res = s.accounts_payable.suppliers.list(req)
@@ -221,7 +221,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='perferendis',
+    supplier_id='repellendus',
 )
 
 res = s.accounts_payable.suppliers.list_attachments(req)

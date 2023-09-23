@@ -34,42 +34,42 @@ req = operations.CreateSupplierRequest(
     accounting_supplier=shared.AccountingSupplier(
         addresses=[
             shared.AccountingAddress(
-                city='Ankundingworth',
-                country='Guadeloupe',
-                line1='nulla',
-                line2='fugit',
-                postal_code='99474-0623',
-                region='ea',
-                type=shared.AccountingAddressType.UNKNOWN,
+                city='Fort Faehaven',
+                country='Cameroon',
+                line1='porro',
+                line2='maiores',
+                postal_code='47406-2341',
+                region='vel',
+                type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='vel',
-        default_currency='possimus',
-        email_address='magnam',
-        id='36813f16-d9f5-4fce-ac55-6146c3e250fb',
+        contact_name='magnam',
+        default_currency='ratione',
+        email_address='ex',
+        id='813f16d9-f5fc-4e6c-9561-46c3e250fb00',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='+44 25691 154789',
-        registration_number='deleniti',
+        phone='01224 658 999',
+        registration_number='aliquam',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "fugit": {
-                    "accusamus": 'inventore',
+                "inventore": {
+                    "non": 'et',
                 },
             },
         ),
-        supplier_name='non',
-        tax_number='et',
+        supplier_name='dolorum',
+        tax_number='laborum',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=677412,
+    timeout_in_minutes=810424,
 )
 
 res = s.loan_writeback.suppliers.create(req)

@@ -23,7 +23,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='e6e13b99-d488-4e1e-91e4-50ad2abd4426',
+    push_operation_key='e13b99d4-88e1-4e91-a450-ad2abd442698',
 )
 
 res = s.loan_writeback.create_operations.get(req)
@@ -66,7 +66,7 @@ req = operations.ListCreateOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='cupiditate',
+    query='perferendis',
 )
 
 res = s.loan_writeback.create_operations.list(req)

@@ -33,7 +33,7 @@ req = operations.DownloadAccountingDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='maiores',
+    direct_income_id='quod',
 )
 
 res = s.accounts_receivable.direct_incomes.download_attachment(req)
@@ -81,7 +81,7 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingDirectIncomeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='molestiae',
+    direct_income_id='quod',
 )
 
 res = s.accounts_receivable.direct_incomes.get(req)
@@ -128,8 +128,8 @@ req = operations.GetAccountingDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='quod',
-    timeout_in_minutes=800911,
+    direct_income_id='esse',
+    timeout_in_minutes=520478,
 )
 
 res = s.accounts_receivable.direct_incomes.get_attachment(req)
@@ -178,7 +178,7 @@ req = operations.ListAccountingDirectIncomesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='esse',
+    query='porro',
 )
 
 res = s.accounts_receivable.direct_incomes.list(req)
@@ -224,7 +224,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingDirectIncomeAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='totam',
+    direct_income_id='dolorum',
 )
 
 res = s.accounts_receivable.direct_incomes.list_attachments(req)

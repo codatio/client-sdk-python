@@ -52,9 +52,9 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'natus',
+                    'hic',
                 ],
-                property='laboriosam',
+                property='saepe',
             ),
         ],
     ),
@@ -62,7 +62,7 @@ req = operations.CreateAccountRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=943749,
+    timeout_in_minutes=681820,
 )
 
 res = s.loan_writeback.accounts.create(req)

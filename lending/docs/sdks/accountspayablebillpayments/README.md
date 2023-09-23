@@ -29,7 +29,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillPaymentRequest(
-    bill_payment_id='placeat',
+    bill_payment_id='iusto',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -78,7 +78,7 @@ req = operations.ListAccountingBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptatum',
+    query='excepturi',
 )
 
 res = s.accounts_payable.bill_payments.list(req)

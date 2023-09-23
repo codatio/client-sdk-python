@@ -34,26 +34,26 @@ s = codatlending.CodatLending(
 req = operations.CreateTransferRequest(
     accounting_transfer=shared.AccountingTransfer(
         contact_ref=shared.AccountingTransferContactRef(
-            data_type='laborum',
-            id='c366c8dd-6b14-4429-8747-4778a7bd466d',
+            data_type='velit',
+            id='66c8dd6b-1442-4907-8747-78a7bd466d28',
         ),
         date_='2022-10-23T00:00:00.000Z',
         deposited_record_refs=[
             shared.RecordRef(
-                data_type='accountTransaction',
-                id='c10ab3cd-ca42-4519-84e5-23c7e0bc7178',
+                data_type='journalEntry',
+                id='0ab3cdca-4251-4904-a523-c7e0bc7178e4',
             ),
         ],
-        description='accusamus',
+        description='odio',
         from_=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='4796f2a7-0c68-4828-aaa4-82562f222e98',
-                name='Tamara Vandervort IV',
+                id='96f2a70c-6882-482a-a482-562f222e9817',
+                name='Sheldon Boehm',
             ),
-            amount=Decimal('8003.79'),
+            amount=Decimal('7241.68'),
             currency='EUR',
         ),
-        id='e61e6b7b-95bc-40ab-bc20-c4f3789fd871',
+        id='61e6b7b9-5bc0-4ab3-820c-4f3789fd871f',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
@@ -61,23 +61,23 @@ req = operations.CreateTransferRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "sint": {
-                    "pariatur": 'possimus',
+                "pariatur": {
+                    "possimus": 'quia',
                 },
             },
         ),
         to=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='2efd121a-a6f1-4e67-8bdb-04f15756082d',
-                name='Cassandra Ward V',
+                id='efd121aa-6f1e-4674-bdb0-4f15756082d6',
+                name='Miss Percy Parisian',
             ),
-            amount=Decimal('9453.02'),
-            currency='GBP',
+            amount=Decimal('984.78'),
+            currency='EUR',
         ),
         tracking_category_refs=[
             shared.TrackingCategoryRef(
-                id='d1705133-9d08-4086-a184-0394c26071f9',
-                name='Camille Hirthe III',
+                id='17051339-d080-486a-9840-394c26071f93',
+                name='Ms. Glen Zboncak',
             ),
         ],
     ),
@@ -85,7 +85,7 @@ req = operations.CreateTransferRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=310067,
+    timeout_in_minutes=162954,
 )
 
 res = s.loan_writeback.transfers.create(req)
