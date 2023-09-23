@@ -52,16 +52,16 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateSourceAccountRequest(
     source_account=shared.SourceAccount(
-        account_name='deserunt',
-        account_number='suscipit',
-        account_type='iure',
-        balance=Decimal('2975.34'),
-        currency='EUR',
+        account_name='magnam',
+        account_number='debitis',
+        account_type='ipsa',
+        balance=Decimal('9636.63'),
+        currency='GBP',
         feed_start_date='2022-10-23T00:00:00.000Z',
-        id='f467cc87-96ed-4151-a05d-fc2ddf7cc78c',
+        id='7cc8796e-d151-4a05-9fc2-ddf7cc78ca1b',
         modified_date='2022-10-23T00:00:00.000Z',
-        sort_code='dicta',
-        status='nam',
+        sort_code='occaecati',
+        status='fugit',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -192,7 +192,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.GenerateCredentialsRequest(
-    request_body='occaecati'.encode(),
+    request_body='hic'.encode(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -279,18 +279,18 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.UpdateSourceAccountRequest(
     source_account=shared.SourceAccount(
-        account_name='fugit',
-        account_number='deleniti',
-        account_type='hic',
-        balance=Decimal('7586.16'),
+        account_name='optio',
+        account_number='totam',
+        account_type='beatae',
+        balance=Decimal('4146.62'),
         currency='USD',
         feed_start_date='2022-10-23T00:00:00.000Z',
-        id='6742cb73-9205-4929-b96f-ea7596eb10fa',
+        id='2cb73920-5929-4396-bea7-596eb10faaa2',
         modified_date='2022-10-23T00:00:00.000Z',
-        sort_code='laborum',
-        status='dolores',
+        sort_code='corporis',
+        status='explicabo',
     ),
-    account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    account_id='EILBDVJVNUAGVKRQ',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
