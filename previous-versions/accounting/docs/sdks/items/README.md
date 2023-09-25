@@ -1,4 +1,4 @@
-# items
+# Items
 
 ## Overview
 
@@ -41,23 +41,23 @@ req = operations.CreateItemRequest(
     item=shared.Item(
         bill_item=shared.BillItem(
             account_ref=shared.AccountRef(
-                id='33e66bd8-fe5d-400b-979e-f20387320590',
-                name='Mr. Forrest Ryan',
+                id='233e66bd-8fe5-4d00-b979-ef2038732059',
+                name='Pat Schmitt Jr.',
             ),
-            description='ea',
+            description='perspiciatis',
             tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=Decimal('2622.31'),
-                id='00313b3e-5044-4f65-be72-dc4077d0cc3f',
-                name='Carol Lowe',
+                effective_tax_rate=Decimal('4069.46'),
+                id='400313b3-e504-44f6-9fe7-2dc4077d0cc3',
+                name='Francis Barton',
             ),
-            unit_price=Decimal('7738.54'),
+            unit_price=Decimal('9380.15'),
         ),
-        code='dicta',
-        id='5ceb4d6e-1eae-40f7-9aed-f2acab58b991',
+        code='impedit',
+        id='15ceb4d6-e1ea-4e0f-b5ae-df2acab58b99',
         invoice_item=shared.InvoiceItem(
             account_ref=shared.AccountRef(
-                id='c926ddb5-8946-41e7-821c-be6d9502f0ea',
-                name='Sean Auer',
+                id='1c926ddb-5894-461e-b421-cbe6d9502f0e',
+                name='Miss Evan Dibbert',
             ),
             description='sint',
             tax_rate_ref=shared.TaxRateRef(

@@ -1,4 +1,4 @@
-# direct_costs
+# DirectCosts
 
 ## Overview
 
@@ -44,18 +44,18 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateDirectCostRequest(
     direct_cost=shared.DirectCost(
         contact_ref=shared.ContactRef(
-            data_type='maxime',
-            id='af5dd672-3dc0-4f5a-a2f3-a6b700878756',
+            data_type=shared.DataType.INVOICES,
+            id='caf5dd67-23dc-40f5-ae2f-3a6b70087875',
         ),
-        currency='GBP',
-        currency_rate=Decimal('3086.58'),
-        id='3f5a6c98-b555-4540-80d4-0bcacc6cbd6b',
+        currency='USD',
+        currency_rate=Decimal('685.96'),
+        id='43f5a6c9-8b55-4554-880d-40bcacc6cbd6',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.DirectCostLineItem(
                 account_ref=shared.AccountRef(
-                    id='f3ec9093-04f9-426b-ad25-53819b474b0e',
-                    name='Steve Barrows',
+                    id='5f3ec909-304f-4926-bad2-553819b474b0',
+                    name='Dr. Woodrow Corkery',
                 ),
                 description='ea',
                 discount_amount=Decimal('1799.06'),

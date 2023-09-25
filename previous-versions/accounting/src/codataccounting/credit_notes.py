@@ -241,7 +241,7 @@ class CreditNotes:
 
     
     def update(self, request: operations.UpdateCreditNoteRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateCreditNoteResponse:
-        r"""Update creditNote
+        r"""Update credit note
         The *Update credit note* endpoint updates an existing [credit note](https://docs.codat.io/accounting-api#/schemas/CreditNote) for a given company's connection.
 
         [Credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote) are issued to a customer to indicate debt, typically with reference to a previously issued invoice and/or purchase.

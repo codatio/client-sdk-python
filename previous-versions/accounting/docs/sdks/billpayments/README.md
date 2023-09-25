@@ -1,4 +1,4 @@
-# bill_payments
+# BillPayments
 
 ## Overview
 
@@ -41,22 +41,22 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='6555ba3c-2874-44ed-93b8-8f3a8d8f5c0b',
-            name='Faith Cole',
+            id='a3c28744-ed53-4b88-b3a8-d8f5c0b2f2fb',
+            name='Kristy Bernier',
         ),
-        currency='USD',
-        currency_rate=Decimal('7090.72'),
+        currency='EUR',
+        currency_rate=Decimal('1523.54'),
         date_='2022-10-23T00:00:00.000Z',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=Decimal('2927.94'),
+                amount=Decimal('6960.77'),
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=Decimal('6719.07'),
-                        currency_rate=Decimal('1523.54'),
-                        id='76b26916-fe1f-408f-8294-e3698f447f60',
+                        amount=Decimal('1312.89'),
+                        currency_rate=Decimal('3783.26'),
+                        id='916fe1f0-8f42-494e-b698-f447f603e8b4',
                         type=shared.BillPaymentLineLinkType.BILL,
                     ),
                 ],
@@ -67,25 +67,25 @@ req = operations.CreateBillPaymentRequest(
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
-        payment_method_ref='praesentium',
-        reference='facilis',
+        payment_method_ref='debitis',
+        reference='rem',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "incidunt": {
-                    "ipsam": 'debitis',
+                "nobis": {
+                    "error": 'veniam',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='80ca55ef-d20e-4457-a185-8b6a89fbe3a5',
-            supplier_name='officia',
+            id='5efd20e4-57e1-4858-b6a8-9fbe3a5aa8e4',
+            supplier_name='atque',
         ),
         total_amount=Decimal('1329.54'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=676243,
+    timeout_in_minutes=148268,
 )
 
 res = s.bill_payments.create(req)
@@ -109,7 +109,7 @@ if res.create_bill_payment_response is not None:
 
 ## delete
 
-﻿The *Delete bill payment* endpoint allows you to delete a specified bill payment from an accounting platform.
+The *Delete bill payment* endpoint allows you to delete a specified bill payment from an accounting platform.
 
 [Bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
 
@@ -128,13 +128,14 @@ Be aware that deleting a bill payment from an accounting platform might cause re
 ## Integration specifics
 Integrations that support soft delete do not permanently delete the object in the accounting platform.
 
-| Integration | Soft Delete | Details                                                                                             |  
-|-------------|-------------|-----------------------------------------------------------------------------------------------------|
+| Integration | Soft Delete | Details                                                                                                      |  
+|-------------|-------------|--------------------------------------------------------------------------------------------------------------|
+| QuickBooks Online | No          | -                                                                                   
 | Oracle NetSuite   | No          | See [here](/integrations/accounting/netsuite/how-deleting-bill-payments-works) to learn more. |
 
 > **Supported Integrations**
 >
-> This functionality is currently only supported for our QuickBooks Online abd Oracle NetSuite integrations. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+> This functionality is currently only supported for our QuickBooks Online and Oracle NetSuite integrations.
 
 ### Example Usage
 
@@ -149,7 +150,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='corrupti',
+    bill_payment_id='ut',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -197,7 +198,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='accusamus',
+    bill_payment_id='fugiat',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -295,7 +296,7 @@ req = operations.ListBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='tempora',
+    query='voluptatem',
 )
 
 res = s.bill_payments.list(req)

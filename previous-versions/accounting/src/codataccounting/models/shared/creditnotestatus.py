@@ -4,6 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class CreditNoteStatus(str, Enum):
+    r"""Current state of the credit note."""
     UNKNOWN = 'Unknown'
     DRAFT = 'Draft'
     SUBMITTED = 'Submitted'

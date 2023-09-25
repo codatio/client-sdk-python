@@ -1,4 +1,4 @@
-# direct_incomes
+# DirectIncomes
 
 ## Overview
 
@@ -44,88 +44,88 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateDirectIncomeRequest(
     direct_income=shared.DirectIncome(
         contact_ref=shared.ContactRef(
-            data_type='unde',
-            id='ad030c4e-cc11-4a08-b642-9068b8502a55',
+            data_type=shared.DataType.INVOICES,
+            id='9ad030c4-ecc1-41a0-8364-29068b8502a5',
         ),
-        currency='EUR',
-        currency_rate=Decimal('4813.07'),
-        id='f73bc845-e320-4a31-9f4b-adf947c9a867',
+        currency='USD',
+        currency_rate=Decimal('8843.25'),
+        id='7f73bc84-5e32-40a3-99f4-badf947c9a86',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.DirectIncomeLineItem(
                 account_ref=shared.AccountRef(
-                    id='c4242666-5816-4ddc-a8ef-51fcb4c593ec',
-                    name='Beverly Satterfield',
+                    id='bc424266-6581-46dd-8a8e-f51fcb4c593e',
+                    name='Ryan Considine',
                 ),
-                description='id',
-                discount_amount=Decimal('8409.92'),
-                discount_percentage=Decimal('590.23'),
+                description='mollitia',
+                discount_amount=Decimal('6615.78'),
+                discount_percentage=Decimal('8409.92'),
                 item_ref=shared.ItemRef(
-                    id='ec7afedb-d80d-4f44-8a47-f9390c588809',
-                    name='Manuel Swift',
+                    id='0ec7afed-bd80-4df4-88a4-7f9390c58880',
+                    name='Willard Erdman',
                 ),
-                quantity=Decimal('9830.6'),
-                sub_total=Decimal('6229.68'),
-                tax_amount=Decimal('9261.19'),
+                quantity=Decimal('7047.32'),
+                sub_total=Decimal('9830.6'),
+                tax_amount=Decimal('6229.68'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('9559.62'),
-                    id='3ffdd9f7-f079-4af4-9357-24cdb0f4d281',
-                    name='Irma Kub',
+                    effective_tax_rate=Decimal('9261.19'),
+                    id='f3ffdd9f-7f07-49af-8d35-724cdb0f4d28',
+                    name='Alice Langosh',
                 ),
-                total_amount=Decimal('4357.13'),
+                total_amount=Decimal('3136.95'),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='844eded8-5a90-465e-a28b-dfc2032b6c87',
-                        name='Alejandro Considine',
+                        id='6844eded-85a9-4065-a628-bdfc2032b6c8',
+                        name='Guadalupe Monahan',
                     ),
                 ],
-                unit_amount=Decimal('4766.14'),
+                unit_amount=Decimal('6962.91'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='vitae',
+        note='debitis',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='GBP',
-                    currency_rate=Decimal('5398.86'),
-                    total_amount=Decimal('2847.79'),
+                    currency_rate=Decimal('3214.22'),
+                    total_amount=Decimal('5398.86'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='f7ae12c6-891f-482c-a115-7172305377dc',
-                        name='Horace Leannon',
+                        id='4f7ae12c-6891-4f82-8e11-57172305377d',
+                        name='Tommie Pfannerstill',
                     ),
                     currency='EUR',
-                    currency_rate=Decimal('6081.72'),
-                    id='75e35668-6092-4e9c-bddc-5f111dea1026',
-                    note='pariatur',
+                    currency_rate=Decimal('9865.94'),
+                    id='975e3566-8609-42e9-83dd-c5f111dea102',
+                    note='aliquid',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='numquam',
-                    total_amount=Decimal('1031.93'),
+                    reference='enim',
+                    total_amount=Decimal('2542.88'),
                 ),
             ),
         ],
-        reference='est',
+        reference='architecto',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        sub_total=Decimal('8167.26'),
+        sub_total=Decimal('3098.52'),
         supplemental_data=shared.SupplementalData(
             content={
-                "vitae": {
-                    "omnis": 'alias',
+                "facere": {
+                    "vitae": 'omnis',
                 },
             },
         ),
-        tax_amount=Decimal('9574.89'),
-        total_amount=Decimal('8876'),
+        tax_amount=Decimal('38.6'),
+        total_amount=Decimal('9574.89'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=708883,
+    timeout_in_minutes=887600,
 )
 
 res = s.direct_incomes.create(req)
@@ -172,7 +172,7 @@ req = operations.DownloadDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='quia',
+    direct_income_id='expedita',
 )
 
 res = s.direct_incomes.download_attachment(req)
@@ -220,7 +220,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetDirectIncomeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='vitae',
+    direct_income_id='quia',
 )
 
 res = s.direct_incomes.get(req)
@@ -267,8 +267,8 @@ req = operations.GetDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='odio',
-    timeout_in_minutes=558410,
+    direct_income_id='vitae',
+    timeout_in_minutes=487839,
 )
 
 res = s.direct_incomes.get_attachment(req)
@@ -366,7 +366,7 @@ req = operations.ListDirectIncomesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsa',
+    query='quas',
 )
 
 res = s.direct_incomes.list(req)
@@ -412,7 +412,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListDirectIncomeAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='distinctio',
+    direct_income_id='ipsa',
 )
 
 res = s.direct_incomes.list_attachments(req)
@@ -461,12 +461,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadDirectIncomeAttachmentRequest(
     request_body=operations.UploadDirectIncomeAttachmentRequestBody(
-        content='placeat'.encode(),
-        request_body='quod',
+        content='distinctio'.encode(),
+        request_body='placeat',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='eligendi',
+    direct_income_id='quod',
 )
 
 res = s.direct_incomes.upload_attachment(req)

@@ -1,4 +1,4 @@
-# bank_account_transactions
+# BankAccountTransactions
 
 ## Overview
 
@@ -38,22 +38,22 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='iure',
+        account_id='magnam',
         transactions=[
             shared.CreateBankAccountTransaction(
-                amount=Decimal('2975.34'),
-                balance=Decimal('8917.73'),
+                amount=Decimal('8917.73'),
+                balance=Decimal('567.13'),
                 date_='2022-10-23T00:00:00.000Z',
-                description='delectus',
-                id='467cc879-6ed1-451a-85df-c2ddf7cc78ca',
+                description='tempora',
+                id='67cc8796-ed15-41a0-9dfc-2ddf7cc78ca1',
             ),
         ],
     ),
-    account_id='dicta',
+    account_id='nam',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=720633,
+    timeout_in_minutes=639921,
 )
 
 res = s.bank_account_transactions.create(req)
@@ -101,7 +101,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='officia',
+    account_id='occaecati',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -149,13 +149,13 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id='occaecati',
+    account_id='fugit',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='fugit',
+    query='deleniti',
 )
 
 res = s.bank_account_transactions.list(req)
