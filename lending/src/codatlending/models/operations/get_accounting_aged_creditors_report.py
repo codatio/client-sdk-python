@@ -13,6 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class GetAccountingAgedCreditorsReportRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     number_of_periods: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'numberOfPeriods', 'style': 'form', 'explode': True }})
     r"""Number of periods to include in the report."""
     period_length_days: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'periodLengthDays', 'style': 'form', 'explode': True }})
@@ -27,11 +28,14 @@ class GetAccountingAgedCreditorsReportRequest:
 @dataclasses.dataclass
 class GetAccountingAgedCreditorsReportResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     accounting_aged_creditor_report: Optional[shared_accountingagedcreditorreport.AccountingAgedCreditorReport] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

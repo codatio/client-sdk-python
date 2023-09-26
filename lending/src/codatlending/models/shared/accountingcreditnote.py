@@ -25,7 +25,7 @@ class AccountingCreditNote:
 
     Think of a credit note as a voucher issued to a customer. It is a reduction that can be applied against one or multiple invoices. A credit note can either reduce the amount owed or cancel out an invoice entirely.
 
-    In the Codat system a credit note is issued to a [customer's](https://docs.codat.io/accounting-api#/schemas/Customer) accounts receivable. 
+    In the Codat system a credit note is issued to a [customer's](https://docs.codat.io/lending-api#/schemas/Customer) accounts receivable. 
 
     It contains details of:
     * The amount of credit remaining and its status.
@@ -37,6 +37,7 @@ class AccountingCreditNote:
     remaining_credit: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('remainingCredit'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Unused balance of totalAmount originally raised."""
     status: shared_creditnotestatus.CreditNoteStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    r"""Current state of the credit note."""
     sub_total: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Value of the credit note, including discounts and excluding tax."""
     total_amount: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
@@ -46,7 +47,9 @@ class AccountingCreditNote:
     total_tax_amount: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxAmount'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Any tax applied to the credit note amount."""
     additional_tax_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalTaxAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    r"""Additional tax amount applied to credit note."""
     additional_tax_percentage: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalTaxPercentage'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    r"""Percentage rate of any additional tax applied to the credit note."""
     allocated_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocatedOnDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 

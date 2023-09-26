@@ -9,7 +9,7 @@
 
 The *Get journal* endpoint returns a single journal for a given journalId.
 
-[Journals](https://docs.codat.io/accounting-api#/schemas/Journal) are used to record all the financial transactions of a company.
+[Journals](https://docs.codat.io/lending-api#/schemas/Journal) are used to record all the financial transactions of a company.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journals) for integrations that support getting a specific journal.
 
@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='similique',
+    journal_id='pariatur',
 )
 
 res = s.transactions.journals.get(req)
@@ -54,9 +54,9 @@ if res.accounting_journal is not None:
 
 ## list
 
-The *List journals* endpoint returns a list of [journals](https://docs.codat.io/accounting-api#/schemas/Journal) for a given company's connection.
+The *List journals* endpoint returns a list of [journals](https://docs.codat.io/lending-api#/schemas/Journal) for a given company's connection.
 
-[Journals](https://docs.codat.io/accounting-api#/schemas/Journal) are used to record all the financial transactions of a company.
+[Journals](https://docs.codat.io/lending-api#/schemas/Journal) are used to record all the financial transactions of a company.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -78,7 +78,7 @@ req = operations.ListAccountingJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='tempora',
+    query='totam',
 )
 
 res = s.transactions.journals.list(req)

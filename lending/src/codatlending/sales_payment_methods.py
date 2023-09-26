@@ -16,7 +16,7 @@ class SalesPaymentMethods:
         r"""Get payment method
         The *Get payment method* endpoint returns a single payment method for a given paymentMethodId.
 
-        [Payment methods](https://docs.codat.io/commerce-api#/schemas/PaymentMethod) represent the payment method(s) used to make payments.
+        [Payment methods](https://docs.codat.io/lending-api#/schemas/PaymentMethod) represent the payment method(s) used to make payments.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-paymentMethods) for integrations that support getting a specific payment method.
 
@@ -69,9 +69,9 @@ class SalesPaymentMethods:
     
     def list(self, request: operations.ListCommercePaymentMethodsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCommercePaymentMethodsResponse:
         r"""List payment methods
-        The *List payment methods* endpoint returns a list of [payment methods](https://docs.codat.io/commerce-api#/schemas/PaymentMethod) for a given company's connection.
+        The *List payment methods* endpoint returns a list of [payment methods](https://docs.codat.io/lending-api#/schemas/PaymentMethod) for a given company's connection.
 
-        [Payment methods](https://docs.codat.io/commerce-api#/schemas/PaymentMethod) represent the payment method(s) used to make payments.
+        [Payment methods](https://docs.codat.io/lending-api#/schemas/PaymentMethod) represent the payment method(s) used to make payments.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """

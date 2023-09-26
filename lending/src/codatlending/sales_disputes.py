@@ -16,7 +16,7 @@ class SalesDisputes:
         r"""Get dispute
         The *Get dispute* endpoint returns a single dispute for a given disputeId.
 
-        [Disputes](https://docs.codat.io/commerce-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
+        [Disputes](https://docs.codat.io/lending-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for integrations that support getting a specific dispute.
 
@@ -69,9 +69,9 @@ class SalesDisputes:
     
     def list(self, request: operations.ListCommerceDisputesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCommerceDisputesResponse:
         r"""List disputes
-        The *List disputes* endpoint returns a list of [disputes](https://docs.codat.io/commerce-api#/schemas/Dispute) for a given company's connection.
+        The *List disputes* endpoint returns a list of [disputes](https://docs.codat.io/lending-api#/schemas/Dispute) for a given company's connection.
 
-        [Disputes](https://docs.codat.io/commerce-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
+        [Disputes](https://docs.codat.io/lending-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """

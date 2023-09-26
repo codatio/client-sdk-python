@@ -48,9 +48,9 @@ req = operations.GetCommerceOrdersReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=992012,
-    period_length=241545,
-    period_unit=shared.PeriodUnit.DAY,
+    number_of_periods=795535,
+    period_length=171853,
+    period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
 
@@ -117,8 +117,8 @@ req = operations.GetCommerceRefundsReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=228263,
-    period_length=105906,
+    number_of_periods=449292,
+    period_length=296242,
     period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )

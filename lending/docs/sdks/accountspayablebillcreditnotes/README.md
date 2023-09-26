@@ -9,7 +9,7 @@
 
 The *Get bill credit note* endpoint returns a single bill credit note for a given billCreditNoteId.
 
-[Bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) are issued by a supplier for the purpose of recording credit.
+[Bill credit notes](https://docs.codat.io/lending-api#/schemas/BillCreditNote) are issued by a supplier for the purpose of recording credit.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes) for integrations that support getting a specific bill credit note.
 
@@ -29,7 +29,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillCreditNoteRequest(
-    bill_credit_note_id='molestiae',
+    bill_credit_note_id='minus',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -54,9 +54,9 @@ if res.accounting_bill_credit_note is not None:
 
 ## list
 
-The *List bill credit notes* endpoint returns a list of [bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) for a given company's connection.
+The *List bill credit notes* endpoint returns a list of [bill credit notes](https://docs.codat.io/lending-api#/schemas/BillCreditNote) for a given company's connection.
 
-[Bill credit notes](https://docs.codat.io/accounting-api#/schemas/BillCreditNote) are issued by a supplier for the purpose of recording credit.
+[Bill credit notes](https://docs.codat.io/lending-api#/schemas/BillCreditNote) are issued by a supplier for the purpose of recording credit.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -78,7 +78,7 @@ req = operations.ListAccountingBillCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='minus',
+    query='placeat',
 )
 
 res = s.accounts_payable.bill_credit_notes.list(req)

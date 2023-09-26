@@ -9,7 +9,7 @@
 
 The *Get dispute* endpoint returns a single dispute for a given disputeId.
 
-[Disputes](https://docs.codat.io/commerce-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
+[Disputes](https://docs.codat.io/lending-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for integrations that support getting a specific dispute.
 
@@ -31,7 +31,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceDisputeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    dispute_id='corporis',
+    dispute_id='dignissimos',
 )
 
 res = s.sales.disputes.get(req)
@@ -55,9 +55,9 @@ if res.commerce_dispute is not None:
 
 ## list
 
-The *List disputes* endpoint returns a list of [disputes](https://docs.codat.io/commerce-api#/schemas/Dispute) for a given company's connection.
+The *List disputes* endpoint returns a list of [disputes](https://docs.codat.io/lending-api#/schemas/Dispute) for a given company's connection.
 
-[Disputes](https://docs.codat.io/commerce-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
+[Disputes](https://docs.codat.io/lending-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -80,7 +80,7 @@ req = operations.ListCommerceDisputesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='reiciendis',
+    query='a',
 )
 
 res = s.sales.disputes.list(req)

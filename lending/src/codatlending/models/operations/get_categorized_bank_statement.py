@@ -12,6 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class GetCategorizedBankStatementRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     page: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
     r"""Page number. [Read more](https://docs.codat.io/using-the-api/paging)."""
     page_size: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
@@ -26,11 +27,14 @@ class GetCategorizedBankStatementRequest:
 @dataclasses.dataclass
 class GetCategorizedBankStatementResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     enhanced_cash_flow_transactions: Optional[shared_enhancedcashflowtransactions.EnhancedCashFlowTransactions] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

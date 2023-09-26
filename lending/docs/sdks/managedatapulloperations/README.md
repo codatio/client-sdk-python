@@ -23,7 +23,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
+    dataset_id='f0642dac-7af5-415c-8413-aa63aae8d678',
 )
 
 res = s.manage_data.pull_operations.get(req)
@@ -66,7 +66,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='consequuntur',
+    query='vel',
 )
 
 res = s.manage_data.pull_operations.list(req)

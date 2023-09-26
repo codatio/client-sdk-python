@@ -16,7 +16,7 @@ class BankingTransactionCategories:
         r"""Get transaction category
         The *Get transaction category* endpoint returns a single transaction category for a given transactionCategoryId.
 
-        [Transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
+        [Transaction categories](https://docs.codat.io/lending-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-transactionCategories) for integrations that support getting a specific transaction category.
 
@@ -63,9 +63,9 @@ class BankingTransactionCategories:
     
     def list(self, request: operations.ListBankingTransactionCategoriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListBankingTransactionCategoriesResponse:
         r"""List transaction categories
-        The *List transaction categories* endpoint returns a list of [transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) for a given company's connection.
+        The *List transaction categories* endpoint returns a list of [transaction categories](https://docs.codat.io/lending-api#/schemas/TransactionCategory) for a given company's connection.
 
-        [Transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
+        [Transaction categories](https://docs.codat.io/lending-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """

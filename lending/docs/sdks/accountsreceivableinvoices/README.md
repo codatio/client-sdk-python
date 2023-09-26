@@ -14,7 +14,7 @@
 
 The *Download invoice attachment* endpoint downloads a specific attachment for a given `invoiceId` and `attachmentId`.
 
-[Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+[Invoices](https://docs.codat.io/lending-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support downloading an invoice attachment.
 
@@ -35,7 +35,7 @@ req = operations.DownloadAccountingInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='porro',
+    invoice_id='dolorum',
 )
 
 res = s.accounts_receivable.invoices.download_attachment(req)
@@ -75,7 +75,7 @@ s = codatlending.CodatLending(
 
 req = operations.DownloadAccountingInvoicePdfRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='dolorum',
+    invoice_id='dicta',
 )
 
 res = s.accounts_receivable.invoices.download_pdf(req)
@@ -101,7 +101,7 @@ if res.data is not None:
 
 The *Get invoice* endpoint returns a single invoice for a given invoiceId.
 
-[Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+[Invoices](https://docs.codat.io/lending-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support getting a specific invoice.
 
@@ -121,7 +121,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='dicta',
+    invoice_id='nam',
 )
 
 res = s.accounts_receivable.invoices.get(req)
@@ -147,7 +147,7 @@ if res.accounting_invoice is not None:
 
 The *Get invoice attachment* endpoint returns a specific attachment for a given `invoiceId` and `attachmentId`.
 
-[Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+[Invoices](https://docs.codat.io/lending-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support getting an invoice attachment.
 
@@ -168,7 +168,7 @@ req = operations.GetAccountingInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='nam',
+    invoice_id='officia',
 )
 
 res = s.accounts_receivable.invoices.get_attachment(req)
@@ -192,9 +192,9 @@ if res.accounting_attachment is not None:
 
 ## list
 
-The *List invoices* endpoint returns a list of [invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) for a given company's connection.
+The *List invoices* endpoint returns a list of [invoices](https://docs.codat.io/lending-api#/schemas/Invoice) for a given company's connection.
 
-[Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+[Invoices](https://docs.codat.io/lending-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -222,7 +222,7 @@ req = operations.ListAccountingInvoicesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='officia',
+    query='occaecati',
 )
 
 res = s.accounts_receivable.invoices.list(req)
@@ -248,7 +248,7 @@ if res.accounting_invoices is not None:
 
 The *List invoice attachments* endpoint returns a list of attachments available to download for given `invoiceId`.
 
-[Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
+[Invoices](https://docs.codat.io/lending-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices) for integrations that support listing invoice attachments.
 
@@ -268,7 +268,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingInvoiceAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='occaecati',
+    invoice_id='fugit',
 )
 
 res = s.accounts_receivable.invoices.list_attachments(req)
@@ -310,7 +310,7 @@ req = operations.ListReconciledInvoicesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='fugit',
+    query='deleniti',
 )
 
 res = s.accounts_receivable.invoices.list_reconciled(req)

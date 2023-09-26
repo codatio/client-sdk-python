@@ -9,7 +9,7 @@
 
 The *Get payment* endpoint returns a single payment for a given paymentId.
 
-[Payments](https://docs.codat.io/accounting-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
+[Payments](https://docs.codat.io/lending-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support getting a specific payment.
 
@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='deleniti',
+    payment_id='hic',
 )
 
 res = s.accounts_receivable.payments.get(req)
@@ -54,9 +54,9 @@ if res.accounting_payment is not None:
 
 ## list
 
-The *List payments* endpoint returns a list of [payments](https://docs.codat.io/accounting-api#/schemas/Payment) for a given company's connection.
+The *List payments* endpoint returns a list of [payments](https://docs.codat.io/lending-api#/schemas/Payment) for a given company's connection.
 
-[Payments](https://docs.codat.io/accounting-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
+[Payments](https://docs.codat.io/lending-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -78,7 +78,7 @@ req = operations.ListAccountingPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='hic',
+    query='optio',
 )
 
 res = s.accounts_receivable.payments.list(req)

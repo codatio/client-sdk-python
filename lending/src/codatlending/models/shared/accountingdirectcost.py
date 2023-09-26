@@ -31,7 +31,7 @@ class AccountingDirectCost:
       * Withdrawing money from a bank account 
       * Writing a cheque
 
-    Direct costs is a child data type of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction).
+    Direct costs is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction).
     """
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.

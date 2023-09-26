@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 from ..shared import accountingcustomerref as shared_accountingcustomerref
 from ..shared import accountingpaymentallocation as shared_accountingpaymentallocation
+from ..shared import datatype as shared_datatype
 from ..shared import invoicelineitem as shared_invoicelineitem
 from ..shared import invoicestatus as shared_invoicestatus
 from ..shared import items as shared_items
@@ -19,8 +20,10 @@ from typing import Optional
 
 @dataclasses.dataclass
 class AccountingInvoiceSalesOrderReference:
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    data_type: Optional[shared_datatype.DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    r"""Available Data types"""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
+    r"""Unique identifier to a record in `dataType`."""
     
 
 
@@ -33,13 +36,13 @@ class AccountingInvoice:
     >
     > We distinguish between invoices where the company *owes money* vs. *is owed money*. If the company issued an invoice, and is owed money (accounts receivable) we call this an Invoice.
     >
-    > See [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) for the accounts payable equivalent of bills.
+    > See [Bills](https://docs.codat.io/lending-api#/schemas/Bill) for the accounts payable equivalent of bills.
 
     View the coverage for invoices in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 
-    An invoice is an itemized record of goods sold or services provided to a [customer](https://docs.codat.io/accounting-api#/schemas/Customer).
+    An invoice is an itemized record of goods sold or services provided to a [customer](https://docs.codat.io/lending-api#/schemas/Customer).
 
     In Codat, an invoice contains details of:
 
@@ -47,11 +50,11 @@ class AccountingInvoice:
     - How much the invoice is for, what portion of the invoice is tax or discounts, and what currency the amounts are represented in. 
     - Who the invoice has been raised to; the _customer_.
     - The breakdown of what the invoice is for; the _line items_.
-    - Any [payments](https://docs.codat.io/accounting-api#/schemas/Payment) assigned to the invoice; the _payment allocations_.
+    - Any [payments](https://docs.codat.io/lending-api#/schemas/Payment) assigned to the invoice; the _payment allocations_.
 
     > **Invoice PDF downloads**  
     >
-    > You can <a className=\"external\" href=\"https://docs.codat.io/accounting-api#/operations/get-invoice-pdf\" target=\"_blank\">download a PDF version</a> of an invoice for supported integrations.
+    > You can <a className=\"external\" href=\"https://docs.codat.io/lending-api#/operations/get-invoice-pdf\" target=\"_blank\">download a PDF version</a> of an invoice for supported integrations.
     > 
     > The filename will be invoice-{number}.pdf.
 
@@ -96,7 +99,9 @@ class AccountingInvoice:
     total_tax_amount: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxAmount'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Amount of tax on the invoice."""
     additional_tax_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalTaxAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    r"""Additional tax amount applied to invoice."""
     additional_tax_percentage: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additionalTaxPercentage'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    r"""Percentage rate of any additional tax applied to the invoice."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 

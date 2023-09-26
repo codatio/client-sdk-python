@@ -9,7 +9,7 @@
 
 The *Get product* endpoint returns a single product for a given productId.
 
-[Products](https://docs.codat.io/commerce-api#/schemas/Product) are items in the company's inventory that are available for sale.
+[Products](https://docs.codat.io/lending-api#/schemas/Product) are items in the company's inventory that are available for sale.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-products) for integrations that support getting a specific product.
 
@@ -31,7 +31,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceProductRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    product_id='dolore',
+    product_id='dolorum',
 )
 
 res = s.sales.products.get(req)
@@ -55,9 +55,9 @@ if res.commerce_product is not None:
 
 ## list
 
-The *List products* endpoint returns a list of [products](https://docs.codat.io/commerce-api#/schemas/Product) for a given company's connection.
+The *List products* endpoint returns a list of [products](https://docs.codat.io/lending-api#/schemas/Product) for a given company's connection.
 
-[Products](https://docs.codat.io/commerce-api#/schemas/Product) are items in the company's inventory that are available for sale.
+[Products](https://docs.codat.io/lending-api#/schemas/Product) are items in the company's inventory that are available for sale.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -80,7 +80,7 @@ req = operations.ListCommerceProductsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sunt',
+    query='adipisci',
 )
 
 res = s.sales.products.list(req)

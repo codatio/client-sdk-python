@@ -9,7 +9,7 @@
 
 The *Get transaction category* endpoint returns a single transaction category for a given transactionCategoryId.
 
-[Transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
+[Transaction categories](https://docs.codat.io/lending-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-transactionCategories) for integrations that support getting a specific transaction category.
 
@@ -31,7 +31,7 @@ s = codatlending.CodatLending(
 req = operations.GetBankingTransactionCategoryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transaction_category_id='molestiae',
+    transaction_category_id='modi',
 )
 
 res = s.banking.transaction_categories.get(req)
@@ -55,9 +55,9 @@ if res.banking_transaction_category is not None:
 
 ## list
 
-The *List transaction categories* endpoint returns a list of [transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) for a given company's connection.
+The *List transaction categories* endpoint returns a list of [transaction categories](https://docs.codat.io/lending-api#/schemas/TransactionCategory) for a given company's connection.
 
-[Transaction categories](https://docs.codat.io/banking-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
+[Transaction categories](https://docs.codat.io/lending-api#/schemas/TransactionCategory) are associated with a transaction to provide greater contextual meaning to transaction activity.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -80,7 +80,7 @@ req = operations.ListBankingTransactionCategoriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='modi',
+    query='qui',
 )
 
 res = s.banking.transaction_categories.list(req)

@@ -12,6 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class ListAccountingBillsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results)."""
     page: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
@@ -28,11 +29,14 @@ class ListAccountingBillsRequest:
 @dataclasses.dataclass
 class ListAccountingBillsResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     accounting_bills: Optional[shared_accountingbills.AccountingBills] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

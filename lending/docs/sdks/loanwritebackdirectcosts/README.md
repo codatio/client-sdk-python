@@ -7,13 +7,13 @@
 
 ## create
 
-The *Create direct cost* endpoint creates a new [direct cost](https://docs.codat.io/accounting-api#/schemas/DirectCost) for a given company's connection.
+The *Create direct cost* endpoint creates a new [direct cost](https://docs.codat.io/lending-api#/schemas/DirectCost) for a given company's connection.
 
-[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are the expenses associated with a business' operations. For example, purchases of raw materials that are paid off at the point of the purchase and service fees are considered direct costs.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are the expenses associated with a business' operations. For example, purchases of raw materials that are paid off at the point of the purchase and service fees are considered direct costs.
 
 **Integration-specific behaviour**
 
-Required data may vary by integration. To see what data to post, first call [Get create direct cost model](https://docs.codat.io/accounting-api#/operations/get-create-directCosts-model).
+Required data may vary by integration. To see what data to post, first call [Get create direct cost model](https://docs.codat.io/lending-api#/operations/get-create-directCosts-model).
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support creating an account.
 
@@ -34,7 +34,7 @@ s = codatlending.CodatLending(
 req = operations.CreateDirectCostRequest(
     accounting_direct_cost=shared.AccountingDirectCost(
         contact_ref=shared.ContactRef(
-            data_type='quos',
+            data_type=shared.DataType.INVOICES,
             id='02d502a9-4bb4-4f63-8969-e9a3efa77dfb',
         ),
         currency='GBP',
@@ -128,7 +128,6 @@ req = operations.CreateDirectCostRequest(
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
     timeout_in_minutes=617877,
 )
 
@@ -153,9 +152,9 @@ if res.accounting_create_direct_cost_response is not None:
 
 ## get_create_model
 
-The *Get create direct cost model* endpoint returns the expected data for the request payload when creating a [direct cost](https://docs.codat.io/accounting-api#/schemas/DirectCost) for a given company and integration.
+The *Get create direct cost model* endpoint returns the expected data for the request payload when creating a [direct cost](https://docs.codat.io/lending-api#/schemas/DirectCost) for a given company and integration.
 
-[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
 **Integration-specific behaviour**
 

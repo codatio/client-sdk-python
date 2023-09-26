@@ -7,13 +7,13 @@
 
 ## create
 
-The *Create bank account* endpoint creates a new [bank account](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company's connection.
+The *Create bank account* endpoint creates a new [bank account](https://docs.codat.io/lending-api#/schemas/BankAccount) for a given company's connection.
 
-[Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
+[Bank accounts](https://docs.codat.io/lending-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
 **Integration-specific behaviour**
 
-Required data may vary by integration. To see what data to post, first call [Get create/update bank account model](https://docs.codat.io/accounting-api#/operations/get-create-update-bankAccounts-model).
+Required data may vary by integration. To see what data to post, first call [Get create/update bank account model](https://docs.codat.io/lending-api#/operations/get-create-update-bankAccounts-model).
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support creating an account.
 
@@ -32,29 +32,28 @@ s = codatlending.CodatLending(
 
 req = operations.CreateBankAccountRequest(
     accounting_bank_account=shared.AccountingBankAccount(
-        account_name='saepe',
-        account_number='fuga',
+        account_name='fuga',
+        account_number='in',
         account_type=shared.AccountingBankAccountType.CREDIT,
-        available_balance=Decimal('3595.08'),
-        balance=Decimal('6130.64'),
-        currency='USD',
-        i_ban='saepe',
-        id='b10faaa2-352c-4595-9907-aff1a3a2fa94',
-        institution='commodi',
+        available_balance=Decimal('6130.64'),
+        balance=Decimal('4370.32'),
+        currency='EUR',
+        i_ban='quidem',
+        id='10faaa23-52c5-4955-907a-ff1a3a2fa946',
+        institution='quam',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='molestiae',
-        overdraft_limit=Decimal('2444.25'),
-        sort_code='error',
+        nominal_code='velit',
+        overdraft_limit=Decimal('6235.1'),
+        sort_code='quia',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    timeout_in_minutes=338007,
+    timeout_in_minutes=110375,
 )
 
 res = s.loan_writeback.bank_accounts.create(req)
@@ -78,9 +77,9 @@ if res.accounting_create_bank_account_response is not None:
 
 ## get_create_update_model
 
-The *Get create/update bank account model* endpoint returns the expected data for the request payload when creating and updating a [bank account](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company and integration.
+The *Get create/update bank account model* endpoint returns the expected data for the request payload when creating and updating a [bank account](https://docs.codat.io/lending-api#/schemas/BankAccount) for a given company and integration.
 
-[Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
+[Bank accounts](https://docs.codat.io/lending-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
 **Integration-specific behaviour**
 

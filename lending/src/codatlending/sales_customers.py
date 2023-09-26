@@ -16,7 +16,7 @@ class SalesCustomers:
         r"""Get customer
         The *Get customer* endpoint returns a single customer for a given customerId.
 
-        [Customers](https://docs.codat.io/commerce-api#/schemas/Customer) are people or organizations that place orders, make payments and receive goods and/or services from the SMB.
+        [Customers](https://docs.codat.io/lending-api#/schemas/Customer) are people or organizations that place orders, make payments and receive goods and/or services from the SMB.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-customers) for integrations that support getting a specific customer.
 
@@ -69,9 +69,9 @@ class SalesCustomers:
     
     def list(self, request: operations.ListCommerceCustomersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCommerceCustomersResponse:
         r"""List customers
-        The *List customers* endpoint returns a list of [customers](https://docs.codat.io/commerce-api#/schemas/Customer) for a given company's connection.
+        The *List customers* endpoint returns a list of [customers](https://docs.codat.io/lending-api#/schemas/Customer) for a given company's connection.
 
-        [Customers](https://docs.codat.io/commerce-api#/schemas/Customer) are people or organizations that place orders, make payments and recieve goods and/or services from the SMB.
+        [Customers](https://docs.codat.io/lending-api#/schemas/Customer) are people or organizations that place orders, make payments and recieve goods and/or services from the SMB.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """

@@ -9,7 +9,7 @@
 
 The *Get transaction* endpoint returns a single transaction for a given transactionId.
 
-[Transactions](https://docs.codat.io/banking-api#/schemas/Transaction) provide an immutable source of up-to-date information on income and expenditure.
+[Transactions](https://docs.codat.io/lending-api#/schemas/Transaction) provide an immutable source of up-to-date information on income and expenditure.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-transactions) for integrations that support getting a specific transaction.
 
@@ -31,7 +31,7 @@ s = codatlending.CodatLending(
 req = operations.GetBankingTransactionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transaction_id='qui',
+    transaction_id='impedit',
 )
 
 res = s.banking.transactions.get(req)
@@ -55,9 +55,9 @@ if res.banking_transaction is not None:
 
 ## list
 
-The *List transactions* endpoint returns a list of [transactions](https://docs.codat.io/banking-api#/schemas/Transaction) for a given company's connection.
+The *List transactions* endpoint returns a list of [transactions](https://docs.codat.io/lending-api#/schemas/Transaction) for a given company's connection.
 
-[Transactions](https://docs.codat.io/banking-api#/schemas/Transaction) provide an immutable source of up-to-date information on income and expenditure.
+[Transactions](https://docs.codat.io/lending-api#/schemas/Transaction) provide an immutable source of up-to-date information on income and expenditure.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -80,7 +80,7 @@ req = operations.ListBankingTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='impedit',
+    query='cum',
 )
 
 res = s.banking.transactions.list(req)

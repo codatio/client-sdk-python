@@ -9,7 +9,7 @@
 
 The *Get bank account* endpoint returns a single account for a given accountId.
 
-[Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
+[Bank accounts](https://docs.codat.io/lending-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support getting a specific bank account.
 
@@ -29,7 +29,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBankAccountRequest(
-    account_id='unde',
+    account_id='corrupti',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -55,9 +55,9 @@ if res.accounting_bank_account is not None:
 
 ## list
 
-The *List bank accounts* endpoint returns a list of [bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company's connection.
+The *List bank accounts* endpoint returns a list of [bank accounts](https://docs.codat.io/lending-api#/schemas/BankAccount) for a given company's connection.
 
-[Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
+[Bank accounts](https://docs.codat.io/lending-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -80,7 +80,7 @@ req = operations.ListAccountingBankAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nulla',
+    query='illum',
 )
 
 res = s.accounting_bank_data.accounts.list(req)

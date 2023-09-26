@@ -9,7 +9,7 @@
 
 The *Get journal entry* endpoint returns a single journal entry for a given journalEntryId.
 
-[Journal entries](https://docs.codat.io/accounting-api#/schemas/JournalEntry) are  made in a company's general ledger, or accounts, when transactions are approved.
+[Journal entries](https://docs.codat.io/lending-api#/schemas/JournalEntry) are  made in a company's general ledger, or accounts, when transactions are approved.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journalEntries) for integrations that support getting a specific journal entry.
 
@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='vitae',
+    journal_entry_id='culpa',
 )
 
 res = s.transactions.journal_entries.get(req)
@@ -54,9 +54,9 @@ if res.accounting_journal_entry is not None:
 
 ## list
 
-The *List journal entries* endpoint returns a list of [journal entries](https://docs.codat.io/accounting-api#/schemas/JournalEntry) for a given company's connection.
+The *List journal entries* endpoint returns a list of [journal entries](https://docs.codat.io/lending-api#/schemas/JournalEntry) for a given company's connection.
 
-[Journal entries](https://docs.codat.io/accounting-api#/schemas/JournalEntry) are  made in a company's general ledger, or accounts, when transactions are approved.
+[Journal entries](https://docs.codat.io/lending-api#/schemas/JournalEntry) are  made in a company's general ledger, or accounts, when transactions are approved.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -78,7 +78,7 @@ req = operations.ListAccountingJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='accusamus',
+    query='corrupti',
 )
 
 res = s.transactions.journal_entries.list(req)

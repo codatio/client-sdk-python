@@ -13,6 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class ListDataIntegrityDetailsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     data_type: shared_dataintegritydatatype.DataIntegrityDataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
     r"""A key for a Codat data type."""
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
@@ -31,11 +32,14 @@ class ListDataIntegrityDetailsRequest:
 @dataclasses.dataclass
 class ListDataIntegrityDetailsResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     data_integrity_details: Optional[shared_dataintegritydetails.DataIntegrityDetails] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

@@ -22,5 +22,6 @@ class ProductPrice:
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
     unit_price: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    r"""The product variant's unit price."""
     
 

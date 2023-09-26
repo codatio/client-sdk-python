@@ -16,7 +16,7 @@ class AccountingBankDataAccounts:
         r"""Get bank account
         The *Get bank account* endpoint returns a single account for a given accountId.
 
-        [Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
+        [Bank accounts](https://docs.codat.io/lending-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support getting a specific bank account.
 
@@ -69,9 +69,9 @@ class AccountingBankDataAccounts:
     
     def list(self, request: operations.ListAccountingBankAccountsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountingBankAccountsResponse:
         r"""List bank accounts
-        The *List bank accounts* endpoint returns a list of [bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company's connection.
+        The *List bank accounts* endpoint returns a list of [bank accounts](https://docs.codat.io/lending-api#/schemas/BankAccount) for a given company's connection.
 
-        [Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
+        [Bank accounts](https://docs.codat.io/lending-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """

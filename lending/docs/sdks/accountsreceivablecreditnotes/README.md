@@ -9,7 +9,7 @@
 
 The *Get credit note* endpoint returns a single credit note for a given creditNoteId.
 
-[Credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote) are issued to a customer to indicate debt, typically with reference to a previously issued invoice and/or purchase.
+[Credit notes](https://docs.codat.io/lending-api#/schemas/CreditNote) are issued to a customer to indicate debt, typically with reference to a previously issued invoice and/or purchase.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support getting a specific credit note.
 
@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingCreditNoteRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    credit_note_id='ipsam',
+    credit_note_id='repellendus',
 )
 
 res = s.accounts_receivable.credit_notes.get(req)
@@ -54,9 +54,9 @@ if res.accounting_credit_note is not None:
 
 ## list
 
-The *List credit notes* endpoint returns a list of [credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote) for a given company's connection.
+The *List credit notes* endpoint returns a list of [credit notes](https://docs.codat.io/lending-api#/schemas/CreditNote) for a given company's connection.
 
-[Credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote) are issued to a customer to indicate debt, typically with reference to a previously issued invoice and/or purchase.
+[Credit notes](https://docs.codat.io/lending-api#/schemas/CreditNote) are issued to a customer to indicate debt, typically with reference to a previously issued invoice and/or purchase.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -78,7 +78,7 @@ req = operations.ListAccountingCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='repellendus',
+    query='sapiente',
 )
 
 res = s.accounts_receivable.credit_notes.list(req)
