@@ -17,7 +17,7 @@ class Connections:
         r"""Create connection
         Creates a connection for the company by providing a valid `platformKey`. 
 
-        Use the [List Integrations](https://docs.codat.io/sync-for-commerce-api#/operations/list-integrations) endpoint to access valid platform keys.
+        Use the [List Integrations](https://docs.codat.io/sync-for-sync-for-commerce-api#/operations/list-integrations) endpoint to access valid platform keys.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

@@ -16,7 +16,7 @@ Create new and manage existing Sync for Commerce connections using the Sync flow
 
 ﻿Creates a connection for the company by providing a valid `platformKey`. 
 
-Use the [List Integrations](https://docs.codat.io/sync-for-commerce-api#/operations/list-integrations) endpoint to access valid platform keys. 
+Use the [List Integrations](https://docs.codat.io/sync-for-sync-for-commerce-api#/operations/list-integrations) endpoint to access valid platform keys. 
 
 ### Example Usage
 
@@ -32,7 +32,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateConnectionRequest(
     request_body=operations.CreateConnectionRequestBody(
-        platform_key='provident',
+        platform_key='gbol',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -73,9 +73,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key='distinctio',
-    commerce_key='quibusdam',
-    merchant_identifier='unde',
+    accounting_key='provident',
+    commerce_key='distinctio',
+    merchant_identifier='quibusdam',
 )
 
 res = s.connections.get_sync_flow_url(req)
@@ -118,7 +118,7 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nulla',
+    query='unde',
 )
 
 res = s.connections.list(req)
@@ -158,7 +158,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.UpdateConnectionAuthorizationRequest(
     request_body={
-        "corrupti": 'illum',
+        "nulla": 'corrupti',
     },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -201,7 +201,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.UpdateConnectionRequest(
     update_connection=shared.UpdateConnection(
-        status=shared.DataConnectionStatus.LINKED,
+        status=shared.DataConnectionStatus.DEAUTHORIZED,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
