@@ -32,7 +32,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.CreateConnectionRequest(
     request_body=operations.CreateConnectionRequestBody(
-        platform_key='tempora',
+        platform_key='gbol',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -158,7 +158,7 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='suscipit',
+    query='excepturi',
 )
 
 res = s.connections.list(req)

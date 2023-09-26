@@ -108,8 +108,9 @@ class JournalEntries:
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.DeleteJournalEntryRequest, base_url, '/companies/{companyId}/data/journalEntries/{journalEntryId}', request)
+        url = utils.generate_url(operations.DeleteJournalEntryRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journalEntries/{journalEntryId}', request)
         headers = {}
+        query_params = utils.get_query_params(operations.DeleteJournalEntryRequest, request)
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
@@ -124,7 +125,7 @@ class JournalEntries:
                 retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
-            return client.request('DELETE', url, headers=headers)
+            return client.request('DELETE', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',

@@ -40,21 +40,22 @@ req = operations.CreateJournalRequest(
     journal=shared.Journal(
         created_on='2022-10-23T00:00:00.000Z',
         has_children=False,
-        id='4f63c969-e9a3-4efa-b7df-b14cd66ae395',
-        journal_code='accusamus',
+        id='9e9a3efa-77df-4b14-8d66-ae395efb9ba8',
+        journal_code='deleniti',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Rene Reinger',
-        parent_id='deleniti',
+        name='Sandy Huels',
+        parent_id='omnis',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.JournalStatus.UNKNOWN,
-        type='deserunt',
+        type='nihil',
     ),
+    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=394869,
+    timeout_in_minutes=301575,
 )
 
 res = s.journals.create(req)
@@ -101,7 +102,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='vel',
+    journal_id='distinctio',
 )
 
 res = s.journals.get(req)
@@ -198,7 +199,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='natus',
+    query='id',
 )
 
 res = s.journals.list(req)
