@@ -14,7 +14,7 @@ class Configuration:
         
     
     def get_configuration(self, request: operations.GetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigurationResponse:
-        r"""Retrieve config preferences set for a company.
+        r"""Retrieve config preferences set for a company
         Retrieve current config preferences.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -57,7 +57,7 @@ class Configuration:
 
     
     def set_configuration(self, request: operations.SetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.SetConfigurationResponse:
-        r"""Create or update configuration.
+        r"""Create or update configuration
         Make changes to configuration preferences.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

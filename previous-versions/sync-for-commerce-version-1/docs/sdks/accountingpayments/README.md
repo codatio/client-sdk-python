@@ -1,4 +1,4 @@
-# accounting_payments
+# AccountingPayments
 
 ## Overview
 
@@ -37,27 +37,27 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.CreateAccountingPaymentRequest(
     accounting_payment=shared.AccountingPayment(
         account_ref=shared.AccountRef(
-            id='2f64d1db-1f2c-4431-8661-e96349e1cf9e',
-            name='Alma Waters',
+            id='e96349e1-cf9e-406e-ba43-7000ae6b6bc9',
+            name='Alfredo Wilkinson',
         ),
-        currency='GBP',
-        currency_rate=Decimal('2244.67'),
+        currency='USD',
+        currency_rate=Decimal('8975.43'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='iusto',
-            id='000ae6b6-bc9b-48f7-99ea-c55a9741d311',
+            company_name='animi',
+            id='c55a9741-d311-4352-965b-b8a720261143',
         ),
         date_='2022-10-23T00:00:00.000Z',
-        id='52965bb8-a720-4261-9435-e139dbc2259b',
+        id='e139dbc2-259b-41ab-9a8c-070e1084cb06',
         lines=[
             shared.PaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=Decimal('6633.18'),
+                amount=Decimal('1729.51'),
                 links=[
                     shared.PaymentLineLink(
-                        amount=Decimal('7278.88'),
-                        currency_rate=Decimal('8544.6'),
-                        id='a8c070e1-084c-4b06-b2d1-ad879eeb9665',
-                        type=shared.PaymentLinkType.PAYMENT_ON_ACCOUNT,
+                        amount=Decimal('8247.98'),
+                        currency_rate=Decimal('1072.1'),
+                        id='ad879eeb-9665-4b85-afbd-02bae0be2d78',
+                        type=shared.PaymentLinkType.UNLINKED,
                     ),
                 ],
             ),
@@ -67,21 +67,21 @@ req = operations.CreateAccountingPaymentRequest(
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         note='corporis',
-        payment_method_ref='officiis',
-        reference='voluptatibus',
+        payment_method_ref='error',
+        reference='earum',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "at": {
-                    "alias": 'quia',
+                "recusandae": {
+                    "similique": 'ut',
                 },
             },
         ),
-        total_amount=Decimal('6941.58'),
+        total_amount=Decimal('6937.46'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=684126,
+    timeout_in_minutes=339631,
 )
 
 res = s.accounting_payments.create_accounting_payment(req)

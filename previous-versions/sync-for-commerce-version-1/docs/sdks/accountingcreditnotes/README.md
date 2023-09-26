@@ -1,4 +1,4 @@
-# accounting_credit_notes
+# AccountingCreditNotes
 
 ## Overview
 
@@ -36,125 +36,125 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingCreditNoteRequest(
     accounting_credit_note=shared.AccountingCreditNote(
-        additional_tax_amount=Decimal('3834.41'),
-        additional_tax_percentage=Decimal('4776.65'),
+        additional_tax_amount=Decimal('3927.85'),
+        additional_tax_percentage=Decimal('9255.97'),
         allocated_on_date='2022-10-23T00:00:00.000Z',
-        credit_note_number='placeat',
+        credit_note_number='ab',
         currency='USD',
-        currency_rate=Decimal('4799.77'),
+        currency_rate=Decimal('871.29'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='excepturi',
-            id='6ed151a0-5dfc-42dd-b7cc-78ca1ba928fc',
+            company_name='deserunt',
+            id='05dfc2dd-f7cc-478c-a1ba-928fc816742c',
         ),
-        discount_percentage=Decimal('5218.48'),
-        id='16742cb7-3920-4592-9396-fea7596eb10f',
+        discount_percentage=Decimal('7369.18'),
+        id='73920592-9396-4fea-b596-eb10faaa2352',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='aa2352c5-9559-407a-bf1a-3a2fa9467739',
-                    name='Beatrice Brown',
+                    id='5955907a-ff1a-43a2-ba94-67739251aa52',
+                    name='Jimmy Wiegand',
                 ),
-                description='enim',
-                discount_amount=Decimal('1381.83'),
-                discount_percentage=Decimal('7783.46'),
+                description='possimus',
+                discount_amount=Decimal('135.71'),
+                discount_percentage=Decimal('971.01'),
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='3f5ad019-da1f-4fe7-8f09-7b0074f15471',
-                    name='Bill Thompson',
+                    id='9da1ffe7-8f09-47b0-874f-15471b5e6e13',
+                    name='Virgil Mante',
                 ),
-                quantity=Decimal('641.47'),
-                sub_total=Decimal('2168.22'),
-                tax_amount=Decimal('6924.72'),
+                quantity=Decimal('5089.69'),
+                sub_total=Decimal('5232.48'),
+                tax_amount=Decimal('9167.23'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('5651.89'),
-                    id='9d488e1e-91e4-450a-92ab-d44269802d50',
-                    name='Sonya Marks',
+                    effective_tax_rate=Decimal('939.4'),
+                    id='e91e450a-d2ab-4d44-a698-02d502a94bb4',
+                    name='Andre Franey',
                 ),
-                total_amount=Decimal('7351.94'),
+                total_amount=Decimal('3960.98'),
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRefsitems(
-                            id='4f63c969-e9a3-4efa-b7df-b14cd66ae395',
-                            name='Toby Pouros',
+                            id='9e9a3efa-77df-4b14-8d66-ae395efb9ba8',
+                            name='Timmy Feeney',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='id',
-                        id='88f3a669-9707-44ba-8469-b6e214195989',
+                        company_name='vel',
+                        id='997074ba-4469-4b6e-a141-959890afa563',
                     ),
-                    is_billed_to=shared.BilledToType.UNKNOWN,
-                    is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_billed_to=shared.BilledToType.PROJECT,
+                    is_rebilled_to=shared.BilledToType.UNKNOWN,
                     project_ref=shared.CreditNoteLineItemTrackingProjectReference(
-                        id='fa563e25-16fe-44c8-b711-e5b7fd2ed028',
-                        name='Victor Casper',
+                        id='516fe4c8-b711-4e5b-bfd2-ed028921cddc',
+                        name='Miriam Connelly Jr.',
                     ),
                     record_ref=shared.RecordRef(
                         data_type='transfer',
-                        id='c692601f-b576-4b0d-9f0d-30c5fbb25870',
+                        id='b576b0d5-f0d3-40c5-bbb2-587053202c73',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRefsitems(
-                        id='53202c73-d5fe-49b9-8c28-909b3fe49a8d',
-                        name='Loren Renner',
+                        id='d5fe9b90-c289-409b-bfe4-9a8d9cbf4863',
+                        name='Rosa Dibbert',
                     ),
                 ],
-                unit_amount=Decimal('5542.42'),
+                unit_amount=Decimal('5695.74'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='dolorem',
+        note='voluptate',
         payment_allocations=[
             shared.PaymentAllocationsitems(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
-                    currency_rate=Decimal('1861.93'),
-                    total_amount=Decimal('2187.49'),
+                    currency='EUR',
+                    currency_rate=Decimal('2274.14'),
+                    total_amount=Decimal('6805.45'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='f9b77f3a-4100-4674-abf6-9280d1ba77a8',
-                        name='Terence Rau',
+                        id='4100674e-bf69-4280-91ba-77a89ebf737a',
+                        name='Mrs. Ray Collins',
                     ),
-                    currency='GBP',
-                    currency_rate=Decimal('4560.15'),
-                    id='ae4203ce-5e6a-495d-8a0d-446ce2af7a73',
-                    note='quisquam',
+                    currency='EUR',
+                    currency_rate=Decimal('3200.17'),
+                    id='e6a95d8a-0d44-46ce-aaf7-a73cf3be453f',
+                    note='totam',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='amet',
-                    total_amount=Decimal('7308.56'),
+                    reference='sit',
+                    total_amount=Decimal('7115.84'),
                 ),
             ),
         ],
-        remaining_credit=Decimal('8802.98'),
+        remaining_credit=Decimal('2074.7'),
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CreditNoteStatus.DRAFT,
-        sub_total=Decimal('2133.12'),
+        status=shared.CreditNoteStatus.SUBMITTED,
+        sub_total=Decimal('7304.42'),
         supplemental_data=shared.SupplementalData(
             content={
-                "sapiente": {
-                    "totam": 'nihil',
+                "voluptas": {
+                    "deserunt": 'quam',
                 },
             },
         ),
-        total_amount=Decimal('256.62'),
-        total_discount=Decimal('7115.84'),
-        total_tax_amount=Decimal('2074.7'),
+        total_amount=Decimal('2148.8'),
+        total_discount=Decimal('2776.28'),
+        total_tax_amount=Decimal('1864.58'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('1536.94'),
-                name='Kelli Hintz',
+                amount=Decimal('5867.84'),
+                name='Miss Jody Rogahn',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=214880,
+    timeout_in_minutes=276894,
 )
 
 res = s.accounting_credit_notes.create_accounting_credit_note(req)

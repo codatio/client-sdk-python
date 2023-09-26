@@ -14,7 +14,7 @@ class SyncFlowPreferences:
         
     
     def get_config_text_sync_flow(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigTextSyncFlowResponse:
-        r"""Retrieve preferences for text fields on Sync Flow
+        r"""Retrieve preferences for text fields on sync flow
         To enable retrieval of preferences set for the text fields on Sync Flow.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -190,7 +190,7 @@ class SyncFlowPreferences:
 
     
     def update_visible_accounts_sync_flow(self, request: operations.UpdateVisibleAccountsSyncFlowRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateVisibleAccountsSyncFlowResponse:
-        r"""Update the visible accounts on Sync Flow
+        r"""Update the visible accounts on sync flow
         To enable update of accounts visible preferences set on Sync Flow.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

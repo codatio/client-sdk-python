@@ -1,4 +1,4 @@
-# accounting_invoices
+# AccountingInvoices
 
 ## Overview
 
@@ -36,132 +36,132 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingInvoiceRequest(
     accounting_invoice=shared.AccountingInvoice(
-        additional_tax_amount=Decimal('7386.83'),
-        additional_tax_percentage=Decimal('2326.27'),
-        amount_due=Decimal('4490.83'),
-        currency='USD',
-        currency_rate=Decimal('9372.85'),
+        additional_tax_amount=Decimal('2282.63'),
+        additional_tax_percentage=Decimal('1059.06'),
+        amount_due=Decimal('4895.09'),
+        currency='EUR',
+        currency_rate=Decimal('8915.23'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='facere',
-            id='4f6fbee4-1f33-4317-be35-b60eb1ea4265',
+            company_name='consectetur',
+            id='5b60eb1e-a426-4555-ba3c-28744ed53b88',
         ),
-        discount_percentage=Decimal('3742.96'),
+        discount_percentage=Decimal('9425.84'),
         due_date='2022-10-23T00:00:00.000Z',
-        id='ba3c2874-4ed5-43b8-8f3a-8d8f5c0b2f2f',
-        invoice_number='facilis',
+        id='a8d8f5c0-b2f2-4fb7-b194-a276b26916fe',
+        invoice_number='illo',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.InvoiceLineItem(
                 account_ref=shared.AccountRef(
-                    id='b194a276-b269-416f-a1f0-8f4294e3698f',
-                    name='Rhonda Klocko',
+                    id='08f4294e-3698-4f44-bf60-3e8b445e80ca',
+                    name='Lorraine Walsh',
                 ),
-                description='sit',
-                discount_amount=Decimal('2484.13'),
-                discount_percentage=Decimal('8880.44'),
+                description='magni',
+                discount_amount=Decimal('486.9'),
+                discount_percentage=Decimal('9014.83'),
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='8b445e80-ca55-4efd-a0e4-57e1858b6a89',
-                    name='Rudolph Trantow',
+                    id='457e1858-b6a8-49fb-a3a5-aa8e4824d0ab',
+                    name='Barbara Koelpin IV',
                 ),
-                quantity=Decimal('3416.98'),
-                sub_total=Decimal('6390.28'),
-                tax_amount=Decimal('6762.43'),
+                quantity=Decimal('5580.65'),
+                sub_total=Decimal('9221.12'),
+                tax_amount=Decimal('3611.51'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('5483.61'),
-                    id='e4824d0a-b407-4508-8e51-862065e904f3',
-                    name='Gerald Bradtke',
+                    effective_tax_rate=Decimal('894.94'),
+                    id='862065e9-04f3-4b11-94b8-abf603a79f9d',
+                    name='Noah Armstrong',
                 ),
-                total_amount=Decimal('6952.7'),
+                total_amount=Decimal('4406.66'),
                 tracking=shared.Tracking(
                     category_refs=[
                         shared.TrackingCategoryRefsitems(
-                            id='8abf603a-79f9-4dfe-8ab7-da8a50ce187f',
-                            name='Sam Powlowski IV',
+                            id='da8a50ce-187f-486b-8173-d689eee9526f',
+                            name='Wilfred Mueller',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='amet',
-                        id='d689eee9-526f-48d9-86e8-81ead4f0e101',
+                        company_name='repudiandae',
+                        id='881ead4f-0e10-4125-a3f9-4e29e973e922',
                     ),
-                    is_billed_to=shared.BilledToType.UNKNOWN,
-                    is_rebilled_to=shared.BilledToType.UNKNOWN,
+                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
                     project_ref=shared.TrackingProjectReference(
-                        id='63f94e29-e973-4e92-aa57-a15be3e06080',
-                        name='Tricia Denesik',
+                        id='7a15be3e-0608-407e-ab6e-3ab8845f0597',
+                        name='Shane Abshire',
                     ),
                     record_ref=shared.RecordRef(
-                        data_type='transfer',
-                        id='3ab8845f-0597-4a60-bf2a-54a31e94764a',
+                        data_type='journalEntry',
+                        id='a54a31e9-4764-4a3e-865e-7956f9251a5a',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRefsitems(
-                        id='3e865e79-56f9-4251-a5a9-da660ff57bfa',
-                        name='Irving Gleichner',
+                        id='9da660ff-57bf-4aad-8f9e-fc1b4512c103',
+                        name='Agnes Gibson',
                     ),
                 ],
-                unit_amount=Decimal('8897.94'),
+                unit_amount=Decimal('7730.84'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='cumque',
+        note='sapiente',
         paid_on_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
             shared.AccountingInvoicePaymentAllocation(
                 allocation=shared.AccountingInvoicePaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='GBP',
-                    currency_rate=Decimal('3354.98'),
-                    total_amount=Decimal('820.57'),
+                    currency_rate=Decimal('1070.04'),
+                    total_amount=Decimal('5834.04'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='2c103264-8dc2-4f61-9199-ebfd0e9fe6c6',
-                        name='Denise Runolfsdottir',
+                        id='9ebfd0e9-fe6c-4632-8a3a-ed0117996312',
+                        name='Mrs. Orville Treutel',
                     ),
                     currency='USD',
-                    currency_rate=Decimal('8987.6'),
-                    id='d0117996-312f-4de0-8771-778ff61d0174',
-                    note='esse',
+                    currency_rate=Decimal('1158.34'),
+                    id='778ff61d-0174-4763-a0a1-5db6a660659a',
+                    note='ab',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='consectetur',
-                    total_amount=Decimal('3998.12'),
+                    reference='possimus',
+                    total_amount=Decimal('9139.92'),
                 ),
             ),
         ],
         sales_order_refs=[
             shared.AccountingInvoiceSalesOrderReference(
-                data_type='ipsa',
-                id='a15db6a6-6065-49a1-adea-ab5851d6c645',
+                data_type=shared.DataType.INVOICES,
+                id='aab5851d-6c64-45b0-8b61-891baa0fe1ad',
             ),
         ],
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.InvoiceStatus.UNKNOWN,
-        sub_total=Decimal('5615.77'),
+        sub_total=Decimal('12.07'),
         supplemental_data=shared.SupplementalData(
             content={
-                "cum": {
-                    "aliquid": 'beatae',
+                "deleniti": {
+                    "earum": 'ex',
                 },
             },
         ),
-        total_amount=Decimal('5308.6'),
-        total_discount=Decimal('6063.08'),
-        total_tax_amount=Decimal('852.33'),
+        total_amount=Decimal('9583.08'),
+        total_discount=Decimal('5241.84'),
+        total_tax_amount=Decimal('7963.2'),
         withholding_tax=[
             shared.AccountingInvoiceWithholdingTax(
-                amount=Decimal('7032.18'),
-                name='Trevor Bartell',
+                amount=Decimal('3651'),
+                name='Dr. Chris Hermiston',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=103298,
+    timeout_in_minutes=770675,
 )
 
 res = s.accounting_invoices.create_accounting_invoice(req)

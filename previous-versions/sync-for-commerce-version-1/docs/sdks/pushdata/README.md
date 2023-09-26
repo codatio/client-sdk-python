@@ -1,4 +1,4 @@
-# push_data
+# PushData
 
 ## Overview
 
@@ -27,7 +27,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='97f92443-da7c-4e52-b895-c537c6454efb',
+    push_operation_key='5c537c64-54ef-4b0b-b489-6c3ca5acfbe2',
 )
 
 res = s.push_data.get_operation(req)
@@ -70,7 +70,7 @@ req = operations.GetCompanyPushHistoryRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='aperiam',
+    query='repellat',
 )
 
 res = s.push_data.list_operations(req)

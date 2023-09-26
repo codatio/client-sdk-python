@@ -12,8 +12,6 @@ pip install codat-sync-for-commerce-version-1
 
 ## Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import codatsynccommerce
 from codatsynccommerce.models import operations, shared
@@ -27,11 +25,11 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingAccountRequest(
     accounting_account=shared.AccountingAccount(
-        currency='USD',
+        currency='EUR',
         current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
-        fully_qualified_name='Fixed Asset',
+        fully_qualified_name='Cash On Hand',
         id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
         is_bank_account=False,
         metadata=shared.AccountingAccountMetadata(
@@ -46,15 +44,15 @@ req = operations.CreateAccountingAccountRequest(
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'unde',
+                    'suscipit',
                 ],
-                property='nulla',
+                property='iure',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=544883,
+    timeout_in_minutes=297534,
 )
 
 res = s.accounting_accounts.create_accounting_account(req)
@@ -68,118 +66,118 @@ if res.accounting_create_account_response is not None:
 ## Available Resources and Operations
 
 
-### [accounting_accounts](docs/sdks/accountingaccounts/README.md)
+### [AccountingAccounts](docs/sdks/accountingaccounts/README.md)
 
 * [create_accounting_account](docs/sdks/accountingaccounts/README.md#create_accounting_account) - Create account
 * [get_accounting_account](docs/sdks/accountingaccounts/README.md#get_accounting_account) - Get account
 * [list_accounting_accounts](docs/sdks/accountingaccounts/README.md#list_accounting_accounts) - List accounts
 
-### [accounting_bank_accounts](docs/sdks/accountingbankaccounts/README.md)
+### [AccountingBankAccounts](docs/sdks/accountingbankaccounts/README.md)
 
 * [get_accounting_bank_account](docs/sdks/accountingbankaccounts/README.md#get_accounting_bank_account) - Get bank account
 * [list_accounting_bank_accounts](docs/sdks/accountingbankaccounts/README.md#list_accounting_bank_accounts) - List bank accounts
 
-### [accounting_company_info](docs/sdks/accountingcompanyinfo/README.md)
+### [AccountingCompanyInfo](docs/sdks/accountingcompanyinfo/README.md)
 
 * [get_accounting_company_info](docs/sdks/accountingcompanyinfo/README.md#get_accounting_company_info) - Get company info
 * [refresh](docs/sdks/accountingcompanyinfo/README.md#refresh) - Refresh company info
 
-### [accounting_credit_notes](docs/sdks/accountingcreditnotes/README.md)
+### [AccountingCreditNotes](docs/sdks/accountingcreditnotes/README.md)
 
 * [create_accounting_credit_note](docs/sdks/accountingcreditnotes/README.md#create_accounting_credit_note) - Create credit note
 
-### [accounting_customers](docs/sdks/accountingcustomers/README.md)
+### [AccountingCustomers](docs/sdks/accountingcustomers/README.md)
 
 * [create_accounting_customer](docs/sdks/accountingcustomers/README.md#create_accounting_customer) - Create customer
 
-### [accounting_direct_incomes](docs/sdks/accountingdirectincomes/README.md)
+### [AccountingDirectIncomes](docs/sdks/accountingdirectincomes/README.md)
 
 * [create_accounting_direct_income](docs/sdks/accountingdirectincomes/README.md#create_accounting_direct_income) - Create direct income
 
-### [accounting_invoices](docs/sdks/accountinginvoices/README.md)
+### [AccountingInvoices](docs/sdks/accountinginvoices/README.md)
 
 * [create_accounting_invoice](docs/sdks/accountinginvoices/README.md#create_accounting_invoice) - Create invoice
 
-### [accounting_journal_entries](docs/sdks/accountingjournalentries/README.md)
+### [AccountingJournalEntries](docs/sdks/accountingjournalentries/README.md)
 
 * [create_accounting_journal_entry](docs/sdks/accountingjournalentries/README.md#create_accounting_journal_entry) - Create journal entry
 
-### [accounting_payments](docs/sdks/accountingpayments/README.md)
+### [AccountingPayments](docs/sdks/accountingpayments/README.md)
 
 * [create_accounting_payment](docs/sdks/accountingpayments/README.md#create_accounting_payment) - Create payment
 
-### [commerce_company_info](docs/sdks/commercecompanyinfo/README.md)
+### [CommerceCompanyInfo](docs/sdks/commercecompanyinfo/README.md)
 
 * [get_commerce_company_info](docs/sdks/commercecompanyinfo/README.md#get_commerce_company_info) - Get company info
 
-### [commerce_customers](docs/sdks/commercecustomers/README.md)
+### [CommerceCustomers](docs/sdks/commercecustomers/README.md)
 
 * [get_commerce_customer](docs/sdks/commercecustomers/README.md#get_commerce_customer) - Get customer
 * [list_commerce_customers](docs/sdks/commercecustomers/README.md#list_commerce_customers) - List customers
 
-### [commerce_locations](docs/sdks/commercelocations/README.md)
+### [CommerceLocations](docs/sdks/commercelocations/README.md)
 
 * [get_commerce_location](docs/sdks/commercelocations/README.md#get_commerce_location) - Get location
 * [list_commerce_locations](docs/sdks/commercelocations/README.md#list_commerce_locations) - List locations
 
-### [commerce_orders](docs/sdks/commerceorders/README.md)
+### [CommerceOrders](docs/sdks/commerceorders/README.md)
 
 * [get_commerce_order](docs/sdks/commerceorders/README.md#get_commerce_order) - Get order
 * [list_commerce_orders](docs/sdks/commerceorders/README.md#list_commerce_orders) - List orders
 
-### [commerce_payments](docs/sdks/commercepayments/README.md)
+### [CommercePayments](docs/sdks/commercepayments/README.md)
 
 * [get_commerce_payment](docs/sdks/commercepayments/README.md#get_commerce_payment) - Get payment
 * [get_method](docs/sdks/commercepayments/README.md#get_method) - Get payment method
 * [list_commerce_payments](docs/sdks/commercepayments/README.md#list_commerce_payments) - List payments
 * [list_methods](docs/sdks/commercepayments/README.md#list_methods) - List payment methods
 
-### [commerce_products](docs/sdks/commerceproducts/README.md)
+### [CommerceProducts](docs/sdks/commerceproducts/README.md)
 
 * [get_commerce_product](docs/sdks/commerceproducts/README.md#get_commerce_product) - Get product
 * [list_commerce_products](docs/sdks/commerceproducts/README.md#list_commerce_products) - List products
 
-### [commerce_transactions](docs/sdks/commercetransactions/README.md)
+### [CommerceTransactions](docs/sdks/commercetransactions/README.md)
 
 * [get_commerce_transaction](docs/sdks/commercetransactions/README.md#get_commerce_transaction) - Get transaction
 * [list_commerce_transactions](docs/sdks/commercetransactions/README.md#list_commerce_transactions) - List transactions
 
-### [companies](docs/sdks/companies/README.md)
+### [Companies](docs/sdks/companies/README.md)
 
 * [delete_company](docs/sdks/companies/README.md#delete_company) - Delete a company
 * [get_company](docs/sdks/companies/README.md#get_company) - Get company
 * [update_company](docs/sdks/companies/README.md#update_company) - Update company
 
-### [company_management](docs/sdks/companymanagement/README.md)
+### [CompanyManagement](docs/sdks/companymanagement/README.md)
 
-* [create_company](docs/sdks/companymanagement/README.md#create_company) - Create Sync for Commerce company
+* [create_company](docs/sdks/companymanagement/README.md#create_company) - Create sync for commerce company
 * [create_connection](docs/sdks/companymanagement/README.md#create_connection) - Create connection
 * [list_companies](docs/sdks/companymanagement/README.md#list_companies) - List companies
 * [list_connections](docs/sdks/companymanagement/README.md#list_connections) - List data connections
 * [update_connection](docs/sdks/companymanagement/README.md#update_connection) - Update data connection
 
-### [configuration](docs/sdks/configuration/README.md)
+### [Configuration](docs/sdks/configuration/README.md)
 
-* [get_configuration](docs/sdks/configuration/README.md#get_configuration) - Retrieve config preferences set for a company.
-* [set_configuration](docs/sdks/configuration/README.md#set_configuration) - Create or update configuration.
+* [get_configuration](docs/sdks/configuration/README.md#get_configuration) - Retrieve config preferences set for a company
+* [set_configuration](docs/sdks/configuration/README.md#set_configuration) - Create or update configuration
 
-### [connections](docs/sdks/connections/README.md)
+### [Connections](docs/sdks/connections/README.md)
 
 * [delete_connection](docs/sdks/connections/README.md#delete_connection) - Delete connection
 * [get_connection](docs/sdks/connections/README.md#get_connection) - Get connection
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [integrations](docs/sdks/integrations/README.md)
+### [Integrations](docs/sdks/integrations/README.md)
 
 * [get_integration_branding](docs/sdks/integrations/README.md#get_integration_branding) - Get branding for an integration
-* [list_integrations](docs/sdks/integrations/README.md#list_integrations) - List information on Codat's supported integrations
+* [list_integrations](docs/sdks/integrations/README.md#list_integrations) - List integrations
 
-### [push_data](docs/sdks/pushdata/README.md)
+### [PushData](docs/sdks/pushdata/README.md)
 
 * [get_operation](docs/sdks/pushdata/README.md#get_operation) - Get push operation
 * [list_operations](docs/sdks/pushdata/README.md#list_operations) - List push operations
 
-### [refresh_data](docs/sdks/refreshdata/README.md)
+### [RefreshData](docs/sdks/refreshdata/README.md)
 
 * [all](docs/sdks/refreshdata/README.md#all) - Refresh all data
 * [by_data_type](docs/sdks/refreshdata/README.md#by_data_type) - Refresh data type
@@ -187,18 +185,44 @@ if res.accounting_create_account_response is not None:
 * [get_pull_operation](docs/sdks/refreshdata/README.md#get_pull_operation) - Get pull operation
 * [list_pull_operations](docs/sdks/refreshdata/README.md#list_pull_operations) - List pull operations
 
-### [sync](docs/sdks/sync/README.md)
+### [Sync](docs/sdks/sync/README.md)
 
 * [get_sync_status](docs/sdks/sync/README.md#get_sync_status) - Get status for a company's syncs
 * [request_sync](docs/sdks/sync/README.md#request_sync) - Sync new
 * [request_sync_for_date_range](docs/sdks/sync/README.md#request_sync_for_date_range) - Sync range
 
-### [sync_flow_preferences](docs/sdks/syncflowpreferences/README.md)
+### [SyncFlowPreferences](docs/sdks/syncflowpreferences/README.md)
 
-* [get_config_text_sync_flow](docs/sdks/syncflowpreferences/README.md#get_config_text_sync_flow) - Retrieve preferences for text fields on Sync Flow
+* [get_config_text_sync_flow](docs/sdks/syncflowpreferences/README.md#get_config_text_sync_flow) - Retrieve preferences for text fields on sync flow
 * [get_sync_flow_url](docs/sdks/syncflowpreferences/README.md#get_sync_flow_url) - Retrieve sync flow url
 * [get_visible_accounts](docs/sdks/syncflowpreferences/README.md#get_visible_accounts) - List visible accounts
 * [update_config_text_sync_flow](docs/sdks/syncflowpreferences/README.md#update_config_text_sync_flow) - Update preferences for text fields on sync flow
-* [update_visible_accounts_sync_flow](docs/sdks/syncflowpreferences/README.md#update_visible_accounts_sync_flow) - Update the visible accounts on Sync Flow
+* [update_visible_accounts_sync_flow](docs/sdks/syncflowpreferences/README.md#update_visible_accounts_sync_flow) - Update the visible accounts on sync flow
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Pagination -->
+# Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `None`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+
+
+<!-- End Pagination -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 ### Library generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)

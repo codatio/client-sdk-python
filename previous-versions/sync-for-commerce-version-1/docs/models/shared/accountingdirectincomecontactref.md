@@ -5,7 +5,7 @@ A customer or supplier associated with the direct income.
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `data_type`        | *Optional[str]*    | :heavy_minus_sign: | N/A                |
-| `id`               | *str*              | :heavy_check_mark: | N/A                |
+| Field                                                 | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `data_type`                                           | [Optional[DataType]](../../models/shared/datatype.md) | :heavy_minus_sign:                                    | Available Data types                                  | invoices                                              |
+| `id`                                                  | *str*                                                 | :heavy_check_mark:                                    | Unique identifier for a customer or supplier.         |                                                       |

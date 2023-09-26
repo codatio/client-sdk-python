@@ -1,4 +1,4 @@
-# configuration
+# Configuration
 
 ## Overview
 
@@ -6,8 +6,8 @@ Expressively configure preferences for any given Sync for Commerce company.
 
 ### Available Operations
 
-* [get_configuration](#get_configuration) - Retrieve config preferences set for a company.
-* [set_configuration](#set_configuration) - Create or update configuration.
+* [get_configuration](#get_configuration) - Retrieve config preferences set for a company
+* [set_configuration](#set_configuration) - Create or update configuration
 
 ## get_configuration
 

@@ -1,4 +1,4 @@
-# accounting_company_info
+# AccountingCompanyInfo
 
 ## Overview
 

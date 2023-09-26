@@ -1,4 +1,4 @@
-# accounting_customers
+# AccountingCustomers
 
 ## Overview
 
@@ -37,63 +37,63 @@ req = operations.CreateAccountingCustomerRequest(
     accounting_customer=shared.AccountingCustomer(
         addresses=[
             shared.Items1(
-                city='East Kylie',
-                country='Slovakia (Slovak Republic)',
-                line1='pariatur',
-                line2='soluta',
-                postal_code='65211',
-                region='distinctio',
+                city='East Mikaylacester',
+                country='Hungary',
+                line1='quam',
+                line2='molestias',
+                postal_code='12114-1379',
+                region='voluptatem',
                 type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='aliquid',
+        contact_name='soluta',
         contacts=[
             shared.Contact(
                 address=shared.Items1(
-                    city='Kennedyhaven',
-                    country='Christmas Island',
-                    line1='neque',
-                    line2='fugit',
-                    postal_code='41379',
-                    region='voluptatem',
-                    type=shared.AccountingAddressType.DELIVERY,
+                    city='Boscoside',
+                    country='Cuba',
+                    line1='veritatis',
+                    line2='nobis',
+                    postal_code='75092-2226',
+                    region='architecto',
+                    type=shared.AccountingAddressType.UNKNOWN,
                 ),
-                email='Nella.Bosco8@hotmail.com',
+                email='Kayleigh66@gmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Dr. Randolph McDermott',
+                name='Domingo Grady',
                 phone=[
                     shared.PhoneNumbersitems(
                         number='+44 25691 154789',
-                        type=shared.PhoneNumberType.LANDLINE,
+                        type=shared.PhoneNumberType.PRIMARY,
                     ),
                 ],
-                status=shared.CustomerStatus.UNKNOWN,
+                status=shared.CustomerStatus.ACTIVE,
             ),
         ],
-        customer_name='dolorum',
-        default_currency='GBP',
-        email_address='quae',
-        id='08e0adcf-4b92-4187-9fce-953f73ef7fbc',
+        customer_name='odio',
+        default_currency='USD',
+        email_address='voluptatibus',
+        id='ce953f73-ef7f-4bc7-abd7-4dd39c0f5d2c',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='1-784-488-1670 x9381',
-        registration_number='porro',
+        phone='574.262.3414 x82145',
+        registration_number='dicta',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "iusto": {
-                    "eligendi": 'ducimus',
+                "quasi": {
+                    "ex": 'nulla',
                 },
             },
         ),
-        tax_number='alias',
+        tax_number='excepturi',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=639473,
+    timeout_in_minutes=972920,
 )
 
 res = s.accounting_customers.create_accounting_customer(req)
