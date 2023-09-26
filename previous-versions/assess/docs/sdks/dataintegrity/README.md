@@ -1,4 +1,4 @@
-# data_integrity
+# DataIntegrity
 
 ## Overview
 
@@ -32,7 +32,7 @@ req = operations.ListDataTypeDataIntegrityDetailsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='provident',
+    query='distinctio',
 )
 
 res = s.data_integrity.details(req)
@@ -113,7 +113,7 @@ s = codatassess.CodatAssess(
 req = operations.GetDataIntegritySummariesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-    query='distinctio',
+    query='quibusdam',
 )
 
 res = s.data_integrity.summary(req)

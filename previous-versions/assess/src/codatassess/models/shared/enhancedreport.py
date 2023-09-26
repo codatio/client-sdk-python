@@ -6,6 +6,7 @@ from ..shared import enhancedreportaccountcategory as shared_enhancedreportaccou
 from ..shared import enhancedreportinfo as shared_enhancedreportinfo
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -18,7 +19,7 @@ class EnhancedReportReportItem:
     r"""The unique account ID."""
     account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountName'), 'exclude': lambda f: f is None }})
     r"""Name of the account."""
-    balance: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'exclude': lambda f: f is None }})
+    balance: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Balance of the account as reported on the profit and loss or Balance sheet."""
     date_: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -49,7 +50,6 @@ class EnhancedReportReportItem:
 
 @dataclasses.dataclass
 class EnhancedReport:
-    r"""OK"""
     report_info: Optional[shared_enhancedreportinfo.EnhancedReportInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInfo'), 'exclude': lambda f: f is None }})
     report_items: Optional[list[EnhancedReportReportItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportItems'), 'exclude': lambda f: f is None }})
     r"""An array of report items."""

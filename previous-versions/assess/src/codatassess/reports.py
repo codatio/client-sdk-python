@@ -29,9 +29,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -77,9 +81,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -123,9 +131,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -169,9 +181,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -215,9 +231,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -261,9 +281,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -307,9 +331,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -357,9 +385,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -403,9 +435,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -436,7 +472,9 @@ class Reports:
 
     
     def get_loan_summary(self, request: operations.GetLoanSummaryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetLoanSummaryResponse:
-        r"""Get enhanced loan summaries"""
+        r"""Get enhanced loan summaries
+        Returns a summary of loan transactions identified for the SMB.
+        """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetLoanSummaryRequest, base_url, '/companies/{companyId}/reports/enhancedLiabilities/loan', request)
@@ -446,9 +484,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
@@ -491,9 +533,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
@@ -524,7 +570,9 @@ class Reports:
 
     
     def list_loan_transactions(self, request: operations.ListLoanTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListLoanTransactionsResponse:
-        r"""List enhanced loan transactions"""
+        r"""List enhanced loan transactions
+        Returns a list of transactions identified as relating to a loan.
+        """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ListLoanTransactionsRequest, base_url, '/companies/{companyId}/reports/enhancedLiabilities/loan/transactions', request)
@@ -535,9 +583,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
@@ -580,9 +632,13 @@ class Reports:
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
