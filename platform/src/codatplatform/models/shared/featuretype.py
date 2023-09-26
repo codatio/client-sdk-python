@@ -4,6 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class FeatureType(str, Enum):
+    r"""The type of feature."""
     GET = 'Get'
     POST = 'Post'
     CATEGORIZATION = 'Categorization'

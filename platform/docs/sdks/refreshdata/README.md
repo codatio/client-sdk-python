@@ -75,7 +75,7 @@ s = codatplatform.CodatPlatform(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='df7cc78c-a1ba-4928-bc81-6742cb739205',
+    connection_id='ddf7cc78-ca1b-4a92-8fc8-16742cb73920',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -155,7 +155,7 @@ s = codatplatform.CodatPlatform(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
+    dataset_id='5929396f-ea75-496e-b10f-aaa2352c5955',
 )
 
 res = s.refresh_data.get_pull_operation(req)
@@ -198,7 +198,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='natus',
+    query='excepturi',
 )
 
 res = s.refresh_data.list_pull_operations(req)
