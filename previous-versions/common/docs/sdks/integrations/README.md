@@ -1,4 +1,4 @@
-# integrations
+# Integrations
 
 ## Overview
 
@@ -108,7 +108,7 @@ req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='suscipit',
+    query='nulla',
 )
 
 res = s.integrations.list(req)

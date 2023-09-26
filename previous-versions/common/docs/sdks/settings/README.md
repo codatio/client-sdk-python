@@ -1,4 +1,4 @@
-# settings
+# Settings
 
 ## Overview
 
@@ -18,7 +18,7 @@ Manage your Codat instance.
 
 Use the *Create API keys* endpoint to generate a new API key for your client.
 
-[API keys](https://docs.codat.io/codat-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
+[API keys](https://docs.codat.io/platform-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
 
 You can [read more](https://docs.codat.io/using-the-api/authentication) about authentication at Codat and managing API keys via the Portal UI or API.
 
@@ -67,7 +67,7 @@ if res.api_key_details is not None:
 
 Use the *Delete API keys* endpoint to delete an existing API key, providing its valid `id` as a parameter. Note that this operation is not reversible.
 
-[API keys](https://docs.codat.io/accounting-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
+[API keys](https://docs.codat.io/platform-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
 
 You can [read more](https://docs.codat.io/using-the-api/authentication) about authentication at Codat and managing API keys via the Portal UI or API.
 
@@ -150,7 +150,7 @@ if res.profile is not None:
 
 ## get_sync_settings
 
-Retrieve the sync settings for your client. This includes how often data types should be queued to be updated, and how much history should be fetched.
+Retrieve the [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-settings) for your client. This includes how often data types should be queued to be updated, and how much history should be fetched.
 
 ### Example Usage
 
@@ -187,7 +187,7 @@ if res.sync_settings is not None:
 
 Use the *List API keys* endpoint to return a list of all API keys that currently exist for your client. This includes keys created via the Portal UI or the *Create API keys* endpoint.
 
-[API keys](https://docs.codat.io/accounting-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
+[API keys](https://docs.codat.io/platform-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
 
 You can [read more](https://docs.codat.io/using-the-api/authentication) about authentication at Codat and managing API keys via the Portal UI or API.
 
@@ -248,9 +248,6 @@ req = shared.Profile(
     redirect_url='https://bobs-burgers.{countrySuffix}/{companyId}',
     white_list_urls=[
         'https://bobs-burgers.com',
-        'https://bobs-burgers.com',
-        'https://bobs-burgers.com',
-        'https://bobs-burgers.com',
     ],
 )
 
@@ -290,47 +287,17 @@ s = codatcommon.CodatCommon(
 )
 
 req = operations.UpdateProfileSyncSettingsRequestBody(
-    client_id='367f7975-267b-439b-90c6-a6040ee680f3',
+    client_id='07aff1a3-a2fa-4946-b739-251aa52c3f5a',
     overrides_defaults=False,
     settings=[
         shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
+            data_type=shared.DataType.INVOICES,
             fetch_on_first_link=False,
             is_locked=False,
             months_to_sync=24,
             sync_from_utc='2022-10-23T00:00:00.000Z',
             sync_from_window=24,
-            sync_order=449950,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=613064,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=902349,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=99280,
+            sync_order=13571,
             sync_schedule=24,
         ),
     ],

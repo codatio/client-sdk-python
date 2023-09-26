@@ -1,4 +1,4 @@
-# supplemental_data
+# SupplementalData
 
 ## Overview
 
@@ -33,22 +33,19 @@ s = codatcommon.CodatCommon(
 req = operations.ConfigureSupplementalDataRequest(
     supplemental_data_configuration=shared.SupplementalDataConfiguration(
         supplemental_data_config={
-            "reiciendis": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
-                data_source='est',
+            "quasi": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
+                data_source='error',
                 pull_data={
-                    "laborum": 'dolores',
-                    "dolorem": 'corporis',
-                    "explicabo": 'nobis',
+                    "temporibus": 'laborum',
                 },
                 push_data={
-                    "omnis": 'nemo',
-                    "minima": 'excepturi',
+                    "quasi": 'reiciendis',
                 },
             ),
         },
     ),
     data_type=operations.ConfigureSupplementalDataDataType.INVOICES,
-    platform_key='accusantium',
+    platform_key='gbol',
 )
 
 res = s.supplemental_data.configure(req)
@@ -90,7 +87,7 @@ s = codatcommon.CodatCommon(
 
 req = operations.GetSupplementalDataConfigurationRequest(
     data_type=operations.GetSupplementalDataConfigurationDataType.INVOICES,
-    platform_key='iure',
+    platform_key='gbol',
 )
 
 res = s.supplemental_data.get_configuration(req)
