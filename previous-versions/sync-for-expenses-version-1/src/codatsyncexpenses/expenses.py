@@ -66,7 +66,7 @@ class Expenses:
 
     
     def update_expense_dataset(self, request: operations.UpdateExpenseDatasetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateExpenseDatasetResponse:
-        r"""Update expense-transactions
+        r"""Update expense transactions
         Update an expense transaction
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

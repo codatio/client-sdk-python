@@ -14,7 +14,7 @@ class TransactionStatus:
         
     
     def get_sync_transaction(self, request: operations.GetSyncTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncTransactionResponse:
-        r"""Get Sync Transaction
+        r"""Get sync transaction
         Gets the status of a transaction for a sync
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -63,7 +63,7 @@ class TransactionStatus:
 
     
     def list_sync_transactions(self, request: operations.ListSyncTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSyncTransactionsResponse:
-        r"""Get Sync transactions
+        r"""Get sync transactions
         Get's the transactions and status for a sync
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

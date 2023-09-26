@@ -1,4 +1,4 @@
-# sync_status
+# SyncStatus
 
 ## Overview
 
@@ -8,7 +8,7 @@ Check the status of ongoing or previous expense syncs.
 
 * [get_last_successful_sync](#get_last_successful_sync) - Last successful sync
 * [get_latest_sync](#get_latest_sync) - Latest sync status
-* [get_sync_by_id](#get_sync_by_id) - Get Sync status
+* [get_sync_by_id](#get_sync_by_id) - Get sync status
 * [list_syncs](#list_syncs) - List sync statuses
 
 ## get_last_successful_sync

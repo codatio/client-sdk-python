@@ -28,7 +28,9 @@ from .recordref import *
 from .security import *
 from .supplier import *
 from .synccompletewebhook import *
+from .synccompletewebhookdata import *
 from .syncfailedwebhook import *
+from .syncfailedwebhookdata import *
 from .syncinitiated import *
 from .syncstartedwebhook import *
 from .taxratemappinginfo import *

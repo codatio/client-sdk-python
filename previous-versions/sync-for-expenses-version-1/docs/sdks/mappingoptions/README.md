@@ -1,4 +1,4 @@
-# mapping_options
+# MappingOptions
 
 ## Overview
 

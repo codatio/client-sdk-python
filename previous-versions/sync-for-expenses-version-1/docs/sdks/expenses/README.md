@@ -1,4 +1,4 @@
-# expenses
+# Expenses
 
 ## Overview
 
@@ -7,7 +7,7 @@ Create expense datasets and upload receipts.
 ### Available Operations
 
 * [create_expense_dataset](#create_expense_dataset) - Create expense-transactions
-* [update_expense_dataset](#update_expense_dataset) - Update expense-transactions
+* [update_expense_dataset](#update_expense_dataset) - Update expense transactions
 * [upload_attachment](#upload_attachment) - Upload attachment
 
 ## create_expense_dataset
@@ -36,7 +36,7 @@ req = operations.CreateExpenseDatasetRequest(
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
                 currency='GBP',
-                currency_rate=Decimal('6027.63'),
+                currency_rate=Decimal('8442.66'),
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
                 issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
@@ -108,7 +108,7 @@ req = operations.UpdateExpenseDatasetRequest(
             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
         ),
         currency='GBP',
-        currency_rate=Decimal('5448.83'),
+        currency_rate=Decimal('8579.46'),
         issue_date='2022-06-28T00:00:00.000Z',
         lines=[
             shared.ExpenseTransactionLine(
@@ -129,7 +129,7 @@ req = operations.UpdateExpenseDatasetRequest(
         ],
         merchant_name='Amazon UK',
         notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type='illum',
+        type='corrupti',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
@@ -172,8 +172,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UploadAttachmentRequest(
     request_body=operations.UploadAttachmentRequestBody(
-        content='vel'.encode(),
-        request_body='error',
+        content='illum'.encode(),
+        request_body='vel',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
