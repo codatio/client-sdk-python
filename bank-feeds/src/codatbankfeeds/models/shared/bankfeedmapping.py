@@ -52,6 +52,7 @@ class BankFeedMapping:
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
     status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    r"""The status."""
     target_account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountId'), 'exclude': lambda f: f is None }})
     r"""Unique ID for the target account in the accounting platform."""
     target_account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountName'), 'exclude': lambda f: f is None }})

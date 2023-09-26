@@ -38,22 +38,22 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='corporis',
+        account_id='nobis',
         transactions=[
             shared.CreateBankTransaction(
-                amount=Decimal('1289.26'),
-                balance=Decimal('7506.86'),
+                amount=Decimal('3154.28'),
+                balance=Decimal('6078.31'),
                 date_='2022-10-23T00:00:00.000Z',
-                description='omnis',
-                id='55907aff-1a3a-42fa-9467-739251aa52c3',
+                description='minima',
+                id='907aff1a-3a2f-4a94-a773-9251aa52c3f5',
             ),
         ],
     ),
-    account_id='EILBDVJVNUAGVKRQ',
+    account_id='7110701885',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=368725,
+    timeout_in_minutes=820994,
 )
 
 res = s.transactions.create(req)
@@ -93,7 +93,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='ad019da1-ffe7-48f0-97b0-074f15471b5e',
+    push_operation_key='019da1ff-e78f-4097-b007-4f15471b5e6e',
 )
 
 res = s.transactions.get_create_operation(req)
@@ -136,7 +136,7 @@ req = operations.ListCreateOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='commodi',
+    query='quae',
 )
 
 res = s.transactions.list_create_operations(req)
