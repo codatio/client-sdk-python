@@ -22,7 +22,7 @@ class Customer:
 
     A customer is a person or organisation that buys goods or services. From the Customers endpoints, you can retrieve a [list of all the customers of a company](https://api.codat.io/swagger/index.html#/Customers/get_companies__companyId__data_customers).
 
-    Customers' data links to accounts receivable [invoices](https://docs.codat.io/accounting-api#/schemas/Invoice).
+    Customers' data links to accounts receivable [invoices](https://docs.codat.io/sync-for-expenses-api#/schemas/Invoice).
     """
     status: shared_customerstatus.CustomerStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of customer."""

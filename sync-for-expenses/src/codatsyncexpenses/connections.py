@@ -68,8 +68,8 @@ class Connections:
 
     
     def create_partner_expense_connection(self, request: operations.CreatePartnerExpenseConnectionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePartnerExpenseConnectionResponse:
-        r"""Create Partner Expense connection
-        Creates a Partner Expense data connection
+        r"""Create partner expense connection
+        Creates a partner expense data connection
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

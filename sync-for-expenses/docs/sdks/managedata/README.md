@@ -69,7 +69,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
+    dataset_id='fd2ed028-921c-4ddc-a926-01fb576b0d5f',
 )
 
 res = s.manage_data.get_pull_operation(req)
@@ -112,7 +112,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='in',
+    query='perferendis',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -197,7 +197,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='11e5b7fd-2ed0-4289-a1cd-dc692601fb57',
+    connection_id='d30c5fbb-2587-4053-a02c-73d5fe9b90c2',
     data_type=shared.DataType.INVOICES,
 )
 

@@ -14,7 +14,7 @@ class Sync:
         
     
     def get(self, request: operations.GetSyncByIDRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncByIDResponse:
-        r"""Get Sync status
+        r"""Get sync status
         Get the sync status for a specified sync
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

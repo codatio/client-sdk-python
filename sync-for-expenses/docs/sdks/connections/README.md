@@ -7,7 +7,7 @@ Create and manage partner expense connection.
 ### Available Operations
 
 * [create](#create) - Create connection
-* [create_partner_expense_connection](#create_partner_expense_connection) - Create Partner Expense connection
+* [create_partner_expense_connection](#create_partner_expense_connection) - Create partner expense connection
 * [delete](#delete) - Delete connection
 * [get](#get) - Get connection
 * [list](#list) - List connections
@@ -33,7 +33,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.CreateConnectionRequest(
     request_body=operations.CreateConnectionRequestBody(
-        platform_key='saepe',
+        platform_key='gbol',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -59,7 +59,7 @@ if res.connection is not None:
 
 ## create_partner_expense_connection
 
-Creates a Partner Expense data connection
+Creates a partner expense data connection
 
 ### Example Usage
 
@@ -198,7 +198,7 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='fuga',
+    query='quidem',
 )
 
 res = s.connections.list(req)
@@ -238,7 +238,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UnlinkConnectionRequest(
     request_body=operations.UnlinkConnectionUpdateConnection(
-        status=shared.DataConnectionStatus.LINKED,
+        status=shared.DataConnectionStatus.PENDING_AUTH,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

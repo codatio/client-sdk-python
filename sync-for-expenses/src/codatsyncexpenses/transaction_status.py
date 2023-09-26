@@ -14,7 +14,7 @@ class TransactionStatus:
         
     
     def get(self, request: operations.GetSyncTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncTransactionResponse:
-        r"""Get Sync Transaction
+        r"""Get sync transaction
         Gets the status of a transaction for a sync
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

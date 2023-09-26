@@ -13,13 +13,13 @@ Suppliers
 
 ## create
 
-The *Create supplier* endpoint creates a new [supplier](https://docs.codat.io/accounting-api#/schemas/Supplier) for a given company's connection.
+The *Create supplier* endpoint creates a new [supplier](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) for a given company's connection.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 **Integration-specific behaviour**
 
-Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/accounting-api#/operations/get-create-update-suppliers-model).
+Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/sync-for-expenses-api#/operations/get-create-update-suppliers-model).
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support creating an account.
 
@@ -40,40 +40,41 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Purdystead',
-                country='Antarctica (the territory South of 60 deg S)',
-                line1='porro',
-                line2='consequuntur',
-                postal_code='60562-9926',
-                region='dolorum',
-                type=shared.AccountingAddressType.BILLING,
+                city='Funkton',
+                country='Azerbaijan',
+                line1='ipsa',
+                line2='iure',
+                postal_code='38693',
+                region='natus',
+                type=shared.AccountingAddressType.UNKNOWN,
             ),
         ],
-        contact_name='pariatur',
-        default_currency='provident',
-        email_address='nobis',
-        id='bf486333-23f9-4b77-b3a4-100674ebf692',
+        contact_name='atque',
+        default_currency='sit',
+        email_address='fugiat',
+        id='1ba77a89-ebf7-437a-a420-3ce5e6a95d8a',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='+44 25691 154789',
-        registration_number='fugiat',
+        phone='01224 658 999',
+        registration_number='quaerat',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.ARCHIVED,
+        status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "dolorum": {
-                    "iusto": 'voluptate',
+                "quod": {
+                    "officiis": 'qui',
                 },
             },
         ),
         supplier_name='dolorum',
-        tax_number='deleniti',
+        tax_number='a',
     ),
+    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=607045,
+    timeout_in_minutes=456130,
 )
 
 res = s.suppliers.create(req)
@@ -99,7 +100,7 @@ if res.create_supplier_response is not None:
 
 The *Get supplier* endpoint returns a single supplier for a given supplierId.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support getting a specific supplier.
 
@@ -120,7 +121,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='EILBDVJVNUAGVKRQ',
+    supplier_id='7110701885',
 )
 
 res = s.suppliers.get(req)
@@ -144,9 +145,9 @@ if res.supplier is not None:
 
 ## list
 
-The *List suppliers* endpoint returns a list of [suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) for a given company's connection.
+The *List suppliers* endpoint returns a list of [suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) for a given company's connection.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/sync-for-expenses-api#/operations/refresh-company-data).
     
@@ -168,7 +169,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='distinctio',
+    query='iusto',
 )
 
 res = s.suppliers.list(req)
@@ -192,13 +193,13 @@ if res.suppliers is not None:
 
 ## update
 
-The *Update supplier* endpoint updates an existing [supplier](https://docs.codat.io/accounting-api#/schemas/Supplier) for a given company's connection.
+The *Update supplier* endpoint updates an existing [supplier](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) for a given company's connection.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 **Integration-specific behaviour**
 
-Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/accounting-api#/operations/get-create-update-suppliers-model).
+Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/sync-for-expenses-api#/operations/get-create-update-suppliers-model).
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support creating an account.
 
@@ -219,42 +220,43 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Lake Havasu City',
-                country='Croatia',
-                line1='voluptate',
-                line2='id',
-                postal_code='21027-8393',
-                region='deserunt',
-                type=shared.AccountingAddressType.BILLING,
+                city='Port Ulises',
+                country='Czech Republic',
+                line1='tempore',
+                line2='accusamus',
+                postal_code='32954',
+                region='sit',
+                type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='minima',
-        default_currency='repellendus',
-        email_address='totam',
-        id='a0d446ce-2af7-4a73-8f3b-e453f870b326',
+        contact_name='neque',
+        default_currency='sed',
+        email_address='vel',
+        id='b5a73429-cdb1-4a84-a2bb-679d2322715b',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='(877) 492-8687',
-        registration_number='deserunt',
+        phone='+44 25691 154789',
+        registration_number='cumque',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ARCHIVED,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "incidunt": {
-                    "qui": 'cupiditate',
+                "et": {
+                    "saepe": 'ipsum',
                 },
             },
         ),
-        supplier_name='maxime',
-        tax_number='pariatur',
+        supplier_name='veritatis',
+        tax_number='nobis',
     ),
+    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
     supplier_id='7110701885',
-    timeout_in_minutes=117531,
+    timeout_in_minutes=731694,
 )
 
 res = s.suppliers.update(req)
