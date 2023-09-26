@@ -12,7 +12,9 @@ from typing import Optional
 @dataclasses.dataclass
 class GetBillCreditNoteRequest:
     bill_credit_note_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'billCreditNoteId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a bill credit note."""
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     
 
 
@@ -21,11 +23,14 @@ class GetBillCreditNoteRequest:
 @dataclasses.dataclass
 class GetBillCreditNoteResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     bill_credit_note: Optional[shared_billcreditnote.BillCreditNote] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

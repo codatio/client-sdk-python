@@ -40,21 +40,21 @@ req = operations.CreateJournalRequest(
     journal=shared.Journal(
         created_on='2022-10-23T00:00:00.000Z',
         has_children=False,
-        id='00b607f3-c93c-473b-9da3-f2ceda7e23f2',
+        id='700b607f-3c93-4c73-b9da-3f2ceda7e23f',
         journal_code='explicabo',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Dr. Elaine Bernhard',
-        parent_id='delectus',
+        name='Mr. Marcia Fritsch',
+        parent_id='deserunt',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.JournalStatus.ARCHIVED,
-        type='in',
+        status=shared.JournalStatus.UNKNOWN,
+        type='distinctio',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=349993,
+    timeout_in_minutes=450224,
 )
 
 res = s.journals.create(req)
@@ -101,7 +101,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='labore',
+    journal_id='exercitationem',
 )
 
 res = s.journals.get(req)
@@ -198,7 +198,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='numquam',
+    query='labore',
 )
 
 res = s.journals.list(req)
