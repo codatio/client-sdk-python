@@ -76,7 +76,7 @@ class Settings:
 
     
     def delete_api_key(self, request: operations.DeleteAPIKeyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteAPIKeyResponse:
-        r"""Delete api key
+        r"""Delete API key
         Use the *Delete API keys* endpoint to delete an existing API key, providing its valid `id` as a parameter. Note that this operation is not reversible.
 
         [API keys](https://docs.codat.io/platform-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word \"Basic\" and a space with your API key.
