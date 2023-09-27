@@ -1,4 +1,5 @@
-# AccountsReceivable.Customers
+# AccountsReceivableCustomers
+(*accounts_receivable.customers*)
 
 ### Available Operations
 

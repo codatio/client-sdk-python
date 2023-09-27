@@ -1,4 +1,5 @@
-# AccountsPayable.Bills
+# AccountsPayableBills
+(*accounts_payable.bills*)
 
 ### Available Operations
 

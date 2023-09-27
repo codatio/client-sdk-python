@@ -1,4 +1,5 @@
-# FinancialStatements.Accounts
+# FinancialStatementsAccounts
+(*financial_statements.accounts*)
 
 ### Available Operations
 

@@ -1,4 +1,5 @@
-# Sales.PaymentMethods
+# SalesPaymentMethods
+(*sales.payment_methods*)
 
 ### Available Operations
 

@@ -1,4 +1,5 @@
-# AccountingBankData.Accounts
+# AccountingBankDataAccounts
+(*accounting_bank_data.accounts*)
 
 ### Available Operations
 

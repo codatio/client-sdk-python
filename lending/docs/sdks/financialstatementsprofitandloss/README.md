@@ -1,4 +1,5 @@
-# FinancialStatements.ProfitAndLoss
+# FinancialStatementsProfitAndLoss
+(*financial_statements.profit_and_loss*)
 
 ### Available Operations
 

@@ -1,4 +1,5 @@
-# Transactions.DirectCosts
+# TransactionsDirectCosts
+(*transactions.direct_costs*)
 
 ### Available Operations
 

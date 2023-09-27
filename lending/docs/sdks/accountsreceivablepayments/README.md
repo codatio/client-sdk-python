@@ -1,4 +1,5 @@
-# AccountsReceivable.Payments
+# AccountsReceivablePayments
+(*accounts_receivable.payments*)
 
 ### Available Operations
 

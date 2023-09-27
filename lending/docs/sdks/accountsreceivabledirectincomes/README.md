@@ -1,4 +1,5 @@
-# AccountsReceivable.DirectIncomes
+# AccountsReceivableDirectIncomes
+(*accounts_receivable.direct_incomes*)
 
 ### Available Operations
 
