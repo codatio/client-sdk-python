@@ -38,14 +38,14 @@ if res.company is not None:
 ## Available Resources and Operations
 
 
-### [AdvancedControls](docs/sdks/advancedcontrols/README.md)
+### [advanced_controls](docs/sdks/advancedcontrols/README.md)
 
 * [create_company](docs/sdks/advancedcontrols/README.md#create_company) - Create company
 * [get_configuration](docs/sdks/advancedcontrols/README.md#get_configuration) - Get company configuration
 * [list_companies](docs/sdks/advancedcontrols/README.md#list_companies) - List companies
 * [set_configuration](docs/sdks/advancedcontrols/README.md#set_configuration) - Set configuration
 
-### [Connections](docs/sdks/connections/README.md)
+### [connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [get_sync_flow_url](docs/sdks/connections/README.md#get_sync_flow_url) - Start new sync flow
@@ -53,12 +53,12 @@ if res.company is not None:
 * [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
 * [update_connection](docs/sdks/connections/README.md#update_connection) - Update connection
 
-### [Integrations](docs/sdks/integrations/README.md)
+### [integrations](docs/sdks/integrations/README.md)
 
 * [get_branding](docs/sdks/integrations/README.md#get_branding) - Get branding for an integration
 * [list](docs/sdks/integrations/README.md#list) - List integrations
 
-### [Sync](docs/sdks/sync/README.md)
+### [sync](docs/sdks/sync/README.md)
 
 * [get](docs/sdks/sync/README.md#get) - Get sync status
 * [get_last_successful_sync](docs/sdks/sync/README.md#get_last_successful_sync) - Last successful sync
@@ -68,7 +68,7 @@ if res.company is not None:
 * [request](docs/sdks/sync/README.md#request) - Initiate new sync
 * [request_for_date_range](docs/sdks/sync/README.md#request_for_date_range) - Initiate sync for specific range
 
-### [SyncFlowSettings](docs/sdks/syncflowsettings/README.md)
+### [sync_flow_settings](docs/sdks/syncflowsettings/README.md)
 
 * [get_config_text_sync_flow](docs/sdks/syncflowsettings/README.md#get_config_text_sync_flow) - Get preferences for text fields
 * [get_visible_accounts](docs/sdks/syncflowsettings/README.md#get_visible_accounts) - List visible accounts
@@ -79,8 +79,6 @@ if res.company is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -94,8 +92,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
