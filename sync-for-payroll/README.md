@@ -67,14 +67,14 @@ if res.create_account_response is not None:
 ## Available Resources and Operations
 
 
-### [Accounts](docs/sdks/accounts/README.md)
+### [accounts](docs/sdks/accounts/README.md)
 
 * [create](docs/sdks/accounts/README.md#create) - Create account
 * [get](docs/sdks/accounts/README.md#get) - Get account
 * [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
 * [list](docs/sdks/accounts/README.md#list) - List accounts
 
-### [Companies](docs/sdks/companies/README.md)
+### [companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
@@ -82,11 +82,11 @@ if res.create_account_response is not None:
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [CompanyInfo](docs/sdks/companyinfo/README.md)
+### [company_info](docs/sdks/companyinfo/README.md)
 
 * [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
 
-### [Connections](docs/sdks/connections/README.md)
+### [connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [delete](docs/sdks/connections/README.md#delete) - Delete connection
@@ -94,7 +94,7 @@ if res.create_account_response is not None:
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [JournalEntries](docs/sdks/journalentries/README.md)
+### [journal_entries](docs/sdks/journalentries/README.md)
 
 * [create](docs/sdks/journalentries/README.md#create) - Create journal entry
 * [delete](docs/sdks/journalentries/README.md#delete) - Delete journal entry
@@ -102,14 +102,14 @@ if res.create_account_response is not None:
 * [get_create_model](docs/sdks/journalentries/README.md#get_create_model) - Get create journal entry model
 * [list](docs/sdks/journalentries/README.md#list) - List journal entries
 
-### [Journals](docs/sdks/journals/README.md)
+### [journals](docs/sdks/journals/README.md)
 
 * [create](docs/sdks/journals/README.md#create) - Create journal
 * [get](docs/sdks/journals/README.md#get) - Get journal
 * [get_create_model](docs/sdks/journals/README.md#get_create_model) - Get create journal model
 * [list](docs/sdks/journals/README.md#list) - List journals
 
-### [ManageData](docs/sdks/managedata/README.md)
+### [manage_data](docs/sdks/managedata/README.md)
 
 * [get_data_status](docs/sdks/managedata/README.md#get_data_status) - Get data status
 * [get_pull_operation](docs/sdks/managedata/README.md#get_pull_operation) - Get pull operation
@@ -119,7 +119,7 @@ if res.create_account_response is not None:
 * [refresh_all_data_types](docs/sdks/managedata/README.md#refresh_all_data_types) - Refresh all data
 * [refresh_data_type](docs/sdks/managedata/README.md#refresh_data_type) - Refresh data type
 
-### [TrackingCategories](docs/sdks/trackingcategories/README.md)
+### [tracking_categories](docs/sdks/trackingcategories/README.md)
 
 * [get](docs/sdks/trackingcategories/README.md#get) - Get tracking categories
 * [list](docs/sdks/trackingcategories/README.md#list) - List tracking categories
@@ -128,8 +128,6 @@ if res.create_account_response is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -143,8 +141,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
