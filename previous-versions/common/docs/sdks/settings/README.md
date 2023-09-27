@@ -1,4 +1,5 @@
 # Settings
+(*settings*)
 
 ## Overview
 
@@ -7,7 +8,7 @@ Manage your Codat instance.
 ### Available Operations
 
 * [create_api_key](#create_api_key) - Create API key
-* [delete_api_key](#delete_api_key) - Delete api key
+* [delete_api_key](#delete_api_key) - Delete API key
 * [~~get_profile~~](#get_profile) - Get profile :warning: **Deprecated**
 * [get_sync_settings](#get_sync_settings) - Get sync settings
 * [list_api_keys](#list_api_keys) - List API keys
