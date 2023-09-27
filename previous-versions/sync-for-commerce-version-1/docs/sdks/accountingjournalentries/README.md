@@ -1,4 +1,5 @@
 # AccountingJournalEntries
+(*accounting_journal_entries*)
 
 ## Overview
 

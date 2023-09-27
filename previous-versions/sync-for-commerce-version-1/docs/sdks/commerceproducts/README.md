@@ -1,4 +1,5 @@
 # CommerceProducts
+(*commerce_products*)
 
 ## Overview
 

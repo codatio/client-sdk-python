@@ -66,89 +66,89 @@ if res.accounting_create_account_response is not None:
 ## Available Resources and Operations
 
 
-### [AccountingAccounts](docs/sdks/accountingaccounts/README.md)
+### [accounting_accounts](docs/sdks/accountingaccounts/README.md)
 
 * [create_accounting_account](docs/sdks/accountingaccounts/README.md#create_accounting_account) - Create account
 * [get_accounting_account](docs/sdks/accountingaccounts/README.md#get_accounting_account) - Get account
 * [list_accounting_accounts](docs/sdks/accountingaccounts/README.md#list_accounting_accounts) - List accounts
 
-### [AccountingBankAccounts](docs/sdks/accountingbankaccounts/README.md)
+### [accounting_bank_accounts](docs/sdks/accountingbankaccounts/README.md)
 
 * [get_accounting_bank_account](docs/sdks/accountingbankaccounts/README.md#get_accounting_bank_account) - Get bank account
 * [list_accounting_bank_accounts](docs/sdks/accountingbankaccounts/README.md#list_accounting_bank_accounts) - List bank accounts
 
-### [AccountingCompanyInfo](docs/sdks/accountingcompanyinfo/README.md)
+### [accounting_company_info](docs/sdks/accountingcompanyinfo/README.md)
 
 * [get_accounting_company_info](docs/sdks/accountingcompanyinfo/README.md#get_accounting_company_info) - Get company info
 * [refresh](docs/sdks/accountingcompanyinfo/README.md#refresh) - Refresh company info
 
-### [AccountingCreditNotes](docs/sdks/accountingcreditnotes/README.md)
+### [accounting_credit_notes](docs/sdks/accountingcreditnotes/README.md)
 
 * [create_accounting_credit_note](docs/sdks/accountingcreditnotes/README.md#create_accounting_credit_note) - Create credit note
 
-### [AccountingCustomers](docs/sdks/accountingcustomers/README.md)
+### [accounting_customers](docs/sdks/accountingcustomers/README.md)
 
 * [create_accounting_customer](docs/sdks/accountingcustomers/README.md#create_accounting_customer) - Create customer
 
-### [AccountingDirectIncomes](docs/sdks/accountingdirectincomes/README.md)
+### [accounting_direct_incomes](docs/sdks/accountingdirectincomes/README.md)
 
 * [create_accounting_direct_income](docs/sdks/accountingdirectincomes/README.md#create_accounting_direct_income) - Create direct income
 
-### [AccountingInvoices](docs/sdks/accountinginvoices/README.md)
+### [accounting_invoices](docs/sdks/accountinginvoices/README.md)
 
 * [create_accounting_invoice](docs/sdks/accountinginvoices/README.md#create_accounting_invoice) - Create invoice
 
-### [AccountingJournalEntries](docs/sdks/accountingjournalentries/README.md)
+### [accounting_journal_entries](docs/sdks/accountingjournalentries/README.md)
 
 * [create_accounting_journal_entry](docs/sdks/accountingjournalentries/README.md#create_accounting_journal_entry) - Create journal entry
 
-### [AccountingPayments](docs/sdks/accountingpayments/README.md)
+### [accounting_payments](docs/sdks/accountingpayments/README.md)
 
 * [create_accounting_payment](docs/sdks/accountingpayments/README.md#create_accounting_payment) - Create payment
 
-### [CommerceCompanyInfo](docs/sdks/commercecompanyinfo/README.md)
+### [commerce_company_info](docs/sdks/commercecompanyinfo/README.md)
 
 * [get_commerce_company_info](docs/sdks/commercecompanyinfo/README.md#get_commerce_company_info) - Get company info
 
-### [CommerceCustomers](docs/sdks/commercecustomers/README.md)
+### [commerce_customers](docs/sdks/commercecustomers/README.md)
 
 * [get_commerce_customer](docs/sdks/commercecustomers/README.md#get_commerce_customer) - Get customer
 * [list_commerce_customers](docs/sdks/commercecustomers/README.md#list_commerce_customers) - List customers
 
-### [CommerceLocations](docs/sdks/commercelocations/README.md)
+### [commerce_locations](docs/sdks/commercelocations/README.md)
 
 * [get_commerce_location](docs/sdks/commercelocations/README.md#get_commerce_location) - Get location
 * [list_commerce_locations](docs/sdks/commercelocations/README.md#list_commerce_locations) - List locations
 
-### [CommerceOrders](docs/sdks/commerceorders/README.md)
+### [commerce_orders](docs/sdks/commerceorders/README.md)
 
 * [get_commerce_order](docs/sdks/commerceorders/README.md#get_commerce_order) - Get order
 * [list_commerce_orders](docs/sdks/commerceorders/README.md#list_commerce_orders) - List orders
 
-### [CommercePayments](docs/sdks/commercepayments/README.md)
+### [commerce_payments](docs/sdks/commercepayments/README.md)
 
 * [get_commerce_payment](docs/sdks/commercepayments/README.md#get_commerce_payment) - Get payment
 * [get_method](docs/sdks/commercepayments/README.md#get_method) - Get payment method
 * [list_commerce_payments](docs/sdks/commercepayments/README.md#list_commerce_payments) - List payments
 * [list_methods](docs/sdks/commercepayments/README.md#list_methods) - List payment methods
 
-### [CommerceProducts](docs/sdks/commerceproducts/README.md)
+### [commerce_products](docs/sdks/commerceproducts/README.md)
 
 * [get_commerce_product](docs/sdks/commerceproducts/README.md#get_commerce_product) - Get product
 * [list_commerce_products](docs/sdks/commerceproducts/README.md#list_commerce_products) - List products
 
-### [CommerceTransactions](docs/sdks/commercetransactions/README.md)
+### [commerce_transactions](docs/sdks/commercetransactions/README.md)
 
 * [get_commerce_transaction](docs/sdks/commercetransactions/README.md#get_commerce_transaction) - Get transaction
 * [list_commerce_transactions](docs/sdks/commercetransactions/README.md#list_commerce_transactions) - List transactions
 
-### [Companies](docs/sdks/companies/README.md)
+### [companies](docs/sdks/companies/README.md)
 
 * [delete_company](docs/sdks/companies/README.md#delete_company) - Delete a company
 * [get_company](docs/sdks/companies/README.md#get_company) - Get company
 * [update_company](docs/sdks/companies/README.md#update_company) - Update company
 
-### [CompanyManagement](docs/sdks/companymanagement/README.md)
+### [company_management](docs/sdks/companymanagement/README.md)
 
 * [create_company](docs/sdks/companymanagement/README.md#create_company) - Create sync for commerce company
 * [create_connection](docs/sdks/companymanagement/README.md#create_connection) - Create connection
@@ -156,28 +156,28 @@ if res.accounting_create_account_response is not None:
 * [list_connections](docs/sdks/companymanagement/README.md#list_connections) - List data connections
 * [update_connection](docs/sdks/companymanagement/README.md#update_connection) - Update data connection
 
-### [Configuration](docs/sdks/configuration/README.md)
+### [configuration](docs/sdks/configuration/README.md)
 
 * [get_configuration](docs/sdks/configuration/README.md#get_configuration) - Retrieve config preferences set for a company
 * [set_configuration](docs/sdks/configuration/README.md#set_configuration) - Create or update configuration
 
-### [Connections](docs/sdks/connections/README.md)
+### [connections](docs/sdks/connections/README.md)
 
 * [delete_connection](docs/sdks/connections/README.md#delete_connection) - Delete connection
 * [get_connection](docs/sdks/connections/README.md#get_connection) - Get connection
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [Integrations](docs/sdks/integrations/README.md)
+### [integrations](docs/sdks/integrations/README.md)
 
 * [get_integration_branding](docs/sdks/integrations/README.md#get_integration_branding) - Get branding for an integration
 * [list_integrations](docs/sdks/integrations/README.md#list_integrations) - List integrations
 
-### [PushData](docs/sdks/pushdata/README.md)
+### [push_data](docs/sdks/pushdata/README.md)
 
 * [get_operation](docs/sdks/pushdata/README.md#get_operation) - Get push operation
 * [list_operations](docs/sdks/pushdata/README.md#list_operations) - List push operations
 
-### [RefreshData](docs/sdks/refreshdata/README.md)
+### [refresh_data](docs/sdks/refreshdata/README.md)
 
 * [all](docs/sdks/refreshdata/README.md#all) - Refresh all data
 * [by_data_type](docs/sdks/refreshdata/README.md#by_data_type) - Refresh data type
@@ -185,13 +185,13 @@ if res.accounting_create_account_response is not None:
 * [get_pull_operation](docs/sdks/refreshdata/README.md#get_pull_operation) - Get pull operation
 * [list_pull_operations](docs/sdks/refreshdata/README.md#list_pull_operations) - List pull operations
 
-### [Sync](docs/sdks/sync/README.md)
+### [sync](docs/sdks/sync/README.md)
 
 * [get_sync_status](docs/sdks/sync/README.md#get_sync_status) - Get status for a company's syncs
 * [request_sync](docs/sdks/sync/README.md#request_sync) - Sync new
 * [request_sync_for_date_range](docs/sdks/sync/README.md#request_sync_for_date_range) - Sync range
 
-### [SyncFlowPreferences](docs/sdks/syncflowpreferences/README.md)
+### [sync_flow_preferences](docs/sdks/syncflowpreferences/README.md)
 
 * [get_config_text_sync_flow](docs/sdks/syncflowpreferences/README.md#get_config_text_sync_flow) - Retrieve preferences for text fields on sync flow
 * [get_sync_flow_url](docs/sdks/syncflowpreferences/README.md#get_sync_flow_url) - Retrieve sync flow url
@@ -203,8 +203,6 @@ if res.accounting_create_account_response is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -218,8 +216,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
