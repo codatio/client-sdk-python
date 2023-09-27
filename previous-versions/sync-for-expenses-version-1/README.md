@@ -38,7 +38,7 @@ if res.company is not None:
 ## Available Resources and Operations
 
 
-### [Companies](docs/sdks/companies/README.md)
+### [companies](docs/sdks/companies/README.md)
 
 * [create_company](docs/sdks/companies/README.md#create_company) - Create company
 * [delete_company](docs/sdks/companies/README.md#delete_company) - Delete a company
@@ -46,12 +46,12 @@ if res.company is not None:
 * [list_companies](docs/sdks/companies/README.md#list_companies) - List companies
 * [update_company](docs/sdks/companies/README.md#update_company) - Update company
 
-### [Configuration](docs/sdks/configuration/README.md)
+### [configuration](docs/sdks/configuration/README.md)
 
 * [get_company_configuration](docs/sdks/configuration/README.md#get_company_configuration) - Get company configuration
 * [save_company_configuration](docs/sdks/configuration/README.md#save_company_configuration) - Set company configuration
 
-### [Connections](docs/sdks/connections/README.md)
+### [connections](docs/sdks/connections/README.md)
 
 * [create_connection](docs/sdks/connections/README.md#create_connection) - Create connection
 * [create_partner_expense_connection](docs/sdks/connections/README.md#create_partner_expense_connection) - Create partner expense connection
@@ -60,28 +60,28 @@ if res.company is not None:
 * [list_connections](docs/sdks/connections/README.md#list_connections) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [Expenses](docs/sdks/expenses/README.md)
+### [expenses](docs/sdks/expenses/README.md)
 
 * [create_expense_dataset](docs/sdks/expenses/README.md#create_expense_dataset) - Create expense-transactions
 * [update_expense_dataset](docs/sdks/expenses/README.md#update_expense_dataset) - Update expense transactions
 * [upload_attachment](docs/sdks/expenses/README.md#upload_attachment) - Upload attachment
 
-### [MappingOptions](docs/sdks/mappingoptions/README.md)
+### [mapping_options](docs/sdks/mappingoptions/README.md)
 
 * [get_mapping_options](docs/sdks/mappingoptions/README.md#get_mapping_options) - Mapping options
 
-### [Sync](docs/sdks/sync/README.md)
+### [sync](docs/sdks/sync/README.md)
 
 * [initiate_sync](docs/sdks/sync/README.md#initiate_sync) - Initiate sync
 
-### [SyncStatus](docs/sdks/syncstatus/README.md)
+### [sync_status](docs/sdks/syncstatus/README.md)
 
 * [get_last_successful_sync](docs/sdks/syncstatus/README.md#get_last_successful_sync) - Last successful sync
 * [get_latest_sync](docs/sdks/syncstatus/README.md#get_latest_sync) - Latest sync status
 * [get_sync_by_id](docs/sdks/syncstatus/README.md#get_sync_by_id) - Get sync status
 * [list_syncs](docs/sdks/syncstatus/README.md#list_syncs) - List sync statuses
 
-### [TransactionStatus](docs/sdks/transactionstatus/README.md)
+### [transaction_status](docs/sdks/transactionstatus/README.md)
 
 * [get_sync_transaction](docs/sdks/transactionstatus/README.md#get_sync_transaction) - Get sync transaction
 * [list_sync_transactions](docs/sdks/transactionstatus/README.md#list_sync_transactions) - Get sync transactions
@@ -90,8 +90,6 @@ if res.company is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -105,8 +103,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
