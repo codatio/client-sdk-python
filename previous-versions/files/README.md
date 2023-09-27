@@ -38,7 +38,7 @@ if res.data is not None:
 ## Available Resources and Operations
 
 
-### [Files](docs/sdks/files/README.md)
+### [files](docs/sdks/files/README.md)
 
 * [download_files](docs/sdks/files/README.md#download_files) - Download all files for a company
 * [list_files](docs/sdks/files/README.md#list_files) - List all files uploaded by a company
@@ -48,8 +48,6 @@ if res.data is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -63,8 +61,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
