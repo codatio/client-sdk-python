@@ -1,4 +1,5 @@
 # JournalEntries
+(*journal_entries*)
 
 ## Overview
 
