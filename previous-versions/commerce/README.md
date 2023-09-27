@@ -7,7 +7,7 @@
 </div>
 
 <!-- Start SDK Installation -->
-# SDK Installation
+## SDK Installation
 
 ```bash
 pip install codat-commerce
@@ -16,8 +16,6 @@ pip install codat-commerce
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import codatcommerce
 from codatcommerce.models import operations, shared
@@ -41,61 +39,59 @@ if res.company_info is not None:
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-# Available Resources and Operations
+## Available Resources and Operations
 
 
-## [CompanyInfo](docs/sdks/companyinfo/README.md)
+### [company_info](docs/sdks/companyinfo/README.md)
 
 * [get](docs/sdks/companyinfo/README.md#get) - Get company info
 
-## [Customers](docs/sdks/customers/README.md)
+### [customers](docs/sdks/customers/README.md)
 
 * [get](docs/sdks/customers/README.md#get) - Get customer
 * [list](docs/sdks/customers/README.md#list) - List customers
 
-## [Disputes](docs/sdks/disputes/README.md)
+### [disputes](docs/sdks/disputes/README.md)
 
 * [get](docs/sdks/disputes/README.md#get) - Get dispute
 * [list](docs/sdks/disputes/README.md#list) - List disputes
 
-## [Locations](docs/sdks/locations/README.md)
+### [locations](docs/sdks/locations/README.md)
 
 * [get](docs/sdks/locations/README.md#get) - Get location
 * [list](docs/sdks/locations/README.md#list) - List locations
 
-## [Orders](docs/sdks/orders/README.md)
+### [orders](docs/sdks/orders/README.md)
 
 * [get](docs/sdks/orders/README.md#get) - Get order
 * [list](docs/sdks/orders/README.md#list) - List orders
 
-## [Payments](docs/sdks/payments/README.md)
+### [payments](docs/sdks/payments/README.md)
 
 * [get](docs/sdks/payments/README.md#get) - Get payment
 * [get_method](docs/sdks/payments/README.md#get_method) - Get payment method
 * [list](docs/sdks/payments/README.md#list) - List payments
 * [list_methods](docs/sdks/payments/README.md#list_methods) - List payment methods
 
-## [Products](docs/sdks/products/README.md)
+### [products](docs/sdks/products/README.md)
 
 * [get](docs/sdks/products/README.md#get) - Get product
 * [get_category](docs/sdks/products/README.md#get_category) - Get product category
 * [list](docs/sdks/products/README.md#list) - List products
 * [list_categories](docs/sdks/products/README.md#list_categories) - List product categories
 
-## [TaxComponents](docs/sdks/taxcomponents/README.md)
+### [tax_components](docs/sdks/taxcomponents/README.md)
 
 * [get](docs/sdks/taxcomponents/README.md#get) - Get tax component
 * [list](docs/sdks/taxcomponents/README.md#list) - List tax components
 
-## [Transactions](docs/sdks/transactions/README.md)
+### [transactions](docs/sdks/transactions/README.md)
 
 * [get](docs/sdks/transactions/README.md#get) - Get transaction
 * [list](docs/sdks/transactions/README.md#list) - List transactions
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -107,8 +103,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
