@@ -43,12 +43,12 @@ if res.bank_feed_account_mapping_response is not None:
 ## Available Resources and Operations
 
 
-### [AccountMapping](docs/sdks/accountmapping/README.md)
+### [account_mapping](docs/sdks/accountmapping/README.md)
 
 * [create](docs/sdks/accountmapping/README.md#create) - Create bank feed account mapping
 * [get](docs/sdks/accountmapping/README.md#get) - List bank feed account mappings
 
-### [Companies](docs/sdks/companies/README.md)
+### [companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
@@ -56,7 +56,7 @@ if res.bank_feed_account_mapping_response is not None:
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [Connections](docs/sdks/connections/README.md)
+### [connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [delete](docs/sdks/connections/README.md#delete) - Delete connection
@@ -64,7 +64,7 @@ if res.bank_feed_account_mapping_response is not None:
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [SourceAccounts](docs/sdks/sourceaccounts/README.md)
+### [source_accounts](docs/sdks/sourceaccounts/README.md)
 
 * [create](docs/sdks/sourceaccounts/README.md#create) - Create source account
 * [delete](docs/sdks/sourceaccounts/README.md#delete) - Delete source account
@@ -73,7 +73,7 @@ if res.bank_feed_account_mapping_response is not None:
 * [list](docs/sdks/sourceaccounts/README.md#list) - List source accounts
 * [update](docs/sdks/sourceaccounts/README.md#update) - Update source account
 
-### [Transactions](docs/sdks/transactions/README.md)
+### [transactions](docs/sdks/transactions/README.md)
 
 * [create](docs/sdks/transactions/README.md#create) - Create bank transactions
 * [get_create_operation](docs/sdks/transactions/README.md#get_create_operation) - Get create operation
@@ -83,8 +83,6 @@ if res.bank_feed_account_mapping_response is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -98,8 +96,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
