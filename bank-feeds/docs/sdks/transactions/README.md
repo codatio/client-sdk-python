@@ -39,22 +39,26 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='nobis',
+        account_id='EILBDVJVNUAGVKRQ',
         transactions=[
-            shared.CreateBankTransaction(
-                amount=Decimal('3154.28'),
-                balance=Decimal('6078.31'),
-                date_='2022-10-23T00:00:00.000Z',
-                description='minima',
-                id='907aff1a-3a2f-4a94-a773-9251aa52c3f5',
+            shared.BankTransactions(
+                amount=Decimal('999.99'),
+                balance=Decimal('-999.99'),
+                cleared_on_date='2022-10-23T00:00:00.000Z',
+                counterparty='ACME INC',
+                description='Debit for Payment Id sdp-1-57379a43-c4b8-49f5-bd7c-699189ee7a60',
+                id='716422529',
+                reconciled=False,
+                reference='reference for transaction',
+                transaction_type=shared.BankTransactionsBankTransactionType.XFER,
             ),
         ],
     ),
-    account_id='7110701885',
+    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=820994,
+    timeout_in_minutes=325047,
 )
 
 res = s.transactions.create(req)
@@ -94,7 +98,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='019da1ff-e78f-4097-b007-4f15471b5e6e',
+    push_operation_key='907aff1a-3a2f-4a94-a773-9251aa52c3f5',
 )
 
 res = s.transactions.get_create_operation(req)
@@ -137,7 +141,7 @@ req = operations.ListCreateOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quae',
+    query='id',
 )
 
 res = s.transactions.list_create_operations(req)
