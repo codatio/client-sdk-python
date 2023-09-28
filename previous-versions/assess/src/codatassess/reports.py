@@ -13,6 +13,106 @@ class Reports:
         self.sdk_configuration = sdk_config
         
     
+    def generate_loan_summary(self, request: operations.GenerateLoanSummaryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GenerateLoanSummaryResponse:
+        r"""Generate loan summaries report
+        The _Generate loan summaries_ endpoint requests the generation of the Loan Summaries report.
+
+        Learn more about Codat's liabilities feature [here](https://docs.codat.io/lending/features/liabilities-overview).
+
+        Make sure you have [synced a company](https://docs.codat.io/codat-api#/operations/refresh-company-data) recently before calling the endpoint.
+        """
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GenerateLoanSummaryRequest, base_url, '/companies/{companyId}/reports/liabilities/loans', request)
+        headers = {}
+        query_params = utils.get_query_params(operations.GenerateLoanSummaryRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        global_retry_config = self.sdk_configuration.retry_config
+        retry_config = retries
+        if retry_config is None:
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+
+        def do_request():
+            return client.request('POST', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GenerateLoanSummaryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 202:
+            pass
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def generate_loan_transactions(self, request: operations.GenerateLoanTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GenerateLoanTransactionsResponse:
+        r"""Generate loan transactions report
+        The _Generate loan transactions_ endpoint requests the generation of the Loan Transactions report.
+
+        Learn more about Codat's liabilities feature [here](https://docs.codat.io/lending/features/liabilities-overview).
+
+        Make sure you have [synced a company](https://docs.codat.io/codat-api#/operations/refresh-company-data) recently before calling the endpoint.
+        """
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GenerateLoanTransactionsRequest, base_url, '/companies/{companyId}/reports/liabilities/loans/transactions', request)
+        headers = {}
+        query_params = utils.get_query_params(operations.GenerateLoanTransactionsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        global_retry_config = self.sdk_configuration.retry_config
+        retry_config = retries
+        if retry_config is None:
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+
+        def do_request():
+            return client.request('POST', url, params=query_params, headers=headers)
+        
+        http_res = utils.retry(do_request, utils.Retries(retry_config, [
+            '408',
+            '429',
+            '5XX'
+        ]))
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GenerateLoanTransactionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 202:
+            pass
+        elif http_res.status_code in [401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def get_accounts_for_enhanced_balance_sheet(self, request: operations.GetAccountsForEnhancedBalanceSheetRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetAccountsForEnhancedBalanceSheetResponse:
         r"""Get enhanced balance sheet accounts
         The Enhanced Balance Sheet Accounts endpoint returns a list of categorized accounts that appear on a company’s Balance Sheet along with a balance per financial statement date.
@@ -472,13 +572,18 @@ class Reports:
 
     
     def get_loan_summary(self, request: operations.GetLoanSummaryRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetLoanSummaryResponse:
-        r"""Get enhanced loan summaries
-        Returns a summary of loan transactions identified for the SMB.
+        r"""Get loan summaries
+        The *Get loan summaries* endpoint returns a summary by integration type of all loans identified from a company's accounting, banking, and commerce integrations.
+
+        The endpoint returns a list of a company's [loan summaries](https://docs.codat.io/codat-api#/schemas/LoanSummary) for each valid data connection.
+
+        Make sure you have [synced a company](https://docs.codat.io/codat-api#/operations/refresh-company-data) recently before calling the endpoint.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetLoanSummaryRequest, base_url, '/companies/{companyId}/reports/enhancedLiabilities/loan', request)
+        url = utils.generate_url(operations.GetLoanSummaryRequest, base_url, '/companies/{companyId}/reports/liabilities/loans', request)
         headers = {}
+        query_params = utils.get_query_params(operations.GetLoanSummaryRequest, request)
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
@@ -493,7 +598,7 @@ class Reports:
                 retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
-            return client.request('GET', url, headers=headers)
+            return client.request('GET', url, params=query_params, headers=headers)
         
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
@@ -570,12 +675,16 @@ class Reports:
 
     
     def list_loan_transactions(self, request: operations.ListLoanTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListLoanTransactionsResponse:
-        r"""List enhanced loan transactions
-        Returns a list of transactions identified as relating to a loan.
+        r"""List loan transactions
+        The *List loan transactions* endpoint returns all [loan transactions](https://docs.codat.io/codat-api#/schemas/LoanTransactions) identified from a company's accounting, banking, and commerce integrations.
+
+        This detail gives analysts a better idea of the loan obligations a company may have.
+
+        Make sure you have [synced a company](https://docs.codat.io/codat-api#/operations/refresh-company-data) recently before calling the endpoint.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.ListLoanTransactionsRequest, base_url, '/companies/{companyId}/reports/enhancedLiabilities/loan/transactions', request)
+        url = utils.generate_url(operations.ListLoanTransactionsRequest, base_url, '/companies/{companyId}/reports/liabilities/loans/transactions', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListLoanTransactionsRequest, request)
         headers['Accept'] = 'application/json'

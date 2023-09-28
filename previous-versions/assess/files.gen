@@ -18,6 +18,8 @@ src/codatassess/models/operations/generate_excel_report.py
 src/codatassess/models/operations/get_accounting_marketing_metrics.py
 src/codatassess/models/operations/get_excel_report.py
 src/codatassess/models/operations/get_excel_report_generation_status.py
+src/codatassess/models/operations/generate_loan_summary.py
+src/codatassess/models/operations/generate_loan_transactions.py
 src/codatassess/models/operations/get_accounts_for_enhanced_balance_sheet.py
 src/codatassess/models/operations/get_accounts_for_enhanced_profit_and_loss.py
 src/codatassess/models/operations/get_commerce_customer_retention_metrics.py
@@ -113,6 +115,12 @@ docs/models/operations/getexcelreport200applicationoctetstream.md
 docs/models/operations/getexcelreportresponse.md
 docs/models/operations/getexcelreportgenerationstatusrequest.md
 docs/models/operations/getexcelreportgenerationstatusresponse.md
+docs/models/operations/generateloansummarysourcetype.md
+docs/models/operations/generateloansummaryrequest.md
+docs/models/operations/generateloansummaryresponse.md
+docs/models/operations/generateloantransactionssourcetype.md
+docs/models/operations/generateloantransactionsrequest.md
+docs/models/operations/generateloantransactionsresponse.md
 docs/models/operations/getaccountsforenhancedbalancesheetrequest.md
 docs/models/operations/getaccountsforenhancedbalancesheetresponse.md
 docs/models/operations/getaccountsforenhancedprofitandlossrequest.md
@@ -131,6 +139,7 @@ docs/models/operations/getenhancedcashflowtransactionsrequest.md
 docs/models/operations/getenhancedcashflowtransactionsresponse.md
 docs/models/operations/getenhancedinvoicesreportrequest.md
 docs/models/operations/getenhancedinvoicesreportresponse.md
+docs/models/operations/getloansummarysourcetype.md
 docs/models/operations/getloansummaryrequest.md
 docs/models/operations/getloansummaryresponse.md
 docs/models/operations/getrecurringrevenuemetricsrequest.md

@@ -58,6 +58,8 @@ if res.details is not None:
 
 ### [reports](docs/sdks/reports/README.md)
 
+* [generate_loan_summary](docs/sdks/reports/README.md#generate_loan_summary) - Generate loan summaries report
+* [generate_loan_transactions](docs/sdks/reports/README.md#generate_loan_transactions) - Generate loan transactions report
 * [get_accounts_for_enhanced_balance_sheet](docs/sdks/reports/README.md#get_accounts_for_enhanced_balance_sheet) - Get enhanced balance sheet accounts
 * [get_accounts_for_enhanced_profit_and_loss](docs/sdks/reports/README.md#get_accounts_for_enhanced_profit_and_loss) - Get enhanced profit and loss accounts
 * [get_commerce_customer_retention_metrics](docs/sdks/reports/README.md#get_commerce_customer_retention_metrics) - Get customer retention metrics
@@ -67,9 +69,9 @@ if res.details is not None:
 * [get_commerce_revenue_metrics](docs/sdks/reports/README.md#get_commerce_revenue_metrics) - Get commerce revenue metrics
 * [get_enhanced_cash_flow_transactions](docs/sdks/reports/README.md#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
 * [get_enhanced_invoices_report](docs/sdks/reports/README.md#get_enhanced_invoices_report) - Get enhanced invoices report
-* [get_loan_summary](docs/sdks/reports/README.md#get_loan_summary) - Get enhanced loan summaries
+* [get_loan_summary](docs/sdks/reports/README.md#get_loan_summary) - Get loan summaries
 * [get_recurring_revenue_metrics](docs/sdks/reports/README.md#get_recurring_revenue_metrics) - Get key subscription revenue metrics
-* [list_loan_transactions](docs/sdks/reports/README.md#list_loan_transactions) - List enhanced loan transactions
+* [list_loan_transactions](docs/sdks/reports/README.md#list_loan_transactions) - List loan transactions
 * [request_recurring_revenue_metrics](docs/sdks/reports/README.md#request_recurring_revenue_metrics) - Generate key subscription revenue metrics
 <!-- End SDK Available Operations -->
 
