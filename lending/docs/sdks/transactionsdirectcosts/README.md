@@ -34,7 +34,7 @@ req = operations.DownloadAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='cum',
+    direct_cost_id='nesciunt',
 )
 
 res = s.transactions.direct_costs.download_attachment(req)
@@ -82,7 +82,7 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingDirectCostRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='blanditiis',
+    direct_cost_id='culpa',
 )
 
 res = s.transactions.direct_costs.get(req)
@@ -129,7 +129,7 @@ req = operations.GetAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='quas',
+    direct_cost_id='corrupti',
 )
 
 res = s.transactions.direct_costs.get_attachment(req)
@@ -178,7 +178,7 @@ req = operations.ListAccountingDirectCostsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='hic',
+    query='pariatur',
 )
 
 res = s.transactions.direct_costs.list(req)
@@ -224,7 +224,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingDirectCostAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='nesciunt',
+    direct_cost_id='totam',
 )
 
 res = s.transactions.direct_costs.list_attachments(req)

@@ -36,25 +36,25 @@ req = operations.CreateTransferRequest(
     accounting_transfer=shared.AccountingTransfer(
         contact_ref=shared.AccountingTransferContactRef(
             data_type=shared.DataType.INVOICES,
-            id='ac366c8d-d6b1-4442-9074-74778a7bd466',
+            id='c366c8dd-6b14-4429-8747-4778a7bd466d',
         ),
         date_='2022-10-23T00:00:00.000Z',
         deposited_record_refs=[
             shared.RecordRef(
-                data_type='journalEntry',
-                id='8c10ab3c-dca4-4251-904e-523c7e0bc717',
+                data_type='accountTransaction',
+                id='c10ab3cd-ca42-4519-84e5-23c7e0bc7178',
             ),
         ],
-        description='totam',
+        description='accusamus',
         from_=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='e4796f2a-70c6-4882-82aa-482562f222e9',
-                name='Carl Koch',
+                id='4796f2a7-0c68-4828-aaa4-82562f222e98',
+                name='Tamara Vandervort IV',
             ),
-            amount=Decimal('829.71'),
-            currency='USD',
+            amount=Decimal('8003.79'),
+            currency='EUR',
         ),
-        id='cbe61e6b-7b95-4bc0-ab3c-20c4f3789fd8',
+        id='e61e6b7b-95bc-40ab-bc20-c4f3789fd871',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
@@ -62,30 +62,30 @@ req = operations.CreateTransferRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "a": {
-                    "error": 'sint',
+                "sint": {
+                    "pariatur": 'possimus',
                 },
             },
         ),
         to=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='dd2efd12-1aa6-4f1e-a74b-db04f1575608',
-                name='Rosemarie Jacobs',
+                id='2efd121a-a6f1-4e67-8bdb-04f15756082d',
+                name='Cassandra Ward V',
             ),
-            amount=Decimal('6802.7'),
+            amount=Decimal('9453.02'),
             currency='GBP',
         ),
         tracking_category_refs=[
             shared.TrackingCategoryRef(
-                id='9f1d1705-1339-4d08-886a-1840394c2607',
-                name='Elisa Mosciski',
+                id='d1705133-9d08-4086-a184-0394c26071f9',
+                name='Camille Hirthe III',
             ),
         ],
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=374323,
+    timeout_in_minutes=310067,
 )
 
 res = s.loan_writeback.transfers.create(req)

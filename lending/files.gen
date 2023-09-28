@@ -93,6 +93,8 @@ src/codatlending/models/operations/get_excel_report_generation_status.py
 src/codatlending/models/operations/download_files.py
 src/codatlending/models/operations/list_files.py
 src/codatlending/models/operations/upload_files.py
+src/codatlending/models/operations/generate_loan_summary.py
+src/codatlending/models/operations/generate_loan_transactions.py
 src/codatlending/models/operations/get_loan_summary.py
 src/codatlending/models/operations/list_loan_transactions.py
 src/codatlending/models/operations/get_accounting_bill_credit_note.py
@@ -525,6 +527,13 @@ docs/models/operations/listfilesresponse.md
 docs/models/operations/uploadfilesrequestbody.md
 docs/models/operations/uploadfilesrequest.md
 docs/models/operations/uploadfilesresponse.md
+docs/models/operations/generateloansummarysourcetype.md
+docs/models/operations/generateloansummaryrequest.md
+docs/models/operations/generateloansummaryresponse.md
+docs/models/operations/generateloantransactionssourcetype.md
+docs/models/operations/generateloantransactionsrequest.md
+docs/models/operations/generateloantransactionsresponse.md
+docs/models/operations/getloansummarysourcetype.md
 docs/models/operations/getloansummaryrequest.md
 docs/models/operations/getloansummaryresponse.md
 docs/models/operations/listloantransactionssourcetype.md

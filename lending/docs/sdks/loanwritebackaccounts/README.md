@@ -34,11 +34,11 @@ s = codatlending.CodatLending(
 
 req = operations.CreateAccountRequest(
     accounting_account=shared.AccountingAccount(
-        currency='GBP',
+        currency='USD',
         current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
-        fully_qualified_name='Fixed Asset',
+        fully_qualified_name='Cash On Hand',
         id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
         is_bank_account=False,
         metadata=shared.Metadata(
@@ -53,16 +53,16 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'laboriosam',
+                    'fuga',
                 ],
-                property='hic',
+                property='in',
             ),
         ],
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=902599,
+    timeout_in_minutes=359508,
 )
 
 res = s.loan_writeback.accounts.create(req)

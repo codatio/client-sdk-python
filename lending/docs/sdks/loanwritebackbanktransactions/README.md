@@ -34,22 +34,22 @@ s = codatlending.CodatLending(
 
 req = operations.CreateBankTransactionsRequest(
     accounting_create_bank_transactions=shared.AccountingCreateBankTransactions(
-        account_id='laborum',
+        account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
         transactions=[
             shared.CreateBankAccountTransaction(
-                amount=Decimal('6563.3'),
-                balance=Decimal('3172.02'),
+                amount=Decimal('7783.46'),
+                balance=Decimal('1965.82'),
                 date_='2022-10-23T00:00:00.000Z',
-                description='quo',
-                id='3f5ad019-da1f-4fe7-8f09-7b0074f15471',
+                description='ipsam',
+                id='ad019da1-ffe7-48f0-97b0-074f15471b5e',
             ),
         ],
     ),
-    account_id='harum',
+    account_id='commodi',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=317983,
+    timeout_in_minutes=918236,
 )
 
 res = s.loan_writeback.bank_transactions.create(req)
@@ -97,7 +97,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='accusamus',
+    account_id='quae',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

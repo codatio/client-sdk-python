@@ -5,7 +5,14 @@ import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
 from ..shared import loansummary as shared_loansummary
+from enum import Enum
 from typing import Optional
+
+class GetLoanSummarySourceType(str, Enum):
+    r"""Data source type."""
+    BANKING = 'banking'
+    COMMERCE = 'commerce'
+    ACCOUNTING = 'accounting'
 
 
 
@@ -13,6 +20,8 @@ from typing import Optional
 class GetLoanSummaryRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a company."""
+    source_type: GetLoanSummarySourceType = dataclasses.field(metadata={'query_param': { 'field_name': 'sourceType', 'style': 'form', 'explode': True }})
+    r"""Data source type."""
     
 
 

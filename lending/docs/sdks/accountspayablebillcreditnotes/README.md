@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillCreditNoteRequest(
-    bill_credit_note_id='minus',
+    bill_credit_note_id='iusto',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -79,7 +79,7 @@ req = operations.ListAccountingBillCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='placeat',
+    query='excepturi',
 )
 
 res = s.accounts_payable.bill_credit_notes.list(req)

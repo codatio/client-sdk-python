@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingAccountTransactionRequest(
-    account_transaction_id='ullam',
+    account_transaction_id='quas',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -81,7 +81,7 @@ req = operations.ListAccountingAccountTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='adipisci',
+    query='hic',
 )
 
 res = s.transactions.account_transactions.list(req)

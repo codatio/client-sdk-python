@@ -93,6 +93,8 @@ if res.accounting_bank_transactions is not None:
 
 ### [liabilities](docs/sdks/liabilities/README.md)
 
+* [generate_loan_summary](docs/sdks/liabilities/README.md#generate_loan_summary) - Generate loan summaries report
+* [generate_loan_transactions](docs/sdks/liabilities/README.md#generate_loan_transactions) - Generate loan transactions report
 * [get_loan_summary](docs/sdks/liabilities/README.md#get_loan_summary) - Get loan summaries
 * [list_loan_transactions](docs/sdks/liabilities/README.md#list_loan_transactions) - List loan transactions
 

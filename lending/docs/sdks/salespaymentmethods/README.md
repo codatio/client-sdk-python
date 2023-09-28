@@ -32,7 +32,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommercePaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_method_id='aspernatur',
+    payment_method_id='minima',
 )
 
 res = s.sales.payment_methods.get(req)
@@ -81,7 +81,7 @@ req = operations.ListCommercePaymentMethodsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptas',
+    query='nobis',
 )
 
 res = s.sales.payment_methods.list(req)

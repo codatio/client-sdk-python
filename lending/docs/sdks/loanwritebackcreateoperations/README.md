@@ -24,7 +24,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='6e13b99d-488e-41e9-9e45-0ad2abd44269',
+    push_operation_key='3b99d488-e1e9-41e4-90ad-2abd44269802',
 )
 
 res = s.loan_writeback.create_operations.get(req)
@@ -67,7 +67,7 @@ req = operations.ListCreateOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quos',
+    query='assumenda',
 )
 
 res = s.loan_writeback.create_operations.list(req)

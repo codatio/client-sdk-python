@@ -32,7 +32,7 @@ s = codatlending.CodatLending(
 
 req = operations.DownloadAccountingBillAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    bill_id='excepturi',
+    bill_id='temporibus',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -80,7 +80,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillRequest(
-    bill_id='nisi',
+    bill_id='ab',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -126,7 +126,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingBillAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    bill_id='recusandae',
+    bill_id='quis',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -176,7 +176,7 @@ req = operations.ListAccountingBillsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='temporibus',
+    query='veritatis',
 )
 
 res = s.accounts_payable.bills.list(req)
@@ -220,7 +220,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.ListAccountingBillAttachmentsRequest(
-    bill_id='ab',
+    bill_id='deserunt',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

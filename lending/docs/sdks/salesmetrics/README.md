@@ -55,8 +55,8 @@ req = operations.GetCommerceCustomerRetentionMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=233420,
-    period_length=358107,
+    number_of_periods=58356,
+    period_length=916727,
     period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
@@ -122,9 +122,9 @@ req = operations.GetCommerceLifetimeValueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=385237,
-    period_length=58356,
-    period_unit=shared.PeriodUnit.YEAR,
+    number_of_periods=113816,
+    period_length=881721,
+    period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
 
@@ -190,9 +190,9 @@ req = operations.GetCommerceRevenueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=730709,
-    period_length=113816,
-    period_unit=shared.PeriodUnit.YEAR,
+    number_of_periods=272437,
+    period_length=132815,
+    period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
 

@@ -33,28 +33,28 @@ s = codatlending.CodatLending(
 
 req = operations.CreateBankAccountRequest(
     accounting_bank_account=shared.AccountingBankAccount(
-        account_name='fuga',
-        account_number='in',
-        account_type=shared.AccountingBankAccountType.CREDIT,
-        available_balance=Decimal('6130.64'),
-        balance=Decimal('4370.32'),
-        currency='EUR',
-        i_ban='quidem',
-        id='10faaa23-52c5-4955-907a-ff1a3a2fa946',
-        institution='quam',
+        account_name='iste',
+        account_number='iure',
+        account_type=shared.AccountingBankAccountType.DEBIT,
+        available_balance=Decimal('6976.31'),
+        balance=Decimal('992.8'),
+        currency='GBP',
+        i_ban='reiciendis',
+        id='aaa2352c-5955-4907-aff1-a3a2fa946773',
+        institution='error',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='velit',
-        overdraft_limit=Decimal('6235.1'),
-        sort_code='quia',
+        nominal_code='quis',
+        overdraft_limit=Decimal('1103.75'),
+        sort_code='laborum',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=110375,
+    timeout_in_minutes=317202,
 )
 
 res = s.loan_writeback.bank_accounts.create(req)

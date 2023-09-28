@@ -35,41 +35,41 @@ req = operations.CreateSupplierRequest(
     accounting_supplier=shared.AccountingSupplier(
         addresses=[
             shared.AccountingAddress(
-                city='Ankundingworth',
-                country='Guadeloupe',
-                line1='nulla',
-                line2='fugit',
-                postal_code='99474-0623',
-                region='ea',
-                type=shared.AccountingAddressType.UNKNOWN,
+                city='Germantown',
+                country='Switzerland',
+                line1='fugit',
+                line2='porro',
+                postal_code='94740-6234',
+                region='aspernatur',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='vel',
-        default_currency='possimus',
-        email_address='magnam',
-        id='36813f16-d9f5-4fce-ac55-6146c3e250fb',
+        contact_name='possimus',
+        default_currency='magnam',
+        email_address='ratione',
+        id='6813f16d-9f5f-4ce6-8556-146c3e250fb0',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='+44 25691 154789',
-        registration_number='deleniti',
+        phone='(877) 492-8687',
+        registration_number='impedit',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "fugit": {
-                    "accusamus": 'inventore',
+                "accusamus": {
+                    "inventore": 'non',
                 },
             },
         ),
-        supplier_name='non',
-        tax_number='et',
+        supplier_name='et',
+        tax_number='dolorum',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=677412,
+    timeout_in_minutes=672048,
 )
 
 res = s.loan_writeback.suppliers.create(req)
