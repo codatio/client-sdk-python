@@ -39,7 +39,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='magnam',
+        account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
         transactions=[
             shared.CreateBankAccountTransaction(
                 amount=Decimal('8917.73'),
