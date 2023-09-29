@@ -14,11 +14,11 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingAccountRequest(
     accounting_account=shared.AccountingAccount(
-        currency='USD',
+        currency='GBP',
         current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
-        fully_qualified_name='Fixed Asset',
+        fully_qualified_name='Cash On Hand',
         id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
         is_bank_account=False,
         metadata=shared.AccountingAccountMetadata(
@@ -33,15 +33,15 @@ req = operations.CreateAccountingAccountRequest(
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'unde',
+                    'Gasoline',
                 ],
-                property='nulla',
+                property='orchid',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=544883,
+    timeout_in_minutes=977465,
 )
 
 res = s.accounting_accounts.create_accounting_account(req)

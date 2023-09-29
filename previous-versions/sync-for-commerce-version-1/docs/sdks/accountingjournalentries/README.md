@@ -38,30 +38,30 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.CreateAccountingJournalEntryRequest(
     accounting_journal_entry=shared.AccountingJournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='nam',
-        id='5a341814-3010-4421-813d-5208ece7e253',
+        description='Upgradable 24/7 parallelism',
+        id='<ID>',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='b668451c-6c6e-4205-a16d-eab3fec9578a',
-                    name='Marjorie Hickle',
+                    id='<ID>',
+                    name='Northwest Minivan',
                 ),
-                currency='aspernatur',
-                description='ducimus',
-                net_amount=Decimal('2005.16'),
+                currency='Denar',
+                description='Cross-platform motivating migration',
+                net_amount=Decimal('9996.19'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
-                            data_type='accountTransaction',
-                            id='8418d162-309f-4b09-a992-1aefb9f58c4d',
+                            data_type='invoice',
+                            id='<ID>',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.AccountingJournalEntryJournalReference(
-            id='86e68e4b-e056-4013-b59d-a757a59ecfef',
-            name='Loretta Tremblay DDS',
+            id='<ID>',
+            name='facilitate',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -69,14 +69,14 @@ req = operations.CreateAccountingJournalEntryRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.AccountingJournalEntryRecordReference(
-            data_type='journalEntry',
-            id='383c2beb-4773-473c-8d72-f64d1db1f2c4',
+            data_type='accountTransaction',
+            id='<ID>',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "illo": {
-                    "accusantium": 'vel',
+                "eum": {
+                    "labore": 'Corporate',
                 },
             },
         ),
@@ -84,7 +84,7 @@ req = operations.CreateAccountingJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=107617,
+    timeout_in_minutes=174830,
 )
 
 res = s.accounting_journal_entries.create_accounting_journal_entry(req)

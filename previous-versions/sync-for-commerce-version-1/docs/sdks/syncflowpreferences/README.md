@@ -65,9 +65,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key='odio',
-    commerce_key='eaque',
-    merchant_identifier='saepe',
+    accounting_key='Manager',
+    commerce_key='payment',
+    merchant_identifier='Rupiah tertiary Zealand',
 )
 
 res = s.sync_flow_preferences.get_sync_flow_url(req)
@@ -106,7 +106,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetVisibleAccountsRequest(
-    client_id='189dbb30-fcb3-43ea-855b-197cd44e2f52',
+    client_id='86fe9741-738d-4f2c-8e96-9c3f84156e91',
     platform_key='gbol',
 )
 
@@ -146,9 +146,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "facere": shared.Localization(
+    "perferendis": shared.Localization(
         required=False,
-        text='laudantium',
+        text='Gasoline Cotton azure',
     ),
 }
 
@@ -190,7 +190,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'odit',
+            'Coordinator',
         ],
     ),
     platform_key='gbol',

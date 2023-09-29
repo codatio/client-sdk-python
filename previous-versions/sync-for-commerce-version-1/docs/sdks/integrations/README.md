@@ -69,7 +69,7 @@ req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='cupiditate',
+    query='Hybrid',
 )
 
 res = s.integrations.list_integrations(req)

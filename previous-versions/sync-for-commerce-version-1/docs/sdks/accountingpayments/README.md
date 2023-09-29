@@ -38,27 +38,27 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.CreateAccountingPaymentRequest(
     accounting_payment=shared.AccountingPayment(
         account_ref=shared.AccountRef(
-            id='e96349e1-cf9e-406e-ba43-7000ae6b6bc9',
-            name='Alfredo Wilkinson',
+            id='<ID>',
+            name='female Romaguera property',
         ),
-        currency='USD',
-        currency_rate=Decimal('8975.43'),
+        currency='GBP',
+        currency_rate=Decimal('2253.13'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='animi',
-            id='c55a9741-d311-4352-965b-b8a720261143',
+            company_name='Rohan - Stoltenberg',
+            id='<ID>',
         ),
         date_='2022-10-23T00:00:00.000Z',
-        id='e139dbc2-259b-41ab-9a8c-070e1084cb06',
+        id='<ID>',
         lines=[
             shared.PaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=Decimal('1729.51'),
+                amount=Decimal('2946.18'),
                 links=[
                     shared.PaymentLineLink(
-                        amount=Decimal('8247.98'),
-                        currency_rate=Decimal('1072.1'),
-                        id='ad879eeb-9665-4b85-afbd-02bae0be2d78',
-                        type=shared.PaymentLinkType.UNLINKED,
+                        amount=Decimal('7256.22'),
+                        currency_rate=Decimal('9866.42'),
+                        id='<ID>',
+                        type=shared.PaymentLinkType.PAYMENT,
                     ),
                 ],
             ),
@@ -67,22 +67,22 @@ req = operations.CreateAccountingPaymentRequest(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='corporis',
-        payment_method_ref='error',
-        reference='earum',
+        note='East HDD',
+        payment_method_ref='Diesel',
+        reference='lumen',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "recusandae": {
-                    "similique": 'ut',
+                "ab": {
+                    "eligendi": 'nimble',
                 },
             },
         ),
-        total_amount=Decimal('6937.46'),
+        total_amount=Decimal('4535.25'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=339631,
+    timeout_in_minutes=324249,
 )
 
 res = s.accounting_payments.create_accounting_payment(req)
