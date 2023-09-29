@@ -49,3 +49,13 @@ Based on:
 - [python v1.2.1] sync-for-payroll
 ### Releases
 - [PyPI v1.2.1] https://pypi.org/project/codat-sync-for-payroll/1.2.1 - sync-for-payroll
+
+## 2023-09-29 00:10:24
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Sync-Payroll.yaml
+- Speakeasy CLI 1.91.3 (2.139.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v1.3.0] sync-for-payroll
+### Releases
+- [PyPI v1.3.0] https://pypi.org/project/codat-sync-for-payroll/1.3.0 - sync-for-payroll

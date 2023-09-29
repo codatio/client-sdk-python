@@ -42,30 +42,30 @@ s = codatsyncpayroll.CodatSyncPayroll(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='temporibus',
-        id='151a05df-c2dd-4f7c-878c-a1ba928fc816',
+        description='Multi-tiered motivating standardization',
+        id='<ID>',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='742cb739-2059-4293-96fe-a7596eb10faa',
-                    name='Ernest Ebert',
+                    id='<ID>',
+                    name='innovative blue',
                 ),
-                currency='nobis',
-                description='enim',
-                net_amount=Decimal('6078.31'),
+                currency='Zimbabwe Dollar',
+                description='Secured exuding throughput',
+                net_amount=Decimal('8915.1'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
-                            data_type='invoice',
-                            id='5907aff1-a3a2-4fa9-8677-39251aa52c3f',
+                            data_type='journalEntry',
+                            id='<ID>',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='5ad019da-1ffe-478f-897b-0074f15471b5',
-            name='Mrs. Leslie VonRueden',
+            id='<ID>',
+            name='orange Northwest',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -74,13 +74,13 @@ req = operations.CreateJournalEntryRequest(
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.JournalEntryRecordReference(
             data_type='transfer',
-            id='488e1e91-e450-4ad2-abd4-4269802d502a',
+            id='<ID>',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.JournalEntrySupplementalData(
             content={
-                "tempora": {
-                    "facilis": 'tempore',
+                "cupiditate": {
+                    "assumenda": 'volt',
                 },
             },
         ),
@@ -89,7 +89,7 @@ req = operations.CreateJournalEntryRequest(
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=962189,
+    timeout_in_minutes=656256,
 )
 
 res = s.journal_entries.create(req)
@@ -160,8 +160,8 @@ req = operations.DeleteJournalEntryRequest(
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='eum',
-    timeout_in_minutes=248753,
+    journal_entry_id='Van complexity',
+    timeout_in_minutes=952479,
 )
 
 res = s.journal_entries.delete(req)
@@ -208,7 +208,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='eligendi',
+    journal_entry_id='Northeast Hatchback Kia',
 )
 
 res = s.journal_entries.get(req)
@@ -305,7 +305,7 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sint',
+    query='Northeast Metal Canada',
 )
 
 res = s.journal_entries.list(req)

@@ -72,7 +72,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='4469b6e2-1419-4598-90af-a563e2516fe4',
+    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
 )
 
 res = s.manage_data.get_pull_operation(req)
@@ -112,7 +112,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='c8b711e5-b7fd-42ed-8289-21cddc692601',
+    push_operation_key='2a6486f4-00c4-40bd-900d-b29c15ad0581',
 )
 
 res = s.manage_data.get_push_operation(req)
@@ -155,7 +155,7 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='maiores',
+    query='Northeast Metal Canada',
 )
 
 res = s.manage_data.list(req)
@@ -198,7 +198,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quidem',
+    query='Dock Elegant Buckinghamshire',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -283,7 +283,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='576b0d5f-0d30-4c5f-bb25-87053202c73d',
+    connection_id='d6258093-be98-4f60-90e1-ca6bcd49fb9a',
     data_type=shared.DataType.INVOICES,
 )
 

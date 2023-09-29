@@ -41,22 +41,22 @@ req = operations.CreateJournalRequest(
     journal=shared.Journal(
         created_on='2022-10-23T00:00:00.000Z',
         has_children=False,
-        id='9e9a3efa-77df-4b14-8d66-ae395efb9ba8',
-        journal_code='deleniti',
+        id='<ID>',
+        journal_code='Configuration Money',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Sandy Huels',
-        parent_id='omnis',
+        name='shred',
+        parent_id='technology East',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.JournalStatus.UNKNOWN,
-        type='nihil',
+        type='male',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=301575,
+    timeout_in_minutes=855952,
 )
 
 res = s.journals.create(req)
@@ -103,7 +103,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='distinctio',
+    journal_id='Northeast Hatchback Kia',
 )
 
 res = s.journals.get(req)
@@ -200,7 +200,7 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='id',
+    query='Northeast Metal Canada',
 )
 
 res = s.journals.list(req)
