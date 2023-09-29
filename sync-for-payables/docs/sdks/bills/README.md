@@ -47,123 +47,123 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.CreateBillRequest(
     bill=shared.Bill(
-        amount_due=Decimal('9167.27'),
-        currency='EUR',
-        currency_rate=Decimal('1138.16'),
+        amount_due=Decimal('4865.89'),
+        currency='USD',
+        currency_rate=Decimal('6384.24'),
         due_date='2022-10-23T00:00:00.000Z',
-        id='a426555b-a3c2-4874-8ed5-3b88f3a8d8f5',
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillLineItem(
                 account_ref=shared.AccountRef(
-                    id='0b2f2fb7-b194-4a27-ab26-916fe1f08f42',
-                    name='Herbert Treutel',
+                    id='<ID>',
+                    name='South',
                 ),
-                description='occaecati',
-                discount_amount=Decimal('5520.78'),
-                discount_percentage=Decimal('9757.52'),
+                description='Vision-oriented responsive function',
+                discount_amount=Decimal('9510.62'),
+                discount_percentage=Decimal('8915.1'),
                 is_direct_cost=False,
                 item_ref=shared.ItemRef(
-                    id='447f603e-8b44-45e8-8ca5-5efd20e457e1',
-                    name='Jorge Langosh',
+                    id='<ID>',
+                    name='deposit',
                 ),
-                quantity=Decimal('6805.15'),
-                sub_total=Decimal('5300.89'),
-                tax_amount=Decimal('6223.85'),
+                quantity=Decimal('3015.1'),
+                sub_total=Decimal('899.64'),
+                tax_amount=Decimal('7150.4'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('9447.08'),
-                    id='be3a5aa8-e482-44d0-ab40-75088e518620',
-                    name='Bernice Ullrich II',
+                    effective_tax_rate=Decimal('7926.2'),
+                    id='<ID>',
+                    name='Gasoline Screen mobile',
                 ),
-                total_amount=Decimal('9688.65'),
+                total_amount=Decimal('6562.56'),
                 tracking=shared.Tracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='3b1194b8-abf6-403a-b9f9-dfe0ab7da8a5',
-                            name='Ms. Alexandra VonRueden',
+                            id='<ID>',
+                            name='Durham after',
                         ),
                     ],
                     customer_ref=shared.TrackingCustomerRef(
-                        company_name='asperiores',
-                        id='86bc173d-689e-4ee9-926f-8d986e881ead',
+                        company_name='Fay - Durgan',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
-                    is_rebilled_to=shared.BilledToType.PROJECT,
+                    is_billed_to=shared.BilledToType.UNKNOWN,
+                    is_rebilled_to=shared.BilledToType.CUSTOMER,
                     project_ref=shared.TrackingProjectReference(
-                        id='0e101256-3f94-4e29-a973-e922a57a15be',
-                        name='Meghan Batz IV',
+                        id='<ID>',
+                        name='Fiat',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='07e2b6e3-ab88-445f-8597-a60ff2a54a31',
-                        name='Arturo Hagenes',
+                        id='<ID>',
+                        name='Grocery Borders Northwest',
                     ),
                 ],
-                unit_amount=Decimal('2840'),
+                unit_amount=Decimal('6519.85'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='adipisci',
+        note='animated Minivan',
         payment_allocations=[
             shared.BillPaymentAllocation(
                 allocation=shared.BillPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='USD',
-                    currency_rate=Decimal('4326.06'),
-                    total_amount=Decimal('3679.27'),
+                    currency_rate=Decimal('808.14'),
+                    total_amount=Decimal('2006.64'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='e7956f92-51a5-4a9d-a660-ff57bfaad4f9',
-                        name='Miss Timmy Runolfsdottir',
+                        id='<ID>',
+                        name='West',
                     ),
                     currency='USD',
-                    currency_rate=Decimal('820.57'),
-                    id='2c103264-8dc2-4f61-9199-ebfd0e9fe6c6',
-                    note='dolorem',
+                    currency_rate=Decimal('3379.66'),
+                    id='<ID>',
+                    note='Towels',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='cumque',
-                    total_amount=Decimal('6849.35'),
+                    reference='payment 1080p',
+                    total_amount=Decimal('2597.72'),
                 ),
             ),
         ],
         purchase_order_refs=[
             shared.BillPurchaseOrderReference(
-                id='3aed0117-9963-412f-9e04-771778ff61d0',
-                purchase_order_number='dicta',
+                id='<ID>',
+                purchase_order_number='silver Indiana',
             ),
         ],
-        reference='odio',
+        reference='Toyota Neptunium round',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.BillStatus.PARTIALLY_PAID,
-        sub_total=Decimal('4037.93'),
+        status=shared.BillStatus.OPEN,
+        sub_total=Decimal('9057.54'),
         supplemental_data=shared.BillSupplementalData(
             content={
-                "consectetur": {
-                    "aliquid": 'ipsa',
+                "in": {
+                    "pariatur": 'Dollar',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='a15db6a6-6065-49a1-adea-ab5851d6c645',
-            supplier_name='expedita',
+            id='<ID>',
+            supplier_name='South',
         ),
-        tax_amount=Decimal('299.5'),
-        total_amount=Decimal('5615.77'),
+        tax_amount=Decimal('4914.27'),
+        total_amount=Decimal('2663.33'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('7372.54'),
-                name='Doris Lemke MD',
+                amount=Decimal('4904.2'),
+                name='markets',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=665678,
+    timeout_in_minutes=924484,
 )
 
 res = s.bills.create(req)
@@ -291,7 +291,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.DeleteBillAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    bill_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -386,7 +386,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetBillRequest(
-    bill_id='EILBDVJVNUAGVKRQ',
+    bill_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -432,7 +432,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetBillAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    bill_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    bill_id='EILBDVJVNUAGVKRQ',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -531,7 +531,7 @@ req = operations.ListBillsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='fuga',
+    query='Northeast Metal Canada',
 )
 
 res = s.bills.list(req)
@@ -627,125 +627,125 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.UpdateBillRequest(
     bill=shared.Bill(
-        amount_due=Decimal('8913.15'),
+        amount_due=Decimal('8574.78'),
         currency='GBP',
-        currency_rate=Decimal('12.07'),
+        currency_rate=Decimal('5971.29'),
         due_date='2022-10-23T00:00:00.000Z',
-        id='e6f8c5f3-50d8-4cdb-9a34-181430104218',
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillLineItem(
                 account_ref=shared.AccountRef(
-                    id='3d5208ec-e7e2-453b-a684-51c6c6e205e1',
-                    name='Teri Thiel',
+                    id='<ID>',
+                    name='dock Quality redundant',
                 ),
-                description='sequi',
-                discount_amount=Decimal('9873.49'),
-                discount_percentage=Decimal('9180.92'),
+                description='Visionary bi-directional analyzer',
+                discount_amount=Decimal('2782.81'),
+                discount_percentage=Decimal('8965.01'),
                 is_direct_cost=False,
                 item_ref=shared.ItemRef(
-                    id='c9578a64-5842-473a-8418-d162309fb092',
-                    name='Miss Joey Dach',
+                    id='<ID>',
+                    name='withdrawal extend',
                 ),
-                quantity=Decimal('9768.02'),
-                sub_total=Decimal('7196.2'),
-                tax_amount=Decimal('6085.93'),
+                quantity=Decimal('2494.4'),
+                sub_total=Decimal('3668.07'),
+                tax_amount=Decimal('1395.79'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('9663.9'),
-                    id='58c4d86e-68e4-4be0-9601-3f59da757a59',
-                    name='Garrett Welch',
+                    effective_tax_rate=Decimal('6447.13'),
+                    id='<ID>',
+                    name='syndicate East Baht',
                 ),
-                total_amount=Decimal('4043.06'),
+                total_amount=Decimal('6298.17'),
                 tracking=shared.Tracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='6ef1caa3-383c-42be-b477-373c8d72f64d',
-                            name='Dr. Muriel Reinger',
+                            id='<ID>',
+                            name='guestbook driver users',
                         ),
                     ],
                     customer_ref=shared.TrackingCustomerRef(
-                        company_name='porro',
-                        id='4310661e-9634-49e1-8f9e-06e3a437000a',
+                        company_name='Schroeder - Nienow',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType.PROJECT,
-                    is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_rebilled_to=shared.BilledToType.UNKNOWN,
                     project_ref=shared.TrackingProjectReference(
-                        id='b6bc9b8f-759e-4ac5-9a97-41d311352965',
-                        name='Wm Legros',
+                        id='<ID>',
+                        name='Wooden Internal',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='20261143-5e13-49db-8225-9b1abda8c070',
-                        name='Walter Beatty',
+                        id='<ID>',
+                        name='Dodge brightly',
                     ),
                 ],
-                unit_amount=Decimal('7551.06'),
+                unit_amount=Decimal('7115.64'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='voluptatem',
+        note='frictionless haptic',
         payment_allocations=[
             shared.BillPaymentAllocation(
                 allocation=shared.BillPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='USD',
-                    currency_rate=Decimal('1729.51'),
-                    total_amount=Decimal('8247.98'),
+                    currency_rate=Decimal('8238.97'),
+                    total_amount=Decimal('5143.61'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='1ad879ee-b966-45b8-9efb-d02bae0be2d7',
-                        name='Fred Champlin',
+                        id='<ID>',
+                        name='Diesel Avon',
                     ),
-                    currency='EUR',
-                    currency_rate=Decimal('2393.37'),
-                    id='ea4b5197-f924-443d-a7ce-52b895c537c6',
-                    note='modi',
+                    currency='GBP',
+                    currency_rate=Decimal('8941.07'),
+                    id='<ID>',
+                    note='male hack',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='magnam',
-                    total_amount=Decimal('9149.71'),
+                    reference='absolve West',
+                    total_amount=Decimal('182.83'),
                 ),
             ),
         ],
         purchase_order_refs=[
             shared.BillPurchaseOrderReference(
-                id='fb0b3489-6c3c-4a5a-8fbe-2fd570757792',
-                purchase_order_number='error',
+                id='<ID>',
+                purchase_order_number='quisquam',
             ),
         ],
-        reference='veritatis',
+        reference='deliverables Ergonomic Money',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.BillStatus.PARTIALLY_PAID,
-        sub_total=Decimal('8667.89'),
+        status=shared.BillStatus.PAID,
+        sub_total=Decimal('4173.15'),
         supplemental_data=shared.BillSupplementalData(
             content={
-                "itaque": {
-                    "similique": 'optio',
+                "repellat": {
+                    "voluptatibus": 'Latvian',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='646ecb57-3409-4e3e-b1e5-a2b12eb07f11',
-            supplier_name='laboriosam',
+            id='<ID>',
+            supplier_name='Chips Omnigender tremendously',
         ),
-        tax_amount=Decimal('8634.71'),
-        total_amount=Decimal('7294.48'),
+        tax_amount=Decimal('9620.25'),
+        total_amount=Decimal('6952.8'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('5665.06'),
-                name='Maurice Haag',
+                amount=Decimal('3189.59'),
+                name='Benz',
             ),
         ],
     ),
-    bill_id='EILBDVJVNUAGVKRQ',
+    bill_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=574032,
+    timeout_in_minutes=523103,
 )
 
 res = s.bills.update(req)
@@ -794,10 +794,10 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.UploadBillAttachmentRequest(
     request_body=operations.UploadBillAttachmentRequestBody(
-        content='enim'.encode(),
-        request_body='hic',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
-    bill_id='7110701885',
+    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

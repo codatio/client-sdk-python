@@ -70,7 +70,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='4e472e80-2857-4a5b-8046-3a7d575f1400',
+    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
 )
 
 res = s.manage_data.get_pull_operation(req)
@@ -113,7 +113,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='eveniet',
+    query='Dock Elegant Buckinghamshire',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -198,7 +198,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='764ad733-4ec1-4b78-9b36-a08088d100ef',
+    connection_id='d6258093-be98-4f60-90e1-ca6bcd49fb9a',
     data_type=shared.DataType.INVOICES,
 )
 
