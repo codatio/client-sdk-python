@@ -5,5 +5,5 @@
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `company_id`                         | *str*                                | :heavy_check_mark:                   | Unique identifier for a company.     | 8a210b68-6988-11ed-a1eb-0242ac120002 |
-| `credit_note_id`                     | *str*                                | :heavy_check_mark:                   | Unique identifier for a credit note. |                                      |
+| `company_id`                         | *Optional[str]*                      | :heavy_check_mark:                   | Unique identifier for a company.     | 8a210b68-6988-11ed-a1eb-0242ac120002 |
+| `credit_note_id`                     | *Optional[str]*                      | :heavy_check_mark:                   | Unique identifier for a credit note. |                                      |

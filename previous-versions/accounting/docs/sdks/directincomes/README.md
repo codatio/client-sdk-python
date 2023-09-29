@@ -46,87 +46,87 @@ req = operations.CreateDirectIncomeRequest(
     direct_income=shared.DirectIncome(
         contact_ref=shared.ContactRef(
             data_type=shared.DataType.INVOICES,
-            id='9ad030c4-ecc1-41a0-8364-29068b8502a5',
+            id='<ID>',
         ),
         currency='USD',
-        currency_rate=Decimal('8843.25'),
-        id='7f73bc84-5e32-40a3-99f4-badf947c9a86',
+        currency_rate=Decimal('4893.82'),
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.DirectIncomeLineItem(
                 account_ref=shared.AccountRef(
-                    id='bc424266-6581-46dd-8a8e-f51fcb4c593e',
-                    name='Ryan Considine',
+                    id='<ID>',
+                    name='Money blue shred',
                 ),
-                description='mollitia',
-                discount_amount=Decimal('6615.78'),
-                discount_percentage=Decimal('8409.92'),
+                description='Implemented web-enabled success',
+                discount_amount=Decimal('0.86'),
+                discount_percentage=Decimal('4552.22'),
                 item_ref=shared.ItemRef(
-                    id='0ec7afed-bd80-4df4-88a4-7f9390c58880',
-                    name='Willard Erdman',
+                    id='<ID>',
+                    name='evolve',
                 ),
-                quantity=Decimal('7047.32'),
-                sub_total=Decimal('9830.6'),
-                tax_amount=Decimal('6229.68'),
+                quantity=Decimal('7150.4'),
+                sub_total=Decimal('7926.2'),
+                tax_amount=Decimal('8559.52'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('9261.19'),
-                    id='f3ffdd9f-7f07-49af-8d35-724cdb0f4d28',
-                    name='Alice Langosh',
+                    effective_tax_rate=Decimal('8165.88'),
+                    id='<ID>',
+                    name='Screen mobile',
                 ),
-                total_amount=Decimal('3136.95'),
+                total_amount=Decimal('6562.56'),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='6844eded-85a9-4065-a628-bdfc2032b6c8',
-                        name='Guadalupe Monahan',
+                        id='<ID>',
+                        name='Durham after',
                     ),
                 ],
-                unit_amount=Decimal('6962.91'),
+                unit_amount=Decimal('5190.28'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='debitis',
+        note='Fish',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
-                    currency_rate=Decimal('3214.22'),
-                    total_amount=Decimal('5398.86'),
+                    currency='EUR',
+                    currency_rate=Decimal('3229.97'),
+                    total_amount=Decimal('8946.95'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='4f7ae12c-6891-4f82-8e11-57172305377d',
-                        name='Tommie Pfannerstill',
+                        id='<ID>',
+                        name='Account',
                     ),
-                    currency='EUR',
-                    currency_rate=Decimal('9865.94'),
-                    id='975e3566-8609-42e9-83dd-c5f111dea102',
-                    note='aliquid',
+                    currency='GBP',
+                    currency_rate=Decimal('3577.62'),
+                    id='<ID>',
+                    note='Kentucky animated',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='enim',
-                    total_amount=Decimal('2542.88'),
+                    reference='though East',
+                    total_amount=Decimal('1687.57'),
                 ),
             ),
         ],
-        reference='architecto',
+        reference='or',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        sub_total=Decimal('3098.52'),
+        sub_total=Decimal('276.19'),
         supplemental_data=shared.SupplementalData(
             content={
-                "facere": {
-                    "vitae": 'omnis',
+                "tempora": {
+                    "id": 'Global',
                 },
             },
         ),
-        tax_amount=Decimal('38.6'),
-        total_amount=Decimal('9574.89'),
+        tax_amount=Decimal('7870.96'),
+        total_amount=Decimal('9065.37'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=887600,
+    timeout_in_minutes=425694,
 )
 
 res = s.direct_incomes.create(req)
@@ -173,7 +173,7 @@ req = operations.DownloadDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='expedita',
+    direct_income_id='Dakota Avon specifically',
 )
 
 res = s.direct_incomes.download_attachment(req)
@@ -221,7 +221,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetDirectIncomeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='quia',
+    direct_income_id='Northeast Hatchback Kia',
 )
 
 res = s.direct_incomes.get(req)
@@ -268,8 +268,8 @@ req = operations.GetDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='vitae',
-    timeout_in_minutes=487839,
+    direct_income_id='array East along',
+    timeout_in_minutes=329312,
 )
 
 res = s.direct_incomes.get_attachment(req)
@@ -367,7 +367,7 @@ req = operations.ListDirectIncomesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quas',
+    query='Northeast Metal Canada',
 )
 
 res = s.direct_incomes.list(req)
@@ -413,7 +413,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListDirectIncomeAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='ipsa',
+    direct_income_id='intuitive Frozen ouch',
 )
 
 res = s.direct_incomes.list_attachments(req)
@@ -462,12 +462,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadDirectIncomeAttachmentRequest(
     request_body=operations.UploadDirectIncomeAttachmentRequestBody(
-        content='distinctio'.encode(),
-        request_body='placeat',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='quod',
+    direct_income_id='Iowa Bentley',
 )
 
 res = s.direct_incomes.upload_attachment(req)

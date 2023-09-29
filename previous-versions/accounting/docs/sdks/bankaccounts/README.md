@@ -40,28 +40,28 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='hic',
-        account_number='optio',
-        account_type=shared.BankAccountBankAccountType.CREDIT,
-        available_balance=Decimal('1059.07'),
-        balance=Decimal('4146.62'),
-        currency='USD',
-        i_ban='modi',
-        id='2cb73920-5929-4396-bea7-596eb10faaa2',
-        institution='dolorem',
+        account_name='bluetooth Extended',
+        account_number='blue',
+        account_type=shared.BankAccountBankAccountType.DEBIT,
+        available_balance=Decimal('7964.74'),
+        balance=Decimal('3768.44'),
+        currency='EUR',
+        i_ban='ES4002078579630900307003',
+        id='<ID>',
+        institution='Grocery Borders Northwest',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='explicabo',
-        overdraft_limit=Decimal('7506.86'),
-        sort_code='enim',
+        nominal_code='metrics',
+        overdraft_limit=Decimal('365.21'),
+        sort_code='Interactions Senior Mouse',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=363711,
+    timeout_in_minutes=908106,
 )
 
 res = s.bank_accounts.create(req)
@@ -107,7 +107,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBankAccountRequest(
-    account_id='minima',
+    account_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -207,7 +207,7 @@ req = operations.ListBankAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='excepturi',
+    query='Northeast Metal Canada',
 )
 
 res = s.bank_accounts.list(req)
@@ -257,29 +257,29 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='accusantium',
-        account_number='iure',
-        account_type=shared.BankAccountBankAccountType.CREDIT,
-        available_balance=Decimal('9883.74'),
-        balance=Decimal('9589.5'),
-        currency='GBP',
-        i_ban='mollitia',
-        id='3a2fa946-7739-4251-aa52-c3f5ad019da1',
-        institution='reiciendis',
+        account_name='New Reactive dock',
+        account_number='Analyst invoice',
+        account_type=shared.BankAccountBankAccountType.UNKNOWN,
+        available_balance=Decimal('540.62'),
+        balance=Decimal('2782.81'),
+        currency='EUR',
+        i_ban='XK423723008830469503',
+        id='<ID>',
+        institution='Sharable Division Northeast',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='vero',
-        overdraft_limit=Decimal('4686.51'),
-        sort_code='praesentium',
+        nominal_code='Wooden',
+        overdraft_limit=Decimal('3529.19'),
+        sort_code='Internal invoice',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
-    bank_account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    bank_account_id='Checking 0202',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=604846,
+    timeout_in_minutes=77428,
 )
 
 res = s.bank_accounts.update(req)

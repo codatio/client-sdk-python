@@ -45,63 +45,63 @@ req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='West Elroy',
-                country='Bolivia',
-                line1='praesentium',
-                line2='eveniet',
-                postal_code='77607',
-                region='quos',
-                type=shared.AccountingAddressType.DELIVERY,
+                city='Jenafurt',
+                country='Sweden',
+                line1='innovative blue',
+                line2='grey technology East',
+                postal_code='30778',
+                region='quantify Polestar mobile',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='sint',
+        contact_name='Durham after',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Emersonside',
-                    country='Armenia',
-                    line1='voluptates',
-                    line2='laudantium',
-                    postal_code='06859',
-                    region='deleniti',
+                    city='Darenberg',
+                    country='Cote d\'Ivoire',
+                    line1='Buckinghamshire functionalities Grocery',
+                    line2='Metal',
+                    postal_code='61380',
+                    region='Interactions Senior Mouse',
                     type=shared.AccountingAddressType.UNKNOWN,
                 ),
-                email='Barrett98@hotmail.com',
+                email='Judd27@hotmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='William Koch',
+                name='transmit likewise',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='01224 658 999',
+                        number='(877) 492-8687',
                         type=shared.PhoneNumberType.FAX,
                     ),
                 ],
-                status=shared.CustomerStatus.UNKNOWN,
+                status=shared.CustomerStatus.ACTIVE,
             ),
         ],
-        customer_name='dolorum',
-        default_currency='USD',
-        email_address='ad',
-        id='f3cabd90-5a97-42e0-9672-8227b2d30947',
+        customer_name='Rubber silver Indiana',
+        default_currency='EUR',
+        email_address='Thea_Ritchie76@hotmail.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='946.496.5489 x3236',
-        registration_number='voluptas',
+        phone='948.595.2034',
+        registration_number='digital',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.ACTIVE,
+        status=shared.CustomerStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
                 "recusandae": {
-                    "corporis": 'non',
+                    "maiores": 'Mongolia',
                 },
             },
         ),
-        tax_number='necessitatibus',
+        tax_number='discrete',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=719469,
+    timeout_in_minutes=522311,
 )
 
 res = s.customers.create(req)
@@ -148,7 +148,7 @@ req = operations.DownloadCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='maiores',
+    customer_id='Dakota Avon specifically',
 )
 
 res = s.customers.download_attachment(req)
@@ -195,7 +195,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='laboriosam',
+    customer_id='Northeast Hatchback Kia',
 )
 
 res = s.customers.get(req)
@@ -242,7 +242,7 @@ req = operations.GetCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='voluptatem',
+    customer_id='array East along',
 )
 
 res = s.customers.get_attachment(req)
@@ -339,7 +339,7 @@ req = operations.ListCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='optio',
+    query='Northeast Metal Canada',
 )
 
 res = s.customers.list(req)
@@ -385,7 +385,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListCustomerAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='sequi',
+    customer_id='intuitive Frozen ouch',
 )
 
 res = s.customers.list_attachments(req)
@@ -436,65 +436,65 @@ req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='North Wavatown',
-                country='Cameroon',
-                line1='amet',
-                line2='rerum',
-                postal_code='38123',
-                region='dignissimos',
-                type=shared.AccountingAddressType.DELIVERY,
+                city='Ann Arbor',
+                country='Montserrat',
+                line1='Reactive',
+                line2='Metal cheater Islands',
+                postal_code='43372',
+                region='Carolina syndicate',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='itaque',
+        contact_name='East',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Lake Alexannefield',
-                    country='Seychelles',
-                    line1='quos',
-                    line2='possimus',
-                    postal_code='45906-1548',
-                    region='unde',
-                    type=shared.AccountingAddressType.UNKNOWN,
+                    city='Olenfurt',
+                    country='Paraguay',
+                    line1='Home users Sharable',
+                    line2='Lev Wooden',
+                    postal_code='36848',
+                    region='brightly',
+                    type=shared.AccountingAddressType.DELIVERY,
                 ),
-                email='Clifford71@hotmail.com',
+                email='Josie49@yahoo.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Ralph Hamill',
+                name='possimus navigating Diesel',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.FAX,
+                        number='+44 25691 154789',
+                        type=shared.PhoneNumberType.PRIMARY,
                     ),
                 ],
-                status=shared.CustomerStatus.ARCHIVED,
+                status=shared.CustomerStatus.UNKNOWN,
             ),
         ],
-        customer_name='accusamus',
-        default_currency='GBP',
-        email_address='quas',
-        id='8b1c4ee2-c8c6-4ce6-91fe-eb1c7cbdb6ee',
+        customer_name='Reactive Global Northeast',
+        default_currency='USD',
+        email_address='Abe.Bogan@hotmail.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='424.676.1311 x442',
-        registration_number='odio',
+        phone='(883) 732-4217 x6499',
+        registration_number='redundant ew',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.ARCHIVED,
+        status=shared.CustomerStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "cupiditate": {
-                    "illo": 'exercitationem',
+                "asperiores": {
+                    "quibusdam": 'Omnigender',
                 },
             },
         ),
-        tax_number='laborum',
+        tax_number='Volkswagen Specialist Bacon',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='illum',
+    customer_id='Copper port East',
     force_update=False,
-    timeout_in_minutes=147989,
+    timeout_in_minutes=373959,
 )
 
 res = s.customers.update(req)

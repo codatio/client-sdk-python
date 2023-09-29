@@ -39,22 +39,22 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+        account_id='7110701885',
         transactions=[
             shared.CreateBankAccountTransaction(
-                amount=Decimal('8917.73'),
-                balance=Decimal('567.13'),
+                amount=Decimal('4893.82'),
+                balance=Decimal('6384.24'),
                 date_='2022-10-23T00:00:00.000Z',
-                description='tempora',
-                id='67cc8796-ed15-41a0-9dfc-2ddf7cc78ca1',
+                description='Inverse discrete benchmark',
+                id='<ID>',
             ),
         ],
     ),
-    account_id='nam',
+    account_id='Cambridgeshire grey technology',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=639921,
+    timeout_in_minutes=86,
 )
 
 res = s.bank_account_transactions.create(req)
@@ -102,7 +102,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='occaecati',
+    account_id='Northwest',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -150,13 +150,13 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id='fugit',
+    account_id='Northeast Metal Canada',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deleniti',
+    query='Data Response West',
 )
 
 res = s.bank_account_transactions.list(req)

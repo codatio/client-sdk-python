@@ -43,25 +43,25 @@ req = operations.CreateTransferRequest(
     transfer=shared.Transfer(
         contact_ref=shared.TransferContactRef(
             data_type=shared.DataType.INVOICES,
-            id='be071bc1-63e2-479a-bb08-4da99257d04f',
+            id='<ID>',
         ),
         date_='2022-10-23T00:00:00.000Z',
         deposited_record_refs=[
             shared.InvoiceTo(
-                data_type='journalEntry',
-                id='847a742d-8449-46cb-9eec-f6b99bc63562',
+                data_type='invoice',
+                id='<ID>',
             ),
         ],
-        description='eveniet',
+        description='Proactive systematic Graphical User Interface',
         from_=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='bfdf55c2-94c0-460b-86a1-287764eef6d0',
-                name='Sam Smitham',
+                id='<ID>',
+                name='South',
             ),
-            amount=Decimal('8616.38'),
-            currency='USD',
+            amount=Decimal('9967.06'),
+            currency='EUR',
         ),
-        id='c73dd634-5715-409a-8e87-0d3c5a1f9c24',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
@@ -69,23 +69,23 @@ req = operations.CreateTransferRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "odio": {
-                    "quidem": 'iure',
+                "debitis": {
+                    "alias": 'deposit',
                 },
             },
         ),
         to=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='6a1f30c7-3df5-4b67-9989-0f42a4bb438d',
-                name='Greg Renner',
+                id='<ID>',
+                name='Northwest',
             ),
-            amount=Decimal('476.2'),
-            currency='GBP',
+            amount=Decimal('7926.2'),
+            currency='EUR',
         ),
         tracking_category_refs=[
             shared.TrackingCategoryRef(
-                id='91d745e3-c205-49c9-83f5-67e0e252765b',
-                name='Kari Jacobson',
+                id='<ID>',
+                name='quantify Polestar mobile',
             ),
         ],
     ),
@@ -138,7 +138,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetTransferRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transfer_id='nobis',
+    transfer_id='Northeast Hatchback Kia',
 )
 
 res = s.transfers.get(req)
@@ -236,7 +236,7 @@ req = operations.ListTransfersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='possimus',
+    query='Northeast Metal Canada',
 )
 
 res = s.transfers.list(req)
@@ -285,12 +285,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadTransferAttachmentRequest(
     request_body=operations.UploadTransferAttachmentRequestBody(
-        content='laborum'.encode(),
-        request_body='optio',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transfer_id='debitis',
+    transfer_id='Iowa Bentley',
 )
 
 res = s.transfers.upload_attachment(req)

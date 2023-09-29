@@ -19,11 +19,11 @@ from typing import Optional
 @dataclasses.dataclass
 class SalesOrderShipToContact:
     r"""Details of the named contact at the delivery address."""
-    email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email'), 'exclude': lambda f: f is None }})
+    email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email') }})
     r"""Email address of the contact at the delivery address."""
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""Name of the contact at the delivery address."""
-    phone: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone'), 'exclude': lambda f: f is None }})
+    phone: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone') }})
     r"""Phone number of the contact at the delivery address."""
     
 
@@ -62,7 +62,7 @@ class SalesOrder:
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -89,7 +89,7 @@ class SalesOrder:
     | **EUR**          | €20            | 1.134         | $22.68                     |
     | **RUB**          | ₽20            | 0.015         | $0.30                      |
     """
-    customer_purchase_order_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerPurchaseOrderNumber'), 'exclude': lambda f: f is None }})
+    customer_purchase_order_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerPurchaseOrderNumber') }})
     r"""A customer-supplied identifier for the purchase order in the customer's system."""
     customer_ref: Optional[shared_accountingcustomerref.AccountingCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
     expected_delivery_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expectedDeliveryDate'), 'exclude': lambda f: f is None }})
@@ -138,13 +138,13 @@ class SalesOrder:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    line_items: Optional[list[shared_salesorderlineitem.SalesOrderLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems'), 'exclude': lambda f: f is None }})
+    line_items: Optional[list[shared_salesorderlineitem.SalesOrderLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems') }})
     r"""An array of line items."""
     metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
+    note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note') }})
     r"""Any additional information associated with the sales order."""
-    sales_order_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('salesOrderNumber'), 'exclude': lambda f: f is None }})
+    sales_order_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('salesOrderNumber') }})
     r"""Friendly reference for the sales order, commonly generated by the accounting platform."""
     ship_to: Optional[SalesOrderShipTo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('shipTo'), 'exclude': lambda f: f is None }})
     r"""Delivery details for any goods that have been ordered."""

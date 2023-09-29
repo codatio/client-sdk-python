@@ -29,12 +29,12 @@ class CreditNotes:
         
         url = utils.generate_url(operations.CreateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "credit_note", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "credit_note", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateCreditNoteRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -48,7 +48,7 @@ class CreditNotes:
 
         def do_request():
             return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -89,7 +89,7 @@ class CreditNotes:
         url = utils.generate_url(operations.GetCreditNoteRequest, base_url, '/companies/{companyId}/data/creditNotes/{creditNoteId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -103,7 +103,7 @@ class CreditNotes:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -146,7 +146,7 @@ class CreditNotes:
         url = utils.generate_url(operations.GetCreateUpdateCreditNotesModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/creditNotes', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -160,7 +160,7 @@ class CreditNotes:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -200,7 +200,7 @@ class CreditNotes:
         headers = {}
         query_params = utils.get_query_params(operations.ListCreditNotesRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -214,7 +214,7 @@ class CreditNotes:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -256,12 +256,12 @@ class CreditNotes:
         
         url = utils.generate_url(operations.UpdateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes/{creditNoteId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "credit_note", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "credit_note", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateCreditNoteRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -275,7 +275,7 @@ class CreditNotes:
 
         def do_request():
             return client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

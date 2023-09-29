@@ -46,99 +46,99 @@ req = operations.CreateDirectCostRequest(
     direct_cost=shared.DirectCost(
         contact_ref=shared.ContactRef(
             data_type=shared.DataType.INVOICES,
-            id='caf5dd67-23dc-40f5-ae2f-3a6b70087875',
+            id='<ID>',
         ),
         currency='USD',
-        currency_rate=Decimal('685.96'),
-        id='43f5a6c9-8b55-4554-880d-40bcacc6cbd6',
+        currency_rate=Decimal('4893.82'),
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.DirectCostLineItem(
                 account_ref=shared.AccountRef(
-                    id='5f3ec909-304f-4926-bad2-553819b474b0',
-                    name='Dr. Woodrow Corkery',
+                    id='<ID>',
+                    name='Money blue shred',
                 ),
-                description='ea',
-                discount_amount=Decimal('1799.06'),
-                discount_percentage=Decimal('3052.67'),
+                description='Implemented web-enabled success',
+                discount_amount=Decimal('0.86'),
+                discount_percentage=Decimal('4552.22'),
                 item_ref=shared.ItemRef(
-                    id='8fff639a-910a-4bdc-ab62-676696e1ec00',
-                    name='Kathryn Bruen',
+                    id='<ID>',
+                    name='evolve',
                 ),
-                quantity=Decimal('2274.31'),
-                sub_total=Decimal('3466.08'),
-                tax_amount=Decimal('8470.18'),
+                quantity=Decimal('7150.4'),
+                sub_total=Decimal('7926.2'),
+                tax_amount=Decimal('8559.52'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('5065.32'),
-                    id='9acb3ecf-da8d-40c5-89ef-03004978a61f',
-                    name='Peter Schmitt',
+                    effective_tax_rate=Decimal('8165.88'),
+                    id='<ID>',
+                    name='Screen mobile',
                 ),
-                total_amount=Decimal('349.89'),
+                total_amount=Decimal('6562.56'),
                 tracking=shared.Tracking(
                     invoice_to=shared.TrackingRecordReference(
                         data_type='invoice',
-                        id='88f77c1f-fc71-4dca-963f-2a3c80a97ff3',
+                        id='<ID>',
                     ),
                     record_refs=[
                         shared.InvoiceTo(
                             data_type='journalEntry',
-                            id='4cddf857-a9e6-4187-ac6a-b21d29dfc94d',
+                            id='<ID>',
                         ),
                     ],
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='6fecd799-3900-466a-ad2d-000355338cec',
-                        name='Lena Kerluke',
+                        id='<ID>',
+                        name='after',
                     ),
                 ],
-                unit_amount=Decimal('1440.58'),
+                unit_amount=Decimal('5190.28'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='necessitatibus',
+        note='Fish',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
-                    currency_rate=Decimal('3690.99'),
-                    total_amount=Decimal('1631.81'),
+                    currency='EUR',
+                    currency_rate=Decimal('3229.97'),
+                    total_amount=Decimal('8946.95'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='cb311916-7b8e-43c8-9b03-408d6d364ffd',
-                        name='Jill Hermann III',
+                        id='<ID>',
+                        name='Account',
                     ),
-                    currency='EUR',
-                    currency_rate=Decimal('1168.67'),
-                    id='263d48e9-35c2-4c9e-81f3-0be3e43202d7',
-                    note='magni',
+                    currency='GBP',
+                    currency_rate=Decimal('3577.62'),
+                    id='<ID>',
+                    note='Kentucky animated',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='aliquid',
-                    total_amount=Decimal('3216.97'),
+                    reference='though East',
+                    total_amount=Decimal('1687.57'),
                 ),
             ),
         ],
-        reference='voluptate',
+        reference='or',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        sub_total=Decimal('3249.99'),
+        sub_total=Decimal('276.19'),
         supplemental_data=shared.SupplementalData(
             content={
-                "sit": {
-                    "vel": 'laboriosam',
+                "tempora": {
+                    "id": 'Global',
                 },
             },
         ),
-        tax_amount=Decimal('3112.47'),
-        total_amount=Decimal('941.22'),
+        tax_amount=Decimal('7870.96'),
+        total_amount=Decimal('9065.37'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=525223,
+    timeout_in_minutes=425694,
 )
 
 res = s.direct_costs.create(req)
@@ -185,7 +185,7 @@ req = operations.DownloadDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='dignissimos',
+    direct_cost_id='Dakota Avon specifically',
 )
 
 res = s.direct_costs.download_attachment(req)
@@ -233,7 +233,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetDirectCostRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='doloremque',
+    direct_cost_id='Northeast Hatchback Kia',
 )
 
 res = s.direct_costs.get(req)
@@ -280,7 +280,7 @@ req = operations.GetDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='assumenda',
+    direct_cost_id='array East along',
 )
 
 res = s.direct_costs.get_attachment(req)
@@ -378,7 +378,7 @@ req = operations.ListDirectCostsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='provident',
+    query='Northeast Metal Canada',
 )
 
 res = s.direct_costs.list(req)
@@ -424,7 +424,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListDirectCostAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='facere',
+    direct_cost_id='intuitive Frozen ouch',
 )
 
 res = s.direct_costs.list_attachments(req)
@@ -473,12 +473,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadDirectCostAttachmentRequest(
     request_body=operations.UploadDirectCostAttachmentRequestBody(
-        content='sed'.encode(),
-        request_body='inventore',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='voluptatibus',
+    direct_cost_id='Iowa Bentley',
 )
 
 res = s.direct_costs.upload_attachment(req)
