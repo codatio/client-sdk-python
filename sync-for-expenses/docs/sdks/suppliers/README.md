@@ -41,41 +41,41 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Funkton',
-                country='Azerbaijan',
-                line1='ipsa',
-                line2='iure',
-                postal_code='38693',
-                region='natus',
-                type=shared.AccountingAddressType.UNKNOWN,
+                city='Jenafurt',
+                country='Sweden',
+                line1='innovative blue',
+                line2='grey technology East',
+                postal_code='30778',
+                region='quantify Polestar mobile',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='atque',
-        default_currency='sit',
-        email_address='fugiat',
-        id='1ba77a89-ebf7-437a-a420-3ce5e6a95d8a',
+        contact_name='Durham after',
+        default_currency='Intelligent Fish',
+        email_address='Ricardo.Hand41@gmail.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='01224 658 999',
-        registration_number='quaerat',
+        phone='(877) 492-8687',
+        registration_number='Profound',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "quod": {
-                    "officiis": 'qui',
+                "pariatur": {
+                    "accusantium": 'Minivan',
                 },
             },
         ),
-        supplier_name='dolorum',
-        tax_number='a',
+        supplier_name='Senior Mouse West',
+        tax_number='Towels likewise',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=456130,
+    timeout_in_minutes=452224,
 )
 
 res = s.suppliers.create(req)
@@ -170,7 +170,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='iusto',
+    query='Northeast Metal Canada',
 )
 
 res = s.suppliers.list(req)
@@ -221,43 +221,43 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Port Ulises',
-                country='Czech Republic',
-                line1='tempore',
-                line2='accusamus',
-                postal_code='32954',
-                region='sit',
-                type=shared.AccountingAddressType.DELIVERY,
+                city='Ann Arbor',
+                country='Montserrat',
+                line1='Reactive',
+                line2='Metal cheater Islands',
+                postal_code='43372',
+                region='Carolina syndicate',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='neque',
-        default_currency='sed',
-        email_address='vel',
-        id='b5a73429-cdb1-4a84-a2bb-679d2322715b',
+        contact_name='East',
+        default_currency='Bicycle guestbook',
+        email_address='Alexys.Hayes81@yahoo.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='+44 25691 154789',
-        registration_number='cumque',
+        phone='(877) 492-8687',
+        registration_number='indexing',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.ARCHIVED,
+        status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "et": {
-                    "saepe": 'ipsum',
+                "consectetur": {
+                    "ullam": 'Jaguar',
                 },
             },
         ),
-        supplier_name='veritatis',
-        tax_number='nobis',
+        supplier_name='visionary Buckinghamshire frictionless',
+        tax_number='parse possimus',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
     supplier_id='7110701885',
-    timeout_in_minutes=731694,
+    timeout_in_minutes=427089,
 )
 
 res = s.suppliers.update(req)

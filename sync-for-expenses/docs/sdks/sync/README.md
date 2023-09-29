@@ -150,7 +150,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.InitiateSyncRequest(
     initiate_sync=shared.InitiateSync(
         dataset_ids=[
-            '90f3443a-1108-4e0a-9cf4-b921879fce95',
+            'acce2362-83d6-4e3e-a27f-f4a08e7217d5',
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',

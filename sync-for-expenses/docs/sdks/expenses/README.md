@@ -36,11 +36,11 @@ req = operations.CreateExpenseTransactionRequest(
                     id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
                 ),
                 contact_ref=shared.ContactRef(
-                    contact_type=shared.ContactRefContactType.SUPPLIER,
+                    contact_type='Supplier',
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
                 currency='GBP',
-                currency_rate=Decimal('1002.26'),
+                currency_rate=Decimal('4865.89'),
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
                 issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
@@ -111,11 +111,11 @@ req = operations.UpdateExpenseTransactionRequest(
             id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
         ),
         contact_ref=shared.ContactRef(
-            contact_type=shared.ContactRefContactType.SUPPLIER,
+            contact_type='Supplier',
             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
         ),
         currency='GBP',
-        currency_rate=Decimal('9194.83'),
+        currency_rate=Decimal('8574.78'),
         issue_date='2022-06-28T00:00:00.000Z',
         lines=[
             shared.ExpenseTransactionLine(
@@ -136,7 +136,7 @@ req = operations.UpdateExpenseTransactionRequest(
         ],
         merchant_name='Amazon UK',
         notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type='ullam',
+        type='New',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
@@ -179,8 +179,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UploadExpenseAttachmentRequest(
     request_body=operations.UploadExpenseAttachmentRequestBody(
-        content='expedita'.encode(),
-        request_body='nihil',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',

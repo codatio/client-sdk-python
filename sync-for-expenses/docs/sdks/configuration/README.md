@@ -111,10 +111,10 @@ req = operations.SetCompanyConfigurationRequest(
             id='32',
         ),
         customer=shared.CustomerDetails(
-            id='8796ed15-1a05-4dfc-addf-7cc78ca1ba92',
+            id='<ID>',
         ),
         supplier=shared.SupplierDetails(
-            id='8fc81674-2cb7-4392-8592-9396fea7596e',
+            id='<ID>',
         ),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',

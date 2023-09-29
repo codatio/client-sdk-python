@@ -41,64 +41,64 @@ req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Items(
-                city='Fort Manuelachester',
-                country='Oman',
-                line1='dolores',
-                line2='dolorem',
-                postal_code='17363',
-                region='minima',
+                city='Jenafurt',
+                country='Sweden',
+                line1='innovative blue',
+                line2='grey technology East',
+                postal_code='30778',
+                region='quantify Polestar mobile',
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='accusantium',
+        contact_name='Durham after',
         contacts=[
             shared.Contact(
                 address=shared.Items(
-                    city='Lorenzaworth',
-                    country='Uzbekistan',
-                    line1='architecto',
-                    line2='mollitia',
-                    postal_code='61965',
-                    region='numquam',
-                    type=shared.AccountingAddressType.BILLING,
+                    city='Darenberg',
+                    country='Cote d\'Ivoire',
+                    line1='Buckinghamshire functionalities Grocery',
+                    line2='Metal',
+                    postal_code='61380',
+                    region='Interactions Senior Mouse',
+                    type=shared.AccountingAddressType.UNKNOWN,
                 ),
-                email='Jarred.Frami@yahoo.com',
+                email='Judd27@hotmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Kayla O'Kon',
+                name='transmit likewise',
                 phone=[
                     shared.ContactPhone(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.PRIMARY,
+                        number='(877) 492-8687',
+                        type=shared.PhoneNumberType.FAX,
                     ),
                 ],
-                status=shared.CustomerStatus.ARCHIVED,
+                status=shared.CustomerStatus.ACTIVE,
             ),
         ],
-        customer_name='ipsam',
-        default_currency='USD',
-        email_address='possimus',
-        id='019da1ff-e78f-4097-b007-4f15471b5e6e',
+        customer_name='Rubber silver Indiana',
+        default_currency='EUR',
+        email_address='Thea_Ritchie76@hotmail.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='755.825.5909',
-        registration_number='sint',
+        phone='948.595.2034',
+        registration_number='digital',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.ARCHIVED,
+        status=shared.CustomerStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "incidunt": {
-                    "enim": 'consequatur',
+                "recusandae": {
+                    "maiores": 'Mongolia',
                 },
             },
         ),
-        tax_number='est',
+        tax_number='discrete',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=842342,
+    timeout_in_minutes=522311,
 )
 
 res = s.customers.create(req)
@@ -145,7 +145,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='explicabo',
+    customer_id='Northeast Hatchback Kia',
 )
 
 res = s.customers.get(req)
@@ -193,7 +193,7 @@ req = operations.ListCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deserunt',
+    query='Northeast Metal Canada',
 )
 
 res = s.customers.list(req)
@@ -244,66 +244,66 @@ req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Items(
-                city='Spencerboro',
-                country='Eritrea',
-                line1='qui',
-                line2='aliquid',
-                postal_code='50183-0165',
-                region='tempora',
-                type=shared.AccountingAddressType.DELIVERY,
+                city='Ann Arbor',
+                country='Montserrat',
+                line1='Reactive',
+                line2='Metal cheater Islands',
+                postal_code='43372',
+                region='Carolina syndicate',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='tempore',
+        contact_name='East',
         contacts=[
             shared.Contact(
                 address=shared.Items(
-                    city='Fort Horacio',
-                    country='Ecuador',
-                    line1='eligendi',
-                    line2='sint',
-                    postal_code='58562',
-                    region='debitis',
+                    city='Olenfurt',
+                    country='Paraguay',
+                    line1='Home users Sharable',
+                    line2='Lev Wooden',
+                    postal_code='36848',
+                    region='brightly',
                     type=shared.AccountingAddressType.DELIVERY,
                 ),
-                email='Isadore_Kirlin69@hotmail.com',
+                email='Josie49@yahoo.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Blanca Schulist',
+                name='possimus navigating Diesel',
                 phone=[
                     shared.ContactPhone(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.UNKNOWN,
+                        number='+44 25691 154789',
+                        type=shared.PhoneNumberType.PRIMARY,
                     ),
                 ],
                 status=shared.CustomerStatus.UNKNOWN,
             ),
         ],
-        customer_name='occaecati',
-        default_currency='GBP',
-        email_address='accusamus',
-        id='fb9ba88f-3a66-4997-874b-a4469b6e2141',
+        customer_name='Reactive Global Northeast',
+        default_currency='USD',
+        email_address='Abe.Bogan@hotmail.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='(655) 269-6342 x813',
-        registration_number='quasi',
+        phone='(883) 732-4217 x6499',
+        registration_number='redundant ew',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.ARCHIVED,
+        status=shared.CustomerStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "debitis": {
-                    "eius": 'maxime',
+                "asperiores": {
+                    "quibusdam": 'Omnigender',
                 },
             },
         ),
-        tax_number='deleniti',
+        tax_number='Volkswagen Specialist Bacon',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='facilis',
+    customer_id='Copper port East',
     force_update=False,
-    timeout_in_minutes=447926,
+    timeout_in_minutes=373959,
 )
 
 res = s.customers.update(req)

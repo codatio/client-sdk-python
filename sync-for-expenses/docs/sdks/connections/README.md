@@ -199,7 +199,7 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quidem',
+    query='Northeast Metal Canada',
 )
 
 res = s.connections.list(req)
