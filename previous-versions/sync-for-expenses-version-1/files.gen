@@ -159,7 +159,6 @@ docs/models/shared/expensetransactiontype.md
 docs/models/shared/expensetransaction.md
 docs/models/shared/expensetransactionline.md
 docs/models/shared/recordref.md
-docs/models/shared/contactrefcontacttype.md
 docs/models/shared/contactref.md
 docs/models/shared/updateexpenserequest.md
 docs/models/shared/attachment.md

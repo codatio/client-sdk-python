@@ -33,11 +33,11 @@ req = operations.CreateExpenseDatasetRequest(
         items=[
             shared.ExpenseTransaction(
                 contact_ref=shared.ContactRef(
-                    contact_type=shared.ContactRefContactType.SUPPLIER,
+                    contact_type='Supplier',
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
                 currency='GBP',
-                currency_rate=Decimal('8442.66'),
+                currency_rate=Decimal('4920.13'),
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
                 issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
@@ -105,11 +105,11 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.UpdateExpenseDatasetRequest(
     update_expense_request=shared.UpdateExpenseRequest(
         contact_ref=shared.ContactRef(
-            contact_type=shared.ContactRefContactType.SUPPLIER,
+            contact_type='Supplier',
             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
         ),
         currency='GBP',
-        currency_rate=Decimal('8579.46'),
+        currency_rate=Decimal('7216.38'),
         issue_date='2022-06-28T00:00:00.000Z',
         lines=[
             shared.ExpenseTransactionLine(
@@ -130,7 +130,7 @@ req = operations.UpdateExpenseDatasetRequest(
         ],
         merchant_name='Amazon UK',
         notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type='corrupti',
+        type='incremental',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
@@ -173,8 +173,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UploadAttachmentRequest(
     request_body=operations.UploadAttachmentRequestBody(
-        content='illum'.encode(),
-        request_body='vel',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
