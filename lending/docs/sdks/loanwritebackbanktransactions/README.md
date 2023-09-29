@@ -34,22 +34,22 @@ s = codatlending.CodatLending(
 
 req = operations.CreateBankTransactionsRequest(
     accounting_create_bank_transactions=shared.AccountingCreateBankTransactions(
-        account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+        account_id='7110701885',
         transactions=[
             shared.CreateBankAccountTransaction(
-                amount=Decimal('7783.46'),
-                balance=Decimal('1965.82'),
+                amount=Decimal('4893.82'),
+                balance=Decimal('6384.24'),
                 date_='2022-10-23T00:00:00.000Z',
-                description='ipsam',
-                id='ad019da1-ffe7-48f0-97b0-074f15471b5e',
+                description='Inverse discrete benchmark',
+                id='<ID>',
             ),
         ],
     ),
-    account_id='commodi',
+    account_id='Cambridgeshire grey technology',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=918236,
+    timeout_in_minutes=86,
 )
 
 res = s.loan_writeback.bank_transactions.create(req)
@@ -97,7 +97,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='quae',
+    account_id='Northwest',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

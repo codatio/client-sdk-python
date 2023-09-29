@@ -33,28 +33,28 @@ s = codatlending.CodatLending(
 
 req = operations.CreateBankAccountRequest(
     accounting_bank_account=shared.AccountingBankAccount(
-        account_name='iste',
-        account_number='iure',
+        account_name='bluetooth Extended',
+        account_number='blue',
         account_type=shared.AccountingBankAccountType.DEBIT,
-        available_balance=Decimal('6976.31'),
-        balance=Decimal('992.8'),
-        currency='GBP',
-        i_ban='reiciendis',
-        id='aaa2352c-5955-4907-aff1-a3a2fa946773',
-        institution='error',
+        available_balance=Decimal('7964.74'),
+        balance=Decimal('3768.44'),
+        currency='EUR',
+        i_ban='ES4002078579630900307003',
+        id='<ID>',
+        institution='Grocery Borders Northwest',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='quis',
-        overdraft_limit=Decimal('1103.75'),
-        sort_code='laborum',
+        nominal_code='metrics',
+        overdraft_limit=Decimal('365.21'),
+        sort_code='Interactions Senior Mouse',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=317202,
+    timeout_in_minutes=908106,
 )
 
 res = s.loan_writeback.bank_accounts.create(req)

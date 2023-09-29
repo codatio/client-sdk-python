@@ -69,7 +69,7 @@ s = codatlending.CodatLending(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='675fd5e6-0b37-45ed-8f6f-bee41f33317f',
+    connection_id='34f47fda-384b-4d2f-a80b-311909008b33',
     data_type=shared.DataType.INVOICES,
 )
 

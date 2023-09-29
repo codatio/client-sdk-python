@@ -29,7 +29,7 @@ class DownloadAccountingDirectCostAttachmentResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    data: Optional[bytes] = dataclasses.field(default=None)
+    data: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""

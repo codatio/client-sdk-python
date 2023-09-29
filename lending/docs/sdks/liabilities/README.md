@@ -35,7 +35,7 @@ s = codatlending.CodatLending(
 
 req = operations.GenerateLoanSummaryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GenerateLoanSummarySourceType.COMMERCE,
+    source_type=operations.GenerateLoanSummarySourceType.ACCOUNTING,
 )
 
 res = s.liabilities.generate_loan_summary(req)
@@ -125,7 +125,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetLoanSummaryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GetLoanSummarySourceType.ACCOUNTING,
+    source_type=operations.GetLoanSummarySourceType.BANKING,
 )
 
 res = s.liabilities.get_loan_summary(req)

@@ -19,7 +19,7 @@ class CreateBankTransactionsRequest:
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a connection."""
     accounting_create_bank_transactions: Optional[shared_accountingcreatebanktransactions.AccountingCreateBankTransactions] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    allow_sync_on_push_complete: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'allowSyncOnPushComplete', 'style': 'form', 'explode': True }})
+    allow_sync_on_push_complete: Optional[bool] = dataclasses.field(default=True, metadata={'query_param': { 'field_name': 'allowSyncOnPushComplete', 'style': 'form', 'explode': True }})
     r"""Allow a sync upon push completion."""
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     r"""Time limit for the push operation to complete before it is timed out."""

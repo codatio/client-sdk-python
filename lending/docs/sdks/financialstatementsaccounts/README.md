@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingAccountRequest(
-    account_id='aspernatur',
+    account_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -78,7 +78,7 @@ req = operations.ListAccountingAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='perferendis',
+    query='Northeast Metal Canada',
 )
 
 res = s.financial_statements.accounts.list(req)

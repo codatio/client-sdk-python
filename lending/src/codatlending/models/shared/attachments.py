@@ -12,6 +12,6 @@ from typing import Optional
 
 @dataclasses.dataclass
 class Attachments:
-    attachments: Optional[list[shared_accountingattachment.AccountingAttachment]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachments'), 'exclude': lambda f: f is None }})
+    attachments: Optional[list[shared_accountingattachment.AccountingAttachment]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachments') }})
     
 

@@ -34,7 +34,7 @@ req = operations.DownloadAccountingDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='esse',
+    direct_income_id='Dakota Avon specifically',
 )
 
 res = s.accounts_receivable.direct_incomes.download_attachment(req)
@@ -82,7 +82,7 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingDirectIncomeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='totam',
+    direct_income_id='Northeast Hatchback Kia',
 )
 
 res = s.accounts_receivable.direct_incomes.get(req)
@@ -129,8 +129,8 @@ req = operations.GetAccountingDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='porro',
-    timeout_in_minutes=678880,
+    direct_income_id='array East along',
+    timeout_in_minutes=329312,
 )
 
 res = s.accounts_receivable.direct_incomes.get_attachment(req)
@@ -179,7 +179,7 @@ req = operations.ListAccountingDirectIncomesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dicta',
+    query='Northeast Metal Canada',
 )
 
 res = s.accounts_receivable.direct_incomes.list(req)
@@ -225,7 +225,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingDirectIncomeAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='nam',
+    direct_income_id='intuitive Frozen ouch',
 )
 
 res = s.accounts_receivable.direct_incomes.list_attachments(req)

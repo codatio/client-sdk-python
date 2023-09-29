@@ -36,7 +36,7 @@ req = operations.DownloadAccountingInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='officia',
+    invoice_id='Dakota Avon specifically',
 )
 
 res = s.accounts_receivable.invoices.download_attachment(req)
@@ -76,7 +76,7 @@ s = codatlending.CodatLending(
 
 req = operations.DownloadAccountingInvoicePdfRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='occaecati',
+    invoice_id='Associate',
 )
 
 res = s.accounts_receivable.invoices.download_pdf(req)
@@ -122,7 +122,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='fugit',
+    invoice_id='Northeast Hatchback Kia',
 )
 
 res = s.accounts_receivable.invoices.get(req)
@@ -169,7 +169,7 @@ req = operations.GetAccountingInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='deleniti',
+    invoice_id='array East along',
 )
 
 res = s.accounts_receivable.invoices.get_attachment(req)
@@ -223,7 +223,7 @@ req = operations.ListAccountingInvoicesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='hic',
+    query='Northeast Metal Canada',
 )
 
 res = s.accounts_receivable.invoices.list(req)
@@ -269,7 +269,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingInvoiceAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='optio',
+    invoice_id='intuitive Frozen ouch',
 )
 
 res = s.accounts_receivable.invoices.list_attachments(req)
@@ -311,7 +311,7 @@ req = operations.ListReconciledInvoicesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='totam',
+    query='Marketing',
 )
 
 res = s.accounts_receivable.invoices.list_reconciled(req)

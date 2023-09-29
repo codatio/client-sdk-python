@@ -53,16 +53,16 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'fuga',
+                    'Money',
                 ],
-                property='in',
+                property='Cambridgeshire grey technology',
             ),
         ],
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=359508,
+    timeout_in_minutes=86,
 )
 
 res = s.loan_writeback.accounts.create(req)

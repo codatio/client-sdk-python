@@ -31,7 +31,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingCreditNoteRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    credit_note_id='odit',
+    credit_note_id='Northeast Hatchback Kia',
 )
 
 res = s.accounts_receivable.credit_notes.get(req)
@@ -79,7 +79,7 @@ req = operations.ListAccountingCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='at',
+    query='Northeast Metal Canada',
 )
 
 res = s.accounts_receivable.credit_notes.list(req)

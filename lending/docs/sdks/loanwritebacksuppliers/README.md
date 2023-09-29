@@ -35,41 +35,41 @@ req = operations.CreateSupplierRequest(
     accounting_supplier=shared.AccountingSupplier(
         addresses=[
             shared.AccountingAddress(
-                city='Germantown',
-                country='Switzerland',
-                line1='fugit',
-                line2='porro',
-                postal_code='94740-6234',
-                region='aspernatur',
+                city='Jenafurt',
+                country='Sweden',
+                line1='innovative blue',
+                line2='grey technology East',
+                postal_code='30778',
+                region='quantify Polestar mobile',
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='possimus',
-        default_currency='magnam',
-        email_address='ratione',
-        id='6813f16d-9f5f-4ce6-8556-146c3e250fb0',
+        contact_name='Durham after',
+        default_currency='Intelligent Fish',
+        email_address='Ricardo.Hand41@gmail.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='impedit',
+        registration_number='Profound',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "accusamus": {
-                    "inventore": 'non',
+                "pariatur": {
+                    "accusantium": 'Minivan',
                 },
             },
         ),
-        supplier_name='et',
-        tax_number='dolorum',
+        supplier_name='Senior Mouse West',
+        tax_number='Towels likewise',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=672048,
+    timeout_in_minutes=452224,
 )
 
 res = s.loan_writeback.suppliers.create(req)

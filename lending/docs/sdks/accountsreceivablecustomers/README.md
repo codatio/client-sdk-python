@@ -34,7 +34,7 @@ req = operations.DownloadAccountingCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='at',
+    customer_id='Dakota Avon specifically',
 )
 
 res = s.accounts_receivable.customers.download_attachment(req)
@@ -81,7 +81,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='maiores',
+    customer_id='Northeast Hatchback Kia',
 )
 
 res = s.accounts_receivable.customers.get(req)
@@ -128,7 +128,7 @@ req = operations.GetAccountingCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='molestiae',
+    customer_id='array East along',
 )
 
 res = s.accounts_receivable.customers.get_attachment(req)
@@ -176,7 +176,7 @@ req = operations.ListAccountingCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quod',
+    query='Northeast Metal Canada',
 )
 
 res = s.accounts_receivable.customers.list(req)
@@ -222,7 +222,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingCustomerAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='quod',
+    customer_id='intuitive Frozen ouch',
 )
 
 res = s.accounts_receivable.customers.list_attachments(req)

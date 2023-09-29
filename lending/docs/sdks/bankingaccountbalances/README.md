@@ -32,7 +32,7 @@ req = operations.ListBankingAccountBalancesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='molestiae',
+    query='Northeast Metal Canada',
 )
 
 res = s.banking.account_balances.list(req)

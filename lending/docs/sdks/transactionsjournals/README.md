@@ -31,7 +31,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='nobis',
+    journal_id='Northeast Hatchback Kia',
 )
 
 res = s.transactions.journals.get(req)
@@ -79,7 +79,7 @@ req = operations.ListAccountingJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sit',
+    query='Northeast Metal Canada',
 )
 
 res = s.transactions.journals.list(req)

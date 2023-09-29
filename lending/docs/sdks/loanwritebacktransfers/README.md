@@ -36,25 +36,25 @@ req = operations.CreateTransferRequest(
     accounting_transfer=shared.AccountingTransfer(
         contact_ref=shared.AccountingTransferContactRef(
             data_type=shared.DataType.INVOICES,
-            id='c366c8dd-6b14-4429-8747-4778a7bd466d',
+            id='<ID>',
         ),
         date_='2022-10-23T00:00:00.000Z',
         deposited_record_refs=[
             shared.RecordRef(
-                data_type='accountTransaction',
-                id='c10ab3cd-ca42-4519-84e5-23c7e0bc7178',
+                data_type='invoice',
+                id='<ID>',
             ),
         ],
-        description='accusamus',
+        description='Proactive systematic Graphical User Interface',
         from_=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='4796f2a7-0c68-4828-aaa4-82562f222e98',
-                name='Tamara Vandervort IV',
+                id='<ID>',
+                name='South',
             ),
-            amount=Decimal('8003.79'),
+            amount=Decimal('9967.06'),
             currency='EUR',
         ),
-        id='e61e6b7b-95bc-40ab-bc20-c4f3789fd871',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
@@ -62,30 +62,30 @@ req = operations.CreateTransferRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "sint": {
-                    "pariatur": 'possimus',
+                "debitis": {
+                    "alias": 'deposit',
                 },
             },
         ),
         to=shared.TransferAccount(
             account_ref=shared.AccountRef(
-                id='2efd121a-a6f1-4e67-8bdb-04f15756082d',
-                name='Cassandra Ward V',
+                id='<ID>',
+                name='Northwest',
             ),
-            amount=Decimal('9453.02'),
-            currency='GBP',
+            amount=Decimal('7926.2'),
+            currency='EUR',
         ),
         tracking_category_refs=[
             shared.TrackingCategoryRef(
-                id='d1705133-9d08-4086-a184-0394c26071f9',
-                name='Camille Hirthe III',
+                id='<ID>',
+                name='quantify Polestar mobile',
             ),
         ],
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=310067,
+    timeout_in_minutes=656256,
 )
 
 res = s.loan_writeback.transfers.create(req)

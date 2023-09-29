@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillPaymentRequest(
-    bill_payment_id='nisi',
+    bill_payment_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -79,7 +79,7 @@ req = operations.ListAccountingBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='recusandae',
+    query='Northeast Metal Canada',
 )
 
 res = s.accounts_payable.bill_payments.list(req)

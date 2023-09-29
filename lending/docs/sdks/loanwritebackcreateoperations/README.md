@@ -24,7 +24,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='3b99d488-e1e9-41e4-90ad-2abd44269802',
+    push_operation_key='b18d8d81-fd7b-4764-a31e-475cb1f36591',
 )
 
 res = s.loan_writeback.create_operations.get(req)
@@ -67,7 +67,7 @@ req = operations.ListCreateOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='assumenda',
+    query='Northeast Metal Canada',
 )
 
 res = s.loan_writeback.create_operations.list(req)
