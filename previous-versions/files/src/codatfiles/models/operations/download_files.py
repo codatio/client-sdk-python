@@ -50,7 +50,7 @@ class DownloadFilesResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    data: Optional[bytes] = dataclasses.field(default=None)
+    data: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[DownloadFilesErrorMessage] = dataclasses.field(default=None)
     r"""One or more of the resources you referenced could not be found.
