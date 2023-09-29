@@ -36,7 +36,7 @@ req = operations.ListAccountBalancesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='distinctio',
+    query='Northeast Metal Canada',
 )
 
 res = s.account_balances.list(req)
