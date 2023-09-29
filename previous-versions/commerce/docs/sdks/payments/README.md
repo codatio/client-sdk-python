@@ -38,7 +38,7 @@ s = codatcommerce.CodatCommerce(
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_id='illum',
+    payment_id='Northeast Hatchback Kia',
 )
 
 res = s.payments.get(req)
@@ -86,7 +86,7 @@ s = codatcommerce.CodatCommerce(
 req = operations.GetPaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_method_id='vel',
+    payment_method_id='Markets',
 )
 
 res = s.payments.get_method(req)
@@ -135,7 +135,7 @@ req = operations.ListPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='error',
+    query='Northeast Metal Canada',
 )
 
 res = s.payments.list(req)
@@ -184,7 +184,7 @@ req = operations.ListPaymentMethodsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deserunt',
+    query='limply',
 )
 
 res = s.payments.list_methods(req)
