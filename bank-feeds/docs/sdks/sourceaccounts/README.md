@@ -53,16 +53,16 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateSourceAccountRequest(
     source_account=shared.SourceAccount(
-        account_name='iure',
-        account_number='magnam',
-        account_type='debitis',
-        balance=Decimal('567.13'),
-        currency='EUR',
+        account_name='bluetooth Extended',
+        account_number='blue',
+        account_type='grey technology East',
+        balance=Decimal('1697.27'),
+        currency='GBP',
         feed_start_date='2022-10-23T00:00:00.000Z',
-        id='67cc8796-ed15-41a0-9dfc-2ddf7cc78ca1',
+        id='<ID>',
         modified_date='2022-10-23T00:00:00.000Z',
-        sort_code='officia',
-        status='occaecati',
+        sort_code='SUV quantify Polestar',
+        status='physical Ameliorated',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -107,7 +107,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.DeleteSourceAccountRequest(
-    account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    account_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -193,7 +193,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.GenerateCredentialsRequest(
-    request_body='deleniti'.encode(),
+    request_body='^upd|k\]Iy'.encode(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -280,18 +280,18 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.UpdateSourceAccountRequest(
     source_account=shared.SourceAccount(
-        account_name='hic',
-        account_number='optio',
-        account_type='totam',
-        balance=Decimal('1059.07'),
+        account_name='New Reactive dock',
+        account_number='Analyst invoice',
+        account_type='Islands',
+        balance=Decimal('4995.57'),
         currency='USD',
         feed_start_date='2022-10-23T00:00:00.000Z',
-        id='42cb7392-0592-4939-afea-7596eb10faaa',
+        id='<ID>',
         modified_date='2022-10-23T00:00:00.000Z',
-        sort_code='dolorem',
-        status='corporis',
+        sort_code='Plastic Carolina syndicate',
+        status='implement JBOD',
     ),
-    account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    account_id='EILBDVJVNUAGVKRQ',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

@@ -35,8 +35,8 @@ s = codatbankfeeds.CodatBankFeeds(
 req = operations.CreateBankAccountMappingRequest(
     request_body=operations.CreateBankAccountMappingBankFeedAccountMapping(
         feed_start_date='2022-10-23T00:00:00.000Z',
-        source_account_id='illum',
-        target_account_id='vel',
+        source_account_id='Configuration Money',
+        target_account_id='Cambridgeshire grey technology',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

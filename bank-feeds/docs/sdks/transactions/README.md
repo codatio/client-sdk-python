@@ -39,7 +39,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='EILBDVJVNUAGVKRQ',
+        account_id='7110701885',
         transactions=[
             shared.BankTransactions(
                 amount=Decimal('999.99'),
@@ -50,15 +50,15 @@ req = operations.CreateBankTransactionsRequest(
                 id='716422529',
                 reconciled=False,
                 reference='reference for transaction',
-                transaction_type=shared.BankTransactionsBankTransactionType.XFER,
+                transaction_type=shared.BankTransactionsBankTransactionType.CHECK,
             ),
         ],
     ),
-    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    account_id='EILBDVJVNUAGVKRQ',
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=325047,
+    timeout_in_minutes=417458,
 )
 
 res = s.transactions.create(req)
@@ -98,7 +98,7 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='907aff1a-3a2f-4a94-a773-9251aa52c3f5',
+    push_operation_key='1fb73c31-a851-46c2-ab8a-5ce6e25b57b8',
 )
 
 res = s.transactions.get_create_operation(req)
@@ -141,7 +141,7 @@ req = operations.ListCreateOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='id',
+    query='Hassium',
 )
 
 res = s.transactions.list_create_operations(req)
