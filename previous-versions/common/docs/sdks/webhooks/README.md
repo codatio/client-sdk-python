@@ -35,7 +35,7 @@ req = shared.CreateRule(
         ],
         webhook='https://webhook.client.com',
     ),
-    type='voluptatibus',
+    type='bluetooth Extended',
 )
 
 res = s.webhooks.create(req)
@@ -116,7 +116,7 @@ req = operations.ListRulesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='vero',
+    query='Northeast Metal Canada',
 )
 
 res = s.webhooks.list(req)

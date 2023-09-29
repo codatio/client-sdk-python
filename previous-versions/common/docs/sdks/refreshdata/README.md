@@ -76,7 +76,7 @@ s = codatcommon.CodatCommon(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='ddf7cc78-ca1b-4a92-8fc8-16742cb73920',
+    connection_id='8803f6d1-c3aa-40d5-a409-b9d7f498be91',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -156,7 +156,7 @@ s = codatcommon.CodatCommon(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='5929396f-ea75-496e-b10f-aaa2352c5955',
+    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
 )
 
 res = s.refresh_data.get_pull_operation(req)
@@ -199,7 +199,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='excepturi',
+    query='Dock Elegant Buckinghamshire',
 )
 
 res = s.refresh_data.list_pull_operations(req)

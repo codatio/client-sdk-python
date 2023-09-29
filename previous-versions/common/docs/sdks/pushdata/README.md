@@ -79,7 +79,7 @@ s = codatcommon.CodatCommon(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='8d69a674-e0f4-467c-8879-6ed151a05dfc',
+    push_operation_key='59acd79e-29d3-4138-91d3-91d4641bf7ed',
 )
 
 res = s.push_data.get_operation(req)
@@ -122,7 +122,7 @@ req = operations.GetCompanyPushHistoryRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='odit',
+    query='Synchronised',
 )
 
 res = s.push_data.list_operations(req)
