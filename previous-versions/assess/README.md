@@ -29,7 +29,7 @@ req = operations.ListDataTypeDataIntegrityDetailsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='provident',
+    query='Savings',
 )
 
 res = s.data_integrity.details(req)
