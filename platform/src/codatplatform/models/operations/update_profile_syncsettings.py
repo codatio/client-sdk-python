@@ -20,7 +20,7 @@ class UpdateProfileSyncSettingsRequestBody:
     client_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('clientId') }})
     r"""Unique identifier for your client in Codat."""
     settings: list[shared_syncsetting.SyncSetting] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('settings') }})
-    overrides_defaults: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overridesDefaults'), 'exclude': lambda f: f is None }})
+    overrides_defaults: Optional[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overridesDefaults'), 'exclude': lambda f: f is None }})
     r"""Set to `True` if you want to override default [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-settings)."""
     
 

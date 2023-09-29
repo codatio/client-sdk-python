@@ -34,13 +34,13 @@ s = codatplatform.CodatPlatform(
 req = operations.ConfigureSupplementalDataRequest(
     supplemental_data_configuration=shared.SupplementalDataConfiguration(
         supplemental_data_config={
-            "quasi": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
-                data_source='error',
+            "voluptatem": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
+                data_source='Alabama',
                 pull_data={
-                    "temporibus": 'laborum',
+                    "dicta": 'transmitter',
                 },
                 push_data={
-                    "quasi": 'reiciendis',
+                    "nisi": 'primary',
                 },
             ),
         },

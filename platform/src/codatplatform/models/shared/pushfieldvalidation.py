@@ -15,7 +15,7 @@ class PushFieldValidation:
     r"""Details on the validation issue."""
     field: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('field'), 'exclude': lambda f: f is None }})
     r"""Field name that resulted in the validation issue."""
-    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ref'), 'exclude': lambda f: f is None }})
+    ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ref') }})
     r"""Unique reference identifier for the validation issue."""
     
 
