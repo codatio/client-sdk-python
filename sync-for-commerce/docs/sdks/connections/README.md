@@ -74,9 +74,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key='provident',
-    commerce_key='distinctio',
-    merchant_identifier='quibusdam',
+    accounting_key='Manager',
+    commerce_key='payment',
+    merchant_identifier='Rupiah tertiary Zealand',
 )
 
 res = s.connections.get_sync_flow_url(req)
@@ -119,7 +119,7 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='unde',
+    query='Northeast Metal Canada',
 )
 
 res = s.connections.list(req)
@@ -159,7 +159,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.UpdateConnectionAuthorizationRequest(
     request_body={
-        "nulla": 'corrupti',
+        "libero": 'teal',
     },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

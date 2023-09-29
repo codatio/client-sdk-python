@@ -64,7 +64,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetVisibleAccountsRequest(
-    client_id='74e0f467-cc87-496e-9151-a05dfc2ddf7c',
+    client_id='86fe9741-738d-4f2c-8e96-9c3f84156e91',
     platform_key='gbol',
 )
 
@@ -104,9 +104,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "quod": shared.Localization(
+    "perferendis": shared.Localization(
         required=False,
-        text='esse',
+        text='Gasoline Cotton azure',
     ),
 }
 
@@ -148,7 +148,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'totam',
+            'Coordinator',
         ],
     ),
     platform_key='gbol',
