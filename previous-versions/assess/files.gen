@@ -76,11 +76,6 @@ src/codatassess/models/shared/reportinfo.py
 src/codatassess/models/shared/datasource.py
 src/codatassess/models/shared/accounts.py
 src/codatassess/models/shared/enhancedinvoicesreport.py
-src/codatassess/models/shared/enhancedinvoicereportitem.py
-src/codatassess/models/shared/invoicestatus.py
-src/codatassess/models/shared/payment.py
-src/codatassess/models/shared/bankingtransactionref.py
-src/codatassess/models/shared/lendingcustomerref.py
 src/codatassess/models/shared/loansummary.py
 src/codatassess/models/shared/loansummaryreportitem.py
 src/codatassess/models/shared/loansummaryrecordref.py
@@ -193,11 +188,6 @@ docs/models/shared/reportinfo.md
 docs/models/shared/datasource.md
 docs/models/shared/accounts.md
 docs/models/shared/enhancedinvoicesreport.md
-docs/models/shared/enhancedinvoicereportitem.md
-docs/models/shared/invoicestatus.md
-docs/models/shared/payment.md
-docs/models/shared/bankingtransactionref.md
-docs/models/shared/lendingcustomerref.md
 docs/models/shared/loansummary.md
 docs/models/shared/loansummaryreportitem.md
 docs/models/shared/loansummaryrecordref.md
