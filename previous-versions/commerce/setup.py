@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-commerce",
-    version="0.35.0",
+    version="0.36.0",
     author="Codat",
     description="Access standardized commerce data from our commerce integrations.",
     long_description=long_description,

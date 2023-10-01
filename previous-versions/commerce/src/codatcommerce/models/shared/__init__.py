@@ -24,10 +24,8 @@ from .payment import *
 from .paymentmethod import *
 from .paymentmethods import *
 from .paymentmethodstatus import *
-from .paymentref import *
 from .payments import *
 from .paymentstatus import *
-from .paymenttype import *
 from .phonenumber import *
 from .phonenumbertype import *
 from .product import *
@@ -55,4 +53,4 @@ from .transactionsourceref import *
 from .transactionsourcetype import *
 from .transactiontype import *
 
-__all__ = ["AccountBalance","Address","CommerceAddressType","CommerceCustomerRef","CompanyInfo","CompanyInfoWeblink","CompanyInfoWeblinkType","Customer","Customers","Dispute","DisputeStatus","Disputes","ErrorMessage","HalRef","Links","Location","LocationRef","Locations","Order","OrderDiscountAllocation","OrderLineItem","OrderSupplementalData","Orders","Payment","PaymentMethod","PaymentMethodStatus","PaymentMethods","PaymentRef","PaymentStatus","PaymentType","Payments","PhoneNumber","PhoneNumberType","Product","ProductCategories","ProductCategory","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatus","Products","RecordRef","Security","ServiceCharge","ServiceChargeType","TaxComponent","TaxComponentAllocation","TaxComponentRef","TaxComponents","Transaction","TransactionSourceRef","TransactionSourceType","TransactionType","Transactions"]
+__all__ = ["AccountBalance","Address","CommerceAddressType","CommerceCustomerRef","CompanyInfo","CompanyInfoWeblink","CompanyInfoWeblinkType","Customer","Customers","Dispute","DisputeStatus","Disputes","ErrorMessage","HalRef","Links","Location","LocationRef","Locations","Order","OrderDiscountAllocation","OrderLineItem","OrderSupplementalData","Orders","Payment","PaymentMethod","PaymentMethodStatus","PaymentMethods","PaymentStatus","Payments","PhoneNumber","PhoneNumberType","Product","ProductCategories","ProductCategory","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatus","Products","RecordRef","Security","ServiceCharge","ServiceChargeType","TaxComponent","TaxComponentAllocation","TaxComponentRef","TaxComponents","Transaction","TransactionSourceRef","TransactionSourceType","TransactionType","Transactions"]
