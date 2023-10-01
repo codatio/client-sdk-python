@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-platform",
-    version="1.3.0",
+    version="1.4.0",
     author="Codat",
     description="Manage the building blocks of Codat, including companies, connections, and more.",
     long_description=long_description,
