@@ -2,15 +2,15 @@ configVersion: 1.0.0
 management:
   docChecksum: b51d801d70747513daf4984bd7a26454
   docVersion: 3.0.0
-  speakeasyVersion: 1.92.2
-  generationVersion: 2.142.2
+  speakeasyVersion: 1.92.3
+  generationVersion: 2.143.2
 generation:
   sdkClassName: CodatAccounting
   singleTagPerOp: false
   telemetryEnabled: true
 features:
   python:
-    core: 2.88.0
+    core: 2.88.1
     deprecations: 2.81.1
     downloadStreams: 0.0.1
     examples: 2.81.2
@@ -19,7 +19,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 0.33.0
+  version: 0.33.1
   author: Codat
   description: Access standardized accounting data from our accounting integrations.
   maxMethodParams: 0
