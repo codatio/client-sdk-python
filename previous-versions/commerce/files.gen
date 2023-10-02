@@ -62,6 +62,9 @@ src/codatcommerce/models/shared/servicecharge.py
 src/codatcommerce/models/shared/servicechargetype.py
 src/codatcommerce/models/shared/taxcomponentallocation.py
 src/codatcommerce/models/shared/taxcomponentref.py
+src/codatcommerce/models/shared/paymentref.py
+src/codatcommerce/models/shared/paymenttype.py
+src/codatcommerce/models/shared/paymentstatus.py
 src/codatcommerce/models/shared/orderlineitem.py
 src/codatcommerce/models/shared/productvariantref.py
 src/codatcommerce/models/shared/productref.py
@@ -70,7 +73,6 @@ src/codatcommerce/models/shared/locationref.py
 src/codatcommerce/models/shared/commercecustomerref.py
 src/codatcommerce/models/shared/orders.py
 src/codatcommerce/models/shared/payment.py
-src/codatcommerce/models/shared/paymentstatus.py
 src/codatcommerce/models/shared/paymentmethod.py
 src/codatcommerce/models/shared/paymentmethodstatus.py
 src/codatcommerce/models/shared/payments.py
@@ -162,6 +164,9 @@ docs/models/shared/servicecharge.md
 docs/models/shared/servicechargetype.md
 docs/models/shared/taxcomponentallocation.md
 docs/models/shared/taxcomponentref.md
+docs/models/shared/paymentref.md
+docs/models/shared/paymenttype.md
+docs/models/shared/paymentstatus.md
 docs/models/shared/orderlineitem.md
 docs/models/shared/productvariantref.md
 docs/models/shared/productref.md
@@ -170,7 +175,6 @@ docs/models/shared/locationref.md
 docs/models/shared/commercecustomerref.md
 docs/models/shared/orders.md
 docs/models/shared/payment.md
-docs/models/shared/paymentstatus.md
 docs/models/shared/paymentmethod.md
 docs/models/shared/paymentmethodstatus.md
 docs/models/shared/payments.md
