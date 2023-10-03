@@ -70,6 +70,7 @@ if res.create_account_response is not None:
 ### [accounts](docs/sdks/accounts/README.md)
 
 * [create](docs/sdks/accounts/README.md#create) - Create account
+* [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
 
 ### [companies](docs/sdks/companies/README.md)
 
