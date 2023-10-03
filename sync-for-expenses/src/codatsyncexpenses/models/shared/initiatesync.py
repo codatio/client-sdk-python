@@ -11,6 +11,6 @@ from typing import Optional
 
 @dataclasses.dataclass
 class InitiateSync:
-    dataset_ids: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datasetIds'), 'exclude': lambda f: f is None }})
+    dataset_ids: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datasetIds') }})
     
 
