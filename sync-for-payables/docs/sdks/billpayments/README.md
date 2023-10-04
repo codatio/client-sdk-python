@@ -1,4 +1,5 @@
 # BillPayments
+(*bill_payments*)
 
 ## Overview
 
@@ -41,23 +42,23 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(
-            id='82d68ea1-9f1d-4170-9133-9d08086a1840',
-            name='Toni Fritsch',
+            id='<ID>',
+            name='bluetooth Extended',
         ),
-        currency='USD',
-        currency_rate=Decimal('120.36'),
+        currency='GBP',
+        currency_rate=Decimal('7865.46'),
         date_='2022-10-23T00:00:00.000Z',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=Decimal('9816.4'),
+                amount=Decimal('7964.74'),
                 links=[
                     shared.BillPaymentLineLink(
-                        amount=Decimal('6184.8'),
-                        currency_rate=Decimal('2446.51'),
-                        id='f5f0642d-ac7a-4f51-9cc4-13aa63aae8d6',
-                        type=shared.BillPaymentLineLinkType.CREDIT_NOTE,
+                        amount=Decimal('3768.44'),
+                        currency_rate=Decimal('9510.62'),
+                        id='<ID>',
+                        type=shared.BillPaymentLineLinkType.MANUAL_JOURNAL,
                     ),
                 ],
             ),
@@ -67,25 +68,25 @@ req = operations.CreateBillPaymentRequest(
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
-        payment_method_ref='vel',
-        reference='labore',
+        payment_method_ref='deposit',
+        reference='Northwest',
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "facilis": {
-                    "cum": 'commodi',
+                "fugiat": {
+                    "facere": 'quantify',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='75fd5e60-b375-4ed4-b6fb-ee41f33317fe',
-            supplier_name='consectetur',
+            id='<ID>',
+            supplier_name='volt physical Ameliorated',
         ),
         total_amount=Decimal('1329.54'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=358107,
+    timeout_in_minutes=259629,
 )
 
 res = s.bill_payments.create(req)
@@ -116,8 +117,8 @@ if res.create_bill_payment_response is not None:
 ### Process
 1. Pass the `{billPaymentId}` to the *Delete bill payment* endpoint and store the `pushOperationKey` returned.
 2. Check the status of the delete operation by checking the status of push operation either via
-    1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
-    2. [Push operation status endpoint](https://docs.codat.io/sync-for-payables-api#/operations/get-push-operation).
+   1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
+   2. [Push operation status endpoint](https://docs.codat.io/sync-for-payables-api#/operations/get-push-operation).
 
    A `Success` status indicates that the bill payment object was deleted from the accounting platform.
 3. (Optional) Check that the bill payment was deleted from the accounting platform.
@@ -128,9 +129,15 @@ Be aware that deleting a bill payment from an accounting platform might cause re
 ## Integration specifics
 Integrations that support soft delete do not permanently delete the object in the accounting platform.
 
-| Integration | Soft Delete | Details                                                                                             |  
-|-------------|-------------|-----------------------------------------------------------------------------------------------------|
-| Oracle NetSuite   | No          | See [here](/integrations/accounting/netsuite/accounting-netsuite-how-deleting-bill-payments-works) to learn more. |
+| Integration | Soft Delete | Details                                                                                              |  
+|-------------|-------------|------------------------------------------------------------------------------------------------------|                                                        
+| Oracle NetSuite   | No          | See [here](/integrations/accounting/netsuite/how-deleting-bill-payments-works) to learn more.  |
+| QuickBooks Online | No          | -                                                                                              |
+| Xero | Yes          | -                                                                                                          |
+
+> **Supported integrations**
+>
+> This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
 
 
 ### Example Usage
@@ -146,7 +153,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='harum',
+    bill_payment_id='Van complexity',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -193,7 +200,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='laboriosam',
+    bill_payment_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -291,7 +298,7 @@ req = operations.ListBillPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsa',
+    query='Northeast Metal Canada',
 )
 
 res = s.bill_payments.list(req)

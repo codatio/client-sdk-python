@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `amount`           | *Decimal*          | :heavy_check_mark: | N/A                |
-| `name`             | *str*              | :heavy_check_mark: | N/A                |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `amount`                       | *Optional[Decimal]*            | :heavy_check_mark:             | Amount of tax withheld.        |
+| `name`                         | *Optional[str]*                | :heavy_check_mark:             | Name assigned to withheld tax. |

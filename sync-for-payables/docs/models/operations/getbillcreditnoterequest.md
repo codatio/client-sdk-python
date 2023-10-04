@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          | Example                              |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `bill_credit_note_id`                | *str*                                | :heavy_check_mark:                   | N/A                                  |                                      |
-| `company_id`                         | *str*                                | :heavy_check_mark:                   | N/A                                  | 8a210b68-6988-11ed-a1eb-0242ac120002 |
+| Field                                     | Type                                      | Required                                  | Description                               | Example                                   |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| `bill_credit_note_id`                     | *Optional[str]*                           | :heavy_check_mark:                        | Unique identifier for a bill credit note. |                                           |
+| `company_id`                              | *Optional[str]*                           | :heavy_check_mark:                        | Unique identifier for a company.          | 8a210b68-6988-11ed-a1eb-0242ac120002      |

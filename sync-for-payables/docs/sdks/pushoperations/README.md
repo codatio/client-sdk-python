@@ -1,4 +1,5 @@
 # PushOperations
+(*push_operations*)
 
 ## Overview
 
@@ -27,7 +28,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='ad7334ec-1b78-41b3-aa08-088d100efada',
+    push_operation_key='b18d8d81-fd7b-4764-a31e-475cb1f36591',
 )
 
 res = s.push_operations.get(req)
@@ -70,7 +71,7 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sed',
+    query='Northeast Metal Canada',
 )
 
 res = s.push_operations.list(req)
