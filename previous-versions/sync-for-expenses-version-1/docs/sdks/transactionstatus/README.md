@@ -1,4 +1,5 @@
-# transaction_status
+# TransactionStatus
+(*transaction_status*)
 
 ## Overview
 
@@ -6,8 +7,8 @@ Retrieve the status of transactions within a sync.
 
 ### Available Operations
 
-* [get_sync_transaction](#get_sync_transaction) - Get Sync Transaction
-* [list_sync_transactions](#list_sync_transactions) - Get Sync transactions
+* [get_sync_transaction](#get_sync_transaction) - Get sync transaction
+* [list_sync_transactions](#list_sync_transactions) - Get sync transactions
 
 ## get_sync_transaction
 
