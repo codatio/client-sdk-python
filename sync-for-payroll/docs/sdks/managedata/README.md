@@ -1,4 +1,5 @@
 # ManageData
+(*manage_data*)
 
 ## Overview
 
@@ -71,7 +72,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
+    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
 )
 
 res = s.manage_data.get_pull_operation(req)
@@ -111,7 +112,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='97074ba4-469b-46e2-9419-59890afa563e',
+    push_operation_key='2a6486f4-00c4-40bd-900d-b29c15ad0581',
 )
 
 res = s.manage_data.get_push_operation(req)
@@ -154,7 +155,7 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='odit',
+    query='Northeast Metal Canada',
 )
 
 res = s.manage_data.list(req)
@@ -197,7 +198,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nemo',
+    query='Dock Elegant Buckinghamshire',
 )
 
 res = s.manage_data.list_pull_operations(req)
@@ -282,7 +283,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='16fe4c8b-711e-45b7-bd2e-d028921cddc6',
+    connection_id='d6258093-be98-4f60-90e1-ca6bcd49fb9a',
     data_type=shared.DataType.INVOICES,
 )
 
