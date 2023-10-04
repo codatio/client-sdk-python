@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 import dataclasses
+from ..shared import datatype as shared_datatype
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 
 class PullOperationStatus(str, Enum):
+    r"""The current status of the pull operation."""
     INITIAL = 'Initial'
     QUEUED = 'Queued'
     FETCHING = 'Fetching'
@@ -40,12 +42,19 @@ class PullOperation:
     *Formally called `dataset`*
     """
     company_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId') }})
+    r"""Unique identifier of the company associated to this pull operation."""
     connection_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionId') }})
-    data_type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
+    r"""Unique identifier of the connection associated to this pull operation."""
+    data_type: shared_datatype.DataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
+    r"""Available Data types"""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""Unique identifier of the pull operation."""
     is_completed: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isCompleted') }})
+    r"""`True` if the pull operation completed successfully."""
     is_errored: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isErrored') }})
+    r"""`True` if the pull operation entered an error state."""
     progress: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('progress') }})
+    r"""An integer signifying the progress of the pull operation."""
     requested: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('requested') }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -68,5 +77,6 @@ class PullOperation:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     status: PullOperationStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    r"""The current status of the pull operation."""
     
 

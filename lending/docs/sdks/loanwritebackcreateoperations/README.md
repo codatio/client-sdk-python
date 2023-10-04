@@ -1,4 +1,5 @@
-# LoanWriteback.CreateOperations
+# LoanWritebackCreateOperations
+(*loan_writeback.create_operations*)
 
 ### Available Operations
 
@@ -23,7 +24,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='e6e13b99-d488-4e1e-91e4-50ad2abd4426',
+    push_operation_key='b18d8d81-fd7b-4764-a31e-475cb1f36591',
 )
 
 res = s.loan_writeback.create_operations.get(req)
@@ -66,7 +67,7 @@ req = operations.ListCreateOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='cupiditate',
+    query='Northeast Metal Canada',
 )
 
 res = s.loan_writeback.create_operations.list(req)

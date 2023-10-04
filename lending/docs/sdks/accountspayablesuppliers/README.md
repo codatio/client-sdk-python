@@ -1,4 +1,5 @@
-# AccountsPayable.Suppliers
+# AccountsPayableSuppliers
+(*accounts_payable.suppliers*)
 
 ### Available Operations
 
@@ -12,7 +13,7 @@
 
 The *Download supplier attachment* endpoint downloads a specific attachment for a given `supplierId` and `attachmentId`.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/lending-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support downloading a supplier attachment.
 
@@ -33,7 +34,7 @@ req = operations.DownloadAccountingSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='ab',
+    supplier_id='Dakota Avon specifically',
 )
 
 res = s.accounts_payable.suppliers.download_attachment(req)
@@ -59,7 +60,7 @@ if res.data is not None:
 
 The *Get supplier* endpoint returns a single supplier for a given supplierId.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/lending-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support getting a specific supplier.
 
@@ -80,7 +81,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='quis',
+    supplier_id='Northeast Hatchback Kia',
 )
 
 res = s.accounts_payable.suppliers.get(req)
@@ -106,7 +107,7 @@ if res.accounting_supplier is not None:
 
 The *Get supplier attachment* endpoint returns a specific attachment for a given `supplierId` and `attachmentId`.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/lending-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support getting a supplier attachment.
 
@@ -127,7 +128,7 @@ req = operations.GetAccountingSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='veritatis',
+    supplier_id='array East along',
 )
 
 res = s.accounts_payable.suppliers.get_attachment(req)
@@ -151,9 +152,9 @@ if res.accounting_attachment is not None:
 
 ## list
 
-The *List suppliers* endpoint returns a list of [suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) for a given company's connection.
+The *List suppliers* endpoint returns a list of [suppliers](https://docs.codat.io/lending-api#/schemas/Supplier) for a given company's connection.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/lending-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -175,7 +176,7 @@ req = operations.ListAccountingSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deserunt',
+    query='Northeast Metal Canada',
 )
 
 res = s.accounts_payable.suppliers.list(req)
@@ -201,7 +202,7 @@ if res.accounting_suppliers is not None:
 
 The *List supplier attachments* endpoint returns a list of attachments available to download for given `supplierId`.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/lending-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support listing supplier attachments.
 
@@ -221,7 +222,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='perferendis',
+    supplier_id='intuitive Frozen ouch',
 )
 
 res = s.accounts_payable.suppliers.list_attachments(req)

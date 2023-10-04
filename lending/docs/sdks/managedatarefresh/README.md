@@ -1,4 +1,5 @@
-# ManageData.Refresh
+# ManageDataRefresh
+(*manage_data.refresh*)
 
 ### Available Operations
 
@@ -68,7 +69,7 @@ s = codatlending.CodatLending(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='dac7af51-5cc4-413a-a63a-ae8d67864dbb',
+    connection_id='34f47fda-384b-4d2f-a80b-311909008b33',
     data_type=shared.DataType.INVOICES,
 )
 

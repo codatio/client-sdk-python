@@ -1,4 +1,5 @@
-# FinancialStatements.BalanceSheet
+# FinancialStatementsBalanceSheet
+(*financial_statements.balance_sheet*)
 
 ### Available Operations
 
@@ -67,7 +68,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetCategorizedBalanceSheetStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=568434,
+    number_of_periods=258121,
     report_date='29-09-2020',
 )
 

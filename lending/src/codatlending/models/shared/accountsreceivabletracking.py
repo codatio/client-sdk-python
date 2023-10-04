@@ -34,7 +34,9 @@ class AccountsReceivableTracking:
     r"""Categories, and a project and customer, against which the item is tracked."""
     category_refs: list[shared_trackingcategoryref.TrackingCategoryRef] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})
     is_billed_to: shared_billedtotype1.BilledToType1 = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})
+    r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
     is_rebilled_to: shared_billedtotype1.BilledToType1 = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
+    r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
     customer_ref: Optional[shared_accountingcustomerref.AccountingCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
     project_ref: Optional[shared_projectref.ProjectRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})
     record_ref: Optional[AccountsReceivableTrackingRecordReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})

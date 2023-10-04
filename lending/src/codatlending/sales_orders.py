@@ -16,7 +16,7 @@ class SalesOrders:
         r"""Get order
         The *Get order* endpoint returns a single order for a given orderId.
 
-        [Orders](https://docs.codat.io/commerce-api#/schemas/Order) contain the transaction details for all products sold by the company.
+        [Orders](https://docs.codat.io/lending-api#/schemas/Order) contain the transaction details for all products sold by the company.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-orders) for integrations that support getting a specific order.
 
@@ -27,7 +27,7 @@ class SalesOrders:
         url = utils.generate_url(operations.GetCommerceOrderRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -41,7 +41,7 @@ class SalesOrders:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -69,9 +69,9 @@ class SalesOrders:
     
     def list(self, request: operations.ListCommerceOrdersRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCommerceOrdersResponse:
         r"""List orders
-        The *List orders* endpoint returns a list of [orders](https://docs.codat.io/commerce-api#/schemas/Order) for a given company's connection.
+        The *List orders* endpoint returns a list of [orders](https://docs.codat.io/lending-api#/schemas/Order) for a given company's connection.
 
-        [Orders](https://docs.codat.io/commerce-api#/schemas/Order) contain the transaction details for all products sold by the company.
+        [Orders](https://docs.codat.io/lending-api#/schemas/Order) contain the transaction details for all products sold by the company.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """
@@ -81,7 +81,7 @@ class SalesOrders:
         headers = {}
         query_params = utils.get_query_params(operations.ListCommerceOrdersRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -95,7 +95,7 @@ class SalesOrders:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
