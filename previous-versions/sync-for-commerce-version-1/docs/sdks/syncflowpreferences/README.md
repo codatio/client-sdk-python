@@ -1,4 +1,5 @@
-# sync_flow_preferences
+# SyncFlowPreferences
+(*sync_flow_preferences*)
 
 ## Overview
 
@@ -6,11 +7,11 @@ Configure preferences for any given Sync for Commerce company using sync flow.
 
 ### Available Operations
 
-* [get_config_text_sync_flow](#get_config_text_sync_flow) - Retrieve preferences for text fields on Sync Flow
+* [get_config_text_sync_flow](#get_config_text_sync_flow) - Retrieve preferences for text fields on sync flow
 * [get_sync_flow_url](#get_sync_flow_url) - Retrieve sync flow url
 * [get_visible_accounts](#get_visible_accounts) - List visible accounts
 * [update_config_text_sync_flow](#update_config_text_sync_flow) - Update preferences for text fields on sync flow
-* [update_visible_accounts_sync_flow](#update_visible_accounts_sync_flow) - Update the visible accounts on Sync Flow
+* [update_visible_accounts_sync_flow](#update_visible_accounts_sync_flow) - Update the visible accounts on sync flow
 
 ## get_config_text_sync_flow
 
@@ -64,9 +65,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key='optio',
-    commerce_key='ex',
-    merchant_identifier='quaerat',
+    accounting_key='Manager',
+    commerce_key='payment',
+    merchant_identifier='Rupiah tertiary Zealand',
 )
 
 res = s.sync_flow_preferences.get_sync_flow_url(req)
@@ -105,8 +106,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetVisibleAccountsRequest(
-    client_id='6ecb5734-09e3-4eb1-a5a2-b12eb07f116d',
-    platform_key='b99545fc-95fa-4889-b0e1-89dbb30fcb33',
+    client_id='86fe9741-738d-4f2c-8e96-9c3f84156e91',
+    platform_key='gbol',
 )
 
 res = s.sync_flow_preferences.get_visible_accounts(req)
@@ -145,9 +146,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "saepe": shared.Localization(
+    "perferendis": shared.Localization(
         required=False,
-        text='deserunt',
+        text='Gasoline Cotton azure',
     ),
 }
 
@@ -189,10 +190,10 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'doloremque',
+            'Coordinator',
         ],
     ),
-    platform_key='55b197cd-44e2-4f52-982d-3513bb6f48b6',
+    platform_key='gbol',
 )
 
 res = s.sync_flow_preferences.update_visible_accounts_sync_flow(req)

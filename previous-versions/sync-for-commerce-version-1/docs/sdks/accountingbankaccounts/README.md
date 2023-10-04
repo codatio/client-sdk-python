@@ -1,4 +1,5 @@
-# accounting_bank_accounts
+# AccountingBankAccounts
+(*accounting_bank_accounts*)
 
 ## Overview
 
@@ -33,7 +34,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetAccountingBankAccountRequest(
-    account_id='delectus',
+    account_id='optimal Buckinghamshire',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -84,7 +85,7 @@ req = operations.ListAccountingBankAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='tempora',
+    query='crushing lumen',
 )
 
 res = s.accounting_bank_accounts.list_accounting_bank_accounts(req)

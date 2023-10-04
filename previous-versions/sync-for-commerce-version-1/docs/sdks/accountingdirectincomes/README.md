@@ -1,4 +1,5 @@
-# accounting_direct_incomes
+# AccountingDirectIncomes
+(*accounting_direct_incomes*)
 
 ## Overview
 
@@ -37,88 +38,88 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.CreateAccountingDirectIncomeRequest(
     accounting_direct_income=shared.AccountingDirectIncome(
         contact_ref=shared.AccountingDirectIncomeContactRef(
-            data_type='tempora',
-            id='5626d436-813f-416d-9f5f-ce6c556146c3',
+            data_type=shared.DataType.INVOICES,
+            id='<ID>',
         ),
-        currency='EUR',
-        currency_rate=Decimal('1324.87'),
-        id='50fb008c-42e1-441a-ac36-6c8dd6b14429',
+        currency='GBP',
+        currency_rate=Decimal('6548.38'),
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.DirectIncomeLineItem(
                 account_ref=shared.AccountRef(
-                    id='7474778a-7bd4-466d-a8c1-0ab3cdca4251',
-                    name='William Goodwin',
+                    id='<ID>',
+                    name='Meitnerium watt Assistant',
                 ),
-                description='aspernatur',
-                discount_amount=Decimal('1970.54'),
-                discount_percentage=Decimal('7791.92'),
+                description='Organized directional moratorium',
+                discount_amount=Decimal('6259.31'),
+                discount_percentage=Decimal('3251.14'),
                 item_ref=shared.DirectIncomeLineItemItemReference(
-                    id='7e0bc717-8e47-496f-aa70-c688282aa482',
-                    name='Sue Corkery',
+                    id='<ID>',
+                    name='Supervisor virtual sadly',
                 ),
-                quantity=Decimal('1871.31'),
-                sub_total=Decimal('1294.12'),
-                tax_amount=Decimal('9039.84'),
+                quantity=Decimal('7605.88'),
+                sub_total=Decimal('2695.32'),
+                tax_amount=Decimal('3396.83'),
                 tax_rate_ref=shared.DirectIncomeLineItemTaxRateReference(
-                    effective_tax_rate=Decimal('5789.22'),
-                    id='817ee17c-be61-4e6b-bb95-bc0ab3c20c4f',
-                    name='Joy Labadie',
+                    effective_tax_rate=Decimal('2606.73'),
+                    id='<ID>',
+                    name='Pensacola Som Northwest',
                 ),
-                total_amount=Decimal('8577.23'),
+                total_amount=Decimal('6880.22'),
                 tracking_category_refs=[
                     shared.DirectIncomeLineItemTrackingCategoryRefs(
-                        id='871f99dd-2efd-4121-aa6f-1e674bdb04f1',
-                        name='Delores Hermiston IV',
+                        id='<ID>',
+                        name='Pickup',
                     ),
                 ],
-                unit_amount=Decimal('1852.32'),
+                unit_amount=Decimal('8819.46'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='ex',
+        note='magni',
         payment_allocations=[
             shared.PaymentAllocationsitems(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='EUR',
-                    currency_rate=Decimal('6802.7'),
-                    total_amount=Decimal('996.15'),
+                    currency='USD',
+                    currency_rate=Decimal('2449.75'),
+                    total_amount=Decimal('6540.35'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='9f1d1705-1339-4d08-886a-1840394c2607',
-                        name='Elisa Mosciski',
+                        id='<ID>',
+                        name='Officer mobile Infrastructure',
                     ),
-                    currency='USD',
-                    currency_rate=Decimal('9903.45'),
-                    id='0642dac7-af51-45cc-813a-a63aae8d6786',
-                    note='labore',
+                    currency='EUR',
+                    currency_rate=Decimal('4022.79'),
+                    id='<ID>',
+                    note='Tools Dynamic Industrial',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='facilis',
-                    total_amount=Decimal('7382.27'),
+                    reference='parallelism',
+                    total_amount=Decimal('9002.17'),
                 ),
             ),
         ],
-        reference='commodi',
+        reference='Man Cotton virtual',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        sub_total=Decimal('3605.45'),
+        sub_total=Decimal('4300.87'),
         supplemental_data=shared.SupplementalData(
             content={
-                "reiciendis": {
-                    "assumenda": 'nemo',
+                "eos": {
+                    "facere": 'TLS',
                 },
             },
         ),
-        tax_amount=Decimal('9249.67'),
-        total_amount=Decimal('3975.33'),
+        tax_amount=Decimal('356.06'),
+        total_amount=Decimal('9132.9'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=46007,
+    timeout_in_minutes=156594,
 )
 
 res = s.accounting_direct_incomes.create_accounting_direct_income(req)

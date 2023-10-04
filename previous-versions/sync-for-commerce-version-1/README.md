@@ -12,8 +12,6 @@ pip install codat-sync-for-commerce-version-1
 
 ## Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import codatsynccommerce
 from codatsynccommerce.models import operations, shared
@@ -27,11 +25,11 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingAccountRequest(
     accounting_account=shared.AccountingAccount(
-        currency='USD',
+        currency='GBP',
         current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
-        fully_qualified_name='Fixed Asset',
+        fully_qualified_name='Cash On Hand',
         id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
         is_bank_account=False,
         metadata=shared.AccountingAccountMetadata(
@@ -46,15 +44,15 @@ req = operations.CreateAccountingAccountRequest(
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'unde',
+                    'Gasoline',
                 ],
-                property='nulla',
+                property='orchid',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=544883,
+    timeout_in_minutes=977465,
 )
 
 res = s.accounting_accounts.create_accounting_account(req)
@@ -152,7 +150,7 @@ if res.accounting_create_account_response is not None:
 
 ### [company_management](docs/sdks/companymanagement/README.md)
 
-* [create_company](docs/sdks/companymanagement/README.md#create_company) - Create Sync for Commerce company
+* [create_company](docs/sdks/companymanagement/README.md#create_company) - Create sync for commerce company
 * [create_connection](docs/sdks/companymanagement/README.md#create_connection) - Create connection
 * [list_companies](docs/sdks/companymanagement/README.md#list_companies) - List companies
 * [list_connections](docs/sdks/companymanagement/README.md#list_connections) - List data connections
@@ -160,8 +158,8 @@ if res.accounting_create_account_response is not None:
 
 ### [configuration](docs/sdks/configuration/README.md)
 
-* [get_configuration](docs/sdks/configuration/README.md#get_configuration) - Retrieve config preferences set for a company.
-* [set_configuration](docs/sdks/configuration/README.md#set_configuration) - Create or update configuration.
+* [get_configuration](docs/sdks/configuration/README.md#get_configuration) - Retrieve config preferences set for a company
+* [set_configuration](docs/sdks/configuration/README.md#set_configuration) - Create or update configuration
 
 ### [connections](docs/sdks/connections/README.md)
 
@@ -172,7 +170,7 @@ if res.accounting_create_account_response is not None:
 ### [integrations](docs/sdks/integrations/README.md)
 
 * [get_integration_branding](docs/sdks/integrations/README.md#get_integration_branding) - Get branding for an integration
-* [list_integrations](docs/sdks/integrations/README.md#list_integrations) - List information on Codat's supported integrations
+* [list_integrations](docs/sdks/integrations/README.md#list_integrations) - List integrations
 
 ### [push_data](docs/sdks/pushdata/README.md)
 
@@ -195,10 +193,36 @@ if res.accounting_create_account_response is not None:
 
 ### [sync_flow_preferences](docs/sdks/syncflowpreferences/README.md)
 
-* [get_config_text_sync_flow](docs/sdks/syncflowpreferences/README.md#get_config_text_sync_flow) - Retrieve preferences for text fields on Sync Flow
+* [get_config_text_sync_flow](docs/sdks/syncflowpreferences/README.md#get_config_text_sync_flow) - Retrieve preferences for text fields on sync flow
 * [get_sync_flow_url](docs/sdks/syncflowpreferences/README.md#get_sync_flow_url) - Retrieve sync flow url
 * [get_visible_accounts](docs/sdks/syncflowpreferences/README.md#get_visible_accounts) - List visible accounts
 * [update_config_text_sync_flow](docs/sdks/syncflowpreferences/README.md#update_config_text_sync_flow) - Update preferences for text fields on sync flow
-* [update_visible_accounts_sync_flow](docs/sdks/syncflowpreferences/README.md#update_visible_accounts_sync_flow) - Update the visible accounts on Sync Flow
+* [update_visible_accounts_sync_flow](docs/sdks/syncflowpreferences/README.md#update_visible_accounts_sync_flow) - Update the visible accounts on sync flow
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Pagination -->
+# Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `None`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+
+
+<!-- End Pagination -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 ### Library generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)

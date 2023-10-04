@@ -1,4 +1,5 @@
-# accounting_invoices
+# AccountingInvoices
+(*accounting_invoices*)
 
 ## Overview
 
@@ -36,132 +37,132 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingInvoiceRequest(
     accounting_invoice=shared.AccountingInvoice(
-        additional_tax_amount=Decimal('7386.83'),
-        additional_tax_percentage=Decimal('2326.27'),
-        amount_due=Decimal('4490.83'),
-        currency='USD',
-        currency_rate=Decimal('9372.85'),
+        additional_tax_amount=Decimal('9907.57'),
+        additional_tax_percentage=Decimal('9015.63'),
+        amount_due=Decimal('195.45'),
+        currency='EUR',
+        currency_rate=Decimal('1021.57'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='facere',
-            id='4f6fbee4-1f33-4317-be35-b60eb1ea4265',
+            company_name='Runte Inc',
+            id='<ID>',
         ),
-        discount_percentage=Decimal('3742.96'),
+        discount_percentage=Decimal('7432.38'),
         due_date='2022-10-23T00:00:00.000Z',
-        id='ba3c2874-4ed5-43b8-8f3a-8d8f5c0b2f2f',
-        invoice_number='facilis',
+        id='<ID>',
+        invoice_number='Manors',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.InvoiceLineItem(
                 account_ref=shared.AccountRef(
-                    id='b194a276-b269-416f-a1f0-8f4294e3698f',
-                    name='Rhonda Klocko',
+                    id='<ID>',
+                    name='as',
                 ),
-                description='sit',
-                discount_amount=Decimal('2484.13'),
-                discount_percentage=Decimal('8880.44'),
+                description='Visionary discrete task-force',
+                discount_amount=Decimal('1010.92'),
+                discount_percentage=Decimal('6455.29'),
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='8b445e80-ca55-4efd-a0e4-57e1858b6a89',
-                    name='Rudolph Trantow',
+                    id='<ID>',
+                    name='Shoes Tennessee',
                 ),
-                quantity=Decimal('3416.98'),
-                sub_total=Decimal('6390.28'),
-                tax_amount=Decimal('6762.43'),
+                quantity=Decimal('8154.23'),
+                sub_total=Decimal('7362.43'),
+                tax_amount=Decimal('6235.41'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('5483.61'),
-                    id='e4824d0a-b407-4508-8e51-862065e904f3',
-                    name='Gerald Bradtke',
+                    effective_tax_rate=Decimal('9166.8'),
+                    id='<ID>',
+                    name='yellow Chair',
                 ),
-                total_amount=Decimal('6952.7'),
+                total_amount=Decimal('1049.23'),
                 tracking=shared.Tracking(
                     category_refs=[
                         shared.TrackingCategoryRefsitems(
-                            id='8abf603a-79f9-4dfe-8ab7-da8a50ce187f',
-                            name='Sam Powlowski IV',
+                            id='<ID>',
+                            name='rural Bulgarian Producer',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='amet',
-                        id='d689eee9-526f-48d9-86e8-81ead4f0e101',
+                        company_name='Grimes, Yost and Champlin',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType.UNKNOWN,
+                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.UNKNOWN,
                     project_ref=shared.TrackingProjectReference(
-                        id='63f94e29-e973-4e92-aa57-a15be3e06080',
-                        name='Tricia Denesik',
+                        id='<ID>',
+                        name='Organized UDP',
                     ),
                     record_ref=shared.RecordRef(
-                        data_type='transfer',
-                        id='3ab8845f-0597-4a60-bf2a-54a31e94764a',
+                        data_type='journalEntry',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRefsitems(
-                        id='3e865e79-56f9-4251-a5a9-da660ff57bfa',
-                        name='Irving Gleichner',
+                        id='<ID>',
+                        name='Garden',
                     ),
                 ],
-                unit_amount=Decimal('8897.94'),
+                unit_amount=Decimal('5528.53'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='cumque',
+        note='Home Applications Fermium',
         paid_on_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
             shared.AccountingInvoicePaymentAllocation(
                 allocation=shared.AccountingInvoicePaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='GBP',
-                    currency_rate=Decimal('3354.98'),
-                    total_amount=Decimal('820.57'),
+                    currency_rate=Decimal('4747.86'),
+                    total_amount=Decimal('8682.37'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='2c103264-8dc2-4f61-9199-ebfd0e9fe6c6',
-                        name='Denise Runolfsdottir',
+                        id='<ID>',
+                        name='West Avon Herzegovina',
                     ),
-                    currency='USD',
-                    currency_rate=Decimal('8987.6'),
-                    id='d0117996-312f-4de0-8771-778ff61d0174',
-                    note='esse',
+                    currency='GBP',
+                    currency_rate=Decimal('7606.26'),
+                    id='<ID>',
+                    note='Berkshire',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='consectetur',
-                    total_amount=Decimal('3998.12'),
+                    reference='Palm scam',
+                    total_amount=Decimal('2223.49'),
                 ),
             ),
         ],
         sales_order_refs=[
             shared.AccountingInvoiceSalesOrderReference(
-                data_type='ipsa',
-                id='a15db6a6-6065-49a1-adea-ab5851d6c645',
+                data_type=shared.DataType.INVOICES,
+                id='<ID>',
             ),
         ],
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.InvoiceStatus.UNKNOWN,
-        sub_total=Decimal('5615.77'),
+        sub_total=Decimal('7559.48'),
         supplemental_data=shared.SupplementalData(
             content={
-                "cum": {
-                    "aliquid": 'beatae',
+                "explicabo": {
+                    "fugiat": 'definition',
                 },
             },
         ),
-        total_amount=Decimal('5308.6'),
-        total_discount=Decimal('6063.08'),
-        total_tax_amount=Decimal('852.33'),
+        total_amount=Decimal('2429.55'),
+        total_discount=Decimal('6497.09'),
+        total_tax_amount=Decimal('337.26'),
         withholding_tax=[
             shared.AccountingInvoiceWithholdingTax(
-                amount=Decimal('7032.18'),
-                name='Trevor Bartell',
+                amount=Decimal('676.3'),
+                name='whether Division so',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=103298,
+    timeout_in_minutes=658558,
 )
 
 res = s.accounting_invoices.create_accounting_invoice(req)

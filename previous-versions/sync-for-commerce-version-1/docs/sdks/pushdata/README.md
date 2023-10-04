@@ -1,4 +1,5 @@
-# push_data
+# PushData
+(*push_data*)
 
 ## Overview
 
@@ -27,7 +28,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='97f92443-da7c-4e52-b895-c537c6454efb',
+    push_operation_key='59acd79e-29d3-4138-91d3-91d4641bf7ed',
 )
 
 res = s.push_data.get_operation(req)
@@ -70,7 +71,7 @@ req = operations.GetCompanyPushHistoryRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='aperiam',
+    query='Synchronised',
 )
 
 res = s.push_data.list_operations(req)

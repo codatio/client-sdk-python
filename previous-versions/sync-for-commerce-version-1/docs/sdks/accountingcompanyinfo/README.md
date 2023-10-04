@@ -1,4 +1,5 @@
-# accounting_company_info
+# AccountingCompanyInfo
+(*accounting_company_info*)
 
 ## Overview
 

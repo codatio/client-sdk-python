@@ -1,4 +1,5 @@
-# accounting_credit_notes
+# AccountingCreditNotes
+(*accounting_credit_notes*)
 
 ## Overview
 
@@ -36,125 +37,125 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingCreditNoteRequest(
     accounting_credit_note=shared.AccountingCreditNote(
-        additional_tax_amount=Decimal('3834.41'),
-        additional_tax_percentage=Decimal('4776.65'),
+        additional_tax_amount=Decimal('6733.79'),
+        additional_tax_percentage=Decimal('612.72'),
         allocated_on_date='2022-10-23T00:00:00.000Z',
-        credit_note_number='placeat',
+        credit_note_number='lavender Planner',
         currency='USD',
-        currency_rate=Decimal('4799.77'),
+        currency_rate=Decimal('2314.32'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='excepturi',
-            id='6ed151a0-5dfc-42dd-b7cc-78ca1ba928fc',
+            company_name='Swaniawski - Okuneva',
+            id='<ID>',
         ),
-        discount_percentage=Decimal('5218.48'),
-        id='16742cb7-3920-4592-9396-fea7596eb10f',
+        discount_percentage=Decimal('1210.61'),
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='aa2352c5-9559-407a-bf1a-3a2fa9467739',
-                    name='Beatrice Brown',
+                    id='<ID>',
+                    name='candela Metal policy',
                 ),
-                description='enim',
-                discount_amount=Decimal('1381.83'),
-                discount_percentage=Decimal('7783.46'),
+                description='Universal 4th generation model',
+                discount_amount=Decimal('6593.55'),
+                discount_percentage=Decimal('3629.12'),
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='3f5ad019-da1f-4fe7-8f09-7b0074f15471',
-                    name='Bill Thompson',
+                    id='<ID>',
+                    name='Titusville Car',
                 ),
-                quantity=Decimal('641.47'),
-                sub_total=Decimal('2168.22'),
-                tax_amount=Decimal('6924.72'),
+                quantity=Decimal('9339.43'),
+                sub_total=Decimal('9776.2'),
+                tax_amount=Decimal('4570.33'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('5651.89'),
-                    id='9d488e1e-91e4-450a-92ab-d44269802d50',
-                    name='Sonya Marks',
+                    effective_tax_rate=Decimal('2840.32'),
+                    id='<ID>',
+                    name='Nissan Shirt',
                 ),
-                total_amount=Decimal('7351.94'),
+                total_amount=Decimal('3862.17'),
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRefsitems(
-                            id='4f63c969-e9a3-4efa-b7df-b14cd66ae395',
-                            name='Toby Pouros',
+                            id='<ID>',
+                            name='system',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='id',
-                        id='88f3a669-9707-44ba-8469-b6e214195989',
+                        company_name='Labadie and Sons',
+                        id='<ID>',
                     ),
                     is_billed_to=shared.BilledToType.UNKNOWN,
                     is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
                     project_ref=shared.CreditNoteLineItemTrackingProjectReference(
-                        id='fa563e25-16fe-44c8-b711-e5b7fd2ed028',
-                        name='Victor Casper',
+                        id='<ID>',
+                        name='Mann second siemens',
                     ),
                     record_ref=shared.RecordRef(
                         data_type='transfer',
-                        id='c692601f-b576-4b0d-9f0d-30c5fbb25870',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRefsitems(
-                        id='53202c73-d5fe-49b9-8c28-909b3fe49a8d',
-                        name='Loren Renner',
+                        id='<ID>',
+                        name='scalable',
                     ),
                 ],
-                unit_amount=Decimal('5542.42'),
+                unit_amount=Decimal('9063.02'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='dolorem',
+        note='Conroy fuzzy Mobility',
         payment_allocations=[
             shared.PaymentAllocationsitems(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
-                    currency_rate=Decimal('1861.93'),
-                    total_amount=Decimal('2187.49'),
+                    currency='EUR',
+                    currency_rate=Decimal('5905.56'),
+                    total_amount=Decimal('8276.36'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='f9b77f3a-4100-4674-abf6-9280d1ba77a8',
-                        name='Terence Rau',
+                        id='<ID>',
+                        name='synthesizing becquerel Operations',
                     ),
                     currency='GBP',
-                    currency_rate=Decimal('4560.15'),
-                    id='ae4203ce-5e6a-495d-8a0d-446ce2af7a73',
-                    note='quisquam',
+                    currency_rate=Decimal('8697.42'),
+                    id='<ID>',
+                    note='Convertible',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='amet',
-                    total_amount=Decimal('7308.56'),
+                    reference='Grenada networks Fantastic',
+                    total_amount=Decimal('5575.36'),
                 ),
             ),
         ],
-        remaining_credit=Decimal('8802.98'),
+        remaining_credit=Decimal('4029.48'),
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.CreditNoteStatus.DRAFT,
-        sub_total=Decimal('2133.12'),
+        sub_total=Decimal('8342.79'),
         supplemental_data=shared.SupplementalData(
             content={
-                "sapiente": {
-                    "totam": 'nihil',
+                "quos": {
+                    "nihil": 'Concrete',
                 },
             },
         ),
-        total_amount=Decimal('256.62'),
-        total_discount=Decimal('7115.84'),
-        total_tax_amount=Decimal('2074.7'),
+        total_amount=Decimal('1868.28'),
+        total_discount=Decimal('4123.14'),
+        total_tax_amount=Decimal('8369.46'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('1536.94'),
-                name='Kelli Hintz',
+                amount=Decimal('879.63'),
+                name='male Bedfordshire architectures',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=214880,
+    timeout_in_minutes=814888,
 )
 
 res = s.accounting_credit_notes.create_accounting_credit_note(req)

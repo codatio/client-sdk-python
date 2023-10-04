@@ -1,4 +1,5 @@
-# commerce_payments
+# CommercePayments
+(*commerce_payments*)
 
 ## Overview
 
@@ -37,7 +38,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommercePaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_id='quibusdam',
+    payment_id='Chief Music',
 )
 
 res = s.commerce_payments.get_commerce_payment(req)
@@ -85,7 +86,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommercePaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_method_id='odio',
+    payment_method_id='Markets',
 )
 
 res = s.commerce_payments.get_method(req)
@@ -134,7 +135,7 @@ req = operations.ListCommercePaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='praesentium',
+    query='Rustic Metal',
 )
 
 res = s.commerce_payments.list_commerce_payments(req)
@@ -183,7 +184,7 @@ req = operations.ListCommercePaymentMethodsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='odit',
+    query='limply',
 )
 
 res = s.commerce_payments.list_methods(req)
