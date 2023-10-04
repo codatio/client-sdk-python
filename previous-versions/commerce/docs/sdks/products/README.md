@@ -1,4 +1,5 @@
-# products
+# Products
+(*products*)
 
 ## Overview
 
@@ -37,7 +38,7 @@ s = codatcommerce.CodatCommerce(
 req = operations.GetProductRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    product_id='suscipit',
+    product_id='Northeast Hatchback Kia',
 )
 
 res = s.products.get(req)
@@ -85,7 +86,7 @@ s = codatcommerce.CodatCommerce(
 req = operations.GetProductCategoryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    product_id='iure',
+    product_id='personalise contingency',
 )
 
 res = s.products.get_category(req)
@@ -134,7 +135,7 @@ req = operations.ListProductsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='magnam',
+    query='Northeast Metal Canada',
 )
 
 res = s.products.list(req)
@@ -183,7 +184,7 @@ req = operations.ListProductCategoriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='debitis',
+    query='deposit nor protocol',
 )
 
 res = s.products.list_categories(req)
