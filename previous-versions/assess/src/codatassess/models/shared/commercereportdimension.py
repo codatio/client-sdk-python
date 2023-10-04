@@ -12,6 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class CommerceReportDimensionItems:
     index: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index'), 'exclude': lambda f: f is None }})
+    r"""The dimension's items index."""
     
 
 
@@ -21,8 +22,11 @@ class CommerceReportDimensionItems:
 @dataclasses.dataclass
 class CommerceReportDimension:
     display_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('displayName'), 'exclude': lambda f: f is None }})
+    r"""The dimension's display name."""
     index: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index'), 'exclude': lambda f: f is None }})
+    r"""The dimension's index."""
     items: Optional[list[CommerceReportDimensionItems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
     type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    r"""The dimension's type."""
     
 

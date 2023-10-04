@@ -1,4 +1,5 @@
-# excel_reports
+# ExcelReports
+(*excel_reports*)
 
 ## Overview
 
@@ -73,9 +74,9 @@ req = operations.GetAccountingMarketingMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     include_display_names=False,
-    number_of_periods=602763,
-    period_length=857946,
-    period_unit=shared.PeriodUnit.MONTH,
+    number_of_periods=644039,
+    period_length=244044,
+    period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
     show_input_values=False,
 )
@@ -157,7 +158,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetExcelReportGenerationStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_FINANCIALS,
+    report_type=shared.ExcelReportType.ENHANCED_INVOICES,
 )
 
 res = s.excel_reports.get_excel_report_generation_status(req)
