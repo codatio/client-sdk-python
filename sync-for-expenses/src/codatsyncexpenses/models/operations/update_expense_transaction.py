@@ -13,6 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class UpdateExpenseTransactionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     transaction_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'transactionId', 'style': 'simple', 'explode': False }})
     r"""The unique identifier for your SMB's transaction."""
     update_expense_request: Optional[shared_updateexpenserequest.UpdateExpenseRequest] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
@@ -24,10 +25,13 @@ class UpdateExpenseTransactionRequest:
 @dataclasses.dataclass
 class UpdateExpenseTransactionResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     update_expense_response: Optional[shared_updateexpenseresponse.UpdateExpenseResponse] = dataclasses.field(default=None)
     r"""Accepted"""
     

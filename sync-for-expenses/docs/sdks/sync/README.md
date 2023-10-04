@@ -1,4 +1,5 @@
 # Sync
+(*sync*)
 
 ## Overview
 
@@ -6,7 +7,7 @@ Trigger and monitor expense syncs to accounting software.
 
 ### Available Operations
 
-* [get](#get) - Get Sync status
+* [get](#get) - Get sync status
 * [get_last_successful_sync](#get_last_successful_sync) - Last successful sync
 * [get_latest_sync](#get_latest_sync) - Latest sync status
 * [initiate_sync](#initiate_sync) - Initiate sync
@@ -149,7 +150,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.InitiateSyncRequest(
     initiate_sync=shared.InitiateSync(
         dataset_ids=[
-            'a8422bb6-79d2-4322-b15b-f0cbb1e31b8b',
+            'acce2362-83d6-4e3e-a27f-f4a08e7217d5',
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
