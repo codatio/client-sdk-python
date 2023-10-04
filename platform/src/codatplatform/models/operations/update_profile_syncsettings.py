@@ -18,8 +18,10 @@ class UpdateProfileSyncSettingsRequestBody:
     `syncFromWindow`, `syncFromUTC` & `monthsToSync` only need to be included if you wish to set a value for them.
     """
     client_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('clientId') }})
-    overrides_defaults: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overridesDefaults') }})
+    r"""Unique identifier for your client in Codat."""
     settings: list[shared_syncsetting.SyncSetting] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('settings') }})
+    overrides_defaults: Optional[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overridesDefaults'), 'exclude': lambda f: f is None }})
+    r"""Set to `True` if you want to override default [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-settings)."""
     
 
 
@@ -28,9 +30,12 @@ class UpdateProfileSyncSettingsRequestBody:
 @dataclasses.dataclass
 class UpdateProfileSyncSettingsResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

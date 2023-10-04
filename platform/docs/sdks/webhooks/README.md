@@ -1,4 +1,5 @@
 # Webhooks
+(*webhooks*)
 
 ## Overview
 
@@ -27,14 +28,14 @@ s = codatplatform.CodatPlatform(
 )
 
 req = shared.CreateRule(
-    company_id='39b73b17-cc2e-429e-915d-71654e9dcd1e',
-    notifiers=shared.CreateRuleNotifiers(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    notifiers=shared.WebhookNotifier(
         emails=[
             'info@client.com',
         ],
         webhook='https://webhook.client.com',
     ),
-    type='iste',
+    type='bluetooth Extended',
 )
 
 res = s.webhooks.create(req)
@@ -115,7 +116,7 @@ req = operations.ListRulesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='iure',
+    query='Northeast Metal Canada',
 )
 
 res = s.webhooks.list(req)
