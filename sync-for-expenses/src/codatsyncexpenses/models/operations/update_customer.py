@@ -13,12 +13,18 @@ from typing import Optional
 @dataclasses.dataclass
 class UpdateCustomerRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a connection."""
     customer_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'customerId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a customer."""
+    allow_sync_on_push_complete: Optional[bool] = dataclasses.field(default=True, metadata={'query_param': { 'field_name': 'allowSyncOnPushComplete', 'style': 'form', 'explode': True }})
+    r"""Allow a sync upon push completion."""
     customer: Optional[shared_customer.Customer] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    force_update: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'forceUpdate', 'style': 'form', 'explode': True }})
+    force_update: Optional[bool] = dataclasses.field(default=False, metadata={'query_param': { 'field_name': 'forceUpdate', 'style': 'form', 'explode': True }})
     r"""When updating data in the destination platform Codat checks the `sourceModifiedDate` against the `lastupdated` date from the accounting platform, if they're different Codat will return an error suggesting you should initiate another pull of the data. If this is set to `true` then the update will override this check."""
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
+    r"""Time limit for the push operation to complete before it is timed out."""
     
 
 
@@ -27,10 +33,13 @@ class UpdateCustomerRequest:
 @dataclasses.dataclass
 class UpdateCustomerResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     update_customer_response: Optional[shared_updatecustomerresponse.UpdateCustomerResponse] = dataclasses.field(default=None)
     r"""Success"""
     
