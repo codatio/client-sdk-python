@@ -1,4 +1,5 @@
-# suppliers
+# Suppliers
+(*suppliers*)
 
 ## Overview
 
@@ -44,40 +45,40 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Arvada',
-                country='Serbia',
-                line1='explicabo',
-                line2='accusantium',
-                postal_code='09117',
-                region='illum',
-                type=shared.AccountingAddressType.UNKNOWN,
+                city='Jenafurt',
+                country='Sweden',
+                line1='innovative blue',
+                line2='grey technology East',
+                postal_code='30778',
+                region='quantify Polestar mobile',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='exercitationem',
-        default_currency='quod',
-        email_address='quod',
-        id='0584a184-d76d-4971-bc82-0c65b037bb8e',
+        contact_name='Durham after',
+        default_currency='Intelligent Fish',
+        email_address='Ricardo.Hand41@gmail.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='01224 658 999',
-        registration_number='impedit',
+        phone='(877) 492-8687',
+        registration_number='Profound',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "ullam": {
-                    "veritatis": 'quas',
+                "pariatur": {
+                    "accusantium": 'Minivan',
                 },
             },
         ),
-        supplier_name='molestiae',
-        tax_number='officiis',
+        supplier_name='Senior Mouse West',
+        tax_number='Towels likewise',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=287293,
+    timeout_in_minutes=452224,
 )
 
 res = s.suppliers.create(req)
@@ -124,7 +125,7 @@ req = operations.DownloadSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='nulla',
+    supplier_id='Dakota Avon specifically',
 )
 
 res = s.suppliers.download_attachment(req)
@@ -171,7 +172,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='accusamus',
+    supplier_id='Northeast Hatchback Kia',
 )
 
 res = s.suppliers.get(req)
@@ -218,7 +219,7 @@ req = operations.GetSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='consequatur',
+    supplier_id='array East along',
 )
 
 res = s.suppliers.get_attachment(req)
@@ -315,7 +316,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ut',
+    query='Northeast Metal Canada',
 )
 
 res = s.suppliers.list(req)
@@ -361,7 +362,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='laborum',
+    supplier_id='intuitive Frozen ouch',
 )
 
 res = s.suppliers.list_attachments(req)
@@ -412,42 +413,42 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Cathedral City',
-                country='Malta',
-                line1='maxime',
-                line2='ad',
-                postal_code='88624-6607',
-                region='voluptatibus',
-                type=shared.AccountingAddressType.DELIVERY,
+                city='Ann Arbor',
+                country='Montserrat',
+                line1='Reactive',
+                line2='Metal cheater Islands',
+                postal_code='43372',
+                region='Carolina syndicate',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='ea',
-        default_currency='facere',
-        email_address='corrupti',
-        id='28da0131-9112-4964-a645-c1d81f29042f',
+        contact_name='East',
+        default_currency='Bicycle guestbook',
+        email_address='Alexys.Hayes81@yahoo.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='iste',
+        registration_number='indexing',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.ACTIVE,
+        status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "culpa": {
-                    "reiciendis": 'a',
+                "consectetur": {
+                    "ullam": 'Jaguar',
                 },
             },
         ),
-        supplier_name='consequatur',
-        tax_number='voluptates',
+        supplier_name='visionary Buckinghamshire frictionless',
+        tax_number='parse possimus',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='dolorum',
-    timeout_in_minutes=148004,
+    supplier_id='Turkish Avon',
+    timeout_in_minutes=151827,
 )
 
 res = s.suppliers.update(req)

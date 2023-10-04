@@ -1,4 +1,5 @@
-# journal_entries
+# JournalEntries
+(*journal_entries*)
 
 ## Overview
 
@@ -41,30 +42,30 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='earum',
-        id='af75b0b5-32a4-4da3-bcba-af4452c4842c',
+        description='Multi-tiered motivating standardization',
+        id='<ID>',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(
-                    id='9b2ad32d-afe8-41a8-8f44-44573fecd473',
-                    name='Robin Weimann',
+                    id='<ID>',
+                    name='innovative blue',
                 ),
-                currency='placeat',
-                description='quos',
-                net_amount=Decimal('1523.02'),
+                currency='Zimbabwe Dollar',
+                description='Secured exuding throughput',
+                net_amount=Decimal('8915.1'),
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
                             data_type='journalEntry',
-                            id='9379aa69-cd5f-4bcf-b9da-18a7822bf958',
+                            id='<ID>',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='94e6861a-db55-4f9e-9d75-1c9fe8f7502b',
-            name='Orville Schinner',
+            id='<ID>',
+            name='orange Northwest',
         ),
         metadata=shared.Metadata(
             is_deleted=False,
@@ -72,14 +73,14 @@ req = operations.CreateJournalEntryRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.InvoiceTo(
-            data_type='accountTransaction',
-            id='41f17644-5637-49f3-bb27-e21f862657b3',
+            data_type='transfer',
+            id='<ID>',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "delectus": {
-                    "maxime": 'vel',
+                "cupiditate": {
+                    "assumenda": 'volt',
                 },
             },
         ),
@@ -87,7 +88,7 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=586163,
+    timeout_in_minutes=656256,
 )
 
 res = s.journal_entries.create(req)
@@ -160,7 +161,7 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='hic',
+    journal_entry_id='Van complexity',
 )
 
 res = s.journal_entries.delete(req)
@@ -207,7 +208,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='quis',
+    journal_entry_id='Northeast Hatchback Kia',
 )
 
 res = s.journal_entries.get(req)
@@ -304,7 +305,7 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deleniti',
+    query='Northeast Metal Canada',
 )
 
 res = s.journal_entries.list(req)

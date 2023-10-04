@@ -1,4 +1,5 @@
-# items
+# Items
+(*items*)
 
 ## Overview
 
@@ -41,46 +42,46 @@ req = operations.CreateItemRequest(
     item=shared.Item(
         bill_item=shared.BillItem(
             account_ref=shared.AccountRef(
-                id='33e66bd8-fe5d-400b-979e-f20387320590',
-                name='Mr. Forrest Ryan',
+                id='<ID>',
+                name='bluetooth Extended',
             ),
-            description='ea',
+            description='Customer-focused regional approach',
             tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=Decimal('2622.31'),
-                id='00313b3e-5044-4f65-be72-dc4077d0cc3f',
-                name='Carol Lowe',
+                effective_tax_rate=Decimal('9967.06'),
+                id='<ID>',
+                name='abnormally deposit evolve',
             ),
-            unit_price=Decimal('7738.54'),
+            unit_price=Decimal('7150.4'),
         ),
-        code='dicta',
-        id='5ceb4d6e-1eae-40f7-9aed-f2acab58b991',
+        code='SUV quantify Polestar',
+        id='<ID>',
         invoice_item=shared.InvoiceItem(
             account_ref=shared.AccountRef(
-                id='c926ddb5-8946-41e7-821c-be6d9502f0ea',
-                name='Sean Auer',
+                id='<ID>',
+                name='physical Ameliorated',
             ),
-            description='sint',
+            description='Exclusive transitional access',
             tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=Decimal('9787.97'),
-                id='7ac2f72f-8850-4090-8911-608207888ec6',
-                name='Teresa Lueilwitz',
+                effective_tax_rate=Decimal('5190.28'),
+                id='<ID>',
+                name='Bike',
             ),
-            unit_price=Decimal('9454.09'),
+            unit_price=Decimal('7141.15'),
         ),
         is_bill_item=False,
         is_invoice_item=False,
-        item_status=shared.ItemStatus.ARCHIVED,
+        item_status=shared.ItemStatus.UNKNOWN,
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Marion Mills',
+        name='easily',
         source_modified_date='2022-10-23T00:00:00.000Z',
         type=shared.ItemType.UNKNOWN,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=881095,
+    timeout_in_minutes=585365,
 )
 
 res = s.items.create(req)
@@ -127,7 +128,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetItemRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    item_id='quod',
+    item_id='Northeast Hatchback Kia',
 )
 
 res = s.items.get(req)
@@ -224,7 +225,7 @@ req = operations.ListItemsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sunt',
+    query='Northeast Metal Canada',
 )
 
 res = s.items.list(req)

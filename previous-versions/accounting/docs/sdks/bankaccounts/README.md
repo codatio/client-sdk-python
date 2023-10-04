@@ -1,4 +1,5 @@
-# bank_accounts
+# BankAccounts
+(*bank_accounts*)
 
 ## Overview
 
@@ -39,28 +40,28 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='deleniti',
-        account_number='hic',
+        account_name='bluetooth Extended',
+        account_number='blue',
         account_type=shared.BankAccountBankAccountType.DEBIT,
-        available_balance=Decimal('5218.48'),
-        balance=Decimal('1059.07'),
-        currency='USD',
-        i_ban='molestiae',
-        id='42cb7392-0592-4939-afea-7596eb10faaa',
-        institution='dolores',
+        available_balance=Decimal('7964.74'),
+        balance=Decimal('3768.44'),
+        currency='EUR',
+        i_ban='ES4002078579630900307003',
+        id='<ID>',
+        institution='Grocery Borders Northwest',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='corporis',
-        overdraft_limit=Decimal('1289.26'),
-        sort_code='nobis',
+        nominal_code='metrics',
+        overdraft_limit=Decimal('365.21'),
+        sort_code='Interactions Senior Mouse',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
     allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=607831,
+    timeout_in_minutes=908106,
 )
 
 res = s.bank_accounts.create(req)
@@ -106,7 +107,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBankAccountRequest(
-    account_id='nemo',
+    account_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -206,7 +207,7 @@ req = operations.ListBankAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='minima',
+    query='Northeast Metal Canada',
 )
 
 res = s.bank_accounts.list(req)
@@ -256,29 +257,29 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='excepturi',
-        account_number='accusantium',
-        account_type=shared.BankAccountBankAccountType.CREDIT,
-        available_balance=Decimal('6342.74'),
-        balance=Decimal('9883.74'),
+        account_name='New Reactive dock',
+        account_number='Analyst invoice',
+        account_type=shared.BankAccountBankAccountType.UNKNOWN,
+        available_balance=Decimal('540.62'),
+        balance=Decimal('2782.81'),
         currency='EUR',
-        i_ban='architecto',
-        id='a3a2fa94-6773-4925-9aa5-2c3f5ad019da',
-        institution='quasi',
+        i_ban='XK423723008830469503',
+        id='<ID>',
+        institution='Sharable Division Northeast',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='voluptatibus',
-        overdraft_limit=Decimal('8781.94'),
-        sort_code='nihil',
+        nominal_code='Wooden',
+        overdraft_limit=Decimal('3529.19'),
+        sort_code='Internal invoice',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
-    bank_account_id='voluptatibus',
+    bank_account_id='Checking 0202',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=55714,
+    timeout_in_minutes=77428,
 )
 
 res = s.bank_accounts.update(req)
