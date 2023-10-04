@@ -56,7 +56,7 @@ src/codatbankfeeds/models/shared/validationitem.py
 src/codatbankfeeds/models/shared/pushoperationstatus.py
 src/codatbankfeeds/models/shared/datatype.py
 src/codatbankfeeds/models/shared/createbanktransactions.py
-src/codatbankfeeds/models/shared/createbanktransaction.py
+src/codatbankfeeds/models/shared/banktransactions.py
 src/codatbankfeeds/models/shared/pushoperationchange.py
 src/codatbankfeeds/models/shared/pushchangetype.py
 src/codatbankfeeds/models/shared/pushoperationref.py
@@ -72,13 +72,6 @@ src/codatbankfeeds/models/webhooks/client_rate_limit_reached.py
 src/codatbankfeeds/models/webhooks/client_rate_limit_reset.py
 src/codatbankfeeds/models/webhooks/__init__.py
 src/codatbankfeeds/models/errors/__init__.py
-docs/sdks/codatbankfeeds/README.md
-docs/models/utils/retryconfig.md
-docs/sdks/accountmapping/README.md
-docs/sdks/companies/README.md
-docs/sdks/connections/README.md
-docs/sdks/sourceaccounts/README.md
-docs/sdks/transactions/README.md
 USAGE.md
 docs/models/operations/createbankaccountmappingbankfeedaccountmapping.md
 docs/models/operations/createbankaccountmappingrequest.md
@@ -146,7 +139,8 @@ docs/models/shared/validationitem.md
 docs/models/shared/pushoperationstatus.md
 docs/models/shared/datatype.md
 docs/models/shared/createbanktransactions.md
-docs/models/shared/createbanktransaction.md
+docs/models/shared/banktransactionsbanktransactiontype.md
+docs/models/shared/banktransactions.md
 docs/models/shared/pushoperationchange.md
 docs/models/shared/pushchangetype.md
 docs/models/shared/pushoperationref.md
@@ -159,4 +153,11 @@ docs/models/shared/clientratelimitresetwebhook.md
 docs/models/shared/clientratelimitresetwebhookdata.md
 docs/models/webhooks/clientratelimitreachedresponse.md
 docs/models/webhooks/clientratelimitresetresponse.md
+docs/sdks/codatbankfeeds/README.md
+docs/models/utils/retryconfig.md
+docs/sdks/accountmapping/README.md
+docs/sdks/companies/README.md
+docs/sdks/connections/README.md
+docs/sdks/sourceaccounts/README.md
+docs/sdks/transactions/README.md
 .gitattributes
