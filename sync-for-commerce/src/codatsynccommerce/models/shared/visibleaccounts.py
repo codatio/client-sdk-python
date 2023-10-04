@@ -11,7 +11,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class VisibleAccounts:
-    visible_accounts: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('visibleAccounts'), 'exclude': lambda f: f is None }})
+    visible_accounts: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('visibleAccounts') }})
     r"""Visible accounts on sync flow."""
     
 
