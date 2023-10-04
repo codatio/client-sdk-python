@@ -21,6 +21,7 @@ features:
 python:
   version: 4.2.0
   author: Codat
-  description: Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
+  description: Make credit decisions backed by enhanced financials, metrics, reports,
+    and data integrity features.
   maxMethodParams: 0
   packageName: codat-lending
