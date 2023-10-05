@@ -56,6 +56,7 @@ class SyncFailedWebhookData:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     sync_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncId'), 'exclude': lambda f: f is None }})
+    r"""Unique identifier for the failed sync."""
     sync_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncType'), 'exclude': lambda f: f is None }})
     r"""The type of sync being performed."""
     
