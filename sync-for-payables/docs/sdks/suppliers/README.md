@@ -1,4 +1,5 @@
 # Suppliers
+(*suppliers*)
 
 ## Overview
 
@@ -41,40 +42,40 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Address(
-                city='North Tadshire',
-                country='Anguilla',
-                line1='incidunt',
-                line2='qui',
-                postal_code='86113',
-                region='modi',
-                type=shared.AccountingAddressType.DELIVERY,
+                city='Jenafurt',
+                country='Sweden',
+                line1='innovative blue',
+                line2='grey technology East',
+                postal_code='30778',
+                region='quantify Polestar mobile',
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='voluptatibus',
-        default_currency='molestias',
-        email_address='officia',
-        id='b8366c72-3ffd-4a9e-86be-e4825c1fc0e1',
+        contact_name='Durham after',
+        default_currency='Intelligent Fish',
+        email_address='Ricardo.Hand41@gmail.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='+44 25691 154789',
-        registration_number='optio',
+        phone='(877) 492-8687',
+        registration_number='Profound',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "facilis": {
-                    "reiciendis": 'a',
+                "pariatur": {
+                    "accusantium": 'Minivan',
                 },
             },
         ),
-        supplier_name='iste',
-        tax_number='dicta',
+        supplier_name='Senior Mouse West',
+        tax_number='Towels likewise',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=552439,
+    timeout_in_minutes=452224,
 )
 
 res = s.suppliers.create(req)
@@ -121,7 +122,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='ullam',
+    supplier_id='Northeast Hatchback Kia',
 )
 
 res = s.suppliers.get(req)
@@ -218,7 +219,7 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dolore',
+    query='Northeast Metal Canada',
 )
 
 res = s.suppliers.list(req)
@@ -269,42 +270,42 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Address(
-                city='Fort Rafael',
-                country='Eritrea',
-                line1='consequuntur',
-                line2='assumenda',
-                postal_code='97785-9054',
-                region='esse',
+                city='Ann Arbor',
+                country='Montserrat',
+                line1='Reactive',
+                line2='Metal cheater Islands',
+                postal_code='43372',
+                region='Carolina syndicate',
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='odio',
-        default_currency='nesciunt',
-        email_address='debitis',
-        id='63562a7b-408f-405e-bd48-fdaf313a1f5f',
+        contact_name='East',
+        default_currency='Bicycle guestbook',
+        email_address='Alexys.Hayes81@yahoo.com',
+        id='<ID>',
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='incidunt',
+        registration_number='indexing',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.ACTIVE,
+        status=shared.SupplierStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "cupiditate": {
-                    "optio": 'alias',
+                "consectetur": {
+                    "ullam": 'Jaguar',
                 },
             },
         ),
-        supplier_name='quidem',
-        tax_number='nesciunt',
+        supplier_name='visionary Buckinghamshire frictionless',
+        tax_number='parse possimus',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    supplier_id='commodi',
-    timeout_in_minutes=956124,
+    supplier_id='Turkish Avon',
+    timeout_in_minutes=151827,
 )
 
 res = s.suppliers.update(req)
