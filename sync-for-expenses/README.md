@@ -5,7 +5,11 @@ Embedded accounting integrations for corporate card providers.
 <!-- End Codat Library Description  -->
 
 <!-- Start SDK Installation -->
-replace me
+## SDK Installation
+
+```bash
+pip install codat-sync-for-expenses
+```
 <!-- End SDK Installation -->
 
 ## Example Usage
