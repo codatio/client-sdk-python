@@ -1,15 +1,23 @@
 configVersion: 1.0.0
 management:
-  docChecksum: '00000000000000000000000000000000'
-  docVersion: 2.1.0
-  speakeasyVersion: 1.53.0
-  generationVersion: 2.58.0
+  docChecksum: d4429eed23ba6f30b06cc94bca45da79
+  docVersion: 3.0.0
+  speakeasyVersion: 1.94.0
+  generationVersion: 2.147.0
 generation:
   sdkClassName: CodatCommerce
   singleTagPerOp: false
   telemetryEnabled: true
+features:
+  python:
+    core: 2.88.2
+    examples: 2.81.2
+    globalSecurity: 2.81.1
+    globalServerURLs: 2.82.0
+    nameOverrides: 2.81.1
+    retries: 2.82.0
 python:
-  version: 0.33.1
+  version: 0.34.0
   author: Codat
   description: Access standardized commerce data from our commerce integrations.
   maxMethodParams: 0

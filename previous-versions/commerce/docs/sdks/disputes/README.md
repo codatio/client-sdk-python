@@ -1,4 +1,5 @@
-# disputes
+# Disputes
+(*disputes*)
 
 ## Overview
 
@@ -35,7 +36,7 @@ s = codatcommerce.CodatCommerce(
 req = operations.GetDisputeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    dispute_id='distinctio',
+    dispute_id='Northeast Hatchback Kia',
 )
 
 res = s.disputes.get(req)
@@ -84,7 +85,7 @@ req = operations.ListDisputesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quibusdam',
+    query='Northeast Metal Canada',
 )
 
 res = s.disputes.list(req)
