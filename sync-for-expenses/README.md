@@ -1,8 +1,8 @@
 # Sync for Expenses
 
 <!-- Start Codat Library Description -->
-<!-- End Codat Library Description  -->
 Embedded accounting integrations for corporate card providers.
+<!-- End Codat Library Description  -->
 
 <!-- Start SDK Installation -->
 ## SDK Installation
@@ -143,8 +143,6 @@ if res.create_account_response is not None:
 * [get](docs/sdks/transactionstatus/README.md#get) - Get sync transaction
 * [list](docs/sdks/transactionstatus/README.md#list) - List sync transactions
 <!-- End SDK Available Operations -->
-
-
 
 <!-- Start Dev Containers -->
 
