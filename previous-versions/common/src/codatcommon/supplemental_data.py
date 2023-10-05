@@ -26,21 +26,25 @@ class SupplementalData:
         
         url = utils.generate_url(operations.ConfigureSupplementalDataRequest, base_url, '/integrations/{platformKey}/datatypes/{dataType}/supplementalDataConfig', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "supplemental_data_configuration", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "supplemental_data_configuration", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('PUT', url, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -73,17 +77,21 @@ class SupplementalData:
         url = utils.generate_url(operations.GetSupplementalDataConfigurationRequest, base_url, '/integrations/{platformKey}/datatypes/{dataType}/supplementalDataConfig', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
+        global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+            if global_retry_config:
+                retry_config = global_retry_config
+            else:
+                retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
