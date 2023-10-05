@@ -1,4 +1,5 @@
 # Accounts
+(*accounts*)
 
 ## Overview
 
@@ -39,7 +40,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.CreateAccountRequest(
     account=shared.Account(
-        currency='EUR',
+        currency='USD',
         current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
@@ -58,15 +59,16 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.AccountValidDataTypeLinks(
                 links=[
-                    'suscipit',
+                    'Money',
                 ],
-                property='iure',
+                property='Cambridgeshire grey technology',
             ),
         ],
     ),
+    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=297534,
+    timeout_in_minutes=86,
 )
 
 res = s.accounts.create(req)
@@ -112,7 +114,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 )
 
 req = operations.GetAccountRequest(
-    account_id='EILBDVJVNUAGVKRQ',
+    account_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -137,15 +139,15 @@ if res.account is not None:
 
 ## get_create_model
 
-﻿  The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/sync-for-payroll-api#/schemas/Account) for a given company and integration.
+The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/sync-for-payroll-api#/schemas/Account) for a given company and integration.
     
-    [Accounts](https://docs.codat.io/sync-for-payroll-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+[Accounts](https://docs.codat.io/sync-for-payroll-api#/schemas/Account) are the categories a business uses to record accounting transactions.
     
-    **Integration-specific behaviour**
+**Integration-specific behaviour**
     
-    See the *response examples* for integration-specific indicative models.
+See the *response examples* for integration-specific indicative models.
     
-    Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
 
 
 ### Example Usage
@@ -209,7 +211,7 @@ req = operations.ListAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ipsa',
+    query='Northeast Metal Canada',
 )
 
 res = s.accounts.list(req)
