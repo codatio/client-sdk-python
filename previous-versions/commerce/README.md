@@ -1,4 +1,4 @@
-# Common
+# Commerce API
 
 <!-- Start Codat Library Description -->
 <!-- End Codat Library Description  -->
