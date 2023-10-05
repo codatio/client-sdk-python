@@ -1,4 +1,5 @@
-# accounts
+# Accounts
+(*accounts*)
 
 ## Overview
 
@@ -84,7 +85,7 @@ req = operations.ListAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quibusdam',
+    query='Northeast Metal Canada',
 )
 
 res = s.accounts.list(req)
