@@ -1,4 +1,5 @@
-# invoices
+# Invoices
+(*invoices*)
 
 ## Overview
 
@@ -46,132 +47,132 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateInvoiceRequest(
     invoice=shared.Invoice(
-        additional_tax_amount=Decimal('263.21'),
-        additional_tax_percentage=Decimal('8197.57'),
-        amount_due=Decimal('7188.79'),
+        additional_tax_amount=Decimal('4865.89'),
+        additional_tax_percentage=Decimal('4893.82'),
+        amount_due=Decimal('6384.24'),
         currency='EUR',
-        currency_rate=Decimal('8256.81'),
+        currency_rate=Decimal('4174.58'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='illum',
-            id='b484708f-b4e3-491e-abc1-58c4c4e54599',
+            company_name='Collier Group',
+            id='<ID>',
         ),
-        discount_percentage=Decimal('9294.43'),
+        discount_percentage=Decimal('690.25'),
         due_date='2022-10-23T00:00:00.000Z',
-        id='342260e9-b200-4ce7-8a1b-d8fb7a0a116c',
-        invoice_number='officiis',
+        id='<ID>',
+        invoice_number='abnormally deposit evolve',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.InvoiceLineItem(
                 account_ref=shared.AccountRef(
-                    id='23d4097f-a30e-49af-b25b-29122030d83f',
-                    name='Rosie Waters',
+                    id='<ID>',
+                    name='SUV quantify Polestar',
                 ),
-                description='dignissimos',
-                discount_amount=Decimal('5920.88'),
-                discount_percentage=Decimal('5818.89'),
+                description='Networked web-enabled monitoring',
+                discount_amount=Decimal('3570.21'),
+                discount_percentage=Decimal('285.48'),
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='d22e8c1f-8493-4825-bdc4-2c876c2c2dfb',
-                    name='Sheri Weissnat DDS',
+                    id='<ID>',
+                    name='after',
                 ),
-                quantity=Decimal('4608.03'),
-                sub_total=Decimal('3920.8'),
-                tax_amount=Decimal('1296.19'),
+                quantity=Decimal('5190.28'),
+                sub_total=Decimal('2303.13'),
+                tax_amount=Decimal('2075.65'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('1974.41'),
-                    id='0f841fb1-bd23-4fdb-94db-6be5a685998e',
-                    name='Wanda Osinski',
+                    effective_tax_rate=Decimal('2113.37'),
+                    id='<ID>',
+                    name='Buckinghamshire functionalities Grocery',
                 ),
-                total_amount=Decimal('276.53'),
+                total_amount=Decimal('738.99'),
                 tracking=shared.Propertiestracking1(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='da16fc2b-271a-4289-857e-854e90439d22',
-                            name='Monica Johnson',
+                            id='<ID>',
+                            name='Northwest Direct',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='cupiditate',
-                        id='46240708-4f7a-4b37-8ef0-2225194db554',
+                        company_name='Stracke - Bashirian',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType1.UNKNOWN,
-                    is_rebilled_to=shared.BilledToType1.UNKNOWN,
+                    is_billed_to=shared.BilledToType1.PROJECT,
+                    is_rebilled_to=shared.BilledToType1.NOT_APPLICABLE,
                     project_ref=shared.ProjectRef(
-                        id='adc669af-90a2-46c7-8dc9-81f068981d6b',
-                        name='Norman Ferry',
+                        id='<ID>',
+                        name='Senior Mouse West',
                     ),
                     record_ref=shared.InvoiceTo(
                         data_type='accountTransaction',
-                        id='a348c31b-f407-4ee4-bcf0-c42b78f15626',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='398a0dc7-6632-44cc-b06c-8ca12d025292',
-                        name='Patricia Pouros',
+                        id='<ID>',
+                        name='Edinburg Investor',
                     ),
                 ],
-                unit_amount=Decimal('3689.76'),
+                unit_amount=Decimal('5504.83'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='fugit',
+        note='Dollar 1080p Rubber',
         paid_on_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='EUR',
-                    currency_rate=Decimal('5062.02'),
-                    total_amount=Decimal('5749.9'),
+                    currency='GBP',
+                    currency_rate=Decimal('2734.46'),
+                    total_amount=Decimal('7034.41'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='5b8bcf24-db95-4969-b352-f74533994d78',
-                        name='Elbert Fay',
+                        id='<ID>',
+                        name='mmm lavender City',
                     ),
                     currency='EUR',
-                    currency_rate=Decimal('6104.9'),
-                    id='389f5abb-7f66-4255-8a28-382ac483afd2',
-                    note='consectetur',
+                    currency_rate=Decimal('4492.21'),
+                    id='<ID>',
+                    note='Dollar Electronic digital',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='minima',
-                    total_amount=Decimal('7036.51'),
+                    reference='um',
+                    total_amount=Decimal('454.16'),
                 ),
             ),
         ],
         sales_order_refs=[
             shared.SalesOrderRef(
-                data_type='facilis',
-                id='a650164e-06f5-4bf6-ae59-1bc8bdef3612',
+                data_type=shared.DataType.INVOICES,
+                id='<ID>',
             ),
         ],
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.InvoiceStatus.SUBMITTED,
-        sub_total=Decimal('2033.96'),
+        status=shared.InvoiceStatus.UNKNOWN,
+        sub_total=Decimal('3633.28'),
         supplemental_data=shared.SupplementalData(
             content={
-                "quod": {
-                    "eos": 'alias',
+                "labore": {
+                    "rem": 'Country',
                 },
             },
         ),
-        total_amount=Decimal('3198.07'),
-        total_discount=Decimal('9545.95'),
-        total_tax_amount=Decimal('8168.25'),
+        total_amount=Decimal('5193.59'),
+        total_discount=Decimal('1932.39'),
+        total_tax_amount=Decimal('3259.9'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('6625.15'),
-                name='Alex Bayer',
+                amount=Decimal('8183.2'),
+                name='mole female',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=264073,
+    timeout_in_minutes=564156,
 )
 
 res = s.invoices.create(req)
@@ -239,7 +240,7 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='fuga',
+    invoice_id='Van complexity',
 )
 
 res = s.invoices.delete(req)
@@ -286,7 +287,7 @@ req = operations.DownloadInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='iure',
+    invoice_id='Dakota Avon specifically',
 )
 
 res = s.invoices.download_attachment(req)
@@ -326,7 +327,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.DownloadInvoicePdfRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='deleniti',
+    invoice_id='Associate',
 )
 
 res = s.invoices.download_pdf(req)
@@ -372,7 +373,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='officia',
+    invoice_id='Northeast Hatchback Kia',
 )
 
 res = s.invoices.get(req)
@@ -419,7 +420,7 @@ req = operations.GetInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='sint',
+    invoice_id='array East along',
 )
 
 res = s.invoices.get_attachment(req)
@@ -522,7 +523,7 @@ req = operations.ListInvoicesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='laborum',
+    query='Northeast Metal Canada',
 )
 
 res = s.invoices.list(req)
@@ -568,7 +569,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListInvoiceAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='dolor',
+    invoice_id='intuitive Frozen ouch',
 )
 
 res = s.invoices.list_attachments(req)
@@ -618,134 +619,134 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateInvoiceRequest(
     invoice=shared.Invoice(
-        additional_tax_amount=Decimal('3227.73'),
-        additional_tax_percentage=Decimal('8477.4'),
-        amount_due=Decimal('229.66'),
-        currency='USD',
-        currency_rate=Decimal('3771.94'),
+        additional_tax_amount=Decimal('8574.78'),
+        additional_tax_percentage=Decimal('245.55'),
+        amount_due=Decimal('5971.29'),
+        currency='GBP',
+        currency_rate=Decimal('3446.2'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='expedita',
-            id='6f66fef0-20e9-4f44-bb42-57b992c8dbda',
+            company_name='Zboncak, Glover and Murazik',
+            id='<ID>',
         ),
-        discount_percentage=Decimal('4146.44'),
+        discount_percentage=Decimal('6841.99'),
         due_date='2022-10-23T00:00:00.000Z',
-        id='61efa219-8258-4fd0-a9eb-a47f7d3ef049',
-        invoice_number='aliquid',
+        id='<ID>',
+        invoice_number='cheater Islands',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.InvoiceLineItem(
                 account_ref=shared.AccountRef(
-                    id='0d6a1831-c87a-4df5-96fd-f1ad837ae80c',
-                    name='Blanca Brakus',
+                    id='<ID>',
+                    name='dynamic white',
                 ),
-                description='occaecati',
-                discount_amount=Decimal('3396.51'),
-                discount_percentage=Decimal('7343.61'),
+                description='Horizontal bifurcated moderator',
+                discount_amount=Decimal('7892.75'),
+                discount_percentage=Decimal('9936.8'),
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='a998678f-a3f6-4969-91af-388ce0361444',
-                    name='Sylvester Kling',
+                    id='<ID>',
+                    name='East Baht Quality',
                 ),
-                quantity=Decimal('4397.45'),
-                sub_total=Decimal('6541.99'),
-                tax_amount=Decimal('105.85'),
+                quantity=Decimal('9574.81'),
+                sub_total=Decimal('4042.65'),
+                tax_amount=Decimal('5275.11'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('9164.86'),
-                    id='f2f53602-8efe-4ef9-b415-2ed7e253f4c1',
-                    name='Constance Stark',
+                    effective_tax_rate=Decimal('339.8'),
+                    id='<ID>',
+                    name='pascal Gasoline',
                 ),
-                total_amount=Decimal('6687.83'),
+                total_amount=Decimal('4391.52'),
                 tracking=shared.Propertiestracking1(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='7170f445-accf-4667-aaf9-bbad185fe431',
-                            name='Rick Predovic',
+                            id='<ID>',
+                            name='indexing',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='cumque',
-                        id='838fbb8c-20cb-467f-84b4-25e99e6234c9',
+                        company_name='Fritsch Inc',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType1.PROJECT,
+                    is_billed_to=shared.BilledToType1.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType1.NOT_APPLICABLE,
                     project_ref=shared.ProjectRef(
-                        id='b79dfeb7-7a5c-438d-8baf-91e506ef890a',
-                        name='Anita Reilly',
+                        id='<ID>',
+                        name='Jaguar Dodge',
                     ),
                     record_ref=shared.InvoiceTo(
-                        data_type='invoice',
-                        id='f16f56d3-85a3-4c4a-8631-b99e26ced8f9',
+                        data_type='transfer',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='fdb9410f-63bb-4f81-b837-b01afdd78862',
-                        name='Katherine Kuvalis',
+                        id='<ID>',
+                        name='female',
                     ),
                 ],
-                unit_amount=Decimal('7164.1'),
+                unit_amount=Decimal('5198.81'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='labore',
+        note='haptic',
         paid_on_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
-                    currency_rate=Decimal('9580.6'),
-                    total_amount=Decimal('3371.49'),
+                    currency='EUR',
+                    currency_rate=Decimal('5143.61'),
+                    total_amount=Decimal('4270.89'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='033f19db-f125-4ce4-952e-ab9cd7e5224a',
-                        name='Jan Abbott Sr.',
+                        id='<ID>',
+                        name='Movies Greens Global',
                     ),
                     currency='GBP',
-                    currency_rate=Decimal('7370.61'),
-                    id='7847ec59-e1f6-47f3-84cc-e4b6d7696ff3',
-                    note='eligendi',
+                    currency_rate=Decimal('2451.56'),
+                    id='<ID>',
+                    note='absolve West',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='nihil',
-                    total_amount=Decimal('2628.91'),
+                    reference='quisquam',
+                    total_amount=Decimal('8523.4'),
                 ),
             ),
         ],
         sales_order_refs=[
             shared.SalesOrderRef(
-                data_type='dignissimos',
-                id='501357e4-4f51-4f8b-884c-3197e193a245',
+                data_type=shared.DataType.INVOICES,
+                id='<ID>',
             ),
         ],
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.InvoiceStatus.SUBMITTED,
-        sub_total=Decimal('4990.05'),
+        status=shared.InvoiceStatus.PAID,
+        sub_total=Decimal('3486.27'),
         supplemental_data=shared.SupplementalData(
             content={
-                "tenetur": {
-                    "excepturi": 'modi',
+                "velit": {
+                    "ex": 'Metal',
                 },
             },
         ),
-        total_amount=Decimal('5463.29'),
-        total_discount=Decimal('4724.29'),
-        total_tax_amount=Decimal('2600.46'),
+        total_amount=Decimal('9961.68'),
+        total_discount=Decimal('9725.7'),
+        total_tax_amount=Decimal('4330.9'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('8113.8'),
-                name='Mable Hills',
+                amount=Decimal('4924.98'),
+                name='ew global',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    invoice_id='labore',
-    timeout_in_minutes=596133,
+    invoice_id='Minivan Human Volkswagen',
+    timeout_in_minutes=695280,
 )
 
 res = s.invoices.update(req)
@@ -794,12 +795,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadInvoiceAttachmentRequest(
     request_body=operations.UploadInvoiceAttachmentRequestBody(
-        content='ducimus'.encode(),
-        request_body='qui',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='qui',
+    invoice_id='Iowa Bentley',
 )
 
 res = s.invoices.upload_attachment(req)

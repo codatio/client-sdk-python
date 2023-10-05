@@ -1,4 +1,5 @@
-# purchase_orders
+# PurchaseOrders
+(*purchase_orders*)
 
 ## Overview
 
@@ -40,80 +41,80 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
-        currency='EUR',
-        currency_rate=Decimal('1356.92'),
+        currency='USD',
+        currency_rate=Decimal('4893.82'),
         delivery_date='2022-10-23T00:00:00.000Z',
         expected_delivery_date='2022-10-23T00:00:00.000Z',
-        id='309db053-6d9e-475c-a006-f5392c11a25a',
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id='bf92f974-28ad-49a9-b8bf-8221125359d9',
-                    name='Glenn Lebsack',
+                    id='<ID>',
+                    name='South',
                 ),
-                description='iusto',
-                discount_amount=Decimal('6339.56'),
-                discount_percentage=Decimal('4531.11'),
+                description='Vision-oriented responsive function',
+                discount_amount=Decimal('9510.62'),
+                discount_percentage=Decimal('8915.1'),
                 item_ref=shared.ItemRef(
-                    id='9cd72cd2-484d-4a21-b29f-2ac41ef5725f',
-                    name='Jean Kemmer',
+                    id='<ID>',
+                    name='deposit',
                 ),
-                quantity=Decimal('7500.75'),
-                sub_total=Decimal('944.87'),
-                tax_amount=Decimal('9313.93'),
+                quantity=Decimal('3015.1'),
+                sub_total=Decimal('899.64'),
+                tax_amount=Decimal('7150.4'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('3062.69'),
-                    id='1d8a23c2-3e34-4f2d-ba4a-197f6de92215',
-                    name='Ms. Dixie Turner Sr.',
+                    effective_tax_rate=Decimal('7926.2'),
+                    id='<ID>',
+                    name='Gasoline Screen mobile',
                 ),
-                total_amount=Decimal('309.62'),
+                total_amount=Decimal('6562.56'),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='99853e9f-543d-4854-839e-e224460443bc',
-                        name='Ms. Lorraine Gusikowski',
+                        id='<ID>',
+                        name='Durham after',
                     ),
                 ],
-                unit_amount=Decimal('7911.29'),
+                unit_amount=Decimal('5190.28'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='asperiores',
+        note='Fish',
         payment_due_date='2022-10-23T00:00:00.000Z',
-        purchase_order_number='vel',
+        purchase_order_number='functionalities Grocery Borders',
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city='Madison',
-                country='Guyana',
-                line1='at',
-                line2='culpa',
-                postal_code='52186',
-                region='libero',
-                type=shared.AccountingAddressType.DELIVERY,
+                city='West Mackville',
+                country='Greenland',
+                line1='Southfield Interactions Senior',
+                line2='red',
+                postal_code='53026-6579',
+                region='payment 1080p',
+                type=shared.AccountingAddressType.UNKNOWN,
             ),
             contact=shared.ShipToContact(
-                email='Augustine.Kuhlman69@yahoo.com',
-                name='Miss Meredith Hand',
-                phone='790-276-8540 x482',
+                email='Otho27@yahoo.com',
+                name='Toyota Neptunium round',
+                phone='1-394-849-5203',
             ),
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.PurchaseOrderStatus.UNKNOWN,
-        sub_total=Decimal('5142.34'),
+        status=shared.PurchaseOrderStatus.DRAFT,
+        sub_total=Decimal('4904.2'),
         supplier_ref=shared.SupplierRef(
-            id='2bfbdc41-ff5d-44e2-ae4f-b5cb35d17638',
-            supplier_name='delectus',
+            id='<ID>',
+            supplier_name='markets',
         ),
-        total_amount=Decimal('1230.16'),
-        total_discount=Decimal('9225.93'),
-        total_tax_amount=Decimal('8182.73'),
+        total_amount=Decimal('9244.84'),
+        total_discount=Decimal('9824.5'),
+        total_tax_amount=Decimal('454.16'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=716538,
+    timeout_in_minutes=589256,
 )
 
 res = s.purchase_orders.create(req)
@@ -160,7 +161,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPurchaseOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    purchase_order_id='ducimus',
+    purchase_order_id='Northeast Hatchback Kia',
 )
 
 res = s.purchase_orders.get(req)
@@ -257,7 +258,7 @@ req = operations.ListPurchaseOrdersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='atque',
+    query='Northeast Metal Canada',
 )
 
 res = s.purchase_orders.list(req)
@@ -307,82 +308,82 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
-        currency='GBP',
-        currency_rate=Decimal('3670.96'),
+        currency='EUR',
+        currency_rate=Decimal('245.55'),
         delivery_date='2022-10-23T00:00:00.000Z',
         expected_delivery_date='2022-10-23T00:00:00.000Z',
-        id='cc5cb860-f8cd-4580-ba73-810e4fe44472',
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(
-                    id='7cd3b1dd-3bbc-4e24-bb76-84eff50126d7',
-                    name='Vicky Wolf',
+                    id='<ID>',
+                    name='dock Quality redundant',
                 ),
-                description='facere',
-                discount_amount=Decimal('113.92'),
-                discount_percentage=Decimal('9309.42'),
+                description='Visionary bi-directional analyzer',
+                discount_amount=Decimal('2782.81'),
+                discount_percentage=Decimal('8965.01'),
                 item_ref=shared.ItemRef(
-                    id='b74b8421-953b-444b-93c4-3159d33e5953',
-                    name='Mr. Michael Bashirian',
+                    id='<ID>',
+                    name='withdrawal extend',
                 ),
-                quantity=Decimal('5784.52'),
-                sub_total=Decimal('5525.12'),
-                tax_amount=Decimal('3971.12'),
+                quantity=Decimal('2494.4'),
+                sub_total=Decimal('3668.07'),
+                tax_amount=Decimal('1395.79'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('1930.48'),
-                    id='aa41e6c3-1cc2-4f1f-8b51-c9a41ffbe9cb',
-                    name='Brad Mraz',
+                    effective_tax_rate=Decimal('6447.13'),
+                    id='<ID>',
+                    name='syndicate East Baht',
                 ),
-                total_amount=Decimal('9358'),
+                total_amount=Decimal('6298.17'),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='65e076cc-7abf-4616-aa5c-71641934b90f',
-                        name='Rochelle Bailey',
+                        id='<ID>',
+                        name='guestbook driver users',
                     ),
                 ],
-                unit_amount=Decimal('683'),
+                unit_amount=Decimal('3567.52'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='possimus',
+        note='Lev Wooden',
         payment_due_date='2022-10-23T00:00:00.000Z',
-        purchase_order_number='a',
+        purchase_order_number='Internal invoice',
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city='Champlinworth',
-                country='Nepal',
-                line1='earum',
-                line2='fugit',
-                postal_code='10352-2752',
-                region='enim',
-                type=shared.AccountingAddressType.DELIVERY,
+                city='Fort Ari',
+                country='Poland',
+                line1='compressing convergence',
+                line2='modulo Kia',
+                postal_code='81011',
+                region='Reactive Global Northeast',
+                type=shared.AccountingAddressType.BILLING,
             ),
             contact=shared.ShipToContact(
-                email='Dayana.Kilback@gmail.com',
-                name='Ms. Nettie McCullough',
-                phone='(836) 983-6977 x4324',
+                email='Abe.Bogan@hotmail.com',
+                name='quisquam',
+                phone='(473) 342-1764 x99443',
             ),
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.PurchaseOrderStatus.VOID,
-        sub_total=Decimal('5678.21'),
+        status=shared.PurchaseOrderStatus.DRAFT,
+        sub_total=Decimal('3635.65'),
         supplier_ref=shared.SupplierRef(
-            id='222c9ff5-7491-4aab-ba2e-761f0ca4d456',
-            supplier_name='vero',
+            id='<ID>',
+            supplier_name='squat Omnigender',
         ),
-        total_amount=Decimal('9708.48'),
-        total_discount=Decimal('1170.53'),
-        total_tax_amount=Decimal('234.1'),
+        total_amount=Decimal('8831.22'),
+        total_discount=Decimal('8283.54'),
+        total_tax_amount=Decimal('9620.25'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    purchase_order_id='adipisci',
-    timeout_in_minutes=80294,
+    purchase_order_id='aggregate Benz Granite',
+    timeout_in_minutes=265006,
 )
 
 res = s.purchase_orders.update(req)

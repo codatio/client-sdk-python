@@ -36,6 +36,6 @@ class PaymentLine:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    links: Optional[list[shared_paymentlinelink.PaymentLineLink]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('links'), 'exclude': lambda f: f is None }})
+    links: Optional[list[shared_paymentlinelink.PaymentLineLink]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('links') }})
     
 

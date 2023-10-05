@@ -15,9 +15,9 @@ class TaxRateComponent:
     r"""A tax rate can be made up of multiple sub taxes, often called components of the tax."""
     is_compound: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isCompound') }})
     r"""A flag to indicate with the tax is calculated using the principle of compounding."""
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""Name of the tax rate component."""
-    rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('rate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('rate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""The rate of the tax rate component, usually a percentage."""
     
 

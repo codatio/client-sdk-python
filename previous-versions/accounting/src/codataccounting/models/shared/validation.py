@@ -13,7 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class Validation:
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""
-    errors: Optional[list[shared_validationitem.ValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
-    warnings: Optional[list[shared_validationitem.ValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings'), 'exclude': lambda f: f is None }})
+    errors: Optional[list[shared_validationitem.ValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors') }})
+    warnings: Optional[list[shared_validationitem.ValidationItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings') }})
     
 

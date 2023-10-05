@@ -1,4 +1,5 @@
-# bill_credit_notes
+# BillCreditNotes
+(*bill_credit_notes*)
 
 ## Overview
 
@@ -44,57 +45,57 @@ req = operations.CreateBillCreditNoteRequest(
         allocated_on_date='2022-10-23T00:00:00.000Z',
         bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
         currency='USD',
-        currency_rate=Decimal('7392.64'),
+        currency_rate=Decimal('6384.24'),
         discount_percentage=Decimal('0'),
         id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillCreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='074f1547-1b5e-46e1-bb99-d488e1e91e45',
-                    name='Monique Spinka',
+                    id='<ID>',
+                    name='innovative blue',
                 ),
-                description='distinctio',
-                discount_amount=Decimal('8413.86'),
-                discount_percentage=Decimal('2894.06'),
+                description='Vision-oriented responsive function',
+                discount_amount=Decimal('9510.62'),
+                discount_percentage=Decimal('8915.1'),
                 item_ref=shared.ItemRef(
-                    id='4269802d-502a-494b-b4f6-3c969e9a3efa',
-                    name='Arlene Stamm',
+                    id='<ID>',
+                    name='deposit',
                 ),
-                quantity=Decimal('1162.02'),
-                sub_total=Decimal('2974.37'),
-                tax_amount=Decimal('7670.24'),
+                quantity=Decimal('3015.1'),
+                sub_total=Decimal('899.64'),
+                tax_amount=Decimal('7150.4'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('8137.98'),
-                    id='66ae395e-fb9b-4a88-b3a6-6997074ba446',
-                    name='Robin Keebler',
+                    effective_tax_rate=Decimal('7926.2'),
+                    id='<ID>',
+                    name='Gasoline Screen mobile',
                 ),
-                total_amount=Decimal('1028.63'),
+                total_amount=Decimal('6562.56'),
                 tracking=shared.BillCreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='41959890-afa5-463e-a516-fe4c8b711e5b',
-                            name='Kristie Spencer',
+                            id='<ID>',
+                            name='Durham after',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='pariatur',
-                        id='028921cd-dc69-4260-9fb5-76b0d5f0d30c',
+                        company_name='Fay - Durgan',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
-                    is_rebilled_to=shared.BilledToType.PROJECT,
+                    is_billed_to=shared.BilledToType.UNKNOWN,
+                    is_rebilled_to=shared.BilledToType.CUSTOMER,
                     project_ref=shared.ProjectRef(
-                        id='bb258705-3202-4c73-95fe-9b90c28909b3',
-                        name='Merle Gleichner',
+                        id='<ID>',
+                        name='Fiat',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='8d9cbf48-6333-423f-9b77-f3a4100674eb',
-                        name='Hector Mosciski',
+                        id='<ID>',
+                        name='Grocery Borders Northwest',
                     ),
                 ],
-                unit_amount=Decimal('246.78'),
+                unit_amount=Decimal('6519.85'),
             ),
         ],
         metadata=shared.Metadata(
@@ -107,21 +108,21 @@ req = operations.CreateBillCreditNoteRequest(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
-                    currency_rate=Decimal('6793.93'),
-                    total_amount=Decimal('4785.96'),
+                    currency_rate=Decimal('365.21'),
+                    total_amount=Decimal('8424.64'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='7a89ebf7-37ae-4420-bce5-e6a95d8a0d44',
-                        name='Bernadette Torp',
+                        id='<ID>',
+                        name='though East',
                     ),
-                    currency='EUR',
-                    currency_rate=Decimal('4561.3'),
-                    id='a73cf3be-453f-4870-b326-b5a73429cdb1',
-                    note='laborum',
+                    currency='GBP',
+                    currency_rate=Decimal('155.52'),
+                    id='<ID>',
+                    note='array Edinburg Investor',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='incidunt',
-                    total_amount=Decimal('1320.68'),
+                    reference='likewise payment 1080p',
+                    total_amount=Decimal('2597.72'),
                 ),
             ),
         ],
@@ -131,28 +132,28 @@ req = operations.CreateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "distinctio": {
-                    "facilis": 'aliquid',
+                "porro": {
+                    "asperiores": 'Indiana',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='79d23227-15bf-40cb-b1e3-1b8b90f3443a',
-            supplier_name='architecto',
+            id='<ID>',
+            supplier_name='Toyota Neptunium round',
         ),
         total_amount=Decimal('805.78'),
         total_discount=Decimal('0'),
         total_tax_amount=Decimal('0'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('630.38'),
-                name='Miss Billie Ward',
+                amount=Decimal('1406.49'),
+                name='meanwhile',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=785153,
+    timeout_in_minutes=863813,
 )
 
 res = s.bill_credit_notes.create(req)
@@ -198,7 +199,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillCreditNoteRequest(
-    bill_credit_note_id='doloribus',
+    bill_credit_note_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -296,7 +297,7 @@ req = operations.ListBillCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ut',
+    query='Northeast Metal Canada',
 )
 
 res = s.bill_credit_notes.list(req)
@@ -348,58 +349,58 @@ req = operations.UpdateBillCreditNoteRequest(
     bill_credit_note=shared.BillCreditNote(
         allocated_on_date='2022-10-23T00:00:00.000Z',
         bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
-        currency='USD',
-        currency_rate=Decimal('1816.31'),
+        currency='GBP',
+        currency_rate=Decimal('5971.29'),
         discount_percentage=Decimal('0'),
         id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillCreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='879fce95-3f73-4ef7-bbc7-abd74dd39c0f',
-                    name='Freda Cormier',
+                    id='<ID>',
+                    name='male Metal',
                 ),
-                description='doloribus',
-                discount_amount=Decimal('4783.7'),
-                discount_percentage=Decimal('7535.7'),
+                description='Visionary bi-directional analyzer',
+                discount_amount=Decimal('2782.81'),
+                discount_percentage=Decimal('8965.01'),
                 item_ref=shared.ItemRef(
-                    id='70a45626-d436-4813-b16d-9f5fce6c5561',
-                    name='Rosemary Ryan',
+                    id='<ID>',
+                    name='withdrawal extend',
                 ),
-                quantity=Decimal('1324.87'),
-                sub_total=Decimal('3253.1'),
-                tax_amount=Decimal('534.27'),
+                quantity=Decimal('2494.4'),
+                sub_total=Decimal('3668.07'),
+                tax_amount=Decimal('1395.79'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('9528.71'),
-                    id='b008c42e-141a-4ac3-a6c8-dd6b14429074',
-                    name='Esther Koch',
+                    effective_tax_rate=Decimal('6447.13'),
+                    id='<ID>',
+                    name='syndicate East Baht',
                 ),
-                total_amount=Decimal('6832.82'),
+                total_amount=Decimal('6298.17'),
                 tracking=shared.BillCreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='7bd466d2-8c10-4ab3-8dca-4251904e523c',
-                            name='Sophie Bayer',
+                            id='<ID>',
+                            name='guestbook driver users',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='dignissimos',
-                        id='178e4796-f2a7-40c6-8828-2aa482562f22',
+                        company_name='Schroeder - Nienow',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType.UNKNOWN,
-                    is_rebilled_to=shared.BilledToType.PROJECT,
+                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_rebilled_to=shared.BilledToType.UNKNOWN,
                     project_ref=shared.ProjectRef(
-                        id='9817ee17-cbe6-41e6-b7b9-5bc0ab3c20c4',
-                        name='Glenn Koch',
+                        id='<ID>',
+                        name='Wooden Internal',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='fd871f99-dd2e-4fd1-a1aa-6f1e674bdb04',
-                        name='Samuel Hermiston',
+                        id='<ID>',
+                        name='Dodge brightly',
                     ),
                 ],
-                unit_amount=Decimal('3917.74'),
+                unit_amount=Decimal('7115.64'),
             ),
         ],
         metadata=shared.Metadata(
@@ -412,21 +413,21 @@ req = operations.UpdateBillCreditNoteRequest(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='GBP',
-                    currency_rate=Decimal('8453.58'),
-                    total_amount=Decimal('4012.59'),
+                    currency_rate=Decimal('3297.12'),
+                    total_amount=Decimal('4939.56'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='8ea19f1d-1705-4133-9d08-086a1840394c',
-                        name='Loretta Anderson DVM',
+                        id='<ID>',
+                        name='modulo Kia',
                     ),
                     currency='USD',
-                    currency_rate=Decimal('2446.51'),
-                    id='f5f0642d-ac7a-4f51-9cc4-13aa63aae8d6',
-                    note='ducimus',
+                    currency_rate=Decimal('8000.94'),
+                    id='<ID>',
+                    note='Avon',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='vel',
-                    total_amount=Decimal('2870.51'),
+                    reference='Reactive Global Northeast',
+                    total_amount=Decimal('6090.5'),
                 ),
             ),
         ],
@@ -436,30 +437,30 @@ req = operations.UpdateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "facilis": {
-                    "cum": 'commodi',
+                "alias": {
+                    "veritatis": 'ADP',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='75fd5e60-b375-4ed4-b6fb-ee41f33317fe',
-            supplier_name='consectetur',
+            id='<ID>',
+            supplier_name='quisquam',
         ),
         total_amount=Decimal('805.78'),
         total_discount=Decimal('0'),
         total_tax_amount=Decimal('0'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('3581.07'),
-                name='Rick Beer',
+                amount=Decimal('8523.4'),
+                name='pascal Plastic',
             ),
         ],
     ),
-    bill_credit_note_id='vitae',
+    bill_credit_note_id='magenta',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     force_update=False,
-    timeout_in_minutes=881721,
+    timeout_in_minutes=639383,
 )
 
 res = s.bill_credit_notes.update(req)
@@ -512,10 +513,10 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadBillCreditNoteAttachmentRequest(
     request_body=operations.UploadBillCreditNoteAttachmentRequestBody(
-        content='similique'.encode(),
-        request_body='tempora',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
-    bill_credit_note_id='aspernatur',
+    bill_credit_note_id='Iowa Bentley',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

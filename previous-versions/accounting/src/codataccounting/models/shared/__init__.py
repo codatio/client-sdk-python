@@ -76,6 +76,7 @@ from .customer import *
 from .customers import *
 from .customerstatus import *
 from .dataset import *
+from .datasetstatus import *
 from .datatype import *
 from .directcost import *
 from .directcostlineitem import *

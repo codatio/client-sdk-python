@@ -1,4 +1,5 @@
-# tax_rates
+# TaxRates
+(*tax_rates*)
 
 ## Overview
 
@@ -34,7 +35,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetTaxRateRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tax_rate_id='eos',
+    tax_rate_id='Northeast Hatchback Kia',
 )
 
 res = s.tax_rates.get(req)
@@ -82,7 +83,7 @@ req = operations.ListTaxRatesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='veritatis',
+    query='Northeast Metal Canada',
 )
 
 res = s.tax_rates.list(req)

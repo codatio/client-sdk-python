@@ -1,4 +1,5 @@
-# credit_notes
+# CreditNotes
+(*credit_notes*)
 
 ## Overview
 
@@ -10,7 +11,7 @@ Credit notes
 * [get](#get) - Get credit note
 * [get_create_update_model](#get_create_update_model) - Get create/update credit note model
 * [list](#list) - List credit notes
-* [update](#update) - Update creditNote
+* [update](#update) - Update credit note
 
 ## create
 
@@ -40,125 +41,125 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateCreditNoteRequest(
     credit_note=shared.CreditNote(
-        additional_tax_amount=Decimal('1363.57'),
-        additional_tax_percentage=Decimal('7239.42'),
+        additional_tax_amount=Decimal('4865.89'),
+        additional_tax_percentage=Decimal('4893.82'),
         allocated_on_date='2022-10-23T00:00:00.000Z',
-        credit_note_number='quas',
+        credit_note_number='Money blue shred',
         currency='USD',
-        currency_rate=Decimal('9222.99'),
+        currency_rate=Decimal('9510.62'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='rerum',
-            id='75dad636-c600-4503-98bb-31180f739ae9',
+            company_name='Abbott, Klocko and Dach',
+            id='<ID>',
         ),
-        discount_percentage=Decimal('9202.72'),
-        id='057eb809-e281-4033-9f39-81d4c700b607',
+        discount_percentage=Decimal('3015.1'),
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='3c93c73b-9da3-4f2c-ada7-e23f2257411f',
-                    name='Toby Friesen',
+                    id='<ID>',
+                    name='fuchsia Gasoline Screen',
                 ),
-                description='exercitationem',
-                discount_amount=Decimal('2883'),
-                discount_percentage=Decimal('2543.82'),
+                description='Networked web-enabled monitoring',
+                discount_amount=Decimal('3570.21'),
+                discount_percentage=Decimal('285.48'),
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='e472e802-857a-45b4-8463-a7d575f1400e',
-                    name='Gertrude Gerhold',
+                    id='<ID>',
+                    name='after',
                 ),
-                quantity=Decimal('4523.99'),
-                sub_total=Decimal('2327.72'),
-                tax_amount=Decimal('2006.37'),
+                quantity=Decimal('5190.28'),
+                sub_total=Decimal('2303.13'),
+                tax_amount=Decimal('2075.65'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('3106.29'),
-                    id='ec1b781b-36a0-4808-8d10-0efada200ef0',
-                    name='Phyllis Denesik',
+                    effective_tax_rate=Decimal('2113.37'),
+                    id='<ID>',
+                    name='Buckinghamshire functionalities Grocery',
                 ),
-                total_amount=Decimal('1267.27'),
+                total_amount=Decimal('738.99'),
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='164cf9ab-8366-4c72-bffd-a9e06bee4825',
-                            name='Willie Wiza PhD',
+                            id='<ID>',
+                            name='Northwest Direct',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='architecto',
-                        id='15c80bff-9185-444e-842d-efcce8f19777',
+                        company_name='Stracke - Bashirian',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType1.NOT_APPLICABLE,
-                    is_rebilled_to=shared.BilledToType1.UNKNOWN,
+                    is_billed_to=shared.BilledToType1.PROJECT,
+                    is_rebilled_to=shared.BilledToType1.NOT_APPLICABLE,
                     project_ref=shared.ProjectRef(
-                        id='e63562a7-b408-4f05-a3d4-8fdaf313a1f5',
-                        name='Woodrow Mitchell III',
+                        id='<ID>',
+                        name='Senior Mouse West',
                     ),
                     record_ref=shared.InvoiceTo(
                         data_type='accountTransaction',
-                        id='c0b36f25-ea94-44f3-b756-c11f6c37a512',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='6243835b-bc05-4a23-a45c-efc5fde10a0c',
-                        name='Randy Carter',
+                        id='<ID>',
+                        name='Edinburg Investor',
                     ),
                 ],
-                unit_amount=Decimal('8927.08'),
+                unit_amount=Decimal('5504.83'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='architecto',
+        note='Dollar 1080p Rubber',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
-                    currency_rate=Decimal('828.76'),
-                    total_amount=Decimal('5905.85'),
+                    currency='EUR',
+                    currency_rate=Decimal('1373.24'),
+                    total_amount=Decimal('2734.46'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='c6dc5e34-7627-499b-bbbe-6949fb2bb4ec',
-                        name='Bert Kassulke',
+                        id='<ID>',
+                        name='Toyota Neptunium round',
                     ),
-                    currency='EUR',
-                    currency_rate=Decimal('3674.75'),
-                    id='db3adebd-5dae-4a4c-906a-8aa94c02644c',
-                    note='hic',
+                    currency='GBP',
+                    currency_rate=Decimal('2199.74'),
+                    id='<ID>',
+                    note='invoice Dollar Electronic',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='officiis',
-                    total_amount=Decimal('6036.5'),
+                    reference='markets',
+                    total_amount=Decimal('9244.84'),
                 ),
             ),
         ],
-        remaining_credit=Decimal('8603.11'),
+        remaining_credit=Decimal('9824.5'),
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.CreditNoteStatus.PAID,
-        sub_total=Decimal('2986.13'),
+        sub_total=Decimal('1296.63'),
         supplemental_data=shared.SupplementalData(
             content={
-                "nostrum": {
-                    "esse": 'corrupti',
+                "nemo": {
+                    "labore": 'pixel',
                 },
             },
         ),
-        total_amount=Decimal('6847.99'),
-        total_discount=Decimal('8152.25'),
-        total_tax_amount=Decimal('7736.59'),
+        total_amount=Decimal('3583.09'),
+        total_discount=Decimal('5193.59'),
+        total_tax_amount=Decimal('1932.39'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('986.1'),
-                name='Mr. Forrest Howe',
+                amount=Decimal('3259.9'),
+                name='Credit female facere',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=901008,
+    timeout_in_minutes=445608,
 )
 
 res = s.credit_notes.create(req)
@@ -205,7 +206,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetCreditNoteRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    credit_note_id='maxime',
+    credit_note_id='Northeast Hatchback Kia',
 )
 
 res = s.credit_notes.get(req)
@@ -302,7 +303,7 @@ req = operations.ListCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='consequatur',
+    query='Northeast Metal Canada',
 )
 
 res = s.credit_notes.list(req)
@@ -352,127 +353,127 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateCreditNoteRequest(
     credit_note=shared.CreditNote(
-        additional_tax_amount=Decimal('510.07'),
-        additional_tax_percentage=Decimal('1023.9'),
+        additional_tax_amount=Decimal('8574.78'),
+        additional_tax_percentage=Decimal('245.55'),
         allocated_on_date='2022-10-23T00:00:00.000Z',
-        credit_note_number='porro',
-        currency='USD',
-        currency_rate=Decimal('608.92'),
+        credit_note_number='Reactive',
+        currency='EUR',
+        currency_rate=Decimal('2703.24'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='magni',
-            id='e2ec09ff-8f0f-4816-bf34-77c13e902c14',
+            company_name='Paucek - Kuhn',
+            id='<ID>',
         ),
-        discount_percentage=Decimal('1165.58'),
-        id='25b0960a-6681-451a-872a-f923c5949f83',
+        discount_percentage=Decimal('4430.76'),
+        id='<ID>',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(
-                    id='350cf876-ffb9-401c-aecb-b4e243cf789f',
-                    name='Lynn Wuckert',
+                    id='<ID>',
+                    name='Islands',
                 ),
-                description='deserunt',
-                discount_amount=Decimal('3590.97'),
-                discount_percentage=Decimal('2465.77'),
+                description='Networked heuristic framework',
+                discount_amount=Decimal('3115.07'),
+                discount_percentage=Decimal('7884.4'),
                 is_direct_income=False,
                 item_ref=shared.ItemRef(
-                    id='e5ae6e0a-c184-4c2b-9c24-7c88373a40e1',
-                    name='Micheal Cassin',
+                    id='<ID>',
+                    name='bifurcated',
                 ),
-                quantity=Decimal('1397.45'),
-                sub_total=Decimal('9368.45'),
-                tax_amount=Decimal('3305.96'),
+                quantity=Decimal('6447.13'),
+                sub_total=Decimal('7892.75'),
+                tax_amount=Decimal('9936.8'),
                 tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('3731.06'),
-                    id='055756f5-d56d-40bd-8af2-dfe13db4f62c',
-                    name='Lorenzo Flatley',
+                    effective_tax_rate=Decimal('8898.38'),
+                    id='<ID>',
+                    name='implement JBOD',
                 ),
-                total_amount=Decimal('6211.4'),
+                total_amount=Decimal('7712.03'),
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='41aebc0b-80a6-4924-93b2-ecfcc8f89501',
-                            name='Melba Heaney',
+                            id='<ID>',
+                            name='Representative Home',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='neque',
-                        id='d6fa1804-e54c-482f-968a-363c8873e484',
+                        company_name='Roob - Hermiston',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType1.UNKNOWN,
+                    is_billed_to=shared.BilledToType1.PROJECT,
                     is_rebilled_to=shared.BilledToType1.NOT_APPLICABLE,
                     project_ref=shared.ProjectRef(
-                        id='0b1f6b8c-a275-4a60-a04c-495cc699171b',
-                        name='Miss Joyce Runolfsson',
+                        id='<ID>',
+                        name='Northeast Wooden',
                     ),
                     record_ref=shared.InvoiceTo(
-                        data_type='accountTransaction',
-                        id='1cf4b888-ebdf-4c4c-8ca9-9bc7fc0b2dce',
+                        data_type='invoice',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='10873e42-b006-4d67-8878-ba8581a58208',
-                        name='Lloyd Grant',
+                        id='<ID>',
+                        name='Internal invoice',
                     ),
                 ],
-                unit_amount=Decimal('9657.35'),
+                unit_amount=Decimal('2803.6'),
             ),
         ],
         metadata=shared.Metadata(
             is_deleted=False,
         ),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='natus',
+        note='female',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='USD',
-                    currency_rate=Decimal('3125.11'),
-                    total_amount=Decimal('9853.79'),
+                    currency='GBP',
+                    currency_rate=Decimal('3297.12'),
+                    total_amount=Decimal('4939.56'),
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(
-                        id='2eac5565-d307-4cfe-a812-06e2813fa4a4',
-                        name='Leticia Gerlach PhD',
+                        id='<ID>',
+                        name='modulo Kia',
                     ),
-                    currency='GBP',
-                    currency_rate=Decimal('9998.54'),
-                    id='2132af03-102d-4514-b4cc-6f18bf9621a6',
-                    note='animi',
+                    currency='USD',
+                    currency_rate=Decimal('8000.94'),
+                    id='<ID>',
+                    note='Avon',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='tenetur',
-                    total_amount=Decimal('4934.07'),
+                    reference='Reactive Global Northeast',
+                    total_amount=Decimal('6090.5'),
                 ),
             ),
         ],
-        remaining_credit=Decimal('4578.35'),
+        remaining_credit=Decimal('9920.1'),
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CreditNoteStatus.PAID,
-        sub_total=Decimal('4610.5'),
+        status=shared.CreditNoteStatus.UNKNOWN,
+        sub_total=Decimal('4798.89'),
         supplemental_data=shared.SupplementalData(
             content={
-                "eveniet": {
-                    "earum": 'velit',
+                "perferendis": {
+                    "architecto": 'quisquam',
                 },
             },
         ),
-        total_amount=Decimal('8847.65'),
-        total_discount=Decimal('2633.46'),
-        total_tax_amount=Decimal('7019.78'),
+        total_amount=Decimal('8523.4'),
+        total_discount=Decimal('3379.02'),
+        total_tax_amount=Decimal('7416.05'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('9301.11'),
-                name='Brittany Cole',
+                amount=Decimal('3486.27'),
+                name='Money',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    credit_note_id='quis',
+    credit_note_id='Group wank Latvian',
     force_update=False,
-    timeout_in_minutes=704402,
+    timeout_in_minutes=934395,
 )
 
 res = s.credit_notes.update(req)

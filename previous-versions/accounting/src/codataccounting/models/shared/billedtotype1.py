@@ -4,6 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class BilledToType1(str, Enum):
+    r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
     UNKNOWN = 'Unknown'
     NOT_APPLICABLE = 'NotApplicable'
     PROJECT = 'Project'
