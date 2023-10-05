@@ -1,4 +1,5 @@
 # SupplementalData
+(*supplemental_data*)
 
 ## Overview
 
@@ -33,19 +34,19 @@ s = codatplatform.CodatPlatform(
 req = operations.ConfigureSupplementalDataRequest(
     supplemental_data_configuration=shared.SupplementalDataConfiguration(
         supplemental_data_config={
-            "dolor": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
-                data_source='natus',
+            "voluptatem": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
+                data_source='Alabama',
                 pull_data={
-                    "laboriosam": 'hic',
+                    "dicta": 'transmitter',
                 },
                 push_data={
-                    "saepe": 'fuga',
+                    "nisi": 'primary',
                 },
             ),
         },
     ),
     data_type=operations.ConfigureSupplementalDataDataType.INVOICES,
-    platform_key='in',
+    platform_key='gbol',
 )
 
 res = s.supplemental_data.configure(req)
@@ -87,7 +88,7 @@ s = codatplatform.CodatPlatform(
 
 req = operations.GetSupplementalDataConfigurationRequest(
     data_type=operations.GetSupplementalDataConfigurationDataType.INVOICES,
-    platform_key='corporis',
+    platform_key='gbol',
 )
 
 res = s.supplemental_data.get_configuration(req)

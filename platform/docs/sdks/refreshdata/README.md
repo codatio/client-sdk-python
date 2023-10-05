@@ -1,4 +1,5 @@
 # RefreshData
+(*refresh_data*)
 
 ## Overview
 
@@ -75,7 +76,7 @@ s = codatplatform.CodatPlatform(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='df7cc78c-a1ba-4928-bc81-6742cb739205',
+    connection_id='8803f6d1-c3aa-40d5-a409-b9d7f498be91',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -155,7 +156,7 @@ s = codatplatform.CodatPlatform(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
+    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
 )
 
 res = s.refresh_data.get_pull_operation(req)
@@ -198,7 +199,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='natus',
+    query='Dock Elegant Buckinghamshire',
 )
 
 res = s.refresh_data.list_pull_operations(req)

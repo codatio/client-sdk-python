@@ -11,8 +11,8 @@ from typing import Optional
 
 @dataclasses.dataclass
 class CreateAPIKey:
-    r"""Details of the API key."""
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    r"""Details about the newly created API key."""
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""A meaningful name assigned to the API key."""
     
 

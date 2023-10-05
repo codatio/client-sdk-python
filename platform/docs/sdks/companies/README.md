@@ -1,4 +1,5 @@
 # Companies
+(*companies*)
 
 ## Overview
 
@@ -137,7 +138,7 @@ if res.company is not None:
 
 ## list
 
-﻿Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/codat-api#/schemas/Connection) related to the company.
+﻿Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/platform-api#/schemas/Connection) related to the company.
 
 ### Example Usage
 
@@ -155,7 +156,7 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='corrupti',
+    query='Northeast Metal Canada',
 )
 
 res = s.companies.list(req)
