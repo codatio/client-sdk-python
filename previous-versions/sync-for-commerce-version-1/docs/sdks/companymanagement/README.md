@@ -1,4 +1,5 @@
-# company_management
+# CompanyManagement
+(*company_management*)
 
 ## Overview
 
@@ -6,7 +7,7 @@ Create new and manage existing Sync for Commerce companies.
 
 ### Available Operations
 
-* [create_company](#create_company) - Create Sync for Commerce company
+* [create_company](#create_company) - Create sync for commerce company
 * [create_connection](#create_connection) - Create connection
 * [list_companies](#list_companies) - List companies
 * [list_connections](#list_connections) - List data connections
@@ -69,7 +70,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.CreateConnectionRequest(
-    request_body='adipisci',
+    request_body='blue',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -112,7 +113,7 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='recusandae',
+    query='New',
 )
 
 res = s.company_management.list_companies(req)
@@ -155,7 +156,7 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='similique',
+    query='Factors',
 )
 
 res = s.company_management.list_connections(req)
@@ -195,7 +196,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.UpdateConnectionRequest(
     update_connection=shared.UpdateConnection(
-        status=shared.DataConnectionStatus.LINKED,
+        status=shared.DataConnectionStatus.DEAUTHORIZED,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

@@ -1,4 +1,5 @@
-# refresh_data
+# RefreshData
+(*refresh_data*)
 
 ## Overview
 
@@ -75,7 +76,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='b34896c3-ca5a-4cfb-a2fd-570757792917',
+    connection_id='8803f6d1-c3aa-40d5-a409-b9d7f498be91',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -155,7 +156,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
+    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
 )
 
 res = s.refresh_data.get_pull_operation(req)
@@ -198,7 +199,7 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptate',
+    query='Dock Elegant Buckinghamshire',
 )
 
 res = s.refresh_data.list_pull_operations(req)
