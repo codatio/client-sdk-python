@@ -7,5 +7,5 @@ Links journal entries to the relevant journal in accounting integrations that us
 
 | Field                           | Type                            | Required                        | Description                     |
 | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `id`                            | *str*                           | :heavy_check_mark:              | GUID of the underlying journal. |
+| `id`                            | *Optional[str]*                 | :heavy_check_mark:              | GUID of the underlying journal. |
 | `name`                          | *Optional[str]*                 | :heavy_minus_sign:              | Name of journal                 |

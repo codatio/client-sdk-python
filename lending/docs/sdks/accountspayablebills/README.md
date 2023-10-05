@@ -1,4 +1,5 @@
-# AccountsPayable.Bills
+# AccountsPayableBills
+(*accounts_payable.bills*)
 
 ### Available Operations
 
@@ -12,7 +13,7 @@
 
 The *Download bill attachment* endpoint downloads a specific attachment for a given `billId` and `attachmentId`.
 
-[Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+[Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support downloading a bill attachment.
 
@@ -31,7 +32,7 @@ s = codatlending.CodatLending(
 
 req = operations.DownloadAccountingBillAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    bill_id='iusto',
+    bill_id='Dakota Avon specifically',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -59,7 +60,7 @@ if res.data is not None:
 
 The *Get bill* endpoint returns a single bill for a given billId.
 
-[Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+[Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support getting a specific bill.
 
@@ -79,7 +80,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillRequest(
-    bill_id='excepturi',
+    bill_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -106,7 +107,7 @@ if res.accounting_bill is not None:
 
 The *Get bill attachment* endpoint returns a specific attachment for a given `billId` and `attachmentId`.
 
-[Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+[Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support getting a bill attachment.
 
@@ -125,7 +126,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingBillAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    bill_id='nisi',
+    bill_id='array East along',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -151,9 +152,9 @@ if res.accounting_attachment is not None:
 
 ## list
 
-The *List bills* endpoint returns a list of [bills](https://docs.codat.io/accounting-api#/schemas/Bill) for a given company's connection.
+The *List bills* endpoint returns a list of [bills](https://docs.codat.io/lending-api#/schemas/Bill) for a given company's connection.
 
-[Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+[Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -175,7 +176,7 @@ req = operations.ListAccountingBillsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='recusandae',
+    query='Northeast Metal Canada',
 )
 
 res = s.accounts_payable.bills.list(req)
@@ -201,7 +202,7 @@ if res.accounting_bills is not None:
 
 The *List bill attachments* endpoint returns a list of attachments available to download for a given `billId`.
 
-[Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+[Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support listing bill attachments.
 
@@ -219,7 +220,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.ListAccountingBillAttachmentsRequest(
-    bill_id='temporibus',
+    bill_id='intuitive Frozen ouch',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

@@ -1,4 +1,5 @@
-# Transactions.AccountTransactions
+# TransactionsAccountTransactions
+(*transactions.account_transactions*)
 
 ### Available Operations
 
@@ -9,7 +10,7 @@
 
 The *Get account transaction* endpoint returns a single account transaction for a given accountTransactionId.
 
-[Account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) represent bank activity within an accounting platform. All transactions that go through a bank account are recorded as account transactions.
+[Account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction) represent bank activity within an accounting platform. All transactions that go through a bank account are recorded as account transactions.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=accountTransactions) for integrations that support getting a specific account transaction.
 
@@ -29,7 +30,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingAccountTransactionRequest(
-    account_transaction_id='consectetur',
+    account_transaction_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -55,9 +56,9 @@ if res.accounting_account_transaction is not None:
 
 ## list
 
-The *List account transactions* endpoint returns a list of [account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) for a given company's connection.
+The *List account transactions* endpoint returns a list of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction) for a given company's connection.
 
-[Account transactions](https://docs.codat.io/accounting-api#/schemas/AccountTransaction) represent bank activity within an accounting platform. All transactions that go through a bank account are recorded as account transactions.
+[Account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction) represent bank activity within an accounting platform. All transactions that go through a bank account are recorded as account transactions.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -80,7 +81,7 @@ req = operations.ListAccountingAccountTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='corporis',
+    query='Northeast Metal Canada',
 )
 
 res = s.transactions.account_transactions.list(req)

@@ -16,13 +16,13 @@ from typing import Optional
 
 @dataclasses.dataclass
 class AccountingJournalEntry:
-    r"""> **Language tip:** For the top-level record of a company's financial transactions, refer to the [Journals](https://docs.codat.io/accounting-api#/schemas/Journal) data type
+    r"""> **Language tip:** For the top-level record of a company's financial transactions, refer to the [Journals](https://docs.codat.io/lending-api#/schemas/Journal) data type
 
     > View the coverage for journal entries in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journalEntries\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 
-    A journal entry report shows the entries made in a company's general ledger, or [accounts](https://docs.codat.io/accounting-api#/schemas/Account), when transactions are approved. The journal line items for each journal entry should balance.
+    A journal entry report shows the entries made in a company's general ledger, or [accounts](https://docs.codat.io/lending-api#/schemas/Account), when transactions are approved. The journal line items for each journal entry should balance.
 
     A journal entry line item is a single transaction line on the journal entry. For example: 
 
@@ -60,11 +60,11 @@ class AccountingJournalEntry:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
+    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description') }})
     r"""Optional description of the journal entry."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Unique identifier of the journal entry for the company in the accounting platform."""
-    journal_lines: Optional[list[shared_journalline.JournalLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalLines'), 'exclude': lambda f: f is None }})
+    journal_lines: Optional[list[shared_journalline.JournalLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalLines') }})
     r"""An array of journal lines."""
     journal_ref: Optional[shared_journalref.JournalRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalRef'), 'exclude': lambda f: f is None }})
     r"""Links journal entries to the relevant journal in accounting integrations that use multi-book accounting (multiple journals)."""

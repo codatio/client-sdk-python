@@ -11,6 +11,7 @@ from enum import Enum
 from typing import Optional
 
 class ReportItemsLoanTransactionType(str, Enum):
+    r"""The type of loan transaction."""
     INVESTMENT = 'Investment'
     REPAYMENT = 'Repayment'
     INTEREST = 'Interest'
@@ -45,7 +46,10 @@ class ReportItems:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     item_ref: Optional[shared_definitionsitemref.DefinitionsitemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
+    lender_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lenderName'), 'exclude': lambda f: f is None }})
+    r"""The name of lender providing the loan."""
     loan_ref: Optional[shared_loanref.LoanRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('loanRef'), 'exclude': lambda f: f is None }})
     loan_transaction_type: Optional[ReportItemsLoanTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('loanTransactionType'), 'exclude': lambda f: f is None }})
+    r"""The type of loan transaction."""
     
 

@@ -1,4 +1,5 @@
 # DataIntegrity
+(*data_integrity*)
 
 ## Overview
 
@@ -34,7 +35,7 @@ req = operations.ListDataIntegrityDetailsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deserunt',
+    query='Savings',
 )
 
 res = s.data_integrity.details(req)
@@ -126,7 +127,7 @@ s = codatlending.CodatLending(
 req = operations.GetDataIntegritySummariesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-    query='suscipit',
+    query='Organized West',
 )
 
 res = s.data_integrity.summaries(req)

@@ -15,6 +15,7 @@ from typing import Optional
 class ProductInventory:
     r"""Information about the total inventory as well as the locations inventory is in."""
     locations: Optional[list[shared_productinventorylocation.ProductInventoryLocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('locations'), 'exclude': lambda f: f is None }})
-    total_quantity: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalQuantity'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    total_quantity: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalQuantity'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
+    r"""The total quantity of stock remaining across locations."""
     
 

@@ -1,4 +1,5 @@
-# Sales.Transactions
+# SalesTransactions
+(*sales.transactions*)
 
 ### Available Operations
 
@@ -9,7 +10,7 @@
 
 The *Get transaction* endpoint returns a single transaction for a given transactionId.
 
-[Transactions](https://docs.codat.io/commerce-api#/schemas/Transaction) detail all financial affairs recorded in the commerce or point of sale system.
+[Transactions](https://docs.codat.io/lending-api#/schemas/Transaction) detail all financial affairs recorded in the commerce or point of sale system.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-transactions) for integrations that support getting a specific transaction.
 
@@ -31,7 +32,7 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceTransactionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transaction_id='a',
+    transaction_id='Northeast Hatchback Kia',
 )
 
 res = s.sales.transactions.get(req)
@@ -55,9 +56,9 @@ if res.commerce_transaction is not None:
 
 ## list
 
-The *List transactions* endpoint returns a list of [transactions](https://docs.codat.io/commerce-api#/schemas/Transaction) for a given company's connection.
+The *List transactions* endpoint returns a list of [transactions](https://docs.codat.io/lending-api#/schemas/Transaction) for a given company's connection.
 
-[Transactions](https://docs.codat.io/commerce-api#/schemas/Transaction) detail all financial affairs recorded in the commerce or point of sale system.
+[Transactions](https://docs.codat.io/lending-api#/schemas/Transaction) detail all financial affairs recorded in the commerce or point of sale system.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -80,7 +81,7 @@ req = operations.ListCommerceTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='debitis',
+    query='Northeast Metal Canada',
 )
 
 res = s.sales.transactions.list(req)
