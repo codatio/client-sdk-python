@@ -1,7 +1,7 @@
 # Files
 
 <!-- Start Codat Library Description -->
-<!-- End Codat Library Description  -->
+﻿Use Codat's Files API to upload your SMB customers' files.
 Use Codat's Files API to upload your SMB customers' files.
 
 <!-- Start SDK Installation -->

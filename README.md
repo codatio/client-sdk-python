@@ -48,7 +48,7 @@ To get your authorization header from the [Codat Portal](https://app.codat.io):
 | **[Sync for Payroll](https://github.com/codatio/client-sdk-python/tree/main/sync-for-payroll)** | Push payroll to accounting platforms. | [codat-sync-for-payroll](https://pypi.org/project/codat-sync-for-payroll) |
 | **[Sync for Payables](https://github.com/codatio/client-sdk-python/tree/main/sync-for-payables)** | Streamline your customers' accounts payable workflow. | [codat-sync-for-payables](https://pypi.org/project/codat-sync-for-payables) |
 
-### Previous products and versions
+### Alternative products and versions
 
 | Library | Description | PyPI |
 | :- | :- | :- |
