@@ -33,7 +33,10 @@ class DataConnectionError:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})
+    r"""A brief message about the error."""
     status_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
+    r"""The HTTP status code returned by the error."""
     status_text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusText'), 'exclude': lambda f: f is None }})
+    r"""A non-numeric status code/text."""
     
 

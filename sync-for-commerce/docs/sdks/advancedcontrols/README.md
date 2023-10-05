@@ -1,4 +1,5 @@
 # AdvancedControls
+(*advanced_controls*)
 
 ## Overview
 
@@ -110,7 +111,7 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='corrupti',
+    query='New',
 )
 
 res = s.advanced_controls.list_companies(req)

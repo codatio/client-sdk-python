@@ -1,4 +1,5 @@
 # SyncFlowSettings
+(*sync_flow_settings*)
 
 ## Overview
 
@@ -63,8 +64,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetVisibleAccountsRequest(
-    client_id='e0f467cc-8796-4ed1-91a0-5dfc2ddf7cc7',
-    platform_key='8ca1ba92-8fc8-4167-82cb-739205929396',
+    client_id='86fe9741-738d-4f2c-8e96-9c3f84156e91',
+    platform_key='gbol',
 )
 
 res = s.sync_flow_settings.get_visible_accounts(req)
@@ -103,9 +104,9 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "hic": shared.Localization(
+    "perferendis": shared.Localization(
         required=False,
-        text='saepe',
+        text='Gasoline Cotton azure',
     ),
 }
 
@@ -147,10 +148,10 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'fuga',
+            'Coordinator',
         ],
     ),
-    platform_key='7596eb10-faaa-4235-ac59-55907aff1a3a',
+    platform_key='gbol',
 )
 
 res = s.sync_flow_settings.update_visible_accounts_sync_flow(req)
