@@ -82,4 +82,3 @@ if res.bank_feed_account_mapping_response is not None:
 * [create](docs/sdks/transactions/README.md#create) - Create bank transactions
 * [get_create_operation](docs/sdks/transactions/README.md#get_create_operation) - Get create operation
 * [list_create_operations](docs/sdks/transactions/README.md#list_create_operations) - List create operations
-<!-- End SDK Available Operations -->

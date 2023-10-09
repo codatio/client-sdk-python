@@ -18,4 +18,3 @@ replace me
 
 <!-- Start SDK Available Operations -->
 replace me
-<!-- End SDK Available Operations -->

@@ -65,4 +65,3 @@ if res.account_balances is not None:
 * [get](docs/sdks/transactions/README.md#get) - Get bank transaction
 * [list](docs/sdks/transactions/README.md#list) - List transactions
 * [~~list_bank_transactions~~](docs/sdks/transactions/README.md#list_bank_transactions) - List banking transactions :warning: **Deprecated** Use `list` instead.
-<!-- End SDK Available Operations -->

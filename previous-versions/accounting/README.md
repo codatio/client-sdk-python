@@ -247,4 +247,3 @@ if res.account_transaction is not None:
 * [get_create_model](docs/sdks/transfers/README.md#get_create_model) - Get create transfer model
 * [list](docs/sdks/transfers/README.md#list) - List transfers
 * [upload_attachment](docs/sdks/transfers/README.md#upload_attachment) - Push invoice attachment
-<!-- End SDK Available Operations -->
