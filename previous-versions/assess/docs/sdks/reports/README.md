@@ -1,4 +1,5 @@
-# reports
+# Reports
+(*reports*)
 
 ## Overview
 
@@ -6,6 +7,8 @@ Enriched reports and analyses of financial data
 
 ### Available Operations
 
+* [generate_loan_summary](#generate_loan_summary) - Generate loan summaries report
+* [generate_loan_transactions](#generate_loan_transactions) - Generate loan transactions report
 * [get_accounts_for_enhanced_balance_sheet](#get_accounts_for_enhanced_balance_sheet) - Get enhanced balance sheet accounts
 * [get_accounts_for_enhanced_profit_and_loss](#get_accounts_for_enhanced_profit_and_loss) - Get enhanced profit and loss accounts
 * [get_commerce_customer_retention_metrics](#get_commerce_customer_retention_metrics) - Get customer retention metrics
@@ -15,10 +18,100 @@ Enriched reports and analyses of financial data
 * [get_commerce_revenue_metrics](#get_commerce_revenue_metrics) - Get commerce revenue metrics
 * [get_enhanced_cash_flow_transactions](#get_enhanced_cash_flow_transactions) - Get enhanced cash flow report
 * [get_enhanced_invoices_report](#get_enhanced_invoices_report) - Get enhanced invoices report
-* [get_loan_summary](#get_loan_summary) - Get enhanced loan summaries
+* [get_loan_summary](#get_loan_summary) - Get loan summaries
 * [get_recurring_revenue_metrics](#get_recurring_revenue_metrics) - Get key subscription revenue metrics
-* [list_loan_transactions](#list_loan_transactions) - List enhanced loan transactions
+* [list_loan_transactions](#list_loan_transactions) - List loan transactions
 * [request_recurring_revenue_metrics](#request_recurring_revenue_metrics) - Generate key subscription revenue metrics
+
+## generate_loan_summary
+
+The _Generate loan summaries_ endpoint requests the generation of the Loan Summaries report.
+
+Learn more about Codat's liabilities feature [here](https://docs.codat.io/lending/features/liabilities-overview).
+
+Make sure you have [synced a company](https://docs.codat.io/codat-api#/operations/refresh-company-data) recently before calling the endpoint.
+
+
+### Example Usage
+
+```python
+import codatassess
+from codatassess.models import operations, shared
+
+s = codatassess.CodatAssess(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GenerateLoanSummaryRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.GenerateLoanSummarySourceType.ACCOUNTING,
+)
+
+res = s.reports.generate_loan_summary(req)
+
+if res.status_code == 200:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.GenerateLoanSummaryRequest](../../models/operations/generateloansummaryrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
+
+
+### Response
+
+**[operations.GenerateLoanSummaryResponse](../../models/operations/generateloansummaryresponse.md)**
+
+
+## generate_loan_transactions
+
+The _Generate loan transactions_ endpoint requests the generation of the Loan Transactions report.
+
+Learn more about Codat's liabilities feature [here](https://docs.codat.io/lending/features/liabilities-overview).
+
+Make sure you have [synced a company](https://docs.codat.io/codat-api#/operations/refresh-company-data) recently before calling the endpoint.
+
+
+### Example Usage
+
+```python
+import codatassess
+from codatassess.models import operations, shared
+
+s = codatassess.CodatAssess(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GenerateLoanTransactionsRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.GenerateLoanTransactionsSourceType.ACCOUNTING,
+)
+
+res = s.reports.generate_loan_transactions(req)
+
+if res.status_code == 200:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [operations.GenerateLoanTransactionsRequest](../../models/operations/generateloantransactionsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
+
+
+### Response
+
+**[operations.GenerateLoanTransactionsResponse](../../models/operations/generateloantransactionsresponse.md)**
+
 
 ## get_accounts_for_enhanced_balance_sheet
 
@@ -40,7 +133,6 @@ s = codatassess.CodatAssess(
 
 req = operations.GetAccountsForEnhancedBalanceSheetRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=623564,
     report_date='29-09-2020',
 )
 
@@ -83,7 +175,6 @@ s = codatassess.CodatAssess(
 
 req = operations.GetAccountsForEnhancedProfitAndLossRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=645894,
     report_date='29-09-2020',
 )
 
@@ -125,10 +216,9 @@ s = codatassess.CodatAssess(
 req = operations.GetCommerceCustomerRetentionMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    include_display_names=False,
-    number_of_periods=384382,
-    period_length=437587,
-    period_unit=shared.PeriodUnit.WEEK,
+    number_of_periods=474636,
+    period_length=781048,
+    period_unit=shared.PeriodUnit.DAY,
     report_date='29-09-2020',
 )
 
@@ -170,10 +260,9 @@ s = codatassess.CodatAssess(
 req = operations.GetCommerceLifetimeValueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    include_display_names=False,
-    number_of_periods=891773,
-    period_length=56713,
-    period_unit=shared.PeriodUnit.YEAR,
+    number_of_periods=463554,
+    period_length=892968,
+    period_unit=shared.PeriodUnit.DAY,
     report_date='29-09-2020',
 )
 
@@ -215,10 +304,9 @@ s = codatassess.CodatAssess(
 req = operations.GetCommerceOrdersMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    include_display_names=False,
-    number_of_periods=272656,
-    period_length=383441,
-    period_unit=shared.PeriodUnit.WEEK,
+    number_of_periods=661381,
+    period_length=875123,
+    period_unit=shared.PeriodUnit.YEAR,
     report_date='29-09-2020',
 )
 
@@ -260,10 +348,9 @@ s = codatassess.CodatAssess(
 req = operations.GetCommerceRefundsMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    include_display_names=False,
-    number_of_periods=791725,
-    period_length=812169,
-    period_unit=shared.PeriodUnit.MONTH,
+    number_of_periods=806705,
+    period_length=498153,
+    period_unit=shared.PeriodUnit.DAY,
     report_date='29-09-2020',
 )
 
@@ -305,9 +392,8 @@ s = codatassess.CodatAssess(
 req = operations.GetCommerceRevenueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    include_display_names=False,
-    number_of_periods=479977,
-    period_length=568045,
+    number_of_periods=58448,
+    period_length=864392,
     period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
@@ -355,7 +441,6 @@ req = operations.GetEnhancedCashFlowTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='recusandae',
 )
 
 res = s.reports.get_enhanced_cash_flow_transactions(req)
@@ -397,7 +482,6 @@ req = operations.GetEnhancedInvoicesReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='temporibus',
 )
 
 res = s.reports.get_enhanced_invoices_report(req)
@@ -421,7 +505,12 @@ if res.enhanced_invoices_report is not None:
 
 ## get_loan_summary
 
-Get enhanced loan summaries
+The *Get loan summaries* endpoint returns a summary by integration type of all loans identified from a company's accounting, banking, and commerce integrations.
+
+The endpoint returns a list of a company's [loan summaries](https://docs.codat.io/codat-api#/schemas/LoanSummary) for each valid data connection.
+
+Make sure you have [synced a company](https://docs.codat.io/codat-api#/operations/refresh-company-data) recently before calling the endpoint.
+
 
 ### Example Usage
 
@@ -437,6 +526,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetLoanSummaryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.GetLoanSummarySourceType.BANKING,
 )
 
 res = s.reports.get_loan_summary(req)
@@ -500,7 +590,12 @@ if res.report is not None:
 
 ## list_loan_transactions
 
-List enhanced loan transactions
+The *List loan transactions* endpoint returns all [loan transactions](https://docs.codat.io/codat-api#/schemas/LoanTransactions) identified from a company's accounting, banking, and commerce integrations.
+
+This detail gives analysts a better idea of the loan obligations a company may have.
+
+Make sure you have [synced a company](https://docs.codat.io/codat-api#/operations/refresh-company-data) recently before calling the endpoint.
+
 
 ### Example Usage
 
@@ -516,7 +611,7 @@ s = codatassess.CodatAssess(
 
 req = operations.ListLoanTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.ListLoanTransactionsSourceType.BANKING,
+    source_type=operations.ListLoanTransactionsSourceType.COMMERCE,
 )
 
 res = s.reports.list_loan_transactions(req)

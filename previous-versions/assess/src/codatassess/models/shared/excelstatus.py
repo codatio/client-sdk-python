@@ -12,10 +12,9 @@ from typing import Optional
 
 @dataclasses.dataclass
 class ExcelStatus:
-    r"""OK"""
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})
     r"""Error details in case the report generation request was unsuccessful."""
-    file_size: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fileSize'), 'exclude': lambda f: f is None }})
+    file_size: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fileSize') }})
     r"""The file size in Bytes is populated upon successful generation of the report."""
     in_progress: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('inProgress'), 'exclude': lambda f: f is None }})
     r"""When true, the request was successful and the report is being generated. If false, the request was unsuccessful and the report is not being generated."""
