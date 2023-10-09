@@ -7,6 +7,7 @@ from ..shared import productprice as shared_productprice
 from ..shared import productvariantstatus as shared_productvariantstatus
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from typing import Optional
 
 
@@ -55,9 +56,10 @@ class ProductVariant:
     r"""SKU (stock keeping unit) of the variant, as defined by the merchant."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     status: Optional[shared_productvariantstatus.ProductVariantStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    r"""The status of the product variant."""
     unit_of_measure: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitOfMeasure'), 'exclude': lambda f: f is None }})
     r"""Unit of measure for the variant, such as `kg` or `meters`."""
-    vat_percentage: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('vatPercentage'), 'exclude': lambda f: f is None }})
+    vat_percentage: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('vatPercentage'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""VAT rate for the product variant if sales taxes are enabled."""
     
 
