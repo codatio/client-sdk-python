@@ -1,4 +1,5 @@
-# connections
+# Connections
+(*connections*)
 
 ## Overview
 
@@ -17,7 +18,7 @@ Manage your companies' data connections.
 
 ﻿Creates a connection for the company by providing a valid `platformKey`. 
 
-Use the [List Integrations](https://docs.codat.io/codat-api#/operations/list-integrations) endpoint to access valid platform keys. 
+Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-integrations) endpoint to access valid platform keys. 
 
 ### Example Usage
 
@@ -33,7 +34,7 @@ s = codatcommon.CodatCommon(
 
 req = operations.CreateConnectionRequest(
     request_body=operations.CreateConnectionRequestBody(
-        platform_key='provident',
+        platform_key='gbol',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -159,7 +160,6 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='distinctio',
 )
 
 res = s.connections.list(req)
@@ -198,9 +198,9 @@ s = codatcommon.CodatCommon(
 )
 
 req = operations.UnlinkConnectionRequest(
-    request_body=operations.UnlinkConnectionRequestBody(
-        status='quibusdam',
-    ),
+    request_body={
+        "Cheese": 'Hybrid',
+    },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -242,9 +242,7 @@ s = codatcommon.CodatCommon(
 
 req = operations.UpdateConnectionAuthorizationRequest(
     request_body={
-        "nulla": 'corrupti',
-        "illum": 'vel',
-        "error": 'deserunt',
+        "Neptunium": 'Books',
     },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
