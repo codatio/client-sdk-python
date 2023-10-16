@@ -1,4 +1,5 @@
 # JournalEntries
+(*journal_entries*)
 
 ## Overview
 
@@ -41,45 +42,33 @@ s = codatsyncpayroll.CodatSyncPayroll(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='placeat',
-        id='8796ed15-1a05-4dfc-addf-7cc78ca1ba92',
         journal_lines=[
             shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='8fc81674-2cb7-4392-8592-9396fea7596e',
-                    name='Roger Beier',
-                ),
-                currency='mollitia',
-                description='laborum',
-                net_amount=Decimal('1709.09'),
+                account_ref=shared.AccountRef(),
+                net_amount=Decimal('4893.82'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
-                            data_type='journalEntry',
-                            id='52c59559-07af-4f1a-ba2f-a9467739251a',
+                            data_type='accountTransaction',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='a52c3f5a-d019-4da1-bfe7-8f097b0074f1',
-            name='Miss Valerie Kshlerin',
+            id='<ID>',
         ),
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.JournalEntryRecordReference(
-            data_type='transfer',
-            id='13b99d48-8e1e-491e-850a-d2abd4426980',
+            data_type='invoice',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.JournalEntrySupplementalData(
             content={
-                "assumenda": {
-                    "ipsam": 'alias',
+                "blue": {
+                    "shred": 'abnormally',
                 },
             },
         ),
@@ -87,13 +76,13 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=677817,
 )
 
 res = s.journal_entries.create(req)
 
 if res.create_journal_entry_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -156,13 +145,15 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='excepturi',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    journal_entry_id='Van complexity',
 )
 
 res = s.journal_entries.delete(req)
 
 if res.push_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -203,13 +194,14 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='tempora',
+    journal_entry_id='Northeast Hatchback Kia',
 )
 
 res = s.journal_entries.get(req)
 
 if res.journal_entry is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -259,6 +251,7 @@ res = s.journal_entries.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -300,13 +293,13 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='facilis',
 )
 
 res = s.journal_entries.list(req)
 
 if res.journal_entries is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

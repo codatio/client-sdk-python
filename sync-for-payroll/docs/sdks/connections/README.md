@@ -1,4 +1,5 @@
 # Connections
+(*connections*)
 
 ## Overview
 
@@ -32,7 +33,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.CreateConnectionRequest(
     request_body=operations.CreateConnectionRequestBody(
-        platform_key='tempora',
+        platform_key='gbol',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -41,6 +42,7 @@ res = s.connections.create(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -82,6 +84,7 @@ res = s.connections.delete(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -122,6 +125,7 @@ res = s.connections.get(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -158,13 +162,13 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='suscipit',
 )
 
 res = s.connections.list(req)
 
 if res.connections is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -197,9 +201,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 )
 
 req = operations.UnlinkConnectionRequest(
-    request_body=operations.UnlinkConnectionUpdateConnection(
-        status=shared.DataConnectionStatus.LINKED,
-    ),
+    request_body=operations.UnlinkConnectionUpdateConnection(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -208,6 +210,7 @@ res = s.connections.unlink(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
