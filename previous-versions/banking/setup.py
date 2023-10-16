@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-banking",
-    version="0.2.0",
+    version="0.28.0",
     author="Codat",
     description="Access standardized banking data from our banking integrations.",
     long_description=long_description,
@@ -19,7 +19,7 @@ setuptools.setup(
     install_requires=[
         "certifi>=2022.12.7",
         "charset-normalizer>=2.1.1",
-        "dataclasses-json>=0.5.12",
+        "dataclasses-json>=0.6.1",
         "idna>=3.3",
         "jsonpath-python>=1.0.6 ",
         "marshmallow>=3.17.1",
