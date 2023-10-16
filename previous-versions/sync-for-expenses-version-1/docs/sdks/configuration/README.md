@@ -1,4 +1,5 @@
-# configuration
+# Configuration
+(*configuration*)
 
 ## Overview
 
@@ -33,6 +34,7 @@ res = s.configuration.get_company_configuration(req)
 
 if res.company_configuration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -83,6 +85,7 @@ res = s.configuration.save_company_configuration(req)
 
 if res.company_configuration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
