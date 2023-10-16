@@ -22,9 +22,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListDataTypeDataIntegrityDetailsRequest(
@@ -39,6 +37,7 @@ res = s.data_integrity.details(req)
 
 if res.details is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->
 
@@ -81,8 +80,6 @@ if res.details is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 

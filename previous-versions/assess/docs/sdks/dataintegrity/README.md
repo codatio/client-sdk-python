@@ -22,9 +22,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListDataTypeDataIntegrityDetailsRequest(
@@ -39,6 +37,7 @@ res = s.data_integrity.details(req)
 
 if res.details is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -65,9 +64,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetDataIntegrityStatusRequest(
@@ -79,6 +76,7 @@ res = s.data_integrity.status(req)
 
 if res.status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -105,9 +103,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetDataIntegritySummariesRequest(
@@ -119,6 +115,7 @@ res = s.data_integrity.summary(req)
 
 if res.summaries is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

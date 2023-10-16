@@ -23,9 +23,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GenerateExcelReportRequest(
@@ -37,6 +35,7 @@ res = s.excel_reports.generate_excel_report(req)
 
 if res.excel_status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -65,9 +64,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetAccountingMarketingMetricsRequest(
@@ -83,6 +80,7 @@ res = s.excel_reports.get_accounting_marketing_metrics(req)
 
 if res.report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -109,9 +107,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetExcelReportRequest(
@@ -123,6 +119,7 @@ res = s.excel_reports.get_excel_report(req)
 
 if res.body is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -149,9 +146,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetExcelReportGenerationStatusRequest(
@@ -163,6 +158,7 @@ res = s.excel_reports.get_excel_report_generation_status(req)
 
 if res.excel_status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

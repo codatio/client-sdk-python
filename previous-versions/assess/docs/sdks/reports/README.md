@@ -39,9 +39,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GenerateLoanSummaryRequest(
@@ -53,6 +51,7 @@ res = s.reports.generate_loan_summary(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -84,9 +83,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GenerateLoanTransactionsRequest(
@@ -98,6 +95,7 @@ res = s.reports.generate_loan_transactions(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -126,9 +124,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetAccountsForEnhancedBalanceSheetRequest(
@@ -140,6 +136,7 @@ res = s.reports.get_accounts_for_enhanced_balance_sheet(req)
 
 if res.enhanced_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -168,9 +165,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetAccountsForEnhancedProfitAndLossRequest(
@@ -182,6 +177,7 @@ res = s.reports.get_accounts_for_enhanced_profit_and_loss(req)
 
 if res.enhanced_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -208,9 +204,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetCommerceCustomerRetentionMetricsRequest(
@@ -226,6 +220,7 @@ res = s.reports.get_commerce_customer_retention_metrics(req)
 
 if res.report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -252,9 +247,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetCommerceLifetimeValueMetricsRequest(
@@ -270,6 +263,7 @@ res = s.reports.get_commerce_lifetime_value_metrics(req)
 
 if res.report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -296,9 +290,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetCommerceOrdersMetricsRequest(
@@ -314,6 +306,7 @@ res = s.reports.get_commerce_orders_metrics(req)
 
 if res.report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -340,9 +333,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetCommerceRefundsMetricsRequest(
@@ -358,6 +349,7 @@ res = s.reports.get_commerce_refunds_metrics(req)
 
 if res.report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -384,9 +376,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetCommerceRevenueMetricsRequest(
@@ -402,6 +392,7 @@ res = s.reports.get_commerce_revenue_metrics(req)
 
 if res.report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -432,9 +423,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetEnhancedCashFlowTransactionsRequest(
@@ -447,6 +436,7 @@ res = s.reports.get_enhanced_cash_flow_transactions(req)
 
 if res.enhanced_cash_flow_transactions is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -473,9 +463,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetEnhancedInvoicesReportRequest(
@@ -488,6 +476,7 @@ res = s.reports.get_enhanced_invoices_report(req)
 
 if res.enhanced_invoices_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -519,9 +508,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetLoanSummaryRequest(
@@ -533,6 +520,7 @@ res = s.reports.get_loan_summary(req)
 
 if res.loan_summary is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -559,9 +547,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetRecurringRevenueMetricsRequest(
@@ -573,6 +559,7 @@ res = s.reports.get_recurring_revenue_metrics(req)
 
 if res.report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -604,9 +591,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListLoanTransactionsRequest(
@@ -618,6 +603,7 @@ res = s.reports.list_loan_transactions(req)
 
 if res.loan_transactions is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -644,9 +630,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.RequestRecurringRevenueMetricsRequest(
@@ -658,6 +642,7 @@ res = s.reports.request_recurring_revenue_metrics(req)
 
 if res.report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
