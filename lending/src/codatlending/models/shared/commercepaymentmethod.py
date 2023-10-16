@@ -2,10 +2,16 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import paymentmethodstatus as shared_paymentmethodstatus
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from typing import Optional
+
+class CommercePaymentMethodStatus(str, Enum):
+    r"""Status of the Payment Method."""
+    UNKNOWN = 'Unknown'
+    ACTIVE = 'Active'
+    ARCHIVED = 'Archived'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -22,7 +28,7 @@ class CommercePaymentMethod:
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""The name of the PaymentMethod"""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[shared_paymentmethodstatus.PaymentMethodStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
-    r"""Status of the Payment Method"""
+    status: Optional[CommercePaymentMethodStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    r"""Status of the Payment Method."""
     
 

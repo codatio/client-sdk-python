@@ -17,6 +17,8 @@ class LoanSummaryReportItem:
     r"""The loan outstanding balance.  This may not equal totalDrawdowns - totalRepayments due to interest which has been accrued."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""The description of the object being referred to. E.g. the account."""
+    lender_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lenderName'), 'exclude': lambda f: f is None }})
+    r"""The name of lender providing the loan."""
     record_ref: Optional[shared_loansummaryrecordref.LoanSummaryRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
     start_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('startDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

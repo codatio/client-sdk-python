@@ -1,4 +1,5 @@
 # DataIntegrity
+(*data_integrity*)
 
 ## Overview
 
@@ -34,13 +35,13 @@ req = operations.ListDataIntegrityDetailsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deserunt',
 )
 
 res = s.data_integrity.details(req)
 
 if res.data_integrity_details is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -88,6 +89,7 @@ res = s.data_integrity.status(req)
 
 if res.data_integrity_statuses is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -126,13 +128,13 @@ s = codatlending.CodatLending(
 req = operations.GetDataIntegritySummariesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-    query='suscipit',
 )
 
 res = s.data_integrity.summaries(req)
 
 if res.data_integrity_summaries is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

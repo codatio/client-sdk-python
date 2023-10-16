@@ -1,4 +1,5 @@
-# Banking.CategorizedStatement
+# BankingCategorizedStatement
+(*banking.categorized_statement*)
 
 ### Available Operations
 
@@ -28,13 +29,13 @@ req = operations.GetCategorizedBankStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='commodi',
 )
 
 res = s.banking.categorized_statement.get(req)
 
 if res.enhanced_cash_flow_transactions is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

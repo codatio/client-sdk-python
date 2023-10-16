@@ -1,4 +1,5 @@
 # AccountingBankData
+(*accounting_bank_data*)
 
 ## Overview
 
@@ -10,9 +11,9 @@ Access bank transactions from an accounting platform.
 
 ## list_transactions
 
-The *List account bank transactions* endpoint returns a list of [bank account transactions](https://docs.codat.io/accounting-api#/schemas/BankTransactions) for a given company's connection.
+The *List account bank transactions* endpoint returns a list of [bank account transactions](https://docs.codat.io/lending-api#/schemas/BankTransactions) for a given company's connection.
 
-[Bank account transactions](https://docs.codat.io/accounting-api#/schemas/BankTransactions) are records of money that has moved in and out of an SMB's bank account.
+[Bank account transactions](https://docs.codat.io/lending-api#/schemas/BankTransactions) are records of money that has moved in and out of an SMB's bank account.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support listing bank transactions.
 
@@ -32,19 +33,19 @@ s = codatlending.CodatLending(
 )
 
 req = operations.ListAccountingBankAccountTransactionsRequest(
-    account_id='distinctio',
+    account_id='Anchorage Product',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quibusdam',
 )
 
 res = s.accounting_bank_data.list_transactions(req)
 
 if res.accounting_bank_transactions is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

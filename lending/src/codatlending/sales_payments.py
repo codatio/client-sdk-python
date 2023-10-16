@@ -16,7 +16,7 @@ class SalesPayments:
         r"""Get payment
         The *Get payment* endpoint returns a single payment for a given paymentId.
 
-        [Payments](https://docs.codat.io/commerce-api#/schemas/Payment) contain details of all payments made by customers to the company.
+        [Payments](https://docs.codat.io/lending-api#/schemas/Payment) contain details of all payments made by customers to the company.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-payments) for integrations that support getting a specific payment.
 
@@ -27,7 +27,7 @@ class SalesPayments:
         url = utils.generate_url(operations.GetCommercePaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-payments/{paymentId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -41,7 +41,7 @@ class SalesPayments:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -69,9 +69,9 @@ class SalesPayments:
     
     def list(self, request: operations.ListCommercePaymentsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCommercePaymentsResponse:
         r"""List payments
-        The *List payments* endpoint returns a list of [payments](https://docs.codat.io/commerce-api#/schemas/Payment) for a given company's connection.
+        The *List payments* endpoint returns a list of [payments](https://docs.codat.io/lending-api#/schemas/Payment) for a given company's connection.
 
-        [Payments](https://docs.codat.io/commerce-api#/schemas/Payment) contain details of all payments made by customers to the company.
+        [Payments](https://docs.codat.io/lending-api#/schemas/Payment) contain details of all payments made by customers to the company.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """
@@ -81,7 +81,7 @@ class SalesPayments:
         headers = {}
         query_params = utils.get_query_params(operations.ListCommercePaymentsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -95,7 +95,7 @@ class SalesPayments:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

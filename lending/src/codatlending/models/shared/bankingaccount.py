@@ -38,9 +38,9 @@ class BankingAccount:
     For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
     For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
     """
-    holder: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('holder'), 'exclude': lambda f: f is None }})
+    holder: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('holder') }})
     r"""The name of the person or company who holds the account."""
-    informal_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('informalName'), 'exclude': lambda f: f is None }})
+    informal_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('informalName') }})
     r"""The friendly name of the account, chosen by the holder. This may not have been set by the account holder and therefore is not always available."""
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})

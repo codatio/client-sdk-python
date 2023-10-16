@@ -1,4 +1,5 @@
-# AccountsReceivable.Reports
+# AccountsReceivableReports
+(*accounts_receivable.reports*)
 
 ### Available Operations
 
@@ -35,6 +36,7 @@ res = s.accounts_receivable.reports.get_aged_creditors(req)
 
 if res.accounting_aged_creditor_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -78,6 +80,7 @@ res = s.accounts_receivable.reports.get_aged_debtors(req)
 
 if res.accounting_aged_debtor_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -117,6 +120,7 @@ res = s.accounts_receivable.reports.is_aged_creditors_available(req)
 
 if res.is_aged_creditors_report_available_200_application_json_boolean is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -156,6 +160,7 @@ res = s.accounts_receivable.reports.is_aged_debtors_available(req)
 
 if res.is_aged_debtors_report_available_200_application_json_boolean is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

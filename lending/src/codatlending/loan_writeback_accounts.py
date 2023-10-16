@@ -14,13 +14,13 @@ class LoanWritebackAccounts:
     
     def create(self, request: operations.CreateAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateAccountResponse:
         r"""Create account
-        The *Create account* endpoint creates a new [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given company's connection.
+        The *Create account* endpoint creates a new [account](https://docs.codat.io/lending-api#/schemas/Account) for a given company's connection.
 
-        [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+        [Accounts](https://docs.codat.io/lending-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
         **Integration-specific behaviour**
 
-        Required data may vary by integration. To see what data to post, first call [Get create account model](https://docs.codat.io/accounting-api#/operations/get-create-chartOfAccounts-model).
+        Required data may vary by integration. To see what data to post, first call [Get create account model](https://docs.codat.io/lending-api#/operations/get-create-chartOfAccounts-model).
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
         """
@@ -28,12 +28,12 @@ class LoanWritebackAccounts:
         
         url = utils.generate_url(operations.CreateAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/accounts', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "accounting_account", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "accounting_account", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateAccountRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -47,7 +47,7 @@ class LoanWritebackAccounts:
 
         def do_request():
             return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -75,9 +75,9 @@ class LoanWritebackAccounts:
     
     def get_create_model(self, request: operations.GetCreateChartOfAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateChartOfAccountsModelResponse:
         r"""Get create account model
-        The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given company and integration.
+        The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/lending-api#/schemas/Account) for a given company and integration.
 
-        [Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+        [Accounts](https://docs.codat.io/lending-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
         **Integration-specific behaviour**
 
@@ -90,7 +90,7 @@ class LoanWritebackAccounts:
         url = utils.generate_url(operations.GetCreateChartOfAccountsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/chartOfAccounts', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -104,7 +104,7 @@ class LoanWritebackAccounts:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

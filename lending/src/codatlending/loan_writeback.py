@@ -5,6 +5,7 @@ from .loan_writeback_bank_accounts import LoanWritebackBankAccounts
 from .loan_writeback_bank_transactions import LoanWritebackBankTransactions
 from .loan_writeback_create_operations import LoanWritebackCreateOperations
 from .loan_writeback_direct_costs import LoanWritebackDirectCosts
+from .loan_writeback_payments import LoanWritebackPayments
 from .loan_writeback_suppliers import LoanWritebackSuppliers
 from .loan_writeback_transfers import LoanWritebackTransfers
 from .sdkconfiguration import SDKConfiguration
@@ -15,6 +16,7 @@ class LoanWriteback:
     bank_transactions: LoanWritebackBankTransactions
     create_operations: LoanWritebackCreateOperations
     direct_costs: LoanWritebackDirectCosts
+    payments: LoanWritebackPayments
     suppliers: LoanWritebackSuppliers
     transfers: LoanWritebackTransfers
     sdk_configuration: SDKConfiguration
@@ -29,6 +31,7 @@ class LoanWriteback:
         self.bank_transactions = LoanWritebackBankTransactions(self.sdk_configuration)
         self.create_operations = LoanWritebackCreateOperations(self.sdk_configuration)
         self.direct_costs = LoanWritebackDirectCosts(self.sdk_configuration)
+        self.payments = LoanWritebackPayments(self.sdk_configuration)
         self.suppliers = LoanWritebackSuppliers(self.sdk_configuration)
         self.transfers = LoanWritebackTransfers(self.sdk_configuration)
         

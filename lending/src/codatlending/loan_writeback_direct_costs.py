@@ -14,13 +14,13 @@ class LoanWritebackDirectCosts:
     
     def create(self, request: operations.CreateDirectCostRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateDirectCostResponse:
         r"""Create direct cost
-        The *Create direct cost* endpoint creates a new [direct cost](https://docs.codat.io/accounting-api#/schemas/DirectCost) for a given company's connection.
+        The *Create direct cost* endpoint creates a new [direct cost](https://docs.codat.io/lending-api#/schemas/DirectCost) for a given company's connection.
 
-        [Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are the expenses associated with a business' operations. For example, purchases of raw materials that are paid off at the point of the purchase and service fees are considered direct costs.
+        [Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are the expenses associated with a business' operations. For example, purchases of raw materials that are paid off at the point of the purchase and service fees are considered direct costs.
 
         **Integration-specific behaviour**
 
-        Required data may vary by integration. To see what data to post, first call [Get create direct cost model](https://docs.codat.io/accounting-api#/operations/get-create-directCosts-model).
+        Required data may vary by integration. To see what data to post, first call [Get create direct cost model](https://docs.codat.io/lending-api#/operations/get-create-directCosts-model).
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support creating an account.
         """
@@ -28,12 +28,12 @@ class LoanWritebackDirectCosts:
         
         url = utils.generate_url(operations.CreateDirectCostRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "accounting_direct_cost", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "accounting_direct_cost", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateDirectCostRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -47,7 +47,7 @@ class LoanWritebackDirectCosts:
 
         def do_request():
             return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -75,9 +75,9 @@ class LoanWritebackDirectCosts:
     
     def get_create_model(self, request: operations.GetCreateDirectCostsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateDirectCostsModelResponse:
         r"""Get create direct cost model
-        The *Get create direct cost model* endpoint returns the expected data for the request payload when creating a [direct cost](https://docs.codat.io/accounting-api#/schemas/DirectCost) for a given company and integration.
+        The *Get create direct cost model* endpoint returns the expected data for the request payload when creating a [direct cost](https://docs.codat.io/lending-api#/schemas/DirectCost) for a given company and integration.
 
-        [Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+        [Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
         **Integration-specific behaviour**
 
@@ -90,7 +90,7 @@ class LoanWritebackDirectCosts:
         url = utils.generate_url(operations.GetCreateDirectCostsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/directCosts', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -104,7 +104,7 @@ class LoanWritebackDirectCosts:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

@@ -1,4 +1,5 @@
 # ExcelReports
+(*excel_reports*)
 
 ## Overview
 
@@ -39,6 +40,7 @@ res = s.excel_reports.download(req)
 
 if res.body is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -88,13 +90,14 @@ s = codatlending.CodatLending(
 
 req = operations.GenerateExcelReportRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypes.ENHANCED_FINANCIALS,
+    report_type=shared.ExcelReportTypes.ENHANCED_INVOICES,
 )
 
 res = s.excel_reports.generate(req)
 
 if res.excel_status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -139,6 +142,7 @@ res = s.excel_reports.get_status(req)
 
 if res.excel_status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
