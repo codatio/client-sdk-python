@@ -28,9 +28,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetLocationRequest(
@@ -43,6 +41,7 @@ res = s.locations.get(req)
 
 if res.location is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -74,9 +73,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListLocationsRequest(
@@ -88,6 +85,7 @@ res = s.locations.list(req)
 
 if res.locations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

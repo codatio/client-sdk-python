@@ -28,9 +28,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetCustomerRequest(
@@ -43,6 +41,7 @@ res = s.customers.get(req)
 
 if res.customer is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -74,9 +73,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListCustomersRequest(
@@ -91,6 +88,7 @@ res = s.customers.list(req)
 
 if res.customers is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

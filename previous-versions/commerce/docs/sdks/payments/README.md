@@ -30,9 +30,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetPaymentRequest(
@@ -45,6 +43,7 @@ res = s.payments.get(req)
 
 if res.payment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -78,9 +77,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetPaymentMethodRequest(
@@ -93,6 +90,7 @@ res = s.payments.get_method(req)
 
 if res.payment_method is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -124,9 +122,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListPaymentsRequest(
@@ -141,6 +137,7 @@ res = s.payments.list(req)
 
 if res.payments is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -172,9 +169,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListPaymentMethodsRequest(
@@ -189,6 +184,7 @@ res = s.payments.list_methods(req)
 
 if res.payment_methods is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

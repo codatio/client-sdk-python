@@ -73,8 +73,8 @@ src/codatcommerce/models/shared/locationref.py
 src/codatcommerce/models/shared/commercecustomerref.py
 src/codatcommerce/models/shared/orders.py
 src/codatcommerce/models/shared/payment.py
+src/codatcommerce/models/shared/paymentmethodref.py
 src/codatcommerce/models/shared/paymentmethod.py
-src/codatcommerce/models/shared/paymentmethodstatus.py
 src/codatcommerce/models/shared/payments.py
 src/codatcommerce/models/shared/paymentmethods.py
 src/codatcommerce/models/shared/product.py
@@ -175,8 +175,9 @@ docs/models/shared/locationref.md
 docs/models/shared/commercecustomerref.md
 docs/models/shared/orders.md
 docs/models/shared/payment.md
-docs/models/shared/paymentmethod.md
+docs/models/shared/paymentmethodref.md
 docs/models/shared/paymentmethodstatus.md
+docs/models/shared/paymentmethod.md
 docs/models/shared/payments.md
 docs/models/shared/paymentmethods.md
 docs/models/shared/product.md

@@ -28,9 +28,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetDisputeRequest(
@@ -43,6 +41,7 @@ res = s.disputes.get(req)
 
 if res.dispute is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -74,9 +73,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListDisputesRequest(
@@ -91,6 +88,7 @@ res = s.disputes.list(req)
 
 if res.disputes is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

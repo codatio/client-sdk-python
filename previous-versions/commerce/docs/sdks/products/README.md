@@ -30,9 +30,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetProductRequest(
@@ -45,6 +43,7 @@ res = s.products.get(req)
 
 if res.product is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -78,9 +77,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetProductCategoryRequest(
@@ -93,6 +90,7 @@ res = s.products.get_category(req)
 
 if res.product_category is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -124,9 +122,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListProductsRequest(
@@ -141,6 +137,7 @@ res = s.products.list(req)
 
 if res.products is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -172,9 +169,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListProductCategoriesRequest(
@@ -189,6 +184,7 @@ res = s.products.list_categories(req)
 
 if res.product_categories is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
