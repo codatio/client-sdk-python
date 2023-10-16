@@ -123,5 +123,3 @@ if res.create_account_response is not None:
 * [refresh_data_type](docs/sdks/managedata/README.md#refresh_data_type) - Refresh data type
 
 ### [TrackingCategories](docs/sdks/trackingcategories/README.md)
-
-* [get](docs/sdks/trackingcategories/README.md#get) - Get tracking categories

@@ -14,5 +14,3 @@ replace me
 <!-- Start SDK Example Usage -->
 replace me
 <!-- End SDK Example Usage -->
-
-<!-- Start SDK Available Operations -->

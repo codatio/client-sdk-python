@@ -86,5 +86,3 @@ if res.company is not None:
 * [list_syncs](docs/sdks/syncstatus/README.md#list_syncs) - List sync statuses
 
 ### [transaction_status](docs/sdks/transactionstatus/README.md)
-
-* [get_sync_transaction](docs/sdks/transactionstatus/README.md#get_sync_transaction) - Get Sync Transaction
