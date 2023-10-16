@@ -1,4 +1,5 @@
-# company_info
+# CompanyInfo
+(*company_info*)
 
 ## Overview
 
@@ -33,6 +34,7 @@ res = s.company_info.get(req)
 
 if res.company_dataset is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -72,6 +74,7 @@ res = s.company_info.refresh(req)
 
 if res.dataset is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

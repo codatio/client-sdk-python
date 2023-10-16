@@ -1,4 +1,5 @@
-# bills
+# Bills
+(*bills*)
 
 ## Overview
 
@@ -45,129 +46,90 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBillRequest(
     bill=shared.Bill(
-        amount_due=Decimal('5436.78'),
-        currency='GBP',
-        currency_rate=Decimal('2826.99'),
+        currency='USD',
         due_date='2022-10-23T00:00:00.000Z',
-        id='0ab40750-88e5-4186-a065-e904f3b1194b',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillLineItem(
-                account_ref=shared.AccountRef(
-                    id='abf603a7-9f9d-4fe0-ab7d-a8a50ce187f8',
-                    name='Ms. Alison Schoen',
-                ),
-                description='assumenda',
-                discount_amount=Decimal('4103.01'),
-                discount_percentage=Decimal('5391.18'),
-                is_direct_cost=False,
+                account_ref=shared.AccountRef(),
                 item_ref=shared.ItemRef(
-                    id='9eee9526-f8d9-486e-881e-ad4f0e101256',
-                    name='Elsa Maggio',
+                    id='<ID>',
                 ),
-                quantity=Decimal('1604.67'),
-                sub_total=Decimal('5801.07'),
-                tax_amount=Decimal('8863.05'),
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('5979.37'),
-                    id='73e922a5-7a15-4be3-a060-807e2b6e3ab8',
-                    name='Jim Hammes II',
-                ),
-                total_amount=Decimal('5973.03'),
+                purchase_order_line_ref=shared.BillLineItemRecordLineReference(),
+                quantity=Decimal('8592.13'),
+                tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.Propertiestracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='7a60ff2a-54a3-41e9-8764-a3e865e7956f',
-                            name='Miss Bruce Hermann',
+                            id='<ID>',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='mollitia',
-                        id='9da660ff-57bf-4aad-8f9e-fc1b4512c103',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType.UNKNOWN,
+                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
                     project_ref=shared.ProjectRef(
-                        id='48dc2f61-5199-4ebf-90e9-fe6c632ca3ae',
-                        name='Ms. William Boyle',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='96312fde-0477-4177-8ff6-1d017476360a',
-                        name='Audrey Stiedemann',
+                        id='<ID>',
                     ),
                 ],
-                unit_amount=Decimal('6391.87'),
+                unit_amount=Decimal('1343.65'),
             ),
         ],
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='aliquid',
         payment_allocations=[
             shared.BillPaymentAllocation(
                 allocation=shared.BillPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='USD',
-                    currency_rate=Decimal('3747.53'),
-                    total_amount=Decimal('6145.28'),
+                    currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='a1adeaab-5851-4d6c-a45b-08b61891baa0',
-                        name='Stewart Brakus',
-                    ),
+                    account_ref=shared.AccountRef(),
                     currency='EUR',
-                    currency_rate=Decimal('291.9'),
-                    id='08e6f8c5-f350-4d8c-9b5a-341814301042',
-                    note='ab',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='quae',
-                    total_amount=Decimal('2226.58'),
                 ),
             ),
         ],
         purchase_order_refs=[
-            shared.PurchaseOrderRef(
-                id='d5208ece-7e25-43b6-a845-1c6c6e205e16',
-                purchase_order_number='at',
-            ),
+            shared.PurchaseOrderRef(),
         ],
-        reference='vero',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.BillStatus.VOID,
-        sub_total=Decimal('1927.18'),
+        status=shared.BillStatus.DRAFT,
+        sub_total=Decimal('0.86'),
         supplemental_data=shared.BillSupplementalData(
             content={
-                "doloribus": {
-                    "repudiandae": 'optio',
+                "deposit": {
+                    "evolve": 'male',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='9578a645-8427-43a8-818d-162309fb0929',
-            supplier_name='iste',
+            id='<ID>',
         ),
-        tax_amount=Decimal('1700.99'),
-        total_amount=Decimal('813.69'),
+        tax_amount=Decimal('8559.52'),
+        total_amount=Decimal('8165.88'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('6863.62'),
-                name='Jan Reichel',
+                amount=Decimal('5519.29'),
+                name='Polestar mobile',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=328379,
 )
 
 res = s.bills.create(req)
 
 if res.create_bill_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -185,7 +147,7 @@ if res.create_bill_response is not None:
 
 ## delete
 
-﻿The *Delete bill* endpoint allows you to delete a specified bill from an accounting platform. 
+The *Delete bill* endpoint allows you to delete a specified bill from an accounting platform. 
 
 [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are itemized records of goods received or services provided to the SMB.
 
@@ -212,7 +174,7 @@ Integrations that support soft delete do not permanently delete the object in th
 
 > **Supported Integrations**
 > 
-> This functionality is currently only supported for our QuickBooks Online abd Oracle NetSuite integrations. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+> This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
 
 ### Example Usage
 
@@ -236,6 +198,7 @@ res = s.bills.delete(req)
 
 if res.push_operation_summary is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -283,6 +246,7 @@ res = s.bills.download_attachment(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -322,7 +286,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillRequest(
-    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    bill_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -330,6 +294,7 @@ res = s.bills.get(req)
 
 if res.bill is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -377,6 +342,7 @@ res = s.bills.get_attachment(req)
 
 if res.attachment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -426,6 +392,7 @@ res = s.bills.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -467,13 +434,13 @@ req = operations.ListBillsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quos',
 )
 
 res = s.bills.list(req)
 
 if res.bills is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -511,7 +478,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.ListBillAttachmentsRequest(
-    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    bill_id='EILBDVJVNUAGVKRQ',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -520,6 +487,7 @@ res = s.bills.list_attachments(req)
 
 if res.attachments_dataset is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -563,131 +531,91 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBillRequest(
     bill=shared.Bill(
-        amount_due=Decimal('9308.19'),
-        currency='USD',
-        currency_rate=Decimal('5207.61'),
+        currency='EUR',
         due_date='2022-10-23T00:00:00.000Z',
-        id='4be05601-3f59-4da7-97a5-9ecfef66ef1c',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillLineItem(
-                account_ref=shared.AccountRef(
-                    id='a3383c2b-eb47-4737-bc8d-72f64d1db1f2',
-                    name='Mr. Jim Franecki',
-                ),
-                description='ea',
-                discount_amount=Decimal('1076.17'),
-                discount_percentage=Decimal('8777.51'),
-                is_direct_cost=False,
+                account_ref=shared.AccountRef(),
                 item_ref=shared.ItemRef(
-                    id='96349e1c-f9e0-46e3-a437-000ae6b6bc9b',
-                    name='Tommie Klocko',
+                    id='<ID>',
                 ),
-                quantity=Decimal('8975.43'),
-                sub_total=Decimal('6540.82'),
-                tax_amount=Decimal('7699.67'),
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('3730.4'),
-                    id='5a9741d3-1135-4296-9bb8-a7202611435e',
-                    name='Tracy Mills',
-                ),
-                total_amount=Decimal('8028.94'),
+                purchase_order_line_ref=shared.BillLineItemRecordLineReference(),
+                quantity=Decimal('156.52'),
+                tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.Propertiestracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='2259b1ab-da8c-4070-a108-4cb0672d1ad8',
-                            name='Daisy Tillman',
+                            id='<ID>',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='sint',
-                        id='665b85ef-bd02-4bae-8be2-d782259e3ea4',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType.CUSTOMER,
-                    is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_rebilled_to=shared.BilledToType.CUSTOMER,
                     project_ref=shared.ProjectRef(
-                        id='197f9244-3da7-4ce5-ab89-5c537c6454ef',
-                        name='Jason Rempel',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='896c3ca5-acfb-4e2f-9570-7577929177de',
-                        name='Benny Jacobs',
+                        id='<ID>',
                     ),
                 ],
-                unit_amount=Decimal('8886.16'),
+                unit_amount=Decimal('9914.64'),
             ),
         ],
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='quidem',
         payment_allocations=[
             shared.BillPaymentAllocation(
                 allocation=shared.BillPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='USD',
-                    currency_rate=Decimal('2114.55'),
-                    total_amount=Decimal('2646.19'),
+                    currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='09e3eb1e-5a2b-412e-b07f-116db99545fc',
-                        name='Ronnie Welch',
-                    ),
+                    account_ref=shared.AccountRef(),
                     currency='USD',
-                    currency_rate=Decimal('5646.67'),
-                    id='70e189db-b30f-4cb3-bea0-55b197cd44e2',
-                    note='asperiores',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='consequuntur',
-                    total_amount=Decimal('8138.8'),
                 ),
             ),
         ],
         purchase_order_refs=[
-            shared.PurchaseOrderRef(
-                id='82d3513b-b6f4-48b6-96bc-db35ff2e4b27',
-                purchase_order_number='nostrum',
-            ),
+            shared.PurchaseOrderRef(),
         ],
-        reference='neque',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.BillStatus.PAID,
-        sub_total=Decimal('5221.76'),
+        status=shared.BillStatus.UNKNOWN,
+        sub_total=Decimal('540.62'),
         supplemental_data=shared.BillSupplementalData(
             content={
-                "eligendi": {
-                    "fugiat": 'unde',
+                "Cotton": {
+                    "extend": 'Plastic',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='e7319c17-7d52-45f7-bb11-4eeb52ff785f',
-            supplier_name='quisquam',
+            id='<ID>',
         ),
-        tax_amount=Decimal('1972.59'),
-        total_amount=Decimal('4671.19'),
+        tax_amount=Decimal('1395.79'),
+        total_amount=Decimal('6447.13'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('5349.08'),
-                name='Jamie Simonis',
+                amount=Decimal('7892.75'),
+                name='immediately implement JBOD',
             ),
         ],
     ),
-    bill_id='7110701885',
+    bill_id='EILBDVJVNUAGVKRQ',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    timeout_in_minutes=514993,
 )
 
 res = s.bills.update(req)
 
 if res.update_bill_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -730,10 +658,10 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadBillAttachmentRequest(
     request_body=operations.UploadBillAttachmentRequestBody(
-        content='repudiandae'.encode(),
-        request_body='consequatur',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
-    bill_id='EILBDVJVNUAGVKRQ',
+    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -742,6 +670,7 @@ res = s.bills.upload_attachment(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters

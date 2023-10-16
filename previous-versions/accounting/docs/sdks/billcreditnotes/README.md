@@ -1,4 +1,5 @@
-# bill_credit_notes
+# BillCreditNotes
+(*bill_credit_notes*)
 
 ## Overview
 
@@ -44,62 +45,41 @@ req = operations.CreateBillCreditNoteRequest(
         allocated_on_date='2022-10-23T00:00:00.000Z',
         bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
         currency='USD',
-        currency_rate=Decimal('7392.64'),
         discount_percentage=Decimal('0'),
         id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillCreditNoteLineItem(
-                account_ref=shared.AccountRef(
-                    id='074f1547-1b5e-46e1-bb99-d488e1e91e45',
-                    name='Monique Spinka',
-                ),
-                description='distinctio',
-                discount_amount=Decimal('8413.86'),
-                discount_percentage=Decimal('2894.06'),
+                account_ref=shared.AccountRef(),
                 item_ref=shared.ItemRef(
-                    id='4269802d-502a-494b-b4f6-3c969e9a3efa',
-                    name='Arlene Stamm',
+                    id='<ID>',
                 ),
-                quantity=Decimal('1162.02'),
-                sub_total=Decimal('2974.37'),
-                tax_amount=Decimal('7670.24'),
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('8137.98'),
-                    id='66ae395e-fb9b-4a88-b3a6-6997074ba446',
-                    name='Robin Keebler',
-                ),
-                total_amount=Decimal('1028.63'),
+                quantity=Decimal('8592.13'),
+                tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.BillCreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='41959890-afa5-463e-a516-fe4c8b711e5b',
-                            name='Kristie Spencer',
+                            id='<ID>',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='pariatur',
-                        id='028921cd-dc69-4260-9fb5-76b0d5f0d30c',
+                        id='<ID>',
                     ),
                     is_billed_to=shared.BilledToType.NOT_APPLICABLE,
-                    is_rebilled_to=shared.BilledToType.PROJECT,
+                    is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
                     project_ref=shared.ProjectRef(
-                        id='bb258705-3202-4c73-95fe-9b90c28909b3',
-                        name='Merle Gleichner',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='8d9cbf48-6333-423f-9b77-f3a4100674eb',
-                        name='Hector Mosciski',
+                        id='<ID>',
                     ),
                 ],
-                unit_amount=Decimal('246.78'),
+                unit_amount=Decimal('1343.65'),
             ),
         ],
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Credit Note with 1 line items, totaling 805.78',
         payment_allocations=[
@@ -107,21 +87,11 @@ req = operations.CreateBillCreditNoteRequest(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
-                    currency_rate=Decimal('6793.93'),
-                    total_amount=Decimal('4785.96'),
                 ),
                 payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='7a89ebf7-37ae-4420-bce5-e6a95d8a0d44',
-                        name='Bernadette Torp',
-                    ),
+                    account_ref=shared.AccountRef(),
                     currency='EUR',
-                    currency_rate=Decimal('4561.3'),
-                    id='a73cf3be-453f-4870-b326-b5a73429cdb1',
-                    note='laborum',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='incidunt',
-                    total_amount=Decimal('1320.68'),
                 ),
             ),
         ],
@@ -131,34 +101,33 @@ req = operations.CreateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "distinctio": {
-                    "facilis": 'aliquid',
+                "abnormally": {
+                    "deposit": 'evolve',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='79d23227-15bf-40cb-b1e3-1b8b90f3443a',
-            supplier_name='architecto',
+            id='<ID>',
         ),
         total_amount=Decimal('805.78'),
         total_discount=Decimal('0'),
         total_tax_amount=Decimal('0'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('630.38'),
-                name='Miss Billie Ward',
+                amount=Decimal('7150.4'),
+                name='SUV quantify Polestar',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=785153,
 )
 
 res = s.bill_credit_notes.create(req)
 
 if res.create_bill_credit_note_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -198,7 +167,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillCreditNoteRequest(
-    bill_credit_note_id='doloribus',
+    bill_credit_note_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -206,6 +175,7 @@ res = s.bill_credit_notes.get(req)
 
 if res.bill_credit_note is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -255,6 +225,7 @@ res = s.bill_credit_notes.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -296,13 +267,13 @@ req = operations.ListBillCreditNotesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ut',
 )
 
 res = s.bill_credit_notes.list(req)
 
 if res.bill_credit_notes is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -348,85 +319,54 @@ req = operations.UpdateBillCreditNoteRequest(
     bill_credit_note=shared.BillCreditNote(
         allocated_on_date='2022-10-23T00:00:00.000Z',
         bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
-        currency='USD',
-        currency_rate=Decimal('1816.31'),
+        currency='GBP',
         discount_percentage=Decimal('0'),
         id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.BillCreditNoteLineItem(
-                account_ref=shared.AccountRef(
-                    id='879fce95-3f73-4ef7-bbc7-abd74dd39c0f',
-                    name='Freda Cormier',
-                ),
-                description='doloribus',
-                discount_amount=Decimal('4783.7'),
-                discount_percentage=Decimal('7535.7'),
+                account_ref=shared.AccountRef(),
                 item_ref=shared.ItemRef(
-                    id='70a45626-d436-4813-b16d-9f5fce6c5561',
-                    name='Rosemary Ryan',
+                    id='<ID>',
                 ),
-                quantity=Decimal('1324.87'),
-                sub_total=Decimal('3253.1'),
-                tax_amount=Decimal('534.27'),
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('9528.71'),
-                    id='b008c42e-141a-4ac3-a6c8-dd6b14429074',
-                    name='Esther Koch',
-                ),
-                total_amount=Decimal('6832.82'),
+                quantity=Decimal('156.52'),
+                tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.BillCreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
-                            id='7bd466d2-8c10-4ab3-8dca-4251904e523c',
-                            name='Sophie Bayer',
+                            id='<ID>',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='dignissimos',
-                        id='178e4796-f2a7-40c6-8828-2aa482562f22',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType.UNKNOWN,
-                    is_rebilled_to=shared.BilledToType.PROJECT,
+                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_rebilled_to=shared.BilledToType.CUSTOMER,
                     project_ref=shared.ProjectRef(
-                        id='9817ee17-cbe6-41e6-b7b9-5bc0ab3c20c4',
-                        name='Glenn Koch',
+                        id='<ID>',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='fd871f99-dd2e-4fd1-a1aa-6f1e674bdb04',
-                        name='Samuel Hermiston',
+                        id='<ID>',
                     ),
                 ],
-                unit_amount=Decimal('3917.74'),
+                unit_amount=Decimal('9914.64'),
             ),
         ],
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Credit Note with 1 line items, totaling 805.78',
         payment_allocations=[
             shared.Items(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
-                    currency_rate=Decimal('8453.58'),
-                    total_amount=Decimal('4012.59'),
+                    currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='8ea19f1d-1705-4133-9d08-086a1840394c',
-                        name='Loretta Anderson DVM',
-                    ),
+                    account_ref=shared.AccountRef(),
                     currency='USD',
-                    currency_rate=Decimal('2446.51'),
-                    id='f5f0642d-ac7a-4f51-9cc4-13aa63aae8d6',
-                    note='ducimus',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='vel',
-                    total_amount=Decimal('2870.51'),
                 ),
             ),
         ],
@@ -436,36 +376,34 @@ req = operations.UpdateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "facilis": {
-                    "cum": 'commodi',
+                "Arizona": {
+                    "Cotton": 'extend',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
-            id='75fd5e60-b375-4ed4-b6fb-ee41f33317fe',
-            supplier_name='consectetur',
+            id='<ID>',
         ),
         total_amount=Decimal('805.78'),
         total_discount=Decimal('0'),
         total_tax_amount=Decimal('0'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('3581.07'),
-                name='Rick Beer',
+                amount=Decimal('2494.4'),
+                name='Carolina syndicate',
             ),
         ],
     ),
-    bill_credit_note_id='vitae',
+    bill_credit_note_id='implement JBOD',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    timeout_in_minutes=881721,
 )
 
 res = s.bill_credit_notes.update(req)
 
 if res.update_bill_credit_note_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -512,10 +450,10 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadBillCreditNoteAttachmentRequest(
     request_body=operations.UploadBillCreditNoteAttachmentRequestBody(
-        content='similique'.encode(),
-        request_body='tempora',
+        content='v/ghW&IC$x'.encode(),
+        request_body='Elegant Producer Electric',
     ),
-    bill_credit_note_id='aspernatur',
+    bill_credit_note_id='Iowa Bentley',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -524,6 +462,7 @@ res = s.bill_credit_notes.upload_attachment(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters

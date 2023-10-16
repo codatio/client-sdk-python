@@ -1,4 +1,5 @@
-# journals
+# Journals
+(*journals*)
 
 ## Overview
 
@@ -39,28 +40,19 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateJournalRequest(
     journal=shared.Journal(
         created_on='2022-10-23T00:00:00.000Z',
-        has_children=False,
-        id='ce525c67-641a-4831-ae50-47b4c21ccb42',
-        journal_code='amet',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Kim Swift',
-        parent_id='et',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.JournalStatus.ARCHIVED,
-        type='est',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=716024,
 )
 
 res = s.journals.create(req)
 
 if res.create_journal_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -101,13 +93,14 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='fugiat',
+    journal_id='Northeast Hatchback Kia',
 )
 
 res = s.journals.get(req)
 
 if res.journal is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -157,6 +150,7 @@ res = s.journals.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -198,13 +192,13 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nulla',
 )
 
 res = s.journals.list(req)
 
 if res.journals is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

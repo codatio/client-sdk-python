@@ -1,4 +1,5 @@
-# bank_accounts
+# BankAccounts
+(*bank_accounts*)
 
 ## Overview
 
@@ -39,34 +40,20 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='deleniti',
-        account_number='hic',
-        account_type=shared.BankAccountBankAccountType.DEBIT,
-        available_balance=Decimal('5218.48'),
-        balance=Decimal('1059.07'),
         currency='USD',
-        i_ban='molestiae',
-        id='42cb7392-0592-4939-afea-7596eb10faaa',
-        institution='dolores',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='corporis',
-        overdraft_limit=Decimal('1289.26'),
-        sort_code='nobis',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
-    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=607831,
 )
 
 res = s.bank_accounts.create(req)
 
 if res.create_bank_account_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -106,7 +93,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBankAccountRequest(
-    account_id='nemo',
+    account_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -115,6 +102,7 @@ res = s.bank_accounts.get(req)
 
 if res.bank_account is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -164,6 +152,7 @@ res = s.bank_accounts.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -206,13 +195,13 @@ req = operations.ListBankAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='minima',
 )
 
 res = s.bank_accounts.list(req)
 
 if res.bank_accounts is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -256,35 +245,21 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
-        account_name='excepturi',
-        account_number='accusantium',
-        account_type=shared.BankAccountBankAccountType.CREDIT,
-        available_balance=Decimal('6342.74'),
-        balance=Decimal('9883.74'),
         currency='EUR',
-        i_ban='architecto',
-        id='a3a2fa94-6773-4925-9aa5-2c3f5ad019da',
-        institution='quasi',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        nominal_code='voluptatibus',
-        overdraft_limit=Decimal('8781.94'),
-        sort_code='nihil',
         source_modified_date='2022-10-23T00:00:00.000Z',
     ),
-    bank_account_id='voluptatibus',
+    bank_account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    timeout_in_minutes=55714,
 )
 
 res = s.bank_accounts.update(req)
 
 if res.update_bank_account_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
