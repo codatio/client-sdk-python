@@ -3,10 +3,11 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import file as shared_file
 from ..shared import schema as shared_schema
 from codatfiles import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Any, Optional
+from typing import Optional
 
 
 
@@ -52,7 +53,7 @@ class ListFilesResponse:
     r"""One or more of the resources you referenced could not be found.
     This might be because your company or data connection id is wrong, or was already deleted.
     """
-    files: Optional[list[dict[str, Any]]] = dataclasses.field(default=None)
+    files: Optional[list[shared_file.File]] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""

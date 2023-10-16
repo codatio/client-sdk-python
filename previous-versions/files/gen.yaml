@@ -2,22 +2,22 @@ configVersion: 1.0.0
 management:
   docChecksum: 51ee4fbc6a66709c22663c007999f4b3
   docVersion: 3.0.0
-  speakeasyVersion: 1.96.1
-  generationVersion: 2.150.0
+  speakeasyVersion: 1.99.2
+  generationVersion: 2.155.1
 generation:
   sdkClassName: CodatFiles
   singleTagPerOp: false
   telemetryEnabled: true
 features:
   python:
-    core: 2.88.4
+    core: 2.88.6
     downloadStreams: 0.0.1
     examples: 2.81.2
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
     retries: 2.82.0
 python:
-  version: 0.1.0
+  version: 0.1.1
   author: Codat
   description: Use Codat's Files API to upload your SMB customers' files.
   flattenGlobalSecurity: true

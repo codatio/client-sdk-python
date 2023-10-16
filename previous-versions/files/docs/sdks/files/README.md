@@ -22,9 +22,7 @@ import codatfiles
 from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.DownloadFilesRequest(
@@ -36,6 +34,7 @@ res = s.files.download_files(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -62,9 +61,7 @@ import codatfiles
 from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListFilesRequest(
@@ -75,6 +72,7 @@ res = s.files.list_files(req)
 
 if res.files is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -107,9 +105,7 @@ import codatfiles
 from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.UploadFilesRequest(
@@ -125,6 +121,7 @@ res = s.files.upload_files(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
