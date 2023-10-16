@@ -12,7 +12,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class Company:
-    r"""In Codat, a company represents a business sharing access to their data. Each company can have multiple [connections](https://docs.codat.io/sync-for-commerce-api#/schemas/Connection) to different data sources such as one connection to [Xero](https://docs.codat.io/integrations/accounting/xero/accounting-xero) for accounting data, two connections to [Plaid](https://docs.codat.io/integrations/banking/plaid/banking-plaid) for two bank accounts and a connection to [Zettle](https://docs.codat.io/integrations/commerce/zettle/commerce-zettle) for POS data.
+    r"""In Codat, a company represents a business sharing access to their data. Each company can have multiple [connections](https://docs.codat.io/sync-for-sync-for-commerce-api#/schemas/Connection) to different data sources such as one connection to [Xero](https://docs.codat.io/integrations/accounting/xero/accounting-xero) for accounting data, two connections to [Plaid](https://docs.codat.io/integrations/banking/plaid/banking-plaid) for two bank accounts and a connection to [Zettle](https://docs.codat.io/integrations/commerce/zettle/commerce-zettle) for POS data.
 
     Typically each company is one of your customers.
 
@@ -46,6 +46,7 @@ class Company:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     created_by_user_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdByUserName'), 'exclude': lambda f: f is None }})
+    r"""Name of user that created the company in Codat."""
     data_connections: Optional[list[shared_connection.Connection]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections'), 'exclude': lambda f: f is None }})
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     r"""Additional information about the company. This can be used to store foreign IDs, references, etc."""
@@ -71,6 +72,9 @@ class Company:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     platform: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platform'), 'exclude': lambda f: f is None }})
-    r"""Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible."""
+    r"""`platformKeys` name used when creating the company.
+
+    Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+    """
     
 
