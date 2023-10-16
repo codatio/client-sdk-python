@@ -5,7 +5,7 @@ A human-readable object describing validation decisions Codat has made when push
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `errors`                                                                 | list[[shared.ValidationItem](undefined/models/shared/validationitem.md)] | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `warnings`                                                               | list[[shared.ValidationItem](undefined/models/shared/validationitem.md)] | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `errors`                                                      | list[[ValidationItem](../../models/shared/validationitem.md)] | :heavy_minus_sign:                                            | N/A                                                           |
+| `warnings`                                                    | list[[ValidationItem](../../models/shared/validationitem.md)] | :heavy_minus_sign:                                            | N/A                                                           |

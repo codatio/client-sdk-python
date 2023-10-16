@@ -41,47 +41,31 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Jenafurt',
-                country='Sweden',
-                line1='innovative blue',
-                line2='grey technology East',
-                postal_code='30778',
-                region='quantify Polestar mobile',
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='Durham after',
-        default_currency='Intelligent Fish',
-        email_address='Ricardo.Hand41@gmail.com',
-        id='<ID>',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='Profound',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "pariatur": {
-                    "accusantium": 'Minivan',
+                "innovative": {
+                    "blue": 'shred',
                 },
             },
         ),
-        supplier_name='Senior Mouse West',
-        tax_number='Towels likewise',
     ),
-    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=452224,
 )
 
 res = s.suppliers.create(req)
 
 if res.create_supplier_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -129,6 +113,7 @@ res = s.suppliers.get(req)
 
 if res.supplier is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -170,13 +155,13 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='Northeast Metal Canada',
 )
 
 res = s.suppliers.list(req)
 
 if res.suppliers is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -221,49 +206,32 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.SupplierAccountingAddress(
-                city='Ann Arbor',
-                country='Montserrat',
-                line1='Reactive',
-                line2='Metal cheater Islands',
-                postal_code='43372',
-                region='Carolina syndicate',
-                type=shared.AccountingAddressType.BILLING,
+                type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='East',
-        default_currency='Bicycle guestbook',
-        email_address='Alexys.Hayes81@yahoo.com',
-        id='<ID>',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='indexing',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplierSupplementalData(
             content={
-                "consectetur": {
-                    "ullam": 'Jaguar',
+                "male": {
+                    "Metal": 'cheater',
                 },
             },
         ),
-        supplier_name='visionary Buckinghamshire frictionless',
-        tax_number='parse possimus',
     ),
-    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    supplier_id='7110701885',
-    timeout_in_minutes=427089,
+    supplier_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
 )
 
 res = s.suppliers.update(req)
 
 if res.update_supplier_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

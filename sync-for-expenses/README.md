@@ -33,10 +33,7 @@ req = operations.CreateAccountRequest(
         fully_qualified_category='Asset.Current',
         fully_qualified_name='Cash On Hand',
         id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
-        is_bank_account=False,
-        metadata=shared.AccountMetadata(
-            is_deleted=False,
-        ),
+        metadata=shared.AccountMetadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         name='Accounts Receivable',
         nominal_code='610',
@@ -48,20 +45,18 @@ req = operations.CreateAccountRequest(
                 links=[
                     'Money',
                 ],
-                property='Cambridgeshire grey technology',
             ),
         ],
     ),
-    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=86,
 )
 
 res = s.accounts.create(req)
 
 if res.create_account_response is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->
 
@@ -145,8 +140,6 @@ if res.create_account_response is not None:
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 

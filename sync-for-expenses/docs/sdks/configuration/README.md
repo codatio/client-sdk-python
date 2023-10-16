@@ -35,6 +35,7 @@ res = s.configuration.get(req)
 
 if res.company_configuration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -74,6 +75,7 @@ res = s.configuration.get_mapping_options(req)
 
 if res.mapping_options is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -110,12 +112,8 @@ req = operations.SetCompanyConfigurationRequest(
         bank_account=shared.BankAccount(
             id='32',
         ),
-        customer=shared.CustomerDetails(
-            id='<ID>',
-        ),
-        supplier=shared.SupplierDetails(
-            id='<ID>',
-        ),
+        customer=shared.CustomerDetails(),
+        supplier=shared.SupplierDetails(),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -124,6 +122,7 @@ res = s.configuration.set(req)
 
 if res.company_configuration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
