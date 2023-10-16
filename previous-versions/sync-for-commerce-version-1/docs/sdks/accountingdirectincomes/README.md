@@ -1,4 +1,5 @@
-# accounting_direct_incomes
+# AccountingDirectIncomes
+(*accounting_direct_incomes*)
 
 ## Overview
 
@@ -37,94 +38,63 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.CreateAccountingDirectIncomeRequest(
     accounting_direct_income=shared.AccountingDirectIncome(
         contact_ref=shared.AccountingDirectIncomeContactRef(
-            data_type='tempora',
-            id='5626d436-813f-416d-9f5f-ce6c556146c3',
+            data_type=shared.DataType.INVOICES,
+            id='<ID>',
         ),
-        currency='EUR',
-        currency_rate=Decimal('1324.87'),
-        id='50fb008c-42e1-441a-ac36-6c8dd6b14429',
+        currency='GBP',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.DirectIncomeLineItem(
-                account_ref=shared.AccountRef(
-                    id='7474778a-7bd4-466d-a8c1-0ab3cdca4251',
-                    name='William Goodwin',
-                ),
-                description='aspernatur',
-                discount_amount=Decimal('1970.54'),
-                discount_percentage=Decimal('7791.92'),
+                account_ref=shared.AccountRef(),
                 item_ref=shared.DirectIncomeLineItemItemReference(
-                    id='7e0bc717-8e47-496f-aa70-c688282aa482',
-                    name='Sue Corkery',
+                    id='<ID>',
                 ),
-                quantity=Decimal('1871.31'),
-                sub_total=Decimal('1294.12'),
-                tax_amount=Decimal('9039.84'),
-                tax_rate_ref=shared.DirectIncomeLineItemTaxRateReference(
-                    effective_tax_rate=Decimal('5789.22'),
-                    id='817ee17c-be61-4e6b-bb95-bc0ab3c20c4f',
-                    name='Joy Labadie',
-                ),
-                total_amount=Decimal('8577.23'),
+                quantity=Decimal('3642.55'),
+                tax_rate_ref=shared.DirectIncomeLineItemTaxRateReference(),
                 tracking_category_refs=[
                     shared.DirectIncomeLineItemTrackingCategoryRefs(
-                        id='871f99dd-2efd-4121-aa6f-1e674bdb04f1',
-                        name='Delores Hermiston IV',
+                        id='<ID>',
                     ),
                 ],
-                unit_amount=Decimal('1852.32'),
+                unit_amount=Decimal('7950.78'),
             ),
         ],
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='ex',
         payment_allocations=[
             shared.PaymentAllocationsitems(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
-                    currency_rate=Decimal('6802.7'),
-                    total_amount=Decimal('996.15'),
                 ),
                 payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='9f1d1705-1339-4d08-886a-1840394c2607',
-                        name='Elisa Mosciski',
-                    ),
+                    account_ref=shared.AccountRef(),
                     currency='USD',
-                    currency_rate=Decimal('9903.45'),
-                    id='0642dac7-af51-45cc-813a-a63aae8d6786',
-                    note='labore',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='facilis',
-                    total_amount=Decimal('7382.27'),
                 ),
             ),
         ],
-        reference='commodi',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        sub_total=Decimal('3605.45'),
+        sub_total=Decimal('5786.44'),
         supplemental_data=shared.SupplementalData(
             content={
-                "reiciendis": {
-                    "assumenda": 'nemo',
+                "Tactics": {
+                    "duh": 'East',
                 },
             },
         ),
-        tax_amount=Decimal('9249.67'),
-        total_amount=Decimal('3975.33'),
+        tax_amount=Decimal('2940.98'),
+        total_amount=Decimal('8825.39'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=46007,
 )
 
 res = s.accounting_direct_incomes.create_accounting_direct_income(req)
 
 if res.accounting_create_direct_income_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

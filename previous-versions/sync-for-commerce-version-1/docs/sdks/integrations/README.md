@@ -1,4 +1,5 @@
-# integrations
+# Integrations
+(*integrations*)
 
 ## Overview
 
@@ -7,7 +8,7 @@ View useful information about codat's integrations.
 ### Available Operations
 
 * [get_integration_branding](#get_integration_branding) - Get branding for an integration
-* [list_integrations](#list_integrations) - List information on Codat's supported integrations
+* [list_integrations](#list_integrations) - List integrations
 
 ## get_integration_branding
 
@@ -26,13 +27,14 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetIntegrationBrandingRequest(
-    platform_key='quis',
+    platform_key='gbol',
 )
 
 res = s.integrations.get_integration_branding(req)
 
 if res.branding is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -68,13 +70,13 @@ req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='beatae',
 )
 
 res = s.integrations.list_integrations(req)
 
 if res.integrations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

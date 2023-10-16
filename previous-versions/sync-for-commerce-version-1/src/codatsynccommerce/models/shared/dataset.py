@@ -2,33 +2,56 @@
 
 from __future__ import annotations
 import dataclasses
+from ..shared import datasetstatus as shared_datasetstatus
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class DatasetStatus(str, Enum):
-    INITIAL = 'Initial'
-    QUEUED = 'Queued'
-    FETCHING = 'Fetching'
-    MAP_QUEUED = 'MapQueued'
-    MAPPING = 'Mapping'
-    COMPLETE = 'Complete'
-    FETCH_ERROR = 'FetchError'
-    MAP_ERROR = 'MapError'
-    INTERNAL_ERROR = 'InternalError'
-    PROCESSING_QUEUED = 'ProcessingQueued'
-    PROCESSING = 'Processing'
-    PROCESSING_ERROR = 'ProcessingError'
-    VALIDATION_QUEUED = 'ValidationQueued'
-    VALIDATING = 'Validating'
-    VALIDATION_ERROR = 'ValidationError'
-    AUTH_ERROR = 'AuthError'
-    CANCELLED = 'Cancelled'
-    NOT_SUPPORTED = 'NotSupported'
-    RATE_LIMIT_ERROR = 'RateLimitError'
-    PERMISSIONS_ERROR = 'PermissionsError'
-    PREREQUISITE_NOT_MET = 'PrerequisiteNotMet'
+class DatasetDataTypes(str, Enum):
+    r"""Available Data types"""
+    ACCOUNT_TRANSACTIONS = 'accountTransactions'
+    BALANCE_SHEET = 'balanceSheet'
+    BANK_ACCOUNTS = 'bankAccounts'
+    BANK_TRANSACTIONS = 'bankTransactions'
+    BILL_CREDIT_NOTES = 'billCreditNotes'
+    BILL_PAYMENTS = 'billPayments'
+    BILLS = 'bills'
+    CASH_FLOW_STATEMENT = 'cashFlowStatement'
+    CHART_OF_ACCOUNTS = 'chartOfAccounts'
+    COMPANY = 'company'
+    CREDIT_NOTES = 'creditNotes'
+    CUSTOMERS = 'customers'
+    DIRECT_COSTS = 'directCosts'
+    DIRECT_INCOMES = 'directIncomes'
+    INVOICES = 'invoices'
+    ITEMS = 'items'
+    JOURNAL_ENTRIES = 'journalEntries'
+    JOURNALS = 'journals'
+    PAYMENT_METHODS = 'paymentMethods'
+    PAYMENTS = 'payments'
+    PROFIT_AND_LOSS = 'profitAndLoss'
+    PURCHASE_ORDERS = 'purchaseOrders'
+    SALES_ORDERS = 'salesOrders'
+    SUPPLIERS = 'suppliers'
+    TAX_RATES = 'taxRates'
+    TRACKING_CATEGORIES = 'trackingCategories'
+    TRANSFERS = 'transfers'
+    BANKING_ACCOUNT_BALANCES = 'banking-accountBalances'
+    BANKING_ACCOUNTS = 'banking-accounts'
+    BANKING_TRANSACTION_CATEGORIES = 'banking-transactionCategories'
+    BANKING_TRANSACTIONS = 'banking-transactions'
+    COMMERCE_COMPANY_INFO = 'commerce-companyInfo'
+    COMMERCE_CUSTOMERS = 'commerce-customers'
+    COMMERCE_DISPUTES = 'commerce-disputes'
+    COMMERCE_LOCATIONS = 'commerce-locations'
+    COMMERCE_ORDERS = 'commerce-orders'
+    COMMERCE_PAYMENT_METHODS = 'commerce-paymentMethods'
+    COMMERCE_PAYMENTS = 'commerce-payments'
+    COMMERCE_PRODUCT_CATEGORIES = 'commerce-productCategories'
+    COMMERCE_PRODUCTS = 'commerce-products'
+    COMMERCE_TAX_COMPONENTS = 'commerce-taxComponents'
+    COMMERCE_TRANSACTIONS = 'commerce-transactions'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -36,11 +59,17 @@ class DatasetStatus(str, Enum):
 @dataclasses.dataclass
 class Dataset:
     company_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId') }})
+    r"""Unique identifier for your SMB in Codat."""
     connection_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionId') }})
+    r"""Unique identifier for a company's data connection."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""Identifier for the dataset."""
     is_completed: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isCompleted') }})
+    r"""`True` if the dataset completed successfully."""
     is_errored: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isErrored') }})
+    r"""`True` if the dataset entered an error state."""
     progress: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('progress') }})
+    r"""An integer signifying the progress of the dataset."""
     requested: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('requested') }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -62,7 +91,8 @@ class Dataset:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    status: DatasetStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_datasetstatus.DatasetStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    r"""The current status of the dataset."""
     completed: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completed'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -84,9 +114,13 @@ class Dataset:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    dataset_logs_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datasetLogsUrl'), 'exclude': lambda f: f is None }})
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is None }})
-    validation_information_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validationInformationUrl'), 'exclude': lambda f: f is None }})
+    dataset_logs_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datasetLogsUrl') }})
+    r"""URI to the dataset's logs."""
+    data_type: Optional[DatasetDataTypes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    r"""Available Data types"""
+    error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage') }})
+    r"""A brief message about the error."""
+    validation_information_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validationInformationUrl') }})
+    r"""URI to the dataset's validation information."""
     
 

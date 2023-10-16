@@ -14,18 +14,18 @@ class CompanyManagement:
         
     
     def create_company(self, request: shared.CreateCompany, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
-        r"""Create Sync for Commerce company
+        r"""Create sync for commerce company
         Creates a Codat company with a commerce partner data connection.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/meta/companies/sync'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -39,7 +39,7 @@ class CompanyManagement:
 
         def do_request():
             return client.request('POST', url, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -67,11 +67,11 @@ class CompanyManagement:
         
         url = utils.generate_url(operations.CreateConnectionRequest, base_url, '/meta/companies/{companyId}/connections', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'string')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -85,7 +85,7 @@ class CompanyManagement:
 
         def do_request():
             return client.request('POST', url, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -115,7 +115,7 @@ class CompanyManagement:
         headers = {}
         query_params = utils.get_query_params(operations.ListCompaniesRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -129,7 +129,7 @@ class CompanyManagement:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -159,7 +159,7 @@ class CompanyManagement:
         headers = {}
         query_params = utils.get_query_params(operations.ListConnectionsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -173,7 +173,7 @@ class CompanyManagement:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -201,11 +201,11 @@ class CompanyManagement:
         
         url = utils.generate_url(operations.UpdateConnectionRequest, base_url, '/meta/companies/{companyId}/connections/{connectionId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "update_connection", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "update_connection", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -219,7 +219,7 @@ class CompanyManagement:
 
         def do_request():
             return client.request('PATCH', url, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

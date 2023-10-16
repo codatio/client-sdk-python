@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 import dataclasses
+from ..shared import paymentmethodref as shared_paymentmethodref
 from ..shared import paymentstatus as shared_paymentstatus
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
-from typing import Any, Optional
+from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -77,7 +78,8 @@ class CommercePayment:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    payment_method_ref: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentMethodRef'), 'exclude': lambda f: f is None }})
+    payment_method_ref: Optional[shared_paymentmethodref.PaymentMethodRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentMethodRef'), 'exclude': lambda f: f is None }})
+    r"""The payment method the record is linked to in the accounting or commerce platform."""
     payment_provider: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentProvider'), 'exclude': lambda f: f is None }})
     r"""Service provider of the payment, if applicable."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})

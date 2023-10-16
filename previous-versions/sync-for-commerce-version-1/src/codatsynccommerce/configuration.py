@@ -14,7 +14,7 @@ class Configuration:
         
     
     def get_configuration(self, request: operations.GetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigurationResponse:
-        r"""Retrieve config preferences set for a company.
+        r"""Retrieve config preferences set for a company
         Retrieve current config preferences.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -22,7 +22,7 @@ class Configuration:
         url = utils.generate_url(operations.GetConfigurationRequest, base_url, '/config/companies/{companyId}/sync/commerce', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -36,7 +36,7 @@ class Configuration:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -57,7 +57,7 @@ class Configuration:
 
     
     def set_configuration(self, request: operations.SetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.SetConfigurationResponse:
-        r"""Create or update configuration.
+        r"""Create or update configuration
         Make changes to configuration preferences.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -65,7 +65,7 @@ class Configuration:
         url = utils.generate_url(operations.SetConfigurationRequest, base_url, '/config/companies/{companyId}/sync/commerce', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -79,7 +79,7 @@ class Configuration:
 
         def do_request():
             return client.request('POST', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

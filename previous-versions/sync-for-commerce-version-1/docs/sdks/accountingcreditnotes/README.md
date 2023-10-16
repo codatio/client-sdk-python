@@ -1,4 +1,5 @@
-# accounting_credit_notes
+# AccountingCreditNotes
+(*accounting_credit_notes*)
 
 ## Overview
 
@@ -36,131 +37,92 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingCreditNoteRequest(
     accounting_credit_note=shared.AccountingCreditNote(
-        additional_tax_amount=Decimal('3834.41'),
-        additional_tax_percentage=Decimal('4776.65'),
         allocated_on_date='2022-10-23T00:00:00.000Z',
-        credit_note_number='placeat',
-        currency='USD',
-        currency_rate=Decimal('4799.77'),
+        currency='GBP',
         customer_ref=shared.AccountingCustomerRef(
-            company_name='excepturi',
-            id='6ed151a0-5dfc-42dd-b7cc-78ca1ba928fc',
+            id='<ID>',
         ),
-        discount_percentage=Decimal('5218.48'),
-        id='16742cb7-3920-4592-9396-fea7596eb10f',
+        discount_percentage=Decimal('3961.39'),
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.CreditNoteLineItem(
-                account_ref=shared.AccountRef(
-                    id='aa2352c5-9559-407a-bf1a-3a2fa9467739',
-                    name='Beatrice Brown',
-                ),
-                description='enim',
-                discount_amount=Decimal('1381.83'),
-                discount_percentage=Decimal('7783.46'),
-                is_direct_income=False,
+                account_ref=shared.AccountRef(),
                 item_ref=shared.ItemRef(
-                    id='3f5ad019-da1f-4fe7-8f09-7b0074f15471',
-                    name='Bill Thompson',
+                    id='<ID>',
                 ),
-                quantity=Decimal('641.47'),
-                sub_total=Decimal('2168.22'),
-                tax_amount=Decimal('6924.72'),
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('5651.89'),
-                    id='9d488e1e-91e4-450a-92ab-d44269802d50',
-                    name='Sonya Marks',
-                ),
-                total_amount=Decimal('7351.94'),
+                quantity=Decimal('1740.95'),
+                tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
                         shared.TrackingCategoryRefsitems(
-                            id='4f63c969-e9a3-4efa-b7df-b14cd66ae395',
-                            name='Toby Pouros',
+                            id='<ID>',
                         ),
                     ],
                     customer_ref=shared.AccountingCustomerRef(
-                        company_name='id',
-                        id='88f3a669-9707-44ba-8469-b6e214195989',
+                        id='<ID>',
                     ),
-                    is_billed_to=shared.BilledToType.UNKNOWN,
-                    is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
+                    is_billed_to=shared.BilledToType.PROJECT,
+                    is_rebilled_to=shared.BilledToType.PROJECT,
                     project_ref=shared.CreditNoteLineItemTrackingProjectReference(
-                        id='fa563e25-16fe-44c8-b711-e5b7fd2ed028',
-                        name='Victor Casper',
+                        id='<ID>',
                     ),
                     record_ref=shared.RecordRef(
-                        data_type='transfer',
-                        id='c692601f-b576-4b0d-9f0d-30c5fbb25870',
+                        data_type='accountTransaction',
                     ),
                 ),
                 tracking_category_refs=[
                     shared.TrackingCategoryRefsitems(
-                        id='53202c73-d5fe-49b9-8c28-909b3fe49a8d',
-                        name='Loren Renner',
+                        id='<ID>',
                     ),
                 ],
-                unit_amount=Decimal('5542.42'),
+                unit_amount=Decimal('6472.07'),
             ),
         ],
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='dolorem',
         payment_allocations=[
             shared.PaymentAllocationsitems(
                 allocation=shared.ItemsAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
-                    currency_rate=Decimal('1861.93'),
-                    total_amount=Decimal('2187.49'),
+                    currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(
-                        id='f9b77f3a-4100-4674-abf6-9280d1ba77a8',
-                        name='Terence Rau',
-                    ),
-                    currency='GBP',
-                    currency_rate=Decimal('4560.15'),
-                    id='ae4203ce-5e6a-495d-8a0d-446ce2af7a73',
-                    note='quisquam',
+                    account_ref=shared.AccountRef(),
+                    currency='USD',
                     paid_on_date='2022-10-23T00:00:00.000Z',
-                    reference='amet',
-                    total_amount=Decimal('7308.56'),
                 ),
             ),
         ],
-        remaining_credit=Decimal('8802.98'),
+        remaining_credit=Decimal('3693.65'),
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CreditNoteStatus.DRAFT,
-        sub_total=Decimal('2133.12'),
+        status=shared.CreditNoteStatus.VOID,
+        sub_total=Decimal('1915.04'),
         supplemental_data=shared.SupplementalData(
             content={
-                "sapiente": {
-                    "totam": 'nihil',
+                "Metal": {
+                    "policy": 'although',
                 },
             },
         ),
-        total_amount=Decimal('256.62'),
-        total_discount=Decimal('7115.84'),
-        total_tax_amount=Decimal('2074.7'),
+        total_amount=Decimal('6437.49'),
+        total_discount=Decimal('6593.55'),
+        total_tax_amount=Decimal('3629.12'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('1536.94'),
-                name='Kelli Hintz',
+                amount=Decimal('5655.86'),
+                name='however',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=214880,
 )
 
 res = s.accounting_credit_notes.create_accounting_credit_note(req)
 
 if res.accounting_create_credit_note_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

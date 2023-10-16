@@ -4,7 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class PushOperationStatus(str, Enum):
-    r"""The status of the push operation."""
+    r"""The current status of the push operation."""
     PENDING = 'Pending'
     FAILED = 'Failed'
     SUCCESS = 'Success'
