@@ -1,4 +1,5 @@
 # JournalEntries
+(*journal_entries*)
 
 ## Overview
 
@@ -38,45 +39,33 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='saepe',
-        id='189dbb30-fcb3-43ea-855b-197cd44e2f52',
         journal_lines=[
             shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='d82d3513-bb6f-448b-a56b-cdb35ff2e4b2',
-                    name='Audrey Durgan',
-                ),
-                currency='rem',
-                description='eligendi',
-                net_amount=Decimal('8536.06'),
+                account_ref=shared.AccountRef(),
+                net_amount=Decimal('4893.82'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
                             data_type='accountTransaction',
-                            id='e7319c17-7d52-45f7-bb11-4eeb52ff785f',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='c37814d4-c98e-40c2-bb89-eb75dad636c6',
-            name='Mrs. Donna Hand',
+            id='<ID>',
         ),
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.JournalEntryRecordReference(
-            data_type='accountTransaction',
-            id='31180f73-9ae9-4e05-beb8-09e2810331f3',
+            data_type='invoice',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "atque": {
-                    "beatae": 'at',
+                "blue": {
+                    "shred": 'abnormally',
                 },
             },
         ),
@@ -84,13 +73,13 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=794988,
 )
 
 res = s.journal_entries.create(req)
 
 if res.create_journal_entry_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -140,6 +129,7 @@ res = s.journal_entries.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
