@@ -12,7 +12,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class PushValidationInfo:
-    information: Optional[list[shared_pushfieldvalidation.PushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('information'), 'exclude': lambda f: f is None }})
-    warnings: Optional[list[shared_pushfieldvalidation.PushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings'), 'exclude': lambda f: f is None }})
+    information: Optional[list[shared_pushfieldvalidation.PushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('information') }})
+    warnings: Optional[list[shared_pushfieldvalidation.PushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings') }})
     
 

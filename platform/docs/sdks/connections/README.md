@@ -1,4 +1,5 @@
 # Connections
+(*connections*)
 
 ## Overview
 
@@ -17,7 +18,7 @@ Manage your companies' data connections.
 
 ﻿Creates a connection for the company by providing a valid `platformKey`. 
 
-Use the [List Integrations](https://docs.codat.io/codat-api#/operations/list-integrations) endpoint to access valid platform keys. 
+Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-integrations) endpoint to access valid platform keys. 
 
 ### Example Usage
 
@@ -33,7 +34,7 @@ s = codatplatform.CodatPlatform(
 
 req = operations.CreateConnectionRequest(
     request_body=operations.CreateConnectionRequestBody(
-        platform_key='provident',
+        platform_key='gbol',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -42,6 +43,7 @@ res = s.connections.create(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -83,6 +85,7 @@ res = s.connections.delete(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -123,6 +126,7 @@ res = s.connections.get(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -159,13 +163,13 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='distinctio',
 )
 
 res = s.connections.list(req)
 
 if res.connections is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -198,9 +202,7 @@ s = codatplatform.CodatPlatform(
 )
 
 req = operations.UnlinkConnectionRequest(
-    update_connection_status=shared.UpdateConnectionStatus(
-        status=shared.DataConnectionStatus.DEAUTHORIZED,
-    ),
+    update_connection_status=shared.UpdateConnectionStatus(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -209,6 +211,7 @@ res = s.connections.unlink(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -242,7 +245,7 @@ s = codatplatform.CodatPlatform(
 
 req = operations.UpdateConnectionAuthorizationRequest(
     request_body={
-        "unde": 'nulla',
+        "Neptunium": 'Books',
     },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -252,6 +255,7 @@ res = s.connections.update_authorization(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
