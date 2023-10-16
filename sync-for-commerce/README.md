@@ -75,4 +75,3 @@ if res.company is not None:
 ### [SyncFlowSettings](docs/sdks/syncflowsettings/README.md)
 
 * [get_config_text_sync_flow](docs/sdks/syncflowsettings/README.md#get_config_text_sync_flow) - Get preferences for text fields
-* [get_visible_accounts](docs/sdks/syncflowsettings/README.md#get_visible_accounts) - List visible accounts

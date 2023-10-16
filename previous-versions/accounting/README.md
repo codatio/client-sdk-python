@@ -244,4 +244,3 @@ if res.account_transaction is not None:
 
 * [create](docs/sdks/transfers/README.md#create) - Create transfer
 * [get](docs/sdks/transfers/README.md#get) - Get transfer
-* [get_create_model](docs/sdks/transfers/README.md#get_create_model) - Get create transfer model

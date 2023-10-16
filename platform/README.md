@@ -95,5 +95,3 @@ if res.company is not None:
 * [get_configuration](docs/sdks/supplementaldata/README.md#get_configuration) - Get configuration
 
 ### [Webhooks](docs/sdks/webhooks/README.md)
-
-* [create](docs/sdks/webhooks/README.md#create) - Create webhook
