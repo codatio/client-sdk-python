@@ -36,9 +36,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = shared.CreateAPIKey(
@@ -49,6 +47,7 @@ res = s.settings.create_api_key(req)
 
 if res.api_key_details is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -84,9 +83,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.DeleteAPIKeyRequest(
@@ -97,6 +94,7 @@ res = s.settings.delete_api_key(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -125,9 +123,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 
@@ -135,6 +131,7 @@ res = s.settings.get_profile()
 
 if res.profile is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -160,9 +157,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 
@@ -170,6 +165,7 @@ res = s.settings.get_sync_settings()
 
 if res.sync_settings is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -199,9 +195,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 
@@ -209,6 +203,7 @@ res = s.settings.list_api_keys()
 
 if res.api_keys is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -234,9 +229,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = shared.Profile(
@@ -278,6 +271,7 @@ res = s.settings.update_profile(req)
 
 if res.profile is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -304,9 +298,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.UpdateProfileSyncSettingsRequestBody(
@@ -328,6 +320,7 @@ res = s.settings.update_sync_settings(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters

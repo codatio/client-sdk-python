@@ -22,9 +22,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = shared.CreateRule(
@@ -56,6 +54,7 @@ res = s.webhooks.create(req)
 
 if res.webhook is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -82,9 +81,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetWebhookRequest(
@@ -95,6 +92,7 @@ res = s.webhooks.get(req)
 
 if res.webhook is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -121,9 +119,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.ListRulesRequest(
@@ -136,6 +132,7 @@ res = s.webhooks.list(req)
 
 if res.webhooks is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

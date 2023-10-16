@@ -28,9 +28,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = shared.CompanyRequestBody(
@@ -42,6 +40,7 @@ res = s.companies.create(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -69,9 +68,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.DeleteCompanyRequest(
@@ -82,6 +79,7 @@ res = s.companies.delete(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -108,9 +106,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetCompanyRequest(
@@ -121,6 +117,7 @@ res = s.companies.get(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -147,9 +144,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.ListCompaniesRequest(
@@ -162,6 +157,7 @@ res = s.companies.list(req)
 
 if res.companies is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -188,9 +184,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.UpdateCompanyRequest(
@@ -205,6 +199,7 @@ res = s.companies.update(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

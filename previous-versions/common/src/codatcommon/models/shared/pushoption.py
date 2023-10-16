@@ -5,9 +5,10 @@ import dataclasses
 from ..shared import pushoptionchoice as shared_pushoptionchoice
 from ..shared import pushoptionproperty as shared_pushoptionproperty
 from ..shared import pushoptiontype as shared_pushoptiontype
+from ..shared import pushvalidationinfo as shared_pushvalidationinfo
 from codatcommon import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Any, Optional
+from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -24,6 +25,6 @@ class PushOption:
     r"""A description of the property."""
     options: Optional[list[shared_pushoptionchoice.PushOptionChoice]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('options') }})
     properties: Optional[dict[str, shared_pushoptionproperty.PushOptionProperty]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('properties') }})
-    validation: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
+    validation: Optional[shared_pushvalidationinfo.PushValidationInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
     
 

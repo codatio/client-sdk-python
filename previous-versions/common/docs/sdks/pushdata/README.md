@@ -31,9 +31,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetCreateUpdateModelOptionsByDataTypeRequest(
@@ -46,6 +44,7 @@ res = s.push_data.get_model_options(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -72,9 +71,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetPushOperationRequest(
@@ -86,6 +83,7 @@ res = s.push_data.get_operation(req)
 
 if res.push_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -112,9 +110,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetCompanyPushHistoryRequest(
@@ -128,6 +124,7 @@ res = s.push_data.list_operations(req)
 
 if res.push_operations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

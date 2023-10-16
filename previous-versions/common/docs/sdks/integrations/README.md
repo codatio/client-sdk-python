@@ -22,9 +22,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetIntegrationRequest(
@@ -35,6 +33,7 @@ res = s.integrations.get(req)
 
 if res.integration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -61,9 +60,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetIntegrationsBrandingRequest(
@@ -74,6 +71,7 @@ res = s.integrations.get_branding(req)
 
 if res.branding is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -100,9 +98,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.ListIntegrationsRequest(
@@ -115,6 +111,7 @@ res = s.integrations.list(req)
 
 if res.integrations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

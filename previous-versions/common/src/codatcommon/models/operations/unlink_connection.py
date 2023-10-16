@@ -5,7 +5,8 @@ import dataclasses
 import requests as requests_http
 from ..shared import connection as shared_connection
 from ..shared import errormessage as shared_errormessage
-from typing import Any, Optional
+from ..shared import updateconnectionstatus as shared_updateconnectionstatus
+from typing import Optional
 
 
 
@@ -15,7 +16,7 @@ class UnlinkConnectionRequest:
     r"""Unique identifier for a company."""
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a connection."""
-    request_body: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    update_connection_status: Optional[shared_updateconnectionstatus.UpdateConnectionStatus] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 

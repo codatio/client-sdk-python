@@ -28,9 +28,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.RefreshCompanyDataRequest(
@@ -41,6 +39,7 @@ res = s.refresh_data.all(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -69,9 +68,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.RefreshDataTypeRequest(
@@ -83,6 +80,7 @@ res = s.refresh_data.by_data_type(req)
 
 if res.pull_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -109,9 +107,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetCompanyDataStatusRequest(
@@ -122,6 +118,7 @@ res = s.refresh_data.get(req)
 
 if res.data_statuses is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -148,9 +145,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetPullOperationRequest(
@@ -162,6 +157,7 @@ res = s.refresh_data.get_pull_operation(req)
 
 if res.pull_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -188,9 +184,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.ListPullOperationsRequest(
@@ -204,6 +198,7 @@ res = s.refresh_data.list_pull_operations(req)
 
 if res.pull_operations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

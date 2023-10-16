@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `auth_header`      | *Optional[str]*    | :heavy_check_mark: | N/A                |                    |
+| `auth_header`      | *str*              | :heavy_check_mark: | N/A                |                    |

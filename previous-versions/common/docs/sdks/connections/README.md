@@ -27,9 +27,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.CreateConnectionRequest(
@@ -43,6 +41,7 @@ res = s.connections.create(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -70,9 +69,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.DeleteConnectionRequest(
@@ -84,6 +81,7 @@ res = s.connections.delete(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -110,9 +108,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetConnectionRequest(
@@ -124,6 +120,7 @@ res = s.connections.get(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -150,9 +147,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.ListConnectionsRequest(
@@ -166,6 +161,7 @@ res = s.connections.list(req)
 
 if res.connections is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -192,15 +188,11 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.UnlinkConnectionRequest(
-    request_body={
-        "Cheese": 'Hybrid',
-    },
+    update_connection_status=shared.UpdateConnectionStatus(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -209,6 +201,7 @@ res = s.connections.unlink(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -235,9 +228,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.UpdateConnectionAuthorizationRequest(
@@ -252,6 +243,7 @@ res = s.connections.update_authorization(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
