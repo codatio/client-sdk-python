@@ -719,3 +719,13 @@ Based on:
 - [python v3.1.0] bank-feeds
 ### Releases
 - [PyPI v3.1.0] https://pypi.org/project/codat-bankfeeds/3.1.0 - bank-feeds
+
+## 2023-10-16 01:27:15
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Bank-Feeds.yaml
+- Speakeasy CLI 1.99.2 (2.155.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v3.2.0] bank-feeds
+### Releases
+- [PyPI v3.2.0] https://pypi.org/project/codat-bankfeeds/3.2.0 - bank-feeds

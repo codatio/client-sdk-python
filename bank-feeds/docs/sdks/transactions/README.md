@@ -1,4 +1,5 @@
 # Transactions
+(*transactions*)
 
 ## Overview
 
@@ -38,28 +39,30 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.CreateBankTransactionsRequest(
     create_bank_transactions=shared.CreateBankTransactions(
-        account_id='corporis',
+        account_id='7110701885',
         transactions=[
-            shared.CreateBankTransaction(
-                amount=Decimal('1289.26'),
-                balance=Decimal('7506.86'),
-                date_='2022-10-23T00:00:00.000Z',
-                description='omnis',
-                id='55907aff-1a3a-42fa-9467-739251aa52c3',
+            shared.BankTransactions(
+                amount=Decimal('999.99'),
+                balance=Decimal('-999.99'),
+                cleared_on_date='2022-10-23T00:00:00.000Z',
+                counterparty='ACME INC',
+                description='Debit for Payment Id sdp-1-57379a43-c4b8-49f5-bd7c-699189ee7a60',
+                id='716422529',
+                reconciled=False,
+                reference='reference for transaction',
             ),
         ],
     ),
-    account_id='EILBDVJVNUAGVKRQ',
-    allow_sync_on_push_complete=False,
+    account_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=368725,
 )
 
 res = s.transactions.create(req)
 
 if res.create_bank_transactions_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -93,13 +96,14 @@ s = codatbankfeeds.CodatBankFeeds(
 
 req = operations.GetCreateOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='ad019da1-ffe7-48f0-97b0-074f15471b5e',
+    push_operation_key='1fb73c31-a851-46c2-ab8a-5ce6e25b57b8',
 )
 
 res = s.transactions.get_create_operation(req)
 
 if res.push_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -136,13 +140,13 @@ req = operations.ListCreateOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='commodi',
 )
 
 res = s.transactions.list_create_operations(req)
 
 if res.push_operations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
