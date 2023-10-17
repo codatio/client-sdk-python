@@ -1,4 +1,5 @@
-# ManageData.Refresh
+# ManageDataRefresh
+(*manage_data.refresh*)
 
 ### Available Operations
 
@@ -33,6 +34,7 @@ res = s.manage_data.refresh.all_data_types(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -68,7 +70,6 @@ s = codatlending.CodatLending(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='dac7af51-5cc4-413a-a63a-ae8d67864dbb',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -76,6 +77,7 @@ res = s.manage_data.refresh.data_type(req)
 
 if res.pull_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

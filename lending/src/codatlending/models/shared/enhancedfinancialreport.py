@@ -7,11 +7,10 @@ from ..shared import enhancedreportinfo as shared_enhancedreportinfo
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class EnhancedFinancialReportReportItem:
     account_category: Optional[shared_enhancedreportaccountcategory.EnhancedReportAccountCategory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountCategory'), 'exclude': lambda f: f is None }})
@@ -47,11 +46,10 @@ class EnhancedFinancialReportReportItem:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class EnhancedFinancialReport:
     report_info: Optional[shared_enhancedreportinfo.EnhancedReportInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInfo'), 'exclude': lambda f: f is None }})
-    report_items: Optional[list[EnhancedFinancialReportReportItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportItems'), 'exclude': lambda f: f is None }})
+    report_items: Optional[List[EnhancedFinancialReportReportItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportItems'), 'exclude': lambda f: f is None }})
     r"""An array of report items."""
     
 

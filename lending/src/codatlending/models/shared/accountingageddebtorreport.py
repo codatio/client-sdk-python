@@ -5,11 +5,10 @@ import dataclasses
 from ..shared import ageddebtor as shared_ageddebtor
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AccountingAgedDebtorReport:
     r"""The Aged Debtors report shows the total outstanding balance due from customers to the business over time.
@@ -22,7 +21,7 @@ class AccountingAgedDebtorReport:
 
     ## Underlying data
 
-    The Aged Debtors report is generated from a set of required data types: [Customers](https://docs.codat.io/accounting-api#/schemas/Customer), [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice), [Credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote), and [Payments](https://docs.codat.io/accounting-api#/schemas/Payment).
+    The Aged Debtors report is generated from a set of required data types: [Customers](https://docs.codat.io/lending-api#/schemas/Customer), [Invoices](https://docs.codat.io/lending-api#/schemas/Invoice), [Credit notes](https://docs.codat.io/lending-api#/schemas/CreditNote), and [Payments](https://docs.codat.io/lending-api#/schemas/Payment).
 
     To generate the report, the underlying data types must have been synced within 24 hours of each other. Otherwise an error is displayed when you try to run the report. Sync the required data types by clicking the link in the error, and then run the report again.
 
@@ -45,7 +44,7 @@ class AccountingAgedDebtorReport:
 
     The report will be grouped per supplier and depending on the periods requested. The details indicates whether the amounts owed come from outstanding invoices or credit notes.
     """
-    data: Optional[list[shared_ageddebtor.AgedDebtor]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
+    data: Optional[List[shared_ageddebtor.AgedDebtor]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     r"""Array of aged debtors."""
     generated: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('generated'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

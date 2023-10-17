@@ -1,4 +1,5 @@
-# AccountsReceivable.Customers
+# AccountsReceivableCustomers
+(*accounts_receivable.customers*)
 
 ### Available Operations
 
@@ -12,7 +13,7 @@
 
 The *Download customer attachment* endpoint downloads a specific attachment for a given `customerId` and `attachmentId`.
 
-[Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+[Customers](https://docs.codat.io/lending-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support downloading a customer attachment.
 
@@ -33,13 +34,14 @@ req = operations.DownloadAccountingCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='sapiente',
+    customer_id='Dakota Avon specifically',
 )
 
 res = s.accounts_receivable.customers.download_attachment(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -59,7 +61,7 @@ if res.data is not None:
 
 The *Get customer* endpoint returns a single customer for a given customerId.
 
-[Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+[Customers](https://docs.codat.io/lending-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support getting a specific customer.
 
@@ -80,13 +82,14 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='quo',
+    customer_id='Northeast Hatchback Kia',
 )
 
 res = s.accounts_receivable.customers.get(req)
 
 if res.accounting_customer is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -106,7 +109,7 @@ if res.accounting_customer is not None:
 
 The *Get customer attachment* endpoint returns a specific attachment for a given `customerId` and `attachmentId`.
 
-[Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+[Customers](https://docs.codat.io/lending-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support getting a customer attachment.
 
@@ -127,13 +130,14 @@ req = operations.GetAccountingCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='odit',
+    customer_id='array East along',
 )
 
 res = s.accounts_receivable.customers.get_attachment(req)
 
 if res.accounting_attachment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -151,9 +155,9 @@ if res.accounting_attachment is not None:
 
 ## list
 
-The *List customers* endpoint returns a list of [customers](https://docs.codat.io/accounting-api#/schemas/Customer) for a given company's connection.
+The *List customers* endpoint returns a list of [customers](https://docs.codat.io/lending-api#/schemas/Customer) for a given company's connection.
 
-[Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+[Customers](https://docs.codat.io/lending-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -175,13 +179,13 @@ req = operations.ListAccountingCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='at',
 )
 
 res = s.accounts_receivable.customers.list(req)
 
 if res.accounting_customers is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -201,7 +205,7 @@ if res.accounting_customers is not None:
 
 The *List customer attachments* endpoint returns a list of attachments avialable to download for given `customerId`.
 
-[Customers](https://docs.codat.io/accounting-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
+[Customers](https://docs.codat.io/lending-api#/schemas/Customer) are people or organizations that buy goods or services from the SMB.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers) for integrations that support listing customer attachments.
 
@@ -221,13 +225,14 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingCustomerAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='at',
+    customer_id='intuitive Frozen ouch',
 )
 
 res = s.accounts_receivable.customers.list_attachments(req)
 
 if res.attachments is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

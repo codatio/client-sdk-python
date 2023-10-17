@@ -15,7 +15,7 @@ class BankingCategorizedStatement:
     def get(self, request: operations.GetCategorizedBankStatementRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCategorizedBankStatementResponse:
         r"""Get categorized bank statement
         > **Categorization engine**
-        > 
+        >
         > The categorization engine uses machine learning and has been fully trained against Plaid and TrueLayer banking data sources. It is not fully trained against the Basiq banking data source.
 
         The _Get categorized bank statement_ endpoint provides a fully categorized list of banking transactions for a company. Accounts and transaction data are obtained from the company's banking data sources.
@@ -26,7 +26,7 @@ class BankingCategorizedStatement:
         headers = {}
         query_params = utils.get_query_params(operations.GetCategorizedBankStatementRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -40,7 +40,7 @@ class BankingCategorizedStatement:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

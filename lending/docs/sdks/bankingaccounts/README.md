@@ -1,4 +1,5 @@
-# Banking.Accounts
+# BankingAccounts
+(*banking.accounts*)
 
 ### Available Operations
 
@@ -9,7 +10,7 @@
 
 The *Get account* endpoint returns a single account for a given accountId.
 
-[Accounts](https://docs.codat.io/banking-api#/schemas/Account) are financial accounts maintained by a bank or other financial institution.
+[Accounts](https://docs.codat.io/lending-api#/schemas/Account) are financial accounts maintained by a bank or other financial institution.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-accounts) for integrations that support getting a specific account.
 
@@ -29,7 +30,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetBankingAccountRequest(
-    account_id='totam',
+    account_id='Northeast Hatchback Kia',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -38,6 +39,7 @@ res = s.banking.accounts.get(req)
 
 if res.banking_account is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -55,9 +57,9 @@ if res.banking_account is not None:
 
 ## list
 
-The *List accounts* endpoint returns a list of [accounts](https://docs.codat.io/banking-api#/schemas/Account) for a given company's connection.
+The *List accounts* endpoint returns a list of [accounts](https://docs.codat.io/lending-api#/schemas/Account) for a given company's connection.
 
-[Accounts](https://docs.codat.io/banking-api#/schemas/Account) are financial accounts maintained by a bank or other financial institution.
+[Accounts](https://docs.codat.io/lending-api#/schemas/Account) are financial accounts maintained by a bank or other financial institution.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -80,13 +82,13 @@ req = operations.ListBankingAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='beatae',
 )
 
 res = s.banking.accounts.list(req)
 
 if res.banking_accounts is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

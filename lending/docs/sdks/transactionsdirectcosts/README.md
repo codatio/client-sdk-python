@@ -1,4 +1,5 @@
-# Transactions.DirectCosts
+# TransactionsDirectCosts
+(*transactions.direct_costs*)
 
 ### Available Operations
 
@@ -12,7 +13,7 @@
 
 The *Download direct cost attachment* endpoint downloads a specific attachment for a given `directCostId` and `attachmentId`.
 
-[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support downloading a direct cost attachment.
 
@@ -33,13 +34,14 @@ req = operations.DownloadAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='harum',
+    direct_cost_id='Dakota Avon specifically',
 )
 
 res = s.transactions.direct_costs.download_attachment(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -59,7 +61,7 @@ if res.data is not None:
 
 The *Get direct cost* endpoint returns a single direct cost for a given directCostId.
 
-[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support getting a specific direct cost.
 
@@ -81,13 +83,14 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingDirectCostRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='laboriosam',
+    direct_cost_id='Northeast Hatchback Kia',
 )
 
 res = s.transactions.direct_costs.get(req)
 
 if res.accounting_direct_cost is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -107,7 +110,7 @@ if res.accounting_direct_cost is not None:
 
 The *Get direct cost attachment* endpoint returns a specific attachment for a given `directCostId` and `attachmentId`.
 
-[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support getting a direct cost attachment.
 
@@ -128,13 +131,14 @@ req = operations.GetAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='ipsa',
+    direct_cost_id='array East along',
 )
 
 res = s.transactions.direct_costs.get_attachment(req)
 
 if res.accounting_attachment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -152,9 +156,9 @@ if res.accounting_attachment is not None:
 
 ## list
 
-The *List direct costs* endpoint returns a list of [direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) for a given company's connection.
+The *List direct costs* endpoint returns a list of [direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) for a given company's connection.
 
-[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -177,13 +181,13 @@ req = operations.ListAccountingDirectCostsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptates',
 )
 
 res = s.transactions.direct_costs.list(req)
 
 if res.accounting_direct_costs is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -203,7 +207,7 @@ if res.accounting_direct_costs is not None:
 
 The *List direct cost attachments* endpoint returns a list of attachments available to download for given `directCostId`.
 
-[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support listing direct cost attachments.
 
@@ -223,13 +227,14 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingDirectCostAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='libero',
+    direct_cost_id='intuitive Frozen ouch',
 )
 
 res = s.transactions.direct_costs.list_attachments(req)
 
 if res.attachments is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

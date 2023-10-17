@@ -1,4 +1,5 @@
-# Sales.Metrics
+# SalesMetrics
+(*sales.metrics*)
 
 ### Available Operations
 
@@ -53,9 +54,8 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceCustomerRetentionMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    include_display_names=False,
-    number_of_periods=363161,
-    period_length=924967,
+    number_of_periods=497588,
+    period_length=613110,
     period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
 )
@@ -64,6 +64,7 @@ res = s.sales.metrics.get_customer_retention(req)
 
 if res.commerce_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -120,10 +121,9 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceLifetimeValueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    include_display_names=False,
-    number_of_periods=46007,
-    period_length=738683,
-    period_unit=shared.PeriodUnit.DAY,
+    number_of_periods=900865,
+    period_length=614777,
+    period_unit=shared.PeriodUnit.MONTH,
     report_date='29-09-2020',
 )
 
@@ -131,6 +131,7 @@ res = s.sales.metrics.get_lifetime_value(req)
 
 if res.commerce_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -188,10 +189,9 @@ s = codatlending.CodatLending(
 req = operations.GetCommerceRevenueMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    include_display_names=False,
-    number_of_periods=449083,
-    period_length=348519,
-    period_unit=shared.PeriodUnit.YEAR,
+    number_of_periods=307462,
+    period_length=944219,
+    period_unit=shared.PeriodUnit.DAY,
     report_date='29-09-2020',
 )
 
@@ -199,6 +199,7 @@ res = s.sales.metrics.get_revenue(req)
 
 if res.commerce_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
