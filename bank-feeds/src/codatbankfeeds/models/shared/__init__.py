@@ -3,6 +3,7 @@
 from .bankaccountcredentials import *
 from .bankfeedaccountmappingresponse import *
 from .bankfeedmapping import *
+from .banktransactions import *
 from .clientratelimitreachedwebhook import *
 from .clientratelimitreachedwebhookdata import *
 from .clientratelimitresetwebhook import *
@@ -12,7 +13,6 @@ from .company import *
 from .companyrequestbody import *
 from .connection import *
 from .connections import *
-from .createbanktransaction import *
 from .createbanktransactions import *
 from .createbanktransactionsresponse import *
 from .dataconnectionerror import *
@@ -33,4 +33,4 @@ from .targetaccountoption import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["BankAccountCredentials","BankFeedAccountMappingResponse","BankFeedMapping","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankTransaction","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","ErrorMessage","HalRef","Links","PushChangeType","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","Security","SourceAccount","TargetAccountOption","Validation","ValidationItem"]
+__all__ = ["BankAccountCredentials","BankFeedAccountMappingResponse","BankFeedMapping","BankTransactions","BankTransactionsBankTransactionType","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","ErrorMessage","HalRef","Links","PushChangeType","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","Security","SourceAccount","TargetAccountOption","Validation","ValidationItem"]

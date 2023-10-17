@@ -11,7 +11,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateBankAccountMappingBankFeedAccountMapping:
     r"""A bank feed connection between a source account and a target account."""
@@ -38,31 +37,34 @@ class CreateBankAccountMappingBankFeedAccountMapping:
     """
     source_account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceAccountId'), 'exclude': lambda f: f is None }})
     r"""Unique ID for the source account"""
-    target_account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountId'), 'exclude': lambda f: f is None }})
+    target_account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountId') }})
     r"""Unique ID for the target account"""
     
-
 
 
 
 @dataclasses.dataclass
 class CreateBankAccountMappingRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a connection."""
     request_body: Optional[CreateBankAccountMappingBankFeedAccountMapping] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
-
 
 
 
 @dataclasses.dataclass
 class CreateBankAccountMappingResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     bank_feed_account_mapping_response: Optional[shared_bankfeedaccountmappingresponse.BankFeedAccountMappingResponse] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 
