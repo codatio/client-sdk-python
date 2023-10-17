@@ -1,4 +1,5 @@
-# accounting_journal_entries
+# AccountingJournalEntries
+(*accounting_journal_entries*)
 
 ## Overview
 
@@ -37,45 +38,33 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.CreateAccountingJournalEntryRequest(
     accounting_journal_entry=shared.AccountingJournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='pariatur',
-        id='e008e6f8-c5f3-450d-8cdb-5a3418143010',
         journal_lines=[
             shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='421813d5-208e-4ce7-a253-b668451c6c6e',
-                    name='Helen Heller III',
-                ),
-                currency='at',
-                description='vero',
-                net_amount=Decimal('6675.93'),
+                account_ref=shared.AccountRef(),
+                net_amount=Decimal('9326.53'),
                 tracking=shared.JournalLineTracking(
                     record_refs=[
                         shared.RecordRef(
-                            data_type='accountTransaction',
-                            id='3fec9578-a645-4842-b3a8-418d162309fb',
+                            data_type='journalEntry',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.AccountingJournalEntryJournalReference(
-            id='0929921a-efb9-4f58-84d8-6e68e4be0560',
-            name='Sheila Wolff',
+            id='<ID>',
         ),
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.AccountingJournalEntryRecordReference(
-            data_type='invoice',
-            id='57a59ecf-ef66-4ef1-8aa3-383c2beb4773',
+            data_type='journalEntry',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "neque": {
-                    "quo": 'deleniti',
+                "Minivan": {
+                    "bypassing": 'Investor',
                 },
             },
         ),
@@ -83,13 +72,13 @@ req = operations.CreateAccountingJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=437814,
 )
 
 res = s.accounting_journal_entries.create_accounting_journal_entry(req)
 
 if res.accounting_create_journal_entry_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

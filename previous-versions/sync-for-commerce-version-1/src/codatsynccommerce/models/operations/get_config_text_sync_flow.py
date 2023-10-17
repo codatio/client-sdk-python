@@ -4,16 +4,18 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import localization as shared_localization
-from typing import Optional
-
+from typing import Dict, Optional
 
 
 @dataclasses.dataclass
 class GetConfigTextSyncFlowResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
-    localization_info: Optional[dict[str, shared_localization.Localization]] = dataclasses.field(default=None)
+    r"""HTTP response status code for this operation"""
+    localization_info: Optional[Dict[str, shared_localization.Localization]] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

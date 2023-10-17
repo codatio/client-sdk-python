@@ -9,33 +9,32 @@ from ..shared import taxesitems as shared_taxesitems
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class OrderLineItem:
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique, persistent identifier for this record"""
-    discount_allocations: Optional[list[shared_orderdiscountallocation.OrderDiscountAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountAllocations'), 'exclude': lambda f: f is None }})
+    discount_allocations: Optional[List[shared_orderdiscountallocation.OrderDiscountAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountAllocations'), 'exclude': lambda f: f is None }})
     product_ref: Optional[shared_productref.ProductRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('productRef'), 'exclude': lambda f: f is None }})
     r"""Reference that links the line item to the correct product details."""
     product_variant_ref: Optional[shared_productvariantref.ProductVariantRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('productVariantRef'), 'exclude': lambda f: f is None }})
     r"""Reference that links the line item to the specific version of product that has been ordered."""
     quantity: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Number of units of the product sold.
-    For refunds, quantity is a negative value.
+    For refunds, quantity is negative.
     """
-    taxes: Optional[list[shared_taxesitems.Taxesitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxes'), 'exclude': lambda f: f is None }})
+    taxes: Optional[List[shared_taxesitems.Taxesitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxes'), 'exclude': lambda f: f is None }})
     r"""Taxes breakdown as applied to order lines."""
     tax_percentage: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxPercentage'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
-    r"""Percentage rate (from 0 to 100) of any sale tax applied to the unit amount."""
+    r"""Percentage rate (from 0 to 100) of any sales tax applied to the unit price."""
     total_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
-    r"""Total price of the line item, including discounts, tax and minus any refunds."""
+    r"""Total amount of the line item, including discounts and tax."""
     total_tax_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
-    r"""Total amount of tax applied to the line item."""
+    r"""Total amount of tax applied to the line item, factoring in any discounts."""
     unit_price: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitPrice'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
-    r"""Price per unit of goods or service."""
+    r"""Price per unit of goods or services, excluding discounts and tax."""
     
 

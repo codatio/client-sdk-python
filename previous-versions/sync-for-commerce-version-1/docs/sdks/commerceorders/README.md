@@ -1,4 +1,5 @@
-# commerce_orders
+# CommerceOrders
+(*commerce_orders*)
 
 ## Overview
 
@@ -35,13 +36,14 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommerceOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    order_id='officiis',
+    order_id='Borders outside',
 )
 
 res = s.commerce_orders.get_commerce_order(req)
 
 if res.commerce_order is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -84,13 +86,13 @@ req = operations.ListCommerceOrdersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='eos',
 )
 
 res = s.commerce_orders.list_commerce_orders(req)
 
 if res.commerce_orders is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

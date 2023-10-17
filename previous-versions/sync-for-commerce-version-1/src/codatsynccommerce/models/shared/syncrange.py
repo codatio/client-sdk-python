@@ -7,7 +7,6 @@ from dataclasses_json import Undefined, dataclass_json
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncRangeDateRange:
     finish: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish') }})
@@ -57,7 +56,6 @@ class SyncRangeDateRange:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncRange:
     date_range: SyncRangeDateRange = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dateRange') }})

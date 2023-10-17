@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from codatsynccommerce import utils
 from codatsynccommerce.models import errors, operations, shared
-from typing import Optional
+from typing import Dict, Optional
 
 class SyncFlowPreferences:
     r"""Configure preferences for any given Sync for Commerce company using sync flow."""
@@ -14,7 +14,7 @@ class SyncFlowPreferences:
         
     
     def get_config_text_sync_flow(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigTextSyncFlowResponse:
-        r"""Retrieve preferences for text fields on Sync Flow
+        r"""Retrieve preferences for text fields on sync flow
         To enable retrieval of preferences set for the text fields on Sync Flow.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -22,7 +22,7 @@ class SyncFlowPreferences:
         url = base_url + '/sync/commerce/config/ui/text'
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -36,7 +36,7 @@ class SyncFlowPreferences:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -48,7 +48,7 @@ class SyncFlowPreferences:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.Localization]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, shared.Localization]])
                 res.localization_info = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -66,7 +66,7 @@ class SyncFlowPreferences:
         headers = {}
         query_params = utils.get_query_params(operations.GetSyncFlowURLRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -80,7 +80,7 @@ class SyncFlowPreferences:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -109,7 +109,7 @@ class SyncFlowPreferences:
         url = utils.generate_url(operations.GetVisibleAccountsRequest, base_url, '/clients/{clientId}/config/ui/accounts/platform/{platformKey}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -123,7 +123,7 @@ class SyncFlowPreferences:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -143,7 +143,7 @@ class SyncFlowPreferences:
         return res
 
     
-    def update_config_text_sync_flow(self, request: dict[str, shared.Localization], retries: Optional[utils.RetryConfig] = None) -> operations.UpdateConfigTextSyncFlowResponse:
+    def update_config_text_sync_flow(self, request: Dict[str, shared.Localization], retries: Optional[utils.RetryConfig] = None) -> operations.UpdateConfigTextSyncFlowResponse:
         r"""Update preferences for text fields on sync flow
         To enable update of preferences set for the text fields on sync flow.
         """
@@ -151,11 +151,11 @@ class SyncFlowPreferences:
         
         url = base_url + '/sync/commerce/config/ui/text'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -169,7 +169,7 @@ class SyncFlowPreferences:
 
         def do_request():
             return client.request('PATCH', url, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -181,7 +181,7 @@ class SyncFlowPreferences:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.Localization]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, shared.Localization]])
                 res.localization_info = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -190,18 +190,18 @@ class SyncFlowPreferences:
 
     
     def update_visible_accounts_sync_flow(self, request: operations.UpdateVisibleAccountsSyncFlowRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateVisibleAccountsSyncFlowResponse:
-        r"""Update the visible accounts on Sync Flow
+        r"""Update the visible accounts on sync flow
         To enable update of accounts visible preferences set on Sync Flow.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.UpdateVisibleAccountsSyncFlowRequest, base_url, '/sync/commerce/config/ui/accounts/platform/{platformKey}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "visible_accounts", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "visible_accounts", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -215,7 +215,7 @@ class SyncFlowPreferences:
 
         def do_request():
             return client.request('POST', url, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

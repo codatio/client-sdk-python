@@ -1,4 +1,5 @@
-# accounting_company_info
+# AccountingCompanyInfo
+(*accounting_company_info*)
 
 ## Overview
 
@@ -33,6 +34,7 @@ res = s.accounting_company_info.get_accounting_company_info(req)
 
 if res.accounting_company_dataset is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -72,6 +74,7 @@ res = s.accounting_company_info.refresh(req)
 
 if res.dataset is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
