@@ -20,5 +20,6 @@ res = s.companies.create_company(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->

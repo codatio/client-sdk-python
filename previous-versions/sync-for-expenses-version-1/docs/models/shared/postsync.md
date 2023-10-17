@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `dataset_ids`      | list[*str*]        | :heavy_minus_sign: | N/A                |
+| `dataset_ids`      | List[*str*]        | :heavy_minus_sign: | N/A                |

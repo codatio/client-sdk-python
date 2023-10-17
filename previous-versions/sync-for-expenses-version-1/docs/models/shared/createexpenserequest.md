@@ -5,4 +5,4 @@
 
 | Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `items`                                                               | list[[ExpenseTransaction](../../models/shared/expensetransaction.md)] | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `items`                                                               | List[[ExpenseTransaction](../../models/shared/expensetransaction.md)] | :heavy_minus_sign:                                                    | N/A                                                                   |

@@ -1,4 +1,5 @@
-# companies
+# Companies
+(*companies*)
 
 ## Overview
 
@@ -41,6 +42,7 @@ res = s.companies.create_company(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -81,6 +83,7 @@ res = s.companies.delete_company(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -120,6 +123,7 @@ res = s.companies.get_company(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -155,13 +159,13 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='corrupti',
 )
 
 res = s.companies.list_companies(req)
 
 if res.companies is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -205,6 +209,7 @@ res = s.companies.update_company(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

@@ -1,4 +1,5 @@
-# mapping_options
+# MappingOptions
+(*mapping_options*)
 
 ## Overview
 
@@ -32,6 +33,7 @@ res = s.mapping_options.get_mapping_options(req)
 
 if res.mapping_options is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

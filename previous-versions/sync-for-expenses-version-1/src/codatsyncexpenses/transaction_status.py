@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from codatsyncexpenses import utils
 from codatsyncexpenses.models import errors, operations, shared
-from typing import Optional
+from typing import List, Optional
 
 class TransactionStatus:
     r"""Retrieve the status of transactions within a sync."""
@@ -14,7 +14,7 @@ class TransactionStatus:
         
     
     def get_sync_transaction(self, request: operations.GetSyncTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetSyncTransactionResponse:
-        r"""Get Sync Transaction
+        r"""Get sync transaction
         Gets the status of a transaction for a sync
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -22,7 +22,7 @@ class TransactionStatus:
         url = utils.generate_url(operations.GetSyncTransactionRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -36,7 +36,7 @@ class TransactionStatus:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -48,7 +48,7 @@ class TransactionStatus:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.TransactionMetadata]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[shared.TransactionMetadata]])
                 res.transaction_metadata = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -63,7 +63,7 @@ class TransactionStatus:
 
     
     def list_sync_transactions(self, request: operations.ListSyncTransactionsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListSyncTransactionsResponse:
-        r"""Get Sync transactions
+        r"""Get sync transactions
         Get's the transactions and status for a sync
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -72,7 +72,7 @@ class TransactionStatus:
         headers = {}
         query_params = utils.get_query_params(operations.ListSyncTransactionsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -86,7 +86,7 @@ class TransactionStatus:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
