@@ -1,4 +1,5 @@
-# data_integrity
+# DataIntegrity
+(*data_integrity*)
 
 ## Overview
 
@@ -21,9 +22,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListDataTypeDataIntegrityDetailsRequest(
@@ -32,13 +31,13 @@ req = operations.ListDataTypeDataIntegrityDetailsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='provident',
 )
 
 res = s.data_integrity.details(req)
 
 if res.details is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -65,9 +64,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetDataIntegrityStatusRequest(
@@ -79,6 +76,7 @@ res = s.data_integrity.status(req)
 
 if res.status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -105,21 +103,19 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetDataIntegritySummariesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-    query='distinctio',
 )
 
 res = s.data_integrity.summary(req)
 
 if res.summaries is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

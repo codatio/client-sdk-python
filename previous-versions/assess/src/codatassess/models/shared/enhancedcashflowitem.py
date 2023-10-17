@@ -5,14 +5,13 @@ import dataclasses
 from ..shared import enhancedcashflowtransaction as shared_enhancedcashflowtransaction
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class EnhancedCashFlowItem:
-    transactions: Optional[list[shared_enhancedcashflowtransaction.EnhancedCashFlowTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
+    transactions: Optional[List[shared_enhancedcashflowtransaction.EnhancedCashFlowTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
     r"""An array of transaction data."""
     
 

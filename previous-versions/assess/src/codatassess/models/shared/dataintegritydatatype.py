@@ -4,7 +4,6 @@ from __future__ import annotations
 from enum import Enum
 
 class DataIntegrityDataType(str, Enum):
-    r"""A key for a Codat data type."""
     BANKING_ACCOUNTS = 'banking-accounts'
     BANKING_TRANSACTIONS = 'banking-transactions'
     BANK_ACCOUNTS = 'bankAccounts'

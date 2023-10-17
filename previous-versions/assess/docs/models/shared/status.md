@@ -1,10 +1,8 @@
 # Status
 
-OK
-
 
 ## Fields
 
 | Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `metadata`                                                              | list[[DataIntegrityStatus](../../models/shared/dataintegritystatus.md)] | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `metadata`                                                              | List[[DataIntegrityStatus](../../models/shared/dataintegritystatus.md)] | :heavy_minus_sign:                                                      | N/A                                                                     |

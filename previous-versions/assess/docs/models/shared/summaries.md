@@ -1,10 +1,8 @@
 # Summaries
 
-OK
-
 
 ## Fields
 
 | Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `summaries`                                                               | list[[DataIntegritySummary](../../models/shared/dataintegritysummary.md)] | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `summaries`                                                               | List[[DataIntegritySummary](../../models/shared/dataintegritysummary.md)] | :heavy_minus_sign:                                                        | N/A                                                                       |

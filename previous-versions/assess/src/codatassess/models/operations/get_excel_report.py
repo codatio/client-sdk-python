@@ -8,14 +8,13 @@ from ..shared import excelreporttype as shared_excelreporttype
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetExcelReportRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     report_type: shared_excelreporttype.ExcelReportType = dataclasses.field(metadata={'query_param': { 'field_name': 'reportType', 'style': 'form', 'explode': True }})
     r"""The type of report you want to generate and download."""
     
-
 
 
 
@@ -26,14 +25,16 @@ class GetExcelReport200ApplicationOctetStream:
 
 
 
-
 @dataclasses.dataclass
 class GetExcelReportResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     body: Optional[bytes] = dataclasses.field(default=None)
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 
