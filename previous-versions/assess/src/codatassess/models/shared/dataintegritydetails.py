@@ -5,14 +5,14 @@ import dataclasses
 from ..shared import dataintegritymatch as shared_dataintegritymatch
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from decimal import Decimal
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DataIntegrityDetails:
-    amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
+    amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""The transaction value."""
     connection_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionId'), 'exclude': lambda f: f is None }})
     r"""ID GUID representing the connection of the accounting or banking platform."""
@@ -50,7 +50,7 @@ class DataIntegrityDetails:
     r"""The transaction description."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""ID GUID of the transaction."""
-    matches: Optional[list[shared_dataintegritymatch.DataIntegrityMatch]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matches'), 'exclude': lambda f: f is None }})
+    matches: Optional[List[shared_dataintegritymatch.DataIntegrityMatch]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matches'), 'exclude': lambda f: f is None }})
     type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The data type of the record."""
     

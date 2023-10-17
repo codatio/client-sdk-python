@@ -1,4 +1,5 @@
-# excel_reports
+# ExcelReports
+(*excel_reports*)
 
 ## Overview
 
@@ -22,9 +23,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GenerateExcelReportRequest(
@@ -36,6 +35,7 @@ res = s.excel_reports.generate_excel_report(req)
 
 if res.excel_status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -64,26 +64,23 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetAccountingMarketingMetricsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    include_display_names=False,
-    number_of_periods=602763,
-    period_length=857946,
-    period_unit=shared.PeriodUnit.MONTH,
+    number_of_periods=644039,
+    period_length=244044,
+    period_unit=shared.PeriodUnit.WEEK,
     report_date='29-09-2020',
-    show_input_values=False,
 )
 
 res = s.excel_reports.get_accounting_marketing_metrics(req)
 
 if res.report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -110,9 +107,7 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetExcelReportRequest(
@@ -124,6 +119,7 @@ res = s.excel_reports.get_excel_report(req)
 
 if res.body is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -150,20 +146,19 @@ import codatassess
 from codatassess.models import operations, shared
 
 s = codatassess.CodatAssess(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetExcelReportGenerationStatusRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_FINANCIALS,
+    report_type=shared.ExcelReportType.ENHANCED_INVOICES,
 )
 
 res = s.excel_reports.get_excel_report_generation_status(req)
 
 if res.excel_status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

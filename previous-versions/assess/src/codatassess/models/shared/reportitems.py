@@ -6,10 +6,12 @@ from ..shared import itemref as shared_itemref
 from ..shared import loanref as shared_loanref
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
+from decimal import Decimal
 from enum import Enum
 from typing import Optional
 
 class ReportItemsLoanTransactionType(str, Enum):
+    r"""The type of loan transaction."""
     INVESTMENT = 'Investment'
     REPAYMENT = 'Repayment'
     INTEREST = 'Interest'
@@ -17,10 +19,9 @@ class ReportItemsLoanTransactionType(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ReportItems:
-    amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'exclude': lambda f: f is None }})
+    amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""The loan transaction amount."""
     date_: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -44,7 +45,10 @@ class ReportItems:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     item_ref: Optional[shared_itemref.ItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
+    lender_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lenderName'), 'exclude': lambda f: f is None }})
+    r"""The name of lender providing the loan."""
     loan_ref: Optional[shared_loanref.LoanRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('loanRef'), 'exclude': lambda f: f is None }})
     loan_transaction_type: Optional[ReportItemsLoanTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('loanTransactionType'), 'exclude': lambda f: f is None }})
+    r"""The type of loan transaction."""
     
 

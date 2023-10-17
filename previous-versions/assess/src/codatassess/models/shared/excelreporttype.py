@@ -4,7 +4,6 @@ from __future__ import annotations
 from enum import Enum
 
 class ExcelReportType(str, Enum):
-    r"""The type of report you want to generate and download."""
     ASSESS = 'assess'
     AUDIT = 'audit'
     ENHANCED_FINANCIALS = 'enhancedFinancials'

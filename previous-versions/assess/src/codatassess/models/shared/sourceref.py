@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SourceRef:
     r"""A source reference containing the `sourceType` object \\"Banking\\"."""
