@@ -3,8 +3,8 @@
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `details`              | dict[str, list[*str*]] | :heavy_minus_sign:     | N/A                    |
-| `message`              | *Optional[str]*        | :heavy_minus_sign:     | N/A                    |
-| `type`                 | *Optional[str]*        | :heavy_minus_sign:     | N/A                    |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `details`                        | Dict[str, List[*str*]]           | :heavy_minus_sign:               | Additional details on the error. |
+| `message`                        | *Optional[str]*                  | :heavy_minus_sign:               | Message returned by error.       |
+| `type`                           | *Optional[str]*                  | :heavy_minus_sign:               | The type of error.               |

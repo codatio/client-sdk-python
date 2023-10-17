@@ -1,4 +1,5 @@
 # FileUpload
+(*file_upload*)
 
 ## Overview
 
@@ -35,6 +36,7 @@ res = s.file_upload.download(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -74,6 +76,7 @@ res = s.file_upload.list_uploaded(req)
 
 if res.files is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -113,8 +116,8 @@ s = codatlending.CodatLending(
 
 req = operations.UploadFilesRequest(
     request_body=operations.UploadFilesRequestBody(
-        content='delectus'.encode(),
-        request_body='tempora',
+        content='F?SRSKG@^n'.encode(),
+        request_body='ullam',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -124,6 +127,7 @@ res = s.file_upload.upload(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters

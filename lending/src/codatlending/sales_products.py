@@ -16,7 +16,7 @@ class SalesProducts:
         r"""Get product
         The *Get product* endpoint returns a single product for a given productId.
 
-        [Products](https://docs.codat.io/commerce-api#/schemas/Product) are items in the company's inventory that are available for sale.
+        [Products](https://docs.codat.io/lending-api#/schemas/Product) are items in the company's inventory that are available for sale.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-products) for integrations that support getting a specific product.
 
@@ -27,7 +27,7 @@ class SalesProducts:
         url = utils.generate_url(operations.GetCommerceProductRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/commerce-products/{productId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -41,7 +41,7 @@ class SalesProducts:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -69,9 +69,9 @@ class SalesProducts:
     
     def list(self, request: operations.ListCommerceProductsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCommerceProductsResponse:
         r"""List products
-        The *List products* endpoint returns a list of [products](https://docs.codat.io/commerce-api#/schemas/Product) for a given company's connection.
+        The *List products* endpoint returns a list of [products](https://docs.codat.io/lending-api#/schemas/Product) for a given company's connection.
 
-        [Products](https://docs.codat.io/commerce-api#/schemas/Product) are items in the company's inventory that are available for sale.
+        [Products](https://docs.codat.io/lending-api#/schemas/Product) are items in the company's inventory that are available for sale.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """
@@ -81,7 +81,7 @@ class SalesProducts:
         headers = {}
         query_params = utils.get_query_params(operations.ListCommerceProductsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -95,7 +95,7 @@ class SalesProducts:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

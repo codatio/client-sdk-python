@@ -10,7 +10,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AccountingPaymentAllocationAllocation:
     allocated_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocatedOnDate'), 'exclude': lambda f: f is None }})
@@ -43,7 +42,7 @@ class AccountingPaymentAllocationAllocation:
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -77,7 +76,6 @@ class AccountingPaymentAllocationAllocation:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AccountingPaymentAllocation:
     allocation: AccountingPaymentAllocationAllocation = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocation') }})

@@ -12,16 +12,15 @@ from ..shared import supplierref as shared_supplierref
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AccountingBillCreditNote:
     r"""> **Bill credit notes or credit notes?**
     > 
-    > In Codat, bill credit notes represent accounts payable only. For accounts receivable, see [Credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote).
+    > In Codat, bill credit notes represent accounts payable only. For accounts receivable, see [Credit notes](https://docs.codat.io/lending-api#/schemas/CreditNote).
 
     View the coverage for bill credit notes in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billCreditNotes\" target=\"_blank\">Data coverage explorer</a>.
 
@@ -29,11 +28,11 @@ class AccountingBillCreditNote:
 
     A bill credit note is issued by a supplier for the purpose of recording credit. For example, if a supplier was unable to fulfil an order that was placed by a business, or delivered damaged goods, they would issue a bill credit note. A bill credit note reduces the amount a business owes to the supplier. It can be refunded to the business or used to pay off future bills.
 
-    In the Codat API, a bill credit note is an accounts payable record issued by a [supplier](https://docs.codat.io/accounting-api#/schemas/Supplier). 
+    In the Codat API, a bill credit note is an accounts payable record issued by a [supplier](https://docs.codat.io/lending-api#/schemas/Supplier). 
 
     A bill credit note includes details of:
     * The original and remaining credit.
-    * Any allocations of the credit against other records, such as [bills](https://docs.codat.io/accounting-api#/schemas/Bill).
+    * Any allocations of the credit against other records, such as [bills](https://docs.codat.io/lending-api#/schemas/Bill).
     * The supplier that issued the bill credit note.
     """
     discount_percentage: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
@@ -69,7 +68,7 @@ class AccountingBillCreditNote:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    bill_credit_note_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billCreditNoteNumber'), 'exclude': lambda f: f is None }})
+    bill_credit_note_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('billCreditNoteNumber') }})
     r"""Friendly reference for the bill credit note."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
@@ -80,7 +79,7 @@ class AccountingBillCreditNote:
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -130,13 +129,13 @@ class AccountingBillCreditNote:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    line_items: Optional[list[shared_billcreditnotelineitem.BillCreditNoteLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems'), 'exclude': lambda f: f is None }})
+    line_items: Optional[List[shared_billcreditnotelineitem.BillCreditNoteLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems') }})
     r"""An array of line"""
     metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
+    note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note') }})
     r"""Any additional information about the bill credit note."""
-    payment_allocations: Optional[list[shared_accountingpaymentallocation.AccountingPaymentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations'), 'exclude': lambda f: f is None }})
+    payment_allocations: Optional[List[shared_accountingpaymentallocation.AccountingPaymentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations') }})
     r"""An array of payment allocations."""
     remaining_credit: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('remainingCredit'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Amount of the bill credit note that is still outstanding."""
@@ -148,6 +147,6 @@ class AccountingBillCreditNote:
     """
     supplier_ref: Optional[shared_supplierref.SupplierRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the supplier the record relates to."""
-    withholding_tax: Optional[list[shared_items.Items]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})
+    withholding_tax: Optional[List[shared_items.Items]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax') }})
     
 

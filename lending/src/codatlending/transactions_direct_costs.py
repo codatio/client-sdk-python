@@ -21,7 +21,7 @@ class TransactionsDirectCosts:
         r"""Download direct cost attachment
         The *Download direct cost attachment* endpoint downloads a specific attachment for a given `directCostId` and `attachmentId`.
 
-        [Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+        [Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support downloading a direct cost attachment.
         """
@@ -33,7 +33,7 @@ class TransactionsDirectCosts:
             headers['Accept'] = accept_header_override.value
         else:
             headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -47,7 +47,7 @@ class TransactionsDirectCosts:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -59,7 +59,7 @@ class TransactionsDirectCosts:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
-                res.data = http_res.content
+                res.data = http_res
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:
@@ -76,7 +76,7 @@ class TransactionsDirectCosts:
         r"""Get direct cost
         The *Get direct cost* endpoint returns a single direct cost for a given directCostId.
 
-        [Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+        [Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support getting a specific direct cost.
 
@@ -87,7 +87,7 @@ class TransactionsDirectCosts:
         url = utils.generate_url(operations.GetAccountingDirectCostRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -101,7 +101,7 @@ class TransactionsDirectCosts:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -131,7 +131,7 @@ class TransactionsDirectCosts:
         r"""Get direct cost attachment
         The *Get direct cost attachment* endpoint returns a specific attachment for a given `directCostId` and `attachmentId`.
 
-        [Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+        [Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support getting a direct cost attachment.
         """
@@ -140,7 +140,7 @@ class TransactionsDirectCosts:
         url = utils.generate_url(operations.GetAccountingDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -154,7 +154,7 @@ class TransactionsDirectCosts:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -182,9 +182,9 @@ class TransactionsDirectCosts:
     
     def list(self, request: operations.ListAccountingDirectCostsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountingDirectCostsResponse:
         r"""List direct costs
-        The *List direct costs* endpoint returns a list of [direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) for a given company's connection.
+        The *List direct costs* endpoint returns a list of [direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) for a given company's connection.
 
-        [Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+        [Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """
@@ -194,7 +194,7 @@ class TransactionsDirectCosts:
         headers = {}
         query_params = utils.get_query_params(operations.ListAccountingDirectCostsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -208,7 +208,7 @@ class TransactionsDirectCosts:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -238,7 +238,7 @@ class TransactionsDirectCosts:
         r"""List direct cost attachments
         The *List direct cost attachments* endpoint returns a list of attachments available to download for given `directCostId`.
 
-        [Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+        [Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts) for integrations that support listing direct cost attachments.
         """
@@ -247,7 +247,7 @@ class TransactionsDirectCosts:
         url = utils.generate_url(operations.ListAccountingDirectCostAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -261,7 +261,7 @@ class TransactionsDirectCosts:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

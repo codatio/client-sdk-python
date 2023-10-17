@@ -1,4 +1,5 @@
-# FinancialStatements.CashFlow
+# FinancialStatementsCashFlow
+(*financial_statements.cash_flow*)
 
 ### Available Operations
 
@@ -31,6 +32,7 @@ res = s.financial_statements.cash_flow.get(req)
 
 if res.accounting_cash_flow_statement is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

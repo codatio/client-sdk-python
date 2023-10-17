@@ -21,7 +21,7 @@ class AccountsPayableBills:
         r"""Download bill attachment
         The *Download bill attachment* endpoint downloads a specific attachment for a given `billId` and `attachmentId`.
 
-        [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+        [Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support downloading a bill attachment.
         """
@@ -33,7 +33,7 @@ class AccountsPayableBills:
             headers['Accept'] = accept_header_override.value
         else:
             headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -47,7 +47,7 @@ class AccountsPayableBills:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -59,7 +59,7 @@ class AccountsPayableBills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
-                res.data = http_res.content
+                res.data = http_res
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:
@@ -76,7 +76,7 @@ class AccountsPayableBills:
         r"""Get bill
         The *Get bill* endpoint returns a single bill for a given billId.
 
-        [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+        [Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support getting a specific bill.
 
@@ -87,7 +87,7 @@ class AccountsPayableBills:
         url = utils.generate_url(operations.GetAccountingBillRequest, base_url, '/companies/{companyId}/data/bills/{billId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -101,7 +101,7 @@ class AccountsPayableBills:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -131,7 +131,7 @@ class AccountsPayableBills:
         r"""Get bill attachment
         The *Get bill attachment* endpoint returns a specific attachment for a given `billId` and `attachmentId`.
 
-        [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+        [Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support getting a bill attachment.
         """
@@ -140,7 +140,7 @@ class AccountsPayableBills:
         url = utils.generate_url(operations.GetAccountingBillAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -154,7 +154,7 @@ class AccountsPayableBills:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -182,9 +182,9 @@ class AccountsPayableBills:
     
     def list(self, request: operations.ListAccountingBillsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountingBillsResponse:
         r"""List bills
-        The *List bills* endpoint returns a list of [bills](https://docs.codat.io/accounting-api#/schemas/Bill) for a given company's connection.
+        The *List bills* endpoint returns a list of [bills](https://docs.codat.io/lending-api#/schemas/Bill) for a given company's connection.
 
-        [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+        [Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """
@@ -194,7 +194,7 @@ class AccountsPayableBills:
         headers = {}
         query_params = utils.get_query_params(operations.ListAccountingBillsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -208,7 +208,7 @@ class AccountsPayableBills:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -238,7 +238,7 @@ class AccountsPayableBills:
         r"""List bill attachments
         The *List bill attachments* endpoint returns a list of attachments available to download for a given `billId`.
 
-        [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
+        [Bills](https://docs.codat.io/lending-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support listing bill attachments.
         """
@@ -247,7 +247,7 @@ class AccountsPayableBills:
         url = utils.generate_url(operations.ListAccountingBillAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -261,7 +261,7 @@ class AccountsPayableBills:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

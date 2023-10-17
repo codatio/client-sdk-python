@@ -5,35 +5,35 @@ from codatlending import utils
 from codatlending.models import errors, operations, shared
 from typing import Optional
 
-class LoanWritebackBankAccounts:
+class LoanWritebackPayments:
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
         self.sdk_configuration = sdk_config
         
     
-    def create(self, request: operations.CreateBankAccountRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateBankAccountResponse:
-        r"""Create bank account
-        The *Create bank account* endpoint creates a new [bank account](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company's connection.
+    def create(self, request: operations.CreatePaymentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreatePaymentResponse:
+        r"""Create payment
+        The *Create payment* endpoint creates a new [payment](https://docs.codat.io/lending-api#/schemas/Payment) for a given company's connection.
 
-        [Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
+        [Payments](https://docs.codat.io/lending-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
 
         **Integration-specific behaviour**
 
-        Required data may vary by integration. To see what data to post, first call [Get create/update bank account model](https://docs.codat.io/accounting-api#/operations/get-create-update-bankAccounts-model).
+        Required data may vary by integration. To see what data to post, first call [Get create payment model](https://docs.codat.io/lending-api#/operations/get-create-payments-model).
 
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support creating an account.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating an account.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.CreateBankAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts', request)
+        url = utils.generate_url(operations.CreatePaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/payments', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "accounting_bank_account", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "accounting_payment", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        query_params = utils.get_query_params(operations.CreateBankAccountRequest, request)
+        query_params = utils.get_query_params(operations.CreatePaymentRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -47,7 +47,7 @@ class LoanWritebackBankAccounts:
 
         def do_request():
             return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -55,12 +55,12 @@ class LoanWritebackBankAccounts:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.CreateBankAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreatePaymentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.AccountingCreateBankAccountResponse])
-                res.accounting_create_bank_account_response = out
+                out = utils.unmarshal_json(http_res.text, Optional[shared.AccountingCreatePaymentResponse])
+                res.accounting_create_payment_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401, 404, 429]:
@@ -73,24 +73,24 @@ class LoanWritebackBankAccounts:
         return res
 
     
-    def get_create_update_model(self, request: operations.GetCreateUpdateBankAccountsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreateUpdateBankAccountsModelResponse:
-        r"""Get create/update bank account model
-        The *Get create/update bank account model* endpoint returns the expected data for the request payload when creating and updating a [bank account](https://docs.codat.io/accounting-api#/schemas/BankAccount) for a given company and integration.
+    def get_create_model(self, request: operations.GetCreatePaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreatePaymentsModelResponse:
+        r"""Get create payment model
+        The *Get create payment model* endpoint returns the expected data for the request payload when creating a [payment](https://docs.codat.io/lending-api#/schemas/Payment) for a given company and integration.
 
-        [Bank accounts](https://docs.codat.io/accounting-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
+        [Payments](https://docs.codat.io/lending-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
 
         **Integration-specific behaviour**
 
         See the *response examples* for integration-specific indicative models.
 
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts) for integrations that support creating and updating a bank account.
+        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating a payment.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetCreateUpdateBankAccountsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bankAccounts', request)
+        url = utils.generate_url(operations.GetCreatePaymentsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/payments', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -104,7 +104,7 @@ class LoanWritebackBankAccounts:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -112,7 +112,7 @@ class LoanWritebackBankAccounts:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetCreateUpdateBankAccountsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetCreatePaymentsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):

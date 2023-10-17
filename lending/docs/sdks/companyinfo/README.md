@@ -1,4 +1,5 @@
 # CompanyInfo
+(*company_info*)
 
 ## Overview
 
@@ -33,6 +34,7 @@ res = s.company_info.get_accounting_profile(req)
 
 if res.accounting_company_info is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -75,6 +77,7 @@ res = s.company_info.get_commerce_profile(req)
 
 if res.commerce_company_info is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

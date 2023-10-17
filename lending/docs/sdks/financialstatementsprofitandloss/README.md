@@ -1,4 +1,5 @@
-# FinancialStatements.ProfitAndLoss
+# FinancialStatementsProfitAndLoss
+(*financial_statements.profit_and_loss*)
 
 ### Available Operations
 
@@ -32,6 +33,7 @@ res = s.financial_statements.profit_and_loss.get(req)
 
 if res.accounting_profit_and_loss_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -67,7 +69,6 @@ s = codatlending.CodatLending(
 
 req = operations.GetCategorizedProfitAndLossStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=324141,
     report_date='29-09-2020',
 )
 
@@ -75,6 +76,7 @@ res = s.financial_statements.profit_and_loss.get_categorized_accounts(req)
 
 if res.enhanced_financial_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

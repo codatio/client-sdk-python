@@ -1,4 +1,5 @@
-# Transactions.Transfers
+# TransactionsTransfers
+(*transactions.transfers*)
 
 ### Available Operations
 
@@ -9,7 +10,7 @@
 
 The *Get transfer* endpoint returns a single transfer for a given transferId.
 
-[Transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) record the movement of money between two bank accounts, or between a bank account and a nominal account.
+[Transfers](https://docs.codat.io/lending-api#/schemas/Transfer) record the movement of money between two bank accounts, or between a bank account and a nominal account.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers) for integrations that support getting a specific transfer.
 
@@ -31,13 +32,14 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingTransferRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transfer_id='aspernatur',
+    transfer_id='Northeast Hatchback Kia',
 )
 
 res = s.transactions.transfers.get(req)
 
 if res.accounting_transfer is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -55,9 +57,9 @@ if res.accounting_transfer is not None:
 
 ## list
 
-The *List transfers* endpoint returns a list of [transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) for a given company's connection.
+The *List transfers* endpoint returns a list of [transfers](https://docs.codat.io/lending-api#/schemas/Transfer) for a given company's connection.
 
-[Transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) record the movement of money between two bank accounts, or between a bank account and a nominal account.
+[Transfers](https://docs.codat.io/lending-api#/schemas/Transfer) record the movement of money between two bank accounts, or between a bank account and a nominal account.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -80,13 +82,13 @@ req = operations.ListAccountingTransfersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='voluptas',
 )
 
 res = s.transactions.transfers.list(req)
 
 if res.accounting_transfers is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

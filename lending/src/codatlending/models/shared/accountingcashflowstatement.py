@@ -7,11 +7,10 @@ from ..shared import reportbasis as shared_reportbasis
 from ..shared import reportinput as shared_reportinput
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AccountingCashFlowStatement:
     r"""> View the coverage for cash flow statement in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\\" target=\\"_blank\\">Data coverage explorer</a>.
@@ -41,7 +40,7 @@ class AccountingCashFlowStatement:
     r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
     report_input: shared_reportinput.ReportInput = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInput') }})
     r"""Accounting method used to prepare the cash flow statement."""
-    reports: list[shared_cashflowstatement.CashFlowStatement] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
+    reports: List[shared_cashflowstatement.CashFlowStatement] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
     r"""Array of cash flow statements."""
     earliest_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('earliestAvailableMonth'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

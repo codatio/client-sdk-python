@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
+from ..shared import supplementaldata as shared_supplementaldata
 from ..shared import transactionsourceref as shared_transactionsourceref
 from ..shared import transactiontype as shared_transactiontype
 from codatlending import utils
@@ -11,7 +12,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CommerceTransaction:
     r"""Details of all financial transactions recorded in the commerce or point of sale system are added to the Transactions data type. For example, payments, service charges, and fees.
@@ -82,6 +82,11 @@ class CommerceTransaction:
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     sub_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subType'), 'exclude': lambda f: f is None }})
     r"""Non-standardised transaction type data from the commerce platform"""
+    supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    r"""Supplemental data is additional data you can include in our standard data types.
+
+    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
+    """
     total_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""The total transaction amount"""
     transaction_source_ref: Optional[shared_transactionsourceref.TransactionSourceRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionSourceRef'), 'exclude': lambda f: f is None }})

@@ -9,12 +9,11 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class OrderDiscountAllocation:
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""Name of the discount in the commerce or point of sale platform."""
     total_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
-    r"""Total amount of discount applied."""
+    r"""Total amount of discount applied, excluding tax. This is typically positive (for discounts which decrease the amount of the order line), but can also be negative (for discounts which increase the amount of the order line)."""
     
 

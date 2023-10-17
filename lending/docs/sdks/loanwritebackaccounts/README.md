@@ -1,4 +1,5 @@
-# LoanWriteback.Accounts
+# LoanWritebackAccounts
+(*loan_writeback.accounts*)
 
 ### Available Operations
 
@@ -7,13 +8,13 @@
 
 ## create
 
-The *Create account* endpoint creates a new [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given company's connection.
+The *Create account* endpoint creates a new [account](https://docs.codat.io/lending-api#/schemas/Account) for a given company's connection.
 
-[Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+[Accounts](https://docs.codat.io/lending-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
 **Integration-specific behaviour**
 
-Required data may vary by integration. To see what data to post, first call [Get create account model](https://docs.codat.io/accounting-api#/operations/get-create-chartOfAccounts-model).
+Required data may vary by integration. To see what data to post, first call [Get create account model](https://docs.codat.io/lending-api#/operations/get-create-chartOfAccounts-model).
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
 
@@ -39,36 +40,37 @@ req = operations.CreateAccountRequest(
         fully_qualified_category='Asset.Current',
         fully_qualified_name='Cash On Hand',
         id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
-        is_bank_account=False,
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         name='Accounts Receivable',
         nominal_code='610',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.AccountStatus.ACTIVE,
+        supplemental_data=shared.SupplementalData(
+            content={
+                "Money": {
+                    "blue": 'shred',
+                },
+            },
+        ),
         type=shared.AccountType.ASSET,
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'natus',
+                    'abnormally',
                 ],
-                property='laboriosam',
             ),
         ],
     ),
-    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    timeout_in_minutes=943749,
 )
 
 res = s.loan_writeback.accounts.create(req)
 
 if res.accounting_create_account_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -86,9 +88,9 @@ if res.accounting_create_account_response is not None:
 
 ## get_create_model
 
-The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/accounting-api#/schemas/Account) for a given company and integration.
+The *Get create account model* endpoint returns the expected data for the request payload when creating an [account](https://docs.codat.io/lending-api#/schemas/Account) for a given company and integration.
 
-[Accounts](https://docs.codat.io/accounting-api#/schemas/Account) are the categories a business uses to record accounting transactions.
+[Accounts](https://docs.codat.io/lending-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
 **Integration-specific behaviour**
 
@@ -118,6 +120,7 @@ res = s.loan_writeback.accounts.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

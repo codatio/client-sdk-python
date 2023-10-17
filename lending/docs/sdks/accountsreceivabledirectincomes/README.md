@@ -1,4 +1,5 @@
-# AccountsReceivable.DirectIncomes
+# AccountsReceivableDirectIncomes
+(*accounts_receivable.direct_incomes*)
 
 ### Available Operations
 
@@ -12,7 +13,7 @@
 
 The *Download direct income attachment* endpoint downloads a specific attachment for a given `directIncomeId` and `attachmentId`.
 
-[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+[Direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support downloading a direct income attachment.
 
@@ -33,13 +34,14 @@ req = operations.DownloadAccountingDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='maiores',
+    direct_income_id='Dakota Avon specifically',
 )
 
 res = s.accounts_receivable.direct_incomes.download_attachment(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -59,7 +61,7 @@ if res.data is not None:
 
 The *Get direct income* endpoint returns a single direct income for a given directIncomeId.
 
-[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+[Direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support getting a specific direct income.
 
@@ -81,13 +83,14 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingDirectIncomeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='molestiae',
+    direct_income_id='Northeast Hatchback Kia',
 )
 
 res = s.accounts_receivable.direct_incomes.get(req)
 
 if res.accounting_direct_income is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -107,7 +110,7 @@ if res.accounting_direct_income is not None:
 
 The *Get direct income attachment* endpoint returns a specific attachment for a given `directIncomeId` and `attachmentId`.
 
-[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+[Direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support getting a direct income attachment.
 
@@ -128,14 +131,14 @@ req = operations.GetAccountingDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='quod',
-    timeout_in_minutes=800911,
+    direct_income_id='array East along',
 )
 
 res = s.accounts_receivable.direct_incomes.get_attachment(req)
 
 if res.accounting_attachment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -153,9 +156,9 @@ if res.accounting_attachment is not None:
 
 ## list
 
-The *List direct incomes* endpoint returns a list of [direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) for a given company's connection.
+The *List direct incomes* endpoint returns a list of [direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) for a given company's connection.
 
-[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+[Direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
@@ -178,13 +181,13 @@ req = operations.ListAccountingDirectIncomesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='esse',
 )
 
 res = s.accounts_receivable.direct_incomes.list(req)
 
 if res.accounting_direct_incomes is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -204,7 +207,7 @@ if res.accounting_direct_incomes is not None:
 
 The *List direct income attachments* endpoint returns a list of attachments available to download for given `directIncomeId`.
 
-[Direct incomes](https://docs.codat.io/accounting-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
+[Direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support listing direct income attachments.
 
@@ -224,13 +227,14 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingDirectIncomeAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='totam',
+    direct_income_id='intuitive Frozen ouch',
 )
 
 res = s.accounts_receivable.direct_incomes.list_attachments(req)
 
 if res.attachments is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

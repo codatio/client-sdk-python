@@ -16,7 +16,7 @@ class AccountsReceivableCreditNotes:
         r"""Get credit note
         The *Get credit note* endpoint returns a single credit note for a given creditNoteId.
 
-        [Credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote) are issued to a customer to indicate debt, typically with reference to a previously issued invoice and/or purchase.
+        [Credit notes](https://docs.codat.io/lending-api#/schemas/CreditNote) are issued to a customer to indicate debt, typically with reference to a previously issued invoice and/or purchase.
 
         Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes) for integrations that support getting a specific credit note.
 
@@ -27,7 +27,7 @@ class AccountsReceivableCreditNotes:
         url = utils.generate_url(operations.GetAccountingCreditNoteRequest, base_url, '/companies/{companyId}/data/creditNotes/{creditNoteId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -41,7 +41,7 @@ class AccountsReceivableCreditNotes:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -69,9 +69,9 @@ class AccountsReceivableCreditNotes:
     
     def list(self, request: operations.ListAccountingCreditNotesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountingCreditNotesResponse:
         r"""List credit notes
-        The *List credit notes* endpoint returns a list of [credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote) for a given company's connection.
+        The *List credit notes* endpoint returns a list of [credit notes](https://docs.codat.io/lending-api#/schemas/CreditNote) for a given company's connection.
 
-        [Credit notes](https://docs.codat.io/accounting-api#/schemas/CreditNote) are issued to a customer to indicate debt, typically with reference to a previously issued invoice and/or purchase.
+        [Credit notes](https://docs.codat.io/lending-api#/schemas/CreditNote) are issued to a customer to indicate debt, typically with reference to a previously issued invoice and/or purchase.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
         """
@@ -81,7 +81,7 @@ class AccountsReceivableCreditNotes:
         headers = {}
         query_params = utils.get_query_params(operations.ListAccountingCreditNotesRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -95,7 +95,7 @@ class AccountsReceivableCreditNotes:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

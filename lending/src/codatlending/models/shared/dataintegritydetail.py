@@ -6,11 +6,10 @@ from ..shared import dataintegritymatch as shared_dataintegritymatch
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DataIntegrityDetail:
     amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
@@ -51,7 +50,7 @@ class DataIntegrityDetail:
     r"""The transaction description."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""ID GUID of the transaction."""
-    matches: Optional[list[shared_dataintegritymatch.DataIntegrityMatch]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matches'), 'exclude': lambda f: f is None }})
+    matches: Optional[List[shared_dataintegritymatch.DataIntegrityMatch]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matches'), 'exclude': lambda f: f is None }})
     type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The data type of the record."""
     

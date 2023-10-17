@@ -4,28 +4,35 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
-from ..shared import pushoption as shared_pushoption
+from enum import Enum
 from typing import Optional
 
+class GenerateLoanTransactionsSourceType(str, Enum):
+    r"""Data source type."""
+    BANKING = 'banking'
+    COMMERCE = 'commerce'
+    ACCOUNTING = 'accounting'
 
 
 @dataclasses.dataclass
-class GetCreateUpdateBankAccountsModelRequest:
+class GenerateLoanTransactionsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
-    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
+    source_type: GenerateLoanTransactionsSourceType = dataclasses.field(metadata={'query_param': { 'field_name': 'sourceType', 'style': 'form', 'explode': True }})
+    r"""Data source type."""
     
 
 
 
-
 @dataclasses.dataclass
-class GetCreateUpdateBankAccountsModelResponse:
+class GenerateLoanTransactionsResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
-    push_option: Optional[shared_pushoption.PushOption] = dataclasses.field(default=None)
-    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

@@ -1,4 +1,5 @@
-# LoanWriteback.Suppliers
+# LoanWritebackSuppliers
+(*loan_writeback.suppliers*)
 
 ### Available Operations
 
@@ -7,13 +8,13 @@
 
 ## create
 
-The *Create supplier* endpoint creates a new [supplier](https://docs.codat.io/accounting-api#/schemas/Supplier) for a given company's connection.
+The *Create supplier* endpoint creates a new [supplier](https://docs.codat.io/lending-api#/schemas/Supplier) for a given company's connection.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/lending-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 **Integration-specific behaviour**
 
-Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/accounting-api#/operations/get-create-update-suppliers-model).
+Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/lending-api#/operations/get-create-update-suppliers-model).
 
 Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers) for integrations that support creating an account.
 
@@ -34,48 +35,31 @@ req = operations.CreateSupplierRequest(
     accounting_supplier=shared.AccountingSupplier(
         addresses=[
             shared.AccountingAddress(
-                city='Ankundingworth',
-                country='Guadeloupe',
-                line1='nulla',
-                line2='fugit',
-                postal_code='99474-0623',
-                region='ea',
-                type=shared.AccountingAddressType.UNKNOWN,
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='vel',
-        default_currency='possimus',
-        email_address='magnam',
-        id='36813f16-d9f5-4fce-ac55-6146c3e250fb',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='+44 25691 154789',
-        registration_number='deleniti',
+        phone='(877) 492-8687',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "fugit": {
-                    "accusamus": 'inventore',
+                "innovative": {
+                    "blue": 'shred',
                 },
             },
         ),
-        supplier_name='non',
-        tax_number='et',
     ),
-    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    timeout_in_minutes=677412,
 )
 
 res = s.loan_writeback.suppliers.create(req)
 
 if res.accounting_create_supplier_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -93,9 +77,9 @@ if res.accounting_create_supplier_response is not None:
 
 ## get_create_update_model
 
-The *Get create/update supplier model* endpoint returns the expected data for the request payload when creating and updating a [supplier](https://docs.codat.io/accounting-api#/schemas/Supplier) for a given company and integration.
+The *Get create/update supplier model* endpoint returns the expected data for the request payload when creating and updating a [supplier](https://docs.codat.io/lending-api#/schemas/Supplier) for a given company and integration.
 
-[Suppliers](https://docs.codat.io/accounting-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+[Suppliers](https://docs.codat.io/lending-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
 **Integration-specific behaviour**
 
@@ -125,6 +109,7 @@ res = s.loan_writeback.suppliers.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

@@ -1,4 +1,5 @@
-# Banking.CategorizedStatement
+# BankingCategorizedStatement
+(*banking.categorized_statement*)
 
 ### Available Operations
 
@@ -6,8 +7,8 @@
 
 ## get
 
-> **Categorization engine**
-> 
+﻿> **Categorization engine**
+>
 > The categorization engine uses machine learning and has been fully trained against Plaid and TrueLayer banking data sources. It is not fully trained against the Basiq banking data source.
 
 The _Get categorized bank statement_ endpoint provides a fully categorized list of banking transactions for a company. Accounts and transaction data are obtained from the company's banking data sources.
@@ -28,13 +29,13 @@ req = operations.GetCategorizedBankStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     page=1,
     page_size=100,
-    query='commodi',
 )
 
 res = s.banking.categorized_statement.get(req)
 
 if res.enhanced_cash_flow_transactions is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

@@ -5,14 +5,14 @@ import dataclasses
 from ..shared import createbankaccounttransaction as shared_createbankaccounttransaction
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AccountingCreateBankTransactions:
     account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
-    transactions: Optional[list[shared_createbankaccounttransaction.CreateBankAccountTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
+    r"""Unique identifier for a bank account."""
+    transactions: Optional[List[shared_createbankaccounttransaction.CreateBankAccountTransaction]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactions'), 'exclude': lambda f: f is None }})
     
 

@@ -1,4 +1,5 @@
-# FinancialStatements.BalanceSheet
+# FinancialStatementsBalanceSheet
+(*financial_statements.balance_sheet*)
 
 ### Available Operations
 
@@ -32,6 +33,7 @@ res = s.financial_statements.balance_sheet.get(req)
 
 if res.accounting_balance_sheet is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -67,7 +69,6 @@ s = codatlending.CodatLending(
 
 req = operations.GetCategorizedBalanceSheetStatementRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=568434,
     report_date='29-09-2020',
 )
 
@@ -75,6 +76,7 @@ res = s.financial_statements.balance_sheet.get_categorized_accounts(req)
 
 if res.enhanced_financial_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
