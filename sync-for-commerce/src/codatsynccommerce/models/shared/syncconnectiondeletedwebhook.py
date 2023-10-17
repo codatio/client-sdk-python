@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncConnectionDeletedWebhook:
     r"""A Sync for Commerce connection is deleted."""

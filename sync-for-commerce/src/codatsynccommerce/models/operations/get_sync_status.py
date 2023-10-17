@@ -7,24 +7,26 @@ from ..shared import syncstatus as shared_syncstatus
 from typing import Any, Optional
 
 
-
 @dataclasses.dataclass
 class GetSyncStatusRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     
-
 
 
 
 @dataclasses.dataclass
 class GetSyncStatusResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     bad_request: Optional[Any] = dataclasses.field(default=None)
     r"""Bad Request"""
     not_found: Optional[Any] = dataclasses.field(default=None)
     r"""Not Found"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     sync_status: Optional[shared_syncstatus.SyncStatus] = dataclasses.field(default=None)
     r"""Success"""
     

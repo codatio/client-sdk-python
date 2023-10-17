@@ -1,4 +1,5 @@
 # AdvancedControls
+(*advanced_controls*)
 
 ## Overview
 
@@ -36,6 +37,7 @@ res = s.advanced_controls.create_company(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -75,6 +77,7 @@ res = s.advanced_controls.get_configuration(req)
 
 if res.configuration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -110,13 +113,13 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='corrupti',
 )
 
 res = s.advanced_controls.list_companies(req)
 
 if res.companies is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -156,6 +159,7 @@ res = s.advanced_controls.set_configuration(req)
 
 if res.configuration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
