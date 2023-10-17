@@ -1,4 +1,5 @@
-# connections
+# Connections
+(*connections*)
 
 ## Overview
 
@@ -7,7 +8,7 @@ Create and manage partner expense connection.
 ### Available Operations
 
 * [create_connection](#create_connection) - Create connection
-* [create_partner_expense_connection](#create_partner_expense_connection) - Create Partner Expense connection
+* [create_partner_expense_connection](#create_partner_expense_connection) - Create partner expense connection
 * [delete_connection](#delete_connection) - Delete connection
 * [get_connection](#get_connection) - Get connection
 * [list_connections](#list_connections) - List connections
@@ -33,7 +34,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.CreateConnectionRequest(
     request_body=operations.CreateConnectionRequestBody(
-        platform_key='provident',
+        platform_key='gbol',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -42,6 +43,7 @@ res = s.connections.create_connection(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -59,7 +61,7 @@ if res.connection is not None:
 
 ## create_partner_expense_connection
 
-Creates a Partner Expense data connection
+Creates a partner expense data connection
 
 ### Example Usage
 
@@ -81,6 +83,7 @@ res = s.connections.create_partner_expense_connection(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -122,6 +125,7 @@ res = s.connections.delete_connection(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -162,6 +166,7 @@ res = s.connections.get_connection(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -198,13 +203,13 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='distinctio',
 )
 
 res = s.connections.list_connections(req)
 
 if res.connections is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -237,9 +242,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.UnlinkConnectionRequest(
-    request_body=operations.UnlinkConnectionUpdateConnection(
-        status=shared.DataConnectionStatus.DEAUTHORIZED,
-    ),
+    request_body=operations.UnlinkConnectionUpdateConnection(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -248,6 +251,7 @@ res = s.connections.unlink(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
