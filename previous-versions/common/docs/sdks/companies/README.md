@@ -1,4 +1,5 @@
-# companies
+# Companies
+(*companies*)
 
 ## Overview
 
@@ -27,9 +28,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = shared.CompanyRequestBody(
@@ -41,6 +40,7 @@ res = s.companies.create(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -68,9 +68,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.DeleteCompanyRequest(
@@ -81,6 +79,7 @@ res = s.companies.delete(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -107,9 +106,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetCompanyRequest(
@@ -120,6 +117,7 @@ res = s.companies.get(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -137,7 +135,7 @@ if res.company is not None:
 
 ## list
 
-﻿Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/codat-api#/schemas/Connection) related to the company.
+﻿Returns a list of your companies. The company schema contains a list of [connections](https://docs.codat.io/platform-api#/schemas/Connection) related to the company.
 
 ### Example Usage
 
@@ -146,22 +144,20 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='corrupti',
 )
 
 res = s.companies.list(req)
 
 if res.companies is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -188,9 +184,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.UpdateCompanyRequest(
@@ -205,6 +199,7 @@ res = s.companies.update(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

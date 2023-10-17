@@ -1,4 +1,4 @@
-# SyncSettingDataType
+# DataStatusDataTypes
 
 Available Data types
 

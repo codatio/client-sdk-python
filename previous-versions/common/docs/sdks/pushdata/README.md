@@ -1,4 +1,5 @@
-# push_data
+# PushData
+(*push_data*)
 
 ## Overview
 
@@ -30,9 +31,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetCreateUpdateModelOptionsByDataTypeRequest(
@@ -45,6 +44,7 @@ res = s.push_data.get_model_options(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -71,20 +71,19 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='74e0f467-cc87-496e-9151-a05dfc2ddf7c',
+    push_operation_key='59acd79e-29d3-4138-91d3-91d4641bf7ed',
 )
 
 res = s.push_data.get_operation(req)
 
 if res.push_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -111,9 +110,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetCompanyPushHistoryRequest(
@@ -121,13 +118,13 @@ req = operations.GetCompanyPushHistoryRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quod',
 )
 
 res = s.push_data.list_operations(req)
 
-if res.push_history_response is not None:
+if res.push_operations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
