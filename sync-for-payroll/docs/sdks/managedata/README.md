@@ -1,4 +1,5 @@
 # ManageData
+(*manage_data*)
 
 ## Overview
 
@@ -38,6 +39,7 @@ res = s.manage_data.get_data_status(req)
 
 if res.data_status_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -71,13 +73,14 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
+    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
 )
 
 res = s.manage_data.get_pull_operation(req)
 
 if res.pull_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -111,13 +114,14 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetPushOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='97074ba4-469b-46e2-9419-59890afa563e',
+    push_operation_key='2a6486f4-00c4-40bd-900d-b29c15ad0581',
 )
 
 res = s.manage_data.get_push_operation(req)
 
 if res.push_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -154,13 +158,13 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='odit',
 )
 
 res = s.manage_data.list(req)
 
 if res.push_operations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -197,13 +201,13 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='nemo',
 )
 
 res = s.manage_data.list_pull_operations(req)
 
 if res.pull_operations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -247,6 +251,7 @@ res = s.manage_data.refresh_all_data_types(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -282,7 +287,6 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='16fe4c8b-711e-45b7-bd2e-d028921cddc6',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -290,6 +294,7 @@ res = s.manage_data.refresh_data_type(req)
 
 if res.pull_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

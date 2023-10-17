@@ -9,10 +9,10 @@ from ..shared import pulloperation as shared_pulloperation
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RefreshDataTypeRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     data_type: shared_datatype.DataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
     r"""The key of a Codat data type"""
     connection_id: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'connectionId', 'style': 'form', 'explode': True }})
@@ -21,15 +21,17 @@ class RefreshDataTypeRequest:
 
 
 
-
 @dataclasses.dataclass
 class RefreshDataTypeResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     pull_operation: Optional[shared_pulloperation.PullOperation] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 
