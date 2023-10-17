@@ -1,4 +1,5 @@
-# refresh_data
+# RefreshData
+(*refresh_data*)
 
 ## Overview
 
@@ -27,9 +28,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.RefreshCompanyDataRequest(
@@ -40,6 +39,7 @@ res = s.refresh_data.all(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -68,14 +68,11 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='78ca1ba9-28fc-4816-b42c-b73920592939',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -83,6 +80,7 @@ res = s.refresh_data.by_data_type(req)
 
 if res.pull_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -109,9 +107,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetCompanyDataStatusRequest(
@@ -120,8 +116,9 @@ req = operations.GetCompanyDataStatusRequest(
 
 res = s.refresh_data.get(req)
 
-if res.data_status_response is not None:
+if res.data_statuses is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -148,20 +145,19 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
+    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
 )
 
 res = s.refresh_data.get_pull_operation(req)
 
 if res.pull_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -188,9 +184,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.ListPullOperationsRequest(
@@ -198,13 +192,13 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='laboriosam',
 )
 
 res = s.refresh_data.list_pull_operations(req)
 
-if res.data_connection_history is not None:
+if res.pull_operations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

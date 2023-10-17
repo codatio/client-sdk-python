@@ -1,4 +1,5 @@
-# supplemental_data
+# SupplementalData
+(*supplemental_data*)
 
 ## Overview
 
@@ -25,36 +26,31 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.ConfigureSupplementalDataRequest(
     supplemental_data_configuration=shared.SupplementalDataConfiguration(
         supplemental_data_config={
-            "reiciendis": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
-                data_source='est',
+            "Cutler": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
                 pull_data={
-                    "laborum": 'dolores',
-                    "dolorem": 'corporis',
-                    "explicabo": 'nobis',
+                    "North": 'transmitter',
                 },
                 push_data={
-                    "omnis": 'nemo',
-                    "minima": 'excepturi',
+                    "infrastructure": 'Northeast',
                 },
             ),
         },
     ),
     data_type=operations.ConfigureSupplementalDataDataType.INVOICES,
-    platform_key='accusantium',
+    platform_key='gbol',
 )
 
 res = s.supplemental_data.configure(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -83,20 +79,19 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.GetSupplementalDataConfigurationRequest(
     data_type=operations.GetSupplementalDataConfigurationDataType.INVOICES,
-    platform_key='iure',
+    platform_key='gbol',
 )
 
 res = s.supplemental_data.get_configuration(req)
 
 if res.supplemental_data_configuration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

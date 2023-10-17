@@ -1,4 +1,5 @@
-# settings
+# Settings
+(*settings*)
 
 ## Overview
 
@@ -7,7 +8,7 @@ Manage your Codat instance.
 ### Available Operations
 
 * [create_api_key](#create_api_key) - Create API key
-* [delete_api_key](#delete_api_key) - Delete api key
+* [delete_api_key](#delete_api_key) - Delete API key
 * [~~get_profile~~](#get_profile) - Get profile :warning: **Deprecated**
 * [get_sync_settings](#get_sync_settings) - Get sync settings
 * [list_api_keys](#list_api_keys) - List API keys
@@ -18,7 +19,7 @@ Manage your Codat instance.
 
 Use the *Create API keys* endpoint to generate a new API key for your client.
 
-[API keys](https://docs.codat.io/codat-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
+[API keys](https://docs.codat.io/platform-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
 
 You can [read more](https://docs.codat.io/using-the-api/authentication) about authentication at Codat and managing API keys via the Portal UI or API.
 
@@ -35,9 +36,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = shared.CreateAPIKey(
@@ -48,6 +47,7 @@ res = s.settings.create_api_key(req)
 
 if res.api_key_details is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -67,7 +67,7 @@ if res.api_key_details is not None:
 
 Use the *Delete API keys* endpoint to delete an existing API key, providing its valid `id` as a parameter. Note that this operation is not reversible.
 
-[API keys](https://docs.codat.io/accounting-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
+[API keys](https://docs.codat.io/platform-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
 
 You can [read more](https://docs.codat.io/using-the-api/authentication) about authentication at Codat and managing API keys via the Portal UI or API.
 
@@ -83,9 +83,7 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.DeleteAPIKeyRequest(
@@ -96,6 +94,7 @@ res = s.settings.delete_api_key(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -124,9 +123,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 
@@ -134,6 +131,7 @@ res = s.settings.get_profile()
 
 if res.profile is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -150,7 +148,7 @@ if res.profile is not None:
 
 ## get_sync_settings
 
-Retrieve the sync settings for your client. This includes how often data types should be queued to be updated, and how much history should be fetched.
+Retrieve the [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-settings) for your client. This includes how often data types should be queued to be updated, and how much history should be fetched.
 
 ### Example Usage
 
@@ -159,9 +157,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 
@@ -169,6 +165,7 @@ res = s.settings.get_sync_settings()
 
 if res.sync_settings is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -187,7 +184,7 @@ if res.sync_settings is not None:
 
 Use the *List API keys* endpoint to return a list of all API keys that currently exist for your client. This includes keys created via the Portal UI or the *Create API keys* endpoint.
 
-[API keys](https://docs.codat.io/accounting-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
+[API keys](https://docs.codat.io/platform-api#/schemas/apiKeys) are tokens used to control access to the API. Include this token in the `Authorization` header parameter when making API calls, following the word "Basic" and a space with your API key.
 
 You can [read more](https://docs.codat.io/using-the-api/authentication) about authentication at Codat and managing API keys via the Portal UI or API.
 
@@ -198,9 +195,7 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 
@@ -208,6 +203,7 @@ res = s.settings.list_api_keys()
 
 if res.api_keys is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -233,24 +229,41 @@ import codatcommon
 from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = shared.Profile(
     alert_auth_header='Bearer tXEiHiRK7XCtI8TNHbpGs1LI1pumdb4Cl1QIo7B2',
     api_key='sartANTjHAkLdbyDfaynoTQb7pkmj6hXHmnQKMrB',
-    confirm_company_name=False,
     icon_url='https://client-images.codat.io/icon/042399f5-d104-4f38-9ce8-cac3524f4e88_3f5623af-d992-4c22-bc08-e58c520a8526.ico',
     logo_url='https://client-images.codat.io/logo/042399f5-d104-4f38-9ce8-cac3524f4e88_5806cb1f-7342-4c0e-a0a8-99bfbc47b0ff.png',
-    name='Bob's Burgers',
+    name='Bob\'s Burgers',
     redirect_url='https://bobs-burgers.{countrySuffix}/{companyId}',
     white_list_urls=[
-        'https://bobs-burgers.com',
-        'https://bobs-burgers.com',
-        'https://bobs-burgers.com',
-        'https://bobs-burgers.com',
+        'h',
+        't',
+        't',
+        'p',
+        's',
+        ':',
+        '/',
+        '/',
+        'b',
+        'o',
+        'b',
+        's',
+        '-',
+        'b',
+        'u',
+        'r',
+        'g',
+        'e',
+        'r',
+        's',
+        '.',
+        'c',
+        'o',
+        'm',
     ],
 )
 
@@ -258,6 +271,7 @@ res = s.settings.update_profile(req)
 
 if res.profile is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -284,53 +298,19 @@ import codatcommon
 from codatcommon.models import operations, shared
 
 s = codatcommon.CodatCommon(
-    security=shared.Security(
-        auth_header="",
-    ),
+    auth_header="",
 )
 
 req = operations.UpdateProfileSyncSettingsRequestBody(
-    client_id='367f7975-267b-439b-90c6-a6040ee680f3',
-    overrides_defaults=False,
+    client_id='ce429104-79f0-4085-a720-e2d40fcc800f',
     settings=[
         shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
+            data_type=shared.DataType.INVOICES,
             fetch_on_first_link=False,
-            is_locked=False,
             months_to_sync=24,
             sync_from_utc='2022-10-23T00:00:00.000Z',
             sync_from_window=24,
-            sync_order=449950,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=613064,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=902349,
-            sync_schedule=24,
-        ),
-        shared.SyncSetting(
-            data_type=shared.SyncSettingDataType.INVOICES,
-            fetch_on_first_link=False,
-            is_locked=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=99280,
+            sync_order=334238,
             sync_schedule=24,
         ),
     ],
@@ -340,6 +320,7 @@ res = s.settings.update_sync_settings(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
