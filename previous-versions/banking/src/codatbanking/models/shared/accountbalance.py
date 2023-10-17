@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AccountBalance:
     r"""The Banking Account Balances data type provides a list of balances for a bank account including end-of-day batch balance or running balances per transaction.

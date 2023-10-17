@@ -1,4 +1,5 @@
-# account_balances
+# AccountBalances
+(*account_balances*)
 
 ## Overview
 
@@ -35,13 +36,13 @@ req = operations.ListAccountBalancesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='provident',
 )
 
 res = s.account_balances.list(req)
 
 if res.account_balances is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
