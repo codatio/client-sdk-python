@@ -1,4 +1,5 @@
 # Journals
+(*journals*)
 
 ## Overview
 
@@ -39,28 +40,19 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateJournalRequest(
     journal=shared.Journal(
         created_on='2022-10-23T00:00:00.000Z',
-        has_children=False,
-        id='00b607f3-c93c-473b-9da3-f2ceda7e23f2',
-        journal_code='explicabo',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Dr. Elaine Bernhard',
-        parent_id='delectus',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.JournalStatus.ARCHIVED,
-        type='in',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=349993,
 )
 
 res = s.journals.create(req)
 
 if res.create_journal_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -101,13 +93,14 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='labore',
+    journal_id='Northeast Hatchback Kia',
 )
 
 res = s.journals.get(req)
 
 if res.journal is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -157,6 +150,7 @@ res = s.journals.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -198,13 +192,13 @@ req = operations.ListJournalsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='numquam',
 )
 
 res = s.journals.list(req)
 
 if res.journals is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
