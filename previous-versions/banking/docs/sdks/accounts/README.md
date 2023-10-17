@@ -1,4 +1,5 @@
-# accounts
+# Accounts
+(*accounts*)
 
 ## Overview
 
@@ -42,6 +43,7 @@ res = s.accounts.get(req)
 
 if res.account is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -84,13 +86,13 @@ req = operations.ListAccountsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='quibusdam',
 )
 
 res = s.accounts.list(req)
 
 if res.accounts is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
