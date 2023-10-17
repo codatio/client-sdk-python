@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DatasetStatusChangedErrorWebhook:
     r"""Webhook request body to notify that a data synchronization has completed."""

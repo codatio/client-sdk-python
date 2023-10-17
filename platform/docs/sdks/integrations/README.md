@@ -1,4 +1,5 @@
 # Integrations
+(*integrations*)
 
 ## Overview
 
@@ -34,6 +35,7 @@ res = s.integrations.get(req)
 
 if res.integration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -73,6 +75,7 @@ res = s.integrations.get_branding(req)
 
 if res.branding is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -108,13 +111,13 @@ req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='corrupti',
 )
 
 res = s.integrations.list(req)
 
 if res.integrations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

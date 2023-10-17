@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DataSyncCompletedWebhook:
     r"""Webhook request body to notify the completion of a data sync."""

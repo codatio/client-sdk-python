@@ -9,10 +9,11 @@ from dataclasses_json import Undefined, dataclass_json
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SupportedFeature:
     feature_state: shared_featurestate.FeatureState = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('featureState') }})
+    r"""The current release state of the feature."""
     feature_type: shared_featuretype.FeatureType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('featureType') }})
+    r"""The type of feature."""
     
 
