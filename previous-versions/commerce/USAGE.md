@@ -6,9 +6,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetCompanyInfoRequest(
@@ -20,5 +18,6 @@ res = s.company_info.get(req)
 
 if res.company_info is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->

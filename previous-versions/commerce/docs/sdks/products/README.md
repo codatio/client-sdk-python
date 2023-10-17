@@ -1,4 +1,5 @@
-# products
+# Products
+(*products*)
 
 ## Overview
 
@@ -29,21 +30,20 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetProductRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    product_id='suscipit',
+    product_id='Northeast Hatchback Kia',
 )
 
 res = s.products.get(req)
 
 if res.product is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -77,21 +77,20 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetProductCategoryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    product_id='iure',
+    product_id='personalise contingency',
 )
 
 res = s.products.get_category(req)
 
 if res.product_category is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -123,9 +122,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListProductsRequest(
@@ -134,13 +131,13 @@ req = operations.ListProductsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='magnam',
 )
 
 res = s.products.list(req)
 
 if res.products is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -172,9 +169,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListProductCategoriesRequest(
@@ -183,13 +178,13 @@ req = operations.ListProductCategoriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='debitis',
 )
 
 res = s.products.list_categories(req)
 
 if res.product_categories is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
