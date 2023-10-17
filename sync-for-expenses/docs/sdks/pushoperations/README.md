@@ -35,6 +35,7 @@ res = s.push_operations.get(req)
 
 if res.push_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -71,13 +72,13 @@ req = operations.ListPushOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='Northeast Metal Canada',
 )
 
 res = s.push_operations.list(req)
 
 if res.push_operations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

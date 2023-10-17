@@ -8,7 +8,6 @@ from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetSyncByIDRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -16,7 +15,6 @@ class GetSyncByIDRequest:
     sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a sync."""
     
-
 
 
 

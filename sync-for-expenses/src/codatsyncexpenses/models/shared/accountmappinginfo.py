@@ -5,7 +5,7 @@ import dataclasses
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
-from typing import Optional
+from typing import List, Optional
 
 class AccountMappingInfoAccountType(str, Enum):
     r"""Type of the account."""
@@ -27,7 +27,6 @@ class AccountMappingInfoValidTransactionTypes(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AccountMappingInfo:
     account_type: Optional[AccountMappingInfoAccountType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType') }})
@@ -38,7 +37,7 @@ class AccountMappingInfo:
     r"""Unique identifier of account."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""Name of the account as it appears in the companies accounting software."""
-    valid_transaction_types: Optional[list[AccountMappingInfoValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes') }})
+    valid_transaction_types: Optional[List[AccountMappingInfoValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes') }})
     r"""Supported transaction types for the account."""
     
 

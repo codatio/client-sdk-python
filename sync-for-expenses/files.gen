@@ -69,6 +69,7 @@ src/codatsyncexpenses/models/shared/pushoperationstatus.py
 src/codatsyncexpenses/models/shared/datatype.py
 src/codatsyncexpenses/models/shared/account.py
 src/codatsyncexpenses/models/shared/accounttype.py
+src/codatsyncexpenses/models/shared/supplementaldata.py
 src/codatsyncexpenses/models/shared/accountstatus.py
 src/codatsyncexpenses/models/shared/pushoperationchange.py
 src/codatsyncexpenses/models/shared/pushchangetype.py
@@ -98,7 +99,6 @@ src/codatsyncexpenses/models/shared/accountmappinginfo.py
 src/codatsyncexpenses/models/shared/connections.py
 src/codatsyncexpenses/models/shared/createcustomerresponse.py
 src/codatsyncexpenses/models/shared/customer.py
-src/codatsyncexpenses/models/shared/supplementaldata.py
 src/codatsyncexpenses/models/shared/customerstatus.py
 src/codatsyncexpenses/models/shared/metadata.py
 src/codatsyncexpenses/models/shared/contact.py
@@ -246,6 +246,7 @@ docs/models/shared/accountmetadata.md
 docs/models/shared/accountvaliddatatypelinks.md
 docs/models/shared/account.md
 docs/models/shared/accounttype.md
+docs/models/shared/supplementaldata.md
 docs/models/shared/accountstatus.md
 docs/models/shared/pushoperationchange.md
 docs/models/shared/pushchangetype.md
@@ -279,7 +280,6 @@ docs/models/shared/accountmappinginfo.md
 docs/models/shared/connections.md
 docs/models/shared/createcustomerresponse.md
 docs/models/shared/customer.md
-docs/models/shared/supplementaldata.md
 docs/models/shared/customerstatus.md
 docs/models/shared/metadata.md
 docs/models/shared/contactphone.md
@@ -311,7 +311,6 @@ docs/models/shared/pushoperation.md
 docs/models/shared/pushoperations.md
 docs/models/shared/createsupplierresponse.md
 docs/models/shared/supplieraccountingaddress.md
-docs/models/shared/suppliersupplementaldata.md
 docs/models/shared/supplier.md
 docs/models/shared/supplierstatus.md
 docs/models/shared/suppliers.md

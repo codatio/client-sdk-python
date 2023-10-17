@@ -9,7 +9,6 @@ from ..shared import updateexpenseresponse as shared_updateexpenseresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class UpdateExpenseTransactionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -18,7 +17,6 @@ class UpdateExpenseTransactionRequest:
     r"""The unique identifier for your SMB's transaction."""
     update_expense_request: Optional[shared_updateexpenserequest.UpdateExpenseRequest] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
-
 
 
 

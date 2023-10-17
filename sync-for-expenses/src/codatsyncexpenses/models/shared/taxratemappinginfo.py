@@ -6,7 +6,7 @@ from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
 from enum import Enum
-from typing import Optional
+from typing import List, Optional
 
 class TaxRateMappingInfoValidTransactionTypes(str, Enum):
     PAYMENT = 'Payment'
@@ -20,7 +20,6 @@ class TaxRateMappingInfoValidTransactionTypes(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class TaxRateMappingInfo:
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code') }})
@@ -33,7 +32,7 @@ class TaxRateMappingInfo:
     r"""Name of the tax rate in the accounting platform."""
     total_tax_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalTaxRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Total (not compounded) sum of the components of a tax rate."""
-    valid_transaction_types: Optional[list[TaxRateMappingInfoValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes') }})
+    valid_transaction_types: Optional[List[TaxRateMappingInfoValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes') }})
     r"""Supported transaction types for the account."""
     
 

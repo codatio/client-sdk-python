@@ -8,7 +8,6 @@ from ..shared import supplier as shared_supplier
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetSupplierRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -16,7 +15,6 @@ class GetSupplierRequest:
     supplier_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'supplierId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a supplier."""
     
-
 
 
 

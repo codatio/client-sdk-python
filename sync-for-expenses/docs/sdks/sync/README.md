@@ -38,6 +38,7 @@ res = s.sync.get(req)
 
 if res.company_sync_status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -77,6 +78,7 @@ res = s.sync.get_last_successful_sync(req)
 
 if res.company_sync_status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -116,6 +118,7 @@ res = s.sync.get_latest_sync(req)
 
 if res.company_sync_status is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -160,6 +163,7 @@ res = s.sync.initiate_sync(req)
 
 if res.sync_initiated is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -199,6 +203,7 @@ res = s.sync.list(req)
 
 if res.company_sync_statuses is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

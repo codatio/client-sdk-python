@@ -46,5 +46,5 @@ If you'd like us to extend support to more data types or integrations, suggest o
 
 | Field                                                   | Type                                                    | Required                                                | Description                                             |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `links`                                                 | list[*str*]                                             | :heavy_minus_sign:                                      | Supported `dataTypes` that the record can be linked to. |
+| `links`                                                 | List[*str*]                                             | :heavy_minus_sign:                                      | Supported `dataTypes` that the record can be linked to. |
 | `property`                                              | *Optional[str]*                                         | :heavy_minus_sign:                                      | The property from the account that can be linked.       |

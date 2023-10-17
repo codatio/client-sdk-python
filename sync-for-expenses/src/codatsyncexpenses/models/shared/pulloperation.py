@@ -36,7 +36,6 @@ class PullOperationStatus(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class PullOperation:
     r"""Information about a queued, in progress or completed pull operation.

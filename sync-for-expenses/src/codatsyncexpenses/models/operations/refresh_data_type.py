@@ -9,7 +9,6 @@ from ..shared import pulloperation as shared_pulloperation
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RefreshDataTypeRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -19,7 +18,6 @@ class RefreshDataTypeRequest:
     connection_id: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'connectionId', 'style': 'form', 'explode': True }})
     r"""Optionally, provide a data connection id to only queue pull operations on that connection."""
     
-
 
 
 

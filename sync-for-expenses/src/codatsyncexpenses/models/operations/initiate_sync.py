@@ -9,14 +9,12 @@ from ..shared import syncinitiated as shared_syncinitiated
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class InitiateSyncRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a company."""
     initiate_sync: Optional[shared_initiatesync.InitiateSync] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
-
 
 
 

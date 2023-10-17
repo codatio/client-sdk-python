@@ -54,7 +54,6 @@ class DataStatusDataTypes(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DataStatus:
     r"""Describes the state of data in the Codat cache for a company and data type"""

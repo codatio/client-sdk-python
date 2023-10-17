@@ -8,7 +8,6 @@ from ..shared import suppliers as shared_suppliers
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListSuppliersRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -22,7 +21,6 @@ class ListSuppliersRequest:
     query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
-
 
 
 

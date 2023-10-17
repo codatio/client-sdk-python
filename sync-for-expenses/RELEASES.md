@@ -667,3 +667,13 @@ Based on:
 - [python v3.1.0] sync-for-expenses
 ### Releases
 - [PyPI v3.1.0] https://pypi.org/project/codat-sync-for-expenses/3.1.0 - sync-for-expenses
+
+## 2023-10-17 14:49:12
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Sync-Expenses.yaml
+- Speakeasy CLI 1.100.2 (2.159.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v4.0.0] sync-for-expenses
+### Releases
+- [PyPI v4.0.0] https://pypi.org/project/codat-sync-for-expenses/4.0.0 - sync-for-expenses

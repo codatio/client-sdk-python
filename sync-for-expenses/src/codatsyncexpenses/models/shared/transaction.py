@@ -10,7 +10,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Transaction:
     integration_type: Optional[shared_integrationtype.IntegrationType] = dataclasses.field(default=shared_integrationtype.IntegrationType.EXPENSES, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('integrationType') }})

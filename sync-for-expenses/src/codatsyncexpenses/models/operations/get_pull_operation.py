@@ -8,7 +8,6 @@ from ..shared import pulloperation as shared_pulloperation
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetPullOperationRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -16,7 +15,6 @@ class GetPullOperationRequest:
     dataset_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'datasetId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for the dataset that completed its sync."""
     
-
 
 
 
