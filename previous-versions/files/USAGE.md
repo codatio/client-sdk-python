@@ -6,9 +6,7 @@ import codatfiles
 from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.DownloadFilesRequest(
@@ -20,5 +18,6 @@ res = s.files.download_files(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->
