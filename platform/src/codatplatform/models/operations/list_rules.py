@@ -8,14 +8,13 @@ from ..shared import webhooks as shared_webhooks
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListRulesRequest:
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results)."""
-    page: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
+    page: Optional[int] = dataclasses.field(default=1, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
     r"""Page number. [Read more](https://docs.codat.io/using-the-api/paging)."""
-    page_size: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
+    page_size: Optional[int] = dataclasses.field(default=100, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
     r"""Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging)."""
     query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
@@ -23,14 +22,16 @@ class ListRulesRequest:
 
 
 
-
 @dataclasses.dataclass
 class ListRulesResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your `query` parameter was not correctly formed"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     webhooks: Optional[shared_webhooks.Webhooks] = dataclasses.field(default=None)
     r"""OK"""
     

@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class NewCompanySynchronizedWebhook:
     r"""Webhook request body to notify that a new company has successfully synchronized at least one dataType for the first time."""

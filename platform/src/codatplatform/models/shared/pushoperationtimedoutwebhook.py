@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class PushOperationTimedOutWebhook:
     r"""Webhook request body notifying that a push push operation has timed out."""

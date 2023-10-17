@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class PushOperationStatusChangedWebhook:
     r"""Webhook request body for a push operation status change."""

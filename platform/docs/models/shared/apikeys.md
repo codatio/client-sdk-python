@@ -5,4 +5,4 @@
 
 | Field                                                       | Type                                                        | Required                                                    | Description                                                 |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `results`                                                   | list[[APIKeyDetails](../../models/shared/apikeydetails.md)] | :heavy_minus_sign:                                          | N/A                                                         |
+| `results`                                                   | List[[APIKeyDetails](../../models/shared/apikeydetails.md)] | :heavy_minus_sign:                                          | N/A                                                         |

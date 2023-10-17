@@ -33,24 +33,26 @@ class GetSupplementalDataConfigurationDataType(str, Enum):
     COMMERCE_TRANSACTIONS = 'commerce-transactions'
 
 
-
 @dataclasses.dataclass
 class GetSupplementalDataConfigurationRequest:
     data_type: GetSupplementalDataConfigurationDataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
-    r"""Data types that support supplemental data"""
+    r"""Supported supplemental data data type."""
     platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
+    r"""A unique 4-letter key to represent a platform in each integration. View [accounting](https://docs.codat.io/integrations/accounting/overview#platform-keys), [banking](https://docs.codat.io/integrations/banking/overview#platform-keys), and [commerce](https://docs.codat.io/integrations/commerce/overview#platform-keys) platform keys."""
     
-
 
 
 
 @dataclasses.dataclass
 class GetSupplementalDataConfigurationResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     supplemental_data_configuration: Optional[shared_supplementaldataconfiguration.SupplementalDataConfiguration] = dataclasses.field(default=None)
     r"""OK"""
     
