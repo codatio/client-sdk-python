@@ -1,4 +1,5 @@
-# items
+# Items
+(*items*)
 
 ## Overview
 
@@ -40,53 +41,37 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateItemRequest(
     item=shared.Item(
         bill_item=shared.BillItem(
-            account_ref=shared.AccountRef(
-                id='33e66bd8-fe5d-400b-979e-f20387320590',
-                name='Mr. Forrest Ryan',
-            ),
-            description='ea',
-            tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=Decimal('2622.31'),
-                id='00313b3e-5044-4f65-be72-dc4077d0cc3f',
-                name='Carol Lowe',
-            ),
-            unit_price=Decimal('7738.54'),
+            account_ref=shared.AccountRef(),
+            tax_rate_ref=shared.TaxRateRef(),
         ),
-        code='dicta',
-        id='5ceb4d6e-1eae-40f7-9aed-f2acab58b991',
         invoice_item=shared.InvoiceItem(
-            account_ref=shared.AccountRef(
-                id='c926ddb5-8946-41e7-821c-be6d9502f0ea',
-                name='Sean Auer',
-            ),
-            description='sint',
-            tax_rate_ref=shared.TaxRateRef(
-                effective_tax_rate=Decimal('9787.97'),
-                id='7ac2f72f-8850-4090-8911-608207888ec6',
-                name='Teresa Lueilwitz',
-            ),
-            unit_price=Decimal('9454.09'),
+            account_ref=shared.AccountRef(),
+            tax_rate_ref=shared.TaxRateRef(),
         ),
         is_bill_item=False,
         is_invoice_item=False,
-        item_status=shared.ItemStatus.ARCHIVED,
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        item_status=shared.ItemStatus.ACTIVE,
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        name='Marion Mills',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        type=shared.ItemType.UNKNOWN,
+        supplemental_data=shared.SupplementalData(
+            content={
+                "Extended": {
+                    "South": 'shred',
+                },
+            },
+        ),
+        type=shared.ItemType.INVENTORY,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=881095,
 )
 
 res = s.items.create(req)
 
 if res.create_item_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -127,13 +112,14 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetItemRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    item_id='quod',
+    item_id='Northeast Hatchback Kia',
 )
 
 res = s.items.get(req)
 
 if res.item is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -183,6 +169,7 @@ res = s.items.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -224,13 +211,13 @@ req = operations.ListItemsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='sunt',
 )
 
 res = s.items.list(req)
 
 if res.items is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

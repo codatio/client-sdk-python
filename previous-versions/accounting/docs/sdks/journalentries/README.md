@@ -1,4 +1,5 @@
-# journal_entries
+# JournalEntries
+(*journal_entries*)
 
 ## Overview
 
@@ -41,45 +42,33 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
         created_on='2022-10-23T00:00:00.000Z',
-        description='earum',
-        id='af75b0b5-32a4-4da3-bcba-af4452c4842c',
         journal_lines=[
             shared.JournalLine(
-                account_ref=shared.AccountRef(
-                    id='9b2ad32d-afe8-41a8-8f44-44573fecd473',
-                    name='Robin Weimann',
-                ),
-                currency='placeat',
-                description='quos',
-                net_amount=Decimal('1523.02'),
+                account_ref=shared.AccountRef(),
+                net_amount=Decimal('4893.82'),
                 tracking=shared.Propertiestracking2(
                     record_refs=[
                         shared.InvoiceTo(
-                            data_type='journalEntry',
-                            id='9379aa69-cd5f-4bcf-b9da-18a7822bf958',
+                            data_type='accountTransaction',
                         ),
                     ],
                 ),
             ),
         ],
         journal_ref=shared.JournalRef(
-            id='94e6861a-db55-4f9e-9d75-1c9fe8f7502b',
-            name='Orville Schinner',
+            id='<ID>',
         ),
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
         record_ref=shared.InvoiceTo(
-            data_type='accountTransaction',
-            id='41f17644-5637-49f3-bb27-e21f862657b3',
+            data_type='invoice',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "delectus": {
-                    "maxime": 'vel',
+                "blue": {
+                    "shred": 'abnormally',
                 },
             },
         ),
@@ -87,13 +76,13 @@ req = operations.CreateJournalEntryRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=586163,
 )
 
 res = s.journal_entries.create(req)
 
 if res.create_journal_entry_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -160,13 +149,14 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='hic',
+    journal_entry_id='Van complexity',
 )
 
 res = s.journal_entries.delete(req)
 
 if res.push_operation_summary is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -207,13 +197,14 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='quis',
+    journal_entry_id='Northeast Hatchback Kia',
 )
 
 res = s.journal_entries.get(req)
 
 if res.journal_entry is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -263,6 +254,7 @@ res = s.journal_entries.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -304,13 +296,13 @@ req = operations.ListJournalEntriesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deleniti',
 )
 
 res = s.journal_entries.list(req)
 
 if res.journal_entries is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

@@ -5,11 +5,10 @@ import dataclasses
 from ..shared import invoiceto as shared_invoiceto
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class TrackingRecordReference:
     r"""Links the current record to the underlying record or data type that created it.
@@ -25,10 +24,9 @@ class TrackingRecordReference:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Tracking:
-    record_refs: list[shared_invoiceto.InvoiceTo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
+    record_refs: List[shared_invoiceto.InvoiceTo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
     invoice_to: Optional[TrackingRecordReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
     r"""Links the current record to the underlying record or data type that created it.
 

@@ -1,4 +1,5 @@
-# reports
+# Reports
+(*reports*)
 
 ## Overview
 
@@ -42,6 +43,7 @@ res = s.reports.get_aged_creditors_report(req)
 
 if res.aged_creditor_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -85,6 +87,7 @@ res = s.reports.get_aged_debtors_report(req)
 
 if res.aged_debtor_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -127,6 +130,7 @@ res = s.reports.get_balance_sheet(req)
 
 if res.balance_sheet is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -169,6 +173,7 @@ res = s.reports.get_cash_flow_statement(req)
 
 if res.cash_flow_statement is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -211,6 +216,7 @@ res = s.reports.get_profit_and_loss(req)
 
 if res.profit_and_loss_report is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -250,6 +256,7 @@ res = s.reports.is_aged_creditors_report_available(req)
 
 if res.is_aged_creditors_report_available_200_application_json_boolean is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -289,6 +296,7 @@ res = s.reports.is_aged_debtor_report_available(req)
 
 if res.is_aged_debtor_report_available_200_application_json_boolean is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

@@ -1,4 +1,5 @@
-# suppliers
+# Suppliers
+(*suppliers*)
 
 ## Overview
 
@@ -44,46 +45,31 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Arvada',
-                country='Serbia',
-                line1='explicabo',
-                line2='accusantium',
-                postal_code='09117',
-                region='illum',
-                type=shared.AccountingAddressType.UNKNOWN,
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='exercitationem',
-        default_currency='quod',
-        email_address='quod',
-        id='0584a184-d76d-4971-bc82-0c65b037bb8e',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='01224 658 999',
-        registration_number='impedit',
+        phone='(877) 492-8687',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "ullam": {
-                    "veritatis": 'quas',
+                "innovative": {
+                    "blue": 'shred',
                 },
             },
         ),
-        supplier_name='molestiae',
-        tax_number='officiis',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=287293,
 )
 
 res = s.suppliers.create(req)
 
 if res.create_supplier_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -124,13 +110,14 @@ req = operations.DownloadSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='nulla',
+    supplier_id='Dakota Avon specifically',
 )
 
 res = s.suppliers.download_attachment(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -171,13 +158,14 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='accusamus',
+    supplier_id='Northeast Hatchback Kia',
 )
 
 res = s.suppliers.get(req)
 
 if res.supplier is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -218,13 +206,14 @@ req = operations.GetSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='consequatur',
+    supplier_id='array East along',
 )
 
 res = s.suppliers.get_attachment(req)
 
 if res.attachment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -274,6 +263,7 @@ res = s.suppliers.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -315,13 +305,13 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='ut',
 )
 
 res = s.suppliers.list(req)
 
 if res.suppliers is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -361,13 +351,14 @@ s = codataccounting.CodatAccounting(
 req = operations.ListSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='laborum',
+    supplier_id='intuitive Frozen ouch',
 )
 
 res = s.suppliers.list_attachments(req)
 
 if res.attachments_dataset is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -412,48 +403,32 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Addressesitems(
-                city='Cathedral City',
-                country='Malta',
-                line1='maxime',
-                line2='ad',
-                postal_code='88624-6607',
-                region='voluptatibus',
                 type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='ea',
-        default_currency='facere',
-        email_address='corrupti',
-        id='28da0131-9112-4964-a645-c1d81f29042f',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='iste',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "culpa": {
-                    "reiciendis": 'a',
+                "male": {
+                    "Metal": 'cheater',
                 },
             },
         ),
-        supplier_name='consequatur',
-        tax_number='voluptates',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    supplier_id='dolorum',
-    timeout_in_minutes=148004,
+    supplier_id='Cotton',
 )
 
 res = s.suppliers.update(req)
 
 if res.update_supplier_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

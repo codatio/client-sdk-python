@@ -1,4 +1,5 @@
-# purchase_orders
+# PurchaseOrders
+(*purchase_orders*)
 
 ## Overview
 
@@ -40,86 +41,47 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
-        currency='EUR',
-        currency_rate=Decimal('1356.92'),
+        currency='USD',
         delivery_date='2022-10-23T00:00:00.000Z',
         expected_delivery_date='2022-10-23T00:00:00.000Z',
-        id='309db053-6d9e-475c-a006-f5392c11a25a',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.PurchaseOrderLineItem(
-                account_ref=shared.AccountRef(
-                    id='bf92f974-28ad-49a9-b8bf-8221125359d9',
-                    name='Glenn Lebsack',
-                ),
-                description='iusto',
-                discount_amount=Decimal('6339.56'),
-                discount_percentage=Decimal('4531.11'),
+                account_ref=shared.AccountRef(),
                 item_ref=shared.ItemRef(
-                    id='9cd72cd2-484d-4a21-b29f-2ac41ef5725f',
-                    name='Jean Kemmer',
+                    id='<ID>',
                 ),
-                quantity=Decimal('7500.75'),
-                sub_total=Decimal('944.87'),
-                tax_amount=Decimal('9313.93'),
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('3062.69'),
-                    id='1d8a23c2-3e34-4f2d-ba4a-197f6de92215',
-                    name='Ms. Dixie Turner Sr.',
-                ),
-                total_amount=Decimal('309.62'),
+                tax_rate_ref=shared.TaxRateRef(),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='99853e9f-543d-4854-839e-e224460443bc',
-                        name='Ms. Lorraine Gusikowski',
+                        id='<ID>',
                     ),
                 ],
-                unit_amount=Decimal('7911.29'),
             ),
         ],
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='asperiores',
         payment_due_date='2022-10-23T00:00:00.000Z',
-        purchase_order_number='vel',
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city='Madison',
-                country='Guyana',
-                line1='at',
-                line2='culpa',
-                postal_code='52186',
-                region='libero',
-                type=shared.AccountingAddressType.DELIVERY,
+                type=shared.AccountingAddressType.UNKNOWN,
             ),
-            contact=shared.ShipToContact(
-                email='Augustine.Kuhlman69@yahoo.com',
-                name='Miss Meredith Hand',
-                phone='790-276-8540 x482',
-            ),
+            contact=shared.ShipToContact(),
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.PurchaseOrderStatus.UNKNOWN,
-        sub_total=Decimal('5142.34'),
         supplier_ref=shared.SupplierRef(
-            id='2bfbdc41-ff5d-44e2-ae4f-b5cb35d17638',
-            supplier_name='delectus',
+            id='<ID>',
         ),
-        total_amount=Decimal('1230.16'),
-        total_discount=Decimal('9225.93'),
-        total_tax_amount=Decimal('8182.73'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=716538,
 )
 
 res = s.purchase_orders.create(req)
 
 if res.create_purchase_order_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -160,13 +122,14 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPurchaseOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    purchase_order_id='ducimus',
+    purchase_order_id='Northeast Hatchback Kia',
 )
 
 res = s.purchase_orders.get(req)
 
 if res.purchase_order is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -216,6 +179,7 @@ res = s.purchase_orders.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -257,13 +221,13 @@ req = operations.ListPurchaseOrdersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='atque',
 )
 
 res = s.purchase_orders.list(req)
 
 if res.purchase_orders is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -307,88 +271,48 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
-        currency='GBP',
-        currency_rate=Decimal('3670.96'),
+        currency='EUR',
         delivery_date='2022-10-23T00:00:00.000Z',
         expected_delivery_date='2022-10-23T00:00:00.000Z',
-        id='cc5cb860-f8cd-4580-ba73-810e4fe44472',
         issue_date='2022-10-23T00:00:00.000Z',
         line_items=[
             shared.PurchaseOrderLineItem(
-                account_ref=shared.AccountRef(
-                    id='7cd3b1dd-3bbc-4e24-bb76-84eff50126d7',
-                    name='Vicky Wolf',
-                ),
-                description='facere',
-                discount_amount=Decimal('113.92'),
-                discount_percentage=Decimal('9309.42'),
+                account_ref=shared.AccountRef(),
                 item_ref=shared.ItemRef(
-                    id='b74b8421-953b-444b-93c4-3159d33e5953',
-                    name='Mr. Michael Bashirian',
+                    id='<ID>',
                 ),
-                quantity=Decimal('5784.52'),
-                sub_total=Decimal('5525.12'),
-                tax_amount=Decimal('3971.12'),
-                tax_rate_ref=shared.TaxRateRef(
-                    effective_tax_rate=Decimal('1930.48'),
-                    id='aa41e6c3-1cc2-4f1f-8b51-c9a41ffbe9cb',
-                    name='Brad Mraz',
-                ),
-                total_amount=Decimal('9358'),
+                tax_rate_ref=shared.TaxRateRef(),
                 tracking_category_refs=[
                     shared.TrackingCategoryRef(
-                        id='65e076cc-7abf-4616-aa5c-71641934b90f',
-                        name='Rochelle Bailey',
+                        id='<ID>',
                     ),
                 ],
-                unit_amount=Decimal('683'),
             ),
         ],
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='possimus',
         payment_due_date='2022-10-23T00:00:00.000Z',
-        purchase_order_number='a',
         ship_to=shared.ShipTo(
             address=shared.Addressesitems(
-                city='Champlinworth',
-                country='Nepal',
-                line1='earum',
-                line2='fugit',
-                postal_code='10352-2752',
-                region='enim',
                 type=shared.AccountingAddressType.DELIVERY,
             ),
-            contact=shared.ShipToContact(
-                email='Dayana.Kilback@gmail.com',
-                name='Ms. Nettie McCullough',
-                phone='(836) 983-6977 x4324',
-            ),
+            contact=shared.ShipToContact(),
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.PurchaseOrderStatus.VOID,
-        sub_total=Decimal('5678.21'),
         supplier_ref=shared.SupplierRef(
-            id='222c9ff5-7491-4aab-ba2e-761f0ca4d456',
-            supplier_name='vero',
+            id='<ID>',
         ),
-        total_amount=Decimal('9708.48'),
-        total_discount=Decimal('1170.53'),
-        total_tax_amount=Decimal('234.1'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    purchase_order_id='adipisci',
-    timeout_in_minutes=80294,
+    purchase_order_id='Analyst invoice',
 )
 
 res = s.purchase_orders.update(req)
 
 if res.update_purchase_order_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

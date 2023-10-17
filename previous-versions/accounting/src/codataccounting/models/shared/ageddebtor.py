@@ -5,14 +5,13 @@ import dataclasses
 from ..shared import agedcurrencyoutstandingitems as shared_agedcurrencyoutstandingitems
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AgedDebtor:
-    aged_currency_outstanding: Optional[list[shared_agedcurrencyoutstandingitems.AgedCurrencyOutstandingitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedCurrencyOutstanding'), 'exclude': lambda f: f is None }})
+    aged_currency_outstanding: Optional[List[shared_agedcurrencyoutstandingitems.AgedCurrencyOutstandingitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedCurrencyOutstanding'), 'exclude': lambda f: f is None }})
     r"""Array of aged debtors by currency."""
     customer_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerId'), 'exclude': lambda f: f is None }})
     r"""Customer ID of the aged debtor."""

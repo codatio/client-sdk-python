@@ -1,4 +1,5 @@
-# customers
+# Customers
+(*customers*)
 
 ## Overview
 
@@ -44,69 +45,46 @@ req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='West Elroy',
-                country='Bolivia',
-                line1='praesentium',
-                line2='eveniet',
-                postal_code='77607',
-                region='quos',
-                type=shared.AccountingAddressType.DELIVERY,
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='sint',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Emersonside',
-                    country='Armenia',
-                    line1='voluptates',
-                    line2='laudantium',
-                    postal_code='06859',
-                    region='deleniti',
-                    type=shared.AccountingAddressType.UNKNOWN,
+                    type=shared.AccountingAddressType.BILLING,
                 ),
-                email='Barrett98@hotmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='William Koch',
                 phone=[
                     shared.PhoneNumbersitems(
                         number='01224 658 999',
-                        type=shared.PhoneNumberType.FAX,
+                        type=shared.PhoneNumberType.MOBILE,
                     ),
                 ],
                 status=shared.CustomerStatus.UNKNOWN,
             ),
         ],
-        customer_name='dolorum',
-        default_currency='USD',
-        email_address='ad',
-        id='f3cabd90-5a97-42e0-9672-8227b2d30947',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        default_currency='GBP',
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='946.496.5489 x3236',
-        registration_number='voluptas',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.ACTIVE,
+        status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "recusandae": {
-                    "corporis": 'non',
+                "grey": {
+                    "technology": 'East',
                 },
             },
         ),
-        tax_number='necessitatibus',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=719469,
 )
 
 res = s.customers.create(req)
 
 if res.create_customer_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -147,13 +125,14 @@ req = operations.DownloadCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='maiores',
+    customer_id='Dakota Avon specifically',
 )
 
 res = s.customers.download_attachment(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -194,13 +173,14 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='laboriosam',
+    customer_id='Northeast Hatchback Kia',
 )
 
 res = s.customers.get(req)
 
 if res.customer is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -241,13 +221,14 @@ req = operations.GetCustomerAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='voluptatem',
+    customer_id='array East along',
 )
 
 res = s.customers.get_attachment(req)
 
 if res.attachment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -297,6 +278,7 @@ res = s.customers.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -338,13 +320,13 @@ req = operations.ListCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='optio',
 )
 
 res = s.customers.list(req)
 
 if res.customers is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -384,13 +366,14 @@ s = codataccounting.CodatAccounting(
 req = operations.ListCustomerAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='sequi',
+    customer_id='intuitive Frozen ouch',
 )
 
 res = s.customers.list_attachments(req)
 
 if res.attachments_dataset is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -435,71 +418,47 @@ req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Addressesitems(
-                city='North Wavatown',
-                country='Cameroon',
-                line1='amet',
-                line2='rerum',
-                postal_code='38123',
-                region='dignissimos',
                 type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='itaque',
         contacts=[
             shared.Contact(
                 address=shared.Addressesitems(
-                    city='Lake Alexannefield',
-                    country='Seychelles',
-                    line1='quos',
-                    line2='possimus',
-                    postal_code='45906-1548',
-                    region='unde',
                     type=shared.AccountingAddressType.UNKNOWN,
                 ),
-                email='Clifford71@hotmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='Ralph Hamill',
                 phone=[
                     shared.PhoneNumbersitems(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.FAX,
+                        number='+44 25691 154789',
+                        type=shared.PhoneNumberType.LANDLINE,
                     ),
                 ],
                 status=shared.CustomerStatus.ARCHIVED,
             ),
         ],
-        customer_name='accusamus',
-        default_currency='GBP',
-        email_address='quas',
-        id='8b1c4ee2-c8c6-4ce6-91fe-eb1c7cbdb6ee',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        default_currency='EUR',
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='424.676.1311 x442',
-        registration_number='odio',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "cupiditate": {
-                    "illo": 'exercitationem',
+                "redundant": {
+                    "cheater": 'Islands',
                 },
             },
         ),
-        tax_number='laborum',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='illum',
-    force_update=False,
-    timeout_in_minutes=147989,
+    customer_id='withdrawal extend',
 )
 
 res = s.customers.update(req)
 
 if res.update_customer_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

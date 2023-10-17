@@ -29,6 +29,7 @@ from .tracking_categories import TrackingCategories
 from .transfers import Transfers
 from codataccounting import utils
 from codataccounting.models import shared
+from typing import Dict
 
 class CodatAccounting:
     r"""Accounting API: A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
@@ -96,7 +97,7 @@ class CodatAccounting:
                  security: shared.Security = None,
                  server_idx: int = None,
                  server_url: str = None,
-                 url_params: dict[str, str] = None,
+                 url_params: Dict[str, str] = None,
                  client: requests_http.Session = None,
                  retry_config: utils.RetryConfig = None
                  ) -> None:
@@ -109,7 +110,7 @@ class CodatAccounting:
         :param server_url: The server URL to use for all operations
         :type server_url: str
         :param url_params: Parameters to optionally template the server URL with
-        :type url_params: dict[str, str]
+        :type url_params: Dict[str, str]
         :param client: The requests.Session HTTP client to use for all operations
         :type client: requests_http.Session
         :param retry_config: The utils.RetryConfig to use globally
@@ -118,7 +119,9 @@ class CodatAccounting:
         if client is None:
             client = requests_http.Session()
         
+        
         security_client = utils.configure_security_client(client, security)
+        
         
         if server_url is not None:
             if url_params is not None:

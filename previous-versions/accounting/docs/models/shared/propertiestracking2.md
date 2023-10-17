@@ -5,4 +5,4 @@
 
 | Field                                               | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `record_refs`                                       | list[[InvoiceTo](../../models/shared/invoiceto.md)] | :heavy_minus_sign:                                  | N/A                                                 |
+| `record_refs`                                       | List[[InvoiceTo](../../models/shared/invoiceto.md)] | :heavy_minus_sign:                                  | N/A                                                 |
