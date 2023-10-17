@@ -34,12 +34,12 @@ class Bills:
         
         url = utils.generate_url(operations.CreateBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bill", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bill", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBillRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -53,7 +53,7 @@ class Bills:
 
         def do_request():
             return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -83,7 +83,7 @@ class Bills:
         r"""Delete bill
         The *Delete bill* endpoint allows you to delete a specified bill from an accounting platform. 
 
-        [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are itemized records of goods received or services provided to the SMB.
+        [Bills](https://docs.codat.io/sync-for-payables-api#/schemas/Bill) are itemized records of goods received or services provided to the SMB.
 
         ### Process 
         1. Pass the `{billId}` to the *Delete bill* endpoint and store the `pushOperationKey` returned.
@@ -108,14 +108,14 @@ class Bills:
 
         > **Supported Integrations**
         > 
-        > This functionality is currently only supported for our QuickBooks Online abd Oracle NetSuite integrations. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+        > This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.DeleteBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -129,7 +129,7 @@ class Bills:
 
         def do_request():
             return client.request('DELETE', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -159,7 +159,7 @@ class Bills:
         r"""Delete bill attachment
         The *Delete bill attachment* endpoint allows you to delete a specified bill attachment from an accounting platform.  
 
-        [Bills](https://docs.codat.io/accounting-api#/schemas/Bill) are invoices
+        [Bills](https://docs.codat.io/sync-for-payables-api#/schemas/Bill) are invoices
         that represent the SMB's financial obligations to their supplier for a
         purchase of goods or services. 
 
@@ -184,7 +184,7 @@ class Bills:
         url = utils.generate_url(operations.DeleteBillAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments/{attachmentId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -198,7 +198,7 @@ class Bills:
 
         def do_request():
             return client.request('DELETE', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -240,7 +240,7 @@ class Bills:
             headers['Accept'] = accept_header_override.value
         else:
             headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -254,7 +254,7 @@ class Bills:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -266,7 +266,7 @@ class Bills:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
-                res.data = http_res.content
+                res.data = http_res
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404, 429]:
@@ -294,7 +294,7 @@ class Bills:
         url = utils.generate_url(operations.GetBillRequest, base_url, '/companies/{companyId}/data/bills/{billId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -308,7 +308,7 @@ class Bills:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -347,7 +347,7 @@ class Bills:
         url = utils.generate_url(operations.GetBillAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -361,7 +361,7 @@ class Bills:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -404,7 +404,7 @@ class Bills:
         url = utils.generate_url(operations.GetCreateUpdateBillModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/bills', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -418,7 +418,7 @@ class Bills:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -458,7 +458,7 @@ class Bills:
         headers = {}
         query_params = utils.get_query_params(operations.ListBillsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -472,7 +472,7 @@ class Bills:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -511,7 +511,7 @@ class Bills:
         url = utils.generate_url(operations.ListBillAttachmentsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -525,7 +525,7 @@ class Bills:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -567,12 +567,12 @@ class Bills:
         
         url = utils.generate_url(operations.UpdateBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bill", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bill", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateBillRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -586,7 +586,7 @@ class Bills:
 
         def do_request():
             return client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -628,11 +628,11 @@ class Bills:
         
         url = utils.generate_url(operations.UploadBillAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -646,7 +646,7 @@ class Bills:
 
         def do_request():
             return client.request('POST', url, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

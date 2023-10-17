@@ -1,4 +1,5 @@
 # Suppliers
+(*suppliers*)
 
 ## Overview
 
@@ -41,46 +42,31 @@ req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Address(
-                city='North Tadshire',
-                country='Anguilla',
-                line1='incidunt',
-                line2='qui',
-                postal_code='86113',
-                region='modi',
-                type=shared.AccountingAddressType.DELIVERY,
+                type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='voluptatibus',
-        default_currency='molestias',
-        email_address='officia',
-        id='b8366c72-3ffd-4a9e-86be-e4825c1fc0e1',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='+44 25691 154789',
-        registration_number='optio',
+        phone='(877) 492-8687',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.SupplierStatus.UNKNOWN,
+        status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "facilis": {
-                    "reiciendis": 'a',
+                "innovative": {
+                    "blue": 'shred',
                 },
             },
         ),
-        supplier_name='iste',
-        tax_number='dicta',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=552439,
 )
 
 res = s.suppliers.create(req)
 
 if res.create_supplier_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -121,13 +107,14 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='ullam',
+    supplier_id='Northeast Hatchback Kia',
 )
 
 res = s.suppliers.get(req)
 
 if res.supplier is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -177,6 +164,7 @@ res = s.suppliers.get_create_update_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -218,13 +206,13 @@ req = operations.ListSuppliersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='dolore',
 )
 
 res = s.suppliers.list(req)
 
 if res.suppliers is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -269,48 +257,32 @@ req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
             shared.Address(
-                city='Fort Rafael',
-                country='Eritrea',
-                line1='consequuntur',
-                line2='assumenda',
-                postal_code='97785-9054',
-                region='esse',
-                type=shared.AccountingAddressType.BILLING,
+                type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='odio',
-        default_currency='nesciunt',
-        email_address='debitis',
-        id='63562a7b-408f-405e-bd48-fdaf313a1f5f',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         phone='(877) 492-8687',
-        registration_number='incidunt',
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "cupiditate": {
-                    "optio": 'alias',
+                "male": {
+                    "Metal": 'cheater',
                 },
             },
         ),
-        supplier_name='quidem',
-        tax_number='nesciunt',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    force_update=False,
-    supplier_id='commodi',
-    timeout_in_minutes=956124,
+    supplier_id='Cotton',
 )
 
 res = s.suppliers.update(req)
 
 if res.update_supplier_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

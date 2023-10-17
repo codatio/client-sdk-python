@@ -1,4 +1,5 @@
 # PaymentMethods
+(*payment_methods*)
 
 ## Overview
 
@@ -34,13 +35,14 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetPaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_method_id='commodi',
+    payment_method_id='Northeast Hatchback Kia',
 )
 
 res = s.payment_methods.get(req)
 
 if res.payment_method is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -82,13 +84,13 @@ req = operations.ListPaymentMethodsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='numquam',
 )
 
 res = s.payment_methods.list(req)
 
 if res.payment_methods is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

@@ -1,4 +1,5 @@
 # ManageData
+(*manage_data*)
 
 ## Overview
 
@@ -36,6 +37,7 @@ res = s.manage_data.get(req)
 
 if res.data_status_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -69,13 +71,14 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetPullOperationRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='eaed9f0f-e77b-4bc9-a58f-ab8b4b99ab18',
+    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
 )
 
 res = s.manage_data.get_pull_operation(req)
 
 if res.pull_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -112,13 +115,13 @@ req = operations.ListPullOperationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='repudiandae',
 )
 
 res = s.manage_data.list_pull_operations(req)
 
 if res.pull_operations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -162,6 +165,7 @@ res = s.manage_data.refresh_all_data_types(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -197,7 +201,6 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='472e8028-57a5-4b40-863a-7d575f1400e7',
     data_type=shared.DataType.INVOICES,
 )
 
@@ -205,6 +208,7 @@ res = s.manage_data.refresh_data_type(req)
 
 if res.pull_operation is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

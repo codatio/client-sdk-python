@@ -15,7 +15,6 @@ class WebLinkType(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class WebLink:
     r"""Weblink associated with the company."""

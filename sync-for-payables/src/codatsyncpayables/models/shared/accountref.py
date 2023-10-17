@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AccountRef:
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""

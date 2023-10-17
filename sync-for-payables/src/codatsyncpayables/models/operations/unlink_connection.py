@@ -12,7 +12,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class UnlinkConnectionUpdateConnection:
     status: Optional[shared_dataconnectionstatus.DataConnectionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
@@ -21,25 +20,28 @@ class UnlinkConnectionUpdateConnection:
 
 
 
-
 @dataclasses.dataclass
 class UnlinkConnectionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a connection."""
     request_body: Optional[UnlinkConnectionUpdateConnection] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
-
 
 
 
 @dataclasses.dataclass
 class UnlinkConnectionResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 
