@@ -4,11 +4,10 @@ from __future__ import annotations
 import dataclasses
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ValidDataTypeLinks:
     r"""When querying Codat's data model, some data types return `validDatatypeLinks` metadata in the JSON response. This indicates where that object can be used as a reference—a _valid link_—when creating or updating other data.
@@ -52,9 +51,9 @@ class ValidDataTypeLinks:
 
     If you'd like us to extend support to more data types or integrations, suggest or vote for this on our <a href=\"https://portal.productboard.com/codat/5-product-roadmap\">Product Roadmap</a>.
     """
-    links: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('links'), 'exclude': lambda f: f is None }})
+    links: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('links') }})
     r"""Supported `dataTypes` that the record can be linked to."""
-    property: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('property'), 'exclude': lambda f: f is None }})
+    property: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('property') }})
     r"""The property from the account that can be linked."""
     
 

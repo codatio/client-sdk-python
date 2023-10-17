@@ -5,13 +5,12 @@ import dataclasses
 from ..shared import attachment as shared_attachment
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AttachmentsDataset:
-    attachments: Optional[list[shared_attachment.Attachment]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachments'), 'exclude': lambda f: f is None }})
+    attachments: Optional[List[shared_attachment.Attachment]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachments') }})
     
 

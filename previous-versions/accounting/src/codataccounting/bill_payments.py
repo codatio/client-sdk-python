@@ -29,12 +29,12 @@ class BillPayments:
         
         url = utils.generate_url(operations.CreateBillPaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billPayments', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bill_payment", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "bill_payment", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBillPaymentRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -48,7 +48,7 @@ class BillPayments:
 
         def do_request():
             return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -95,20 +95,21 @@ class BillPayments:
         ## Integration specifics
         Integrations that support soft delete do not permanently delete the object in the accounting platform.
 
-        | Integration | Soft Delete | Details                                                                                             |  
-        |-------------|-------------|-----------------------------------------------------------------------------------------------------|
+        | Integration | Soft Delete | Details                                                                                                      |  
+        |-------------|-------------|--------------------------------------------------------------------------------------------------------------|
+        | QuickBooks Online | No          | -                                                                                   
         | Oracle NetSuite   | No          | See [here](/integrations/accounting/netsuite/how-deleting-bill-payments-works) to learn more. |
 
         > **Supported Integrations**
         >
-        > This functionality is currently only supported for our QuickBooks Online abd Oracle NetSuite integrations. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
+        > This functionality is currently only supported for our QuickBooks Online and Oracle NetSuite integrations.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.DeleteBillPaymentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billPayments/{billPaymentId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -122,7 +123,7 @@ class BillPayments:
 
         def do_request():
             return client.request('DELETE', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -163,7 +164,7 @@ class BillPayments:
         url = utils.generate_url(operations.GetBillPaymentsRequest, base_url, '/companies/{companyId}/data/billPayments/{billPaymentId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -177,7 +178,7 @@ class BillPayments:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -220,7 +221,7 @@ class BillPayments:
         url = utils.generate_url(operations.GetCreateBillPaymentsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/billPayments', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -234,7 +235,7 @@ class BillPayments:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -274,7 +275,7 @@ class BillPayments:
         headers = {}
         query_params = utils.get_query_params(operations.ListBillPaymentsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -288,7 +289,7 @@ class BillPayments:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

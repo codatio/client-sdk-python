@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class InvoiceTo:
     r"""Links the current record to the underlying record or data type that created it.

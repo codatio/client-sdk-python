@@ -10,7 +10,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ProfitAndLossReport:
     gross_profit: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('grossProfit'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})

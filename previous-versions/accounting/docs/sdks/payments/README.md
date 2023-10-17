@@ -1,4 +1,5 @@
-# payments
+# Payments
+(*payments*)
 
 ## Overview
 
@@ -39,58 +40,46 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreatePaymentRequest(
     payment=shared.Payment(
-        account_ref=shared.AccountRef(
-            id='e71f6c48-252d-4777-9e7f-d074009ef8d2',
-            name='Dr. Levi Volkman',
-        ),
+        account_ref=shared.AccountRef(),
         currency='USD',
-        currency_rate=Decimal('161.58'),
         customer_ref=shared.AccountingCustomerRef(
-            company_name='provident',
-            id='7b5da08c-57fa-46c7-8a21-6e19bafeca61',
+            id='<ID>',
         ),
         date_='2022-10-23T00:00:00.000Z',
-        id='1498140b-64ff-48ae-970e-f03b5f37e4aa',
         lines=[
             shared.PaymentLine(
                 allocated_on_date='2022-10-23T00:00:00.000Z',
-                amount=Decimal('3819.74'),
+                amount=Decimal('8592.13'),
                 links=[
                     shared.PaymentLineLink(
-                        amount=Decimal('5576.51'),
-                        currency_rate=Decimal('3385.42'),
-                        id='55966732-aa5d-4cb6-a82c-b70f8cfd5fb6',
-                        type=shared.PaymentLinkType.DISCOUNT,
+                        type=shared.PaymentLinkType.OTHER,
                     ),
                 ],
             ),
         ],
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        note='dicta',
-        payment_method_ref='quidem',
-        reference='omnis',
+        payment_method_ref=shared.PaymentMethodRef(
+            id='<ID>',
+        ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "molestias": {
-                    "a": 'dignissimos',
+                "blue": {
+                    "shred": 'abnormally',
                 },
             },
         ),
-        total_amount=Decimal('2883.48'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=511054,
 )
 
 res = s.payments.create(req)
 
 if res.create_payment_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -131,13 +120,14 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='dolore',
+    payment_id='Northeast Hatchback Kia',
 )
 
 res = s.payments.get(req)
 
 if res.payment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -187,6 +177,7 @@ res = s.payments.get_create_model(req)
 
 if res.push_option is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -228,13 +219,13 @@ req = operations.ListPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='aliquid',
 )
 
 res = s.payments.list(req)
 
 if res.payments is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

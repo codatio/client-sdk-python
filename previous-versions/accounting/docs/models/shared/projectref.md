@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *str*              | :heavy_check_mark: | N/A                |
-| `name`             | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| Field                                       | Type                                        | Required                                    | Description                                 |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| `id`                                        | *str*                                       | :heavy_check_mark:                          | Unique identifier to the project reference. |
+| `name`                                      | *Optional[str]*                             | :heavy_minus_sign:                          | The project's name.                         |

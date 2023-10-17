@@ -5,13 +5,12 @@ import dataclasses
 from ..shared import invoiceto as shared_invoiceto
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Propertiestracking2:
-    record_refs: Optional[list[shared_invoiceto.InvoiceTo]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs'), 'exclude': lambda f: f is None }})
+    record_refs: Optional[List[shared_invoiceto.InvoiceTo]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
     
 

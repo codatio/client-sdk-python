@@ -29,12 +29,12 @@ class Journals:
         
         url = utils.generate_url(operations.CreateJournalRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journals', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "journal", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "journal", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateJournalRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -48,7 +48,7 @@ class Journals:
 
         def do_request():
             return client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -89,7 +89,7 @@ class Journals:
         url = utils.generate_url(operations.GetJournalRequest, base_url, '/companies/{companyId}/data/journals/{journalId}', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -103,7 +103,7 @@ class Journals:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -146,7 +146,7 @@ class Journals:
         url = utils.generate_url(operations.GetCreateJournalsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/journals', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -160,7 +160,7 @@ class Journals:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -200,7 +200,7 @@ class Journals:
         headers = {}
         query_params = utils.get_query_params(operations.ListJournalsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -214,7 +214,7 @@ class Journals:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',

@@ -7,15 +7,15 @@ from ..shared import billstatus as shared_billstatus
 from ..shared import metadata as shared_metadata
 from ..shared import paymentallocationpayment as shared_paymentallocationpayment
 from ..shared import purchaseorderref as shared_purchaseorderref
+from ..shared import supplementaldata as shared_supplementaldata
 from ..shared import supplierref as shared_supplierref
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
-from typing import Any, Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class BillPaymentAllocationAllocation:
     allocated_on_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocatedOnDate'), 'exclude': lambda f: f is None }})
@@ -48,7 +48,7 @@ class BillPaymentAllocationAllocation:
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -82,7 +82,6 @@ class BillPaymentAllocationAllocation:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class BillPaymentAllocation:
     allocation: BillPaymentAllocationAllocation = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allocation') }})
@@ -92,30 +91,17 @@ class BillPaymentAllocation:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class BillSupplementalData:
-    r"""Supplemental data is additional data you can include in our standard data types.
-
-    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
-    """
-    content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is None }})
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class BillWithholdingTax:
     amount: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
+    r"""Amount of tax withheld."""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
+    r"""Name assigned to withheld tax."""
     
 
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Bill:
     r"""> **Invoices or bills?**
@@ -147,7 +133,7 @@ class Bill:
     r"""Amount of tax on the bill."""
     total_amount: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Amount of the bill, including tax."""
-    amount_due: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amountDue'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    amount_due: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amountDue'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Amount outstanding on the bill."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
@@ -158,7 +144,7 @@ class Bill:
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -188,25 +174,25 @@ class Bill:
     due_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dueDate'), 'exclude': lambda f: f is None }})
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier for the bill, unique for the company in the accounting platform."""
-    line_items: Optional[list[shared_billlineitem.BillLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems'), 'exclude': lambda f: f is None }})
+    line_items: Optional[List[shared_billlineitem.BillLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lineItems') }})
     r"""Array of Bill line items."""
     metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is None }})
+    note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note') }})
     r"""Any private, company notes about the bill, such as payment information."""
-    payment_allocations: Optional[list[BillPaymentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations'), 'exclude': lambda f: f is None }})
+    payment_allocations: Optional[List[BillPaymentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('paymentAllocations') }})
     r"""An array of payment allocations."""
-    purchase_order_refs: Optional[list[shared_purchaseorderref.PurchaseOrderRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('purchaseOrderRefs'), 'exclude': lambda f: f is None }})
-    reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference'), 'exclude': lambda f: f is None }})
+    purchase_order_refs: Optional[List[shared_purchaseorderref.PurchaseOrderRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('purchaseOrderRefs') }})
+    reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference') }})
     r"""User-friendly reference for the bill."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    supplemental_data: Optional[BillSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
     supplier_ref: Optional[shared_supplierref.SupplierRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the supplier the record relates to."""
-    withholding_tax: Optional[list[BillWithholdingTax]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax'), 'exclude': lambda f: f is None }})
+    withholding_tax: Optional[List[BillWithholdingTax]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('withholdingTax') }})
     
 

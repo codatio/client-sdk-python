@@ -6,11 +6,10 @@ from ..shared import profitandlossreport as shared_profitandlossreport
 from ..shared import reportbasis as shared_reportbasis
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ProfitAndLossReport1:
     r"""> **Language tip:** Profit and loss statement is also referred to as **income statement** under US GAAP (Generally Accepted Accounting Principles).
@@ -40,7 +39,7 @@ class ProfitAndLossReport1:
     r"""Base currency of the company in which the profit and loss report is presented."""
     report_basis: shared_reportbasis.ReportBasis = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportBasis') }})
     r"""The basis of a report."""
-    reports: list[shared_profitandlossreport.ProfitAndLossReport] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
+    reports: List[shared_profitandlossreport.ProfitAndLossReport] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
     r"""An array of profit and loss reports."""
     earliest_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('earliestAvailableMonth'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

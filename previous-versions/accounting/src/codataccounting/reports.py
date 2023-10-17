@@ -23,7 +23,7 @@ class Reports:
         headers = {}
         query_params = utils.get_query_params(operations.GetAgedCreditorsReportRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -37,7 +37,7 @@ class Reports:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -73,7 +73,7 @@ class Reports:
         headers = {}
         query_params = utils.get_query_params(operations.GetAgedDebtorsReportRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -87,7 +87,7 @@ class Reports:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -123,7 +123,7 @@ class Reports:
         headers = {}
         query_params = utils.get_query_params(operations.GetBalanceSheetRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -137,7 +137,7 @@ class Reports:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -173,7 +173,7 @@ class Reports:
         headers = {}
         query_params = utils.get_query_params(operations.GetCashFlowStatementRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -187,7 +187,7 @@ class Reports:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -223,7 +223,7 @@ class Reports:
         headers = {}
         query_params = utils.get_query_params(operations.GetProfitAndLossRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -237,7 +237,7 @@ class Reports:
 
         def do_request():
             return client.request('GET', url, params=query_params, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -272,7 +272,7 @@ class Reports:
         url = utils.generate_url(operations.IsAgedCreditorsReportAvailableRequest, base_url, '/companies/{companyId}/reports/agedCreditor/available', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -286,7 +286,7 @@ class Reports:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
@@ -315,7 +315,7 @@ class Reports:
         url = utils.generate_url(operations.IsAgedDebtorReportAvailableRequest, base_url, '/companies/{companyId}/reports/agedDebtor/available', request)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -329,7 +329,7 @@ class Reports:
 
         def do_request():
             return client.request('GET', url, headers=headers)
-        
+
         http_res = utils.retry(do_request, utils.Retries(retry_config, [
             '408',
             '429',
