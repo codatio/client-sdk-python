@@ -1,4 +1,5 @@
-# sync
+# Sync
+(*sync*)
 
 ## Overview
 
@@ -34,6 +35,7 @@ res = s.sync.get_sync_status(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -77,6 +79,7 @@ res = s.sync.request_sync(req)
 
 if res.sync_summary is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -122,6 +125,7 @@ res = s.sync.request_sync_for_date_range(req)
 
 if res.sync_summary is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

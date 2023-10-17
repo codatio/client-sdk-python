@@ -1,4 +1,5 @@
-# company_management
+# CompanyManagement
+(*company_management*)
 
 ## Overview
 
@@ -6,7 +7,7 @@ Create new and manage existing Sync for Commerce companies.
 
 ### Available Operations
 
-* [create_company](#create_company) - Create Sync for Commerce company
+* [create_company](#create_company) - Create sync for commerce company
 * [create_connection](#create_connection) - Create connection
 * [list_companies](#list_companies) - List companies
 * [list_connections](#list_connections) - List data connections
@@ -37,6 +38,7 @@ res = s.company_management.create_company(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -69,7 +71,6 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.CreateConnectionRequest(
-    request_body='adipisci',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -77,6 +78,7 @@ res = s.company_management.create_connection(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -112,13 +114,13 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='recusandae',
 )
 
 res = s.company_management.list_companies(req)
 
 if res.companies is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -155,13 +157,13 @@ req = operations.ListConnectionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='similique',
 )
 
 res = s.company_management.list_connections(req)
 
 if res.connections is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -194,9 +196,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.UpdateConnectionRequest(
-    update_connection=shared.UpdateConnection(
-        status=shared.DataConnectionStatus.LINKED,
-    ),
+    update_connection=shared.UpdateConnection(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -205,6 +205,7 @@ res = s.company_management.update_connection(req)
 
 if res.connection is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

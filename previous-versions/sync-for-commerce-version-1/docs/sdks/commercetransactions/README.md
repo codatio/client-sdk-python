@@ -1,4 +1,5 @@
-# commerce_transactions
+# CommerceTransactions
+(*commerce_transactions*)
 
 ## Overview
 
@@ -35,13 +36,14 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommerceTransactionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transaction_id='error',
+    transaction_id='West Infrastructure',
 )
 
 res = s.commerce_transactions.get_commerce_transaction(req)
 
 if res.commerce_transaction is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -84,13 +86,13 @@ req = operations.ListCommerceTransactionsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='earum',
 )
 
 res = s.commerce_transactions.list_commerce_transactions(req)
 
 if res.commerce_transactions is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

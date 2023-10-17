@@ -1,4 +1,5 @@
-# configuration
+# Configuration
+(*configuration*)
 
 ## Overview
 
@@ -6,8 +7,8 @@ Expressively configure preferences for any given Sync for Commerce company.
 
 ### Available Operations
 
-* [get_configuration](#get_configuration) - Retrieve config preferences set for a company.
-* [set_configuration](#set_configuration) - Create or update configuration.
+* [get_configuration](#get_configuration) - Retrieve config preferences set for a company
+* [set_configuration](#set_configuration) - Create or update configuration
 
 ## get_configuration
 
@@ -33,6 +34,7 @@ res = s.configuration.get_configuration(req)
 
 if res.configuration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -72,6 +74,7 @@ res = s.configuration.set_configuration(req)
 
 if res.configuration is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

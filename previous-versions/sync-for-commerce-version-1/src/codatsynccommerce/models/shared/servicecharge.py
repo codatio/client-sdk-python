@@ -6,11 +6,10 @@ from ..shared import servicechargetype as shared_servicechargetype
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ServiceChargeTaxComponentAllocationTaxComponentRef:
     r"""Taxes rates reference object depending on the rates being available on source commerce package."""
@@ -23,10 +22,9 @@ class ServiceChargeTaxComponentAllocationTaxComponentRef:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ServiceChargeTaxComponentAllocation:
-    rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('rate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('rate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Tax amount on order line sale as available from source commerce platform."""
     tax_component_ref: Optional[ServiceChargeTaxComponentAllocationTaxComponentRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxComponentRef'), 'exclude': lambda f: f is None }})
     r"""Taxes rates reference object depending on the rates being available on source commerce package."""
@@ -35,7 +33,6 @@ class ServiceChargeTaxComponentAllocation:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ServiceCharge:
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
@@ -44,12 +41,12 @@ class ServiceCharge:
     r"""The number of times the charge is charged."""
     tax_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Amount of the service charge that is tax."""
-    taxes: Optional[list[ServiceChargeTaxComponentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxes'), 'exclude': lambda f: f is None }})
+    taxes: Optional[List[ServiceChargeTaxComponentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxes'), 'exclude': lambda f: f is None }})
     r"""Taxes breakdown as applied to service charges."""
     tax_percentage: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxPercentage'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Percentage rate (from 0 to 100) of any tax applied to the service charge."""
     total_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
-    r"""Total service charge, including taxes."""
+    r"""Total amount of the service charge, including tax."""
     type: Optional[shared_servicechargetype.ServiceChargeType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the service charge."""
     

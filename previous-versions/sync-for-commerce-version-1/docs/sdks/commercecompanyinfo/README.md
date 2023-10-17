@@ -1,4 +1,5 @@
-# commerce_company_info
+# CommerceCompanyInfo
+(*commerce_company_info*)
 
 ## Overview
 
@@ -35,6 +36,7 @@ res = s.commerce_company_info.get_commerce_company_info(req)
 
 if res.commerce_company_info is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
