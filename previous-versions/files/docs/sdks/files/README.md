@@ -1,4 +1,5 @@
-# files
+# Files
+(*files*)
 
 ## Overview
 
@@ -21,9 +22,7 @@ import codatfiles
 from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.DownloadFilesRequest(
@@ -35,6 +34,7 @@ res = s.files.download_files(req)
 
 if res.data is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -61,9 +61,7 @@ import codatfiles
 from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListFilesRequest(
@@ -74,6 +72,7 @@ res = s.files.list_files(req)
 
 if res.files is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -106,15 +105,13 @@ import codatfiles
 from codatfiles.models import operations, shared
 
 s = codatfiles.CodatFiles(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.UploadFilesRequest(
     request_body=operations.UploadFilesRequestBody(
-        content='distinctio'.encode(),
-        request_body='quibusdam',
+        content=';*>\'Oq[l/G'.encode(),
+        request_body='syndicate Central defect',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -124,6 +121,7 @@ res = s.files.upload_files(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
