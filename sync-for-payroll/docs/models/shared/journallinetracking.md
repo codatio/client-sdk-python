@@ -7,4 +7,4 @@ List of record refs associated with the tracking information for the line (eg to
 
 | Field                                               | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `record_refs`                                       | list[[RecordRef](../../models/shared/recordref.md)] | :heavy_minus_sign:                                  | N/A                                                 |
+| `record_refs`                                       | List[[RecordRef](../../models/shared/recordref.md)] | :heavy_minus_sign:                                  | N/A                                                 |
