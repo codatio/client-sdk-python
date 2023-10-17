@@ -6,11 +6,10 @@ from ..shared import disputestatus as shared_disputestatus
 from ..shared import transactionsourceref as shared_transactionsourceref
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Optional
+from typing import Any, List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Dispute:
     r"""A customer may file a payment dispute with their bank or other card issuer when they're unsatisfied with their purchase or believe they have been charged incorrectly. For example:
@@ -54,7 +53,7 @@ class Dispute:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    disputed_transactions: Optional[list[shared_transactionsourceref.TransactionSourceRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('disputedTransactions'), 'exclude': lambda f: f is None }})
+    disputed_transactions: Optional[List[shared_transactionsourceref.TransactionSourceRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('disputedTransactions'), 'exclude': lambda f: f is None }})
     r"""Link to the source event(s) which triggered this transaction."""
     due_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dueDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -83,7 +82,7 @@ class Dispute:
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     status: Optional[shared_disputestatus.DisputeStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""Current status of the dispute"""
-    total_amount: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
+    total_amount: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'exclude': lambda f: f is None }})
     r"""Total transaction amount that is under dispute."""
     
 

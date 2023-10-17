@@ -1,4 +1,5 @@
-# payments
+# Payments
+(*payments*)
 
 ## Overview
 
@@ -29,21 +30,20 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_id='illum',
+    payment_id='Northeast Hatchback Kia',
 )
 
 res = s.payments.get(req)
 
 if res.payment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -77,21 +77,20 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetPaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_method_id='vel',
+    payment_method_id='Markets',
 )
 
 res = s.payments.get_method(req)
 
 if res.payment_method is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -123,9 +122,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListPaymentsRequest(
@@ -134,13 +131,13 @@ req = operations.ListPaymentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='error',
 )
 
 res = s.payments.list(req)
 
 if res.payments is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -172,9 +169,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListPaymentMethodsRequest(
@@ -183,13 +178,13 @@ req = operations.ListPaymentMethodsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deserunt',
 )
 
 res = s.payments.list_methods(req)
 
 if res.payment_methods is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

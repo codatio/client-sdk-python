@@ -9,11 +9,11 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CommerceCustomerRef:
-    r"""Reference to the customer that placed the order."""
+class PaymentMethodRef:
+    r"""The payment method the record is linked to in the accounting or commerce platform."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""The unique identitifer of the customer being referenced"""
+    r"""The unique identifier of the location being referenced."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
-    r"""Name of the customer being referenced."""
+    r"""Name of the location being referenced."""
     
 

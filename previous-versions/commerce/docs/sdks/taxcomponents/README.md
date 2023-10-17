@@ -1,4 +1,5 @@
-# tax_components
+# TaxComponents
+(*tax_components*)
 
 ## Overview
 
@@ -27,21 +28,20 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.GetTaxComponentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    tax_id='ipsa',
+    tax_id='Northeast Hatchback Kia',
 )
 
 res = s.tax_components.get(req)
 
 if res.tax_component is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -73,9 +73,7 @@ import codatcommerce
 from codatcommerce.models import operations, shared
 
 s = codatcommerce.CodatCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
 req = operations.ListTaxComponentsRequest(
@@ -84,13 +82,13 @@ req = operations.ListTaxComponentsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='delectus',
 )
 
 res = s.tax_components.list(req)
 
 if res.tax_components is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

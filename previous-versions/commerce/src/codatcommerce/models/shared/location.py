@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Location:
     r"""The Location datatype holds information on the geographic location at which stocks of products may be held, as referenced in the Products data type.
