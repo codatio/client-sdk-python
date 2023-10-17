@@ -5,8 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import datastatus as shared_datastatus
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
-
+from typing import Dict, Optional
 
 
 @dataclasses.dataclass
@@ -17,14 +16,13 @@ class GetDataStatusRequest:
 
 
 
-
 @dataclasses.dataclass
 class GetDataStatusResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    data_status_response: Optional[dict[str, shared_datastatus.DataStatus]] = dataclasses.field(default=None)
+    data_status_response: Optional[Dict[str, shared_datastatus.DataStatus]] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""

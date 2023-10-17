@@ -40,7 +40,6 @@ req = operations.CreateExpenseTransactionRequest(
                     type=shared.ContactRefType.SUPPLIER,
                 ),
                 currency='GBP',
-                currency_rate=Decimal('4865.89'),
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
                 issue_date='2022-10-23T00:00:00.000Z',
                 lines=[
@@ -73,6 +72,7 @@ res = s.expenses.create(req)
 
 if res.create_expense_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -115,7 +115,6 @@ req = operations.UpdateExpenseTransactionRequest(
             type=shared.ContactRefType.SUPPLIER,
         ),
         currency='GBP',
-        currency_rate=Decimal('8574.78'),
         issue_date='2022-06-28T00:00:00.000Z',
         lines=[
             shared.ExpenseTransactionLine(
@@ -136,7 +135,7 @@ req = operations.UpdateExpenseTransactionRequest(
         ],
         merchant_name='Amazon UK',
         notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type='New',
+        type='Van',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
@@ -146,6 +145,7 @@ res = s.expenses.update(req)
 
 if res.update_expense_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -191,6 +191,7 @@ res = s.expenses.upload_attachment(req)
 
 if res.attachment is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

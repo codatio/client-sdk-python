@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ClientRateLimitResetWebhook:
     r"""Webhook request body for a client that has had their rate limit reset."""

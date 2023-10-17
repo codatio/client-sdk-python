@@ -8,7 +8,6 @@ from ..shared import pulloperations as shared_pulloperations
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListPullOperationsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -22,7 +21,6 @@ class ListPullOperationsRequest:
     query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
-
 
 
 

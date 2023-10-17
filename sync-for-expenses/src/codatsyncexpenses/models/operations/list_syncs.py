@@ -5,8 +5,7 @@ import dataclasses
 import requests as requests_http
 from ..shared import companysyncstatus as shared_companysyncstatus
 from ..shared import errormessage as shared_errormessage
-from typing import Optional
-
+from typing import List, Optional
 
 
 @dataclasses.dataclass
@@ -17,14 +16,13 @@ class ListSyncsRequest:
 
 
 
-
 @dataclasses.dataclass
 class ListSyncsResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    company_sync_statuses: Optional[list[shared_companysyncstatus.CompanySyncStatus]] = dataclasses.field(default=None)
+    company_sync_statuses: Optional[List[shared_companysyncstatus.CompanySyncStatus]] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""

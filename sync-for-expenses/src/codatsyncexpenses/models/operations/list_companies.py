@@ -8,7 +8,6 @@ from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListCompaniesRequest:
     order_by: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
@@ -20,7 +19,6 @@ class ListCompaniesRequest:
     query: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'query', 'style': 'form', 'explode': True }})
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
     
-
 
 
 

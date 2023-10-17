@@ -8,13 +8,11 @@ from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreatePartnerExpenseConnectionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a company."""
     
-
 
 
 

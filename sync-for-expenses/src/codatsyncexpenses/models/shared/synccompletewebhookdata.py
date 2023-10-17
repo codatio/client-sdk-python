@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncCompleteWebhookData:
     sync_date_range_finish_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('SyncDateRangeFinishUtc'), 'exclude': lambda f: f is None }})

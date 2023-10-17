@@ -4,14 +4,14 @@ from __future__ import annotations
 import dataclasses
 from ..shared import accountingaddresstype as shared_accountingaddresstype
 from ..shared import metadata as shared_metadata
+from ..shared import supplementaldata as shared_supplementaldata
 from ..shared import supplierstatus as shared_supplierstatus
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
-from typing import Any, Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SupplierAccountingAddress:
     type: shared_accountingaddresstype.AccountingAddressType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
@@ -33,20 +33,6 @@ class SupplierAccountingAddress:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class SupplierSupplementalData:
-    r"""Supplemental data is additional data you can include in our standard data types.
-
-    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
-    """
-    content: Optional[dict[str, dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Supplier:
     r"""> View the coverage for suppliers in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers\\" target=\\"_blank\\">Data coverage explorer</a>.
@@ -57,7 +43,7 @@ class Supplier:
     """
     status: shared_supplierstatus.SupplierStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of the supplier."""
-    addresses: Optional[list[SupplierAccountingAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses') }})
+    addresses: Optional[List[SupplierAccountingAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses') }})
     r"""An array of Addresses."""
     contact_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactName') }})
     r"""Name of the main contact for the supplier."""
@@ -74,7 +60,7 @@ class Supplier:
     registration_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('registrationNumber') }})
     r"""Company number of the supplier. In the UK, this is typically the company registration number issued by Companies House."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    supplemental_data: Optional[SupplierSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.

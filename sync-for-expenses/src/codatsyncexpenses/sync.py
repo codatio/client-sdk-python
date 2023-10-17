@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from codatsyncexpenses import utils
 from codatsyncexpenses.models import errors, operations, shared
-from typing import Optional
+from typing import List, Optional
 
 class Sync:
     r"""Trigger and monitor expense syncs to accounting software."""
@@ -247,7 +247,7 @@ class Sync:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.CompanySyncStatus]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[shared.CompanySyncStatus]])
                 res.company_sync_statuses = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)

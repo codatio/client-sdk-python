@@ -8,7 +8,6 @@ from ..shared import transaction as shared_transaction
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetSyncTransactionRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -18,7 +17,6 @@ class GetSyncTransactionRequest:
     transaction_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'transactionId', 'style': 'simple', 'explode': False }})
     r"""The unique identifier for your SMB's transaction."""
     
-
 
 
 

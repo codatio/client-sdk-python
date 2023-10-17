@@ -2,8 +2,9 @@
 
 import requests
 from dataclasses import dataclass
-
+from typing import Dict, Tuple
 from .utils.retries import RetryConfig
+from .utils import utils
 
 
 SERVERS = [
@@ -19,14 +20,14 @@ class SDKConfiguration:
     server_idx: int = 0
     language: str = 'python'
     openapi_doc_version: str = 'prealpha'
-    sdk_version: str = '3.1.0'
-    gen_version: str = '2.146.1'
-    user_agent: str = 'speakeasy-sdk/python 3.1.0 2.146.1 prealpha codat-sync-for-expenses'
+    sdk_version: str = '4.0.0'
+    gen_version: str = '2.159.2'
+    user_agent: str = 'speakeasy-sdk/python 4.0.0 2.159.2 prealpha codat-sync-for-expenses'
     retry_config: RetryConfig = None
 
-    def get_server_details(self) -> tuple[str, dict[str, str]]:
+    def get_server_details(self) -> Tuple[str, Dict[str, str]]:
         if self.server_url:
-            return self.server_url.removesuffix('/'), {}
+            return utils.remove_suffix(self.server_url, '/'), {}
         if self.server_idx is None:
             self.server_idx = 0
 

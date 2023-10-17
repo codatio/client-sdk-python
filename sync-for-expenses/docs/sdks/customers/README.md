@@ -41,70 +41,46 @@ req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Items(
-                city='Jenafurt',
-                country='Sweden',
-                line1='innovative blue',
-                line2='grey technology East',
-                postal_code='30778',
-                region='quantify Polestar mobile',
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
-        contact_name='Durham after',
         contacts=[
             shared.Contact(
                 address=shared.Items(
-                    city='Darenberg',
-                    country='Cote d\'Ivoire',
-                    line1='Buckinghamshire functionalities Grocery',
-                    line2='Metal',
-                    postal_code='61380',
-                    region='Interactions Senior Mouse',
-                    type=shared.AccountingAddressType.UNKNOWN,
+                    type=shared.AccountingAddressType.BILLING,
                 ),
-                email='Judd27@hotmail.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='transmit likewise',
                 phone=[
                     shared.ContactPhone(
-                        number='(877) 492-8687',
-                        type=shared.PhoneNumberType.FAX,
+                        number='01224 658 999',
+                        type=shared.PhoneNumberType.MOBILE,
                     ),
                 ],
-                status=shared.CustomerStatus.ACTIVE,
+                status=shared.CustomerStatus.UNKNOWN,
             ),
         ],
-        customer_name='Rubber silver Indiana',
-        default_currency='EUR',
-        email_address='Thea_Ritchie76@hotmail.com',
-        id='<ID>',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        default_currency='GBP',
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='948.595.2034',
-        registration_number='digital',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.UNKNOWN,
+        status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "recusandae": {
-                    "maiores": 'Mongolia',
+                "grey": {
+                    "technology": 'East',
                 },
             },
         ),
-        tax_number='discrete',
     ),
-    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    timeout_in_minutes=522311,
 )
 
 res = s.customers.create(req)
 
 if res.create_customer_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -152,6 +128,7 @@ res = s.customers.get(req)
 
 if res.customer is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -193,13 +170,13 @@ req = operations.ListCustomersRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='Northeast Metal Canada',
 )
 
 res = s.customers.list(req)
 
 if res.customers is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -244,72 +221,47 @@ req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
             shared.Items(
-                city='Ann Arbor',
-                country='Montserrat',
-                line1='Reactive',
-                line2='Metal cheater Islands',
-                postal_code='43372',
-                region='Carolina syndicate',
-                type=shared.AccountingAddressType.BILLING,
+                type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
-        contact_name='East',
         contacts=[
             shared.Contact(
                 address=shared.Items(
-                    city='Olenfurt',
-                    country='Paraguay',
-                    line1='Home users Sharable',
-                    line2='Lev Wooden',
-                    postal_code='36848',
-                    region='brightly',
-                    type=shared.AccountingAddressType.DELIVERY,
+                    type=shared.AccountingAddressType.UNKNOWN,
                 ),
-                email='Josie49@yahoo.com',
                 modified_date='2022-10-23T00:00:00.000Z',
-                name='possimus navigating Diesel',
                 phone=[
                     shared.ContactPhone(
                         number='+44 25691 154789',
-                        type=shared.PhoneNumberType.PRIMARY,
+                        type=shared.PhoneNumberType.LANDLINE,
                     ),
                 ],
-                status=shared.CustomerStatus.UNKNOWN,
+                status=shared.CustomerStatus.ARCHIVED,
             ),
         ],
-        customer_name='Reactive Global Northeast',
-        default_currency='USD',
-        email_address='Abe.Bogan@hotmail.com',
-        id='<ID>',
-        metadata=shared.Metadata(
-            is_deleted=False,
-        ),
+        default_currency='EUR',
+        metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
-        phone='(883) 732-4217 x6499',
-        registration_number='redundant ew',
         source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.CustomerStatus.ACTIVE,
+        status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "asperiores": {
-                    "quibusdam": 'Omnigender',
+                "redundant": {
+                    "cheater": 'Islands',
                 },
             },
         ),
-        tax_number='Volkswagen Specialist Bacon',
     ),
-    allow_sync_on_push_complete=False,
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='Copper port East',
-    force_update=False,
-    timeout_in_minutes=373959,
+    customer_id='withdrawal extend',
 )
 
 res = s.customers.update(req)
 
 if res.update_customer_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

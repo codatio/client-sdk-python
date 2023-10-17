@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from codatsyncexpenses import utils
 from codatsyncexpenses.models import errors, operations, shared
-from typing import Optional
+from typing import Dict, Optional
 
 class ManageData:
     r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
@@ -48,7 +48,7 @@ class ManageData:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.DataStatus]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, shared.DataStatus]])
                 res.data_status_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)

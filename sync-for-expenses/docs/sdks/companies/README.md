@@ -42,6 +42,7 @@ res = s.companies.create(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -82,6 +83,7 @@ res = s.companies.delete(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -121,6 +123,7 @@ res = s.companies.get(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -156,13 +159,13 @@ req = operations.ListCompaniesRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='Northeast Metal Canada',
 )
 
 res = s.companies.list(req)
 
 if res.companies is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -206,6 +209,7 @@ res = s.companies.update(req)
 
 if res.company is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

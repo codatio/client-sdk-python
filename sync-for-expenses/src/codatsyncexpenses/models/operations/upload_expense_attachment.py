@@ -8,13 +8,11 @@ from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class UploadExpenseAttachmentRequestBody:
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
     request_body: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'requestBody' }})
     
-
 
 
 
@@ -28,7 +26,6 @@ class UploadExpenseAttachmentRequest:
     r"""The unique identifier for your SMB's transaction."""
     request_body: Optional[UploadExpenseAttachmentRequestBody] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }, 'request': { 'media_type': 'multipart/form-data' }})
     
-
 
 
 

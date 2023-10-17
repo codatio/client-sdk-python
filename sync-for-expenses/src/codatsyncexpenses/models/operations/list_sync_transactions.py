@@ -8,7 +8,6 @@ from ..shared import transactions as shared_transactions
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListSyncTransactionsRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -20,7 +19,6 @@ class ListSyncTransactionsRequest:
     page_size: Optional[int] = dataclasses.field(default=100, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
     r"""Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging)."""
     
-
 
 
 

@@ -9,7 +9,6 @@ from ..shared import updatesupplierresponse as shared_updatesupplierresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class UpdateSupplierRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -26,7 +25,6 @@ class UpdateSupplierRequest:
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     r"""Time limit for the push operation to complete before it is timed out."""
     
-
 
 
 

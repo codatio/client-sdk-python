@@ -8,7 +8,6 @@ from ..shared import pushoption as shared_pushoption
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetCreateChartOfAccountsModelRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
@@ -16,7 +15,6 @@ class GetCreateChartOfAccountsModelRequest:
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a connection."""
     
-
 
 
 

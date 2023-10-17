@@ -8,7 +8,6 @@ from ..shared import errormessage as shared_errormessage
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateCompanyResponse:
     content_type: str = dataclasses.field()
