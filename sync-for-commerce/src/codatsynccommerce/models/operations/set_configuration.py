@@ -7,21 +7,23 @@ from ..shared import configuration as shared_configuration
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class SetConfigurationRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a company."""
     
-
 
 
 
 @dataclasses.dataclass
 class SetConfigurationResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     configuration: Optional[shared_configuration.Configuration] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

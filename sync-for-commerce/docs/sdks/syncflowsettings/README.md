@@ -1,4 +1,5 @@
 # SyncFlowSettings
+(*sync_flow_settings*)
 
 ## Overview
 
@@ -32,6 +33,7 @@ res = s.sync_flow_settings.get_config_text_sync_flow()
 
 if res.localization_info is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -63,14 +65,15 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetVisibleAccountsRequest(
-    client_id='e0f467cc-8796-4ed1-91a0-5dfc2ddf7cc7',
-    platform_key='8ca1ba92-8fc8-4167-82cb-739205929396',
+    client_id='86fe9741-738d-4f2c-8e96-9c3f84156e91',
+    platform_key='gbol',
 )
 
 res = s.sync_flow_settings.get_visible_accounts(req)
 
 if res.visible_accounts is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -103,23 +106,21 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "hic": shared.Localization(
-        required=False,
-        text='saepe',
-    ),
+    "West": shared.Localization(),
 }
 
 res = s.sync_flow_settings.update_config_text_sync_flow(req)
 
 if res.localization_info is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [dict[str, shared.Localization]](../../models//.md)                 | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `request`                                                           | [Dict[str, shared.Localization]](../../models//.md)                 | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 
@@ -147,16 +148,17 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'fuga',
+            'Coordinator',
         ],
     ),
-    platform_key='7596eb10-faaa-4235-ac59-55907aff1a3a',
+    platform_key='gbol',
 )
 
 res = s.sync_flow_settings.update_visible_accounts_sync_flow(req)
 
 if res.visible_accounts is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

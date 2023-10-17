@@ -4,6 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class FeatureState(str, Enum):
+    r"""The current release state of the feature."""
     RELEASE = 'Release'
     ALPHA = 'Alpha'
     BETA = 'Beta'

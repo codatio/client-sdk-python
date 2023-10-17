@@ -1,4 +1,5 @@
 # Integrations
+(*integrations*)
 
 ## Overview
 
@@ -26,13 +27,14 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetIntegrationBrandingRequest(
-    platform_key='error',
+    platform_key='gbol',
 )
 
 res = s.integrations.get_branding(req)
 
 if res.branding is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -68,13 +70,13 @@ req = operations.ListIntegrationsRequest(
     order_by='-modifiedDate',
     page=1,
     page_size=100,
-    query='deserunt',
 )
 
 res = s.integrations.list(req)
 
 if res.integrations is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
