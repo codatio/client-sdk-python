@@ -22,6 +22,5 @@ python:
   version: 0.31.0
   author: Codat
   description: Access standardized accounting data from our accounting integrations.
-  flattenGlobalSecurity: false
   maxMethodParams: 0
   packageName: codat-accounting
