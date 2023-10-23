@@ -35,7 +35,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetTrackingCategoryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tracking_category_id='Northeast Hatchback Kia',
+    tracking_category_id='string',
 )
 
 res = s.tracking_categories.get(req)

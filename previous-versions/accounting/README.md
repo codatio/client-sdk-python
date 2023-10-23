@@ -28,7 +28,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetAccountTransactionRequest(
-    account_transaction_id='Northeast Hatchback Kia',
+    account_transaction_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -198,9 +198,13 @@ if res.account_transaction is not None:
 ### [purchase_orders](docs/sdks/purchaseorders/README.md)
 
 * [create](docs/sdks/purchaseorders/README.md#create) - Create purchase order
+* [download_attachment](docs/sdks/purchaseorders/README.md#download_attachment) - Download purchase order attachment
+* [download_purchase_order_pdf](docs/sdks/purchaseorders/README.md#download_purchase_order_pdf) - Download purchase order as PDF
 * [get](docs/sdks/purchaseorders/README.md#get) - Get purchase order
+* [get_attachment](docs/sdks/purchaseorders/README.md#get_attachment) - Get purchase order attachment
 * [get_create_update_model](docs/sdks/purchaseorders/README.md#get_create_update_model) - Get create/update purchase order model
 * [list](docs/sdks/purchaseorders/README.md#list) - List purchase orders
+* [list_attachments](docs/sdks/purchaseorders/README.md#list_attachments) - List purchase order attachments
 * [update](docs/sdks/purchaseorders/README.md#update) - Update purchase order
 
 ### [reports](docs/sdks/reports/README.md)
@@ -251,8 +255,6 @@ if res.account_transaction is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 

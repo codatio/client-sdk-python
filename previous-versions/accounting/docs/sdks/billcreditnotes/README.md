@@ -101,8 +101,8 @@ req = operations.CreateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "abnormally": {
-                    "deposit": 'evolve',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -114,8 +114,8 @@ req = operations.CreateBillCreditNoteRequest(
         total_tax_amount=Decimal('0'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('7150.4'),
-                name='SUV quantify Polestar',
+                amount=Decimal('8915.1'),
+                name='string',
             ),
         ],
     ),
@@ -167,7 +167,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillCreditNoteRequest(
-    bill_credit_note_id='Northeast Hatchback Kia',
+    bill_credit_note_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -376,8 +376,8 @@ req = operations.UpdateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Arizona": {
-                    "Cotton": 'extend',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -389,12 +389,12 @@ req = operations.UpdateBillCreditNoteRequest(
         total_tax_amount=Decimal('0'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('2494.4'),
-                name='Carolina syndicate',
+                amount=Decimal('1341.51'),
+                name='string',
             ),
         ],
     ),
-    bill_credit_note_id='implement JBOD',
+    bill_credit_note_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -451,9 +451,9 @@ s = codataccounting.CodatAccounting(
 req = operations.UploadBillCreditNoteAttachmentRequest(
     request_body=operations.UploadBillCreditNoteAttachmentRequestBody(
         content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        request_body='string',
     ),
-    bill_credit_note_id='Iowa Bentley',
+    bill_credit_note_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

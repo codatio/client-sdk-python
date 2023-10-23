@@ -10,7 +10,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PaymentMethodRef:
-    r"""The payment method the record is linked to in the accounting or commerce platform."""
+    r"""The Payment Method to which the payment is linked in the accounting platform."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The unique identifier of the location being referenced."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})

@@ -104,20 +104,20 @@ req = operations.CreateBillRequest(
         sub_total=Decimal('0.86'),
         supplemental_data=shared.SupplementalData(
             content={
-                "deposit": {
-                    "evolve": 'male',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
             id='<ID>',
         ),
-        tax_amount=Decimal('8559.52'),
-        total_amount=Decimal('8165.88'),
+        tax_amount=Decimal('4552.22'),
+        total_amount=Decimal('1697.27'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('5519.29'),
-                name='Polestar mobile',
+                amount=Decimal('3015.1'),
+                name='string',
             ),
         ],
     ),
@@ -589,24 +589,24 @@ req = operations.UpdateBillRequest(
         sub_total=Decimal('540.62'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Cotton": {
-                    "extend": 'Plastic',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
             id='<ID>',
         ),
-        tax_amount=Decimal('1395.79'),
-        total_amount=Decimal('6447.13'),
+        tax_amount=Decimal('2782.81'),
+        total_amount=Decimal('8965.01'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('7892.75'),
-                name='immediately implement JBOD',
+                amount=Decimal('4995.57'),
+                name='string',
             ),
         ],
     ),
-    bill_id='EILBDVJVNUAGVKRQ',
+    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -659,9 +659,9 @@ s = codataccounting.CodatAccounting(
 req = operations.UploadBillAttachmentRequest(
     request_body=operations.UploadBillAttachmentRequestBody(
         content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        request_body='string',
     ),
-    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    bill_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

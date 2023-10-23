@@ -35,7 +35,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetTaxRateRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tax_rate_id='Northeast Hatchback Kia',
+    tax_rate_id='string',
 )
 
 res = s.tax_rates.get(req)

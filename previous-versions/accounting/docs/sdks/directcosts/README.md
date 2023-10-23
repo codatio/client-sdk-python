@@ -95,13 +95,13 @@ req = operations.CreateDirectCostRequest(
         sub_total=Decimal('9510.62'),
         supplemental_data=shared.SupplementalData(
             content={
-                "abnormally": {
-                    "deposit": 'evolve',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        tax_amount=Decimal('7150.4'),
-        total_amount=Decimal('7926.2'),
+        tax_amount=Decimal('8915.1'),
+        total_amount=Decimal('0.86'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -152,7 +152,7 @@ req = operations.DownloadDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='Dakota Avon specifically',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.download_attachment(req)
@@ -201,7 +201,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetDirectCostRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='Northeast Hatchback Kia',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.get(req)
@@ -249,7 +249,7 @@ req = operations.GetDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='array East along',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.get_attachment(req)
@@ -395,7 +395,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListDirectCostAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='intuitive Frozen ouch',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.list_attachments(req)
@@ -446,11 +446,11 @@ s = codataccounting.CodatAccounting(
 req = operations.UploadDirectCostAttachmentRequest(
     request_body=operations.UploadDirectCostAttachmentRequestBody(
         content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        request_body='string',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='Iowa Bentley',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.upload_attachment(req)
