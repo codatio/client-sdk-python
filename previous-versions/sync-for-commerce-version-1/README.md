@@ -212,5 +212,3 @@ if res.accounting_create_account_response is not None:
 
 
 <!-- End Dev Containers -->
-
-<!-- Placeholder for Future Speakeasy SDK Sections -->
