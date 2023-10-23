@@ -80,7 +80,7 @@ if res.company is not None:
 
 * [create_api_key](docs/sdks/settings/README.md#create_api_key) - Create API key
 * [delete_api_key](docs/sdks/settings/README.md#delete_api_key) - Delete API key
-* [~~get_profile~~](docs/sdks/settings/README.md#get_profile) - Get profile :warning: **Deprecated**
+* [get_profile](docs/sdks/settings/README.md#get_profile) - Get profile
 * [get_sync_settings](docs/sdks/settings/README.md#get_sync_settings) - Get sync settings
 * [list_api_keys](docs/sdks/settings/README.md#list_api_keys) - List API keys
 * [update_profile](docs/sdks/settings/README.md#update_profile) - Update profile
@@ -101,8 +101,6 @@ if res.company is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
