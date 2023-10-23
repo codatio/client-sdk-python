@@ -41,8 +41,8 @@ req = operations.CreateAccountRequest(
         status=shared.AccountStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "Money": {
-                    "blue": 'shred',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -50,7 +50,7 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.AccountValidDataTypeLinks(
                 links=[
-                    'abnormally',
+                    'string',
                 ],
             ),
         ],

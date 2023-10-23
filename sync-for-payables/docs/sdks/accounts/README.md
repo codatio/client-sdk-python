@@ -54,8 +54,8 @@ req = operations.CreateAccountRequest(
         status=shared.AccountStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "Money": {
-                    "blue": 'shred',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -63,7 +63,7 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.AccountValidDataTypeLinks(
                 links=[
-                    'abnormally',
+                    'string',
                 ],
             ),
         ],
@@ -116,7 +116,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetAccountRequest(
-    account_id='Northeast Hatchback Kia',
+    account_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 

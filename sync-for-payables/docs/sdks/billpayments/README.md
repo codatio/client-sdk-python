@@ -65,8 +65,8 @@ req = operations.CreateBillPaymentRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "blue": {
-                    "shred": 'abnormally',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -144,7 +144,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='Van complexity',
+    bill_payment_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -192,7 +192,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='Northeast Hatchback Kia',
+    bill_payment_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
