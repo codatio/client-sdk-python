@@ -30,7 +30,7 @@ s = codatlending.CodatLending(
 )
 
 req = operations.GetAccountingBillPaymentRequest(
-    bill_payment_id='Northeast Hatchback Kia',
+    bill_payment_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 

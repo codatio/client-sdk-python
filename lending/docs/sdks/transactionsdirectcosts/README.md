@@ -34,7 +34,7 @@ req = operations.DownloadAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='Dakota Avon specifically',
+    direct_cost_id='string',
 )
 
 res = s.transactions.direct_costs.download_attachment(req)
@@ -83,7 +83,7 @@ s = codatlending.CodatLending(
 req = operations.GetAccountingDirectCostRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='Northeast Hatchback Kia',
+    direct_cost_id='string',
 )
 
 res = s.transactions.direct_costs.get(req)
@@ -131,7 +131,7 @@ req = operations.GetAccountingDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='array East along',
+    direct_cost_id='string',
 )
 
 res = s.transactions.direct_costs.get_attachment(req)
@@ -227,7 +227,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingDirectCostAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='intuitive Frozen ouch',
+    direct_cost_id='string',
 )
 
 res = s.transactions.direct_costs.list_attachments(req)

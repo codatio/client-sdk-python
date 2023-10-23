@@ -85,13 +85,13 @@ req = operations.CreateDirectCostRequest(
         sub_total=Decimal('9510.62'),
         supplemental_data=shared.SupplementalData(
             content={
-                "abnormally": {
-                    "deposit": 'evolve',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        tax_amount=Decimal('7150.4'),
-        total_amount=Decimal('7926.2'),
+        tax_amount=Decimal('8915.1'),
+        total_amount=Decimal('0.86'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
