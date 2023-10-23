@@ -78,13 +78,13 @@ req = operations.CreateAccountingDirectIncomeRequest(
         sub_total=Decimal('5786.44'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Tactics": {
-                    "duh": 'East',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        tax_amount=Decimal('2940.98'),
-        total_amount=Decimal('8825.39'),
+        tax_amount=Decimal('2812.91'),
+        total_amount=Decimal('6636.11'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

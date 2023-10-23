@@ -63,8 +63,8 @@ req = operations.CreateAccountingCustomerRequest(
         status=shared.CustomerStatus.UNKNOWN,
         supplemental_data=shared.SupplementalData(
             content={
-                "California": {
-                    "systems": 'North',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),

@@ -103,17 +103,17 @@ req = operations.CreateAccountingInvoiceRequest(
         status=shared.InvoiceStatus.PARTIALLY_PAID,
         supplemental_data=shared.SupplementalData(
             content={
-                "Beier": {
-                    "boo": 'Regional',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        total_amount=Decimal('1895.83'),
-        total_tax_amount=Decimal('7283.9'),
+        total_amount=Decimal('1416.23'),
+        total_tax_amount=Decimal('9069.87'),
         withholding_tax=[
             shared.AccountingInvoiceWithholdingTax(
-                amount=Decimal('1357.13'),
-                name='Gasoline Interactions Cisgender',
+                amount=Decimal('598.23'),
+                name='string',
             ),
         ],
     ),

@@ -53,8 +53,8 @@ req = operations.CreateAccountingAccountRequest(
         status=shared.AccountStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "Gasoline": {
-                    "Wall": 'Oriental',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -62,7 +62,7 @@ req = operations.CreateAccountingAccountRequest(
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'Intranet',
+                    'string',
                 ],
             ),
         ],
@@ -115,7 +115,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetAccountingAccountRequest(
-    account_id='Officer steer whoa',
+    account_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 

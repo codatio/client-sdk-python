@@ -41,8 +41,8 @@ req = operations.CreateAccountingAccountRequest(
         status=shared.AccountStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "Gasoline": {
-                    "Wall": 'Oriental',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -50,7 +50,7 @@ req = operations.CreateAccountingAccountRequest(
         valid_datatype_links=[
             shared.AccountingAccountValidDataTypeLinks(
                 links=[
-                    'Intranet',
+                    'string',
                 ],
             ),
         ],
@@ -208,8 +208,6 @@ if res.accounting_create_account_response is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
