@@ -9,7 +9,7 @@ Manage your Codat instance.
 
 * [create_api_key](#create_api_key) - Create API key
 * [delete_api_key](#delete_api_key) - Delete API key
-* [~~get_profile~~](#get_profile) - Get profile :warning: **Deprecated**
+* [get_profile](#get_profile) - Get profile
 * [get_sync_settings](#get_sync_settings) - Get sync settings
 * [list_api_keys](#list_api_keys) - List API keys
 * [update_profile](#update_profile) - Update profile
@@ -114,11 +114,9 @@ if res.status_code == 200:
 **[operations.DeleteAPIKeyResponse](../../models/operations/deleteapikeyresponse.md)**
 
 
-## ~~get_profile~~
+## get_profile
 
 Fetch your Codat profile.
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
