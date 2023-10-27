@@ -194,5 +194,3 @@ return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
 
-
-<!-- End Pagination -->
