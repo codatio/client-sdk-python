@@ -33,7 +33,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateBankAccountMappingRequest(
-    request_body=operations.CreateBankAccountMappingBankFeedAccountMapping(
+    zero=shared.Zero(
         feed_start_date='2022-10-23T00:00:00.000Z',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
