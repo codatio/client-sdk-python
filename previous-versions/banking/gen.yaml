@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: c566cee435f28c1ad4a204ebc469f625
+  docChecksum: aa203fbf9ad5cffbde9599f604629a16
   docVersion: 3.0.0
-  speakeasyVersion: 1.104.0
-  generationVersion: 2.169.0
+  speakeasyVersion: 1.109.0
+  generationVersion: 2.173.0
 generation:
   repoURL: https://github.com/codatio/client-sdk-python.git
   sdkClassName: CodatBanking
@@ -11,7 +11,7 @@ generation:
   telemetryEnabled: true
 features:
   python:
-    core: 3.3.0
+    core: 3.3.1
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.82.0
@@ -19,7 +19,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 0.29.0
+  version: 0.29.1
   author: Codat
   description: Access standardized banking data from our banking integrations.
   flattenGlobalSecurity: false
