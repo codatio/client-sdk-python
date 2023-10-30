@@ -22,9 +22,7 @@ class DownloadFilesRequest:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DownloadFilesErrorMessage:
-    r"""One or more of the resources you referenced could not be found.
-    This might be because your company or data connection id is wrong, or was already deleted.
-    """
+    r"""You are using an outdated API key or a key not associated with that resource."""
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     r"""`True` if the error occurred transiently and can be retried."""
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
@@ -50,9 +48,7 @@ class DownloadFilesResponse:
     data: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[DownloadFilesErrorMessage] = dataclasses.field(default=None)
-    r"""One or more of the resources you referenced could not be found.
-    This might be because your company or data connection id is wrong, or was already deleted.
-    """
+    r"""You are using an outdated API key or a key not associated with that resource."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     schema: Optional[shared_schema.Schema] = dataclasses.field(default=None)

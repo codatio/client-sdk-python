@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 51ee4fbc6a66709c22663c007999f4b3
+  docChecksum: 540f3032e88f867b222d889d0252c688
   docVersion: 3.0.0
-  speakeasyVersion: 1.104.0
-  generationVersion: 2.169.0
+  speakeasyVersion: 1.109.0
+  generationVersion: 2.173.0
 generation:
   repoURL: https://github.com/codatio/client-sdk-python.git
   sdkClassName: CodatFiles
@@ -11,14 +11,14 @@ generation:
   telemetryEnabled: true
 features:
   python:
-    core: 3.3.0
+    core: 3.3.1
     downloadStreams: 0.0.2
     examples: 2.81.3
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
     retries: 2.82.0
 python:
-  version: 0.2.0
+  version: 0.2.1
   author: Codat
   description: Use Codat's Files API to upload your SMB customers' files.
   flattenGlobalSecurity: true
