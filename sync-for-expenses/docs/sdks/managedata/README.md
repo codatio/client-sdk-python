@@ -35,7 +35,7 @@ req = operations.GetDataStatusRequest(
 
 res = s.manage_data.get(req)
 
-if res.data_status_response is not None:
+if res.data_statuses is not None:
     # handle response
     pass
 ```

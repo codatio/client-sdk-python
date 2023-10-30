@@ -40,7 +40,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
-            shared.Items(
+            shared.CustomerAccountingAddress(
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
@@ -66,8 +66,8 @@ req = operations.CreateCustomerRequest(
         status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "grey": {
-                    "technology": 'East',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -121,7 +121,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='Northeast Hatchback Kia',
+    customer_id='string',
 )
 
 res = s.customers.get(req)
@@ -220,7 +220,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
-            shared.Items(
+            shared.CustomerAccountingAddress(
                 type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
@@ -246,15 +246,15 @@ req = operations.UpdateCustomerRequest(
         status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "redundant": {
-                    "cheater": 'Islands',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='withdrawal extend',
+    customer_id='string',
 )
 
 res = s.customers.update(req)

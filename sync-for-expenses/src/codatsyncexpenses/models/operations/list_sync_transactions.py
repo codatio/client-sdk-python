@@ -29,7 +29,7 @@ class ListSyncTransactionsResponse:
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
+    r"""Your `query` parameter was not correctly formed"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     transactions: Optional[shared_transactions.Transactions] = dataclasses.field(default=None)

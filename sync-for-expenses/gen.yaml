@@ -1,26 +1,30 @@
 configVersion: 1.0.0
 management:
-  docChecksum: cd39427322ae650607fb0524405a4f11
+  docChecksum: 1143b92ba435c088e3832adc50f10c53
   docVersion: prealpha
-  speakeasyVersion: 1.100.2
-  generationVersion: 2.159.2
+  speakeasyVersion: 1.109.0
+  generationVersion: 2.173.0
 generation:
+  repoURL: https://github.com/codatio/client-sdk-python.git
   sdkClassName: CodatSyncExpenses
   singleTagPerOp: false
   telemetryEnabled: true
 features:
   python:
-    core: 3.0.2
+    core: 3.3.1
     deprecations: 2.81.1
-    examples: 2.81.2
+    examples: 2.81.3
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 4.0.0
+  version: 4.1.0
   author: Codat
   description: Push expenses to accounting platforms.
   flattenGlobalSecurity: false
+  installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-expenses
   maxMethodParams: 0
   packageName: codat-sync-for-expenses
+  published: true
+  repoSubDirectory: sync-for-expenses

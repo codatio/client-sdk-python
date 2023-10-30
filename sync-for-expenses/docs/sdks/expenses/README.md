@@ -135,7 +135,7 @@ req = operations.UpdateExpenseTransactionRequest(
         ],
         merchant_name='Amazon UK',
         notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type='Van',
+        type='string',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
@@ -180,7 +180,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.UploadExpenseAttachmentRequest(
     request_body=operations.UploadExpenseAttachmentRequestBody(
         content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        request_body='string',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',

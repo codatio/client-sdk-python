@@ -40,7 +40,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
-            shared.SupplierAccountingAddress(
+            shared.Items(
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
@@ -51,8 +51,8 @@ req = operations.CreateSupplierRequest(
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "innovative": {
-                    "blue": 'shred',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -205,7 +205,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
-            shared.SupplierAccountingAddress(
+            shared.Items(
                 type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
@@ -216,15 +216,15 @@ req = operations.UpdateSupplierRequest(
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "male": {
-                    "Metal": 'cheater',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    supplier_id='7110701885',
 )
 
 res = s.suppliers.update(req)

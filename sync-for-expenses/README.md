@@ -41,8 +41,8 @@ req = operations.CreateAccountRequest(
         status=shared.AccountStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "Money": {
-                    "blue": 'shred',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -50,7 +50,7 @@ req = operations.CreateAccountRequest(
         valid_datatype_links=[
             shared.AccountValidDataTypeLinks(
                 links=[
-                    'abnormally',
+                    'string',
                 ],
             ),
         ],
@@ -163,6 +163,167 @@ Here's an example of one such pagination call:
 
 
 <!-- End Pagination -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.codat.io` | None |
+
+For example:
+
+
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import operations, shared
+from decimal import Decimal
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+    server_idx=0
+)
+
+req = operations.CreateAccountRequest(
+    account=shared.Account(
+        currency='USD',
+        current_balance=Decimal('0'),
+        description='Invoices the business has issued but has not yet collected payment on.',
+        fully_qualified_category='Asset.Current',
+        fully_qualified_name='Cash On Hand',
+        id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
+        metadata=shared.AccountMetadata(),
+        modified_date='2022-10-23T00:00:00.000Z',
+        name='Accounts Receivable',
+        nominal_code='610',
+        source_modified_date='2022-10-23T00:00:00.000Z',
+        status=shared.AccountStatus.ACTIVE,
+        supplemental_data=shared.SupplementalData(
+            content={
+                "key": {
+                    "key": 'string',
+                },
+            },
+        ),
+        type=shared.AccountType.ASSET,
+        valid_datatype_links=[
+            shared.AccountValidDataTypeLinks(
+                links=[
+                    'string',
+                ],
+            ),
+        ],
+    ),
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+)
+
+res = s.accounts.create(req)
+
+if res.create_account_response is not None:
+    # handle response
+    pass
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import operations, shared
+from decimal import Decimal
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+    server_url="https://api.codat.io"
+)
+
+req = operations.CreateAccountRequest(
+    account=shared.Account(
+        currency='USD',
+        current_balance=Decimal('0'),
+        description='Invoices the business has issued but has not yet collected payment on.',
+        fully_qualified_category='Asset.Current',
+        fully_qualified_name='Cash On Hand',
+        id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
+        metadata=shared.AccountMetadata(),
+        modified_date='2022-10-23T00:00:00.000Z',
+        name='Accounts Receivable',
+        nominal_code='610',
+        source_modified_date='2022-10-23T00:00:00.000Z',
+        status=shared.AccountStatus.ACTIVE,
+        supplemental_data=shared.SupplementalData(
+            content={
+                "key": {
+                    "key": 'string',
+                },
+            },
+        ),
+        type=shared.AccountType.ASSET,
+        valid_datatype_links=[
+            shared.AccountValidDataTypeLinks(
+                links=[
+                    'string',
+                ],
+            ),
+        ],
+    ),
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+)
+
+res = s.accounts.create(req)
+
+if res.create_account_response is not None:
+    # handle response
+    pass
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```python
+import codatsyncexpenses
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = codatsyncexpenses.CodatSyncExpenses(client: http_client)
+```
+
+
+<!-- End Custom HTTP Client -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
