@@ -22,7 +22,7 @@ class DeleteAPIKeyResponse:
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
+    r"""Too many requests were made in a given amount of time. Wait a short period and then try again."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

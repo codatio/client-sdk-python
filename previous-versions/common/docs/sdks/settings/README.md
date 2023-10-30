@@ -92,7 +92,7 @@ req = operations.DeleteAPIKeyRequest(
 
 res = s.settings.delete_api_key(req)
 
-if res.status_code == 200:
+if res.error_message is not None:
     # handle response
     pass
 ```
