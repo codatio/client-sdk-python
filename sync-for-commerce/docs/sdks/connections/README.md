@@ -75,8 +75,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key='Manager',
-    commerce_key='payment',
+    accounting_key='string',
+    commerce_key='string',
 )
 
 res = s.connections.get_sync_flow_url(req)
@@ -160,7 +160,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.UpdateConnectionAuthorizationRequest(
     request_body={
-        "Neptunium": 'Books',
+        "key": 'string',
     },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

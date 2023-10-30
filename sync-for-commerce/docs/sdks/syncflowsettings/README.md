@@ -106,7 +106,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "West": shared.Localization(),
+    "key": shared.Localization(),
 }
 
 res = s.sync_flow_settings.update_config_text_sync_flow(req)
@@ -148,7 +148,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'Coordinator',
+            'string',
         ],
     ),
     platform_key='gbol',

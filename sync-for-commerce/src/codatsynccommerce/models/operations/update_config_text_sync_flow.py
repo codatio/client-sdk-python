@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import errormessage as shared_errormessage
 from ..shared import localization as shared_localization
 from typing import Dict, Optional
 
@@ -13,6 +14,8 @@ class UpdateConfigTextSyncFlowResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
+    r"""The request made is not valid."""
     localization_info: Optional[Dict[str, shared_localization.Localization]] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)

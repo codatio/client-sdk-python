@@ -36,6 +36,7 @@ src/codatsynccommerce/models/operations/get_visible_accounts.py
 src/codatsynccommerce/models/operations/update_config_text_sync_flow.py
 src/codatsynccommerce/models/operations/update_visible_accounts_sync_flow.py
 src/codatsynccommerce/models/operations/__init__.py
+src/codatsynccommerce/models/shared/errormessage.py
 src/codatsynccommerce/models/shared/company.py
 src/codatsynccommerce/models/shared/connection.py
 src/codatsynccommerce/models/shared/dataconnectionstatus.py
@@ -63,7 +64,6 @@ src/codatsynccommerce/models/shared/feessupplier.py
 src/codatsynccommerce/models/shared/companies.py
 src/codatsynccommerce/models/shared/links.py
 src/codatsynccommerce/models/shared/halref.py
-src/codatsynccommerce/models/shared/errormessage.py
 src/codatsynccommerce/models/shared/syncflowurl.py
 src/codatsynccommerce/models/shared/connections.py
 src/codatsynccommerce/models/shared/updateconnection.py
@@ -135,6 +135,7 @@ docs/models/operations/getvisibleaccountsresponse.md
 docs/models/operations/updateconfigtextsyncflowresponse.md
 docs/models/operations/updatevisibleaccountssyncflowrequest.md
 docs/models/operations/updatevisibleaccountssyncflowresponse.md
+docs/models/shared/errormessage.md
 docs/models/shared/company.md
 docs/models/shared/connectionsourcetype.md
 docs/models/shared/connection.md
@@ -163,7 +164,6 @@ docs/models/shared/feessupplier.md
 docs/models/shared/companies.md
 docs/models/shared/links.md
 docs/models/shared/halref.md
-docs/models/shared/errormessage.md
 docs/models/shared/syncflowurl.md
 docs/models/shared/connections.md
 docs/models/shared/updateconnection.md
