@@ -63,7 +63,7 @@ req = operations.CreateAccountingInvoiceRequest(
                     ),
                     is_billed_to=shared.BilledToType.UNKNOWN,
                     is_rebilled_to=shared.BilledToType.PROJECT,
-                    project_ref=shared.TrackingProjectReference(
+                    project_ref=shared.TrackingAccountingProjectReference(
                         id='<ID>',
                     ),
                     record_ref=shared.RecordRef(
@@ -82,8 +82,8 @@ req = operations.CreateAccountingInvoiceRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         paid_on_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.AccountingInvoicePaymentAllocation(
-                allocation=shared.AccountingInvoicePaymentAllocationAllocation(
+            shared.AccountingInvoiceAccountingPaymentAllocation(
+                allocation=shared.AccountingInvoiceAccountingPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='USD',
                 ),

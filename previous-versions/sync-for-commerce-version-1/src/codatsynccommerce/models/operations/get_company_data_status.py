@@ -22,7 +22,7 @@ class GetCompanyDataStatusResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    data_status_response: Optional[Dict[str, shared_datastatus.DataStatus]] = dataclasses.field(default=None)
+    data_statuses: Optional[Dict[str, shared_datastatus.DataStatus]] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Your API request was not properly authorized."""

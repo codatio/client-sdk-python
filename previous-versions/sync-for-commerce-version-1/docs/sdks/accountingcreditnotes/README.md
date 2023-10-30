@@ -63,7 +63,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.PROJECT,
                     is_rebilled_to=shared.BilledToType.PROJECT,
-                    project_ref=shared.CreditNoteLineItemTrackingProjectReference(
+                    project_ref=shared.CreditNoteLineItemTrackingAccountingProjectReference(
                         id='<ID>',
                     ),
                     record_ref=shared.RecordRef(

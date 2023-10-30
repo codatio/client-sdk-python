@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import connection as shared_connection
+from ..shared import errormessage as shared_errormessage
 from ..shared import updateconnection as shared_updateconnection
 from typing import Optional
 
@@ -27,6 +28,8 @@ class UpdateConnectionResponse:
     r"""HTTP response status code for this operation"""
     connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
     r"""Success"""
+    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
+    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

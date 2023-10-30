@@ -33,7 +33,7 @@ req = operations.GetSyncStatusRequest(
 
 res = s.sync.get_sync_status(req)
 
-if res.status_code == 200:
+if res.sync_summary is not None:
     # handle response
     pass
 ```

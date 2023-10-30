@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 014da64b08eaacd3b4cd073c840bb741
+  docChecksum: 485cfc95133859f1e76658919fa77417
   docVersion: "1.1"
-  speakeasyVersion: 1.104.0
-  generationVersion: 2.169.0
+  speakeasyVersion: 1.109.0
+  generationVersion: 2.173.0
 generation:
   repoURL: https://github.com/codatio/client-sdk-python.git
   sdkClassName: CodatSyncCommerce
@@ -11,7 +11,7 @@ generation:
   telemetryEnabled: true
 features:
   python:
-    core: 3.3.0
+    core: 3.3.1
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.82.0
@@ -19,7 +19,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 0.3.0
+  version: 0.3.1
   author: Codat
   description: Push merchants' data from your ecommerce or point-of-sale (POS) platform into your merchants' accounting platform.
   flattenGlobalSecurity: false
