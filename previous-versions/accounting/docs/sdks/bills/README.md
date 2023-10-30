@@ -84,8 +84,8 @@ req = operations.CreateBillRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.BillPaymentAllocation(
-                allocation=shared.BillPaymentAllocationAllocation(
+            shared.BillAccountingPaymentAllocation(
+                allocation=shared.BillAccountingPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -569,8 +569,8 @@ req = operations.UpdateBillRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.BillPaymentAllocation(
-                allocation=shared.BillPaymentAllocationAllocation(
+            shared.BillAccountingPaymentAllocation(
+                allocation=shared.BillAccountingPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),

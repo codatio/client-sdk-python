@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 2c365f212fb133408f0b67a9ab0876c3
+  docChecksum: e80b87f0707d82a1facabdbcadaed7ad
   docVersion: 3.0.0
-  speakeasyVersion: 1.104.0
-  generationVersion: 2.169.0
+  speakeasyVersion: 1.109.0
+  generationVersion: 2.173.0
 generation:
   repoURL: https://github.com/codatio/client-sdk-python.git
   sdkClassName: CodatAccounting
@@ -11,7 +11,7 @@ generation:
   telemetryEnabled: true
 features:
   python:
-    core: 3.3.0
+    core: 3.3.1
     deprecations: 2.81.1
     downloadStreams: 0.0.2
     examples: 2.81.3
@@ -20,7 +20,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 0.32.0
+  version: 0.32.1
   author: Codat
   description: Access standardized accounting data from our accounting integrations.
   flattenGlobalSecurity: false

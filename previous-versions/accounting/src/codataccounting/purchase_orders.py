@@ -10,6 +10,10 @@ class DownloadAttachmentAcceptEnum(str, Enum):
     APPLICATION_JSON = "application/json"
     APPLICATION_OCTET_STREAM = "application/octet-stream"
 
+class DownloadPurchaseOrderPdfAcceptEnum(str, Enum):
+    APPLICATION_JSON = "application/json"
+    APPLICATION_OCTET_STREAM = "application/octet-stream"
+
 class PurchaseOrders:
     r"""Purchase orders"""
     sdk_configuration: SDKConfiguration
@@ -69,7 +73,7 @@ class PurchaseOrders:
                 res.create_purchase_order_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -124,7 +128,7 @@ class PurchaseOrders:
                 res.data = http_res
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -134,7 +138,7 @@ class PurchaseOrders:
         return res
 
     
-    def download_purchase_order_pdf(self, request: operations.DownloadPurchaseOrderPdfRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadPurchaseOrderPdfResponse:
+    def download_purchase_order_pdf(self, request: operations.DownloadPurchaseOrderPdfRequest, retries: Optional[utils.RetryConfig] = None, accept_header_override: Optional[DownloadPurchaseOrderPdfAcceptEnum] = None) -> operations.DownloadPurchaseOrderPdfResponse:
         r"""Download purchase order as PDF
         The *Download purchase order as PDF* endpoint downloads the purchase order as a PDF for a given `purchaseOrderId`.
 
@@ -146,7 +150,10 @@ class PurchaseOrders:
         
         url = utils.generate_url(operations.DownloadPurchaseOrderPdfRequest, base_url, '/companies/{companyId}/data/purchaseOrders/{purchaseOrderId}/pdf', request)
         headers = {}
-        headers['Accept'] = 'application/octet-stream'
+        if accept_header_override is not None:
+            headers['Accept'] = accept_header_override.value
+        else:
+            headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
@@ -174,6 +181,12 @@ class PurchaseOrders:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
                 res.data = http_res
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
@@ -225,7 +238,7 @@ class PurchaseOrders:
                 res.purchase_order = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 409, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -278,7 +291,7 @@ class PurchaseOrders:
                 res.attachment = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -335,7 +348,7 @@ class PurchaseOrders:
                 res.push_option = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -389,7 +402,7 @@ class PurchaseOrders:
                 res.purchase_orders = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 409]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -442,7 +455,7 @@ class PurchaseOrders:
                 res.attachments_dataset = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -503,7 +516,7 @@ class PurchaseOrders:
                 res.update_purchase_order_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
