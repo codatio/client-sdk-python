@@ -66,7 +66,7 @@ req = operations.CreateBillCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
-                    project_ref=shared.BillCreditNoteLineItemTrackingProjectReference(
+                    project_ref=shared.BillCreditNoteLineItemTrackingAccountingProjectReference(
                         id='<ID>',
                     ),
                 ),
@@ -341,7 +341,7 @@ req = operations.UpdateBillCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.CUSTOMER,
-                    project_ref=shared.BillCreditNoteLineItemTrackingProjectReference(
+                    project_ref=shared.BillCreditNoteLineItemTrackingAccountingProjectReference(
                         id='<ID>',
                     ),
                 ),

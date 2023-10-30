@@ -35,7 +35,7 @@ req = operations.GetDataStatusRequest(
 
 res = s.manage_data.get(req)
 
-if res.data_status_response is not None:
+if res.data_statuses is not None:
     # handle response
     pass
 ```
@@ -96,15 +96,7 @@ if res.pull_operation is not None:
 
 ## list_pull_operations
 
-﻿The *List pull operations* endpoint returns a list of [pull operations](https://docs.codat.io/sync-for-payables-api#/schemas/PullOperation) made by your client.
-
-A [pull operation](https://docs.codat.io/sync-for-payables-api#/schemas/PullOperation) is a request to retrieve a specific data type from an integration.
-
-### Tips and traps
-
-- The *List pull operations* endpoint does not support querying the `isCompleted` property. You can filter failed pull operations by querying `status!=Complete&&status!=NotSupported` instead.
-
-
+Gets the pull operation history (datasets) for a given company.
 
 ### Example Usage
 

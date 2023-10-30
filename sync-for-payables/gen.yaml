@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: ec9a07817c986b64eec8362553fc7600
+  docChecksum: ef8af4ad770bb56bc0078a4f17a0e2a5
   docVersion: 3.0.0
-  speakeasyVersion: 1.104.0
-  generationVersion: 2.169.0
+  speakeasyVersion: 1.109.0
+  generationVersion: 2.173.0
 generation:
   repoURL: https://github.com/codatio/client-sdk-python.git
   sdkClassName: CodatSyncPayables
@@ -11,7 +11,7 @@ generation:
   telemetryEnabled: true
 features:
   python:
-    core: 3.3.0
+    core: 3.3.1
     deprecations: 2.81.1
     downloadStreams: 0.0.2
     examples: 2.81.3
@@ -20,7 +20,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 2.1.0
+  version: 2.1.1
   author: Codat
   description: Streamline your customers' accounts payable workflow.
   flattenGlobalSecurity: false
