@@ -30,7 +30,7 @@ class GetDataIntegritySummariesResponse:
     data_integrity_summaries: Optional[shared_dataintegritysummaries.DataIntegritySummaries] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
+    r"""Your `query` parameter was not correctly formed"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

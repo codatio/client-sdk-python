@@ -10,6 +10,10 @@ class DownloadAttachmentAcceptEnum(str, Enum):
     APPLICATION_JSON = "application/json"
     APPLICATION_OCTET_STREAM = "application/octet-stream"
 
+class DownloadPdfAcceptEnum(str, Enum):
+    APPLICATION_JSON = "application/json"
+    APPLICATION_OCTET_STREAM = "application/octet-stream"
+
 class AccountsReceivableInvoices:
     sdk_configuration: SDKConfiguration
 
@@ -62,7 +66,7 @@ class AccountsReceivableInvoices:
                 res.data = http_res
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -72,7 +76,7 @@ class AccountsReceivableInvoices:
         return res
 
     
-    def download_pdf(self, request: operations.DownloadAccountingInvoicePdfRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DownloadAccountingInvoicePdfResponse:
+    def download_pdf(self, request: operations.DownloadAccountingInvoicePdfRequest, retries: Optional[utils.RetryConfig] = None, accept_header_override: Optional[DownloadPdfAcceptEnum] = None) -> operations.DownloadAccountingInvoicePdfResponse:
         r"""Get invoice as PDF
         Download invoice as a pdf.
         """
@@ -80,7 +84,10 @@ class AccountsReceivableInvoices:
         
         url = utils.generate_url(operations.DownloadAccountingInvoicePdfRequest, base_url, '/companies/{companyId}/data/invoices/{invoiceId}/pdf', request)
         headers = {}
-        headers['Accept'] = 'application/octet-stream'
+        if accept_header_override is not None:
+            headers['Accept'] = accept_header_override.value
+        else:
+            headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
@@ -108,6 +115,12 @@ class AccountsReceivableInvoices:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
                 res.data = http_res
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 402, 403, 404, 409, 429, 500, 503]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                res.error_message = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
@@ -159,7 +172,7 @@ class AccountsReceivableInvoices:
                 res.accounting_invoice = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 409, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -212,7 +225,7 @@ class AccountsReceivableInvoices:
                 res.accounting_attachment = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -273,7 +286,7 @@ class AccountsReceivableInvoices:
                 res.accounting_invoices = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 409]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -326,7 +339,7 @@ class AccountsReceivableInvoices:
                 res.attachments = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -376,7 +389,7 @@ class AccountsReceivableInvoices:
                 res.enhanced_invoices_report = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out

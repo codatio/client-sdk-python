@@ -27,7 +27,7 @@ class ListCommerceLocationsResponse:
     commerce_locations: Optional[shared_commercelocations.CommerceLocations] = dataclasses.field(default=None)
     r"""OK"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your `query` parameter was not correctly formed"""
+    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

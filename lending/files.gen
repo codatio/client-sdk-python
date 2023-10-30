@@ -32,6 +32,7 @@ src/codatlending/financial_statements_cash_flow.py
 src/codatlending/financial_statements_profit_and_loss.py
 src/codatlending/financial_statements.py
 src/codatlending/loan_writeback_accounts.py
+src/codatlending/loan_writeback_bank_accounts.py
 src/codatlending/loan_writeback_bank_transactions.py
 src/codatlending/loan_writeback_create_operations.py
 src/codatlending/loan_writeback_direct_costs.py
@@ -153,6 +154,8 @@ src/codatlending/models/operations/get_accounting_profit_and_loss.py
 src/codatlending/models/operations/get_categorized_profit_and_loss_statement.py
 src/codatlending/models/operations/create_account.py
 src/codatlending/models/operations/get_create_chartofaccounts_model.py
+src/codatlending/models/operations/create_bank_account.py
+src/codatlending/models/operations/get_create_update_bankaccounts_model.py
 src/codatlending/models/operations/create_bank_transactions.py
 src/codatlending/models/operations/get_create_bank_transactions_model.py
 src/codatlending/models/operations/get_create_operation.py
@@ -160,7 +163,7 @@ src/codatlending/models/operations/list_create_operations.py
 src/codatlending/models/operations/create_direct_cost.py
 src/codatlending/models/operations/get_create_directcosts_model.py
 src/codatlending/models/operations/create_payment.py
-src/codatlending/models/operations/get_create_payments_model.py
+src/codatlending/models/operations/get_create_payment_model.py
 src/codatlending/models/operations/create_supplier.py
 src/codatlending/models/operations/get_create_update_suppliers_model.py
 src/codatlending/models/operations/create_transfer.py
@@ -384,6 +387,7 @@ src/codatlending/models/shared/pushfieldvalidation.py
 src/codatlending/models/shared/pushoptiontype.py
 src/codatlending/models/shared/pushoptionproperty.py
 src/codatlending/models/shared/pushoptionchoice.py
+src/codatlending/models/shared/accountingcreatebankaccountresponse.py
 src/codatlending/models/shared/accountingcreatebanktransactionsresponse.py
 src/codatlending/models/shared/accountingcreatebanktransactions.py
 src/codatlending/models/shared/createbankaccounttransaction.py
@@ -651,6 +655,10 @@ docs/models/operations/createaccountrequest.md
 docs/models/operations/createaccountresponse.md
 docs/models/operations/getcreatechartofaccountsmodelrequest.md
 docs/models/operations/getcreatechartofaccountsmodelresponse.md
+docs/models/operations/createbankaccountrequest.md
+docs/models/operations/createbankaccountresponse.md
+docs/models/operations/getcreateupdatebankaccountsmodelrequest.md
+docs/models/operations/getcreateupdatebankaccountsmodelresponse.md
 docs/models/operations/createbanktransactionsrequest.md
 docs/models/operations/createbanktransactionsresponse.md
 docs/models/operations/getcreatebanktransactionsmodelrequest.md
@@ -665,8 +673,8 @@ docs/models/operations/getcreatedirectcostsmodelrequest.md
 docs/models/operations/getcreatedirectcostsmodelresponse.md
 docs/models/operations/createpaymentrequest.md
 docs/models/operations/createpaymentresponse.md
-docs/models/operations/getcreatepaymentsmodelrequest.md
-docs/models/operations/getcreatepaymentsmodelresponse.md
+docs/models/operations/getcreatepaymentmodelrequest.md
+docs/models/operations/getcreatepaymentmodelresponse.md
 docs/models/operations/createsupplierrequest.md
 docs/models/operations/createsupplierresponse.md
 docs/models/operations/getcreateupdatesuppliersmodelrequest.md
@@ -948,6 +956,7 @@ docs/models/shared/pushfieldvalidation.md
 docs/models/shared/pushoptiontype.md
 docs/models/shared/pushoptionproperty.md
 docs/models/shared/pushoptionchoice.md
+docs/models/shared/accountingcreatebankaccountresponse.md
 docs/models/shared/accountingcreatebanktransactionsresponse.md
 docs/models/shared/accountingcreatebanktransactions.md
 docs/models/shared/createbankaccounttransaction.md
@@ -1080,6 +1089,7 @@ docs/sdks/financialstatementscashflow/README.md
 docs/sdks/financialstatementsprofitandloss/README.md
 docs/sdks/loanwriteback/README.md
 docs/sdks/loanwritebackaccounts/README.md
+docs/sdks/loanwritebackbankaccounts/README.md
 docs/sdks/loanwritebackbanktransactions/README.md
 docs/sdks/loanwritebackcreateoperations/README.md
 docs/sdks/loanwritebackdirectcosts/README.md

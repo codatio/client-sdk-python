@@ -221,6 +221,11 @@ if res.accounting_bank_transactions is not None:
 * [create](docs/sdks/loanwritebackaccounts/README.md#create) - Create account
 * [get_create_model](docs/sdks/loanwritebackaccounts/README.md#get_create_model) - Get create account model
 
+### [loan_writeback.bank_accounts](docs/sdks/loanwritebackbankaccounts/README.md)
+
+* [create](docs/sdks/loanwritebackbankaccounts/README.md#create) - Create bank account
+* [get_create_update_model](docs/sdks/loanwritebackbankaccounts/README.md#get_create_update_model) - Get create/update bank account model
+
 ### [loan_writeback.bank_transactions](docs/sdks/loanwritebackbanktransactions/README.md)
 
 * [create](docs/sdks/loanwritebackbanktransactions/README.md#create) - Create bank account transactions
@@ -357,6 +362,115 @@ if res.accounting_bank_transactions is not None:
 <!-- Start Dev Containers -->
 
 <!-- End Dev Containers -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.codat.io` | None |
+
+For example:
+
+
+```python
+import codatlending
+from codatlending.models import operations, shared
+
+s = codatlending.CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+    server_idx=0
+)
+
+req = operations.ListAccountingBankAccountTransactionsRequest(
+    account_id='string',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
+    page=1,
+    page_size=100,
+)
+
+res = s.accounting_bank_data.list_transactions(req)
+
+if res.accounting_bank_transactions is not None:
+    # handle response
+    pass
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```python
+import codatlending
+from codatlending.models import operations, shared
+
+s = codatlending.CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+    server_url="https://api.codat.io"
+)
+
+req = operations.ListAccountingBankAccountTransactionsRequest(
+    account_id='string',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    order_by='-modifiedDate',
+    page=1,
+    page_size=100,
+)
+
+res = s.accounting_bank_data.list_transactions(req)
+
+if res.accounting_bank_transactions is not None:
+    # handle response
+    pass
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```python
+import codatlending
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = codatlending.CodatLending(client: http_client)
+```
+
+
+<!-- End Custom HTTP Client -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
