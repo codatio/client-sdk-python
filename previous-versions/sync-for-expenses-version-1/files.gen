@@ -67,7 +67,6 @@ src/codatsyncexpenses/models/shared/mappingoptions.py
 src/codatsyncexpenses/models/shared/trackingcategorymappinginfo.py
 src/codatsyncexpenses/models/shared/taxratemappinginfo.py
 src/codatsyncexpenses/models/shared/accountmappinginfo.py
-src/codatsyncexpenses/models/shared/syncinitiated.py
 src/codatsyncexpenses/models/shared/postsync.py
 src/codatsyncexpenses/models/shared/companysyncstatus.py
 src/codatsyncexpenses/models/shared/transactionmetadata.py
@@ -170,7 +169,6 @@ docs/models/shared/taxratemappinginfo.md
 docs/models/shared/accountmappinginfoaccounttype.md
 docs/models/shared/accountmappinginfovalidtransactiontypes.md
 docs/models/shared/accountmappinginfo.md
-docs/models/shared/syncinitiated.md
 docs/models/shared/postsync.md
 docs/models/shared/companysyncstatus.md
 docs/models/shared/transactionmetadata.md

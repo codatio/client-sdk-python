@@ -36,7 +36,7 @@ req = operations.InitiateSyncRequest(
 
 res = s.sync.initiate_sync(req)
 
-if res.sync_initiated is not None:
+if res.status_code == 200:
     # handle response
     pass
 ```

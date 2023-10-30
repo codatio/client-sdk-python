@@ -31,7 +31,6 @@ from .synccompletewebhook import *
 from .synccompletewebhookdata import *
 from .syncfailedwebhook import *
 from .syncfailedwebhookdata import *
-from .syncinitiated import *
 from .syncstartedwebhook import *
 from .taxratemappinginfo import *
 from .trackingcategorymappinginfo import *
@@ -40,4 +39,4 @@ from .transactionmetadatalist import *
 from .transactionstatus import *
 from .updateexpenserequest import *
 
-__all__ = ["AccountMappingInfo","AccountMappingInfoAccountType","AccountMappingInfoValidTransactionTypes","Attachment","BankAccount","Companies","Company","CompanyConfiguration","CompanyRequestBody","CompanySyncStatus","Connection","ConnectionSourceType","Connections","ContactRef","ContactRefContactType","CreateExpenseRequest","CreateExpenseResponse","Customer","DataConnectionError","DataConnectionStatus","ErrorMessage","ExpenseTransaction","ExpenseTransactionLine","ExpenseTransactionType","HalRef","IntegrationType","Links","MappingOptions","PostSync","RecordRef","Security","Supplier","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncInitiated","SyncStartedWebhook","SyncStartedWebhookData","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionStatus","UpdateExpenseRequest"]
+__all__ = ["AccountMappingInfo","AccountMappingInfoAccountType","AccountMappingInfoValidTransactionTypes","Attachment","BankAccount","Companies","Company","CompanyConfiguration","CompanyRequestBody","CompanySyncStatus","Connection","ConnectionSourceType","Connections","ContactRef","ContactRefContactType","CreateExpenseRequest","CreateExpenseResponse","Customer","DataConnectionError","DataConnectionStatus","ErrorMessage","ExpenseTransaction","ExpenseTransactionLine","ExpenseTransactionType","HalRef","IntegrationType","Links","MappingOptions","PostSync","RecordRef","Security","Supplier","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncStartedWebhook","SyncStartedWebhookData","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionStatus","UpdateExpenseRequest"]
