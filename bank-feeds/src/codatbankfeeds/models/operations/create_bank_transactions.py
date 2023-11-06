@@ -35,7 +35,7 @@ class CreateBankTransactionsResponse:
     create_bank_transactions_response: Optional[shared_createbanktransactionsresponse.CreateBankTransactionsResponse] = dataclasses.field(default=None)
     r"""Success"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
+    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

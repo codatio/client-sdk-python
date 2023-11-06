@@ -32,5 +32,6 @@ from .sourceaccount import *
 from .targetaccountoption import *
 from .validation import *
 from .validationitem import *
+from .zero import *
 
-__all__ = ["BankAccountCredentials","BankFeedAccountMappingResponse","BankFeedMapping","BankTransactions","BankTransactionsBankTransactionType","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","ErrorMessage","HalRef","Links","PushChangeType","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","Security","SourceAccount","TargetAccountOption","Validation","ValidationItem"]
+__all__ = ["BankAccountCredentials","BankFeedAccountMappingResponse","BankFeedMapping","BankTransactions","BankTransactionsBankTransactionType","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateBankTransactions","CreateBankTransactionsResponse","DataConnectionError","DataConnectionStatus","DataType","ErrorMessage","HalRef","Links","PushChangeType","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","Security","SourceAccount","TargetAccountOption","Validation","ValidationItem","Zero"]
