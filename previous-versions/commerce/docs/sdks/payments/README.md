@@ -36,7 +36,7 @@ s = codatcommerce.CodatCommerce(
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_id='Northeast Hatchback Kia',
+    payment_id='string',
 )
 
 res = s.payments.get(req)
@@ -83,7 +83,7 @@ s = codatcommerce.CodatCommerce(
 req = operations.GetPaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_method_id='Markets',
+    payment_method_id='string',
 )
 
 res = s.payments.get_method(req)

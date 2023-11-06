@@ -25,7 +25,7 @@ class ListLocationsResponse:
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your `query` parameter was not correctly formed"""
+    r"""Your API request was not properly authorized."""
     locations: Optional[shared_locations.Locations] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
