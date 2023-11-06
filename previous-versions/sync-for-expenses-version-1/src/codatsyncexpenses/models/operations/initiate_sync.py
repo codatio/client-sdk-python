@@ -5,7 +5,6 @@ import dataclasses
 import requests as requests_http
 from ..shared import errormessage as shared_errormessage
 from ..shared import postsync as shared_postsync
-from ..shared import syncinitiated as shared_syncinitiated
 from typing import Optional
 
 
@@ -25,10 +24,8 @@ class InitiateSyncResponse:
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""If model is incorrect"""
+    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    sync_initiated: Optional[shared_syncinitiated.SyncInitiated] = dataclasses.field(default=None)
-    r"""Returns the newly created SyncId"""
     
 
