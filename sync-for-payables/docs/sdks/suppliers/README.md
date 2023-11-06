@@ -52,8 +52,8 @@ req = operations.CreateSupplierRequest(
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "innovative": {
-                    "blue": 'shred',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -107,7 +107,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='Northeast Hatchback Kia',
+    supplier_id='string',
 )
 
 res = s.suppliers.get(req)
@@ -267,15 +267,15 @@ req = operations.UpdateSupplierRequest(
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "male": {
-                    "Metal": 'cheater',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='Cotton',
+    supplier_id='string',
 )
 
 res = s.suppliers.update(req)

@@ -14,6 +14,8 @@ class DeleteBillPaymentRequest:
     r"""Unique identifier for a bill payment."""
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a company."""
+    connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
+    r"""Unique identifier for a connection."""
     
 
 

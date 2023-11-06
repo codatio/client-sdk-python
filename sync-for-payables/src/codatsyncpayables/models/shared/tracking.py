@@ -22,7 +22,7 @@ class TrackingCustomerRef:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class TrackingProjectReference:
+class TrackingAccountingProjectReference:
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier to the project reference."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
@@ -41,6 +41,6 @@ class Tracking:
     is_rebilled_to: shared_billedtotype.BilledToType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
     r"""Defines if the invoice or credit note is billed/rebilled to a project or customer."""
     customer_ref: Optional[TrackingCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
-    project_ref: Optional[TrackingProjectReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})
+    project_ref: Optional[TrackingAccountingProjectReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})
     
 
