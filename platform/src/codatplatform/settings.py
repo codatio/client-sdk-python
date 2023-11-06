@@ -65,7 +65,7 @@ class Settings:
                 res.api_key_details = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 409, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -117,9 +117,7 @@ class Settings:
 
         res = operations.DeleteAPIKeyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code == 204:
-            pass
-        elif http_res.status_code in [401, 404, 429]:
+        if http_res.status_code in [204, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -132,8 +130,6 @@ class Settings:
     def get_profile(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetProfileResponse:
         r"""Get profile
         Fetch your Codat profile.
-
-        Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -170,7 +166,7 @@ class Settings:
                 res.profile = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -219,7 +215,7 @@ class Settings:
                 res.sync_settings = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -272,7 +268,7 @@ class Settings:
                 res.api_keys = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -324,7 +320,7 @@ class Settings:
                 res.profile = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -372,7 +368,7 @@ class Settings:
         
         if http_res.status_code == 204:
             pass
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out

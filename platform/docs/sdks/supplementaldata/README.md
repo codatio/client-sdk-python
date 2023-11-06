@@ -34,12 +34,12 @@ s = codatplatform.CodatPlatform(
 req = operations.ConfigureSupplementalDataRequest(
     supplemental_data_configuration=shared.SupplementalDataConfiguration(
         supplemental_data_config={
-            "Cutler": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
+            "key": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
                 pull_data={
-                    "North": 'transmitter',
+                    "key": 'string',
                 },
                 push_data={
-                    "infrastructure": 'Northeast',
+                    "key": 'string',
                 },
             ),
         },
