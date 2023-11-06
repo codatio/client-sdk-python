@@ -47,7 +47,7 @@ req = shared.CreateRule(
         ],
         webhook='https://webhook.client.com',
     ),
-    type='bluetooth Extended',
+    type='string',
 )
 
 res = s.webhooks.create(req)

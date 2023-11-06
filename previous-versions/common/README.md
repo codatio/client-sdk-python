@@ -80,7 +80,7 @@ if res.company is not None:
 
 * [create_api_key](docs/sdks/settings/README.md#create_api_key) - Create API key
 * [delete_api_key](docs/sdks/settings/README.md#delete_api_key) - Delete API key
-* [~~get_profile~~](docs/sdks/settings/README.md#get_profile) - Get profile :warning: **Deprecated**
+* [get_profile](docs/sdks/settings/README.md#get_profile) - Get profile
 * [get_sync_settings](docs/sdks/settings/README.md#get_sync_settings) - Get sync settings
 * [list_api_keys](docs/sdks/settings/README.md#list_api_keys) - List API keys
 * [update_profile](docs/sdks/settings/README.md#update_profile) - Update profile
@@ -102,9 +102,104 @@ if res.company is not None:
 
 <!-- Start Dev Containers -->
 
-
-
 <!-- End Dev Containers -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.codat.io` | None |
+
+For example:
+
+
+```python
+import codatcommon
+from codatcommon.models import shared
+
+s = codatcommon.CodatCommon(
+    auth_header="",
+    server_idx=0
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```python
+import codatcommon
+from codatcommon.models import shared
+
+s = codatcommon.CodatCommon(
+    auth_header="",
+    server_url="https://api.codat.io"
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```python
+import codatcommon
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = codatcommon.CodatCommon(client: http_client)
+```
+
+
+<!-- End Custom HTTP Client -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
