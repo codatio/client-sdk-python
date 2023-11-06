@@ -46,8 +46,8 @@ req = operations.CreateBankAccountRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "Extended": {
-                    "South": 'shred',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -100,7 +100,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBankAccountRequest(
-    account_id='Northeast Hatchback Kia',
+    account_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -258,13 +258,13 @@ req = operations.UpdateBankAccountRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "East": {
-                    "male": 'Metal',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
     ),
-    bank_account_id='Checking 0202',
+    bank_account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

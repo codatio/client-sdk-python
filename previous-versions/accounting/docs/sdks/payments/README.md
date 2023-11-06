@@ -65,8 +65,8 @@ req = operations.CreatePaymentRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "blue": {
-                    "shred": 'abnormally',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -120,7 +120,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='Northeast Hatchback Kia',
+    payment_id='string',
 )
 
 res = s.payments.get(req)

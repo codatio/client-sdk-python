@@ -8,9 +8,13 @@ Purchase orders
 ### Available Operations
 
 * [create](#create) - Create purchase order
+* [download_attachment](#download_attachment) - Download purchase order attachment
+* [download_purchase_order_pdf](#download_purchase_order_pdf) - Download purchase order as PDF
 * [get](#get) - Get purchase order
+* [get_attachment](#get_attachment) - Get purchase order attachment
 * [get_create_update_model](#get_create_update_model) - Get create/update purchase order model
 * [list](#list) - List purchase orders
+* [list_attachments](#list_attachments) - List purchase order attachments
 * [update](#update) - Update purchase order
 
 ## create
@@ -97,6 +101,99 @@ if res.create_purchase_order_response is not None:
 **[operations.CreatePurchaseOrderResponse](../../models/operations/createpurchaseorderresponse.md)**
 
 
+## download_attachment
+
+The *Download purchase order attachment* endpoint downloads a specific attachment for a given `purchaseOrderId` and `attachmentId`.
+
+[Purchase Orders](https://docs.codat.io/accounting-api#/schemas/PurchaseOrder) represent a business's intent to purchase goods or services from a supplier.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=purchaseOrders) for integrations that support downloading a purchase order attachment.
+
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations, shared
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.DownloadPurchaseOrderAttachmentRequest(
+    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    purchase_order_id='string',
+)
+
+res = s.purchase_orders.download_attachment(req)
+
+if res.data is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                              | [operations.DownloadPurchaseOrderAttachmentRequest](../../models/operations/downloadpurchaseorderattachmentrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `retries`                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                                     | Configuration to override the default retry behavior of the client.                                                    |
+
+
+### Response
+
+**[operations.DownloadPurchaseOrderAttachmentResponse](../../models/operations/downloadpurchaseorderattachmentresponse.md)**
+
+
+## download_purchase_order_pdf
+
+The *Download purchase order as PDF* endpoint downloads the purchase order as a PDF for a given `purchaseOrderId`.
+
+[Purchase Orders](https://docs.codat.io/accounting-api#/schemas/PurchaseOrder) represent a business's intent to purchase goods or services from a supplier.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=purchaseOrders) for integrations that support getting a purchase order as PDF.
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations, shared
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.DownloadPurchaseOrderPdfRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    purchase_order_id='string',
+)
+
+res = s.purchase_orders.download_purchase_order_pdf(req)
+
+if res.data is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [operations.DownloadPurchaseOrderPdfRequest](../../models/operations/downloadpurchaseorderpdfrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
+
+
+### Response
+
+**[operations.DownloadPurchaseOrderPdfResponse](../../models/operations/downloadpurchaseorderpdfresponse.md)**
+
+
 ## get
 
 The *Get purchase order* endpoint returns a single purchase order for a given purchaseOrderId.
@@ -122,7 +219,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetPurchaseOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    purchase_order_id='Northeast Hatchback Kia',
+    purchase_order_id='string',
 )
 
 res = s.purchase_orders.get(req)
@@ -143,6 +240,54 @@ if res.purchase_order is not None:
 ### Response
 
 **[operations.GetPurchaseOrderResponse](../../models/operations/getpurchaseorderresponse.md)**
+
+
+## get_attachment
+
+The *Get purchase order attachment* endpoint returns a specific attachment for a given `purchaseOrderId` and `attachmentId`.
+
+[Purchase Orders](https://docs.codat.io/accounting-api#/schemas/PurchaseOrder) represent a business's intent to purchase goods or services from a supplier.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=purchaseOrders) for integrations that support getting a purchase order attachment.
+
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations, shared
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetPurchaseOrderAttachmentRequest(
+    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    purchase_order_id='string',
+)
+
+res = s.purchase_orders.get_attachment(req)
+
+if res.attachment is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                    | [operations.GetPurchaseOrderAttachmentRequest](../../models/operations/getpurchaseorderattachmentrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `retries`                                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                           | Configuration to override the default retry behavior of the client.                                          |
+
+
+### Response
+
+**[operations.GetPurchaseOrderAttachmentResponse](../../models/operations/getpurchaseorderattachmentresponse.md)**
 
 
 ## get_create_update_model
@@ -243,6 +388,53 @@ if res.purchase_orders is not None:
 **[operations.ListPurchaseOrdersResponse](../../models/operations/listpurchaseordersresponse.md)**
 
 
+## list_attachments
+
+The *List purchase order attachments* endpoint returns a list of attachments available to download for a given `purchaseOrderId`.
+
+[Purchase Orders](https://docs.codat.io/accounting-api#/schemas/PurchaseOrder) represent a business's intent to purchase goods or services from a supplier.
+
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=purchaseOrders) for integrations that support listing purchase order attachments.
+
+
+### Example Usage
+
+```python
+import codataccounting
+from codataccounting.models import operations, shared
+
+s = codataccounting.CodatAccounting(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.ListPurchaseOrderAttachmentsRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    purchase_order_id='string',
+)
+
+res = s.purchase_orders.list_attachments(req)
+
+if res.attachments_dataset is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                        | [operations.ListPurchaseOrderAttachmentsRequest](../../models/operations/listpurchaseorderattachmentsrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `retries`                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                 | :heavy_minus_sign:                                                                                               | Configuration to override the default retry behavior of the client.                                              |
+
+
+### Response
+
+**[operations.ListPurchaseOrderAttachmentsResponse](../../models/operations/listpurchaseorderattachmentsresponse.md)**
+
+
 ## update
 
 The *Update purchase order* endpoint updates an existing [purchase order](https://docs.codat.io/accounting-api#/schemas/PurchaseOrder) for a given company's connection.
@@ -305,7 +497,7 @@ req = operations.UpdatePurchaseOrderRequest(
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    purchase_order_id='Analyst invoice',
+    purchase_order_id='string',
 )
 
 res = s.purchase_orders.update(req)

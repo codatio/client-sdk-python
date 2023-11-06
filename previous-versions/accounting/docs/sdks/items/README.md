@@ -56,12 +56,12 @@ req = operations.CreateItemRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "Extended": {
-                    "South": 'shred',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        type=shared.ItemType.INVENTORY,
+        type=shared.ItemType.SERVICE,
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -112,7 +112,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetItemRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    item_id='Northeast Hatchback Kia',
+    item_id='string',
 )
 
 res = s.items.get(req)

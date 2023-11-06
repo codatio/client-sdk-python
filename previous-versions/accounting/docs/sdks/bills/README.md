@@ -84,8 +84,8 @@ req = operations.CreateBillRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.BillPaymentAllocation(
-                allocation=shared.BillPaymentAllocationAllocation(
+            shared.BillAccountingPaymentAllocation(
+                allocation=shared.BillAccountingPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -104,20 +104,20 @@ req = operations.CreateBillRequest(
         sub_total=Decimal('0.86'),
         supplemental_data=shared.SupplementalData(
             content={
-                "deposit": {
-                    "evolve": 'male',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
             id='<ID>',
         ),
-        tax_amount=Decimal('8559.52'),
-        total_amount=Decimal('8165.88'),
+        tax_amount=Decimal('4552.22'),
+        total_amount=Decimal('1697.27'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('5519.29'),
-                name='Polestar mobile',
+                amount=Decimal('3015.1'),
+                name='string',
             ),
         ],
     ),
@@ -153,7 +153,7 @@ The *Delete bill* endpoint allows you to delete a specified bill from an account
 
 ### Process 
 1. Pass the `{billId}` to the *Delete bill* endpoint and store the `pushOperationKey` returned.
-2. Check the status of the delete operation by checking the status of push operation either via
+2. Check the status of the delete operation by checking the status of the push operation either via
     1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
     2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
 
@@ -170,11 +170,12 @@ Integrations that support soft delete do not permanently delete the object in th
 | Integration | Soft Delete | Details                                                                                                      |  
 |-------------|-------------|--------------------------------------------------------------------------------------------------------------|
 | QuickBooks Online | No          | -                                                                                                            |
-| Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
+| Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |                                                                                                      |
+| Sage Intacct   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
 
 > **Supported Integrations**
 > 
-> This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
+> This functionality is currently supported for our QuickBooks Online, Xero, Oracle NetSuite and Sage Intacct integrations.
 
 ### Example Usage
 
@@ -569,8 +570,8 @@ req = operations.UpdateBillRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.BillPaymentAllocation(
-                allocation=shared.BillPaymentAllocationAllocation(
+            shared.BillAccountingPaymentAllocation(
+                allocation=shared.BillAccountingPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -589,24 +590,24 @@ req = operations.UpdateBillRequest(
         sub_total=Decimal('540.62'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Cotton": {
-                    "extend": 'Plastic',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
             id='<ID>',
         ),
-        tax_amount=Decimal('1395.79'),
-        total_amount=Decimal('6447.13'),
+        tax_amount=Decimal('2782.81'),
+        total_amount=Decimal('8965.01'),
         withholding_tax=[
             shared.BillWithholdingTax(
-                amount=Decimal('7892.75'),
-                name='immediately implement JBOD',
+                amount=Decimal('4995.57'),
+                name='string',
             ),
         ],
     ),
-    bill_id='EILBDVJVNUAGVKRQ',
+    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -659,9 +660,9 @@ s = codataccounting.CodatAccounting(
 req = operations.UploadBillAttachmentRequest(
     request_body=operations.UploadBillAttachmentRequestBody(
         content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        request_body='string',
     ),
-    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
+    bill_id='7110701885',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

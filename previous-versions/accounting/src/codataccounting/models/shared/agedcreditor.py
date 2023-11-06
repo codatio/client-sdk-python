@@ -10,7 +10,7 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class AgedCreditorAgedCurrencyOutstanding:
+class AgedCreditorAccountingAgedCurrencyOutstanding:
     aged_outstanding_amounts: Optional[List[shared_agedoutstandingamount.AgedOutstandingAmount]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedOutstandingAmounts'), 'exclude': lambda f: f is None }})
     r"""Array of outstanding amounts by period."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
@@ -29,7 +29,7 @@ class AgedCreditorAgedCurrencyOutstanding:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class AgedCreditor:
-    aged_currency_outstanding: Optional[List[AgedCreditorAgedCurrencyOutstanding]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedCurrencyOutstanding'), 'exclude': lambda f: f is None }})
+    aged_currency_outstanding: Optional[List[AgedCreditorAccountingAgedCurrencyOutstanding]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedCurrencyOutstanding'), 'exclude': lambda f: f is None }})
     r"""Array of aged creditors by currency."""
     supplier_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierId'), 'exclude': lambda f: f is None }})
     r"""Supplier ID of the aged creditor."""

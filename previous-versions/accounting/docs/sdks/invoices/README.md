@@ -113,17 +113,17 @@ req = operations.CreateInvoiceRequest(
         status=shared.InvoiceStatus.DRAFT,
         supplemental_data=shared.SupplementalData(
             content={
-                "evolve": {
-                    "male": 'SUV',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        total_amount=Decimal('5519.29'),
-        total_tax_amount=Decimal('5862.2'),
+        total_amount=Decimal('3015.1'),
+        total_tax_amount=Decimal('899.64'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('8275.63'),
-                name='mobile National Durham',
+                amount=Decimal('7150.4'),
+                name='string',
             ),
         ],
     ),
@@ -197,7 +197,7 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='Van complexity',
+    invoice_id='string',
 )
 
 res = s.invoices.delete(req)
@@ -245,7 +245,7 @@ req = operations.DownloadInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='Dakota Avon specifically',
+    invoice_id='string',
 )
 
 res = s.invoices.download_attachment(req)
@@ -286,7 +286,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.DownloadInvoicePdfRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='Associate',
+    invoice_id='string',
 )
 
 res = s.invoices.download_pdf(req)
@@ -333,7 +333,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='Northeast Hatchback Kia',
+    invoice_id='string',
 )
 
 res = s.invoices.get(req)
@@ -381,7 +381,7 @@ req = operations.GetInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='array East along',
+    invoice_id='string',
 )
 
 res = s.invoices.get_attachment(req)
@@ -532,7 +532,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListInvoiceAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='intuitive Frozen ouch',
+    invoice_id='string',
 )
 
 res = s.invoices.list_attachments(req)
@@ -649,23 +649,23 @@ req = operations.UpdateInvoiceRequest(
         status=shared.InvoiceStatus.VOID,
         supplemental_data=shared.SupplementalData(
             content={
-                "online": {
-                    "dynamic": 'white',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        total_amount=Decimal('3668.07'),
-        total_tax_amount=Decimal('1395.79'),
+        total_amount=Decimal('4995.57'),
+        total_tax_amount=Decimal('4468.63'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('6447.13'),
-                name='syndicate East Baht',
+                amount=Decimal('3691.82'),
+                name='string',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='Representative Home',
+    invoice_id='string',
 )
 
 res = s.invoices.update(req)
@@ -716,11 +716,11 @@ s = codataccounting.CodatAccounting(
 req = operations.UploadInvoiceAttachmentRequest(
     request_body=operations.UploadInvoiceAttachmentRequestBody(
         content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        request_body='string',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='Iowa Bentley',
+    invoice_id='string',
 )
 
 res = s.invoices.upload_attachment(req)

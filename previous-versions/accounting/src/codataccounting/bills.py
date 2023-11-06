@@ -69,7 +69,7 @@ class Bills:
                 res.create_bill_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -87,7 +87,7 @@ class Bills:
 
         ### Process 
         1. Pass the `{billId}` to the *Delete bill* endpoint and store the `pushOperationKey` returned.
-        2. Check the status of the delete operation by checking the status of push operation either via
+        2. Check the status of the delete operation by checking the status of the push operation either via
             1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
             2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
 
@@ -104,11 +104,12 @@ class Bills:
         | Integration | Soft Delete | Details                                                                                                      |  
         |-------------|-------------|--------------------------------------------------------------------------------------------------------------|
         | QuickBooks Online | No          | -                                                                                                            |
-        | Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
+        | Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |                                                                                                      |
+        | Sage Intacct   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
 
         > **Supported Integrations**
         > 
-        > This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
+        > This functionality is currently supported for our QuickBooks Online, Xero, Oracle NetSuite and Sage Intacct integrations.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -145,7 +146,7 @@ class Bills:
                 res.push_operation_summary = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -200,7 +201,7 @@ class Bills:
                 res.data = http_res
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -255,7 +256,7 @@ class Bills:
                 res.bill = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 409, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -308,7 +309,7 @@ class Bills:
                 res.attachment = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -365,7 +366,7 @@ class Bills:
                 res.push_option = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -419,7 +420,7 @@ class Bills:
                 res.bills = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 409]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -472,7 +473,7 @@ class Bills:
                 res.attachments_dataset = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -533,7 +534,7 @@ class Bills:
                 res.update_bill_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -589,7 +590,7 @@ class Bills:
         
         if http_res.status_code == 200:
             pass
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out

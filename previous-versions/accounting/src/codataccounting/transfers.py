@@ -63,7 +63,7 @@ class Transfers:
                 res.create_transfer_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -118,7 +118,7 @@ class Transfers:
                 res.transfer = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 409, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -175,7 +175,7 @@ class Transfers:
                 res.push_option = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -229,7 +229,7 @@ class Transfers:
                 res.transfers = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 409]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -285,7 +285,7 @@ class Transfers:
         
         if http_res.status_code == 200:
             pass
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out

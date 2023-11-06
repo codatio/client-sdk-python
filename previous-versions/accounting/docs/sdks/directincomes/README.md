@@ -85,13 +85,13 @@ req = operations.CreateDirectIncomeRequest(
         sub_total=Decimal('7964.74'),
         supplemental_data=shared.SupplementalData(
             content={
-                "abnormally": {
-                    "deposit": 'evolve',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        tax_amount=Decimal('7150.4'),
-        total_amount=Decimal('7926.2'),
+        tax_amount=Decimal('3768.44'),
+        total_amount=Decimal('9510.62'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -142,7 +142,7 @@ req = operations.DownloadDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='Dakota Avon specifically',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.download_attachment(req)
@@ -191,7 +191,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetDirectIncomeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='Northeast Hatchback Kia',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.get(req)
@@ -239,7 +239,7 @@ req = operations.GetDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='array East along',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.get_attachment(req)
@@ -385,7 +385,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListDirectIncomeAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='intuitive Frozen ouch',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.list_attachments(req)
@@ -436,11 +436,11 @@ s = codataccounting.CodatAccounting(
 req = operations.UploadDirectIncomeAttachmentRequest(
     request_body=operations.UploadDirectIncomeAttachmentRequestBody(
         content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        request_body='string',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='Iowa Bentley',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.upload_attachment(req)

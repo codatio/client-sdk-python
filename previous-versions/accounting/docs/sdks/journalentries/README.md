@@ -67,8 +67,8 @@ req = operations.CreateJournalEntryRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "blue": {
-                    "shred": 'abnormally',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -149,7 +149,7 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='Van complexity',
+    journal_entry_id='string',
 )
 
 res = s.journal_entries.delete(req)
@@ -197,7 +197,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='Northeast Hatchback Kia',
+    journal_entry_id='string',
 )
 
 res = s.journal_entries.get(req)
