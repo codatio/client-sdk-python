@@ -63,7 +63,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.PROJECT,
                     is_rebilled_to=shared.BilledToType.PROJECT,
-                    project_ref=shared.CreditNoteLineItemTrackingProjectReference(
+                    project_ref=shared.CreditNoteLineItemTrackingAccountingProjectReference(
                         id='<ID>',
                     ),
                     record_ref=shared.RecordRef(
@@ -99,18 +99,18 @@ req = operations.CreateAccountingCreditNoteRequest(
         sub_total=Decimal('1915.04'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Metal": {
-                    "policy": 'although',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        total_amount=Decimal('6437.49'),
-        total_discount=Decimal('6593.55'),
-        total_tax_amount=Decimal('3629.12'),
+        total_amount=Decimal('5893.9'),
+        total_discount=Decimal('579.23'),
+        total_tax_amount=Decimal('3881.42'),
         withholding_tax=[
             shared.WithholdingTaxitems(
-                amount=Decimal('5655.86'),
-                name='however',
+                amount=Decimal('7369.44'),
+                name='string',
             ),
         ],
     ),

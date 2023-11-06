@@ -63,7 +63,7 @@ req = operations.CreateAccountingInvoiceRequest(
                     ),
                     is_billed_to=shared.BilledToType.UNKNOWN,
                     is_rebilled_to=shared.BilledToType.PROJECT,
-                    project_ref=shared.TrackingProjectReference(
+                    project_ref=shared.TrackingAccountingProjectReference(
                         id='<ID>',
                     ),
                     record_ref=shared.RecordRef(
@@ -82,8 +82,8 @@ req = operations.CreateAccountingInvoiceRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         paid_on_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.AccountingInvoicePaymentAllocation(
-                allocation=shared.AccountingInvoicePaymentAllocationAllocation(
+            shared.AccountingInvoiceAccountingPaymentAllocation(
+                allocation=shared.AccountingInvoiceAccountingPaymentAllocationAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='USD',
                 ),
@@ -103,17 +103,17 @@ req = operations.CreateAccountingInvoiceRequest(
         status=shared.InvoiceStatus.PARTIALLY_PAID,
         supplemental_data=shared.SupplementalData(
             content={
-                "Beier": {
-                    "boo": 'Regional',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        total_amount=Decimal('1895.83'),
-        total_tax_amount=Decimal('7283.9'),
+        total_amount=Decimal('1416.23'),
+        total_tax_amount=Decimal('9069.87'),
         withholding_tax=[
             shared.AccountingInvoiceWithholdingTax(
-                amount=Decimal('1357.13'),
-                name='Gasoline Interactions Cisgender',
+                amount=Decimal('598.23'),
+                name='string',
             ),
         ],
     ),

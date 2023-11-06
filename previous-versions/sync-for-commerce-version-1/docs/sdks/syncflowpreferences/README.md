@@ -66,8 +66,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key='Manager',
-    commerce_key='payment',
+    accounting_key='string',
+    commerce_key='string',
 )
 
 res = s.sync_flow_preferences.get_sync_flow_url(req)
@@ -148,7 +148,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "West": shared.Localization(),
+    "key": shared.Localization(),
 }
 
 res = s.sync_flow_preferences.update_config_text_sync_flow(req)
@@ -190,7 +190,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'Coordinator',
+            'string',
         ],
     ),
     platform_key='gbol',
