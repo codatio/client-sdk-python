@@ -53,14 +53,14 @@ req = operations.CreateTransferRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "innovative": {
-                    "blue": 'shred',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
         to=shared.TransferAccount(
             account_ref=shared.AccountRef(),
-            currency='USD',
+            currency='GBP',
         ),
         tracking_category_refs=[
             shared.TrackingCategoryRef(

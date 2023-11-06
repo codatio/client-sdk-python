@@ -36,7 +36,7 @@ req = operations.DownloadAccountingInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='Dakota Avon specifically',
+    invoice_id='string',
 )
 
 res = s.accounts_receivable.invoices.download_attachment(req)
@@ -77,7 +77,7 @@ s = codatlending.CodatLending(
 
 req = operations.DownloadAccountingInvoicePdfRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='Associate',
+    invoice_id='string',
 )
 
 res = s.accounts_receivable.invoices.download_pdf(req)
@@ -124,7 +124,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='Northeast Hatchback Kia',
+    invoice_id='string',
 )
 
 res = s.accounts_receivable.invoices.get(req)
@@ -172,7 +172,7 @@ req = operations.GetAccountingInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='array East along',
+    invoice_id='string',
 )
 
 res = s.accounts_receivable.invoices.get_attachment(req)
@@ -273,7 +273,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingInvoiceAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='intuitive Frozen ouch',
+    invoice_id='string',
 )
 
 res = s.accounts_receivable.invoices.list_attachments(req)

@@ -31,7 +31,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingCreditNoteRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    credit_note_id='Northeast Hatchback Kia',
+    credit_note_id='string',
 )
 
 res = s.accounts_receivable.credit_notes.get(req)

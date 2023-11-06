@@ -52,7 +52,7 @@ class CompanyInfo:
                 res.accounting_company_info = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 409, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -64,9 +64,11 @@ class CompanyInfo:
     
     def get_commerce_profile(self, request: operations.GetCommerceProfileRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCommerceProfileResponse:
         r"""Get company commerce profile
-        Retrieve information about the company, as seen in the commerce platform.
+        Retrieve information about the company, as seen in the commerce
+        platform.
 
-        This may include information like addresses, tax registration details and social media or website information.
+        This may include information like addresses, tax registration details and
+        social media or website information.\" 
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -103,7 +105,7 @@ class CompanyInfo:
                 res.commerce_company_info = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 409, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out

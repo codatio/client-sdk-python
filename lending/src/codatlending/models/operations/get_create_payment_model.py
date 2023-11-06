@@ -9,7 +9,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetCreatePaymentsModelRequest:
+class GetCreatePaymentModelRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a company."""
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
@@ -19,7 +19,7 @@ class GetCreatePaymentsModelRequest:
 
 
 @dataclasses.dataclass
-class GetCreatePaymentsModelResponse:
+class GetCreatePaymentModelResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()

@@ -63,7 +63,7 @@ class LoanWritebackPayments:
                 res.accounting_create_payment_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
@@ -73,7 +73,7 @@ class LoanWritebackPayments:
         return res
 
     
-    def get_create_model(self, request: operations.GetCreatePaymentsModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreatePaymentsModelResponse:
+    def get_create_model(self, request: operations.GetCreatePaymentModelRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetCreatePaymentModelResponse:
         r"""Get create payment model
         The *Get create payment model* endpoint returns the expected data for the request payload when creating a [payment](https://docs.codat.io/lending-api#/schemas/Payment) for a given company and integration.
 
@@ -87,7 +87,7 @@ class LoanWritebackPayments:
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetCreatePaymentsModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/payments', request)
+        url = utils.generate_url(operations.GetCreatePaymentModelRequest, base_url, '/companies/{companyId}/connections/{connectionId}/options/payments', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
@@ -112,7 +112,7 @@ class LoanWritebackPayments:
         ]))
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetCreatePaymentsModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetCreatePaymentModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
@@ -120,7 +120,7 @@ class LoanWritebackPayments:
                 res.push_option = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
                 res.error_message = out
