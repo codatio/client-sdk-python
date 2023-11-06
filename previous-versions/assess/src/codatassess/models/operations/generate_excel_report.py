@@ -26,7 +26,7 @@ class GenerateExcelReportResponse:
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
+    r"""The request made is not valid."""
     excel_status: Optional[shared_excelstatus.ExcelStatus] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
