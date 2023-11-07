@@ -130,5 +130,3 @@ if res.create_account_response is not None:
 <!-- End SDK Available Operations -->
 
 
-
-<!-- Start Dev Containers -->
