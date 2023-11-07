@@ -46,4 +46,3 @@ if res.data is not None:
 * [list_files](docs/sdks/files/README.md#list_files) - List all files uploaded by a company
 * [upload_files](docs/sdks/files/README.md#upload_files) - Upload files for a company
 <!-- End SDK Available Operations -->
-

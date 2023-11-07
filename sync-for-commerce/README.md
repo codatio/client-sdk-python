@@ -78,4 +78,3 @@ if res.company is not None:
 * [update_config_text_sync_flow](docs/sdks/syncflowsettings/README.md#update_config_text_sync_flow) - Update preferences for text fields
 * [update_visible_accounts_sync_flow](docs/sdks/syncflowsettings/README.md#update_visible_accounts_sync_flow) - Update visible accounts
 <!-- End SDK Available Operations -->
-

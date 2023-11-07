@@ -204,4 +204,3 @@ if res.accounting_create_account_response is not None:
 * [update_config_text_sync_flow](docs/sdks/syncflowpreferences/README.md#update_config_text_sync_flow) - Update preferences for text fields on sync flow
 * [update_visible_accounts_sync_flow](docs/sdks/syncflowpreferences/README.md#update_visible_accounts_sync_flow) - Update the visible accounts on sync flow
 <!-- End SDK Available Operations -->
-
