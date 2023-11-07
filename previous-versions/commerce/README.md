@@ -90,4 +90,3 @@ if res.company_info is not None:
 * [list](docs/sdks/transactions/README.md#list) - List transactions
 <!-- End SDK Available Operations -->
 
-

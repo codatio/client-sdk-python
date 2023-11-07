@@ -248,4 +248,3 @@ if res.account_transaction is not None:
 * [upload_attachment](docs/sdks/transfers/README.md#upload_attachment) - Push invoice attachment
 <!-- End SDK Available Operations -->
 
-

@@ -81,4 +81,3 @@ if res.bank_feed_account_mapping_response is not None:
 * [list_create_operations](docs/sdks/transactions/README.md#list_create_operations) - List create operations
 <!-- End SDK Available Operations -->
 
-

@@ -90,4 +90,3 @@ if res.company is not None:
 * [list_sync_transactions](docs/sdks/transactionstatus/README.md#list_sync_transactions) - Get sync transactions
 <!-- End SDK Available Operations -->
 
-

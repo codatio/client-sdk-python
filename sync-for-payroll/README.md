@@ -129,4 +129,3 @@ if res.create_account_response is not None:
 * [list](docs/sdks/trackingcategories/README.md#list) - List tracking categories
 <!-- End SDK Available Operations -->
 
-
