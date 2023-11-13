@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import commercecompanyinfo as shared_commercecompanyinfo
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import commercecompanyinfo as shared_commercecompanyinfo
 from typing import Optional
 
 
@@ -26,8 +25,6 @@ class GetCommerceProfileResponse:
     r"""HTTP response status code for this operation"""
     commerce_company_info: Optional[shared_commercecompanyinfo.CommerceCompanyInfo] = dataclasses.field(default=None)
     r"""OK"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

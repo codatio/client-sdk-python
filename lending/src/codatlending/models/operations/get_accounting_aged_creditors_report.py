@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingagedcreditorreport as shared_accountingagedcreditorreport
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingagedcreditorreport as shared_accountingagedcreditorreport
 from datetime import date
 from typing import Optional
 
@@ -31,8 +30,6 @@ class GetAccountingAgedCreditorsReportResponse:
     r"""HTTP response status code for this operation"""
     accounting_aged_creditor_report: Optional[shared_accountingagedcreditorreport.AccountingAgedCreditorReport] = dataclasses.field(default=None)
     r"""OK"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

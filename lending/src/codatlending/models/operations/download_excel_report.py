@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import excelreporttypes as shared_excelreporttypes
+from ...models.shared import excelreporttypes as shared_excelreporttypes
 from typing import Optional
 
 
@@ -25,8 +24,6 @@ class DownloadExcelReportResponse:
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     body: Optional[bytes] = dataclasses.field(default=None)
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

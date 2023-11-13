@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import cashflowstatement as shared_cashflowstatement
-from ..shared import reportbasis as shared_reportbasis
-from ..shared import reportinput as shared_reportinput
+from .cashflowstatement import CashFlowStatement
+from .reportbasis import ReportBasis
+from .reportinput import ReportInput
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -36,11 +36,11 @@ class AccountingCashFlowStatement:
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    report_basis: shared_reportbasis.ReportBasis = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportBasis') }})
+    report_basis: ReportBasis = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportBasis') }})
     r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
-    report_input: shared_reportinput.ReportInput = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInput') }})
+    report_input: ReportInput = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInput') }})
     r"""Accounting method used to prepare the cash flow statement."""
-    reports: List[shared_cashflowstatement.CashFlowStatement] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
+    reports: List[CashFlowStatement] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reports') }})
     r"""Array of cash flow statements."""
     earliest_available_month: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('earliestAvailableMonth'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

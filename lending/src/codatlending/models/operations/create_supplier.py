@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingcreatesupplierresponse as shared_accountingcreatesupplierresponse
-from ..shared import accountingsupplier as shared_accountingsupplier
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingcreatesupplierresponse as shared_accountingcreatesupplierresponse
+from ...models.shared import accountingsupplier as shared_accountingsupplier
 from typing import Optional
 
 
@@ -32,8 +31,6 @@ class CreateSupplierResponse:
     r"""HTTP response status code for this operation"""
     accounting_create_supplier_response: Optional[shared_accountingcreatesupplierresponse.AccountingCreateSupplierResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

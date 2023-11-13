@@ -1,0 +1,103 @@
+# ProfitAndLoss
+(*financial_statements.profit_and_loss*)
+
+### Available Operations
+
+* [get](#get) - Get profit and loss
+* [get_categorized_accounts](#get_categorized_accounts) - Get categorized profit and loss statement
+
+## get
+
+Gets the latest profit and loss for a company.
+
+### Example Usage
+
+```python
+import codatlending
+from codatlending.models import operations, shared
+
+s = codatlending.CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetAccountingProfitAndLossRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    period_length=4,
+    periods_to_compare=20,
+    start_month='2022-10-23T00:00:00.000Z',
+)
+
+res = s.financial_statements.profit_and_loss.get(req)
+
+if res.accounting_profit_and_loss_report is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                    | [operations.GetAccountingProfitAndLossRequest](../../models/operations/getaccountingprofitandlossrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `retries`                                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                           | Configuration to override the default retry behavior of the client.                                          |
+
+
+### Response
+
+**[operations.GetAccountingProfitAndLossResponse](../../models/operations/getaccountingprofitandlossresponse.md)**
+### Errors
+
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
+
+## get_categorized_accounts
+
+The *Get categorized profit and loss statement* endpoint returns a list of categorized accounts that appear on a company’s Profit and Loss statement. It also includes a balance as of the financial statement date.
+
+Codat suggests a category for each account automatically, but you can [change it](https://docs.codat.io/lending/enhanced-financials/overview#categorize-accounts) to a more suitable one.
+
+### Example Usage
+
+```python
+import codatlending
+from codatlending.models import operations, shared
+
+s = codatlending.CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.GetCategorizedProfitAndLossStatementRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    report_date='29-09-2020',
+)
+
+res = s.financial_statements.profit_and_loss.get_categorized_accounts(req)
+
+if res.enhanced_financial_report is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                        | [operations.GetCategorizedProfitAndLossStatementRequest](../../models/operations/getcategorizedprofitandlossstatementrequest.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
+| `retries`                                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                 | :heavy_minus_sign:                                                                                                               | Configuration to override the default retry behavior of the client.                                                              |
+
+
+### Response
+
+**[operations.GetCategorizedProfitAndLossStatementResponse](../../models/operations/getcategorizedprofitandlossstatementresponse.md)**
+### Errors
+
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

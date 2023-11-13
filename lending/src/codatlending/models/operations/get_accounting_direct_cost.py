@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingdirectcost as shared_accountingdirectcost
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingdirectcost as shared_accountingdirectcost
 from typing import Optional
 
 
@@ -28,8 +27,6 @@ class GetAccountingDirectCostResponse:
     r"""HTTP response status code for this operation"""
     accounting_direct_cost: Optional[shared_accountingdirectcost.AccountingDirectCost] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

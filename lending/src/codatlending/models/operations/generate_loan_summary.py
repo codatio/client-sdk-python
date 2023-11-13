@@ -3,11 +3,10 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
 from enum import Enum
 from typing import Optional
 
-class GenerateLoanSummarySourceType(str, Enum):
+class SourceType(str, Enum):
     r"""Data source type."""
     BANKING = 'banking'
     COMMERCE = 'commerce'
@@ -18,7 +17,7 @@ class GenerateLoanSummarySourceType(str, Enum):
 class GenerateLoanSummaryRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a company."""
-    source_type: GenerateLoanSummarySourceType = dataclasses.field(metadata={'query_param': { 'field_name': 'sourceType', 'style': 'form', 'explode': True }})
+    source_type: SourceType = dataclasses.field(metadata={'query_param': { 'field_name': 'sourceType', 'style': 'form', 'explode': True }})
     r"""Data source type."""
     
 
@@ -30,8 +29,6 @@ class GenerateLoanSummaryResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import loansummaryintegrationtype as shared_loansummaryintegrationtype
-from ..shared import loansummaryrecordreftype as shared_loansummaryrecordreftype
+from .loansummaryintegrationtype import LoanSummaryIntegrationType
+from .loansummaryrecordreftype import LoanSummaryRecordRefType
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -16,9 +16,9 @@ class LoanSummaryRecordRef:
     r"""The dataConnectionId the object being referred to is associated with."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""The id of the object being referred to."""
-    integration_type: Optional[shared_loansummaryintegrationtype.LoanSummaryIntegrationType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('integrationType'), 'exclude': lambda f: f is None }})
+    integration_type: Optional[LoanSummaryIntegrationType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('integrationType'), 'exclude': lambda f: f is None }})
     r"""The integration type begin referred to."""
-    record_ref_type: Optional[shared_loansummaryrecordreftype.LoanSummaryRecordRefType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefType'), 'exclude': lambda f: f is None }})
+    record_ref_type: Optional[LoanSummaryRecordRefType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefType'), 'exclude': lambda f: f is None }})
     r"""The datatype being referred to."""
     
 

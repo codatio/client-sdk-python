@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingjournalentry as shared_accountingjournalentry
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingjournalentry as shared_accountingjournalentry
 from typing import Optional
 
 
@@ -26,8 +25,6 @@ class GetAccountingJournalEntryResponse:
     r"""HTTP response status code for this operation"""
     accounting_journal_entry: Optional[shared_accountingjournalentry.AccountingJournalEntry] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

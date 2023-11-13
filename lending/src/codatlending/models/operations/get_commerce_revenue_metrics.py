@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import commercereport as shared_commercereport
-from ..shared import errormessage as shared_errormessage
-from ..shared import periodunit as shared_periodunit
+from ...models.shared import commercereport as shared_commercereport
+from ...models.shared import periodunit as shared_periodunit
 from typing import Optional
 
 
@@ -37,8 +36,6 @@ class GetCommerceRevenueMetricsResponse:
     r"""HTTP response status code for this operation"""
     commerce_report: Optional[shared_commercereport.CommerceReport] = dataclasses.field(default=None)
     r"""OK"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

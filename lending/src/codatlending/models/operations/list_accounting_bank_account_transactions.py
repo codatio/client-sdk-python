@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingbanktransactions as shared_accountingbanktransactions
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingbanktransactions as shared_accountingbanktransactions
 from typing import Optional
 
 
@@ -36,8 +35,6 @@ class ListAccountingBankAccountTransactionsResponse:
     r"""HTTP response status code for this operation"""
     accounting_bank_transactions: Optional[shared_accountingbanktransactions.AccountingBankTransactions] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your `query` parameter was not correctly formed"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingtransfer as shared_accountingtransfer
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingtransfer as shared_accountingtransfer
 from typing import Optional
 
 
@@ -28,8 +27,6 @@ class GetAccountingTransferResponse:
     r"""HTTP response status code for this operation"""
     accounting_transfer: Optional[shared_accountingtransfer.AccountingTransfer] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     
