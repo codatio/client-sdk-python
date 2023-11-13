@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import codataccounting
 from codataccounting.models import operations, shared

@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import bankaccount as shared_bankaccount
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import bankaccount as shared_bankaccount
 from typing import Optional
 
 
@@ -28,8 +27,6 @@ class GetBankAccountResponse:
     r"""HTTP response status code for this operation"""
     bank_account: Optional[shared_bankaccount.BankAccount] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

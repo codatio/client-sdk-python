@@ -55,10 +55,10 @@ req = operations.CreateBillRequest(
                 item_ref=shared.ItemRef(
                     id='<ID>',
                 ),
-                purchase_order_line_ref=shared.BillLineItemRecordLineReference(),
+                purchase_order_line_ref=shared.RecordLineReference(),
                 quantity=Decimal('8592.13'),
                 tax_rate_ref=shared.TaxRateRef(),
-                tracking=shared.Propertiestracking(
+                tracking=shared.PropertieTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
                             id='<ID>',
@@ -84,8 +84,8 @@ req = operations.CreateBillRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.BillAccountingPaymentAllocation(
-                allocation=shared.BillAccountingPaymentAllocationAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -115,7 +115,7 @@ req = operations.CreateBillRequest(
         tax_amount=Decimal('4552.22'),
         total_amount=Decimal('1697.27'),
         withholding_tax=[
-            shared.BillWithholdingTax(
+            shared.WithholdingTax(
                 amount=Decimal('3015.1'),
                 name='string',
             ),
@@ -143,7 +143,12 @@ if res.create_bill_response is not None:
 ### Response
 
 **[operations.CreateBillResponse](../../models/operations/createbillresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## delete
 
@@ -213,7 +218,12 @@ if res.push_operation_summary is not None:
 ### Response
 
 **[operations.DeleteBillResponse](../../models/operations/deletebillresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## download_attachment
 
@@ -261,7 +271,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadBillAttachmentResponse](../../models/operations/downloadbillattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -309,7 +324,12 @@ if res.bill is not None:
 ### Response
 
 **[operations.GetBillResponse](../../models/operations/getbillresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_attachment
 
@@ -357,7 +377,12 @@ if res.attachment is not None:
 ### Response
 
 **[operations.GetBillAttachmentResponse](../../models/operations/getbillattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_create_update_model
 
@@ -407,7 +432,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdateBillsModelResponse](../../models/operations/getcreateupdatebillsmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -455,7 +485,12 @@ if res.bills is not None:
 ### Response
 
 **[operations.ListBillsResponse](../../models/operations/listbillsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list_attachments
 
@@ -502,7 +537,12 @@ if res.attachments_dataset is not None:
 ### Response
 
 **[operations.ListBillAttachmentsResponse](../../models/operations/listbillattachmentsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## update
 
@@ -541,10 +581,10 @@ req = operations.UpdateBillRequest(
                 item_ref=shared.ItemRef(
                     id='<ID>',
                 ),
-                purchase_order_line_ref=shared.BillLineItemRecordLineReference(),
+                purchase_order_line_ref=shared.RecordLineReference(),
                 quantity=Decimal('156.52'),
                 tax_rate_ref=shared.TaxRateRef(),
-                tracking=shared.Propertiestracking(
+                tracking=shared.PropertieTracking(
                     category_refs=[
                         shared.TrackingCategoryRef(
                             id='<ID>',
@@ -570,8 +610,8 @@ req = operations.UpdateBillRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.BillAccountingPaymentAllocation(
-                allocation=shared.BillAccountingPaymentAllocationAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -601,7 +641,7 @@ req = operations.UpdateBillRequest(
         tax_amount=Decimal('2782.81'),
         total_amount=Decimal('8965.01'),
         withholding_tax=[
-            shared.BillWithholdingTax(
+            shared.WithholdingTax(
                 amount=Decimal('4995.57'),
                 name='string',
             ),
@@ -630,7 +670,12 @@ if res.update_bill_response is not None:
 ### Response
 
 **[operations.UpdateBillResponse](../../models/operations/updatebillresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## upload_attachment
 
@@ -659,10 +704,10 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadBillAttachmentRequest(
     request_body=operations.UploadBillAttachmentRequestBody(
-        content='v/ghW&IC$x'.encode(),
-        request_body='string',
+        content='0xE3ABc1980E'.encode(),
+        file_name='elegant_producer_electric.jpeg',
     ),
-    bill_id='7110701885',
+    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -685,4 +730,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UploadBillAttachmentResponse](../../models/operations/uploadbillattachmentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

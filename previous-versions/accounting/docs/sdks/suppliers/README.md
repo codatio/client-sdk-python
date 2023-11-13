@@ -44,7 +44,7 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
-            shared.Addressesitems(
+            shared.Items(
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
@@ -83,7 +83,12 @@ if res.create_supplier_response is not None:
 ### Response
 
 **[operations.CreateSupplierResponse](../../models/operations/createsupplierresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## download_attachment
 
@@ -131,7 +136,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadSupplierAttachmentResponse](../../models/operations/downloadsupplierattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -179,7 +189,12 @@ if res.supplier is not None:
 ### Response
 
 **[operations.GetSupplierResponse](../../models/operations/getsupplierresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_attachment
 
@@ -227,7 +242,12 @@ if res.attachment is not None:
 ### Response
 
 **[operations.GetSupplierAttachmentResponse](../../models/operations/getsupplierattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_create_update_model
 
@@ -277,7 +297,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdateSuppliersModelResponse](../../models/operations/getcreateupdatesuppliersmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -325,7 +350,12 @@ if res.suppliers is not None:
 ### Response
 
 **[operations.ListSuppliersResponse](../../models/operations/listsuppliersresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list_attachments
 
@@ -372,7 +402,12 @@ if res.attachments_dataset is not None:
 ### Response
 
 **[operations.ListSupplierAttachmentsResponse](../../models/operations/listsupplierattachmentsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## update
 
@@ -402,7 +437,7 @@ s = codataccounting.CodatAccounting(
 req = operations.UpdateSupplierRequest(
     supplier=shared.Supplier(
         addresses=[
-            shared.Addressesitems(
+            shared.Items(
                 type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
@@ -442,4 +477,9 @@ if res.update_supplier_response is not None:
 ### Response
 
 **[operations.UpdateSupplierResponse](../../models/operations/updatesupplierresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

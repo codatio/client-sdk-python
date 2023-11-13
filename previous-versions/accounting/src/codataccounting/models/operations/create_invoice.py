@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createinvoiceresponse as shared_createinvoiceresponse
-from ..shared import errormessage as shared_errormessage
-from ..shared import invoice as shared_invoice
+from ...models.shared import createinvoiceresponse as shared_createinvoiceresponse
+from ...models.shared import invoice as shared_invoice
 from typing import Optional
 
 
@@ -30,8 +29,6 @@ class CreateInvoiceResponse:
     r"""HTTP response status code for this operation"""
     create_invoice_response: Optional[shared_createinvoiceresponse.CreateInvoiceResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

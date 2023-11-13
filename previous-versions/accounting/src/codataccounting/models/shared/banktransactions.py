@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import banktransactiontype as shared_banktransactiontype
-from ..shared import links as shared_links
+from .banktransactiontype import BankTransactionType
+from .links import Links
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -12,7 +12,7 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class BankTransactionsSourceModifiedDate:
+class SourceModifiedDate:
     r"""> **Accessing Bank Accounts through Banking API**
     > 
     > This datatype was originally used for accessing bank account data both in accounting integrations and open banking aggregators. 
@@ -65,7 +65,7 @@ class BankTransactionsSourceModifiedDate:
     reconciled: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reconciled'), 'exclude': lambda f: f is None }})
     r"""`True` if the bank transaction has been [reconciled](https://www.xero.com/uk/guides/what-is-bank-reconciliation/) in the accounting platform."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    transaction_type: Optional[shared_banktransactiontype.BankTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType'), 'exclude': lambda f: f is None }})
+    transaction_type: Optional[BankTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType'), 'exclude': lambda f: f is None }})
     r"""Type of transaction for the bank statement line."""
     
 
@@ -74,13 +74,13 @@ class BankTransactionsSourceModifiedDate:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class BankTransactions:
-    links: shared_links.Links = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})
+    links: Links = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})
     page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})
     r"""Current page number."""
     page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})
     r"""Number of items to return in results array."""
     total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})
     r"""Total number of items."""
-    results: Optional[List[BankTransactionsSourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
+    results: Optional[List[SourceModifiedDate]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
     
 

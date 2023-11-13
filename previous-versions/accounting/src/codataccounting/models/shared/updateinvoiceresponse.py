@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import datatype as shared_datatype
-from ..shared import invoice as shared_invoice
-from ..shared import pushoperationchange as shared_pushoperationchange
-from ..shared import pushoperationstatus as shared_pushoperationstatus
-from ..shared import validation as shared_validation
+from .datatype import DataType
+from .invoice import Invoice
+from .pushoperationchange import PushOperationChange
+from .pushoperationstatus import PushOperationStatus
+from .validation import Validation
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -42,11 +42,11 @@ class UpdateInvoiceResponse:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    status: shared_pushoperationstatus.PushOperationStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: PushOperationStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The current status of the push operation."""
     status_code: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode') }})
     r"""Push status code."""
-    changes: Optional[List[shared_pushoperationchange.PushOperationChange]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes') }})
+    changes: Optional[List[PushOperationChange]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes') }})
     r"""Contains a single entry that communicates which record has changed and the manner in which it changed."""
     completed_on_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completedOnUtc'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -69,7 +69,7 @@ class UpdateInvoiceResponse:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    data: Optional[shared_invoice.Invoice] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: Optional[Invoice] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     r"""> **Invoices or bills?**
     >
     > We distinguish between invoices where the company *owes money* vs. *is owed money*. If the company issued an invoice, and is owed money (accounts receivable) we call this an Invoice.
@@ -100,7 +100,7 @@ class UpdateInvoiceResponse:
     >
     > In Sage 50 and ClearBooks, you may prefer to use the **invoiceNumber** to identify an invoice rather than the invoice **id**. Each time a draft invoice is submitted or printed, the draft **id** becomes void and a submitted invoice with a new **id** exists in its place. In both platforms, the **invoiceNumber** should remain the same.
     """
-    data_type: Optional[shared_datatype.DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    data_type: Optional[DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     r"""Available Data types"""
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage') }})
     r"""A message about the error."""
@@ -111,7 +111,7 @@ class UpdateInvoiceResponse:
 
     Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
     """
-    validation: Optional[shared_validation.Validation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
+    validation: Optional[Validation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""
     
 

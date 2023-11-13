@@ -74,7 +74,12 @@ if res.create_bank_account_response is not None:
 ### Response
 
 **[operations.CreateBankAccountResponse](../../models/operations/createbankaccountresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get
 
@@ -123,7 +128,12 @@ if res.bank_account is not None:
 ### Response
 
 **[operations.GetBankAccountResponse](../../models/operations/getbankaccountresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_update_model
 
@@ -173,7 +183,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdateBankAccountsModelResponse](../../models/operations/getcreateupdatebankaccountsmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -222,7 +237,12 @@ if res.bank_accounts is not None:
 ### Response
 
 **[operations.ListBankAccountsResponse](../../models/operations/listbankaccountsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## update
 
@@ -287,4 +307,9 @@ if res.update_bank_account_response is not None:
 ### Response
 
 **[operations.UpdateBankAccountResponse](../../models/operations/updatebankaccountresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

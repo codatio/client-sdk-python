@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createcreditnoteresponse as shared_createcreditnoteresponse
-from ..shared import creditnote as shared_creditnote
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import createcreditnoteresponse as shared_createcreditnoteresponse
+from ...models.shared import creditnote as shared_creditnote
 from typing import Optional
 
 
@@ -30,8 +29,6 @@ class CreateCreditNoteResponse:
     r"""HTTP response status code for this operation"""
     create_credit_note_response: Optional[shared_createcreditnoteresponse.CreateCreditNoteResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

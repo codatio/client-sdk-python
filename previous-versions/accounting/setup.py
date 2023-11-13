@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-accounting",
-    version="0.32.0",
+    version="0.33.0",
     author="Codat",
     description="Access standardized accounting data from our accounting integrations.",
     long_description=long_description,

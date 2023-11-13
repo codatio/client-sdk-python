@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import purchaseorder as shared_purchaseorder
-from ..shared import updatepurchaseorderresponse as shared_updatepurchaseorderresponse
+from ...models.shared import purchaseorder as shared_purchaseorder
+from ...models.shared import updatepurchaseorderresponse as shared_updatepurchaseorderresponse
 from typing import Optional
 
 
@@ -32,8 +31,6 @@ class UpdatePurchaseOrderResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     update_purchase_order_response: Optional[shared_updatepurchaseorderresponse.UpdatePurchaseOrderResponse] = dataclasses.field(default=None)

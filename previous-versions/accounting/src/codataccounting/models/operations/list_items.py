@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import items1 as shared_items1
+from ...models.shared import schema_items as shared_schema_items
 from typing import Optional
 
 
@@ -30,9 +29,7 @@ class ListItemsResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your `query` parameter was not correctly formed"""
-    items: Optional[shared_items1.Items1] = dataclasses.field(default=None)
+    items: Optional[shared_schema_items.SchemaItems] = dataclasses.field(default=None)
     r"""Success"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""

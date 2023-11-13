@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createitemresponse as shared_createitemresponse
-from ..shared import errormessage as shared_errormessage
-from ..shared import item as shared_item
+from ...models.shared import createitemresponse as shared_createitemresponse
+from ...models.shared import item as shared_item
 from typing import Optional
 
 
@@ -30,8 +29,6 @@ class CreateItemResponse:
     r"""HTTP response status code for this operation"""
     create_item_response: Optional[shared_createitemresponse.CreateItemResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createdirectcostresponse as shared_createdirectcostresponse
-from ..shared import directcost as shared_directcost
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import createdirectcostresponse as shared_createdirectcostresponse
+from ...models.shared import directcostprototype as shared_directcostprototype
 from typing import Optional
 
 
@@ -15,7 +14,7 @@ class CreateDirectCostRequest:
     r"""Unique identifier for a company."""
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a connection."""
-    direct_cost: Optional[shared_directcost.DirectCost] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    direct_cost_prototype: Optional[shared_directcostprototype.DirectCostPrototype] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     r"""Time limit for the push operation to complete before it is timed out."""
     
@@ -30,8 +29,6 @@ class CreateDirectCostResponse:
     r"""HTTP response status code for this operation"""
     create_direct_cost_response: Optional[shared_createdirectcostresponse.CreateDirectCostResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

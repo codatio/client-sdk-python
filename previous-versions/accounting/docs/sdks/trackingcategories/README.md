@@ -56,7 +56,12 @@ if res.tracking_category_tree is not None:
 ### Response
 
 **[operations.GetTrackingCategoryResponse](../../models/operations/gettrackingcategoryresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list
 
@@ -104,4 +109,9 @@ if res.tracking_categories is not None:
 ### Response
 
 **[operations.ListTrackingCategoriesResponse](../../models/operations/listtrackingcategoriesresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

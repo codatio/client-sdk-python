@@ -67,7 +67,7 @@ req = operations.CreatePurchaseOrderRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         payment_due_date='2022-10-23T00:00:00.000Z',
         ship_to=shared.ShipTo(
-            address=shared.Addressesitems(
+            address=shared.Items(
                 type=shared.AccountingAddressType.UNKNOWN,
             ),
             contact=shared.ShipToContact(),
@@ -99,7 +99,12 @@ if res.create_purchase_order_response is not None:
 ### Response
 
 **[operations.CreatePurchaseOrderResponse](../../models/operations/createpurchaseorderresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## download_attachment
 
@@ -147,7 +152,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadPurchaseOrderAttachmentResponse](../../models/operations/downloadpurchaseorderattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## download_purchase_order_pdf
 
@@ -192,7 +202,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadPurchaseOrderPdfResponse](../../models/operations/downloadpurchaseorderpdfresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -240,7 +255,12 @@ if res.purchase_order is not None:
 ### Response
 
 **[operations.GetPurchaseOrderResponse](../../models/operations/getpurchaseorderresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_attachment
 
@@ -288,7 +308,12 @@ if res.attachment is not None:
 ### Response
 
 **[operations.GetPurchaseOrderAttachmentResponse](../../models/operations/getpurchaseorderattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_create_update_model
 
@@ -338,7 +363,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdatePurchaseOrdersModelResponse](../../models/operations/getcreateupdatepurchaseordersmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -386,7 +416,12 @@ if res.purchase_orders is not None:
 ### Response
 
 **[operations.ListPurchaseOrdersResponse](../../models/operations/listpurchaseordersresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list_attachments
 
@@ -433,7 +468,12 @@ if res.attachments_dataset is not None:
 ### Response
 
 **[operations.ListPurchaseOrderAttachmentsResponse](../../models/operations/listpurchaseorderattachmentsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## update
 
@@ -485,7 +525,7 @@ req = operations.UpdatePurchaseOrderRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         payment_due_date='2022-10-23T00:00:00.000Z',
         ship_to=shared.ShipTo(
-            address=shared.Addressesitems(
+            address=shared.Items(
                 type=shared.AccountingAddressType.DELIVERY,
             ),
             contact=shared.ShipToContact(),
@@ -518,4 +558,9 @@ if res.update_purchase_order_response is not None:
 ### Response
 
 **[operations.UpdatePurchaseOrderResponse](../../models/operations/updatepurchaseorderresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

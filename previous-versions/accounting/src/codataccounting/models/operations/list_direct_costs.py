@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import directcosts as shared_directcosts
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import directcosts as shared_directcosts
 from typing import Optional
 
 
@@ -34,8 +33,6 @@ class ListDirectCostsResponse:
     r"""HTTP response status code for this operation"""
     direct_costs: Optional[shared_directcosts.DirectCosts] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your `query` parameter was not correctly formed"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

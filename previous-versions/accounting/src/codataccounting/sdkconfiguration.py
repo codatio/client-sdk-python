@@ -2,9 +2,10 @@
 
 import requests
 from dataclasses import dataclass
-from typing import Dict, Tuple
+from typing import Dict, Tuple, Callable, Union
 from .utils.retries import RetryConfig
 from .utils import utils
+from codataccounting.models import shared
 
 
 SERVERS = [
@@ -16,14 +17,14 @@ SERVERS = [
 @dataclass
 class SDKConfiguration:
     client: requests.Session
-    security_client: requests.Session
+    security: Union[shared.Security,Callable[[], shared.Security]] = None
     server_url: str = ''
     server_idx: int = 0
     language: str = 'python'
     openapi_doc_version: str = '3.0.0'
-    sdk_version: str = '0.32.0'
-    gen_version: str = '2.173.0'
-    user_agent: str = 'speakeasy-sdk/python 0.32.0 2.173.0 3.0.0 codat-accounting'
+    sdk_version: str = '0.33.0'
+    gen_version: str = '2.188.1'
+    user_agent: str = 'speakeasy-sdk/python 0.33.0 2.188.1 3.0.0 codat-accounting'
     retry_config: RetryConfig = None
 
     def get_server_details(self) -> Tuple[str, Dict[str, str]]:

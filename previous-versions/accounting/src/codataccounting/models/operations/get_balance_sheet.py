@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import balancesheet1 as shared_balancesheet1
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import balancesheet_input as shared_balancesheet_input
 from typing import Optional
 
 
@@ -28,10 +27,8 @@ class GetBalanceSheetResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    balance_sheet: Optional[shared_balancesheet1.BalanceSheet1] = dataclasses.field(default=None)
+    balance_sheet: Optional[shared_balancesheet_input.BalanceSheetInput] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

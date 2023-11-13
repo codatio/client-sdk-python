@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import bill as shared_bill
-from ..shared import createbillresponse as shared_createbillresponse
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import bill as shared_bill
+from ...models.shared import createbillresponse as shared_createbillresponse
 from typing import Optional
 
 
@@ -30,8 +29,6 @@ class CreateBillResponse:
     r"""HTTP response status code for this operation"""
     create_bill_response: Optional[shared_createbillresponse.CreateBillResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

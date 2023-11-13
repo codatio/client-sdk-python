@@ -44,18 +44,18 @@ s = codataccounting.CodatAccounting(
 req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
-            shared.Addressesitems(
+            shared.Items(
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
         contacts=[
             shared.Contact(
-                address=shared.Addressesitems(
+                address=shared.Items(
                     type=shared.AccountingAddressType.BILLING,
                 ),
                 modified_date='2022-10-23T00:00:00.000Z',
                 phone=[
-                    shared.PhoneNumbersitems(
+                    shared.PhoneNumberItems(
                         number='01224 658 999',
                         type=shared.PhoneNumberType.MOBILE,
                     ),
@@ -98,7 +98,12 @@ if res.create_customer_response is not None:
 ### Response
 
 **[operations.CreateCustomerResponse](../../models/operations/createcustomerresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## download_attachment
 
@@ -146,7 +151,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadCustomerAttachmentResponse](../../models/operations/downloadcustomerattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -194,7 +204,12 @@ if res.customer is not None:
 ### Response
 
 **[operations.GetCustomerResponse](../../models/operations/getcustomerresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_attachment
 
@@ -242,7 +257,12 @@ if res.attachment is not None:
 ### Response
 
 **[operations.GetCustomerAttachmentResponse](../../models/operations/getcustomerattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_create_update_model
 
@@ -292,7 +312,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdateCustomersModelResponse](../../models/operations/getcreateupdatecustomersmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -340,7 +365,12 @@ if res.customers is not None:
 ### Response
 
 **[operations.ListCustomersResponse](../../models/operations/listcustomersresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list_attachments
 
@@ -387,7 +417,12 @@ if res.attachments_dataset is not None:
 ### Response
 
 **[operations.ListCustomerAttachmentsResponse](../../models/operations/listcustomerattachmentsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## update
 
@@ -417,18 +452,18 @@ s = codataccounting.CodatAccounting(
 req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
-            shared.Addressesitems(
+            shared.Items(
                 type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
         contacts=[
             shared.Contact(
-                address=shared.Addressesitems(
+                address=shared.Items(
                     type=shared.AccountingAddressType.UNKNOWN,
                 ),
                 modified_date='2022-10-23T00:00:00.000Z',
                 phone=[
-                    shared.PhoneNumbersitems(
+                    shared.PhoneNumberItems(
                         number='+44 25691 154789',
                         type=shared.PhoneNumberType.LANDLINE,
                     ),
@@ -472,4 +507,9 @@ if res.update_customer_response is not None:
 ### Response
 
 **[operations.UpdateCustomerResponse](../../models/operations/updatecustomerresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

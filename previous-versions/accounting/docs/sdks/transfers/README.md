@@ -41,7 +41,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateTransferRequest(
     transfer=shared.Transfer(
-        contact_ref=shared.TransferContactRef(
+        contact_ref=shared.ContactRef(
             data_type=shared.DataType.INVOICES,
             id='<ID>',
         ),
@@ -97,7 +97,12 @@ if res.create_transfer_response is not None:
 ### Response
 
 **[operations.CreateTransferResponse](../../models/operations/createtransferresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get
 
@@ -146,7 +151,12 @@ if res.transfer is not None:
 ### Response
 
 **[operations.GetTransferResponse](../../models/operations/gettransferresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_model
 
@@ -196,7 +206,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateTransfersModelResponse](../../models/operations/getcreatetransfersmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -245,7 +260,12 @@ if res.transfers is not None:
 ### Response
 
 **[operations.ListTransfersResponse](../../models/operations/listtransfersresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## upload_attachment
 
@@ -274,8 +294,8 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadTransferAttachmentRequest(
     request_body=operations.UploadTransferAttachmentRequestBody(
-        content='v/ghW&IC$x'.encode(),
-        request_body='string',
+        content='0xE3ABc1980E'.encode(),
+        file_name='elegant_producer_electric.jpeg',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -300,4 +320,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UploadTransferAttachmentResponse](../../models/operations/uploadtransferattachmentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

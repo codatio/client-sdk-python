@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import dataset as shared_dataset
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import dataset as shared_dataset
 from typing import Optional
 
 
@@ -24,8 +23,6 @@ class RefreshCompanyInfoResponse:
     r"""HTTP response status code for this operation"""
     dataset: Optional[shared_dataset.Dataset] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     
