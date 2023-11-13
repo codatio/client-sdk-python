@@ -1,9 +1,7 @@
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import operations, shared
+from codatbankfeeds.models import shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -11,17 +9,14 @@ s = codatbankfeeds.CodatBankFeeds(
     ),
 )
 
-req = operations.CreateBankAccountMappingRequest(
-    zero=shared.Zero(
-        feed_start_date='2022-10-23T00:00:00.000Z',
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
 )
 
-res = s.account_mapping.create(req)
+res = s.companies.create(req)
 
-if res.bank_feed_account_mapping_response is not None:
+if res.company is not None:
     # handle response
     pass
 ```

@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import sourceaccount as shared_sourceaccount
+from ...models.shared import sourceaccount as shared_sourceaccount
 from typing import Optional
 
 
@@ -25,8 +24,6 @@ class CreateSourceAccountResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     source_account: Optional[shared_sourceaccount.SourceAccount] = dataclasses.field(default=None)

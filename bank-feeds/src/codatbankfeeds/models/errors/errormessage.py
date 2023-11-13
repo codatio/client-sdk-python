@@ -8,8 +8,9 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
-class ErrorMessage:
+class ErrorMessage(Exception):
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     r"""`True` if the error occurred transiently and can be retried."""
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
@@ -24,3 +25,5 @@ class ErrorMessage:
     r"""The HTTP status code returned by the error."""
     
 
+    def __str__(self) -> str:
+        return utils.marshal_json(self)

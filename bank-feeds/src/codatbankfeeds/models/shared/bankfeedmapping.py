@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import targetaccountoption as shared_targetaccountoption
+from .targetaccountoption import TargetAccountOption
 from codatbankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -56,7 +56,7 @@ class BankFeedMapping:
     r"""Unique ID for the target account in the accounting platform."""
     target_account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountName'), 'exclude': lambda f: f is None }})
     r"""Name for the target account in the accounting platform."""
-    target_account_options: Optional[List[shared_targetaccountoption.TargetAccountOption]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountOptions') }})
+    target_account_options: Optional[List[TargetAccountOption]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountOptions') }})
     r"""An array of potential target accounts."""
     
 

@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import bankfeedaccountmappingresponse as shared_bankfeedaccountmappingresponse
-from ..shared import errormessage as shared_errormessage
-from ..shared import zero as shared_zero
+from ...models.shared import bankfeedaccountmappingresponse as shared_bankfeedaccountmappingresponse
+from ...models.shared import zero as shared_zero
 from typing import Optional
 
 
@@ -28,8 +27,6 @@ class CreateBankAccountMappingResponse:
     r"""HTTP response status code for this operation"""
     bank_feed_account_mapping_response: Optional[shared_bankfeedaccountmappingresponse.BankFeedAccountMappingResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     
