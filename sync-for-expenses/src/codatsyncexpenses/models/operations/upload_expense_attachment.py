@@ -3,15 +3,14 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import attachment as shared_attachment
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import attachment as shared_attachment
 from typing import Optional
 
 
 @dataclasses.dataclass
 class UploadExpenseAttachmentRequestBody:
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
-    request_body: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'requestBody' }})
+    file_name: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'fileName' }})
     
 
 
@@ -37,8 +36,6 @@ class UploadExpenseAttachmentResponse:
     r"""HTTP response status code for this operation"""
     attachment: Optional[shared_attachment.Attachment] = dataclasses.field(default=None)
     r"""OK"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

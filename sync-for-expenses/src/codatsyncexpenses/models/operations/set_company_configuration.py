@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import companyconfiguration as shared_companyconfiguration
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import companyconfiguration as shared_companyconfiguration
 from typing import Optional
 
 
@@ -25,8 +24,6 @@ class SetCompanyConfigurationResponse:
     r"""HTTP response status code for this operation"""
     company_configuration: Optional[shared_companyconfiguration.CompanyConfiguration] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

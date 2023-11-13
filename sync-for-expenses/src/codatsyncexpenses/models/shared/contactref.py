@@ -7,7 +7,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class ContactRefType(str, Enum):
+class Type(str, Enum):
     r"""The type of contact."""
     SUPPLIER = 'Supplier'
 
@@ -17,7 +17,7 @@ class ContactRefType(str, Enum):
 class ContactRef:
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier of supplier or customer."""
-    type: Optional[ContactRefType] = dataclasses.field(default=ContactRefType.SUPPLIER, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[Type] = dataclasses.field(default=Type.SUPPLIER, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of contact."""
     
 

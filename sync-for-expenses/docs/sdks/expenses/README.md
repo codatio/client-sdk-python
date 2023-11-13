@@ -32,12 +32,12 @@ req = operations.CreateExpenseTransactionRequest(
     create_expense_request=shared.CreateExpenseRequest(
         items=[
             shared.ExpenseTransaction(
-                bank_account_ref=shared.ExpenseTransactionBankAccountReference(
+                bank_account_ref=shared.BankAccountReference(
                     id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
                 ),
                 contact_ref=shared.ContactRef(
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    type=shared.ContactRefType.SUPPLIER,
+                    type=shared.Type.SUPPLIER,
                 ),
                 currency='GBP',
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
@@ -86,7 +86,12 @@ if res.create_expense_response is not None:
 ### Response
 
 **[operations.CreateExpenseTransactionResponse](../../models/operations/createexpensetransactionresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## update
 
@@ -112,7 +117,7 @@ req = operations.UpdateExpenseTransactionRequest(
         ),
         contact_ref=shared.ContactRef(
             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-            type=shared.ContactRefType.SUPPLIER,
+            type=shared.Type.SUPPLIER,
         ),
         currency='GBP',
         issue_date='2022-06-28T00:00:00.000Z',
@@ -135,7 +140,7 @@ req = operations.UpdateExpenseTransactionRequest(
         ],
         merchant_name='Amazon UK',
         notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type='Van',
+        type='string',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
@@ -159,7 +164,12 @@ if res.update_expense_response is not None:
 ### Response
 
 **[operations.UpdateExpenseTransactionResponse](../../models/operations/updateexpensetransactionresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,422,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## upload_attachment
 
@@ -179,8 +189,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UploadExpenseAttachmentRequest(
     request_body=operations.UploadExpenseAttachmentRequestBody(
-        content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        content='0xE3ABc1980E'.encode(),
+        file_name='elegant_producer_electric.jpeg',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
@@ -205,4 +215,9 @@ if res.attachment is not None:
 ### Response
 
 **[operations.UploadExpenseAttachmentResponse](../../models/operations/uploadexpenseattachmentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

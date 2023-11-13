@@ -15,7 +15,7 @@ class AccountMappingInfoAccountType(str, Enum):
     EXPENSE = 'Expense'
     EQUITY = 'Equity'
 
-class AccountMappingInfoValidTransactionTypes(str, Enum):
+class ValidTransactionTypes(str, Enum):
     PAYMENT = 'Payment'
     REFUND = 'Refund'
     REWARD = 'Reward'
@@ -37,7 +37,7 @@ class AccountMappingInfo:
     r"""Unique identifier of account."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""Name of the account as it appears in the companies accounting software."""
-    valid_transaction_types: Optional[List[AccountMappingInfoValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes') }})
+    valid_transaction_types: Optional[List[ValidTransactionTypes]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validTransactionTypes') }})
     r"""Supported transaction types for the account."""
     
 
