@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import dataintegritydatatype as shared_dataintegritydatatype
-from ..shared import errormessage as shared_errormessage
-from ..shared import summaries as shared_summaries
+from ...models.shared import dataintegritydatatype as shared_dataintegritydatatype
+from ...models.shared import summaries as shared_summaries
 from typing import Optional
 
 
@@ -27,8 +26,6 @@ class GetDataIntegritySummariesResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your `query` parameter was not correctly formed"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     summaries: Optional[shared_summaries.Summaries] = dataclasses.field(default=None)

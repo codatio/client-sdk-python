@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import excelreporttype as shared_excelreporttype
-from ..shared import excelstatus as shared_excelstatus
+from ...models.shared import excelreporttype as shared_excelreporttype
+from ...models.shared import excelstatus as shared_excelstatus
 from typing import Optional
 
 
@@ -25,8 +24,6 @@ class GenerateExcelReportResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     excel_status: Optional[shared_excelstatus.ExcelStatus] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
