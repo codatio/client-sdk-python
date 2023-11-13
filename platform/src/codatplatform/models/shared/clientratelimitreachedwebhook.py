@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import clientratelimitreachedwebhookdata as shared_clientratelimitreachedwebhookdata
+from .clientratelimitreachedwebhookdata import ClientRateLimitReachedWebhookData
 from codatplatform import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -18,7 +18,7 @@ class ClientRateLimitReachedWebhook:
     r"""Unique identifier for your client in Codat."""
     client_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ClientName'), 'exclude': lambda f: f is None }})
     r"""Name of your client in Codat."""
-    data: Optional[shared_clientratelimitreachedwebhookdata.ClientRateLimitReachedWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Data'), 'exclude': lambda f: f is None }})
+    data: Optional[ClientRateLimitReachedWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Data'), 'exclude': lambda f: f is None }})
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Message'), 'exclude': lambda f: f is None }})
     r"""A human readable message about the webhook."""
     rule_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RuleId'), 'exclude': lambda f: f is None }})

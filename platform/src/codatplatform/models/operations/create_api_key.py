@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import apikeydetails as shared_apikeydetails
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import apikeydetails as shared_apikeydetails
 from typing import Optional
 
 
@@ -16,8 +15,6 @@ class CreateAPIKeyResponse:
     r"""HTTP response status code for this operation"""
     api_key_details: Optional[shared_apikeydetails.APIKeyDetails] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Bad Request"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

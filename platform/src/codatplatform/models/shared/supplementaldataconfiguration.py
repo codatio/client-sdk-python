@@ -9,7 +9,7 @@ from typing import Dict, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class SupplementalDataConfigurationSupplementalDataSourceConfiguration:
+class SupplementalDataSourceConfiguration:
     r"""The client's defined name for the object."""
     data_source: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataSource'), 'exclude': lambda f: f is None }})
     r"""The underlying endpoint of the source system which the configuration is targeting."""
@@ -24,6 +24,6 @@ class SupplementalDataConfigurationSupplementalDataSourceConfiguration:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SupplementalDataConfiguration:
-    supplemental_data_config: Optional[Dict[str, SupplementalDataConfigurationSupplementalDataSourceConfiguration]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalDataConfig'), 'exclude': lambda f: f is None }})
+    supplemental_data_config: Optional[Dict[str, SupplementalDataSourceConfiguration]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalDataConfig'), 'exclude': lambda f: f is None }})
     
 

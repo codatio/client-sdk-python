@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import syncsetting as shared_syncsetting
+from ...models.shared import syncsetting as shared_syncsetting
 from codatplatform import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -31,8 +30,6 @@ class UpdateProfileSyncSettingsResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     
