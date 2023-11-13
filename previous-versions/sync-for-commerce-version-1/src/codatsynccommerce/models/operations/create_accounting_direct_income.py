@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingcreatedirectincomeresponse as shared_accountingcreatedirectincomeresponse
-from ..shared import accountingdirectincome as shared_accountingdirectincome
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingcreatedirectincomeresponse as shared_accountingcreatedirectincomeresponse
+from ...models.shared import accountingdirectincome as shared_accountingdirectincome
 from typing import Optional
 
 
@@ -30,8 +29,6 @@ class CreateAccountingDirectIncomeResponse:
     r"""HTTP response status code for this operation"""
     accounting_create_direct_income_response: Optional[shared_accountingcreatedirectincomeresponse.AccountingCreateDirectIncomeResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

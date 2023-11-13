@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import company as shared_company
-from ..shared import createcompany as shared_createcompany
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import company as shared_company
+from ...models.shared import createcompany as shared_createcompany
 from typing import Optional
 
 
@@ -26,8 +25,6 @@ class UpdateCompanyResponse:
     r"""HTTP response status code for this operation"""
     company: Optional[shared_company.Company] = dataclasses.field(default=None)
     r"""OK"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

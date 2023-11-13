@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import configuration as shared_configuration
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import configuration as shared_configuration
 from typing import Optional
 
 
@@ -24,8 +23,6 @@ class SetConfigurationResponse:
     r"""HTTP response status code for this operation"""
     configuration: Optional[shared_configuration.Configuration] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

@@ -48,7 +48,12 @@ if res.configuration is not None:
 ### Response
 
 **[operations.GetConfigurationResponse](../../models/operations/getconfigurationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## set_configuration
 
@@ -88,4 +93,9 @@ if res.configuration is not None:
 ### Response
 
 **[operations.SetConfigurationResponse](../../models/operations/setconfigurationresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

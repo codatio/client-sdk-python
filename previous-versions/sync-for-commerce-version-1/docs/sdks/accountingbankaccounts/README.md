@@ -57,7 +57,12 @@ if res.accounting_bank_account is not None:
 ### Response
 
 **[operations.GetAccountingBankAccountResponse](../../models/operations/getaccountingbankaccountresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list_accounting_bank_accounts
 
@@ -106,4 +111,9 @@ if res.accounting_bank_accounts is not None:
 ### Response
 
 **[operations.ListAccountingBankAccountsResponse](../../models/operations/listaccountingbankaccountsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

@@ -49,7 +49,12 @@ if res.push_operation is not None:
 ### Response
 
 **[operations.GetPushOperationResponse](../../models/operations/getpushoperationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list_operations
 
@@ -92,4 +97,9 @@ if res.push_operations is not None:
 ### Response
 
 **[operations.GetCompanyPushHistoryResponse](../../models/operations/getcompanypushhistoryresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

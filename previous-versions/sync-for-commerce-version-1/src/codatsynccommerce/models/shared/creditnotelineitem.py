@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountingcustomerref as shared_accountingcustomerref
-from ..shared import accountref as shared_accountref
-from ..shared import billedtotype as shared_billedtotype
-from ..shared import itemref as shared_itemref
-from ..shared import recordref as shared_recordref
-from ..shared import taxrateref as shared_taxrateref
-from ..shared import trackingcategoryrefsitems as shared_trackingcategoryrefsitems
+from .accountingcustomerref import AccountingCustomerRef
+from .accountref import AccountRef
+from .billedtotype import BilledToType
+from .itemref import ItemRef
+from .recordref import RecordRef
+from .taxrateref import TaxRateRef
+from .trackingcategoryref_items import TrackingCategoryRefItems
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -17,7 +17,7 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreditNoteLineItemTrackingAccountingProjectReference:
+class CreditNoteLineItemAccountingProjectReference:
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier to the project reference."""
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
@@ -30,14 +30,14 @@ class CreditNoteLineItemTrackingAccountingProjectReference:
 @dataclasses.dataclass
 class CreditNoteLineItemTracking:
     r"""Categories, and a project and customer, against which the item is tracked."""
-    category_refs: List[shared_trackingcategoryrefsitems.TrackingCategoryRefsitems] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})
-    is_billed_to: shared_billedtotype.BilledToType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})
+    category_refs: List[TrackingCategoryRefItems] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categoryRefs') }})
+    is_billed_to: BilledToType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isBilledTo') }})
     r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
-    is_rebilled_to: shared_billedtotype.BilledToType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
+    is_rebilled_to: BilledToType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isRebilledTo') }})
     r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
-    customer_ref: Optional[shared_accountingcustomerref.AccountingCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
-    project_ref: Optional[CreditNoteLineItemTrackingAccountingProjectReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})
-    record_ref: Optional[shared_recordref.RecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
+    customer_ref: Optional[AccountingCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
+    project_ref: Optional[CreditNoteLineItemAccountingProjectReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectRef'), 'exclude': lambda f: f is None }})
+    record_ref: Optional[RecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
     r"""Links the current record to the underlying record or data type that created it.
 
     For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
@@ -53,7 +53,7 @@ class CreditNoteLineItem:
     r"""Number of units of the goods or service for which credit has been issued."""
     unit_amount: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unitAmount'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Unit price of the goods or service."""
-    account_ref: Optional[shared_accountref.AccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[AccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description') }})
     r"""Friendly name of each line item. For example, the goods or service for which credit has been issued."""
@@ -63,19 +63,19 @@ class CreditNoteLineItem:
     r"""Percentage rate of any discount applied to the line item."""
     is_direct_income: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDirectIncome'), 'exclude': lambda f: f is None }})
     r"""The credit note is a direct income if `True`."""
-    item_ref: Optional[shared_itemref.ItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
+    item_ref: Optional[ItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the product, service type, or inventory item to which the direct cost is linked."""
     sub_total: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Amount of credit associated with the line item, including discounts but excluding tax."""
     tax_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Amount of tax associated with the line item."""
-    tax_rate_ref: Optional[shared_taxrateref.TaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
+    tax_rate_ref: Optional[TaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the tax rate to which the line item is linked."""
     total_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Total amount of the line item, including discounts and tax."""
     tracking: Optional[CreditNoteLineItemTracking] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking'), 'exclude': lambda f: f is None }})
     r"""Categories, and a project and customer, against which the item is tracked."""
-    tracking_category_refs: Optional[List[shared_trackingcategoryrefsitems.TrackingCategoryRefsitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs') }})
+    tracking_category_refs: Optional[List[TrackingCategoryRefItems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs') }})
     r"""Reference to the tracking categories to which the line item is linked.
 
     Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.

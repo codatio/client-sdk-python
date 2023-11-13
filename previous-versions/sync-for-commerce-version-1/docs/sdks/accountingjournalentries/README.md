@@ -51,13 +51,13 @@ req = operations.CreateAccountingJournalEntryRequest(
                 ),
             ),
         ],
-        journal_ref=shared.AccountingJournalEntryJournalReference(
+        journal_ref=shared.JournalReference(
             id='<ID>',
         ),
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
-        record_ref=shared.AccountingJournalEntryRecordReference(
+        record_ref=shared.RecordReference(
             data_type='journalEntry',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
@@ -92,4 +92,9 @@ if res.accounting_create_journal_entry_response is not None:
 ### Response
 
 **[operations.CreateAccountingJournalEntryResponse](../../models/operations/createaccountingjournalentryresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingcreatejournalentryresponse as shared_accountingcreatejournalentryresponse
-from ..shared import accountingjournalentry as shared_accountingjournalentry
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingcreatejournalentryresponse as shared_accountingcreatejournalentryresponse
+from ...models.shared import accountingjournalentry as shared_accountingjournalentry
 from typing import Optional
 
 
@@ -30,8 +29,6 @@ class CreateAccountingJournalEntryResponse:
     r"""HTTP response status code for this operation"""
     accounting_create_journal_entry_response: Optional[shared_accountingcreatejournalentryresponse.AccountingCreateJournalEntryResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

@@ -57,7 +57,12 @@ if res.commerce_customer is not None:
 ### Response
 
 **[operations.GetCommerceCustomerResponse](../../models/operations/getcommercecustomerresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list_commerce_customers
 
@@ -106,4 +111,9 @@ if res.commerce_customers is not None:
 ### Response
 
 **[operations.ListCommerceCustomersResponse](../../models/operations/listcommercecustomersresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

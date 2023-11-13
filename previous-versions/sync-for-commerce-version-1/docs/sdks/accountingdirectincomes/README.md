@@ -37,7 +37,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingDirectIncomeRequest(
     accounting_direct_income=shared.AccountingDirectIncome(
-        contact_ref=shared.AccountingDirectIncomeContactRef(
+        contact_ref=shared.ContactRef(
             data_type=shared.DataType.INVOICES,
             id='<ID>',
         ),
@@ -46,13 +46,13 @@ req = operations.CreateAccountingDirectIncomeRequest(
         line_items=[
             shared.DirectIncomeLineItem(
                 account_ref=shared.AccountRef(),
-                item_ref=shared.DirectIncomeLineItemItemReference(
+                item_ref=shared.ItemReference(
                     id='<ID>',
                 ),
                 quantity=Decimal('3642.55'),
-                tax_rate_ref=shared.DirectIncomeLineItemTaxRateReference(),
+                tax_rate_ref=shared.TaxRateReference(),
                 tracking_category_refs=[
-                    shared.DirectIncomeLineItemTrackingCategoryRefs(
+                    shared.TrackingCategoryRefs(
                         id='<ID>',
                     ),
                 ],
@@ -62,8 +62,8 @@ req = operations.CreateAccountingDirectIncomeRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.PaymentAllocationsitems(
-                allocation=shared.ItemsAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -108,4 +108,9 @@ if res.accounting_create_direct_income_response is not None:
 ### Response
 
 **[operations.CreateAccountingDirectIncomeResponse](../../models/operations/createaccountingdirectincomeresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

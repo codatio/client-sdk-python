@@ -54,7 +54,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                 tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
-                        shared.TrackingCategoryRefsitems(
+                        shared.TrackingCategoryRefItems(
                             id='<ID>',
                         ),
                     ],
@@ -63,7 +63,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.PROJECT,
                     is_rebilled_to=shared.BilledToType.PROJECT,
-                    project_ref=shared.CreditNoteLineItemTrackingAccountingProjectReference(
+                    project_ref=shared.CreditNoteLineItemAccountingProjectReference(
                         id='<ID>',
                     ),
                     record_ref=shared.RecordRef(
@@ -71,7 +71,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                     ),
                 ),
                 tracking_category_refs=[
-                    shared.TrackingCategoryRefsitems(
+                    shared.TrackingCategoryRefItems(
                         id='<ID>',
                     ),
                 ],
@@ -81,8 +81,8 @@ req = operations.CreateAccountingCreditNoteRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.PaymentAllocationsitems(
-                allocation=shared.ItemsAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -108,7 +108,7 @@ req = operations.CreateAccountingCreditNoteRequest(
         total_discount=Decimal('579.23'),
         total_tax_amount=Decimal('3881.42'),
         withholding_tax=[
-            shared.WithholdingTaxitems(
+            shared.WithholdingTaxItems(
                 amount=Decimal('7369.44'),
                 name='string',
             ),
@@ -136,4 +136,9 @@ if res.accounting_create_credit_note_response is not None:
 ### Response
 
 **[operations.CreateAccountingCreditNoteResponse](../../models/operations/createaccountingcreditnoteresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

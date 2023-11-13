@@ -49,7 +49,12 @@ if res.sync_summary is not None:
 ### Response
 
 **[operations.GetSyncStatusResponse](../../models/operations/getsyncstatusresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## request_sync
 
@@ -93,7 +98,12 @@ if res.sync_summary is not None:
 ### Response
 
 **[operations.RequestSyncResponse](../../models/operations/requestsyncresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## request_sync_for_date_range
 
@@ -139,4 +149,9 @@ if res.sync_summary is not None:
 ### Response
 
 **[operations.RequestSyncForDateRangeResponse](../../models/operations/requestsyncfordaterangeresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

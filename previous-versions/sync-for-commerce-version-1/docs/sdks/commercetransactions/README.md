@@ -57,7 +57,12 @@ if res.commerce_transaction is not None:
 ### Response
 
 **[operations.GetCommerceTransactionResponse](../../models/operations/getcommercetransactionresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list_commerce_transactions
 
@@ -106,4 +111,9 @@ if res.commerce_transactions is not None:
 ### Response
 
 **[operations.ListCommerceTransactionsResponse](../../models/operations/listcommercetransactionsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

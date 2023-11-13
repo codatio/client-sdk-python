@@ -57,7 +57,12 @@ if res.commerce_location is not None:
 ### Response
 
 **[operations.GetCommerceLocationResponse](../../models/operations/getcommercelocationresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list_commerce_locations
 
@@ -103,4 +108,9 @@ if res.commerce_locations is not None:
 ### Response
 
 **[operations.ListCommerceLocationsResponse](../../models/operations/listcommercelocationsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
