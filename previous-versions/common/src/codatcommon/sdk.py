@@ -12,7 +12,7 @@ from .supplemental_data import SupplementalData
 from .webhooks import Webhooks
 from codatcommon import utils
 from codatcommon.models import shared
-from typing import Dict
+from typing import Callable, Dict, Union
 
 class CodatCommon:
     r"""Platform API: Platform API
@@ -24,18 +24,18 @@ class CodatCommon:
 
     [See our OpenAPI spec](https://github.com/codatio/oas)
     """
+    settings: Settings
+    r"""Manage your Codat instance."""
     companies: Companies
     r"""Create and manage your Codat companies."""
     connections: Connections
     r"""Manage your companies' data connections."""
-    integrations: Integrations
-    r"""View and manage your available integrations in Codat."""
     push_data: PushData
     r"""View push options and get push statuses."""
     refresh_data: RefreshData
     r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
-    settings: Settings
-    r"""Manage your Codat instance."""
+    integrations: Integrations
+    r"""View and manage your available integrations in Codat."""
     supplemental_data: SupplementalData
     r"""View and configure supplemental data for supported data types."""
     webhooks: Webhooks
@@ -44,7 +44,7 @@ class CodatCommon:
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 auth_header: str,
+                 auth_header: Union[str,Callable[[], str]],
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -54,7 +54,7 @@ class CodatCommon:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param auth_header: The auth_header required for authentication
-        :type auth_header: str
+        :type auth_header: Union[str,Callable[[], str]]
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -69,25 +69,23 @@ class CodatCommon:
         if client is None:
             client = requests_http.Session()
         
-        
-        security_client = utils.configure_security_client(client, shared.Security(auth_header = auth_header))
-        
+        security = shared.Security(auth_header = auth_header)
         
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
     def _init_sdks(self):
+        self.settings = Settings(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
-        self.integrations = Integrations(self.sdk_configuration)
         self.push_data = PushData(self.sdk_configuration)
         self.refresh_data = RefreshData(self.sdk_configuration)
-        self.settings = Settings(self.sdk_configuration)
+        self.integrations = Integrations(self.sdk_configuration)
         self.supplemental_data = SupplementalData(self.sdk_configuration)
         self.webhooks = Webhooks(self.sdk_configuration)
     

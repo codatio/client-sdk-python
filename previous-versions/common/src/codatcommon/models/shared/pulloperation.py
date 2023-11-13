@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import datatype as shared_datatype
+from .datatype import DataType
 from codatcommon import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class PullOperationStatus(str, Enum):
+class Status(str, Enum):
     r"""The current status of the pull operation."""
     INITIAL = 'Initial'
     QUEUED = 'Queued'
@@ -45,7 +45,7 @@ class PullOperation:
     r"""Unique identifier of the company associated to this pull operation."""
     connection_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionId') }})
     r"""Unique identifier of the connection associated to this pull operation."""
-    data_type: shared_datatype.DataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
+    data_type: DataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
     r"""Available Data types"""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier of the pull operation."""
@@ -76,7 +76,7 @@ class PullOperation:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    status: PullOperationStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: Status = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The current status of the pull operation."""
     completed: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completed'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

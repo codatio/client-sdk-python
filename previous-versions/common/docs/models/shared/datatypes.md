@@ -1,4 +1,4 @@
-# DataStatusDataTypes
+# DataTypes
 
 Available Data types
 

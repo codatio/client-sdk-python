@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import datatype as shared_datatype
-from ..shared import errormessage as shared_errormessage
-from ..shared import pushoption as shared_pushoption
+from ...models.shared import pushoption as shared_pushoption
+from ...models.shared import schema_datatype as shared_schema_datatype
 from typing import Optional
 
 
@@ -15,7 +14,7 @@ class GetCreateUpdateModelOptionsByDataTypeRequest:
     r"""Unique identifier for a company."""
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a connection."""
-    data_type: shared_datatype.DataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
+    data_type: shared_schema_datatype.SchemaDataType = dataclasses.field(metadata={'path_param': { 'field_name': 'dataType', 'style': 'simple', 'explode': False }})
     r"""The key of a Codat data type"""
     
 
@@ -27,8 +26,6 @@ class GetCreateUpdateModelOptionsByDataTypeResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     push_option: Optional[shared_pushoption.PushOption] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)

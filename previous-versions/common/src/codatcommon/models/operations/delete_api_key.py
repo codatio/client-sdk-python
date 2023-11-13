@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import errormessage as shared_errormessage
 from typing import Optional
 
 

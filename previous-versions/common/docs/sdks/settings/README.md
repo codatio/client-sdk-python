@@ -61,7 +61,12 @@ if res.api_key_details is not None:
 ### Response
 
 **[operations.CreateAPIKeyResponse](../../models/operations/createapikeyresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## delete_api_key
 
@@ -80,7 +85,7 @@ You can [read more](https://docs.codat.io/using-the-api/authentication) about au
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -108,7 +113,12 @@ if res.error_message is not None:
 ### Response
 
 **[operations.DeleteAPIKeyResponse](../../models/operations/deleteapikeyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_profile
 
@@ -118,7 +128,6 @@ Fetch your Codat profile.
 
 ```python
 import codatcommon
-from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -142,7 +151,12 @@ if res.profile is not None:
 ### Response
 
 **[operations.GetProfileResponse](../../models/operations/getprofileresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## get_sync_settings
 
@@ -152,7 +166,6 @@ Retrieve the [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-
 
 ```python
 import codatcommon
-from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -176,7 +189,12 @@ if res.sync_settings is not None:
 ### Response
 
 **[operations.GetProfileSyncSettingsResponse](../../models/operations/getprofilesyncsettingsresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## list_api_keys
 
@@ -190,7 +208,6 @@ You can [read more](https://docs.codat.io/using-the-api/authentication) about au
 
 ```python
 import codatcommon
-from codatcommon.models import shared
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -214,7 +231,12 @@ if res.api_keys is not None:
 ### Response
 
 **[operations.ListAPIKeysResponse](../../models/operations/listapikeysresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## update_profile
 
@@ -283,7 +305,12 @@ if res.profile is not None:
 ### Response
 
 **[operations.UpdateProfileResponse](../../models/operations/updateprofileresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## update_sync_settings
 
@@ -332,4 +359,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UpdateProfileSyncSettingsResponse](../../models/operations/updateprofilesyncsettingsresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |

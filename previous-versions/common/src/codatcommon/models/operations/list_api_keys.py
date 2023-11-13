@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import apikeys as shared_apikeys
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import apikeys as shared_apikeys
 from typing import Optional
 
 
@@ -16,8 +15,6 @@ class ListAPIKeysResponse:
     r"""HTTP response status code for this operation"""
     api_keys: Optional[shared_apikeys.APIKeys] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

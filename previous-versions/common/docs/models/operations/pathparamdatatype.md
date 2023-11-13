@@ -1,4 +1,4 @@
-# GetSupplementalDataConfigurationDataType
+# PathParamDataType
 
 Data types that support supplemental data
 

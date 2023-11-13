@@ -19,3 +19,13 @@ Based on:
 - [python v0.35.0] previous-versions/common
 ### Releases
 - [PyPI v0.35.0] https://pypi.org/project/codat-common/0.35.0 - previous-versions/common
+
+## 2023-11-13 01:26:31
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Platform.yaml
+- Speakeasy CLI 1.119.0 (2.188.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.36.0] previous-versions/common
+### Releases
+- [PyPI v0.36.0] https://pypi.org/project/codat-common/0.36.0 - previous-versions/common
