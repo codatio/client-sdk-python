@@ -1,29 +1,43 @@
 configVersion: 1.0.0
 management:
-  docChecksum: ec8e3eb5a723cc9ea65cb9d024f4d4bf
+  docChecksum: 941aa6e92d6d251a15c651fc41820752
   docVersion: 3.0.0
-  speakeasyVersion: 1.112.1
-  generationVersion: 2.173.0
+  speakeasyVersion: 1.119.0
+  generationVersion: 2.188.1
 generation:
   comments: {}
   sdkClassName: CodatSyncPayroll
   repoURL: https://github.com/codatio/client-sdk-python.git
+  usageSnippets:
+    optionalPropertyRendering: withExample
 features:
   python:
-    core: 3.3.1
+    core: 4.1.2
     deprecations: 2.81.1
     examples: 2.81.3
-    globalSecurity: 2.82.0
+    globalSecurity: 2.83.0
     globalServerURLs: 2.82.0
+    inputOutputModels: 2.82.0
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 2.1.0
+  version: 3.0.0
   author: Codat
+  clientServerStatusCodesAsErrors: true
   description: Push payroll to accounting platforms.
   flattenGlobalSecurity: false
+  imports:
+    option: openapi
+    paths:
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models/shared
+      webhooks: models/webhooks
+  inputModelSuffix: input
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-payroll
   maxMethodParams: 0
+  outputModelSuffix: output
   packageName: codat-sync-for-payroll
   published: true
   repoSubDirectory: sync-for-payroll

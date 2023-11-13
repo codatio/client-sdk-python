@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import datatype as shared_datatype
+from .datatype import DataType
 from codatsyncpayroll import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -45,7 +45,7 @@ class PullOperation:
     r"""Unique identifier of the company associated to this pull operation."""
     connection_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionId') }})
     r"""Unique identifier of the connection associated to this pull operation."""
-    data_type: shared_datatype.DataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
+    data_type: DataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
     r"""Available Data types"""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier of the pull operation."""

@@ -53,7 +53,12 @@ if res.data_statuses is not None:
 ### Response
 
 **[operations.GetDataStatusResponse](../../models/operations/getdatastatusresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_pull_operation
 
@@ -94,7 +99,12 @@ if res.pull_operation is not None:
 ### Response
 
 **[operations.GetPullOperationResponse](../../models/operations/getpulloperationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_push_operation
 
@@ -135,7 +145,12 @@ if res.push_operation is not None:
 ### Response
 
 **[operations.GetPushOperationResponse](../../models/operations/getpushoperationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -178,7 +193,12 @@ if res.push_operations is not None:
 ### Response
 
 **[operations.ListPushOperationsResponse](../../models/operations/listpushoperationsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list_pull_operations
 
@@ -221,7 +241,12 @@ if res.pull_operations is not None:
 ### Response
 
 **[operations.ListPullOperationsResponse](../../models/operations/listpulloperationsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## refresh_all_data_types
 
@@ -265,7 +290,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.RefreshAllDataTypesResponse](../../models/operations/refreshalldatatypesresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## refresh_data_type
 
@@ -287,7 +317,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataType.INVOICES,
+    data_type=shared.SchemaDataType.INVOICES,
 )
 
 res = s.manage_data.refresh_data_type(req)
@@ -308,4 +338,9 @@ if res.pull_operation is not None:
 ### Response
 
 **[operations.RefreshDataTypeResponse](../../models/operations/refreshdatatyperesponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
