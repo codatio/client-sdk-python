@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import bankaccount as shared_bankaccount
-from ..shared import customer as shared_customer
-from ..shared import supplier as shared_supplier
+from .bankaccount import BankAccount
+from .customer import Customer
+from .supplier import Supplier
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
 
@@ -12,8 +12,8 @@ from dataclasses_json import Undefined, dataclass_json
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CompanyConfiguration:
-    bank_account: shared_bankaccount.BankAccount = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccount') }})
-    customer: shared_customer.Customer = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customer') }})
-    supplier: shared_supplier.Supplier = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplier') }})
+    bank_account: BankAccount = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccount') }})
+    customer: Customer = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customer') }})
+    supplier: Supplier = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplier') }})
     
 

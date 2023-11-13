@@ -33,7 +33,7 @@ req = operations.CreateExpenseDatasetRequest(
         items=[
             shared.ExpenseTransaction(
                 contact_ref=shared.ContactRef(
-                    contact_type=shared.ContactRefContactType.SUPPLIER,
+                    contact_type=shared.ContactType.SUPPLIER,
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
                 currency='GBP',
@@ -58,7 +58,7 @@ req = operations.CreateExpenseDatasetRequest(
                 ],
                 merchant_name='Amazon UK',
                 notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-                type=shared.ExpenseTransactionType.PAYMENT,
+                type=shared.Type.PAYMENT,
             ),
         ],
     ),
@@ -83,7 +83,12 @@ if res.create_expense_response is not None:
 ### Response
 
 **[operations.CreateExpenseDatasetResponse](../../models/operations/createexpensedatasetresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## update_expense_dataset
 
@@ -105,7 +110,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.UpdateExpenseDatasetRequest(
     update_expense_request=shared.UpdateExpenseRequest(
         contact_ref=shared.ContactRef(
-            contact_type=shared.ContactRefContactType.SUPPLIER,
+            contact_type=shared.ContactType.SUPPLIER,
             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
         ),
         currency='GBP',
@@ -137,7 +142,7 @@ req = operations.UpdateExpenseDatasetRequest(
 
 res = s.expenses.update_expense_dataset(req)
 
-if res.update_expense_dataset_202_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -153,7 +158,12 @@ if res.update_expense_dataset_202_application_json_object is not None:
 ### Response
 
 **[operations.UpdateExpenseDatasetResponse](../../models/operations/updateexpensedatasetresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,422,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## upload_attachment
 
@@ -173,8 +183,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.UploadAttachmentRequest(
     request_body=operations.UploadAttachmentRequestBody(
-        content='v/ghW&IC$x'.encode(),
-        request_body='string',
+        content='0xE3ABc1980E'.encode(),
+        file_name='elegant_producer_electric.jpeg',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
@@ -199,4 +209,9 @@ if res.attachment is not None:
 ### Response
 
 **[operations.UploadAttachmentResponse](../../models/operations/uploadattachmentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

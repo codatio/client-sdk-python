@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createexpenserequest as shared_createexpenserequest
-from ..shared import createexpenseresponse as shared_createexpenseresponse
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import createexpenserequest as shared_createexpenserequest
+from ...models.shared import createexpenseresponse as shared_createexpenseresponse
 from typing import Optional
 
 
@@ -26,8 +25,6 @@ class CreateExpenseDatasetResponse:
     r"""HTTP response status code for this operation"""
     create_expense_response: Optional[shared_createexpenseresponse.CreateExpenseResponse] = dataclasses.field(default=None)
     r"""OK"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import shared

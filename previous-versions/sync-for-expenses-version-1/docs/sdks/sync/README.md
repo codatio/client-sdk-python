@@ -52,4 +52,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.InitiateSyncResponse](../../models/operations/initiatesyncresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,422,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

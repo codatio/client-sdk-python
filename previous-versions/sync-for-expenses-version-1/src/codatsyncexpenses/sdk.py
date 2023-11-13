@@ -12,7 +12,7 @@ from .sync_status import SyncStatus
 from .transaction_status import TransactionStatus
 from codatsyncexpenses import utils
 from codatsyncexpenses.models import shared
-from typing import Dict
+from typing import Callable, Dict, Union
 
 class CodatSyncExpenses:
     r"""Sync for Expenses (v1): The API for Sync for Expenses.
@@ -29,10 +29,10 @@ class CodatSyncExpenses:
     """
     companies: Companies
     r"""Create and manage your Codat companies."""
-    configuration: Configuration
-    r"""Companies sync configuration."""
     connections: Connections
     r"""Create and manage partner expense connection."""
+    configuration: Configuration
+    r"""Companies sync configuration."""
     expenses: Expenses
     r"""Create expense datasets and upload receipts."""
     mapping_options: MappingOptions
@@ -47,7 +47,7 @@ class CodatSyncExpenses:
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 security: shared.Security = None,
+                 security: Union[shared.Security,Callable[[], shared.Security]] = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -57,7 +57,7 @@ class CodatSyncExpenses:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param security: The security details required for authentication
-        :type security: shared.Security
+        :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -72,22 +72,18 @@ class CodatSyncExpenses:
         if client is None:
             client = requests_http.Session()
         
-        
-        security_client = utils.configure_security_client(client, security)
-        
-        
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
     def _init_sdks(self):
         self.companies = Companies(self.sdk_configuration)
-        self.configuration = Configuration(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
+        self.configuration = Configuration(self.sdk_configuration)
         self.expenses = Expenses(self.sdk_configuration)
         self.mapping_options = MappingOptions(self.sdk_configuration)
         self.sync = Sync(self.sdk_configuration)

@@ -16,7 +16,6 @@ from .createexpenseresponse import *
 from .customer import *
 from .dataconnectionerror import *
 from .dataconnectionstatus import *
-from .errormessage import *
 from .expensetransaction import *
 from .expensetransactionline import *
 from .halref import *
@@ -39,4 +38,4 @@ from .transactionmetadatalist import *
 from .transactionstatus import *
 from .updateexpenserequest import *
 
-__all__ = ["AccountMappingInfo","AccountMappingInfoAccountType","AccountMappingInfoValidTransactionTypes","Attachment","BankAccount","Companies","Company","CompanyConfiguration","CompanyRequestBody","CompanySyncStatus","Connection","ConnectionSourceType","Connections","ContactRef","ContactRefContactType","CreateExpenseRequest","CreateExpenseResponse","Customer","DataConnectionError","DataConnectionStatus","ErrorMessage","ExpenseTransaction","ExpenseTransactionLine","ExpenseTransactionType","HalRef","IntegrationType","Links","MappingOptions","PostSync","RecordRef","Security","Supplier","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncStartedWebhook","SyncStartedWebhookData","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionStatus","UpdateExpenseRequest"]
+__all__ = ["AccountMappingInfo","AccountType","Attachment","BankAccount","Companies","Company","CompanyConfiguration","CompanyRequestBody","CompanySyncStatus","Connection","Connections","ContactRef","ContactType","CreateExpenseRequest","CreateExpenseResponse","Customer","Data","DataConnectionError","DataConnectionStatus","ExpenseTransaction","ExpenseTransactionLine","HalRef","IntegrationType","Links","MappingOptions","PostSync","RecordRef","Security","SourceType","Supplier","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncStartedWebhook","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionStatus","Type","UpdateExpenseRequest","ValidTransactionTypes"]
