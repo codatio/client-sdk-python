@@ -8,7 +8,7 @@ from .transaction_categories import TransactionCategories
 from .transactions import Transactions
 from codatbanking import utils
 from codatbanking.models import shared
-from typing import Dict
+from typing import Callable, Dict, Union
 
 class CodatBanking:
     r"""Banking API: Codat's standardized API for accessing banking data.
@@ -32,7 +32,7 @@ class CodatBanking:
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 security: shared.Security = None,
+                 security: Union[shared.Security,Callable[[], shared.Security]] = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -42,7 +42,7 @@ class CodatBanking:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param security: The security details required for authentication
-        :type security: shared.Security
+        :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -57,15 +57,11 @@ class CodatBanking:
         if client is None:
             client = requests_http.Session()
         
-        
-        security_client = utils.configure_security_client(client, security)
-        
-        
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     

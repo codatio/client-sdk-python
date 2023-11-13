@@ -7,11 +7,10 @@ src/codatbanking/sdk.py
 pylintrc
 setup.py
 src/codatbanking/__init__.py
-src/codatbanking/models/__init__.py
-src/codatbanking/models/errors/sdkerror.py
 src/codatbanking/utils/__init__.py
 src/codatbanking/utils/retries.py
 src/codatbanking/utils/utils.py
+src/codatbanking/models/errors/sdkerror.py
 src/codatbanking/models/operations/list_account_balances.py
 src/codatbanking/models/operations/get_account.py
 src/codatbanking/models/operations/list_accounts.py
@@ -20,8 +19,6 @@ src/codatbanking/models/operations/list_transaction_categories.py
 src/codatbanking/models/operations/get_transaction.py
 src/codatbanking/models/operations/list_transactions.py
 src/codatbanking/models/operations/list_bank_transactions.py
-src/codatbanking/models/operations/__init__.py
-src/codatbanking/models/shared/errormessage.py
 src/codatbanking/models/shared/accountbalances.py
 src/codatbanking/models/shared/accountbalance.py
 src/codatbanking/models/shared/accountbalanceamounts.py
@@ -41,8 +38,11 @@ src/codatbanking/models/shared/transactioncategoryref.py
 src/codatbanking/models/shared/transactioncode.py
 src/codatbanking/models/shared/transactions.py
 src/codatbanking/models/shared/security.py
-src/codatbanking/models/shared/__init__.py
+src/codatbanking/models/errors/errormessage.py
+src/codatbanking/models/__init__.py
 src/codatbanking/models/errors/__init__.py
+src/codatbanking/models/operations/__init__.py
+src/codatbanking/models/shared/__init__.py
 USAGE.md
 docs/models/operations/listaccountbalancesrequest.md
 docs/models/operations/listaccountbalancesresponse.md
@@ -60,7 +60,6 @@ docs/models/operations/listtransactionsrequest.md
 docs/models/operations/listtransactionsresponse.md
 docs/models/operations/listbanktransactionsrequest.md
 docs/models/operations/listbanktransactionsresponse.md
-docs/models/shared/errormessage.md
 docs/models/shared/accountbalances.md
 docs/models/shared/accountbalance.md
 docs/models/shared/accountbalanceamounts.md
@@ -80,6 +79,7 @@ docs/models/shared/transactioncategoryref.md
 docs/models/shared/transactioncode.md
 docs/models/shared/transactions.md
 docs/models/shared/security.md
+docs/models/errors/errormessage.md
 docs/sdks/codatbanking/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/accountbalances/README.md

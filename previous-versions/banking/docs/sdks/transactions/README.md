@@ -58,7 +58,12 @@ if res.transaction is not None:
 ### Response
 
 **[operations.GetTransactionResponse](../../models/operations/gettransactionresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list
 
@@ -107,7 +112,12 @@ if res.transactions is not None:
 ### Response
 
 **[operations.ListTransactionsResponse](../../models/operations/listtransactionsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## ~~list_bank_transactions~~
 
@@ -157,4 +167,9 @@ if res.transactions is not None:
 ### Response
 
 **[operations.ListBankTransactionsResponse](../../models/operations/listbanktransactionsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

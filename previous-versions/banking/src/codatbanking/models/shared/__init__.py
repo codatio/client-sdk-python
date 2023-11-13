@@ -9,7 +9,6 @@ from .accountidentifiertype import *
 from .accountinstitution import *
 from .accounts import *
 from .accounttype import *
-from .errormessage import *
 from .halref import *
 from .links import *
 from .security import *
@@ -21,4 +20,4 @@ from .transactioncategorystatus import *
 from .transactioncode import *
 from .transactions import *
 
-__all__ = ["Account","AccountBalance","AccountBalanceAmounts","AccountBalances","AccountIdentifierType","AccountIdentifiers","AccountInstitution","AccountType","Accounts","ErrorMessage","HalRef","Links","Security","Transaction","TransactionCategories","TransactionCategory","TransactionCategoryRef","TransactionCategoryStatus","TransactionCode","Transactions"]
+__all__ = ["Account","AccountBalance","AccountBalanceAmounts","AccountBalances","AccountIdentifierType","AccountIdentifiers","AccountInstitution","AccountType","Accounts","HalRef","Links","Security","Transaction","TransactionCategories","TransactionCategory","TransactionCategoryRef","TransactionCategoryStatus","TransactionCode","Transactions"]
