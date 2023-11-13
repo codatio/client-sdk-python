@@ -2,6 +2,7 @@
 
 from .account import *
 from .accountingaddresstype import *
+from .accountprototype import *
 from .accountref import *
 from .accounts import *
 from .accountstatus import *
@@ -44,13 +45,13 @@ from .dataconnectionerror import *
 from .dataconnectionstatus import *
 from .datastatus import *
 from .datatype import *
-from .errormessage import *
 from .halref import *
 from .itemref import *
 from .items import *
 from .journal import *
 from .journalentry import *
 from .journalline import *
+from .journalprototype import *
 from .journalref import *
 from .journals import *
 from .journalstatus import *
@@ -78,6 +79,7 @@ from .pushoptionproperty import *
 from .pushoptiontype import *
 from .pushvalidationinfo import *
 from .recordref import *
+from .schema_datatype import *
 from .security import *
 from .status import *
 from .supplementaldata import *
@@ -100,8 +102,8 @@ from .updatebillresponse import *
 from .updatesupplierresponse import *
 from .validation import *
 from .validationitem import *
-from .validdatatypelinksitems import *
+from .validdatatypelink_items import *
 from .weblink import *
-from .withholdingtaxitems import *
+from .withholdingtax_items import *
 
-__all__ = ["Account","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","AccountingAddressType","Accounts","Address","Attachment","Attachments","Bill","BillAccountingPaymentAllocation","BillAccountingPaymentAllocationAllocation","BillCreditNote","BillCreditNoteLineItem","BillCreditNoteLineItemItemReference","BillCreditNoteLineItemTracking","BillCreditNoteLineItemTrackingAccountingProjectReference","BillCreditNoteLineItemTrackingCustomerRef","BillCreditNoteStatus","BillCreditNotes","BillLineItem","BillLineItemRecordLineReference","BillLineItemRecordLineReferenceDataType","BillPayment","BillPaymentLine","BillPaymentLineLink","BillPaymentLineLinkType","BillPayments","BillPurchaseOrderReference","BillStatus","BillWithholdingTax","BilledToType","Bills","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyInfo","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateAccountResponse","CreateBillCreditNoteResponse","CreateBillPaymentResponse","CreateBillResponse","CreateJournalEntryResponse","CreateJournalResponse","CreateSupplierResponse","DataConnectionError","DataConnectionStatus","DataStatus","DataStatusDataTypes","DataType","ErrorMessage","HalRef","ItemRef","Items","ItemsAllocation","Journal","JournalEntry","JournalEntryRecordReference","JournalLine","JournalLineTracking","JournalRef","JournalStatus","Journals","Links","Metadata","PaymentAllocationPayment","PaymentMethod","PaymentMethodRef","PaymentMethodStatus","PaymentMethodType","PaymentMethods","PhoneNumber","PhoneNumberType","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","Security","Status","SupplementalData","Supplier","SupplierRef","SupplierStatus","Suppliers","TaxRate","TaxRateComponent","TaxRateRef","TaxRateStatus","TaxRates","Tracking","TrackingAccountingProjectReference","TrackingCategories","TrackingCategory","TrackingCategoryRef","TrackingCategoryTree","TrackingCustomerRef","UpdateBillCreditNoteResponse","UpdateBillResponse","UpdateSupplierResponse","ValidDatatypeLinksitems","Validation","ValidationItem","WebLink","WebLinkType","WithholdingTaxitems"]
+__all__ = ["Account","AccountPrototype","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","AccountingAddressType","AccountingPaymentAllocation","AccountingProjectReference","Accounts","Address","Allocation","Attachment","Attachments","Bill","BillAllocation","BillCreditNote","BillCreditNoteLineItem","BillCreditNoteLineItemAccountingProjectReference","BillCreditNoteLineItemCustomerRef","BillCreditNoteLineItemTracking","BillCreditNoteStatus","BillCreditNotes","BillLineItem","BillLineItemDataType","BillPayment","BillPaymentLine","BillPaymentLineLink","BillPaymentLineLinkType","BillPayments","BillStatus","BilledToType","Bills","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyInfo","CompanyRequestBody","Connection","Connections","CreateAccountResponse","CreateBillCreditNoteResponse","CreateBillPaymentResponse","CreateBillResponse","CreateJournalEntryResponse","CreateJournalResponse","CreateSupplierResponse","CustomerRef","DataConnectionError","DataConnectionStatus","DataStatus","DataType","DataTypes","HalRef","ItemRef","ItemReference","Items","Journal","JournalEntry","JournalLine","JournalLineTracking","JournalPrototype","JournalRef","JournalStatus","Journals","Links","Metadata","PaymentAllocationPayment","PaymentMethod","PaymentMethodRef","PaymentMethodStatus","PaymentMethodType","PaymentMethods","PhoneNumber","PhoneNumberType","PullOperation","PullOperationStatus","PullOperations","PurchaseOrderReference","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordLineReference","RecordRef","RecordReference","SchemaDataType","Security","SourceType","Status","SupplementalData","Supplier","SupplierRef","SupplierStatus","Suppliers","TaxRate","TaxRateComponent","TaxRateRef","TaxRateStatus","TaxRates","Tracking","TrackingCategories","TrackingCategory","TrackingCategoryRef","TrackingCategoryTree","Type","UpdateBillCreditNoteResponse","UpdateBillResponse","UpdateSupplierResponse","ValidDataTypeLinks","ValidDatatypeLinkItems","Validation","ValidationItem","WebLink","WithholdingTax","WithholdingTaxItems"]

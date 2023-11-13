@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import account as shared_account
-from ..shared import createaccountresponse as shared_createaccountresponse
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountprototype as shared_accountprototype
+from ...models.shared import createaccountresponse as shared_createaccountresponse
 from typing import Optional
 
 
@@ -15,7 +14,7 @@ class CreateAccountRequest:
     r"""Unique identifier for a company."""
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a connection."""
-    account: Optional[shared_account.Account] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    account_prototype: Optional[shared_accountprototype.AccountPrototype] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     r"""Time limit for the push operation to complete before it is timed out."""
     
@@ -30,8 +29,6 @@ class CreateAccountResponse:
     r"""HTTP response status code for this operation"""
     create_account_response: Optional[shared_createaccountresponse.CreateAccountResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

@@ -1,4 +1,4 @@
-# BillPurchaseOrderReference
+# PurchaseOrderReference
 
 
 ## Fields

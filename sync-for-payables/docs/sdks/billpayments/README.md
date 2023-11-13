@@ -97,7 +97,12 @@ if res.create_bill_payment_response is not None:
 ### Response
 
 **[operations.CreateBillPaymentResponse](../../models/operations/createbillpaymentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## delete
 
@@ -167,7 +172,12 @@ if res.push_operation is not None:
 ### Response
 
 **[operations.DeleteBillPaymentResponse](../../models/operations/deletebillpaymentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -215,7 +225,12 @@ if res.bill_payment is not None:
 ### Response
 
 **[operations.GetBillPaymentsResponse](../../models/operations/getbillpaymentsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_model
 
@@ -265,7 +280,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateBillPaymentModelResponse](../../models/operations/getcreatebillpaymentmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -313,4 +333,9 @@ if res.bill_payments is not None:
 ### Response
 
 **[operations.ListBillPaymentsResponse](../../models/operations/listbillpaymentsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

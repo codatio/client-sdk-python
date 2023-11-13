@@ -19,7 +19,7 @@ from .tax_rates import TaxRates
 from .tracking_categories import TrackingCategories
 from codatsyncpayables import utils
 from codatsyncpayables.models import shared
-from typing import Dict
+from typing import Callable, Dict, Union
 
 class CodatSyncPayables:
     r"""Sync for Payables: The API for Sync for Payables.
@@ -50,41 +50,41 @@ class CodatSyncPayables:
     | Company info         | View company profile from the source platform.                                                             |
     | Manage data          | Control how data is retrieved from an integration.                                                         |
     """
-    accounts: Accounts
-    r"""Accounts"""
+    companies: Companies
+    r"""Create and manage your Codat companies."""
+    connections: Connections
+    r"""Manage your companies' data connections."""
+    bills: Bills
+    r"""Bills"""
     bill_credit_notes: BillCreditNotes
     r"""Bill credit notes"""
     bill_payments: BillPayments
     r"""Bill payments"""
-    bills: Bills
-    r"""Bills"""
-    companies: Companies
-    r"""Create and manage your Codat companies."""
-    company_info: CompanyInfo
-    r"""View company information fetched from the source platform."""
-    connections: Connections
-    r"""Manage your companies' data connections."""
+    accounts: Accounts
+    r"""Accounts"""
     journal_entries: JournalEntries
     r"""Journal entries"""
     journals: Journals
     r"""Journals"""
-    manage_data: ManageData
-    r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
-    payment_methods: PaymentMethods
-    r"""Payment methods"""
-    push_operations: PushOperations
-    r"""Access create, update and delete operations made to an SMB's data connection."""
     suppliers: Suppliers
     r"""Suppliers"""
+    manage_data: ManageData
+    r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
+    company_info: CompanyInfo
+    r"""View company information fetched from the source platform."""
+    payment_methods: PaymentMethods
+    r"""Payment methods"""
     tax_rates: TaxRates
     r"""Tax rates"""
     tracking_categories: TrackingCategories
     r"""Tracking categories"""
+    push_operations: PushOperations
+    r"""Access create, update and delete operations made to an SMB's data connection."""
 
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 security: shared.Security = None,
+                 security: Union[shared.Security,Callable[[], shared.Security]] = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -94,7 +94,7 @@ class CodatSyncPayables:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param security: The security details required for authentication
-        :type security: shared.Security
+        :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -109,32 +109,28 @@ class CodatSyncPayables:
         if client is None:
             client = requests_http.Session()
         
-        
-        security_client = utils.configure_security_client(client, security)
-        
-        
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
     def _init_sdks(self):
-        self.accounts = Accounts(self.sdk_configuration)
+        self.companies = Companies(self.sdk_configuration)
+        self.connections = Connections(self.sdk_configuration)
+        self.bills = Bills(self.sdk_configuration)
         self.bill_credit_notes = BillCreditNotes(self.sdk_configuration)
         self.bill_payments = BillPayments(self.sdk_configuration)
-        self.bills = Bills(self.sdk_configuration)
-        self.companies = Companies(self.sdk_configuration)
-        self.company_info = CompanyInfo(self.sdk_configuration)
-        self.connections = Connections(self.sdk_configuration)
+        self.accounts = Accounts(self.sdk_configuration)
         self.journal_entries = JournalEntries(self.sdk_configuration)
         self.journals = Journals(self.sdk_configuration)
-        self.manage_data = ManageData(self.sdk_configuration)
-        self.payment_methods = PaymentMethods(self.sdk_configuration)
-        self.push_operations = PushOperations(self.sdk_configuration)
         self.suppliers = Suppliers(self.sdk_configuration)
+        self.manage_data = ManageData(self.sdk_configuration)
+        self.company_info = CompanyInfo(self.sdk_configuration)
+        self.payment_methods = PaymentMethods(self.sdk_configuration)
         self.tax_rates = TaxRates(self.sdk_configuration)
         self.tracking_categories = TrackingCategories(self.sdk_configuration)
+        self.push_operations = PushOperations(self.sdk_configuration)
     

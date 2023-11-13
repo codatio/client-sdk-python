@@ -56,7 +56,12 @@ if res.tax_rate is not None:
 ### Response
 
 **[operations.GetTaxRateResponse](../../models/operations/gettaxrateresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list
 
@@ -104,4 +109,9 @@ if res.tax_rates is not None:
 ### Response
 
 **[operations.ListTaxRatesResponse](../../models/operations/listtaxratesresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

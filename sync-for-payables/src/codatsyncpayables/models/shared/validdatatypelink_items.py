@@ -9,7 +9,7 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ValidDatatypeLinksitems:
+class ValidDatatypeLinkItems:
     r"""When querying Codat's data model, some data types return `validDatatypeLinks` metadata in the JSON response. This indicates where that object can be used as a reference—a _valid link_—when creating or updating other data.
 
     For example, `validDatatypeLinks` might indicate the following references:

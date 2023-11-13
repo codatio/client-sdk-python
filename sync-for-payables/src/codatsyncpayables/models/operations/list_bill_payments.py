@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import billpayments as shared_billpayments
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import billpayments as shared_billpayments
 from typing import Optional
 
 
@@ -32,8 +31,6 @@ class ListBillPaymentsResponse:
     r"""HTTP response status code for this operation"""
     bill_payments: Optional[shared_billpayments.BillPayments] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your `query` parameter was not correctly formed"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     
