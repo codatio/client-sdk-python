@@ -25,7 +25,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatcommerce
-from codatcommerce.models import operations, shared
+from codatcommerce.models import operations
 
 s = codatcommerce.CodatCommerce(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -55,7 +55,12 @@ if res.location is not None:
 ### Response
 
 **[operations.GetLocationResponse](../../models/operations/getlocationresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list
 
@@ -70,7 +75,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ```python
 import codatcommerce
-from codatcommerce.models import operations, shared
+from codatcommerce.models import operations
 
 s = codatcommerce.CodatCommerce(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -99,4 +104,9 @@ if res.locations is not None:
 ### Response
 
 **[operations.ListLocationsResponse](../../models/operations/listlocationsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

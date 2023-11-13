@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import recordref as shared_recordref
+from .recordref import RecordRef
 from codatcommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -15,7 +15,7 @@ class ProductCategory:
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-productCategories) for this data type.
     """
-    ancestor_refs: Optional[List[shared_recordref.RecordRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ancestorRefs'), 'exclude': lambda f: f is None }})
+    ancestor_refs: Optional[List[RecordRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ancestorRefs'), 'exclude': lambda f: f is None }})
     r"""A collection of parent product categories implicitly ordered with the immediate parent last in the list."""
     has_children: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasChildren'), 'exclude': lambda f: f is None }})
     r"""A boolean indicating whether there are other product categories beneath this one in the hierarchy."""
