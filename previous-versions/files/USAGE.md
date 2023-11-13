@@ -1,9 +1,7 @@
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import codatfiles
-from codatfiles.models import operations, shared
+from codatfiles.models import operations
 
 s = codatfiles.CodatFiles(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
