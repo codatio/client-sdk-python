@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import codatsynccommerce
 from codatsynccommerce.models import shared
@@ -11,14 +9,10 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-req = shared.CreateCompany(
-    description='Requested early access to the new financing scheme.',
-    name='Bank of Dave',
-)
 
-res = s.advanced_controls.create_company(req)
+res = s.sync_flow_settings.get_config_text_sync_flow()
 
-if res.company is not None:
+if res.localization_info is not None:
     # handle response
     pass
 ```

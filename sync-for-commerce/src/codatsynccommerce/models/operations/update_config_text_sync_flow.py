@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import localization as shared_localization
+from ...models.shared import localization as shared_localization
 from typing import Dict, Optional
 
 

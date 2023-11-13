@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import connection as shared_connection
+from .connection import Connection
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Any, List, Optional
@@ -15,7 +15,7 @@ class SyncStatus:
     commerce_sync_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('commerceSyncId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for the sync in Codat."""
     company_id: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})
-    data_connections: Optional[List[shared_connection.Connection]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections') }})
+    data_connections: Optional[List[Connection]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections') }})
     r"""Array of containing objects data connection information for the company."""
     data_pushed: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataPushed'), 'exclude': lambda f: f is None }})
     r"""Boolean indicator for data being pushed during a sync operation."""

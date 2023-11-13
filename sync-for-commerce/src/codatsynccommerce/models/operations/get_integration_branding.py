@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import branding as shared_branding
+from ...models.shared import branding as shared_branding
 from typing import Optional
 
 

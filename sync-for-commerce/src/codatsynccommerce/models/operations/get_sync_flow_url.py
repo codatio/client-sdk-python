@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import syncflowurl as shared_syncflowurl
+from ...models.shared import syncflowurl as shared_syncflowurl
 from typing import Optional
 
 

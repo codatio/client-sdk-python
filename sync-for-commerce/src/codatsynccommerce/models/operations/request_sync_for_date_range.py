@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import syncrange as shared_syncrange
-from ..shared import syncsummary as shared_syncsummary
+from ...models.shared import syncrange as shared_syncrange
+from ...models.shared import syncsummary as shared_syncsummary
 from typing import Optional
 
 
