@@ -15,6 +15,7 @@ src/codatplatform/utils/__init__.py
 src/codatplatform/utils/retries.py
 src/codatplatform/utils/utils.py
 src/codatplatform/models/errors/sdkerror.py
+tests/helpers.py
 src/codatplatform/models/operations/create_api_key.py
 src/codatplatform/models/operations/delete_api_key.py
 src/codatplatform/models/operations/get_profile.py
@@ -51,7 +52,6 @@ src/codatplatform/models/operations/get_webhook.py
 src/codatplatform/models/operations/list_rules.py
 src/codatplatform/models/shared/apikeydetails.py
 src/codatplatform/models/shared/createapikey.py
-src/codatplatform/models/shared/errormessage.py
 src/codatplatform/models/shared/profile.py
 src/codatplatform/models/shared/syncsettings.py
 src/codatplatform/models/shared/syncsetting.py
@@ -202,7 +202,6 @@ docs/models/operations/listrulesrequest.md
 docs/models/operations/listrulesresponse.md
 docs/models/shared/apikeydetails.md
 docs/models/shared/createapikey.md
-docs/models/shared/errormessage.md
 docs/models/shared/profile.md
 docs/models/shared/syncsettings.md
 docs/models/shared/syncsetting.md
