@@ -262,7 +262,6 @@ if res.status_code == 200:
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes

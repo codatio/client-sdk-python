@@ -10,6 +10,7 @@ src/codatassess/utils/__init__.py
 src/codatassess/utils/retries.py
 src/codatassess/utils/utils.py
 src/codatassess/models/errors/sdkerror.py
+tests/helpers.py
 src/codatassess/models/operations/generate_loan_summary.py
 src/codatassess/models/operations/generate_loan_transactions.py
 src/codatassess/models/operations/get_accounts_for_enhanced_balance_sheet.py
