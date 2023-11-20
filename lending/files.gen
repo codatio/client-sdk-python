@@ -69,6 +69,7 @@ src/codatlending/utils/__init__.py
 src/codatlending/utils/retries.py
 src/codatlending/utils/utils.py
 src/codatlending/models/errors/sdkerror.py
+tests/helpers.py
 src/codatlending/models/operations/create_company.py
 src/codatlending/models/operations/delete_company.py
 src/codatlending/models/operations/get_company.py
