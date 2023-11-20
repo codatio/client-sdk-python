@@ -238,7 +238,6 @@ if res.data is not None:
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes

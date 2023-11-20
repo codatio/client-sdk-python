@@ -8,6 +8,7 @@ src/codatfiles/utils/__init__.py
 src/codatfiles/utils/retries.py
 src/codatfiles/utils/utils.py
 src/codatfiles/models/errors/sdkerror.py
+tests/helpers.py
 src/codatfiles/models/operations/download_files.py
 src/codatfiles/models/operations/list_files.py
 src/codatfiles/models/operations/upload_files.py
