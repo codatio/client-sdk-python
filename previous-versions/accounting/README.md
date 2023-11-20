@@ -455,7 +455,6 @@ if res.account_transaction is not None:
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes

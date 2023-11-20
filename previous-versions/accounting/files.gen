@@ -32,6 +32,7 @@ src/codataccounting/utils/__init__.py
 src/codataccounting/utils/retries.py
 src/codataccounting/utils/utils.py
 src/codataccounting/models/errors/sdkerror.py
+tests/helpers.py
 src/codataccounting/models/operations/get_account_transaction.py
 src/codataccounting/models/operations/list_account_transactions.py
 src/codataccounting/models/operations/create_bank_account.py
