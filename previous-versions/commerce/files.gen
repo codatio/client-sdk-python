@@ -16,6 +16,7 @@ src/codatcommerce/utils/__init__.py
 src/codatcommerce/utils/retries.py
 src/codatcommerce/utils/utils.py
 src/codatcommerce/models/errors/sdkerror.py
+tests/helpers.py
 src/codatcommerce/models/operations/get_customer.py
 src/codatcommerce/models/operations/list_customers.py
 src/codatcommerce/models/operations/get_dispute.py

@@ -284,7 +284,6 @@ if res.customer is not None:
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes
