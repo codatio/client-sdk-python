@@ -44,4 +44,3 @@ if res.data is not None:
 
 * [download_files](docs/sdks/files/README.md#download_files) - Download all files for a company
 * [list_files](docs/sdks/files/README.md#list_files) - List all files uploaded by a company
-* [upload_files](docs/sdks/files/README.md#upload_files) - Upload files for a company

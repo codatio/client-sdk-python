@@ -74,4 +74,3 @@ if res.details is not None:
 * [get_loan_summary](docs/sdks/reports/README.md#get_loan_summary) - Get loan summaries
 * [get_recurring_revenue_metrics](docs/sdks/reports/README.md#get_recurring_revenue_metrics) - Get key subscription revenue metrics
 * [list_loan_transactions](docs/sdks/reports/README.md#list_loan_transactions) - List loan transactions
-* [request_recurring_revenue_metrics](docs/sdks/reports/README.md#request_recurring_revenue_metrics) - Generate key subscription revenue metrics
