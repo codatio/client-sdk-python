@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-sync-for-payroll",
-    version="3.0.0",
+    version="3.0.1",
     author="Codat",
     description="Push payroll to accounting platforms.",
     long_description=long_description,

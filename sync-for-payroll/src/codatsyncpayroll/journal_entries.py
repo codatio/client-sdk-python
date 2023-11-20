@@ -59,7 +59,7 @@ class JournalEntries:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.CreateJournalEntryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -144,7 +144,7 @@ class JournalEntries:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.DeleteJournalEntryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -206,7 +206,7 @@ class JournalEntries:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetJournalEntryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -270,7 +270,7 @@ class JournalEntries:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetCreateJournalEntryModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -331,7 +331,7 @@ class JournalEntries:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ListJournalEntriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:

@@ -47,7 +47,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetDataStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -103,7 +103,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetPullOperationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -159,7 +159,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetPushOperationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -216,7 +216,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ListPushOperationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -273,7 +273,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ListPullOperationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -333,7 +333,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RefreshAllDataTypesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 204:
@@ -388,7 +388,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RefreshDataTypeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:

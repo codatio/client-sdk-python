@@ -15,6 +15,7 @@ src/codatsyncpayroll/utils/__init__.py
 src/codatsyncpayroll/utils/retries.py
 src/codatsyncpayroll/utils/utils.py
 src/codatsyncpayroll/models/errors/sdkerror.py
+tests/helpers.py
 src/codatsyncpayroll/models/operations/create_company.py
 src/codatsyncpayroll/models/operations/delete_company.py
 src/codatsyncpayroll/models/operations/get_company.py
