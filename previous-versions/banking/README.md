@@ -278,7 +278,6 @@ if res.account_balances is not None:
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes

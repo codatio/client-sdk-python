@@ -11,6 +11,7 @@ src/codatbanking/utils/__init__.py
 src/codatbanking/utils/retries.py
 src/codatbanking/utils/utils.py
 src/codatbanking/models/errors/sdkerror.py
+tests/helpers.py
 src/codatbanking/models/operations/list_account_balances.py
 src/codatbanking/models/operations/get_account.py
 src/codatbanking/models/operations/list_accounts.py
