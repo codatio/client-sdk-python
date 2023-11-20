@@ -350,4 +350,3 @@ if res.accounting_bank_transactions is not None:
 
 * [get](docs/sdks/transactionstransfers/README.md#get) - Get transfer
 * [list](docs/sdks/transactionstransfers/README.md#list) - List transfers
-<!-- End SDK Available Operations -->
