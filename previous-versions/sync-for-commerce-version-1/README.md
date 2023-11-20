@@ -349,7 +349,6 @@ if res.localization_info is not None:
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes

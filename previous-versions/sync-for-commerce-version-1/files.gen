@@ -32,6 +32,7 @@ src/codatsynccommerce/utils/__init__.py
 src/codatsynccommerce/utils/retries.py
 src/codatsynccommerce/utils/utils.py
 src/codatsynccommerce/models/errors/sdkerror.py
+tests/helpers.py
 src/codatsynccommerce/models/operations/get_config_text_sync_flow.py
 src/codatsynccommerce/models/operations/get_sync_flow_url.py
 src/codatsynccommerce/models/operations/get_visible_accounts.py
