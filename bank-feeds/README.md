@@ -276,7 +276,6 @@ if res.company is not None:
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes

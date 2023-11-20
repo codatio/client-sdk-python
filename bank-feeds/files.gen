@@ -12,6 +12,7 @@ src/codatbankfeeds/utils/__init__.py
 src/codatbankfeeds/utils/retries.py
 src/codatbankfeeds/utils/utils.py
 src/codatbankfeeds/models/errors/sdkerror.py
+tests/helpers.py
 src/codatbankfeeds/models/operations/create_company.py
 src/codatbankfeeds/models/operations/delete_company.py
 src/codatbankfeeds/models/operations/get_company.py
