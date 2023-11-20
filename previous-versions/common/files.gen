@@ -15,6 +15,7 @@ src/codatcommon/utils/__init__.py
 src/codatcommon/utils/retries.py
 src/codatcommon/utils/utils.py
 src/codatcommon/models/errors/sdkerror.py
+tests/helpers.py
 src/codatcommon/models/operations/create_api_key.py
 src/codatcommon/models/operations/delete_api_key.py
 src/codatcommon/models/operations/get_profile.py
@@ -51,7 +52,6 @@ src/codatcommon/models/operations/get_webhook.py
 src/codatcommon/models/operations/list_rules.py
 src/codatcommon/models/shared/apikeydetails.py
 src/codatcommon/models/shared/createapikey.py
-src/codatcommon/models/shared/errormessage.py
 src/codatcommon/models/shared/profile.py
 src/codatcommon/models/shared/syncsettings.py
 src/codatcommon/models/shared/syncsetting.py
@@ -202,7 +202,6 @@ docs/models/operations/listrulesrequest.md
 docs/models/operations/listrulesresponse.md
 docs/models/shared/apikeydetails.md
 docs/models/shared/createapikey.md
-docs/models/shared/errormessage.md
 docs/models/shared/profile.md
 docs/models/shared/syncsettings.md
 docs/models/shared/syncsetting.md

@@ -280,7 +280,6 @@ if res.api_key_details is not None:
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes
