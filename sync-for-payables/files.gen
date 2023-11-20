@@ -22,6 +22,7 @@ src/codatsyncpayables/utils/__init__.py
 src/codatsyncpayables/utils/retries.py
 src/codatsyncpayables/utils/utils.py
 src/codatsyncpayables/models/errors/sdkerror.py
+tests/helpers.py
 src/codatsyncpayables/models/operations/create_company.py
 src/codatsyncpayables/models/operations/delete_company.py
 src/codatsyncpayables/models/operations/get_company.py

@@ -69,3 +69,13 @@ Based on:
 - [python v3.0.0] sync-for-payables
 ### Releases
 - [PyPI v3.0.0] https://pypi.org/project/codat-sync-for-payables/3.0.0 - sync-for-payables
+
+## 2023-11-20 01:27:04
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Sync-Payables.yaml
+- Speakeasy CLI 1.121.1 (2.194.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v3.0.1] sync-for-payables
+### Releases
+- [PyPI v3.0.1] https://pypi.org/project/codat-sync-for-payables/3.0.1 - sync-for-payables
