@@ -237,7 +237,6 @@ if res.company is not None:
     # handle response
     pass
 ```
-
 <!-- End Error Handling -->
 
 
@@ -327,7 +326,6 @@ s = codatsyncexpenses.CodatSyncExpenses(client: http_client)
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes

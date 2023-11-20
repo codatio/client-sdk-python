@@ -18,6 +18,7 @@ src/codatsyncexpenses/utils/__init__.py
 src/codatsyncexpenses/utils/retries.py
 src/codatsyncexpenses/utils/utils.py
 src/codatsyncexpenses/models/errors/sdkerror.py
+tests/helpers.py
 src/codatsyncexpenses/models/operations/create_company.py
 src/codatsyncexpenses/models/operations/delete_company.py
 src/codatsyncexpenses/models/operations/get_company.py
