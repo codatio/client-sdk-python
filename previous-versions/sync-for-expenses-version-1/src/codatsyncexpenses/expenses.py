@@ -50,7 +50,7 @@ class Expenses:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.CreateExpenseDatasetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -109,7 +109,7 @@ class Expenses:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UpdateExpenseDatasetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 202:
@@ -168,7 +168,7 @@ class Expenses:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UploadAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:

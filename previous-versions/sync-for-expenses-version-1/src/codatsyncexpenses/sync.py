@@ -50,7 +50,7 @@ class Sync:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.InitiateSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code in [400, 401, 402, 403, 404, 422, 429, 500, 503]:
