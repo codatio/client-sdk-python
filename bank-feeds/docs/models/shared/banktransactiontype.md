@@ -1,4 +1,4 @@
-# BankTransactionsBankTransactionType
+# BankTransactionType
 
 Type of transaction for the bank statement line.
 

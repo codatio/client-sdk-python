@@ -80,7 +80,12 @@ if res.source_account is not None:
 ### Response
 
 **[operations.CreateSourceAccountResponse](../../models/operations/createsourceaccountresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## delete
 
@@ -125,7 +130,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeleteSourceAccountResponse](../../models/operations/deletesourceaccountresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## delete_credentials
 
@@ -168,7 +178,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeleteBankFeedCredentialsResponse](../../models/operations/deletebankfeedcredentialsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## generate_credentials
 
@@ -190,7 +205,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.GenerateCredentialsRequest(
-    request_body='^upd|k\]Iy'.encode(),
+    request_body='0xeDCfFBde9E'.encode(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -213,7 +228,12 @@ if res.bank_account_credentials is not None:
 ### Response
 
 **[operations.GenerateCredentialsResponse](../../models/operations/generatecredentialsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -257,7 +277,12 @@ if res.source_account is not None:
 ### Response
 
 **[operations.ListSourceAccountsResponse](../../models/operations/listsourceaccountsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## update
 
@@ -307,4 +332,9 @@ if res.source_account is not None:
 ### Response
 
 **[operations.UpdateSourceAccountResponse](../../models/operations/updatesourceaccountresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
