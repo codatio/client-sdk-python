@@ -22,6 +22,5 @@ python:
   version: 2.0.0
   author: Codat
   description: Streamline your customers' accounts payable workflow.
-  flattenGlobalSecurity: false
   maxMethodParams: 0
   packageName: codat-sync-for-payables

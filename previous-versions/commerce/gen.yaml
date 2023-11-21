@@ -20,6 +20,5 @@ python:
   version: 0.34.0
   author: Codat
   description: Access standardized commerce data from our commerce integrations.
-  flattenGlobalSecurity: true
   maxMethodParams: 0
   packageName: codat-commerce

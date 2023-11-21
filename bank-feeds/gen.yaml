@@ -5,11 +5,8 @@ management:
   speakeasyVersion: 1.121.3
   generationVersion: 2.195.2
 generation:
-  comments: {}
   sdkClassName: CodatBankFeeds
-  repoURL: https://github.com/codatio/client-sdk-python.git
-  usageSnippets:
-    optionalPropertyRendering: withExample
+  singleTagPerOp: false
   telemetryEnabled: true
 features:
   python:
@@ -23,21 +20,7 @@ features:
 python:
   version: 5.0.0
   author: Codat
-  clientServerStatusCodesAsErrors: true
-  description: Set up bank feeds from accounts in your application to supported accounting platforms.
-  flattenGlobalSecurity: false
-  imports:
-    option: openapi
-    paths:
-      callbacks: models/callbacks
-      errors: models/errors
-      operations: models/operations
-      shared: models/shared
-      webhooks: models/webhooks
-  inputModelSuffix: input
-  installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=bank-feeds
+  description: Set up bank feeds from accounts in your application to supported accounting
+    platforms.
   maxMethodParams: 0
-  outputModelSuffix: output
   packageName: codat-bankfeeds
-  published: true
-  repoSubDirectory: bank-feeds
