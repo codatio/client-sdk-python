@@ -33,7 +33,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateBankAccountMappingRequest(
-    request_body=operations.CreateBankAccountMappingBankFeedAccountMapping(
+    zero=shared.Zero(
         feed_start_date='2022-10-23T00:00:00.000Z',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -58,7 +58,12 @@ if res.bank_feed_account_mapping_response is not None:
 ### Response
 
 **[operations.CreateBankAccountMappingResponse](../../models/operations/createbankaccountmappingresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get
 
@@ -103,4 +108,9 @@ if res.bank_feed_mapping is not None:
 ### Response
 
 **[operations.GetBankAccountMappingResponse](../../models/operations/getbankaccountmappingresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

@@ -8,7 +8,7 @@ from decimal import Decimal
 from enum import Enum
 from typing import Optional
 
-class BankTransactionsBankTransactionType(str, Enum):
+class BankTransactionType(str, Enum):
     r"""Type of transaction for the bank statement line."""
     UNKNOWN = 'Unknown'
     CREDIT = 'Credit'
@@ -68,7 +68,7 @@ class BankTransactions:
     r"""`True` if the bank transaction has been [reconciled](https://www.xero.com/uk/guides/what-is-bank-reconciliation/) in the accounting platform."""
     reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference') }})
     r"""An optional reference to the bank transaction."""
-    transaction_type: Optional[BankTransactionsBankTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType'), 'exclude': lambda f: f is None }})
+    transaction_type: Optional[BankTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType'), 'exclude': lambda f: f is None }})
     r"""Type of transaction for the bank statement line."""
     
 
