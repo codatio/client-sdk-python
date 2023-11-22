@@ -315,4 +315,3 @@ if res.company is not None:
 <!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
-
