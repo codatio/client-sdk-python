@@ -163,5 +163,3 @@ Here's an example of one such pagination call:
 
 
 <!-- End Pagination -->
-
-<!-- Placeholder for Future Speakeasy SDK Sections -->

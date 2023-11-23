@@ -313,5 +313,3 @@ if res.company is not None:
     pass
 ```
 <!-- End Authentication -->
-
-<!-- Placeholder for Future Speakeasy SDK Sections -->
