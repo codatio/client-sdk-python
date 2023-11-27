@@ -49,7 +49,12 @@ if res.integration is not None:
 ### Response
 
 **[operations.GetIntegrationResponse](../../models/operations/getintegrationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_branding
 
@@ -89,7 +94,12 @@ if res.branding is not None:
 ### Response
 
 **[operations.GetIntegrationsBrandingResponse](../../models/operations/getintegrationsbrandingresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -131,4 +141,9 @@ if res.integrations is not None:
 ### Response
 
 **[operations.ListIntegrationsResponse](../../models/operations/listintegrationsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

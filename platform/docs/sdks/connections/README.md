@@ -57,7 +57,12 @@ if res.connection is not None:
 ### Response
 
 **[operations.CreateConnectionResponse](../../models/operations/createconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## delete
 
@@ -99,7 +104,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeleteConnectionResponse](../../models/operations/deleteconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -140,7 +150,12 @@ if res.connection is not None:
 ### Response
 
 **[operations.GetConnectionResponse](../../models/operations/getconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -183,7 +198,12 @@ if res.connections is not None:
 ### Response
 
 **[operations.ListConnectionsResponse](../../models/operations/listconnectionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## unlink
 
@@ -225,7 +245,12 @@ if res.connection is not None:
 ### Response
 
 **[operations.UnlinkConnectionResponse](../../models/operations/unlinkconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## update_authorization
 
@@ -245,7 +270,7 @@ s = codatplatform.CodatPlatform(
 
 req = operations.UpdateConnectionAuthorizationRequest(
     request_body={
-        "Neptunium": 'Books',
+        "key": 'string',
     },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -269,4 +294,9 @@ if res.connection is not None:
 ### Response
 
 **[operations.UpdateConnectionAuthorizationResponse](../../models/operations/updateconnectionauthorizationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

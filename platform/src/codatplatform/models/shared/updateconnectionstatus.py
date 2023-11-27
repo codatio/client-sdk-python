@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import dataconnectionstatus as shared_dataconnectionstatus
+from .dataconnectionstatus import DataConnectionStatus
 from codatplatform import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -11,7 +11,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateConnectionStatus:
-    status: Optional[shared_dataconnectionstatus.DataConnectionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[DataConnectionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""The current authorization status of the data connection."""
     
 
