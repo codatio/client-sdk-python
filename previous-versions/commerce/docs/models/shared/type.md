@@ -1,4 +1,4 @@
-# CompanyInfoWeblinkType
+# Type
 
 The type of the weblink.
 

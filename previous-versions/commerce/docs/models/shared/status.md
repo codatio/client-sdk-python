@@ -1,4 +1,4 @@
-# PaymentMethodStatus
+# Status
 
 Status of the Payment Method.
 
