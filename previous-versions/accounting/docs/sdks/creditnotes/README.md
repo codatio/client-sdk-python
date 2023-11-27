@@ -85,8 +85,8 @@ req = operations.CreateCreditNoteRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.Items(
-                allocation=shared.ItemsAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='USD',
                 ),
@@ -103,18 +103,18 @@ req = operations.CreateCreditNoteRequest(
         sub_total=Decimal('3015.1'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Northwest": {
-                    "fuchsia": 'Gasoline',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        total_amount=Decimal('5862.2'),
-        total_discount=Decimal('8275.63'),
-        total_tax_amount=Decimal('7524.38'),
+        total_amount=Decimal('899.64'),
+        total_discount=Decimal('7150.4'),
+        total_tax_amount=Decimal('7926.2'),
         withholding_tax=[
-            shared.WithholdingTaxitems(
-                amount=Decimal('4915.7'),
-                name='National Durham after',
+            shared.WithholdingTaxItems(
+                amount=Decimal('8559.52'),
+                name='string',
             ),
         ],
     ),
@@ -140,7 +140,12 @@ if res.create_credit_note_response is not None:
 ### Response
 
 **[operations.CreateCreditNoteResponse](../../models/operations/createcreditnoteresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get
 
@@ -167,7 +172,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetCreditNoteRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    credit_note_id='Northeast Hatchback Kia',
+    credit_note_id='string',
 )
 
 res = s.credit_notes.get(req)
@@ -188,7 +193,12 @@ if res.credit_note is not None:
 ### Response
 
 **[operations.GetCreditNoteResponse](../../models/operations/getcreditnoteresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_update_model
 
@@ -238,7 +248,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdateCreditNotesModelResponse](../../models/operations/getcreateupdatecreditnotesmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -286,7 +301,12 @@ if res.credit_notes is not None:
 ### Response
 
 **[operations.ListCreditNotesResponse](../../models/operations/listcreditnotesresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## update
 
@@ -360,8 +380,8 @@ req = operations.UpdateCreditNoteRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.Items(
-                allocation=shared.ItemsAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='USD',
                 ),
@@ -378,24 +398,24 @@ req = operations.UpdateCreditNoteRequest(
         sub_total=Decimal('4995.57'),
         supplemental_data=shared.SupplementalData(
             content={
-                "withdrawal": {
-                    "extend": 'Plastic',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        total_amount=Decimal('1395.79'),
-        total_discount=Decimal('6447.13'),
-        total_tax_amount=Decimal('7892.75'),
+        total_amount=Decimal('4468.63'),
+        total_discount=Decimal('3691.82'),
+        total_tax_amount=Decimal('3115.07'),
         withholding_tax=[
-            shared.WithholdingTaxitems(
-                amount=Decimal('9936.8'),
-                name='East Baht Quality',
+            shared.WithholdingTaxItems(
+                amount=Decimal('7884.4'),
+                name='string',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    credit_note_id='Home users Sharable',
+    credit_note_id='string',
 )
 
 res = s.credit_notes.update(req)
@@ -416,4 +436,9 @@ if res.update_credit_note_response is not None:
 ### Response
 
 **[operations.UpdateCreditNoteResponse](../../models/operations/updatecreditnoteresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

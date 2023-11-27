@@ -14,6 +14,7 @@ from .customers import Customers
 from .direct_costs import DirectCosts
 from .direct_incomes import DirectIncomes
 from .invoices import Invoices
+from .item_receipts import ItemReceipts
 from .items import Items
 from .journal_entries import JournalEntries
 from .journals import Journals
@@ -29,7 +30,7 @@ from .tracking_categories import TrackingCategories
 from .transfers import Transfers
 from codataccounting import utils
 from codataccounting.models import shared
-from typing import Dict
+from typing import Callable, Dict, Union
 
 class CodatAccounting:
     r"""Accounting API: A flexible API for pulling accounting data, normalized and aggregated from 20 accounting integrations.
@@ -42,22 +43,12 @@ class CodatAccounting:
     """
     account_transactions: AccountTransactions
     r"""Account transactions"""
-    accounts: Accounts
-    r"""Accounts"""
-    bank_account_transactions: BankAccountTransactions
-    r"""Bank transactions for bank accounts"""
     bank_accounts: BankAccounts
     r"""Bank accounts"""
-    bill_credit_notes: BillCreditNotes
-    r"""Bill credit notes"""
-    bill_payments: BillPayments
-    r"""Bill payments"""
+    bank_account_transactions: BankAccountTransactions
+    r"""Bank transactions for bank accounts"""
     bills: Bills
     r"""Bills"""
-    company_info: CompanyInfo
-    r"""Company info"""
-    credit_notes: CreditNotes
-    r"""Credit notes"""
     customers: Customers
     r"""Customers"""
     direct_costs: DirectCosts
@@ -66,35 +57,47 @@ class CodatAccounting:
     r"""Direct incomes"""
     invoices: Invoices
     r"""Invoices"""
+    item_receipts: ItemReceipts
+    r"""Item receipts"""
+    purchase_orders: PurchaseOrders
+    r"""Purchase orders"""
+    suppliers: Suppliers
+    r"""Suppliers"""
+    transfers: Transfers
+    r"""Transfers"""
+    bill_credit_notes: BillCreditNotes
+    r"""Bill credit notes"""
+    bill_payments: BillPayments
+    r"""Bill payments"""
+    accounts: Accounts
+    r"""Accounts"""
+    credit_notes: CreditNotes
+    r"""Credit notes"""
     items: Items
     r"""Items"""
     journal_entries: JournalEntries
     r"""Journal entries"""
     journals: Journals
     r"""Journals"""
-    payment_methods: PaymentMethods
-    r"""Payment methods"""
     payments: Payments
     r"""Payments"""
-    purchase_orders: PurchaseOrders
-    r"""Purchase orders"""
     reports: Reports
     r"""Reports"""
+    company_info: CompanyInfo
+    r"""Company info"""
+    payment_methods: PaymentMethods
+    r"""Payment methods"""
     sales_orders: SalesOrders
     r"""Sales orders"""
-    suppliers: Suppliers
-    r"""Suppliers"""
     tax_rates: TaxRates
     r"""Tax rates"""
     tracking_categories: TrackingCategories
     r"""Tracking categories"""
-    transfers: Transfers
-    r"""Transfers"""
 
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 security: shared.Security = None,
+                 security: Union[shared.Security,Callable[[], shared.Security]] = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -104,7 +107,7 @@ class CodatAccounting:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param security: The security details required for authentication
-        :type security: shared.Security
+        :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -119,42 +122,39 @@ class CodatAccounting:
         if client is None:
             client = requests_http.Session()
         
-        
-        security_client = utils.configure_security_client(client, security)
-        
-        
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
     def _init_sdks(self):
         self.account_transactions = AccountTransactions(self.sdk_configuration)
-        self.accounts = Accounts(self.sdk_configuration)
-        self.bank_account_transactions = BankAccountTransactions(self.sdk_configuration)
         self.bank_accounts = BankAccounts(self.sdk_configuration)
-        self.bill_credit_notes = BillCreditNotes(self.sdk_configuration)
-        self.bill_payments = BillPayments(self.sdk_configuration)
+        self.bank_account_transactions = BankAccountTransactions(self.sdk_configuration)
         self.bills = Bills(self.sdk_configuration)
-        self.company_info = CompanyInfo(self.sdk_configuration)
-        self.credit_notes = CreditNotes(self.sdk_configuration)
         self.customers = Customers(self.sdk_configuration)
         self.direct_costs = DirectCosts(self.sdk_configuration)
         self.direct_incomes = DirectIncomes(self.sdk_configuration)
         self.invoices = Invoices(self.sdk_configuration)
+        self.item_receipts = ItemReceipts(self.sdk_configuration)
+        self.purchase_orders = PurchaseOrders(self.sdk_configuration)
+        self.suppliers = Suppliers(self.sdk_configuration)
+        self.transfers = Transfers(self.sdk_configuration)
+        self.bill_credit_notes = BillCreditNotes(self.sdk_configuration)
+        self.bill_payments = BillPayments(self.sdk_configuration)
+        self.accounts = Accounts(self.sdk_configuration)
+        self.credit_notes = CreditNotes(self.sdk_configuration)
         self.items = Items(self.sdk_configuration)
         self.journal_entries = JournalEntries(self.sdk_configuration)
         self.journals = Journals(self.sdk_configuration)
-        self.payment_methods = PaymentMethods(self.sdk_configuration)
         self.payments = Payments(self.sdk_configuration)
-        self.purchase_orders = PurchaseOrders(self.sdk_configuration)
         self.reports = Reports(self.sdk_configuration)
+        self.company_info = CompanyInfo(self.sdk_configuration)
+        self.payment_methods = PaymentMethods(self.sdk_configuration)
         self.sales_orders = SalesOrders(self.sdk_configuration)
-        self.suppliers = Suppliers(self.sdk_configuration)
         self.tax_rates = TaxRates(self.sdk_configuration)
         self.tracking_categories = TrackingCategories(self.sdk_configuration)
-        self.transfers = Transfers(self.sdk_configuration)
     

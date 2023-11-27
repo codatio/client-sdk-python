@@ -83,8 +83,8 @@ req = operations.CreateBillCreditNoteRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Credit Note with 1 line items, totaling 805.78',
         payment_allocations=[
-            shared.Items(
-                allocation=shared.ItemsAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -101,8 +101,8 @@ req = operations.CreateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "abnormally": {
-                    "deposit": 'evolve',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -113,9 +113,9 @@ req = operations.CreateBillCreditNoteRequest(
         total_discount=Decimal('0'),
         total_tax_amount=Decimal('0'),
         withholding_tax=[
-            shared.WithholdingTaxitems(
-                amount=Decimal('7150.4'),
-                name='SUV quantify Polestar',
+            shared.WithholdingTaxItems(
+                amount=Decimal('8915.1'),
+                name='string',
             ),
         ],
     ),
@@ -141,7 +141,12 @@ if res.create_bill_credit_note_response is not None:
 ### Response
 
 **[operations.CreateBillCreditNoteResponse](../../models/operations/createbillcreditnoteresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get
 
@@ -167,7 +172,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetBillCreditNoteRequest(
-    bill_credit_note_id='Northeast Hatchback Kia',
+    bill_credit_note_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -189,7 +194,12 @@ if res.bill_credit_note is not None:
 ### Response
 
 **[operations.GetBillCreditNoteResponse](../../models/operations/getbillcreditnoteresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_update_model
 
@@ -239,7 +249,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdateBillCreditNotesModelResponse](../../models/operations/getcreateupdatebillcreditnotesmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -287,7 +302,12 @@ if res.bill_credit_notes is not None:
 ### Response
 
 **[operations.ListBillCreditNotesResponse](../../models/operations/listbillcreditnotesresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## update
 
@@ -358,8 +378,8 @@ req = operations.UpdateBillCreditNoteRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         note='Bill Credit Note with 1 line items, totaling 805.78',
         payment_allocations=[
-            shared.Items(
-                allocation=shared.ItemsAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -376,8 +396,8 @@ req = operations.UpdateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Arizona": {
-                    "Cotton": 'extend',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -388,13 +408,13 @@ req = operations.UpdateBillCreditNoteRequest(
         total_discount=Decimal('0'),
         total_tax_amount=Decimal('0'),
         withholding_tax=[
-            shared.WithholdingTaxitems(
-                amount=Decimal('2494.4'),
-                name='Carolina syndicate',
+            shared.WithholdingTaxItems(
+                amount=Decimal('1341.51'),
+                name='string',
             ),
         ],
     ),
-    bill_credit_note_id='implement JBOD',
+    bill_credit_note_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -417,7 +437,12 @@ if res.update_bill_credit_note_response is not None:
 ### Response
 
 **[operations.UpdateBillCreditNoteResponse](../../models/operations/updatebillcreditnoteresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## upload_attachment
 
@@ -450,10 +475,10 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadBillCreditNoteAttachmentRequest(
     request_body=operations.UploadBillCreditNoteAttachmentRequestBody(
-        content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        content='0xE3ABc1980E'.encode(),
+        file_name='elegant_producer_electric.jpeg',
     ),
-    bill_credit_note_id='Iowa Bentley',
+    bill_credit_note_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -476,4 +501,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UploadBillCreditNoteAttachmentResponse](../../models/operations/uploadbillcreditnoteattachmentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

@@ -57,7 +57,12 @@ if res.aged_creditor_report is not None:
 ### Response
 
 **[operations.GetAgedCreditorsReportResponse](../../models/operations/getagedcreditorsreportresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_aged_debtors_report
 
@@ -101,7 +106,12 @@ if res.aged_debtor_report is not None:
 ### Response
 
 **[operations.GetAgedDebtorsReportResponse](../../models/operations/getageddebtorsreportresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_balance_sheet
 
@@ -144,7 +154,12 @@ if res.balance_sheet is not None:
 ### Response
 
 **[operations.GetBalanceSheetResponse](../../models/operations/getbalancesheetresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_cash_flow_statement
 
@@ -187,7 +202,12 @@ if res.cash_flow_statement is not None:
 ### Response
 
 **[operations.GetCashFlowStatementResponse](../../models/operations/getcashflowstatementresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_profit_and_loss
 
@@ -230,7 +250,12 @@ if res.profit_and_loss_report is not None:
 ### Response
 
 **[operations.GetProfitAndLossResponse](../../models/operations/getprofitandlossresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## is_aged_creditors_report_available
 
@@ -254,7 +279,7 @@ req = operations.IsAgedCreditorsReportAvailableRequest(
 
 res = s.reports.is_aged_creditors_report_available(req)
 
-if res.is_aged_creditors_report_available_200_application_json_boolean is not None:
+if res.boolean is not None:
     # handle response
     pass
 ```
@@ -270,7 +295,12 @@ if res.is_aged_creditors_report_available_200_application_json_boolean is not No
 ### Response
 
 **[operations.IsAgedCreditorsReportAvailableResponse](../../models/operations/isagedcreditorsreportavailableresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## is_aged_debtor_report_available
 
@@ -294,7 +324,7 @@ req = operations.IsAgedDebtorReportAvailableRequest(
 
 res = s.reports.is_aged_debtor_report_available(req)
 
-if res.is_aged_debtor_report_available_200_application_json_boolean is not None:
+if res.boolean is not None:
     # handle response
     pass
 ```
@@ -310,4 +340,9 @@ if res.is_aged_debtor_report_available_200_application_json_boolean is not None:
 ### Response
 
 **[operations.IsAgedDebtorReportAvailableResponse](../../models/operations/isageddebtorreportavailableresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

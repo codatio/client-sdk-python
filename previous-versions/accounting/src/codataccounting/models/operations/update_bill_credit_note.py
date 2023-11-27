@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import billcreditnote as shared_billcreditnote
-from ..shared import errormessage as shared_errormessage
-from ..shared import updatebillcreditnoteresponse as shared_updatebillcreditnoteresponse
+from ...models.shared import billcreditnote as shared_billcreditnote
+from ...models.shared import updatebillcreditnoteresponse as shared_updatebillcreditnoteresponse
 from typing import Optional
 
 
@@ -30,12 +29,10 @@ class UpdateBillCreditNoteRequest:
 class UpdateBillCreditNoteResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     update_bill_credit_note_response: Optional[shared_updatebillcreditnoteresponse.UpdateBillCreditNoteResponse] = dataclasses.field(default=None)
     r"""Success"""
     
