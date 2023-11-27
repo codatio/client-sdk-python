@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import integritystatus as shared_integritystatus
+from .integritystatus import IntegrityStatus
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -11,7 +11,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DataIntegrityStatusInfo:
-    current_status: Optional[shared_integritystatus.IntegrityStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currentStatus'), 'exclude': lambda f: f is None }})
+    current_status: Optional[IntegrityStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currentStatus'), 'exclude': lambda f: f is None }})
     r"""The current status of the most recently run matching algorithm."""
     last_matched: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastMatched'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import dataintegritysummary as shared_dataintegritysummary
+from .dataintegritysummary import DataIntegritySummary
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -11,6 +11,6 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DataIntegritySummaries:
-    summaries: Optional[List[shared_dataintegritysummary.DataIntegritySummary]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('summaries'), 'exclude': lambda f: f is None }})
+    summaries: Optional[List[DataIntegritySummary]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('summaries'), 'exclude': lambda f: f is None }})
     
 

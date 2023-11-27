@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import orderdiscountallocation as shared_orderdiscountallocation
-from ..shared import productref as shared_productref
-from ..shared import productvariantref as shared_productvariantref
-from ..shared import taxcomponentallocation as shared_taxcomponentallocation
+from .orderdiscountallocation import OrderDiscountAllocation
+from .productref import ProductRef
+from .productvariantref import ProductVariantRef
+from .taxcomponentallocation import TaxComponentAllocation
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -17,16 +17,16 @@ from typing import List, Optional
 class OrderLineItem:
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique, persistent identifier for this record"""
-    discount_allocations: Optional[List[shared_orderdiscountallocation.OrderDiscountAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountAllocations'), 'exclude': lambda f: f is None }})
-    product_ref: Optional[shared_productref.ProductRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('productRef'), 'exclude': lambda f: f is None }})
+    discount_allocations: Optional[List[OrderDiscountAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountAllocations'), 'exclude': lambda f: f is None }})
+    product_ref: Optional[ProductRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('productRef'), 'exclude': lambda f: f is None }})
     r"""Reference that links the line item to the correct product details."""
-    product_variant_ref: Optional[shared_productvariantref.ProductVariantRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('productVariantRef'), 'exclude': lambda f: f is None }})
+    product_variant_ref: Optional[ProductVariantRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('productVariantRef'), 'exclude': lambda f: f is None }})
     r"""Reference that links the line item to the specific version of product that has been ordered."""
     quantity: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Number of units of the product sold.
     For refunds, quantity is negative.
     """
-    taxes: Optional[List[shared_taxcomponentallocation.TaxComponentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxes'), 'exclude': lambda f: f is None }})
+    taxes: Optional[List[TaxComponentAllocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxes'), 'exclude': lambda f: f is None }})
     r"""Taxes breakdown as applied to order lines."""
     tax_percentage: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxPercentage'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Percentage rate (from 0 to 100) of any sales tax applied to the unit price."""

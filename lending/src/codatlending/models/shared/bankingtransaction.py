@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import transactioncategoryref as shared_transactioncategoryref
-from ..shared import transactioncode as shared_transactioncode
+from .transactioncategoryref import TransactionCategoryRef
+from .transactioncode import TransactionCode
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -48,7 +48,7 @@ class BankingTransaction:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    code: Optional[shared_transactioncode.TransactionCode] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
+    code: Optional[TransactionCode] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
     r"""Code to identify the underlying transaction."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description') }})
     r"""The description of the bank transaction."""
@@ -77,7 +77,7 @@ class BankingTransaction:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    transaction_category_ref: Optional[shared_transactioncategoryref.TransactionCategoryRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionCategoryRef'), 'exclude': lambda f: f is None }})
+    transaction_category_ref: Optional[TransactionCategoryRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionCategoryRef'), 'exclude': lambda f: f is None }})
     r"""An object of bank transaction category reference data."""
     
 
