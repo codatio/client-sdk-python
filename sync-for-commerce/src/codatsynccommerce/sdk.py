@@ -9,7 +9,7 @@ from .sync import Sync
 from .sync_flow_settings import SyncFlowSettings
 from codatsynccommerce import utils
 from codatsynccommerce.models import shared
-from typing import Dict
+from typing import Callable, Dict, Union
 
 class CodatSyncCommerce:
     r"""Sync for Commerce: The API for Sync for Commerce.
@@ -20,21 +20,21 @@ class CodatSyncCommerce:
 
     Not seeing the endpoints you're expecting? We've [reorganized our products](https://docs.codat.io/updates/230901-new-products), and you may be using a [different version of Sync for Commerce](https://docs.codat.io/sync-for-commerce-v1-api#/).
     """
+    sync_flow_settings: SyncFlowSettings
+    r"""Configure preferences for any given Sync for Commerce company using sync flow."""
     advanced_controls: AdvancedControls
     r"""Advanced company management and sync preferences."""
     connections: Connections
     r"""Create new and manage existing Sync for Commerce connections using the Sync flow UI."""
-    integrations: Integrations
-    r"""View useful information about codat's integrations."""
     sync: Sync
     r"""Initiate and monitor the sync of company data into accounting software."""
-    sync_flow_settings: SyncFlowSettings
-    r"""Configure preferences for any given Sync for Commerce company using sync flow."""
+    integrations: Integrations
+    r"""View useful information about codat's integrations."""
 
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 security: shared.Security = None,
+                 security: Union[shared.Security,Callable[[], shared.Security]] = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -44,7 +44,7 @@ class CodatSyncCommerce:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param security: The security details required for authentication
-        :type security: shared.Security
+        :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -59,22 +59,18 @@ class CodatSyncCommerce:
         if client is None:
             client = requests_http.Session()
         
-        
-        security_client = utils.configure_security_client(client, security)
-        
-        
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
     def _init_sdks(self):
+        self.sync_flow_settings = SyncFlowSettings(self.sdk_configuration)
         self.advanced_controls = AdvancedControls(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
-        self.integrations = Integrations(self.sdk_configuration)
         self.sync = Sync(self.sdk_configuration)
-        self.sync_flow_settings = SyncFlowSettings(self.sdk_configuration)
+        self.integrations = Integrations(self.sdk_configuration)
     

@@ -1,4 +1,4 @@
-# SyncSummarySyncDateRangeUtc
+# SyncDateRangeUtc
 
 
 ## Fields

@@ -46,7 +46,12 @@ if res.localization_info is not None:
 ### Response
 
 **[operations.GetConfigTextSyncFlowResponse](../../models/operations/getconfigtextsyncflowresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## get_visible_accounts
 
@@ -87,7 +92,12 @@ if res.visible_accounts is not None:
 ### Response
 
 **[operations.GetVisibleAccountsResponse](../../models/operations/getvisibleaccountsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## update_config_text_sync_flow
 
@@ -106,7 +116,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "West": shared.Localization(),
+    "key": shared.Localization(),
 }
 
 res = s.sync_flow_settings.update_config_text_sync_flow(req)
@@ -120,14 +130,19 @@ if res.localization_info is not None:
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [Dict[str, shared.Localization]](../../models//.md)                 | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `request`                                                           | [Dict[str, shared.Localization]](../../models/.md)                  | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 
 ### Response
 
 **[operations.UpdateConfigTextSyncFlowResponse](../../models/operations/updateconfigtextsyncflowresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## update_visible_accounts_sync_flow
 
@@ -148,7 +163,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
     visible_accounts=shared.VisibleAccounts(
         visible_accounts=[
-            'Coordinator',
+            'string',
         ],
     ),
     platform_key='gbol',
@@ -172,4 +187,9 @@ if res.visible_accounts is not None:
 ### Response
 
 **[operations.UpdateVisibleAccountsSyncFlowResponse](../../models/operations/updatevisibleaccountssyncflowresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
