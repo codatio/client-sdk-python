@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import codatbanking
 from codatbanking.models import operations, shared

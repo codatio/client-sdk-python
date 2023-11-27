@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import transactioncategorystatus as shared_transactioncategorystatus
+from .transactioncategorystatus import TransactionCategoryStatus
 from codatbanking import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -22,7 +22,7 @@ class TransactionCategory:
     parent_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parentId') }})
     r"""The unique identifier of the parent bank transaction category."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[shared_transactioncategorystatus.TransactionCategoryStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[TransactionCategoryStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""The status of the transaction category."""
     
 
