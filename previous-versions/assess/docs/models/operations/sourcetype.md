@@ -1,4 +1,4 @@
-# GenerateLoanSummarySourceType
+# SourceType
 
 Data source type.
 

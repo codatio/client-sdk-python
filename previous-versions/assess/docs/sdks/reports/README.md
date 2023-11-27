@@ -36,7 +36,7 @@ Make sure you have [synced a company](https://docs.codat.io/codat-api#/operation
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -44,7 +44,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GenerateLoanSummaryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GenerateLoanSummarySourceType.ACCOUNTING,
+    source_type=operations.SourceType.ACCOUNTING,
 )
 
 res = s.reports.generate_loan_summary(req)
@@ -65,7 +65,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.GenerateLoanSummaryResponse](../../models/operations/generateloansummaryresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## generate_loan_transactions
 
@@ -80,7 +85,7 @@ Make sure you have [synced a company](https://docs.codat.io/codat-api#/operation
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -88,7 +93,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GenerateLoanTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GenerateLoanTransactionsSourceType.ACCOUNTING,
+    source_type=operations.QueryParamSourceType.ACCOUNTING,
 )
 
 res = s.reports.generate_loan_transactions(req)
@@ -109,7 +114,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.GenerateLoanTransactionsResponse](../../models/operations/generateloantransactionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_accounts_for_enhanced_balance_sheet
 
@@ -121,7 +131,7 @@ Codat suggests a category for each account automatically, but you can [change it
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -150,7 +160,12 @@ if res.enhanced_report is not None:
 ### Response
 
 **[operations.GetAccountsForEnhancedBalanceSheetResponse](../../models/operations/getaccountsforenhancedbalancesheetresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_accounts_for_enhanced_profit_and_loss
 
@@ -162,7 +177,7 @@ Codat suggests a category for each account automatically, but you can [change it
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -191,7 +206,12 @@ if res.enhanced_report is not None:
 ### Response
 
 **[operations.GetAccountsForEnhancedProfitAndLossResponse](../../models/operations/getaccountsforenhancedprofitandlossresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_commerce_customer_retention_metrics
 
@@ -234,7 +254,12 @@ if res.report is not None:
 ### Response
 
 **[operations.GetCommerceCustomerRetentionMetricsResponse](../../models/operations/getcommercecustomerretentionmetricsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_commerce_lifetime_value_metrics
 
@@ -277,7 +302,12 @@ if res.report is not None:
 ### Response
 
 **[operations.GetCommerceLifetimeValueMetricsResponse](../../models/operations/getcommercelifetimevaluemetricsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_commerce_orders_metrics
 
@@ -320,7 +350,12 @@ if res.report is not None:
 ### Response
 
 **[operations.GetCommerceOrdersMetricsResponse](../../models/operations/getcommerceordersmetricsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_commerce_refunds_metrics
 
@@ -363,7 +398,12 @@ if res.report is not None:
 ### Response
 
 **[operations.GetCommerceRefundsMetricsResponse](../../models/operations/getcommercerefundsmetricsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_commerce_revenue_metrics
 
@@ -406,7 +446,12 @@ if res.report is not None:
 ### Response
 
 **[operations.GetCommerceRevenueMetricsResponse](../../models/operations/getcommercerevenuemetricsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_enhanced_cash_flow_transactions
 
@@ -420,7 +465,7 @@ The Enhanced Cash Flow Transactions endpoint provides a fully categorized list o
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -450,7 +495,12 @@ if res.enhanced_cash_flow_transactions is not None:
 ### Response
 
 **[operations.GetEnhancedCashFlowTransactionsResponse](../../models/operations/getenhancedcashflowtransactionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_enhanced_invoices_report
 
@@ -460,7 +510,7 @@ Gets a list of invoices linked to the corresponding banking transaction
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -490,7 +540,12 @@ if res.enhanced_invoices_report is not None:
 ### Response
 
 **[operations.GetEnhancedInvoicesReportResponse](../../models/operations/getenhancedinvoicesreportresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_loan_summary
 
@@ -505,7 +560,7 @@ Make sure you have [synced a company](https://docs.codat.io/codat-api#/operation
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -513,7 +568,7 @@ s = codatassess.CodatAssess(
 
 req = operations.GetLoanSummaryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GetLoanSummarySourceType.BANKING,
+    source_type=operations.GetLoanSummaryQueryParamSourceType.BANKING,
 )
 
 res = s.reports.get_loan_summary(req)
@@ -534,7 +589,12 @@ if res.loan_summary is not None:
 ### Response
 
 **[operations.GetLoanSummaryResponse](../../models/operations/getloansummaryresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_recurring_revenue_metrics
 
@@ -544,7 +604,7 @@ Gets key metrics for subscription revenue.
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -573,7 +633,12 @@ if res.report is not None:
 ### Response
 
 **[operations.GetRecurringRevenueMetricsResponse](../../models/operations/getrecurringrevenuemetricsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list_loan_transactions
 
@@ -588,7 +653,7 @@ Make sure you have [synced a company](https://docs.codat.io/codat-api#/operation
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -596,7 +661,7 @@ s = codatassess.CodatAssess(
 
 req = operations.ListLoanTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.ListLoanTransactionsSourceType.COMMERCE,
+    source_type=operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
 )
 
 res = s.reports.list_loan_transactions(req)
@@ -617,7 +682,12 @@ if res.loan_transactions is not None:
 ### Response
 
 **[operations.ListLoanTransactionsResponse](../../models/operations/listloantransactionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## request_recurring_revenue_metrics
 
@@ -627,7 +697,7 @@ Requests production of key subscription revenue metrics.
 
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -656,4 +726,9 @@ if res.report is not None:
 ### Response
 
 **[operations.RequestRecurringRevenueMetricsResponse](../../models/operations/requestrecurringrevenuemetricsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

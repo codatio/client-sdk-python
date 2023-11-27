@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import enhancedreportaccountcategory as shared_enhancedreportaccountcategory
-from ..shared import enhancedreportinfo as shared_enhancedreportinfo
+from .enhancedreportaccountcategory import EnhancedReportAccountCategory
+from .enhancedreportinfo import EnhancedReportInfo
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -12,8 +12,8 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class EnhancedReportReportItem:
-    account_category: Optional[shared_enhancedreportaccountcategory.EnhancedReportAccountCategory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountCategory'), 'exclude': lambda f: f is None }})
+class ReportItem:
+    account_category: Optional[EnhancedReportAccountCategory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountCategory'), 'exclude': lambda f: f is None }})
     account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is None }})
     r"""The unique account ID."""
     account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountName'), 'exclude': lambda f: f is None }})
@@ -48,8 +48,8 @@ class EnhancedReportReportItem:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class EnhancedReport:
-    report_info: Optional[shared_enhancedreportinfo.EnhancedReportInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInfo'), 'exclude': lambda f: f is None }})
-    report_items: Optional[List[EnhancedReportReportItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportItems'), 'exclude': lambda f: f is None }})
+    report_info: Optional[EnhancedReportInfo] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInfo'), 'exclude': lambda f: f is None }})
+    report_items: Optional[List[ReportItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportItems'), 'exclude': lambda f: f is None }})
     r"""An array of report items."""
     
 

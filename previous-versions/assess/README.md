@@ -17,25 +17,24 @@ pip install codat-assess
 
 ## Example Usage
 <!-- Start SDK Example Usage -->
+### Example
+
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.ListDataTypeDataIntegrityDetailsRequest(
+req = operations.GenerateLoanSummaryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
+    source_type=operations.SourceType.ACCOUNTING,
 )
 
-res = s.data_integrity.details(req)
+res = s.reports.generate_loan_summary(req)
 
-if res.details is not None:
+if res.status_code == 200:
     # handle response
     pass
 ```
@@ -44,19 +43,6 @@ if res.details is not None:
 <!-- Start SDK Available Operations -->
 ## Available Resources and Operations
 
-
-### [data_integrity](docs/sdks/dataintegrity/README.md)
-
-* [details](docs/sdks/dataintegrity/README.md#details) - List data type data integrity
-* [status](docs/sdks/dataintegrity/README.md#status) - Get data integrity status
-* [summary](docs/sdks/dataintegrity/README.md#summary) - Get data integrity summary
-
-### [excel_reports](docs/sdks/excelreports/README.md)
-
-* [generate_excel_report](docs/sdks/excelreports/README.md#generate_excel_report) - Generate Excel report
-* [get_accounting_marketing_metrics](docs/sdks/excelreports/README.md#get_accounting_marketing_metrics) - Get marketing metrics report
-* [get_excel_report](docs/sdks/excelreports/README.md#get_excel_report) - Download Excel report
-* [get_excel_report_generation_status](docs/sdks/excelreports/README.md#get_excel_report_generation_status) - Get Excel report status
 
 ### [reports](docs/sdks/reports/README.md)
 
@@ -75,6 +61,19 @@ if res.details is not None:
 * [get_recurring_revenue_metrics](docs/sdks/reports/README.md#get_recurring_revenue_metrics) - Get key subscription revenue metrics
 * [list_loan_transactions](docs/sdks/reports/README.md#list_loan_transactions) - List loan transactions
 * [request_recurring_revenue_metrics](docs/sdks/reports/README.md#request_recurring_revenue_metrics) - Generate key subscription revenue metrics
+
+### [data_integrity](docs/sdks/dataintegrity/README.md)
+
+* [details](docs/sdks/dataintegrity/README.md#details) - List data type data integrity
+* [status](docs/sdks/dataintegrity/README.md#status) - Get data integrity status
+* [summary](docs/sdks/dataintegrity/README.md#summary) - Get data integrity summary
+
+### [excel_reports](docs/sdks/excelreports/README.md)
+
+* [generate_excel_report](docs/sdks/excelreports/README.md#generate_excel_report) - Generate Excel report
+* [get_accounting_marketing_metrics](docs/sdks/excelreports/README.md#get_accounting_marketing_metrics) - Get marketing metrics report
+* [get_excel_report](docs/sdks/excelreports/README.md#get_excel_report) - Download Excel report
+* [get_excel_report_generation_status](docs/sdks/excelreports/README.md#get_excel_report_generation_status) - Get Excel report status
 <!-- End SDK Available Operations -->
 
 
@@ -84,6 +83,220 @@ if res.details is not None:
 
 
 <!-- End Dev Containers -->
+
+
+
+<!-- Start Retries -->
+## Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+```python
+import codatassess
+from codatassess.models import operations
+from codatassess.utils import BackoffStrategy, RetryConfig
+
+s = codatassess.CodatAssess(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
+)
+
+req = operations.GenerateLoanSummaryRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.SourceType.ACCOUNTING,
+)
+
+res = s.reports.generate_loan_summary(req,
+    RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+```python
+import codatassess
+from codatassess.models import operations
+from codatassess.utils import BackoffStrategy, RetryConfig
+
+s = codatassess.CodatAssess(
+    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
+)
+
+req = operations.GenerateLoanSummaryRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.SourceType.ACCOUNTING,
+)
+
+res = s.reports.generate_loan_summary(req)
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+<!-- End Retries -->
+
+
+
+<!-- Start Error Handling -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
+
+### Example
+
+```python
+import codatassess
+from codatassess.models import operations
+
+s = codatassess.CodatAssess(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
+)
+
+req = operations.GenerateLoanSummaryRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.SourceType.ACCOUNTING,
+)
+
+res = None
+try:
+    res = s.reports.generate_loan_summary(req)
+except (errors.ErrorMessage) as e:
+    print(e) # handle exception
+
+except (errors.SDKError) as e:
+    print(e) # handle exception
+
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.codat.io` | None |
+
+#### Example
+
+```python
+import codatassess
+from codatassess.models import operations
+
+s = codatassess.CodatAssess(
+    server_idx=0,
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
+)
+
+req = operations.GenerateLoanSummaryRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.SourceType.ACCOUNTING,
+)
+
+res = s.reports.generate_loan_summary(req)
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+```python
+import codatassess
+from codatassess.models import operations
+
+s = codatassess.CodatAssess(
+    server_url="https://api.codat.io",
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
+)
+
+req = operations.GenerateLoanSummaryRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.SourceType.ACCOUNTING,
+)
+
+res = s.reports.generate_loan_summary(req)
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+## Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+For example, you could specify a header for every request that this sdk makes as follows:
+```python
+import codatassess
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = codatassess.CodatAssess(client: http_client)
+```
+<!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `auth_header` | apiKey        | API key       |
+
+To authenticate with the API the `auth_header` parameter must be set when initializing the SDK client instance. For example:
+```python
+import codatassess
+from codatassess.models import operations
+
+s = codatassess.CodatAssess(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
+)
+
+req = operations.GenerateLoanSummaryRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    source_type=operations.SourceType.ACCOUNTING,
+)
+
+res = s.reports.generate_loan_summary(req)
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

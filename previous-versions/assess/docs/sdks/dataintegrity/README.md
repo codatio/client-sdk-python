@@ -51,7 +51,12 @@ if res.details is not None:
 ### Response
 
 **[operations.ListDataTypeDataIntegrityDetailsResponse](../../models/operations/listdatatypedataintegritydetailsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## status
 
@@ -90,7 +95,12 @@ if res.status is not None:
 ### Response
 
 **[operations.GetDataIntegrityStatusResponse](../../models/operations/getdataintegritystatusresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## summary
 
@@ -129,4 +139,9 @@ if res.summaries is not None:
 ### Response
 
 **[operations.GetDataIntegritySummariesResponse](../../models/operations/getdataintegritysummariesresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
