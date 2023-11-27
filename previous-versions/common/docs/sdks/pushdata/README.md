@@ -37,7 +37,7 @@ s = codatcommon.CodatCommon(
 req = operations.GetCreateUpdateModelOptionsByDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    data_type=shared.DataType.INVOICES,
+    data_type=shared.SchemaDataType.INVOICES,
 )
 
 res = s.push_data.get_model_options(req)
@@ -58,7 +58,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdateModelOptionsByDataTypeResponse](../../models/operations/getcreateupdatemodeloptionsbydatatyperesponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_operation
 
@@ -68,7 +73,7 @@ Retrieve push operation.
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -97,7 +102,12 @@ if res.push_operation is not None:
 ### Response
 
 **[operations.GetPushOperationResponse](../../models/operations/getpushoperationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list_operations
 
@@ -107,7 +117,7 @@ List push operation records.
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -138,4 +148,9 @@ if res.push_operations is not None:
 ### Response
 
 **[operations.GetCompanyPushHistoryResponse](../../models/operations/getcompanypushhistoryresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

@@ -13,6 +13,7 @@ class Settings:
         self.sdk_configuration = sdk_config
         
     
+    
     def create_api_key(self, request: shared.CreateAPIKey, retries: Optional[utils.RetryConfig] = None) -> operations.CreateAPIKeyResponse:
         r"""Create API key
         Use the *Create API keys* endpoint to generate a new API key for your client.
@@ -37,7 +38,10 @@ class Settings:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -56,7 +60,7 @@ class Settings:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.CreateAPIKeyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 201:
@@ -65,15 +69,19 @@ class Settings:
                 res.api_key_details = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 409, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def delete_api_key(self, request: operations.DeleteAPIKeyRequest, retries: Optional[utils.RetryConfig] = None) -> operations.DeleteAPIKeyResponse:
         r"""Delete API key
@@ -95,7 +103,10 @@ class Settings:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -114,26 +125,32 @@ class Settings:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.DeleteAPIKeyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 204:
-            pass
-        elif http_res.status_code in [401, 404, 429]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+                out = utils.unmarshal_json(http_res.text, Optional[errors.ErrorMessage])
                 res.error_message = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
+    
     def get_profile(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetProfileResponse:
         r"""Get profile
         Fetch your Codat profile.
-
-        Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -142,7 +159,10 @@ class Settings:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -161,7 +181,7 @@ class Settings:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetProfileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -170,15 +190,19 @@ class Settings:
                 res.profile = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def get_sync_settings(self, retries: Optional[utils.RetryConfig] = None) -> operations.GetProfileSyncSettingsResponse:
         r"""Get sync settings
@@ -191,7 +215,10 @@ class Settings:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -210,7 +237,7 @@ class Settings:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetProfileSyncSettingsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -219,15 +246,19 @@ class Settings:
                 res.sync_settings = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def list_api_keys(self, retries: Optional[utils.RetryConfig] = None) -> operations.ListAPIKeysResponse:
         r"""List API keys
@@ -244,7 +275,10 @@ class Settings:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -263,7 +297,7 @@ class Settings:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ListAPIKeysResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -272,15 +306,19 @@ class Settings:
                 res.api_keys = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def update_profile(self, request: shared.Profile, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateProfileResponse:
         r"""Update profile
@@ -296,7 +334,10 @@ class Settings:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -315,7 +356,7 @@ class Settings:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UpdateProfileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -324,15 +365,19 @@ class Settings:
                 res.profile = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def update_sync_settings(self, request: operations.UpdateProfileSyncSettingsRequestBody, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateProfileSyncSettingsResponse:
         r"""Update all sync settings
@@ -348,7 +393,10 @@ class Settings:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -367,17 +415,20 @@ class Settings:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UpdateProfileSyncSettingsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 204:
             pass
-        elif http_res.status_code in [401, 429]:
+        elif http_res.status_code in [401, 402, 403, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 

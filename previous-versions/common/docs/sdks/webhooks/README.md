@@ -47,7 +47,7 @@ req = shared.CreateRule(
         ],
         webhook='https://webhook.client.com',
     ),
-    type='bluetooth Extended',
+    type='string',
 )
 
 res = s.webhooks.create(req)
@@ -68,7 +68,12 @@ if res.webhook is not None:
 ### Response
 
 **[operations.CreateRuleResponse](../../models/operations/createruleresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 400-600                 | */*                     |
 
 ## get
 
@@ -78,7 +83,7 @@ Get a single webhook
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -106,7 +111,12 @@ if res.webhook is not None:
 ### Response
 
 **[operations.GetWebhookResponse](../../models/operations/getwebhookresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -116,7 +126,7 @@ List webhooks that you are subscribed to.
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -146,4 +156,9 @@ if res.webhooks is not None:
 ### Response
 
 **[operations.ListRulesResponse](../../models/operations/listrulesresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

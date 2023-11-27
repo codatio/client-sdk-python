@@ -19,7 +19,7 @@ Get single integration, by platformKey
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -47,7 +47,12 @@ if res.integration is not None:
 ### Response
 
 **[operations.GetIntegrationResponse](../../models/operations/getintegrationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_branding
 
@@ -57,7 +62,7 @@ Get branding for platform.
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -85,7 +90,12 @@ if res.branding is not None:
 ### Response
 
 **[operations.GetIntegrationsBrandingResponse](../../models/operations/getintegrationsbrandingresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -95,7 +105,7 @@ List your available integrations
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -125,4 +135,9 @@ if res.integrations is not None:
 ### Response
 
 **[operations.ListIntegrationsResponse](../../models/operations/listintegrationsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

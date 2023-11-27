@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import datasetstatuschangederrorwebhookdata as shared_datasetstatuschangederrorwebhookdata
+from .datasetstatuschangederrorwebhookdata import DatasetStatusChangedErrorWebhookData
 from codatcommon import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -20,7 +20,7 @@ class DatasetStatusChangedErrorWebhook:
     r"""Name of your client in Codat."""
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('CompanyId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for your SMB in Codat."""
-    data: Optional[shared_datasetstatuschangederrorwebhookdata.DatasetStatusChangedErrorWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Data'), 'exclude': lambda f: f is None }})
+    data: Optional[DatasetStatusChangedErrorWebhookData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Data'), 'exclude': lambda f: f is None }})
     data_connection_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('DataConnectionId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for a company's data connection."""
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Message'), 'exclude': lambda f: f is None }})

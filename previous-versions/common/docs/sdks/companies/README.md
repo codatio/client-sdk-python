@@ -54,7 +54,12 @@ if res.company is not None:
 ### Response
 
 **[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## delete
 
@@ -65,7 +70,7 @@ Permanently deletes a company, its connections and any cached data. This operati
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -93,7 +98,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -103,7 +113,7 @@ if res.status_code == 200:
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -131,7 +141,12 @@ if res.company is not None:
 ### Response
 
 **[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -141,7 +156,7 @@ if res.company is not None:
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -171,7 +186,12 @@ if res.companies is not None:
 ### Response
 
 **[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## update
 
@@ -213,4 +233,9 @@ if res.company is not None:
 ### Response
 
 **[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
