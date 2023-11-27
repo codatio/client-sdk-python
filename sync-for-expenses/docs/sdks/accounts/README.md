@@ -37,31 +37,27 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.CreateAccountRequest(
-    account=shared.Account(
+    account_prototype=shared.AccountPrototype(
         currency='USD',
         current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
         fully_qualified_name='Cash On Hand',
-        id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
-        metadata=shared.AccountMetadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
         name='Accounts Receivable',
         nominal_code='610',
-        source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.AccountStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "Money": {
-                    "blue": 'shred',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
         type=shared.AccountType.ASSET,
         valid_datatype_links=[
-            shared.AccountValidDataTypeLinks(
+            shared.ValidDataTypeLinks(
                 links=[
-                    'abnormally',
+                    'string',
                 ],
             ),
         ],
@@ -88,7 +84,12 @@ if res.create_account_response is not None:
 ### Response
 
 **[operations.CreateAccountResponse](../../models/operations/createaccountresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_model
 
@@ -138,4 +139,9 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateChartOfAccountsModelResponse](../../models/operations/getcreatechartofaccountsmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
