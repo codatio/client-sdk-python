@@ -65,8 +65,8 @@ req = operations.CreateBillPaymentRequest(
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "blue": {
-                    "shred": 'abnormally',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
@@ -97,7 +97,12 @@ if res.create_bill_payment_response is not None:
 ### Response
 
 **[operations.CreateBillPaymentResponse](../../models/operations/createbillpaymentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## delete
 
@@ -107,7 +112,7 @@ if res.create_bill_payment_response is not None:
 
 ### Process
 1. Pass the `{billPaymentId}` to the *Delete bill payment* endpoint and store the `pushOperationKey` returned.
-2. Check the status of the delete operation by checking the status of push operation either via
+2. Check the status of the delete operation by checking the status of the push operation either via
    1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
    2. [Push operation status endpoint](https://docs.codat.io/sync-for-payables-api#/operations/get-push-operation).
 
@@ -120,15 +125,16 @@ Be aware that deleting a bill payment from an accounting platform might cause re
 ## Integration specifics
 Integrations that support soft delete do not permanently delete the object in the accounting platform.
 
-| Integration | Soft Delete | Details                                                                                              |  
+| Integration | Soft Delete | Details |  
 |-------------|-------------|------------------------------------------------------------------------------------------------------|                                                        
-| Oracle NetSuite   | No          | See [here](/integrations/accounting/netsuite/how-deleting-bill-payments-works) to learn more.  |
-| QuickBooks Online | No          | -                                                                                              |
-| Xero | Yes          | -                                                                                                          |
+| QuickBooks Online | No   | -
+| Oracle NetSuite   | No   | See [here](/integrations/accounting/netsuite/accounting-netsuite-how-deleting-bill-payments-works) to learn more.
+| Xero              | Yes  | -     
+| Sage Intacct      | No   | Some bill payments in Sage Intacct can only be deleted, whilst others can only be voided. Codat have applied logic to handle this complexity. 
 
 > **Supported integrations**
 >
-> This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
+> This functionality is currently supported for our QuickBooks Online, Oracle NetSuite, Xero and Sage Intacct integrations.
 
 
 ### Example Usage
@@ -144,8 +150,9 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='Van complexity',
+    bill_payment_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.bill_payments.delete(req)
@@ -166,7 +173,12 @@ if res.push_operation is not None:
 ### Response
 
 **[operations.DeleteBillPaymentResponse](../../models/operations/deletebillpaymentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -192,7 +204,7 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.GetBillPaymentsRequest(
-    bill_payment_id='Northeast Hatchback Kia',
+    bill_payment_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -214,7 +226,12 @@ if res.bill_payment is not None:
 ### Response
 
 **[operations.GetBillPaymentsResponse](../../models/operations/getbillpaymentsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_model
 
@@ -264,7 +281,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateBillPaymentModelResponse](../../models/operations/getcreatebillpaymentmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -312,4 +334,9 @@ if res.bill_payments is not None:
 ### Response
 
 **[operations.ListBillPaymentsResponse](../../models/operations/listbillpaymentsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

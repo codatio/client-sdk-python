@@ -1,4 +1,4 @@
-# WebLinkType
+# Type
 
 The type of the weblink.
 

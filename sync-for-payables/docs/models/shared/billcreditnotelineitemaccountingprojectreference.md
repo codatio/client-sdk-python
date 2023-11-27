@@ -1,4 +1,4 @@
-# BillCreditNoteLineItemTrackingProjectReference
+# BillCreditNoteLineItemAccountingProjectReference
 
 
 ## Fields

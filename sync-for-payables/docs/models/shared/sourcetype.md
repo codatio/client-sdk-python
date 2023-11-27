@@ -1,4 +1,4 @@
-# ConnectionSourceType
+# SourceType
 
 The type of platform of the connection.
 

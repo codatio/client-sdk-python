@@ -14,10 +14,11 @@ pip install codat-sync-for-payables
 
 ## Example Usage
 <!-- Start SDK Example Usage -->
+### Example
+
 ```python
 import codatsyncpayables
-from codatsyncpayables.models import operations, shared
-from decimal import Decimal
+from codatsyncpayables.models import shared
 
 s = codatsyncpayables.CodatSyncPayables(
     security=shared.Security(
@@ -25,43 +26,14 @@ s = codatsyncpayables.CodatSyncPayables(
     ),
 )
 
-req = operations.CreateAccountRequest(
-    account=shared.Account(
-        currency='USD',
-        current_balance=Decimal('0'),
-        description='Invoices the business has issued but has not yet collected payment on.',
-        fully_qualified_category='Asset.Current',
-        fully_qualified_name='Cash On Hand',
-        id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        name='Accounts Receivable',
-        nominal_code='610',
-        source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.AccountStatus.ACTIVE,
-        supplemental_data=shared.SupplementalData(
-            content={
-                "Money": {
-                    "blue": 'shred',
-                },
-            },
-        ),
-        type=shared.AccountType.ASSET,
-        valid_datatype_links=[
-            shared.AccountValidDataTypeLinks(
-                links=[
-                    'abnormally',
-                ],
-            ),
-        ],
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
 )
 
-res = s.accounts.create(req)
+res = s.companies.create(req)
 
-if res.create_account_response is not None:
+if res.company is not None:
     # handle response
     pass
 ```
@@ -71,12 +43,35 @@ if res.create_account_response is not None:
 ## Available Resources and Operations
 
 
-### [accounts](docs/sdks/accounts/README.md)
+### [companies](docs/sdks/companies/README.md)
 
-* [create](docs/sdks/accounts/README.md#create) - Create account
-* [get](docs/sdks/accounts/README.md#get) - Get account
-* [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
-* [list](docs/sdks/accounts/README.md#list) - List accounts
+* [create](docs/sdks/companies/README.md#create) - Create company
+* [delete](docs/sdks/companies/README.md#delete) - Delete a company
+* [get](docs/sdks/companies/README.md#get) - Get company
+* [list](docs/sdks/companies/README.md#list) - List companies
+* [update](docs/sdks/companies/README.md#update) - Update company
+
+### [connections](docs/sdks/connections/README.md)
+
+* [create](docs/sdks/connections/README.md#create) - Create connection
+* [delete](docs/sdks/connections/README.md#delete) - Delete connection
+* [get](docs/sdks/connections/README.md#get) - Get connection
+* [list](docs/sdks/connections/README.md#list) - List connections
+* [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
+
+### [bills](docs/sdks/bills/README.md)
+
+* [create](docs/sdks/bills/README.md#create) - Create bill
+* [delete](docs/sdks/bills/README.md#delete) - Delete bill
+* [delete_attachment](docs/sdks/bills/README.md#delete_attachment) - Delete bill attachment
+* [download_attachment](docs/sdks/bills/README.md#download_attachment) - Download bill attachment
+* [get](docs/sdks/bills/README.md#get) - Get bill
+* [get_attachment](docs/sdks/bills/README.md#get_attachment) - Get bill attachment
+* [get_create_update_model](docs/sdks/bills/README.md#get_create_update_model) - Get create/update bill model
+* [list](docs/sdks/bills/README.md#list) - List bills
+* [list_attachments](docs/sdks/bills/README.md#list_attachments) - List bill attachments
+* [update](docs/sdks/bills/README.md#update) - Update bill
+* [upload_attachment](docs/sdks/bills/README.md#upload_attachment) - Upload bill attachment
 
 ### [bill_credit_notes](docs/sdks/billcreditnotes/README.md)
 
@@ -94,39 +89,12 @@ if res.create_account_response is not None:
 * [get_create_model](docs/sdks/billpayments/README.md#get_create_model) - Get create bill payment model
 * [list](docs/sdks/billpayments/README.md#list) - List bill payments
 
-### [bills](docs/sdks/bills/README.md)
+### [accounts](docs/sdks/accounts/README.md)
 
-* [create](docs/sdks/bills/README.md#create) - Create bill
-* [delete](docs/sdks/bills/README.md#delete) - Delete bill
-* [delete_attachment](docs/sdks/bills/README.md#delete_attachment) - Delete bill attachment
-* [download_attachment](docs/sdks/bills/README.md#download_attachment) - Download bill attachment
-* [get](docs/sdks/bills/README.md#get) - Get bill
-* [get_attachment](docs/sdks/bills/README.md#get_attachment) - Get bill attachment
-* [get_create_update_model](docs/sdks/bills/README.md#get_create_update_model) - Get create/update bill model
-* [list](docs/sdks/bills/README.md#list) - List bills
-* [list_attachments](docs/sdks/bills/README.md#list_attachments) - List bill attachments
-* [update](docs/sdks/bills/README.md#update) - Update bill
-* [upload_attachment](docs/sdks/bills/README.md#upload_attachment) - Upload bill attachment
-
-### [companies](docs/sdks/companies/README.md)
-
-* [create](docs/sdks/companies/README.md#create) - Create company
-* [delete](docs/sdks/companies/README.md#delete) - Delete a company
-* [get](docs/sdks/companies/README.md#get) - Get company
-* [list](docs/sdks/companies/README.md#list) - List companies
-* [update](docs/sdks/companies/README.md#update) - Update company
-
-### [company_info](docs/sdks/companyinfo/README.md)
-
-* [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
-
-### [connections](docs/sdks/connections/README.md)
-
-* [create](docs/sdks/connections/README.md#create) - Create connection
-* [delete](docs/sdks/connections/README.md#delete) - Delete connection
-* [get](docs/sdks/connections/README.md#get) - Get connection
-* [list](docs/sdks/connections/README.md#list) - List connections
-* [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
+* [create](docs/sdks/accounts/README.md#create) - Create account
+* [get](docs/sdks/accounts/README.md#get) - Get account
+* [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
+* [list](docs/sdks/accounts/README.md#list) - List accounts
 
 ### [journal_entries](docs/sdks/journalentries/README.md)
 
@@ -140,6 +108,14 @@ if res.create_account_response is not None:
 * [get_create_model](docs/sdks/journals/README.md#get_create_model) - Get create journal model
 * [list](docs/sdks/journals/README.md#list) - List journals
 
+### [suppliers](docs/sdks/suppliers/README.md)
+
+* [create](docs/sdks/suppliers/README.md#create) - Create supplier
+* [get](docs/sdks/suppliers/README.md#get) - Get supplier
+* [get_create_update_model](docs/sdks/suppliers/README.md#get_create_update_model) - Get create/update supplier model
+* [list](docs/sdks/suppliers/README.md#list) - List suppliers
+* [update](docs/sdks/suppliers/README.md#update) - Update supplier
+
 ### [manage_data](docs/sdks/managedata/README.md)
 
 * [get](docs/sdks/managedata/README.md#get) - Get data status
@@ -148,23 +124,14 @@ if res.create_account_response is not None:
 * [refresh_all_data_types](docs/sdks/managedata/README.md#refresh_all_data_types) - Refresh all data
 * [refresh_data_type](docs/sdks/managedata/README.md#refresh_data_type) - Refresh data type
 
+### [company_info](docs/sdks/companyinfo/README.md)
+
+* [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
+
 ### [payment_methods](docs/sdks/paymentmethods/README.md)
 
 * [get](docs/sdks/paymentmethods/README.md#get) - Get payment method
 * [list](docs/sdks/paymentmethods/README.md#list) - List payment methods
-
-### [push_operations](docs/sdks/pushoperations/README.md)
-
-* [get](docs/sdks/pushoperations/README.md#get) - Get push operation
-* [list](docs/sdks/pushoperations/README.md#list) - List push operations
-
-### [suppliers](docs/sdks/suppliers/README.md)
-
-* [create](docs/sdks/suppliers/README.md#create) - Create supplier
-* [get](docs/sdks/suppliers/README.md#get) - Get supplier
-* [get_create_update_model](docs/sdks/suppliers/README.md#get_create_update_model) - Get create/update supplier model
-* [list](docs/sdks/suppliers/README.md#list) - List suppliers
-* [update](docs/sdks/suppliers/README.md#update) - Update supplier
 
 ### [tax_rates](docs/sdks/taxrates/README.md)
 
@@ -175,6 +142,11 @@ if res.create_account_response is not None:
 
 * [get](docs/sdks/trackingcategories/README.md#get) - Get tracking categories
 * [list](docs/sdks/trackingcategories/README.md#list) - List tracking categories
+
+### [push_operations](docs/sdks/pushoperations/README.md)
+
+* [get](docs/sdks/pushoperations/README.md#get) - Get push operation
+* [list](docs/sdks/pushoperations/README.md#list) - List push operations
 <!-- End SDK Available Operations -->
 
 
@@ -196,6 +168,232 @@ Here's an example of one such pagination call:
 
 
 <!-- End Pagination -->
+
+
+
+<!-- Start Retries -->
+## Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+```python
+import codatsyncpayables
+from codatsyncpayables.models import shared
+from codatsyncpayables.utils import BackoffStrategy, RetryConfig
+
+s = codatsyncpayables.CodatSyncPayables(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create(req,
+    RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
+
+if res.company is not None:
+    # handle response
+    pass
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+```python
+import codatsyncpayables
+from codatsyncpayables.models import shared
+from codatsyncpayables.utils import BackoffStrategy, RetryConfig
+
+s = codatsyncpayables.CodatSyncPayables(
+    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Retries -->
+
+
+
+<!-- Start Error Handling -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
+
+### Example
+
+```python
+import codatsyncpayables
+from codatsyncpayables.models import shared
+
+s = codatsyncpayables.CodatSyncPayables(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = None
+try:
+    res = s.companies.create(req)
+except (errors.ErrorMessage) as e:
+    print(e) # handle exception
+
+except (errors.SDKError) as e:
+    print(e) # handle exception
+
+
+if res.company is not None:
+    # handle response
+    pass
+```
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.codat.io` | None |
+
+#### Example
+
+```python
+import codatsyncpayables
+from codatsyncpayables.models import shared
+
+s = codatsyncpayables.CodatSyncPayables(
+    server_idx=0,
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+```python
+import codatsyncpayables
+from codatsyncpayables.models import shared
+
+s = codatsyncpayables.CodatSyncPayables(
+    server_url="https://api.codat.io",
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+## Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+For example, you could specify a header for every request that this sdk makes as follows:
+```python
+import codatsyncpayables
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = codatsyncpayables.CodatSyncPayables(client: http_client)
+```
+<!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `auth_header` | apiKey        | API key       |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
+```python
+import codatsyncpayables
+from codatsyncpayables.models import shared
+
+s = codatsyncpayables.CodatSyncPayables(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
