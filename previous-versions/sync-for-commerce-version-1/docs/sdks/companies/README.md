@@ -50,7 +50,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_company
 
@@ -90,7 +95,12 @@ if res.company is not None:
 ### Response
 
 **[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## update_company
 
@@ -134,4 +144,9 @@ if res.company is not None:
 ### Response
 
 **[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

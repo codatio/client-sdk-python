@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import commerceaddresstype as shared_commerceaddresstype
+from .commerceaddresstype import CommerceAddressType
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -10,7 +10,7 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CommerceCustomerAddress:
+class CommerceAddress:
     city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city'), 'exclude': lambda f: f is None }})
     r"""The third line of the address, or city"""
     country: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('country'), 'exclude': lambda f: f is None }})
@@ -23,7 +23,7 @@ class CommerceCustomerAddress:
     r"""The postal (or zip) code for the address"""
     region: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('region'), 'exclude': lambda f: f is None }})
     r"""The fourth line of the address, or region"""
-    type: Optional[shared_commerceaddresstype.CommerceAddressType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[CommerceAddressType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the address"""
     
 
@@ -38,7 +38,7 @@ class CommerceCustomer:
     """
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique, persistent identifier for this record"""
-    addresses: Optional[List[CommerceCustomerAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
+    addresses: Optional[List[CommerceAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses'), 'exclude': lambda f: f is None }})
     r"""Addresses of the customer"""
     created_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

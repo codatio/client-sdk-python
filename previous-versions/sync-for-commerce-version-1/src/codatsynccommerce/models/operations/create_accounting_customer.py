@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingcreatecustomerresponse as shared_accountingcreatecustomerresponse
-from ..shared import accountingcustomer as shared_accountingcustomer
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingcreatecustomerresponse as shared_accountingcreatecustomerresponse
+from ...models.shared import accountingcustomer as shared_accountingcustomer
 from typing import Optional
 
 
@@ -26,13 +25,11 @@ class CreateAccountingCustomerRequest:
 class CreateAccountingCustomerResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     accounting_create_customer_response: Optional[shared_accountingcreatecustomerresponse.AccountingCreateCustomerResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

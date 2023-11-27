@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import customerstatus as shared_customerstatus
-from ..shared import items1 as shared_items1
-from ..shared import phonenumbersitems as shared_phonenumbersitems
+from .customerstatus import CustomerStatus
+from .items1 import Items1
+from .phonenumber_items import PhoneNumberItems
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -13,9 +13,9 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Contact:
-    status: shared_customerstatus.CustomerStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: CustomerStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""Status of customer."""
-    address: Optional[shared_items1.Items1] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('address'), 'exclude': lambda f: f is None }})
+    address: Optional[Items1] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('address'), 'exclude': lambda f: f is None }})
     email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email') }})
     r"""Email of a contact for a customer."""
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
@@ -41,7 +41,7 @@ class Contact:
     """
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""Name of a contact for a customer."""
-    phone: Optional[List[shared_phonenumbersitems.PhoneNumbersitems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone') }})
+    phone: Optional[List[PhoneNumberItems]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone') }})
     r"""An array of Phone numbers."""
     
 

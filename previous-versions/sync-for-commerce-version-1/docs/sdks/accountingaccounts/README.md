@@ -38,31 +38,27 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.CreateAccountingAccountRequest(
-    accounting_account=shared.AccountingAccount(
+    account_prototype=shared.AccountPrototype(
         currency='GBP',
         current_balance=Decimal('0'),
         description='Invoices the business has issued but has not yet collected payment on.',
         fully_qualified_category='Asset.Current',
         fully_qualified_name='Cash On Hand',
-        id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
-        metadata=shared.AccountingAccountMetadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
         name='Accounts Receivable',
         nominal_code='610',
-        source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.AccountStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "Gasoline": {
-                    "Wall": 'Oriental',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
         type=shared.AccountType.ASSET,
         valid_datatype_links=[
-            shared.AccountingAccountValidDataTypeLinks(
+            shared.ValidDataTypeLinks(
                 links=[
-                    'Intranet',
+                    'string',
                 ],
             ),
         ],
@@ -89,7 +85,12 @@ if res.accounting_create_account_response is not None:
 ### Response
 
 **[operations.CreateAccountingAccountResponse](../../models/operations/createaccountingaccountresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_accounting_account
 
@@ -115,7 +116,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetAccountingAccountRequest(
-    account_id='Officer steer whoa',
+    account_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -137,7 +138,12 @@ if res.accounting_account is not None:
 ### Response
 
 **[operations.GetAccountingAccountResponse](../../models/operations/getaccountingaccountresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list_accounting_accounts
 
@@ -184,4 +190,9 @@ if res.accounting_accounts is not None:
 ### Response
 
 **[operations.ListAccountingAccountsResponse](../../models/operations/listaccountingaccountsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

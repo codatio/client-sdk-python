@@ -54,7 +54,7 @@ req = operations.CreateAccountingInvoiceRequest(
                 tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.Tracking(
                     category_refs=[
-                        shared.TrackingCategoryRefsitems(
+                        shared.TrackingCategoryRefItems(
                             id='<ID>',
                         ),
                     ],
@@ -63,7 +63,7 @@ req = operations.CreateAccountingInvoiceRequest(
                     ),
                     is_billed_to=shared.BilledToType.UNKNOWN,
                     is_rebilled_to=shared.BilledToType.PROJECT,
-                    project_ref=shared.TrackingProjectReference(
+                    project_ref=shared.AccountingProjectReference(
                         id='<ID>',
                     ),
                     record_ref=shared.RecordRef(
@@ -71,7 +71,7 @@ req = operations.CreateAccountingInvoiceRequest(
                     ),
                 ),
                 tracking_category_refs=[
-                    shared.TrackingCategoryRefsitems(
+                    shared.TrackingCategoryRefItems(
                         id='<ID>',
                     ),
                 ],
@@ -82,8 +82,8 @@ req = operations.CreateAccountingInvoiceRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         paid_on_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.AccountingInvoicePaymentAllocation(
-                allocation=shared.AccountingInvoicePaymentAllocationAllocation(
+            shared.AccountingPaymentAllocation(
+                allocation=shared.AccountingInvoiceAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='USD',
                 ),
@@ -95,7 +95,7 @@ req = operations.CreateAccountingInvoiceRequest(
             ),
         ],
         sales_order_refs=[
-            shared.AccountingInvoiceSalesOrderReference(
+            shared.SalesOrderReference(
                 data_type=shared.DataType.INVOICES,
             ),
         ],
@@ -103,17 +103,17 @@ req = operations.CreateAccountingInvoiceRequest(
         status=shared.InvoiceStatus.PARTIALLY_PAID,
         supplemental_data=shared.SupplementalData(
             content={
-                "Beier": {
-                    "boo": 'Regional',
+                "key": {
+                    "key": 'string',
                 },
             },
         ),
-        total_amount=Decimal('1895.83'),
-        total_tax_amount=Decimal('7283.9'),
+        total_amount=Decimal('1416.23'),
+        total_tax_amount=Decimal('9069.87'),
         withholding_tax=[
-            shared.AccountingInvoiceWithholdingTax(
-                amount=Decimal('1357.13'),
-                name='Gasoline Interactions Cisgender',
+            shared.WithholdingTax(
+                amount=Decimal('598.23'),
+                name='string',
             ),
         ],
     ),
@@ -139,4 +139,9 @@ if res.accounting_create_invoice_response is not None:
 ### Response
 
 **[operations.CreateAccountingInvoiceResponse](../../models/operations/createaccountinginvoiceresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

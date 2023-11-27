@@ -36,7 +36,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommerceProductRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    product_id='Pierce connect Missouri',
+    product_id='string',
 )
 
 res = s.commerce_products.get_commerce_product(req)
@@ -57,7 +57,12 @@ if res.commerce_product is not None:
 ### Response
 
 **[operations.GetCommerceProductResponse](../../models/operations/getcommerceproductresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list_commerce_products
 
@@ -106,4 +111,9 @@ if res.commerce_products is not None:
 ### Response
 
 **[operations.ListCommerceProductsResponse](../../models/operations/listcommerceproductsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

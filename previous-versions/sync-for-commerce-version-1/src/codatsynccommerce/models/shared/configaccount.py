@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountoption as shared_accountoption
+from .accountoption import AccountOption
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -12,7 +12,7 @@ from typing import List, Optional
 @dataclasses.dataclass
 class ConfigAccount:
     r"""G/L account object for configuration."""
-    account_options: Optional[List[shared_accountoption.AccountOption]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountOptions') }})
+    account_options: Optional[List[AccountOption]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountOptions') }})
     r"""Object containing account options."""
     description_text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('descriptionText') }})
     r"""Descriprtive text for sales configuration section."""
