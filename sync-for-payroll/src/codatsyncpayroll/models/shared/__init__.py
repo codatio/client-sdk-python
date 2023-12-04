@@ -2,6 +2,7 @@
 
 from .account import *
 from .accountingaddresstype import *
+from .accountprototype import *
 from .accountref import *
 from .accounts import *
 from .accountstatus import *
@@ -24,12 +25,12 @@ from .dataconnectionerror import *
 from .dataconnectionstatus import *
 from .datastatus import *
 from .datatype import *
-from .errormessage import *
 from .halref import *
 from .journal import *
 from .journalentries import *
 from .journalentry import *
 from .journalline import *
+from .journalprototype import *
 from .journalref import *
 from .journals import *
 from .journalstatus import *
@@ -52,6 +53,7 @@ from .pushoptionproperty import *
 from .pushoptiontype import *
 from .pushvalidationinfo import *
 from .recordref import *
+from .schema_datatype import *
 from .security import *
 from .status import *
 from .supplementaldata import *
@@ -62,4 +64,4 @@ from .validation import *
 from .validationitem import *
 from .weblink import *
 
-__all__ = ["Account","AccountMetadata","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","AccountingAddressType","Accounts","Address","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyInfo","CompanyRequestBody","Connection","ConnectionSourceType","Connections","CreateAccountResponse","CreateJournalEntryResponse","CreateJournalResponse","DataConnectionError","DataConnectionStatus","DataStatus","DataStatusDataTypes","DataType","ErrorMessage","HalRef","Journal","JournalEntries","JournalEntry","JournalEntryRecordReference","JournalLine","JournalLineTracking","JournalRef","JournalStatus","Journals","Links","Metadata","PhoneNumber","PhoneNumberType","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","Security","Status","SupplementalData","TrackingCategories","TrackingCategory","TrackingCategoryTree","Validation","ValidationItem","WebLink","WebLinkType"]
+__all__ = ["Account","AccountMetadata","AccountPrototype","AccountRef","AccountStatus","AccountType","AccountValidDataTypeLinks","AccountingAddressType","Accounts","Address","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyInfo","CompanyRequestBody","Connection","Connections","CreateAccountResponse","CreateJournalEntryResponse","CreateJournalResponse","DataConnectionError","DataConnectionStatus","DataStatus","DataType","DataTypes","HalRef","Journal","JournalEntries","JournalEntry","JournalLine","JournalPrototype","JournalRef","JournalStatus","Journals","Links","Metadata","PhoneNumber","PhoneNumberType","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","RecordReference","SchemaDataType","Security","SourceType","Status","SupplementalData","Tracking","TrackingCategories","TrackingCategory","TrackingCategoryTree","Type","ValidDataTypeLinks","Validation","ValidationItem","WebLink"]
