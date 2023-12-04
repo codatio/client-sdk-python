@@ -25,7 +25,7 @@ class SupplementalData:
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.ConfigureSupplementalDataRequest, base_url, '/integrations/{platformKey}/datatypes/{dataType}/supplementalDataConfig', request)
+        url = utils.generate_url(operations.ConfigureSupplementalDataRequest, base_url, '/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "supplemental_data_configuration", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -82,7 +82,7 @@ class SupplementalData:
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetSupplementalDataConfigurationRequest, base_url, '/integrations/{platformKey}/datatypes/{dataType}/supplementalDataConfig', request)
+        url = utils.generate_url(operations.GetSupplementalDataConfigurationRequest, base_url, '/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig', request)
         headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent

@@ -4,16 +4,18 @@
 Manage the building blocks of Codat, including companies, connections, and more.
 <!-- End Codat Library Description -->
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 pip install codat-common
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## Example Usage
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
 ### Example
 
 ```python
@@ -34,11 +36,10 @@ if res.api_key_details is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [settings](docs/sdks/settings/README.md)
 
@@ -66,6 +67,13 @@ if res.api_key_details is not None:
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 * [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
+
+### [custom_data_type](docs/sdks/customdatatype/README.md)
+
+* [configure](docs/sdks/customdatatype/README.md#configure) - Configure custom data type
+* [get_configuration](docs/sdks/customdatatype/README.md#get_configuration) - Get custom data configuration
+* [list](docs/sdks/customdatatype/README.md#list) - List custom data type records
+* [refresh](docs/sdks/customdatatype/README.md#refresh) - Refresh custom data type
 
 ### [push_data](docs/sdks/pushdata/README.md)
 
@@ -97,19 +105,13 @@ if res.api_key_details is not None:
 * [create](docs/sdks/webhooks/README.md#create) - Create webhook
 * [get](docs/sdks/webhooks/README.md#get) - Get webhook
 * [list](docs/sdks/webhooks/README.md#list) - List webhooks
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
 
 
-
-<!-- End Dev Containers -->
-
-
-
-<!-- Start Retries -->
+<!-- Start Retries [retries] -->
 ## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
@@ -157,11 +159,11 @@ if res.api_key_details is not None:
     # handle response
     pass
 ```
-<!-- End Retries -->
+<!-- End Retries [retries] -->
 
 
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
@@ -188,23 +190,22 @@ req = shared.CreateAPIKey(
 res = None
 try:
     res = s.settings.create_api_key(req)
-except (errors.ErrorMessage) as e:
-    print(e) # handle exception
-
-except (errors.SDKError) as e:
-    print(e) # handle exception
-
+except errors.ErrorMessage as e:
+    print(e)  # handle exception
+    raise(e)
+except errors.SDKError as e:
+    print(e)  # handle exception
+    raise(e)
 
 if res.api_key_details is not None:
     # handle response
     pass
 ```
-
-<!-- End Error Handling -->
-
+<!-- End Error Handling [errors] -->
 
 
-<!-- Start Server Selection -->
+
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -260,11 +261,11 @@ if res.api_key_details is not None:
     # handle response
     pass
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
 The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
@@ -278,12 +279,11 @@ http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
 s = codatcommon.CodatCommon(client: http_client)
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Authentication -->
-
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -313,7 +313,7 @@ if res.api_key_details is not None:
     # handle response
     pass
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

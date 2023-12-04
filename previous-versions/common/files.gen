@@ -2,6 +2,7 @@ src/codatcommon/sdkconfiguration.py
 src/codatcommon/settings.py
 src/codatcommon/companies.py
 src/codatcommon/connections.py
+src/codatcommon/custom_data_type.py
 src/codatcommon/push_data.py
 src/codatcommon/refresh_data.py
 src/codatcommon/integrations.py
@@ -34,6 +35,10 @@ src/codatcommon/models/operations/get_connection.py
 src/codatcommon/models/operations/list_connections.py
 src/codatcommon/models/operations/unlink_connection.py
 src/codatcommon/models/operations/update_connection_authorization.py
+src/codatcommon/models/operations/configure_custom_data_type.py
+src/codatcommon/models/operations/get_custom_data_type_configuration.py
+src/codatcommon/models/operations/list_custom_data_type_records.py
+src/codatcommon/models/operations/refresh_custom_data_type.py
 src/codatcommon/models/operations/get_create_update_model_options_by_data_type.py
 src/codatcommon/models/operations/get_push_operation.py
 src/codatcommon/models/operations/get_company_push_history.py
@@ -68,6 +73,10 @@ src/codatcommon/models/shared/links.py
 src/codatcommon/models/shared/halref.py
 src/codatcommon/models/shared/connections.py
 src/codatcommon/models/shared/updateconnectionstatus.py
+src/codatcommon/models/shared/customdatatypeconfiguration.py
+src/codatcommon/models/shared/customdatatyperecords.py
+src/codatcommon/models/shared/customdatatyperecord.py
+src/codatcommon/models/shared/pulloperation.py
 src/codatcommon/models/shared/pushoption.py
 src/codatcommon/models/shared/pushvalidationinfo.py
 src/codatcommon/models/shared/pushfieldvalidation.py
@@ -83,7 +92,6 @@ src/codatcommon/models/shared/pushoperationchange.py
 src/codatcommon/models/shared/pushchangetype.py
 src/codatcommon/models/shared/pushoperationref.py
 src/codatcommon/models/shared/pushoperations.py
-src/codatcommon/models/shared/pulloperation.py
 src/codatcommon/models/shared/datastatus.py
 src/codatcommon/models/shared/pulloperations.py
 src/codatcommon/models/shared/integration.py
@@ -135,7 +143,6 @@ src/codatcommon/models/errors/__init__.py
 src/codatcommon/models/operations/__init__.py
 src/codatcommon/models/shared/__init__.py
 src/codatcommon/models/webhooks/__init__.py
-USAGE.md
 docs/models/operations/createapikeyresponse.md
 docs/models/operations/deleteapikeyrequest.md
 docs/models/operations/deleteapikeyresponse.md
@@ -167,6 +174,14 @@ docs/models/operations/unlinkconnectionrequest.md
 docs/models/operations/unlinkconnectionresponse.md
 docs/models/operations/updateconnectionauthorizationrequest.md
 docs/models/operations/updateconnectionauthorizationresponse.md
+docs/models/operations/configurecustomdatatyperequest.md
+docs/models/operations/configurecustomdatatyperesponse.md
+docs/models/operations/getcustomdatatypeconfigurationrequest.md
+docs/models/operations/getcustomdatatypeconfigurationresponse.md
+docs/models/operations/listcustomdatatyperecordsrequest.md
+docs/models/operations/listcustomdatatyperecordsresponse.md
+docs/models/operations/refreshcustomdatatyperequest.md
+docs/models/operations/refreshcustomdatatyperesponse.md
 docs/models/operations/getcreateupdatemodeloptionsbydatatyperequest.md
 docs/models/operations/getcreateupdatemodeloptionsbydatatyperesponse.md
 docs/models/operations/getpushoperationrequest.md
@@ -218,6 +233,13 @@ docs/models/shared/links.md
 docs/models/shared/halref.md
 docs/models/shared/connections.md
 docs/models/shared/updateconnectionstatus.md
+docs/models/shared/customdatatypeconfiguration.md
+docs/models/shared/customdatatyperecords.md
+docs/models/shared/content.md
+docs/models/shared/modifieddate.md
+docs/models/shared/customdatatyperecord.md
+docs/models/shared/status.md
+docs/models/shared/pulloperation.md
 docs/models/shared/pushoption.md
 docs/models/shared/pushvalidationinfo.md
 docs/models/shared/pushfieldvalidation.md
@@ -233,8 +255,6 @@ docs/models/shared/pushoperationchange.md
 docs/models/shared/pushchangetype.md
 docs/models/shared/pushoperationref.md
 docs/models/shared/pushoperations.md
-docs/models/shared/status.md
-docs/models/shared/pulloperation.md
 docs/models/shared/datatypes.md
 docs/models/shared/datastatus.md
 docs/models/shared/pulloperations.md
@@ -289,9 +309,11 @@ docs/models/utils/retryconfig.md
 docs/sdks/settings/README.md
 docs/sdks/companies/README.md
 docs/sdks/connections/README.md
+docs/sdks/customdatatype/README.md
 docs/sdks/pushdata/README.md
 docs/sdks/refreshdata/README.md
 docs/sdks/integrations/README.md
 docs/sdks/supplementaldata/README.md
 docs/sdks/webhooks/README.md
+USAGE.md
 .gitattributes
