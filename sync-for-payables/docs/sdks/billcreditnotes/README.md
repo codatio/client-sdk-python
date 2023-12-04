@@ -100,8 +100,8 @@ req = operations.CreateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
@@ -395,8 +395,8 @@ req = operations.UpdateBillCreditNoteRequest(
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),

@@ -52,8 +52,8 @@ req = operations.CreateSupplierRequest(
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
@@ -287,8 +287,8 @@ req = operations.UpdateSupplierRequest(
         status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),

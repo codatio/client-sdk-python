@@ -105,8 +105,8 @@ req = operations.CreateBillRequest(
         sub_total=Decimal('0.86'),
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
@@ -699,8 +699,8 @@ req = operations.UpdateBillRequest(
         sub_total=Decimal('540.62'),
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
