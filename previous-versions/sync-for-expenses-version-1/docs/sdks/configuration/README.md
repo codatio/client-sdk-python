@@ -48,7 +48,12 @@ if res.company_configuration is not None:
 ### Response
 
 **[operations.GetCompanyConfigurationResponse](../../models/operations/getcompanyconfigurationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## save_company_configuration
 
@@ -99,4 +104,9 @@ if res.company_configuration is not None:
 ### Response
 
 **[operations.SaveCompanyConfigurationResponse](../../models/operations/savecompanyconfigurationresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

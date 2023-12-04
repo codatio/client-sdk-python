@@ -1,4 +1,4 @@
-# AccountMappingInfoAccountType
+# AccountType
 
 Type of the account.
 
