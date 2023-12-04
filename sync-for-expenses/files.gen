@@ -154,7 +154,6 @@ src/codatsyncexpenses/models/errors/__init__.py
 src/codatsyncexpenses/models/operations/__init__.py
 src/codatsyncexpenses/models/shared/__init__.py
 src/codatsyncexpenses/models/webhooks/__init__.py
-USAGE.md
 docs/models/operations/createcompanyresponse.md
 docs/models/operations/deletecompanyrequest.md
 docs/models/operations/deletecompanyresponse.md
@@ -357,4 +356,5 @@ docs/sdks/configuration/README.md
 docs/sdks/expenses/README.md
 docs/sdks/sync/README.md
 docs/sdks/transactionstatus/README.md
+USAGE.md
 .gitattributes
