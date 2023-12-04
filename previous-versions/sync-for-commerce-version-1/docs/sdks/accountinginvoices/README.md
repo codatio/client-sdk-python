@@ -103,8 +103,8 @@ req = operations.CreateAccountingInvoiceRequest(
         status=shared.InvoiceStatus.PARTIALLY_PAID,
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),

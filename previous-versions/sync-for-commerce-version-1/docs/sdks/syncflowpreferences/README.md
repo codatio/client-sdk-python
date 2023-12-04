@@ -163,7 +163,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = {
-    "key": shared.Localization(),
+    'key': shared.Localization(),
 }
 
 res = s.sync_flow_preferences.update_config_text_sync_flow(req)

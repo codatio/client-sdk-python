@@ -78,8 +78,8 @@ req = operations.CreateAccountingDirectIncomeRequest(
         sub_total=Decimal('5786.44'),
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),

@@ -99,8 +99,8 @@ req = operations.CreateAccountingCreditNoteRequest(
         sub_total=Decimal('1915.04'),
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),

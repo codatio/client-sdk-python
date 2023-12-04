@@ -249,7 +249,6 @@ src/codatsynccommerce/models/__init__.py
 src/codatsynccommerce/models/errors/__init__.py
 src/codatsynccommerce/models/operations/__init__.py
 src/codatsynccommerce/models/shared/__init__.py
-USAGE.md
 docs/models/operations/getconfigtextsyncflowresponse.md
 docs/models/operations/getsyncflowurlrequest.md
 docs/models/operations/getsyncflowurlresponse.md
@@ -577,4 +576,5 @@ docs/sdks/sync/README.md
 docs/sdks/configuration/README.md
 docs/sdks/integrations/README.md
 docs/sdks/companymanagement/README.md
+USAGE.md
 .gitattributes

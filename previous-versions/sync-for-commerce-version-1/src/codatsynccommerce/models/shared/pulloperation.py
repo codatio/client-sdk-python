@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 import dataclasses
-from .datatype import DataType
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -45,8 +44,8 @@ class PullOperation:
     r"""Unique identifier of the company associated to this pull operation."""
     connection_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionId') }})
     r"""Unique identifier of the connection associated to this pull operation."""
-    data_type: DataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
-    r"""Available Data types"""
+    data_type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
+    r"""The data type you are requesting in a pull operation."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier of the pull operation."""
     is_completed: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isCompleted') }})
