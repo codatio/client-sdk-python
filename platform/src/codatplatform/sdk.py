@@ -3,6 +3,7 @@
 import requests as requests_http
 from .companies import Companies
 from .connections import Connections
+from .custom_data_type import CustomDataType
 from .integrations import Integrations
 from .push_data import PushData
 from .refresh_data import RefreshData
@@ -30,6 +31,8 @@ class CodatPlatform:
     r"""Create and manage your Codat companies."""
     connections: Connections
     r"""Manage your companies' data connections."""
+    custom_data_type: CustomDataType
+    r"""View and configure custom data types for supported integrations."""
     push_data: PushData
     r"""View push options and get push statuses."""
     refresh_data: RefreshData
@@ -81,6 +84,7 @@ class CodatPlatform:
         self.settings = Settings(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
+        self.custom_data_type = CustomDataType(self.sdk_configuration)
         self.push_data = PushData(self.sdk_configuration)
         self.refresh_data = RefreshData(self.sdk_configuration)
         self.integrations = Integrations(self.sdk_configuration)
