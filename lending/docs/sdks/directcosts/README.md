@@ -84,8 +84,8 @@ req = operations.CreateDirectCostRequest(
         sub_total=Decimal('7964.74'),
         supplemental_data=shared.SupplementalData(
             content={
-                "key": {
-                    "key": 'string',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),

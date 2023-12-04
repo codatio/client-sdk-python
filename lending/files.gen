@@ -485,7 +485,6 @@ src/codatlending/models/errors/__init__.py
 src/codatlending/models/operations/__init__.py
 src/codatlending/models/shared/__init__.py
 src/codatlending/models/webhooks/__init__.py
-USAGE.md
 docs/models/operations/createcompanyresponse.md
 docs/models/operations/deletecompanyrequest.md
 docs/models/operations/deletecompanyresponse.md
@@ -1128,4 +1127,5 @@ docs/sdks/pulloperations/README.md
 docs/sdks/liabilities/README.md
 docs/sdks/dataintegrity/README.md
 docs/sdks/excelreports/README.md
+USAGE.md
 .gitattributes
