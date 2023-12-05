@@ -69,8 +69,8 @@ req = operations.CreateDirectIncomeRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.Items(
-                allocation=shared.ItemsAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='GBP',
                 ),
@@ -85,13 +85,13 @@ req = operations.CreateDirectIncomeRequest(
         sub_total=Decimal('7964.74'),
         supplemental_data=shared.SupplementalData(
             content={
-                "abnormally": {
-                    "deposit": 'evolve',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
-        tax_amount=Decimal('7150.4'),
-        total_amount=Decimal('7926.2'),
+        tax_amount=Decimal('3768.44'),
+        total_amount=Decimal('9510.62'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -115,7 +115,12 @@ if res.create_direct_income_response is not None:
 ### Response
 
 **[operations.CreateDirectIncomeResponse](../../models/operations/createdirectincomeresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## download_attachment
 
@@ -142,7 +147,7 @@ req = operations.DownloadDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='Dakota Avon specifically',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.download_attachment(req)
@@ -163,7 +168,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadDirectIncomeAttachmentResponse](../../models/operations/downloaddirectincomeattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -191,7 +201,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetDirectIncomeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='Northeast Hatchback Kia',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.get(req)
@@ -212,7 +222,12 @@ if res.direct_income is not None:
 ### Response
 
 **[operations.GetDirectIncomeResponse](../../models/operations/getdirectincomeresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_attachment
 
@@ -239,7 +254,7 @@ req = operations.GetDirectIncomeAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='array East along',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.get_attachment(req)
@@ -260,7 +275,12 @@ if res.attachment is not None:
 ### Response
 
 **[operations.GetDirectIncomeAttachmentResponse](../../models/operations/getdirectincomeattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_create_model
 
@@ -310,7 +330,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateDirectIncomesModelResponse](../../models/operations/getcreatedirectincomesmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -359,7 +384,12 @@ if res.direct_incomes is not None:
 ### Response
 
 **[operations.ListDirectIncomesResponse](../../models/operations/listdirectincomesresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list_attachments
 
@@ -385,7 +415,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListDirectIncomeAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='intuitive Frozen ouch',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.list_attachments(req)
@@ -406,7 +436,12 @@ if res.attachments_dataset is not None:
 ### Response
 
 **[operations.ListDirectIncomeAttachmentsResponse](../../models/operations/listdirectincomeattachmentsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## upload_attachment
 
@@ -435,12 +470,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadDirectIncomeAttachmentRequest(
     request_body=operations.UploadDirectIncomeAttachmentRequestBody(
-        content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        content='0xE3ABc1980E'.encode(),
+        file_name='elegant_producer_electric.jpeg',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='Iowa Bentley',
+    direct_income_id='string',
 )
 
 res = s.direct_incomes.upload_attachment(req)
@@ -461,4 +496,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UploadDirectIncomeAttachmentResponse](../../models/operations/uploaddirectincomeattachmentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

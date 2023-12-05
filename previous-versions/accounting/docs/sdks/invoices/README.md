@@ -62,7 +62,7 @@ req = operations.CreateInvoiceRequest(
                 ),
                 quantity=Decimal('4174.58'),
                 tax_rate_ref=shared.TaxRateRef(),
-                tracking=shared.Propertiestracking1(
+                tracking=shared.PropertieTracking1(
                     category_refs=[
                         shared.TrackingCategoryRef(
                             id='<ID>',
@@ -92,8 +92,8 @@ req = operations.CreateInvoiceRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         paid_on_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.Items(
-                allocation=shared.ItemsAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -113,17 +113,17 @@ req = operations.CreateInvoiceRequest(
         status=shared.InvoiceStatus.DRAFT,
         supplemental_data=shared.SupplementalData(
             content={
-                "evolve": {
-                    "male": 'SUV',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
-        total_amount=Decimal('5519.29'),
-        total_tax_amount=Decimal('5862.2'),
+        total_amount=Decimal('3015.1'),
+        total_tax_amount=Decimal('899.64'),
         withholding_tax=[
-            shared.WithholdingTaxitems(
-                amount=Decimal('8275.63'),
-                name='mobile National Durham',
+            shared.WithholdingTaxItems(
+                amount=Decimal('7150.4'),
+                name='string',
             ),
         ],
     ),
@@ -149,7 +149,12 @@ if res.create_invoice_response is not None:
 ### Response
 
 **[operations.CreateInvoiceResponse](../../models/operations/createinvoiceresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## delete
 
@@ -197,7 +202,7 @@ s = codataccounting.CodatAccounting(
 req = operations.DeleteInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='Van complexity',
+    invoice_id='string',
 )
 
 res = s.invoices.delete(req)
@@ -218,7 +223,12 @@ if res.push_operation_summary is not None:
 ### Response
 
 **[operations.DeleteInvoiceResponse](../../models/operations/deleteinvoiceresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## download_attachment
 
@@ -245,7 +255,7 @@ req = operations.DownloadInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='Dakota Avon specifically',
+    invoice_id='string',
 )
 
 res = s.invoices.download_attachment(req)
@@ -266,7 +276,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadInvoiceAttachmentResponse](../../models/operations/downloadinvoiceattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## download_pdf
 
@@ -286,7 +301,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.DownloadInvoicePdfRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='Associate',
+    invoice_id='string',
 )
 
 res = s.invoices.download_pdf(req)
@@ -307,7 +322,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadInvoicePdfResponse](../../models/operations/downloadinvoicepdfresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get
 
@@ -333,7 +353,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetInvoiceRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='Northeast Hatchback Kia',
+    invoice_id='string',
 )
 
 res = s.invoices.get(req)
@@ -354,7 +374,12 @@ if res.invoice is not None:
 ### Response
 
 **[operations.GetInvoiceResponse](../../models/operations/getinvoiceresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_attachment
 
@@ -381,7 +406,7 @@ req = operations.GetInvoiceAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='array East along',
+    invoice_id='string',
 )
 
 res = s.invoices.get_attachment(req)
@@ -402,7 +427,12 @@ if res.attachment is not None:
 ### Response
 
 **[operations.GetInvoiceAttachmentResponse](../../models/operations/getinvoiceattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_create_update_model
 
@@ -452,7 +482,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdateInvoicesModelResponse](../../models/operations/getcreateupdateinvoicesmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -506,7 +541,12 @@ if res.invoices is not None:
 ### Response
 
 **[operations.ListInvoicesResponse](../../models/operations/listinvoicesresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list_attachments
 
@@ -532,7 +572,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListInvoiceAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='intuitive Frozen ouch',
+    invoice_id='string',
 )
 
 res = s.invoices.list_attachments(req)
@@ -553,7 +593,12 @@ if res.attachments_dataset is not None:
 ### Response
 
 **[operations.ListInvoiceAttachmentsResponse](../../models/operations/listinvoiceattachmentsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## update
 
@@ -598,7 +643,7 @@ req = operations.UpdateInvoiceRequest(
                 ),
                 quantity=Decimal('3446.2'),
                 tax_rate_ref=shared.TaxRateRef(),
-                tracking=shared.Propertiestracking1(
+                tracking=shared.PropertieTracking1(
                     category_refs=[
                         shared.TrackingCategoryRef(
                             id='<ID>',
@@ -628,8 +673,8 @@ req = operations.UpdateInvoiceRequest(
         modified_date='2022-10-23T00:00:00.000Z',
         paid_on_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.Items(
-                allocation=shared.ItemsAllocation(
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -649,23 +694,23 @@ req = operations.UpdateInvoiceRequest(
         status=shared.InvoiceStatus.VOID,
         supplemental_data=shared.SupplementalData(
             content={
-                "online": {
-                    "dynamic": 'white',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
-        total_amount=Decimal('3668.07'),
-        total_tax_amount=Decimal('1395.79'),
+        total_amount=Decimal('4995.57'),
+        total_tax_amount=Decimal('4468.63'),
         withholding_tax=[
-            shared.WithholdingTaxitems(
-                amount=Decimal('6447.13'),
-                name='syndicate East Baht',
+            shared.WithholdingTaxItems(
+                amount=Decimal('3691.82'),
+                name='string',
             ),
         ],
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='Representative Home',
+    invoice_id='string',
 )
 
 res = s.invoices.update(req)
@@ -686,7 +731,12 @@ if res.update_invoice_response is not None:
 ### Response
 
 **[operations.UpdateInvoiceResponse](../../models/operations/updateinvoiceresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## upload_attachment
 
@@ -715,12 +765,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadInvoiceAttachmentRequest(
     request_body=operations.UploadInvoiceAttachmentRequestBody(
-        content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        content='0xE3ABc1980E'.encode(),
+        file_name='elegant_producer_electric.jpeg',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='Iowa Bentley',
+    invoice_id='string',
 )
 
 res = s.invoices.upload_attachment(req)
@@ -741,4 +791,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UploadInvoiceAttachmentResponse](../../models/operations/uploadinvoiceattachmentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

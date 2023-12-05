@@ -35,7 +35,7 @@ s = codataccounting.CodatAccounting(
 
 req = operations.GetSalesOrderRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    sales_order_id='Northeast Hatchback Kia',
+    sales_order_id='string',
 )
 
 res = s.sales_orders.get(req)
@@ -56,7 +56,12 @@ if res.sales_order is not None:
 ### Response
 
 **[operations.GetSalesOrderResponse](../../models/operations/getsalesorderresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list
 
@@ -104,4 +109,9 @@ if res.sales_orders is not None:
 ### Response
 
 **[operations.ListSalesOrdersResponse](../../models/operations/listsalesordersresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

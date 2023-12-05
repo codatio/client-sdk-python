@@ -43,8 +43,10 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.CreateDirectCostRequest(
-    direct_cost=shared.DirectCost(
-        contact_ref=shared.ContactRef(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    direct_cost_prototype=shared.DirectCostPrototype(
+        contact_ref=shared.DirectCostPrototypeContactRef(
             data_type=shared.DataType.INVOICES,
             id='<ID>',
         ),
@@ -59,7 +61,7 @@ req = operations.CreateDirectCostRequest(
                 quantity=Decimal('6384.24'),
                 tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.Tracking(
-                    invoice_to=shared.TrackingRecordReference(
+                    invoice_to=shared.RecordReference(
                         data_type='transfer',
                     ),
                     record_refs=[
@@ -76,35 +78,30 @@ req = operations.CreateDirectCostRequest(
                 unit_amount=Decimal('2884.08'),
             ),
         ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.Items(
-                allocation=shared.ItemsAllocation(
+            shared.AccountingPaymentAllocation(
+                allocation=shared.DirectCostPrototypeAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
-                    currency='GBP',
+                    currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
-                    currency='EUR',
+                    currency='GBP',
                     paid_on_date='2022-10-23T00:00:00.000Z',
                 ),
             ),
         ],
-        source_modified_date='2022-10-23T00:00:00.000Z',
-        sub_total=Decimal('9510.62'),
+        sub_total=Decimal('7964.74'),
         supplemental_data=shared.SupplementalData(
             content={
-                "abnormally": {
-                    "deposit": 'evolve',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
-        tax_amount=Decimal('7150.4'),
-        total_amount=Decimal('7926.2'),
+        tax_amount=Decimal('3768.44'),
+        total_amount=Decimal('9510.62'),
     ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.direct_costs.create(req)
@@ -125,7 +122,12 @@ if res.create_direct_cost_response is not None:
 ### Response
 
 **[operations.CreateDirectCostResponse](../../models/operations/createdirectcostresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## download_attachment
 
@@ -152,7 +154,7 @@ req = operations.DownloadDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='Dakota Avon specifically',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.download_attachment(req)
@@ -173,7 +175,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadDirectCostAttachmentResponse](../../models/operations/downloaddirectcostattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -201,7 +208,7 @@ s = codataccounting.CodatAccounting(
 req = operations.GetDirectCostRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='Northeast Hatchback Kia',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.get(req)
@@ -222,7 +229,12 @@ if res.direct_cost is not None:
 ### Response
 
 **[operations.GetDirectCostResponse](../../models/operations/getdirectcostresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_attachment
 
@@ -249,7 +261,7 @@ req = operations.GetDirectCostAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='array East along',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.get_attachment(req)
@@ -270,7 +282,12 @@ if res.attachment is not None:
 ### Response
 
 **[operations.GetDirectCostAttachmentResponse](../../models/operations/getdirectcostattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_create_model
 
@@ -320,7 +337,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateDirectCostsModelResponse](../../models/operations/getcreatedirectcostsmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -369,7 +391,12 @@ if res.direct_costs is not None:
 ### Response
 
 **[operations.ListDirectCostsResponse](../../models/operations/listdirectcostsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list_attachments
 
@@ -395,7 +422,7 @@ s = codataccounting.CodatAccounting(
 req = operations.ListDirectCostAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='intuitive Frozen ouch',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.list_attachments(req)
@@ -416,7 +443,12 @@ if res.attachments_dataset is not None:
 ### Response
 
 **[operations.ListDirectCostAttachmentsResponse](../../models/operations/listdirectcostattachmentsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## upload_attachment
 
@@ -445,12 +477,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UploadDirectCostAttachmentRequest(
     request_body=operations.UploadDirectCostAttachmentRequestBody(
-        content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+        content='0xE3ABc1980E'.encode(),
+        file_name='elegant_producer_electric.jpeg',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='Iowa Bentley',
+    direct_cost_id='string',
 )
 
 res = s.direct_costs.upload_attachment(req)
@@ -471,4 +503,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UploadDirectCostAttachmentResponse](../../models/operations/uploaddirectcostattachmentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

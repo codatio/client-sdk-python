@@ -5,7 +5,7 @@ Delivery details for any goods that have been ordered.
 
 ## Fields
 
-| Field                                                             | Type                                                              | Required                                                          | Description                                                       |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `address`                                                         | [Optional[Addressesitems]](../../models/shared/addressesitems.md) | :heavy_minus_sign:                                                | N/A                                                               |
-| `contact`                                                         | [Optional[ShipToContact]](../../models/shared/shiptocontact.md)   | :heavy_minus_sign:                                                | Details of the named contact at the delivery address.             |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `address`                                                              | [Optional[shared.Items]](../../models/shared/items.md)                 | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `contact`                                                              | [Optional[shared.ShipToContact]](../../models/shared/shiptocontact.md) | :heavy_minus_sign:                                                     | Details of the named contact at the delivery address.                  |
