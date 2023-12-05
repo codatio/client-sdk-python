@@ -35,7 +35,7 @@ s = codatlending.CodatLending(
 
 req = operations.GenerateLoanSummaryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GenerateLoanSummarySourceType.ACCOUNTING,
+    source_type=operations.SourceType.ACCOUNTING,
 )
 
 res = s.liabilities.generate_loan_summary(req)
@@ -56,7 +56,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.GenerateLoanSummaryResponse](../../models/operations/generateloansummaryresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## generate_loan_transactions
 
@@ -81,7 +86,7 @@ s = codatlending.CodatLending(
 
 req = operations.GenerateLoanTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GenerateLoanTransactionsSourceType.ACCOUNTING,
+    source_type=operations.QueryParamSourceType.ACCOUNTING,
 )
 
 res = s.liabilities.generate_loan_transactions(req)
@@ -102,7 +107,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.GenerateLoanTransactionsResponse](../../models/operations/generateloantransactionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_loan_summary
 
@@ -127,7 +137,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetLoanSummaryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GetLoanSummarySourceType.BANKING,
+    source_type=operations.GetLoanSummaryQueryParamSourceType.BANKING,
 )
 
 res = s.liabilities.get_loan_summary(req)
@@ -148,7 +158,12 @@ if res.loan_summary is not None:
 ### Response
 
 **[operations.GetLoanSummaryResponse](../../models/operations/getloansummaryresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list_loan_transactions
 
@@ -173,7 +188,7 @@ s = codatlending.CodatLending(
 
 req = operations.ListLoanTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.ListLoanTransactionsSourceType.COMMERCE,
+    source_type=operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
 )
 
 res = s.liabilities.list_loan_transactions(req)
@@ -194,4 +209,9 @@ if res.loan_transactions is not None:
 ### Response
 
 **[operations.ListLoanTransactionsResponse](../../models/operations/listloantransactionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

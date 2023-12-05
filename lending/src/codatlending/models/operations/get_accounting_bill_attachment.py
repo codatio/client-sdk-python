@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import accountingattachment as shared_accountingattachment
-from ..shared import errormessage as shared_errormessage
+from ...models.shared import accountingattachment as shared_accountingattachment
 from typing import Optional
 
 
@@ -26,13 +25,11 @@ class GetAccountingBillAttachmentRequest:
 class GetAccountingBillAttachmentResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     accounting_attachment: Optional[shared_accountingattachment.AccountingAttachment] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

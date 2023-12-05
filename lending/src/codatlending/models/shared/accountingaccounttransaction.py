@@ -2,16 +2,16 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accounttransactionline as shared_accounttransactionline
-from ..shared import bankaccountref as shared_bankaccountref
-from ..shared import metadata as shared_metadata
+from .accounttransactionline import AccountTransactionLine
+from .bankaccountref import BankAccountRef
+from .metadata import Metadata
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
 from enum import Enum
 from typing import List, Optional
 
-class AccountingAccountTransactionStatus(str, Enum):
+class Status(str, Enum):
     r"""The status of the account transaction."""
     UNKNOWN = 'Unknown'
     UNRECONCILED = 'Unreconciled'
@@ -40,7 +40,7 @@ class AccountingAccountTransaction:
 
     Account transactions is the parent data type of [payments](https://docs.codat.io/lending-api#/schemas/Payment), [bill payments](https://docs.codat.io/lending-api#/schemas/BillPayment), [direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost), [direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome), and [transfers](https://docs.codat.io/lending-api#/schemas/Transfer).
     """
-    bank_account_ref: Optional[shared_bankaccountref.BankAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccountRef'), 'exclude': lambda f: f is None }})
+    bank_account_ref: Optional[BankAccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccountRef'), 'exclude': lambda f: f is None }})
     r"""Links to the Account transactions data type."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
@@ -101,14 +101,14 @@ class AccountingAccountTransaction:
     """
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier of the direct cost (unique to the company)."""
-    lines: Optional[List[shared_accounttransactionline.AccountTransactionLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines') }})
+    lines: Optional[List[AccountTransactionLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lines') }})
     r"""Array of account transaction lines."""
-    metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
+    metadata: Optional[Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note') }})
     r"""Additional information about the account transaction, if available."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    status: Optional[AccountingAccountTransactionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    status: Optional[Status] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""The status of the account transaction."""
     total_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""Total amount of the account transactions, inclusive of tax."""

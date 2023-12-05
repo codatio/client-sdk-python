@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import agedcurrencyoutstanding as shared_agedcurrencyoutstanding
+from .agedcurrencyoutstanding import AgedCurrencyOutstanding
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -11,7 +11,7 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class AgedCreditor:
-    aged_currency_outstanding: Optional[List[shared_agedcurrencyoutstanding.AgedCurrencyOutstanding]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedCurrencyOutstanding'), 'exclude': lambda f: f is None }})
+    aged_currency_outstanding: Optional[List[AgedCurrencyOutstanding]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agedCurrencyOutstanding'), 'exclude': lambda f: f is None }})
     r"""Array of aged creditors by currency."""
     supplier_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierId'), 'exclude': lambda f: f is None }})
     r"""Supplier ID of the aged creditor."""

@@ -1,9 +1,7 @@
-<!-- Start SDK Example Usage -->
-
-
+<!-- Start SDK Example Usage [usage] -->
 ```python
 import codatlending
-from codatlending.models import operations, shared
+from codatlending.models import shared
 
 s = codatlending.CodatLending(
     security=shared.Security(
@@ -11,19 +9,15 @@ s = codatlending.CodatLending(
     ),
 )
 
-req = operations.ListAccountingBankAccountTransactionsRequest(
-    account_id='Anchorage Product',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
 )
 
-res = s.accounting_bank_data.list_transactions(req)
+res = s.companies.create(req)
 
-if res.accounting_bank_transactions is not None:
+if res.company is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

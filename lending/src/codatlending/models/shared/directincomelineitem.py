@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountref as shared_accountref
-from ..shared import itemref as shared_itemref
-from ..shared import taxrateref as shared_taxrateref
-from ..shared import trackingcategoryref as shared_trackingcategoryref
+from .accountref import AccountRef
+from .propertie_itemref import PropertieItemRef
+from .taxrateref import TaxRateRef
+from .trackingcategoryref import TrackingCategoryRef
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -24,7 +24,7 @@ class DirectIncomeLineItem:
     r"""The price of each unit of goods or services.
     Note: If the platform does not provide this information, the unit amount will be mapped to the total amount.
     """
-    account_ref: Optional[shared_accountref.AccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[AccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description') }})
     r"""A user-friendly name of the goods or services."""
@@ -32,7 +32,7 @@ class DirectIncomeLineItem:
     r"""Discount amount for the line before tax."""
     discount_percentage: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('discountPercentage'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""Discount percentage for the line before tax."""
-    item_ref: Optional[shared_itemref.ItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
+    item_ref: Optional[PropertieItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the item the line is linked to."""
     sub_total: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subTotal'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""The amount of the line, inclusive of discounts, but exclusive of tax."""
@@ -40,7 +40,7 @@ class DirectIncomeLineItem:
     r"""The amount of tax for the line.
     Note: If the platform does not provide this information, the quantity will be mapped as 0.00.
     """
-    tax_rate_ref: Optional[shared_taxrateref.TaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
+    tax_rate_ref: Optional[TaxRateRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateRef'), 'exclude': lambda f: f is None }})
     r"""Data types that reference a tax rate, for example invoice and bill line items, use a taxRateRef that includes the ID and name of the linked tax rate.
 
     Found on:
@@ -54,7 +54,7 @@ class DirectIncomeLineItem:
     """
     total_amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
     r"""The total amount of the line, including tax."""
-    tracking_category_refs: Optional[List[shared_trackingcategoryref.TrackingCategoryRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs') }})
+    tracking_category_refs: Optional[List[TrackingCategoryRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategoryRefs') }})
     r"""An array of categories against which this direct cost is tracked."""
     
 

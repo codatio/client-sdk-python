@@ -48,13 +48,20 @@ if res.accounting_company_info is not None:
 ### Response
 
 **[operations.GetAccountingProfileResponse](../../models/operations/getaccountingprofileresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_commerce_profile
 
-Retrieve information about the company, as seen in the commerce platform.
+Retrieve information about the company, as seen in the commerce
+platform.
 
-This may include information like addresses, tax registration details and social media or website information.
+This may include information like addresses, tax registration details and
+social media or website information."
 
 ### Example Usage
 
@@ -91,4 +98,9 @@ if res.commerce_company_info is not None:
 ### Response
 
 **[operations.GetCommerceProfileResponse](../../models/operations/getcommerceprofileresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

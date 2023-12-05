@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import reportcomponentmeasure as shared_reportcomponentmeasure
+from .reportcomponentmeasure import ReportComponentMeasure
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -20,6 +20,6 @@ class CommerceReportComponent:
     r"""The component's item number."""
     item_display_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemDisplayName'), 'exclude': lambda f: f is None }})
     r"""The component's item display name."""
-    measures: Optional[List[shared_reportcomponentmeasure.ReportComponentMeasure]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('measures'), 'exclude': lambda f: f is None }})
+    measures: Optional[List[ReportComponentMeasure]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('measures'), 'exclude': lambda f: f is None }})
     
 

@@ -1,11 +1,10 @@
 # ItemRef
 
-Reference to the item the line is linked to.
-
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `id`                                                       | *str*                                                      | :heavy_check_mark:                                         | Unique identifier for the item in the accounting platform. |
-| `name`                                                     | *Optional[str]*                                            | :heavy_minus_sign:                                         | Name of the item in the accounting platform.               |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `data_connection_id`                                         | *Optional[str]*                                              | :heavy_minus_sign:                                           | The data connection id being referenced.                     |
+| `id`                                                         | *Optional[str]*                                              | :heavy_minus_sign:                                           | The id of the object, e.g. the Journal entry.                |
+| `type`                                                       | *Optional[str]*                                              | :heavy_minus_sign:                                           | The data type the loan transaction entry was extracted from. |
