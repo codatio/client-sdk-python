@@ -5,11 +5,8 @@ management:
   speakeasyVersion: 1.125.1
   generationVersion: 2.210.3
 generation:
-  comments: {}
   sdkClassName: CodatAccounting
-  repoURL: https://github.com/codatio/client-sdk-python.git
-  usageSnippets:
-    optionalPropertyRendering: withExample
+  singleTagPerOp: false
   telemetryEnabled: true
 features:
   python:
@@ -25,21 +22,6 @@ features:
 python:
   version: 0.32.0
   author: Codat
-  clientServerStatusCodesAsErrors: true
   description: Access standardized accounting data from our accounting integrations.
-  flattenGlobalSecurity: false
-  imports:
-    option: openapi
-    paths:
-      callbacks: models/callbacks
-      errors: models/errors
-      operations: models/operations
-      shared: models/shared
-      webhooks: models/webhooks
-  inputModelSuffix: input
-  installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=previous-versions/accounting
   maxMethodParams: 0
-  outputModelSuffix: output
   packageName: codat-accounting
-  published: true
-  repoSubDirectory: previous-versions/accounting
