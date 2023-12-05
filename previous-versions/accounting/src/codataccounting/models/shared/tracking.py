@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import invoiceto as shared_invoiceto
+from .invoiceto import InvoiceTo
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -10,7 +10,7 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class TrackingRecordReference:
+class RecordReference:
     r"""Links the current record to the underlying record or data type that created it.
 
     For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
@@ -26,8 +26,8 @@ class TrackingRecordReference:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Tracking:
-    record_refs: List[shared_invoiceto.InvoiceTo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
-    invoice_to: Optional[TrackingRecordReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
+    record_refs: List[InvoiceTo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
+    invoice_to: Optional[RecordReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
     r"""Links the current record to the underlying record or data type that created it.
 
     For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.

@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import suppliers as shared_suppliers
+from ...models.shared import suppliers as shared_suppliers
 from typing import Optional
 
 
@@ -28,12 +27,10 @@ class ListSuppliersRequest:
 class ListSuppliersResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your `query` parameter was not correctly formed"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     suppliers: Optional[shared_suppliers.Suppliers] = dataclasses.field(default=None)
     r"""Success"""
     

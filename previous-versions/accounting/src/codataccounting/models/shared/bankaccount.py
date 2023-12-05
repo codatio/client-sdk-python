@@ -2,15 +2,15 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import metadata as shared_metadata
-from ..shared import supplementaldata as shared_supplementaldata
+from .metadata import Metadata
+from .supplementaldata import SupplementalData
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
 from enum import Enum
 from typing import Optional
 
-class BankAccountBankAccountType(str, Enum):
+class BankAccountType(str, Enum):
     r"""The type of transactions and balances on the account.
     For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
     For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
@@ -51,7 +51,7 @@ class BankAccount:
     FreeAgent integrations
     For Credit accounts, only the last four digits are required. For other types, the field is optional.
     """
-    account_type: Optional[BankAccountBankAccountType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
+    account_type: Optional[BankAccountType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
     r"""The type of transactions and balances on the account.
     For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
     For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
@@ -75,7 +75,7 @@ class BankAccount:
     r"""Identifier for the account, unique for the company in the accounting platform."""
     institution: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('institution') }})
     r"""The institution of the bank account."""
-    metadata: Optional[shared_metadata.Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
+    metadata: Optional[Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     nominal_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('nominalCode') }})
     r"""Code used to identify each nominal account for a business."""
@@ -91,7 +91,7 @@ class BankAccount:
     The sort code is only displayed when the currency = GBP and the sort code and account number sum to 14 digits. For non-GBP accounts, this field is not populated.
     """
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    supplemental_data: Optional[SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.

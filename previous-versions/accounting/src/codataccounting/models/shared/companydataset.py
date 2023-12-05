@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountingaddresstype as shared_accountingaddresstype
-from ..shared import phonenumbertype as shared_phonenumbertype
-from ..shared import supplementaldata as shared_supplementaldata
+from .accountingaddresstype import AccountingAddressType
+from .phonenumbertype import PhoneNumberType
+from .supplementaldata import SupplementalData
 from codataccounting import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -13,8 +13,8 @@ from typing import Dict, List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CompanyDatasetAccountingAddress:
-    type: shared_accountingaddresstype.AccountingAddressType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+class AccountingAddress:
+    type: AccountingAddressType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of the address"""
     city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city') }})
     r"""City of the customer address."""
@@ -34,15 +34,15 @@ class CompanyDatasetAccountingAddress:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CompanyDatasetPhone:
+class Phone:
     number: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('number') }})
     r"""A phone number."""
-    type: shared_phonenumbertype.PhoneNumberType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: PhoneNumberType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of phone number"""
     
 
 
-class CompanyDatasetWeblinkType(str, Enum):
+class Type(str, Enum):
     r"""The type of the weblink."""
     WEBSITE = 'Website'
     SOCIAL = 'Social'
@@ -51,9 +51,9 @@ class CompanyDatasetWeblinkType(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CompanyDatasetWeblink:
+class Weblink:
     r"""Weblink associated with the company."""
-    type: Optional[CompanyDatasetWeblinkType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[Type] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of the weblink."""
     url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
     r"""The full URL for the weblink."""
@@ -64,17 +64,17 @@ class CompanyDatasetWeblink:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CompanyDataset:
-    r"""> View the coverage for company info in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\\" target=\\"_blank\\">Data coverage explorer</a>.
+    r"""> View the coverage for company profile in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\\" target=\\"_blank\\">Data coverage explorer</a>.
 
     Company info provides standard details about a linked company such as their address, phone number, and company registration.
 
     > **Company information or companies?**
     > 
-    > Company information is standard information that is held in the accounting platform about a company. `Companies` is an endpoint that lists businesses in the Codat system that have linked and shared their data sources.
+    > Company profile is standard information that is held in the accounting platform about a company. `Companies` is an endpoint that lists businesses in the Codat system that have linked and shared their data sources.
     """
     accounting_platform_ref: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountingPlatformRef') }})
     r"""Identifier or reference for the company in the accounting platform."""
-    addresses: Optional[List[CompanyDatasetAccountingAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses') }})
+    addresses: Optional[List[AccountingAddress]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addresses') }})
     r"""An array of Addresses."""
     base_currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('baseCurrency') }})
     r"""Currency set in the accounting platform of the linked company. Used by the currency rate."""
@@ -145,7 +145,7 @@ class CompanyDataset:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    phone_numbers: Optional[List[CompanyDatasetPhone]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phoneNumbers') }})
+    phone_numbers: Optional[List[Phone]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phoneNumbers') }})
     r"""An array of phone numbers."""
     registration_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('registrationNumber') }})
     r"""Registration number given to the linked company by the companies authority in the country of origin. In the UK this is Companies House."""
@@ -154,14 +154,14 @@ class CompanyDataset:
 
     For example, for Xero integrations two URLs are returned. These have many potential use cases, such as [deep linking](https://developer.xero.com/documentation/api-guides/deep-link-xero).
     """
-    supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    supplemental_data: Optional[SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
     tax_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxNumber') }})
     r"""Company tax number."""
-    web_links: Optional[List[CompanyDatasetWeblink]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webLinks') }})
+    web_links: Optional[List[Weblink]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webLinks') }})
     r"""An array of weblinks."""
     
 

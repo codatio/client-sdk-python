@@ -46,7 +46,7 @@ req = operations.CreateBankTransactionsRequest(
             ),
         ],
     ),
-    account_id='Extended South',
+    account_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -69,7 +69,12 @@ if res.create_bank_transactions_response is not None:
 ### Response
 
 **[operations.CreateBankTransactionsResponse](../../models/operations/createbanktransactionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_model
 
@@ -97,7 +102,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.GetCreateBankTransactionsModelRequest(
-    account_id='Northwest',
+    account_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -120,7 +125,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateBankTransactionsModelResponse](../../models/operations/getcreatebanktransactionsmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -146,7 +156,7 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.ListBankAccountTransactionsRequest(
-    account_id='Northeast Metal Canada',
+    account_id='string',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     order_by='-modifiedDate',
@@ -172,4 +182,9 @@ if res.bank_transactions is not None:
 ### Response
 
 **[operations.ListBankAccountTransactionsResponse](../../models/operations/listbankaccounttransactionsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

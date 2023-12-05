@@ -48,7 +48,12 @@ if res.company_dataset is not None:
 ### Response
 
 **[operations.GetCompanyInfoResponse](../../models/operations/getcompanyinforesponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## refresh
 
@@ -88,4 +93,9 @@ if res.dataset is not None:
 ### Response
 
 **[operations.RefreshCompanyInfoResponse](../../models/operations/refreshcompanyinforesponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
