@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import agedcreditor as shared_agedcreditor
+from .agedcreditor import AgedCreditor
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -44,7 +44,7 @@ class AccountingAgedCreditorReport:
 
     The report will be grouped per supplier and depending on the periods requested. The details indicates whether the amounts owed come from outstanding bills or bill credit notes.
     """
-    data: Optional[List[shared_agedcreditor.AgedCreditor]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
+    data: Optional[List[AgedCreditor]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     r"""Array of aged creditor."""
     generated: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('generated'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:

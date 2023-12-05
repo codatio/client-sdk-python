@@ -2,15 +2,15 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import definitionsitemref as shared_definitionsitemref
-from ..shared import loanref as shared_loanref
+from .itemref import ItemRef
+from .loanref import LoanRef
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
 from enum import Enum
 from typing import Optional
 
-class ReportItemsLoanTransactionType(str, Enum):
+class LoanTransactionType(str, Enum):
     r"""The type of loan transaction."""
     INVESTMENT = 'Investment'
     REPAYMENT = 'Repayment'
@@ -44,11 +44,11 @@ class ReportItems:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    item_ref: Optional[shared_definitionsitemref.DefinitionsitemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
+    item_ref: Optional[ItemRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('itemRef'), 'exclude': lambda f: f is None }})
     lender_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lenderName'), 'exclude': lambda f: f is None }})
     r"""The name of lender providing the loan."""
-    loan_ref: Optional[shared_loanref.LoanRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('loanRef'), 'exclude': lambda f: f is None }})
-    loan_transaction_type: Optional[ReportItemsLoanTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('loanTransactionType'), 'exclude': lambda f: f is None }})
+    loan_ref: Optional[LoanRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('loanRef'), 'exclude': lambda f: f is None }})
+    loan_transaction_type: Optional[LoanTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('loanTransactionType'), 'exclude': lambda f: f is None }})
     r"""The type of loan transaction."""
     
 

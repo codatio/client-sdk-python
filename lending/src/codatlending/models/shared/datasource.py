@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accounts as shared_accounts
+from .accounts import Accounts
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -11,7 +11,7 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DataSource:
-    accounts: Optional[List[shared_accounts.Accounts]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accounts'), 'exclude': lambda f: f is None }})
+    accounts: Optional[List[Accounts]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accounts'), 'exclude': lambda f: f is None }})
     r"""An array containing bank account data for each connected banking data source that have the following data types enabled: `banking-accounts`, `banking-transactions`."""
     
 

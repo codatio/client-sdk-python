@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import excelreporttypes as shared_excelreporttypes
+from .excelreporttypes import ExcelReportTypes
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -42,7 +42,7 @@ class ExcelStatus:
     r"""A unique ID generated for this request."""
     queued: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('queued'), 'exclude': lambda f: f is None }})
     r"""The date and time of when a successful request was queued for the most recent report."""
-    report_type: Optional[shared_excelreporttypes.ExcelReportTypes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportType'), 'exclude': lambda f: f is None }})
+    report_type: Optional[ExcelReportTypes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportType'), 'exclude': lambda f: f is None }})
     r"""The type of the report requested in the query string."""
     success: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('success'), 'exclude': lambda f: f is None }})
     r"""True if the requested report was successfully queued and false if the requested report was not able to be queued."""

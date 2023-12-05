@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import dataintegritymatch as shared_dataintegritymatch
+from .dataintegritymatch import DataIntegrityMatch
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -50,7 +50,7 @@ class DataIntegrityDetail:
     r"""The transaction description."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""ID GUID of the transaction."""
-    matches: Optional[List[shared_dataintegritymatch.DataIntegrityMatch]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matches'), 'exclude': lambda f: f is None }})
+    matches: Optional[List[DataIntegrityMatch]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('matches'), 'exclude': lambda f: f is None }})
     type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The data type of the record."""
     

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import banktransactiontype as shared_banktransactiontype
+from .banktransactiontype import BankTransactionType
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -64,7 +64,7 @@ class AccountingBankTransaction:
     reconciled: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reconciled'), 'exclude': lambda f: f is None }})
     r"""`True` if the bank transaction has been [reconciled](https://www.xero.com/uk/guides/what-is-bank-reconciliation/) in the accounting platform."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    transaction_type: Optional[shared_banktransactiontype.BankTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType'), 'exclude': lambda f: f is None }})
+    transaction_type: Optional[BankTransactionType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionType'), 'exclude': lambda f: f is None }})
     r"""Type of transaction for the bank statement line."""
     
 

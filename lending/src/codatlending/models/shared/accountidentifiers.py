@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountidentifiertype as shared_accountidentifiertype
+from .accountidentifiertype import AccountIdentifierType
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -12,7 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class AccountIdentifiers:
     r"""An object containing bank account identification information."""
-    type: shared_accountidentifiertype.AccountIdentifierType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: AccountIdentifierType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Type of account"""
     bank_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankCode') }})
     r"""The local (usually national) routing number for the account.

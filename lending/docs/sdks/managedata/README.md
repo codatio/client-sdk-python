@@ -27,7 +27,7 @@ req = operations.GetDataStatusRequest(
 
 res = s.manage_data.get_status(req)
 
-if res.data_status_response is not None:
+if res.data_statuses is not None:
     # handle response
     pass
 ```
@@ -43,4 +43,9 @@ if res.data_status_response is not None:
 ### Response
 
 **[operations.GetDataStatusResponse](../../models/operations/getdatastatusresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

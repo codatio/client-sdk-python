@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import reportline as shared_reportline
+from .reportline_input import ReportLineInput
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -11,8 +11,8 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CashFlowStatement:
-    cash_payments: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cashPayments'), 'exclude': lambda f: f is None }})
-    cash_receipts: Optional[shared_reportline.ReportLine] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cashReceipts'), 'exclude': lambda f: f is None }})
+    cash_payments: Optional[ReportLineInput] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cashPayments'), 'exclude': lambda f: f is None }})
+    cash_receipts: Optional[ReportLineInput] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cashReceipts'), 'exclude': lambda f: f is None }})
     from_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fromDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 

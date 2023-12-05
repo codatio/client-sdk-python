@@ -7,7 +7,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import Optional
 
-class DataStatusDataTypes(str, Enum):
+class DataTypes(str, Enum):
     r"""Available Data types"""
     ACCOUNT_TRANSACTIONS = 'accountTransactions'
     BALANCE_SHEET = 'balanceSheet'
@@ -24,6 +24,7 @@ class DataStatusDataTypes(str, Enum):
     DIRECT_COSTS = 'directCosts'
     DIRECT_INCOMES = 'directIncomes'
     INVOICES = 'invoices'
+    ITEM_RECEIPTS = 'itemReceipts'
     ITEMS = 'items'
     JOURNAL_ENTRIES = 'journalEntries'
     JOURNALS = 'journals'
@@ -59,7 +60,7 @@ class DataStatus:
     r"""Describes the state of data in the Codat cache for a company and data type"""
     current_status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currentStatus') }})
     r"""The current status of the dataset in Codat's cache."""
-    data_type: DataStatusDataTypes = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
+    data_type: DataTypes = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
     r"""Available Data types"""
     last_successful_sync: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastSuccessfulSync') }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
