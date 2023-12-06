@@ -1,6 +1,4 @@
-# ExpenseTransactionType
-
-The type of transaction.
+# ValidTransactionTypes
 
 
 ## Values

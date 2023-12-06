@@ -36,7 +36,7 @@ req = operations.InitiateSyncRequest(
 
 res = s.sync.initiate_sync(req)
 
-if res.sync_initiated is not None:
+if res.status_code == 200:
     # handle response
     pass
 ```
@@ -52,4 +52,9 @@ if res.sync_initiated is not None:
 ### Response
 
 **[operations.InitiateSyncResponse](../../models/operations/initiatesyncresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,422,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

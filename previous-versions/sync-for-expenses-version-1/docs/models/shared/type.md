@@ -1,4 +1,6 @@
-# AccountMappingInfoValidTransactionTypes
+# Type
+
+The type of transaction.
 
 
 ## Values
