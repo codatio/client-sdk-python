@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import updateexpenserequest as shared_updateexpenserequest
+from ...models.shared import updateexpenserequest as shared_updateexpenserequest
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -23,7 +22,7 @@ class UpdateExpenseDatasetRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class UpdateExpenseDataset202ApplicationJSON:
+class UpdateExpenseDatasetResponseBody:
     r"""Accepted"""
     sync_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for the updated sync."""
@@ -35,13 +34,11 @@ class UpdateExpenseDataset202ApplicationJSON:
 class UpdateExpenseDatasetResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
-    update_expense_dataset_202_application_json_object: Optional[UpdateExpenseDataset202ApplicationJSON] = dataclasses.field(default=None)
+    object: Optional[UpdateExpenseDatasetResponseBody] = dataclasses.field(default=None)
     r"""Accepted"""
     
 

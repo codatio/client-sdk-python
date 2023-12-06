@@ -1,4 +1,4 @@
-# UpdateExpenseDataset202ApplicationJSON
+# UpdateExpenseDatasetResponseBody
 
 Accepted
 

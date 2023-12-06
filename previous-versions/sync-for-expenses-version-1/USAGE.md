@@ -1,6 +1,4 @@
-<!-- Start SDK Example Usage -->
-
-
+<!-- Start SDK Example Usage [usage] -->
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import shared
@@ -22,4 +20,4 @@ if res.company is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

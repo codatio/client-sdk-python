@@ -4,16 +4,20 @@
 Push expenses to accounting platforms.
 <!-- End Codat Library Description -->
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 pip install codat-sync-for-expenses-version-1
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## Example Usage
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
+### Example
+
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import shared
@@ -35,11 +39,10 @@ if res.company is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [companies](docs/sdks/companies/README.md)
 
@@ -49,11 +52,6 @@ if res.company is not None:
 * [list_companies](docs/sdks/companies/README.md#list_companies) - List companies
 * [update_company](docs/sdks/companies/README.md#update_company) - Update company
 
-### [configuration](docs/sdks/configuration/README.md)
-
-* [get_company_configuration](docs/sdks/configuration/README.md#get_company_configuration) - Get company configuration
-* [save_company_configuration](docs/sdks/configuration/README.md#save_company_configuration) - Set company configuration
-
 ### [connections](docs/sdks/connections/README.md)
 
 * [create_connection](docs/sdks/connections/README.md#create_connection) - Create connection
@@ -62,6 +60,11 @@ if res.company is not None:
 * [get_connection](docs/sdks/connections/README.md#get_connection) - Get connection
 * [list_connections](docs/sdks/connections/README.md#list_connections) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
+
+### [configuration](docs/sdks/configuration/README.md)
+
+* [get_company_configuration](docs/sdks/configuration/README.md#get_company_configuration) - Get company configuration
+* [save_company_configuration](docs/sdks/configuration/README.md#save_company_configuration) - Set company configuration
 
 ### [expenses](docs/sdks/expenses/README.md)
 
@@ -88,15 +91,223 @@ if res.company is not None:
 
 * [get_sync_transaction](docs/sdks/transactionstatus/README.md#get_sync_transaction) - Get sync transaction
 * [list_sync_transactions](docs/sdks/transactionstatus/README.md#list_sync_transactions) - Get sync transactions
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import shared
+from codatsyncexpenses.utils import BackoffStrategy, RetryConfig
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create_company(req,
+    RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
+
+if res.company is not None:
+    # handle response
+    pass
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import shared
+from codatsyncexpenses.utils import BackoffStrategy, RetryConfig
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create_company(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Retries [retries] -->
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
+
+### Example
+
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import shared
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = None
+try:
+    res = s.companies.create_company(req)
+except errors.ErrorMessage as e:
+    print(e)  # handle exception
+    raise(e)
+except errors.SDKError as e:
+    print(e)  # handle exception
+    raise(e)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.codat.io` | None |
+
+#### Example
+
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import shared
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    server_idx=0,
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create_company(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
 
 
+### Override Server URL Per-Client
 
-<!-- End Dev Containers -->
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import shared
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    server_url="https://api.codat.io",
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create_company(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Server Selection [server] -->
+
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+For example, you could specify a header for every request that this sdk makes as follows:
+```python
+import codatsyncexpenses
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = codatsyncexpenses.CodatSyncExpenses(client: http_client)
+```
+<!-- End Custom HTTP Client [http-client] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `auth_header` | apiKey        | API key       |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
+```python
+import codatsyncexpenses
+from codatsyncexpenses.models import shared
+
+s = codatsyncexpenses.CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    description='Requested early access to the new financing scheme.',
+    name='Bank of Dave',
+)
+
+res = s.companies.create_company(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
