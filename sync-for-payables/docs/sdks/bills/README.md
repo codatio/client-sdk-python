@@ -56,7 +56,7 @@ req = operations.CreateBillRequest(
                 item_ref=shared.ItemRef(
                     id='<ID>',
                 ),
-                purchase_order_line_ref=shared.BillLineItemRecordLineReference(),
+                purchase_order_line_ref=shared.RecordLineReference(),
                 quantity=Decimal('8592.13'),
                 tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.Tracking(
@@ -65,12 +65,12 @@ req = operations.CreateBillRequest(
                             id='<ID>',
                         ),
                     ],
-                    customer_ref=shared.TrackingCustomerRef(
+                    customer_ref=shared.CustomerRef(
                         id='<ID>',
                     ),
                     is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
-                    project_ref=shared.TrackingProjectReference(
+                    project_ref=shared.AccountingProjectReference(
                         id='<ID>',
                     ),
                 ),
@@ -85,8 +85,8 @@ req = operations.CreateBillRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.BillPaymentAllocation(
-                allocation=shared.BillPaymentAllocationAllocation(
+            shared.AccountingPaymentAllocation(
+                allocation=shared.BillAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -98,27 +98,27 @@ req = operations.CreateBillRequest(
             ),
         ],
         purchase_order_refs=[
-            shared.BillPurchaseOrderReference(),
+            shared.PurchaseOrderReference(),
         ],
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.BillStatus.DRAFT,
         sub_total=Decimal('0.86'),
         supplemental_data=shared.SupplementalData(
             content={
-                "deposit": {
-                    "evolve": 'male',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
             id='<ID>',
         ),
-        tax_amount=Decimal('8559.52'),
-        total_amount=Decimal('8165.88'),
+        tax_amount=Decimal('4552.22'),
+        total_amount=Decimal('1697.27'),
         withholding_tax=[
-            shared.BillWithholdingTax(
-                amount=Decimal('5519.29'),
-                name='Polestar mobile',
+            shared.WithholdingTax(
+                amount=Decimal('3015.1'),
+                name='string',
             ),
         ],
     ),
@@ -144,7 +144,12 @@ if res.create_bill_response is not None:
 ### Response
 
 **[operations.CreateBillResponse](../../models/operations/createbillresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## delete
 
@@ -154,7 +159,7 @@ The *Delete bill* endpoint allows you to delete a specified bill from an account
 
 ### Process 
 1. Pass the `{billId}` to the *Delete bill* endpoint and store the `pushOperationKey` returned.
-2. Check the status of the delete operation by checking the status of push operation either via
+2. Check the status of the delete operation by checking the status of the push operation either via
     1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
     2. [Push operation status endpoint](https://docs.codat.io/sync-for-payables-api#/operations/get-push-operation).
 
@@ -171,11 +176,12 @@ Integrations that support soft delete do not permanently delete the object in th
 | Integration | Soft Delete | Details                                                                                                      |  
 |-------------|-------------|--------------------------------------------------------------------------------------------------------------|
 | QuickBooks Online | No          | -                                                                                                            |
-| Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
+| Oracle NetSuite   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |                                                                                                      |
+| Sage Intacct   | No          | When deleting a bill that's already linked to a bill payment, you must delete the linked bill payment first. |
 
 > **Supported Integrations**
 > 
-> This functionality is currently supported for our QuickBooks Online, Xero and Oracle NetSuite integrations.
+> This functionality is currently supported for our QuickBooks Online, Xero, Oracle NetSuite and Sage Intacct integrations.
 
 ### Example Usage
 
@@ -213,7 +219,12 @@ if res.push_operation is not None:
 ### Response
 
 **[operations.DeleteBillResponse](../../models/operations/deletebillresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## delete_attachment
 
@@ -276,7 +287,12 @@ if res.push_operation is not None:
 ### Response
 
 **[operations.DeleteBillAttachmentResponse](../../models/operations/deletebillattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## download_attachment
 
@@ -324,7 +340,12 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadBillAttachmentResponse](../../models/operations/downloadbillattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -372,7 +393,12 @@ if res.bill is not None:
 ### Response
 
 **[operations.GetBillResponse](../../models/operations/getbillresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_attachment
 
@@ -420,7 +446,12 @@ if res.attachment is not None:
 ### Response
 
 **[operations.GetBillAttachmentResponse](../../models/operations/getbillattachmentresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_create_update_model
 
@@ -470,7 +501,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateUpdateBillModelResponse](../../models/operations/getcreateupdatebillmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -518,7 +554,12 @@ if res.bills is not None:
 ### Response
 
 **[operations.ListBillsResponse](../../models/operations/listbillsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list_attachments
 
@@ -565,7 +606,12 @@ if res.attachments is not None:
 ### Response
 
 **[operations.ListBillAttachmentsResponse](../../models/operations/listbillattachmentsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## update
 
@@ -604,7 +650,7 @@ req = operations.UpdateBillRequest(
                 item_ref=shared.ItemRef(
                     id='<ID>',
                 ),
-                purchase_order_line_ref=shared.BillLineItemRecordLineReference(),
+                purchase_order_line_ref=shared.RecordLineReference(),
                 quantity=Decimal('156.52'),
                 tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.Tracking(
@@ -613,12 +659,12 @@ req = operations.UpdateBillRequest(
                             id='<ID>',
                         ),
                     ],
-                    customer_ref=shared.TrackingCustomerRef(
+                    customer_ref=shared.CustomerRef(
                         id='<ID>',
                     ),
                     is_billed_to=shared.BilledToType.NOT_APPLICABLE,
                     is_rebilled_to=shared.BilledToType.CUSTOMER,
-                    project_ref=shared.TrackingProjectReference(
+                    project_ref=shared.AccountingProjectReference(
                         id='<ID>',
                     ),
                 ),
@@ -633,8 +679,8 @@ req = operations.UpdateBillRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         payment_allocations=[
-            shared.BillPaymentAllocation(
-                allocation=shared.BillPaymentAllocationAllocation(
+            shared.AccountingPaymentAllocation(
+                allocation=shared.BillAllocation(
                     allocated_on_date='2022-10-23T00:00:00.000Z',
                     currency='EUR',
                 ),
@@ -646,31 +692,31 @@ req = operations.UpdateBillRequest(
             ),
         ],
         purchase_order_refs=[
-            shared.BillPurchaseOrderReference(),
+            shared.PurchaseOrderReference(),
         ],
         source_modified_date='2022-10-23T00:00:00.000Z',
         status=shared.BillStatus.UNKNOWN,
         sub_total=Decimal('540.62'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Cotton": {
-                    "extend": 'Plastic',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
         supplier_ref=shared.SupplierRef(
             id='<ID>',
         ),
-        tax_amount=Decimal('1395.79'),
-        total_amount=Decimal('6447.13'),
+        tax_amount=Decimal('2782.81'),
+        total_amount=Decimal('8965.01'),
         withholding_tax=[
-            shared.BillWithholdingTax(
-                amount=Decimal('7892.75'),
-                name='immediately implement JBOD',
+            shared.WithholdingTax(
+                amount=Decimal('4995.57'),
+                name='string',
             ),
         ],
     ),
-    bill_id='EILBDVJVNUAGVKRQ',
+    bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -693,7 +739,12 @@ if res.update_bill_response is not None:
 ### Response
 
 **[operations.UpdateBillResponse](../../models/operations/updatebillresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## upload_attachment
 
@@ -721,9 +772,11 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = operations.UploadBillAttachmentRequest(
-    request_body=operations.UploadBillAttachmentRequestBody(
-        content='v/ghW&IC$x'.encode(),
-        request_body='Elegant Producer Electric',
+    attachment_upload=shared.AttachmentUpload(
+        file=shared.CodatFile(
+            content='0xE3ABc1980E'.encode(),
+            file_name='elegant_producer_electric.jpeg',
+        ),
     ),
     bill_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -748,4 +801,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UploadBillAttachmentResponse](../../models/operations/uploadbillattachmentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

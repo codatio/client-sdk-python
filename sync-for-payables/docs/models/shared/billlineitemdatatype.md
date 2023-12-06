@@ -1,4 +1,4 @@
-# BillLineItemRecordLineReferenceDataType
+# BillLineItemDataType
 
 Allowed name of the 'dataType'.
 

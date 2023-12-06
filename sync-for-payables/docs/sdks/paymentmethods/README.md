@@ -35,7 +35,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.GetPaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_method_id='Northeast Hatchback Kia',
+    payment_method_id='string',
 )
 
 res = s.payment_methods.get(req)
@@ -56,7 +56,12 @@ if res.payment_method is not None:
 ### Response
 
 **[operations.GetPaymentMethodResponse](../../models/operations/getpaymentmethodresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list
 
@@ -104,4 +109,9 @@ if res.payment_methods is not None:
 ### Response
 
 **[operations.ListPaymentMethodsResponse](../../models/operations/listpaymentmethodsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

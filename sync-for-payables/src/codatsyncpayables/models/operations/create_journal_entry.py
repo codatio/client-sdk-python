@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createjournalentryresponse as shared_createjournalentryresponse
-from ..shared import errormessage as shared_errormessage
-from ..shared import journalentry as shared_journalentry
+from ...models.shared import createjournalentryresponse as shared_createjournalentryresponse
+from ...models.shared import journalentry as shared_journalentry
 from typing import Optional
 
 
@@ -26,13 +25,11 @@ class CreateJournalEntryRequest:
 class CreateJournalEntryResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     create_journal_entry_response: Optional[shared_createjournalentryresponse.CreateJournalEntryResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 
