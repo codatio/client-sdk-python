@@ -220,6 +220,8 @@ src/codataccounting/models/shared/attachment.py
 src/codataccounting/models/shared/bills.py
 src/codataccounting/models/shared/attachmentsdataset.py
 src/codataccounting/models/shared/updatebillresponse.py
+src/codataccounting/models/shared/attachmentupload.py
+src/codataccounting/models/shared/codatfile.py
 src/codataccounting/models/shared/createcustomerresponse.py
 src/codataccounting/models/shared/customer.py
 src/codataccounting/models/shared/customerstatus.py
@@ -401,7 +403,6 @@ docs/models/operations/listbillattachmentsrequest.md
 docs/models/operations/listbillattachmentsresponse.md
 docs/models/operations/updatebillrequest.md
 docs/models/operations/updatebillresponse.md
-docs/models/operations/uploadbillattachmentrequestbody.md
 docs/models/operations/uploadbillattachmentrequest.md
 docs/models/operations/uploadbillattachmentresponse.md
 docs/models/operations/createcustomerrequest.md
@@ -434,7 +435,6 @@ docs/models/operations/listdirectcostsrequest.md
 docs/models/operations/listdirectcostsresponse.md
 docs/models/operations/listdirectcostattachmentsrequest.md
 docs/models/operations/listdirectcostattachmentsresponse.md
-docs/models/operations/uploaddirectcostattachmentrequestbody.md
 docs/models/operations/uploaddirectcostattachmentrequest.md
 docs/models/operations/uploaddirectcostattachmentresponse.md
 docs/models/operations/createdirectincomerequest.md
@@ -694,6 +694,8 @@ docs/models/shared/attachment.md
 docs/models/shared/bills.md
 docs/models/shared/attachmentsdataset.md
 docs/models/shared/updatebillresponse.md
+docs/models/shared/attachmentupload.md
+docs/models/shared/codatfile.md
 docs/models/shared/createcustomerresponse.md
 docs/models/shared/customer.md
 docs/models/shared/customerstatus.md

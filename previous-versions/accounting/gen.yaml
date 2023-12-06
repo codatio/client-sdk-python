@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 1643e696b57c43c25f8da2810bbbeae4
+  docChecksum: 643eb8e5abb697d514899964068b369b
   docVersion: 3.0.0
-  speakeasyVersion: 1.125.1
-  generationVersion: 2.210.3
+  speakeasyVersion: 1.125.2
+  generationVersion: 2.210.6
 generation:
   comments: {}
   sdkClassName: CodatAccounting
@@ -13,7 +13,7 @@ generation:
   telemetryEnabled: true
 features:
   python:
-    core: 4.1.5
+    core: 4.1.6
     deprecations: 2.81.1
     downloadStreams: 0.0.2
     examples: 2.81.3
@@ -23,7 +23,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 0.32.0
+  version: 0.33.0
   author: Codat
   clientServerStatusCodesAsErrors: true
   description: Access standardized accounting data from our accounting integrations.
