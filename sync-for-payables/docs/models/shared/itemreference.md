@@ -1,4 +1,4 @@
-# BillCreditNoteLineItemItemReference
+# ItemReference
 
 Reference to the item the line is linked to.
 

@@ -58,14 +58,14 @@ req = operations.CreateJournalEntryRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
-        record_ref=shared.JournalEntryRecordReference(
+        record_ref=shared.RecordReference(
             data_type='invoice',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "blue": {
-                    "shred": 'abnormally',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
@@ -93,7 +93,12 @@ if res.create_journal_entry_response is not None:
 ### Response
 
 **[operations.CreateJournalEntryResponse](../../models/operations/createjournalentryresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_model
 
@@ -143,4 +148,9 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateJournalEntryModelResponse](../../models/operations/getcreatejournalentrymodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
