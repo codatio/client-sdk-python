@@ -5,11 +5,8 @@ management:
   speakeasyVersion: 1.125.2
   generationVersion: 2.210.6
 generation:
-  comments: {}
   sdkClassName: CodatSyncPayables
-  repoURL: https://github.com/codatio/client-sdk-python.git
-  usageSnippets:
-    optionalPropertyRendering: withExample
+  singleTagPerOp: false
   telemetryEnabled: true
 features:
   python:
@@ -25,21 +22,6 @@ features:
 python:
   version: 3.0.0
   author: Codat
-  clientServerStatusCodesAsErrors: true
   description: Streamline your customers' accounts payable workflow.
-  flattenGlobalSecurity: false
-  imports:
-    option: openapi
-    paths:
-      callbacks: models/callbacks
-      errors: models/errors
-      operations: models/operations
-      shared: models/shared
-      webhooks: models/webhooks
-  inputModelSuffix: input
-  installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-payables
   maxMethodParams: 0
-  outputModelSuffix: output
   packageName: codat-sync-for-payables
-  published: true
-  repoSubDirectory: sync-for-payables

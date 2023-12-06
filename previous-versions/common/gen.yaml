@@ -20,7 +20,7 @@ features:
 python:
   version: 0.34.0
   author: Codat
-  description: Manage the building blocks of Codat, including companies, connections, and more.
-  flattenGlobalSecurity: true
+  description: Manage the building blocks of Codat, including companies, connections,
+    and more.
   maxMethodParams: 0
   packageName: codat-common
