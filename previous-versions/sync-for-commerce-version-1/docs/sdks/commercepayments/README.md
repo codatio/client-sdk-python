@@ -38,7 +38,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommercePaymentRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_id='Chief Music',
+    payment_id='string',
 )
 
 res = s.commerce_payments.get_commerce_payment(req)
@@ -59,7 +59,12 @@ if res.commerce_payment is not None:
 ### Response
 
 **[operations.GetCommercePaymentResponse](../../models/operations/getcommercepaymentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_method
 
@@ -87,7 +92,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.GetCommercePaymentMethodRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    payment_method_id='Markets',
+    payment_method_id='string',
 )
 
 res = s.commerce_payments.get_method(req)
@@ -108,7 +113,12 @@ if res.commerce_payment_method is not None:
 ### Response
 
 **[operations.GetCommercePaymentMethodResponse](../../models/operations/getcommercepaymentmethodresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list_commerce_payments
 
@@ -157,7 +167,12 @@ if res.commerce_payments is not None:
 ### Response
 
 **[operations.ListCommercePaymentsResponse](../../models/operations/listcommercepaymentsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list_methods
 
@@ -206,4 +221,9 @@ if res.commerce_payment_methods is not None:
 ### Response
 
 **[operations.ListCommercePaymentMethodsResponse](../../models/operations/listcommercepaymentmethodsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
