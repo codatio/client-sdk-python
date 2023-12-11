@@ -49,7 +49,12 @@ if res.company_configuration is not None:
 ### Response
 
 **[operations.GetCompanyConfigurationResponse](../../models/operations/getcompanyconfigurationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_mapping_options
 
@@ -89,7 +94,12 @@ if res.mapping_options is not None:
 ### Response
 
 **[operations.GetMappingOptionsResponse](../../models/operations/getmappingoptionsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## set
 
@@ -136,4 +146,9 @@ if res.company_configuration is not None:
 ### Response
 
 **[operations.SetCompanyConfigurationResponse](../../models/operations/setcompanyconfigurationresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

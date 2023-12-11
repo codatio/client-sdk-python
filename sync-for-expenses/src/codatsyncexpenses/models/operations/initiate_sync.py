@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import initiatesync as shared_initiatesync
-from ..shared import syncinitiated as shared_syncinitiated
+from ...models.shared import initiatesync as shared_initiatesync
+from ...models.shared import syncinitiated as shared_syncinitiated
 from typing import Optional
 
 
@@ -22,12 +21,10 @@ class InitiateSyncRequest:
 class InitiateSyncResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""If model is incorrect"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     sync_initiated: Optional[shared_syncinitiated.SyncInitiated] = dataclasses.field(default=None)
     r"""Returns the newly created SyncId"""
     

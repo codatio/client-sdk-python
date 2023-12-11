@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountingaddresstype as shared_accountingaddresstype
+from .accountingaddresstype import AccountingAddressType
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -11,7 +11,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Items:
-    type: shared_accountingaddresstype.AccountingAddressType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: AccountingAddressType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of the address"""
     city: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('city') }})
     r"""City of the customer address."""

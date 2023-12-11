@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import bankaccount as shared_bankaccount
-from ..shared import customerdetails as shared_customerdetails
-from ..shared import supplierdetails as shared_supplierdetails
+from .bankaccount import BankAccount
+from .customerdetails import CustomerDetails
+from .supplierdetails import SupplierDetails
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
 
@@ -12,8 +12,8 @@ from dataclasses_json import Undefined, dataclass_json
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CompanyConfiguration:
-    bank_account: shared_bankaccount.BankAccount = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccount') }})
-    customer: shared_customerdetails.CustomerDetails = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customer') }})
-    supplier: shared_supplierdetails.SupplierDetails = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplier') }})
+    bank_account: BankAccount = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bankAccount') }})
+    customer: CustomerDetails = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customer') }})
+    supplier: SupplierDetails = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplier') }})
     
 

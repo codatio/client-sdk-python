@@ -13,9 +13,24 @@ class Expenses:
         self.sdk_configuration = sdk_config
         
     
+    
     def create(self, request: operations.CreateExpenseTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.CreateExpenseTransactionResponse:
         r"""Create expense transaction
-        Create an expense transaction
+        The *Create expense* endpoint creates an [expense transaction](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) in the accounting platform for a given company's connection. 
+
+        [Expense transactions](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) represent transactions made with a company debit or credit card. 
+
+
+        **Integration-specific behaviour**
+
+        Some accounting platforms support the option of pushing transactions to a draft state. This can be done by setting the postAsDraft property on the transaction to true. For platforms without this feature, the postAsDraft property should be ignored or set to false.
+
+        | Integration | Draft State | Details                                                                                                      |  
+        |-------------|-------------|--------------------------------------------------------------------------------------------------------------|
+        | Dynamics 365 Business Central | Yes   | Setting postAsDraft to true will push the transactions to a drafted state rather than posting directly to the ledger. For transactions in a draft state, they can then be approved and posted within the accounting platform. |
+        | Quickbooks Online | No | -  |
+        | Xero | No | - |
+        | NetSuite | No | - |
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -27,7 +42,10 @@ class Expenses:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -46,7 +64,7 @@ class Expenses:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.CreateExpenseTransactionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -55,19 +73,30 @@ class Expenses:
                 res.create_expense_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
+    
     def update(self, request: operations.UpdateExpenseTransactionRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UpdateExpenseTransactionResponse:
         r"""Update expense-transactions
-        Update an expense transaction
+        The *Update expense* endpoint updates an existing [expense transaction](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) in the accounting platform for a given company's connection. 
+
+        [Expense transactions](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) represent transactions made with a company debit or credit card. 
+
+
+        **Integration-specific behaviour**
+
+        At the moment you can update expenses only for Xero ([Payment](https://docs.codat.io/expenses/sync-process/expense-transactions#transaction-types) transaction type only).
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -79,7 +108,10 @@ class Expenses:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -98,7 +130,7 @@ class Expenses:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UpdateExpenseTransactionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 202:
@@ -107,31 +139,51 @@ class Expenses:
                 res.update_expense_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 422, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 422, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
+    
     def upload_attachment(self, request: operations.UploadExpenseAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadExpenseAttachmentResponse:
         r"""Upload attachment
-        Creates an attachment in the accounting software against the given transactionId
+        The *Upload attachment* endpoint uploads an attachment in the accounting software against the given transactionId. 
+
+        [Expense transactions](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) represent transactions made with a company debit or credit card. 
+
+        **Integration-specific behaviour**
+
+        Each accounting software supports different file formats and sizes.
+
+        | Integration | File Size | File Extension                                                                                                      |  
+        |-------------|-------------|--------------------------------------------------------------------------------------------------------------|
+        | Xero | 4MB  | 7Z, BMP, CSV, DOC, DOCX, EML, GIF, JPEG, JPG, KEYNOTE, MSG, NUMBERS, ODF, ODS, ODT, PAGES, PDF, PNG, PPT, PPTX, RAR, RTF, TIF, TIFF, TXT, XLS, XLSX, ZIP |
+        | QuickBooks Online | 100MB | AI, CSV, DOC, DOCX, EPS, GIF, JPEG, JPG, ODS, PAGES, PDF, PNG, RTF, TIF, TXT, XLS, XLSX, XML  |
+        | NetSuite | 100MB | BMP, CSV, XLS, XLSX, JSON, PDF, PJPG, PJPEG, PNG, TXT, SVG, TIF, TIFF, DOC, DOCX, ZIP |
+        | Dynamics 365 Business Central | 350 MB | Dynamics do not explicitly outline which file types are supported but they do state <a className=\"external\" href=\"https://learn.microsoft.com/en-gb/dynamics365/business-central/ui-how-add-link-to-record#to-attach-a-file-to-a-purchase-invoice\" target=\"_blank\">here</a> that \"You can attach any type of file, such as text, image, or video files\". |
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.UploadExpenseAttachmentRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}/attachments', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, "attachment_upload", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -150,7 +202,7 @@ class Expenses:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UploadExpenseAttachmentResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -159,12 +211,15 @@ class Expenses:
                 res.attachment = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 

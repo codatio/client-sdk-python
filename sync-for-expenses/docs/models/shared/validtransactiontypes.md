@@ -1,4 +1,4 @@
-# AccountMappingInfoValidTransactionTypes
+# ValidTransactionTypes
 
 
 ## Values

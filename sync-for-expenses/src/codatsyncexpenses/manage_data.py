@@ -13,6 +13,7 @@ class ManageData:
         self.sdk_configuration = sdk_config
         
     
+    
     def get(self, request: operations.GetDataStatusRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetDataStatusResponse:
         r"""Get data status
         Get the state of each data type for a company
@@ -24,7 +25,10 @@ class ManageData:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -43,24 +47,28 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetDataStatusResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Dict[str, shared.DataStatus]])
-                res.data_status_response = out
+                res.data_statuses = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def get_pull_operation(self, request: operations.GetPullOperationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetPullOperationResponse:
         r"""Get pull operation
@@ -73,7 +81,10 @@ class ManageData:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -92,7 +103,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetPullOperationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -101,15 +112,19 @@ class ManageData:
                 res.pull_operation = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def list_pull_operations(self, request: operations.ListPullOperationsRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListPullOperationsResponse:
         r"""List pull operations
@@ -123,7 +138,10 @@ class ManageData:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -142,7 +160,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ListPullOperationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -151,15 +169,19 @@ class ManageData:
                 res.pull_operations = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 429]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def refresh_all_data_types(self, request: operations.RefreshAllDataTypesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RefreshAllDataTypesResponse:
         r"""Refresh all data
@@ -176,7 +198,10 @@ class ManageData:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -195,20 +220,24 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RefreshAllDataTypesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 204:
             pass
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def refresh_data_type(self, request: operations.RefreshDataTypeRequest, retries: Optional[utils.RetryConfig] = None) -> operations.RefreshDataTypeResponse:
         r"""Refresh data type
@@ -224,7 +253,10 @@ class ManageData:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -243,7 +275,7 @@ class ManageData:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RefreshDataTypeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -252,12 +284,15 @@ class ManageData:
                 res.pull_operation = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [401, 404, 429]:
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
