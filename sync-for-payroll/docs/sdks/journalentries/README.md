@@ -46,7 +46,7 @@ req = operations.CreateJournalEntryRequest(
             shared.JournalLine(
                 account_ref=shared.AccountRef(),
                 net_amount=Decimal('4893.82'),
-                tracking=shared.JournalLineTracking(
+                tracking=shared.Tracking(
                     record_refs=[
                         shared.RecordRef(
                             data_type='accountTransaction',
@@ -61,14 +61,14 @@ req = operations.CreateJournalEntryRequest(
         metadata=shared.Metadata(),
         modified_date='2022-10-23T00:00:00.000Z',
         posted_on='2022-10-23T00:00:00.000Z',
-        record_ref=shared.JournalEntryRecordReference(
+        record_ref=shared.RecordReference(
             data_type='invoice',
         ),
         source_modified_date='2022-10-23T00:00:00.000Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "blue": {
-                    "shred": 'abnormally',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
@@ -96,7 +96,12 @@ if res.create_journal_entry_response is not None:
 ### Response
 
 **[operations.CreateJournalEntryResponse](../../models/operations/createjournalentryresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## delete
 
@@ -146,7 +151,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 req = operations.DeleteJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_entry_id='Van complexity',
+    journal_entry_id='string',
 )
 
 res = s.journal_entries.delete(req)
@@ -167,7 +172,12 @@ if res.push_operation is not None:
 ### Response
 
 **[operations.DeleteJournalEntryResponse](../../models/operations/deletejournalentryresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -194,7 +204,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetJournalEntryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_entry_id='Northeast Hatchback Kia',
+    journal_entry_id='string',
 )
 
 res = s.journal_entries.get(req)
@@ -215,7 +225,12 @@ if res.journal_entry is not None:
 ### Response
 
 **[operations.GetJournalEntryResponse](../../models/operations/getjournalentryresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get_create_model
 
@@ -265,7 +280,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateJournalEntryModelResponse](../../models/operations/getcreatejournalentrymodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -313,4 +333,9 @@ if res.journal_entries is not None:
 ### Response
 
 **[operations.ListJournalEntriesResponse](../../models/operations/listjournalentriesresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
