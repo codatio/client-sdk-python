@@ -37,7 +37,7 @@ s = codatbanking.CodatBanking(
 req = operations.GetTransactionRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transaction_id='Northeast Hatchback Kia',
+    transaction_id='string',
 )
 
 res = s.transactions.get(req)
@@ -58,7 +58,12 @@ if res.transaction is not None:
 ### Response
 
 **[operations.GetTransactionResponse](../../models/operations/gettransactionresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list
 
@@ -107,7 +112,12 @@ if res.transactions is not None:
 ### Response
 
 **[operations.ListTransactionsResponse](../../models/operations/listtransactionsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## ~~list_bank_transactions~~
 
@@ -157,4 +167,9 @@ if res.transactions is not None:
 ### Response
 
 **[operations.ListBankTransactionsResponse](../../models/operations/listbanktransactionsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

@@ -13,6 +13,7 @@ class AccountBalances:
         self.sdk_configuration = sdk_config
         
     
+    
     def list(self, request: operations.ListAccountBalancesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListAccountBalancesResponse:
         r"""List account balances
         The *List account balances* endpoint returns a list of [account balances](https://docs.codat.io/banking-api#/schemas/AccountBalance) for a given company's connection.
@@ -29,7 +30,10 @@ class AccountBalances:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -48,7 +52,7 @@ class AccountBalances:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ListAccountBalancesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -57,12 +61,15 @@ class AccountBalances:
                 res.account_balances = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code in [400, 401, 404, 409]:
+        elif http_res.status_code in [400, 401, 402, 403, 404, 409, 429, 500, 503]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
-                res.error_message = out
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 

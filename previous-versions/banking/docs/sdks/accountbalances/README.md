@@ -56,4 +56,9 @@ if res.account_balances is not None:
 ### Response
 
 **[operations.ListAccountBalancesResponse](../../models/operations/listaccountbalancesresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |

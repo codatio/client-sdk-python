@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountbalanceamounts as shared_accountbalanceamounts
+from .accountbalanceamounts import AccountBalanceAmounts
 from codatbanking import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -23,7 +23,7 @@ class AccountBalance:
     """
     account_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId') }})
     r"""The unique identifier of the account."""
-    balance: shared_accountbalanceamounts.AccountBalanceAmounts = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})
+    balance: AccountBalanceAmounts = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance') }})
     r"""Depending on the data provided by the underlying bank, not all balances are always available."""
     date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
