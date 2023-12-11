@@ -19,7 +19,7 @@ This may include information like addresses, tax registration details and social
 
 ```python
 import codatcommerce
-from codatcommerce.models import operations, shared
+from codatcommerce.models import operations
 
 s = codatcommerce.CodatCommerce(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -48,4 +48,9 @@ if res.company_info is not None:
 ### Response
 
 **[operations.GetCompanyInfoResponse](../../models/operations/getcompanyinforesponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

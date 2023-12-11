@@ -10,7 +10,6 @@ from .customers import *
 from .dispute import *
 from .disputes import *
 from .disputestatus import *
-from .errormessage import *
 from .halref import *
 from .links import *
 from .location import *
@@ -56,4 +55,4 @@ from .transactionsourceref import *
 from .transactionsourcetype import *
 from .transactiontype import *
 
-__all__ = ["AccountBalance","Address","CommerceAddressType","CommerceCustomerRef","CompanyInfo","CompanyInfoWeblink","CompanyInfoWeblinkType","Customer","Customers","Dispute","DisputeStatus","Disputes","ErrorMessage","HalRef","Links","Location","LocationRef","Locations","Order","OrderDiscountAllocation","OrderLineItem","Orders","Payment","PaymentMethod","PaymentMethodRef","PaymentMethodStatus","PaymentMethods","PaymentRef","PaymentStatus","PaymentType","Payments","PhoneNumber","PhoneNumberType","Product","ProductCategories","ProductCategory","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatus","Products","RecordRef","Security","ServiceCharge","ServiceChargeType","SupplementalData","TaxComponent","TaxComponentAllocation","TaxComponentRef","TaxComponents","Transaction","TransactionSourceRef","TransactionSourceType","TransactionType","Transactions"]
+__all__ = ["AccountBalance","Address","CommerceAddressType","CommerceCustomerRef","CompanyInfo","Customer","Customers","Dispute","DisputeStatus","Disputes","HalRef","Links","Location","LocationRef","Locations","Order","OrderDiscountAllocation","OrderLineItem","Orders","Payment","PaymentMethod","PaymentMethodRef","PaymentMethods","PaymentRef","PaymentStatus","PaymentType","Payments","PhoneNumber","PhoneNumberType","Product","ProductCategories","ProductCategory","ProductInventory","ProductInventoryLocation","ProductPrice","ProductRef","ProductVariant","ProductVariantRef","ProductVariantStatus","Products","RecordRef","Security","ServiceCharge","ServiceChargeType","Status","SupplementalData","TaxComponent","TaxComponentAllocation","TaxComponentRef","TaxComponents","Transaction","TransactionSourceRef","TransactionSourceType","TransactionType","Transactions","Type","Weblink"]
