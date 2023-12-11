@@ -1,4 +1,4 @@
-# ListLoanTransactionsSourceType
+# QueryParamSourceType
 
 Data source type
 

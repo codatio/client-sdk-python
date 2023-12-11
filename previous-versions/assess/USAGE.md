@@ -1,26 +1,21 @@
-<!-- Start SDK Example Usage -->
-
-
+<!-- Start SDK Example Usage [usage] -->
 ```python
 import codatassess
-from codatassess.models import operations, shared
+from codatassess.models import operations
 
 s = codatassess.CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.ListDataTypeDataIntegrityDetailsRequest(
+req = operations.GenerateLoanSummaryRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
+    source_type=operations.SourceType.ACCOUNTING,
 )
 
-res = s.data_integrity.details(req)
+res = s.reports.generate_loan_summary(req)
 
-if res.details is not None:
+if res.status_code == 200:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

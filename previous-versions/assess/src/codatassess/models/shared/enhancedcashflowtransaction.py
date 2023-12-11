@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import accountref as shared_accountref
-from ..shared import sourceref as shared_sourceref
-from ..shared import transactioncategory as shared_transactioncategory
+from .accountref import AccountRef
+from .sourceref import SourceRef
+from .transactioncategory import TransactionCategory
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -14,7 +14,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class EnhancedCashFlowTransaction:
-    account_ref: Optional[shared_accountref.AccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
+    account_ref: Optional[AccountRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountRef'), 'exclude': lambda f: f is None }})
     r"""An account reference containing the account id and name."""
     amount: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('amount'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     r"""The bank transaction amount."""
@@ -54,8 +54,8 @@ class EnhancedCashFlowTransaction:
     r"""The unique identifier of the bank transaction."""
     platform_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('platformName'), 'exclude': lambda f: f is None }})
     r"""Returns the payment processor responsible for the transaction."""
-    source_ref: Optional[shared_sourceref.SourceRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceRef'), 'exclude': lambda f: f is None }})
+    source_ref: Optional[SourceRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceRef'), 'exclude': lambda f: f is None }})
     r"""A source reference containing the `sourceType` object \\"Banking\\"."""
-    transaction_category: Optional[shared_transactioncategory.TransactionCategory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionCategory'), 'exclude': lambda f: f is None }})
+    transaction_category: Optional[TransactionCategory] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionCategory'), 'exclude': lambda f: f is None }})
     
 

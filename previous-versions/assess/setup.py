@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-assess",
-    version="0.32.0",
+    version="0.33.0",
     author="Codat",
     description="Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.",
     long_description=long_description,
@@ -30,7 +30,7 @@ setuptools.setup(
         "six>=1.16.0",
         "typing-inspect>=0.9.0",
         "typing_extensions>=4.7.1",
-        "urllib3>=2.0.4",
+        "urllib3>=1.26.18",
     ],
     extras_require={
         "dev":["pylint==2.16.2"]

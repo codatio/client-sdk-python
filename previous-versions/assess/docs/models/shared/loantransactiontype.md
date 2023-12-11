@@ -1,4 +1,4 @@
-# ReportItemsLoanTransactionType
+# LoanTransactionType
 
 The type of loan transaction.
 

@@ -1,4 +1,4 @@
-# GetExcelReport200ApplicationOctetStream
+# GetExcelReportResponseBody
 
 OK
 
