@@ -4,16 +4,20 @@
 Manage the building blocks of Codat, including companies, connections, and more.
 <!-- End Codat Library Description -->
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 pip install codat-common
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## Example Usage
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
+### Example
+
 ```python
 import codatcommon
 from codatcommon.models import shared
@@ -22,22 +26,30 @@ s = codatcommon.CodatCommon(
     auth_header="",
 )
 
-req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    name='Bank of Dave',
+req = shared.CreateAPIKey(
+    name='azure-invoice-finance-processor',
 )
 
-res = s.companies.create(req)
+res = s.settings.create_api_key(req)
 
-if res.company is not None:
+if res.api_key_details is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+### [settings](docs/sdks/settings/README.md)
+
+* [create_api_key](docs/sdks/settings/README.md#create_api_key) - Create API key
+* [delete_api_key](docs/sdks/settings/README.md#delete_api_key) - Delete API key
+* [get_profile](docs/sdks/settings/README.md#get_profile) - Get profile
+* [get_sync_settings](docs/sdks/settings/README.md#get_sync_settings) - Get sync settings
+* [list_api_keys](docs/sdks/settings/README.md#list_api_keys) - List API keys
+* [update_profile](docs/sdks/settings/README.md#update_profile) - Update profile
+* [update_sync_settings](docs/sdks/settings/README.md#update_sync_settings) - Update all sync settings
 
 ### [companies](docs/sdks/companies/README.md)
 
@@ -56,11 +68,12 @@ if res.company is not None:
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 * [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
 
-### [integrations](docs/sdks/integrations/README.md)
+### [custom_data_type](docs/sdks/customdatatype/README.md)
 
-* [get](docs/sdks/integrations/README.md#get) - Get integration
-* [get_branding](docs/sdks/integrations/README.md#get_branding) - Get branding
-* [list](docs/sdks/integrations/README.md#list) - List integrations
+* [configure](docs/sdks/customdatatype/README.md#configure) - Configure custom data type
+* [get_configuration](docs/sdks/customdatatype/README.md#get_configuration) - Get custom data configuration
+* [list](docs/sdks/customdatatype/README.md#list) - List custom data type records
+* [refresh](docs/sdks/customdatatype/README.md#refresh) - Refresh custom data type
 
 ### [push_data](docs/sdks/pushdata/README.md)
 
@@ -76,15 +89,11 @@ if res.company is not None:
 * [get_pull_operation](docs/sdks/refreshdata/README.md#get_pull_operation) - Get pull operation
 * [list_pull_operations](docs/sdks/refreshdata/README.md#list_pull_operations) - List pull operations
 
-### [settings](docs/sdks/settings/README.md)
+### [integrations](docs/sdks/integrations/README.md)
 
-* [create_api_key](docs/sdks/settings/README.md#create_api_key) - Create API key
-* [delete_api_key](docs/sdks/settings/README.md#delete_api_key) - Delete API key
-* [~~get_profile~~](docs/sdks/settings/README.md#get_profile) - Get profile :warning: **Deprecated**
-* [get_sync_settings](docs/sdks/settings/README.md#get_sync_settings) - Get sync settings
-* [list_api_keys](docs/sdks/settings/README.md#list_api_keys) - List API keys
-* [update_profile](docs/sdks/settings/README.md#update_profile) - Update profile
-* [update_sync_settings](docs/sdks/settings/README.md#update_sync_settings) - Update all sync settings
+* [get](docs/sdks/integrations/README.md#get) - Get integration
+* [get_branding](docs/sdks/integrations/README.md#get_branding) - Get branding
+* [list](docs/sdks/integrations/README.md#list) - List integrations
 
 ### [supplemental_data](docs/sdks/supplementaldata/README.md)
 
@@ -96,15 +105,205 @@ if res.company is not None:
 * [create](docs/sdks/webhooks/README.md#create) - Create webhook
 * [get](docs/sdks/webhooks/README.md#get) - Get webhook
 * [list](docs/sdks/webhooks/README.md#list) - List webhooks
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+```python
+import codatcommon
+from codatcommon.models import shared
+from codatcommon.utils import BackoffStrategy, RetryConfig
+
+s = codatcommon.CodatCommon(
+    auth_header="",
+)
+
+req = shared.CreateAPIKey(
+    name='azure-invoice-finance-processor',
+)
+
+res = s.settings.create_api_key(req,
+    RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
+
+if res.api_key_details is not None:
+    # handle response
+    pass
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+```python
+import codatcommon
+from codatcommon.models import shared
+from codatcommon.utils import BackoffStrategy, RetryConfig
+
+s = codatcommon.CodatCommon(
+    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+    auth_header="",
+)
+
+req = shared.CreateAPIKey(
+    name='azure-invoice-finance-processor',
+)
+
+res = s.settings.create_api_key(req)
+
+if res.api_key_details is not None:
+    # handle response
+    pass
+```
+<!-- End Retries [retries] -->
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
+
+### Example
+
+```python
+import codatcommon
+from codatcommon.models import shared
+
+s = codatcommon.CodatCommon(
+    auth_header="",
+)
+
+req = shared.CreateAPIKey(
+    name='azure-invoice-finance-processor',
+)
+
+res = None
+try:
+    res = s.settings.create_api_key(req)
+except errors.ErrorMessage as e:
+    print(e)  # handle exception
+    raise(e)
+except errors.SDKError as e:
+    print(e)  # handle exception
+    raise(e)
+
+if res.api_key_details is not None:
+    # handle response
+    pass
+```
+<!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.codat.io` | None |
+
+#### Example
+
+```python
+import codatcommon
+from codatcommon.models import shared
+
+s = codatcommon.CodatCommon(
+    server_idx=0,
+    auth_header="",
+)
+
+req = shared.CreateAPIKey(
+    name='azure-invoice-finance-processor',
+)
+
+res = s.settings.create_api_key(req)
+
+if res.api_key_details is not None:
+    # handle response
+    pass
+```
 
 
+### Override Server URL Per-Client
 
-<!-- End Dev Containers -->
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+```python
+import codatcommon
+from codatcommon.models import shared
+
+s = codatcommon.CodatCommon(
+    server_url="https://api.codat.io",
+    auth_header="",
+)
+
+req = shared.CreateAPIKey(
+    name='azure-invoice-finance-processor',
+)
+
+res = s.settings.create_api_key(req)
+
+if res.api_key_details is not None:
+    # handle response
+    pass
+```
+<!-- End Server Selection [server] -->
+
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+For example, you could specify a header for every request that this sdk makes as follows:
+```python
+import codatcommon
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = codatcommon.CodatCommon(client: http_client)
+```
+<!-- End Custom HTTP Client [http-client] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `auth_header` | apiKey        | API key       |
+
+To authenticate with the API the `auth_header` parameter must be set when initializing the SDK client instance. For example:
+```python
+import codatcommon
+from codatcommon.models import shared
+
+s = codatcommon.CodatCommon(
+    auth_header="",
+)
+
+req = shared.CreateAPIKey(
+    name='azure-invoice-finance-processor',
+)
+
+res = s.settings.create_api_key(req)
+
+if res.api_key_details is not None:
+    # handle response
+    pass
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

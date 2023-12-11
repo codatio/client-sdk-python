@@ -1,4 +1,4 @@
-# SupplementalDataConfigurationSupplementalDataSourceConfiguration
+# SupplementalDataSourceConfiguration
 
 The client's defined name for the object.
 

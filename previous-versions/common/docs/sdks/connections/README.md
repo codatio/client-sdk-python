@@ -24,7 +24,7 @@ Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -55,7 +55,12 @@ if res.connection is not None:
 ### Response
 
 **[operations.CreateConnectionResponse](../../models/operations/createconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## delete
 
@@ -66,7 +71,7 @@ This operation is not reversible. The end user would need to reauthorize a new d
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -95,7 +100,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeleteConnectionResponse](../../models/operations/deleteconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get
 
@@ -105,7 +115,7 @@ if res.status_code == 200:
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -134,7 +144,12 @@ if res.connection is not None:
 ### Response
 
 **[operations.GetConnectionResponse](../../models/operations/getconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -144,7 +159,7 @@ if res.connection is not None:
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -175,7 +190,12 @@ if res.connections is not None:
 ### Response
 
 **[operations.ListConnectionsResponse](../../models/operations/listconnectionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## unlink
 
@@ -215,7 +235,12 @@ if res.connection is not None:
 ### Response
 
 **[operations.UnlinkConnectionResponse](../../models/operations/unlinkconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## update_authorization
 
@@ -225,7 +250,7 @@ Update data connection's authorization.
 
 ```python
 import codatcommon
-from codatcommon.models import operations, shared
+from codatcommon.models import operations
 
 s = codatcommon.CodatCommon(
     auth_header="",
@@ -233,7 +258,7 @@ s = codatcommon.CodatCommon(
 
 req = operations.UpdateConnectionAuthorizationRequest(
     request_body={
-        "Neptunium": 'Books',
+        'key': 'string',
     },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -257,4 +282,9 @@ if res.connection is not None:
 ### Response
 
 **[operations.UpdateConnectionAuthorizationResponse](../../models/operations/updateconnectionauthorizationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
