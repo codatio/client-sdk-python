@@ -1,13 +1,13 @@
 # DownloadFilesErrorMessage
 
-One or more of the resources you referenced could not be found.
-This might be because your company or data connection id is wrong, or was already deleted.
+You are using an outdated API key or a key not associated with that resource.
 
 
 ## Fields
 
 | Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `raw_response`                                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response)                 | :heavy_minus_sign:                                                                                    | Raw HTTP response; suitable for custom response parsing                                               |
 | `can_be_retried`                                                                                      | *Optional[str]*                                                                                       | :heavy_minus_sign:                                                                                    | `True` if the error occurred transiently and can be retried.                                          |
 | `correlation_id`                                                                                      | *Optional[str]*                                                                                       | :heavy_minus_sign:                                                                                    | Unique identifier used to propagate to all downstream services and determine the source of the error. |
 | `detailed_error_code`                                                                                 | *Optional[int]*                                                                                       | :heavy_minus_sign:                                                                                    | Machine readable error code used to automate processes based on the code returned.                    |
