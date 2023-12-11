@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-lending",
-    version="6.0.0",
+    version="6.0.1",
     author="Codat",
     description="Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.",
     long_description=long_description,
