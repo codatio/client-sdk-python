@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import brandingimage as shared_brandingimage
+from .brandingimage import BrandingImage
 from codatplatform import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -12,7 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class BrandingLogo:
     r"""Logo branding references."""
-    full: Optional[shared_brandingimage.BrandingImage] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('full'), 'exclude': lambda f: f is None }})
-    square: Optional[shared_brandingimage.BrandingImage] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('square'), 'exclude': lambda f: f is None }})
+    full: Optional[BrandingImage] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('full'), 'exclude': lambda f: f is None }})
+    square: Optional[BrandingImage] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('square'), 'exclude': lambda f: f is None }})
     
 

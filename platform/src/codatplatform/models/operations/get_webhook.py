@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import errormessage as shared_errormessage
-from ..shared import webhook as shared_webhook
+from ...models.shared import webhook as shared_webhook
 from typing import Optional
 
 
@@ -20,12 +19,10 @@ class GetWebhookRequest:
 class GetWebhookResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""Your API request was not properly authorized."""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     webhook: Optional[shared_webhook.Webhook] = dataclasses.field(default=None)
     r"""OK"""
     

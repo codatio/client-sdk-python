@@ -1,6 +1,4 @@
-<!-- Start SDK Example Usage -->
-
-
+<!-- Start SDK Example Usage [usage] -->
 ```python
 import codatplatform
 from codatplatform.models import shared
@@ -11,15 +9,14 @@ s = codatplatform.CodatPlatform(
     ),
 )
 
-req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    name='Bank of Dave',
+req = shared.CreateAPIKey(
+    name='azure-invoice-finance-processor',
 )
 
-res = s.companies.create(req)
+res = s.settings.create_api_key(req)
 
-if res.company is not None:
+if res.api_key_details is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

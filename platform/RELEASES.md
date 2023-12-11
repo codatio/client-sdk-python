@@ -39,3 +39,13 @@ Based on:
 - [python v2.0.0] platform
 ### Releases
 - [PyPI v2.0.0] https://pypi.org/project/codat-platform/2.0.0 - platform
+
+## 2023-12-11 01:30:01
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Platform.yaml
+- Speakeasy CLI 1.125.2 (2.210.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v3.0.0] platform
+### Releases
+- [PyPI v3.0.0] https://pypi.org/project/codat-platform/3.0.0 - platform
