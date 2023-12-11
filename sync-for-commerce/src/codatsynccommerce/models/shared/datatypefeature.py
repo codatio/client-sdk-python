@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import supportedfeature as shared_supportedfeature
+from .supportedfeature import SupportedFeature
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from typing import List, Optional
 
-class DataTypeFeatureDataTypes(str, Enum):
+class DataTypes(str, Enum):
     r"""Available Data types"""
     ACCOUNT_TRANSACTIONS = 'accountTransactions'
     BALANCE_SHEET = 'balanceSheet'
@@ -25,6 +25,7 @@ class DataTypeFeatureDataTypes(str, Enum):
     DIRECT_COSTS = 'directCosts'
     DIRECT_INCOMES = 'directIncomes'
     INVOICES = 'invoices'
+    ITEM_RECEIPTS = 'itemReceipts'
     ITEMS = 'items'
     JOURNAL_ENTRIES = 'journalEntries'
     JOURNALS = 'journals'
@@ -58,8 +59,8 @@ class DataTypeFeatureDataTypes(str, Enum):
 @dataclasses.dataclass
 class DataTypeFeature:
     r"""Describes support for a given datatype and associated operations"""
-    supported_features: List[shared_supportedfeature.SupportedFeature] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supportedFeatures') }})
-    data_type: Optional[DataTypeFeatureDataTypes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    supported_features: List[SupportedFeature] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supportedFeatures') }})
+    data_type: Optional[DataTypes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     r"""Available Data types"""
     
 

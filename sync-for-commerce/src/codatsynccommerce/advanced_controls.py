@@ -13,9 +13,10 @@ class AdvancedControls:
         self.sdk_configuration = sdk_config
         
     
+    
     def create_company(self, request: shared.CreateCompany, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
         r"""Create company
-        Creates a Codat company..
+        Creates a Codat company
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -27,7 +28,10 @@ class AdvancedControls:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -46,7 +50,7 @@ class AdvancedControls:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.CreateCompanyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -55,9 +59,19 @@ class AdvancedControls:
                 res.company = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401, 402, 403, 429, 500, 503]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def get_configuration(self, request: operations.GetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.GetConfigurationResponse:
         r"""Get company configuration
@@ -70,7 +84,10 @@ class AdvancedControls:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -89,7 +106,7 @@ class AdvancedControls:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.GetConfigurationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -98,9 +115,19 @@ class AdvancedControls:
                 res.configuration = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def list_companies(self, request: operations.ListCompaniesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.ListCompaniesResponse:
         r"""List companies
@@ -114,7 +141,10 @@ class AdvancedControls:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -133,7 +163,7 @@ class AdvancedControls:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ListCompaniesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -142,9 +172,19 @@ class AdvancedControls:
                 res.companies = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 
+    
     
     def set_configuration(self, request: operations.SetConfigurationRequest, retries: Optional[utils.RetryConfig] = None) -> operations.SetConfigurationResponse:
         r"""Set configuration
@@ -157,7 +197,10 @@ class AdvancedControls:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries
@@ -176,7 +219,7 @@ class AdvancedControls:
             '5XX'
         ]))
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.SetConfigurationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -185,6 +228,15 @@ class AdvancedControls:
                 res.configuration = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401, 402, 403, 404, 409, 429, 500, 503]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
+                out.raw_response = http_res
+                raise out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
         return res
 

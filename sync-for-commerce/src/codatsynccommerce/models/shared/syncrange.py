@@ -8,7 +8,7 @@ from dataclasses_json import Undefined, dataclass_json
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class SyncRangeDateRange:
+class DateRange:
     finish: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish') }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -58,6 +58,6 @@ class SyncRangeDateRange:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncRange:
-    date_range: SyncRangeDateRange = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dateRange') }})
+    date_range: DateRange = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dateRange') }})
     
 

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import connection as shared_connection
+from .connection import Connection
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -10,7 +10,7 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class SyncSummarySyncDateRangeUtc:
+class SyncDateRangeUtc:
     finish: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -64,13 +64,13 @@ class SyncSummary:
     r"""Unique identifier for the sync in Codat."""
     company_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for your SMB in Codat."""
-    data_connections: Optional[List[shared_connection.Connection]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections') }})
+    data_connections: Optional[List[Connection]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataConnections') }})
     r"""Array of containing objects data connection information for the company."""
     data_pushed: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataPushed'), 'exclude': lambda f: f is None }})
     r"""Boolean indicator for data being pushed during a sync operation."""
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage') }})
     r"""Friendly error message for the sync operation."""
-    sync_date_range_utc: Optional[SyncSummarySyncDateRangeUtc] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncDateRangeUtc'), 'exclude': lambda f: f is None }})
+    sync_date_range_utc: Optional[SyncDateRangeUtc] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncDateRangeUtc'), 'exclude': lambda f: f is None }})
     sync_exception_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncExceptionMessage') }})
     r"""Exception message for the sync operation."""
     sync_status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncStatus') }})

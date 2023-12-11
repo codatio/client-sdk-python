@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import invoicelevelselection as shared_invoicelevelselection
-from ..shared import invoicelinelevelselection as shared_invoicelinelevelselection
+from .invoicelevelselection import InvoiceLevelSelection
+from .invoicelinelevelselection import InvoiceLineLevelSelection
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -12,7 +12,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GroupingLevels:
-    invoice_level: Optional[shared_invoicelevelselection.InvoiceLevelSelection] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceLevel'), 'exclude': lambda f: f is None }})
-    invoice_line_level: Optional[shared_invoicelinelevelselection.InvoiceLineLevelSelection] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceLineLevel'), 'exclude': lambda f: f is None }})
+    invoice_level: Optional[InvoiceLevelSelection] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceLevel'), 'exclude': lambda f: f is None }})
+    invoice_line_level: Optional[InvoiceLineLevelSelection] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceLineLevel'), 'exclude': lambda f: f is None }})
     
 
