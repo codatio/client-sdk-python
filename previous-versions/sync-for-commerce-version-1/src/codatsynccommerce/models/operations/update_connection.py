@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import connection as shared_connection
-from ..shared import updateconnection as shared_updateconnection
+from ...models.shared import connection as shared_connection
+from ...models.shared import updateconnection as shared_updateconnection
 from typing import Optional
 
 
@@ -23,11 +23,11 @@ class UpdateConnectionRequest:
 class UpdateConnectionResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
     connection: Optional[shared_connection.Connection] = dataclasses.field(default=None)
     r"""Success"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

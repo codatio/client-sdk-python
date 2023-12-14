@@ -37,13 +37,13 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingCreditNoteRequest(
     accounting_credit_note=shared.AccountingCreditNote(
-        allocated_on_date='2022-10-23T00:00:00.000Z',
+        allocated_on_date='2022-10-23T00:00:00Z',
         currency='GBP',
         customer_ref=shared.AccountingCustomerRef(
             id='<ID>',
         ),
         discount_percentage=Decimal('3961.39'),
-        issue_date='2022-10-23T00:00:00.000Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(),
@@ -54,7 +54,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                 tax_rate_ref=shared.TaxRateRef(),
                 tracking=shared.CreditNoteLineItemTracking(
                     category_refs=[
-                        shared.TrackingCategoryRefsitems(
+                        shared.TrackingCategoryRefItems(
                             id='<ID>',
                         ),
                     ],
@@ -63,7 +63,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                     ),
                     is_billed_to=shared.BilledToType.PROJECT,
                     is_rebilled_to=shared.BilledToType.PROJECT,
-                    project_ref=shared.CreditNoteLineItemTrackingProjectReference(
+                    project_ref=shared.CreditNoteLineItemAccountingProjectReference(
                         id='<ID>',
                     ),
                     record_ref=shared.RecordRef(
@@ -71,7 +71,7 @@ req = operations.CreateAccountingCreditNoteRequest(
                     ),
                 ),
                 tracking_category_refs=[
-                    shared.TrackingCategoryRefsitems(
+                    shared.TrackingCategoryRefItems(
                         id='<ID>',
                     ),
                 ],
@@ -79,38 +79,38 @@ req = operations.CreateAccountingCreditNoteRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         payment_allocations=[
-            shared.PaymentAllocationsitems(
-                allocation=shared.ItemsAllocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='USD',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
         remaining_credit=Decimal('3693.65'),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.CreditNoteStatus.VOID,
         sub_total=Decimal('1915.04'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Metal": {
-                    "policy": 'although',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
-        total_amount=Decimal('6437.49'),
-        total_discount=Decimal('6593.55'),
-        total_tax_amount=Decimal('3629.12'),
+        total_amount=Decimal('5893.9'),
+        total_discount=Decimal('579.23'),
+        total_tax_amount=Decimal('3881.42'),
         withholding_tax=[
-            shared.WithholdingTaxitems(
-                amount=Decimal('5655.86'),
-                name='however',
+            shared.WithholdingTaxItems(
+                amount=Decimal('7369.44'),
+                name='string',
             ),
         ],
     ),
@@ -136,4 +136,9 @@ if res.accounting_create_credit_note_response is not None:
 ### Response
 
 **[operations.CreateAccountingCreditNoteResponse](../../models/operations/createaccountingcreditnoteresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

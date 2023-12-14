@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import option as shared_option
+from .option import Option
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -13,7 +13,7 @@ from typing import List, Optional
 class TaxRateAmount:
     selected_tax_rate_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedTaxRateId') }})
     r"""Selected tax rate id from the list of tax rates on the accounting software."""
-    tax_rate_options: Optional[List[shared_option.Option]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateOptions') }})
+    tax_rate_options: Optional[List[Option]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRateOptions') }})
     r"""Array of tax rate options object."""
     
 

@@ -37,7 +37,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingJournalEntryRequest(
     accounting_journal_entry=shared.AccountingJournalEntry(
-        created_on='2022-10-23T00:00:00.000Z',
+        created_on='2022-10-23T00:00:00Z',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(),
@@ -51,24 +51,24 @@ req = operations.CreateAccountingJournalEntryRequest(
                 ),
             ),
         ],
-        journal_ref=shared.AccountingJournalEntryJournalReference(
+        journal_ref=shared.JournalReference(
             id='<ID>',
         ),
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        posted_on='2022-10-23T00:00:00.000Z',
-        record_ref=shared.AccountingJournalEntryRecordReference(
+        modified_date='2022-10-23T00:00:00Z',
+        posted_on='2022-10-23T00:00:00Z',
+        record_ref=shared.RecordReference(
             data_type='journalEntry',
         ),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "Minivan": {
-                    "bypassing": 'Investor',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
-        updated_on='2022-10-23T00:00:00.000Z',
+        updated_on='2022-10-23T00:00:00Z',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -92,4 +92,9 @@ if res.accounting_create_journal_entry_response is not None:
 ### Response
 
 **[operations.CreateAccountingJournalEntryResponse](../../models/operations/createaccountingjournalentryresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

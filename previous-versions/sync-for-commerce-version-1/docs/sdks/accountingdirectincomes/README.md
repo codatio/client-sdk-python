@@ -37,22 +37,22 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.CreateAccountingDirectIncomeRequest(
     accounting_direct_income=shared.AccountingDirectIncome(
-        contact_ref=shared.AccountingDirectIncomeContactRef(
+        contact_ref=shared.ContactRef(
             data_type=shared.DataType.INVOICES,
             id='<ID>',
         ),
         currency='GBP',
-        issue_date='2022-10-23T00:00:00.000Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.DirectIncomeLineItem(
                 account_ref=shared.AccountRef(),
-                item_ref=shared.DirectIncomeLineItemItemReference(
+                item_ref=shared.ItemReference(
                     id='<ID>',
                 ),
                 quantity=Decimal('3642.55'),
-                tax_rate_ref=shared.DirectIncomeLineItemTaxRateReference(),
+                tax_rate_ref=shared.TaxRateReference(),
                 tracking_category_refs=[
-                    shared.DirectIncomeLineItemTrackingCategoryRefs(
+                    shared.TrackingCategoryRefs(
                         id='<ID>',
                     ),
                 ],
@@ -60,31 +60,31 @@ req = operations.CreateAccountingDirectIncomeRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         payment_allocations=[
-            shared.PaymentAllocationsitems(
-                allocation=shared.ItemsAllocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+            shared.PaymentAllocationItems(
+                allocation=shared.Allocation(
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='USD',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         sub_total=Decimal('5786.44'),
         supplemental_data=shared.SupplementalData(
             content={
-                "Tactics": {
-                    "duh": 'East',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
-        tax_amount=Decimal('2940.98'),
-        total_amount=Decimal('8825.39'),
+        tax_amount=Decimal('2812.91'),
+        total_amount=Decimal('6636.11'),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -108,4 +108,9 @@ if res.accounting_create_direct_income_response is not None:
 ### Response
 
 **[operations.CreateAccountingDirectIncomeResponse](../../models/operations/createaccountingdirectincomeresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
