@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import commercereportcomponent as shared_commercereportcomponent
-from ..shared import commercereportdimension as shared_commercereportdimension
-from ..shared import commercereporterror as shared_commercereporterror
-from ..shared import commercereportmeasure as shared_commercereportmeasure
+from .commercereportcomponent import CommerceReportComponent
+from .commercereportdimension import CommerceReportDimension
+from .commercereporterror import CommerceReportError
+from .commercereportmeasure import CommerceReportMeasure
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Dict, List, Optional
@@ -56,10 +56,10 @@ class Report:
 
     ## Dimensions
     """
-    dimensions: Optional[List[shared_commercereportdimension.CommerceReportDimension]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dimensions'), 'exclude': lambda f: f is None }})
-    errors: Optional[List[shared_commercereporterror.CommerceReportError]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
-    measures: Optional[List[shared_commercereportmeasure.CommerceReportMeasure]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('measures'), 'exclude': lambda f: f is None }})
-    report_data: Optional[List[shared_commercereportcomponent.CommerceReportComponent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportData'), 'exclude': lambda f: f is None }})
+    dimensions: Optional[List[CommerceReportDimension]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dimensions'), 'exclude': lambda f: f is None }})
+    errors: Optional[List[CommerceReportError]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errors'), 'exclude': lambda f: f is None }})
+    measures: Optional[List[CommerceReportMeasure]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('measures'), 'exclude': lambda f: f is None }})
+    report_data: Optional[List[CommerceReportComponent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportData'), 'exclude': lambda f: f is None }})
     report_info: Optional[Dict[str, str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reportInfo'), 'exclude': lambda f: f is None }})
     
 
