@@ -22,9 +22,9 @@ class SDKConfiguration:
     server_idx: int = 0
     language: str = 'python'
     openapi_doc_version: str = '3.0.0'
-    sdk_version: str = '3.0.0'
-    gen_version: str = '2.210.6'
-    user_agent: str = 'speakeasy-sdk/python 3.0.0 2.210.6 3.0.0 codat-sync-for-payables'
+    sdk_version: str = '3.1.0'
+    gen_version: str = '2.214.3'
+    user_agent: str = 'speakeasy-sdk/python 3.1.0 2.214.3 3.0.0 codat-sync-for-payables'
     retry_config: RetryConfig = None
 
     def get_server_details(self) -> Tuple[str, Dict[str, str]]:

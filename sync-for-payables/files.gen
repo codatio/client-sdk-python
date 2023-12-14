@@ -2,6 +2,7 @@ src/codatsyncpayables/sdkconfiguration.py
 src/codatsyncpayables/companies.py
 src/codatsyncpayables/connections.py
 src/codatsyncpayables/bills.py
+src/codatsyncpayables/bank_accounts.py
 src/codatsyncpayables/bill_credit_notes.py
 src/codatsyncpayables/bill_payments.py
 src/codatsyncpayables/accounts.py
@@ -44,6 +45,8 @@ src/codatsyncpayables/models/operations/list_bills.py
 src/codatsyncpayables/models/operations/list_bill_attachments.py
 src/codatsyncpayables/models/operations/update_bill.py
 src/codatsyncpayables/models/operations/upload_bill_attachment.py
+src/codatsyncpayables/models/operations/create_bank_account.py
+src/codatsyncpayables/models/operations/get_create_bankaccounts_model.py
 src/codatsyncpayables/models/operations/create_bill_credit_note.py
 src/codatsyncpayables/models/operations/get_bill_credit_note.py
 src/codatsyncpayables/models/operations/get_create_update_billcreditnote_model.py
@@ -126,6 +129,9 @@ src/codatsyncpayables/models/shared/attachments.py
 src/codatsyncpayables/models/shared/updatebillresponse.py
 src/codatsyncpayables/models/shared/attachmentupload.py
 src/codatsyncpayables/models/shared/codatfile.py
+src/codatsyncpayables/models/shared/bankaccountcreateresponse.py
+src/codatsyncpayables/models/shared/bankaccount.py
+src/codatsyncpayables/models/shared/bankaccountprototype.py
 src/codatsyncpayables/models/shared/createbillcreditnoteresponse.py
 src/codatsyncpayables/models/shared/billcreditnote.py
 src/codatsyncpayables/models/shared/withholdingtax_items.py
@@ -241,6 +247,10 @@ docs/models/operations/updatebillrequest.md
 docs/models/operations/updatebillresponse.md
 docs/models/operations/uploadbillattachmentrequest.md
 docs/models/operations/uploadbillattachmentresponse.md
+docs/models/operations/createbankaccountrequest.md
+docs/models/operations/createbankaccountresponse.md
+docs/models/operations/getcreatebankaccountsmodelrequest.md
+docs/models/operations/getcreatebankaccountsmodelresponse.md
 docs/models/operations/createbillcreditnoterequest.md
 docs/models/operations/createbillcreditnoteresponse.md
 docs/models/operations/getbillcreditnoterequest.md
@@ -371,6 +381,11 @@ docs/models/shared/attachments.md
 docs/models/shared/updatebillresponse.md
 docs/models/shared/attachmentupload.md
 docs/models/shared/codatfile.md
+docs/models/shared/bankaccountcreateresponse.md
+docs/models/shared/bankaccountbankaccounttype.md
+docs/models/shared/bankaccount.md
+docs/models/shared/bankaccounttype.md
+docs/models/shared/bankaccountprototype.md
 docs/models/shared/createbillcreditnoteresponse.md
 docs/models/shared/billcreditnote.md
 docs/models/shared/withholdingtaxitems.md
@@ -456,6 +471,7 @@ docs/models/utils/retryconfig.md
 docs/sdks/companies/README.md
 docs/sdks/connections/README.md
 docs/sdks/bills/README.md
+docs/sdks/bankaccounts/README.md
 docs/sdks/billcreditnotes/README.md
 docs/sdks/billpayments/README.md
 docs/sdks/accounts/README.md

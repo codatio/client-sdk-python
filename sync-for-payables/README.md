@@ -74,6 +74,11 @@ if res.company is not None:
 * [update](docs/sdks/bills/README.md#update) - Update bill
 * [upload_attachment](docs/sdks/bills/README.md#upload_attachment) - Upload bill attachment
 
+### [bank_accounts](docs/sdks/bankaccounts/README.md)
+
+* [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
+* [get_create_model](docs/sdks/bankaccounts/README.md#get_create_model) - Get create/update bank account model
+
 ### [bill_credit_notes](docs/sdks/billcreditnotes/README.md)
 
 * [create](docs/sdks/billcreditnotes/README.md#create) - Create bill credit note

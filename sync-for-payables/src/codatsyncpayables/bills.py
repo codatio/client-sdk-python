@@ -35,7 +35,7 @@ class Bills:
         
         url = utils.generate_url(operations.CreateBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bill", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateBillRequest, "bill", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBillRequest, request)
@@ -632,7 +632,7 @@ class Bills:
         
         url = utils.generate_url(operations.UpdateBillRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bill", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateBillRequest, "bill", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateBillRequest, request)
@@ -700,7 +700,7 @@ class Bills:
         
         url = utils.generate_url(operations.UploadBillAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bills/{billId}/attachments', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "attachment_upload", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadBillAttachmentRequest, "attachment_upload", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
