@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import dataintegritystatus as shared_dataintegritystatus
+from .dataintegritystatus import DataIntegrityStatus
 from codatassess import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -11,6 +11,6 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Status:
-    metadata: Optional[List[shared_dataintegritystatus.DataIntegrityStatus]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
+    metadata: Optional[List[DataIntegrityStatus]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     
 
