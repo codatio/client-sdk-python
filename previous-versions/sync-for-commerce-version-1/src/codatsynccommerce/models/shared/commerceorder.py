@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import commercecustomerref as shared_commercecustomerref
-from ..shared import locationref as shared_locationref
-from ..shared import orderlineitem as shared_orderlineitem
-from ..shared import paymentref as shared_paymentref
-from ..shared import servicecharge as shared_servicecharge
-from ..shared import supplementaldata as shared_supplementaldata
+from .commercecustomerref import CommerceCustomerRef
+from .locationref import LocationRef
+from .orderlineitem import OrderLineItem
+from .paymentref import PaymentRef
+from .servicecharge import ServiceCharge
+from .supplementaldata import SupplementalData
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
@@ -73,18 +73,18 @@ class CommerceOrder:
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
-    customer_ref: Optional[shared_commercecustomerref.CommerceCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
+    customer_ref: Optional[CommerceCustomerRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('customerRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the customer that placed the order."""
-    location_ref: Optional[shared_locationref.LocationRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('locationRef'), 'exclude': lambda f: f is None }})
+    location_ref: Optional[LocationRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('locationRef'), 'exclude': lambda f: f is None }})
     r"""Reference to the geographic location where the order was placed."""
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    order_line_items: Optional[List[shared_orderlineitem.OrderLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('orderLineItems'), 'exclude': lambda f: f is None }})
+    order_line_items: Optional[List[OrderLineItem]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('orderLineItems'), 'exclude': lambda f: f is None }})
     order_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('orderNumber'), 'exclude': lambda f: f is None }})
     r"""Friendly reference for the order in the commerce or point of sale platform."""
-    payments: Optional[List[shared_paymentref.PaymentRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payments'), 'exclude': lambda f: f is None }})
-    service_charges: Optional[List[shared_servicecharge.ServiceCharge]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('serviceCharges'), 'exclude': lambda f: f is None }})
+    payments: Optional[List[PaymentRef]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('payments'), 'exclude': lambda f: f is None }})
+    service_charges: Optional[List[ServiceCharge]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('serviceCharges'), 'exclude': lambda f: f is None }})
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    supplemental_data: Optional[shared_supplementaldata.SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
+    supplemental_data: Optional[SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.

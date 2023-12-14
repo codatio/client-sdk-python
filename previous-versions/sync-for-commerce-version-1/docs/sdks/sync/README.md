@@ -33,7 +33,7 @@ req = operations.GetSyncStatusRequest(
 
 res = s.sync.get_sync_status(req)
 
-if res.status_code == 200:
+if res.sync_summary is not None:
     # handle response
     pass
 ```
@@ -49,7 +49,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.GetSyncStatusResponse](../../models/operations/getsyncstatusresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## request_sync
 
@@ -70,7 +75,7 @@ s = codatsynccommerce.CodatSyncCommerce(
 
 req = operations.RequestSyncRequest(
     sync_to_latest_args=shared.SyncToLatestArgs(
-        sync_to='2022-10-23T00:00:00.000Z',
+        sync_to='2022-10-23T00:00:00Z',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
@@ -93,7 +98,12 @@ if res.sync_summary is not None:
 ### Response
 
 **[operations.RequestSyncResponse](../../models/operations/requestsyncresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## request_sync_for_date_range
 
@@ -114,8 +124,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 req = operations.RequestSyncForDateRangeRequest(
     sync_range=shared.SyncRange(
         date_range=shared.SyncRangeDateRange(
-            finish='2022-10-23T00:00:00.000Z',
-            start='2022-10-23T00:00:00.000Z',
+            finish='2022-10-23T00:00:00Z',
+            start='2022-10-23T00:00:00Z',
         ),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
@@ -139,4 +149,9 @@ if res.sync_summary is not None:
 ### Response
 
 **[operations.RequestSyncForDateRangeResponse](../../models/operations/requestsyncfordaterangeresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

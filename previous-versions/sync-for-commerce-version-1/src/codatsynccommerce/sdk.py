@@ -29,7 +29,7 @@ from .sync import Sync
 from .sync_flow_preferences import SyncFlowPreferences
 from codatsynccommerce import utils
 from codatsynccommerce.models import shared
-from typing import Dict
+from typing import Callable, Dict, Union
 
 class CodatSyncCommerce:
     r"""Sync for Commerce (v1): The API for Sync for Commerce V1.
@@ -40,12 +40,30 @@ class CodatSyncCommerce:
 
     Not seeing what you expect? [See the main Sync for Commerce API](https://docs.codat.io/sync-for-commerce-api).
     """
-    accounting_accounts: AccountingAccounts
-    r"""Accounts"""
+    sync_flow_preferences: SyncFlowPreferences
+    r"""Configure preferences for any given Sync for Commerce company using sync flow."""
+    companies: Companies
+    r"""Create and manage your Codat companies."""
+    connections: Connections
+    r"""Manage your companies' data connections."""
     accounting_bank_accounts: AccountingBankAccounts
     r"""Bank accounts"""
-    accounting_company_info: AccountingCompanyInfo
-    r"""Company info"""
+    commerce_customers: CommerceCustomers
+    r"""Retrieve standardized data from linked commerce platforms."""
+    commerce_company_info: CommerceCompanyInfo
+    r"""Retrieve standardized data from linked commerce platforms."""
+    commerce_locations: CommerceLocations
+    r"""Retrieve standardized data from linked commerce platforms."""
+    commerce_orders: CommerceOrders
+    r"""Retrieve standardized data from linked commerce platforms."""
+    commerce_payments: CommercePayments
+    r"""Retrieve standardized data from linked commerce platforms."""
+    commerce_products: CommerceProducts
+    r"""Retrieve standardized data from linked commerce platforms."""
+    commerce_transactions: CommerceTransactions
+    r"""Retrieve standardized data from linked commerce platforms."""
+    accounting_accounts: AccountingAccounts
+    r"""Accounts"""
     accounting_credit_notes: AccountingCreditNotes
     r"""Credit notes"""
     accounting_customers: AccountingCustomers
@@ -58,43 +76,25 @@ class CodatSyncCommerce:
     r"""Journal entries"""
     accounting_payments: AccountingPayments
     r"""Payments"""
-    commerce_company_info: CommerceCompanyInfo
-    r"""Retrieve standardized data from linked commerce platforms."""
-    commerce_customers: CommerceCustomers
-    r"""Retrieve standardized data from linked commerce platforms."""
-    commerce_locations: CommerceLocations
-    r"""Retrieve standardized data from linked commerce platforms."""
-    commerce_orders: CommerceOrders
-    r"""Retrieve standardized data from linked commerce platforms."""
-    commerce_payments: CommercePayments
-    r"""Retrieve standardized data from linked commerce platforms."""
-    commerce_products: CommerceProducts
-    r"""Retrieve standardized data from linked commerce platforms."""
-    commerce_transactions: CommerceTransactions
-    r"""Retrieve standardized data from linked commerce platforms."""
-    companies: Companies
-    r"""Create and manage your Codat companies."""
-    company_management: CompanyManagement
-    r"""Create new and manage existing Sync for Commerce companies."""
-    configuration: Configuration
-    r"""Expressively configure preferences for any given Sync for Commerce company."""
-    connections: Connections
-    r"""Manage your companies' data connections."""
-    integrations: Integrations
-    r"""View useful information about codat's integrations."""
-    push_data: PushData
-    r"""View push options and get push statuses."""
     refresh_data: RefreshData
     r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
+    accounting_company_info: AccountingCompanyInfo
+    r"""Company info"""
+    push_data: PushData
+    r"""View push options and get push statuses."""
     sync: Sync
     r"""Initiate a sync of Sync for Commerce company data into their respective accounting software."""
-    sync_flow_preferences: SyncFlowPreferences
-    r"""Configure preferences for any given Sync for Commerce company using sync flow."""
+    configuration: Configuration
+    r"""Expressively configure preferences for any given Sync for Commerce company."""
+    integrations: Integrations
+    r"""View useful information about codat's integrations."""
+    company_management: CompanyManagement
+    r"""Create new and manage existing Sync for Commerce companies."""
 
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 security: shared.Security = None,
+                 security: Union[shared.Security,Callable[[], shared.Security]] = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -104,7 +104,7 @@ class CodatSyncCommerce:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param security: The security details required for authentication
-        :type security: shared.Security
+        :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -119,42 +119,38 @@ class CodatSyncCommerce:
         if client is None:
             client = requests_http.Session()
         
-        
-        security_client = utils.configure_security_client(client, security)
-        
-        
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
        
         self._init_sdks()
     
     def _init_sdks(self):
-        self.accounting_accounts = AccountingAccounts(self.sdk_configuration)
+        self.sync_flow_preferences = SyncFlowPreferences(self.sdk_configuration)
+        self.companies = Companies(self.sdk_configuration)
+        self.connections = Connections(self.sdk_configuration)
         self.accounting_bank_accounts = AccountingBankAccounts(self.sdk_configuration)
-        self.accounting_company_info = AccountingCompanyInfo(self.sdk_configuration)
+        self.commerce_customers = CommerceCustomers(self.sdk_configuration)
+        self.commerce_company_info = CommerceCompanyInfo(self.sdk_configuration)
+        self.commerce_locations = CommerceLocations(self.sdk_configuration)
+        self.commerce_orders = CommerceOrders(self.sdk_configuration)
+        self.commerce_payments = CommercePayments(self.sdk_configuration)
+        self.commerce_products = CommerceProducts(self.sdk_configuration)
+        self.commerce_transactions = CommerceTransactions(self.sdk_configuration)
+        self.accounting_accounts = AccountingAccounts(self.sdk_configuration)
         self.accounting_credit_notes = AccountingCreditNotes(self.sdk_configuration)
         self.accounting_customers = AccountingCustomers(self.sdk_configuration)
         self.accounting_direct_incomes = AccountingDirectIncomes(self.sdk_configuration)
         self.accounting_invoices = AccountingInvoices(self.sdk_configuration)
         self.accounting_journal_entries = AccountingJournalEntries(self.sdk_configuration)
         self.accounting_payments = AccountingPayments(self.sdk_configuration)
-        self.commerce_company_info = CommerceCompanyInfo(self.sdk_configuration)
-        self.commerce_customers = CommerceCustomers(self.sdk_configuration)
-        self.commerce_locations = CommerceLocations(self.sdk_configuration)
-        self.commerce_orders = CommerceOrders(self.sdk_configuration)
-        self.commerce_payments = CommercePayments(self.sdk_configuration)
-        self.commerce_products = CommerceProducts(self.sdk_configuration)
-        self.commerce_transactions = CommerceTransactions(self.sdk_configuration)
-        self.companies = Companies(self.sdk_configuration)
-        self.company_management = CompanyManagement(self.sdk_configuration)
-        self.configuration = Configuration(self.sdk_configuration)
-        self.connections = Connections(self.sdk_configuration)
-        self.integrations = Integrations(self.sdk_configuration)
-        self.push_data = PushData(self.sdk_configuration)
         self.refresh_data = RefreshData(self.sdk_configuration)
+        self.accounting_company_info = AccountingCompanyInfo(self.sdk_configuration)
+        self.push_data = PushData(self.sdk_configuration)
         self.sync = Sync(self.sdk_configuration)
-        self.sync_flow_preferences = SyncFlowPreferences(self.sdk_configuration)
+        self.configuration = Configuration(self.sdk_configuration)
+        self.integrations = Integrations(self.sdk_configuration)
+        self.company_management = CompanyManagement(self.sdk_configuration)
     

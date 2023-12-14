@@ -51,7 +51,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeleteConnectionResponse](../../models/operations/deleteconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_connection
 
@@ -92,7 +97,12 @@ if res.connection is not None:
 ### Response
 
 **[operations.GetConnectionResponse](../../models/operations/getconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## unlink
 
@@ -134,4 +144,9 @@ if res.connection is not None:
 ### Response
 
 **[operations.UnlinkConnectionResponse](../../models/operations/unlinkconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

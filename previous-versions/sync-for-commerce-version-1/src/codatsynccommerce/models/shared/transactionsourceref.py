@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import transactionsourcetype as shared_transactionsourcetype
+from .transactionsourcetype import TransactionSourceType
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 
@@ -12,7 +12,7 @@ from dataclasses_json import Undefined, dataclass_json
 class TransactionSourceRef:
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The unique identitifer of the record being referenced"""
-    type: shared_transactionsourcetype.TransactionSourceType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: TransactionSourceType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of source the transaction arose."""
     
 

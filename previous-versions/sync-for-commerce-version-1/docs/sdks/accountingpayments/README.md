@@ -42,10 +42,10 @@ req = operations.CreateAccountingPaymentRequest(
         customer_ref=shared.AccountingCustomerRef(
             id='<ID>',
         ),
-        date_='2022-10-23T00:00:00.000Z',
+        date_='2022-10-23T00:00:00Z',
         lines=[
             shared.PaymentLine(
-                allocated_on_date='2022-10-23T00:00:00.000Z',
+                allocated_on_date='2022-10-23T00:00:00Z',
                 amount=Decimal('9211.94'),
                 links=[
                     shared.PaymentLineLink(
@@ -55,15 +55,15 @@ req = operations.CreateAccountingPaymentRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         payment_method_ref=shared.PaymentMethodRef(
             id='<ID>',
         ),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplemental_data=shared.SupplementalData(
             content={
-                "Diesel": {
-                    "property": 'Reduced',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
@@ -90,4 +90,9 @@ if res.accounting_create_payment_response is not None:
 ### Response
 
 **[operations.CreateAccountingPaymentResponse](../../models/operations/createaccountingpaymentresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

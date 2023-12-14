@@ -20,6 +20,7 @@ class DataType(str, Enum):
     DIRECT_COSTS = 'directCosts'
     DIRECT_INCOMES = 'directIncomes'
     INVOICES = 'invoices'
+    ITEM_RECEIPTS = 'itemReceipts'
     ITEMS = 'items'
     JOURNAL_ENTRIES = 'journalEntries'
     JOURNALS = 'journals'
