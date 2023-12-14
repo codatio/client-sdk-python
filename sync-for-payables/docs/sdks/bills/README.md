@@ -48,8 +48,8 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.CreateBillRequest(
     bill=shared.Bill(
         currency='USD',
-        due_date='2022-10-23T00:00:00.000Z',
-        issue_date='2022-10-23T00:00:00.000Z',
+        due_date='2022-10-23T00:00:00Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.BillLineItem(
                 account_ref=shared.AccountRef(),
@@ -83,24 +83,24 @@ req = operations.CreateBillRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         payment_allocations=[
             shared.AccountingPaymentAllocation(
                 allocation=shared.BillAllocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='EUR',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
         purchase_order_refs=[
             shared.PurchaseOrderReference(),
         ],
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.BillStatus.DRAFT,
         sub_total=Decimal('0.86'),
         supplemental_data=shared.SupplementalData(
@@ -642,8 +642,8 @@ s = codatsyncpayables.CodatSyncPayables(
 req = operations.UpdateBillRequest(
     bill=shared.Bill(
         currency='EUR',
-        due_date='2022-10-23T00:00:00.000Z',
-        issue_date='2022-10-23T00:00:00.000Z',
+        due_date='2022-10-23T00:00:00Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.BillLineItem(
                 account_ref=shared.AccountRef(),
@@ -677,24 +677,24 @@ req = operations.UpdateBillRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         payment_allocations=[
             shared.AccountingPaymentAllocation(
                 allocation=shared.BillAllocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='USD',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
         purchase_order_refs=[
             shared.PurchaseOrderReference(),
         ],
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.BillStatus.UNKNOWN,
         sub_total=Decimal('540.62'),
         supplemental_data=shared.SupplementalData(

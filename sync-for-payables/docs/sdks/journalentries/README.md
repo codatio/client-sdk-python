@@ -38,7 +38,7 @@ s = codatsyncpayables.CodatSyncPayables(
 
 req = operations.CreateJournalEntryRequest(
     journal_entry=shared.JournalEntry(
-        created_on='2022-10-23T00:00:00.000Z',
+        created_on='2022-10-23T00:00:00Z',
         journal_lines=[
             shared.JournalLine(
                 account_ref=shared.AccountRef(),
@@ -56,12 +56,12 @@ req = operations.CreateJournalEntryRequest(
             id='<ID>',
         ),
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        posted_on='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        posted_on='2022-10-23T00:00:00Z',
         record_ref=shared.RecordReference(
             data_type='invoice',
         ),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplemental_data=shared.SupplementalData(
             content={
                 'key': {
@@ -69,7 +69,7 @@ req = operations.CreateJournalEntryRequest(
                 },
             },
         ),
-        updated_on='2022-10-23T00:00:00.000Z',
+        updated_on='2022-10-23T00:00:00Z',
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',

@@ -2,6 +2,7 @@
 
 import requests as requests_http
 from .accounts import Accounts
+from .bank_accounts import BankAccounts
 from .bill_credit_notes import BillCreditNotes
 from .bill_payments import BillPayments
 from .bills import Bills
@@ -56,6 +57,8 @@ class CodatSyncPayables:
     r"""Manage your companies' data connections."""
     bills: Bills
     r"""Bills"""
+    bank_accounts: BankAccounts
+    r"""Bank accounts"""
     bill_credit_notes: BillCreditNotes
     r"""Bill credit notes"""
     bill_payments: BillPayments
@@ -121,6 +124,7 @@ class CodatSyncPayables:
         self.companies = Companies(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
         self.bills = Bills(self.sdk_configuration)
+        self.bank_accounts = BankAccounts(self.sdk_configuration)
         self.bill_credit_notes = BillCreditNotes(self.sdk_configuration)
         self.bill_payments = BillPayments(self.sdk_configuration)
         self.accounts = Accounts(self.sdk_configuration)
