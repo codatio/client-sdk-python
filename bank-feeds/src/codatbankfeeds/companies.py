@@ -14,7 +14,7 @@ class Companies:
         
     
     
-    def create(self, request: shared.CompanyRequestBody, retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
+    def create(self, request: Optional[shared.CompanyRequestBody], retries: Optional[utils.RetryConfig] = None) -> operations.CreateCompanyResponse:
         r"""Create company
         Creates a new company that can be used to assign connections to. 
 
@@ -24,7 +24,7 @@ class Companies:
         
         url = base_url + '/companies'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[shared.CompanyRequestBody], "request", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -248,7 +248,7 @@ class Companies:
         
         url = utils.generate_url(operations.UpdateCompanyRequest, base_url, '/companies/{companyId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "company_request_body", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateCompanyRequest, "company_request_body", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

@@ -74,7 +74,6 @@ src/codatbankfeeds/models/errors/__init__.py
 src/codatbankfeeds/models/operations/__init__.py
 src/codatbankfeeds/models/shared/__init__.py
 src/codatbankfeeds/models/webhooks/__init__.py
-USAGE.md
 docs/models/operations/createcompanyresponse.md
 docs/models/operations/deletecompanyrequest.md
 docs/models/operations/deletecompanyresponse.md
@@ -162,4 +161,5 @@ docs/sdks/connections/README.md
 docs/sdks/accountmapping/README.md
 docs/sdks/sourceaccounts/README.md
 docs/sdks/transactions/README.md
+USAGE.md
 .gitattributes

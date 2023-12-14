@@ -28,7 +28,7 @@ class AccountMapping:
         
         url = utils.generate_url(operations.CreateBankAccountMappingRequest, base_url, '/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "zero", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateBankAccountMappingRequest, "zero", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

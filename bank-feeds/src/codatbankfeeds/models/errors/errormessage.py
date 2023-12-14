@@ -11,7 +11,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class ErrorMessage(Exception):
-    r"""Your `query` parameter was not correctly formed"""
+    r"""The request made is not valid."""
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     r"""`True` if the error occurred transiently and can be retried."""
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
@@ -27,4 +27,4 @@ class ErrorMessage(Exception):
     
 
     def __str__(self) -> str:
-        return utils.marshal_json(self)
+        return utils.marshal_json(self, type(self))

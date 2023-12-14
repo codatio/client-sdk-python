@@ -18,22 +18,24 @@ class SourceAccounts:
         r"""Create source account
         The _Create Source Account_ endpoint allows you to create a representation of a bank account within Codat's domain. The company can then map the source account to an existing or new target account in their accounting software.
 
-        #### Account Mapping Variability
+        #### Account mapping variability
 
         The method of mapping the source account to the target account varies depending on the accounting package your company uses.
 
-        #### Mapping Options:
+        #### Mapping options:
 
         1. **API Mapping**: Integrate the mapping journey directly into your application for a seamless user experience.
         2. **Codat UI Mapping**: If you prefer a quicker setup, you can utilize Codat's provided user interface for mapping.
         3. **Accounting Platform Mapping**: For some accounting software, the mapping process must be conducted within the software itself.
 
-        ### Integration specific behaviour
+        ### Integration-specific behaviour
 
         | Bank Feed Integration | API Mapping | Codat UI Mapping | Accounting Platform Mapping |
         | --------------------- | ----------- | ---------------- | --------------------------- |
         | Xero                  | ✅          | ✅               |                             |
         | FreeAgent             | ✅          | ✅               |                             |
+        | Oracle NetSuite       | ✅          | ✅               |                             |
+        | Exact Online (NL)     | ✅          | ✅               |                             |
         | QuickBooks Online     |             |                  | ✅                          |
         | Sage                  |             |                  | ✅                          |
         """
@@ -41,7 +43,7 @@ class SourceAccounts:
         
         url = utils.generate_url(operations.CreateSourceAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "source_account", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateSourceAccountRequest, "source_account", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -210,7 +212,7 @@ class SourceAccounts:
         
         url = utils.generate_url(operations.GenerateCredentialsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.GenerateCredentialsRequest, "request_body", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -329,7 +331,7 @@ class SourceAccounts:
         
         url = utils.generate_url(operations.UpdateSourceAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "source_account", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateSourceAccountRequest, "source_account", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
