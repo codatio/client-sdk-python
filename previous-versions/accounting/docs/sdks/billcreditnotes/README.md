@@ -42,12 +42,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateBillCreditNoteRequest(
     bill_credit_note=shared.BillCreditNote(
-        allocated_on_date='2022-10-23T00:00:00.000Z',
+        allocated_on_date='2022-10-23T00:00:00Z',
         bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
         currency='USD',
         discount_percentage=Decimal('0'),
         id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
-        issue_date='2022-10-23T00:00:00.000Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.BillCreditNoteLineItem(
                 account_ref=shared.AccountRef(),
@@ -80,23 +80,23 @@ req = operations.CreateBillCreditNoteRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         note='Bill Credit Note with 1 line items, totaling 805.78',
         payment_allocations=[
             shared.PaymentAllocationItems(
                 allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='EUR',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
         remaining_credit=Decimal('0'),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.BillCreditNoteStatus.PAID,
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(
@@ -337,12 +337,12 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateBillCreditNoteRequest(
     bill_credit_note=shared.BillCreditNote(
-        allocated_on_date='2022-10-23T00:00:00.000Z',
+        allocated_on_date='2022-10-23T00:00:00Z',
         bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
         currency='GBP',
         discount_percentage=Decimal('0'),
         id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
-        issue_date='2022-10-23T00:00:00.000Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.BillCreditNoteLineItem(
                 account_ref=shared.AccountRef(),
@@ -375,23 +375,23 @@ req = operations.UpdateBillCreditNoteRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         note='Bill Credit Note with 1 line items, totaling 805.78',
         payment_allocations=[
             shared.PaymentAllocationItems(
                 allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='USD',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
         remaining_credit=Decimal('0'),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.BillCreditNoteStatus.PAID,
         sub_total=Decimal('805.78'),
         supplemental_data=shared.SupplementalData(

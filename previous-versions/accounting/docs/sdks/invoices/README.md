@@ -52,8 +52,8 @@ req = operations.CreateInvoiceRequest(
         customer_ref=shared.AccountingCustomerRef(
             id='<ID>',
         ),
-        due_date='2022-10-23T00:00:00.000Z',
-        issue_date='2022-10-23T00:00:00.000Z',
+        due_date='2022-10-23T00:00:00Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.InvoiceLineItem(
                 account_ref=shared.AccountRef(),
@@ -89,18 +89,18 @@ req = operations.CreateInvoiceRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        paid_on_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        paid_on_date='2022-10-23T00:00:00Z',
         payment_allocations=[
             shared.PaymentAllocationItems(
                 allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='EUR',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
@@ -109,7 +109,7 @@ req = operations.CreateInvoiceRequest(
                 data_type=shared.DataType.INVOICES,
             ),
         ],
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.InvoiceStatus.DRAFT,
         supplemental_data=shared.SupplementalData(
             content={
@@ -633,8 +633,8 @@ req = operations.UpdateInvoiceRequest(
         customer_ref=shared.AccountingCustomerRef(
             id='<ID>',
         ),
-        due_date='2022-10-23T00:00:00.000Z',
-        issue_date='2022-10-23T00:00:00.000Z',
+        due_date='2022-10-23T00:00:00Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.InvoiceLineItem(
                 account_ref=shared.AccountRef(),
@@ -670,18 +670,18 @@ req = operations.UpdateInvoiceRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        paid_on_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        paid_on_date='2022-10-23T00:00:00Z',
         payment_allocations=[
             shared.PaymentAllocationItems(
                 allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='GBP',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
@@ -690,7 +690,7 @@ req = operations.UpdateInvoiceRequest(
                 data_type=shared.DataType.INVOICES,
             ),
         ],
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.InvoiceStatus.VOID,
         supplemental_data=shared.SupplementalData(
             content={

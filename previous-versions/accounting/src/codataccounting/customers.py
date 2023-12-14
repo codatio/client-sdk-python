@@ -35,7 +35,7 @@ class Customers:
         
         url = utils.generate_url(operations.CreateCustomerRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/customers', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "customer", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateCustomerRequest, "customer", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateCustomerRequest, request)
@@ -472,7 +472,7 @@ class Customers:
         
         url = utils.generate_url(operations.UpdateCustomerRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/customers/{customerId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "customer", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateCustomerRequest, "customer", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateCustomerRequest, request)

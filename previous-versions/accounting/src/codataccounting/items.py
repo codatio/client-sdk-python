@@ -30,7 +30,7 @@ class Items:
         
         url = utils.generate_url(operations.CreateItemRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/items', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "item", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateItemRequest, "item", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateItemRequest, request)

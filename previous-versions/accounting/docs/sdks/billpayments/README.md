@@ -43,11 +43,11 @@ req = operations.CreateBillPaymentRequest(
     bill_payment=shared.BillPayment(
         account_ref=shared.AccountRef(),
         currency='USD',
-        date_='2022-10-23T00:00:00.000Z',
+        date_='2022-10-23T00:00:00Z',
         id='3d5a8e00-d108-4045-8823-7f342676cffa',
         lines=[
             shared.BillPaymentLine(
-                allocated_on_date='2022-10-23T00:00:00.000Z',
+                allocated_on_date='2022-10-23T00:00:00Z',
                 amount=Decimal('8592.13'),
                 links=[
                     shared.BillPaymentLineLink(
@@ -57,12 +57,12 @@ req = operations.CreateBillPaymentRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
         payment_method_ref=shared.PaymentMethodRef(
             id='<ID>',
         ),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplemental_data=shared.SupplementalData(
             content={
                 'key': {

@@ -39,7 +39,7 @@ class Invoices:
         
         url = utils.generate_url(operations.CreateInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "invoice", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateInvoiceRequest, "invoice", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateInvoiceRequest, request)
@@ -624,7 +624,7 @@ class Invoices:
         
         url = utils.generate_url(operations.UpdateInvoiceRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "invoice", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateInvoiceRequest, "invoice", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateInvoiceRequest, request)
@@ -692,7 +692,7 @@ class Invoices:
         
         url = utils.generate_url(operations.UploadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}/attachment', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadInvoiceAttachmentRequest, "request_body", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

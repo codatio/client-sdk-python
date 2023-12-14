@@ -52,8 +52,8 @@ req = operations.CreateItemRequest(
         is_invoice_item=False,
         item_status=shared.ItemStatus.ACTIVE,
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplemental_data=shared.SupplementalData(
             content={
                 'key': {

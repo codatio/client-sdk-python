@@ -41,13 +41,13 @@ s = codataccounting.CodatAccounting(
 
 req = operations.CreateCreditNoteRequest(
     credit_note=shared.CreditNote(
-        allocated_on_date='2022-10-23T00:00:00.000Z',
+        allocated_on_date='2022-10-23T00:00:00Z',
         currency='USD',
         customer_ref=shared.AccountingCustomerRef(
             id='<ID>',
         ),
         discount_percentage=Decimal('6384.24'),
-        issue_date='2022-10-23T00:00:00.000Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(),
@@ -83,22 +83,22 @@ req = operations.CreateCreditNoteRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         payment_allocations=[
             shared.PaymentAllocationItems(
                 allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='USD',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='EUR',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
         remaining_credit=Decimal('0.86'),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.CreditNoteStatus.DRAFT,
         sub_total=Decimal('3015.1'),
         supplemental_data=shared.SupplementalData(
@@ -336,13 +336,13 @@ s = codataccounting.CodatAccounting(
 
 req = operations.UpdateCreditNoteRequest(
     credit_note=shared.CreditNote(
-        allocated_on_date='2022-10-23T00:00:00.000Z',
+        allocated_on_date='2022-10-23T00:00:00Z',
         currency='GBP',
         customer_ref=shared.AccountingCustomerRef(
             id='<ID>',
         ),
         discount_percentage=Decimal('5971.29'),
-        issue_date='2022-10-23T00:00:00.000Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.CreditNoteLineItem(
                 account_ref=shared.AccountRef(),
@@ -378,22 +378,22 @@ req = operations.UpdateCreditNoteRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         payment_allocations=[
             shared.PaymentAllocationItems(
                 allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='USD',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='EUR',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
         remaining_credit=Decimal('540.62'),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.CreditNoteStatus.PARTIALLY_PAID,
         sub_total=Decimal('4995.57'),
         supplemental_data=shared.SupplementalData(

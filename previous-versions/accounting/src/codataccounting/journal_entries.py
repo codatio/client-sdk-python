@@ -30,7 +30,7 @@ class JournalEntries:
         
         url = utils.generate_url(operations.CreateJournalEntryRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/journalEntries', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "journal_entry", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateJournalEntryRequest, "journal_entry", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateJournalEntryRequest, request)

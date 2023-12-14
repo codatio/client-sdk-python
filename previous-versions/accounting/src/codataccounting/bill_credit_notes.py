@@ -30,7 +30,7 @@ class BillCreditNotes:
         
         url = utils.generate_url(operations.CreateBillCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bill_credit_note", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateBillCreditNoteRequest, "bill_credit_note", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBillCreditNoteRequest, request)
@@ -285,7 +285,7 @@ class BillCreditNotes:
         
         url = utils.generate_url(operations.UpdateBillCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes/{billCreditNoteId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "bill_credit_note", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateBillCreditNoteRequest, "bill_credit_note", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateBillCreditNoteRequest, request)
@@ -357,7 +357,7 @@ class BillCreditNotes:
         
         url = utils.generate_url(operations.UploadBillCreditNoteAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes/{billCreditNoteId}/attachment', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadBillCreditNoteAttachmentRequest, "request_body", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

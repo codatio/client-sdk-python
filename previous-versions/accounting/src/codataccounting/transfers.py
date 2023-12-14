@@ -30,7 +30,7 @@ class Transfers:
         
         url = utils.generate_url(operations.CreateTransferRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/transfers', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "transfer", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateTransferRequest, "transfer", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -284,7 +284,7 @@ class Transfers:
         
         url = utils.generate_url(operations.UploadTransferAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/transfers/{transferId}/attachment', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadTransferAttachmentRequest, "request_body", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
