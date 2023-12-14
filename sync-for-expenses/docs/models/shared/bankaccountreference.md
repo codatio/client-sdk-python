@@ -1,4 +1,4 @@
-# ExpenseTransactionBankAccountReference
+# BankAccountReference
 
 
 ## Fields

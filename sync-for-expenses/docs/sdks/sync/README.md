@@ -52,7 +52,12 @@ if res.company_sync_status is not None:
 ### Response
 
 **[operations.GetSyncByIDResponse](../../models/operations/getsyncbyidresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_last_successful_sync
 
@@ -92,7 +97,12 @@ if res.company_sync_status is not None:
 ### Response
 
 **[operations.GetLastSuccessfulSyncResponse](../../models/operations/getlastsuccessfulsyncresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## get_latest_sync
 
@@ -132,7 +142,12 @@ if res.company_sync_status is not None:
 ### Response
 
 **[operations.GetLatestSyncResponse](../../models/operations/getlatestsyncresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## initiate_sync
 
@@ -177,7 +192,12 @@ if res.sync_initiated is not None:
 ### Response
 
 **[operations.InitiateSyncResponse](../../models/operations/initiatesyncresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,422,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## list
 
@@ -201,7 +221,7 @@ req = operations.ListSyncsRequest(
 
 res = s.sync.list(req)
 
-if res.company_sync_statuses is not None:
+if res.classes is not None:
     # handle response
     pass
 ```
@@ -217,4 +237,9 @@ if res.company_sync_statuses is not None:
 ### Response
 
 **[operations.ListSyncsResponse](../../models/operations/listsyncsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |

@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import datatype as shared_datatype
-from ..shared import pushoperationchange as shared_pushoperationchange
-from ..shared import pushoperationstatus as shared_pushoperationstatus
-from ..shared import supplier as shared_supplier
-from ..shared import validation as shared_validation
+from .datatype import DataType
+from .pushoperationchange import PushOperationChange
+from .pushoperationstatus import PushOperationStatus
+from .supplier import Supplier
+from .validation import Validation
 from codatsyncexpenses import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -42,11 +42,11 @@ class UpdateSupplierResponse:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    status: shared_pushoperationstatus.PushOperationStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: PushOperationStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The current status of the push operation."""
     status_code: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode') }})
     r"""Push status code."""
-    changes: Optional[List[shared_pushoperationchange.PushOperationChange]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes') }})
+    changes: Optional[List[PushOperationChange]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changes') }})
     r"""Contains a single entry that communicates which record has changed and the manner in which it changed."""
     completed_on_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completedOnUtc'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -69,14 +69,14 @@ class UpdateSupplierResponse:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    data: Optional[shared_supplier.Supplier] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: Optional[Supplier] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     r"""> View the coverage for suppliers in the <a className=\\"external\\" href=\\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers\\" target=\\"_blank\\">Data coverage explorer</a>.
 
     ## Overview
 
     From the **Suppliers** endpoints, you can retrieve a list of [all the suppliers for a company](https://docs.codat.io/sync-for-expenses-api#/operations/list-suppliers). Suppliers' data links to accounts payable [bills](https://docs.codat.io/sync-for-expenses-api#/schemas/Bill).
     """
-    data_type: Optional[shared_datatype.DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    data_type: Optional[DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
     r"""Available Data types"""
     error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage') }})
     r"""A message about the error."""
@@ -87,7 +87,7 @@ class UpdateSupplierResponse:
 
     Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
     """
-    validation: Optional[shared_validation.Validation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
+    validation: Optional[Validation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is None }})
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""
     
 
