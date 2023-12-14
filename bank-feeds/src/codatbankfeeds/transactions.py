@@ -30,7 +30,7 @@ class Transactions:
         
         url = utils.generate_url(operations.CreateBankTransactionsRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "create_bank_transactions", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateBankTransactionsRequest, "create_bank_transactions", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBankTransactionsRequest, request)
