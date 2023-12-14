@@ -40,7 +40,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.CreateCustomerRequest(
     customer=shared.Customer(
         addresses=[
-            shared.Items(
+            shared.AccountingAddress(
                 type=shared.AccountingAddressType.BILLING,
             ),
         ],
@@ -49,9 +49,9 @@ req = operations.CreateCustomerRequest(
                 address=shared.Items(
                     type=shared.AccountingAddressType.BILLING,
                 ),
-                modified_date='2022-10-23T00:00:00.000Z',
+                modified_date='2022-10-23T00:00:00Z',
                 phone=[
-                    shared.ContactPhone(
+                    shared.Phone(
                         number='01224 658 999',
                         type=shared.PhoneNumberType.MOBILE,
                     ),
@@ -61,13 +61,13 @@ req = operations.CreateCustomerRequest(
         ],
         default_currency='GBP',
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "grey": {
-                    "technology": 'East',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
@@ -94,7 +94,12 @@ if res.create_customer_response is not None:
 ### Response
 
 **[operations.CreateCustomerResponse](../../models/operations/createcustomerresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## get
 
@@ -121,7 +126,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='Northeast Hatchback Kia',
+    customer_id='string',
 )
 
 res = s.customers.get(req)
@@ -142,7 +147,12 @@ if res.customer is not None:
 ### Response
 
 **[operations.GetCustomerResponse](../../models/operations/getcustomerresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
 
 ## list
 
@@ -190,7 +200,12 @@ if res.customers is not None:
 ### Response
 
 **[operations.ListCustomersResponse](../../models/operations/listcustomersresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 400-600                             | */*                                 |
 
 ## update
 
@@ -220,7 +235,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 req = operations.UpdateCustomerRequest(
     customer=shared.Customer(
         addresses=[
-            shared.Items(
+            shared.AccountingAddress(
                 type=shared.AccountingAddressType.DELIVERY,
             ),
         ],
@@ -229,9 +244,9 @@ req = operations.UpdateCustomerRequest(
                 address=shared.Items(
                     type=shared.AccountingAddressType.UNKNOWN,
                 ),
-                modified_date='2022-10-23T00:00:00.000Z',
+                modified_date='2022-10-23T00:00:00Z',
                 phone=[
-                    shared.ContactPhone(
+                    shared.Phone(
                         number='+44 25691 154789',
                         type=shared.PhoneNumberType.LANDLINE,
                     ),
@@ -241,20 +256,20 @@ req = operations.UpdateCustomerRequest(
         ],
         default_currency='EUR',
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
-                "redundant": {
-                    "cheater": 'Islands',
+                'key': {
+                    'key': 'string',
                 },
             },
         ),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='withdrawal extend',
+    customer_id='string',
 )
 
 res = s.customers.update(req)
@@ -275,4 +290,9 @@ if res.update_customer_response is not None:
 ### Response
 
 **[operations.UpdateCustomerResponse](../../models/operations/updatecustomerresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |

@@ -3,14 +3,17 @@
 from .account import *
 from .accountingaddresstype import *
 from .accountmappinginfo import *
+from .accountprototype import *
 from .accountstatus import *
 from .accounttype import *
 from .attachment import *
+from .attachmentupload import *
 from .bankaccount import *
 from .clientratelimitreachedwebhook import *
 from .clientratelimitreachedwebhookdata import *
 from .clientratelimitresetwebhook import *
 from .clientratelimitresetwebhookdata import *
+from .codatfile import *
 from .companies import *
 from .company import *
 from .companyconfiguration import *
@@ -33,12 +36,12 @@ from .dataconnectionerror import *
 from .dataconnectionstatus import *
 from .datastatus import *
 from .datatype import *
-from .errormessage import *
 from .expensetransaction import *
 from .expensetransactionline import *
 from .halref import *
 from .initiatesync import *
 from .integrationtype import *
+from .invoiceto import *
 from .items import *
 from .links import *
 from .mappingoptions import *
@@ -59,6 +62,7 @@ from .pushoptionproperty import *
 from .pushoptiontype import *
 from .pushvalidationinfo import *
 from .recordref import *
+from .schema_datatype import *
 from .security import *
 from .supplementaldata import *
 from .supplier import *
@@ -73,6 +77,7 @@ from .syncinitiated import *
 from .syncstartedwebhook import *
 from .taxratemappinginfo import *
 from .trackingcategorymappinginfo import *
+from .trackingref import *
 from .transaction import *
 from .transactions import *
 from .transactionstatus import *
@@ -83,4 +88,4 @@ from .updatesupplierresponse import *
 from .validation import *
 from .validationitem import *
 
-__all__ = ["Account","AccountMappingInfo","AccountMappingInfoAccountType","AccountMappingInfoValidTransactionTypes","AccountMetadata","AccountStatus","AccountType","AccountValidDataTypeLinks","AccountingAddressType","Attachment","BankAccount","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","Companies","Company","CompanyConfiguration","CompanyRequestBody","CompanySyncStatus","Connection","ConnectionSourceType","Connections","Contact","ContactPhone","ContactRef","ContactRefType","CreateAccountResponse","CreateCustomerResponse","CreateExpenseRequest","CreateExpenseResponse","CreateSupplierResponse","Customer","CustomerDetails","CustomerStatus","Customers","DataConnectionError","DataConnectionStatus","DataStatus","DataStatusDataTypes","DataType","ErrorMessage","ExpenseTransaction","ExpenseTransactionBankAccountReference","ExpenseTransactionLine","ExpenseTransactionType","HalRef","InitiateSync","IntegrationType","Items","Links","MappingOptions","Metadata","PhoneNumberType","PullOperation","PullOperationStatus","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","Security","SupplementalData","Supplier","SupplierAccountingAddress","SupplierDetails","SupplierStatus","Suppliers","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncInitiated","SyncStartedWebhook","SyncStartedWebhookData","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","Transaction","TransactionStatus","Transactions","UpdateCustomerResponse","UpdateExpenseRequest","UpdateExpenseRequestBankAccountReference","UpdateExpenseResponse","UpdateSupplierResponse","Validation","ValidationItem"]
+__all__ = ["Account","AccountMappingInfo","AccountMappingInfoAccountType","AccountMetadata","AccountPrototype","AccountStatus","AccountType","AccountValidDataTypeLinks","AccountingAddress","AccountingAddressType","Attachment","AttachmentUpload","BankAccount","BankAccountReference","ClientRateLimitReachedWebhook","ClientRateLimitReachedWebhookData","ClientRateLimitResetWebhook","ClientRateLimitResetWebhookData","CodatFile","Companies","Company","CompanyConfiguration","CompanyRequestBody","CompanySyncStatus","Connection","Connections","Contact","ContactRef","CreateAccountResponse","CreateCustomerResponse","CreateExpenseRequest","CreateExpenseResponse","CreateSupplierResponse","Customer","CustomerDetails","CustomerStatus","Customers","Data","DataConnectionError","DataConnectionStatus","DataStatus","DataType","DataTypes","ExpenseTransaction","ExpenseTransactionLine","ExpenseTransactionType","HalRef","InitiateSync","IntegrationType","InvoiceTo","Items","Links","MappingOptions","Metadata","Phone","PhoneNumberType","PullOperation","PullOperations","PushChangeType","PushFieldValidation","PushOperation","PushOperationChange","PushOperationRef","PushOperationStatus","PushOperations","PushOption","PushOptionChoice","PushOptionProperty","PushOptionType","PushValidationInfo","RecordRef","SchemaDataType","Security","SourceType","Status","SupplementalData","Supplier","SupplierDetails","SupplierStatus","Suppliers","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncInitiated","SyncStartedWebhook","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","TrackingRef","TrackingRefDataType","Transaction","TransactionStatus","Transactions","Type","UpdateCustomerResponse","UpdateExpenseRequest","UpdateExpenseRequestBankAccountReference","UpdateExpenseResponse","UpdateSupplierResponse","ValidDataTypeLinks","ValidTransactionTypes","Validation","ValidationItem"]

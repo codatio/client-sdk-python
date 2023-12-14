@@ -50,7 +50,12 @@ if res.transaction is not None:
 ### Response
 
 **[operations.GetSyncTransactionResponse](../../models/operations/getsynctransactionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 400-600                     | */*                         |
 
 ## list
 
@@ -93,4 +98,9 @@ if res.transactions is not None:
 ### Response
 
 **[operations.ListSyncTransactionsResponse](../../models/operations/listsynctransactionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 400-600                         | */*                             |
