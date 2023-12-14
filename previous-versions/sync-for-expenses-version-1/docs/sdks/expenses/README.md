@@ -38,7 +38,7 @@ req = operations.CreateExpenseDatasetRequest(
                 ),
                 currency='GBP',
                 id='4d7c6929-7770-412b-91bb-44d3bc71d111',
-                issue_date='2022-10-23T00:00:00.000Z',
+                issue_date='2022-10-23T00:00:00Z',
                 lines=[
                     shared.ExpenseTransactionLine(
                         account_ref=shared.RecordRef(

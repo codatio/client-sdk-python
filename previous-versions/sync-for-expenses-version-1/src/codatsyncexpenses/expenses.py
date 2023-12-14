@@ -22,7 +22,7 @@ class Expenses:
         
         url = utils.generate_url(operations.CreateExpenseDatasetRequest, base_url, '/companies/{companyId}/sync/expenses/data/expense-transactions', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "create_expense_request", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateExpenseDatasetRequest, "create_expense_request", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -81,7 +81,7 @@ class Expenses:
         
         url = utils.generate_url(operations.UpdateExpenseDatasetRequest, base_url, '/companies/{companyId}/sync/expenses/expense-transactions/{transactionId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "update_expense_request", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateExpenseDatasetRequest, "update_expense_request", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -140,7 +140,7 @@ class Expenses:
         
         url = utils.generate_url(operations.UploadAttachmentRequest, base_url, '/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}/attachments', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "attachment_upload", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadAttachmentRequest, "attachment_upload", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

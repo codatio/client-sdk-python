@@ -22,7 +22,7 @@ class Sync:
         
         url = utils.generate_url(operations.InitiateSyncRequest, base_url, '/companies/{companyId}/sync/expenses/syncs', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "post_sync", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.InitiateSyncRequest, "post_sync", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
