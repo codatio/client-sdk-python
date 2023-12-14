@@ -42,7 +42,7 @@ req = operations.CreateBankTransactionsRequest(
         account_id='7110701885',
         transactions=[
             shared.CreateBankAccountTransaction(
-                date_='2022-10-23T00:00:00.000Z',
+                date_='2022-10-23T00:00:00Z',
             ),
         ],
     ),

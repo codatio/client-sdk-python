@@ -53,7 +53,7 @@ req = operations.CreateCustomerRequest(
                 address=shared.Items(
                     type=shared.AccountingAddressType.BILLING,
                 ),
-                modified_date='2022-10-23T00:00:00.000Z',
+                modified_date='2022-10-23T00:00:00Z',
                 phone=[
                     shared.PhoneNumberItems(
                         number='01224 658 999',
@@ -65,8 +65,8 @@ req = operations.CreateCustomerRequest(
         ],
         default_currency='GBP',
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={
@@ -461,7 +461,7 @@ req = operations.UpdateCustomerRequest(
                 address=shared.Items(
                     type=shared.AccountingAddressType.UNKNOWN,
                 ),
-                modified_date='2022-10-23T00:00:00.000Z',
+                modified_date='2022-10-23T00:00:00Z',
                 phone=[
                     shared.PhoneNumberItems(
                         number='+44 25691 154789',
@@ -473,8 +473,8 @@ req = operations.UpdateCustomerRequest(
         ],
         default_currency='EUR',
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         status=shared.CustomerStatus.ARCHIVED,
         supplemental_data=shared.SupplementalData(
             content={

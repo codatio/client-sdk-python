@@ -42,8 +42,8 @@ req = operations.CreateBankAccountRequest(
     bank_account=shared.BankAccount(
         currency='USD',
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplemental_data=shared.SupplementalData(
             content={
                 'key': {
@@ -274,8 +274,8 @@ req = operations.UpdateBankAccountRequest(
     bank_account=shared.BankAccount(
         currency='EUR',
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplemental_data=shared.SupplementalData(
             content={
                 'key': {

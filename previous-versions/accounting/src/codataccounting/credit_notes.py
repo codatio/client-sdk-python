@@ -30,7 +30,7 @@ class CreditNotes:
         
         url = utils.generate_url(operations.CreateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "credit_note", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateCreditNoteRequest, "credit_note", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateCreditNoteRequest, request)
@@ -285,7 +285,7 @@ class CreditNotes:
         
         url = utils.generate_url(operations.UpdateCreditNoteRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/creditNotes/{creditNoteId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "credit_note", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateCreditNoteRequest, "credit_note", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UpdateCreditNoteRequest, request)

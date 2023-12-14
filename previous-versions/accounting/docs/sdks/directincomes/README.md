@@ -49,7 +49,7 @@ req = operations.CreateDirectIncomeRequest(
             id='<ID>',
         ),
         currency='USD',
-        issue_date='2022-10-23T00:00:00.000Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.DirectIncomeLineItem(
                 account_ref=shared.AccountRef(),
@@ -67,21 +67,21 @@ req = operations.CreateDirectIncomeRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         payment_allocations=[
             shared.PaymentAllocationItems(
                 allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='GBP',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='EUR',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         sub_total=Decimal('7964.74'),
         supplemental_data=shared.SupplementalData(
             content={

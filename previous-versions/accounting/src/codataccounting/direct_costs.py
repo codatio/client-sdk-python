@@ -35,7 +35,7 @@ class DirectCosts:
         
         url = utils.generate_url(operations.CreateDirectCostRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "direct_cost_prototype", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateDirectCostRequest, "direct_cost_prototype", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateDirectCostRequest, request)
@@ -472,7 +472,7 @@ class DirectCosts:
         
         url = utils.generate_url(operations.UploadDirectCostAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts/{directCostId}/attachment', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "attachment_upload", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadDirectCostAttachmentRequest, "attachment_upload", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

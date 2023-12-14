@@ -45,7 +45,7 @@ req = operations.CreateTransferRequest(
             data_type=shared.DataType.INVOICES,
             id='<ID>',
         ),
-        date_='2022-10-23T00:00:00.000Z',
+        date_='2022-10-23T00:00:00Z',
         deposited_record_refs=[
             shared.InvoiceTo(
                 data_type='invoice',
@@ -56,8 +56,8 @@ req = operations.CreateTransferRequest(
             currency='USD',
         ),
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplemental_data=shared.SupplementalData(
             content={
                 'key': {

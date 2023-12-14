@@ -46,9 +46,9 @@ s = codataccounting.CodatAccounting(
 req = operations.CreatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
         currency='USD',
-        delivery_date='2022-10-23T00:00:00.000Z',
-        expected_delivery_date='2022-10-23T00:00:00.000Z',
-        issue_date='2022-10-23T00:00:00.000Z',
+        delivery_date='2022-10-23T00:00:00Z',
+        expected_delivery_date='2022-10-23T00:00:00Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(),
@@ -64,15 +64,15 @@ req = operations.CreatePurchaseOrderRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        payment_due_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        payment_due_date='2022-10-23T00:00:00Z',
         ship_to=shared.ShipTo(
             address=shared.Items(
                 type=shared.AccountingAddressType.UNKNOWN,
             ),
             contact=shared.ShipToContact(),
         ),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplier_ref=shared.SupplierRef(
             id='<ID>',
         ),
@@ -504,9 +504,9 @@ s = codataccounting.CodatAccounting(
 req = operations.UpdatePurchaseOrderRequest(
     purchase_order=shared.PurchaseOrder(
         currency='EUR',
-        delivery_date='2022-10-23T00:00:00.000Z',
-        expected_delivery_date='2022-10-23T00:00:00.000Z',
-        issue_date='2022-10-23T00:00:00.000Z',
+        delivery_date='2022-10-23T00:00:00Z',
+        expected_delivery_date='2022-10-23T00:00:00Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.PurchaseOrderLineItem(
                 account_ref=shared.AccountRef(),
@@ -522,15 +522,15 @@ req = operations.UpdatePurchaseOrderRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        payment_due_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
+        payment_due_date='2022-10-23T00:00:00Z',
         ship_to=shared.ShipTo(
             address=shared.Items(
                 type=shared.AccountingAddressType.DELIVERY,
             ),
             contact=shared.ShipToContact(),
         ),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplier_ref=shared.SupplierRef(
             id='<ID>',
         ),
