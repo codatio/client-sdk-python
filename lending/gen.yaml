@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 12e40076647cc13ceba5ae79e163f014
+  docChecksum: 6a74810fd57eea3cc5941ff18d1a2430
   docVersion: 3.0.0
-  speakeasyVersion: 1.125.1
-  generationVersion: 2.210.3
+  speakeasyVersion: 1.126.3
+  generationVersion: 2.214.3
 generation:
   comments: {}
   sdkClassName: CodatLending
@@ -11,25 +11,23 @@ generation:
   usageSnippets:
     optionalPropertyRendering: withExample
   telemetryEnabled: true
-  singleTagPerOp: false
 features:
   python:
-    core: 4.1.5
+    core: 4.3.0
     deprecations: 2.81.1
     downloadStreams: 0.0.2
     examples: 2.81.3
-    globalSecurity: 2.83.0
+    globalSecurity: 2.83.1
     globalServerURLs: 2.82.1
     groups: 2.81.2
     inputOutputModels: 2.82.0
     nameOverrides: 2.81.1
     retries: 2.82.0
 python:
-  version: 6.0.0
+  version: 6.1.0
   author: Codat
   clientServerStatusCodesAsErrors: true
-  description: Make credit decisions backed by enhanced financials, metrics, reports,
-    and data integrity features.
+  description: Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
   flattenGlobalSecurity: false
   imports:
     option: openapi

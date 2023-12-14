@@ -39,10 +39,10 @@ req = operations.CreatePaymentRequest(
         customer_ref=shared.AccountingCustomerRef(
             id='<ID>',
         ),
-        date_='2022-10-23T00:00:00.000Z',
+        date_='2022-10-23T00:00:00Z',
         lines=[
             shared.PaymentLine(
-                allocated_on_date='2022-10-23T00:00:00.000Z',
+                allocated_on_date='2022-10-23T00:00:00Z',
                 amount=Decimal('8592.13'),
                 links=[
                     shared.PaymentLineLink(
@@ -52,11 +52,11 @@ req = operations.CreatePaymentRequest(
             ),
         ],
         metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
+        modified_date='2022-10-23T00:00:00Z',
         payment_method_ref=shared.PaymentMethodRef(
             id='<ID>',
         ),
-        source_modified_date='2022-10-23T00:00:00.000Z',
+        source_modified_date='2022-10-23T00:00:00Z',
         supplemental_data=shared.SupplementalData(
             content={
                 'key': {
