@@ -29,7 +29,7 @@ class BankAccounts:
         
         url = utils.generate_url(operations.CreateBankAccountRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/bankAccounts', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "accounting_bank_account", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateBankAccountRequest, "accounting_bank_account", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateBankAccountRequest, request)

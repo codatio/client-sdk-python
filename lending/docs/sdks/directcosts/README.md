@@ -41,7 +41,7 @@ req = operations.CreateDirectCostRequest(
             id='<ID>',
         ),
         currency='USD',
-        issue_date='2022-10-23T00:00:00.000Z',
+        issue_date='2022-10-23T00:00:00Z',
         line_items=[
             shared.DirectCostLineItem(
                 account_ref=shared.AccountRef(),
@@ -71,13 +71,13 @@ req = operations.CreateDirectCostRequest(
         payment_allocations=[
             shared.AccountingPaymentAllocation(
                 allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00.000Z',
+                    allocated_on_date='2022-10-23T00:00:00Z',
                     currency='EUR',
                 ),
                 payment=shared.PaymentAllocationPayment(
                     account_ref=shared.AccountRef(),
                     currency='GBP',
-                    paid_on_date='2022-10-23T00:00:00.000Z',
+                    paid_on_date='2022-10-23T00:00:00Z',
                 ),
             ),
         ],

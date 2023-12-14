@@ -29,7 +29,7 @@ class Transfers:
         
         url = utils.generate_url(operations.CreateTransferRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/transfers', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "accounting_transfer", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateTransferRequest, "accounting_transfer", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateTransferRequest, request)

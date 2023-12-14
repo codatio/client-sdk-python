@@ -29,7 +29,7 @@ class DirectCosts:
         
         url = utils.generate_url(operations.CreateDirectCostRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directCosts', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "direct_cost_prototype", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateDirectCostRequest, "direct_cost_prototype", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.CreateDirectCostRequest, request)
