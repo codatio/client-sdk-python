@@ -394,6 +394,8 @@ src/codatlending/models/shared/agedoutstandingamountdetail.py
 src/codatlending/models/shared/accountingageddebtorreport.py
 src/codatlending/models/shared/ageddebtor.py
 src/codatlending/models/shared/file.py
+src/codatlending/models/shared/fileupload.py
+src/codatlending/models/shared/codatfile.py
 src/codatlending/models/shared/accountingcreatebankaccountresponse.py
 src/codatlending/models/shared/validation.py
 src/codatlending/models/shared/validationitem.py
@@ -686,7 +688,6 @@ docs/models/operations/downloadfilesrequest.md
 docs/models/operations/downloadfilesresponse.md
 docs/models/operations/listfilesrequest.md
 docs/models/operations/listfilesresponse.md
-docs/models/operations/uploadfilesrequestbody.md
 docs/models/operations/uploadfilesrequest.md
 docs/models/operations/uploadfilesresponse.md
 docs/models/operations/createbankaccountrequest.md
@@ -970,6 +971,8 @@ docs/models/shared/agedoutstandingamountdetail.md
 docs/models/shared/accountingageddebtorreport.md
 docs/models/shared/ageddebtor.md
 docs/models/shared/file.md
+docs/models/shared/fileupload.md
+docs/models/shared/codatfile.md
 docs/models/shared/accountingcreatebankaccountresponse.md
 docs/models/shared/validation.md
 docs/models/shared/validationitem.md

@@ -3,15 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ...models.shared import fileupload as shared_fileupload
 from typing import Optional
-
-
-@dataclasses.dataclass
-class UploadFilesRequestBody:
-    content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
-    file_name: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'fileName' }})
-    
-
 
 
 @dataclasses.dataclass
@@ -20,7 +13,7 @@ class UploadFilesRequest:
     r"""Unique identifier for a company."""
     connection_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'connectionId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a connection."""
-    request_body: Optional[UploadFilesRequestBody] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }, 'request': { 'media_type': 'multipart/form-data' }})
+    file_upload: Optional[shared_fileupload.FileUpload] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'multipart/form-data' }})
     
 
 
