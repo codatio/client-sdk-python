@@ -473,7 +473,7 @@ class DirectIncomes:
         
         url = utils.generate_url(operations.UploadDirectIncomeAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/directIncomes/{directIncomeId}/attachment', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadDirectIncomeAttachmentRequest, "request_body", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadDirectIncomeAttachmentRequest, "attachment_upload", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

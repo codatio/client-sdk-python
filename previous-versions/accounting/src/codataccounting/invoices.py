@@ -677,7 +677,7 @@ class Invoices:
     
     
     def upload_attachment(self, request: operations.UploadInvoiceAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadInvoiceAttachmentResponse:
-        r"""Push invoice attachment
+        r"""Upload invoice attachment
         The *Upload invoice attachment* endpoint uploads an attachment and assigns it against a specific `invoiceId`.
 
         [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
@@ -692,7 +692,7 @@ class Invoices:
         
         url = utils.generate_url(operations.UploadInvoiceAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/invoices/{invoiceId}/attachment', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadInvoiceAttachmentRequest, "request_body", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadInvoiceAttachmentRequest, "attachment_upload", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

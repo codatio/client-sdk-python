@@ -269,7 +269,7 @@ class Transfers:
     
     
     def upload_attachment(self, request: operations.UploadTransferAttachmentRequest, retries: Optional[utils.RetryConfig] = None) -> operations.UploadTransferAttachmentResponse:
-        r"""Push invoice attachment
+        r"""Upload invoice attachment
         The *Upload transfer attachment* endpoint uploads an attachment and assigns it against a specific `transferId`.
 
         [Transfers](https://docs.codat.io/accounting-api#/schemas/Transfer) are issued by a supplier for the purpose of recording transfer.
@@ -284,7 +284,7 @@ class Transfers:
         
         url = utils.generate_url(operations.UploadTransferAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/transfers/{transferId}/attachment', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadTransferAttachmentRequest, "request_body", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadTransferAttachmentRequest, "attachment_upload", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

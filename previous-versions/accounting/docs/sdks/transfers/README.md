@@ -11,7 +11,7 @@ Transfers
 * [get](#get) - Get transfer
 * [get_create_model](#get_create_model) - Get create transfer model
 * [list](#list) - List transfers
-* [upload_attachment](#upload_attachment) - Push invoice attachment
+* [upload_attachment](#upload_attachment) - Upload invoice attachment
 
 ## create
 
@@ -293,9 +293,11 @@ s = codataccounting.CodatAccounting(
 )
 
 req = operations.UploadTransferAttachmentRequest(
-    request_body=operations.UploadTransferAttachmentRequestBody(
-        content='0xE3ABc1980E'.encode(),
-        file_name='elegant_producer_electric.jpeg',
+    attachment_upload=shared.AttachmentUpload(
+        file=shared.CodatFile(
+            content='0xE3ABc1980E'.encode(),
+            file_name='elegant_producer_electric.jpeg',
+        ),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
