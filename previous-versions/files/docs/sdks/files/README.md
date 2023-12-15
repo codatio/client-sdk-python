@@ -19,7 +19,7 @@ The *Download files* endpoint downloads all files that have  been uploaded by to
 
 ```python
 import codatfiles
-from codatfiles.models import operations, shared
+from codatfiles.models import operations
 
 s = codatfiles.CodatFiles(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -27,7 +27,7 @@ s = codatfiles.CodatFiles(
 
 req = operations.DownloadFilesRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    date_='2022-10-23T00:00:00.000Z',
+    date_='2022-10-23T00:00:00Z',
 )
 
 res = s.files.download_files(req)
@@ -48,7 +48,13 @@ if res.data is not None:
 ### Response
 
 **[operations.DownloadFilesResponse](../../models/operations/downloadfilesresponse.md)**
+### Errors
 
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.Schema                    | 400,401,402,404,429,500,503      | application/json                 |
+| errors.DownloadFilesErrorMessage | 403                              | application/json                 |
+| errors.SDKError                  | 400-600                          | */*                              |
 
 ## list_files
 
@@ -58,7 +64,7 @@ if res.data is not None:
 
 ```python
 import codatfiles
-from codatfiles.models import operations, shared
+from codatfiles.models import operations
 
 s = codatfiles.CodatFiles(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -86,7 +92,13 @@ if res.files is not None:
 ### Response
 
 **[operations.ListFilesResponse](../../models/operations/listfilesresponse.md)**
+### Errors
 
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.Schema                | 401,402,404,429,500,503      | application/json             |
+| errors.ListFilesErrorMessage | 403                          | application/json             |
+| errors.SDKError              | 400-600                      | */*                          |
 
 ## upload_files
 
@@ -109,9 +121,11 @@ s = codatfiles.CodatFiles(
 )
 
 req = operations.UploadFilesRequest(
-    request_body=operations.UploadFilesRequestBody(
-        content=';*>\'Oq[l/G'.encode(),
-        request_body='syndicate Central defect',
+    file_upload=shared.FileUpload(
+        file=shared.CodatFile(
+            content='0x6261bDdB39'.encode(),
+            file_name='syndicate_central_defect.wav',
+        ),
     ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
@@ -135,4 +149,10 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UploadFilesResponse](../../models/operations/uploadfilesresponse.md)**
+### Errors
 
+| Error Object                   | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.Schema                  | 400,401,402,404,429,500,503    | application/json               |
+| errors.UploadFilesErrorMessage | 403                            | application/json               |
+| errors.SDKError                | 400-600                        | */*                            |
