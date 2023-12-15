@@ -357,7 +357,7 @@ class BillCreditNotes:
         
         url = utils.generate_url(operations.UploadBillCreditNoteAttachmentRequest, base_url, '/companies/{companyId}/connections/{connectionId}/push/billCreditNotes/{billCreditNoteId}/attachment', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadBillCreditNoteAttachmentRequest, "request_body", False, True, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UploadBillCreditNoteAttachmentRequest, "attachment_upload", False, True, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'

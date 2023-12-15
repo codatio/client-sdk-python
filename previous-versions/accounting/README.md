@@ -125,7 +125,7 @@ if res.account_transaction is not None:
 * [list](docs/sdks/invoices/README.md#list) - List invoices
 * [list_attachments](docs/sdks/invoices/README.md#list_attachments) - List invoice attachments
 * [update](docs/sdks/invoices/README.md#update) - Update invoice
-* [upload_attachment](docs/sdks/invoices/README.md#upload_attachment) - Push invoice attachment
+* [upload_attachment](docs/sdks/invoices/README.md#upload_attachment) - Upload invoice attachment
 
 ### [item_receipts](docs/sdks/itemreceipts/README.md)
 
@@ -161,7 +161,7 @@ if res.account_transaction is not None:
 * [get](docs/sdks/transfers/README.md#get) - Get transfer
 * [get_create_model](docs/sdks/transfers/README.md#get_create_model) - Get create transfer model
 * [list](docs/sdks/transfers/README.md#list) - List transfers
-* [upload_attachment](docs/sdks/transfers/README.md#upload_attachment) - Push invoice attachment
+* [upload_attachment](docs/sdks/transfers/README.md#upload_attachment) - Upload invoice attachment
 
 ### [bill_credit_notes](docs/sdks/billcreditnotes/README.md)
 
