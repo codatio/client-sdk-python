@@ -11,6 +11,7 @@ generation:
   usageSnippets:
     optionalPropertyRendering: withExample
   telemetryEnabled: true
+  singleTagPerOp: false
 features:
   python:
     core: 4.3.0
@@ -27,7 +28,8 @@ python:
   version: 6.1.0
   author: Codat
   clientServerStatusCodesAsErrors: true
-  description: Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
+  description: Make credit decisions backed by enhanced financials, metrics, reports,
+    and data integrity features.
   flattenGlobalSecurity: false
   imports:
     option: openapi
