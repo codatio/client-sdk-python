@@ -29,7 +29,7 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -55,7 +55,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.RefreshCompanyDataResponse](../../models/operations/refreshcompanydataresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## by_data_type
 
@@ -71,13 +76,13 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
 req = operations.RefreshDataTypeRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataType.INVOICES,
+    data_type=shared.SchemaDataType.INVOICES,
 )
 
 res = s.refresh_data.by_data_type(req)
@@ -98,7 +103,12 @@ if res.pull_operation is not None:
 ### Response
 
 **[operations.RefreshDataTypeResponse](../../models/operations/refreshdatatyperesponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get
 
@@ -112,7 +122,7 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -138,7 +148,12 @@ if res.data_statuses is not None:
 ### Response
 
 **[operations.GetCompanyDataStatusResponse](../../models/operations/getcompanydatastatusresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_pull_operation
 
@@ -152,7 +167,7 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -179,7 +194,12 @@ if res.pull_operation is not None:
 ### Response
 
 **[operations.GetPullOperationResponse](../../models/operations/getpulloperationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list_pull_operations
 
@@ -193,7 +213,7 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -222,4 +242,9 @@ if res.pull_operations is not None:
 ### Response
 
 **[operations.ListPullOperationsResponse](../../models/operations/listpulloperationsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |

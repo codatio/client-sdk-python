@@ -1,4 +1,4 @@
-# PullOperationStatus
+# Status
 
 The current status of the pull operation.
 
