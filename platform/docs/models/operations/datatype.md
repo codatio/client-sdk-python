@@ -1,4 +1,4 @@
-# ConfigureSupplementalDataDataType
+# DataType
 
 Data types that support supplemental data
 

@@ -9,7 +9,7 @@ Manage your Codat instance.
 
 * [create_api_key](#create_api_key) - Create API key
 * [delete_api_key](#delete_api_key) - Delete API key
-* [~~get_profile~~](#get_profile) - Get profile :warning: **Deprecated**
+* [get_profile](#get_profile) - Get profile
 * [get_sync_settings](#get_sync_settings) - Get sync settings
 * [list_api_keys](#list_api_keys) - List API keys
 * [update_profile](#update_profile) - Update profile
@@ -37,7 +37,7 @@ from codatplatform.models import shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -63,7 +63,12 @@ if res.api_key_details is not None:
 ### Response
 
 **[operations.CreateAPIKeyResponse](../../models/operations/createapikeyresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,409,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## delete_api_key
 
@@ -86,7 +91,7 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -96,7 +101,7 @@ req = operations.DeleteAPIKeyRequest(
 
 res = s.settings.delete_api_key(req)
 
-if res.status_code == 200:
+if res.error_message is not None:
     # handle response
     pass
 ```
@@ -112,13 +117,16 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeleteAPIKeyResponse](../../models/operations/deleteapikeyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
-## ~~get_profile~~
+## get_profile
 
 Fetch your Codat profile.
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -128,7 +136,7 @@ from codatplatform.models import shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -150,7 +158,12 @@ if res.profile is not None:
 ### Response
 
 **[operations.GetProfileResponse](../../models/operations/getprofileresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 4x-5xx                  | */*                     |
 
 ## get_sync_settings
 
@@ -164,7 +177,7 @@ from codatplatform.models import shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -186,7 +199,12 @@ if res.sync_settings is not None:
 ### Response
 
 **[operations.GetProfileSyncSettingsResponse](../../models/operations/getprofilesyncsettingsresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 4x-5xx                  | */*                     |
 
 ## list_api_keys
 
@@ -204,7 +222,7 @@ from codatplatform.models import shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -226,7 +244,12 @@ if res.api_keys is not None:
 ### Response
 
 **[operations.ListAPIKeysResponse](../../models/operations/listapikeysresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 4x-5xx                  | */*                     |
 
 ## update_profile
 
@@ -240,7 +263,7 @@ from codatplatform.models import shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -252,30 +275,7 @@ req = shared.Profile(
     name='Bob\'s Burgers',
     redirect_url='https://bobs-burgers.{countrySuffix}/{companyId}',
     white_list_urls=[
-        'h',
-        't',
-        't',
-        'p',
-        's',
-        ':',
-        '/',
-        '/',
-        'b',
-        'o',
-        'b',
-        's',
-        '-',
-        'b',
-        'u',
-        'r',
-        'g',
-        'e',
-        'r',
-        's',
-        '.',
-        'c',
-        'o',
-        'm',
+        'https://bobs-burgers.com',
     ],
 )
 
@@ -297,7 +297,12 @@ if res.profile is not None:
 ### Response
 
 **[operations.UpdateProfileResponse](../../models/operations/updateprofileresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 4x-5xx                  | */*                     |
 
 ## update_sync_settings
 
@@ -311,7 +316,7 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -322,7 +327,7 @@ req = operations.UpdateProfileSyncSettingsRequestBody(
             data_type=shared.DataType.INVOICES,
             fetch_on_first_link=False,
             months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
+            sync_from_utc='2022-10-23T00:00:00Z',
             sync_from_window=24,
             sync_order=334238,
             sync_schedule=24,
@@ -348,4 +353,9 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UpdateProfileSyncSettingsResponse](../../models/operations/updateprofilesyncsettingsresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 4x-5xx                  | */*                     |

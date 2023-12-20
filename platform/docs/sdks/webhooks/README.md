@@ -23,7 +23,7 @@ from codatplatform.models import shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -31,25 +31,11 @@ req = shared.CreateRule(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     notifiers=shared.WebhookNotifier(
         emails=[
-            'i',
-            'n',
-            'f',
-            'o',
-            '@',
-            'c',
-            'l',
-            'i',
-            'e',
-            'n',
-            't',
-            '.',
-            'c',
-            'o',
-            'm',
+            'info@client.com',
         ],
         webhook='https://webhook.client.com',
     ),
-    type='bluetooth Extended',
+    type='string',
 )
 
 res = s.webhooks.create(req)
@@ -70,7 +56,12 @@ if res.webhook is not None:
 ### Response
 
 **[operations.CreateRuleResponse](../../models/operations/createruleresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 4x-5xx                  | */*                     |
 
 ## get
 
@@ -84,7 +75,7 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -110,7 +101,12 @@ if res.webhook is not None:
 ### Response
 
 **[operations.GetWebhookResponse](../../models/operations/getwebhookresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list
 
@@ -124,7 +120,7 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
@@ -152,4 +148,9 @@ if res.webhooks is not None:
 ### Response
 
 **[operations.ListRulesResponse](../../models/operations/listrulesresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
