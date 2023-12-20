@@ -27,24 +27,24 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
 req = operations.ConfigureSupplementalDataRequest(
     supplemental_data_configuration=shared.SupplementalDataConfiguration(
         supplemental_data_config={
-            "Cutler": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
+            'key': shared.SupplementalDataSourceConfiguration(
                 pull_data={
-                    "North": 'transmitter',
+                    'key': 'string',
                 },
                 push_data={
-                    "infrastructure": 'Northeast',
+                    'key': 'string',
                 },
             ),
         },
     ),
-    data_type=operations.ConfigureSupplementalDataDataType.INVOICES,
+    data_type=operations.DataType.INVOICES,
     platform_key='gbol',
 )
 
@@ -66,7 +66,12 @@ if res.status_code == 200:
 ### Response
 
 **[operations.ConfigureSupplementalDataResponse](../../models/operations/configuresupplementaldataresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_configuration
 
@@ -82,12 +87,12 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="",
+        auth_header="<YOUR_API_KEY_HERE>",
     ),
 )
 
 req = operations.GetSupplementalDataConfigurationRequest(
-    data_type=operations.GetSupplementalDataConfigurationDataType.INVOICES,
+    data_type=operations.PathParamDataType.INVOICES,
     platform_key='gbol',
 )
 
@@ -109,4 +114,9 @@ if res.supplemental_data_configuration is not None:
 ### Response
 
 **[operations.GetSupplementalDataConfigurationResponse](../../models/operations/getsupplementaldataconfigurationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import syncsetting as shared_syncsetting
+from .syncsetting import SyncSetting
 from codatplatform import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -15,6 +15,6 @@ class SyncSettings:
     r"""Unique identifier for your client in Codat."""
     overrides_defaults: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overridesDefaults'), 'exclude': lambda f: f is None }})
     r"""Set to `True` if you want to override the default [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-settings)."""
-    settings: Optional[List[shared_syncsetting.SyncSetting]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('settings'), 'exclude': lambda f: f is None }})
+    settings: Optional[List[SyncSetting]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('settings'), 'exclude': lambda f: f is None }})
     
 
