@@ -8,5 +8,6 @@ class SourceType(str, Enum):
     ACCOUNTING = 'Accounting'
     BANKING = 'Banking'
     COMMERCE = 'Commerce'
+    BANK_FEED = 'BankFeed'
     OTHER = 'Other'
     UNKNOWN = 'Unknown'
