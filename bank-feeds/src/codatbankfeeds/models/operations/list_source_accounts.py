@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ...models.shared import sourceaccount as shared_sourceaccount
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclasses.dataclass
@@ -25,7 +25,7 @@ class ListSourceAccountsResponse:
     r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    source_account: Optional[shared_sourceaccount.SourceAccount] = dataclasses.field(default=None)
+    source_accounts: Optional[List[shared_sourceaccount.SourceAccount]] = dataclasses.field(default=None)
     r"""Success"""
     
 
