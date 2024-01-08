@@ -7,7 +7,8 @@ class SourceType(str, Enum):
     r"""The type of platform of the connection."""
     ACCOUNTING = 'Accounting'
     BANKING = 'Banking'
-    COMMERCE = 'Commerce'
     BANK_FEED = 'BankFeed'
+    COMMERCE = 'Commerce'
+    EXPENSE = 'Expense'
     OTHER = 'Other'
     UNKNOWN = 'Unknown'
