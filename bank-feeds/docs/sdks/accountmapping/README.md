@@ -63,7 +63,7 @@ if res.bank_feed_account_mapping_response is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## get
 
@@ -113,4 +113,4 @@ if res.bank_feed_mapping is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |

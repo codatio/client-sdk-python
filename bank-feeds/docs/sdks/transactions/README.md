@@ -81,7 +81,7 @@ if res.create_bank_transactions_response is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## get_create_operation
 
@@ -127,7 +127,7 @@ if res.push_operation is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list_create_operations
 
@@ -175,4 +175,4 @@ if res.push_operations is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |

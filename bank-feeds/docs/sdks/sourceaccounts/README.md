@@ -86,7 +86,7 @@ if res.source_account is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## delete
 
@@ -136,7 +136,7 @@ if res.status_code == 200:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## delete_credentials
 
@@ -184,7 +184,7 @@ if res.status_code == 200:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## generate_credentials
 
@@ -234,7 +234,7 @@ if res.bank_account_credentials is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list
 
@@ -262,7 +262,7 @@ req = operations.ListSourceAccountsRequest(
 
 res = s.source_accounts.list(req)
 
-if res.source_account is not None:
+if res.source_accounts is not None:
     # handle response
     pass
 ```
@@ -283,7 +283,7 @@ if res.source_account is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## update
 
@@ -338,4 +338,4 @@ if res.source_account is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
