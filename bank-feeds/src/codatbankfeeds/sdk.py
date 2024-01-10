@@ -2,7 +2,9 @@
 
 import requests as requests_http
 from .account_mapping import AccountMapping
+from .bank_accounts import BankAccounts
 from .companies import Companies
+from .configuration import Configuration
 from .connections import Connections
 from .sdkconfiguration import SDKConfiguration
 from .source_accounts import SourceAccounts
@@ -38,8 +40,12 @@ class CodatBankFeeds:
     r"""Bank feed bank account mapping."""
     source_accounts: SourceAccounts
     r"""Source accounts act as a bridge to bank accounts in accounting software."""
+    bank_accounts: BankAccounts
+    r"""Access bank accounts in an SMBs accounting platform."""
     transactions: Transactions
     r"""Transactions represent debits and credits from a source account."""
+    configuration: Configuration
+    r"""Configure bank feeds for a company."""
 
     sdk_configuration: SDKConfiguration
 
@@ -82,5 +88,7 @@ class CodatBankFeeds:
         self.connections = Connections(self.sdk_configuration)
         self.account_mapping = AccountMapping(self.sdk_configuration)
         self.source_accounts = SourceAccounts(self.sdk_configuration)
+        self.bank_accounts = BankAccounts(self.sdk_configuration)
         self.transactions = Transactions(self.sdk_configuration)
+        self.configuration = Configuration(self.sdk_configuration)
     

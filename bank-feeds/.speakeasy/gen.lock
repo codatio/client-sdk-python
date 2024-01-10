@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 07093ad1-99d8-4bbd-a29c-a624e1b0e25a
 management:
-  docChecksum: b095b0a347cf654b362ab0929e984eb2
+  docChecksum: 3a0b899f2dc3766b39e4fd3e931ebe0c
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.228.3
-  releaseVersion: 6.0.0
-  configChecksum: 3eb45974c86db9d25e88242a656ed13a
+  generationVersion: 2.230.3
+  releaseVersion: 6.0.1
+  configChecksum: 6e0bf71d5591a041364a525f826b1966
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: bank-feeds
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=bank-feeds
@@ -27,7 +27,9 @@ generatedFiles:
   - src/codatbankfeeds/connections.py
   - src/codatbankfeeds/account_mapping.py
   - src/codatbankfeeds/source_accounts.py
+  - src/codatbankfeeds/bank_accounts.py
   - src/codatbankfeeds/transactions.py
+  - src/codatbankfeeds/configuration.py
   - src/codatbankfeeds/sdk.py
   - pylintrc
   - setup.py
@@ -55,9 +57,12 @@ generatedFiles:
   - src/codatbankfeeds/models/operations/generate_credentials.py
   - src/codatbankfeeds/models/operations/list_source_accounts.py
   - src/codatbankfeeds/models/operations/update_source_account.py
+  - src/codatbankfeeds/models/operations/list_bank_accounts.py
   - src/codatbankfeeds/models/operations/create_bank_transactions.py
   - src/codatbankfeeds/models/operations/get_create_operation.py
   - src/codatbankfeeds/models/operations/list_create_operations.py
+  - src/codatbankfeeds/models/operations/get_configuration.py
+  - src/codatbankfeeds/models/operations/set_configuration.py
   - src/codatbankfeeds/models/shared/zero.py
   - src/codatbankfeeds/models/shared/company.py
   - src/codatbankfeeds/models/shared/connection.py
@@ -74,6 +79,7 @@ generatedFiles:
   - src/codatbankfeeds/models/shared/targetaccountoption.py
   - src/codatbankfeeds/models/shared/sourceaccount.py
   - src/codatbankfeeds/models/shared/bankaccountcredentials.py
+  - src/codatbankfeeds/models/shared/bankaccounts.py
   - src/codatbankfeeds/models/shared/createbanktransactionsresponse.py
   - src/codatbankfeeds/models/shared/validation.py
   - src/codatbankfeeds/models/shared/validationitem.py
@@ -86,6 +92,15 @@ generatedFiles:
   - src/codatbankfeeds/models/shared/pushoperationref.py
   - src/codatbankfeeds/models/shared/pushoperation.py
   - src/codatbankfeeds/models/shared/pushoperations.py
+  - src/codatbankfeeds/models/shared/configuration.py
+  - src/codatbankfeeds/models/shared/configurationschedule.py
+  - src/codatbankfeeds/models/shared/syncconfiguration.py
+  - src/codatbankfeeds/models/shared/syncasexpenses.py
+  - src/codatbankfeeds/models/shared/configurationsupplier.py
+  - src/codatbankfeeds/models/shared/configurationcontactref.py
+  - src/codatbankfeeds/models/shared/configurationcustomer.py
+  - src/codatbankfeeds/models/shared/bankaccountoption.py
+  - src/codatbankfeeds/models/shared/syncasbankfeeds.py
   - src/codatbankfeeds/models/shared/security.py
   - src/codatbankfeeds/models/shared/clientratelimitreachedwebhook.py
   - src/codatbankfeeds/models/shared/clientratelimitreachedwebhookdata.py
@@ -136,12 +151,18 @@ generatedFiles:
   - docs/models/operations/listsourceaccountsresponse.md
   - docs/models/operations/updatesourceaccountrequest.md
   - docs/models/operations/updatesourceaccountresponse.md
+  - docs/models/operations/listbankaccountsrequest.md
+  - docs/models/operations/listbankaccountsresponse.md
   - docs/models/operations/createbanktransactionsrequest.md
   - docs/models/operations/createbanktransactionsresponse.md
   - docs/models/operations/getcreateoperationrequest.md
   - docs/models/operations/getcreateoperationresponse.md
   - docs/models/operations/listcreateoperationsrequest.md
   - docs/models/operations/listcreateoperationsresponse.md
+  - docs/models/operations/getconfigurationrequest.md
+  - docs/models/operations/getconfigurationresponse.md
+  - docs/models/operations/setconfigurationrequest.md
+  - docs/models/operations/setconfigurationresponse.md
   - docs/models/shared/zero.md
   - docs/models/shared/groupreference.md
   - docs/models/shared/company.md
@@ -160,6 +181,11 @@ generatedFiles:
   - docs/models/shared/targetaccountoption.md
   - docs/models/shared/sourceaccount.md
   - docs/models/shared/bankaccountcredentials.md
+  - docs/models/shared/bankaccounttype.md
+  - docs/models/shared/metadata.md
+  - docs/models/shared/supplementaldata.md
+  - docs/models/shared/accountingbankaccount.md
+  - docs/models/shared/bankaccounts.md
   - docs/models/shared/createbanktransactionsresponse.md
   - docs/models/shared/validation.md
   - docs/models/shared/validationitem.md
@@ -173,6 +199,15 @@ generatedFiles:
   - docs/models/shared/pushoperationref.md
   - docs/models/shared/pushoperation.md
   - docs/models/shared/pushoperations.md
+  - docs/models/shared/configuration.md
+  - docs/models/shared/configurationschedule.md
+  - docs/models/shared/syncconfiguration.md
+  - docs/models/shared/syncasexpenses.md
+  - docs/models/shared/configurationsupplier.md
+  - docs/models/shared/configurationcontactref.md
+  - docs/models/shared/configurationcustomer.md
+  - docs/models/shared/bankaccountoption.md
+  - docs/models/shared/syncasbankfeeds.md
   - docs/models/shared/security.md
   - docs/models/shared/clientratelimitreachedwebhook.md
   - docs/models/shared/clientratelimitreachedwebhookdata.md
@@ -187,6 +222,8 @@ generatedFiles:
   - docs/sdks/connections/README.md
   - docs/sdks/accountmapping/README.md
   - docs/sdks/sourceaccounts/README.md
+  - docs/sdks/bankaccounts/README.md
   - docs/sdks/transactions/README.md
+  - docs/sdks/configuration/README.md
   - USAGE.md
   - .gitattributes

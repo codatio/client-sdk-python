@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-bankfeeds",
-    version="6.0.0",
+    version="6.0.1",
     author="Codat",
     description="Set up bank feeds from accounts in your application to supported accounting platforms.",
     long_description=long_description,
