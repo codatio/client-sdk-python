@@ -79,11 +79,20 @@ if res.company is not None:
 * [list](docs/sdks/sourceaccounts/README.md#list) - List source accounts
 * [update](docs/sdks/sourceaccounts/README.md#update) - Update source account
 
+### [bank_accounts](docs/sdks/bankaccounts/README.md)
+
+* [list](docs/sdks/bankaccounts/README.md#list) - List bank accounts
+
 ### [transactions](docs/sdks/transactions/README.md)
 
 * [create](docs/sdks/transactions/README.md#create) - Create bank transactions
 * [get_create_operation](docs/sdks/transactions/README.md#get_create_operation) - Get create operation
 * [list_create_operations](docs/sdks/transactions/README.md#list_create_operations) - List create operations
+
+### [configuration](docs/sdks/configuration/README.md)
+
+* [get](docs/sdks/configuration/README.md#get) - Get configuration
+* [set](docs/sdks/configuration/README.md#set) - Set configuration
 <!-- End Available Resources and Operations [operations] -->
 
 
