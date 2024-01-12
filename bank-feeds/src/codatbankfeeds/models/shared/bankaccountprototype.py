@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 import dataclasses
-from .links import Links
 from codatbankfeeds import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import Optional
 
-class BankAccountsBankAccountType(str, Enum):
+class BankAccountType(str, Enum):
     r"""The type of transactions and balances on the account.
     For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
     For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
@@ -21,45 +20,7 @@ class BankAccountsBankAccountType(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class BankAccountsMetadata:
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted') }})
-    r"""Indicates whether the record has been deleted in the third-party system this record originated from."""
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class BankAccountsSupplementalData:
-    r"""Supplemental data is additional data you can include in our standard data types.
-
-    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
-    """
-    content: Optional[Dict[str, Dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class BankAccountsAccountingBankAccount:
-    r"""> **Accessing Bank Accounts through Banking API**
-    > 
-    > This datatype was originally used for accessing bank account data both in accounting integrations and open banking aggregators. 
-    > 
-    > To view bank account data through the Banking API, please refer to the new datatype [here](https://docs.codat.io/bank-feeds-api#/schemas/Account)
-
-    > View the coverage for bank accounts in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts\" target=\"_blank\">Data coverage explorer</a>.
-
-    ## Overview
-
-    A list of bank accounts associated with a company and a specific data connection.
-
-    Bank accounts data includes:
-    * The name and ID of the account in the accounting platform.
-    * The currency and balance of the account.
-    * The sort code and account number.
-    """
+class BankAccountPrototype:
     account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountName') }})
     r"""Name of the bank account in the accounting platform."""
     account_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountNumber') }})
@@ -71,7 +32,7 @@ class BankAccountsAccountingBankAccount:
     FreeAgent integrations
     For Credit accounts, only the last four digits are required. For other types, the field is optional.
     """
-    account_type: Optional[BankAccountsBankAccountType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
+    account_type: Optional[BankAccountType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountType'), 'exclude': lambda f: f is None }})
     r"""The type of transactions and balances on the account.
     For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
     For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
@@ -91,12 +52,8 @@ class BankAccountsAccountingBankAccount:
     """
     i_ban: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('iBan') }})
     r"""International bank account number of the account. Often used when making or receiving international payments."""
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    r"""Identifier for the account, unique for the company in the accounting platform."""
     institution: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('institution') }})
     r"""The institution of the bank account."""
-    metadata: Optional[BankAccountsMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
-    modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
     nominal_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('nominalCode') }})
     r"""Code used to identify each nominal account for a business."""
     overdraft_limit: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overdraftLimit'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
@@ -110,26 +67,5 @@ class BankAccountsAccountingBankAccount:
     Xero integrations
     The sort code is only displayed when the currency = GBP and the sort code and account number sum to 14 digits. For non-GBP accounts, this field is not populated.
     """
-    source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
-    supplemental_data: Optional[BankAccountsSupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
-    r"""Supplemental data is additional data you can include in our standard data types.
-
-    It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
-    """
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class BankAccounts:
-    links: Links = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('_links') }})
-    page_number: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageNumber') }})
-    r"""Current page number."""
-    page_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pageSize') }})
-    r"""Number of items to return in results array."""
-    total_results: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalResults') }})
-    r"""Total number of items."""
-    results: Optional[List[BankAccountsAccountingBankAccount]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results'), 'exclude': lambda f: f is None }})
     
 
