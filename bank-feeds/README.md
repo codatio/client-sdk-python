@@ -81,6 +81,8 @@ if res.company is not None:
 
 ### [bank_accounts](docs/sdks/bankaccounts/README.md)
 
+* [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
+* [get_create_model](docs/sdks/bankaccounts/README.md#get_create_model) - Get create/update bank account model
 * [list](docs/sdks/bankaccounts/README.md#list) - List bank accounts
 
 ### [transactions](docs/sdks/transactions/README.md)

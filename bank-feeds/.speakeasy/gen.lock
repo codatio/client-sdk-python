@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 07093ad1-99d8-4bbd-a29c-a624e1b0e25a
 management:
-  docChecksum: 3a0b899f2dc3766b39e4fd3e931ebe0c
+  docChecksum: d8a3c846c6e6c943937af494c3623e4f
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.230.3
-  releaseVersion: 6.0.1
-  configChecksum: 6e0bf71d5591a041364a525f826b1966
+  generationVersion: 2.231.0
+  releaseVersion: 6.1.0
+  configChecksum: 708926194b40801b64a55104595fbdbc
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: bank-feeds
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=bank-feeds
@@ -19,6 +19,7 @@ features:
     examples: 2.81.3
     globalSecurity: 2.83.1
     globalServerURLs: 2.82.1
+    inputOutputModels: 2.83.0
     nameOverrides: 2.81.1
     retries: 2.82.0
 generatedFiles:
@@ -57,6 +58,8 @@ generatedFiles:
   - src/codatbankfeeds/models/operations/generate_credentials.py
   - src/codatbankfeeds/models/operations/list_source_accounts.py
   - src/codatbankfeeds/models/operations/update_source_account.py
+  - src/codatbankfeeds/models/operations/create_bank_account.py
+  - src/codatbankfeeds/models/operations/get_create_bankaccounts_model.py
   - src/codatbankfeeds/models/operations/list_bank_accounts.py
   - src/codatbankfeeds/models/operations/create_bank_transactions.py
   - src/codatbankfeeds/models/operations/get_create_operation.py
@@ -79,17 +82,25 @@ generatedFiles:
   - src/codatbankfeeds/models/shared/targetaccountoption.py
   - src/codatbankfeeds/models/shared/sourceaccount.py
   - src/codatbankfeeds/models/shared/bankaccountcredentials.py
-  - src/codatbankfeeds/models/shared/bankaccounts.py
-  - src/codatbankfeeds/models/shared/createbanktransactionsresponse.py
+  - src/codatbankfeeds/models/shared/bankaccountcreateresponse.py
   - src/codatbankfeeds/models/shared/validation.py
   - src/codatbankfeeds/models/shared/validationitem.py
   - src/codatbankfeeds/models/shared/pushoperationstatus.py
   - src/codatbankfeeds/models/shared/datatype.py
-  - src/codatbankfeeds/models/shared/createbanktransactions.py
-  - src/codatbankfeeds/models/shared/banktransactions.py
   - src/codatbankfeeds/models/shared/pushoperationchange.py
   - src/codatbankfeeds/models/shared/pushchangetype.py
   - src/codatbankfeeds/models/shared/pushoperationref.py
+  - src/codatbankfeeds/models/shared/bankaccountprototype.py
+  - src/codatbankfeeds/models/shared/pushoption.py
+  - src/codatbankfeeds/models/shared/pushvalidationinfo.py
+  - src/codatbankfeeds/models/shared/pushfieldvalidation.py
+  - src/codatbankfeeds/models/shared/pushoptiontype.py
+  - src/codatbankfeeds/models/shared/pushoptionproperty.py
+  - src/codatbankfeeds/models/shared/pushoptionchoice.py
+  - src/codatbankfeeds/models/shared/bankaccounts.py
+  - src/codatbankfeeds/models/shared/createbanktransactionsresponse.py
+  - src/codatbankfeeds/models/shared/createbanktransactions.py
+  - src/codatbankfeeds/models/shared/banktransactions.py
   - src/codatbankfeeds/models/shared/pushoperation.py
   - src/codatbankfeeds/models/shared/pushoperations.py
   - src/codatbankfeeds/models/shared/configuration.py
@@ -151,6 +162,10 @@ generatedFiles:
   - docs/models/operations/listsourceaccountsresponse.md
   - docs/models/operations/updatesourceaccountrequest.md
   - docs/models/operations/updatesourceaccountresponse.md
+  - docs/models/operations/createbankaccountrequest.md
+  - docs/models/operations/createbankaccountresponse.md
+  - docs/models/operations/getcreatebankaccountsmodelrequest.md
+  - docs/models/operations/getcreatebankaccountsmodelresponse.md
   - docs/models/operations/listbankaccountsrequest.md
   - docs/models/operations/listbankaccountsresponse.md
   - docs/models/operations/createbanktransactionsrequest.md
@@ -181,22 +196,35 @@ generatedFiles:
   - docs/models/shared/targetaccountoption.md
   - docs/models/shared/sourceaccount.md
   - docs/models/shared/bankaccountcredentials.md
-  - docs/models/shared/bankaccounttype.md
+  - docs/models/shared/bankaccountcreateresponsebankaccounttype.md
   - docs/models/shared/metadata.md
   - docs/models/shared/supplementaldata.md
   - docs/models/shared/accountingbankaccount.md
-  - docs/models/shared/bankaccounts.md
-  - docs/models/shared/createbanktransactionsresponse.md
+  - docs/models/shared/bankaccountcreateresponse.md
   - docs/models/shared/validation.md
   - docs/models/shared/validationitem.md
   - docs/models/shared/pushoperationstatus.md
   - docs/models/shared/datatype.md
-  - docs/models/shared/createbanktransactions.md
-  - docs/models/shared/banktransactiontype.md
-  - docs/models/shared/banktransactions.md
   - docs/models/shared/pushoperationchange.md
   - docs/models/shared/pushchangetype.md
   - docs/models/shared/pushoperationref.md
+  - docs/models/shared/bankaccounttype.md
+  - docs/models/shared/bankaccountprototype.md
+  - docs/models/shared/pushoption.md
+  - docs/models/shared/pushvalidationinfo.md
+  - docs/models/shared/pushfieldvalidation.md
+  - docs/models/shared/pushoptiontype.md
+  - docs/models/shared/pushoptionproperty.md
+  - docs/models/shared/pushoptionchoice.md
+  - docs/models/shared/bankaccountsbankaccounttype.md
+  - docs/models/shared/bankaccountsmetadata.md
+  - docs/models/shared/bankaccountssupplementaldata.md
+  - docs/models/shared/bankaccountsaccountingbankaccount.md
+  - docs/models/shared/bankaccounts.md
+  - docs/models/shared/createbanktransactionsresponse.md
+  - docs/models/shared/createbanktransactions.md
+  - docs/models/shared/banktransactiontype.md
+  - docs/models/shared/banktransactions.md
   - docs/models/shared/pushoperation.md
   - docs/models/shared/pushoperations.md
   - docs/models/shared/configuration.md
