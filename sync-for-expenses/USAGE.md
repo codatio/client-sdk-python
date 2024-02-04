@@ -11,6 +11,11 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = shared.CompanyRequestBody(
     description='Requested early access to the new financing scheme.',
+    groups=[
+        shared.GroupItems(
+            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
+        ),
+    ],
     name='Bank of Dave',
 )
 
