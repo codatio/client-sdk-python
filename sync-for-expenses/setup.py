@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="codat-sync-for-expenses",
-    version="5.0.0",
+    version="6.0.0",
     author="Codat",
     description="Push expenses to accounting platforms.",
     long_description=long_description,
@@ -19,7 +19,7 @@ setuptools.setup(
     install_requires=[
         "certifi>=2023.7.22",
         "charset-normalizer>=3.2.0",
-        "dataclasses-json>=0.6.1",
+        "dataclasses-json-speakeasy>=0.5.11",
         "idna>=3.4",
         "jsonpath-python>=1.0.6 ",
         "marshmallow>=3.19.0",
@@ -36,5 +36,6 @@ setuptools.setup(
         "dev":["pylint==2.16.2"]
     },
     package_dir={'': 'src'},
-    python_requires='>=3.8'
+    python_requires='>=3.8',
+    package_data={"codat-sync-for-expenses": ["py.typed"]},
 )

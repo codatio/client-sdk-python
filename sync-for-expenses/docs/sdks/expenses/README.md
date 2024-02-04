@@ -61,7 +61,10 @@ req = operations.CreateExpenseTransactionRequest(
                         account_ref=shared.RecordRef(
                             id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                         ),
-                        invoice_to=shared.InvoiceTo(),
+                        invoice_to=shared.InvoiceTo(
+                            data_type=shared.InvoiceToDataType.CUSTOMERS,
+                            id='80000002-1674552702',
+                        ),
                         net_amount=Decimal('110.42'),
                         tax_amount=Decimal('14.43'),
                         tax_rate_ref=shared.RecordRef(
@@ -107,7 +110,7 @@ if res.create_expense_response is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## update
 
@@ -149,7 +152,10 @@ req = operations.UpdateExpenseTransactionRequest(
                 account_ref=shared.RecordRef(
                     id='40e3e57c-2322-4898-966c-ca41adfd23fd',
                 ),
-                invoice_to=shared.InvoiceTo(),
+                invoice_to=shared.InvoiceTo(
+                    data_type=shared.InvoiceToDataType.CUSTOMERS,
+                    id='80000002-1674552702',
+                ),
                 net_amount=Decimal('110.42'),
                 tax_amount=Decimal('14.43'),
                 tax_rate_ref=shared.RecordRef(
@@ -194,7 +200,7 @@ if res.update_expense_response is not None:
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,422,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4x-5xx                              | */*                                 |
 
 ## upload_attachment
 
@@ -260,4 +266,4 @@ if res.attachment is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
