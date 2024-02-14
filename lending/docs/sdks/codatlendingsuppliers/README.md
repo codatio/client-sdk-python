@@ -32,27 +32,46 @@ s = codatlending.CodatLending(
 )
 
 req = operations.CreateSupplierRequest(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
     accounting_supplier=shared.AccountingSupplier(
+        status=shared.SupplierStatus.UNKNOWN,
         addresses=[
             shared.AccountingAddress(
                 type=shared.AccountingAddressType.BILLING,
+                city='Bakersfield',
+                country='USA',
+                line1='Unit 51',
+                line2='Bakersfield Industrial Estate',
+                region='California',
             ),
         ],
-        metadata=shared.Metadata(),
+        contact_name='Kelly\'s Industrial Supplies',
+        default_currency='string',
+        email_address='sales@kellysupplies.com',
+        id='C520FFD4-F6F6-4FC2-A6D2-5D7088B2B14F',
+        metadata=shared.Metadata(
+            is_deleted=True,
+        ),
         modified_date='2022-10-23T00:00:00Z',
-        phone='(877) 492-8687',
+        phone='07999 999999',
+        registration_number='string',
         source_modified_date='2022-10-23T00:00:00Z',
-        status=shared.SupplierStatus.ACTIVE,
         supplemental_data=shared.SupplementalData(
             content={
-                'key': {
-                    'key': 'string',
+                'property1': {
+                    'property1': None,
+                    'property2': None,
+                },
+                'property2': {
+                    'property1': None,
+                    'property2': None,
                 },
             },
         ),
+        supplier_name='Kelly\'s Industrial Supplies',
+        tax_number='string',
     ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
 
 res = s.loan_writeback.suppliers.create(req)
@@ -78,7 +97,7 @@ if res.accounting_create_supplier_response is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## get_create_update_model
 
@@ -133,4 +152,4 @@ if res.push_option is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |

@@ -11,6 +11,7 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Attachments:
-    attachments: Optional[List[AccountingAttachment]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachments') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    attachments: Optional[List[AccountingAttachment]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attachments'), 'exclude': lambda f: f is Attachments.UNSET }})
     
 

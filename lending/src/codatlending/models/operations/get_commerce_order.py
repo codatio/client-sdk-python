@@ -21,13 +21,14 @@ class GetCommerceOrderRequest:
 
 @dataclasses.dataclass
 class GetCommerceOrderResponse:
+    UNSET='__SPEAKEASY_UNSET__'
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    commerce_order: Optional[shared_commerceorder.CommerceOrder] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
+    commerce_order: Optional[shared_commerceorder.CommerceOrder] = dataclasses.field(default=UNSET)
     r"""OK"""
     
 

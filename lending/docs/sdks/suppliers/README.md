@@ -34,7 +34,7 @@ req = operations.DownloadAccountingSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='string',
+    supplier_id='<value>',
 )
 
 res = s.accounts_payable.suppliers.download_attachment(req)
@@ -60,7 +60,7 @@ if res.data is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get
 
@@ -87,7 +87,7 @@ s = codatlending.CodatLending(
 
 req = operations.GetAccountingSupplierRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='string',
+    supplier_id='<value>',
 )
 
 res = s.accounts_payable.suppliers.get(req)
@@ -113,7 +113,7 @@ if res.accounting_supplier is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## get_attachment
 
@@ -140,7 +140,7 @@ req = operations.GetAccountingSupplierAttachmentRequest(
     attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='string',
+    supplier_id='<value>',
 )
 
 res = s.accounts_payable.suppliers.get_attachment(req)
@@ -166,7 +166,7 @@ if res.accounting_attachment is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list
 
@@ -219,7 +219,7 @@ if res.accounting_suppliers is not None:
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4x-5xx                              | */*                                 |
 
 ## list_attachments
 
@@ -245,7 +245,7 @@ s = codatlending.CodatLending(
 req = operations.ListAccountingSupplierAttachmentsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='string',
+    supplier_id='<value>',
 )
 
 res = s.accounts_payable.suppliers.list_attachments(req)
@@ -271,4 +271,4 @@ if res.attachments is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |

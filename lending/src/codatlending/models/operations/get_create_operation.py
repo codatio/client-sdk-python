@@ -12,7 +12,7 @@ class GetCreateOperationRequest:
     company_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'companyId', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a company."""
     push_operation_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'pushOperationKey', 'style': 'simple', 'explode': False }})
-    r"""Push operation key."""
+    r"""Unique identifier for the push operation."""
     
 
 
@@ -21,10 +21,10 @@ class GetCreateOperationRequest:
 class GetCreateOperationResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     push_operation: Optional[shared_pushoperation.PushOperation] = dataclasses.field(default=None)
     r"""OK"""
     

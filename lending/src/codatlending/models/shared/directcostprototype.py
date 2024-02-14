@@ -3,23 +3,29 @@
 from __future__ import annotations
 import dataclasses
 from .accountingpaymentallocation import AccountingPaymentAllocation
-from .datatype import DataType
 from .directcostlineitem import DirectCostLineItem
 from .supplementaldata import SupplementalData
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
+from enum import Enum
 from typing import List, Optional
+
+class DirectCostPrototypeDataType(str, Enum):
+    r"""Allowed name of the 'dataType'."""
+    CUSTOMERS = 'customers'
+    SUPPLIERS = 'suppliers'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class DirectCostPrototypeContactRef:
+class ContactReference:
     r"""A customer or supplier associated with the direct cost."""
+    UNSET='__SPEAKEASY_UNSET__'
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier for a customer or supplier."""
-    data_type: Optional[DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Available Data types"""
+    data_type: Optional[DirectCostPrototypeDataType] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is ContactReference.UNSET }})
+    r"""Allowed name of the 'dataType'."""
     
 
 
@@ -27,6 +33,7 @@ class DirectCostPrototypeContactRef:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DirectCostPrototype:
+    UNSET='__SPEAKEASY_UNSET__'
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -67,9 +74,9 @@ class DirectCostPrototype:
     r"""The total amount of tax on the direct costs."""
     total_amount: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""The amount of the direct costs, inclusive of tax."""
-    contact_ref: Optional[DirectCostPrototypeContactRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
+    contact_ref: Optional[ContactReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
     r"""A customer or supplier associated with the direct cost."""
-    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
+    currency_rate: Optional[Decimal] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is DirectCostPrototype.UNSET }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -103,9 +110,9 @@ class DirectCostPrototype:
     |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, include the required currency rate in the expense transaction.  |
     """
-    note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note') }})
+    note: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is DirectCostPrototype.UNSET }})
     r"""A note attached to the direct cost."""
-    reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference') }})
+    reference: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference'), 'exclude': lambda f: f is DirectCostPrototype.UNSET }})
     r"""User-friendly reference for the direct cost."""
     supplemental_data: Optional[SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Supplemental data is additional data you can include in our standard data types.

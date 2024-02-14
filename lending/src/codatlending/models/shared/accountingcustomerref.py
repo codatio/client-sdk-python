@@ -10,9 +10,10 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class AccountingCustomerRef:
+    UNSET='__SPEAKEASY_UNSET__'
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""`id` from the Customers data type"""
-    company_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName') }})
+    company_name: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyName'), 'exclude': lambda f: f is AccountingCustomerRef.UNSET }})
     r"""`customerName` from the Customer data type"""
     
 

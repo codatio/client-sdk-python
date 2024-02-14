@@ -19,13 +19,14 @@ class GetAccountingJournalRequest:
 
 @dataclasses.dataclass
 class GetAccountingJournalResponse:
+    UNSET='__SPEAKEASY_UNSET__'
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    accounting_journal: Optional[shared_accountingjournal.AccountingJournal] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
+    accounting_journal: Optional[shared_accountingjournal.AccountingJournal] = dataclasses.field(default=UNSET)
     r"""Success"""
     
 

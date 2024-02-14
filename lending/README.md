@@ -29,8 +29,8 @@ s = codatlending.CodatLending(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -361,9 +361,9 @@ if res.company is not None:
 <!-- Start Retries [retries] -->
 ## Retries
 
-Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
-To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
 import codatlending
 from codatlending.models import shared
@@ -376,8 +376,8 @@ s = codatlending.CodatLending(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req,
@@ -388,7 +388,7 @@ if res.company is not None:
     pass
 ```
 
-If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
 import codatlending
 from codatlending.models import shared
@@ -402,8 +402,8 @@ s = codatlending.CodatLending(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -422,13 +422,13 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ### Example
 
 ```python
 import codatlending
-from codatlending.models import shared
+from codatlending.models import errors, shared
 
 s = codatlending.CodatLending(
     security=shared.Security(
@@ -437,18 +437,18 @@ s = codatlending.CodatLending(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = None
 try:
     res = s.companies.create(req)
 except errors.ErrorMessage as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 except errors.SDKError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 
 if res.company is not None:
@@ -482,8 +482,8 @@ s = codatlending.CodatLending(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -509,8 +509,8 @@ s = codatlending.CodatLending(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -524,7 +524,7 @@ if res.company is not None:
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+The Python SDK makes API calls using the [requests](https://pypi.org/project/requests/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
@@ -560,8 +560,8 @@ s = codatlending.CodatLending(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)

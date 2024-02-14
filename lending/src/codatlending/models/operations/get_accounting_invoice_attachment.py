@@ -23,13 +23,14 @@ class GetAccountingInvoiceAttachmentRequest:
 
 @dataclasses.dataclass
 class GetAccountingInvoiceAttachmentResponse:
+    UNSET='__SPEAKEASY_UNSET__'
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    accounting_attachment: Optional[shared_accountingattachment.AccountingAttachment] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
+    accounting_attachment: Optional[shared_accountingattachment.AccountingAttachment] = dataclasses.field(default=UNSET)
     r"""Success"""
     
 

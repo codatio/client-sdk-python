@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 import dataclasses
+from .journalentryrecordref import JournalEntryRecordRef
 from .journalline import JournalLine
 from .journalref import JournalRef
 from .metadata import Metadata
-from .recordref import RecordRef
 from .supplementaldata import SupplementalData
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
@@ -38,6 +38,7 @@ class AccountingJournalEntry:
     > **Pushing journal entries**  
     > Codat only supports journal entries in the base currency of the company that are pushed into accounts denominated in the same base currency.
     """
+    UNSET='__SPEAKEASY_UNSET__'
     created_on: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdOn'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -59,11 +60,11 @@ class AccountingJournalEntry:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description') }})
+    description: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is AccountingJournalEntry.UNSET }})
     r"""Optional description of the journal entry."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Unique identifier of the journal entry for the company in the accounting platform."""
-    journal_lines: Optional[List[JournalLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalLines') }})
+    journal_lines: Optional[List[JournalLine]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalLines'), 'exclude': lambda f: f is AccountingJournalEntry.UNSET }})
     r"""An array of journal lines."""
     journal_ref: Optional[JournalRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('journalRef'), 'exclude': lambda f: f is None }})
     r"""Links journal entries to the relevant journal in accounting integrations that use multi-book accounting (multiple journals)."""
@@ -90,11 +91,8 @@ class AccountingJournalEntry:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    record_ref: Optional[RecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
-    r"""Links the current record to the underlying record or data type that created it.
-
-    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
-    """
+    record_ref: Optional[JournalEntryRecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRef'), 'exclude': lambda f: f is None }})
+    r"""Links a journal entry to the underlying record that created it."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     supplemental_data: Optional[SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})
     r"""Supplemental data is additional data you can include in our standard data types.

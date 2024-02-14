@@ -3,24 +3,30 @@
 from __future__ import annotations
 import dataclasses
 from .accountingpaymentallocation import AccountingPaymentAllocation
-from .datatype import DataType
 from .directcostlineitem import DirectCostLineItem
 from .metadata import Metadata
 from .supplementaldata import SupplementalData
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
+from enum import Enum
 from typing import List, Optional
+
+class AccountingDirectCostDataType(str, Enum):
+    r"""Allowed name of the 'dataType'."""
+    CUSTOMERS = 'customers'
+    SUPPLIERS = 'suppliers'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class AccountingDirectCostContactRef:
+class AccountingDirectCostContactReference:
     r"""A customer or supplier associated with the direct cost."""
+    UNSET='__SPEAKEASY_UNSET__'
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier for a customer or supplier."""
-    data_type: Optional[DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Available Data types"""
+    data_type: Optional[AccountingDirectCostDataType] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is AccountingDirectCostContactReference.UNSET }})
+    r"""Allowed name of the 'dataType'."""
     
 
 
@@ -44,6 +50,7 @@ class AccountingDirectCost:
 
     Direct costs is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction).
     """
+    UNSET='__SPEAKEASY_UNSET__'
     currency: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency') }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -84,9 +91,9 @@ class AccountingDirectCost:
     r"""The total amount of tax on the direct costs."""
     total_amount: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalAmount'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""The amount of the direct costs, inclusive of tax."""
-    contact_ref: Optional[AccountingDirectCostContactRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
+    contact_ref: Optional[AccountingDirectCostContactReference] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('contactRef'), 'exclude': lambda f: f is None }})
     r"""A customer or supplier associated with the direct cost."""
-    currency_rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
+    currency_rate: Optional[Decimal] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currencyRate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is AccountingDirectCost.UNSET }})
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.  
@@ -124,9 +131,9 @@ class AccountingDirectCost:
     r"""Identifier of the direct cost, unique for the company."""
     metadata: Optional[Metadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    note: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note') }})
+    note: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('note'), 'exclude': lambda f: f is AccountingDirectCost.UNSET }})
     r"""A note attached to the direct cost."""
-    reference: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference') }})
+    reference: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reference'), 'exclude': lambda f: f is AccountingDirectCost.UNSET }})
     r"""User-friendly reference for the direct cost."""
     source_modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is None }})
     supplemental_data: Optional[SupplementalData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplementalData'), 'exclude': lambda f: f is None }})

@@ -24,7 +24,6 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codatlending
 from codatlending.models import operations, shared
-from decimal import Decimal
 
 s = codatlending.CodatLending(
     security=shared.Security(
@@ -33,31 +32,6 @@ s = codatlending.CodatLending(
 )
 
 req = operations.CreateAccountRequest(
-    account_prototype=shared.AccountPrototype(
-        currency='USD',
-        current_balance=Decimal('0'),
-        description='Invoices the business has issued but has not yet collected payment on.',
-        fully_qualified_category='Asset.Current',
-        fully_qualified_name='Cash On Hand',
-        name='Accounts Receivable',
-        nominal_code='610',
-        status=shared.AccountStatus.ACTIVE,
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
-            },
-        ),
-        type=shared.AccountType.ASSET,
-        valid_datatype_links=[
-            shared.ValidDataTypeLinks(
-                links=[
-                    'string',
-                ],
-            ),
-        ],
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -85,7 +59,7 @@ if res.accounting_create_account_response is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## get_create_model
 
@@ -140,4 +114,4 @@ if res.push_option is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |

@@ -11,9 +11,10 @@ from typing import Optional
 @dataclasses.dataclass
 class TransactionCategoryRef:
     r"""An object of bank transaction category reference data."""
+    UNSET='__SPEAKEASY_UNSET__'
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The unique category reference id for the bank transaction."""
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
+    name: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is TransactionCategoryRef.UNSET }})
     r"""The category name reference for the bank transaction."""
     
 

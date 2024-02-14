@@ -12,7 +12,8 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class TaxComponentAllocation:
-    rate: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('rate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
+    UNSET='__SPEAKEASY_UNSET__'
+    rate: Optional[Decimal] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('rate'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is TaxComponentAllocation.UNSET }})
     r"""Tax amount on order line sale as available from source commerce platform."""
     tax_component_ref: Optional[TaxComponentRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxComponentRef'), 'exclude': lambda f: f is None }})
     r"""Taxes rates reference object depending on the rates being available on source commerce package."""

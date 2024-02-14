@@ -10,8 +10,8 @@ s = codatlending.CodatLending(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)

@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from .recordref import RecordRef
+from .trackingrecordref import TrackingRecordRef
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -11,7 +12,7 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Tracking:
-    record_refs: List[RecordRef] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
+    record_refs: List[TrackingRecordRef] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('recordRefs') }})
     invoice_to: Optional[RecordRef] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invoiceTo'), 'exclude': lambda f: f is None }})
     r"""Links the current record to the underlying record or data type that created it.
 

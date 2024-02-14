@@ -11,13 +11,14 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ReportLine:
+    UNSET='__SPEAKEASY_UNSET__'
     value: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     r"""Numerical value of the line item."""
-    account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId') }})
+    account_id: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountId'), 'exclude': lambda f: f is ReportLine.UNSET }})
     r"""Identifier for the account, unique for the company in the accounting platform."""
-    items: Optional[List[ReportLine]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items') }})
+    items: Optional[List[ReportLine]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is ReportLine.UNSET }})
     r"""An array of ReportLine items."""
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
+    name: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is ReportLine.UNSET }})
     r"""Name of the report line item."""
     
 
