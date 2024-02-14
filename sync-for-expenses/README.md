@@ -29,13 +29,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.GroupItems(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -144,13 +139,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.GroupItems(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req,
@@ -175,13 +165,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.GroupItems(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -206,7 +191,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 ```python
 import codatsyncexpenses
-from codatsyncexpenses.models import shared
+from codatsyncexpenses.models import errors, shared
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -215,23 +200,18 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.GroupItems(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = None
 try:
     res = s.companies.create(req)
 except errors.ErrorMessage as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 except errors.SDKError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 
 if res.company is not None:
@@ -265,13 +245,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.GroupItems(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -297,13 +272,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.GroupItems(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -353,13 +323,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.GroupItems(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)

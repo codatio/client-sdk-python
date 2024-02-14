@@ -14,6 +14,7 @@ class SupplementalData:
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    content: Optional[Dict[str, Dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    content: Optional[Dict[str, Dict[str, Any]]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is SupplementalData.UNSET }})
     
 

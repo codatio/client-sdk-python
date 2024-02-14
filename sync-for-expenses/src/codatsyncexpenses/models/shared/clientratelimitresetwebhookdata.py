@@ -10,6 +10,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ClientRateLimitResetWebhookData:
+    UNSET='__SPEAKEASY_UNSET__'
     daily_quota: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('DailyQuota'), 'exclude': lambda f: f is None }})
     r"""The number of available requests per day."""
     expires_utc: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ExpiresUtc'), 'exclude': lambda f: f is None }})
@@ -33,7 +34,7 @@ class ClientRateLimitResetWebhookData:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    quota_remaining: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('QuotaRemaining') }})
+    quota_remaining: Optional[int] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('QuotaRemaining'), 'exclude': lambda f: f is ClientRateLimitResetWebhookData.UNSET }})
     r"""Total number of request remaining for your client."""
     reset_reason: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ResetReason'), 'exclude': lambda f: f is None }})
     r"""The reason for your rate limit quota being reset."""

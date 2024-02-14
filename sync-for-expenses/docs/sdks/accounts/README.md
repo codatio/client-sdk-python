@@ -28,7 +28,6 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import operations, shared
-from decimal import Decimal
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -37,31 +36,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.CreateAccountRequest(
-    account_prototype=shared.AccountPrototype(
-        currency='USD',
-        current_balance=Decimal('0'),
-        description='Invoices the business has issued but has not yet collected payment on.',
-        fully_qualified_category='Asset.Current',
-        fully_qualified_name='Cash On Hand',
-        name='Accounts Receivable',
-        nominal_code='610',
-        status=shared.AccountStatus.ACTIVE,
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
-            },
-        ),
-        type=shared.AccountType.ASSET,
-        valid_datatype_links=[
-            shared.ValidDataTypeLinks(
-                links=[
-                    'string',
-                ],
-            ),
-        ],
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

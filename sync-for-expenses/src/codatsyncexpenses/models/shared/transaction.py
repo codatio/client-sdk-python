@@ -12,13 +12,14 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Transaction:
-    integration_type: Optional[IntegrationType] = dataclasses.field(default=IntegrationType.EXPENSES, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('integrationType') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    integration_type: Optional[IntegrationType] = dataclasses.field(default=IntegrationType.EXPENSES, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('integrationType'), 'exclude': lambda f: f is Transaction.UNSET }})
     r"""Type of transaction that has been processed e.g. Expense or Bank Feed."""
-    message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
+    message: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is Transaction.UNSET }})
     r"""Metadata such as validation errors or the resulting record created in the accounting software."""
-    status: Optional[TransactionStatus] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: Optional[TransactionStatus] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is Transaction.UNSET }})
     r"""Status of the transaction."""
-    transaction_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionId') }})
+    transaction_id: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('transactionId'), 'exclude': lambda f: f is Transaction.UNSET }})
     r"""Your unique idenfier of the transaction."""
     
 
