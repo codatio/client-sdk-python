@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createjournalresponse as shared_createjournalresponse
-from ..shared import errormessage as shared_errormessage
-from ..shared import journal as shared_journal
+from ...models.shared import createjournalresponse as shared_createjournalresponse
+from ...models.shared import journalprototype as shared_journalprototype
 from typing import Optional
 
 
@@ -17,7 +16,7 @@ class CreateJournalRequest:
     r"""Unique identifier for a connection."""
     allow_sync_on_push_complete: Optional[bool] = dataclasses.field(default=True, metadata={'query_param': { 'field_name': 'allowSyncOnPushComplete', 'style': 'form', 'explode': True }})
     r"""Allow a sync upon push completion."""
-    journal: Optional[shared_journal.Journal] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    journal_prototype: Optional[shared_journalprototype.JournalPrototype] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'timeoutInMinutes', 'style': 'form', 'explode': True }})
     r"""Time limit for the push operation to complete before it is timed out."""
     
@@ -30,11 +29,9 @@ class CreateJournalResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     create_journal_response: Optional[shared_createjournalresponse.CreateJournalResponse] = dataclasses.field(default=None)
     r"""Success"""
-    error_message: Optional[shared_errormessage.ErrorMessage] = dataclasses.field(default=None)
-    r"""The request made is not valid."""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

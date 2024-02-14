@@ -4,20 +4,23 @@
 Push payroll to accounting platforms.
 <!-- End Codat Library Description -->
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 pip install codat-sync-for-payroll
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## Example Usage
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
+### Example
+
 ```python
 import codatsyncpayroll
-from codatsyncpayroll.models import operations, shared
-from decimal import Decimal
+from codatsyncpayroll.models import shared
 
 s = codatsyncpayroll.CodatSyncPayroll(
     security=shared.Security(
@@ -25,58 +28,21 @@ s = codatsyncpayroll.CodatSyncPayroll(
     ),
 )
 
-req = operations.CreateAccountRequest(
-    account=shared.Account(
-        currency='USD',
-        current_balance=Decimal('0'),
-        description='Invoices the business has issued but has not yet collected payment on.',
-        fully_qualified_category='Asset.Current',
-        fully_qualified_name='Cash On Hand',
-        id='1b6266d1-1e44-46c5-8eb5-a8f98e03124e',
-        metadata=shared.AccountMetadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        name='Accounts Receivable',
-        nominal_code='610',
-        source_modified_date='2022-10-23T00:00:00.000Z',
-        status=shared.AccountStatus.ACTIVE,
-        supplemental_data=shared.SupplementalData(
-            content={
-                "Money": {
-                    "blue": 'shred',
-                },
-            },
-        ),
-        type=shared.AccountType.ASSET,
-        valid_datatype_links=[
-            shared.AccountValidDataTypeLinks(
-                links=[
-                    'abnormally',
-                ],
-            ),
-        ],
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+req = shared.CompanyRequestBody(
+    name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
-res = s.accounts.create(req)
+res = s.companies.create(req)
 
-if res.create_account_response is not None:
+if res.company is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
-
-### [accounts](docs/sdks/accounts/README.md)
-
-* [create](docs/sdks/accounts/README.md#create) - Create account
-* [get](docs/sdks/accounts/README.md#get) - Get account
-* [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
-* [list](docs/sdks/accounts/README.md#list) - List accounts
 
 ### [companies](docs/sdks/companies/README.md)
 
@@ -86,10 +52,6 @@ if res.create_account_response is not None:
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [company_info](docs/sdks/companyinfo/README.md)
-
-* [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
-
 ### [connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
@@ -97,6 +59,13 @@ if res.create_account_response is not None:
 * [get](docs/sdks/connections/README.md#get) - Get connection
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
+
+### [accounts](docs/sdks/accounts/README.md)
+
+* [create](docs/sdks/accounts/README.md#create) - Create account
+* [get](docs/sdks/accounts/README.md#get) - Get account
+* [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
+* [list](docs/sdks/accounts/README.md#list) - List accounts
 
 ### [journal_entries](docs/sdks/journalentries/README.md)
 
@@ -123,19 +92,231 @@ if res.create_account_response is not None:
 * [refresh_all_data_types](docs/sdks/managedata/README.md#refresh_all_data_types) - Refresh all data
 * [refresh_data_type](docs/sdks/managedata/README.md#refresh_data_type) - Refresh data type
 
+### [company_info](docs/sdks/companyinfo/README.md)
+
+* [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
+
 ### [tracking_categories](docs/sdks/trackingcategories/README.md)
 
 * [get](docs/sdks/trackingcategories/README.md#get) - Get tracking categories
 * [list](docs/sdks/trackingcategories/README.md#list) - List tracking categories
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
+```python
+import codatsyncpayroll
+from codatsyncpayroll.models import shared
+from codatsyncpayroll.utils import BackoffStrategy, RetryConfig
+
+s = codatsyncpayroll.CodatSyncPayroll(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
+)
+
+res = s.companies.create(req,
+    RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
+
+if res.company is not None:
+    # handle response
+    pass
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
+```python
+import codatsyncpayroll
+from codatsyncpayroll.models import shared
+from codatsyncpayroll.utils import BackoffStrategy, RetryConfig
+
+s = codatsyncpayroll.CodatSyncPayroll(
+    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Retries [retries] -->
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
+
+### Example
+
+```python
+import codatsyncpayroll
+from codatsyncpayroll.models import errors, shared
+
+s = codatsyncpayroll.CodatSyncPayroll(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
+)
+
+res = None
+try:
+    res = s.companies.create(req)
+except errors.ErrorMessage as e:
+    # handle exception
+    raise(e)
+except errors.SDKError as e:
+    # handle exception
+    raise(e)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.codat.io` | None |
+
+#### Example
+
+```python
+import codatsyncpayroll
+from codatsyncpayroll.models import shared
+
+s = codatsyncpayroll.CodatSyncPayroll(
+    server_idx=0,
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
 
 
+### Override Server URL Per-Client
 
-<!-- End Dev Containers -->
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+```python
+import codatsyncpayroll
+from codatsyncpayroll.models import shared
+
+s = codatsyncpayroll.CodatSyncPayroll(
+    server_url="https://api.codat.io",
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Server Selection [server] -->
+
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
+
+The Python SDK makes API calls using the [requests](https://pypi.org/project/requests/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+For example, you could specify a header for every request that this sdk makes as follows:
+```python
+import codatsyncpayroll
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = codatsyncpayroll.CodatSyncPayroll(client: http_client)
+```
+<!-- End Custom HTTP Client [http-client] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `auth_header` | apiKey        | API key       |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
+```python
+import codatsyncpayroll
+from codatsyncpayroll.models import shared
+
+s = codatsyncpayroll.CodatSyncPayroll(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.CompanyRequestBody(
+    name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
+)
+
+res = s.companies.create(req)
+
+if res.company is not None:
+    # handle response
+    pass
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

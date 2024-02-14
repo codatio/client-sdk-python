@@ -1,4 +1,4 @@
-# ConnectionSourceType
+# SourceType
 
 The type of platform of the connection.
 
@@ -9,6 +9,8 @@ The type of platform of the connection.
 | ------------ | ------------ |
 | `ACCOUNTING` | Accounting   |
 | `BANKING`    | Banking      |
+| `BANK_FEED`  | BankFeed     |
 | `COMMERCE`   | Commerce     |
+| `EXPENSE`    | Expense      |
 | `OTHER`      | Other        |
 | `UNKNOWN`    | Unknown      |
