@@ -29,8 +29,8 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -52,6 +52,10 @@ if res.company is not None:
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
+### [bills](docs/sdks/bills/README.md)
+
+* [list](docs/sdks/bills/README.md#list) - List bills
+
 ### [connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
@@ -59,100 +63,6 @@ if res.company is not None:
 * [get](docs/sdks/connections/README.md#get) - Get connection
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
-
-### [bills](docs/sdks/bills/README.md)
-
-* [create](docs/sdks/bills/README.md#create) - Create bill
-* [delete](docs/sdks/bills/README.md#delete) - Delete bill
-* [delete_attachment](docs/sdks/bills/README.md#delete_attachment) - Delete bill attachment
-* [download_attachment](docs/sdks/bills/README.md#download_attachment) - Download bill attachment
-* [get](docs/sdks/bills/README.md#get) - Get bill
-* [get_attachment](docs/sdks/bills/README.md#get_attachment) - Get bill attachment
-* [get_create_update_model](docs/sdks/bills/README.md#get_create_update_model) - Get create/update bill model
-* [list](docs/sdks/bills/README.md#list) - List bills
-* [list_attachments](docs/sdks/bills/README.md#list_attachments) - List bill attachments
-* [update](docs/sdks/bills/README.md#update) - Update bill
-* [upload_attachment](docs/sdks/bills/README.md#upload_attachment) - Upload bill attachment
-
-### [bank_accounts](docs/sdks/bankaccounts/README.md)
-
-* [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
-* [get_create_model](docs/sdks/bankaccounts/README.md#get_create_model) - Get create/update bank account model
-
-### [bill_credit_notes](docs/sdks/billcreditnotes/README.md)
-
-* [create](docs/sdks/billcreditnotes/README.md#create) - Create bill credit note
-* [get](docs/sdks/billcreditnotes/README.md#get) - Get bill credit note
-* [get_create_update_model](docs/sdks/billcreditnotes/README.md#get_create_update_model) - Get create/update bill credit note model
-* [list](docs/sdks/billcreditnotes/README.md#list) - List bill credit notes
-* [update](docs/sdks/billcreditnotes/README.md#update) - Update bill credit note
-
-### [bill_payments](docs/sdks/billpayments/README.md)
-
-* [create](docs/sdks/billpayments/README.md#create) - Create bill payments
-* [delete](docs/sdks/billpayments/README.md#delete) - Delete bill payment
-* [get](docs/sdks/billpayments/README.md#get) - Get bill payment
-* [get_create_model](docs/sdks/billpayments/README.md#get_create_model) - Get create bill payment model
-* [list](docs/sdks/billpayments/README.md#list) - List bill payments
-
-### [accounts](docs/sdks/accounts/README.md)
-
-* [create](docs/sdks/accounts/README.md#create) - Create account
-* [get](docs/sdks/accounts/README.md#get) - Get account
-* [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
-* [list](docs/sdks/accounts/README.md#list) - List accounts
-
-### [journal_entries](docs/sdks/journalentries/README.md)
-
-* [create](docs/sdks/journalentries/README.md#create) - Create journal entry
-* [get_create_model](docs/sdks/journalentries/README.md#get_create_model) - Get create journal entry model
-
-### [journals](docs/sdks/journals/README.md)
-
-* [create](docs/sdks/journals/README.md#create) - Create journal
-* [get](docs/sdks/journals/README.md#get) - Get journal
-* [get_create_model](docs/sdks/journals/README.md#get_create_model) - Get create journal model
-* [list](docs/sdks/journals/README.md#list) - List journals
-
-### [suppliers](docs/sdks/suppliers/README.md)
-
-* [create](docs/sdks/suppliers/README.md#create) - Create supplier
-* [get](docs/sdks/suppliers/README.md#get) - Get supplier
-* [get_create_update_model](docs/sdks/suppliers/README.md#get_create_update_model) - Get create/update supplier model
-* [list](docs/sdks/suppliers/README.md#list) - List suppliers
-* [update](docs/sdks/suppliers/README.md#update) - Update supplier
-
-### [manage_data](docs/sdks/managedata/README.md)
-
-* [get](docs/sdks/managedata/README.md#get) - Get data status
-* [get_pull_operation](docs/sdks/managedata/README.md#get_pull_operation) - Get pull operation
-* [list_pull_operations](docs/sdks/managedata/README.md#list_pull_operations) - List pull operations
-* [refresh_all_data_types](docs/sdks/managedata/README.md#refresh_all_data_types) - Refresh all data
-* [refresh_data_type](docs/sdks/managedata/README.md#refresh_data_type) - Refresh data type
-
-### [company_info](docs/sdks/companyinfo/README.md)
-
-* [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
-
-### [payment_methods](docs/sdks/paymentmethods/README.md)
-
-* [get](docs/sdks/paymentmethods/README.md#get) - Get payment method
-* [list](docs/sdks/paymentmethods/README.md#list) - List payment methods
-
-### [tax_rates](docs/sdks/taxrates/README.md)
-
-* [get](docs/sdks/taxrates/README.md#get) - Get tax rate
-* [list](docs/sdks/taxrates/README.md#list) - List all tax rates
-
-### [tracking_categories](docs/sdks/trackingcategories/README.md)
-
-* [get](docs/sdks/trackingcategories/README.md#get) - Get tracking categories
-* [list](docs/sdks/trackingcategories/README.md#list) - List tracking categories
-
-### [push_operations](docs/sdks/pushoperations/README.md)
-
-* [get](docs/sdks/pushoperations/README.md#get) - Get push operation
-* [list](docs/sdks/pushoperations/README.md#list) - List push operations
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -162,9 +72,9 @@ if res.company is not None:
 <!-- Start Retries [retries] -->
 ## Retries
 
-Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
-To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
 import codatsyncpayables
 from codatsyncpayables.models import shared
@@ -177,8 +87,8 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req,
@@ -189,7 +99,7 @@ if res.company is not None:
     pass
 ```
 
-If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
 import codatsyncpayables
 from codatsyncpayables.models import shared
@@ -203,8 +113,8 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -223,13 +133,13 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ### Example
 
 ```python
 import codatsyncpayables
-from codatsyncpayables.models import shared
+from codatsyncpayables.models import errors, shared
 
 s = codatsyncpayables.CodatSyncPayables(
     security=shared.Security(
@@ -238,18 +148,18 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = None
 try:
     res = s.companies.create(req)
 except errors.ErrorMessage as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 except errors.SDKError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 
 if res.company is not None:
@@ -283,8 +193,8 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -310,8 +220,8 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -325,7 +235,7 @@ if res.company is not None:
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+The Python SDK makes API calls using the [requests](https://pypi.org/project/requests/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
@@ -361,8 +271,8 @@ s = codatsyncpayables.CodatSyncPayables(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
