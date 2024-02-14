@@ -54,7 +54,12 @@ if res.company_sync_status is not None:
 ### Response
 
 **[operations.GetSyncByIDResponse](../../models/operations/getsyncbyidresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_last_successful_sync
 
@@ -94,7 +99,12 @@ if res.company_sync_status is not None:
 ### Response
 
 **[operations.GetLastSuccessfulSyncResponse](../../models/operations/getlastsuccessfulsyncresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_latest_sync
 
@@ -134,7 +144,12 @@ if res.company_sync_status is not None:
 ### Response
 
 **[operations.GetLatestSyncResponse](../../models/operations/getlatestsyncresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_status
 
@@ -174,7 +189,12 @@ if res.sync_status is not None:
 ### Response
 
 **[operations.GetSyncStatusResponse](../../models/operations/getsyncstatusresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list
 
@@ -198,7 +218,7 @@ req = operations.ListSyncsRequest(
 
 res = s.sync.list(req)
 
-if res.company_sync_statuses is not None:
+if res.classes is not None:
     # handle response
     pass
 ```
@@ -214,7 +234,12 @@ if res.company_sync_statuses is not None:
 ### Response
 
 **[operations.ListSyncsResponse](../../models/operations/listsyncsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## request
 
@@ -233,9 +258,6 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.RequestSyncRequest(
-    sync_to_latest_args=shared.SyncToLatestArgs(
-        sync_to='2022-10-23T00:00:00.000Z',
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -257,7 +279,12 @@ if res.sync_summary is not None:
 ### Response
 
 **[operations.RequestSyncResponse](../../models/operations/requestsyncresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## request_for_date_range
 
@@ -276,12 +303,6 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.RequestSyncForDateRangeRequest(
-    sync_range=shared.SyncRange(
-        date_range=shared.SyncRangeDateRange(
-            finish='2022-10-23T00:00:00.000Z',
-            start='2022-10-23T00:00:00.000Z',
-        ),
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -303,4 +324,9 @@ if res.sync_summary is not None:
 ### Response
 
 **[operations.RequestSyncForDateRangeResponse](../../models/operations/requestsyncfordaterangeresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |

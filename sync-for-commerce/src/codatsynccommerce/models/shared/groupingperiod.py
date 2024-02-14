@@ -10,9 +10,10 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GroupingPeriod:
-    grouping_period_options: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('groupingPeriodOptions') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    grouping_period_options: Optional[List[str]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('groupingPeriodOptions'), 'exclude': lambda f: f is GroupingPeriod.UNSET }})
     r"""Array of grouping period options."""
-    selected_grouping_period: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedGroupingPeriod') }})
+    selected_grouping_period: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedGroupingPeriod'), 'exclude': lambda f: f is GroupingPeriod.UNSET }})
     r"""Grouping period i.e. Daily sales."""
     
 

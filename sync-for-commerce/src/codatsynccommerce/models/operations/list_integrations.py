@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import integrations as shared_integrations
+from ...models.shared import integrations as shared_integrations
 from typing import Optional
 
 
@@ -27,9 +27,9 @@ class ListIntegrationsResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     integrations: Optional[shared_integrations.Integrations] = dataclasses.field(default=None)
     r"""Success"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

@@ -32,9 +32,6 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.CreateConnectionRequest(
-    request_body=operations.CreateConnectionRequestBody(
-        platform_key='gbol',
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -56,7 +53,12 @@ if res.connection is not None:
 ### Response
 
 **[operations.CreateConnectionResponse](../../models/operations/createconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_sync_flow_url
 
@@ -75,8 +77,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.GetSyncFlowURLRequest(
-    accounting_key='Manager',
-    commerce_key='payment',
+    accounting_key='<value>',
+    commerce_key='<value>',
 )
 
 res = s.connections.get_sync_flow_url(req)
@@ -97,7 +99,12 @@ if res.sync_flow_url is not None:
 ### Response
 
 **[operations.GetSyncFlowURLResponse](../../models/operations/getsyncflowurlresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## list
 
@@ -140,7 +147,12 @@ if res.connections is not None:
 ### Response
 
 **[operations.ListConnectionsResponse](../../models/operations/listconnectionsresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## update_authorization
 
@@ -159,9 +171,6 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.UpdateConnectionAuthorizationRequest(
-    request_body={
-        "Neptunium": 'Books',
-    },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -184,7 +193,12 @@ if res.connection is not None:
 ### Response
 
 **[operations.UpdateConnectionAuthorizationResponse](../../models/operations/updateconnectionauthorizationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## update_connection
 
@@ -203,7 +217,6 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.UpdateConnectionRequest(
-    update_connection=shared.UpdateConnection(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -226,4 +239,9 @@ if res.connection is not None:
 ### Response
 
 **[operations.UpdateConnectionResponse](../../models/operations/updateconnectionresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |

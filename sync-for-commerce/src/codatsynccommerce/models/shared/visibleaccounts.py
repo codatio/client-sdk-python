@@ -10,7 +10,8 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class VisibleAccounts:
-    visible_accounts: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('visibleAccounts') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    visible_accounts: Optional[List[str]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('visibleAccounts'), 'exclude': lambda f: f is VisibleAccounts.UNSET }})
     r"""Visible accounts on sync flow."""
     
 
