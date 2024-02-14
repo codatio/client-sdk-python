@@ -29,13 +29,8 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.Items(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -104,9 +99,9 @@ if res.company is not None:
 <!-- Start Retries [retries] -->
 ## Retries
 
-Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
-To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
 import codatbankfeeds
 from codatbankfeeds.models import shared
@@ -119,13 +114,8 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.Items(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req,
@@ -136,7 +126,7 @@ if res.company is not None:
     pass
 ```
 
-If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
 import codatbankfeeds
 from codatbankfeeds.models import shared
@@ -150,13 +140,8 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.Items(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -183,7 +168,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 ```python
 import codatbankfeeds
-from codatbankfeeds.models import shared
+from codatbankfeeds.models import errors, shared
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -192,23 +177,18 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.Items(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = None
 try:
     res = s.companies.create(req)
 except errors.ErrorMessage as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 except errors.SDKError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 
 if res.company is not None:
@@ -244,13 +224,8 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.Items(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -276,13 +251,8 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.Items(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)
@@ -336,13 +306,8 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    groups=[
-        shared.Items(
-            id='60d2fa12-8a04-11ee-b9d1-0242ac120002',
-        ),
-    ],
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create(req)

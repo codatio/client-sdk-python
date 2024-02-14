@@ -53,14 +53,20 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateSourceAccountRequest(
-    source_account=shared.SourceAccount(
-        currency='USD',
-        feed_start_date='2022-10-23T00:00:00Z',
-        id='<ID>',
-        modified_date='2022-10-23T00:00:00Z',
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    source_account=shared.SourceAccount(
+        id='acc-002',
+        account_name='account-081',
+        account_number='12345670',
+        account_type='Credit',
+        balance=Decimal('99.99'),
+        currency='GBP',
+        feed_start_date='2022-10-23T00:00:00Z',
+        modified_date='2023-01-09T14:14:14.1057478Z',
+        sort_code='123456',
+        status='pending',
+    ),
 )
 
 res = s.source_accounts.create(req)
@@ -304,15 +310,21 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.UpdateSourceAccountRequest(
-    source_account=shared.SourceAccount(
-        currency='EUR',
-        feed_start_date='2022-10-23T00:00:00Z',
-        id='<ID>',
-        modified_date='2022-10-23T00:00:00Z',
-    ),
-    account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
+    account_id='EILBDVJVNUAGVKRQ',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    source_account=shared.SourceAccount(
+        id='acc-002',
+        account_name='account-081',
+        account_number='12345670',
+        account_type='Credit',
+        balance=Decimal('99.99'),
+        currency='GBP',
+        feed_start_date='2022-10-23T00:00:00Z',
+        modified_date='2023-01-09T14:14:14.1057478Z',
+        sort_code='123456',
+        status='pending',
+    ),
 )
 
 res = s.source_accounts.update(req)

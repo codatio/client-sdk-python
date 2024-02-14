@@ -110,17 +110,20 @@ def _parse_security_scheme_value(client: SecurityClient, scheme_metadata: Dict, 
         else:
             raise Exception('not supported')
     elif scheme_type == "openIdConnect":
-        client.client.headers[header_name] = value
+        client.client.headers[header_name] = _apply_bearer(value)
     elif scheme_type == 'oauth2':
-        client.client.headers[header_name] = value
+        client.client.headers[header_name] = _apply_bearer(value)
     elif scheme_type == 'http':
         if sub_type == 'bearer':
-            client.client.headers[header_name] = value.lower().startswith(
-                'bearer ') and value or f'Bearer {value}'
+            client.client.headers[header_name] = _apply_bearer(value)
         else:
             raise Exception('not supported')
     else:
         raise Exception('not supported')
+
+
+def _apply_bearer(token: str) -> str:
+    return token.lower().startswith('bearer ') and token or f'Bearer {token}'
 
 
 def _parse_basic_auth_scheme(client: SecurityClient, scheme: dataclass):
@@ -692,7 +695,7 @@ def unmarshal_json(data, typ, decoder=None):
         out = unmarshal.from_dict({"res": json_dict})
     except AttributeError as attr_err:
         raise AttributeError(
-            f'unable to unmarshal {data} as {typ}') from attr_err
+            f'unable to unmarshal {data} as {typ} - {attr_err}') from attr_err
 
     return out.res if decoder is None else decoder(out.res)
 

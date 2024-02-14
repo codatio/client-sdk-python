@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 07093ad1-99d8-4bbd-a29c-a624e1b0e25a
 management:
-  docChecksum: d8a3c846c6e6c943937af494c3623e4f
+  docChecksum: 4dc8263ccdcfe623fbd51a2f54a06f5d
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.231.0
-  releaseVersion: 6.1.0
-  configChecksum: 708926194b40801b64a55104595fbdbc
+  generationVersion: 2.257.2
+  releaseVersion: 6.1.1
+  configChecksum: e5708ca5e72122e988345930b5e76592
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: bank-feeds
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=bank-feeds
@@ -14,14 +14,14 @@ management:
 features:
   python:
     constsAndDefaults: 0.1.2
-    core: 4.4.1
+    core: 4.4.6
     deprecations: 2.81.1
     examples: 2.81.3
-    globalSecurity: 2.83.1
+    globalSecurity: 2.83.2
     globalServerURLs: 2.82.1
-    inputOutputModels: 2.83.0
+    inputOutputModels: 2.83.1
     nameOverrides: 2.81.1
-    retries: 2.82.0
+    retries: 2.82.1
 generatedFiles:
   - src/codatbankfeeds/sdkconfiguration.py
   - src/codatbankfeeds/companies.py
@@ -71,6 +71,8 @@ generatedFiles:
   - src/codatbankfeeds/models/shared/connection.py
   - src/codatbankfeeds/models/shared/dataconnectionstatus.py
   - src/codatbankfeeds/models/shared/dataconnectionerror.py
+  - src/codatbankfeeds/models/shared/errorvalidation.py
+  - src/codatbankfeeds/models/shared/errorvalidationitem.py
   - src/codatbankfeeds/models/shared/companyrequestbody.py
   - src/codatbankfeeds/models/shared/items.py
   - src/codatbankfeeds/models/shared/companies.py
@@ -185,6 +187,8 @@ generatedFiles:
   - docs/models/shared/connection.md
   - docs/models/shared/dataconnectionstatus.md
   - docs/models/shared/dataconnectionerror.md
+  - docs/models/shared/errorvalidation.md
+  - docs/models/shared/errorvalidationitem.md
   - docs/models/shared/companyrequestbody.md
   - docs/models/shared/items.md
   - docs/models/shared/companies.md

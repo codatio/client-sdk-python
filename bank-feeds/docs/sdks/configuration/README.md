@@ -72,36 +72,6 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.SetConfigurationRequest(
-    configuration=shared.Configuration(
-        company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-        configuration=shared.SyncConfiguration(
-            sync_as_bank_feeds=shared.SyncAsBankFeeds(
-                bank_account_options=[
-                    shared.BankAccountOption(),
-                ],
-            ),
-            sync_as_expenses=shared.SyncAsExpenses(
-                bank_account_options=[
-                    shared.BankAccountOption(),
-                ],
-                customer=shared.ConfigurationCustomer(
-                    customer_options=[
-                        shared.ConfigurationContactRef(),
-                    ],
-                ),
-                supplier=shared.ConfigurationSupplier(
-                    supplier_options=[
-                        shared.ConfigurationContactRef(),
-                    ],
-                ),
-            ),
-        ),
-        schedule=shared.ConfigurationSchedule(
-            frequency_options=[
-                'string',
-            ],
-        ),
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
