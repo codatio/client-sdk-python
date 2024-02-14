@@ -34,7 +34,6 @@ Some accounting platforms support the option of pushing transactions to a draft 
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import operations, shared
-from decimal import Decimal
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -43,47 +42,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.CreateExpenseTransactionRequest(
-    create_expense_request=shared.CreateExpenseRequest(
-        items=[
-            shared.ExpenseTransaction(
-                bank_account_ref=shared.BankAccountReference(
-                    id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
-                ),
-                contact_ref=shared.ContactRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    type=shared.Type.SUPPLIER,
-                ),
-                currency='GBP',
-                id='4d7c6929-7770-412b-91bb-44d3bc71d111',
-                issue_date='2022-10-23T00:00:00Z',
-                lines=[
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        invoice_to=shared.InvoiceTo(
-                            data_type=shared.InvoiceToDataType.CUSTOMERS,
-                            id='80000002-1674552702',
-                        ),
-                        net_amount=Decimal('110.42'),
-                        tax_amount=Decimal('14.43'),
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.TrackingRef(
-                                data_type=shared.TrackingRefDataType.TRACKING_CATEGORIES,
-                                id='e9a1b63d-9ff0-40e7-8038-016354b987e6',
-                            ),
-                        ],
-                    ),
-                ],
-                merchant_name='Amazon UK',
-                notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-                type=shared.ExpenseTransactionType.PAYMENT,
-            ),
-        ],
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -128,7 +86,6 @@ At the moment you can update expenses only for Xero ([Payment](https://docs.coda
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import operations, shared
-from decimal import Decimal
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -137,42 +94,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.UpdateExpenseTransactionRequest(
-    update_expense_request=shared.UpdateExpenseRequest(
-        bank_account_ref=shared.UpdateExpenseRequestBankAccountReference(
-            id='787dfb37-5707-4dc0-8a86-8d74e4cc78ea',
-        ),
-        contact_ref=shared.ContactRef(
-            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-            type=shared.Type.SUPPLIER,
-        ),
-        currency='GBP',
-        issue_date='2022-06-28T00:00:00.000Z',
-        lines=[
-            shared.ExpenseTransactionLine(
-                account_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                invoice_to=shared.InvoiceTo(
-                    data_type=shared.InvoiceToDataType.CUSTOMERS,
-                    id='80000002-1674552702',
-                ),
-                net_amount=Decimal('110.42'),
-                tax_amount=Decimal('14.43'),
-                tax_rate_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                tracking_refs=[
-                    shared.TrackingRef(
-                        data_type=shared.TrackingRefDataType.TRACKING_CATEGORIES,
-                        id='e9a1b63d-9ff0-40e7-8038-016354b987e6',
-                    ),
-                ],
-            ),
-        ],
-        merchant_name='Amazon UK',
-        notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type='string',
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
 )
@@ -232,12 +153,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.UploadExpenseAttachmentRequest(
-    attachment_upload=shared.AttachmentUpload(
-        file=shared.CodatFile(
-            content='0xE3ABc1980E'.encode(),
-            file_name='elegant_producer_electric.jpeg',
-        ),
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',

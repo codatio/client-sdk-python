@@ -11,7 +11,8 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PushValidationInfo:
-    information: Optional[List[PushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('information') }})
-    warnings: Optional[List[PushFieldValidation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    information: Optional[List[PushFieldValidation]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('information'), 'exclude': lambda f: f is PushValidationInfo.UNSET }})
+    warnings: Optional[List[PushFieldValidation]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('warnings'), 'exclude': lambda f: f is PushValidationInfo.UNSET }})
     
 

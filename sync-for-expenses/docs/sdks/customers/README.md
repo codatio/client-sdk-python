@@ -38,40 +38,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.CreateCustomerRequest(
-    customer=shared.Customer(
-        addresses=[
-            shared.AccountingAddress(
-                type=shared.AccountingAddressType.BILLING,
-            ),
-        ],
-        contacts=[
-            shared.Contact(
-                address=shared.Items(
-                    type=shared.AccountingAddressType.BILLING,
-                ),
-                modified_date='2022-10-23T00:00:00Z',
-                phone=[
-                    shared.Phone(
-                        number='01224 658 999',
-                        type=shared.PhoneNumberType.MOBILE,
-                    ),
-                ],
-                status=shared.CustomerStatus.UNKNOWN,
-            ),
-        ],
-        default_currency='GBP',
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        source_modified_date='2022-10-23T00:00:00Z',
-        status=shared.CustomerStatus.ARCHIVED,
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
-            },
-        ),
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -126,7 +92,7 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.GetCustomerRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    customer_id='string',
+    customer_id='<value>',
 )
 
 res = s.customers.get(req)
@@ -233,43 +199,9 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.UpdateCustomerRequest(
-    customer=shared.Customer(
-        addresses=[
-            shared.AccountingAddress(
-                type=shared.AccountingAddressType.DELIVERY,
-            ),
-        ],
-        contacts=[
-            shared.Contact(
-                address=shared.Items(
-                    type=shared.AccountingAddressType.UNKNOWN,
-                ),
-                modified_date='2022-10-23T00:00:00Z',
-                phone=[
-                    shared.Phone(
-                        number='+44 25691 154789',
-                        type=shared.PhoneNumberType.LANDLINE,
-                    ),
-                ],
-                status=shared.CustomerStatus.ARCHIVED,
-            ),
-        ],
-        default_currency='EUR',
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        source_modified_date='2022-10-23T00:00:00Z',
-        status=shared.CustomerStatus.ARCHIVED,
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
-            },
-        ),
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    customer_id='string',
+    customer_id='<value>',
 )
 
 res = s.customers.update(req)

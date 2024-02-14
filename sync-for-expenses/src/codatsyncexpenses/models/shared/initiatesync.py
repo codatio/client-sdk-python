@@ -10,6 +10,7 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class InitiateSync:
-    dataset_ids: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datasetIds') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    dataset_ids: Optional[List[str]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datasetIds'), 'exclude': lambda f: f is InitiateSync.UNSET }})
     
 
