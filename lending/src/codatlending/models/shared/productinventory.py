@@ -13,8 +13,9 @@ from typing import List, Optional
 @dataclasses.dataclass
 class ProductInventory:
     r"""Information about the total inventory as well as the locations inventory is in."""
+    UNSET='__SPEAKEASY_UNSET__'
     locations: Optional[List[ProductInventoryLocation]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('locations'), 'exclude': lambda f: f is None }})
-    total_quantity: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalQuantity'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
+    total_quantity: Optional[Decimal] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('totalQuantity'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is ProductInventory.UNSET }})
     r"""The total quantity of stock remaining across locations."""
     
 

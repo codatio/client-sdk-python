@@ -28,10 +28,10 @@ class ListLoanTransactionsRequest:
 class ListLoanTransactionsResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     loan_transactions: Optional[shared_loantransactions.LoanTransactions] = dataclasses.field(default=None)
     r"""OK"""
     

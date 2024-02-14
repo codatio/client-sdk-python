@@ -11,9 +11,10 @@ from typing import Optional
 @dataclasses.dataclass
 class SupplierRef:
     r"""Reference to the supplier the record relates to."""
+    UNSET='__SPEAKEASY_UNSET__'
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The supplier's unique ID"""
-    supplier_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName') }})
+    supplier_name: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierName'), 'exclude': lambda f: f is SupplierRef.UNSET }})
     r"""The supplier's name"""
     
 

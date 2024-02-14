@@ -24,7 +24,6 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codatlending
 from codatlending.models import operations, shared
-from decimal import Decimal
 
 s = codatlending.CodatLending(
     security=shared.Security(
@@ -33,38 +32,6 @@ s = codatlending.CodatLending(
 )
 
 req = operations.CreatePaymentRequest(
-    accounting_payment=shared.AccountingPayment(
-        account_ref=shared.AccountRef(),
-        currency='USD',
-        customer_ref=shared.AccountingCustomerRef(
-            id='<ID>',
-        ),
-        date_='2022-10-23T00:00:00Z',
-        lines=[
-            shared.PaymentLine(
-                allocated_on_date='2022-10-23T00:00:00Z',
-                amount=Decimal('8592.13'),
-                links=[
-                    shared.PaymentLineLink(
-                        type=shared.PaymentLinkType.OTHER,
-                    ),
-                ],
-            ),
-        ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        payment_method_ref=shared.PaymentMethodRef(
-            id='<ID>',
-        ),
-        source_modified_date='2022-10-23T00:00:00Z',
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
-            },
-        ),
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -92,7 +59,7 @@ if res.accounting_create_payment_response is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## get_create_model
 
@@ -147,4 +114,4 @@ if res.push_option is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |

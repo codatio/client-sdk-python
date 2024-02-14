@@ -2,19 +2,25 @@
 
 from __future__ import annotations
 import dataclasses
-from .datatype import DataType
 from codatlending import utils
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from typing import Optional
+
+class ContactRefDataType(str, Enum):
+    r"""Allowed name of the 'dataType'."""
+    CUSTOMERS = 'customers'
+    SUPPLIERS = 'suppliers'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ContactRef:
     r"""A customer or supplier associated with the direct cost."""
+    UNSET='__SPEAKEASY_UNSET__'
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier for a customer or supplier."""
-    data_type: Optional[DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Available Data types"""
+    data_type: Optional[ContactRefDataType] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is ContactRef.UNSET }})
+    r"""Allowed name of the 'dataType'."""
     
 
