@@ -28,14 +28,14 @@ s = codatplatform.CodatPlatform(
 )
 
 req = shared.CreateRule(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     notifiers=shared.WebhookNotifier(
         emails=[
             'info@client.com',
         ],
         webhook='https://webhook.client.com',
     ),
-    type='string',
+    type='DataConnectionStatusChanged',
+    company_id='39b73b17-cc2e-429e-915d-71654e9dcd1e',
 )
 
 res = s.webhooks.create(req)

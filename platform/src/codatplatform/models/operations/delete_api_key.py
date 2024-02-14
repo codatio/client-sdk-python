@@ -19,10 +19,10 @@ class DeleteAPIKeyRequest:
 class DeleteAPIKeyResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     error_message: Optional[errors_errormessage.ErrorMessage] = dataclasses.field(default=None)
     r"""Too many requests were made in a given amount of time. Wait a short period and then try again."""
     

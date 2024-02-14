@@ -32,20 +32,21 @@ s = codatplatform.CodatPlatform(
 )
 
 req = operations.ConfigureSupplementalDataRequest(
+    data_type=operations.DataType.INVOICES,
+    platform_key='gbol',
     supplemental_data_configuration=shared.SupplementalDataConfiguration(
         supplemental_data_config={
-            'key': shared.SupplementalDataSourceConfiguration(
+            'orders-supplemental-data': shared.SupplementalDataSourceConfiguration(
+                data_source='/orders',
                 pull_data={
-                    'key': 'string',
+                    'orderNumber': 'order_num',
                 },
                 push_data={
-                    'key': 'string',
+                    'orderNumber': 'order_num',
                 },
             ),
         },
     ),
-    data_type=operations.DataType.INVOICES,
-    platform_key='gbol',
 )
 
 res = s.supplemental_data.configure(req)
