@@ -38,12 +38,6 @@ s = codatsyncpayroll.CodatSyncPayroll(
 )
 
 req = operations.CreateJournalRequest(
-    journal=shared.Journal(
-        created_on='2022-10-23T00:00:00.000Z',
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00.000Z',
-        source_modified_date='2022-10-23T00:00:00.000Z',
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -66,7 +60,12 @@ if res.create_journal_response is not None:
 ### Response
 
 **[operations.CreateJournalResponse](../../models/operations/createjournalresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## get
 
@@ -93,7 +92,7 @@ s = codatsyncpayroll.CodatSyncPayroll(
 
 req = operations.GetJournalRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='Northeast Hatchback Kia',
+    journal_id='<value>',
 )
 
 res = s.journals.get(req)
@@ -114,7 +113,12 @@ if res.journal is not None:
 ### Response
 
 **[operations.GetJournalResponse](../../models/operations/getjournalresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## get_create_model
 
@@ -164,7 +168,12 @@ if res.push_option is not None:
 ### Response
 
 **[operations.GetCreateJournalModelResponse](../../models/operations/getcreatejournalmodelresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list
 
@@ -212,4 +221,9 @@ if res.journals is not None:
 ### Response
 
 **[operations.ListJournalsResponse](../../models/operations/listjournalsresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 4x-5xx                              | */*                                 |

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import datatype as shared_datatype
 from codatsyncpayroll import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -41,16 +40,17 @@ class PullOperation:
     r"""Information about a queued, in progress or completed pull operation.
     *Formally called `dataset`*
     """
+    UNSET='__SPEAKEASY_UNSET__'
     company_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId') }})
     r"""Unique identifier of the company associated to this pull operation."""
     connection_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('connectionId') }})
     r"""Unique identifier of the connection associated to this pull operation."""
-    data_type: shared_datatype.DataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
-    r"""Available Data types"""
+    data_type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
+    r"""The data type you are requesting in a pull operation."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""Unique identifier of the pull operation."""
     is_completed: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isCompleted') }})
-    r"""`True` if the pull operation completed successfully."""
+    r"""`True` if the pull operation is completed successfully. The `isCompleted` property is not queryable. To filter failed pull operations, query by `status!=Complete&&status!=NotSupported` instead."""
     is_errored: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isErrored') }})
     r"""`True` if the pull operation entered an error state."""
     progress: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('progress') }})
@@ -99,7 +99,9 @@ class PullOperation:
     > Not all dates from Codat will contain information about time zones.  
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    error_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage') }})
+    error_message: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is PullOperation.UNSET }})
     r"""A message about a transient or persistent error."""
+    status_description: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusDescription'), 'exclude': lambda f: f is PullOperation.UNSET }})
+    r"""Additional information about the dataset status."""
     
 

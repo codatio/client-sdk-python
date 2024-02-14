@@ -4,18 +4,22 @@ from __future__ import annotations
 import dataclasses
 from codatsyncpayroll import utils
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from typing import Optional
+
+class TrackingRecordRefDataType(str, Enum):
+    r"""Name of underlying data type."""
+    CUSTOMERS = 'customers'
+    SUPPLIERS = 'suppliers'
+    TRACKING_CATEGORIES = 'trackingCategories'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RecordRef:
-    r"""Links the current record to the underlying record or data type that created it.
-
-    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
-    """
-    data_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Allowed name of the 'dataType'."""
+class TrackingRecordRef:
+    r"""Links to the customer or tracking category."""
+    data_type: Optional[TrackingRecordRefDataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
+    r"""Name of underlying data type."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""'id' of the underlying record or data type."""
     
