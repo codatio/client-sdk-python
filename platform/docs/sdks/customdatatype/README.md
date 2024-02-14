@@ -39,19 +39,26 @@ s = codatplatform.CodatPlatform(
 )
 
 req = operations.ConfigureCustomDataTypeRequest(
-    custom_data_type_configuration=shared.CustomDataTypeConfiguration(
-        key_by=[
-            'string',
-        ],
-        required_data={
-            'key': 'string',
-        },
-        source_modified_date=[
-            'string',
-        ],
-    ),
     custom_data_identifier='DynamicsPurchaseOrders',
     platform_key='gbol',
+    custom_data_type_configuration=shared.CustomDataTypeConfiguration(
+        data_source='api/purchaseOrders?$filter=currencyCode eq \'NOK\'',
+        key_by=[
+            '$[*].id',
+        ],
+        required_data={
+            'currencyCode': '$[*].currencyCode',
+            'id': '$[*].id',
+            'number': '$[*].number',
+            'orderDate': '$[*].orderDate',
+            'totalAmountExcludingTax': '$[*].totalAmountExcludingTax',
+            'totalTaxAmount': '$[*].totalTaxAmount',
+            'vendorName': '$[*].number',
+        },
+        source_modified_date=[
+            '$[*].lastModifiedDateTime',
+        ],
+    ),
 )
 
 res = s.custom_data_type.configure(req)

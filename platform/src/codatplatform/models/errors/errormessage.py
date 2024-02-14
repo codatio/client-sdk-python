@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
+from ...models.shared import errorvalidation as shared_errorvalidation
 from codatplatform import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import Optional
@@ -12,6 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class ErrorMessage(Exception):
     r"""Bad Request"""
+    UNSET='__SPEAKEASY_UNSET__'
     can_be_retried: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('canBeRetried'), 'exclude': lambda f: f is None }})
     r"""`True` if the error occurred transiently and can be retried."""
     correlation_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('correlationId'), 'exclude': lambda f: f is None }})
@@ -24,6 +26,8 @@ class ErrorMessage(Exception):
     r"""Codat's service the returned the error."""
     status_code: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('statusCode'), 'exclude': lambda f: f is None }})
     r"""The HTTP status code returned by the error."""
+    validation: Optional[shared_errorvalidation.ErrorValidation] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation'), 'exclude': lambda f: f is ErrorMessage.UNSET }})
+    r"""A human-readable object describing validation decisions Codat has made. If an operation has failed because of validation errors, they will be detailed here."""
     
 
     def __str__(self) -> str:

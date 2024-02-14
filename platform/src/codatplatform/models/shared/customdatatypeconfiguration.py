@@ -11,13 +11,14 @@ from typing import Dict, List, Optional
 @dataclasses.dataclass
 class CustomDataTypeConfiguration:
     r"""Client's configuration details for a specific custom data type and platform pair."""
+    UNSET='__SPEAKEASY_UNSET__'
     data_source: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataSource'), 'exclude': lambda f: f is None }})
     r"""Underlying endpoint of the source platform that will serve as a data source for the custom data type. This value is not validated by Codat."""
     key_by: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('keyBy'), 'exclude': lambda f: f is None }})
     r"""An array of properties from the source system that can be used to uniquely identify the records returned for the custom data type. This value is not validated by Codat."""
     required_data: Optional[Dict[str, str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('requiredData'), 'exclude': lambda f: f is None }})
     r"""Properties required to be fetched from the underlying platform for the custom data type that is being configured. This value is not validated by Codat."""
-    source_modified_date: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate') }})
+    source_modified_date: Optional[List[str]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceModifiedDate'), 'exclude': lambda f: f is CustomDataTypeConfiguration.UNSET }})
     r"""Property in the source platform nominated by the client that defines the date when a record was last modified there. This value is not validated by Codat."""
     
 

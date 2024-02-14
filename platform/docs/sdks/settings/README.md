@@ -268,14 +268,16 @@ s = codatplatform.CodatPlatform(
 )
 
 req = shared.Profile(
-    alert_auth_header='Bearer tXEiHiRK7XCtI8TNHbpGs1LI1pumdb4Cl1QIo7B2',
-    api_key='sartANTjHAkLdbyDfaynoTQb7pkmj6hXHmnQKMrB',
-    icon_url='https://client-images.codat.io/icon/042399f5-d104-4f38-9ce8-cac3524f4e88_3f5623af-d992-4c22-bc08-e58c520a8526.ico',
-    logo_url='https://client-images.codat.io/logo/042399f5-d104-4f38-9ce8-cac3524f4e88_5806cb1f-7342-4c0e-a0a8-99bfbc47b0ff.png',
     name='Bob\'s Burgers',
     redirect_url='https://bobs-burgers.{countrySuffix}/{companyId}',
+    alert_auth_header='Bearer tXEiHiRK7XCtI8TNHbpGs1LI1pumdb4Cl1QIo7B2',
+    api_key='sartANTjHAkLdbyDfaynoTQb7pkmj6hXHmnQKMrB',
+    confirm_company_name=True,
+    icon_url='https://client-images.codat.io/icon/042399f5-d104-4f38-9ce8-cac3524f4e88_3f5623af-d992-4c22-bc08-e58c520a8526.ico',
+    logo_url='https://client-images.codat.io/logo/042399f5-d104-4f38-9ce8-cac3524f4e88_5806cb1f-7342-4c0e-a0a8-99bfbc47b0ff.png',
     white_list_urls=[
         'https://bobs-burgers.com',
+        'https://bobs-burgers.co.uk',
     ],
 )
 
@@ -325,12 +327,13 @@ req = operations.UpdateProfileSyncSettingsRequestBody(
     settings=[
         shared.SyncSetting(
             data_type=shared.DataType.INVOICES,
-            fetch_on_first_link=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00Z',
-            sync_from_window=24,
-            sync_order=334238,
+            fetch_on_first_link=True,
+            sync_order=0,
             sync_schedule=24,
+            is_locked=True,
+            months_to_sync=24,
+            sync_from_utc='2020-01-01T12:00:00.000Z',
+            sync_from_window=24,
         ),
     ],
 )

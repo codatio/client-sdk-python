@@ -33,9 +33,6 @@ s = codatplatform.CodatPlatform(
 )
 
 req = operations.CreateConnectionRequest(
-    request_body=operations.CreateConnectionRequestBody(
-        platform_key='gbol',
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -222,7 +219,6 @@ s = codatplatform.CodatPlatform(
 )
 
 req = operations.UnlinkConnectionRequest(
-    update_connection_status=shared.UpdateConnectionStatus(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -269,9 +265,6 @@ s = codatplatform.CodatPlatform(
 )
 
 req = operations.UpdateConnectionAuthorizationRequest(
-    request_body={
-        'key': 'string',
-    },
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

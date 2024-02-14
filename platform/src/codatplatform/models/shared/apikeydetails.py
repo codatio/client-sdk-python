@@ -11,6 +11,7 @@ from typing import Optional
 @dataclasses.dataclass
 class APIKeyDetails:
     r"""Details of the API key."""
+    UNSET='__SPEAKEASY_UNSET__'
     api_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('apiKey'), 'exclude': lambda f: f is None }})
     r"""The API key value used to make authenticated http requests."""
     created_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdDate'), 'exclude': lambda f: f is None }})
@@ -36,7 +37,7 @@ class APIKeyDetails:
     """
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for the API key."""
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
+    name: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is APIKeyDetails.UNSET }})
     r"""A meaningful name assigned to the API key."""
     
 
