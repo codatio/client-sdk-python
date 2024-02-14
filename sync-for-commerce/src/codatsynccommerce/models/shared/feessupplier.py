@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import option as shared_option
+from .option import Option
 from codatsynccommerce import utils
 from dataclasses_json import Undefined, dataclass_json
 from typing import List, Optional
@@ -11,9 +11,10 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class FeesSupplier:
-    selected_supplier_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedSupplierId') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    selected_supplier_id: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedSupplierId'), 'exclude': lambda f: f is FeesSupplier.UNSET }})
     r"""Selected supplier id from the list of supplier records on the accounting software."""
-    supplier_options: Optional[List[shared_option.Option]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierOptions') }})
+    supplier_options: Optional[List[Option]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supplierOptions'), 'exclude': lambda f: f is FeesSupplier.UNSET }})
     r"""List of supplier options from the list of supplier records on the accounting software."""
     
 

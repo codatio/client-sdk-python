@@ -10,9 +10,10 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class InvoiceLineLevelSelection:
-    group_by_options: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('groupByOptions') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    group_by_options: Optional[List[str]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('groupByOptions'), 'exclude': lambda f: f is InvoiceLineLevelSelection.UNSET }})
     r"""Options for grouping on invoice lines."""
-    selected_group_by_options: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedGroupByOptions') }})
+    selected_group_by_options: Optional[List[str]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedGroupByOptions'), 'exclude': lambda f: f is InvoiceLineLevelSelection.UNSET }})
     r"""Invoice line level selection."""
     
 

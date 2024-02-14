@@ -10,9 +10,10 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class TaxRateMapping:
-    selected_accounting_tax_rate_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedAccountingTaxRateId') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    selected_accounting_tax_rate_id: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedAccountingTaxRateId'), 'exclude': lambda f: f is TaxRateMapping.UNSET }})
     r"""Selected tax rate id from the list of tax rates on the accounting software."""
-    selected_commerce_tax_rate_ids: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedCommerceTaxRateIds') }})
+    selected_commerce_tax_rate_ids: Optional[List[str]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selectedCommerceTaxRateIds'), 'exclude': lambda f: f is TaxRateMapping.UNSET }})
     r"""Selected tax component id from the list of tax components on the commerce software."""
     
 

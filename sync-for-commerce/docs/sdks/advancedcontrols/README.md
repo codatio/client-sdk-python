@@ -14,7 +14,7 @@ Advanced company management and sync preferences.
 
 ## create_company
 
-Creates a Codat company..
+Creates a Codat company
 
 ### Example Usage
 
@@ -29,8 +29,8 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = shared.CreateCompany(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.advanced_controls.create_company(req)
@@ -51,7 +51,12 @@ if res.company is not None:
 ### Response
 
 **[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_configuration
 
@@ -91,7 +96,12 @@ if res.configuration is not None:
 ### Response
 
 **[operations.GetConfigurationResponse](../../models/operations/getconfigurationresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list_companies
 
@@ -133,7 +143,12 @@ if res.companies is not None:
 ### Response
 
 **[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## set_configuration
 
@@ -173,4 +188,9 @@ if res.configuration is not None:
 ### Response
 
 **[operations.SetConfigurationResponse](../../models/operations/setconfigurationresponse.md)**
+### Errors
 
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 4x-5xx                              | */*                                 |

@@ -20,7 +20,7 @@ Return preferences set for the text fields on sync flow.
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import shared
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -28,8 +28,11 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
+req = operations.GetConfigTextSyncFlowRequest(
+    locale=shared.Locale.EN_US,
+)
 
-res = s.sync_flow_settings.get_config_text_sync_flow()
+res = s.sync_flow_settings.get_config_text_sync_flow(req)
 
 if res.localization_info is not None:
     # handle response
@@ -38,15 +41,21 @@ if res.localization_info is not None:
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.GetConfigTextSyncFlowRequest](../../models/operations/getconfigtextsyncflowrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
 
 
 ### Response
 
 **[operations.GetConfigTextSyncFlowResponse](../../models/operations/getconfigtextsyncflowresponse.md)**
+### Errors
 
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 4x-5xx                  | */*                     |
 
 ## get_visible_accounts
 
@@ -87,7 +96,12 @@ if res.visible_accounts is not None:
 ### Response
 
 **[operations.GetVisibleAccountsResponse](../../models/operations/getvisibleaccountsresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## update_config_text_sync_flow
 
@@ -97,7 +111,7 @@ Set preferences for the text fields on sync flow.
 
 ```python
 import codatsynccommerce
-from codatsynccommerce.models import shared
+from codatsynccommerce.models import operations, shared
 
 s = codatsynccommerce.CodatSyncCommerce(
     security=shared.Security(
@@ -105,9 +119,9 @@ s = codatsynccommerce.CodatSyncCommerce(
     ),
 )
 
-req = {
-    "West": shared.Localization(),
-}
+req = operations.UpdateConfigTextSyncFlowRequest(
+    locale=shared.Locale.EN_US,
+)
 
 res = s.sync_flow_settings.update_config_text_sync_flow(req)
 
@@ -118,16 +132,21 @@ if res.localization_info is not None:
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [Dict[str, shared.Localization]](../../models//.md)                 | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [operations.UpdateConfigTextSyncFlowRequest](../../models/operations/updateconfigtextsyncflowrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
 
 ### Response
 
 **[operations.UpdateConfigTextSyncFlowResponse](../../models/operations/updateconfigtextsyncflowresponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## update_visible_accounts_sync_flow
 
@@ -146,11 +165,6 @@ s = codatsynccommerce.CodatSyncCommerce(
 )
 
 req = operations.UpdateVisibleAccountsSyncFlowRequest(
-    visible_accounts=shared.VisibleAccounts(
-        visible_accounts=[
-            'Coordinator',
-        ],
-    ),
     platform_key='gbol',
 )
 
@@ -172,4 +186,9 @@ if res.visible_accounts is not None:
 ### Response
 
 **[operations.UpdateVisibleAccountsSyncFlowResponse](../../models/operations/updatevisibleaccountssyncflowresponse.md)**
+### Errors
 
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
