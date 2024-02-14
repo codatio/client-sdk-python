@@ -33,11 +33,13 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateBankAccountMappingRequest(
-    zero=shared.Zero(
-        feed_start_date='2022-10-23T00:00:00Z',
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
+    zero=shared.Zero(
+        feed_start_date='2023-01-09T14:14:14.1057478Z',
+        source_account_id='acc-002',
+        target_account_id='account-081',
+    ),
 )
 
 res = s.account_mapping.create(req)

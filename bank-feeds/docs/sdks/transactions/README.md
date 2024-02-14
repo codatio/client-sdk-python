@@ -29,7 +29,6 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ```python
 import codatbankfeeds
 from codatbankfeeds.models import operations, shared
-from decimal import Decimal
 
 s = codatbankfeeds.CodatBankFeeds(
     security=shared.Security(
@@ -38,22 +37,7 @@ s = codatbankfeeds.CodatBankFeeds(
 )
 
 req = operations.CreateBankTransactionsRequest(
-    create_bank_transactions=shared.CreateBankTransactions(
-        account_id='7110701885',
-        transactions=[
-            shared.BankTransactions(
-                amount=Decimal('999.99'),
-                balance=Decimal('-999.99'),
-                counterparty='ACME INC',
-                date_='2022-10-23T00:00:00Z',
-                description='Debit for Payment Id sdp-1-57379a43-c4b8-49f5-bd7c-699189ee7a60',
-                id='716422529',
-                reconciled=False,
-                reference='reference for transaction',
-            ),
-        ],
-    ),
-    account_id='7110701885',
+    account_id='9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2',
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )

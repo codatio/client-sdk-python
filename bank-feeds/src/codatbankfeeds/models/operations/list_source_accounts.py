@@ -21,10 +21,10 @@ class ListSourceAccountsRequest:
 class ListSourceAccountsResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     source_accounts: Optional[List[shared_sourceaccount.SourceAccount]] = dataclasses.field(default=None)
     r"""Success"""
     

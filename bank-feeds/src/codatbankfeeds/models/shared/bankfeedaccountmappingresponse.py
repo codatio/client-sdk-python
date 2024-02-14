@@ -11,13 +11,14 @@ from typing import Optional
 @dataclasses.dataclass
 class BankFeedAccountMappingResponse:
     r"""The result from POSTing a Bank Account mapping."""
-    error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Error') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    error: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Error'), 'exclude': lambda f: f is BankFeedAccountMappingResponse.UNSET }})
     r"""Error returned during the post request"""
+    status: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Status'), 'exclude': lambda f: f is BankFeedAccountMappingResponse.UNSET }})
+    r"""Status of the POST request."""
     source_account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceAccountId'), 'exclude': lambda f: f is None }})
     r"""Unique ID for the source account."""
-    status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Status') }})
-    r"""Status of the POST request."""
-    target_account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountId') }})
+    target_account_id: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountId'), 'exclude': lambda f: f is BankFeedAccountMappingResponse.UNSET }})
     r"""Unique ID for the target account."""
     
 

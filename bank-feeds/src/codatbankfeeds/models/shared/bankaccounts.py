@@ -22,7 +22,8 @@ class BankAccountsBankAccountType(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class BankAccountsMetadata:
-    is_deleted: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    is_deleted: Optional[bool] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isDeleted'), 'exclude': lambda f: f is BankAccountsMetadata.UNSET }})
     r"""Indicates whether the record has been deleted in the third-party system this record originated from."""
     
 
@@ -35,7 +36,8 @@ class BankAccountsSupplementalData:
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting platform. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    content: Optional[Dict[str, Dict[str, Any]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    content: Optional[Dict[str, Dict[str, Any]]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content'), 'exclude': lambda f: f is BankAccountsSupplementalData.UNSET }})
     
 
 
@@ -60,9 +62,10 @@ class BankAccountsAccountingBankAccount:
     * The currency and balance of the account.
     * The sort code and account number.
     """
-    account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountName') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    account_name: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountName'), 'exclude': lambda f: f is BankAccountsAccountingBankAccount.UNSET }})
     r"""Name of the bank account in the accounting platform."""
-    account_number: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountNumber') }})
+    account_number: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accountNumber'), 'exclude': lambda f: f is BankAccountsAccountingBankAccount.UNSET }})
     r"""Account number for the bank account.
 
     Xero integrations
@@ -76,9 +79,9 @@ class BankAccountsAccountingBankAccount:
     For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.  
     For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
     """
-    available_balance: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('availableBalance'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
+    available_balance: Optional[Decimal] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('availableBalance'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is BankAccountsAccountingBankAccount.UNSET }})
     r"""Total available balance of the bank account as reported by the underlying data source. This may take into account overdrafts or pending transactions for example."""
-    balance: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
+    balance: Optional[Decimal] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('balance'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is BankAccountsAccountingBankAccount.UNSET }})
     r"""Balance of the bank account."""
     currency: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currency'), 'exclude': lambda f: f is None }})
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
@@ -89,22 +92,22 @@ class BankAccountsAccountingBankAccount:
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    i_ban: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('iBan') }})
+    i_ban: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('iBan'), 'exclude': lambda f: f is BankAccountsAccountingBankAccount.UNSET }})
     r"""International bank account number of the account. Often used when making or receiving international payments."""
     id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
     r"""Identifier for the account, unique for the company in the accounting platform."""
-    institution: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('institution') }})
+    institution: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('institution'), 'exclude': lambda f: f is BankAccountsAccountingBankAccount.UNSET }})
     r"""The institution of the bank account."""
     metadata: Optional[BankAccountsMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is None }})
     modified_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modifiedDate'), 'exclude': lambda f: f is None }})
-    nominal_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('nominalCode') }})
+    nominal_code: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('nominalCode'), 'exclude': lambda f: f is BankAccountsAccountingBankAccount.UNSET }})
     r"""Code used to identify each nominal account for a business."""
-    overdraft_limit: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overdraftLimit'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder }})
+    overdraft_limit: Optional[Decimal] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('overdraftLimit'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is BankAccountsAccountingBankAccount.UNSET }})
     r"""Pre-arranged overdraft limit of the account.
 
     The value is always positive. For example, an overdraftLimit of `1000` means that the balance of the account can go down to `-1000`.
     """
-    sort_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sortCode') }})
+    sort_code: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sortCode'), 'exclude': lambda f: f is BankAccountsAccountingBankAccount.UNSET }})
     r"""Sort code for the bank account.
 
     Xero integrations

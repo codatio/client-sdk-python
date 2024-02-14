@@ -12,6 +12,7 @@ from typing import List, Optional
 @dataclasses.dataclass
 class BankFeedMapping:
     r"""A bank feed connection between a source account and a target account, including potential target accounts."""
+    UNSET='__SPEAKEASY_UNSET__'
     feed_start_date: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('feedStartDate'), 'exclude': lambda f: f is None }})
     r"""In Codat's data model, dates and times are represented using the <a class=\\"external\\" href=\\"https://en.wikipedia.org/wiki/ISO_8601\\" target=\\"_blank\\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -52,11 +53,11 @@ class BankFeedMapping:
     """
     status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""The status."""
-    target_account_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountId') }})
+    target_account_id: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountId'), 'exclude': lambda f: f is BankFeedMapping.UNSET }})
     r"""Unique ID for the target account in the accounting platform."""
     target_account_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountName'), 'exclude': lambda f: f is None }})
     r"""Name for the target account in the accounting platform."""
-    target_account_options: Optional[List[TargetAccountOption]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountOptions') }})
+    target_account_options: Optional[List[TargetAccountOption]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('targetAccountOptions'), 'exclude': lambda f: f is BankFeedMapping.UNSET }})
     r"""An array of potential target accounts."""
     
 
