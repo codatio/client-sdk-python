@@ -12,7 +12,8 @@ python:
   version: 6.1.1
   author: Codat
   clientServerStatusCodesAsErrors: true
-  description: Set up bank feeds from accounts in your application to supported accounting platforms.
+  description: Set up bank feeds from accounts in your application to supported accounting
+    platforms.
   flattenGlobalSecurity: false
   imports:
     option: openapi
