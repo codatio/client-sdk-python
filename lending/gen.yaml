@@ -12,7 +12,8 @@ python:
   version: 6.3.0
   author: Codat
   clientServerStatusCodesAsErrors: true
-  description: Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
+  description: Make credit decisions backed by enhanced financials, metrics, reports,
+    and data integrity features.
   flattenGlobalSecurity: false
   imports:
     option: openapi

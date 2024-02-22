@@ -12,7 +12,7 @@ python:
   version: 3.2.0
   author: Codat
   clientServerStatusCodesAsErrors: true
-  description: Streamline your customers' accounts payable workflow.
+  description: Push expenses to accounting platforms.
   flattenGlobalSecurity: false
   imports:
     option: openapi
@@ -25,4 +25,4 @@ python:
   inputModelSuffix: input
   maxMethodParams: 0
   outputModelSuffix: output
-  packageName: codat-sync-for-payables
+  packageName: codat-sync-for-payables-version-1
