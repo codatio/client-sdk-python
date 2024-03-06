@@ -12,6 +12,6 @@ from typing import List, Optional
 class WebhookNotifier:
     emails: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('emails'), 'exclude': lambda f: f is None }})
     webhook: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webhook'), 'exclude': lambda f: f is None }})
-    r"""The URI the webhook service will POST events."""
+    r"""The URI the webhook service will use to post events."""
     
 

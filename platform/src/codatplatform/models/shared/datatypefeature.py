@@ -15,6 +15,6 @@ class DataTypeFeature:
     r"""Describes support for a given datatype and associated operations"""
     supported_features: List[SupportedFeature] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('supportedFeatures') }})
     data_type: Optional[DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Available Data types"""
+    r"""Available data types"""
     
 

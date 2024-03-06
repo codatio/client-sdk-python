@@ -12,7 +12,7 @@ class ConfigureCustomDataTypeRequest:
     custom_data_identifier: str = dataclasses.field(metadata={'path_param': { 'field_name': 'customDataIdentifier', 'style': 'simple', 'explode': False }})
     r"""Unique identifier for a custom data type."""
     platform_key: str = dataclasses.field(metadata={'path_param': { 'field_name': 'platformKey', 'style': 'simple', 'explode': False }})
-    r"""A unique 4-letter key to represent a platform in each integration. View [accounting](https://docs.codat.io/integrations/accounting/overview#platform-keys), [banking](https://docs.codat.io/integrations/banking/overview#platform-keys), and [commerce](https://docs.codat.io/integrations/commerce/overview#platform-keys) platform keys."""
+    r"""A unique 4-letter key to represent a platform in each integration."""
     custom_data_type_configuration: Optional[shared_customdatatypeconfiguration.CustomDataTypeConfiguration] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     r"""Custom data type configuration for the specified platform."""
     

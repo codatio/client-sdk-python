@@ -13,6 +13,7 @@ from .settings import Settings
 from .supplemental_data import SupplementalData
 from .webhooks import Webhooks
 from codatplatform import utils
+from codatplatform._hooks import SDKHooks
 from codatplatform.models import shared
 from typing import Callable, Dict, Union
 
@@ -80,6 +81,16 @@ class CodatPlatform:
                 server_url = utils.template_url(server_url, url_params)
 
         self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
+
+        hooks = SDKHooks()
+
+        current_server_url, *_ = self.sdk_configuration.get_server_details()
+        server_url, self.sdk_configuration.client = hooks.sdk_init(current_server_url, self.sdk_configuration.client)
+        if current_server_url != server_url:
+            self.sdk_configuration.server_url = server_url
+
+        # pylint: disable=protected-access
+        self.sdk_configuration._hooks=hooks
        
         self._init_sdks()
     
