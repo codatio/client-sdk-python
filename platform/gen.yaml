@@ -7,9 +7,15 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
   telemetryEnabled: true
 python:
-  version: 3.3.0
+  version: 3.4.0
+  additionalDependencies:
+    dependencies: {}
+    extraDependencies:
+      dev: {}
   author: Codat
   clientServerStatusCodesAsErrors: true
   description: Manage the building blocks of Codat, including companies, connections, and more.

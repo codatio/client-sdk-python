@@ -7,13 +7,18 @@ Manage webhooks, rules, and events.
 
 ### Available Operations
 
-* [create](#create) - Create webhook
-* [get](#get) - Get webhook
-* [list](#list) - List webhooks
+* [~~create~~](#create) - Create webhook :warning: **Deprecated**
+* [create_consumer](#create_consumer) - Create webhook consumer
+* [delete_consumer](#delete_consumer) - Delete webhook consumer
+* [~~get~~](#get) - Get webhook :warning: **Deprecated**
+* [~~list~~](#list) - List webhooks :warning: **Deprecated**
+* [list_consumers](#list_consumers) - List webhook consumers
 
-## create
+## ~~create~~
 
 Create a new webhook configuration
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -23,7 +28,7 @@ from codatplatform.models import shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -63,9 +68,56 @@ if res.webhook is not None:
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
 | errors.SDKError         | 4x-5xx                  | */*                     |
 
-## get
+## create_consumer
 
-Get a single webhook
+﻿Use the *Create webhook consumer* endpoint to create a new webhook consumer that will listen to messages we send you.
+
+[Webhook consumer](https://docs.codat.io/platform-api#/schemas/WebhookConsumer) is an HTTP endpoint that you configure to subscribe to specific events. See our documentation for more details on [Codat's webhook service](https://docs.codat.io/using-the-api/webhooks/overview).
+
+### Example Usage
+
+```python
+import codatplatform
+from codatplatform.models import shared
+
+s = codatplatform.CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = shared.WebhookConsumerPrototype()
+
+res = s.webhooks.create_consumer(req)
+
+if res.webhook_consumer is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [shared.WebhookConsumerPrototype](../../models/shared/webhookconsumerprototype.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
+
+
+### Response
+
+**[operations.CreateWebhookConsumerResponse](../../models/operations/createwebhookconsumerresponse.md)**
+### Errors
+
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| errors.SDKError         | 4x-5xx                  | */*                     |
+
+## delete_consumer
+
+﻿Use the *Delete webhook consumer* endpoint to delete an existing webhoook consumer, providing its valid `id` as a parameter.
+
+[Webhook consumer](https://docs.codat.io/platform-api#/schemas/WebhookConsumer) is an HTTP endpoint that you configure to subscribe to specific events. See our documentation for more details on [Codat's webhook service](https://docs.codat.io/using-the-api/webhooks/overview).
 
 ### Example Usage
 
@@ -75,7 +127,54 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+req = operations.DeleteWebhookConsumerRequest(
+    webhook_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+)
+
+res = s.webhooks.delete_consumer(req)
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.DeleteWebhookConsumerRequest](../../models/operations/deletewebhookconsumerrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
+
+
+### Response
+
+**[operations.DeleteWebhookConsumerResponse](../../models/operations/deletewebhookconsumerresponse.md)**
+### Errors
+
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |
+
+## ~~get~~
+
+Get a single webhook
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+```python
+import codatplatform
+from codatplatform.models import operations, shared
+
+s = codatplatform.CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -108,9 +207,11 @@ if res.webhook is not None:
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4x-5xx                      | */*                         |
 
-## list
+## ~~list~~
 
 List webhooks that you are subscribed to.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -120,7 +221,7 @@ from codatplatform.models import operations, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -154,3 +255,46 @@ if res.webhooks is not None:
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4x-5xx                          | */*                             |
+
+## list_consumers
+
+﻿Use the *List webhook consumers* endpoint to return a list of all webhook consumers that currently exist for your client.
+
+[Webhook consumer](https://docs.codat.io/platform-api#/schemas/WebhookConsumer) is an HTTP endpoint that you configure to subscribe to specific events. See our documentation for more details on [Codat's webhook service](https://docs.codat.io/using-the-api/webhooks/overview).
+
+### Example Usage
+
+```python
+import codatplatform
+from codatplatform.models import shared
+
+s = codatplatform.CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+
+res = s.webhooks.list_consumers()
+
+if res.webhook_consumers is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+
+### Response
+
+**[operations.ListWebhookConsumersResponse](../../models/operations/listwebhookconsumersresponse.md)**
+### Errors
+
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
+| errors.SDKError             | 4x-5xx                      | */*                         |

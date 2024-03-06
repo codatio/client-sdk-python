@@ -13,7 +13,7 @@ from typing import Optional
 class SyncSetting:
     r"""Describes how often, and how much history, should be fetched for the given data type when a pull operation is queued."""
     data_type: DataType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
-    r"""Available Data types"""
+    r"""Available data types"""
     fetch_on_first_link: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fetchOnFirstLink') }})
     r"""Whether this data type should be queued after a company has authorized a connection."""
     sync_order: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncOrder') }})

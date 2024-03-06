@@ -11,7 +11,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateRule:
-    r"""Create an event notification to a URL or list of email addresses based on the given type or condition."""
+    r"""Create a message that notifies a URL of an event based on its given type or condition."""
     notifiers: WebhookNotifier = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('notifiers') }})
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of webhook."""

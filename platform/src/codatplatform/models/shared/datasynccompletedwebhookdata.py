@@ -12,7 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class DataSyncCompletedWebhookData:
     data_type: Optional[DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Available Data types"""
+    r"""Available data types"""
     dataset_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datasetId'), 'exclude': lambda f: f is None }})
     r"""Unique identifier for the dataset that completed its sync."""
     

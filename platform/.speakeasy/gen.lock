@@ -1,27 +1,28 @@
 lockVersion: 2.0.0
 id: ede4f28e-23c0-442d-89ba-baa76ae2da6e
 management:
-  docChecksum: 1c413a5d3d57588774d54236c89a147e
+  docChecksum: 6b9afa35a1ca4d8a1834643e80dd9a19
   docVersion: 3.0.0
   speakeasyVersion: internal
-  generationVersion: 2.257.2
-  releaseVersion: 3.3.0
-  configChecksum: 784efc81af1d53ff20fe66e5949e3428
+  generationVersion: 2.277.0
+  releaseVersion: 3.4.0
+  configChecksum: 29197c333cff36b846fe087471e16d21
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: platform
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=platform
   published: true
 features:
   python:
-    constsAndDefaults: 0.1.2
-    core: 4.4.6
+    constsAndDefaults: 0.1.3
+    core: 4.5.0
     deprecations: 2.81.1
     examples: 2.81.3
-    globalSecurity: 2.83.2
+    globalSecurity: 2.83.4
     globalServerURLs: 2.82.1
     inputOutputModels: 2.83.1
     nameOverrides: 2.81.1
     retries: 2.82.1
+    webhooks: 1.0.0
 generatedFiles:
   - src/codatplatform/sdkconfiguration.py
   - src/codatplatform/settings.py
@@ -83,8 +84,11 @@ generatedFiles:
   - src/codatplatform/models/operations/configure_supplemental_data.py
   - src/codatplatform/models/operations/get_supplemental_data_configuration.py
   - src/codatplatform/models/operations/create_rule.py
+  - src/codatplatform/models/operations/create_webhook_consumer.py
+  - src/codatplatform/models/operations/delete_webhook_consumer.py
   - src/codatplatform/models/operations/get_webhook.py
   - src/codatplatform/models/operations/list_rules.py
+  - src/codatplatform/models/operations/list_webhook_consumers.py
   - src/codatplatform/models/shared/apikeydetails.py
   - src/codatplatform/models/shared/errorvalidation.py
   - src/codatplatform/models/shared/errorvalidationitem.py
@@ -146,7 +150,10 @@ generatedFiles:
   - src/codatplatform/models/shared/webhook.py
   - src/codatplatform/models/shared/webhooknotifier.py
   - src/codatplatform/models/shared/createrule.py
+  - src/codatplatform/models/shared/webhookconsumer.py
+  - src/codatplatform/models/shared/webhookconsumerprototype.py
   - src/codatplatform/models/shared/webhooks.py
+  - src/codatplatform/models/shared/webhookconsumers.py
   - src/codatplatform/models/shared/security.py
   - src/codatplatform/models/shared/clientratelimitreachedwebhook.py
   - src/codatplatform/models/shared/clientratelimitreachedwebhookdata.py
@@ -254,10 +261,14 @@ generatedFiles:
   - docs/models/operations/getsupplementaldataconfigurationrequest.md
   - docs/models/operations/getsupplementaldataconfigurationresponse.md
   - docs/models/operations/createruleresponse.md
+  - docs/models/operations/createwebhookconsumerresponse.md
+  - docs/models/operations/deletewebhookconsumerrequest.md
+  - docs/models/operations/deletewebhookconsumerresponse.md
   - docs/models/operations/getwebhookrequest.md
   - docs/models/operations/getwebhookresponse.md
   - docs/models/operations/listrulesrequest.md
   - docs/models/operations/listrulesresponse.md
+  - docs/models/operations/listwebhookconsumersresponse.md
   - docs/models/shared/apikeydetails.md
   - docs/models/shared/errorvalidation.md
   - docs/models/shared/errorvalidationitem.md
@@ -324,7 +335,10 @@ generatedFiles:
   - docs/models/shared/webhook.md
   - docs/models/shared/webhooknotifier.md
   - docs/models/shared/createrule.md
+  - docs/models/shared/webhookconsumer.md
+  - docs/models/shared/webhookconsumerprototype.md
   - docs/models/shared/webhooks.md
+  - docs/models/shared/webhookconsumers.md
   - docs/models/shared/security.md
   - docs/models/shared/clientratelimitreachedwebhook.md
   - docs/models/shared/clientratelimitreachedwebhookdata.md
@@ -368,3 +382,7 @@ generatedFiles:
   - docs/sdks/webhooks/README.md
   - USAGE.md
   - .gitattributes
+  - src/codatplatform/_hooks/registration.py
+  - src/codatplatform/_hooks/sdkhooks.py
+  - src/codatplatform/_hooks/types.py
+  - src/codatplatform/_hooks/__init__.py

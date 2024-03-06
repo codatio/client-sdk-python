@@ -24,7 +24,7 @@ from codatplatform.models import shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -111,9 +111,12 @@ if res.api_key_details is not None:
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 
-* [create](docs/sdks/webhooks/README.md#create) - Create webhook
-* [get](docs/sdks/webhooks/README.md#get) - Get webhook
-* [list](docs/sdks/webhooks/README.md#list) - List webhooks
+* [~~create~~](docs/sdks/webhooks/README.md#create) - Create webhook :warning: **Deprecated**
+* [create_consumer](docs/sdks/webhooks/README.md#create_consumer) - Create webhook consumer
+* [delete_consumer](docs/sdks/webhooks/README.md#delete_consumer) - Delete webhook consumer
+* [~~get~~](docs/sdks/webhooks/README.md#get) - Get webhook :warning: **Deprecated**
+* [~~list~~](docs/sdks/webhooks/README.md#list) - List webhooks :warning: **Deprecated**
+* [list_consumers](docs/sdks/webhooks/README.md#list_consumers) - List webhook consumers
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -131,7 +134,7 @@ from codatplatform.utils import BackoffStrategy, RetryConfig
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -156,7 +159,7 @@ from codatplatform.utils import BackoffStrategy, RetryConfig
 s = codatplatform.CodatPlatform(
     retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -190,7 +193,7 @@ from codatplatform.models import errors, shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -234,7 +237,7 @@ from codatplatform.models import shared
 s = codatplatform.CodatPlatform(
     server_idx=0,
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -260,7 +263,7 @@ from codatplatform.models import shared
 s = codatplatform.CodatPlatform(
     server_url="https://api.codat.io",
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
@@ -310,7 +313,7 @@ from codatplatform.models import shared
 
 s = codatplatform.CodatPlatform(
     security=shared.Security(
-        auth_header="<YOUR_API_KEY_HERE>",
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
