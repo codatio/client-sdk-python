@@ -34,9 +34,10 @@ req = operations.GetSyncTransactionRequest(
 
 res = s.transaction_status.get(req)
 
-if res.transaction is not None:
+if res.transaction_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -85,6 +86,7 @@ res = s.transaction_status.list(req)
 if res.transactions is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

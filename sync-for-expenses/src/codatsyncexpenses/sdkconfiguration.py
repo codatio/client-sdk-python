@@ -2,6 +2,7 @@
 
 
 import requests as requests_http
+from ._hooks import SDKHooks
 from .utils import utils
 from .utils.retries import RetryConfig
 from codatsyncexpenses.models import shared
@@ -22,10 +23,11 @@ class SDKConfiguration:
     server_idx: int = 0
     language: str = 'python'
     openapi_doc_version: str = 'prealpha'
-    sdk_version: str = '6.0.1'
-    gen_version: str = '2.257.2'
-    user_agent: str = 'speakeasy-sdk/python 6.0.1 2.257.2 prealpha codat-sync-for-expenses'
+    sdk_version: str = '6.1.0'
+    gen_version: str = '2.286.2'
+    user_agent: str = 'speakeasy-sdk/python 6.1.0 2.286.2 prealpha codat-sync-for-expenses'
     retry_config: RetryConfig = None
+    _hooks: SDKHooks = None
 
     def get_server_details(self) -> Tuple[str, Dict[str, str]]:
         if self.server_url:
@@ -34,3 +36,7 @@ class SDKConfiguration:
             self.server_idx = 0
 
         return SERVERS[self.server_idx], {}
+
+
+    def get_hooks(self) -> SDKHooks:
+        return self._hooks

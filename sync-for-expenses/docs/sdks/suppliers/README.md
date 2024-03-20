@@ -85,6 +85,7 @@ res = s.suppliers.create(req)
 if res.create_supplier_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -138,6 +139,7 @@ res = s.suppliers.get(req)
 if res.supplier is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -191,6 +193,7 @@ res = s.suppliers.list(req)
 if res.suppliers is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -285,6 +288,7 @@ res = s.suppliers.update(req)
 if res.update_supplier_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

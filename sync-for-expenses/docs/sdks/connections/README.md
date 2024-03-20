@@ -41,6 +41,7 @@ res = s.connections.create(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -86,6 +87,7 @@ res = s.connections.create_partner_expense_connection(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -130,9 +132,10 @@ req = operations.DeleteConnectionRequest(
 
 res = s.connections.delete(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -179,6 +182,7 @@ res = s.connections.get(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -227,6 +231,7 @@ res = s.connections.list(req)
 if res.connections is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -273,6 +278,7 @@ res = s.connections.unlink(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

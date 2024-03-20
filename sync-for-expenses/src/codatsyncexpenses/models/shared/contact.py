@@ -13,10 +13,11 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Phone:
-    number: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('number') }})
-    r"""A phone number."""
+    UNSET='__SPEAKEASY_UNSET__'
     type: PhoneNumberType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of phone number"""
+    number: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('number'), 'exclude': lambda f: f is Phone.UNSET }})
+    r"""A phone number."""
     
 
 

@@ -38,6 +38,7 @@ res = s.manage_data.get(req)
 if res.data_statuses is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -84,6 +85,7 @@ res = s.manage_data.get_pull_operation(req)
 if res.pull_operation is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -132,6 +134,7 @@ res = s.manage_data.list_pull_operations(req)
 if res.pull_operations is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -178,9 +181,10 @@ req = operations.RefreshAllDataTypesRequest(
 
 res = s.manage_data.refresh_all_data_types(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -229,6 +233,7 @@ res = s.manage_data.refresh_data_type(req)
 if res.pull_operation is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

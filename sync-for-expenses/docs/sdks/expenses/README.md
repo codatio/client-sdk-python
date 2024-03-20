@@ -8,7 +8,7 @@ Create expense datasets and upload receipts.
 ### Available Operations
 
 * [create](#create) - Create expense transaction
-* [update](#update) - Update expense-transactions
+* [update](#update) - Update expense transactions
 * [upload_attachment](#upload_attachment) - Upload attachment
 
 ## create
@@ -50,6 +50,7 @@ res = s.expenses.create(req)
 if res.create_expense_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -103,6 +104,7 @@ res = s.expenses.update(req)
 if res.update_expense_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -163,6 +165,7 @@ res = s.expenses.upload_attachment(req)
 if res.attachment is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

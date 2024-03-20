@@ -7,9 +7,15 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
   telemetryEnabled: true
 python:
-  version: 6.0.1
+  version: 6.1.0
+  additionalDependencies:
+    dependencies: {}
+    extraDependencies:
+      dev: {}
   author: Codat
   clientServerStatusCodesAsErrors: true
   description: Push expenses to accounting platforms.
@@ -26,3 +32,4 @@ python:
   maxMethodParams: 0
   outputModelSuffix: output
   packageName: codat-sync-for-expenses
+  responseFormat: envelope

@@ -36,6 +36,7 @@ res = s.push_operations.get(req)
 if res.push_operation is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -84,6 +85,7 @@ res = s.push_operations.list(req)
 if res.push_operations is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
