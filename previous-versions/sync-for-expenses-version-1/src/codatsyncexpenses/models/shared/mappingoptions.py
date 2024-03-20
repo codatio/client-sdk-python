@@ -13,13 +13,14 @@ from typing import List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class MappingOptions:
-    accounts: Optional[List[AccountMappingInfo]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accounts') }})
+    UNSET='__SPEAKEASY_UNSET__'
+    accounts: Optional[List[AccountMappingInfo]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('accounts'), 'exclude': lambda f: f is MappingOptions.UNSET }})
     r"""Array of available accounts for mapping."""
-    expense_provider: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expenseProvider') }})
+    expense_provider: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expenseProvider'), 'exclude': lambda f: f is MappingOptions.UNSET }})
     r"""Name of the expense integration."""
-    tax_rates: Optional[List[TaxRateMappingInfo]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRates') }})
+    tax_rates: Optional[List[TaxRateMappingInfo]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('taxRates'), 'exclude': lambda f: f is MappingOptions.UNSET }})
     r"""Array of available tax rates for mapping."""
-    tracking_categories: Optional[List[TrackingCategoryMappingInfo]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategories') }})
+    tracking_categories: Optional[List[TrackingCategoryMappingInfo]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trackingCategories'), 'exclude': lambda f: f is MappingOptions.UNSET }})
     r"""Array of available tracking categories for mapping."""
     
 

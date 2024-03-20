@@ -10,8 +10,8 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
     name='Bank of Dave',
+    description='Requested early access to the new financing scheme.',
 )
 
 res = s.companies.create_company(req)
@@ -19,5 +19,6 @@ res = s.companies.create_company(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->

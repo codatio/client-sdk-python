@@ -26,19 +26,15 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.InitiateSyncRequest(
-    post_sync=shared.PostSync(
-        dataset_ids=[
-            'acce2362-83d6-4e3e-a27f-f4a08e7217d5',
-        ],
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
 res = s.sync.initiate_sync(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -57,4 +53,4 @@ if res.status_code == 200:
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,422,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4x-5xx                              | */*                                 |

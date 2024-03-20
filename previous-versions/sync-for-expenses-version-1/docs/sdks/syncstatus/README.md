@@ -37,6 +37,7 @@ res = s.sync_status.get_last_successful_sync(req)
 if res.company_sync_status is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -55,7 +56,7 @@ if res.company_sync_status is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_latest_sync
 
@@ -82,6 +83,7 @@ res = s.sync_status.get_latest_sync(req)
 if res.company_sync_status is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -100,7 +102,7 @@ if res.company_sync_status is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_sync_by_id
 
@@ -128,6 +130,7 @@ res = s.sync_status.get_sync_by_id(req)
 if res.company_sync_status is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -146,7 +149,7 @@ if res.company_sync_status is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list_syncs
 
@@ -173,6 +176,7 @@ res = s.sync_status.list_syncs(req)
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -191,4 +195,4 @@ if res.classes is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |

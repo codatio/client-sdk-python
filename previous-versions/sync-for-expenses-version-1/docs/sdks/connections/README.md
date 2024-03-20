@@ -33,9 +33,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.CreateConnectionRequest(
-    request_body=operations.CreateConnectionRequestBody(
-        platform_key='gbol',
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -44,6 +41,7 @@ res = s.connections.create_connection(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -62,7 +60,7 @@ if res.connection is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## create_partner_expense_connection
 
@@ -89,6 +87,7 @@ res = s.connections.create_partner_expense_connection(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -107,7 +106,7 @@ if res.connection is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## delete_connection
 
@@ -133,9 +132,10 @@ req = operations.DeleteConnectionRequest(
 
 res = s.connections.delete_connection(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -154,7 +154,7 @@ if res.status_code == 200:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## get_connection
 
@@ -182,6 +182,7 @@ res = s.connections.get_connection(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -200,7 +201,7 @@ if res.connection is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list_connections
 
@@ -230,6 +231,7 @@ res = s.connections.list_connections(req)
 if res.connections is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -248,7 +250,7 @@ if res.connections is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## unlink
 
@@ -267,7 +269,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.UnlinkConnectionRequest(
-    request_body=operations.UnlinkConnectionUpdateConnection(),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
 )
@@ -277,6 +278,7 @@ res = s.connections.unlink(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -295,4 +297,4 @@ if res.connection is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |

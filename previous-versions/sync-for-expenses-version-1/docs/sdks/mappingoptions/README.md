@@ -34,6 +34,7 @@ res = s.mapping_options.get_mapping_options(req)
 if res.mapping_options is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -52,4 +53,4 @@ if res.mapping_options is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |

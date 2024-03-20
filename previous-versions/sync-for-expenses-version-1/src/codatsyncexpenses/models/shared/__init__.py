@@ -18,10 +18,13 @@ from .createexpenseresponse import *
 from .customer import *
 from .dataconnectionerror import *
 from .dataconnectionstatus import *
+from .errorvalidation import *
+from .errorvalidationitem import *
 from .expensetransaction import *
 from .expensetransactionline import *
 from .halref import *
 from .integrationtype import *
+from .items import *
 from .links import *
 from .mappingoptions import *
 from .postsync import *
@@ -40,4 +43,4 @@ from .transactionmetadatalist import *
 from .transactionstatus import *
 from .updateexpenserequest import *
 
-__all__ = ["AccountMappingInfo","AccountType","Attachment","AttachmentUpload","BankAccount","CodatFile","Companies","Company","CompanyConfiguration","CompanyRequestBody","CompanySyncStatus","Connection","Connections","ContactRef","ContactType","CreateExpenseRequest","CreateExpenseResponse","Customer","Data","DataConnectionError","DataConnectionStatus","ExpenseTransaction","ExpenseTransactionLine","HalRef","IntegrationType","Links","MappingOptions","PostSync","RecordRef","Security","SourceType","Supplier","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncStartedWebhook","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionStatus","Type","UpdateExpenseRequest","ValidTransactionTypes"]
+__all__ = ["AccountMappingInfo","AccountType","Attachment","AttachmentUpload","BankAccount","CodatFile","Companies","Company","CompanyConfiguration","CompanyRequestBody","CompanySyncStatus","Connection","Connections","ContactRef","ContactType","CreateExpenseRequest","CreateExpenseResponse","Customer","Data","DataConnectionError","DataConnectionStatus","ErrorValidation","ErrorValidationItem","ExpenseTransaction","ExpenseTransactionLine","GroupReference","HalRef","IntegrationType","Items","Links","MappingOptions","PostSync","RecordRef","Security","SourceType","Supplier","SyncCompleteWebhook","SyncCompleteWebhookData","SyncFailedWebhook","SyncFailedWebhookData","SyncStartedWebhook","TaxRateMappingInfo","TaxRateMappingInfoValidTransactionTypes","TrackingCategoryMappingInfo","TransactionMetadata","TransactionMetadataList","TransactionStatus","Type","UpdateExpenseRequest","ValidTransactionTypes"]

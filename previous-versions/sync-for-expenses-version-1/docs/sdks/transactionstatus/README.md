@@ -37,6 +37,7 @@ res = s.transaction_status.get_sync_transaction(req)
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -55,7 +56,7 @@ if res.classes is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4x-5xx                      | */*                         |
 
 ## list_sync_transactions
 
@@ -75,9 +76,9 @@ s = codatsyncexpenses.CodatSyncExpenses(
 
 req = operations.ListSyncTransactionsRequest(
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+    sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
     page=1,
     page_size=100,
-    sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
 )
 
 res = s.transaction_status.list_sync_transactions(req)
@@ -85,6 +86,7 @@ res = s.transaction_status.list_sync_transactions(req)
 if res.transaction_metadata_list is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -103,4 +105,4 @@ if res.transaction_metadata_list is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
