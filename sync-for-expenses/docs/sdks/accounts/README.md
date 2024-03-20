@@ -45,6 +45,7 @@ res = s.accounts.create(req)
 if res.create_account_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -100,6 +101,7 @@ res = s.accounts.get_create_model(req)
 if res.push_option is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

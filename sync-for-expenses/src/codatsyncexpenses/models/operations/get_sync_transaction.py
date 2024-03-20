@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ...models.shared import transaction as shared_transaction
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclasses.dataclass
@@ -27,7 +27,7 @@ class GetSyncTransactionResponse:
     r"""HTTP response status code for this operation"""
     raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
-    transaction: Optional[shared_transaction.Transaction] = dataclasses.field(default=None)
+    transaction_response: Optional[List[shared_transaction.Transaction]] = dataclasses.field(default=None)
     r"""Success"""
     
 

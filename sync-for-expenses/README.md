@@ -38,6 +38,7 @@ res = s.companies.create(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -102,7 +103,7 @@ if res.company is not None:
 ### [expenses](docs/sdks/expenses/README.md)
 
 * [create](docs/sdks/expenses/README.md#create) - Create expense transaction
-* [update](docs/sdks/expenses/README.md#update) - Update expense-transactions
+* [update](docs/sdks/expenses/README.md#update) - Update expense transactions
 * [upload_attachment](docs/sdks/expenses/README.md#upload_attachment) - Upload attachment
 
 ### [sync](docs/sdks/sync/README.md)
@@ -149,6 +150,7 @@ res = s.companies.create(req,
 if res.company is not None:
     # handle response
     pass
+
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
@@ -174,6 +176,7 @@ res = s.companies.create(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 <!-- End Retries [retries] -->
 
@@ -217,6 +220,7 @@ except errors.SDKError as e:
 if res.company is not None:
     # handle response
     pass
+
 ```
 <!-- End Error Handling [errors] -->
 
@@ -254,6 +258,7 @@ res = s.companies.create(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 
 
@@ -281,6 +286,7 @@ res = s.companies.create(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 <!-- End Server Selection [server] -->
 
@@ -332,6 +338,7 @@ res = s.companies.create(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 <!-- End Authentication [security] -->
 

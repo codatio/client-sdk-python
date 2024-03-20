@@ -47,6 +47,7 @@ res = s.customers.create(req)
 if res.create_customer_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -100,6 +101,7 @@ res = s.customers.get(req)
 if res.customer is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -153,6 +155,7 @@ res = s.customers.list(req)
 if res.customers is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -209,6 +212,7 @@ res = s.customers.update(req)
 if res.update_customer_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

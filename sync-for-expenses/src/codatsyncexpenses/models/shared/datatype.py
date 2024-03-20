@@ -4,7 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class DataType(str, Enum):
-    r"""Available Data types"""
+    r"""Available data types"""
     ACCOUNT_TRANSACTIONS = 'accountTransactions'
     BALANCE_SHEET = 'balanceSheet'
     BANK_ACCOUNTS = 'bankAccounts'

@@ -153,7 +153,7 @@ class CreateCustomerResponse:
     """
     data: Optional[AccountingCustomer] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is CreateCustomerResponse.UNSET }})
     data_type: Optional[DataType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType'), 'exclude': lambda f: f is None }})
-    r"""Available Data types"""
+    r"""Available data types"""
     error_message: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is CreateCustomerResponse.UNSET }})
     r"""A message about the error."""
     timeout_in_minutes: Optional[int] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is CreateCustomerResponse.UNSET }})

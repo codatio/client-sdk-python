@@ -36,6 +36,7 @@ res = s.configuration.get(req)
 if res.company_configuration is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -81,6 +82,7 @@ res = s.configuration.get_mapping_options(req)
 if res.mapping_options is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -126,6 +128,7 @@ res = s.configuration.set(req)
 if res.company_configuration is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

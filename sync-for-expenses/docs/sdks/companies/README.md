@@ -44,6 +44,7 @@ res = s.companies.create(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -90,9 +91,10 @@ req = operations.DeleteCompanyRequest(
 
 res = s.companies.delete(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -142,6 +144,7 @@ res = s.companies.get(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -192,6 +195,7 @@ res = s.companies.list(req)
 if res.companies is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -241,6 +245,7 @@ res = s.companies.update(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
