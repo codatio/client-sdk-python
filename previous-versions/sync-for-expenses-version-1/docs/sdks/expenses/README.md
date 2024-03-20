@@ -20,7 +20,6 @@ Create an expense transaction
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import operations, shared
-from decimal import Decimal
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -29,39 +28,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.CreateExpenseDatasetRequest(
-    create_expense_request=shared.CreateExpenseRequest(
-        items=[
-            shared.ExpenseTransaction(
-                contact_ref=shared.ContactRef(
-                    contact_type=shared.ContactType.SUPPLIER,
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                currency='GBP',
-                id='4d7c6929-7770-412b-91bb-44d3bc71d111',
-                issue_date='2022-10-23T00:00:00Z',
-                lines=[
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        net_amount=Decimal('110.42'),
-                        tax_amount=Decimal('14.43'),
-                        tax_rate_ref=shared.RecordRef(
-                            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                        ),
-                        tracking_refs=[
-                            shared.RecordRef(
-                                id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                            ),
-                        ],
-                    ),
-                ],
-                merchant_name='Amazon UK',
-                notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-                type=shared.Type.PAYMENT,
-            ),
-        ],
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
 )
 
@@ -70,6 +36,7 @@ res = s.expenses.create_expense_dataset(req)
 if res.create_expense_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -88,7 +55,7 @@ if res.create_expense_response is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
 
 ## update_expense_dataset
 
@@ -99,7 +66,6 @@ Update an expense transaction
 ```python
 import codatsyncexpenses
 from codatsyncexpenses.models import operations, shared
-from decimal import Decimal
 
 s = codatsyncexpenses.CodatSyncExpenses(
     security=shared.Security(
@@ -108,34 +74,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.UpdateExpenseDatasetRequest(
-    update_expense_request=shared.UpdateExpenseRequest(
-        contact_ref=shared.ContactRef(
-            contact_type=shared.ContactType.SUPPLIER,
-            id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-        ),
-        currency='GBP',
-        issue_date='2022-06-28T00:00:00.000Z',
-        lines=[
-            shared.ExpenseTransactionLine(
-                account_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                net_amount=Decimal('110.42'),
-                tax_amount=Decimal('14.43'),
-                tax_rate_ref=shared.RecordRef(
-                    id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                ),
-                tracking_refs=[
-                    shared.RecordRef(
-                        id='40e3e57c-2322-4898-966c-ca41adfd23fd',
-                    ),
-                ],
-            ),
-        ],
-        merchant_name='Amazon UK',
-        notes='APPLE.COM/BILL - 09001077498 - Card Ending: 4590',
-        type='string',
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
 )
@@ -145,6 +83,7 @@ res = s.expenses.update_expense_dataset(req)
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -163,7 +102,7 @@ if res.object is not None:
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,422,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4x-5xx                              | */*                                 |
 
 ## upload_attachment
 
@@ -182,12 +121,6 @@ s = codatsyncexpenses.CodatSyncExpenses(
 )
 
 req = operations.UploadAttachmentRequest(
-    attachment_upload=shared.AttachmentUpload(
-        file=shared.CodatFile(
-            content='0xE3ABc1980E'.encode(),
-            file_name='elegant_producer_electric.jpeg',
-        ),
-    ),
     company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
     sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
     transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
@@ -198,6 +131,7 @@ res = s.expenses.upload_attachment(req)
 if res.attachment is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -216,4 +150,4 @@ if res.attachment is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4x-5xx                          | */*                             |
