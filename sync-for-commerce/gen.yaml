@@ -12,7 +12,8 @@ python:
   version: 4.0.0
   author: Codat
   clientServerStatusCodesAsErrors: true
-  description: Push merchants' data from your ecommerce or point-of-sale (POS) platform into your merchants' accounting platform.
+  description: Push merchants' data from your ecommerce or point-of-sale (POS) platform
+    into your merchants' accounting platform.
   flattenGlobalSecurity: false
   imports:
     option: openapi
