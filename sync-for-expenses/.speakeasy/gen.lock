@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a2c830ee-4f93-4e8e-8f01-48d0991317f5
 management:
-  docChecksum: f7909a451d1597b90dec569f16a52c39
+  docChecksum: 179208fc9435d796d44c0ed26220e8ea
   docVersion: prealpha
-  speakeasyVersion: 1.214.0
-  generationVersion: 2.286.2
-  releaseVersion: 6.1.0
-  configChecksum: e79911b643cf0af7980744493efc5dad
+  speakeasyVersion: 1.244.1
+  generationVersion: 2.301.2
+  releaseVersion: 6.2.0
+  configChecksum: 459921fe135cf9813305705dbcdd4885
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: sync-for-expenses
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-expenses
@@ -14,14 +14,14 @@ management:
 features:
   python:
     constsAndDefaults: 0.1.3
-    core: 4.5.1
+    core: 4.6.4
     decimal: 0.1.0
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.83.5
     globalServerURLs: 2.82.2
     inputOutputModels: 2.83.1
-    nameOverrides: 2.81.1
+    nameOverrides: 2.81.2
     responseFormat: 0.1.0
     retries: 2.82.1
     webhooks: 1.0.0
@@ -36,8 +36,11 @@ generatedFiles:
   - src/codatsyncexpenses/push_operations.py
   - src/codatsyncexpenses/configuration.py
   - src/codatsyncexpenses/expenses.py
+  - src/codatsyncexpenses/reimbursements.py
   - src/codatsyncexpenses/sync.py
   - src/codatsyncexpenses/transaction_status.py
+  - src/codatsyncexpenses/attachments.py
+  - src/codatsyncexpenses/transfers.py
   - src/codatsyncexpenses/sdk.py
   - py.typed
   - pylintrc
@@ -81,7 +84,8 @@ generatedFiles:
   - src/codatsyncexpenses/models/operations/set_company_configuration.py
   - src/codatsyncexpenses/models/operations/create_expense_transaction.py
   - src/codatsyncexpenses/models/operations/update_expense_transaction.py
-  - src/codatsyncexpenses/models/operations/upload_expense_attachment.py
+  - src/codatsyncexpenses/models/operations/create_reimbursable_expense_transaction.py
+  - src/codatsyncexpenses/models/operations/update_reimbursable_expense_transaction.py
   - src/codatsyncexpenses/models/operations/get_sync_by_id.py
   - src/codatsyncexpenses/models/operations/get_last_successful_sync.py
   - src/codatsyncexpenses/models/operations/get_latest_sync.py
@@ -89,6 +93,8 @@ generatedFiles:
   - src/codatsyncexpenses/models/operations/list_syncs.py
   - src/codatsyncexpenses/models/operations/get_sync_transaction.py
   - src/codatsyncexpenses/models/operations/list_sync_transactions.py
+  - src/codatsyncexpenses/models/operations/upload_expense_attachment.py
+  - src/codatsyncexpenses/models/operations/create_transfer_transaction.py
   - src/codatsyncexpenses/models/shared/company.py
   - src/codatsyncexpenses/models/shared/connection.py
   - src/codatsyncexpenses/models/shared/dataconnectionstatus.py
@@ -158,9 +164,10 @@ generatedFiles:
   - src/codatsyncexpenses/models/shared/contactref.py
   - src/codatsyncexpenses/models/shared/updateexpenseresponse.py
   - src/codatsyncexpenses/models/shared/updateexpenserequest.py
-  - src/codatsyncexpenses/models/shared/attachment.py
-  - src/codatsyncexpenses/models/shared/attachmentupload.py
-  - src/codatsyncexpenses/models/shared/codatfile.py
+  - src/codatsyncexpenses/models/shared/createreimbursableexpenseresponse.py
+  - src/codatsyncexpenses/models/shared/createreimbursableexpenserequest.py
+  - src/codatsyncexpenses/models/shared/reimbursableexpensetransaction.py
+  - src/codatsyncexpenses/models/shared/reimbursableexpensetransactionline.py
   - src/codatsyncexpenses/models/shared/companysyncstatus.py
   - src/codatsyncexpenses/models/shared/syncinitiated.py
   - src/codatsyncexpenses/models/shared/initiatesync.py
@@ -168,6 +175,13 @@ generatedFiles:
   - src/codatsyncexpenses/models/shared/transactionstatus.py
   - src/codatsyncexpenses/models/shared/integrationtype.py
   - src/codatsyncexpenses/models/shared/transactions.py
+  - src/codatsyncexpenses/models/shared/attachment.py
+  - src/codatsyncexpenses/models/shared/attachmentupload.py
+  - src/codatsyncexpenses/models/shared/codatfile.py
+  - src/codatsyncexpenses/models/shared/createtransferresponse.py
+  - src/codatsyncexpenses/models/shared/createtransferrequest.py
+  - src/codatsyncexpenses/models/shared/transferdetails.py
+  - src/codatsyncexpenses/models/shared/accountref.py
   - src/codatsyncexpenses/models/shared/security.py
   - src/codatsyncexpenses/models/shared/clientratelimitreachedwebhook.py
   - src/codatsyncexpenses/models/shared/clientratelimitreachedwebhookdata.py
@@ -256,8 +270,10 @@ generatedFiles:
   - docs/models/operations/createexpensetransactionresponse.md
   - docs/models/operations/updateexpensetransactionrequest.md
   - docs/models/operations/updateexpensetransactionresponse.md
-  - docs/models/operations/uploadexpenseattachmentrequest.md
-  - docs/models/operations/uploadexpenseattachmentresponse.md
+  - docs/models/operations/createreimbursableexpensetransactionrequest.md
+  - docs/models/operations/createreimbursableexpensetransactionresponse.md
+  - docs/models/operations/updatereimbursableexpensetransactionrequest.md
+  - docs/models/operations/updatereimbursableexpensetransactionresponse.md
   - docs/models/operations/getsyncbyidrequest.md
   - docs/models/operations/getsyncbyidresponse.md
   - docs/models/operations/getlastsuccessfulsyncrequest.md
@@ -272,6 +288,10 @@ generatedFiles:
   - docs/models/operations/getsynctransactionresponse.md
   - docs/models/operations/listsynctransactionsrequest.md
   - docs/models/operations/listsynctransactionsresponse.md
+  - docs/models/operations/uploadexpenseattachmentrequest.md
+  - docs/models/operations/uploadexpenseattachmentresponse.md
+  - docs/models/operations/createtransfertransactionrequest.md
+  - docs/models/operations/createtransfertransactionresponse.md
   - docs/models/shared/groupreference.md
   - docs/models/shared/company.md
   - docs/models/shared/sourcetype.md
@@ -352,7 +372,7 @@ generatedFiles:
   - docs/models/shared/accountmappinginfo.md
   - docs/models/shared/createexpenseresponse.md
   - docs/models/shared/createexpenserequest.md
-  - docs/models/shared/bankaccountreference.md
+  - docs/models/shared/expensetransactionbankaccountreference.md
   - docs/models/shared/expensetransactiontype.md
   - docs/models/shared/expensetransaction.md
   - docs/models/shared/expensetransactionline.md
@@ -366,9 +386,11 @@ generatedFiles:
   - docs/models/shared/updateexpenseresponse.md
   - docs/models/shared/updateexpenserequestbankaccountreference.md
   - docs/models/shared/updateexpenserequest.md
-  - docs/models/shared/attachment.md
-  - docs/models/shared/attachmentupload.md
-  - docs/models/shared/codatfile.md
+  - docs/models/shared/createreimbursableexpenseresponse.md
+  - docs/models/shared/createreimbursableexpenserequest.md
+  - docs/models/shared/bankaccountreference.md
+  - docs/models/shared/reimbursableexpensetransaction.md
+  - docs/models/shared/reimbursableexpensetransactionline.md
   - docs/models/shared/companysyncstatus.md
   - docs/models/shared/syncinitiated.md
   - docs/models/shared/initiatesync.md
@@ -376,6 +398,13 @@ generatedFiles:
   - docs/models/shared/transactionstatus.md
   - docs/models/shared/integrationtype.md
   - docs/models/shared/transactions.md
+  - docs/models/shared/attachment.md
+  - docs/models/shared/attachmentupload.md
+  - docs/models/shared/codatfile.md
+  - docs/models/shared/createtransferresponse.md
+  - docs/models/shared/createtransferrequest.md
+  - docs/models/shared/transferdetails.md
+  - docs/models/shared/accountref.md
   - docs/models/shared/security.md
   - docs/models/shared/clientratelimitreachedwebhook.md
   - docs/models/shared/clientratelimitreachedwebhookdata.md
@@ -404,8 +433,11 @@ generatedFiles:
   - docs/sdks/pushoperations/README.md
   - docs/sdks/configuration/README.md
   - docs/sdks/expenses/README.md
+  - docs/sdks/reimbursements/README.md
   - docs/sdks/sync/README.md
   - docs/sdks/transactionstatus/README.md
+  - docs/sdks/attachments/README.md
+  - docs/sdks/transfers/README.md
   - USAGE.md
   - .gitattributes
   - src/codatsyncexpenses/_hooks/sdkhooks.py

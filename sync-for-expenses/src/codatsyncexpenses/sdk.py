@@ -2,6 +2,7 @@
 
 import requests as requests_http
 from .accounts import Accounts
+from .attachments import Attachments
 from .companies import Companies
 from .configuration import Configuration
 from .connections import Connections
@@ -9,10 +10,13 @@ from .customers import Customers
 from .expenses import Expenses
 from .manage_data import ManageData
 from .push_operations import PushOperations
+from .reimbursements import Reimbursements
 from .sdkconfiguration import SDKConfiguration
 from .suppliers import Suppliers
 from .sync import Sync
 from .transaction_status import TransactionStatus
+from .transfers import Transfers
+from .utils.retries import RetryConfig
 from codatsyncexpenses import utils
 from codatsyncexpenses._hooks import SDKHooks
 from codatsyncexpenses.models import shared
@@ -48,11 +52,17 @@ class CodatSyncExpenses:
     configuration: Configuration
     r"""Manage mapping options and sync configuration."""
     expenses: Expenses
-    r"""Create expense datasets and upload receipts."""
+    r"""Create expense transactions."""
+    reimbursements: Reimbursements
+    r"""Create reimbursable expense transactions."""
     sync: Sync
     r"""Trigger and monitor expense syncs to accounting software."""
     transaction_status: TransactionStatus
     r"""Retrieve the status of transactions within a sync."""
+    attachments: Attachments
+    r"""Upload attachmens to expenses, transfers and reimbursable expense transactions."""
+    transfers: Transfers
+    r"""Create transfer transactions."""
 
     sdk_configuration: SDKConfiguration
 
@@ -62,7 +72,7 @@ class CodatSyncExpenses:
                  server_url: Optional[str] = None,
                  url_params: Optional[Dict[str, str]] = None,
                  client: Optional[requests_http.Session] = None,
-                 retry_config: Optional[utils.RetryConfig] = None
+                 retry_config: Optional[RetryConfig] = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
 
@@ -77,7 +87,7 @@ class CodatSyncExpenses:
         :param client: The requests.Session HTTP client to use for all operations
         :type client: requests_http.Session
         :param retry_config: The utils.RetryConfig to use globally
-        :type retry_config: utils.RetryConfig
+        :type retry_config: RetryConfig
         """
         if client is None:
             client = requests_http.Session()
@@ -85,6 +95,7 @@ class CodatSyncExpenses:
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
+    
 
         self.sdk_configuration = SDKConfiguration(
             client,
@@ -102,7 +113,7 @@ class CodatSyncExpenses:
             self.sdk_configuration.server_url = server_url
 
         # pylint: disable=protected-access
-        self.sdk_configuration._hooks = hooks
+        self.sdk_configuration.__dict__['_hooks'] = hooks
 
         self._init_sdks()
 
@@ -117,5 +128,8 @@ class CodatSyncExpenses:
         self.push_operations = PushOperations(self.sdk_configuration)
         self.configuration = Configuration(self.sdk_configuration)
         self.expenses = Expenses(self.sdk_configuration)
+        self.reimbursements = Reimbursements(self.sdk_configuration)
         self.sync = Sync(self.sdk_configuration)
         self.transaction_status = TransactionStatus(self.sdk_configuration)
+        self.attachments = Attachments(self.sdk_configuration)
+        self.transfers = Transfers(self.sdk_configuration)
