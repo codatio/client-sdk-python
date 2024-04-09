@@ -66,7 +66,7 @@ if res.create_customer_response is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get
 
@@ -120,7 +120,7 @@ if res.customer is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## list
 
@@ -174,7 +174,7 @@ if res.customers is not None:
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 4x-5xx                              | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
 
 ## update
 
@@ -231,4 +231,4 @@ if res.update_customer_response is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

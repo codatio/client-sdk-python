@@ -3,7 +3,7 @@
 import requests as requests_http
 from .sdkconfiguration import SDKConfiguration
 from codatsyncexpenses import utils
-from codatsyncexpenses._hooks import HookContext
+from codatsyncexpenses._hooks import AfterErrorContext, AfterSuccessContext, BeforeRequestContext, HookContext
 from codatsyncexpenses.models import errors, operations, shared
 from typing import Optional
 
@@ -54,24 +54,22 @@ class Companies:
         def do_request():
             nonlocal req
             try:
-                req = self.sdk_configuration.get_hooks().before_request(
-                    hook_ctx, 
-                    requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
-                )
+                req = client.prepare_request(requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers))
+                req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
                 http_res = client.send(req)
             except Exception as e:
-                _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-                raise e
+                _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+                if e is not None:
+                    raise e
 
             if utils.match_status_codes(['400','401','402','403','429','4XX','500','503','5XX'], http_res.status_code):
-                http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-                if e:
+                result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+                if e is not None:
                     raise e
+                if result is not None:
+                    http_res = result
             else:
-                result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-                if isinstance(result, Exception):
-                    raise result
-                http_res = result
+                http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
 
             return http_res
 
@@ -82,17 +80,17 @@ class Companies:
         ]))
         
         
-        res = operations.CreateCompanyResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        res = operations.CreateCompanyResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
                 res.company = out
             else:
                 content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401, 402, 403, 429, 500, 503]:
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
                 raise out
             else:
@@ -117,7 +115,7 @@ class Companies:
         hook_ctx = HookContext(operation_id='delete-company', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.DeleteCompanyRequest, base_url, '/companies/{companyId}', request)
+        url = utils.generate_url(base_url, '/companies/{companyId}', request)
         
         if callable(self.sdk_configuration.security):
             headers, query_params = utils.get_security(self.sdk_configuration.security())
@@ -140,24 +138,22 @@ class Companies:
         def do_request():
             nonlocal req
             try:
-                req = self.sdk_configuration.get_hooks().before_request(
-                    hook_ctx, 
-                    requests_http.Request('DELETE', url, params=query_params, headers=headers).prepare(),
-                )
+                req = client.prepare_request(requests_http.Request('DELETE', url, params=query_params, headers=headers))
+                req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
                 http_res = client.send(req)
             except Exception as e:
-                _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-                raise e
+                _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+                if e is not None:
+                    raise e
 
             if utils.match_status_codes(['401','402','403','404','429','4XX','500','503','5XX'], http_res.status_code):
-                http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-                if e:
+                result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+                if e is not None:
                     raise e
+                if result is not None:
+                    http_res = result
             else:
-                result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-                if isinstance(result, Exception):
-                    raise result
-                http_res = result
+                http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
 
             return http_res
 
@@ -168,12 +164,12 @@ class Companies:
         ]))
         
         
-        res = operations.DeleteCompanyResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        res = operations.DeleteCompanyResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res)
         
         if http_res.status_code == 204:
             pass
         elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
                 raise out
             else:
@@ -198,7 +194,7 @@ class Companies:
         hook_ctx = HookContext(operation_id='get-company', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.GetCompanyRequest, base_url, '/companies/{companyId}', request)
+        url = utils.generate_url(base_url, '/companies/{companyId}', request)
         
         if callable(self.sdk_configuration.security):
             headers, query_params = utils.get_security(self.sdk_configuration.security())
@@ -221,24 +217,22 @@ class Companies:
         def do_request():
             nonlocal req
             try:
-                req = self.sdk_configuration.get_hooks().before_request(
-                    hook_ctx, 
-                    requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
-                )
+                req = client.prepare_request(requests_http.Request('GET', url, params=query_params, headers=headers))
+                req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
                 http_res = client.send(req)
             except Exception as e:
-                _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-                raise e
+                _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+                if e is not None:
+                    raise e
 
             if utils.match_status_codes(['401','402','403','404','429','4XX','500','503','5XX'], http_res.status_code):
-                http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-                if e:
+                result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+                if e is not None:
                     raise e
+                if result is not None:
+                    http_res = result
             else:
-                result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-                if isinstance(result, Exception):
-                    raise result
-                http_res = result
+                http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
 
             return http_res
 
@@ -249,17 +243,17 @@ class Companies:
         ]))
         
         
-        res = operations.GetCompanyResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        res = operations.GetCompanyResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
                 res.company = out
             else:
                 content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
                 raise out
             else:
@@ -291,7 +285,7 @@ class Companies:
         else:
             headers, query_params = utils.get_security(self.sdk_configuration.security)
         
-        query_params = { **utils.get_query_params(operations.ListCompaniesRequest, request), **query_params }
+        query_params = { **utils.get_query_params(request), **query_params }
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         client = self.sdk_configuration.client
@@ -308,24 +302,22 @@ class Companies:
         def do_request():
             nonlocal req
             try:
-                req = self.sdk_configuration.get_hooks().before_request(
-                    hook_ctx, 
-                    requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
-                )
+                req = client.prepare_request(requests_http.Request('GET', url, params=query_params, headers=headers))
+                req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
                 http_res = client.send(req)
             except Exception as e:
-                _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-                raise e
+                _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+                if e is not None:
+                    raise e
 
             if utils.match_status_codes(['400','401','402','403','404','429','4XX','500','503','5XX'], http_res.status_code):
-                http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-                if e:
+                result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+                if e is not None:
                     raise e
+                if result is not None:
+                    http_res = result
             else:
-                result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-                if isinstance(result, Exception):
-                    raise result
-                http_res = result
+                http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
 
             return http_res
 
@@ -336,17 +328,17 @@ class Companies:
         ]))
         
         
-        res = operations.ListCompaniesResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        res = operations.ListCompaniesResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Companies])
                 res.companies = out
             else:
                 content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401, 402, 403, 404, 429, 500, 503]:
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
                 raise out
             else:
@@ -372,7 +364,7 @@ class Companies:
         hook_ctx = HookContext(operation_id='update-company', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(operations.UpdateCompanyRequest, base_url, '/companies/{companyId}', request)
+        url = utils.generate_url(base_url, '/companies/{companyId}', request)
         
         if callable(self.sdk_configuration.security):
             headers, query_params = utils.get_security(self.sdk_configuration.security())
@@ -398,24 +390,22 @@ class Companies:
         def do_request():
             nonlocal req
             try:
-                req = self.sdk_configuration.get_hooks().before_request(
-                    hook_ctx, 
-                    requests_http.Request('PUT', url, params=query_params, data=data, files=form, headers=headers).prepare(),
-                )
+                req = client.prepare_request(requests_http.Request('PUT', url, params=query_params, data=data, files=form, headers=headers))
+                req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
                 http_res = client.send(req)
             except Exception as e:
-                _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-                raise e
+                _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+                if e is not None:
+                    raise e
 
             if utils.match_status_codes(['401','402','403','404','429','4XX','500','503','5XX'], http_res.status_code):
-                http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-                if e:
+                result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+                if e is not None:
                     raise e
+                if result is not None:
+                    http_res = result
             else:
-                result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-                if isinstance(result, Exception):
-                    raise result
-                http_res = result
+                http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
 
             return http_res
 
@@ -426,17 +416,17 @@ class Companies:
         ]))
         
         
-        res = operations.UpdateCompanyResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        res = operations.UpdateCompanyResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Company])
                 res.company = out
             else:
                 content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 402, 403, 404, 429, 500, 503]:
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, errors.ErrorMessage)
                 raise out
             else:
@@ -450,3 +440,4 @@ class Companies:
         return res
 
     
+

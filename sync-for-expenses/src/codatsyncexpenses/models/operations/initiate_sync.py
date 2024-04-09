@@ -26,6 +26,6 @@ class InitiateSyncResponse:
     raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     sync_initiated: Optional[shared_syncinitiated.SyncInitiated] = dataclasses.field(default=None)
-    r"""Returns the newly created SyncId"""
+    r"""Returns the newly created syncId"""
     
 

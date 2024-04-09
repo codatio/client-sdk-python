@@ -104,7 +104,11 @@ if res.company is not None:
 
 * [create](docs/sdks/expenses/README.md#create) - Create expense transaction
 * [update](docs/sdks/expenses/README.md#update) - Update expense transactions
-* [upload_attachment](docs/sdks/expenses/README.md#upload_attachment) - Upload attachment
+
+### [reimbursements](docs/sdks/reimbursements/README.md)
+
+* [create](docs/sdks/reimbursements/README.md#create) - Create reimbursable expense transaction
+* [update](docs/sdks/reimbursements/README.md#update) - Update reimbursable expense transaction
 
 ### [sync](docs/sdks/sync/README.md)
 
@@ -118,6 +122,14 @@ if res.company is not None:
 
 * [get](docs/sdks/transactionstatus/README.md#get) - Get sync transaction
 * [list](docs/sdks/transactionstatus/README.md#list) - List sync transactions
+
+### [attachments](docs/sdks/attachments/README.md)
+
+* [upload](docs/sdks/attachments/README.md#upload) - Upload attachment
+
+### [transfers](docs/sdks/transfers/README.md)
+
+* [create](docs/sdks/transfers/README.md#create) - Create transfer transaction
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -188,7 +200,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ### Example
 
@@ -302,7 +314,7 @@ import requests
 
 http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
-s = codatsyncexpenses.CodatSyncExpenses(client: http_client)
+s = codatsyncexpenses.CodatSyncExpenses(client=http_client)
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
