@@ -18,5 +18,6 @@ res = s.settings.create_api_key(req)
 if res.api_key_details is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->

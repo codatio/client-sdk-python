@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
+from .status import Status
 from codatplatform import utils
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -58,8 +59,8 @@ class DataTypes(str, Enum):
 @dataclasses.dataclass
 class DataStatus:
     r"""Describes the state of data in the Codat cache for a company and data type"""
-    current_status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currentStatus') }})
-    r"""The current status of the dataset in Codat's cache."""
+    current_status: Status = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('currentStatus') }})
+    r"""The current status of the dataset."""
     data_type: DataTypes = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dataType') }})
     r"""Available data types"""
     last_successful_sync: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastSuccessfulSync') }})

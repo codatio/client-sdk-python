@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ...models.shared import datastatus as shared_datastatus
-from typing import Dict, Optional
+from ...models.shared import datastatuses as shared_datastatuses
+from typing import Optional
 
 
 @dataclasses.dataclass
@@ -23,7 +23,7 @@ class GetCompanyDataStatusResponse:
     r"""HTTP response status code for this operation"""
     raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
-    data_statuses: Optional[Dict[str, shared_datastatus.DataStatus]] = dataclasses.field(default=None)
+    data_statuses: Optional[shared_datastatuses.DataStatuses] = dataclasses.field(default=None)
     r"""OK"""
     
 

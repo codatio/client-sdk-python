@@ -15,6 +15,8 @@ class WebhookConsumer:
     See our documentation for more details on [Codat's webhook service](https://docs.codat.io/using-the-api/webhooks/overview).
     """
     UNSET='__SPEAKEASY_UNSET__'
+    company_id: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('companyId'), 'exclude': lambda f: f is WebhookConsumer.UNSET }})
+    r"""Unique identifier of the company to indicate company-specific events. The associated webhook consumer will receive events only for the specified ID."""
     disabled: Optional[bool] = dataclasses.field(default=False, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('disabled'), 'exclude': lambda f: f is WebhookConsumer.UNSET }})
     r"""Flag that enables or disables the endpoint from receiving events. Disabled when set to `true`."""
     event_types: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('eventTypes'), 'exclude': lambda f: f is None }})

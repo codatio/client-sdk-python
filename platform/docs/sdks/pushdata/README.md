@@ -3,7 +3,7 @@
 
 ## Overview
 
-View push options and get push statuses.
+Initiate and monitor Create, Update, and Delete operations.
 
 ### Available Operations
 
@@ -47,6 +47,7 @@ res = s.push_data.get_model_options(req)
 if res.push_option is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -65,7 +66,7 @@ if res.push_option is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get_operation
 
@@ -93,6 +94,7 @@ res = s.push_data.get_operation(req)
 if res.push_operation is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -111,7 +113,7 @@ if res.push_operation is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list_operations
 
@@ -141,6 +143,7 @@ res = s.push_data.list_operations(req)
 if res.push_operations is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -159,4 +162,4 @@ if res.push_operations is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

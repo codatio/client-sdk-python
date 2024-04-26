@@ -3,7 +3,7 @@
 
 ## Overview
 
-Create and manage your Codat companies.
+Create and manage your SMB users' companies.
 
 ### Available Operations
 
@@ -44,6 +44,7 @@ res = s.companies.create(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -62,7 +63,7 @@ if res.company is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## delete
 
@@ -90,9 +91,10 @@ req = operations.DeleteCompanyRequest(
 
 res = s.companies.delete(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -111,7 +113,7 @@ if res.status_code == 200:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get
 
@@ -142,6 +144,7 @@ res = s.companies.get(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -160,7 +163,7 @@ if res.company is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list
 
@@ -192,6 +195,7 @@ res = s.companies.list(req)
 if res.companies is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -210,7 +214,7 @@ if res.companies is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## update
 
@@ -241,6 +245,7 @@ res = s.companies.update(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -259,4 +264,4 @@ if res.company is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
