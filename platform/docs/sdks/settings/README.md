@@ -3,7 +3,7 @@
 
 ## Overview
 
-Manage your Codat instance.
+Manage company profile configuration, sync settings, and API keys.
 
 ### Available Operations
 
@@ -50,6 +50,7 @@ res = s.settings.create_api_key(req)
 if res.api_key_details is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -68,7 +69,7 @@ if res.api_key_details is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## delete_api_key
 
@@ -104,6 +105,7 @@ res = s.settings.delete_api_key(req)
 if res.error_message is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -122,7 +124,7 @@ if res.error_message is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get_profile
 
@@ -146,6 +148,7 @@ res = s.settings.get_profile()
 if res.profile is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -163,7 +166,7 @@ if res.profile is not None:
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4x-5xx                  | */*                     |
+| errors.SDKError         | 4xx-5xx                 | */*                     |
 
 ## get_sync_settings
 
@@ -187,6 +190,7 @@ res = s.settings.get_sync_settings()
 if res.sync_settings is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -204,7 +208,7 @@ if res.sync_settings is not None:
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4x-5xx                  | */*                     |
+| errors.SDKError         | 4xx-5xx                 | */*                     |
 
 ## list_api_keys
 
@@ -232,6 +236,7 @@ res = s.settings.list_api_keys()
 if res.api_keys is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -249,7 +254,7 @@ if res.api_keys is not None:
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4x-5xx                  | */*                     |
+| errors.SDKError         | 4xx-5xx                 | */*                     |
 
 ## update_profile
 
@@ -286,6 +291,7 @@ res = s.settings.update_profile(req)
 if res.profile is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -304,7 +310,7 @@ if res.profile is not None:
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4x-5xx                  | */*                     |
+| errors.SDKError         | 4xx-5xx                 | */*                     |
 
 ## update_sync_settings
 
@@ -340,9 +346,10 @@ req = operations.UpdateProfileSyncSettingsRequestBody(
 
 res = s.settings.update_sync_settings(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -361,4 +368,4 @@ if res.status_code == 200:
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4x-5xx                  | */*                     |
+| errors.SDKError         | 4xx-5xx                 | */*                     |

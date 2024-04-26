@@ -37,6 +37,7 @@ res = s.settings.create_api_key(req)
 if res.api_key_details is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -60,6 +61,15 @@ if res.api_key_details is not None:
 * [get](docs/sdks/companies/README.md#get) - Get company
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
+
+### [connection_management](docs/sdks/connectionmanagement/README.md)
+
+* [get_access_token](docs/sdks/connectionmanagement/README.md#get_access_token) - Get access token
+
+### [connection_management.cors_settings](docs/sdks/corssettings/README.md)
+
+* [get](docs/sdks/corssettings/README.md#get) - Get CORS settings
+* [set](docs/sdks/corssettings/README.md#set) - Set CORS settings
 
 ### [connections](docs/sdks/connections/README.md)
 
@@ -148,6 +158,7 @@ res = s.settings.create_api_key(req,
 if res.api_key_details is not None:
     # handle response
     pass
+
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
@@ -157,7 +168,7 @@ from codatplatform.models import shared
 from codatplatform.utils import BackoffStrategy, RetryConfig
 
 s = codatplatform.CodatPlatform(
-    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
@@ -172,6 +183,7 @@ res = s.settings.create_api_key(req)
 if res.api_key_details is not None:
     # handle response
     pass
+
 ```
 <!-- End Retries [retries] -->
 
@@ -183,7 +195,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ### Example
 
@@ -214,6 +226,7 @@ except errors.SDKError as e:
 if res.api_key_details is not None:
     # handle response
     pass
+
 ```
 <!-- End Error Handling [errors] -->
 
@@ -250,6 +263,7 @@ res = s.settings.create_api_key(req)
 if res.api_key_details is not None:
     # handle response
     pass
+
 ```
 
 
@@ -276,6 +290,7 @@ res = s.settings.create_api_key(req)
 if res.api_key_details is not None:
     # handle response
     pass
+
 ```
 <!-- End Server Selection [server] -->
 
@@ -291,7 +306,7 @@ import requests
 
 http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
-s = codatplatform.CodatPlatform(client: http_client)
+s = codatplatform.CodatPlatform(client=http_client)
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -326,6 +341,7 @@ res = s.settings.create_api_key(req)
 if res.api_key_details is not None:
     # handle response
     pass
+
 ```
 <!-- End Authentication [security] -->
 

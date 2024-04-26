@@ -3,7 +3,7 @@
 
 ## Overview
 
-Manage your companies' data connections.
+Create new and manage existing data connections for a company.
 
 ### Available Operations
 
@@ -41,6 +41,7 @@ res = s.connections.create(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -59,7 +60,7 @@ if res.connection is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## delete
 
@@ -85,9 +86,10 @@ req = operations.DeleteConnectionRequest(
 
 res = s.connections.delete(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -106,7 +108,7 @@ if res.status_code == 200:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get
 
@@ -134,6 +136,7 @@ res = s.connections.get(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -152,7 +155,7 @@ if res.connection is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list
 
@@ -182,6 +185,7 @@ res = s.connections.list(req)
 if res.connections is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -200,7 +204,7 @@ if res.connections is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## unlink
 
@@ -228,6 +232,7 @@ res = s.connections.unlink(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -246,7 +251,7 @@ if res.connection is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## update_authorization
 
@@ -274,6 +279,7 @@ res = s.connections.update_authorization(req)
 if res.connection is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -292,4 +298,4 @@ if res.connection is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

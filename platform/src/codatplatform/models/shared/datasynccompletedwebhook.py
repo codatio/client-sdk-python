@@ -26,7 +26,10 @@ class DataSyncCompletedWebhook:
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Message'), 'exclude': lambda f: f is None }})
     r"""A human-readable message about the webhook."""
     rule_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RuleId'), 'exclude': lambda f: f is None }})
-    r"""Unique identifier for the rule."""
+    r"""Unique identifier for the rule.
+
+    Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+    """
     rule_type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RuleType'), 'exclude': lambda f: f is None }})
     r"""The type of rule."""
     

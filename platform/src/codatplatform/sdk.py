@@ -2,6 +2,7 @@
 
 import requests as requests_http
 from .companies import Companies
+from .connection_management import ConnectionManagement
 from .connections import Connections
 from .custom_data_type import CustomDataType
 from .groups import Groups
@@ -11,11 +12,12 @@ from .refresh_data import RefreshData
 from .sdkconfiguration import SDKConfiguration
 from .settings import Settings
 from .supplemental_data import SupplementalData
+from .utils.retries import RetryConfig
 from .webhooks import Webhooks
 from codatplatform import utils
 from codatplatform._hooks import SDKHooks
 from codatplatform.models import shared
-from typing import Callable, Dict, Union
+from typing import Callable, Dict, Optional, Union
 
 class CodatPlatform:
     r"""Platform API: Platform API
@@ -23,43 +25,62 @@ class CodatPlatform:
 
     These end points cover creating and managing your companies, data connections, and integrations.
 
-    [Read about the building blocks of Codat...](https://docs.codat.io/core-concepts/companies)
+    [Read about the building blocks of Codat...](https://docs.codat.io/core-concepts/companies) | [See our OpenAPI spec](https://github.com/codatio/oas) 
 
-    [See our OpenAPI spec](https://github.com/codatio/oas)
+    ---
+    <!-- Start Codat Tags Table -->
+    ## Endpoints
+
+    | Endpoints | Description |
+    | :- |:- |
+    | Companies | Create and manage your SMB users' companies. |
+    | Connections | Create new and manage existing data connections for a company. |
+    | Connection management | Configure connection management UI and retrieve access tokens for authentication. |
+    | Groups | Define and manage sets of companies based on a chosen characteristic. |
+    | Webhooks | Create and manage webhooks that listen to Codat's events. |
+    | Integrations | Get a list of integrations supported by Codat and their logos. |
+    | Refresh data | Initiate data refreshes, view pull status and history. |
+    | Settings | Manage company profile configuration, sync settings, and API keys. |
+    | Push data | Initiate and monitor Create, Update, and Delete operations. |
+    | Supplemental data | Configure and pull additional data you can include in Codat's standard data types. |
+    | Custom data type | Configure and pull additional data types that are not included in Codat's standardized data model. |
+    <!-- End Codat Tags Table -->
     """
     settings: Settings
-    r"""Manage your Codat instance."""
+    r"""Manage company profile configuration, sync settings, and API keys."""
     companies: Companies
-    r"""Create and manage your Codat companies."""
+    r"""Create and manage your SMB users' companies."""
+    connection_management: ConnectionManagement
+    r"""Configure connection management UI and retrieve access tokens for authentication."""
     connections: Connections
-    r"""Manage your companies' data connections."""
+    r"""Create new and manage existing data connections for a company."""
     custom_data_type: CustomDataType
-    r"""View and configure custom data types for supported integrations."""
+    r"""Configure and pull additional data types that are not included in Codat's standardized data model."""
     push_data: PushData
-    r"""View push options and get push statuses."""
+    r"""Initiate and monitor Create, Update, and Delete operations."""
     refresh_data: RefreshData
-    r"""Asynchronously retrieve data from an integration to refresh data in Codat."""
+    r"""Initiate data refreshes, view pull status and history."""
     groups: Groups
-    r"""Create groups and link them to your Codat companies."""
+    r"""Define and manage sets of companies based on a chosen characteristic."""
     integrations: Integrations
-    r"""View and manage your available integrations in Codat."""
+    r"""Get a list of integrations supported by Codat and their logos."""
     supplemental_data: SupplementalData
-    r"""View and configure supplemental data for supported data types."""
+    r"""Configure and pull additional data you can include in Codat's standard data types."""
     webhooks: Webhooks
-    r"""Manage webhooks, rules, and events."""
+    r"""Create and manage webhooks that listen to Codat's events."""
 
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
                  security: Union[shared.Security,Callable[[], shared.Security]] = None,
-                 server_idx: int = None,
-                 server_url: str = None,
-                 url_params: Dict[str, str] = None,
-                 client: requests_http.Session = None,
-                 retry_config: utils.RetryConfig = None
+                 server_idx: Optional[int] = None,
+                 server_url: Optional[str] = None,
+                 url_params: Optional[Dict[str, str]] = None,
+                 client: Optional[requests_http.Session] = None,
+                 retry_config: Optional[RetryConfig] = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
-        
+
         :param security: The security details required for authentication
         :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param server_idx: The index of the server to use for all operations
@@ -71,16 +92,23 @@ class CodatPlatform:
         :param client: The requests.Session HTTP client to use for all operations
         :type client: requests_http.Session
         :param retry_config: The utils.RetryConfig to use globally
-        :type retry_config: utils.RetryConfig
+        :type retry_config: RetryConfig
         """
         if client is None:
             client = requests_http.Session()
-        
+
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
+    
 
-        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(
+            client,
+            security,
+            server_url,
+            server_idx,
+            retry_config=retry_config
+        )
 
         hooks = SDKHooks()
 
@@ -90,13 +118,15 @@ class CodatPlatform:
             self.sdk_configuration.server_url = server_url
 
         # pylint: disable=protected-access
-        self.sdk_configuration._hooks=hooks
-       
+        self.sdk_configuration.__dict__['_hooks'] = hooks
+
         self._init_sdks()
-    
+
+
     def _init_sdks(self):
         self.settings = Settings(self.sdk_configuration)
         self.companies = Companies(self.sdk_configuration)
+        self.connection_management = ConnectionManagement(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
         self.custom_data_type = CustomDataType(self.sdk_configuration)
         self.push_data = PushData(self.sdk_configuration)
@@ -105,4 +135,3 @@ class CodatPlatform:
         self.integrations = Integrations(self.sdk_configuration)
         self.supplemental_data = SupplementalData(self.sdk_configuration)
         self.webhooks = Webhooks(self.sdk_configuration)
-    

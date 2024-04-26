@@ -11,7 +11,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
   telemetryEnabled: true
 python:
-  version: 3.4.0
+  version: 3.5.0
   additionalDependencies:
     dependencies: {}
     extraDependencies:
@@ -32,3 +32,5 @@ python:
   maxMethodParams: 0
   outputModelSuffix: output
   packageName: codat-platform
+  projectUrls: {}
+  responseFormat: envelope

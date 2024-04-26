@@ -3,7 +3,7 @@
 
 ## Overview
 
-View and manage your available integrations in Codat.
+Get a list of integrations supported by Codat and their logos.
 
 ### Available Operations
 
@@ -36,6 +36,7 @@ res = s.integrations.get(req)
 if res.integration is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -54,7 +55,7 @@ if res.integration is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get_branding
 
@@ -81,6 +82,7 @@ res = s.integrations.get_branding(req)
 if res.branding is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -99,7 +101,7 @@ if res.branding is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list
 
@@ -128,6 +130,7 @@ res = s.integrations.list(req)
 if res.integrations is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -146,4 +149,4 @@ if res.integrations is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

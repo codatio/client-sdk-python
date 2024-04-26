@@ -3,7 +3,7 @@
 
 ## Overview
 
-Manage webhooks, rules, and events.
+Create and manage webhooks that listen to Codat's events.
 
 ### Available Operations
 
@@ -48,6 +48,7 @@ res = s.webhooks.create(req)
 if res.webhook is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -66,7 +67,7 @@ if res.webhook is not None:
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4x-5xx                  | */*                     |
+| errors.SDKError         | 4xx-5xx                 | */*                     |
 
 ## create_consumer
 
@@ -86,13 +87,16 @@ s = codatplatform.CodatPlatform(
     ),
 )
 
-req = shared.WebhookConsumerPrototype()
+req = shared.WebhookConsumerPrototype(
+    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
+)
 
 res = s.webhooks.create_consumer(req)
 
 if res.webhook_consumer is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -111,7 +115,7 @@ if res.webhook_consumer is not None:
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4x-5xx                  | */*                     |
+| errors.SDKError         | 4xx-5xx                 | */*                     |
 
 ## delete_consumer
 
@@ -137,9 +141,10 @@ req = operations.DeleteWebhookConsumerRequest(
 
 res = s.webhooks.delete_consumer(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -158,7 +163,7 @@ if res.status_code == 200:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## ~~get~~
 
@@ -187,6 +192,7 @@ res = s.webhooks.get(req)
 if res.webhook is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -205,7 +211,7 @@ if res.webhook is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## ~~list~~
 
@@ -236,6 +242,7 @@ res = s.webhooks.list(req)
 if res.webhooks is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -254,7 +261,7 @@ if res.webhooks is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## list_consumers
 
@@ -280,6 +287,7 @@ res = s.webhooks.list_consumers()
 if res.webhook_consumers is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -297,4 +305,4 @@ if res.webhook_consumers is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

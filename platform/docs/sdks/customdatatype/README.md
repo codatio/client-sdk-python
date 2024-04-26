@@ -3,7 +3,7 @@
 
 ## Overview
 
-View and configure custom data types for supported integrations.
+Configure and pull additional data types that are not included in Codat's standardized data model.
 
 ### Available Operations
 
@@ -66,6 +66,7 @@ res = s.custom_data_type.configure(req)
 if res.custom_data_type_configuration is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -84,7 +85,7 @@ if res.custom_data_type_configuration is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get_configuration
 
@@ -114,6 +115,7 @@ res = s.custom_data_type.get_configuration(req)
 if res.custom_data_type_records is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -132,7 +134,7 @@ if res.custom_data_type_records is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list
 
@@ -165,6 +167,7 @@ res = s.custom_data_type.list(req)
 if res.custom_data_type_records is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -183,7 +186,7 @@ if res.custom_data_type_records is not None:
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,429,451,500,503 | application/json                    |
-| errors.SDKError                     | 4x-5xx                              | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
 
 ## refresh
 
@@ -212,6 +215,7 @@ res = s.custom_data_type.refresh(req)
 if res.pull_operation is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -230,4 +234,4 @@ if res.pull_operation is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,429,451,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

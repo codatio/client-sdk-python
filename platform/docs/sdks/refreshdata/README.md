@@ -3,7 +3,7 @@
 
 ## Overview
 
-Asynchronously retrieve data from an integration to refresh data in Codat.
+Initiate data refreshes, view pull status and history.
 
 ### Available Operations
 
@@ -39,9 +39,10 @@ req = operations.RefreshCompanyDataRequest(
 
 res = s.refresh_data.all(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -60,7 +61,7 @@ if res.status_code == 200:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## by_data_type
 
@@ -90,6 +91,7 @@ res = s.refresh_data.by_data_type(req)
 if res.pull_operation is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -108,7 +110,7 @@ if res.pull_operation is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get
 
@@ -135,6 +137,7 @@ res = s.refresh_data.get(req)
 if res.data_statuses is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -153,7 +156,7 @@ if res.data_statuses is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get_pull_operation
 
@@ -181,6 +184,7 @@ res = s.refresh_data.get_pull_operation(req)
 if res.pull_operation is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -199,7 +203,7 @@ if res.pull_operation is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list_pull_operations
 
@@ -229,6 +233,7 @@ res = s.refresh_data.list_pull_operations(req)
 if res.pull_operations is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -247,4 +252,4 @@ if res.pull_operations is not None:
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

@@ -3,7 +3,7 @@
 
 ## Overview
 
-Create groups and link them to your Codat companies.
+Define and manage sets of companies based on a chosen characteristic.
 
 ### Available Operations
 
@@ -39,6 +39,7 @@ res = s.groups.add_company(req)
 if res.company is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -57,7 +58,7 @@ if res.company is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## create
 
@@ -91,6 +92,7 @@ res = s.groups.create(req)
 if res.group is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -109,7 +111,7 @@ if res.group is not None:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,409,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list
 
@@ -135,6 +137,7 @@ res = s.groups.list()
 if res.groups is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -152,7 +155,7 @@ if res.groups is not None:
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4x-5xx                  | */*                     |
+| errors.SDKError         | 4xx-5xx                 | */*                     |
 
 ## remove_company
 
@@ -179,9 +182,10 @@ req = operations.RemoveCompanyFromGroupRequest(
 
 res = s.groups.remove_company(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -200,4 +204,4 @@ if res.status_code == 200:
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
