@@ -22,26 +22,28 @@ You can [learn more](https://docs.codat.io/lending/excel/overview) about valid E
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DownloadExcelReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypes.ENHANCED_FINANCIALS,
-)
 
-res = s.excel_reports.download(req)
+res = s.excel_reports.download(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "report_type": shared.ExcelReportTypes.ENHANCED_FINANCIALS,
+})
 
-if res.body is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -53,13 +55,13 @@ if res.body is not None:
 
 ### Response
 
-**[operations.DownloadExcelReportResponse](../../models/operations/downloadexcelreportresponse.md)**
+**[bytes](../../models/.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## generate
 
@@ -84,26 +86,28 @@ In response, the endpoint returns the [status](https://docs.codat.io/lending-api
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GenerateExcelReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypes.ENHANCED_INVOICES,
-)
 
-res = s.excel_reports.generate(req)
+res = s.excel_reports.generate(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "report_type": shared.ExcelReportTypes.ENHANCED_INVOICES,
+})
 
-if res.excel_status is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -115,13 +119,13 @@ if res.excel_status is not None:
 
 ### Response
 
-**[operations.GenerateExcelReportResponse](../../models/operations/generateexcelreportresponse.md)**
+**[shared.ExcelStatus](../../models/shared/excelstatus.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get_status
 
@@ -134,26 +138,28 @@ When the report generation completes successfully, the `inProgress` property wil
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetExcelReportGenerationStatusRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
-)
 
-res = s.excel_reports.get_status(req)
+res = s.excel_reports.get_status(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "report_type": shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
+})
 
-if res.excel_status is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -165,10 +171,10 @@ if res.excel_status is not None:
 
 ### Response
 
-**[operations.GetExcelReportGenerationStatusResponse](../../models/operations/getexcelreportgenerationstatusresponse.md)**
+**[shared.ExcelStatus](../../models/shared/excelstatus.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

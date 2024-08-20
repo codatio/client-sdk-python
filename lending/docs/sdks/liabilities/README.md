@@ -24,26 +24,26 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import operations, shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GenerateLoanSummaryRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.SourceType.ACCOUNTING,
-)
 
-res = s.liabilities.generate_loan_summary(req)
+s.liabilities.generate_loan_summary(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "source_type": operations.SourceType.ACCOUNTING,
+})
 
-if res.status_code == 200:
-    # handle response
-    pass
+# Use the SDK ...
+
 ```
+
+
 
 ### Parameters
 
@@ -52,16 +52,12 @@ if res.status_code == 200:
 | `request`                                                                                      | [operations.GenerateLoanSummaryRequest](../../models/operations/generateloansummaryrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
-### Response
-
-**[operations.GenerateLoanSummaryResponse](../../models/operations/generateloansummaryresponse.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## generate_loan_transactions
 
@@ -75,26 +71,26 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import operations, shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GenerateLoanTransactionsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.QueryParamSourceType.ACCOUNTING,
-)
 
-res = s.liabilities.generate_loan_transactions(req)
+s.liabilities.generate_loan_transactions(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "source_type": operations.QueryParamSourceType.ACCOUNTING,
+})
 
-if res.status_code == 200:
-    # handle response
-    pass
+# Use the SDK ...
+
 ```
+
+
 
 ### Parameters
 
@@ -103,16 +99,12 @@ if res.status_code == 200:
 | `request`                                                                                                | [operations.GenerateLoanTransactionsRequest](../../models/operations/generateloantransactionsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 | `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
-
-### Response
-
-**[operations.GenerateLoanTransactionsResponse](../../models/operations/generateloantransactionsresponse.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get_loan_summary
 
@@ -126,26 +118,28 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import operations, shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetLoanSummaryRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GetLoanSummaryQueryParamSourceType.BANKING,
-)
 
-res = s.liabilities.get_loan_summary(req)
+res = s.liabilities.get_loan_summary(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "source_type": operations.GetLoanSummaryQueryParamSourceType.BANKING,
+})
 
-if res.loan_summary is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -157,13 +151,13 @@ if res.loan_summary is not None:
 
 ### Response
 
-**[operations.GetLoanSummaryResponse](../../models/operations/getloansummaryresponse.md)**
+**[shared.LoanSummary](../../models/shared/loansummary.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list_loan_transactions
 
@@ -177,26 +171,28 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import operations, shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListLoanTransactionsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
-)
 
-res = s.liabilities.list_loan_transactions(req)
+res = s.liabilities.list_loan_transactions(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "source_type": operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
+})
 
-if res.loan_transactions is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -208,10 +204,10 @@ if res.loan_transactions is not None:
 
 ### Response
 
-**[operations.ListLoanTransactionsResponse](../../models/operations/listloantransactionsresponse.md)**
+**[shared.LoanTransactions](../../models/shared/loantransactions.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

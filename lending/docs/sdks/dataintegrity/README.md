@@ -20,29 +20,32 @@ The [details](https://docs.codat.io/lending-api#/schemas/DataIntegrityDetails) a
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListDataIntegrityDetailsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
 
-res = s.data_integrity.details(req)
+res = s.data_integrity.details(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-if res.data_integrity_details is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -54,13 +57,13 @@ if res.data_integrity_details is not None:
 
 ### Response
 
-**[operations.ListDataIntegrityDetailsResponse](../../models/operations/listdataintegritydetailsresponse.md)**
+**[shared.DataIntegrityDetails](../../models/shared/dataintegritydetails.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## status
 
@@ -76,26 +79,28 @@ The response tells you:
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetDataIntegrityStatusRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-)
 
-res = s.data_integrity.status(req)
+res = s.data_integrity.status(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
+})
 
-if res.data_integrity_statuses is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -107,13 +112,13 @@ if res.data_integrity_statuses is not None:
 
 ### Response
 
-**[operations.GetDataIntegrityStatusResponse](../../models/operations/getdataintegritystatusresponse.md)**
+**[shared.DataIntegrityStatuses](../../models/shared/dataintegritystatuses.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## summaries
 
@@ -126,26 +131,29 @@ The endpoint response includes only the summary results, not transactions. To vi
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetDataIntegritySummariesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.DataIntegrityDataType.BANKING_ACCOUNTS,
-)
 
-res = s.data_integrity.summaries(req)
+res = s.data_integrity.summaries(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-if res.data_integrity_summaries is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -157,10 +165,10 @@ if res.data_integrity_summaries is not None:
 
 ### Response
 
-**[operations.GetDataIntegritySummariesResponse](../../models/operations/getdataintegritysummariesresponse.md)**
+**[shared.DataIntegritySummaries](../../models/shared/dataintegritysummaries.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

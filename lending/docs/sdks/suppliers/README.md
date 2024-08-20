@@ -21,28 +21,30 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DownloadAccountingSupplierAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='<value>',
-)
 
-res = s.accounts_payable.suppliers.download_attachment(req)
+res = s.accounts_payable.suppliers.download_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "supplier_id": "<value>",
+})
 
-if res.data is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -54,13 +56,13 @@ if res.data is not None:
 
 ### Response
 
-**[operations.DownloadAccountingSupplierAttachmentResponse](../../models/operations/downloadaccountingsupplierattachmentresponse.md)**
+**[httpx.Response](../../models/.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get
 
@@ -76,26 +78,28 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingSupplierRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='<value>',
-)
 
-res = s.accounts_payable.suppliers.get(req)
+res = s.accounts_payable.suppliers.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "supplier_id": "<value>",
+})
 
-if res.accounting_supplier is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -107,13 +111,13 @@ if res.accounting_supplier is not None:
 
 ### Response
 
-**[operations.GetAccountingSupplierResponse](../../models/operations/getaccountingsupplierresponse.md)**
+**[shared.AccountingSupplier](../../models/shared/accountingsupplier.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get_attachment
 
@@ -127,28 +131,30 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingSupplierAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='<value>',
-)
 
-res = s.accounts_payable.suppliers.get_attachment(req)
+res = s.accounts_payable.suppliers.get_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "supplier_id": "<value>",
+})
 
-if res.accounting_attachment is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -160,13 +166,13 @@ if res.accounting_attachment is not None:
 
 ### Response
 
-**[operations.GetAccountingSupplierAttachmentResponse](../../models/operations/getaccountingsupplierattachmentresponse.md)**
+**[shared.AccountingAttachment](../../models/shared/accountingattachment.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list
 
@@ -180,28 +186,31 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListAccountingSuppliersRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
 
-res = s.accounts_payable.suppliers.list(req)
+res = s.accounts_payable.suppliers.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-if res.accounting_suppliers is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -213,13 +222,13 @@ if res.accounting_suppliers is not None:
 
 ### Response
 
-**[operations.ListAccountingSuppliersResponse](../../models/operations/listaccountingsuppliersresponse.md)**
+**[shared.AccountingSuppliers](../../models/shared/accountingsuppliers.md)**
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 4x-5xx                              | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
 
 ## list_attachments
 
@@ -233,27 +242,29 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListAccountingSupplierAttachmentsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='<value>',
-)
 
-res = s.accounts_payable.suppliers.list_attachments(req)
+res = s.accounts_payable.suppliers.list_attachments(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "supplier_id": "<value>",
+})
 
-if res.attachments is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -265,10 +276,10 @@ if res.attachments is not None:
 
 ### Response
 
-**[operations.ListAccountingSupplierAttachmentsResponse](../../models/operations/listaccountingsupplierattachmentsresponse.md)**
+**[shared.Attachments](../../models/shared/attachments.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
