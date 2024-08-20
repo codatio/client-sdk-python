@@ -7,5 +7,5 @@ Reference to the item the line is linked to.
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `id`                                                       | *str*                                                      | :heavy_check_mark:                                         | Unique identifier for the item in the accounting platform. |
-| `name`                                                     | *Optional[str]*                                            | :heavy_minus_sign:                                         | Name of the item in the accounting platform.               |
+| `id`                                                       | *str*                                                      | :heavy_check_mark:                                         | Unique identifier for the item in the accounting software. |
+| `name`                                                     | *OptionalNullable[str]*                                    | :heavy_minus_sign:                                         | Name of the item in the accounting software.               |

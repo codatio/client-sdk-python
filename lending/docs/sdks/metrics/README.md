@@ -42,30 +42,32 @@ The report data then combines multiple reporting dimensions and measures and out
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCommerceCustomerRetentionMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=497588,
-    period_length=613110,
-    period_unit=shared.PeriodUnit.WEEK,
-    report_date='29-09-2020',
-)
 
-res = s.sales.metrics.get_customer_retention(req)
+res = s.sales.metrics.get_customer_retention(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 497588,
+    "period_length": 613110,
+    "period_unit": shared.PeriodUnit.WEEK,
+    "report_date": "29-09-2020",
+})
 
-if res.commerce_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -77,13 +79,13 @@ if res.commerce_report is not None:
 
 ### Response
 
-**[operations.GetCommerceCustomerRetentionMetricsResponse](../../models/operations/getcommercecustomerretentionmetricsresponse.md)**
+**[shared.CommerceReport](../../models/shared/commercereport.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get_lifetime_value
 
@@ -114,30 +116,32 @@ The report data then combines multiple reporting dimensions and measures and out
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCommerceLifetimeValueMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=900865,
-    period_length=614777,
-    period_unit=shared.PeriodUnit.MONTH,
-    report_date='29-09-2020',
-)
 
-res = s.sales.metrics.get_lifetime_value(req)
+res = s.sales.metrics.get_lifetime_value(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 900865,
+    "period_length": 614777,
+    "period_unit": shared.PeriodUnit.MONTH,
+    "report_date": "29-09-2020",
+})
 
-if res.commerce_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -149,13 +153,13 @@ if res.commerce_report is not None:
 
 ### Response
 
-**[operations.GetCommerceLifetimeValueMetricsResponse](../../models/operations/getcommercelifetimevaluemetricsresponse.md)**
+**[shared.CommerceReport](../../models/shared/commercereport.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get_revenue
 
@@ -187,30 +191,32 @@ The report data then combines multiple reporting dimensions and measures and out
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCommerceRevenueMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=307462,
-    period_length=944219,
-    period_unit=shared.PeriodUnit.DAY,
-    report_date='29-09-2020',
-)
 
-res = s.sales.metrics.get_revenue(req)
+res = s.sales.metrics.get_revenue(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 307462,
+    "period_length": 944219,
+    "period_unit": shared.PeriodUnit.DAY,
+    "report_date": "29-09-2020",
+})
 
-if res.commerce_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -222,10 +228,10 @@ if res.commerce_report is not None:
 
 ### Response
 
-**[operations.GetCommerceRevenueMetricsResponse](../../models/operations/getcommercerevenuemetricsresponse.md)**
+**[shared.CommerceReport](../../models/shared/commercereport.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

@@ -36,30 +36,32 @@ The report data then combines multiple reporting dimensions and measures and out
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCommerceOrdersReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=491586,
-    period_length=776309,
-    period_unit=shared.PeriodUnit.WEEK,
-    report_date='29-09-2020',
-)
 
-res = s.sales.reports.get_orders(req)
+res = s.sales.reports.get_orders(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 491586,
+    "period_length": 776309,
+    "period_unit": shared.PeriodUnit.WEEK,
+    "report_date": "29-09-2020",
+})
 
-if res.commerce_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -71,13 +73,13 @@ if res.commerce_report is not None:
 
 ### Response
 
-**[operations.GetCommerceOrdersReportResponse](../../models/operations/getcommerceordersreportresponse.md)**
+**[shared.CommerceReport](../../models/shared/commercereport.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get_refunds
 
@@ -110,30 +112,32 @@ The report data then combines multiple reporting dimensions and measures and out
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCommerceRefundsReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=277786,
-    period_length=876670,
-    period_unit=shared.PeriodUnit.YEAR,
-    report_date='29-09-2020',
-)
 
-res = s.sales.reports.get_refunds(req)
+res = s.sales.reports.get_refunds(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 277786,
+    "period_length": 876670,
+    "period_unit": shared.PeriodUnit.YEAR,
+    "report_date": "29-09-2020",
+})
 
-if res.commerce_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -145,10 +149,10 @@ if res.commerce_report is not None:
 
 ### Response
 
-**[operations.GetCommerceRefundsReportResponse](../../models/operations/getcommercerefundsreportresponse.md)**
+**[shared.CommerceReport](../../models/shared/commercereport.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

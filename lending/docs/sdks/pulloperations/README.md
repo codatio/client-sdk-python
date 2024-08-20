@@ -13,26 +13,28 @@ Retrieve information about a single dataset or pull operation.
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetPullOperationRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='b18d8d81-fd7b-4764-a31e-475cb1f36591',
-)
 
-res = s.manage_data.pull_operations.get(req)
+res = s.manage_data.pull_operations.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "dataset_id": "b18d8d81-fd7b-4764-a31e-475cb1f36591",
+})
 
-if res.pull_operation is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -44,13 +46,13 @@ if res.pull_operation is not None:
 
 ### Response
 
-**[operations.GetPullOperationResponse](../../models/operations/getpulloperationresponse.md)**
+**[shared.PullOperation](../../models/shared/pulloperation.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list
 
@@ -59,28 +61,31 @@ Gets the pull operation history (datasets) for a given company.
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListPullOperationsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
 
-res = s.manage_data.pull_operations.list(req)
+res = s.manage_data.pull_operations.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-if res.pull_operations is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -92,10 +97,10 @@ if res.pull_operations is not None:
 
 ### Response
 
-**[operations.ListPullOperationsResponse](../../models/operations/listpulloperationsresponse.md)**
+**[shared.PullOperations](../../models/shared/pulloperations.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

@@ -17,25 +17,25 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.RefreshAllDataTypesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
 
-res = s.manage_data.refresh.all_data_types(req)
+s.manage_data.refresh.all_data_types(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-if res.status_code == 200:
-    # handle response
-    pass
+# Use the SDK ...
+
 ```
+
+
 
 ### Parameters
 
@@ -44,16 +44,12 @@ if res.status_code == 200:
 | `request`                                                                                      | [operations.RefreshAllDataTypesRequest](../../models/operations/refreshalldatatypesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
-### Response
-
-**[operations.RefreshAllDataTypesResponse](../../models/operations/refreshalldatatypesresponse.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## data_type
 
@@ -64,26 +60,28 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.RefreshDataTypeRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.SchemaDataType.INVOICES,
-)
 
-res = s.manage_data.refresh.data_type(req)
+res = s.manage_data.refresh.data_type(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "data_type": shared.SchemaDataType.INVOICES,
+})
 
-if res.pull_operation is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -95,10 +93,10 @@ if res.pull_operation is not None:
 
 ### Response
 
-**[operations.RefreshDataTypeResponse](../../models/operations/refreshdatatyperesponse.md)**
+**[shared.PullOperation](../../models/shared/pulloperation.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

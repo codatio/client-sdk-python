@@ -20,26 +20,28 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingJournalRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='<value>',
-)
 
-res = s.transactions.journals.get(req)
+res = s.transactions.journals.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "journal_id": "<value>",
+})
 
-if res.accounting_journal is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -51,13 +53,13 @@ if res.accounting_journal is not None:
 
 ### Response
 
-**[operations.GetAccountingJournalResponse](../../models/operations/getaccountingjournalresponse.md)**
+**[shared.AccountingJournal](../../models/shared/accountingjournal.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## list
 
@@ -71,28 +73,31 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListAccountingJournalsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
 
-res = s.transactions.journals.list(req)
+res = s.transactions.journals.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-if res.accounting_journals is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -104,10 +109,10 @@ if res.accounting_journals is not None:
 
 ### Response
 
-**[operations.ListAccountingJournalsResponse](../../models/operations/listaccountingjournalsresponse.md)**
+**[shared.AccountingJournals](../../models/shared/accountingjournals.md)**
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 4x-5xx                              | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

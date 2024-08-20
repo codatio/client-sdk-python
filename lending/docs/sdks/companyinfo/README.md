@@ -17,25 +17,27 @@ Gets the latest basic info for a company.
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingProfileRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
 
-res = s.company_info.get_accounting_profile(req)
+res = s.company_info.get_accounting_profile(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-if res.accounting_company_info is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -47,13 +49,13 @@ if res.accounting_company_info is not None:
 
 ### Response
 
-**[operations.GetAccountingProfileResponse](../../models/operations/getaccountingprofileresponse.md)**
+**[shared.AccountingCompanyInfo](../../models/shared/accountingcompanyinfo.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get_commerce_profile
 
@@ -66,26 +68,28 @@ social media or website information."
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCommerceProfileRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
 
-res = s.company_info.get_commerce_profile(req)
+res = s.company_info.get_commerce_profile(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-if res.commerce_company_info is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -97,10 +101,10 @@ if res.commerce_company_info is not None:
 
 ### Response
 
-**[operations.GetCommerceProfileResponse](../../models/operations/getcommerceprofileresponse.md)**
+**[shared.CommerceCompanyInfo](../../models/shared/commercecompanyinfo.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

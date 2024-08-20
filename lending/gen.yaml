@@ -7,13 +7,22 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
   telemetryEnabled: true
 python:
-  version: 6.3.0
+  version: 7.0.0
+  additionalDependencies:
+    dev: {}
+    main: {}
   author: Codat
+  authors:
+    - Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
+  enumFormat: enum
   flattenGlobalSecurity: false
+  flattenRequests: false
   imports:
     option: openapi
     paths:
@@ -24,5 +33,8 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
+  methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: codat-lending
+  responseFormat: flat
+  templateVersion: v2
