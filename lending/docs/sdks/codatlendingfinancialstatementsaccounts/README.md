@@ -20,26 +20,28 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingAccountRequest(
-    account_id='<value>',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
 
-res = s.financial_statements.accounts.get(req)
+res = s.financial_statements.accounts.get(request={
+    "account_id": "<value>",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-if res.accounting_account is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -51,13 +53,13 @@ if res.accounting_account is not None:
 
 ### Response
 
-**[operations.GetAccountingAccountResponse](../../models/operations/getaccountingaccountresponse.md)**
+**[shared.AccountingAccount](../../models/shared/accountingaccount.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## list
 
@@ -70,28 +72,31 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListAccountingAccountsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
 
-res = s.financial_statements.accounts.list(req)
+res = s.financial_statements.accounts.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-if res.accounting_accounts is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -103,10 +108,10 @@ if res.accounting_accounts is not None:
 
 ### Response
 
-**[operations.ListAccountingAccountsResponse](../../models/operations/listaccountingaccountsresponse.md)**
+**[shared.AccountingAccounts](../../models/shared/accountingaccounts.md)**
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 4x-5xx                              | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

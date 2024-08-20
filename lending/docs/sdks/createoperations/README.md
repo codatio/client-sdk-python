@@ -13,26 +13,28 @@ Retrieve create operation.
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateOperationRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    push_operation_key='b18d8d81-fd7b-4764-a31e-475cb1f36591',
-)
 
-res = s.loan_writeback.create_operations.get(req)
+res = s.loan_writeback.create_operations.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "push_operation_key": "b18d8d81-fd7b-4764-a31e-475cb1f36591",
+})
 
-if res.push_operation is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -44,13 +46,13 @@ if res.push_operation is not None:
 
 ### Response
 
-**[operations.GetCreateOperationResponse](../../models/operations/getcreateoperationresponse.md)**
+**[shared.PushOperation](../../models/shared/pushoperation.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list
 
@@ -59,28 +61,31 @@ List create operations.
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListCreateOperationsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
 
-res = s.loan_writeback.create_operations.list(req)
+res = s.loan_writeback.create_operations.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-if res.push_operations is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -92,10 +97,10 @@ if res.push_operations is not None:
 
 ### Response
 
-**[operations.ListCreateOperationsResponse](../../models/operations/listcreateoperationsresponse.md)**
+**[shared.PushOperations](../../models/shared/pushoperations.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

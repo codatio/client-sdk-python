@@ -23,28 +23,30 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DownloadAccountingInvoiceAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='<value>',
-)
 
-res = s.accounts_receivable.invoices.download_attachment(req)
+res = s.accounts_receivable.invoices.download_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice_id": "<value>",
+})
 
-if res.data is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -56,13 +58,13 @@ if res.data is not None:
 
 ### Response
 
-**[operations.DownloadAccountingInvoiceAttachmentResponse](../../models/operations/downloadaccountinginvoiceattachmentresponse.md)**
+**[httpx.Response](../../models/.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## download_pdf
 
@@ -71,26 +73,28 @@ if res.data is not None:
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DownloadAccountingInvoicePdfRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='<value>',
-)
 
-res = s.accounts_receivable.invoices.download_pdf(req)
+res = s.accounts_receivable.invoices.download_pdf(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "invoice_id": "<value>",
+})
 
-if res.data is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -102,13 +106,13 @@ if res.data is not None:
 
 ### Response
 
-**[operations.DownloadAccountingInvoicePdfResponse](../../models/operations/downloadaccountinginvoicepdfresponse.md)**
+**[httpx.Response](../../models/.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get
 
@@ -120,29 +124,36 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
+### Tips and traps
+
+To access the `paymentAllocations` property, ensure that the `payments` data type is queued and cached in Codat before retrieving `invoices` from Codat's cache.
+
+
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingInvoiceRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='<value>',
-)
 
-res = s.accounts_receivable.invoices.get(req)
+res = s.accounts_receivable.invoices.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "invoice_id": "<value>",
+})
 
-if res.accounting_invoice is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -154,13 +165,13 @@ if res.accounting_invoice is not None:
 
 ### Response
 
-**[operations.GetAccountingInvoiceResponse](../../models/operations/getaccountinginvoiceresponse.md)**
+**[shared.AccountingInvoice](../../models/shared/accountinginvoice.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## get_attachment
 
@@ -174,28 +185,30 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingInvoiceAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='<value>',
-)
 
-res = s.accounts_receivable.invoices.get_attachment(req)
+res = s.accounts_receivable.invoices.get_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice_id": "<value>",
+})
 
-if res.accounting_attachment is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -207,13 +220,13 @@ if res.accounting_attachment is not None:
 
 ### Response
 
-**[operations.GetAccountingInvoiceAttachmentResponse](../../models/operations/getaccountinginvoiceattachmentresponse.md)**
+**[shared.AccountingAttachment](../../models/shared/accountingattachment.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## list
 
@@ -230,31 +243,39 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 [Read more about querying](https://docs.codat.io/using-the-api/querying).
 
+### Tips and traps
+
+To access the `paymentAllocations` property, ensure that the `payments` data type is queued and cached in Codat before retrieving `invoices` from Codat's cache.
+
+
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListAccountingInvoicesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
 
-res = s.accounts_receivable.invoices.list(req)
+res = s.accounts_receivable.invoices.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-if res.accounting_invoices is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -266,13 +287,13 @@ if res.accounting_invoices is not None:
 
 ### Response
 
-**[operations.ListAccountingInvoicesResponse](../../models/operations/listaccountinginvoicesresponse.md)**
+**[shared.AccountingInvoices](../../models/shared/accountinginvoices.md)**
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 4x-5xx                              | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
 
 ## list_attachments
 
@@ -286,27 +307,29 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListAccountingInvoiceAttachmentsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='<value>',
-)
 
-res = s.accounts_receivable.invoices.list_attachments(req)
+res = s.accounts_receivable.invoices.list_attachments(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice_id": "<value>",
+})
 
-if res.attachments is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -318,13 +341,13 @@ if res.attachments is not None:
 
 ### Response
 
-**[operations.ListAccountingInvoiceAttachmentsResponse](../../models/operations/listaccountinginvoiceattachmentsresponse.md)**
+**[shared.Attachments](../../models/shared/attachments.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
 ## list_reconciled
 
@@ -333,27 +356,30 @@ Gets a list of invoices linked to the corresponding banking transaction
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListReconciledInvoicesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    page=1,
-    page_size=100,
-)
 
-res = s.accounts_receivable.invoices.list_reconciled(req)
+res = s.accounts_receivable.invoices.list_reconciled(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-if res.enhanced_invoices_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -365,10 +391,10 @@ if res.enhanced_invoices_report is not None:
 
 ### Response
 
-**[operations.ListReconciledInvoicesResponse](../../models/operations/listreconciledinvoicesresponse.md)**
+**[shared.EnhancedInvoicesReport](../../models/shared/enhancedinvoicesreport.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

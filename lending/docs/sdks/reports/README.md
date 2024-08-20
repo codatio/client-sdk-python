@@ -15,29 +15,31 @@ Returns aged creditors report for company that shows the total balance owed by a
 ### Example Usage
 
 ```python
-import codatlending
+from codat_lending import CodatLending
+from codat_lending.models import shared
 import dateutil.parser
-from codatlending.models import operations, shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingAgedCreditorsReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=12,
-    period_length_days=30,
-    report_date=dateutil.parser.parse('2022-12-31').date(),
-)
 
-res = s.accounts_receivable.reports.get_aged_creditors(req)
+res = s.accounts_receivable.reports.get_aged_creditors(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "number_of_periods": 12,
+    "period_length_days": 30,
+    "report_date": dateutil.parser.parse("2022-12-31").date(),
+})
 
-if res.accounting_aged_creditor_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -49,13 +51,13 @@ if res.accounting_aged_creditor_report is not None:
 
 ### Response
 
-**[operations.GetAccountingAgedCreditorsReportResponse](../../models/operations/getaccountingagedcreditorsreportresponse.md)**
+**[shared.AccountingAgedCreditorReport](../../models/shared/accountingagedcreditorreport.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## get_aged_debtors
 
@@ -64,29 +66,31 @@ Returns aged debtors report for company that shows the total outstanding balance
 ### Example Usage
 
 ```python
-import codatlending
+from codat_lending import CodatLending
+from codat_lending.models import shared
 import dateutil.parser
-from codatlending.models import operations, shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingAgedDebtorsReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=12,
-    period_length_days=30,
-    report_date=dateutil.parser.parse('2022-12-31').date(),
-)
 
-res = s.accounts_receivable.reports.get_aged_debtors(req)
+res = s.accounts_receivable.reports.get_aged_debtors(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "number_of_periods": 12,
+    "period_length_days": 30,
+    "report_date": dateutil.parser.parse("2022-12-31").date(),
+})
 
-if res.accounting_aged_debtor_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -98,13 +102,13 @@ if res.accounting_aged_debtor_report is not None:
 
 ### Response
 
-**[operations.GetAccountingAgedDebtorsReportResponse](../../models/operations/getaccountingageddebtorsreportresponse.md)**
+**[shared.AccountingAgedDebtorReport](../../models/shared/accountingageddebtorreport.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## is_aged_creditors_available
 
@@ -113,25 +117,27 @@ Indicates whether the aged creditor report is available for the company.
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.IsAgedCreditorsReportAvailableRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
 
-res = s.accounts_receivable.reports.is_aged_creditors_available(req)
+res = s.accounts_receivable.reports.is_aged_creditors_available(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-if res.boolean is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -143,13 +149,13 @@ if res.boolean is not None:
 
 ### Response
 
-**[operations.IsAgedCreditorsReportAvailableResponse](../../models/operations/isagedcreditorsreportavailableresponse.md)**
+**[bool](../../models/.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ## is_aged_debtors_available
 
@@ -158,25 +164,27 @@ Indicates whether the aged debtors report is available for the company.
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.IsAgedDebtorsReportAvailableRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
 
-res = s.accounts_receivable.reports.is_aged_debtors_available(req)
+res = s.accounts_receivable.reports.is_aged_debtors_available(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-if res.boolean is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -188,10 +196,10 @@ if res.boolean is not None:
 
 ### Response
 
-**[operations.IsAgedDebtorsReportAvailableResponse](../../models/operations/isageddebtorsreportavailableresponse.md)**
+**[bool](../../models/.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

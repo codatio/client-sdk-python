@@ -12,28 +12,30 @@ Gets the latest cash flow statement for a company.
 ### Example Usage
 
 ```python
-import codatlending
-from codatlending.models import operations, shared
+from codat_lending import CodatLending
+from codat_lending.models import shared
 
-s = codatlending.CodatLending(
+s = CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAccountingCashFlowStatementRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    period_length=4,
-    periods_to_compare=20,
-    start_month='2022-10-23T00:00:00Z',
-)
 
-res = s.financial_statements.cash_flow.get(req)
+res = s.financial_statements.cash_flow.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "period_length": 4,
+    "periods_to_compare": 20,
+    "start_month": "2022-10-23T00:00:00Z",
+})
 
-if res.accounting_cash_flow_statement is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+
 
 ### Parameters
 
@@ -45,10 +47,10 @@ if res.accounting_cash_flow_statement is not None:
 
 ### Response
 
-**[operations.GetAccountingCashFlowStatementResponse](../../models/operations/getaccountingcashflowstatementresponse.md)**
+**[shared.AccountingCashFlowStatement](../../models/shared/accountingcashflowstatement.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
