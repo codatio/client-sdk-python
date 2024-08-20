@@ -61,7 +61,7 @@ sources:
             location: registry.speakeasyapi.dev/codat/codat/sync-for-payroll-source
 targets:
     accounting-library:
-        target: typescript
+        target: python
         source: accounting-source
         output: previous-versions/accounting
         publish:
