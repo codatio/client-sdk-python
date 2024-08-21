@@ -1,6 +1,8 @@
 # CategorizedStatement
 (*banking.categorized_statement*)
 
+## Overview
+
 ### Available Operations
 
 * [get](#get) - Get categorized bank statement
@@ -39,8 +41,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
@@ -48,10 +48,10 @@ if res is not None:
 | `request`                                                                                                      | [operations.GetCategorizedBankStatementRequest](../../models/operations/getcategorizedbankstatementrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
 | `retries`                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                               | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |
 
-
 ### Response
 
 **[shared.EnhancedCashFlowTransactions](../../models/shared/enhancedcashflowtransactions.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

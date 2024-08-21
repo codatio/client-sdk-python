@@ -1,6 +1,8 @@
 # AccountTransactions
 (*transactions.account_transactions*)
 
+## Overview
+
 ### Available Operations
 
 * [get](#get) - Get account transaction
@@ -42,8 +44,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
@@ -51,16 +51,17 @@ if res is not None:
 | `request`                                                                                                              | [operations.GetAccountingAccountTransactionRequest](../../models/operations/getaccountingaccounttransactionrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
 | `retries`                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                                     | Configuration to override the default retry behavior of the client.                                                    |
 
-
 ### Response
 
 **[shared.AccountingAccountTransaction](../../models/shared/accountingaccounttransaction.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## list
 
@@ -99,8 +100,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
@@ -108,10 +107,10 @@ if res is not None:
 | `request`                                                                                                                  | [operations.ListAccountingAccountTransactionsRequest](../../models/operations/listaccountingaccounttransactionsrequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
 | `retries`                                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                           | :heavy_minus_sign:                                                                                                         | Configuration to override the default retry behavior of the client.                                                        |
 
-
 ### Response
 
 **[shared.AccountingAccountTransactions](../../models/shared/accountingaccounttransactions.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |

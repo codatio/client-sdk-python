@@ -1,6 +1,8 @@
 # ManageData
 (*manage_data*)
 
+## Overview
+
 ### Available Operations
 
 * [get_status](#get_status) - Get data status
@@ -32,8 +34,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
@@ -41,10 +41,10 @@ if res is not None:
 | `request`                                                                          | [operations.GetDataStatusRequest](../../models/operations/getdatastatusrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
 **[operations.GetDataStatusDataStatuses](../../models/operations/getdatastatusdatastatuses.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |

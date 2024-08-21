@@ -1,6 +1,8 @@
 # CodatLendingReports
 (*sales.reports*)
 
+## Overview
+
 ### Available Operations
 
 * [get_orders](#get_orders) - Get orders report
@@ -61,8 +63,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
@@ -70,16 +70,17 @@ if res is not None:
 | `request`                                                                                              | [operations.GetCommerceOrdersReportRequest](../../models/operations/getcommerceordersreportrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
 | `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
-
 ### Response
 
 **[shared.CommerceReport](../../models/shared/commercereport.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_refunds
 
@@ -137,8 +138,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
@@ -146,10 +145,10 @@ if res is not None:
 | `request`                                                                                                | [operations.GetCommerceRefundsReportRequest](../../models/operations/getcommercerefundsreportrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 | `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
-
 ### Response
 
 **[shared.CommerceReport](../../models/shared/commercereport.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

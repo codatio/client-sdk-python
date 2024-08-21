@@ -3,10 +3,10 @@ id: c22ee3eb-abe5-40e9-bcf6-8be944e72a7b
 management:
   docChecksum: 1f639539f1378e6b0f8843acc1f63ea7
   docVersion: 3.0.0
-  speakeasyVersion: 1.376.0
-  generationVersion: 2.402.5
-  releaseVersion: 7.0.0
-  configChecksum: 2d5def522f9e50c9b4d27fbd79cac268
+  speakeasyVersion: 1.377.0
+  generationVersion: 2.404.0
+  releaseVersion: 7.0.1
+  configChecksum: fac6722acde54431b9939d27e44b94ea
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: lending
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=lending

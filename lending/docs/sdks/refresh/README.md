@@ -1,6 +1,8 @@
 # Refresh
 (*manage_data.refresh*)
 
+## Overview
+
 ### Available Operations
 
 * [all_data_types](#all_data_types) - Refresh all data
@@ -35,8 +37,6 @@ s.manage_data.refresh.all_data_types(request={
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
@@ -50,6 +50,7 @@ s.manage_data.refresh.all_data_types(request={
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## data_type
 
@@ -81,8 +82,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
@@ -90,10 +89,10 @@ if res is not None:
 | `request`                                                                              | [operations.RefreshDataTypeRequest](../../models/operations/refreshdatatyperequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 | `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
 
-
 ### Response
 
 **[shared.PullOperation](../../models/shared/pulloperation.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |

@@ -1,6 +1,8 @@
 # CashFlow
 (*financial_statements.cash_flow*)
 
+## Overview
+
 ### Available Operations
 
 * [get](#get) - Get cash flow statement
@@ -35,8 +37,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
@@ -44,10 +44,10 @@ if res is not None:
 | `request`                                                                                                            | [operations.GetAccountingCashFlowStatementRequest](../../models/operations/getaccountingcashflowstatementrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `retries`                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                                   | Configuration to override the default retry behavior of the client.                                                  |
 
-
 ### Response
 
 **[shared.AccountingCashFlowStatement](../../models/shared/accountingcashflowstatement.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
