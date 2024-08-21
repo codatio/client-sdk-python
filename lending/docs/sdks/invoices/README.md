@@ -1,6 +1,8 @@
 # Invoices
 (*accounts_receivable.invoices*)
 
+## Overview
+
 ### Available Operations
 
 * [download_attachment](#download_attachment) - Download invoice attachment
@@ -46,8 +48,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
@@ -55,16 +55,17 @@ if res is not None:
 | `request`                                                                                                                      | [operations.DownloadAccountingInvoiceAttachmentRequest](../../models/operations/downloadaccountinginvoiceattachmentrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 | `retries`                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                               | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |
 
-
 ### Response
 
 **[httpx.Response](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## download_pdf
 
@@ -94,8 +95,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
@@ -103,16 +102,17 @@ if res is not None:
 | `request`                                                                                                        | [operations.DownloadAccountingInvoicePdfRequest](../../models/operations/downloadaccountinginvoicepdfrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
 | `retries`                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                 | :heavy_minus_sign:                                                                                               | Configuration to override the default retry behavior of the client.                                              |
 
-
 ### Response
 
 **[httpx.Response](../../models/.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get
 
@@ -153,8 +153,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
@@ -162,16 +160,17 @@ if res is not None:
 | `request`                                                                                        | [operations.GetAccountingInvoiceRequest](../../models/operations/getaccountinginvoicerequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
-
 ### Response
 
 **[shared.AccountingInvoice](../../models/shared/accountinginvoice.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_attachment
 
@@ -208,8 +207,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
@@ -217,16 +214,17 @@ if res is not None:
 | `request`                                                                                                            | [operations.GetAccountingInvoiceAttachmentRequest](../../models/operations/getaccountinginvoiceattachmentrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `retries`                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                                   | Configuration to override the default retry behavior of the client.                                                  |
 
-
 ### Response
 
 **[shared.AccountingAttachment](../../models/shared/accountingattachment.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -275,8 +273,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
@@ -284,16 +280,17 @@ if res is not None:
 | `request`                                                                                            | [operations.ListAccountingInvoicesRequest](../../models/operations/listaccountinginvoicesrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 | `retries`                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
 
-
 ### Response
 
 **[shared.AccountingInvoices](../../models/shared/accountinginvoices.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
 | errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
 
 ## list_attachments
 
@@ -329,8 +326,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
@@ -338,16 +333,17 @@ if res is not None:
 | `request`                                                                                                                | [operations.ListAccountingInvoiceAttachmentsRequest](../../models/operations/listaccountinginvoiceattachmentsrequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
 | `retries`                                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                         | :heavy_minus_sign:                                                                                                       | Configuration to override the default retry behavior of the client.                                                      |
 
-
 ### Response
 
 **[shared.Attachments](../../models/shared/attachments.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## list_reconciled
 
@@ -379,8 +375,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
@@ -388,10 +382,10 @@ if res is not None:
 | `request`                                                                                            | [operations.ListReconciledInvoicesRequest](../../models/operations/listreconciledinvoicesrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 | `retries`                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
 
-
 ### Response
 
 **[shared.EnhancedInvoicesReport](../../models/shared/enhancedinvoicesreport.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

@@ -1,6 +1,8 @@
 # Orders
 (*sales.orders*)
 
+## Overview
+
 ### Available Operations
 
 * [get](#get) - Get order
@@ -42,8 +44,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
@@ -51,16 +51,17 @@ if res is not None:
 | `request`                                                                                | [operations.GetCommerceOrderRequest](../../models/operations/getcommerceorderrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
 **[shared.CommerceOrder](../../models/shared/commerceorder.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## list
 
@@ -99,8 +100,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
@@ -108,10 +107,10 @@ if res is not None:
 | `request`                                                                                    | [operations.ListCommerceOrdersRequest](../../models/operations/listcommerceordersrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
-
 ### Response
 
 **[shared.CommerceOrders](../../models/shared/commerceorders.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |

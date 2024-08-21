@@ -1,6 +1,8 @@
 # AccountBalances
 (*banking.account_balances*)
 
+## Overview
+
 ### Available Operations
 
 * [list](#list) - List account balances
@@ -42,8 +44,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
@@ -51,10 +51,10 @@ if res is not None:
 | `request`                                                                                                    | [operations.ListBankingAccountBalancesRequest](../../models/operations/listbankingaccountbalancesrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
 | `retries`                                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                           | Configuration to override the default retry behavior of the client.                                          |
 
-
 ### Response
 
 **[shared.BankingAccountBalances](../../models/shared/bankingaccountbalances.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |

@@ -1,6 +1,5 @@
 # CodatLending SDK
 
-
 ## Overview
 
 Lending API: Our Lending API helps you make smarter credit decisions on small businesses by enabling you to pull your customers' latest data from accounting, banking, and commerce software they are already using. It also includes features to help providers verify the accuracy of data and process it more efficiently.
@@ -30,6 +29,3 @@ The Lending API is built on top of the latest accounting, commerce, and banking 
 | File upload | Endpoints to manage uploaded files. |
 | Loan writeback | Implement the [loan writeback](https://docs.codat.io/lending/guides/loan-writeback/introduction) procedure in your lending process to maintain an accurate position of a loan during the entire lending cycle. |
 <!-- End Codat Tags Table -->
-
-### Available Operations
-

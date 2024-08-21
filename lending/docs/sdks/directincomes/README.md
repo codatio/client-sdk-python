@@ -1,6 +1,8 @@
 # DirectIncomes
 (*accounts_receivable.direct_incomes*)
 
+## Overview
+
 ### Available Operations
 
 * [download_attachment](#download_attachment) - Download direct income attachment
@@ -44,8 +46,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
@@ -53,16 +53,17 @@ if res is not None:
 | `request`                                                                                                                                | [operations.DownloadAccountingDirectIncomeAttachmentRequest](../../models/operations/downloadaccountingdirectincomeattachmentrequest.md) | :heavy_check_mark:                                                                                                                       | The request object to use for the request.                                                                                               |
 | `retries`                                                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                         | :heavy_minus_sign:                                                                                                                       | Configuration to override the default retry behavior of the client.                                                                      |
 
-
 ### Response
 
 **[httpx.Response](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get
 
@@ -100,8 +101,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
@@ -109,16 +108,17 @@ if res is not None:
 | `request`                                                                                                  | [operations.GetAccountingDirectIncomeRequest](../../models/operations/getaccountingdirectincomerequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
 **[shared.AccountingDirectIncome](../../models/shared/accountingdirectincome.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_attachment
 
@@ -155,8 +155,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
@@ -164,16 +162,17 @@ if res is not None:
 | `request`                                                                                                                      | [operations.GetAccountingDirectIncomeAttachmentRequest](../../models/operations/getaccountingdirectincomeattachmentrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 | `retries`                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                               | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |
 
-
 ### Response
 
 **[shared.AccountingAttachment](../../models/shared/accountingattachment.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -212,8 +211,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
@@ -221,16 +218,17 @@ if res is not None:
 | `request`                                                                                                      | [operations.ListAccountingDirectIncomesRequest](../../models/operations/listaccountingdirectincomesrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
 | `retries`                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                               | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |
 
-
 ### Response
 
 **[shared.AccountingDirectIncomes](../../models/shared/accountingdirectincomes.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
 | errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
 
 ## list_attachments
 
@@ -266,8 +264,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
@@ -275,10 +271,10 @@ if res is not None:
 | `request`                                                                                                                          | [operations.ListAccountingDirectIncomeAttachmentsRequest](../../models/operations/listaccountingdirectincomeattachmentsrequest.md) | :heavy_check_mark:                                                                                                                 | The request object to use for the request.                                                                                         |
 | `retries`                                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                   | :heavy_minus_sign:                                                                                                                 | Configuration to override the default retry behavior of the client.                                                                |
 
-
 ### Response
 
 **[shared.Attachments](../../models/shared/attachments.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

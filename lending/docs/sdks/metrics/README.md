@@ -1,6 +1,8 @@
 # Metrics
 (*sales.metrics*)
 
+## Overview
+
 ### Available Operations
 
 * [get_customer_retention](#get_customer_retention) - Get customer retention metrics
@@ -67,8 +69,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
@@ -76,16 +76,17 @@ if res is not None:
 | `request`                                                                                                                      | [operations.GetCommerceCustomerRetentionMetricsRequest](../../models/operations/getcommercecustomerretentionmetricsrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 | `retries`                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                               | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |
 
-
 ### Response
 
 **[shared.CommerceReport](../../models/shared/commercereport.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_lifetime_value
 
@@ -141,8 +142,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
@@ -150,16 +149,17 @@ if res is not None:
 | `request`                                                                                                              | [operations.GetCommerceLifetimeValueMetricsRequest](../../models/operations/getcommercelifetimevaluemetricsrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
 | `retries`                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                                     | Configuration to override the default retry behavior of the client.                                                    |
 
-
 ### Response
 
 **[shared.CommerceReport](../../models/shared/commercereport.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_revenue
 
@@ -216,8 +216,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
@@ -225,10 +223,10 @@ if res is not None:
 | `request`                                                                                                  | [operations.GetCommerceRevenueMetricsRequest](../../models/operations/getcommercerevenuemetricsrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
 **[shared.CommerceReport](../../models/shared/commercereport.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

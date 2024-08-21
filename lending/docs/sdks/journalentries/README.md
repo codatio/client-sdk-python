@@ -1,6 +1,8 @@
 # JournalEntries
 (*transactions.journal_entries*)
 
+## Overview
+
 ### Available Operations
 
 * [get](#get) - Get journal entry
@@ -41,8 +43,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
@@ -50,16 +50,17 @@ if res is not None:
 | `request`                                                                                                  | [operations.GetAccountingJournalEntryRequest](../../models/operations/getaccountingjournalentryrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
 **[shared.AccountingJournalEntry](../../models/shared/accountingjournalentry.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## list
 
@@ -97,8 +98,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
@@ -106,10 +105,10 @@ if res is not None:
 | `request`                                                                                                        | [operations.ListAccountingJournalEntriesRequest](../../models/operations/listaccountingjournalentriesrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
 | `retries`                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                 | :heavy_minus_sign:                                                                                               | Configuration to override the default retry behavior of the client.                                              |
 
-
 ### Response
 
 **[shared.AccountingJournalEntries](../../models/shared/accountingjournalentries.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |

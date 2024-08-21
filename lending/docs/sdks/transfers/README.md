@@ -1,6 +1,8 @@
 # Transfers
 (*loan_writeback.transfers*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Create transfer
@@ -82,8 +84,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
@@ -91,16 +91,17 @@ if res is not None:
 | `request`                                                                            | [operations.CreateTransferRequest](../../models/operations/createtransferrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
 **[shared.AccountingCreateTransferResponse](../../models/shared/accountingcreatetransferresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_create_model
 
@@ -139,8 +140,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
@@ -148,10 +147,10 @@ if res is not None:
 | `request`                                                                                              | [operations.GetCreateTransfersModelRequest](../../models/operations/getcreatetransfersmodelrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
 | `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
-
 ### Response
 
 **[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |

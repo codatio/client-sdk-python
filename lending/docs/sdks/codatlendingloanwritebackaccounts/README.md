@@ -1,6 +1,8 @@
 # CodatLendingLoanWritebackAccounts
 (*loan_writeback.accounts*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Create account
@@ -55,8 +57,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
@@ -64,16 +64,17 @@ if res is not None:
 | `request`                                                                          | [operations.CreateAccountRequest](../../models/operations/createaccountrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
 **[shared.AccountingCreateAccountResponse](../../models/shared/accountingcreateaccountresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_create_model
 
@@ -112,8 +113,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
@@ -121,10 +120,10 @@ if res is not None:
 | `request`                                                                                                          | [operations.GetCreateChartOfAccountsModelRequest](../../models/operations/getcreatechartofaccountsmodelrequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
 | `retries`                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                                 | Configuration to override the default retry behavior of the client.                                                |
 
-
 ### Response
 
 **[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |

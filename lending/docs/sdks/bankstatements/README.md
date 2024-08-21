@@ -42,8 +42,6 @@ s.bank_statements.end_upload_session(request={
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
@@ -57,6 +55,7 @@ s.bank_statements.end_upload_session(request={
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_upload_configuration
 
@@ -90,8 +89,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
@@ -99,16 +96,17 @@ if res is not None:
 | `request`                                                                                                                      | [operations.GetBankStatementUploadConfigurationRequest](../../models/operations/getbankstatementuploadconfigurationrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 | `retries`                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                               | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |
 
-
 ### Response
 
 **[shared.BankStatementUploadConfiguration](../../models/shared/bankstatementuploadconfiguration.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## set_upload_configuration
 
@@ -146,8 +144,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
@@ -155,16 +151,17 @@ if res is not None:
 | `request`                                                                                                                      | [operations.SetBankStatementUploadConfigurationRequest](../../models/operations/setbankstatementuploadconfigurationrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 | `retries`                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                               | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |
 
-
 ### Response
 
 **[shared.BankStatementUploadConfiguration](../../models/shared/bankstatementuploadconfiguration.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## start_upload_session
 
@@ -198,8 +195,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
@@ -207,16 +202,17 @@ if res is not None:
 | `request`                                                                                                              | [operations.StartBankStatementUploadSessionRequest](../../models/operations/startbankstatementuploadsessionrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
 | `retries`                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                                     | Configuration to override the default retry behavior of the client.                                                    |
 
-
 ### Response
 
 **[shared.PullOperation](../../models/shared/pulloperation.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## upload_bank_statement_data
 
@@ -259,8 +255,6 @@ s.bank_statements.upload_bank_statement_data(request={
 # Use the SDK ...
 
 ```
-
-
 
 ### Parameters
 

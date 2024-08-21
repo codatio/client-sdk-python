@@ -43,8 +43,6 @@ s.liabilities.generate_loan_summary(request={
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
@@ -58,6 +56,7 @@ s.liabilities.generate_loan_summary(request={
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## generate_loan_transactions
 
@@ -90,8 +89,6 @@ s.liabilities.generate_loan_transactions(request={
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
@@ -105,6 +102,7 @@ s.liabilities.generate_loan_transactions(request={
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_loan_summary
 
@@ -139,8 +137,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
@@ -148,16 +144,17 @@ if res is not None:
 | `request`                                                                            | [operations.GetLoanSummaryRequest](../../models/operations/getloansummaryrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
 **[shared.LoanSummary](../../models/shared/loansummary.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
 | errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list_loan_transactions
 
@@ -192,8 +189,6 @@ if res is not None:
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
@@ -201,10 +196,10 @@ if res is not None:
 | `request`                                                                                        | [operations.ListLoanTransactionsRequest](../../models/operations/listloantransactionsrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
-
 ### Response
 
 **[shared.LoanTransactions](../../models/shared/loantransactions.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

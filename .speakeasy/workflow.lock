@@ -1,8 +1,8 @@
-speakeasyVersion: 1.376.0
+speakeasyVersion: 1.377.0
 sources:
     lending-source:
         sourceNamespace: lending-source
-        sourceRevisionDigest: sha256:427764465a99a087e8ddb6115be2b23255a3f0003c5bea2a153870b7f5bf0b26
+        sourceRevisionDigest: sha256:e9279793fec15674c2c6ff77d11be16f6945b43d47b8005e68d7300da68a24a4
         sourceBlobDigest: sha256:7ca97cfd4c993bac385e1da2ed1a467acb50d0bf3893fffd0a811d2f1ea49e91
         tags:
             - latest
@@ -11,7 +11,7 @@ targets:
     lending-library:
         source: lending-source
         sourceNamespace: lending-source
-        sourceRevisionDigest: sha256:427764465a99a087e8ddb6115be2b23255a3f0003c5bea2a153870b7f5bf0b26
+        sourceRevisionDigest: sha256:e9279793fec15674c2c6ff77d11be16f6945b43d47b8005e68d7300da68a24a4
         sourceBlobDigest: sha256:7ca97cfd4c993bac385e1da2ed1a467acb50d0bf3893fffd0a811d2f1ea49e91
         outLocation: lending
 workflow:
