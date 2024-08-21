@@ -14,7 +14,9 @@ python:
   version: 7.0.0
   additionalDependencies:
     dev: {}
-    main: {}
+    main: {
+      "python-dateutil": "2.9.0.post0"
+    }
   author: Codat
   authors:
     - Speakeasy
