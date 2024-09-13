@@ -19,3 +19,13 @@ Based on:
 - [python v0.2.0] previous-versions/files
 ### Releases
 - [PyPI v0.2.0] https://pypi.org/project/codat-files/0.2.0 - previous-versions/files
+
+## 2024-09-13 14:15:23
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.396.6 (2.415.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.3.0] previous-versions/files
+### Releases
+- [PyPI v0.3.0] https://pypi.org/project/codat-files/0.3.0 - previous-versions/files
