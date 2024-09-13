@@ -1,23 +1,44 @@
-<!-- Start SDK Example Usage -->
-
-
+<!-- Start SDK Example Usage [usage] -->
 ```python
-import codatcommerce
-from codatcommerce.models import operations, shared
+# Synchronous Example
+from codat_commerce import CodatCommerce
 
-s = codatcommerce.CodatCommerce(
+s = CodatCommerce(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetCompanyInfoRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.customers.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "customer_id": "<value>",
+})
 
-res = s.company_info.get(req)
-
-if res.company_info is not None:
+if res is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+
+</br>
+
+The same SDK client can also be used to make asychronous requests by importing asyncio.
+```python
+# Asynchronous Example
+import asyncio
+from codat_commerce import CodatCommerce
+
+async def main():
+    s = CodatCommerce(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    )
+    res = await s.customers.get_async(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "customer_id": "<value>",
+    })
+    if res is not None:
+        # handle response
+        pass
+
+asyncio.run(main())
+```
+<!-- End SDK Example Usage [usage] -->
