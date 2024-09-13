@@ -18,23 +18,21 @@ The *Download files* endpoint downloads all files that have  been uploaded by to
 ### Example Usage
 
 ```python
-import codatfiles
-from codatfiles.models import operations
+from codat_files import CodatFiles
 
-s = codatfiles.CodatFiles(
+s = CodatFiles(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.DownloadFilesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    date_='2022-10-23T00:00:00Z',
-)
+res = s.files.download_files(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "date_": "2022-10-23T00:00:00Z",
+})
 
-res = s.files.download_files(req)
-
-if res.data is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -44,17 +42,18 @@ if res.data is not None:
 | `request`                                                                          | [operations.DownloadFilesRequest](../../models/operations/downloadfilesrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.DownloadFilesResponse](../../models/operations/downloadfilesresponse.md)**
+**[httpx.Response](../../models/.md)**
+
 ### Errors
 
 | Error Object                     | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
 | errors.Schema                    | 400,401,402,404,429,500,503      | application/json                 |
 | errors.DownloadFilesErrorMessage | 403                              | application/json                 |
-| errors.SDKError                  | 400-600                          | */*                              |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
+
 
 ## list_files
 
@@ -63,22 +62,20 @@ if res.data is not None:
 ### Example Usage
 
 ```python
-import codatfiles
-from codatfiles.models import operations
+from codat_files import CodatFiles
 
-s = codatfiles.CodatFiles(
+s = CodatFiles(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.ListFilesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.files.list_files(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.files.list_files(req)
-
-if res.files is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -88,17 +85,18 @@ if res.files is not None:
 | `request`                                                                  | [operations.ListFilesRequest](../../models/operations/listfilesrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
 | `retries`                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)           | :heavy_minus_sign:                                                         | Configuration to override the default retry behavior of the client.        |
 
-
 ### Response
 
-**[operations.ListFilesResponse](../../models/operations/listfilesresponse.md)**
+**[List[shared.File]](../../models/.md)**
+
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | errors.Schema                | 401,402,404,429,500,503      | application/json             |
 | errors.ListFilesErrorMessage | 403                          | application/json             |
-| errors.SDKError              | 400-600                      | */*                          |
+| errors.SDKError              | 4xx-5xx                      | */*                          |
+
 
 ## upload_files
 
@@ -113,29 +111,19 @@ Uploaded files must meet the following requirements:
 ### Example Usage
 
 ```python
-import codatfiles
-from codatfiles.models import operations, shared
+from codat_files import CodatFiles
 
-s = codatfiles.CodatFiles(
+s = CodatFiles(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.UploadFilesRequest(
-    file_upload=shared.FileUpload(
-        file=shared.CodatFile(
-            content='0x6261bDdB39'.encode(),
-            file_name='syndicate_central_defect.wav',
-        ),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+s.files.upload_files(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.files.upload_files(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -145,14 +133,10 @@ if res.status_code == 200:
 | `request`                                                                      | [operations.UploadFilesRequest](../../models/operations/uploadfilesrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 | `retries`                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)               | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |
 
-
-### Response
-
-**[operations.UploadFilesResponse](../../models/operations/uploadfilesresponse.md)**
 ### Errors
 
 | Error Object                   | Status Code                    | Content Type                   |
 | ------------------------------ | ------------------------------ | ------------------------------ |
 | errors.Schema                  | 400,401,402,404,429,500,503    | application/json               |
 | errors.UploadFilesErrorMessage | 403                            | application/json               |
-| errors.SDKError                | 400-600                        | */*                            |
+| errors.SDKError                | 4xx-5xx                        | */*                            |

@@ -1,0 +1,156 @@
+lockVersion: 2.0.0
+id: fab15c19-4b2f-4bcc-b740-a2837afa101f
+management:
+  docChecksum: 3e1bf1ed751542092d2ada42a1b8273b
+  docVersion: 3.0.0
+  speakeasyVersion: 1.396.6
+  generationVersion: 2.415.6
+  releaseVersion: 0.3.0
+  configChecksum: 08994b0196165994876c81d16fc9cc1c
+  repoURL: https://github.com/codatio/client-sdk-python.git
+  repoSubDirectory: previous-versions/files
+  installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=previous-versions/files
+  published: true
+features:
+  python:
+    additionalDependencies: 1.0.0
+    core: 5.5.3
+    defaultEnabledRetries: 0.2.0
+    downloadStreams: 1.0.1
+    envVarSecurityUsage: 0.3.1
+    examples: 3.0.0
+    globalSecurity: 3.0.2
+    globalSecurityCallbacks: 1.0.0
+    globalSecurityFlattening: 1.0.0
+    globalServerURLs: 3.0.0
+    multipartFileContentType: 1.0.0
+    nullables: 1.0.0
+    responseFormat: 1.0.0
+    retries: 3.0.2
+    sdkHooks: 1.0.0
+    serverEventsSentinels: 0.1.0
+    uploadStreams: 1.0.0
+generatedFiles:
+  - .gitattributes
+  - .vscode/settings.json
+  - CONTRIBUTING.md
+  - USAGE.md
+  - docs/models/errors/downloadfileserrormessage.md
+  - docs/models/errors/listfileserrormessage.md
+  - docs/models/errors/schema.md
+  - docs/models/errors/uploadfileserrormessage.md
+  - docs/models/operations/downloadfilesrequest.md
+  - docs/models/operations/listfilesrequest.md
+  - docs/models/operations/uploadfilesrequest.md
+  - docs/models/shared/codatfile.md
+  - docs/models/shared/errorvalidation.md
+  - docs/models/shared/errorvalidationitem.md
+  - docs/models/shared/file.md
+  - docs/models/shared/fileupload.md
+  - docs/models/shared/security.md
+  - docs/models/utils/retryconfig.md
+  - docs/sdks/codatfiles/README.md
+  - docs/sdks/files/README.md
+  - poetry.toml
+  - py.typed
+  - pylintrc
+  - pyproject.toml
+  - scripts/compile.sh
+  - scripts/prepare-readme.py
+  - scripts/publish.sh
+  - src/codat_files/__init__.py
+  - src/codat_files/_hooks/__init__.py
+  - src/codat_files/_hooks/sdkhooks.py
+  - src/codat_files/_hooks/types.py
+  - src/codat_files/basesdk.py
+  - src/codat_files/files.py
+  - src/codat_files/httpclient.py
+  - src/codat_files/models/errors/__init__.py
+  - src/codat_files/models/errors/download_files.py
+  - src/codat_files/models/errors/list_files.py
+  - src/codat_files/models/errors/schema.py
+  - src/codat_files/models/errors/sdkerror.py
+  - src/codat_files/models/errors/upload_files.py
+  - src/codat_files/models/operations/__init__.py
+  - src/codat_files/models/operations/download_files.py
+  - src/codat_files/models/operations/list_files.py
+  - src/codat_files/models/operations/upload_files.py
+  - src/codat_files/models/shared/__init__.py
+  - src/codat_files/models/shared/codatfile.py
+  - src/codat_files/models/shared/errorvalidation.py
+  - src/codat_files/models/shared/errorvalidationitem.py
+  - src/codat_files/models/shared/file.py
+  - src/codat_files/models/shared/fileupload.py
+  - src/codat_files/models/shared/security.py
+  - src/codat_files/py.typed
+  - src/codat_files/sdk.py
+  - src/codat_files/sdkconfiguration.py
+  - src/codat_files/types/__init__.py
+  - src/codat_files/types/basemodel.py
+  - src/codat_files/utils/__init__.py
+  - src/codat_files/utils/annotations.py
+  - src/codat_files/utils/enums.py
+  - src/codat_files/utils/eventstreaming.py
+  - src/codat_files/utils/forms.py
+  - src/codat_files/utils/headers.py
+  - src/codat_files/utils/logger.py
+  - src/codat_files/utils/metadata.py
+  - src/codat_files/utils/queryparams.py
+  - src/codat_files/utils/requestbodies.py
+  - src/codat_files/utils/retries.py
+  - src/codat_files/utils/security.py
+  - src/codat_files/utils/serializers.py
+  - src/codat_files/utils/url.py
+  - src/codat_files/utils/values.py
+examples:
+  download-files:
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          date: "2022-10-23T00:00:00Z"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error processing request - not valid.", "service": "PublicApi", "statusCode": 400}
+    Conflict:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          date: "2022-10-23T00:00:00Z"
+      responses:
+        "403":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "You are using an outdated API key or a key not associated with that resource.", "service": "PublicApi", "statusCode": 403}
+  list-files:
+    Unauthorized:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+      responses:
+        "401":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+    Conflict:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+      responses:
+        "403":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "You are using an outdated API key or a key not associated with that resource.", "service": "PublicApi", "statusCode": 403}
+  upload-files:
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error processing request - not valid.", "service": "PublicApi", "statusCode": 400}
+    Conflict:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+      responses:
+        "403":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "You are using an outdated API key or a key not associated with that resource.", "service": "PublicApi", "statusCode": 403}

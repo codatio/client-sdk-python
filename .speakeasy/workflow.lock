@@ -42,6 +42,13 @@ sources:
         tags:
             - latest
             - main
+    files-source:
+        sourceNamespace: files-source
+        sourceRevisionDigest: sha256:b1abb994c69cf896fcb103548d80466e9e1c94f911aeb14174ce36b77de24670
+        sourceBlobDigest: sha256:95e088645c8a70b6c0d755c6f12a0a24b74eda70dcebccc7a0c2f70fec219d81
+        tags:
+            - latest
+            - main
     lending-source:
         sourceNamespace: lending-source
         sourceRevisionDigest: sha256:e9279793fec15674c2c6ff77d11be16f6945b43d47b8005e68d7300da68a24a4
@@ -80,6 +87,11 @@ targets:
         sourceNamespace: common-source
         sourceRevisionDigest: sha256:0bf371cdd8c79c641e4d66c66abf2102492e521956f50a9d0ff2090a5da44822
         sourceBlobDigest: sha256:e1e3f4c3ed16022322bc656bb0e4ef28c04fff8c92c271cc859c6e2b32af5613
+    files-library:
+        source: files-source
+        sourceNamespace: files-source
+        sourceRevisionDigest: sha256:b1abb994c69cf896fcb103548d80466e9e1c94f911aeb14174ce36b77de24670
+        sourceBlobDigest: sha256:95e088645c8a70b6c0d755c6f12a0a24b74eda70dcebccc7a0c2f70fec219d81
     lending-library:
         source: lending-source
         sourceNamespace: lending-source
@@ -122,6 +134,8 @@ workflow:
         files-source:
             inputs:
                 - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Files.yaml
+            registry:
+                location: registry.speakeasyapi.dev/codat/codat/files-source
         lending-source:
             inputs:
                 - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Lending.yaml
