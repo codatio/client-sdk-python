@@ -28,6 +28,13 @@ sources:
         tags:
             - latest
             - main
+    commerce-source:
+        sourceNamespace: commerce-source
+        sourceRevisionDigest: sha256:1e223325fbfece04139fc0c8f9520c5a4a3d0d895614836fd2e12d65182c2471
+        sourceBlobDigest: sha256:6f1199c3d0384446a3a88e1c9a018ec6487a1cb391d46f4f4bbf4b7fce00a339
+        tags:
+            - latest
+            - main
     lending-source:
         sourceNamespace: lending-source
         sourceRevisionDigest: sha256:e9279793fec15674c2c6ff77d11be16f6945b43d47b8005e68d7300da68a24a4
@@ -56,6 +63,11 @@ targets:
         sourceNamespace: banking-source
         sourceRevisionDigest: sha256:b2683698c6afe88bf4ca96bb8a6d598c19410794ef4f6bc027c755fb59e1434f
         sourceBlobDigest: sha256:78c7d7c24581662bec85176d517f23c35ad9b6e569b1c23ac199b9b50a96063a
+    commerce-library:
+        source: commerce-source
+        sourceNamespace: commerce-source
+        sourceRevisionDigest: sha256:1e223325fbfece04139fc0c8f9520c5a4a3d0d895614836fd2e12d65182c2471
+        sourceBlobDigest: sha256:6f1199c3d0384446a3a88e1c9a018ec6487a1cb391d46f4f4bbf4b7fce00a339
     lending-library:
         source: lending-source
         sourceNamespace: lending-source
@@ -88,6 +100,8 @@ workflow:
         commerce-source:
             inputs:
                 - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Commerce.yaml
+            registry:
+                location: registry.speakeasyapi.dev/codat/codat/commerce-source
         common-source:
             inputs:
                 - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Platform.yaml
