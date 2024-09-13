@@ -3,7 +3,7 @@
 
 ## Overview
 
-Payment methods
+Access standardized Payment methods from linked accounting software.
 
 ### Available Operations
 
@@ -24,25 +24,24 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetPaymentMethodRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_method_id='string',
-)
+res = s.payment_methods.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "payment_method_id": "<value>",
+})
 
-res = s.payment_methods.get(req)
-
-if res.payment_method is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -52,16 +51,17 @@ if res.payment_method is not None:
 | `request`                                                                                | [operations.GetPaymentMethodRequest](../../models/operations/getpaymentmethodrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.GetPaymentMethodResponse](../../models/operations/getpaymentmethodresponse.md)**
+**[shared.PaymentMethod](../../models/shared/paymentmethod.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## list
 
@@ -75,27 +75,27 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListPaymentMethodsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.payment_methods.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.payment_methods.list(req)
-
-if res.payment_methods is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -105,13 +105,13 @@ if res.payment_methods is not None:
 | `request`                                                                                    | [operations.ListPaymentMethodsRequest](../../models/operations/listpaymentmethodsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
-
 ### Response
 
-**[operations.ListPaymentMethodsResponse](../../models/operations/listpaymentmethodsresponse.md)**
+**[shared.PaymentMethods](../../models/shared/paymentmethods.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

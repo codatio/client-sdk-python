@@ -3,7 +3,7 @@
 
 ## Overview
 
-Journals
+Access standardized Journals from linked accounting software.
 
 ### Available Operations
 
@@ -28,28 +28,27 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateJournalRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    journal_prototype=shared.JournalPrototype(
-        created_on='2022-10-23T00:00:00Z',
-    ),
-)
+res = s.journals.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "journal_prototype": {
+        "created_on": "2022-10-23T00:00:00Z",
+    },
+})
 
-res = s.journals.create(req)
-
-if res.create_journal_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -59,16 +58,17 @@ if res.create_journal_response is not None:
 | `request`                                                                          | [operations.CreateJournalRequest](../../models/operations/createjournalrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.CreateJournalResponse](../../models/operations/createjournalresponse.md)**
+**[shared.CreateJournalResponse](../../models/shared/createjournalresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get
 
@@ -84,25 +84,24 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetJournalRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    journal_id='string',
-)
+res = s.journals.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "journal_id": "<value>",
+})
 
-res = s.journals.get(req)
-
-if res.journal is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -112,16 +111,17 @@ if res.journal is not None:
 | `request`                                                                    | [operations.GetJournalRequest](../../models/operations/getjournalrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 | `retries`                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)             | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |
 
-
 ### Response
 
-**[operations.GetJournalResponse](../../models/operations/getjournalresponse.md)**
+**[shared.Journal](../../models/shared/journal.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_create_model
 
@@ -139,25 +139,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateJournalsModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.journals.get_create_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.journals.get_create_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -167,16 +166,17 @@ if res.push_option is not None:
 | `request`                                                                                            | [operations.GetCreateJournalsModelRequest](../../models/operations/getcreatejournalsmodelrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 | `retries`                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
 
-
 ### Response
 
-**[operations.GetCreateJournalsModelResponse](../../models/operations/getcreatejournalsmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -190,27 +190,27 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListJournalsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.journals.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.journals.list(req)
-
-if res.journals is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -220,13 +220,13 @@ if res.journals is not None:
 | `request`                                                                        | [operations.ListJournalsRequest](../../models/operations/listjournalsrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
 | `retries`                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                               | Configuration to override the default retry behavior of the client.              |
 
-
 ### Response
 
-**[operations.ListJournalsResponse](../../models/operations/listjournalsresponse.md)**
+**[shared.Journals](../../models/shared/journals.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

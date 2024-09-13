@@ -3,7 +3,7 @@
 
 ## Overview
 
-Bank accounts
+Access standardized Bank accounts from linked accounting software.
 
 ### Available Operations
 
@@ -28,39 +28,30 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
-from decimal import Decimal
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateBankAccountRequest(
-    bank_account=shared.BankAccount(
-        currency='USD',
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        source_modified_date='2022-10-23T00:00:00Z',
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
-            },
-        ),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.bank_accounts.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "bank_account": {
+        "currency": "USD",
+        "modified_date": "2022-10-23T00:00:00Z",
+        "source_modified_date": "2022-10-23T00:00:00Z",
+        "status": shared.BankAccountStatus.ACTIVE,
+    },
+})
 
-res = s.bank_accounts.create(req)
-
-if res.create_bank_account_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -70,16 +61,17 @@ if res.create_bank_account_response is not None:
 | `request`                                                                                  | [operations.CreateBankAccountRequest](../../models/operations/createbankaccountrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 | `retries`                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                           | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
 
-
 ### Response
 
-**[operations.CreateBankAccountResponse](../../models/operations/createbankaccountresponse.md)**
+**[shared.CreateBankAccountResponse](../../models/shared/createbankaccountresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get
 
@@ -95,26 +87,25 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetBankAccountRequest(
-    account_id='string',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.bank_accounts.get(request={
+    "account_id": "<value>",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.bank_accounts.get(req)
-
-if res.bank_account is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -124,16 +115,17 @@ if res.bank_account is not None:
 | `request`                                                                            | [operations.GetBankAccountRequest](../../models/operations/getbankaccountrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
-**[operations.GetBankAccountResponse](../../models/operations/getbankaccountresponse.md)**
+**[shared.BankAccount](../../models/shared/bankaccount.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_create_update_model
 
@@ -151,25 +143,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateUpdateBankAccountsModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.bank_accounts.get_create_update_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.bank_accounts.get_create_update_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -179,16 +170,17 @@ if res.push_option is not None:
 | `request`                                                                                                                | [operations.GetCreateUpdateBankAccountsModelRequest](../../models/operations/getcreateupdatebankaccountsmodelrequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
 | `retries`                                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                         | :heavy_minus_sign:                                                                                                       | Configuration to override the default retry behavior of the client.                                                      |
 
-
 ### Response
 
-**[operations.GetCreateUpdateBankAccountsModelResponse](../../models/operations/getcreateupdatebankaccountsmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -202,28 +194,28 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListBankAccountsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.bank_accounts.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.bank_accounts.list(req)
-
-if res.bank_accounts is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -233,16 +225,17 @@ if res.bank_accounts is not None:
 | `request`                                                                                | [operations.ListBankAccountsRequest](../../models/operations/listbankaccountsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.ListBankAccountsResponse](../../models/operations/listbankaccountsresponse.md)**
+**[shared.BankAccounts](../../models/shared/bankaccounts.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
 
 ## update
 
@@ -260,40 +253,31 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
-from decimal import Decimal
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateBankAccountRequest(
-    bank_account=shared.BankAccount(
-        currency='EUR',
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        source_modified_date='2022-10-23T00:00:00Z',
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
-            },
-        ),
-    ),
-    bank_account_id='13d946f0-c5d5-42bc-b092-97ece17923ab',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.bank_accounts.update(request={
+    "bank_account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "bank_account": {
+        "currency": "EUR",
+        "modified_date": "2022-10-23T00:00:00Z",
+        "source_modified_date": "2022-10-23T00:00:00Z",
+        "status": shared.BankAccountStatus.ACTIVE,
+    },
+})
 
-res = s.bank_accounts.update(req)
-
-if res.update_bank_account_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -303,13 +287,13 @@ if res.update_bank_account_response is not None:
 | `request`                                                                                  | [operations.UpdateBankAccountRequest](../../models/operations/updatebankaccountrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 | `retries`                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                           | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
 
-
 ### Response
 
-**[operations.UpdateBankAccountResponse](../../models/operations/updatebankaccountresponse.md)**
+**[shared.UpdateBankAccountResponse](../../models/shared/updatebankaccountresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

@@ -1,5 +1,12 @@
-speakeasyVersion: 1.377.0
+speakeasyVersion: 1.396.6
 sources:
+    accounting-source:
+        sourceNamespace: accounting-source
+        sourceRevisionDigest: sha256:69321f987c271eb886b1235bf55c2eb13b9f2994d6038d7625094c3c6e276d44
+        sourceBlobDigest: sha256:1196b9f04ffba9bfc30292d059e6e63e93b26fe3f8ca92cab6d58df8de86c4ca
+        tags:
+            - latest
+            - main
     lending-source:
         sourceNamespace: lending-source
         sourceRevisionDigest: sha256:e9279793fec15674c2c6ff77d11be16f6945b43d47b8005e68d7300da68a24a4
@@ -8,12 +15,16 @@ sources:
             - latest
             - main
 targets:
+    accounting-library:
+        source: accounting-source
+        sourceNamespace: accounting-source
+        sourceRevisionDigest: sha256:69321f987c271eb886b1235bf55c2eb13b9f2994d6038d7625094c3c6e276d44
+        sourceBlobDigest: sha256:1196b9f04ffba9bfc30292d059e6e63e93b26fe3f8ca92cab6d58df8de86c4ca
     lending-library:
         source: lending-source
         sourceNamespace: lending-source
         sourceRevisionDigest: sha256:e9279793fec15674c2c6ff77d11be16f6945b43d47b8005e68d7300da68a24a4
         sourceBlobDigest: sha256:7ca97cfd4c993bac385e1da2ed1a467acb50d0bf3893fffd0a811d2f1ea49e91
-        outLocation: lending
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -21,6 +32,8 @@ workflow:
         accounting-source:
             inputs:
                 - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+            registry:
+                location: registry.speakeasyapi.dev/codat/codat/accounting-source
         assess-source:
             inputs:
                 - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml

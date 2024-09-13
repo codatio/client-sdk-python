@@ -4,6 +4,8 @@ sources:
     accounting-source:
         inputs:
             - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Accounting.yaml
+        registry:
+            location: registry.speakeasyapi.dev/codat/codat/accounting-source
     assess-source:
         inputs:
             - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml

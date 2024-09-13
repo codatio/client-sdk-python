@@ -1,11 +1,9 @@
 # ContactRef
 
-A customer or supplier associated with the direct cost.
-
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `data_type`                                                  | [Optional[shared.DataType]](../../models/shared/datatype.md) | :heavy_minus_sign:                                           | Available Data types                                         | invoices                                                     |
-| `id`                                                         | *str*                                                        | :heavy_check_mark:                                           | Unique identifier for a customer or supplier.                |                                                              |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `id`                                                                                     | *str*                                                                                    | :heavy_check_mark:                                                                       | Unique identifier for a customer or supplier.                                            |
+| `data_type`                                                                              | [OptionalNullable[shared.ContactRefDataType]](../../models/shared/contactrefdatatype.md) | :heavy_minus_sign:                                                                       | Allowed name of the 'dataType'.                                                          |

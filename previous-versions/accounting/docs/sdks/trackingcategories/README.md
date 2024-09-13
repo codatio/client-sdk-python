@@ -3,7 +3,7 @@
 
 ## Overview
 
-Tracking categories
+Access standardized Tracking categories from linked accounting software.
 
 ### Available Operations
 
@@ -24,25 +24,24 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetTrackingCategoryRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    tracking_category_id='string',
-)
+res = s.tracking_categories.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "tracking_category_id": "<value>",
+})
 
-res = s.tracking_categories.get(req)
-
-if res.tracking_category_tree is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -52,16 +51,17 @@ if res.tracking_category_tree is not None:
 | `request`                                                                                      | [operations.GetTrackingCategoryRequest](../../models/operations/gettrackingcategoryrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
 ### Response
 
-**[operations.GetTrackingCategoryResponse](../../models/operations/gettrackingcategoryresponse.md)**
+**[shared.TrackingCategoryTree](../../models/shared/trackingcategorytree.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## list
 
@@ -75,27 +75,27 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListTrackingCategoriesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.tracking_categories.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.tracking_categories.list(req)
-
-if res.tracking_categories is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -105,13 +105,13 @@ if res.tracking_categories is not None:
 | `request`                                                                                            | [operations.ListTrackingCategoriesRequest](../../models/operations/listtrackingcategoriesrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 | `retries`                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
 
-
 ### Response
 
-**[operations.ListTrackingCategoriesResponse](../../models/operations/listtrackingcategoriesresponse.md)**
+**[shared.TrackingCategories](../../models/shared/trackingcategories.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

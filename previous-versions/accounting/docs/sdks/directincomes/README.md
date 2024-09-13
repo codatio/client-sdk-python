@@ -3,7 +3,7 @@
 
 ## Overview
 
-Direct incomes
+Access standardized Direct incomes from linked accounting software.
 
 ### Available Operations
 
@@ -32,76 +32,86 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 from decimal import Decimal
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateDirectIncomeRequest(
-    direct_income=shared.DirectIncome(
-        contact_ref=shared.ContactRef(
-            data_type=shared.DataType.INVOICES,
-            id='<ID>',
-        ),
-        currency='USD',
-        issue_date='2022-10-23T00:00:00Z',
-        line_items=[
-            shared.DirectIncomeLineItem(
-                account_ref=shared.AccountRef(),
-                item_ref=shared.ItemRef(
-                    id='<ID>',
-                ),
-                quantity=Decimal('6384.24'),
-                tax_rate_ref=shared.TaxRateRef(),
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='<ID>',
-                    ),
+res = s.direct_incomes.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_income": {
+        "currency": "USD",
+        "issue_date": "2023-02-01T16:27:40.023Z",
+        "line_items": [
+            {
+                "quantity": Decimal("68"),
+                "unit_amount": Decimal("9100"),
+                "account_ref": {
+                    "id": "80000007-1671793811",
+                },
+                "description": "line description 1",
+                "discount_amount": Decimal("0"),
+                "discount_percentage": Decimal("0"),
+                "sub_total": Decimal("5320"),
+                "tax_amount": Decimal("37"),
+                "total_amount": Decimal("12"),
+                "tracking_category_refs": [
+                    {
+                        "id": "80000002-1674553271",
+                        "name": "string",
+                    },
                 ],
-                unit_amount=Decimal('8592.13'),
-            ),
+            },
         ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        payment_allocations=[
-            shared.PaymentAllocationItems(
-                allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00Z',
-                    currency='GBP',
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(),
-                    currency='EUR',
-                    paid_on_date='2022-10-23T00:00:00Z',
-                ),
-            ),
-        ],
-        source_modified_date='2022-10-23T00:00:00Z',
-        sub_total=Decimal('7964.74'),
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
+        "payment_allocations": [
+            {
+                "allocation": {
+                    "allocated_on_date": "2023-02-01T16:27:40.023Z",
+                    "currency": "USD",
+                    "currency_rate": Decimal("1"),
+                    "total_amount": Decimal("560"),
+                },
+                "payment": {
+                    "account_ref": {
+                        "id": "80000028-1671794219",
+                    },
+                    "currency": "USD",
+                    "currency_rate": Decimal("1"),
+                    "id": "3594002235",
+                    "note": "payment allocations note",
+                    "paid_on_date": "2023-02-01T16:27:40.023Z",
+                    "reference": "230202 1217",
+                    "total_amount": Decimal("560"),
                 },
             },
-        ),
-        tax_amount=Decimal('3768.44'),
-        total_amount=Decimal('9510.62'),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+        ],
+        "sub_total": Decimal("0"),
+        "tax_amount": Decimal("9999"),
+        "total_amount": Decimal("9999"),
+        "contact_ref": {
+            "id": "80000002-1674552702",
+            "data_type": shared.ContactRefDataType.CUSTOMERS,
+        },
+        "metadata": {
+            "is_deleted": True,
+        },
+        "modified_date": "2022-10-23T00:00:00Z",
+        "note": "test note",
+        "reference": None,
+        "source_modified_date": "2022-10-23T00:00:00Z",
+    },
+})
 
-res = s.direct_incomes.create(req)
-
-if res.create_direct_income_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -111,16 +121,17 @@ if res.create_direct_income_response is not None:
 | `request`                                                                                    | [operations.CreateDirectIncomeRequest](../../models/operations/createdirectincomerequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
-
 ### Response
 
-**[operations.CreateDirectIncomeResponse](../../models/operations/createdirectincomeresponse.md)**
+**[shared.CreateDirectIncomeResponse](../../models/shared/createdirectincomeresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## download_attachment
 
@@ -134,27 +145,26 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DownloadDirectIncomeAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='string',
-)
+res = s.direct_incomes.download_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_income_id": "<value>",
+})
 
-res = s.direct_incomes.download_attachment(req)
-
-if res.data is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -164,16 +174,17 @@ if res.data is not None:
 | `request`                                                                                                            | [operations.DownloadDirectIncomeAttachmentRequest](../../models/operations/downloaddirectincomeattachmentrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `retries`                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                                   | Configuration to override the default retry behavior of the client.                                                  |
 
-
 ### Response
 
-**[operations.DownloadDirectIncomeAttachmentResponse](../../models/operations/downloaddirectincomeattachmentresponse.md)**
+**[httpx.Response](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get
 
@@ -189,26 +200,25 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetDirectIncomeRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='string',
-)
+res = s.direct_incomes.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_income_id": "<value>",
+})
 
-res = s.direct_incomes.get(req)
-
-if res.direct_income is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -218,16 +228,17 @@ if res.direct_income is not None:
 | `request`                                                                              | [operations.GetDirectIncomeRequest](../../models/operations/getdirectincomerequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 | `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
 
-
 ### Response
 
-**[operations.GetDirectIncomeResponse](../../models/operations/getdirectincomeresponse.md)**
+**[shared.DirectIncome](../../models/shared/directincome.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_attachment
 
@@ -241,27 +252,26 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetDirectIncomeAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='string',
-)
+res = s.direct_incomes.get_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_income_id": "<value>",
+})
 
-res = s.direct_incomes.get_attachment(req)
-
-if res.attachment is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -271,16 +281,17 @@ if res.attachment is not None:
 | `request`                                                                                                  | [operations.GetDirectIncomeAttachmentRequest](../../models/operations/getdirectincomeattachmentrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
-**[operations.GetDirectIncomeAttachmentResponse](../../models/operations/getdirectincomeattachmentresponse.md)**
+**[shared.Attachment](../../models/shared/attachment.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_create_model
 
@@ -298,25 +309,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateDirectIncomesModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.direct_incomes.get_create_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.direct_incomes.get_create_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -326,16 +336,17 @@ if res.push_option is not None:
 | `request`                                                                                                      | [operations.GetCreateDirectIncomesModelRequest](../../models/operations/getcreatedirectincomesmodelrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
 | `retries`                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                               | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |
 
-
 ### Response
 
-**[operations.GetCreateDirectIncomesModelResponse](../../models/operations/getcreatedirectincomesmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -349,28 +360,28 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListDirectIncomesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.direct_incomes.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.direct_incomes.list(req)
-
-if res.direct_incomes is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -380,16 +391,17 @@ if res.direct_incomes is not None:
 | `request`                                                                                  | [operations.ListDirectIncomesRequest](../../models/operations/listdirectincomesrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 | `retries`                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                           | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
 
-
 ### Response
 
-**[operations.ListDirectIncomesResponse](../../models/operations/listdirectincomesresponse.md)**
+**[shared.DirectIncomes](../../models/shared/directincomes.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
 
 ## list_attachments
 
@@ -403,26 +415,25 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListDirectIncomeAttachmentsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='string',
-)
+res = s.direct_incomes.list_attachments(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_income_id": "<value>",
+})
 
-res = s.direct_incomes.list_attachments(req)
-
-if res.attachments_dataset is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -432,16 +443,17 @@ if res.attachments_dataset is not None:
 | `request`                                                                                                      | [operations.ListDirectIncomeAttachmentsRequest](../../models/operations/listdirectincomeattachmentsrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
 | `retries`                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                               | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |
 
-
 ### Response
 
-**[operations.ListDirectIncomeAttachmentsResponse](../../models/operations/listdirectincomeattachmentsresponse.md)**
+**[shared.AttachmentsDataset](../../models/shared/attachmentsdataset.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## upload_attachment
 
@@ -459,32 +471,23 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UploadDirectIncomeAttachmentRequest(
-    attachment_upload=shared.AttachmentUpload(
-        file=shared.CodatFile(
-            content='0xE3ABc1980E'.encode(),
-            file_name='elegant_producer_electric.jpeg',
-        ),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_income_id='string',
-)
+s.direct_incomes.upload_attachment(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_income_id": "<value>",
+})
 
-res = s.direct_incomes.upload_attachment(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -494,13 +497,9 @@ if res.status_code == 200:
 | `request`                                                                                                        | [operations.UploadDirectIncomeAttachmentRequest](../../models/operations/uploaddirectincomeattachmentrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
 | `retries`                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                 | :heavy_minus_sign:                                                                                               | Configuration to override the default retry behavior of the client.                                              |
 
-
-### Response
-
-**[operations.UploadDirectIncomeAttachmentResponse](../../models/operations/uploaddirectincomeattachmentresponse.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
