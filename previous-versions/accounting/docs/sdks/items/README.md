@@ -3,7 +3,7 @@
 
 ## Overview
 
-Items
+Access standardized Items from linked accounting software.
 
 ### Available Operations
 
@@ -28,50 +28,32 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
-from decimal import Decimal
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateItemRequest(
-    item=shared.Item(
-        bill_item=shared.BillItem(
-            account_ref=shared.AccountRef(),
-            tax_rate_ref=shared.TaxRateRef(),
-        ),
-        invoice_item=shared.InvoiceItem(
-            account_ref=shared.AccountRef(),
-            tax_rate_ref=shared.TaxRateRef(),
-        ),
-        is_bill_item=False,
-        is_invoice_item=False,
-        item_status=shared.ItemStatus.ACTIVE,
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        source_modified_date='2022-10-23T00:00:00Z',
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
-            },
-        ),
-        type=shared.ItemType.SERVICE,
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.items.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "item": {
+        "is_bill_item": True,
+        "is_invoice_item": False,
+        "item_status": shared.ItemStatus.ACTIVE,
+        "type": shared.ItemType.INVENTORY,
+        "modified_date": "2022-10-23T00:00:00Z",
+        "source_modified_date": "2022-10-23T00:00:00Z",
+    },
+})
 
-res = s.items.create(req)
-
-if res.create_item_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -81,16 +63,17 @@ if res.create_item_response is not None:
 | `request`                                                                    | [operations.CreateItemRequest](../../models/operations/createitemrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 | `retries`                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)             | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |
 
-
 ### Response
 
-**[operations.CreateItemResponse](../../models/operations/createitemresponse.md)**
+**[shared.CreateItemResponse](../../models/shared/createitemresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get
 
@@ -106,25 +89,24 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetItemRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    item_id='string',
-)
+res = s.items.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "item_id": "<value>",
+})
 
-res = s.items.get(req)
-
-if res.item is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -134,16 +116,17 @@ if res.item is not None:
 | `request`                                                              | [operations.GetItemRequest](../../models/operations/getitemrequest.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
 | `retries`                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)       | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |
 
-
 ### Response
 
-**[operations.GetItemResponse](../../models/operations/getitemresponse.md)**
+**[shared.Item](../../models/shared/item.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_create_model
 
@@ -161,25 +144,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateItemsModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.items.get_create_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.items.get_create_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -189,16 +171,17 @@ if res.push_option is not None:
 | `request`                                                                                      | [operations.GetCreateItemsModelRequest](../../models/operations/getcreateitemsmodelrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
 ### Response
 
-**[operations.GetCreateItemsModelResponse](../../models/operations/getcreateitemsmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -212,27 +195,27 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListItemsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.items.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.items.list(req)
-
-if res.items is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -242,13 +225,13 @@ if res.items is not None:
 | `request`                                                                  | [operations.ListItemsRequest](../../models/operations/listitemsrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
 | `retries`                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)           | :heavy_minus_sign:                                                         | Configuration to override the default retry behavior of the client.        |
 
-
 ### Response
 
-**[operations.ListItemsResponse](../../models/operations/listitemsresponse.md)**
+**[shared.SchemaItems](../../models/shared/schemaitems.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

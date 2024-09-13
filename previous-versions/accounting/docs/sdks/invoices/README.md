@@ -3,7 +3,7 @@
 
 ## Overview
 
-Invoices
+Access standardized Invoices from linked accounting software.
 
 ### Available Operations
 
@@ -35,107 +35,84 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 from decimal import Decimal
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateInvoiceRequest(
-    invoice=shared.Invoice(
-        amount_due=Decimal('4865.89'),
-        currency='USD',
-        customer_ref=shared.AccountingCustomerRef(
-            id='<ID>',
-        ),
-        due_date='2022-10-23T00:00:00Z',
-        issue_date='2022-10-23T00:00:00Z',
-        line_items=[
-            shared.InvoiceLineItem(
-                account_ref=shared.AccountRef(),
-                item_ref=shared.ItemRef(
-                    id='<ID>',
-                ),
-                quantity=Decimal('4174.58'),
-                tax_rate_ref=shared.TaxRateRef(),
-                tracking=shared.PropertieTracking1(
-                    category_refs=[
-                        shared.TrackingCategoryRef(
-                            id='<ID>',
-                        ),
-                    ],
-                    customer_ref=shared.AccountingCustomerRef(
-                        id='<ID>',
-                    ),
-                    is_billed_to=shared.BilledToType1.UNKNOWN,
-                    is_rebilled_to=shared.BilledToType1.UNKNOWN,
-                    project_ref=shared.ProjectRef(
-                        id='<ID>',
-                    ),
-                    record_ref=shared.InvoiceTo(
-                        data_type='transfer',
-                    ),
-                ),
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='<ID>',
-                    ),
-                ],
-                unit_amount=Decimal('690.25'),
-            ),
+res = s.invoices.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice": {
+        "amount_due": Decimal("87326532"),
+        "issue_date": "2023-04-18T11:09:01.438Z",
+        "status": shared.InvoiceStatus.SUBMITTED,
+        "total_amount": Decimal("30"),
+        "total_tax_amount": Decimal("0"),
+        "additional_tax_amount": Decimal("0"),
+        "additional_tax_percentage": Decimal("0"),
+        "currency": "USD",
+        "currency_rate": Decimal("1"),
+        "customer_ref": {
+            "id": "80000002-1674552702",
+            "company_name": "Test Customer 1",
+        },
+        "discount_percentage": Decimal("0"),
+        "due_date": "2023-05-24T11:09:01.438Z",
+        "invoice_number": "18/04 15.26",
+        "line_items": [
+
         ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        paid_on_date='2022-10-23T00:00:00Z',
-        payment_allocations=[
-            shared.PaymentAllocationItems(
-                allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00Z',
-                    currency='EUR',
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(),
-                    currency='EUR',
-                    paid_on_date='2022-10-23T00:00:00Z',
-                ),
-            ),
-        ],
-        sales_order_refs=[
-            shared.SalesOrderRef(
-                data_type=shared.DataType.INVOICES,
-            ),
-        ],
-        source_modified_date='2022-10-23T00:00:00Z',
-        status=shared.InvoiceStatus.DRAFT,
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
+        "modified_date": "2023-02-14T11:09:01.438Z",
+        "note": "invoice push 20230418 15.26",
+        "paid_on_date": "2023-02-10T11:09:01.438Z",
+        "payment_allocations": [
+            {
+                "allocation": {
+                    "allocated_on_date": "2023-02-14T11:09:01.438Z",
+                    "currency": "USD",
+                    "currency_rate": Decimal("1"),
+                    "total_amount": Decimal("725"),
+                },
+                "payment": {
+                    "account_ref": {
+                        "id": "string",
+                        "name": "string",
+                    },
+                    "currency": "USD",
+                    "currency_rate": Decimal("1"),
+                    "id": "80000004-1789341990",
+                    "note": "string",
+                    "paid_on_date": "2023-02-14T11:09:01.438Z",
+                    "reference": "string",
+                    "total_amount": Decimal("725"),
                 },
             },
-        ),
-        total_amount=Decimal('3015.1'),
-        total_tax_amount=Decimal('899.64'),
-        withholding_tax=[
-            shared.WithholdingTaxItems(
-                amount=Decimal('7150.4'),
-                name='string',
-            ),
         ],
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+        "sales_order_refs": [
+            {},
+        ],
+        "source_modified_date": "2023-02-14T11:09:01.438Z",
+        "sub_total": Decimal("30"),
+        "total_discount": Decimal("0"),
+        "withholding_tax": [
+            {
+                "amount": Decimal("0"),
+                "name": "string",
+            },
+        ],
+    },
+})
 
-res = s.invoices.create(req)
-
-if res.create_invoice_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -145,20 +122,21 @@ if res.create_invoice_response is not None:
 | `request`                                                                          | [operations.CreateInvoiceRequest](../../models/operations/createinvoicerequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.CreateInvoiceResponse](../../models/operations/createinvoiceresponse.md)**
+**[shared.CreateInvoiceResponse](../../models/shared/createinvoiceresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## delete
 
-﻿The *Delete invoice* endpoint allows you to delete a specified invoice from an accounting platform.
+﻿The *Delete invoice* endpoint allows you to delete a specified invoice from an accounting software.
 
 [Invoices](https://docs.codat.io/accounting-api#/schemas/Invoice) are itemized records of goods sold or services provided to a customer.
 
@@ -168,15 +146,15 @@ if res.create_invoice_response is not None:
     1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
     2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
 
-   A `Success` status indicates that the invoice object was deleted from the accounting platform.
-3. (Optional) Check that the invoice was deleted from the accounting platform.
+   A `Success` status indicates that the invoice object was deleted from the accounting software.
+3. (Optional) Check that the invoice was deleted from the accounting software.
 
 ### Effect on related objects
 
-Be aware that deleting an invoice from an accounting platform might cause related objects to be modified. For example, if you delete a paid invoice from QuickBooks Online, the invoice is deleted but the payment against that invoice is not. The payment is converted to a payment on account.
+Be aware that deleting an invoice from an accounting software might cause related objects to be modified. For example, if you delete a paid invoice from QuickBooks Online, the invoice is deleted but the payment against that invoice is not. The payment is converted to a payment on account.
 
 ## Integration specifics
-Integrations that support soft delete do not permanently delete the object in the accounting platform.
+Integrations that support soft delete do not permanently delete the object in the accounting software.
 
 | Integration | Soft Deleted | 
 |-------------|--------------|
@@ -185,31 +163,30 @@ Integrations that support soft delete do not permanently delete the object in th
 > **Supported Integrations**
 > 
 > This functionality is currently only supported for our QuickBooks Online integration. Check out our [public roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) to see what we're building next, and to submit ideas for new features.
-> We're increasing support for object deletion across various accounting platforms and data types. You can check our [Accounting API Public Product Roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) for the latest status.
+> We're increasing support for object deletion across various accounting software and data types. You can check our [Accounting API Public Product Roadmap](https://portal.productboard.com/codat/7-public-product-roadmap/tabs/46-accounting-api) for the latest status.
 
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DeleteInvoiceRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='string',
-)
+res = s.invoices.delete(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice_id": "<value>",
+})
 
-res = s.invoices.delete(req)
-
-if res.push_operation_summary is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -219,16 +196,17 @@ if res.push_operation_summary is not None:
 | `request`                                                                          | [operations.DeleteInvoiceRequest](../../models/operations/deleteinvoicerequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.DeleteInvoiceResponse](../../models/operations/deleteinvoiceresponse.md)**
+**[shared.PushOperationSummary](../../models/shared/pushoperationsummary.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## download_attachment
 
@@ -242,27 +220,26 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DownloadInvoiceAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='string',
-)
+res = s.invoices.download_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice_id": "<value>",
+})
 
-res = s.invoices.download_attachment(req)
-
-if res.data is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -272,16 +249,17 @@ if res.data is not None:
 | `request`                                                                                                  | [operations.DownloadInvoiceAttachmentRequest](../../models/operations/downloadinvoiceattachmentrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
-**[operations.DownloadInvoiceAttachmentResponse](../../models/operations/downloadinvoiceattachmentresponse.md)**
+**[httpx.Response](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## download_pdf
 
@@ -290,25 +268,24 @@ if res.data is not None:
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DownloadInvoicePdfRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='string',
-)
+res = s.invoices.download_pdf(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "invoice_id": "<value>",
+})
 
-res = s.invoices.download_pdf(req)
-
-if res.data is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -318,16 +295,17 @@ if res.data is not None:
 | `request`                                                                                    | [operations.DownloadInvoicePdfRequest](../../models/operations/downloadinvoicepdfrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
-
 ### Response
 
-**[operations.DownloadInvoicePdfResponse](../../models/operations/downloadinvoicepdfresponse.md)**
+**[httpx.Response](../../models/.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get
 
@@ -339,28 +317,32 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
 
+### Tips and traps
+
+To access the `paymentAllocations` property, ensure that the `payments` data type is queued and cached in Codat before retrieving `invoices` from Codat's cache.
+
+
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetInvoiceRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    invoice_id='string',
-)
+res = s.invoices.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "invoice_id": "<value>",
+})
 
-res = s.invoices.get(req)
-
-if res.invoice is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -370,16 +352,17 @@ if res.invoice is not None:
 | `request`                                                                    | [operations.GetInvoiceRequest](../../models/operations/getinvoicerequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 | `retries`                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)             | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |
 
-
 ### Response
 
-**[operations.GetInvoiceResponse](../../models/operations/getinvoiceresponse.md)**
+**[shared.Invoice](../../models/shared/invoice.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_attachment
 
@@ -393,27 +376,26 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetInvoiceAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='string',
-)
+res = s.invoices.get_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice_id": "<value>",
+})
 
-res = s.invoices.get_attachment(req)
-
-if res.attachment is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -423,16 +405,17 @@ if res.attachment is not None:
 | `request`                                                                                        | [operations.GetInvoiceAttachmentRequest](../../models/operations/getinvoiceattachmentrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
-
 ### Response
 
-**[operations.GetInvoiceAttachmentResponse](../../models/operations/getinvoiceattachmentresponse.md)**
+**[shared.Attachment](../../models/shared/attachment.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_create_update_model
 
@@ -450,25 +433,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateUpdateInvoicesModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.invoices.get_create_update_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.invoices.get_create_update_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -478,16 +460,17 @@ if res.push_option is not None:
 | `request`                                                                                                        | [operations.GetCreateUpdateInvoicesModelRequest](../../models/operations/getcreateupdateinvoicesmodelrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
 | `retries`                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                 | :heavy_minus_sign:                                                                                               | Configuration to override the default retry behavior of the client.                                              |
 
-
 ### Response
 
-**[operations.GetCreateUpdateInvoicesModelResponse](../../models/operations/getcreateupdateinvoicesmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -504,30 +487,35 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 [Read more about querying](https://docs.codat.io/using-the-api/querying).
 
+### Tips and traps
+
+To access the `paymentAllocations` property, ensure that the `payments` data type is queued and cached in Codat before retrieving `invoices` from Codat's cache.
+
+
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListInvoicesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.invoices.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.invoices.list(req)
-
-if res.invoices is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -537,16 +525,17 @@ if res.invoices is not None:
 | `request`                                                                        | [operations.ListInvoicesRequest](../../models/operations/listinvoicesrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
 | `retries`                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                               | Configuration to override the default retry behavior of the client.              |
 
-
 ### Response
 
-**[operations.ListInvoicesResponse](../../models/operations/listinvoicesresponse.md)**
+**[shared.Invoices](../../models/shared/invoices.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
 
 ## list_attachments
 
@@ -560,26 +549,25 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListInvoiceAttachmentsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='string',
-)
+res = s.invoices.list_attachments(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice_id": "<value>",
+})
 
-res = s.invoices.list_attachments(req)
-
-if res.attachments_dataset is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -589,16 +577,17 @@ if res.attachments_dataset is not None:
 | `request`                                                                                            | [operations.ListInvoiceAttachmentsRequest](../../models/operations/listinvoiceattachmentsrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 | `retries`                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
 
-
 ### Response
 
-**[operations.ListInvoiceAttachmentsResponse](../../models/operations/listinvoiceattachmentsresponse.md)**
+**[shared.AttachmentsDataset](../../models/shared/attachmentsdataset.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## update
 
@@ -616,108 +605,53 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 from decimal import Decimal
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateInvoiceRequest(
-    invoice=shared.Invoice(
-        amount_due=Decimal('8574.78'),
-        currency='GBP',
-        customer_ref=shared.AccountingCustomerRef(
-            id='<ID>',
-        ),
-        due_date='2022-10-23T00:00:00Z',
-        issue_date='2022-10-23T00:00:00Z',
-        line_items=[
-            shared.InvoiceLineItem(
-                account_ref=shared.AccountRef(),
-                item_ref=shared.ItemRef(
-                    id='<ID>',
-                ),
-                quantity=Decimal('3446.2'),
-                tax_rate_ref=shared.TaxRateRef(),
-                tracking=shared.PropertieTracking1(
-                    category_refs=[
-                        shared.TrackingCategoryRef(
-                            id='<ID>',
-                        ),
-                    ],
-                    customer_ref=shared.AccountingCustomerRef(
-                        id='<ID>',
-                    ),
-                    is_billed_to=shared.BilledToType1.PROJECT,
-                    is_rebilled_to=shared.BilledToType1.PROJECT,
-                    project_ref=shared.ProjectRef(
-                        id='<ID>',
-                    ),
-                    record_ref=shared.InvoiceTo(
-                        data_type='invoice',
-                    ),
-                ),
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='<ID>',
-                    ),
-                ],
-                unit_amount=Decimal('6276.9'),
-            ),
+res = s.invoices.update(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice_id": "<value>",
+    "invoice": {
+        "amount_due": Decimal("8574.78"),
+        "issue_date": "2022-10-23T00:00:00Z",
+        "status": shared.InvoiceStatus.DRAFT,
+        "total_amount": Decimal("6276.9"),
+        "total_tax_amount": Decimal("6841.99"),
+        "currency": "GBP",
+        "due_date": "2022-10-23T00:00:00Z",
+        "line_items": [
+
         ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        paid_on_date='2022-10-23T00:00:00Z',
-        payment_allocations=[
-            shared.PaymentAllocationItems(
-                allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00Z',
-                    currency='EUR',
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(),
-                    currency='GBP',
-                    paid_on_date='2022-10-23T00:00:00Z',
-                ),
-            ),
-        ],
-        sales_order_refs=[
-            shared.SalesOrderRef(
-                data_type=shared.DataType.INVOICES,
-            ),
-        ],
-        source_modified_date='2022-10-23T00:00:00Z',
-        status=shared.InvoiceStatus.VOID,
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
+        "modified_date": "2022-10-23T00:00:00Z",
+        "paid_on_date": "2022-10-23T00:00:00Z",
+        "payment_allocations": [
+            {
+                "allocation": {
+                    "allocated_on_date": "2022-10-23T00:00:00Z",
+                    "currency": "GBP",
+                },
+                "payment": {
+                    "currency": "EUR",
+                    "paid_on_date": "2022-10-23T00:00:00Z",
                 },
             },
-        ),
-        total_amount=Decimal('4995.57'),
-        total_tax_amount=Decimal('4468.63'),
-        withholding_tax=[
-            shared.WithholdingTaxItems(
-                amount=Decimal('3691.82'),
-                name='string',
-            ),
         ],
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='string',
-)
+        "source_modified_date": "2022-10-23T00:00:00Z",
+    },
+})
 
-res = s.invoices.update(req)
-
-if res.update_invoice_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -727,16 +661,17 @@ if res.update_invoice_response is not None:
 | `request`                                                                          | [operations.UpdateInvoiceRequest](../../models/operations/updateinvoicerequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.UpdateInvoiceResponse](../../models/operations/updateinvoiceresponse.md)**
+**[shared.UpdateInvoiceResponse](../../models/shared/updateinvoiceresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## upload_attachment
 
@@ -754,32 +689,23 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UploadInvoiceAttachmentRequest(
-    attachment_upload=shared.AttachmentUpload(
-        file=shared.CodatFile(
-            content='0xE3ABc1980E'.encode(),
-            file_name='elegant_producer_electric.jpeg',
-        ),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    invoice_id='string',
-)
+s.invoices.upload_attachment(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "invoice_id": "<value>",
+})
 
-res = s.invoices.upload_attachment(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -789,13 +715,9 @@ if res.status_code == 200:
 | `request`                                                                                              | [operations.UploadInvoiceAttachmentRequest](../../models/operations/uploadinvoiceattachmentrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
 | `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
-
-### Response
-
-**[operations.UploadInvoiceAttachmentResponse](../../models/operations/uploadinvoiceattachmentresponse.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

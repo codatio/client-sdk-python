@@ -3,7 +3,7 @@
 
 ## Overview
 
-Suppliers
+Access standardized Suppliers from linked accounting software.
 
 ### Available Operations
 
@@ -32,44 +32,33 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateSupplierRequest(
-    supplier=shared.Supplier(
-        addresses=[
-            shared.Items(
-                type=shared.AccountingAddressType.BILLING,
-            ),
-        ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        phone='(877) 492-8687',
-        source_modified_date='2022-10-23T00:00:00Z',
-        status=shared.SupplierStatus.ACTIVE,
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
-            },
-        ),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.suppliers.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "supplier": {
+        "status": shared.SupplierStatus.ACTIVE,
+        "contact_name": "Joe Bloggs",
+        "id": "73593",
+        "modified_date": "2022-10-23T00:00:00Z",
+        "phone": "(877) 492-8687",
+        "source_modified_date": "2022-10-23T00:00:00Z",
+        "supplier_name": "test 20230420 1004",
+    },
+})
 
-res = s.suppliers.create(req)
-
-if res.create_supplier_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -79,16 +68,17 @@ if res.create_supplier_response is not None:
 | `request`                                                                            | [operations.CreateSupplierRequest](../../models/operations/createsupplierrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
-**[operations.CreateSupplierResponse](../../models/operations/createsupplierresponse.md)**
+**[shared.CreateSupplierResponse](../../models/shared/createsupplierresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## download_attachment
 
@@ -102,27 +92,26 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DownloadSupplierAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='string',
-)
+res = s.suppliers.download_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "supplier_id": "<value>",
+})
 
-res = s.suppliers.download_attachment(req)
-
-if res.data is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -132,16 +121,17 @@ if res.data is not None:
 | `request`                                                                                                    | [operations.DownloadSupplierAttachmentRequest](../../models/operations/downloadsupplierattachmentrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
 | `retries`                                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                           | Configuration to override the default retry behavior of the client.                                          |
 
-
 ### Response
 
-**[operations.DownloadSupplierAttachmentResponse](../../models/operations/downloadsupplierattachmentresponse.md)**
+**[httpx.Response](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get
 
@@ -157,25 +147,24 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetSupplierRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    supplier_id='string',
-)
+res = s.suppliers.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "supplier_id": "<value>",
+})
 
-res = s.suppliers.get(req)
-
-if res.supplier is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -185,16 +174,17 @@ if res.supplier is not None:
 | `request`                                                                      | [operations.GetSupplierRequest](../../models/operations/getsupplierrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 | `retries`                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)               | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |
 
-
 ### Response
 
-**[operations.GetSupplierResponse](../../models/operations/getsupplierresponse.md)**
+**[shared.Supplier](../../models/shared/supplier.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_attachment
 
@@ -208,27 +198,26 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetSupplierAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='string',
-)
+res = s.suppliers.get_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "supplier_id": "<value>",
+})
 
-res = s.suppliers.get_attachment(req)
-
-if res.attachment is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -238,16 +227,17 @@ if res.attachment is not None:
 | `request`                                                                                          | [operations.GetSupplierAttachmentRequest](../../models/operations/getsupplierattachmentrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
 | `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
 
-
 ### Response
 
-**[operations.GetSupplierAttachmentResponse](../../models/operations/getsupplierattachmentresponse.md)**
+**[shared.Attachment](../../models/shared/attachment.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_create_update_model
 
@@ -265,25 +255,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateUpdateSuppliersModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.suppliers.get_create_update_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.suppliers.get_create_update_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -293,16 +282,17 @@ if res.push_option is not None:
 | `request`                                                                                                          | [operations.GetCreateUpdateSuppliersModelRequest](../../models/operations/getcreateupdatesuppliersmodelrequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
 | `retries`                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                                 | Configuration to override the default retry behavior of the client.                                                |
 
-
 ### Response
 
-**[operations.GetCreateUpdateSuppliersModelResponse](../../models/operations/getcreateupdatesuppliersmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -316,27 +306,27 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListSuppliersRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.suppliers.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.suppliers.list(req)
-
-if res.suppliers is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -346,16 +336,17 @@ if res.suppliers is not None:
 | `request`                                                                          | [operations.ListSuppliersRequest](../../models/operations/listsuppliersrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.ListSuppliersResponse](../../models/operations/listsuppliersresponse.md)**
+**[shared.Suppliers](../../models/shared/suppliers.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
 
 ## list_attachments
 
@@ -369,26 +360,25 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListSupplierAttachmentsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='string',
-)
+res = s.suppliers.list_attachments(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "supplier_id": "<value>",
+})
 
-res = s.suppliers.list_attachments(req)
-
-if res.attachments_dataset is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -398,16 +388,17 @@ if res.attachments_dataset is not None:
 | `request`                                                                                              | [operations.ListSupplierAttachmentsRequest](../../models/operations/listsupplierattachmentsrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
 | `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
-
 ### Response
 
-**[operations.ListSupplierAttachmentsResponse](../../models/operations/listsupplierattachmentsresponse.md)**
+**[shared.AttachmentsDataset](../../models/shared/attachmentsdataset.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## update
 
@@ -425,45 +416,63 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateSupplierRequest(
-    supplier=shared.Supplier(
-        addresses=[
-            shared.Items(
-                type=shared.AccountingAddressType.DELIVERY,
-            ),
+res = s.suppliers.update(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "supplier_id": "<value>",
+    "supplier": {
+        "status": shared.SupplierStatus.UNKNOWN,
+        "addresses": [
+            {
+                "type": shared.AccountingAddressType.BILLING,
+                "city": "Bakersfield",
+                "country": "USA",
+                "line1": "Unit 51",
+                "line2": "Bakersfield Industrial Estate",
+                "region": "California",
+            },
         ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        phone='(877) 492-8687',
-        source_modified_date='2022-10-23T00:00:00Z',
-        status=shared.SupplierStatus.ACTIVE,
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
+        "contact_name": "Kelly's Industrial Supplies",
+        "default_currency": "string",
+        "email_address": "sales@kellysupplies.com",
+        "id": "C520FFD4-F6F6-4FC2-A6D2-5D7088B2B14F",
+        "metadata": {
+            "is_deleted": True,
+        },
+        "modified_date": "2022-10-23T00:00:00Z",
+        "phone": "07999 999999",
+        "registration_number": "string",
+        "source_modified_date": "2022-10-23T00:00:00Z",
+        "supplemental_data": {
+            "content": {
+                "property1": {
+                    "property1": "<value>",
+                    "property2": "<value>",
+                },
+                "property2": {
+                    "property1": "<value>",
+                    "property2": "<value>",
                 },
             },
-        ),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    supplier_id='string',
-)
+        },
+        "supplier_name": "Kelly's Industrial Supplies",
+        "tax_number": "string",
+    },
+})
 
-res = s.suppliers.update(req)
-
-if res.update_supplier_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -473,13 +482,13 @@ if res.update_supplier_response is not None:
 | `request`                                                                            | [operations.UpdateSupplierRequest](../../models/operations/updatesupplierrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
-**[operations.UpdateSupplierResponse](../../models/operations/updatesupplierresponse.md)**
+**[shared.UpdateSupplierResponse](../../models/shared/updatesupplierresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

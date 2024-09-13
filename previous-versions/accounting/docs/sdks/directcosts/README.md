@@ -3,11 +3,12 @@
 
 ## Overview
 
-Direct costs
+Access standardized Direct costs from linked accounting software.
 
 ### Available Operations
 
 * [create](#create) - Create direct cost
+* [delete](#delete) - Delete direct cost
 * [download_attachment](#download_attachment) - Download direct cost attachment
 * [get](#get) - Get direct cost
 * [get_attachment](#get_attachment) - Get direct cost attachment
@@ -32,83 +33,95 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 from decimal import Decimal
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateDirectCostRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_prototype=shared.DirectCostPrototype(
-        contact_ref=shared.DirectCostPrototypeContactRef(
-            data_type=shared.DataType.INVOICES,
-            id='<ID>',
-        ),
-        currency='USD',
-        issue_date='2022-10-23T00:00:00Z',
-        line_items=[
-            shared.DirectCostLineItem(
-                account_ref=shared.AccountRef(),
-                item_ref=shared.ItemRef(
-                    id='<ID>',
-                ),
-                quantity=Decimal('6384.24'),
-                tax_rate_ref=shared.TaxRateRef(),
-                tracking=shared.Tracking(
-                    invoice_to=shared.RecordReference(
-                        data_type='transfer',
-                    ),
-                    record_refs=[
-                        shared.InvoiceTo(
-                            data_type='invoice',
-                        ),
+res = s.direct_costs.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_cost_prototype": {
+        "currency": "USD",
+        "issue_date": "2023-03-21T10:19:52.223Z",
+        "line_items": [
+            {
+                "quantity": Decimal("1"),
+                "unit_amount": Decimal("7"),
+                "account_ref": {
+                    "id": "8000000D-1671793811",
+                    "name": "Purchases - Hardware for Resale",
+                },
+                "description": "test description line 1",
+                "discount_amount": Decimal("0"),
+                "discount_percentage": Decimal("0"),
+                "item_ref": {
+                    "id": "80000001-1674566705",
+                    "name": "item test",
+                },
+                "sub_total": Decimal("99"),
+                "tax_amount": Decimal("360"),
+                "total_amount": Decimal("70"),
+                "tracking": {
+                    "record_refs": [
+                        {
+                            "data_type": shared.TrackingRecordRefDataType.TRACKING_CATEGORIES,
+                        },
                     ],
-                ),
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='<ID>',
-                    ),
+                    "invoice_to": {
+                        "data_type": "invoice",
+                    },
+                },
+                "tracking_category_refs": [
+                    {
+                        "id": "80000001-1674553252",
+                        "name": "Class 1",
+                    },
                 ],
-                unit_amount=Decimal('2884.08'),
-            ),
+            },
         ],
-        payment_allocations=[
-            shared.AccountingPaymentAllocation(
-                allocation=shared.DirectCostPrototypeAllocation(
-                    allocated_on_date='2022-10-23T00:00:00Z',
-                    currency='EUR',
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(),
-                    currency='GBP',
-                    paid_on_date='2022-10-23T00:00:00Z',
-                ),
-            ),
-        ],
-        sub_total=Decimal('7964.74'),
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
+        "payment_allocations": [
+            {
+                "allocation": {
+                    "allocated_on_date": "2023-01-29T10:19:52.223Z",
+                    "currency": "USD",
+                    "currency_rate": Decimal("0"),
+                    "total_amount": Decimal("88"),
+                },
+                "payment": {
+                    "account_ref": {
+                        "id": "80000028-1671794219",
+                        "name": "Bank Account 1",
+                    },
+                    "currency": "USD",
+                    "note": "payment allocations note",
+                    "paid_on_date": "2023-01-28T10:19:52.223Z",
+                    "reference": "payment allocations reference",
+                    "total_amount": Decimal("54"),
                 },
             },
-        ),
-        tax_amount=Decimal('3768.44'),
-        total_amount=Decimal('9510.62'),
-    ),
-)
+        ],
+        "sub_total": Decimal("362"),
+        "tax_amount": Decimal("4"),
+        "total_amount": Decimal("366"),
+        "contact_ref": {
+            "id": "80000001-1671793885",
+            "data_type": shared.ContactRefDataType.SUPPLIERS,
+        },
+        "note": "directCost 21/03 09.20",
+        "reference": "test ref",
+    },
+})
 
-res = s.direct_costs.create(req)
-
-if res.create_direct_cost_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -118,16 +131,89 @@ if res.create_direct_cost_response is not None:
 | `request`                                                                                | [operations.CreateDirectCostRequest](../../models/operations/createdirectcostrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.CreateDirectCostResponse](../../models/operations/createdirectcostresponse.md)**
+**[shared.CreateDirectCostResponse](../../models/shared/createdirectcostresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
+
+## delete
+
+The *Delete direct cost* endpoint allows you to delete a specified direct cost from an accounting software. 
+
+[Direct costs](https://docs.codat.io/accounting-api#/schemas/DirectCost) are the expenses associated with a business' operations. For example, purchases of raw materials that are paid off at the point of the purchase and service fees are considered direct costs.
+
+### Process 
+1. Pass the `{directCostId}` to the *Delete direct cost* endpoint and store the `pushOperationKey` returned.
+2. Check the status of the delete operation by checking the status of the push operation either via
+    1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
+    2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
+
+   A `Success` status indicates that the direct cost object was deleted from the accounting software.
+3. (Optional) Check that the direct cost was deleted from the accounting software.
+
+### Effect on related objects
+Be aware that deleting a direct cost from an accounting software might cause related objects to be modified.
+
+## Integration specifics
+Integrations that support soft delete do not permanently delete the object in the accounting software.
+
+| Integration        | Soft Delete | Details                                                                                                   |  
+|--------------------|-------------|-----------------------------------------------------------------------------------------------------------|
+| QuickBooks Desktop | No          | - |
+
+> **Supported Integrations**
+> 
+> This functionality is currently supported for our QuickBooks Desktop integration.
+
+### Example Usage
+
+```python
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
+
+s = CodatAccounting(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+res = s.direct_costs.delete(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_cost_id": "<value>",
+})
+
+if res is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.DeleteDirectCostRequest](../../models/operations/deletedirectcostrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
+
+### Response
+
+**[shared.PushOperationSummary](../../models/shared/pushoperationsummary.md)**
+
+### Errors
+
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## download_attachment
 
@@ -141,27 +227,26 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DownloadDirectCostAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='string',
-)
+res = s.direct_costs.download_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_cost_id": "<value>",
+})
 
-res = s.direct_costs.download_attachment(req)
-
-if res.data is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -171,16 +256,17 @@ if res.data is not None:
 | `request`                                                                                                        | [operations.DownloadDirectCostAttachmentRequest](../../models/operations/downloaddirectcostattachmentrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
 | `retries`                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                 | :heavy_minus_sign:                                                                                               | Configuration to override the default retry behavior of the client.                                              |
 
-
 ### Response
 
-**[operations.DownloadDirectCostAttachmentResponse](../../models/operations/downloaddirectcostattachmentresponse.md)**
+**[httpx.Response](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get
 
@@ -196,26 +282,25 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetDirectCostRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='string',
-)
+res = s.direct_costs.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_cost_id": "<value>",
+})
 
-res = s.direct_costs.get(req)
-
-if res.direct_cost is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -225,16 +310,17 @@ if res.direct_cost is not None:
 | `request`                                                                          | [operations.GetDirectCostRequest](../../models/operations/getdirectcostrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.GetDirectCostResponse](../../models/operations/getdirectcostresponse.md)**
+**[shared.DirectCost](../../models/shared/directcost.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_attachment
 
@@ -248,27 +334,26 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetDirectCostAttachmentRequest(
-    attachment_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='string',
-)
+res = s.direct_costs.get_attachment(request={
+    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_cost_id": "<value>",
+})
 
-res = s.direct_costs.get_attachment(req)
-
-if res.attachment is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -278,16 +363,17 @@ if res.attachment is not None:
 | `request`                                                                                              | [operations.GetDirectCostAttachmentRequest](../../models/operations/getdirectcostattachmentrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
 | `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
-
 ### Response
 
-**[operations.GetDirectCostAttachmentResponse](../../models/operations/getdirectcostattachmentresponse.md)**
+**[shared.Attachment](../../models/shared/attachment.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_create_model
 
@@ -305,25 +391,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateDirectCostsModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.direct_costs.get_create_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.direct_costs.get_create_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -333,16 +418,17 @@ if res.push_option is not None:
 | `request`                                                                                                  | [operations.GetCreateDirectCostsModelRequest](../../models/operations/getcreatedirectcostsmodelrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
-**[operations.GetCreateDirectCostsModelResponse](../../models/operations/getcreatedirectcostsmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -356,28 +442,28 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListDirectCostsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.direct_costs.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.direct_costs.list(req)
-
-if res.direct_costs is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -387,16 +473,17 @@ if res.direct_costs is not None:
 | `request`                                                                              | [operations.ListDirectCostsRequest](../../models/operations/listdirectcostsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 | `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
 
-
 ### Response
 
-**[operations.ListDirectCostsResponse](../../models/operations/listdirectcostsresponse.md)**
+**[shared.DirectCosts](../../models/shared/directcosts.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
 
 ## list_attachments
 
@@ -410,26 +497,25 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListDirectCostAttachmentsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='string',
-)
+res = s.direct_costs.list_attachments(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_cost_id": "<value>",
+})
 
-res = s.direct_costs.list_attachments(req)
-
-if res.attachments_dataset is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -439,16 +525,17 @@ if res.attachments_dataset is not None:
 | `request`                                                                                                  | [operations.ListDirectCostAttachmentsRequest](../../models/operations/listdirectcostattachmentsrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
-**[operations.ListDirectCostAttachmentsResponse](../../models/operations/listdirectcostattachmentsresponse.md)**
+**[shared.AttachmentsDataset](../../models/shared/attachmentsdataset.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## upload_attachment
 
@@ -466,32 +553,23 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UploadDirectCostAttachmentRequest(
-    attachment_upload=shared.AttachmentUpload(
-        file=shared.CodatFile(
-            content='0xE3ABc1980E'.encode(),
-            file_name='elegant_producer_electric.jpeg',
-        ),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    direct_cost_id='string',
-)
+s.direct_costs.upload_attachment(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "direct_cost_id": "<value>",
+})
 
-res = s.direct_costs.upload_attachment(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -501,13 +579,9 @@ if res.status_code == 200:
 | `request`                                                                                                    | [operations.UploadDirectCostAttachmentRequest](../../models/operations/uploaddirectcostattachmentrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
 | `retries`                                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                           | Configuration to override the default retry behavior of the client.                                          |
 
-
-### Response
-
-**[operations.UploadDirectCostAttachmentResponse](../../models/operations/uploaddirectcostattachmentresponse.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

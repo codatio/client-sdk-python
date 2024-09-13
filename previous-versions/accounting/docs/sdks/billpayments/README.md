@@ -3,7 +3,7 @@
 
 ## Overview
 
-Bill payments
+Access standardized Bill payments from linked accounting software.
 
 ### Available Operations
 
@@ -23,67 +23,71 @@ The *Create bill payment* endpoint creates a new [bill payment](https://docs.cod
 
 Required data may vary by integration. To see what data to post, first call [Get create bill payment model](https://docs.codat.io/accounting-api#/operations/get-create-billPayments-model).
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating an account.
+Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=billPayments) for integrations that support creating a bill payment.
 
 
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 from decimal import Decimal
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateBillPaymentRequest(
-    bill_payment=shared.BillPayment(
-        account_ref=shared.AccountRef(),
-        currency='USD',
-        date_='2022-10-23T00:00:00Z',
-        id='3d5a8e00-d108-4045-8823-7f342676cffa',
-        lines=[
-            shared.BillPaymentLine(
-                allocated_on_date='2022-10-23T00:00:00Z',
-                amount=Decimal('8592.13'),
-                links=[
-                    shared.BillPaymentLineLink(
-                        type=shared.BillPaymentLineLinkType.CREDIT_NOTE,
-                    ),
+res = s.bill_payments.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "bill_payment": {
+        "date_": "2023-01-05T12:33:25.339Z",
+        "account_ref": {
+            "id": "1200",
+            "name": "string",
+        },
+        "currency": "GBP",
+        "currency_rate": Decimal("1"),
+        "id": "3d5a8e00-d108-4045-8823-7f342676cffa",
+        "lines": [
+            {
+                "amount": Decimal("15.38"),
+                "allocated_on_date": "2023-01-05T12:33:25.339Z",
+                "links": [
+                    {
+                        "type": shared.BillPaymentLineLinkType.BILL,
+                        "amount": Decimal("-15.38"),
+                        "currency_rate": Decimal("1"),
+                        "id": "3",
+                    },
                 ],
-            ),
-        ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        note='Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44',
-        payment_method_ref=shared.PaymentMethodRef(
-            id='<ID>',
-        ),
-        source_modified_date='2022-10-23T00:00:00Z',
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
             },
-        ),
-        supplier_ref=shared.SupplierRef(
-            id='<ID>',
-        ),
-        total_amount=Decimal('1329.54'),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+        ],
+        "metadata": {
+            "is_deleted": True,
+        },
+        "modified_date": "2023-01-05T12:33:25.339Z",
+        "note": "note - billpayment on 20230220 of 15.38",
+        "payment_method_ref": {
+            "id": "string",
+            "name": "string",
+        },
+        "reference": "reference 20230220 15.38",
+        "source_modified_date": "2023-01-05T12:33:25.339Z",
+        "supplier_ref": {
+            "id": "SUPP1",
+            "supplier_name": "string",
+        },
+        "total_amount": Decimal("15.38"),
+    },
+})
 
-res = s.bill_payments.create(req)
-
-if res.create_bill_payment_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -93,22 +97,23 @@ if res.create_bill_payment_response is not None:
 | `request`                                                                                  | [operations.CreateBillPaymentRequest](../../models/operations/createbillpaymentrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 | `retries`                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                           | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
 
-
 ### Response
 
-**[operations.CreateBillPaymentResponse](../../models/operations/createbillpaymentresponse.md)**
+**[shared.CreateBillPaymentResponse](../../models/shared/createbillpaymentresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## delete
 
-The *Delete bill payment* endpoint allows you to delete a specified bill payment from an accounting platform.
+The *Delete bill payment* endpoint allows you to delete a specified bill payment from an accounting software.
 
-[Bill payments](https://docs.codat.io/codat-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
+[Bill payments](https://docs.codat.io/accounting-api#/schemas/BillPayment) are an allocation of money within any customer accounts payable account.
 
 ### Process
 1. Pass the `{billPaymentId}` to the *Delete bill payment* endpoint and store the `pushOperationKey` returned.
@@ -116,50 +121,49 @@ The *Delete bill payment* endpoint allows you to delete a specified bill payment
    1. [Push operation webhook](https://docs.codat.io/introduction/webhooks/core-rules-types#push-operation-status-has-changed) (advised),
    2. [Push operation status endpoint](https://docs.codat.io/codat-api#/operations/get-push-operation).
 
-   A `Success` status indicates that the bill payment object was deleted from the accounting platform.
-3. (Optional) Check that the bill payment was deleted from the accounting platform.
+   A `Success` status indicates that the bill payment object was deleted from the accounting software.
+3. (Optional) Check that the bill payment was deleted from the accounting software.
 
 ### Effect on related objects
-Be aware that deleting a bill payment from an accounting platform might cause related objects to be modified.
+Be aware that deleting a bill payment from an accounting software might cause related objects to be modified.
 
 ## Integration specifics
-Integrations that support soft delete do not permanently delete the object in the accounting platform.
+Integrations that support soft delete do not permanently delete the object in the accounting software.
 
-| Integration | Soft Delete | Details |  
-|-------------|-------------|------------------------------------------------------------------------------------------------------|                                                        
-| QuickBooks Online | No   | -
-| Oracle NetSuite   | No   | See [here](/integrations/accounting/netsuite/accounting-netsuite-how-deleting-bill-payments-works) to learn more.
-| Xero              | Yes  | -     
-| Sage Intacct      | No   | Some bill payments in Sage Intacct can only be deleted, whilst others can only be voided. Codat have applied logic to handle this complexity. 
+| Integration | Soft Delete | Details |
+|-------------|-------------|---------|
+| QuickBooks Online  | No  | -
+| QuickBooks Desktop | No  | -
+| Oracle NetSuite    | No  | See [here](/integrations/accounting/netsuite/accounting-netsuite-how-deleting-bill-payments-works) to learn more.
+| Xero               | Yes | -     
+| Sage Intacct       | No  | Some bill payments in Sage Intacct can only be deleted, whilst others can only be voided. Codat have applied logic to handle this complexity. 
 
 > **Supported integrations**
 >
-> This functionality is currently supported for our QuickBooks Online, Oracle NetSuite, Xero and Sage Intacct integrations.
-
+> This functionality is currently supported for our QuickBooks Online, QuickBooks Desktop, Oracle NetSuite, Xero and Sage Intacct integrations.
 
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DeleteBillPaymentRequest(
-    bill_payment_id='string',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.bill_payments.delete(request={
+    "bill_payment_id": "<value>",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.bill_payments.delete(req)
-
-if res.push_operation_summary is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -169,16 +173,17 @@ if res.push_operation_summary is not None:
 | `request`                                                                                  | [operations.DeleteBillPaymentRequest](../../models/operations/deletebillpaymentrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 | `retries`                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                           | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
 
-
 ### Response
 
-**[operations.DeleteBillPaymentResponse](../../models/operations/deletebillpaymentresponse.md)**
+**[shared.PushOperationSummary](../../models/shared/pushoperationsummary.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get
 
@@ -194,25 +199,24 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetBillPaymentsRequest(
-    bill_payment_id='string',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.bill_payments.get(request={
+    "bill_payment_id": "<value>",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.bill_payments.get(req)
-
-if res.bill_payment is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -222,16 +226,17 @@ if res.bill_payment is not None:
 | `request`                                                                              | [operations.GetBillPaymentsRequest](../../models/operations/getbillpaymentsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 | `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
 
-
 ### Response
 
-**[operations.GetBillPaymentsResponse](../../models/operations/getbillpaymentsresponse.md)**
+**[shared.BillPayment](../../models/shared/billpayment.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_create_model
 
@@ -249,25 +254,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateBillPaymentsModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.bill_payments.get_create_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.bill_payments.get_create_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -277,16 +281,17 @@ if res.push_option is not None:
 | `request`                                                                                                    | [operations.GetCreateBillPaymentsModelRequest](../../models/operations/getcreatebillpaymentsmodelrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
 | `retries`                                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                           | Configuration to override the default retry behavior of the client.                                          |
 
-
 ### Response
 
-**[operations.GetCreateBillPaymentsModelResponse](../../models/operations/getcreatebillpaymentsmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -300,27 +305,27 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListBillPaymentsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.bill_payments.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.bill_payments.list(req)
-
-if res.bill_payments is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -330,13 +335,13 @@ if res.bill_payments is not None:
 | `request`                                                                                | [operations.ListBillPaymentsRequest](../../models/operations/listbillpaymentsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.ListBillPaymentsResponse](../../models/operations/listbillpaymentsresponse.md)**
+**[shared.BillPayments](../../models/shared/billpayments.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

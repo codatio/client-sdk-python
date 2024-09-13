@@ -3,7 +3,7 @@
 
 ## Overview
 
-Payments
+Access standardized Payments from linked accounting software.
 
 ### Available Operations
 
@@ -11,6 +11,7 @@ Payments
 * [get](#get) - Get payment
 * [get_create_model](#get_create_model) - Get create payment model
 * [list](#list) - List payments
+* [payments](#payments) - List payments
 
 ## create
 
@@ -28,58 +29,61 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 from decimal import Decimal
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreatePaymentRequest(
-    payment=shared.Payment(
-        account_ref=shared.AccountRef(),
-        currency='USD',
-        customer_ref=shared.AccountingCustomerRef(
-            id='<ID>',
-        ),
-        date_='2022-10-23T00:00:00Z',
-        lines=[
-            shared.PaymentLine(
-                allocated_on_date='2022-10-23T00:00:00Z',
-                amount=Decimal('8592.13'),
-                links=[
-                    shared.PaymentLineLink(
-                        type=shared.PaymentLinkType.OTHER,
-                    ),
+res = s.payments.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "payment": {
+        "date_": "2023-02-10T11:47:04.792Z",
+        "account_ref": {
+            "id": "8000002E-1675267199",
+            "name": "Undeposited Funds",
+        },
+        "currency": "USD",
+        "currency_rate": Decimal("1"),
+        "customer_ref": {
+            "id": "80000002-1674552702",
+            "company_name": "string",
+        },
+        "lines": [
+            {
+                "amount": Decimal("28"),
+                "allocated_on_date": "2023-02-11T11:47:04.792Z",
+                "links": [
+                    {
+                        "type": shared.PaymentLinkType.INVOICE,
+                        "amount": Decimal("-28"),
+                        "currency_rate": Decimal("1"),
+                        "id": "181-1676374586",
+                    },
                 ],
-            ),
-        ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        payment_method_ref=shared.PaymentMethodRef(
-            id='<ID>',
-        ),
-        source_modified_date='2022-10-23T00:00:00Z',
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
             },
-        ),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+        ],
+        "modified_date": "2022-10-23T00:00:00Z",
+        "note": "note 14/02 1147",
+        "payment_method_ref": {
+            "id": "string",
+            "name": "string",
+        },
+        "reference": "ref 14/02 1147",
+        "source_modified_date": "2022-10-23T00:00:00Z",
+        "total_amount": Decimal("28"),
+    },
+})
 
-res = s.payments.create(req)
-
-if res.create_payment_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -89,16 +93,17 @@ if res.create_payment_response is not None:
 | `request`                                                                          | [operations.CreatePaymentRequest](../../models/operations/createpaymentrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.CreatePaymentResponse](../../models/operations/createpaymentresponse.md)**
+**[shared.CreatePaymentResponse](../../models/shared/createpaymentresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get
 
@@ -114,25 +119,24 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetPaymentRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    payment_id='string',
-)
+res = s.payments.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "payment_id": "<value>",
+})
 
-res = s.payments.get(req)
-
-if res.payment is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -142,16 +146,17 @@ if res.payment is not None:
 | `request`                                                                    | [operations.GetPaymentRequest](../../models/operations/getpaymentrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 | `retries`                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)             | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |
 
-
 ### Response
 
-**[operations.GetPaymentResponse](../../models/operations/getpaymentresponse.md)**
+**[shared.Payment](../../models/shared/payment.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_create_model
 
@@ -169,25 +174,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreatePaymentsModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.payments.get_create_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.payments.get_create_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -197,16 +201,17 @@ if res.push_option is not None:
 | `request`                                                                                            | [operations.GetCreatePaymentsModelRequest](../../models/operations/getcreatepaymentsmodelrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 | `retries`                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
 
-
 ### Response
 
-**[operations.GetCreatePaymentsModelResponse](../../models/operations/getcreatepaymentsmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -220,27 +225,27 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListPaymentsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.payments.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.payments.list(req)
-
-if res.payments is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -250,13 +255,68 @@ if res.payments is not None:
 | `request`                                                                        | [operations.ListPaymentsRequest](../../models/operations/listpaymentsrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
 | `retries`                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                               | Configuration to override the default retry behavior of the client.              |
 
-
 ### Response
 
-**[operations.ListPaymentsResponse](../../models/operations/listpaymentsresponse.md)**
+**[shared.Payments](../../models/shared/payments.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
+
+## payments
+
+The *List payments* endpoint returns a list of [payments](https://docs.codat.io/accounting-api#/schemas/Payment) for a given company's connection.
+
+[Payments](https://docs.codat.io/accounting-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
+
+Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/codat-api#/operations/refresh-company-data).
+    
+
+### Example Usage
+
+```python
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
+
+s = CodatAccounting(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+res = s.payments.payments(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "link_type": "invoice",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
+
+if res is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `request`                                                                | [operations.PaymentsRequest](../../models/operations/paymentsrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
+| `retries`                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)         | :heavy_minus_sign:                                                       | Configuration to override the default retry behavior of the client.      |
+
+### Response
+
+**[shared.Payments](../../models/shared/payments.md)**
+
+### Errors
+
+| Error Object                        | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

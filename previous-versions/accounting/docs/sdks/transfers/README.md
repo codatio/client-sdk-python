@@ -3,7 +3,7 @@
 
 ## Overview
 
-Transfers
+Access standardized Transfers from linked accounting software.
 
 ### Available Operations
 
@@ -11,7 +11,7 @@ Transfers
 * [get](#get) - Get transfer
 * [get_create_model](#get_create_model) - Get create transfer model
 * [list](#list) - List transfers
-* [upload_attachment](#upload_attachment) - Upload invoice attachment
+* [upload_attachment](#upload_attachment) - Upload transfer attachment
 
 ## create
 
@@ -29,61 +29,63 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 from decimal import Decimal
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateTransferRequest(
-    transfer=shared.Transfer(
-        contact_ref=shared.ContactRef(
-            data_type=shared.DataType.INVOICES,
-            id='<ID>',
-        ),
-        date_='2022-10-23T00:00:00Z',
-        deposited_record_refs=[
-            shared.InvoiceTo(
-                data_type='invoice',
-            ),
-        ],
-        from_=shared.TransferAccount(
-            account_ref=shared.AccountRef(),
-            currency='USD',
-        ),
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        source_modified_date='2022-10-23T00:00:00Z',
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
-                },
+res = s.transfers.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "transfer": {
+        "contact_ref": {
+            "id": "80000028-167239230944",
+            "data_type": shared.ContactRefDataType.CUSTOMERS,
+        },
+        "date_": "2023-01-26T11:51:18.104Z",
+        "deposited_record_refs": [
+            {
+                "data_type": "invoice",
             },
-        ),
-        to=shared.TransferAccount(
-            account_ref=shared.AccountRef(),
-            currency='GBP',
-        ),
-        tracking_category_refs=[
-            shared.TrackingCategoryRef(
-                id='<ID>',
-            ),
         ],
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+        "description": "test transfers push 20230126 12.08",
+        "from_": {
+            "account_ref": {
+                "id": "80000028-1671794219",
+            },
+            "amount": Decimal("12"),
+            "currency": "USD",
+        },
+        "metadata": {
+            "is_deleted": True,
+        },
+        "modified_date": "2022-10-23T00:00:00Z",
+        "source_modified_date": "2022-10-23T00:00:00Z",
+        "to": {
+            "account_ref": {
+                "id": "80000004-1671793811",
+            },
+            "amount": Decimal("12"),
+            "currency": "EUR",
+        },
+        "tracking_category_refs": [
+            {
+                "id": "80000001-1674553252",
+                "name": "Class 1",
+            },
+        ],
+    },
+})
 
-res = s.transfers.create(req)
-
-if res.create_transfer_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -93,16 +95,17 @@ if res.create_transfer_response is not None:
 | `request`                                                                            | [operations.CreateTransferRequest](../../models/operations/createtransferrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
-**[operations.CreateTransferResponse](../../models/operations/createtransferresponse.md)**
+**[shared.CreateTransferResponse](../../models/shared/createtransferresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get
 
@@ -118,26 +121,25 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetTransferRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transfer_id='string',
-)
+res = s.transfers.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "transfer_id": "<value>",
+})
 
-res = s.transfers.get(req)
-
-if res.transfer is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -147,16 +149,17 @@ if res.transfer is not None:
 | `request`                                                                      | [operations.GetTransferRequest](../../models/operations/gettransferrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 | `retries`                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)               | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |
 
-
 ### Response
 
-**[operations.GetTransferResponse](../../models/operations/gettransferresponse.md)**
+**[shared.Transfer](../../models/shared/transfer.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_create_model
 
@@ -174,25 +177,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateTransfersModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.transfers.get_create_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.transfers.get_create_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -202,16 +204,17 @@ if res.push_option is not None:
 | `request`                                                                                              | [operations.GetCreateTransfersModelRequest](../../models/operations/getcreatetransfersmodelrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
 | `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
-
 ### Response
 
-**[operations.GetCreateTransfersModelResponse](../../models/operations/getcreatetransfersmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -225,28 +228,28 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListTransfersRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.transfers.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.transfers.list(req)
-
-if res.transfers is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -256,16 +259,17 @@ if res.transfers is not None:
 | `request`                                                                          | [operations.ListTransfersRequest](../../models/operations/listtransfersrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.ListTransfersResponse](../../models/operations/listtransfersresponse.md)**
+**[shared.Transfers](../../models/shared/transfers.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
 
 ## upload_attachment
 
@@ -283,32 +287,23 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UploadTransferAttachmentRequest(
-    attachment_upload=shared.AttachmentUpload(
-        file=shared.CodatFile(
-            content='0xE3ABc1980E'.encode(),
-            file_name='elegant_producer_electric.jpeg',
-        ),
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    transfer_id='string',
-)
+s.transfers.upload_attachment(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "transfer_id": "<value>",
+})
 
-res = s.transfers.upload_attachment(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -318,13 +313,9 @@ if res.status_code == 200:
 | `request`                                                                                                | [operations.UploadTransferAttachmentRequest](../../models/operations/uploadtransferattachmentrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 | `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
-
-### Response
-
-**[operations.UploadTransferAttachmentResponse](../../models/operations/uploadtransferattachmentresponse.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

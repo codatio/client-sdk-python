@@ -3,7 +3,7 @@
 
 ## Overview
 
-Bill credit notes
+Access standardized Bill credit notes from linked accounting software.
 
 ### Available Operations
 
@@ -30,104 +30,73 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 from decimal import Decimal
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateBillCreditNoteRequest(
-    bill_credit_note=shared.BillCreditNote(
-        allocated_on_date='2022-10-23T00:00:00Z',
-        bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
-        currency='USD',
-        discount_percentage=Decimal('0'),
-        id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
-        issue_date='2022-10-23T00:00:00Z',
-        line_items=[
-            shared.BillCreditNoteLineItem(
-                account_ref=shared.AccountRef(),
-                item_ref=shared.ItemRef(
-                    id='<ID>',
-                ),
-                quantity=Decimal('8592.13'),
-                tax_rate_ref=shared.TaxRateRef(),
-                tracking=shared.BillCreditNoteLineItemTracking(
-                    category_refs=[
-                        shared.TrackingCategoryRef(
-                            id='<ID>',
-                        ),
-                    ],
-                    customer_ref=shared.AccountingCustomerRef(
-                        id='<ID>',
-                    ),
-                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
-                    is_rebilled_to=shared.BilledToType.NOT_APPLICABLE,
-                    project_ref=shared.ProjectRef(
-                        id='<ID>',
-                    ),
-                ),
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='<ID>',
-                    ),
-                ],
-                unit_amount=Decimal('1343.65'),
-            ),
+res = s.bill_credit_notes.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "bill_credit_note": {
+        "discount_percentage": Decimal("0"),
+        "status": shared.BillCreditNoteStatus.SUBMITTED,
+        "sub_total": Decimal("100"),
+        "total_amount": Decimal("100"),
+        "total_discount": Decimal("0"),
+        "total_tax_amount": Decimal("0"),
+        "allocated_on_date": "2022-10-23T00:00:00Z",
+        "bill_credit_note_number": "309",
+        "created_from_refs": [
+            {
+                "data_type": "invoice",
+            },
         ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        note='Bill Credit Note with 1 line items, totaling 805.78',
-        payment_allocations=[
-            shared.PaymentAllocationItems(
-                allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00Z',
-                    currency='EUR',
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(),
-                    currency='EUR',
-                    paid_on_date='2022-10-23T00:00:00Z',
-                ),
-            ),
+        "currency": "GBP",
+        "currency_rate": Decimal("1.242097"),
+        "id": "1509398f-98e2-436d-8a5d-c042e0c74ffc",
+        "issue_date": "2023-04-20T00:00:00",
+        "line_items": [
+
         ],
-        remaining_credit=Decimal('0'),
-        source_modified_date='2022-10-23T00:00:00Z',
-        status=shared.BillCreditNoteStatus.PAID,
-        sub_total=Decimal('805.78'),
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
+        "modified_date": "2022-10-23T00:00:00Z",
+        "note": "Bill Credit Note with 1 line items, totaling 805.78",
+        "payment_allocations": [
+            {
+                "allocation": {
+                    "allocated_on_date": "2022-10-23T00:00:00Z",
+                    "currency": "GBP",
+                },
+                "payment": {
+                    "currency": "EUR",
+                    "paid_on_date": "2022-10-23T00:00:00Z",
                 },
             },
-        ),
-        supplier_ref=shared.SupplierRef(
-            id='<ID>',
-        ),
-        total_amount=Decimal('805.78'),
-        total_discount=Decimal('0'),
-        total_tax_amount=Decimal('0'),
-        withholding_tax=[
-            shared.WithholdingTaxItems(
-                amount=Decimal('8915.1'),
-                name='string',
-            ),
         ],
-    ),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+        "remaining_credit": Decimal("100"),
+        "source_modified_date": "2022-10-23T00:00:00Z",
+        "supplier_ref": {
+            "id": "87",
+            "supplier_name": "Ankunding Inc",
+        },
+        "withholding_tax": [
+            {
+                "amount": Decimal("7964.74"),
+                "name": "<value>",
+            },
+        ],
+    },
+})
 
-res = s.bill_credit_notes.create(req)
-
-if res.create_bill_credit_note_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -137,16 +106,17 @@ if res.create_bill_credit_note_response is not None:
 | `request`                                                                                        | [operations.CreateBillCreditNoteRequest](../../models/operations/createbillcreditnoterequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
-
 ### Response
 
-**[operations.CreateBillCreditNoteResponse](../../models/operations/createbillcreditnoteresponse.md)**
+**[shared.CreateBillCreditNoteResponse](../../models/shared/createbillcreditnoteresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get
 
@@ -162,25 +132,24 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetBillCreditNoteRequest(
-    bill_credit_note_id='string',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.bill_credit_notes.get(request={
+    "bill_credit_note_id": "<value>",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.bill_credit_notes.get(req)
-
-if res.bill_credit_note is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -190,16 +159,17 @@ if res.bill_credit_note is not None:
 | `request`                                                                                  | [operations.GetBillCreditNoteRequest](../../models/operations/getbillcreditnoterequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 | `retries`                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                           | :heavy_minus_sign:                                                                         | Configuration to override the default retry behavior of the client.                        |
 
-
 ### Response
 
-**[operations.GetBillCreditNoteResponse](../../models/operations/getbillcreditnoteresponse.md)**
+**[shared.BillCreditNote](../../models/shared/billcreditnote.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_create_update_model
 
@@ -217,25 +187,24 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCreateUpdateBillCreditNotesModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.bill_credit_notes.get_create_update_model(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.bill_credit_notes.get_create_update_model(req)
-
-if res.push_option is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -245,16 +214,17 @@ if res.push_option is not None:
 | `request`                                                                                                                      | [operations.GetCreateUpdateBillCreditNotesModelRequest](../../models/operations/getcreateupdatebillcreditnotesmodelrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 | `retries`                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                               | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |
 
-
 ### Response
 
-**[operations.GetCreateUpdateBillCreditNotesModelResponse](../../models/operations/getcreateupdatebillcreditnotesmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -268,27 +238,27 @@ Before using this endpoint, you must have [retrieved data for the company](https
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListBillCreditNotesRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.bill_credit_notes.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.bill_credit_notes.list(req)
-
-if res.bill_credit_notes is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -298,16 +268,17 @@ if res.bill_credit_notes is not None:
 | `request`                                                                                      | [operations.ListBillCreditNotesRequest](../../models/operations/listbillcreditnotesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
 ### Response
 
-**[operations.ListBillCreditNotesResponse](../../models/operations/listbillcreditnotesresponse.md)**
+**[shared.BillCreditNotes](../../models/shared/billcreditnotes.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 400-600                             | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+
 
 ## update
 
@@ -325,105 +296,67 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 from decimal import Decimal
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateBillCreditNoteRequest(
-    bill_credit_note=shared.BillCreditNote(
-        allocated_on_date='2022-10-23T00:00:00Z',
-        bill_credit_note_number='91fe2a83-e161-4c21-929d-c5c10c4b07e5',
-        currency='GBP',
-        discount_percentage=Decimal('0'),
-        id='1509398f-98e2-436d-8a5d-c042e0c74ffc',
-        issue_date='2022-10-23T00:00:00Z',
-        line_items=[
-            shared.BillCreditNoteLineItem(
-                account_ref=shared.AccountRef(),
-                item_ref=shared.ItemRef(
-                    id='<ID>',
-                ),
-                quantity=Decimal('156.52'),
-                tax_rate_ref=shared.TaxRateRef(),
-                tracking=shared.BillCreditNoteLineItemTracking(
-                    category_refs=[
-                        shared.TrackingCategoryRef(
-                            id='<ID>',
-                        ),
-                    ],
-                    customer_ref=shared.AccountingCustomerRef(
-                        id='<ID>',
-                    ),
-                    is_billed_to=shared.BilledToType.NOT_APPLICABLE,
-                    is_rebilled_to=shared.BilledToType.CUSTOMER,
-                    project_ref=shared.ProjectRef(
-                        id='<ID>',
-                    ),
-                ),
-                tracking_category_refs=[
-                    shared.TrackingCategoryRef(
-                        id='<ID>',
-                    ),
-                ],
-                unit_amount=Decimal('9914.64'),
-            ),
+res = s.bill_credit_notes.update(request={
+    "bill_credit_note_id": "<value>",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "bill_credit_note": {
+        "discount_percentage": Decimal("0"),
+        "status": shared.BillCreditNoteStatus.SUBMITTED,
+        "sub_total": Decimal("805.78"),
+        "total_amount": Decimal("693"),
+        "total_discount": Decimal("0"),
+        "total_tax_amount": Decimal("0"),
+        "allocated_on_date": "2022-10-23T00:00:00Z",
+        "bill_credit_note_number": "14763237",
+        "created_from_refs": [
+            {
+                "data_type": "journalEntry",
+            },
         ],
-        metadata=shared.Metadata(),
-        modified_date='2022-10-23T00:00:00Z',
-        note='Bill Credit Note with 1 line items, totaling 805.78',
-        payment_allocations=[
-            shared.PaymentAllocationItems(
-                allocation=shared.Allocation(
-                    allocated_on_date='2022-10-23T00:00:00Z',
-                    currency='EUR',
-                ),
-                payment=shared.PaymentAllocationPayment(
-                    account_ref=shared.AccountRef(),
-                    currency='USD',
-                    paid_on_date='2022-10-23T00:00:00Z',
-                ),
-            ),
+        "currency": "USD",
+        "id": "6a0e9dfb-87b0-47d3-aaaf-9753ae9e757d",
+        "issue_date": "2019-02-18T16:03:07.268Z",
+        "line_items": [
+
         ],
-        remaining_credit=Decimal('0'),
-        source_modified_date='2022-10-23T00:00:00Z',
-        status=shared.BillCreditNoteStatus.PAID,
-        sub_total=Decimal('805.78'),
-        supplemental_data=shared.SupplementalData(
-            content={
-                'key': {
-                    'key': 'string',
+        "modified_date": "2022-10-23T00:00:00Z",
+        "note": "Track separately",
+        "payment_allocations": [
+            {
+                "allocation": {
+                    "allocated_on_date": "2022-10-23T00:00:00Z",
+                    "currency": "EUR",
+                },
+                "payment": {
+                    "currency": "GBP",
+                    "paid_on_date": "2022-10-23T00:00:00Z",
                 },
             },
-        ),
-        supplier_ref=shared.SupplierRef(
-            id='<ID>',
-        ),
-        total_amount=Decimal('805.78'),
-        total_discount=Decimal('0'),
-        total_tax_amount=Decimal('0'),
-        withholding_tax=[
-            shared.WithholdingTaxItems(
-                amount=Decimal('1341.51'),
-                name='string',
-            ),
         ],
-    ),
-    bill_credit_note_id='string',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+        "remaining_credit": Decimal("693"),
+        "source_modified_date": "2022-10-23T00:00:00Z",
+        "supplier_ref": {
+            "id": "67C6A7A1-5E84-4AC4-B950-24A114E379D0",
+            "supplier_name": "Chin's Gas and Oil",
+        },
+    },
+})
 
-res = s.bill_credit_notes.update(req)
-
-if res.update_bill_credit_note_response is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -433,16 +366,17 @@ if res.update_bill_credit_note_response is not None:
 | `request`                                                                                        | [operations.UpdateBillCreditNoteRequest](../../models/operations/updatebillcreditnoterequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
-
 ### Response
 
-**[operations.UpdateBillCreditNoteResponse](../../models/operations/updatebillcreditnoteresponse.md)**
+**[shared.UpdateBillCreditNoteResponse](../../models/shared/updatebillcreditnoteresponse.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## upload_attachment
 
@@ -464,32 +398,23 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UploadBillCreditNoteAttachmentRequest(
-    attachment_upload=shared.AttachmentUpload(
-        file=shared.CodatFile(
-            content='0xE3ABc1980E'.encode(),
-            file_name='elegant_producer_electric.jpeg',
-        ),
-    ),
-    bill_credit_note_id='string',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+s.bill_credit_notes.upload_attachment(request={
+    "bill_credit_note_id": "<value>",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.bill_credit_notes.upload_attachment(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -499,13 +424,9 @@ if res.status_code == 200:
 | `request`                                                                                                            | [operations.UploadBillCreditNoteAttachmentRequest](../../models/operations/uploadbillcreditnoteattachmentrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `retries`                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                                   | Configuration to override the default retry behavior of the client.                                                  |
 
-
-### Response
-
-**[operations.UploadBillCreditNoteAttachmentResponse](../../models/operations/uploadbillcreditnoteattachmentresponse.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

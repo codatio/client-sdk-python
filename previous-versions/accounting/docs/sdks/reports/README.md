@@ -3,7 +3,7 @@
 
 ## Overview
 
-Reports
+Access standardized Reports from linked accounting software.
 
 ### Available Operations
 
@@ -22,28 +22,27 @@ Returns aged creditors report for company that shows the total balance owed by a
 ### Example Usage
 
 ```python
-import codataccounting
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 import dateutil.parser
-from codataccounting.models import operations, shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAgedCreditorsReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=12,
-    period_length_days=30,
-    report_date=dateutil.parser.parse('2022-12-31').date(),
-)
+res = s.reports.get_aged_creditors_report(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "number_of_periods": 12,
+    "period_length_days": 30,
+    "report_date": dateutil.parser.parse("2022-12-31").date(),
+})
 
-res = s.reports.get_aged_creditors_report(req)
-
-if res.aged_creditor_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -53,16 +52,17 @@ if res.aged_creditor_report is not None:
 | `request`                                                                                            | [operations.GetAgedCreditorsReportRequest](../../models/operations/getagedcreditorsreportrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 | `retries`                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                     | :heavy_minus_sign:                                                                                   | Configuration to override the default retry behavior of the client.                                  |
 
-
 ### Response
 
-**[operations.GetAgedCreditorsReportResponse](../../models/operations/getagedcreditorsreportresponse.md)**
+**[shared.AgedCreditorReport](../../models/shared/agedcreditorreport.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_aged_debtors_report
 
@@ -71,28 +71,27 @@ Returns aged debtors report for company that shows the total outstanding balance
 ### Example Usage
 
 ```python
-import codataccounting
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 import dateutil.parser
-from codataccounting.models import operations, shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetAgedDebtorsReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    number_of_periods=12,
-    period_length_days=30,
-    report_date=dateutil.parser.parse('2022-12-31').date(),
-)
+res = s.reports.get_aged_debtors_report(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "number_of_periods": 12,
+    "period_length_days": 30,
+    "report_date": dateutil.parser.parse("2022-12-31").date(),
+})
 
-res = s.reports.get_aged_debtors_report(req)
-
-if res.aged_debtor_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -102,16 +101,17 @@ if res.aged_debtor_report is not None:
 | `request`                                                                                        | [operations.GetAgedDebtorsReportRequest](../../models/operations/getageddebtorsreportrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
-
 ### Response
 
-**[operations.GetAgedDebtorsReportResponse](../../models/operations/getageddebtorsreportresponse.md)**
+**[shared.AgedDebtorReport](../../models/shared/ageddebtorreport.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_balance_sheet
 
@@ -120,27 +120,26 @@ Gets the latest balance sheet for a company.
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetBalanceSheetRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    period_length=4,
-    periods_to_compare=20,
-    start_month='2022-10-23T00:00:00Z',
-)
+res = s.reports.get_balance_sheet(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "period_length": 4,
+    "periods_to_compare": 20,
+    "start_month": "2022-10-23T00:00:00Z",
+})
 
-res = s.reports.get_balance_sheet(req)
-
-if res.balance_sheet is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -150,16 +149,17 @@ if res.balance_sheet is not None:
 | `request`                                                                              | [operations.GetBalanceSheetRequest](../../models/operations/getbalancesheetrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 | `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
 
-
 ### Response
 
-**[operations.GetBalanceSheetResponse](../../models/operations/getbalancesheetresponse.md)**
+**[shared.BalanceSheetInput](../../models/shared/balancesheetinput.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_cash_flow_statement
 
@@ -168,27 +168,26 @@ Gets the latest cash flow statement for a company.
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCashFlowStatementRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    period_length=4,
-    periods_to_compare=20,
-    start_month='2022-10-23T00:00:00Z',
-)
+res = s.reports.get_cash_flow_statement(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "period_length": 4,
+    "periods_to_compare": 20,
+    "start_month": "2022-10-23T00:00:00Z",
+})
 
-res = s.reports.get_cash_flow_statement(req)
-
-if res.cash_flow_statement is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -198,16 +197,17 @@ if res.cash_flow_statement is not None:
 | `request`                                                                                        | [operations.GetCashFlowStatementRequest](../../models/operations/getcashflowstatementrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
-
 ### Response
 
-**[operations.GetCashFlowStatementResponse](../../models/operations/getcashflowstatementresponse.md)**
+**[shared.CashFlowStatementInput](../../models/shared/cashflowstatementinput.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_profit_and_loss
 
@@ -216,27 +216,26 @@ Gets the latest profit and loss for a company.
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetProfitAndLossRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    period_length=4,
-    periods_to_compare=20,
-    start_month='2022-10-23T00:00:00Z',
-)
+res = s.reports.get_profit_and_loss(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "period_length": 4,
+    "periods_to_compare": 20,
+    "start_month": "2022-10-23T00:00:00Z",
+})
 
-res = s.reports.get_profit_and_loss(req)
-
-if res.profit_and_loss_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -246,16 +245,17 @@ if res.profit_and_loss_report is not None:
 | `request`                                                                                | [operations.GetProfitAndLossRequest](../../models/operations/getprofitandlossrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.GetProfitAndLossResponse](../../models/operations/getprofitandlossresponse.md)**
+**[shared.ProfitAndLossReportInput](../../models/shared/profitandlossreportinput.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## is_aged_creditors_report_available
 
@@ -264,24 +264,23 @@ Indicates whether the aged creditor report is available for the company.
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.IsAgedCreditorsReportAvailableRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.reports.is_aged_creditors_report_available(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.reports.is_aged_creditors_report_available(req)
-
-if res.boolean is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -291,16 +290,17 @@ if res.boolean is not None:
 | `request`                                                                                                            | [operations.IsAgedCreditorsReportAvailableRequest](../../models/operations/isagedcreditorsreportavailablerequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `retries`                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                                   | Configuration to override the default retry behavior of the client.                                                  |
 
-
 ### Response
 
-**[operations.IsAgedCreditorsReportAvailableResponse](../../models/operations/isagedcreditorsreportavailableresponse.md)**
+**[bool](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## is_aged_debtor_report_available
 
@@ -309,24 +309,23 @@ Indicates whether the aged debtor report is available for the company.
 ### Example Usage
 
 ```python
-import codataccounting
-from codataccounting.models import operations, shared
+from codat_accounting import CodatAccounting
+from codat_accounting.models import shared
 
-s = codataccounting.CodatAccounting(
+s = CodatAccounting(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.IsAgedDebtorReportAvailableRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.reports.is_aged_debtor_report_available(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.reports.is_aged_debtor_report_available(req)
-
-if res.boolean is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -336,13 +335,13 @@ if res.boolean is not None:
 | `request`                                                                                                      | [operations.IsAgedDebtorReportAvailableRequest](../../models/operations/isageddebtorreportavailablerequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
 | `retries`                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                               | :heavy_minus_sign:                                                                                             | Configuration to override the default retry behavior of the client.                                            |
 
-
 ### Response
 
-**[operations.IsAgedDebtorReportAvailableResponse](../../models/operations/isageddebtorreportavailableresponse.md)**
+**[bool](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
