@@ -14,6 +14,13 @@ sources:
         tags:
             - latest
             - main
+    bank-feeds-source:
+        sourceNamespace: bank-feeds-source
+        sourceRevisionDigest: sha256:2bf52af4a0753c29a508bf534075c9fc6bbd4ba070605d3c7d4e092a9f3733cf
+        sourceBlobDigest: sha256:24d837ec7ccccb55559e6de16951a64c09874b48e5ca92b7af36ea0b95b0eac2
+        tags:
+            - latest
+            - main
     lending-source:
         sourceNamespace: lending-source
         sourceRevisionDigest: sha256:e9279793fec15674c2c6ff77d11be16f6945b43d47b8005e68d7300da68a24a4
@@ -32,6 +39,11 @@ targets:
         sourceNamespace: assess-source
         sourceRevisionDigest: sha256:fc689a909f3360047c372a7fa75818d0909de3c521b92f4c30037918524de981
         sourceBlobDigest: sha256:93a5943e66c0bec898e50532b545a9e2694aa004d1e763c9fadc7424a311c2ed
+    bank-feeds-library:
+        source: bank-feeds-source
+        sourceNamespace: bank-feeds-source
+        sourceRevisionDigest: sha256:2bf52af4a0753c29a508bf534075c9fc6bbd4ba070605d3c7d4e092a9f3733cf
+        sourceBlobDigest: sha256:24d837ec7ccccb55559e6de16951a64c09874b48e5ca92b7af36ea0b95b0eac2
     lending-library:
         source: lending-source
         sourceNamespace: lending-source

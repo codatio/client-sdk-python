@@ -3,7 +3,7 @@
 
 ## Overview
 
-Source accounts act as a bridge to bank accounts in accounting software.
+Provide and manage lists of source bank accounts.
 
 ### Available Operations
 
@@ -20,7 +20,7 @@ The _Create Source Account_ endpoint allows you to create a representation of a 
 
 #### Account mapping variability
 
-The method of mapping the source account to the target account varies depending on the accounting package your company uses.
+The method of mapping the source account to the target account varies depending on the accounting software your company uses.
 
 #### Mapping options:
 
@@ -39,41 +39,52 @@ The method of mapping the source account to the target account varies depending 
 | QuickBooks Online     |             |                  | ✅                          |
 | Sage                  |             |                  | ✅                          |
 
+> ### Versioning
+> If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+
 ### Example Usage
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import operations, shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 from decimal import Decimal
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateSourceAccountRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    source_account=shared.SourceAccount(
-        id='acc-002',
-        account_name='account-081',
-        account_number='12345670',
-        account_type='Credit',
-        balance=Decimal('99.99'),
-        currency='GBP',
-        feed_start_date='2022-10-23T00:00:00Z',
-        modified_date='2023-01-09T14:14:14.1057478Z',
-        sort_code='123456',
-        status='pending',
-    ),
-)
+res = s.source_accounts.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "request_body": {
+        "account_name": "account-081",
+        "account_number": "12345670",
+        "account_type": shared.AccountType.CHECKING,
+        "balance": Decimal("99.99"),
+        "currency": "GBP",
+        "id": "acc-001",
+        "account_info": {
+            "account_open_date": "2023-05-06T00:00:00Z",
+            "available_balance": Decimal("10"),
+            "description": "account description 1",
+            "nickname": "account 123",
+        },
+        "feed_start_date": "2024-05-01T00:00:00Z",
+        "modified_date": "2024-08-02T00:00:00.000Z",
+        "routing_info": {
+            "bank_code": "21001088",
+            "type": shared.Type.BANKCODE,
+        },
+        "status": shared.SourceAccountV2Status.PENDING,
+    },
+})
 
-res = s.source_accounts.create(req)
-
-if res.source_account is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -83,16 +94,17 @@ if res.source_account is not None:
 | `request`                                                                                      | [operations.CreateSourceAccountRequest](../../models/operations/createsourceaccountrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
 ### Response
 
-**[operations.CreateSourceAccountResponse](../../models/operations/createsourceaccountresponse.md)**
+**[operations.CreateSourceAccountResponseBody](../../models/operations/createsourceaccountresponsebody.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## delete
 
@@ -104,26 +116,23 @@ Removing a source account will also remove any mapping between the source bank f
 ### Example Usage
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import operations, shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DeleteSourceAccountRequest(
-    account_id='7110701885',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+s.source_accounts.delete(request={
+    "account_id": "7110701885",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.source_accounts.delete(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -133,16 +142,13 @@ if res.status_code == 200:
 | `request`                                                                                      | [operations.DeleteSourceAccountRequest](../../models/operations/deletesourceaccountrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
-### Response
-
-**[operations.DeleteSourceAccountResponse](../../models/operations/deletesourceaccountresponse.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## delete_credentials
 
@@ -153,25 +159,22 @@ In cases where multiple credential sets have been generated, a single API call t
 ### Example Usage
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import operations, shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DeleteBankFeedCredentialsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+s.source_accounts.delete_credentials(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.source_accounts.delete_credentials(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -181,16 +184,13 @@ if res.status_code == 200:
 | `request`                                                                                                  | [operations.DeleteBankFeedCredentialsRequest](../../models/operations/deletebankfeedcredentialsrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
-### Response
-
-**[operations.DeleteBankFeedCredentialsResponse](../../models/operations/deletebankfeedcredentialsresponse.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## generate_credentials
 
@@ -202,26 +202,25 @@ The old credentials will still be valid until the revoke credentials endpoint is
 ### Example Usage
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import operations, shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GenerateCredentialsRequest(
-    request_body='0xeDCfFBde9E'.encode(),
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.source_accounts.generate_credentials(request={
+    "request_body": open("example.file", "rb"),
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.source_accounts.generate_credentials(req)
-
-if res.bank_account_credentials is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -231,16 +230,17 @@ if res.bank_account_credentials is not None:
 | `request`                                                                                      | [operations.GenerateCredentialsRequest](../../models/operations/generatecredentialsrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
 ### Response
 
-**[operations.GenerateCredentialsResponse](../../models/operations/generatecredentialsresponse.md)**
+**[shared.BankAccountCredentials](../../models/shared/bankaccountcredentials.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -248,29 +248,30 @@ if res.bank_account_credentials is not None:
 
 [source accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) are the bank's bank account within Codat's domain from which transactions are synced into the accounting platform.
 
+> ### Versioning
+> If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
 ### Example Usage
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import operations, shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListSourceAccountsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.source_accounts.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.source_accounts.list(req)
-
-if res.source_accounts is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -280,58 +281,62 @@ if res.source_accounts is not None:
 | `request`                                                                                    | [operations.ListSourceAccountsRequest](../../models/operations/listsourceaccountsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
-
 ### Response
 
-**[operations.ListSourceAccountsResponse](../../models/operations/listsourceaccountsresponse.md)**
+**[operations.ListSourceAccountsResponseBody](../../models/operations/listsourceaccountsresponsebody.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## update
 
 ﻿The _Update source account_ endpoint updates a single source account for a single data connection connected to a single company.
 
+### Tips and pitfalls
+
+* This endpoint only updates the `accountName` field.
+* Updates made here apply exclusively to source accounts and will not affect target accounts in the accounting software.
 
 ### Example Usage
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import operations, shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 from decimal import Decimal
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateSourceAccountRequest(
-    account_id='EILBDVJVNUAGVKRQ',
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    source_account=shared.SourceAccount(
-        id='acc-002',
-        account_name='account-081',
-        account_number='12345670',
-        account_type='Credit',
-        balance=Decimal('99.99'),
-        currency='GBP',
-        feed_start_date='2022-10-23T00:00:00Z',
-        modified_date='2023-01-09T14:14:14.1057478Z',
-        sort_code='123456',
-        status='pending',
-    ),
-)
+res = s.source_accounts.update(request={
+    "account_id": "7110701885",
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "source_account": {
+        "id": "acc-003",
+        "account_name": "account-095",
+        "account_number": "12345671",
+        "account_type": "Credit",
+        "balance": Decimal("0"),
+        "currency": "USD",
+        "feed_start_date": "2022-10-23T00:00:00Z",
+        "modified_date": "2023-01-09T14:14:14.1057478Z",
+        "sort_code": "123456",
+        "status": shared.Status.PENDING,
+    },
+})
 
-res = s.source_accounts.update(req)
-
-if res.source_account is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -341,13 +346,13 @@ if res.source_account is not None:
 | `request`                                                                                      | [operations.UpdateSourceAccountRequest](../../models/operations/updatesourceaccountrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
 ### Response
 
-**[operations.UpdateSourceAccountResponse](../../models/operations/updatesourceaccountresponse.md)**
+**[shared.SourceAccount](../../models/shared/sourceaccount.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
