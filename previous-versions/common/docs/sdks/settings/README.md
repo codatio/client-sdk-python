@@ -3,13 +3,13 @@
 
 ## Overview
 
-Manage your Codat instance.
+Manage company profile configuration, sync settings, and API keys.
 
 ### Available Operations
 
 * [create_api_key](#create_api_key) - Create API key
 * [delete_api_key](#delete_api_key) - Delete API key
-* [~~get_profile~~](#get_profile) - Get profile :warning: **Deprecated**
+* [get_profile](#get_profile) - Get profile
 * [get_sync_settings](#get_sync_settings) - Get sync settings
 * [list_api_keys](#list_api_keys) - List API keys
 * [update_profile](#update_profile) - Update profile
@@ -32,35 +32,39 @@ You can [read more](https://docs.codat.io/using-the-api/authentication) about au
 ### Example Usage
 
 ```python
-import codatcommon
-from codatcommon.models import shared
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = shared.CreateAPIKey(
-    name='azure-invoice-finance-processor',
-)
+res = s.settings.create_api_key(request={
+    "name": "azure-invoice-finance-processor",
+})
 
-res = s.settings.create_api_key(req)
-
-if res.api_key_details is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [shared.CreateAPIKey](../../models/shared/createapikey.md)          | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `request`                                                           | [models.CreateAPIKey](../../models/createapikey.md)                 | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
 
 ### Response
 
-**[operations.CreateAPIKeyResponse](../../models/operations/createapikeyresponse.md)**
+**[models.APIKeyDetails](../../models/apikeydetails.md)**
+
+### Errors
+
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| models.ErrorMessage             | 400,401,402,403,409,429,500,503 | application/json                |
+| models.SDKError                 | 4xx-5xx                         | */*                             |
 
 
 ## delete_api_key
@@ -79,59 +83,60 @@ You can [read more](https://docs.codat.io/using-the-api/authentication) about au
 ### Example Usage
 
 ```python
-import codatcommon
-from codatcommon.models import operations, shared
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.DeleteAPIKeyRequest(
-    api_key_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.settings.delete_api_key(request={
+    "api_key_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.settings.delete_api_key(req)
-
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.DeleteAPIKeyRequest](../../models/operations/deleteapikeyrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `retries`                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                 | :heavy_minus_sign:                                                               | Configuration to override the default retry behavior of the client.              |
-
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [models.DeleteAPIKeyRequest](../../models/deleteapikeyrequest.md)   | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[operations.DeleteAPIKeyResponse](../../models/operations/deleteapikeyresponse.md)**
+**[models.ErrorMessage](../../models/errormessage.md)**
+
+### Errors
+
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| models.SDKError             | 4xx-5xx                     | */*                         |
 
 
-## ~~get_profile~~
+## get_profile
 
 Fetch your Codat profile.
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
 ```python
-import codatcommon
-from codatcommon.models import shared
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
-
 
 res = s.settings.get_profile()
 
-if res.profile is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -140,10 +145,16 @@ if res.profile is not None:
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
 ### Response
 
-**[operations.GetProfileResponse](../../models/operations/getprofileresponse.md)**
+**[models.Profile](../../models/profile.md)**
+
+### Errors
+
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| models.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| models.SDKError         | 4xx-5xx                 | */*                     |
 
 
 ## get_sync_settings
@@ -153,19 +164,18 @@ Retrieve the [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-
 ### Example Usage
 
 ```python
-import codatcommon
-from codatcommon.models import shared
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
-
 
 res = s.settings.get_sync_settings()
 
-if res.sync_settings is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -174,10 +184,16 @@ if res.sync_settings is not None:
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
 ### Response
 
-**[operations.GetProfileSyncSettingsResponse](../../models/operations/getprofilesyncsettingsresponse.md)**
+**[models.SyncSettings](../../models/syncsettings.md)**
+
+### Errors
+
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| models.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| models.SDKError         | 4xx-5xx                 | */*                     |
 
 
 ## list_api_keys
@@ -191,19 +207,18 @@ You can [read more](https://docs.codat.io/using-the-api/authentication) about au
 ### Example Usage
 
 ```python
-import codatcommon
-from codatcommon.models import shared
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
-
 
 res = s.settings.list_api_keys()
 
-if res.api_keys is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -212,10 +227,16 @@ if res.api_keys is not None:
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
 ### Response
 
-**[operations.ListAPIKeysResponse](../../models/operations/listapikeysresponse.md)**
+**[models.APIKeys](../../models/apikeys.md)**
+
+### Errors
+
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| models.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| models.SDKError         | 4xx-5xx                 | */*                     |
 
 
 ## update_profile
@@ -225,66 +246,48 @@ Update your Codat profile
 ### Example Usage
 
 ```python
-import codatcommon
-from codatcommon.models import shared
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = shared.Profile(
-    alert_auth_header='Bearer tXEiHiRK7XCtI8TNHbpGs1LI1pumdb4Cl1QIo7B2',
-    api_key='sartANTjHAkLdbyDfaynoTQb7pkmj6hXHmnQKMrB',
-    icon_url='https://client-images.codat.io/icon/042399f5-d104-4f38-9ce8-cac3524f4e88_3f5623af-d992-4c22-bc08-e58c520a8526.ico',
-    logo_url='https://client-images.codat.io/logo/042399f5-d104-4f38-9ce8-cac3524f4e88_5806cb1f-7342-4c0e-a0a8-99bfbc47b0ff.png',
-    name='Bob\'s Burgers',
-    redirect_url='https://bobs-burgers.{countrySuffix}/{companyId}',
-    white_list_urls=[
-        'h',
-        't',
-        't',
-        'p',
-        's',
-        ':',
-        '/',
-        '/',
-        'b',
-        'o',
-        'b',
-        's',
-        '-',
-        'b',
-        'u',
-        'r',
-        'g',
-        'e',
-        'r',
-        's',
-        '.',
-        'c',
-        'o',
-        'm',
+res = s.settings.update_profile(request={
+    "name": "Bob's Burgers",
+    "redirect_url": "https://bobs-burgers.{countrySuffix}/{companyId}",
+    "alert_auth_header": "Bearer tXEiHiRK7XCtI8TNHbpGs1LI1pumdb4Cl1QIo7B2",
+    "confirm_company_name": True,
+    "icon_url": "https://client-images.codat.io/icon/042399f5-d104-4f38-9ce8-cac3524f4e88_3f5623af-d992-4c22-bc08-e58c520a8526.ico",
+    "logo_url": "https://client-images.codat.io/logo/042399f5-d104-4f38-9ce8-cac3524f4e88_5806cb1f-7342-4c0e-a0a8-99bfbc47b0ff.png",
+    "white_list_urls": [
+        "https://bobs-burgers.com",
+        "https://bobs-burgers.co.uk",
     ],
-)
+})
 
-res = s.settings.update_profile(req)
-
-if res.profile is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [shared.Profile](../../models/shared/profile.md)                    | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `request`                                                           | [models.Profile](../../models/profile.md)                           | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
 
 ### Response
 
-**[operations.UpdateProfileResponse](../../models/operations/updateprofileresponse.md)**
+**[models.Profile](../../models/profile.md)**
+
+### Errors
+
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| models.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| models.SDKError         | 4xx-5xx                 | */*                     |
 
 
 ## update_sync_settings
@@ -294,44 +297,43 @@ Update sync settings for all data types.
 ### Example Usage
 
 ```python
-import codatcommon
-from codatcommon.models import operations, shared
+import codat_common
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.UpdateProfileSyncSettingsRequestBody(
-    client_id='ce429104-79f0-4085-a720-e2d40fcc800f',
-    settings=[
-        shared.SyncSetting(
-            data_type=shared.DataType.INVOICES,
-            fetch_on_first_link=False,
-            months_to_sync=24,
-            sync_from_utc='2022-10-23T00:00:00.000Z',
-            sync_from_window=24,
-            sync_order=334238,
-            sync_schedule=24,
-        ),
+s.settings.update_sync_settings(request={
+    "client_id": "ce429104-79f0-4085-a720-e2d40fcc800f",
+    "settings": [
+        {
+            "data_type": codat_common.DataType.INVOICES,
+            "fetch_on_first_link": True,
+            "sync_order": 0,
+            "sync_schedule": 24,
+            "is_locked": True,
+            "months_to_sync": 24,
+            "sync_from_utc": "2020-01-01T12:00:00.000Z",
+            "sync_from_window": 24,
+        },
     ],
-)
+})
 
-res = s.settings.update_sync_settings(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
 
-| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                          | [operations.UpdateProfileSyncSettingsRequestBody](../../models/operations/updateprofilesyncsettingsrequestbody.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
-| `retries`                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                                 | Configuration to override the default retry behavior of the client.                                                |
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `request`                                                                                           | [models.UpdateProfileSyncSettingsRequestBody](../../models/updateprofilesyncsettingsrequestbody.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
+| `retries`                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                    | :heavy_minus_sign:                                                                                  | Configuration to override the default retry behavior of the client.                                 |
 
+### Errors
 
-### Response
-
-**[operations.UpdateProfileSyncSettingsResponse](../../models/operations/updateprofilesyncsettingsresponse.md)**
-
+| Error Object            | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| models.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
+| models.SDKError         | 4xx-5xx                 | */*                     |

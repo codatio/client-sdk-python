@@ -1,0 +1,14 @@
+# PushOption
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `display_name`                                                          | *str*                                                                   | :heavy_check_mark:                                                      | The property's display name.                                            |
+| `required`                                                              | *bool*                                                                  | :heavy_check_mark:                                                      | The property is required if `True`.                                     |
+| `type`                                                                  | [models.PushOptionType](../models/pushoptiontype.md)                    | :heavy_check_mark:                                                      | The option type.                                                        |
+| `description`                                                           | *Optional[str]*                                                         | :heavy_minus_sign:                                                      | A description of the property.                                          |
+| `options`                                                               | List[[models.PushOptionChoice](../models/pushoptionchoice.md)]          | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `properties`                                                            | Dict[str, [models.PushOptionProperty](../models/pushoptionproperty.md)] | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `validation`                                                            | [Optional[models.PushValidationInfo]](../models/pushvalidationinfo.md)  | :heavy_minus_sign:                                                      | N/A                                                                     |

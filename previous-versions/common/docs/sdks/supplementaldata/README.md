@@ -3,7 +3,7 @@
 
 ## Overview
 
-View and configure supplemental data for supported data types.
+Configure and pull additional data you can include in Codat's standard data types.
 
 ### Available Operations
 
@@ -22,48 +22,36 @@ See the *examples* for integration-specific frequently requested properties.
 ### Example Usage
 
 ```python
-import codatcommon
-from codatcommon.models import operations, shared
+import codat_common
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.ConfigureSupplementalDataRequest(
-    supplemental_data_configuration=shared.SupplementalDataConfiguration(
-        supplemental_data_config={
-            "Cutler": shared.SupplementalDataConfigurationSupplementalDataSourceConfiguration(
-                pull_data={
-                    "North": 'transmitter',
-                },
-                push_data={
-                    "infrastructure": 'Northeast',
-                },
-            ),
-        },
-    ),
-    data_type=operations.ConfigureSupplementalDataDataType.INVOICES,
-    platform_key='gbol',
-)
+s.supplemental_data.configure(request={
+    "data_type": codat_common.ConfigureSupplementalDataPathParamDataType.INVOICES,
+    "platform_key": "gbol",
+    "supplemental_data_configuration": {},
+})
 
-res = s.supplemental_data.configure(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                  | [operations.ConfigureSupplementalDataRequest](../../models/operations/configuresupplementaldatarequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-| `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `request`                                                                                   | [models.ConfigureSupplementalDataRequest](../../models/configuresupplementaldatarequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+| `retries`                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                          | Configuration to override the default retry behavior of the client.                         |
 
+### Errors
 
-### Response
-
-**[operations.ConfigureSupplementalDataResponse](../../models/operations/configuresupplementaldataresponse.md)**
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| models.SDKError             | 4xx-5xx                     | */*                         |
 
 
 ## get_configuration
@@ -75,34 +63,38 @@ The *Get configuration* endpoint returns supplemental data configuration previou
 ### Example Usage
 
 ```python
-import codatcommon
-from codatcommon.models import operations, shared
+import codat_common
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetSupplementalDataConfigurationRequest(
-    data_type=operations.GetSupplementalDataConfigurationDataType.INVOICES,
-    platform_key='gbol',
-)
+res = s.supplemental_data.get_configuration(request={
+    "data_type": codat_common.PathParamDataType.INVOICES,
+    "platform_key": "gbol",
+})
 
-res = s.supplemental_data.get_configuration(req)
-
-if res.supplemental_data_configuration is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                | [operations.GetSupplementalDataConfigurationRequest](../../models/operations/getsupplementaldataconfigurationrequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
-| `retries`                                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                         | :heavy_minus_sign:                                                                                                       | Configuration to override the default retry behavior of the client.                                                      |
-
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                 | [models.GetSupplementalDataConfigurationRequest](../../models/getsupplementaldataconfigurationrequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
+| `retries`                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                          | :heavy_minus_sign:                                                                                        | Configuration to override the default retry behavior of the client.                                       |
 
 ### Response
 
-**[operations.GetSupplementalDataConfigurationResponse](../../models/operations/getsupplementaldataconfigurationresponse.md)**
+**[models.SupplementalDataConfiguration](../../models/supplementaldataconfiguration.md)**
 
+### Errors
+
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
+| models.SDKError             | 4xx-5xx                     | */*                         |
