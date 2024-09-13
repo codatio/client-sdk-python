@@ -1,0 +1,534 @@
+lockVersion: 2.0.0
+id: b3823143-997a-4f0f-9d78-7166056f692b
+management:
+  docChecksum: ecf0fa063e2c63f7bc17fa949a59296b
+  docVersion: 3.0.0
+  speakeasyVersion: 1.396.6
+  generationVersion: 2.415.6
+  releaseVersion: 0.29.0
+  configChecksum: 5780ee545287f72797c9156b69a3c02c
+  repoURL: https://github.com/codatio/client-sdk-python.git
+  repoSubDirectory: previous-versions/banking
+  installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=previous-versions/banking
+  published: true
+features:
+  python:
+    additionalDependencies: 1.0.0
+    constsAndDefaults: 1.0.2
+    core: 5.5.3
+    decimal: 1.0.0
+    defaultEnabledRetries: 0.2.0
+    deprecations: 3.0.0
+    enumUnions: 0.1.0
+    envVarSecurityUsage: 0.3.1
+    examples: 3.0.0
+    globalSecurity: 3.0.2
+    globalSecurityCallbacks: 1.0.0
+    globalServerURLs: 3.0.0
+    nameOverrides: 3.0.0
+    nullables: 1.0.0
+    responseFormat: 1.0.0
+    retries: 3.0.2
+    sdkHooks: 1.0.0
+    serverEventsSentinels: 0.1.0
+generatedFiles:
+  - .gitattributes
+  - .vscode/settings.json
+  - CONTRIBUTING.md
+  - USAGE.md
+  - docs/models/account.md
+  - docs/models/accountbalance.md
+  - docs/models/accountbalanceamounts.md
+  - docs/models/accountbalances.md
+  - docs/models/accountidentifiers.md
+  - docs/models/accountidentifiertype.md
+  - docs/models/accountinstitution.md
+  - docs/models/accounts.md
+  - docs/models/accounttype.md
+  - docs/models/errormessage.md
+  - docs/models/errorvalidation.md
+  - docs/models/errorvalidationitem.md
+  - docs/models/getaccountrequest.md
+  - docs/models/gettransactioncategoryrequest.md
+  - docs/models/gettransactionrequest.md
+  - docs/models/halref.md
+  - docs/models/links.md
+  - docs/models/listaccountbalancesrequest.md
+  - docs/models/listaccountsrequest.md
+  - docs/models/listbanktransactionsrequest.md
+  - docs/models/listtransactioncategoriesrequest.md
+  - docs/models/listtransactionsrequest.md
+  - docs/models/security.md
+  - docs/models/transaction.md
+  - docs/models/transactioncategories.md
+  - docs/models/transactioncategory.md
+  - docs/models/transactioncategoryref.md
+  - docs/models/transactioncategorystatus.md
+  - docs/models/transactioncode.md
+  - docs/models/transactions.md
+  - docs/models/utils/retryconfig.md
+  - docs/sdks/accountbalancessdk/README.md
+  - docs/sdks/accountssdk/README.md
+  - docs/sdks/codatbanking/README.md
+  - docs/sdks/transactioncategoriessdk/README.md
+  - docs/sdks/transactionssdk/README.md
+  - poetry.toml
+  - py.typed
+  - pylintrc
+  - pyproject.toml
+  - scripts/compile.sh
+  - scripts/prepare-readme.py
+  - scripts/publish.sh
+  - src/codat_banking/__init__.py
+  - src/codat_banking/_hooks/__init__.py
+  - src/codat_banking/_hooks/sdkhooks.py
+  - src/codat_banking/_hooks/types.py
+  - src/codat_banking/account_balances_sdk.py
+  - src/codat_banking/accounts_sdk.py
+  - src/codat_banking/basesdk.py
+  - src/codat_banking/httpclient.py
+  - src/codat_banking/models/__init__.py
+  - src/codat_banking/models/account.py
+  - src/codat_banking/models/accountbalance.py
+  - src/codat_banking/models/accountbalanceamounts.py
+  - src/codat_banking/models/accountbalances.py
+  - src/codat_banking/models/accountidentifiers.py
+  - src/codat_banking/models/accountidentifiertype.py
+  - src/codat_banking/models/accountinstitution.py
+  - src/codat_banking/models/accounts.py
+  - src/codat_banking/models/accounttype.py
+  - src/codat_banking/models/errormessage.py
+  - src/codat_banking/models/errorvalidation.py
+  - src/codat_banking/models/errorvalidationitem.py
+  - src/codat_banking/models/get_accountop.py
+  - src/codat_banking/models/get_transaction_categoryop.py
+  - src/codat_banking/models/get_transactionop.py
+  - src/codat_banking/models/halref.py
+  - src/codat_banking/models/links.py
+  - src/codat_banking/models/list_account_balancesop.py
+  - src/codat_banking/models/list_accountsop.py
+  - src/codat_banking/models/list_bank_transactionsop.py
+  - src/codat_banking/models/list_transaction_categoriesop.py
+  - src/codat_banking/models/list_transactionsop.py
+  - src/codat_banking/models/sdkerror.py
+  - src/codat_banking/models/security.py
+  - src/codat_banking/models/transaction.py
+  - src/codat_banking/models/transactioncategories.py
+  - src/codat_banking/models/transactioncategory.py
+  - src/codat_banking/models/transactioncategoryref.py
+  - src/codat_banking/models/transactioncategorystatus.py
+  - src/codat_banking/models/transactioncode.py
+  - src/codat_banking/models/transactions.py
+  - src/codat_banking/py.typed
+  - src/codat_banking/sdk.py
+  - src/codat_banking/sdkconfiguration.py
+  - src/codat_banking/transaction_categories_sdk.py
+  - src/codat_banking/transactions_sdk.py
+  - src/codat_banking/types/__init__.py
+  - src/codat_banking/types/basemodel.py
+  - src/codat_banking/utils/__init__.py
+  - src/codat_banking/utils/annotations.py
+  - src/codat_banking/utils/enums.py
+  - src/codat_banking/utils/eventstreaming.py
+  - src/codat_banking/utils/forms.py
+  - src/codat_banking/utils/headers.py
+  - src/codat_banking/utils/logger.py
+  - src/codat_banking/utils/metadata.py
+  - src/codat_banking/utils/queryparams.py
+  - src/codat_banking/utils/requestbodies.py
+  - src/codat_banking/utils/retries.py
+  - src/codat_banking/utils/security.py
+  - src/codat_banking/utils/serializers.py
+  - src/codat_banking/utils/url.py
+  - src/codat_banking/utils/values.py
+examples:
+  list-account-balances:
+    "":
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "results": [{"accountId": "<value>", "date": "2022-10-23T00:00:00Z", "modifiedDate": "2022-10-23T00:00:00Z", "sourceModifiedDate": "2022-10-23T00:00:00Z"}], "totalResults": 1}
+        "400": {}
+    Basiq:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-accountBalances?page=1&pageSize=2"}, "next": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-accountBalances?page=2&pageSize=2"}, "self": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-accountBalances"}}, "pageNumber": 1, "pageSize": 2, "results": [{"accountId": "4811e776-6187-48d9-afee-635fb0d89d93", "balance": {"current": 11389.85}, "date": "2017-12-31T00:00:00Z", "modifiedDate": "2022-10-28T07:15:07Z", "sourceModifiedDate": "2022-10-23T00:00:00Z"}, {"accountId": "4811e776-6187-48d9-afee-635fb0d89d93", "balance": {"current": 8002.09}, "date": "2018-01-01T00:00:00Z", "modifiedDate": "2022-10-28T07:15:07Z", "sourceModifiedDate": "2022-10-23T00:00:00Z"}], "totalResults": 3103}
+    Plaid:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-accountBalances?page=1&pageSize=2"}, "next": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-accountBalances?page=2&pageSize=2"}, "self": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-accountBalances"}}, "pageNumber": 1, "pageSize": 2, "results": [{"accountId": "3opGv6XXNeHPEgNVbQpyCr8MAKQ3noC8Qz1zB", "balance": {"current": 205.78}, "date": "2022-10-13T00:00:00", "modifiedDate": "2022-10-27T10:50:16Z", "sourceModifiedDate": "2022-10-23T00:00:00Z"}, {"accountId": "3opGv6XXNeHPEgNVbQpyCr8MAKQ3noC8Qz1zB", "balance": {"current": 205.78}, "date": "2022-10-14T00:00:00", "modifiedDate": "2022-10-27T10:50:16Z", "sourceModifiedDate": "2022-10-23T00:00:00Z"}], "totalResults": 14}
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
+    Unresolved property:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
+  get-account:
+    Basiq:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          accountId: "7110701885"
+      responses:
+        "200":
+          application/json: {"balance": {"available": 2932.85, "current": 2932.85}, "currency": "AUD", "holder": "david smith", "id": "4811e776-6187-48d9-afee-635fb0d89d93", "identifiers": {"bankCode": "416-982", "number": "14293919644182", "type": "Account"}, "institution": {"id": "AU00000", "name": "Hooli Bank"}, "modifiedDate": "2022-10-28T07:14:48Z", "name": "Hooli Saver", "sourceModifiedDate": "2022-10-27T13:00:00Z", "type": "Debit"}
+    Plaid:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          accountId: "13d946f0-c5d5-42bc-b092-97ece17923ab"
+      responses:
+        "200":
+          application/json: {"balance": {"available": 200, "current": 210}, "currency": "CAD", "id": "3opGv6XXNeHPEgNVbQpyCr8MAKQ3noC8Qz1zB", "identifiers": {"bankCode": "00021", "maskedAccountNumber": "1111", "number": "1111222233331111", "type": "Depository"}, "informalName": "Plaid Saving", "institution": {"id": "ins_100533", "name": "American Express (CA)"}, "modifiedDate": "2022-10-27T10:50:16Z", "name": "Plaid Silver Standard 0.1% Interest Saving", "sourceModifiedDate": "2022-10-23T00:00:00Z", "type": "Debit"}
+    Unauthorized:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          accountId: "7110701885"
+      responses:
+        "401":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+  list-accounts:
+    "":
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "results": [{"currency": "Lilangeni", "id": "<id>", "identifiers": {"type": "Account"}, "modifiedDate": "2022-10-23T00:00:00Z", "name": "<value>", "sourceModifiedDate": "2022-10-23T00:00:00Z", "type": "Debit"}], "totalResults": 1}
+        "400": {}
+    Basiq:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-accounts?page=1&pageSize=2"}, "next": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-accounts?page=2&pageSize=2"}, "self": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"balance": {"available": 2932.85, "current": 2932.85}, "currency": "AUD", "holder": "david smith", "id": "4811e776-6187-48d9-afee-635fb0d89d93", "identifiers": {"bankCode": "416-982", "number": "14293919644182", "type": "Account"}, "institution": {"id": "AU00000", "name": "Hooli Bank"}, "modifiedDate": "2022-10-28T07:14:48Z", "name": "Hooli Saver", "sourceModifiedDate": "2022-10-27T13:00:00Z", "type": "Debit"}, {"balance": {"available": 6940.31, "current": 6940.31}, "currency": "AUD", "holder": "david smith", "id": "736d90a5-f836-4ae0-a161-1e8056f39701", "identifiers": {"bankCode": "416-982", "number": "14293919644183", "type": "Loan"}, "institution": {"id": "AU00000", "name": "Hooli Bank"}, "modifiedDate": "2022-10-28T07:14:48Z", "name": "Standard Variable Rate Home Loan", "sourceModifiedDate": "2022-10-27T13:00:00Z", "type": "Credit"}], "totalResults": 4}
+    Plaid:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-accounts?page=1&pageSize=2"}, "self": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-accounts"}}, "pageNumber": 1, "pageSize": 2, "results": [{"balance": {"available": 200, "current": 210}, "currency": "CAD", "id": "3opGv6XXNeHPEgNVbQpyCr8MAKQ3noC8Qz1zB", "identifiers": {"bankCode": "00021", "maskedAccountNumber": "1111", "number": "1111222233331111", "type": "Depository"}, "informalName": "Plaid Saving", "institution": {"id": "ins_100533", "name": "American Express (CA)"}, "modifiedDate": "2022-10-27T10:50:16Z", "name": "Plaid Silver Standard 0.1% Interest Saving", "sourceModifiedDate": "2022-10-23T00:00:00Z", "type": "Debit"}], "totalResults": 1}
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
+    Unresolved property:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
+  get-transaction-category:
+    Basiq:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          transactionCategoryId: "<value>"
+      responses:
+        "200":
+          application/json: {"hasChildren": false, "id": "bank-fee", "modifiedDate": "2022-10-28T07:14:46", "name": "Bank Fee", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active"}
+    Plaid:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          transactionCategoryId: "<value>"
+      responses:
+        "200":
+          application/json: {"hasChildren": true, "id": "BANK_FEES", "modifiedDate": "2022-10-27T10:50:17", "name": "BANK_FEES", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active"}
+    Unauthorized:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          transactionCategoryId: "<value>"
+      responses:
+        "401":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+  list-transaction-categories:
+    "":
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "results": [{"hasChildren": true, "id": "auto-and-transport", "modifiedDate": "2022-05-23T16:32:50", "name": "Auto & Transport", "sourceModifiedDate": "2021-04-24T07:59:10", "status": "Active"}], "totalResults": 1}
+        "400": {}
+    Basiq:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-transactionCategories?page=1&pageSize=2"}, "next": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-transactionCategories?page=2&pageSize=2"}, "self": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-transactionCategories"}}, "pageNumber": 1, "pageSize": 2, "results": [{"hasChildren": false, "id": "bank-fee", "modifiedDate": "2022-10-28T07:14:46", "name": "Bank Fee", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active"}, {"hasChildren": false, "id": "cash-withdrawal", "modifiedDate": "2022-10-28T07:14:46", "name": "Cash Withdrawal", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active"}], "totalResults": 9}
+    Plaid:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-transactionCategories?page=1&pageSize=2"}, "next": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-transactionCategories?page=2&pageSize=2"}, "self": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-transactionCategories"}}, "pageNumber": 1, "pageSize": 2, "results": [{"hasChildren": true, "id": "BANK_FEES", "modifiedDate": "2022-10-27T10:50:17", "name": "BANK_FEES", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active"}, {"hasChildren": false, "id": "BANK_FEES.BANK_FEES_ATM_FEES", "modifiedDate": "2022-10-27T10:50:17", "name": "BANK_FEES_ATM_FEES", "parentId": "BANK_FEES", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Active"}], "totalResults": 120}
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
+    Unresolved property:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
+  get-transaction:
+    Basiq:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          transactionId: "<value>"
+      responses:
+        "200":
+          application/json: {"accountId": "feb76128-7650-4b02-a323-e1606146be0c", "amount": -14.26, "authorizedDate": "2022-10-23T00:00:00Z", "code": "Unknown", "currency": "AUD", "description": "RENTALCARTOLLPH131865 PARRAMATTA  AU Card xx0399 Value Date: 25/07/2019", "id": "00017a94-c681-448d-ba8d-585a81b4128f", "merchantName": "", "modifiedDate": "2022-10-28T07:15:10Z", "postedDate": "2019-07-31T00:00:00Z", "sourceModifiedDate": "2022-10-23T00:00:00Z", "transactionCategoryRef": {"id": "payment", "name": "Payment"}}
+    Plaid:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          transactionId: "<value>"
+      responses:
+        "200":
+          application/json: {"accountId": "3opGv6XXNeHPEgNVbQpyCr8MAKQ3noC8Qz1zB", "amount": -25, "authorizedDate": "2021-05-09T00:00:00", "code": "Unknown", "currency": "CAD", "description": "CREDIT CARD 3333 PAYMENT *//", "id": "1514wvMMajumgG7xWA1Bt8o15xP5k3fmeo9Bg_EC6E0DC820E1F9D1A2300BF4A5B80513", "modifiedDate": "2022-10-27T10:50:25Z", "postedDate": "2021-05-10T00:00:00", "sourceModifiedDate": "2022-10-23T00:00:00Z", "transactionCategoryRef": {"id": "TRANSFER_OUT.TRANSFER_OUT_ACCOUNT_TRANSFER", "name": "TRANSFER_OUT_ACCOUNT_TRANSFER"}}
+    Unauthorized:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+          transactionId: "<value>"
+      responses:
+        "401":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+  list-transactions:
+    "":
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "results": [{"accountId": "1703194f-7805-4da8-bac0-2ba5da4a4216", "amount": 5062.39, "authorizedDate": "2021-07-06T00:00:00", "currency": "GBP", "description": "Payments for direct income ce149943-c157-43fc-aac7-42a716b655b6", "id": "0130b5bb-1419-40f6-8a27-7362d0381229", "merchantName": "New Look", "modifiedDate": "2022-05-23T16:32:50Z", "postedDate": "2021-07-06T00:00:00", "sourceModifiedDate": "2021-06-28T10:48:12", "transactionCategoryRef": {"id": "health-and-fitness-sports"}}], "totalResults": 1}
+        "400": {}
+    Basiq:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-transactions?page=1&pageSize=2"}, "next": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-transactions?page=2&pageSize=2"}, "self": {"href": "/companies/17129e41-5389-4f10-ac06-e0a37e47d177/connections/b4703906-e631-46f1-9acc-7e237acdc64d/data/banking-transactions"}}, "pageNumber": 1, "pageSize": 2, "results": [{"accountId": "feb76128-7650-4b02-a323-e1606146be0c", "amount": -14.26, "authorizedDate": "2022-10-23T00:00:00Z", "code": "Unknown", "currency": "AUD", "description": "RENTALCARTOLLPH131865 PARRAMATTA  AU Card xx0399 Value Date: 25/07/2019", "id": "00017a94-c681-448d-ba8d-585a81b4128f", "merchantName": "", "modifiedDate": "2022-10-28T07:15:10Z", "postedDate": "2019-07-31T00:00:00Z", "sourceModifiedDate": "2022-10-23T00:00:00Z", "transactionCategoryRef": {"id": "payment", "name": "Payment"}}, {"accountId": "4811e776-6187-48d9-afee-635fb0d89d93", "amount": 191, "authorizedDate": "2022-10-23T00:00:00Z", "code": "Unknown", "currency": "AUD", "description": "Transfer from xx9263 CommBank app Shop", "id": "0023c431-35c8-41f5-b75e-9239413cde7e", "merchantName": "", "modifiedDate": "2022-10-28T07:15:10Z", "postedDate": "2018-07-31T00:00:00Z", "sourceModifiedDate": "2022-10-23T00:00:00Z", "transactionCategoryRef": {"id": "transfer", "name": "Transfer"}}], "totalResults": 3319}
+    Plaid:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-transactions?page=1&pageSize=2"}, "next": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-transactions?page=2&pageSize=2"}, "self": {"href": "/companies/efc2d985-cdb3-4724-8be3-c7310f7ead6c/connections/6c44dc44-e1b1-4578-800f-0bdefb658db7/data/banking-transactions"}}, "pageNumber": 1, "pageSize": 2, "results": [{"accountId": "3opGv6XXNeHPEgNVbQpyCr8MAKQ3noC8Qz1zB", "amount": -25, "authorizedDate": "2021-05-09T00:00:00", "code": "Unknown", "currency": "CAD", "description": "CREDIT CARD 3333 PAYMENT *//", "id": "1514wvMMajumgG7xWA1Bt8o15xP5k3fmeo9Bg_EC6E0DC820E1F9D1A2300BF4A5B80513", "modifiedDate": "2022-10-27T10:50:25Z", "postedDate": "2021-05-10T00:00:00", "sourceModifiedDate": "2022-10-23T00:00:00Z", "transactionCategoryRef": {"id": "TRANSFER_OUT.TRANSFER_OUT_ACCOUNT_TRANSFER", "name": "TRANSFER_OUT_ACCOUNT_TRANSFER"}}, {"accountId": "3opGv6XXNeHPEgNVbQpyCr8MAKQ3noC8Qz1zB", "amount": -25, "authorizedDate": "2022-10-01T00:00:00", "code": "Unknown", "currency": "CAD", "description": "CREDIT CARD 3333 PAYMENT *//", "id": "1514wvMMajumgG7xWA1Bt8oDLxlpm3i3zraD7_6DB63D1DACF6F5824C80F8BE2E066DB5", "modifiedDate": "2022-10-27T10:50:25Z", "postedDate": "2022-10-02T00:00:00", "sourceModifiedDate": "2022-10-23T00:00:00Z", "transactionCategoryRef": {"id": "TRANSFER_OUT.TRANSFER_OUT_ACCOUNT_TRANSFER", "name": "TRANSFER_OUT_ACCOUNT_TRANSFER"}}], "totalResults": 49}
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
+    Unresolved property:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+          connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
+  list-bank-transactions:
+    "":
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "200":
+          application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "results": [{"accountId": "1703194f-7805-4da8-bac0-2ba5da4a4216", "amount": 5062.39, "authorizedDate": "2021-07-06T00:00:00", "currency": "GBP", "description": "Payments for direct income ce149943-c157-43fc-aac7-42a716b655b6", "id": "0130b5bb-1419-40f6-8a27-7362d0381229", "merchantName": "New Look", "modifiedDate": "2022-05-23T16:32:50Z", "postedDate": "2021-07-06T00:00:00", "sourceModifiedDate": "2021-06-28T10:48:12", "transactionCategoryRef": {"id": "health-and-fitness-sports"}}], "totalResults": 1}
+        "400": {}
+    Malformed query:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
+    Unresolved property:
+      parameters:
+        path:
+          companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
+        query:
+          page: 1
+          pageSize: 100
+          query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
+          orderBy: "-modifiedDate"
+      responses:
+        "400":
+          application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
