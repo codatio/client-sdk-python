@@ -3,7 +3,7 @@
 
 ## Overview
 
-Downloadable reports
+Downloadable reports.
 
 ### Available Operations
 
@@ -19,23 +19,22 @@ Generate an Excel report which can subsequently be downloaded.
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations, shared
+from codat_assess import CodatAssess
+from codat_assess.models import shared
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GenerateExcelReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_CASH_FLOW,
-)
+res = s.excel_reports.generate_excel_report(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "report_type": shared.ExcelReportType.ENHANCED_CASH_FLOW,
+})
 
-res = s.excel_reports.generate_excel_report(req)
-
-if res.excel_status is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -45,16 +44,17 @@ if res.excel_status is not None:
 | `request`                                                                                      | [operations.GenerateExcelReportRequest](../../models/operations/generateexcelreportrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
 ### Response
 
-**[operations.GenerateExcelReportResponse](../../models/operations/generateexcelreportresponse.md)**
+**[shared.ExcelStatus](../../models/shared/excelstatus.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_accounting_marketing_metrics
 
@@ -65,27 +65,26 @@ Request an Excel report for download.
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations, shared
+from codat_assess import CodatAssess
+from codat_assess.models import shared
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetAccountingMarketingMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=644039,
-    period_length=244044,
-    period_unit=shared.PeriodUnit.WEEK,
-    report_date='29-09-2020',
-)
+res = s.excel_reports.get_accounting_marketing_metrics(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 495559,
+    "period_length": 644039,
+    "period_unit": shared.PeriodUnit.MONTH,
+    "report_date": "29-09-2020",
+})
 
-res = s.excel_reports.get_accounting_marketing_metrics(req)
-
-if res.report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -95,16 +94,17 @@ if res.report is not None:
 | `request`                                                                                                          | [operations.GetAccountingMarketingMetricsRequest](../../models/operations/getaccountingmarketingmetricsrequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
 | `retries`                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                                 | Configuration to override the default retry behavior of the client.                                                |
 
-
 ### Response
 
-**[operations.GetAccountingMarketingMetricsResponse](../../models/operations/getaccountingmarketingmetricsresponse.md)**
+**[shared.Report](../../models/shared/report.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_excel_report
 
@@ -113,23 +113,22 @@ Download the previously generated Excel report to a local drive.
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations, shared
+from codat_assess import CodatAssess
+from codat_assess.models import shared
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetExcelReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_CASH_FLOW,
-)
+res = s.excel_reports.get_excel_report(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "report_type": shared.ExcelReportType.ENHANCED_CASH_FLOW,
+})
 
-res = s.excel_reports.get_excel_report(req)
-
-if res.body is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -139,16 +138,17 @@ if res.body is not None:
 | `request`                                                                            | [operations.GetExcelReportRequest](../../models/operations/getexcelreportrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
-**[operations.GetExcelReportResponse](../../models/operations/getexcelreportresponse.md)**
+**[bytes](../../models/.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_excel_report_generation_status
 
@@ -157,23 +157,22 @@ Returns the status of the latest report requested.
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations, shared
+from codat_assess import CodatAssess
+from codat_assess.models import shared
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetExcelReportGenerationStatusRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_type=shared.ExcelReportType.ENHANCED_INVOICES,
-)
+res = s.excel_reports.get_excel_report_generation_status(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "report_type": shared.ExcelReportType.ENHANCED_INVOICES,
+})
 
-res = s.excel_reports.get_excel_report_generation_status(req)
-
-if res.excel_status is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -183,13 +182,13 @@ if res.excel_status is not None:
 | `request`                                                                                                            | [operations.GetExcelReportGenerationStatusRequest](../../models/operations/getexcelreportgenerationstatusrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `retries`                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                                   | Configuration to override the default retry behavior of the client.                                                  |
 
-
 ### Response
 
-**[operations.GetExcelReportGenerationStatusResponse](../../models/operations/getexcelreportgenerationstatusresponse.md)**
+**[shared.ExcelStatus](../../models/shared/excelstatus.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

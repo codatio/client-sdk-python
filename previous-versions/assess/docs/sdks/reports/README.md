@@ -3,7 +3,7 @@
 
 ## Overview
 
-Enriched reports and analyses of financial data
+Enriched reports and analyses of financial data.
 
 ### Available Operations
 
@@ -35,23 +35,20 @@ Make sure you have [synced a company](https://docs.codat.io/codat-api#/operation
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
+from codat_assess.models import operations
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GenerateLoanSummaryRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.SourceType.ACCOUNTING,
-)
+s.reports.generate_loan_summary(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "source_type": operations.SourceType.ACCOUNTING,
+})
 
-res = s.reports.generate_loan_summary(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -61,16 +58,13 @@ if res.status_code == 200:
 | `request`                                                                                      | [operations.GenerateLoanSummaryRequest](../../models/operations/generateloansummaryrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `retries`                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                               | :heavy_minus_sign:                                                                             | Configuration to override the default retry behavior of the client.                            |
 
-
-### Response
-
-**[operations.GenerateLoanSummaryResponse](../../models/operations/generateloansummaryresponse.md)**
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## generate_loan_transactions
 
@@ -84,23 +78,20 @@ Make sure you have [synced a company](https://docs.codat.io/codat-api#/operation
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
+from codat_assess.models import operations
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GenerateLoanTransactionsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.QueryParamSourceType.ACCOUNTING,
-)
+s.reports.generate_loan_transactions(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "source_type": operations.QueryParamSourceType.ACCOUNTING,
+})
 
-res = s.reports.generate_loan_transactions(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -110,16 +101,13 @@ if res.status_code == 200:
 | `request`                                                                                                | [operations.GenerateLoanTransactionsRequest](../../models/operations/generateloantransactionsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 | `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
-
-### Response
-
-**[operations.GenerateLoanTransactionsResponse](../../models/operations/generateloantransactionsresponse.md)**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_accounts_for_enhanced_balance_sheet
 
@@ -130,23 +118,21 @@ Codat suggests a category for each account automatically, but you can [change it
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetAccountsForEnhancedBalanceSheetRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_date='29-09-2020',
-)
+res = s.reports.get_accounts_for_enhanced_balance_sheet(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "report_date": "29-09-2020",
+})
 
-res = s.reports.get_accounts_for_enhanced_balance_sheet(req)
-
-if res.enhanced_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -156,16 +142,17 @@ if res.enhanced_report is not None:
 | `request`                                                                                                                    | [operations.GetAccountsForEnhancedBalanceSheetRequest](../../models/operations/getaccountsforenhancedbalancesheetrequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
 | `retries`                                                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                             | :heavy_minus_sign:                                                                                                           | Configuration to override the default retry behavior of the client.                                                          |
 
-
 ### Response
 
-**[operations.GetAccountsForEnhancedBalanceSheetResponse](../../models/operations/getaccountsforenhancedbalancesheetresponse.md)**
+**[shared.EnhancedReport](../../models/shared/enhancedreport.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_accounts_for_enhanced_profit_and_loss
 
@@ -176,23 +163,21 @@ Codat suggests a category for each account automatically, but you can [change it
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetAccountsForEnhancedProfitAndLossRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    report_date='29-09-2020',
-)
+res = s.reports.get_accounts_for_enhanced_profit_and_loss(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "report_date": "29-09-2020",
+})
 
-res = s.reports.get_accounts_for_enhanced_profit_and_loss(req)
-
-if res.enhanced_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -202,16 +187,17 @@ if res.enhanced_report is not None:
 | `request`                                                                                                                      | [operations.GetAccountsForEnhancedProfitAndLossRequest](../../models/operations/getaccountsforenhancedprofitandlossrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 | `retries`                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                               | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |
 
-
 ### Response
 
-**[operations.GetAccountsForEnhancedProfitAndLossResponse](../../models/operations/getaccountsforenhancedprofitandlossresponse.md)**
+**[shared.EnhancedReport](../../models/shared/enhancedreport.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_commerce_customer_retention_metrics
 
@@ -220,27 +206,26 @@ Gets the customer retention metrics for a specific company connection, over one 
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations, shared
+from codat_assess import CodatAssess
+from codat_assess.models import shared
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetCommerceCustomerRetentionMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=474636,
-    period_length=781048,
-    period_unit=shared.PeriodUnit.DAY,
-    report_date='29-09-2020',
-)
+res = s.reports.get_commerce_customer_retention_metrics(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 10128,
+    "period_length": 474636,
+    "period_unit": shared.PeriodUnit.MONTH,
+    "report_date": "29-09-2020",
+})
 
-res = s.reports.get_commerce_customer_retention_metrics(req)
-
-if res.report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -250,16 +235,17 @@ if res.report is not None:
 | `request`                                                                                                                      | [operations.GetCommerceCustomerRetentionMetricsRequest](../../models/operations/getcommercecustomerretentionmetricsrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 | `retries`                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                               | :heavy_minus_sign:                                                                                                             | Configuration to override the default retry behavior of the client.                                                            |
 
-
 ### Response
 
-**[operations.GetCommerceCustomerRetentionMetricsResponse](../../models/operations/getcommercecustomerretentionmetricsresponse.md)**
+**[shared.Report](../../models/shared/report.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_commerce_lifetime_value_metrics
 
@@ -268,27 +254,26 @@ Gets the lifetime value metric for a specific company connection, over one or mo
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations, shared
+from codat_assess import CodatAssess
+from codat_assess.models import shared
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetCommerceLifetimeValueMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=463554,
-    period_length=892968,
-    period_unit=shared.PeriodUnit.DAY,
-    report_date='29-09-2020',
-)
+res = s.reports.get_commerce_lifetime_value_metrics(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 247228,
+    "period_length": 463554,
+    "period_unit": shared.PeriodUnit.WEEK,
+    "report_date": "29-09-2020",
+})
 
-res = s.reports.get_commerce_lifetime_value_metrics(req)
-
-if res.report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -298,16 +283,17 @@ if res.report is not None:
 | `request`                                                                                                              | [operations.GetCommerceLifetimeValueMetricsRequest](../../models/operations/getcommercelifetimevaluemetricsrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
 | `retries`                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                                     | Configuration to override the default retry behavior of the client.                                                    |
 
-
 ### Response
 
-**[operations.GetCommerceLifetimeValueMetricsResponse](../../models/operations/getcommercelifetimevaluemetricsresponse.md)**
+**[shared.Report](../../models/shared/report.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_commerce_orders_metrics
 
@@ -316,27 +302,26 @@ Gets the order information for a specific company connection, over one or more p
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations, shared
+from codat_assess import CodatAssess
+from codat_assess.models import shared
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetCommerceOrdersMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=661381,
-    period_length=875123,
-    period_unit=shared.PeriodUnit.YEAR,
-    report_date='29-09-2020',
-)
+res = s.reports.get_commerce_orders_metrics(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 982233,
+    "period_length": 661381,
+    "period_unit": shared.PeriodUnit.WEEK,
+    "report_date": "29-09-2020",
+})
 
-res = s.reports.get_commerce_orders_metrics(req)
-
-if res.report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -346,16 +331,17 @@ if res.report is not None:
 | `request`                                                                                                | [operations.GetCommerceOrdersMetricsRequest](../../models/operations/getcommerceordersmetricsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 | `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
-
 ### Response
 
-**[operations.GetCommerceOrdersMetricsResponse](../../models/operations/getcommerceordersmetricsresponse.md)**
+**[shared.Report](../../models/shared/report.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_commerce_refunds_metrics
 
@@ -364,27 +350,26 @@ Gets the refunds information for a specific company connection, over one or more
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations, shared
+from codat_assess import CodatAssess
+from codat_assess.models import shared
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetCommerceRefundsMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=806705,
-    period_length=498153,
-    period_unit=shared.PeriodUnit.DAY,
-    report_date='29-09-2020',
-)
+res = s.reports.get_commerce_refunds_metrics(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 224296,
+    "period_length": 806705,
+    "period_unit": shared.PeriodUnit.WEEK,
+    "report_date": "29-09-2020",
+})
 
-res = s.reports.get_commerce_refunds_metrics(req)
-
-if res.report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -394,16 +379,17 @@ if res.report is not None:
 | `request`                                                                                                  | [operations.GetCommerceRefundsMetricsRequest](../../models/operations/getcommercerefundsmetricsrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
-**[operations.GetCommerceRefundsMetricsResponse](../../models/operations/getcommercerefundsmetricsresponse.md)**
+**[shared.Report](../../models/shared/report.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_commerce_revenue_metrics
 
@@ -412,27 +398,26 @@ Get the revenue and revenue growth for a specific company connection, over one o
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations, shared
+from codat_assess import CodatAssess
+from codat_assess.models import shared
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetCommerceRevenueMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    number_of_periods=58448,
-    period_length=864392,
-    period_unit=shared.PeriodUnit.WEEK,
-    report_date='29-09-2020',
-)
+res = s.reports.get_commerce_revenue_metrics(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    "number_of_periods": 254955,
+    "period_length": 58448,
+    "period_unit": shared.PeriodUnit.DAY,
+    "report_date": "29-09-2020",
+})
 
-res = s.reports.get_commerce_revenue_metrics(req)
-
-if res.report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -442,16 +427,17 @@ if res.report is not None:
 | `request`                                                                                                  | [operations.GetCommerceRevenueMetricsRequest](../../models/operations/getcommercerevenuemetricsrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
-**[operations.GetCommerceRevenueMetricsResponse](../../models/operations/getcommercerevenuemetricsresponse.md)**
+**[shared.Report](../../models/shared/report.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_enhanced_cash_flow_transactions
 
@@ -464,24 +450,23 @@ The Enhanced Cash Flow Transactions endpoint provides a fully categorized list o
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetEnhancedCashFlowTransactionsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    page=1,
-    page_size=100,
-)
+res = s.reports.get_enhanced_cash_flow_transactions(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.reports.get_enhanced_cash_flow_transactions(req)
-
-if res.enhanced_cash_flow_transactions is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -491,16 +476,17 @@ if res.enhanced_cash_flow_transactions is not None:
 | `request`                                                                                                              | [operations.GetEnhancedCashFlowTransactionsRequest](../../models/operations/getenhancedcashflowtransactionsrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
 | `retries`                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                                     | Configuration to override the default retry behavior of the client.                                                    |
 
-
 ### Response
 
-**[operations.GetEnhancedCashFlowTransactionsResponse](../../models/operations/getenhancedcashflowtransactionsresponse.md)**
+**[shared.EnhancedCashFlowTransactions](../../models/shared/enhancedcashflowtransactions.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_enhanced_invoices_report
 
@@ -509,24 +495,23 @@ Gets a list of invoices linked to the corresponding banking transaction
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetEnhancedInvoicesReportRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    page=1,
-    page_size=100,
-)
+res = s.reports.get_enhanced_invoices_report(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.reports.get_enhanced_invoices_report(req)
-
-if res.enhanced_invoices_report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -536,16 +521,17 @@ if res.enhanced_invoices_report is not None:
 | `request`                                                                                                  | [operations.GetEnhancedInvoicesReportRequest](../../models/operations/getenhancedinvoicesreportrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
-**[operations.GetEnhancedInvoicesReportResponse](../../models/operations/getenhancedinvoicesreportresponse.md)**
+**[shared.EnhancedInvoicesReport](../../models/shared/enhancedinvoicesreport.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## get_loan_summary
 
@@ -559,23 +545,22 @@ Make sure you have [synced a company](https://docs.codat.io/codat-api#/operation
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
+from codat_assess.models import operations
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetLoanSummaryRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.GetLoanSummaryQueryParamSourceType.BANKING,
-)
+res = s.reports.get_loan_summary(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "source_type": operations.GetLoanSummaryQueryParamSourceType.BANKING,
+})
 
-res = s.reports.get_loan_summary(req)
-
-if res.loan_summary is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -585,16 +570,17 @@ if res.loan_summary is not None:
 | `request`                                                                            | [operations.GetLoanSummaryRequest](../../models/operations/getloansummaryrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
-**[operations.GetLoanSummaryResponse](../../models/operations/getloansummaryresponse.md)**
+**[shared.LoanSummary](../../models/shared/loansummary.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_recurring_revenue_metrics
 
@@ -603,23 +589,21 @@ Gets key metrics for subscription revenue.
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.GetRecurringRevenueMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.reports.get_recurring_revenue_metrics(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.reports.get_recurring_revenue_metrics(req)
-
-if res.report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -629,16 +613,17 @@ if res.report is not None:
 | `request`                                                                                                    | [operations.GetRecurringRevenueMetricsRequest](../../models/operations/getrecurringrevenuemetricsrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
 | `retries`                                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                             | :heavy_minus_sign:                                                                                           | Configuration to override the default retry behavior of the client.                                          |
 
-
 ### Response
 
-**[operations.GetRecurringRevenueMetricsResponse](../../models/operations/getrecurringrevenuemetricsresponse.md)**
+**[shared.Report](../../models/shared/report.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list_loan_transactions
 
@@ -652,23 +637,22 @@ Make sure you have [synced a company](https://docs.codat.io/codat-api#/operation
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
+from codat_assess.models import operations
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.ListLoanTransactionsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    source_type=operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
-)
+res = s.reports.list_loan_transactions(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "source_type": operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
+})
 
-res = s.reports.list_loan_transactions(req)
-
-if res.loan_transactions is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -678,16 +662,17 @@ if res.loan_transactions is not None:
 | `request`                                                                                        | [operations.ListLoanTransactionsRequest](../../models/operations/listloantransactionsrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
-
 ### Response
 
-**[operations.ListLoanTransactionsResponse](../../models/operations/listloantransactionsresponse.md)**
+**[shared.LoanTransactions](../../models/shared/loantransactions.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 400-600                         | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## request_recurring_revenue_metrics
 
@@ -696,23 +681,21 @@ Requests production of key subscription revenue metrics.
 ### Example Usage
 
 ```python
-import codatassess
-from codatassess.models import operations
+from codat_assess import CodatAssess
 
-s = codatassess.CodatAssess(
+s = CodatAssess(
     auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = operations.RequestRecurringRevenueMetricsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.reports.request_recurring_revenue_metrics(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.reports.request_recurring_revenue_metrics(req)
-
-if res.report is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -722,13 +705,13 @@ if res.report is not None:
 | `request`                                                                                                            | [operations.RequestRecurringRevenueMetricsRequest](../../models/operations/requestrecurringrevenuemetricsrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `retries`                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                                   | Configuration to override the default retry behavior of the client.                                                  |
 
-
 ### Response
 
-**[operations.RequestRecurringRevenueMetricsResponse](../../models/operations/requestrecurringrevenuemetricsresponse.md)**
+**[shared.Report](../../models/shared/report.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 400-600                     | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
