@@ -7,6 +7,13 @@ sources:
         tags:
             - latest
             - main
+    assess-source:
+        sourceNamespace: assess-source
+        sourceRevisionDigest: sha256:fc689a909f3360047c372a7fa75818d0909de3c521b92f4c30037918524de981
+        sourceBlobDigest: sha256:93a5943e66c0bec898e50532b545a9e2694aa004d1e763c9fadc7424a311c2ed
+        tags:
+            - latest
+            - main
     lending-source:
         sourceNamespace: lending-source
         sourceRevisionDigest: sha256:e9279793fec15674c2c6ff77d11be16f6945b43d47b8005e68d7300da68a24a4
@@ -20,6 +27,11 @@ targets:
         sourceNamespace: accounting-source
         sourceRevisionDigest: sha256:69321f987c271eb886b1235bf55c2eb13b9f2994d6038d7625094c3c6e276d44
         sourceBlobDigest: sha256:1196b9f04ffba9bfc30292d059e6e63e93b26fe3f8ca92cab6d58df8de86c4ca
+    assess-library:
+        source: assess-source
+        sourceNamespace: assess-source
+        sourceRevisionDigest: sha256:fc689a909f3360047c372a7fa75818d0909de3c521b92f4c30037918524de981
+        sourceBlobDigest: sha256:93a5943e66c0bec898e50532b545a9e2694aa004d1e763c9fadc7424a311c2ed
     lending-library:
         source: lending-source
         sourceNamespace: lending-source
@@ -37,6 +49,8 @@ workflow:
         assess-source:
             inputs:
                 - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Assess.yaml
+            registry:
+                location: registry.speakeasyapi.dev/codat/codat/assess-source
         bank-feeds-source:
             inputs:
                 - location: https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Bank-Feeds.yaml
