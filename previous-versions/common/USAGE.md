@@ -1,23 +1,40 @@
-<!-- Start SDK Example Usage -->
-
-
+<!-- Start SDK Example Usage [usage] -->
 ```python
-import codatcommon
-from codatcommon.models import shared
+# Synchronous Example
+from codat_common import CodatCommon
 
-s = codatcommon.CodatCommon(
-    auth_header="",
+s = CodatCommon(
+    auth_header="Basic BASE_64_ENCODED(API_KEY)",
 )
 
-req = shared.CompanyRequestBody(
-    description='Requested early access to the new financing scheme.',
-    name='Bank of Dave',
-)
+res = s.settings.create_api_key(request={
+    "name": "azure-invoice-finance-processor",
+})
 
-res = s.companies.create(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+
+</br>
+
+The same SDK client can also be used to make asychronous requests by importing asyncio.
+```python
+# Asynchronous Example
+import asyncio
+from codat_common import CodatCommon
+
+async def main():
+    s = CodatCommon(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    )
+    res = await s.settings.create_api_key_async(request={
+        "name": "azure-invoice-finance-processor",
+    })
+    if res is not None:
+        # handle response
+        pass
+
+asyncio.run(main())
+```
+<!-- End SDK Example Usage [usage] -->
