@@ -17,24 +17,23 @@ Configure bank feeds for a company.
 ### Example Usage
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import operations, shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetConfigurationRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.configuration.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.configuration.get(req)
-
-if res.configuration is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -44,16 +43,17 @@ if res.configuration is not None:
 | `request`                                                                                | [operations.GetConfigurationRequest](../../models/operations/getconfigurationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.GetConfigurationResponse](../../models/operations/getconfigurationresponse.md)**
+**[shared.Configuration](../../models/shared/configuration.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## set
 
@@ -62,24 +62,26 @@ if res.configuration is not None:
 ### Example Usage
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import operations, shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.SetConfigurationRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.configuration.set(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "configuration": {
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    },
+})
 
-res = s.configuration.set(req)
-
-if res.configuration is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -89,13 +91,13 @@ if res.configuration is not None:
 | `request`                                                                                | [operations.SetConfigurationRequest](../../models/operations/setconfigurationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.SetConfigurationResponse](../../models/operations/setconfigurationresponse.md)**
+**[shared.Configuration](../../models/shared/configuration.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

@@ -7,13 +7,22 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
   telemetryEnabled: true
 python:
-  version: 6.1.1
+  version: 7.0.0
+  additionalDependencies:
+    dev: {}
+    main: {}
   author: Codat
+  authors:
+    - Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Set up bank feeds from accounts in your application to supported accounting platforms.
+  enumFormat: enum
   flattenGlobalSecurity: false
+  flattenRequests: false
   imports:
     option: openapi
     paths:
@@ -24,5 +33,8 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
+  methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: codat-bankfeeds
+  responseFormat: flat
+  templateVersion: v2

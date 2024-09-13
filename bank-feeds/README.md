@@ -4,45 +4,159 @@
 ﻿Bank Feeds API enables your SMB users to set up bank feeds from accounts in your application to supported accounting platforms.
 <!-- End Codat Library Description -->
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Bank Feeds API: Bank Feeds API enables your SMB users to set up bank feeds from accounts in your application to supported accounting software.
+
+A bank feed is a connection between a source bank account in your application and a target bank account in a supported accounting software.
+
+[Explore product](https://docs.codat.io/bank-feeds-api/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
+
+---
+<!-- Start Codat Tags Table -->
+## Endpoints
+
+| Endpoints | Description |
+| :- |:- |
+| Companies | Create and manage your SMB users' companies. |
+| Connections | Create new and manage existing data connections for a company. |
+| Source accounts | Provide and manage lists of source bank accounts. |
+| Account mapping | Extra functionality for building an account management UI. |
+| Company information | Get detailed information about a company from the underlying platform. |
+| Transactions | Create new bank account transactions for a company's connections, and see previous operations. |
+<!-- End Codat Tags Table -->
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [IDE Support](#ide-support)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [File uploads](#file-uploads)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Debugging](#debugging)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+The SDK can be installed with either *pip* or *poetry* package managers.
+
+### PIP
+
+*PIP* is the default package installer for Python, enabling easy installation and management of packages from PyPI via the command line.
 
 ```bash
 pip install codat-bankfeeds
 ```
+
+### Poetry
+
+*Poetry* is a modern tool that simplifies dependency management and package publishing by using a single `pyproject.toml` file to handle project metadata and dependencies.
+
+```bash
+poetry add codat-bankfeeds
+```
 <!-- End SDK Installation [installation] -->
 
 ## Example Usage
+<!-- Start IDE Support [idesupport] -->
+## IDE Support
+
+### PyCharm
+
+Generally, the SDK will work well with most IDEs out of the box. However, when using PyCharm, you can enjoy much better integration with Pydantic by installing an additional plugin.
+
+- [PyCharm Pydantic Plugin](https://docs.pydantic.dev/latest/integrations/pycharm/)
+<!-- End IDE Support [idesupport] -->
+
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
 ### Example
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import shared
+# Synchronous Example
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
+res = s.companies.create(request={
+    "name": "Technicalium",
+    "description": "Requested early access to the new financing scheme.",
+    "groups": [
+        {
+            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+        },
+    ],
+})
 
-res = s.companies.create(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+```
+
+</br>
+
+The same SDK client can also be used to make asychronous requests by importing asyncio.
+```python
+# Asynchronous Example
+import asyncio
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+
+async def main():
+    s = CodatBankFeeds(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    )
+    res = await s.companies.create_async(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+        "groups": [
+            {
+                "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+            },
+        ],
+    })
+    if res is not None:
+        # handle response
+        pass
+
+asyncio.run(main())
 ```
 <!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
+
+<details open>
+<summary>Available methods</summary>
+
+### [account_mapping](docs/sdks/accountmapping/README.md)
+
+* [create](docs/sdks/accountmapping/README.md#create) - Create bank feed account mapping
+* [get](docs/sdks/accountmapping/README.md#get) - List bank feed account mappings
+
+### [bank_accounts](docs/sdks/bankaccounts/README.md)
+
+* [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
+* [get_create_model](docs/sdks/bankaccounts/README.md#get_create_model) - Get create/update bank account model
+* [list](docs/sdks/bankaccounts/README.md#list) - List bank accounts
+
 
 ### [companies](docs/sdks/companies/README.md)
 
@@ -52,6 +166,15 @@ if res.company is not None:
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
+### [company_information](docs/sdks/companyinformation/README.md)
+
+* [get](docs/sdks/companyinformation/README.md#get) - Get company information
+
+### [configuration](docs/sdks/configuration/README.md)
+
+* [get](docs/sdks/configuration/README.md#get) - Get configuration
+* [set](docs/sdks/configuration/README.md#set) - Set configuration
+
 ### [connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
@@ -59,11 +182,6 @@ if res.company is not None:
 * [get](docs/sdks/connections/README.md#get) - Get connection
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
-
-### [account_mapping](docs/sdks/accountmapping/README.md)
-
-* [create](docs/sdks/accountmapping/README.md#create) - Create bank feed account mapping
-* [get](docs/sdks/accountmapping/README.md#get) - List bank feed account mappings
 
 ### [source_accounts](docs/sdks/sourceaccounts/README.md)
 
@@ -74,11 +192,9 @@ if res.company is not None:
 * [list](docs/sdks/sourceaccounts/README.md#list) - List source accounts
 * [update](docs/sdks/sourceaccounts/README.md#update) - Update source account
 
-### [bank_accounts](docs/sdks/bankaccounts/README.md)
+### [sync](docs/sdks/sync/README.md)
 
-* [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
-* [get_create_model](docs/sdks/bankaccounts/README.md#get_create_model) - Get create/update bank account model
-* [list](docs/sdks/bankaccounts/README.md#list) - List bank accounts
+* [get_last_successful_sync](docs/sdks/sync/README.md#get_last_successful_sync) - Get last successful sync
 
 ### [transactions](docs/sdks/transactions/README.md)
 
@@ -86,15 +202,45 @@ if res.company is not None:
 * [get_create_operation](docs/sdks/transactions/README.md#get_create_operation) - Get create operation
 * [list_create_operations](docs/sdks/transactions/README.md#list_create_operations) - List create operations
 
-### [configuration](docs/sdks/configuration/README.md)
-
-* [get](docs/sdks/configuration/README.md#get) - Get configuration
-* [set](docs/sdks/configuration/README.md#set) - Set configuration
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 
 
 
+
+<!-- Start File uploads [file-upload] -->
+## File uploads
+
+Certain SDK methods accept file objects as part of a request body or multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
+
+> [!TIP]
+>
+> For endpoints that handle file uploads bytes arrays can also be used. However, using streams is recommended for large files.
+>
+
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+
+s = CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+)
+
+res = s.source_accounts.generate_credentials(request={
+    "request_body": open("example.file", "rb"),
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
+
+if res is not None:
+    # handle response
+    pass
+
+```
+<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -103,52 +249,60 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 from codatbankfeeds.utils import BackoffStrategy, RetryConfig
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
+res = s.companies.create(request={
+    "name": "Technicalium",
+    "description": "Requested early access to the new financing scheme.",
+    "groups": [
+        {
+            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+        },
+    ],
+},
+    RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-res = s.companies.create(req,
-    RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 from codatbankfeeds.utils import BackoffStrategy, RetryConfig
 
-s = codatbankfeeds.CodatBankFeeds(
-    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+s = CodatBankFeeds(
+    retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
+res = s.companies.create(request={
+    "name": "Technicalium",
+    "description": "Requested early access to the new financing scheme.",
+    "groups": [
+        {
+            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+        },
+    ],
+})
 
-res = s.companies.create(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End Retries [retries] -->
 
@@ -162,38 +316,42 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
 
 ### Example
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import errors, shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import errors, shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
-
 res = None
 try:
-    res = s.companies.create(req)
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+        "groups": [
+            {
+                "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+            },
+        ],
+    })
+
+    if res is not None:
+        # handle response
+        pass
+
 except errors.ErrorMessage as e:
-    # handle exception
+    # handle e.data: errors.ErrorMessageData
     raise(e)
 except errors.SDKError as e:
     # handle exception
     raise(e)
-
-if res.company is not None:
-    # handle response
-    pass
 ```
 <!-- End Error Handling [errors] -->
 
@@ -213,26 +371,30 @@ You can override the default server globally by passing a server index to the `s
 #### Example
 
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     server_idx=0,
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
+res = s.companies.create(request={
+    "name": "Technicalium",
+    "description": "Requested early access to the new financing scheme.",
+    "groups": [
+        {
+            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+        },
+    ],
+})
 
-res = s.companies.create(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 
@@ -240,26 +402,30 @@ if res.company is not None:
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     server_url="https://api.codat.io",
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
+res = s.companies.create(request={
+    "name": "Technicalium",
+    "description": "Requested early access to the new financing scheme.",
+    "groups": [
+        {
+            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+        },
+    ],
+})
 
-res = s.companies.create(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End Server Selection [server] -->
 
@@ -268,16 +434,81 @@ if res.company is not None:
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Python SDK makes API calls using the [requests](https://pypi.org/project/requests/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+The Python SDK makes API calls using the [httpx](https://www.python-httpx.org/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with your own HTTP client instance.
+Depending on whether you are using the sync or async version of the SDK, you can pass an instance of `HttpClient` or `AsyncHttpClient` respectively, which are Protocol's ensuring that the client has the necessary methods to make API calls.
+This allows you to wrap the client with your own custom logic, such as adding custom headers, logging, or error handling, or you can just pass an instance of `httpx.Client` or `httpx.AsyncClient` directly.
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
-import codatbankfeeds
-import requests
+from codat_bankfeeds import CodatBankFeeds
+import httpx
 
-http_client = requests.Session()
-http_client.headers.update({'x-custom-header': 'someValue'})
-s = codatbankfeeds.CodatBankFeeds(client: http_client)
+http_client = httpx.Client(headers={"x-custom-header": "someValue"})
+s = CodatBankFeeds(client=http_client)
+```
+
+or you could wrap the client with your own custom logic:
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.httpclient import AsyncHttpClient
+import httpx
+
+class CustomClient(AsyncHttpClient):
+    client: AsyncHttpClient
+
+    def __init__(self, client: AsyncHttpClient):
+        self.client = client
+
+    async def send(
+        self,
+        request: httpx.Request,
+        *,
+        stream: bool = False,
+        auth: Union[
+            httpx._types.AuthTypes, httpx._client.UseClientDefault, None
+        ] = httpx.USE_CLIENT_DEFAULT,
+        follow_redirects: Union[
+            bool, httpx._client.UseClientDefault
+        ] = httpx.USE_CLIENT_DEFAULT,
+    ) -> httpx.Response:
+        request.headers["Client-Level-Header"] = "added by client"
+
+        return await self.client.send(
+            request, stream=stream, auth=auth, follow_redirects=follow_redirects
+        )
+
+    def build_request(
+        self,
+        method: str,
+        url: httpx._types.URLTypes,
+        *,
+        content: Optional[httpx._types.RequestContent] = None,
+        data: Optional[httpx._types.RequestData] = None,
+        files: Optional[httpx._types.RequestFiles] = None,
+        json: Optional[Any] = None,
+        params: Optional[httpx._types.QueryParamTypes] = None,
+        headers: Optional[httpx._types.HeaderTypes] = None,
+        cookies: Optional[httpx._types.CookieTypes] = None,
+        timeout: Union[
+            httpx._types.TimeoutTypes, httpx._client.UseClientDefault
+        ] = httpx.USE_CLIENT_DEFAULT,
+        extensions: Optional[httpx._types.RequestExtensions] = None,
+    ) -> httpx.Request:
+        return self.client.build_request(
+            method,
+            url,
+            content=content,
+            data=data,
+            files=files,
+            json=json,
+            params=params,
+            headers=headers,
+            cookies=cookies,
+            timeout=timeout,
+            extensions=extensions,
+        )
+
+s = CodatBankFeeds(async_client=CustomClient(httpx.AsyncClient()))
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -296,27 +527,46 @@ This SDK supports the following security scheme globally:
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```python
-import codatbankfeeds
-from codatbankfeeds.models import shared
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
 
-s = codatbankfeeds.CodatBankFeeds(
+s = CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
+res = s.companies.create(request={
+    "name": "Technicalium",
+    "description": "Requested early access to the new financing scheme.",
+    "groups": [
+        {
+            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+        },
+    ],
+})
 
-res = s.companies.create(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+You can setup your SDK to emit debug logs for SDK requests and responses.
+
+You can pass your own logger class directly into your SDK.
+```python
+from codat_bankfeeds import CodatBankFeeds
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+s = CodatBankFeeds(debug_logger=logging.getLogger("codat_bankfeeds"))
+```
+<!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
