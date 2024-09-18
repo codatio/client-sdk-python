@@ -3,7 +3,7 @@
 
 ## Overview
 
-Configure preferences for any given Sync for Commerce company using sync flow.
+Control text and visibility settings for the Sync Flow.
 
 ### Available Operations
 
@@ -19,24 +19,23 @@ Return preferences set for the text fields on sync flow.
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetConfigTextSyncFlowRequest(
-    locale=shared.Locale.EN_US,
-)
+res = s.sync_flow_settings.get_config_text_sync_flow(request={
+    "locale": shared.Locale.EN_US,
+})
 
-res = s.sync_flow_settings.get_config_text_sync_flow(req)
-
-if res.localization_info is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -46,16 +45,17 @@ if res.localization_info is not None:
 | `request`                                                                                          | [operations.GetConfigTextSyncFlowRequest](../../models/operations/getconfigtextsyncflowrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
 | `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
 
-
 ### Response
 
-**[operations.GetConfigTextSyncFlowResponse](../../models/operations/getconfigtextsyncflowresponse.md)**
+**[Dict[str, shared.Localization]](../../models/.md)**
+
 ### Errors
 
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4x-5xx                  | */*                     |
+| errors.SDKError         | 4xx-5xx                 | */*                     |
+
 
 ## get_visible_accounts
 
@@ -64,25 +64,24 @@ Return accounts which are visible on sync flow.
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetVisibleAccountsRequest(
-    client_id='86fe9741-738d-4f2c-8e96-9c3f84156e91',
-    platform_key='gbol',
-)
+res = s.sync_flow_settings.get_visible_accounts(request={
+    "client_id": "86fe9741-738d-4f2c-8e96-9c3f84156e91",
+    "platform_key": "gbol",
+})
 
-res = s.sync_flow_settings.get_visible_accounts(req)
-
-if res.visible_accounts is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -92,16 +91,17 @@ if res.visible_accounts is not None:
 | `request`                                                                                    | [operations.GetVisibleAccountsRequest](../../models/operations/getvisibleaccountsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
-
 ### Response
 
-**[operations.GetVisibleAccountsResponse](../../models/operations/getvisibleaccountsresponse.md)**
+**[shared.VisibleAccounts](../../models/shared/visibleaccounts.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## update_config_text_sync_flow
 
@@ -110,24 +110,23 @@ Set preferences for the text fields on sync flow.
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateConfigTextSyncFlowRequest(
-    locale=shared.Locale.EN_US,
-)
+res = s.sync_flow_settings.update_config_text_sync_flow(request={
+    "locale": shared.Locale.EN_US,
+})
 
-res = s.sync_flow_settings.update_config_text_sync_flow(req)
-
-if res.localization_info is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -137,16 +136,17 @@ if res.localization_info is not None:
 | `request`                                                                                                | [operations.UpdateConfigTextSyncFlowRequest](../../models/operations/updateconfigtextsyncflowrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 | `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
-
 ### Response
 
-**[operations.UpdateConfigTextSyncFlowResponse](../../models/operations/updateconfigtextsyncflowresponse.md)**
+**[Dict[str, shared.Localization]](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## update_visible_accounts_sync_flow
 
@@ -155,24 +155,23 @@ Update which accounts are visible on sync flow.
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateVisibleAccountsSyncFlowRequest(
-    platform_key='gbol',
-)
+res = s.sync_flow_settings.update_visible_accounts_sync_flow(request={
+    "platform_key": "gbol",
+})
 
-res = s.sync_flow_settings.update_visible_accounts_sync_flow(req)
-
-if res.visible_accounts is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -182,13 +181,13 @@ if res.visible_accounts is not None:
 | `request`                                                                                                          | [operations.UpdateVisibleAccountsSyncFlowRequest](../../models/operations/updatevisibleaccountssyncflowrequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
 | `retries`                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                                 | Configuration to override the default retry behavior of the client.                                                |
 
-
 ### Response
 
-**[operations.UpdateVisibleAccountsSyncFlowResponse](../../models/operations/updatevisibleaccountssyncflowresponse.md)**
+**[shared.VisibleAccounts](../../models/shared/visibleaccounts.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

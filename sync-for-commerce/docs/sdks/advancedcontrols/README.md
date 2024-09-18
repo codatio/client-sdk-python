@@ -3,7 +3,7 @@
 
 ## Overview
 
-Advanced company management and sync preferences.
+View and manage mapping configured for a company's commerce sync.
 
 ### Available Operations
 
@@ -19,25 +19,29 @@ Creates a Codat company
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = shared.CreateCompany(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
+res = s.advanced_controls.create_company(request={
+    "name": "string",
+    "description": "Requested early access to the new financing scheme.",
+    "groups": [
+        {
+            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
+        },
+    ],
+})
 
-res = s.advanced_controls.create_company(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -47,16 +51,17 @@ if res.company is not None:
 | `request`                                                           | [shared.CreateCompany](../../models/shared/createcompany.md)        | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
 ### Response
 
-**[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)**
+**[shared.Company](../../models/shared/company.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_configuration
 
@@ -65,24 +70,23 @@ Returns a company's commerce sync configuration'.
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetConfigurationRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.advanced_controls.get_configuration(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.advanced_controls.get_configuration(req)
-
-if res.configuration is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -92,16 +96,17 @@ if res.configuration is not None:
 | `request`                                                                                | [operations.GetConfigurationRequest](../../models/operations/getconfigurationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.GetConfigurationResponse](../../models/operations/getconfigurationresponse.md)**
+**[shared.Configuration](../../models/shared/configuration.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list_companies
 
@@ -110,26 +115,26 @@ Returns a list of companies.
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListCompaniesRequest(
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.advanced_controls.list_companies(request={
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.advanced_controls.list_companies(req)
-
-if res.companies is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -139,16 +144,17 @@ if res.companies is not None:
 | `request`                                                                          | [operations.ListCompaniesRequest](../../models/operations/listcompaniesrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)**
+**[shared.Companies](../../models/shared/companies.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## set_configuration
 
@@ -157,24 +163,23 @@ Sets a company's commerce sync configuration.
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.SetConfigurationRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.advanced_controls.set_configuration(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.advanced_controls.set_configuration(req)
-
-if res.configuration is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -184,13 +189,13 @@ if res.configuration is not None:
 | `request`                                                                                | [operations.SetConfigurationRequest](../../models/operations/setconfigurationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.SetConfigurationResponse](../../models/operations/setconfigurationresponse.md)**
+**[shared.Configuration](../../models/shared/configuration.md)**
+
 ### Errors
 
 | Error Object                        | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 4x-5xx                              | */*                                 |
+| errors.SDKError                     | 4xx-5xx                             | */*                                 |

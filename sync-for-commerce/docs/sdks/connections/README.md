@@ -3,7 +3,7 @@
 
 ## Overview
 
-Create new and manage existing Sync for Commerce connections using the Sync flow UI.
+Create new and manage existing data connections for a company.
 
 ### Available Operations
 
@@ -22,24 +22,26 @@ Use the [List Integrations](https://docs.codat.io/sync-for-sync-for-commerce-api
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.CreateConnectionRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.connections.create(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "request_body": {
+        "platform_key": "gbol",
+    },
+})
 
-res = s.connections.create(req)
-
-if res.connection is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -49,16 +51,17 @@ if res.connection is not None:
 | `request`                                                                                | [operations.CreateConnectionRequest](../../models/operations/createconnectionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.CreateConnectionResponse](../../models/operations/createconnectionresponse.md)**
+**[shared.Connection](../../models/shared/connection.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_sync_flow_url
 
@@ -67,25 +70,24 @@ Create a new company and connections. Get a URL for Sync Flow, including a one t
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetSyncFlowURLRequest(
-    accounting_key='<value>',
-    commerce_key='<value>',
-)
+res = s.connections.get_sync_flow_url(request={
+    "accounting_key": "<value>",
+    "commerce_key": "<value>",
+})
 
-res = s.connections.get_sync_flow_url(req)
-
-if res.sync_flow_url is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -95,16 +97,17 @@ if res.sync_flow_url is not None:
 | `request`                                                                            | [operations.GetSyncFlowURLRequest](../../models/operations/getsyncflowurlrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
-**[operations.GetSyncFlowURLResponse](../../models/operations/getsyncflowurlresponse.md)**
+**[shared.SyncFlowURL](../../models/shared/syncflowurl.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## list
 
@@ -113,27 +116,27 @@ if res.sync_flow_url is not None:
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListConnectionsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.connections.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.connections.list(req)
-
-if res.connections is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -143,16 +146,17 @@ if res.connections is not None:
 | `request`                                                                              | [operations.ListConnectionsRequest](../../models/operations/listconnectionsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 | `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
 
-
 ### Response
 
-**[operations.ListConnectionsResponse](../../models/operations/listconnectionsresponse.md)**
+**[shared.Connections](../../models/shared/connections.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## update_authorization
 
@@ -161,25 +165,24 @@ Update data connection's authorization.
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateConnectionAuthorizationRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.connections.update_authorization(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.connections.update_authorization(req)
-
-if res.connection is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -189,16 +192,17 @@ if res.connection is not None:
 | `request`                                                                                                          | [operations.UpdateConnectionAuthorizationRequest](../../models/operations/updateconnectionauthorizationrequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
 | `retries`                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                                 | Configuration to override the default retry behavior of the client.                                                |
 
-
 ### Response
 
-**[operations.UpdateConnectionAuthorizationResponse](../../models/operations/updateconnectionauthorizationresponse.md)**
+**[shared.Connection](../../models/shared/connection.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## update_connection
 
@@ -207,25 +211,24 @@ Update a data connection
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateConnectionRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
+res = s.connections.update_connection(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+})
 
-res = s.connections.update_connection(req)
-
-if res.connection is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -235,13 +238,13 @@ if res.connection is not None:
 | `request`                                                                                | [operations.UpdateConnectionRequest](../../models/operations/updateconnectionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.UpdateConnectionResponse](../../models/operations/updateconnectionresponse.md)**
+**[shared.Connection](../../models/shared/connection.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |

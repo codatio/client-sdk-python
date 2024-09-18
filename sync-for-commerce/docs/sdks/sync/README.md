@@ -3,7 +3,7 @@
 
 ## Overview
 
-Initiate and monitor the sync of company data into accounting software.
+Initiate data syncs and monitor their status.
 
 ### Available Operations
 
@@ -22,25 +22,24 @@ Get the sync status for a specified sync
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetSyncByIDRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    sync_id='6fb40d5e-b13e-11ed-afa1-0242ac120002',
-)
+res = s.sync.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "sync_id": "6fb40d5e-b13e-11ed-afa1-0242ac120002",
+})
 
-res = s.sync.get(req)
-
-if res.company_sync_status is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -50,16 +49,17 @@ if res.company_sync_status is not None:
 | `request`                                                                      | [operations.GetSyncByIDRequest](../../models/operations/getsyncbyidrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 | `retries`                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)               | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |
 
-
 ### Response
 
-**[operations.GetSyncByIDResponse](../../models/operations/getsyncbyidresponse.md)**
+**[shared.CompanySyncStatus](../../models/shared/companysyncstatus.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_last_successful_sync
 
@@ -68,24 +68,23 @@ Gets the status of the last successful sync
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetLastSuccessfulSyncRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.sync.get_last_successful_sync(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.sync.get_last_successful_sync(req)
-
-if res.company_sync_status is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -95,16 +94,17 @@ if res.company_sync_status is not None:
 | `request`                                                                                          | [operations.GetLastSuccessfulSyncRequest](../../models/operations/getlastsuccessfulsyncrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
 | `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
 
-
 ### Response
 
-**[operations.GetLastSuccessfulSyncResponse](../../models/operations/getlastsuccessfulsyncresponse.md)**
+**[shared.CompanySyncStatus](../../models/shared/companysyncstatus.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_latest_sync
 
@@ -113,24 +113,23 @@ Gets the latest sync status
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetLatestSyncRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.sync.get_latest_sync(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.sync.get_latest_sync(req)
-
-if res.company_sync_status is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -140,16 +139,17 @@ if res.company_sync_status is not None:
 | `request`                                                                          | [operations.GetLatestSyncRequest](../../models/operations/getlatestsyncrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.GetLatestSyncResponse](../../models/operations/getlatestsyncresponse.md)**
+**[shared.CompanySyncStatus](../../models/shared/companysyncstatus.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## get_status
 
@@ -158,24 +158,23 @@ Gets a list of sync statuses.
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetSyncStatusRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.sync.get_status(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.sync.get_status(req)
-
-if res.sync_status is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -185,16 +184,17 @@ if res.sync_status is not None:
 | `request`                                                                          | [operations.GetSyncStatusRequest](../../models/operations/getsyncstatusrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.GetSyncStatusResponse](../../models/operations/getsyncstatusresponse.md)**
+**[shared.SyncStatus](../../models/shared/syncstatus.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## list
 
@@ -203,24 +203,23 @@ Gets a list of sync statuses
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListSyncsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.sync.list(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.sync.list(req)
-
-if res.classes is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -230,16 +229,17 @@ if res.classes is not None:
 | `request`                                                                  | [operations.ListSyncsRequest](../../models/operations/listsyncsrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
 | `retries`                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)           | :heavy_minus_sign:                                                         | Configuration to override the default retry behavior of the client.        |
 
-
 ### Response
 
-**[operations.ListSyncsResponse](../../models/operations/listsyncsresponse.md)**
+**[List[shared.CompanySyncStatus]](../../models/.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| errors.SDKError             | 4xx-5xx                     | */*                         |
+
 
 ## request
 
@@ -248,24 +248,26 @@ Run a Commerce sync from the last successful sync up to the date provided (optio
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.RequestSyncRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.sync.request(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "sync_to_latest_args": {
+        "sync_to": "2022-10-23T00:00:00Z",
+    },
+})
 
-res = s.sync.request(req)
-
-if res.sync_summary is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -275,16 +277,17 @@ if res.sync_summary is not None:
 | `request`                                                                      | [operations.RequestSyncRequest](../../models/operations/requestsyncrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 | `retries`                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)               | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |
 
-
 ### Response
 
-**[operations.RequestSyncResponse](../../models/operations/requestsyncresponse.md)**
+**[shared.SyncSummary](../../models/shared/syncsummary.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
+
 
 ## request_for_date_range
 
@@ -293,24 +296,29 @@ Initiate a sync for the specified start date to the specified finish date in the
 ### Example Usage
 
 ```python
-import codatsynccommerce
-from codatsynccommerce.models import operations, shared
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
 
-s = codatsynccommerce.CodatSyncCommerce(
+s = CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.RequestSyncForDateRangeRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.sync.request_for_date_range(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "sync_range": {
+        "date_range": {
+            "finish": "2022-10-23T00:00:00Z",
+            "start": "2022-10-23T00:00:00Z",
+        },
+    },
+})
 
-res = s.sync.request_for_date_range(req)
-
-if res.sync_summary is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -320,13 +328,13 @@ if res.sync_summary is not None:
 | `request`                                                                                              | [operations.RequestSyncForDateRangeRequest](../../models/operations/requestsyncfordaterangerequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
 | `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
-
 ### Response
 
-**[operations.RequestSyncForDateRangeResponse](../../models/operations/requestsyncfordaterangeresponse.md)**
+**[shared.SyncSummary](../../models/shared/syncsummary.md)**
+
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

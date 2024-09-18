@@ -1,4 +1,4 @@
-speakeasyVersion: 1.396.6
+speakeasyVersion: 1.399.0
 sources:
     accounting-source:
         sourceNamespace: accounting-source
@@ -56,6 +56,13 @@ sources:
         tags:
             - latest
             - main
+    sync-for-commerce-source:
+        sourceNamespace: sync-for-commerce-source
+        sourceRevisionDigest: sha256:6a62a3d9d65254b83a8e6afa5ea2e9d287076520c057bf8a1b60e42ebbdc815e
+        sourceBlobDigest: sha256:2e0d6f59d01a5896709430e1e05d725b88ca088e959502f216a39b23ccab77ec
+        tags:
+            - latest
+            - main
 targets:
     accounting-library:
         source: accounting-source
@@ -97,6 +104,11 @@ targets:
         sourceNamespace: lending-source
         sourceRevisionDigest: sha256:e9279793fec15674c2c6ff77d11be16f6945b43d47b8005e68d7300da68a24a4
         sourceBlobDigest: sha256:7ca97cfd4c993bac385e1da2ed1a467acb50d0bf3893fffd0a811d2f1ea49e91
+    sync-for-commerce-library:
+        source: sync-for-commerce-source
+        sourceNamespace: sync-for-commerce-source
+        sourceRevisionDigest: sha256:6a62a3d9d65254b83a8e6afa5ea2e9d287076520c057bf8a1b60e42ebbdc815e
+        sourceBlobDigest: sha256:2e0d6f59d01a5896709430e1e05d725b88ca088e959502f216a39b23ccab77ec
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

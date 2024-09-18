@@ -569,3 +569,13 @@ Based on:
 - [python v4.0.0] sync-for-commerce
 ### Releases
 - [PyPI v4.0.0] https://pypi.org/project/codat-sync-for-commerce/4.0.0 - sync-for-commerce
+
+## 2024-09-18 10:34:08
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.399.0 (2.415.8) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v5.0.0] sync-for-commerce
+### Releases
+- [PyPI v5.0.0] https://pypi.org/project/codat-sync-for-commerce/5.0.0 - sync-for-commerce
