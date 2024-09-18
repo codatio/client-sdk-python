@@ -7,13 +7,22 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
   telemetryEnabled: true
 python:
-  version: 4.0.0
+  version: 5.0.0
+  additionalDependencies:
+    dev: {}
+    main: {}
   author: Codat
+  authors:
+    - Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Push merchants' data from your ecommerce or point-of-sale (POS) platform into your merchants' accounting platform.
+  enumFormat: enum
   flattenGlobalSecurity: false
+  flattenRequests: false
   imports:
     option: openapi
     paths:
@@ -24,5 +33,8 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
+  methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: codat-sync-for-commerce
+  responseFormat: flat
+  templateVersion: v2
