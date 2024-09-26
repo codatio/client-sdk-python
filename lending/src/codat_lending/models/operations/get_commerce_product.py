@@ -15,13 +15,26 @@ class GetCommerceProductRequestTypedDict(TypedDict):
     r"""Unique identifier for a connection."""
     product_id: str
     r"""Unique identifier for a product."""
-    
+
 
 class GetCommerceProductRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    product_id: Annotated[str, pydantic.Field(alias="productId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    product_id: Annotated[
+        str,
+        pydantic.Field(alias="productId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a product."""
-    

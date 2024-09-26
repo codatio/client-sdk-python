@@ -10,33 +10,38 @@ from typing_extensions import Annotated, NotRequired
 
 class ZeroDataType(str, Enum):
     r"""Allowed name of the 'dataType'."""
+
     PURCHASE_ORDERS = "purchaseOrders"
     BILLS = "bills"
+
 
 class ZeroTypedDict(TypedDict):
     r"""Links the current record line to the underlying record line that created it.
 
     For example, if a bill is generated from a purchase order, this property allows you to connect the bill line item to the purchase order line item in our data model.
     """
-    
+
     data_type: NotRequired[ZeroDataType]
     r"""Allowed name of the 'dataType'."""
     id: NotRequired[str]
     r"""'id' of the underlying record."""
     line_number: NotRequired[str]
     r"""Line number of the underlying record."""
-    
+
 
 class Zero(BaseModel):
     r"""Links the current record line to the underlying record line that created it.
 
     For example, if a bill is generated from a purchase order, this property allows you to connect the bill line item to the purchase order line item in our data model.
     """
-    
-    data_type: Annotated[Optional[ZeroDataType], pydantic.Field(alias="dataType")] = None
+
+    data_type: Annotated[Optional[ZeroDataType], pydantic.Field(alias="dataType")] = (
+        None
+    )
     r"""Allowed name of the 'dataType'."""
+
     id: Optional[str] = None
     r"""'id' of the underlying record."""
+
     line_number: Annotated[Optional[str], pydantic.Field(alias="lineNumber")] = None
     r"""Line number of the underlying record."""
-    

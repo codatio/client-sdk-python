@@ -6,6 +6,7 @@ from enum import Enum
 
 class AccountType(str, Enum):
     r"""Type of account"""
+
     UNKNOWN = "Unknown"
     ASSET = "Asset"
     EXPENSE = "Expense"

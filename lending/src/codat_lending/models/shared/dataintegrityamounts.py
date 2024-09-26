@@ -12,7 +12,7 @@ from typing_extensions import Annotated, NotRequired
 
 class DataIntegrityAmountsTypedDict(TypedDict):
     r"""Only returned for transactions. For accounts, there is nothing returned."""
-    
+
     currency: NotRequired[str]
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -26,11 +26,11 @@ class DataIntegrityAmountsTypedDict(TypedDict):
     r"""Highest value of transaction set."""
     min: NotRequired[Decimal]
     r"""Lowest value of transaction set."""
-    
+
 
 class DataIntegrityAmounts(BaseModel):
     r"""Only returned for transactions. For accounts, there is nothing returned."""
-    
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -40,8 +40,17 @@ class DataIntegrityAmounts(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    max: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    max: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""Highest value of transaction set."""
-    min: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    min: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""Lowest value of transaction set."""
-    

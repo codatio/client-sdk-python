@@ -54,13 +54,19 @@ class DataIntegrityDetailTypedDict(TypedDict):
     matches: NotRequired[List[DataIntegrityMatchTypedDict]]
     type: NotRequired[str]
     r"""The data type of the record."""
-    
+
 
 class DataIntegrityDetail(BaseModel):
-    amount: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+    amount: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The transaction value."""
+
     connection_id: Annotated[Optional[str], pydantic.Field(alias="connectionId")] = None
     r"""ID GUID representing the connection of the accounting or banking platform."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -70,6 +76,7 @@ class DataIntegrityDetail(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     date_: Annotated[Optional[str], pydantic.Field(alias="date")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -91,11 +98,14 @@ class DataIntegrityDetail(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     description: Optional[str] = None
     r"""The transaction description."""
+
     id: Optional[str] = None
     r"""ID GUID of the transaction."""
+
     matches: Optional[List[DataIntegrityMatch]] = None
+
     type: Optional[str] = None
     r"""The data type of the record."""
-    

@@ -25,7 +25,7 @@ class AccountingCashFlowStatementTypedDict(TypedDict):
     >
     > Look at the cash flow statement to understand a company's ability to pay its bills. Although the balance sheet may show healthy earnings at a specific point in time, the cash flow statement allows you to see whether the company is meeting its financial commitments, such as paying creditors or its employees.
     """
-    
+
     currency: str
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -83,7 +83,7 @@ class AccountingCashFlowStatementTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
 
 class AccountingCashFlowStatement(BaseModel):
     r"""> View the coverage for cash flow statement in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\" target=\"_blank\">Data coverage explorer</a>.
@@ -100,7 +100,7 @@ class AccountingCashFlowStatement(BaseModel):
     >
     > Look at the cash flow statement to understand a company's ability to pay its bills. Although the balance sheet may show healthy earnings at a specific point in time, the cash flow statement allows you to see whether the company is meeting its financial commitments, such as paying creditors or its employees.
     """
-    
+
     currency: str
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -110,13 +110,19 @@ class AccountingCashFlowStatement(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     report_basis: Annotated[ReportBasis, pydantic.Field(alias="reportBasis")]
     r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
+
     report_input: Annotated[ReportInput, pydantic.Field(alias="reportInput")]
     r"""Accounting method used to prepare the cash flow statement."""
+
     reports: List[CashFlowStatement]
     r"""Array of cash flow statements."""
-    earliest_available_month: Annotated[Optional[str], pydantic.Field(alias="earliestAvailableMonth")] = None
+
+    earliest_available_month: Annotated[
+        Optional[str], pydantic.Field(alias="earliestAvailableMonth")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -137,7 +143,10 @@ class AccountingCashFlowStatement(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    most_recent_available_month: Annotated[Optional[str], pydantic.Field(alias="mostRecentAvailableMonth")] = None
+
+    most_recent_available_month: Annotated[
+        Optional[str], pydantic.Field(alias="mostRecentAvailableMonth")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -158,4 +167,3 @@ class AccountingCashFlowStatement(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    

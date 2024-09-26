@@ -6,6 +6,7 @@ from enum import Enum
 
 class Status(str, Enum):
     r"""The current status of the dataset."""
+
     INITIAL = "Initial"
     QUEUED = "Queued"
     FETCHING = "Fetching"

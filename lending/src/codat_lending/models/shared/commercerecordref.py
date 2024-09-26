@@ -10,11 +10,11 @@ class CommerceRecordRefTypedDict(TypedDict):
     r"""The unique identitifer of the record being referenced"""
     type: str
     r"""The type of record being referenced."""
-    
+
 
 class CommerceRecordRef(BaseModel):
     id: str
     r"""The unique identitifer of the record being referenced"""
+
     type: str
     r"""The type of record being referenced."""
-    

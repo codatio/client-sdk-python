@@ -13,6 +13,7 @@ class InvoiceStatus(str, Enum):
     - `Paid` - Invoice is paid in full. This includes if the invoice has been credited or overpaid (amountDue == 0).
     - `Void` - An invoice can become Void when it's deleted, refunded, written off, or cancelled. A voided invoice may still be PartiallyPaid, and so all outstanding amounts on voided invoices are removed from the accounts receivable account.
     """
+
     UNKNOWN = "Unknown"
     DRAFT = "Draft"
     SUBMITTED = "Submitted"

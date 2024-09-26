@@ -13,11 +13,19 @@ class GetAccountingCreditNoteRequestTypedDict(TypedDict):
     r"""Unique identifier for a company."""
     credit_note_id: str
     r"""Unique identifier for a credit note."""
-    
+
 
 class GetAccountingCreditNoteRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    credit_note_id: Annotated[str, pydantic.Field(alias="creditNoteId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    credit_note_id: Annotated[
+        str,
+        pydantic.Field(alias="creditNoteId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a credit note."""
-    

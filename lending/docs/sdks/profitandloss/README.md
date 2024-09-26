@@ -24,7 +24,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.financial_statements.profit_and_loss.get(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "period_length": 4,
@@ -74,7 +73,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.financial_statements.profit_and_loss.get_categorized_accounts(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

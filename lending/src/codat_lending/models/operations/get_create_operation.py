@@ -13,11 +13,19 @@ class GetCreateOperationRequestTypedDict(TypedDict):
     r"""Unique identifier for a company."""
     push_operation_key: str
     r"""Unique identifier for the push operation."""
-    
+
 
 class GetCreateOperationRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    push_operation_key: Annotated[str, pydantic.Field(alias="pushOperationKey"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    push_operation_key: Annotated[
+        str,
+        pydantic.Field(alias="pushOperationKey"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for the push operation."""
-    

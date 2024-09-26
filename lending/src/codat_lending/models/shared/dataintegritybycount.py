@@ -20,15 +20,36 @@ class DataIntegrityByCountTypedDict(TypedDict):
     r"""The total of unmatched and matched."""
     unmatched: NotRequired[Decimal]
     r"""The number of records of the type specified in the route which don't have a match."""
-    
+
 
 class DataIntegrityByCount(BaseModel):
-    match_percentage: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="matchPercentage")] = None
+    match_percentage: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="matchPercentage"),
+    ] = None
     r"""The percentage of records of the type specified in the route which have a match."""
-    matched: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    matched: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The number of records of the type specified in the route which do have a match."""
-    total: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    total: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The total of unmatched and matched."""
-    unmatched: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    unmatched: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The number of records of the type specified in the route which don't have a match."""
-    

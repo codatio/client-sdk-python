@@ -19,17 +19,40 @@ class GetAccountingDirectIncomeAttachmentRequestTypedDict(TypedDict):
     r"""Unique identifier for a direct income."""
     timeout_in_minutes: NotRequired[int]
     r"""Time limit for the push operation to complete before it is timed out."""
-    
+
 
 class GetAccountingDirectIncomeAttachmentRequest(BaseModel):
-    attachment_id: Annotated[str, pydantic.Field(alias="attachmentId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    attachment_id: Annotated[
+        str,
+        pydantic.Field(alias="attachmentId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for an attachment."""
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    direct_income_id: Annotated[str, pydantic.Field(alias="directIncomeId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    direct_income_id: Annotated[
+        str,
+        pydantic.Field(alias="directIncomeId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a direct income."""
-    timeout_in_minutes: Annotated[Optional[int], pydantic.Field(alias="timeoutInMinutes"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    timeout_in_minutes: Annotated[
+        Optional[int],
+        pydantic.Field(alias="timeoutInMinutes"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""Time limit for the push operation to complete before it is timed out."""
-    

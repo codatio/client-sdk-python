@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .paymentlinelink import PaymentLineLink, PaymentLineLinkTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -38,12 +44,19 @@ class PaymentLineTypedDict(TypedDict):
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
     links: NotRequired[Nullable[List[PaymentLineLinkTypedDict]]]
-    
+
 
 class PaymentLine(BaseModel):
-    amount: Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))]
+    amount: Annotated[
+        Decimal,
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ]
     r"""Amount in the payment currency."""
-    allocated_on_date: Annotated[Optional[str], pydantic.Field(alias="allocatedOnDate")] = None
+
+    allocated_on_date: Annotated[
+        Optional[str], pydantic.Field(alias="allocatedOnDate")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -64,8 +77,9 @@ class PaymentLine(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     links: OptionalNullable[List[PaymentLineLink]] = UNSET
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["allocatedOnDate", "links"]
@@ -79,9 +93,13 @@ class PaymentLine(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -91,4 +109,3 @@ class PaymentLine(BaseModel):
                 m[k] = val
 
         return m
-        

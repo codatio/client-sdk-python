@@ -29,7 +29,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.data_integrity.details(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
@@ -87,7 +86,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.data_integrity.status(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
@@ -137,7 +135,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.data_integrity.summaries(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

@@ -11,7 +11,9 @@ from codat_lending.accounts_payable import AccountsPayable
 from codat_lending.accounts_receivable import AccountsReceivable
 from codat_lending.bank_statements import BankStatements
 from codat_lending.banking import Banking
-from codat_lending.codatlending_accounting_bank_data import CodatLendingAccountingBankData
+from codat_lending.codatlending_accounting_bank_data import (
+    CodatLendingAccountingBankData,
+)
 from codat_lending.companies import Companies
 from codat_lending.company_info import CompanyInfo
 from codat_lending.connections import Connections
@@ -28,6 +30,7 @@ from codat_lending.transactions import Transactions
 from codat_lending.types import OptionalNullable, UNSET
 import httpx
 from typing import Callable, Dict, Optional, Union
+
 
 class CodatLending(BaseSDK):
     r"""Lending API: Our Lending API helps you make smarter credit decisions on small businesses by enabling you to pull your customers' latest data from accounting, banking, and commerce software they are already using. It also includes features to help providers verify the accuracy of data and process it more efficiently.
@@ -58,6 +61,7 @@ class CodatLending(BaseSDK):
     | Loan writeback | Implement the [loan writeback](https://docs.codat.io/lending/guides/loan-writeback/introduction) procedure in your lending process to maintain an accurate position of a loan during the entire lending cycle. |
     <!-- End Codat Tags Table -->
     """
+
     companies: Companies
     r"""Create and manage your SMB users' companies."""
     connections: Connections
@@ -84,6 +88,7 @@ class CodatLending(BaseSDK):
     r"""Match mutable accounting data with immutable banking data to increase confidence in financial data."""
     excel_reports: ExcelReports
     r"""Download reports in Excel format."""
+
     def __init__(
         self,
         security: Union[shared.Security, Callable[[], shared.Security]],
@@ -94,7 +99,7 @@ class CodatLending(BaseSDK):
         async_client: Optional[AsyncHttpClient] = None,
         retry_config: OptionalNullable[RetryConfig] = UNSET,
         timeout_ms: Optional[int] = None,
-        debug_logger: Optional[Logger] = None
+        debug_logger: Optional[Logger] = None,
     ) -> None:
         r"""Instantiates the SDK configuring it with the provided parameters.
 
@@ -127,23 +132,27 @@ class CodatLending(BaseSDK):
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
-    
 
-        BaseSDK.__init__(self, SDKConfiguration(
-            client=client,
-            async_client=async_client,
-            security=security,
-            server_url=server_url,
-            server_idx=server_idx,
-            retry_config=retry_config,
-            timeout_ms=timeout_ms,
-            debug_logger=debug_logger
-        ))
+        BaseSDK.__init__(
+            self,
+            SDKConfiguration(
+                client=client,
+                async_client=async_client,
+                security=security,
+                server_url=server_url,
+                server_idx=server_idx,
+                retry_config=retry_config,
+                timeout_ms=timeout_ms,
+                debug_logger=debug_logger,
+            ),
+        )
 
         hooks = SDKHooks()
 
         current_server_url, *_ = self.sdk_configuration.get_server_details()
-        server_url, self.sdk_configuration.client = hooks.sdk_init(current_server_url, self.sdk_configuration.client)
+        server_url, self.sdk_configuration.client = hooks.sdk_init(
+            current_server_url, self.sdk_configuration.client
+        )
         if current_server_url != server_url:
             self.sdk_configuration.server_url = server_url
 
@@ -152,13 +161,14 @@ class CodatLending(BaseSDK):
 
         self._init_sdks()
 
-
     def _init_sdks(self):
         self.companies = Companies(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
         self.bank_statements = BankStatements(self.sdk_configuration)
         self.transactions = Transactions(self.sdk_configuration)
-        self.accounting_bank_data = CodatLendingAccountingBankData(self.sdk_configuration)
+        self.accounting_bank_data = CodatLendingAccountingBankData(
+            self.sdk_configuration
+        )
         self.banking = Banking(self.sdk_configuration)
         self.accounts_payable = AccountsPayable(self.sdk_configuration)
         self.sales = Sales(self.sdk_configuration)
@@ -171,4 +181,3 @@ class CodatLending(BaseSDK):
         self.liabilities = Liabilities(self.sdk_configuration)
         self.data_integrity = DataIntegrity(self.sdk_configuration)
         self.excel_reports = ExcelReports(self.sdk_configuration)
-    

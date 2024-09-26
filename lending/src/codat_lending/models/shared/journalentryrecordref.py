@@ -10,6 +10,7 @@ from typing_extensions import Annotated, NotRequired
 
 class JournalEntryRecordRefDataType(str, Enum):
     r"""Name of underlying data type."""
+
     BANK_TRANSACTIONS = "bankTransactions"
     BILL_CREDIT_NOTES = "billCreditNotes"
     BILL_PAYMENTS = "billPayments"
@@ -22,20 +23,23 @@ class JournalEntryRecordRefDataType(str, Enum):
     PAYMENTS = "payments"
     TRANSFERS = "transfers"
 
+
 class JournalEntryRecordRefTypedDict(TypedDict):
     r"""Links a journal entry to the underlying record that created it."""
-    
+
     data_type: NotRequired[JournalEntryRecordRefDataType]
     r"""Name of underlying data type."""
     id: NotRequired[str]
     r"""'id' of the underlying record or data type."""
-    
+
 
 class JournalEntryRecordRef(BaseModel):
     r"""Links a journal entry to the underlying record that created it."""
-    
-    data_type: Annotated[Optional[JournalEntryRecordRefDataType], pydantic.Field(alias="dataType")] = None
+
+    data_type: Annotated[
+        Optional[JournalEntryRecordRefDataType], pydantic.Field(alias="dataType")
+    ] = None
     r"""Name of underlying data type."""
+
     id: Optional[str] = None
     r"""'id' of the underlying record or data type."""
-    

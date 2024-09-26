@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .excelreporttypes import ExcelReportTypes
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
 from pydantic import model_serializer
 from typing import Optional, TypedDict
@@ -45,16 +51,23 @@ class ExcelStatusTypedDict(TypedDict):
     r"""The type of the report requested in the query string."""
     success: NotRequired[bool]
     r"""True if the requested report was successfully queued and false if the requested report was not able to be queued."""
-    
+
 
 class ExcelStatus(BaseModel):
     error_message: Annotated[Optional[str], pydantic.Field(alias="errorMessage")] = None
     r"""Error details in case the report generation request was unsuccessful."""
-    file_size: Annotated[OptionalNullable[int], pydantic.Field(alias="fileSize")] = UNSET
+
+    file_size: Annotated[OptionalNullable[int], pydantic.Field(alias="fileSize")] = (
+        UNSET
+    )
     r"""The file size in Bytes is populated upon successful generation of the report."""
+
     in_progress: Annotated[Optional[bool], pydantic.Field(alias="inProgress")] = None
     r"""When true, the request was successful and the report is being generated. If false, the request was unsuccessful and the report is not being generated."""
-    last_generated: Annotated[Optional[str], pydantic.Field(alias="lastGenerated")] = None
+
+    last_generated: Annotated[Optional[str], pydantic.Field(alias="lastGenerated")] = (
+        None
+    )
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -75,18 +88,35 @@ class ExcelStatus(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    last_invocation_id: Annotated[Optional[str], pydantic.Field(alias="lastInvocationId")] = None
+
+    last_invocation_id: Annotated[
+        Optional[str], pydantic.Field(alias="lastInvocationId")
+    ] = None
     r"""A unique ID generated for this request."""
+
     queued: Optional[str] = None
     r"""The date and time of when a successful request was queued for the most recent report."""
-    report_type: Annotated[Optional[ExcelReportTypes], pydantic.Field(alias="reportType")] = None
+
+    report_type: Annotated[
+        Optional[ExcelReportTypes], pydantic.Field(alias="reportType")
+    ] = None
     r"""The type of the report requested in the query string."""
+
     success: Optional[bool] = None
     r"""True if the requested report was successfully queued and false if the requested report was not able to be queued."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["errorMessage", "fileSize", "inProgress", "lastGenerated", "lastInvocationId", "queued", "reportType", "success"]
+        optional_fields = [
+            "errorMessage",
+            "fileSize",
+            "inProgress",
+            "lastGenerated",
+            "lastInvocationId",
+            "queued",
+            "reportType",
+            "success",
+        ]
         nullable_fields = ["fileSize"]
         null_default_fields = []
 
@@ -97,9 +127,13 @@ class ExcelStatus(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -109,4 +143,3 @@ class ExcelStatus(BaseModel):
                 m[k] = val
 
         return m
-        

@@ -41,13 +41,23 @@ class CreateBankAccountTransactionTypedDict(TypedDict):
     r"""Description of the bank transaction."""
     id: NotRequired[str]
     r"""Identifier for the bank account transaction, unique for the company in the accounting software."""
-    
+
 
 class CreateBankAccountTransaction(BaseModel):
-    amount: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+    amount: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The amount transacted in the bank transaction."""
-    balance: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    balance: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The remaining balance in the account with ID `accountId`."""
+
     date_: Annotated[Optional[str], pydantic.Field(alias="date")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -69,8 +79,9 @@ class CreateBankAccountTransaction(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     description: Optional[str] = None
     r"""Description of the bank transaction."""
+
     id: Optional[str] = None
     r"""Identifier for the bank account transaction, unique for the company in the accounting software."""
-    

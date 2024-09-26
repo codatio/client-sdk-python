@@ -13,7 +13,7 @@ class CommerceProductCategoryTypedDict(TypedDict):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-productCategories) for this data type.
     """
-    
+
     ancestor_refs: NotRequired[List[CommerceRecordRefTypedDict]]
     r"""A collection of parent product categories implicitly ordered with the immediate parent last in the list."""
     has_children: NotRequired[bool]
@@ -24,22 +24,30 @@ class CommerceProductCategoryTypedDict(TypedDict):
     name: NotRequired[str]
     r"""The name of the product category"""
     source_modified_date: NotRequired[str]
-    
+
 
 class CommerceProductCategory(BaseModel):
     r"""Product categories are used to classify a group of products together, either by type (e.g. \"Furniture\"), or sometimes by tax profile.
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-productCategories) for this data type.
     """
-    
-    ancestor_refs: Annotated[Optional[List[CommerceRecordRef]], pydantic.Field(alias="ancestorRefs")] = None
+
+    ancestor_refs: Annotated[
+        Optional[List[CommerceRecordRef]], pydantic.Field(alias="ancestorRefs")
+    ] = None
     r"""A collection of parent product categories implicitly ordered with the immediate parent last in the list."""
+
     has_children: Annotated[Optional[bool], pydantic.Field(alias="hasChildren")] = None
     r"""A boolean indicating whether there are other product categories beneath this one in the hierarchy."""
+
     id: Optional[str] = None
     r"""The unique identifier of the product category"""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     name: Optional[str] = None
     r"""The name of the product category"""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None

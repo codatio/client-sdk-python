@@ -10,15 +10,18 @@ from typing_extensions import Annotated, NotRequired
 
 class StartUploadSessionRequestDataType(str, Enum):
     r"""A key for a Codat data type."""
+
     BANKING_ACCOUNTS = "banking-accounts"
     BANKING_TRANSACTIONS = "banking-transactions"
+
 
 class StartUploadSessionRequestTypedDict(TypedDict):
     data_type: NotRequired[StartUploadSessionRequestDataType]
     r"""A key for a Codat data type."""
-    
+
 
 class StartUploadSessionRequest(BaseModel):
-    data_type: Annotated[Optional[StartUploadSessionRequestDataType], pydantic.Field(alias="dataType")] = None
+    data_type: Annotated[
+        Optional[StartUploadSessionRequestDataType], pydantic.Field(alias="dataType")
+    ] = None
     r"""A key for a Codat data type."""
-    

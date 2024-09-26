@@ -4,7 +4,13 @@ from __future__ import annotations
 from .accountingaddress import AccountingAddress, AccountingAddressTypedDict
 from .customerstatus import CustomerStatus
 from .phonenumber import PhoneNumber, PhoneNumberTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
 from pydantic import model_serializer
 from typing import List, Optional, TypedDict
@@ -42,14 +48,17 @@ class ContactTypedDict(TypedDict):
     r"""Name of a contact for a customer."""
     phone: NotRequired[Nullable[List[PhoneNumberTypedDict]]]
     r"""An array of Phone numbers."""
-    
+
 
 class Contact(BaseModel):
     status: CustomerStatus
     r"""Status of customer."""
+
     address: Optional[AccountingAddress] = None
+
     email: OptionalNullable[str] = UNSET
     r"""Email of a contact for a customer."""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -71,11 +80,13 @@ class Contact(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     name: OptionalNullable[str] = UNSET
     r"""Name of a contact for a customer."""
+
     phone: OptionalNullable[List[PhoneNumber]] = UNSET
     r"""An array of Phone numbers."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["address", "email", "modifiedDate", "name", "phone"]
@@ -89,9 +100,13 @@ class Contact(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -101,4 +116,3 @@ class Contact(BaseModel):
                 m[k] = val
 
         return m
-        

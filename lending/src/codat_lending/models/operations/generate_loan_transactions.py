@@ -11,20 +11,30 @@ from typing_extensions import Annotated
 
 class QueryParamSourceType(str, Enum):
     r"""Data source type."""
+
     BANKING = "banking"
     COMMERCE = "commerce"
     ACCOUNTING = "accounting"
+
 
 class GenerateLoanTransactionsRequestTypedDict(TypedDict):
     company_id: str
     r"""Unique identifier for a company."""
     source_type: QueryParamSourceType
     r"""Data source type."""
-    
+
 
 class GenerateLoanTransactionsRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    source_type: Annotated[QueryParamSourceType, pydantic.Field(alias="sourceType"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))]
+
+    source_type: Annotated[
+        QueryParamSourceType,
+        pydantic.Field(alias="sourceType"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ]
     r"""Data source type."""
-    

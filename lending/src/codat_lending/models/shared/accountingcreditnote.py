@@ -2,13 +2,22 @@
 
 from __future__ import annotations
 from .accountingcustomerref import AccountingCustomerRef, AccountingCustomerRefTypedDict
-from .accountingpaymentallocation import AccountingPaymentAllocation, AccountingPaymentAllocationTypedDict
+from .accountingpaymentallocation import (
+    AccountingPaymentAllocation,
+    AccountingPaymentAllocationTypedDict,
+)
 from .creditnotelineitem import CreditNoteLineItem, CreditNoteLineItemTypedDict
 from .creditnotestatus import CreditNoteStatus
+from .items import Items, ItemsTypedDict
 from .metadata import Metadata, MetadataTypedDict
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
-from .withholdingtax_items import WithholdingTaxItems, WithholdingTaxItemsTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -33,7 +42,7 @@ class AccountingCreditNoteTypedDict(TypedDict):
     * Payment allocations against the payments type, in this case an invoice.
     * Which customers the credit notes have been issued to.
     """
-    
+
     discount_percentage: Decimal
     r"""Percentage rate (from 0 to 100) of discounts applied to the credit note."""
     remaining_credit: Decimal
@@ -147,7 +156,9 @@ class AccountingCreditNoteTypedDict(TypedDict):
     modified_date: NotRequired[str]
     note: NotRequired[Nullable[str]]
     r"""Any additional information about the credit note. Where possible, Codat links to a data field in the accounting software that is publicly available. This means that the contents of the note field are included when a credit note is emailed from the accounting software to the customer."""
-    payment_allocations: NotRequired[Nullable[List[AccountingPaymentAllocationTypedDict]]]
+    payment_allocations: NotRequired[
+        Nullable[List[AccountingPaymentAllocationTypedDict]]
+    ]
     r"""An array of payment allocations."""
     source_modified_date: NotRequired[str]
     supplemental_data: NotRequired[SupplementalDataTypedDict]
@@ -155,8 +166,8 @@ class AccountingCreditNoteTypedDict(TypedDict):
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    withholding_tax: NotRequired[Nullable[List[WithholdingTaxItemsTypedDict]]]
-    
+    withholding_tax: NotRequired[Nullable[List[ItemsTypedDict]]]
+
 
 class AccountingCreditNote(BaseModel):
     r"""> View the coverage for credit notes in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=creditNotes\" target=\"_blank\">Data coverage explorer</a>.
@@ -172,26 +183,93 @@ class AccountingCreditNote(BaseModel):
     * Payment allocations against the payments type, in this case an invoice.
     * Which customers the credit notes have been issued to.
     """
-    
-    discount_percentage: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="discountPercentage")]
+
+    discount_percentage: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="discountPercentage"),
+    ]
     r"""Percentage rate (from 0 to 100) of discounts applied to the credit note."""
-    remaining_credit: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="remainingCredit")]
+
+    remaining_credit: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="remainingCredit"),
+    ]
     r"""Unused balance of totalAmount originally raised."""
+
     status: CreditNoteStatus
     r"""Current state of the credit note."""
-    sub_total: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="subTotal")]
+
+    sub_total: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="subTotal"),
+    ]
     r"""Value of the credit note, including discounts and excluding tax."""
-    total_amount: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalAmount")]
+
+    total_amount: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalAmount"),
+    ]
     r"""Total amount of credit that has been applied to the customer's accounts receivable"""
-    total_discount: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalDiscount")]
+
+    total_discount: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalDiscount"),
+    ]
     r"""Any discounts applied to the credit note amount."""
-    total_tax_amount: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalTaxAmount")]
+
+    total_tax_amount: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalTaxAmount"),
+    ]
     r"""Any tax applied to the credit note amount."""
-    additional_tax_amount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="additionalTaxAmount")] = None
+
+    additional_tax_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="additionalTaxAmount"),
+    ] = None
     r"""Additional tax amount applied to credit note."""
-    additional_tax_percentage: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="additionalTaxPercentage")] = None
+
+    additional_tax_percentage: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="additionalTaxPercentage"),
+    ] = None
     r"""Percentage rate of any additional tax applied to the credit note."""
-    allocated_on_date: Annotated[Optional[str], pydantic.Field(alias="allocatedOnDate")] = None
+
+    allocated_on_date: Annotated[
+        Optional[str], pydantic.Field(alias="allocatedOnDate")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -212,8 +290,12 @@ class AccountingCreditNote(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    credit_note_number: Annotated[OptionalNullable[str], pydantic.Field(alias="creditNoteNumber")] = UNSET
+
+    credit_note_number: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="creditNoteNumber")
+    ] = UNSET
     r"""Friendly reference for the credit note."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -223,7 +305,15 @@ class AccountingCreditNote(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    currency_rate: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="currencyRate")] = UNSET
+
+    currency_rate: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="currencyRate"),
+    ] = UNSET
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.
@@ -257,9 +347,14 @@ class AccountingCreditNote(BaseModel):
     |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, specify a currencyRate in the request body.  |
     """
-    customer_ref: Annotated[Optional[AccountingCustomerRef], pydantic.Field(alias="customerRef")] = None
+
+    customer_ref: Annotated[
+        Optional[AccountingCustomerRef], pydantic.Field(alias="customerRef")
+    ] = None
+
     id: Optional[str] = None
     r"""Identifier for the credit note, unique to the company in the accounting software."""
+
     issue_date: Annotated[Optional[str], pydantic.Field(alias="issueDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -281,25 +376,69 @@ class AccountingCreditNote(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    line_items: Annotated[OptionalNullable[List[CreditNoteLineItem]], pydantic.Field(alias="lineItems")] = UNSET
+
+    line_items: Annotated[
+        OptionalNullable[List[CreditNoteLineItem]], pydantic.Field(alias="lineItems")
+    ] = UNSET
+
     metadata: Optional[Metadata] = None
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     note: OptionalNullable[str] = UNSET
     r"""Any additional information about the credit note. Where possible, Codat links to a data field in the accounting software that is publicly available. This means that the contents of the note field are included when a credit note is emailed from the accounting software to the customer."""
-    payment_allocations: Annotated[OptionalNullable[List[AccountingPaymentAllocation]], pydantic.Field(alias="paymentAllocations")] = UNSET
+
+    payment_allocations: Annotated[
+        OptionalNullable[List[AccountingPaymentAllocation]],
+        pydantic.Field(alias="paymentAllocations"),
+    ] = UNSET
     r"""An array of payment allocations."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    withholding_tax: Annotated[OptionalNullable[List[WithholdingTaxItems]], pydantic.Field(alias="withholdingTax")] = UNSET
-    
+
+    withholding_tax: Annotated[
+        OptionalNullable[List[Items]], pydantic.Field(alias="withholdingTax")
+    ] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["additionalTaxAmount", "additionalTaxPercentage", "allocatedOnDate", "creditNoteNumber", "currency", "currencyRate", "customerRef", "id", "issueDate", "lineItems", "metadata", "modifiedDate", "note", "paymentAllocations", "sourceModifiedDate", "supplementalData", "withholdingTax"]
-        nullable_fields = ["creditNoteNumber", "currencyRate", "lineItems", "note", "paymentAllocations", "withholdingTax"]
+        optional_fields = [
+            "additionalTaxAmount",
+            "additionalTaxPercentage",
+            "allocatedOnDate",
+            "creditNoteNumber",
+            "currency",
+            "currencyRate",
+            "customerRef",
+            "id",
+            "issueDate",
+            "lineItems",
+            "metadata",
+            "modifiedDate",
+            "note",
+            "paymentAllocations",
+            "sourceModifiedDate",
+            "supplementalData",
+            "withholdingTax",
+        ]
+        nullable_fields = [
+            "creditNoteNumber",
+            "currencyRate",
+            "lineItems",
+            "note",
+            "paymentAllocations",
+            "withholdingTax",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -309,9 +448,13 @@ class AccountingCreditNote(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -321,4 +464,3 @@ class AccountingCreditNote(BaseModel):
                 m[k] = val
 
         return m
-        

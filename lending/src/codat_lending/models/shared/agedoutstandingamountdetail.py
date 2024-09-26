@@ -15,11 +15,15 @@ class AgedOutstandingAmountDetailTypedDict(TypedDict):
     r"""The amount outstanding."""
     name: NotRequired[str]
     r"""Name of data type with outstanding amount for given period."""
-    
+
 
 class AgedOutstandingAmountDetail(BaseModel):
-    amount: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+    amount: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The amount outstanding."""
+
     name: Optional[str] = None
     r"""Name of data type with outstanding amount for given period."""
-    

@@ -15,13 +15,26 @@ class GetAccountingTransferRequestTypedDict(TypedDict):
     r"""Unique identifier for a connection."""
     transfer_id: str
     r"""Unique identifier for a transfer."""
-    
+
 
 class GetAccountingTransferRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    transfer_id: Annotated[str, pydantic.Field(alias="transferId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    transfer_id: Annotated[
+        str,
+        pydantic.Field(alias="transferId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a transfer."""
-    

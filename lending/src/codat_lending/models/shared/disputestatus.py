@@ -6,6 +6,7 @@ from enum import Enum
 
 class DisputeStatus(str, Enum):
     r"""Current status of the dispute"""
+
     WON = "Won"
     LOST = "Lost"
     ACCEPTED = "Accepted"

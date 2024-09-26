@@ -23,7 +23,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.manage_data.get_status(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
 })

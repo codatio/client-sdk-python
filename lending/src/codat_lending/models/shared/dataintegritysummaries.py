@@ -9,8 +9,7 @@ from typing_extensions import NotRequired
 
 class DataIntegritySummariesTypedDict(TypedDict):
     summaries: NotRequired[List[DataIntegritySummaryTypedDict]]
-    
+
 
 class DataIntegritySummaries(BaseModel):
     summaries: Optional[List[DataIntegritySummary]] = None
-    

@@ -42,7 +42,7 @@ class AccountingAgedCreditorReportTypedDict(TypedDict):
 
     The report will be grouped per supplier and depending on the periods requested. The details indicates whether the amounts owed come from outstanding bills or bill credit notes.
     """
-    
+
     data: NotRequired[List[AgedCreditorTypedDict]]
     r"""Array of aged creditor."""
     generated: NotRequired[str]
@@ -87,7 +87,7 @@ class AccountingAgedCreditorReportTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
 
 class AccountingAgedCreditorReport(BaseModel):
     r"""The Aged Creditors report shows the total balance owed by a business to its suppliers over time.
@@ -123,9 +123,10 @@ class AccountingAgedCreditorReport(BaseModel):
 
     The report will be grouped per supplier and depending on the periods requested. The details indicates whether the amounts owed come from outstanding bills or bill credit notes.
     """
-    
+
     data: Optional[List[AgedCreditor]] = None
     r"""Array of aged creditor."""
+
     generated: Optional[str] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -147,6 +148,7 @@ class AccountingAgedCreditorReport(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     report_date: Annotated[Optional[str], pydantic.Field(alias="reportDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -168,4 +170,3 @@ class AccountingAgedCreditorReport(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    

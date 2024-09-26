@@ -11,20 +11,38 @@ from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from .trackingcategoryref import TrackingCategoryRef, TrackingCategoryRefTypedDict
 from .transferaccount import TransferAccount, TransferAccountTypedDict
 from .validation import Validation, ValidationTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
+from enum import Enum
 import pydantic
 from pydantic import model_serializer
 from typing import List, Optional, TypedDict
 from typing_extensions import Annotated, NotRequired, deprecated
 
 
-@deprecated("warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.")
+class AccountingCreateTransferResponseStatus(str, Enum):
+    r"""The status of the transfer in the account"""
+
+    UNKNOWN = "Unknown"
+    UNRECONCILED = "Unreconciled"
+    RECONCILED = "Reconciled"
+    VOID = "Void"
+
+
+@deprecated(
+    "warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+)
 class AccountingCreateTransferResponseAccountingTransferTypedDict(TypedDict):
     r"""> View the coverage for transfers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers\" target=\"_blank\">Data coverage explorer</a>.
 
     A transfer records the movement of money between two bank accounts, or between a bank account and a nominal account. It is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction).
     """
-    
+
     contact_ref: NotRequired[ContactRefTypedDict]
     date_: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -58,6 +76,8 @@ class AccountingCreateTransferResponseAccountingTransferTypedDict(TypedDict):
     metadata: NotRequired[MetadataTypedDict]
     modified_date: NotRequired[str]
     source_modified_date: NotRequired[str]
+    status: NotRequired[Nullable[AccountingCreateTransferResponseStatus]]
+    r"""The status of the transfer in the account"""
     supplemental_data: NotRequired[SupplementalDataTypedDict]
     r"""Supplemental data is additional data you can include in our standard data types.
 
@@ -67,16 +87,21 @@ class AccountingCreateTransferResponseAccountingTransferTypedDict(TypedDict):
     r"""Account details of the account sending or receiving the transfer."""
     tracking_category_refs: NotRequired[Nullable[List[TrackingCategoryRefTypedDict]]]
     r"""Reference to the tracking categories this transfer is being tracked against."""
-    
 
-@deprecated("warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.")
+
+@deprecated(
+    "warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+)
 class AccountingCreateTransferResponseAccountingTransfer(BaseModel):
     r"""> View the coverage for transfers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers\" target=\"_blank\">Data coverage explorer</a>.
 
     A transfer records the movement of money between two bank accounts, or between a bank account and a nominal account. It is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction).
     """
-    
-    contact_ref: Annotated[Optional[ContactRef], pydantic.Field(alias="contactRef")] = None
+
+    contact_ref: Annotated[Optional[ContactRef], pydantic.Field(alias="contactRef")] = (
+        None
+    )
+
     date_: Annotated[Optional[str], pydantic.Field(alias="date")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -98,31 +123,72 @@ class AccountingCreateTransferResponseAccountingTransfer(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    deposited_record_refs: Annotated[OptionalNullable[List[RecordRef]], pydantic.Field(alias="depositedRecordRefs")] = UNSET
+
+    deposited_record_refs: Annotated[
+        OptionalNullable[List[RecordRef]], pydantic.Field(alias="depositedRecordRefs")
+    ] = UNSET
     r"""List of selected transactions to associate with the transfer. Use this field to include transactions which are posted to the _undeposited funds_ (or other holding) account within the transfer."""
+
     description: OptionalNullable[str] = UNSET
     r"""Description of the transfer."""
+
     from_: Annotated[Optional[TransferAccount], pydantic.Field(alias="from")] = None
     r"""Account details of the account sending or receiving the transfer."""
+
     id: Optional[str] = None
     r"""Unique identifier for the transfer."""
+
     metadata: Optional[Metadata] = None
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
+    status: OptionalNullable[AccountingCreateTransferResponseStatus] = UNSET
+    r"""The status of the transfer in the account"""
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
+
     to: Optional[TransferAccount] = None
     r"""Account details of the account sending or receiving the transfer."""
-    tracking_category_refs: Annotated[OptionalNullable[List[TrackingCategoryRef]], pydantic.Field(alias="trackingCategoryRefs")] = UNSET
+
+    tracking_category_refs: Annotated[
+        OptionalNullable[List[TrackingCategoryRef]],
+        pydantic.Field(alias="trackingCategoryRefs"),
+    ] = UNSET
     r"""Reference to the tracking categories this transfer is being tracked against."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["contactRef", "date", "depositedRecordRefs", "description", "from", "id", "metadata", "modifiedDate", "sourceModifiedDate", "supplementalData", "to", "trackingCategoryRefs"]
-        nullable_fields = ["depositedRecordRefs", "description", "trackingCategoryRefs"]
+        optional_fields = [
+            "contactRef",
+            "date",
+            "depositedRecordRefs",
+            "description",
+            "from",
+            "id",
+            "metadata",
+            "modifiedDate",
+            "sourceModifiedDate",
+            "status",
+            "supplementalData",
+            "to",
+            "trackingCategoryRefs",
+        ]
+        nullable_fields = [
+            "depositedRecordRefs",
+            "description",
+            "status",
+            "trackingCategoryRefs",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -132,9 +198,13 @@ class AccountingCreateTransferResponseAccountingTransfer(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -144,7 +214,7 @@ class AccountingCreateTransferResponseAccountingTransfer(BaseModel):
                 m[k] = val
 
         return m
-        
+
 
 class AccountingCreateTransferResponseTypedDict(TypedDict):
     company_id: str
@@ -201,7 +271,9 @@ class AccountingCreateTransferResponseTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    data: NotRequired[Nullable[AccountingCreateTransferResponseAccountingTransferTypedDict]]
+    data: NotRequired[
+        Nullable[AccountingCreateTransferResponseAccountingTransferTypedDict]
+    ]
     data_type: NotRequired[DataType]
     r"""Available data types"""
     error_message: NotRequired[Nullable[str]]
@@ -212,15 +284,18 @@ class AccountingCreateTransferResponseTypedDict(TypedDict):
     r"""Number of seconds the push operation must complete within before it times out."""
     validation: NotRequired[ValidationTypedDict]
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""
-    
+
 
 class AccountingCreateTransferResponse(BaseModel):
     company_id: Annotated[str, pydantic.Field(alias="companyId")]
     r"""Unique identifier for your SMB in Codat."""
+
     data_connection_key: Annotated[str, pydantic.Field(alias="dataConnectionKey")]
     r"""Unique identifier for a company's data connection."""
+
     push_operation_key: Annotated[str, pydantic.Field(alias="pushOperationKey")]
     r"""A unique identifier generated by Codat to represent this single push operation. This identifier can be used to track the status of the push, and should be persisted."""
+
     requested_on_utc: Annotated[str, pydantic.Field(alias="requestedOnUtc")]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -242,13 +317,19 @@ class AccountingCreateTransferResponse(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     status: PushOperationStatus
     r"""The current status of the push operation."""
+
     status_code: Annotated[int, pydantic.Field(alias="statusCode")]
     r"""Push status code."""
+
     changes: OptionalNullable[List[PushOperationChange]] = UNSET
     r"""Contains a single entry that communicates which record has changed and the manner in which it changed."""
-    completed_on_utc: Annotated[Optional[str], pydantic.Field(alias="completedOnUtc")] = None
+
+    completed_on_utc: Annotated[
+        Optional[str], pydantic.Field(alias="completedOnUtc")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -269,22 +350,53 @@ class AccountingCreateTransferResponse(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     data: OptionalNullable[AccountingCreateTransferResponseAccountingTransfer] = UNSET
+
     data_type: Annotated[Optional[DataType], pydantic.Field(alias="dataType")] = None
     r"""Available data types"""
-    error_message: Annotated[OptionalNullable[str], pydantic.Field(alias="errorMessage")] = UNSET
+
+    error_message: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="errorMessage")
+    ] = UNSET
     r"""A message about the error."""
-    timeout_in_minutes: Annotated[OptionalNullable[int], pydantic.Field(alias="timeoutInMinutes")] = UNSET
+
+    timeout_in_minutes: Annotated[
+        OptionalNullable[int], pydantic.Field(alias="timeoutInMinutes")
+    ] = UNSET
     r"""Number of minutes the push operation must complete within before it times out."""
-    timeout_in_seconds: Annotated[OptionalNullable[int], pydantic.Field(deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.", alias="timeoutInSeconds")] = UNSET
+
+    timeout_in_seconds: Annotated[
+        OptionalNullable[int],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.",
+            alias="timeoutInSeconds",
+        ),
+    ] = UNSET
     r"""Number of seconds the push operation must complete within before it times out."""
+
     validation: Optional[Validation] = None
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["changes", "completedOnUtc", "data", "dataType", "errorMessage", "timeoutInMinutes", "timeoutInSeconds", "validation"]
-        nullable_fields = ["changes", "data", "errorMessage", "timeoutInMinutes", "timeoutInSeconds"]
+        optional_fields = [
+            "changes",
+            "completedOnUtc",
+            "data",
+            "dataType",
+            "errorMessage",
+            "timeoutInMinutes",
+            "timeoutInSeconds",
+            "validation",
+        ]
+        nullable_fields = [
+            "changes",
+            "data",
+            "errorMessage",
+            "timeoutInMinutes",
+            "timeoutInSeconds",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -294,9 +406,13 @@ class AccountingCreateTransferResponse(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -306,4 +422,3 @@ class AccountingCreateTransferResponse(BaseModel):
                 m[k] = val
 
         return m
-        

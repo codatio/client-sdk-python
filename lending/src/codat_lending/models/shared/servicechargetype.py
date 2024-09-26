@@ -6,6 +6,7 @@ from enum import Enum
 
 class ServiceChargeType(str, Enum):
     r"""The type of the service charge."""
+
     GENERIC = "Generic"
     SHIPPING = "Shipping"
     OVERPAYMENT = "Overpayment"

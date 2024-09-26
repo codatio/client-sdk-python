@@ -68,19 +68,55 @@ class ProfitAndLossReportTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
 
 class ProfitAndLossReport(BaseModel):
-    gross_profit: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="grossProfit")]
+    gross_profit: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="grossProfit"),
+    ]
     r"""Gross profit of the company in the given date range."""
-    net_operating_profit: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="netOperatingProfit")]
+
+    net_operating_profit: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="netOperatingProfit"),
+    ]
     r"""Net operating profit of the company in the given date range."""
-    net_other_income: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="netOtherIncome")]
+
+    net_other_income: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="netOtherIncome"),
+    ]
     r"""Net other income of the company in the given date range."""
-    net_profit: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="netProfit")]
+
+    net_profit: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="netProfit"),
+    ]
     r"""Net profit of the company in the given date range."""
-    cost_of_sales: Annotated[Optional[ReportLine], pydantic.Field(alias="costOfSales")] = None
+
+    cost_of_sales: Annotated[
+        Optional[ReportLine], pydantic.Field(alias="costOfSales")
+    ] = None
+
     expenses: Optional[ReportLine] = None
+
     from_date: Annotated[Optional[str], pydantic.Field(alias="fromDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -102,9 +138,17 @@ class ProfitAndLossReport(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     income: Optional[ReportLine] = None
-    other_expenses: Annotated[Optional[ReportLine], pydantic.Field(alias="otherExpenses")] = None
-    other_income: Annotated[Optional[ReportLine], pydantic.Field(alias="otherIncome")] = None
+
+    other_expenses: Annotated[
+        Optional[ReportLine], pydantic.Field(alias="otherExpenses")
+    ] = None
+
+    other_income: Annotated[
+        Optional[ReportLine], pydantic.Field(alias="otherIncome")
+    ] = None
+
     to_date: Annotated[Optional[str], pydantic.Field(alias="toDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -126,4 +170,3 @@ class ProfitAndLossReport(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    

@@ -53,11 +53,17 @@ class CashFlowStatementTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
 
 class CashFlowStatement(BaseModel):
-    cash_payments: Annotated[Optional[ReportLine], pydantic.Field(alias="cashPayments")] = None
-    cash_receipts: Annotated[Optional[ReportLine], pydantic.Field(alias="cashReceipts")] = None
+    cash_payments: Annotated[
+        Optional[ReportLine], pydantic.Field(alias="cashPayments")
+    ] = None
+
+    cash_receipts: Annotated[
+        Optional[ReportLine], pydantic.Field(alias="cashReceipts")
+    ] = None
+
     from_date: Annotated[Optional[str], pydantic.Field(alias="fromDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -79,6 +85,7 @@ class CashFlowStatement(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     to_date: Annotated[Optional[str], pydantic.Field(alias="toDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -100,4 +107,3 @@ class CashFlowStatement(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    

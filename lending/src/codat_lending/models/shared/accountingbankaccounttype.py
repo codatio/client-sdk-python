@@ -9,6 +9,7 @@ class AccountingBankAccountType(str, Enum):
     For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.
     For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
     """
+
     UNKNOWN = "Unknown"
     CREDIT = "Credit"
     DEBIT = "Debit"

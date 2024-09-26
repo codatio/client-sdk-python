@@ -33,14 +33,16 @@ s = CodatLending(
     ),
 )
 
-
 res = s.loan_writeback.bank_transactions.create(request={
-    "account_id": "<value>",
+    "account_id": "<id>",
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     "accounting_create_bank_transactions": {
         "account_id": "7110701885",
         "transactions": [
+            {
+                "date_": "2022-10-23T00:00:00Z",
+            },
             {
                 "date_": "2022-10-23T00:00:00Z",
             },
@@ -98,9 +100,8 @@ s = CodatLending(
     ),
 )
 
-
 res = s.loan_writeback.bank_transactions.get_create_model(request={
-    "account_id": "<value>",
+    "account_id": "<id>",
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
 })

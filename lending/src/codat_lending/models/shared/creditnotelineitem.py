@@ -2,11 +2,20 @@
 
 from __future__ import annotations
 from .accountref import AccountRef, AccountRefTypedDict
-from .accountsreceivabletracking import AccountsReceivableTracking, AccountsReceivableTrackingTypedDict
+from .accountsreceivabletracking import (
+    AccountsReceivableTracking,
+    AccountsReceivableTrackingTypedDict,
+)
 from .propertie_itemref import PropertieItemRef, PropertieItemRefTypedDict
 from .taxrateref import TaxRateRef, TaxRateRefTypedDict
 from .trackingcategoryref import TrackingCategoryRef, TrackingCategoryRefTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -56,30 +65,87 @@ class CreditNoteLineItemTypedDict(TypedDict):
     r"""Categories, and a project and customer, against which the item is tracked."""
     tracking_category_refs: NotRequired[Nullable[List[TrackingCategoryRefTypedDict]]]
     r"""Reference to the tracking categories to which the line item is linked."""
-    
+
 
 class CreditNoteLineItem(BaseModel):
-    quantity: Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))]
+    quantity: Annotated[
+        Decimal,
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ]
     r"""Number of units of the goods or service for which credit has been issued."""
-    unit_amount: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="unitAmount")]
+
+    unit_amount: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="unitAmount"),
+    ]
     r"""Unit price of the goods or service."""
-    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = None
+
+    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = (
+        None
+    )
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
+
     description: OptionalNullable[str] = UNSET
     r"""Friendly name of each line item. For example, the goods or service for which credit has been issued."""
-    discount_amount: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="discountAmount")] = UNSET
+
+    discount_amount: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="discountAmount"),
+    ] = UNSET
     r"""Value of any discounts applied."""
-    discount_percentage: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="discountPercentage")] = UNSET
+
+    discount_percentage: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="discountPercentage"),
+    ] = UNSET
     r"""Percentage rate of any discount applied to the line item."""
-    is_direct_income: Annotated[Optional[bool], pydantic.Field(alias="isDirectIncome")] = None
+
+    is_direct_income: Annotated[
+        Optional[bool], pydantic.Field(alias="isDirectIncome")
+    ] = None
     r"""The credit note is a direct income if `True`."""
-    item_ref: Annotated[Optional[PropertieItemRef], pydantic.Field(alias="itemRef")] = None
+
+    item_ref: Annotated[Optional[PropertieItemRef], pydantic.Field(alias="itemRef")] = (
+        None
+    )
     r"""Reference to the item the line is linked to."""
-    sub_total: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="subTotal")] = UNSET
+
+    sub_total: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="subTotal"),
+    ] = UNSET
     r"""Amount of credit associated with the line item, including discounts but excluding tax."""
-    tax_amount: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="taxAmount")] = UNSET
+
+    tax_amount: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="taxAmount"),
+    ] = UNSET
     r"""Amount of tax associated with the line item."""
-    tax_rate_ref: Annotated[Optional[TaxRateRef], pydantic.Field(alias="taxRateRef")] = None
+
+    tax_rate_ref: Annotated[
+        Optional[TaxRateRef], pydantic.Field(alias="taxRateRef")
+    ] = None
     r"""Data types that reference a tax rate, for example invoice and bill line items, use a taxRateRef that includes the ID and name of the linked tax rate.
 
     Found on:
@@ -91,17 +157,54 @@ class CreditNoteLineItem(BaseModel):
     - Invoice line items
     - Items
     """
-    total_amount: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalAmount")] = UNSET
+
+    total_amount: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalAmount"),
+    ] = UNSET
     r"""Total amount of the line item, including discounts and tax."""
+
     tracking: Optional[AccountsReceivableTracking] = None
     r"""Categories, and a project and customer, against which the item is tracked."""
-    tracking_category_refs: Annotated[OptionalNullable[List[TrackingCategoryRef]], pydantic.Field(deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.", alias="trackingCategoryRefs")] = UNSET
+
+    tracking_category_refs: Annotated[
+        OptionalNullable[List[TrackingCategoryRef]],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.",
+            alias="trackingCategoryRefs",
+        ),
+    ] = UNSET
     r"""Reference to the tracking categories to which the line item is linked."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["accountRef", "description", "discountAmount", "discountPercentage", "isDirectIncome", "itemRef", "subTotal", "taxAmount", "taxRateRef", "totalAmount", "tracking", "trackingCategoryRefs"]
-        nullable_fields = ["description", "discountAmount", "discountPercentage", "subTotal", "taxAmount", "totalAmount", "trackingCategoryRefs"]
+        optional_fields = [
+            "accountRef",
+            "description",
+            "discountAmount",
+            "discountPercentage",
+            "isDirectIncome",
+            "itemRef",
+            "subTotal",
+            "taxAmount",
+            "taxRateRef",
+            "totalAmount",
+            "tracking",
+            "trackingCategoryRefs",
+        ]
+        nullable_fields = [
+            "description",
+            "discountAmount",
+            "discountPercentage",
+            "subTotal",
+            "taxAmount",
+            "totalAmount",
+            "trackingCategoryRefs",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -111,9 +214,13 @@ class CreditNoteLineItem(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -123,4 +230,3 @@ class CreditNoteLineItem(BaseModel):
                 m[k] = val
 
         return m
-        

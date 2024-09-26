@@ -23,7 +23,7 @@ class CommerceOrderTypedDict(TypedDict):
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-orders) for this data type.
 
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
     closed_date: NotRequired[str]
@@ -102,7 +102,7 @@ class CommerceOrderTypedDict(TypedDict):
     r"""Total amount of any refunds issued on the order, including discounts and tax, but excluding gratuities. This is always negative."""
     total_tax_amount: NotRequired[Decimal]
     r"""Total amount of tax applied to the order."""
-    
+
 
 class CommerceOrder(BaseModel):
     r"""Orders contain the transaction details for all products sold by the company, and include details of any payments, service charges, or refunds related to each order. You can use data from the Orders endpoints to calculate key metrics, such as gross sales values and monthly recurring revenue (MRR).
@@ -110,9 +110,10 @@ class CommerceOrder(BaseModel):
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-orders) for this data type.
 
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
+
     closed_date: Annotated[Optional[str], pydantic.Field(alias="closedDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -134,6 +135,7 @@ class CommerceOrder(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     country: Optional[str] = None
     r"""The Codat country property is returned as it was provided in the underlying platform by the company without any formatting on our part.
 
@@ -141,6 +143,7 @@ class CommerceOrder(BaseModel):
 
     For POST operations against platforms that demand a specific format for the country code, we have documented accepted values in the [options](https://docs.codat.io/lending-api#/operations/get-companies-companyId-connections-connectionId-push) endpoint.
     """
+
     created_date: Annotated[Optional[str], pydantic.Field(alias="createdDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -162,31 +165,92 @@ class CommerceOrder(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     currency: Optional[str] = None
-    customer_ref: Annotated[Optional[CommerceCustomerRef], pydantic.Field(alias="customerRef")] = None
+
+    customer_ref: Annotated[
+        Optional[CommerceCustomerRef], pydantic.Field(alias="customerRef")
+    ] = None
     r"""Reference to the customer that placed the order."""
-    location_ref: Annotated[Optional[LocationRef], pydantic.Field(alias="locationRef")] = None
+
+    location_ref: Annotated[
+        Optional[LocationRef], pydantic.Field(alias="locationRef")
+    ] = None
     r"""Reference to the geographic location where the order was placed."""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
-    order_line_items: Annotated[Optional[List[OrderLineItem]], pydantic.Field(alias="orderLineItems")] = None
+
+    order_line_items: Annotated[
+        Optional[List[OrderLineItem]], pydantic.Field(alias="orderLineItems")
+    ] = None
+
     order_number: Annotated[Optional[str], pydantic.Field(alias="orderNumber")] = None
     r"""Friendly reference for the order in the commerce or point of sale platform."""
+
     payments: Optional[List[PaymentRef]] = None
-    service_charges: Annotated[Optional[List[ServiceCharge]], pydantic.Field(alias="serviceCharges")] = None
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    service_charges: Annotated[
+        Optional[List[ServiceCharge]], pydantic.Field(alias="serviceCharges")
+    ] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    total_amount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalAmount")] = None
+
+    total_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalAmount"),
+    ] = None
     r"""Total amount of the order, including discounts, refunds, and tax, but excluding gratuities."""
-    total_discount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalDiscount")] = None
+
+    total_discount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalDiscount"),
+    ] = None
     r"""Total amount of any discounts applied to the order, excluding tax. This is typically positive (for discounts which decrease the amount of the order), but can also be negative (for discounts which increase the amount of the order)."""
-    total_gratuity: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalGratuity")] = None
+
+    total_gratuity: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalGratuity"),
+    ] = None
     r"""Extra amount added to the order."""
-    total_refund: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalRefund")] = None
+
+    total_refund: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalRefund"),
+    ] = None
     r"""Total amount of any refunds issued on the order, including discounts and tax, but excluding gratuities. This is always negative."""
-    total_tax_amount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalTaxAmount")] = None
+
+    total_tax_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalTaxAmount"),
+    ] = None
     r"""Total amount of tax applied to the order."""
-    

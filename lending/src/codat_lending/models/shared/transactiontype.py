@@ -15,6 +15,7 @@ class TransactionType(str, Enum):
     - `Refund` — Refunds to a customer's credit or debit card.
     - `Transfer` — Secure transfer of funds to the seller's bank account.
     """
+
     PAYMENT = "Payment"
     REFUND = "Refund"
     PAYOUT = "Payout"

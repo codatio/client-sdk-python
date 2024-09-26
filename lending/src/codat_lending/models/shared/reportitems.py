@@ -16,10 +16,12 @@ from typing_extensions import Annotated, NotRequired
 
 class LoanTransactionType(str, Enum):
     r"""The type of loan transaction."""
+
     INVESTMENT = "Investment"
     REPAYMENT = "Repayment"
     INTEREST = "Interest"
     ACCURED_INTEREST = "AccuredInterest"
+
 
 class ReportItemsTypedDict(TypedDict):
     amount: NotRequired[Decimal]
@@ -51,11 +53,16 @@ class ReportItemsTypedDict(TypedDict):
     loan_ref: NotRequired[LoanRefTypedDict]
     loan_transaction_type: NotRequired[LoanTransactionType]
     r"""The type of loan transaction."""
-    
+
 
 class ReportItems(BaseModel):
-    amount: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+    amount: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The loan transaction amount."""
+
     date_: Annotated[Optional[str], pydantic.Field(alias="date")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -77,10 +84,15 @@ class ReportItems(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     item_ref: Annotated[Optional[ItemRef], pydantic.Field(alias="itemRef")] = None
+
     lender: Optional[str] = None
     r"""The name of lender providing the loan."""
+
     loan_ref: Annotated[Optional[LoanRef], pydantic.Field(alias="loanRef")] = None
-    loan_transaction_type: Annotated[Optional[LoanTransactionType], pydantic.Field(alias="loanTransactionType")] = None
+
+    loan_transaction_type: Annotated[
+        Optional[LoanTransactionType], pydantic.Field(alias="loanTransactionType")
+    ] = None
     r"""The type of loan transaction."""
-    

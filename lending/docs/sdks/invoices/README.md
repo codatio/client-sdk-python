@@ -34,12 +34,11 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.invoices.download_attachment(request={
     "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "invoice_id": "<value>",
+    "invoice_id": "<id>",
 })
 
 if res is not None:
@@ -83,10 +82,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.invoices.download_pdf(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "invoice_id": "<value>",
+    "invoice_id": "<id>",
 })
 
 if res is not None:
@@ -141,10 +139,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.invoices.get(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "invoice_id": "<value>",
+    "invoice_id": "<id>",
 })
 
 if res is not None:
@@ -193,12 +190,11 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.invoices.get_attachment(request={
     "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "invoice_id": "<value>",
+    "invoice_id": "<id>",
 })
 
 if res is not None:
@@ -258,7 +254,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.invoices.list(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "order_by": "-modifiedDate",
@@ -313,11 +308,10 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.invoices.list_attachments(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "invoice_id": "<value>",
+    "invoice_id": "<id>",
 })
 
 if res is not None:
@@ -360,7 +354,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.accounts_receivable.invoices.list_reconciled(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

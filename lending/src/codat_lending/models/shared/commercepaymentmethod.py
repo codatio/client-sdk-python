@@ -10,16 +10,18 @@ from typing_extensions import Annotated, NotRequired
 
 class CommercePaymentMethodStatus(str, Enum):
     r"""Status of the Payment Method."""
+
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
     ARCHIVED = "Archived"
+
 
 class CommercePaymentMethodTypedDict(TypedDict):
     r"""A Payment Method represents the payment method(s) used to make payments.
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-paymentMethods) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
     modified_date: NotRequired[str]
@@ -28,20 +30,25 @@ class CommercePaymentMethodTypedDict(TypedDict):
     source_modified_date: NotRequired[str]
     status: NotRequired[CommercePaymentMethodStatus]
     r"""Status of the Payment Method."""
-    
+
 
 class CommercePaymentMethod(BaseModel):
     r"""A Payment Method represents the payment method(s) used to make payments.
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-paymentMethods) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     name: Optional[str] = None
     r"""The name of the PaymentMethod"""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     status: Optional[CommercePaymentMethodStatus] = None
     r"""Status of the Payment Method."""
-    

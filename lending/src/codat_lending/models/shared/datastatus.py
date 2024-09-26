@@ -11,6 +11,7 @@ from typing_extensions import Annotated, NotRequired
 
 class DataTypes(str, Enum):
     r"""Available data types"""
+
     ACCOUNT_TRANSACTIONS = "accountTransactions"
     BALANCE_SHEET = "balanceSheet"
     BANK_ACCOUNTS = "bankAccounts"
@@ -55,9 +56,10 @@ class DataTypes(str, Enum):
     COMMERCE_TAX_COMPONENTS = "commerce-taxComponents"
     COMMERCE_TRANSACTIONS = "commerce-transactions"
 
+
 class DataStatusTypedDict(TypedDict):
     r"""Describes the state of data in the Codat cache for a company and data type"""
-    
+
     current_status: Status
     r"""The current status of the dataset."""
     data_type: DataTypes
@@ -87,15 +89,17 @@ class DataStatusTypedDict(TypedDict):
     r"""Unique identifier for the most recent successful sync of data type."""
     latest_sync_id: NotRequired[str]
     r"""Unique identifier for most recent sync of data type."""
-    
+
 
 class DataStatus(BaseModel):
     r"""Describes the state of data in the Codat cache for a company and data type"""
-    
+
     current_status: Annotated[Status, pydantic.Field(alias="currentStatus")]
     r"""The current status of the dataset."""
+
     data_type: Annotated[DataTypes, pydantic.Field(alias="dataType")]
     r"""Available data types"""
+
     last_successful_sync: Annotated[str, pydantic.Field(alias="lastSuccessfulSync")]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -117,8 +121,13 @@ class DataStatus(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    latest_successful_sync_id: Annotated[Optional[str], pydantic.Field(alias="latestSuccessfulSyncId")] = None
+
+    latest_successful_sync_id: Annotated[
+        Optional[str], pydantic.Field(alias="latestSuccessfulSyncId")
+    ] = None
     r"""Unique identifier for the most recent successful sync of data type."""
-    latest_sync_id: Annotated[Optional[str], pydantic.Field(alias="latestSyncId")] = None
+
+    latest_sync_id: Annotated[Optional[str], pydantic.Field(alias="latestSyncId")] = (
+        None
+    )
     r"""Unique identifier for most recent sync of data type."""
-    

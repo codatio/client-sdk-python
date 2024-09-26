@@ -28,7 +28,6 @@ s = CodatLending(
     ),
 )
 
-
 s.manage_data.refresh.all_data_types(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
 })
@@ -69,7 +68,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.manage_data.refresh.data_type(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

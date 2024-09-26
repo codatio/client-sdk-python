@@ -29,13 +29,15 @@ class DataIntegrityMatchTypedDict(TypedDict):
     r"""ID GUID of the transaction."""
     type: NotRequired[str]
     r"""The data type which the data type in the URL has been matched against. For example, if you've matched accountTransactions and banking-transactions, and you call this endpoint with accountTransactions in the URL, this property would be banking-transactions."""
-    
+
 
 class DataIntegrityMatch(BaseModel):
     amount: Optional[str] = None
     r"""The transaction value."""
+
     connection_id: Annotated[Optional[str], pydantic.Field(alias="connectionId")] = None
     r"""ID GUID representing the connection of the accounting or banking platform."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -45,12 +47,15 @@ class DataIntegrityMatch(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     date_: Annotated[Optional[str], pydantic.Field(alias="date")] = None
     r"""The date of the transaction."""
+
     description: Optional[str] = None
     r"""The transaction description."""
+
     id: Optional[str] = None
     r"""ID GUID of the transaction."""
+
     type: Optional[str] = None
     r"""The data type which the data type in the URL has been matched against. For example, if you've matched accountTransactions and banking-transactions, and you call this endpoint with accountTransactions in the URL, this property would be banking-transactions."""
-    

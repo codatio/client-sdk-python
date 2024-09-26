@@ -47,13 +47,12 @@ s = CodatLending(
     ),
 )
 
-
 res = s.sales.reports.get_orders(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "number_of_periods": 491586,
-    "period_length": 776309,
-    "period_unit": shared.PeriodUnit.WEEK,
+    "number_of_periods": 393849,
+    "period_length": 491586,
+    "period_unit": shared.PeriodUnit.YEAR,
     "report_date": "29-09-2020",
 })
 
@@ -122,13 +121,12 @@ s = CodatLending(
     ),
 )
 
-
 res = s.sales.reports.get_refunds(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "number_of_periods": 277786,
-    "period_length": 876670,
-    "period_unit": shared.PeriodUnit.YEAR,
+    "number_of_periods": 810912,
+    "period_length": 277786,
+    "period_unit": shared.PeriodUnit.MONTH,
     "report_date": "29-09-2020",
 })
 

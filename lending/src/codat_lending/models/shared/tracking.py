@@ -16,13 +16,13 @@ class TrackingTypedDict(TypedDict):
 
     For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
     """
-    
+
 
 class Tracking(BaseModel):
     record_refs: Annotated[List[TrackingRecordRef], pydantic.Field(alias="recordRefs")]
+
     invoice_to: Annotated[Optional[RecordRef], pydantic.Field(alias="invoiceTo")] = None
     r"""Links the current record to the underlying record or data type that created it.
 
     For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
     """
-    

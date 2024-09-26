@@ -13,11 +13,11 @@ class PushOperationRefTypedDict(TypedDict):
     r"""Available data types"""
     id: NotRequired[str]
     r"""Unique identifier for a push operation."""
-    
+
 
 class PushOperationRef(BaseModel):
     data_type: Annotated[Optional[DataType], pydantic.Field(alias="dataType")] = None
     r"""Available data types"""
+
     id: Optional[str] = None
     r"""Unique identifier for a push operation."""
-    

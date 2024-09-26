@@ -14,6 +14,7 @@ from codat_lending.payment_methods import PaymentMethods
 from codat_lending.product_categories import ProductCategories
 from codat_lending.products import Products
 
+
 class Sales(BaseSDK):
     customers: CodatLendingCustomers
     disputes: Disputes
@@ -26,11 +27,12 @@ class Sales(BaseSDK):
     transactions: CodatLendingTransactions
     metrics: Metrics
     reports: CodatLendingReports
+
     def __init__(self, sdk_config: SDKConfiguration) -> None:
         BaseSDK.__init__(self, sdk_config)
         self.sdk_configuration = sdk_config
         self._init_sdks()
-    
+
     def _init_sdks(self):
         self.customers = CodatLendingCustomers(self.sdk_configuration)
         self.disputes = Disputes(self.sdk_configuration)
@@ -43,4 +45,3 @@ class Sales(BaseSDK):
         self.transactions = CodatLendingTransactions(self.sdk_configuration)
         self.metrics = Metrics(self.sdk_configuration)
         self.reports = CodatLendingReports(self.sdk_configuration)
-    

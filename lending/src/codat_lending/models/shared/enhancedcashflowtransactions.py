@@ -17,12 +17,12 @@ class EnhancedCashFlowTransactionsTypedDict(TypedDict):
 
     The Enhanced Cash Flow Transactions endpoint provides a fully categorized list of banking transactions for a company. Accounts and transaction data are obtained from the company's banking data sources.
     """
-    
+
     data_sources: NotRequired[List[DataSourceTypedDict]]
     report_info: NotRequired[ReportInfoTypedDict]
     r"""Report additional information, which is specific to Lending API reports."""
     report_items: NotRequired[List[EnhancedCashFlowItemTypedDict]]
-    
+
 
 class EnhancedCashFlowTransactions(BaseModel):
     r"""> **Categorization engine**
@@ -31,9 +31,16 @@ class EnhancedCashFlowTransactions(BaseModel):
 
     The Enhanced Cash Flow Transactions endpoint provides a fully categorized list of banking transactions for a company. Accounts and transaction data are obtained from the company's banking data sources.
     """
-    
-    data_sources: Annotated[Optional[List[DataSource]], pydantic.Field(alias="dataSources")] = None
-    report_info: Annotated[Optional[ReportInfo], pydantic.Field(alias="reportInfo")] = None
+
+    data_sources: Annotated[
+        Optional[List[DataSource]], pydantic.Field(alias="dataSources")
+    ] = None
+
+    report_info: Annotated[Optional[ReportInfo], pydantic.Field(alias="reportInfo")] = (
+        None
+    )
     r"""Report additional information, which is specific to Lending API reports."""
-    report_items: Annotated[Optional[List[EnhancedCashFlowItem]], pydantic.Field(alias="reportItems")] = None
-    
+
+    report_items: Annotated[
+        Optional[List[EnhancedCashFlowItem]], pydantic.Field(alias="reportItems")
+    ] = None

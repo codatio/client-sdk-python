@@ -34,7 +34,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.loan_writeback.direct_costs.create(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -64,6 +63,9 @@ res = s.loan_writeback.direct_costs.create(request={
                         {
                             "data_type": shared.TrackingRecordRefDataType.TRACKING_CATEGORIES,
                         },
+                        {
+                            "data_type": shared.TrackingRecordRefDataType.TRACKING_CATEGORIES,
+                        },
                     ],
                     "invoice_to": {
                         "data_type": "invoice",
@@ -90,7 +92,7 @@ res = s.loan_writeback.direct_costs.create(request={
                         "id": "80000028-1671794219",
                         "name": "Bank Account 1",
                     },
-                    "currency": "USD",
+                    "currency": "GBP",
                     "note": "payment allocations note",
                     "paid_on_date": "2023-01-28T10:19:52.223Z",
                     "reference": "payment allocations reference",
@@ -159,7 +161,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.loan_writeback.direct_costs.get_create_model(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

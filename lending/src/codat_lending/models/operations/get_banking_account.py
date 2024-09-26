@@ -15,13 +15,26 @@ class GetBankingAccountRequestTypedDict(TypedDict):
     r"""Unique identifier for a company."""
     connection_id: str
     r"""Unique identifier for a connection."""
-    
+
 
 class GetBankingAccountRequest(BaseModel):
-    account_id: Annotated[str, pydantic.Field(alias="accountId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    account_id: Annotated[
+        str,
+        pydantic.Field(alias="accountId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for an account."""
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    

@@ -33,12 +33,15 @@ class LoanSummaryReportInfoTypedDict(TypedDict):
     """
     report_name: NotRequired[str]
     r"""The name of the report."""
-    
+
 
 class LoanSummaryReportInfo(BaseModel):
     company_name: Annotated[Optional[str], pydantic.Field(alias="companyName")] = None
     r"""Name of the company queried."""
-    generated_date: Annotated[Optional[str], pydantic.Field(alias="generatedDate")] = None
+
+    generated_date: Annotated[Optional[str], pydantic.Field(alias="generatedDate")] = (
+        None
+    )
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -59,6 +62,6 @@ class LoanSummaryReportInfo(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     report_name: Annotated[Optional[str], pydantic.Field(alias="reportName")] = None
     r"""The name of the report."""
-    

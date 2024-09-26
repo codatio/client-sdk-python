@@ -19,17 +19,20 @@ class PushOptionChoiceTypedDict(TypedDict):
     r"""The option type."""
     value: NotRequired[str]
     r"""Allowed value for field."""
-    
+
 
 class PushOptionChoice(BaseModel):
     description: Optional[str] = None
     r"""A description of the property."""
+
     display_name: Annotated[Optional[str], pydantic.Field(alias="displayName")] = None
     r"""The property's display name."""
+
     required: Optional[bool] = None
     r"""The property is required if `True`."""
+
     type: Optional[PushOptionType] = None
     r"""The option type."""
+
     value: Optional[str] = None
     r"""Allowed value for field."""
-    

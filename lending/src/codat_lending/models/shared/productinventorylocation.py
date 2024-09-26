@@ -17,11 +17,17 @@ class ProductInventoryLocationTypedDict(TypedDict):
     r"""Reference to the geographic location where the order was placed."""
     quantity: NotRequired[Decimal]
     r"""The quantity of stock remaining at location."""
-    
+
 
 class ProductInventoryLocation(BaseModel):
-    location_ref: Annotated[Optional[LocationRef], pydantic.Field(alias="locationRef")] = None
+    location_ref: Annotated[
+        Optional[LocationRef], pydantic.Field(alias="locationRef")
+    ] = None
     r"""Reference to the geographic location where the order was placed."""
-    quantity: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    quantity: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The quantity of stock remaining at location."""
-    

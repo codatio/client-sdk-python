@@ -18,15 +18,33 @@ class GetAccountingAgedDebtorsReportRequestTypedDict(TypedDict):
     r"""The length of period in days."""
     report_date: NotRequired[date]
     r"""Date the report is generated up to."""
-    
+
 
 class GetAccountingAgedDebtorsReportRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    number_of_periods: Annotated[Optional[int], pydantic.Field(alias="numberOfPeriods"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    number_of_periods: Annotated[
+        Optional[int],
+        pydantic.Field(alias="numberOfPeriods"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""Number of periods to include in the report."""
-    period_length_days: Annotated[Optional[int], pydantic.Field(alias="periodLengthDays"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    period_length_days: Annotated[
+        Optional[int],
+        pydantic.Field(alias="periodLengthDays"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""The length of period in days."""
-    report_date: Annotated[Optional[date], pydantic.Field(alias="reportDate"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    report_date: Annotated[
+        Optional[date],
+        pydantic.Field(alias="reportDate"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""Date the report is generated up to."""
-    

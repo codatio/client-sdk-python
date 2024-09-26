@@ -34,7 +34,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.loan_writeback.transfers.create(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -46,7 +45,7 @@ res = s.loan_writeback.transfers.create(request={
         "date_": "2023-01-26T11:51:18.104Z",
         "deposited_record_refs": [
             {
-                "data_type": "invoice",
+                "data_type": "accountTransaction",
             },
         ],
         "description": "test transfers push 20230126 12.08",
@@ -62,12 +61,13 @@ res = s.loan_writeback.transfers.create(request={
         },
         "modified_date": "2022-10-23T00:00:00Z",
         "source_modified_date": "2022-10-23T00:00:00Z",
+        "status": shared.AccountingTransferStatus.UNKNOWN,
         "to": {
             "account_ref": {
                 "id": "80000004-1671793811",
             },
             "amount": Decimal("12"),
-            "currency": "USD",
+            "currency": "EUR",
         },
         "tracking_category_refs": [
             {
@@ -127,7 +127,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.loan_writeback.transfers.get_create_model(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

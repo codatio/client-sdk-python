@@ -6,6 +6,7 @@ from enum import Enum
 
 class ReportBasis(str, Enum):
     r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
+
     UNKNOWN = "Unknown"
     ACCRUAL = "Accrual"
     CASH = "Cash"

@@ -24,10 +24,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.loan_writeback.create_operations.get(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "push_operation_key": "b18d8d81-fd7b-4764-a31e-475cb1f36591",
+    "push_operation_key": "b888f774-3e7c-4135-a18c-6b985523c4bc",
 })
 
 if res is not None:
@@ -70,7 +69,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.loan_writeback.create_operations.list(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

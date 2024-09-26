@@ -12,9 +12,12 @@ from typing_extensions import Annotated
 class FileUploadTypedDict(TypedDict):
     file: CodatFileTypedDict
     r"""The file to be uploaded as an attachment."""
-    
+
 
 class FileUpload(BaseModel):
-    file: Annotated[CodatFile, pydantic.Field(alias=""), FieldMetadata(multipart=MultipartFormMetadata(file=True))]
+    file: Annotated[
+        CodatFile,
+        pydantic.Field(alias=""),
+        FieldMetadata(multipart=MultipartFormMetadata(file=True)),
+    ]
     r"""The file to be uploaded as an attachment."""
-    

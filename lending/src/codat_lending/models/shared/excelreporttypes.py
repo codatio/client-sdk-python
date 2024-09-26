@@ -6,6 +6,7 @@ from enum import Enum
 
 class ExcelReportTypes(str, Enum):
     r"""The type of the report requested in the query string."""
+
     AUDIT = "audit"
     ENHANCED_FINANCIALS = "enhancedFinancials"
     ENHANCED_INVOICES = "enhancedInvoices"

@@ -6,6 +6,7 @@ from enum import Enum
 
 class TransactionCategoryStatus(str, Enum):
     r"""The status of the transaction category."""
+
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
     ARCHIVED = "Archived"

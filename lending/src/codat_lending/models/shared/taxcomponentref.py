@@ -7,18 +7,18 @@ from typing import TypedDict
 
 class TaxComponentRefTypedDict(TypedDict):
     r"""Taxes rates reference object depending on the rates being available on source commerce software."""
-    
+
     id: str
     r"""The unique identitifer of the tax component being referenced."""
     name: str
     r"""Name of the tax component being referenced."""
-    
+
 
 class TaxComponentRef(BaseModel):
     r"""Taxes rates reference object depending on the rates being available on source commerce software."""
-    
+
     id: str
     r"""The unique identitifer of the tax component being referenced."""
+
     name: str
     r"""Name of the tax component being referenced."""
-    

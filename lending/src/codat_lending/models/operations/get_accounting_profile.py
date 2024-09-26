@@ -11,9 +11,12 @@ from typing_extensions import Annotated
 class GetAccountingProfileRequestTypedDict(TypedDict):
     company_id: str
     r"""Unique identifier for a company."""
-    
+
 
 class GetAccountingProfileRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    

@@ -13,11 +13,13 @@ class LinksTypedDict(TypedDict):
     self_: HalRefTypedDict
     next: NotRequired[HalRefTypedDict]
     previous: NotRequired[HalRefTypedDict]
-    
+
 
 class Links(BaseModel):
     current: HalRef
+
     self_: Annotated[HalRef, pydantic.Field(alias="self")]
+
     next: Optional[HalRef] = None
+
     previous: Optional[HalRef] = None
-    

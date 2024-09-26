@@ -9,9 +9,8 @@ from typing_extensions import NotRequired
 class HalRefTypedDict(TypedDict):
     href: NotRequired[str]
     r"""Uri hypertext reference."""
-    
+
 
 class HalRef(BaseModel):
     href: Optional[str] = None
     r"""Uri hypertext reference."""
-    

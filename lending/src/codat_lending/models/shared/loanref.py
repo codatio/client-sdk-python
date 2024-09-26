@@ -14,13 +14,16 @@ class LoanRefTypedDict(TypedDict):
     r"""The id of the object being referred to."""
     type: NotRequired[str]
     r"""The object type data is referring to, e.g. Account."""
-    
+
 
 class LoanRef(BaseModel):
-    data_connection_id: Annotated[Optional[str], pydantic.Field(alias="dataConnectionId")] = None
+    data_connection_id: Annotated[
+        Optional[str], pydantic.Field(alias="dataConnectionId")
+    ] = None
     r"""The dataConnectionId the object being referred to is associated with."""
+
     id: Optional[str] = None
     r"""The id of the object being referred to."""
+
     type: Optional[str] = None
     r"""The object type data is referring to, e.g. Account."""
-    

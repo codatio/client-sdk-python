@@ -17,15 +17,33 @@ class DownloadAccountingCustomerAttachmentRequestTypedDict(TypedDict):
     r"""Unique identifier for a connection."""
     customer_id: str
     r"""Unique identifier for a customer."""
-    
+
 
 class DownloadAccountingCustomerAttachmentRequest(BaseModel):
-    attachment_id: Annotated[str, pydantic.Field(alias="attachmentId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    attachment_id: Annotated[
+        str,
+        pydantic.Field(alias="attachmentId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for an attachment."""
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    customer_id: Annotated[str, pydantic.Field(alias="customerId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    customer_id: Annotated[
+        str,
+        pydantic.Field(alias="customerId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a customer."""
-    

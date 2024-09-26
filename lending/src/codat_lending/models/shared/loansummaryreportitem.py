@@ -45,16 +45,26 @@ class LoanSummaryReportItemTypedDict(TypedDict):
     r"""The total loan drawdowns."""
     total_repayments: NotRequired[Decimal]
     r"""The total loan repayments which includes capital plus any interest."""
-    
+
 
 class LoanSummaryReportItem(BaseModel):
-    balance: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+    balance: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The loan outstanding balance.  This may not equal totalDrawdowns - totalRepayments due to interest which has been accrued."""
+
     description: Optional[str] = None
     r"""The description of the object being referred to. E.g. the account."""
+
     lender: Optional[str] = None
     r"""The name of lender providing the loan."""
-    record_ref: Annotated[Optional[LoanSummaryRecordRef], pydantic.Field(alias="recordRef")] = None
+
+    record_ref: Annotated[
+        Optional[LoanSummaryRecordRef], pydantic.Field(alias="recordRef")
+    ] = None
+
     start_date: Annotated[Optional[str], pydantic.Field(alias="startDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -76,8 +86,23 @@ class LoanSummaryReportItem(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    total_drawdowns: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalDrawdowns")] = None
+
+    total_drawdowns: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalDrawdowns"),
+    ] = None
     r"""The total loan drawdowns."""
-    total_repayments: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalRepayments")] = None
+
+    total_repayments: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalRepayments"),
+    ] = None
     r"""The total loan repayments which includes capital plus any interest."""
-    

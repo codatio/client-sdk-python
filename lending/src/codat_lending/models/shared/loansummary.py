@@ -13,10 +13,14 @@ class LoanSummaryTypedDict(TypedDict):
     report_info: NotRequired[LoanSummaryReportInfoTypedDict]
     report_items: NotRequired[List[LoanSummaryReportItemTypedDict]]
     r"""Returns a summary of all loan activity for that integration type"""
-    
+
 
 class LoanSummary(BaseModel):
-    report_info: Annotated[Optional[LoanSummaryReportInfo], pydantic.Field(alias="reportInfo")] = None
-    report_items: Annotated[Optional[List[LoanSummaryReportItem]], pydantic.Field(alias="reportItems")] = None
+    report_info: Annotated[
+        Optional[LoanSummaryReportInfo], pydantic.Field(alias="reportInfo")
+    ] = None
+
+    report_items: Annotated[
+        Optional[List[LoanSummaryReportItem]], pydantic.Field(alias="reportItems")
+    ] = None
     r"""Returns a summary of all loan activity for that integration type"""
-    

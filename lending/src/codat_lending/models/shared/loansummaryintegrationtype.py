@@ -6,6 +6,7 @@ from enum import Enum
 
 class LoanSummaryIntegrationType(str, Enum):
     r"""The integration type begin referred to."""
+
     ACCOUNTING = "Accounting"
     BANKING = "Banking"
     COMMERCE = "Commerce"

@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .paymentlinktype import PaymentLinkType
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -68,7 +74,7 @@ class PaymentLineLinkTypedDict(TypedDict):
     """
     id: NotRequired[str]
     r"""Unique identifier of the transaction represented by the link."""
-    
+
 
 class PaymentLineLink(BaseModel):
     type: PaymentLinkType
@@ -84,12 +90,25 @@ class PaymentLineLink(BaseModel):
     `Manual Journal`
     `Discount` - ID refers to the payment
     """
-    amount: Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = UNSET
+
+    amount: Annotated[
+        OptionalNullable[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = UNSET
     r"""Amount by which the balance of the linked entity is altered, in the currency of the linked entity.
     A negative link amount _reduces_ the outstanding amount on the accounts receivable account.
     A positive link amount _increases_ the outstanding amount on the accounts receivable account.
     """
-    currency_rate: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="currencyRate")] = UNSET
+
+    currency_rate: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="currencyRate"),
+    ] = UNSET
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.
@@ -123,9 +142,10 @@ class PaymentLineLink(BaseModel):
     |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, specify a currencyRate in the request body.  |
     """
+
     id: Optional[str] = None
     r"""Unique identifier of the transaction represented by the link."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["amount", "currencyRate", "id"]
@@ -139,9 +159,13 @@ class PaymentLineLink(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -151,4 +175,3 @@ class PaymentLineLink(BaseModel):
                 m[k] = val
 
         return m
-        

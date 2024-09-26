@@ -19,7 +19,7 @@ class CommerceDisputeTypedDict(TypedDict):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for this data type.
     """
-    
+
     currency: str
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -83,7 +83,7 @@ class CommerceDisputeTypedDict(TypedDict):
     r"""Current status of the dispute"""
     total_amount: NotRequired[Any]
     r"""Total transaction amount that is under dispute."""
-    
+
 
 class CommerceDispute(BaseModel):
     r"""A customer may file a payment dispute with their bank or other card issuer when they're unsatisfied with their purchase or believe they have been charged incorrectly. For example:
@@ -95,7 +95,7 @@ class CommerceDispute(BaseModel):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for this data type.
     """
-    
+
     currency: str
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -105,8 +105,10 @@ class CommerceDispute(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     id: str
     r"""A unique, persistent identifier for this record"""
+
     created_date: Annotated[Optional[str], pydantic.Field(alias="createdDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -128,8 +130,13 @@ class CommerceDispute(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    disputed_transactions: Annotated[Optional[List[TransactionSourceRef]], pydantic.Field(alias="disputedTransactions")] = None
+
+    disputed_transactions: Annotated[
+        Optional[List[TransactionSourceRef]],
+        pydantic.Field(alias="disputedTransactions"),
+    ] = None
     r"""Link to the source event(s) which triggered this transaction."""
+
     due_date: Annotated[Optional[str], pydantic.Field(alias="dueDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -151,12 +158,18 @@ class CommerceDispute(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     reason: Optional[str] = None
     r"""Reason for the dispute"""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     status: Optional[DisputeStatus] = None
     r"""Current status of the dispute"""
+
     total_amount: Annotated[Optional[Any], pydantic.Field(alias="totalAmount")] = None
     r"""Total transaction amount that is under dispute."""
-    

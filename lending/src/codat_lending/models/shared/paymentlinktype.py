@@ -17,6 +17,7 @@ class PaymentLinkType(str, Enum):
     `Manual Journal`
     `Discount` - ID refers to the payment
     """
+
     UNKNOWN = "Unknown"
     UNLINKED = "Unlinked"
     INVOICE = "Invoice"

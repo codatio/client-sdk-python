@@ -6,6 +6,7 @@ from enum import Enum
 
 class PushOperationStatus(str, Enum):
     r"""The current status of the push operation."""
+
     PENDING = "Pending"
     FAILED = "Failed"
     SUCCESS = "Success"

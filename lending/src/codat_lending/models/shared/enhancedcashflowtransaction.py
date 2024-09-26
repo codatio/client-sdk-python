@@ -81,15 +81,26 @@ class EnhancedCashFlowTransactionTypedDict(TypedDict):
     source_ref: NotRequired[SourceRefTypedDict]
     r"""A source reference containing the `sourceType` object \"Banking\"."""
     transaction_category: NotRequired[TransactionCategoryTypedDict]
-    
+
 
 class EnhancedCashFlowTransaction(BaseModel):
-    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = None
+    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = (
+        None
+    )
     r"""An account reference containing the account id and name."""
-    amount: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    amount: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The bank transaction amount."""
-    counterparty_names: Annotated[Optional[List[str]], pydantic.Field(alias="counterpartyNames")] = None
+
+    counterparty_names: Annotated[
+        Optional[List[str]], pydantic.Field(alias="counterpartyNames")
+    ] = None
     r"""An array of counterparty names involved in the transaction."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -99,6 +110,7 @@ class EnhancedCashFlowTransaction(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     date_: Annotated[Optional[str], pydantic.Field(alias="date")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -120,10 +132,13 @@ class EnhancedCashFlowTransaction(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     description: Optional[str] = None
     r"""The description of the bank transaction."""
+
     id: Optional[str] = None
     r"""The unique identifier of the bank transaction."""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -145,9 +160,13 @@ class EnhancedCashFlowTransaction(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     platform_name: Annotated[Optional[str], pydantic.Field(alias="platformName")] = None
     r"""Returns the payment processor responsible for the transaction."""
+
     source_ref: Annotated[Optional[SourceRef], pydantic.Field(alias="sourceRef")] = None
     r"""A source reference containing the `sourceType` object \"Banking\"."""
-    transaction_category: Annotated[Optional[TransactionCategory], pydantic.Field(alias="transactionCategory")] = None
-    
+
+    transaction_category: Annotated[
+        Optional[TransactionCategory], pydantic.Field(alias="transactionCategory")
+    ] = None

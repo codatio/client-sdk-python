@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .banktransactiontype import BankTransactionType
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -31,7 +37,7 @@ class AccountingBankTransactionTypedDict(TypedDict):
     * Current account balance.
     * Transaction type, for example, credit, debit, or transfer.
     """
-    
+
     account_id: NotRequired[Nullable[str]]
     r"""Unique identifier to the `accountId` the bank transactions originates from."""
     amount: NotRequired[Decimal]
@@ -69,7 +75,7 @@ class AccountingBankTransactionTypedDict(TypedDict):
     source_modified_date: NotRequired[str]
     transaction_type: NotRequired[BankTransactionType]
     r"""Type of transaction for the bank statement line."""
-    
+
 
 class AccountingBankTransaction(BaseModel):
     r"""> **Accessing Bank Accounts through Banking API**
@@ -89,14 +95,29 @@ class AccountingBankTransaction(BaseModel):
     * Current account balance.
     * Transaction type, for example, credit, debit, or transfer.
     """
-    
-    account_id: Annotated[OptionalNullable[str], pydantic.Field(alias="accountId")] = UNSET
+
+    account_id: Annotated[OptionalNullable[str], pydantic.Field(alias="accountId")] = (
+        UNSET
+    )
     r"""Unique identifier to the `accountId` the bank transactions originates from."""
-    amount: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    amount: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The amount transacted in the bank transaction."""
-    balance: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    balance: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The remaining balance in the account with ID `accountId`."""
-    cleared_on_date: Annotated[Optional[str], pydantic.Field(alias="clearedOnDate")] = None
+
+    cleared_on_date: Annotated[Optional[str], pydantic.Field(alias="clearedOnDate")] = (
+        None
+    )
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -117,20 +138,41 @@ class AccountingBankTransaction(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     description: OptionalNullable[str] = UNSET
     r"""Description of the bank transaction."""
+
     id: Optional[str] = None
     r"""Identifier for the bank transaction, unique to the company in the accounting software."""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     reconciled: Optional[bool] = None
     r"""`True` if the bank transaction has been [reconciled](https://www.xero.com/uk/guides/what-is-bank-reconciliation/) in the accounting software."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    transaction_type: Annotated[Optional[BankTransactionType], pydantic.Field(alias="transactionType")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
+    transaction_type: Annotated[
+        Optional[BankTransactionType], pydantic.Field(alias="transactionType")
+    ] = None
     r"""Type of transaction for the bank statement line."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["accountId", "amount", "balance", "clearedOnDate", "description", "id", "modifiedDate", "reconciled", "sourceModifiedDate", "transactionType"]
+        optional_fields = [
+            "accountId",
+            "amount",
+            "balance",
+            "clearedOnDate",
+            "description",
+            "id",
+            "modifiedDate",
+            "reconciled",
+            "sourceModifiedDate",
+            "transactionType",
+        ]
         nullable_fields = ["accountId", "description"]
         null_default_fields = []
 
@@ -141,9 +183,13 @@ class AccountingBankTransaction(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -153,4 +199,3 @@ class AccountingBankTransaction(BaseModel):
                 m[k] = val
 
         return m
-        

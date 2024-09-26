@@ -34,15 +34,20 @@ class AccountsTypedDict(TypedDict):
     r"""Name of the banking data source, e.g. \"Plaid\"."""
     source_ref: NotRequired[SourceRefTypedDict]
     r"""A source reference containing the `sourceType` object \"Banking\"."""
-    
+
 
 class Accounts(BaseModel):
     account_name: Annotated[Optional[str], pydantic.Field(alias="accountName")] = None
     r"""The name of the account according to the provider."""
-    account_provider: Annotated[Optional[str], pydantic.Field(alias="accountProvider")] = None
+
+    account_provider: Annotated[
+        Optional[str], pydantic.Field(alias="accountProvider")
+    ] = None
     r"""The bank or other financial institution providing the account."""
+
     account_type: Annotated[Optional[str], pydantic.Field(alias="accountType")] = None
     r"""The type of banking account, e.g. credit or debit."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -52,10 +57,19 @@ class Accounts(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    current_balance: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="currentBalance")] = None
+
+    current_balance: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="currentBalance"),
+    ] = None
     r"""The balance of the bank account."""
+
     platform_name: Annotated[Optional[str], pydantic.Field(alias="platformName")] = None
     r"""Name of the banking data source, e.g. \"Plaid\"."""
+
     source_ref: Annotated[Optional[SourceRef], pydantic.Field(alias="sourceRef")] = None
     r"""A source reference containing the `sourceType` object \"Banking\"."""
-    

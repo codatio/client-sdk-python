@@ -23,14 +23,14 @@ class TaxRateRefTypedDict(TypedDict):
     - Invoice line items
     - Items
     """
-    
+
     effective_tax_rate: NotRequired[Decimal]
     r"""Applicable tax rate."""
     id: NotRequired[str]
     r"""Unique identifier for the tax rate in the accounting software."""
     name: NotRequired[str]
     r"""Name of the tax rate in the accounting software."""
-    
+
 
 class TaxRateRef(BaseModel):
     r"""Data types that reference a tax rate, for example invoice and bill line items, use a taxRateRef that includes the ID and name of the linked tax rate.
@@ -44,11 +44,19 @@ class TaxRateRef(BaseModel):
     - Invoice line items
     - Items
     """
-    
-    effective_tax_rate: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="effectiveTaxRate")] = None
+
+    effective_tax_rate: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="effectiveTaxRate"),
+    ] = None
     r"""Applicable tax rate."""
+
     id: Optional[str] = None
     r"""Unique identifier for the tax rate in the accounting software."""
+
     name: Optional[str] = None
     r"""Name of the tax rate in the accounting software."""
-    

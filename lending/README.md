@@ -4,15 +4,71 @@
 Lending helps you make smarter credit decisions on small businesses by enabling you to pull your customers' latest data from the operating systems they are already using. You can use that data for automating decisioning and surfacing new insights on the customer, all via one API.
 <!-- End Codat Library Description -->
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Lending API: Our Lending API helps you make smarter credit decisions on small businesses by enabling you to pull your customers' latest data from accounting, banking, and commerce software they are already using. It also includes features to help providers verify the accuracy of data and process it more efficiently.
+
+The Lending API is built on top of the latest accounting, commerce, and banking data, providing you with the most important data points you need to get a full picture of SMB creditworthiness and make a comprehensive assessment of your customers.
+
+[Explore product](https://docs.codat.io/lending/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
+
+<!-- Start Codat Tags Table -->
+## Endpoints
+
+| Endpoints | Description |
+| :- |:- |
+| Companies | Create and manage your SMB users' companies. |
+| Connections | Create new and manage existing data connections for a company. |
+| Bank statements | Retrieve banking data from linked bank accounts. |
+| Sales | Retrieve standardized sales data from a linked commerce software. |
+| Financial statements | Financial data and reports from a linked accounting software. |
+| Liabilities | Debt and other liabilities. |
+| Accounts payable | Data from a linked accounting software representing money the business owes money to its suppliers. |
+| Accounts receivable | Data from a linked accounting software representing money owed to the business for sold goods or services. |
+| Transactions | Data from a linked accounting software representing transactions. |
+| Company info | View company information fetched from the source platform. |
+| Data integrity | Match mutable accounting data with immutable banking data to increase confidence in financial data. |
+| Excel reports | Download reports in Excel format. |
+| Manage data | Control how data is retrieved from an integration. |
+| File upload | Endpoints to manage uploaded files. |
+| Loan writeback | Implement the [loan writeback](https://docs.codat.io/lending/guides/loan-writeback/introduction) procedure in your lending process to maintain an accurate position of a loan during the entire lending cycle. |
+<!-- End Codat Tags Table -->
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [IDE Support](#ide-support)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [File uploads](#file-uploads)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Debugging](#debugging)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-PIP
+The SDK can be installed with either *pip* or *poetry* package managers.
+
+### PIP
+
+*PIP* is the default package installer for Python, enabling easy installation and management of packages from PyPI via the command line.
+
 ```bash
 pip install codat-lending
 ```
 
-Poetry
+### Poetry
+
+*Poetry* is a modern tool that simplifies dependency management and package publishing by using a single `pyproject.toml` file to handle project metadata and dependencies.
+
 ```bash
 poetry add codat-lending
 ```
@@ -35,15 +91,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -69,11 +119,6 @@ async def main():
     res = await s.companies.create_async(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
-        "groups": [
-            {
-                "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-            },
-        ],
     })
     if res is not None:
         # handle response
@@ -86,94 +131,32 @@ asyncio.run(main())
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [companies](docs/sdks/companies/README.md)
-
-* [create](docs/sdks/companies/README.md#create) - Create company
-* [delete](docs/sdks/companies/README.md#delete) - Delete a company
-* [get](docs/sdks/companies/README.md#get) - Get company
-* [list](docs/sdks/companies/README.md#list) - List companies
-* [update](docs/sdks/companies/README.md#update) - Update company
-
-### [connections](docs/sdks/connections/README.md)
-
-* [create](docs/sdks/connections/README.md#create) - Create connection
-* [delete](docs/sdks/connections/README.md#delete) - Delete connection
-* [get](docs/sdks/connections/README.md#get) - Get connection
-* [list](docs/sdks/connections/README.md#list) - List connections
-* [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
-
-### [bank_statements](docs/sdks/bankstatements/README.md)
-
-* [end_upload_session](docs/sdks/bankstatements/README.md#end_upload_session) - End upload session
-* [get_upload_configuration](docs/sdks/bankstatements/README.md#get_upload_configuration) - Get upload configuration
-* [set_upload_configuration](docs/sdks/bankstatements/README.md#set_upload_configuration) - Set upload configuration
-* [start_upload_session](docs/sdks/bankstatements/README.md#start_upload_session) - Start upload session
-* [upload_bank_statement_data](docs/sdks/bankstatements/README.md#upload_bank_statement_data) - Upload data
-
-
-### [transactions.account_transactions](docs/sdks/accounttransactions/README.md)
-
-* [get](docs/sdks/accounttransactions/README.md#get) - Get account transaction
-* [list](docs/sdks/accounttransactions/README.md#list) - List account transactions
-
-### [transactions.direct_costs](docs/sdks/codatlendingdirectcosts/README.md)
-
-* [download_attachment](docs/sdks/codatlendingdirectcosts/README.md#download_attachment) - Download direct cost attachment
-* [get](docs/sdks/codatlendingdirectcosts/README.md#get) - Get direct cost
-* [get_attachment](docs/sdks/codatlendingdirectcosts/README.md#get_attachment) - Get direct cost attachment
-* [list](docs/sdks/codatlendingdirectcosts/README.md#list) - List direct costs
-* [list_attachments](docs/sdks/codatlendingdirectcosts/README.md#list_attachments) - List direct cost attachments
-
-### [transactions.transfers](docs/sdks/codatlendingtransfers/README.md)
-
-* [get](docs/sdks/codatlendingtransfers/README.md#get) - Get transfer
-* [list](docs/sdks/codatlendingtransfers/README.md#list) - List transfers
-
-### [transactions.journal_entries](docs/sdks/journalentries/README.md)
-
-* [get](docs/sdks/journalentries/README.md#get) - Get journal entry
-* [list](docs/sdks/journalentries/README.md#list) - List journal entries
-
-### [transactions.journals](docs/sdks/journals/README.md)
-
-* [get](docs/sdks/journals/README.md#get) - Get journal
-* [list](docs/sdks/journals/README.md#list) - List journals
+<details open>
+<summary>Available methods</summary>
 
 ### [accounting_bank_data](docs/sdks/codatlendingaccountingbankdata/README.md)
 
 * [list_transactions](docs/sdks/codatlendingaccountingbankdata/README.md#list_transactions) - List bank account transactions
 
-### [accounting_bank_data.accounts](docs/sdks/accounts/README.md)
+#### [accounting_bank_data.accounts](docs/sdks/accounts/README.md)
 
 * [get](docs/sdks/accounts/README.md#get) - Get bank account
 * [list](docs/sdks/accounts/README.md#list) - List bank accounts
 
-
-### [banking.account_balances](docs/sdks/accountbalances/README.md)
-
-* [list](docs/sdks/accountbalances/README.md#list) - List account balances
-
-### [banking.accounts](docs/sdks/codatlendingaccounts/README.md)
-
-* [get](docs/sdks/codatlendingaccounts/README.md#get) - Get account
-* [list](docs/sdks/codatlendingaccounts/README.md#list) - List accounts
-
-### [banking.transaction_categories](docs/sdks/transactioncategories/README.md)
-
-* [get](docs/sdks/transactioncategories/README.md#get) - Get transaction category
-* [list](docs/sdks/transactioncategories/README.md#list) - List transaction categories
-
-### [banking.transactions](docs/sdks/codatlendingbankingtransactions/README.md)
-
-* [get](docs/sdks/codatlendingbankingtransactions/README.md#get) - Get bank transaction
-* [list](docs/sdks/codatlendingbankingtransactions/README.md#list) - List transactions
-
-### [banking.categorized_statement](docs/sdks/categorizedstatement/README.md)
-
-* [get](docs/sdks/categorizedstatement/README.md#get) - Get categorized bank statement
+### [accounts_payable](docs/sdks/accountspayable/README.md)
 
 
-### [accounts_payable.bills](docs/sdks/bills/README.md)
+#### [accounts_payable.bill_credit_notes](docs/sdks/billcreditnotes/README.md)
+
+* [get](docs/sdks/billcreditnotes/README.md#get) - Get bill credit note
+* [list](docs/sdks/billcreditnotes/README.md#list) - List bill credit notes
+
+#### [accounts_payable.bill_payments](docs/sdks/billpayments/README.md)
+
+* [get](docs/sdks/billpayments/README.md#get) - Get bill payment
+* [list](docs/sdks/billpayments/README.md#list) - List bill payments
+
+#### [accounts_payable.bills](docs/sdks/bills/README.md)
 
 * [download_attachment](docs/sdks/bills/README.md#download_attachment) - Download bill attachment
 * [get](docs/sdks/bills/README.md#get) - Get bill
@@ -181,7 +164,7 @@ asyncio.run(main())
 * [list](docs/sdks/bills/README.md#list) - List bills
 * [list_attachments](docs/sdks/bills/README.md#list_attachments) - List bill attachments
 
-### [accounts_payable.suppliers](docs/sdks/suppliers/README.md)
+#### [accounts_payable.suppliers](docs/sdks/suppliers/README.md)
 
 * [download_attachment](docs/sdks/suppliers/README.md#download_attachment) - Download supplier attachment
 * [get](docs/sdks/suppliers/README.md#get) - Get supplier
@@ -189,80 +172,15 @@ asyncio.run(main())
 * [list](docs/sdks/suppliers/README.md#list) - List suppliers
 * [list_attachments](docs/sdks/suppliers/README.md#list_attachments) - List supplier attachments
 
-### [accounts_payable.bill_credit_notes](docs/sdks/billcreditnotes/README.md)
-
-* [get](docs/sdks/billcreditnotes/README.md#get) - Get bill credit note
-* [list](docs/sdks/billcreditnotes/README.md#list) - List bill credit notes
-
-### [accounts_payable.bill_payments](docs/sdks/billpayments/README.md)
-
-* [get](docs/sdks/billpayments/README.md#get) - Get bill payment
-* [list](docs/sdks/billpayments/README.md#list) - List bill payments
+### [accounts_receivable](docs/sdks/accountsreceivable/README.md)
 
 
-### [sales.customers](docs/sdks/codatlendingcustomers/README.md)
+#### [accounts_receivable.credit_notes](docs/sdks/creditnotes/README.md)
 
-* [get](docs/sdks/codatlendingcustomers/README.md#get) - Get customer
-* [list](docs/sdks/codatlendingcustomers/README.md#list) - List customers
+* [get](docs/sdks/creditnotes/README.md#get) - Get credit note
+* [list](docs/sdks/creditnotes/README.md#list) - List credit notes
 
-### [sales.disputes](docs/sdks/disputes/README.md)
-
-* [get](docs/sdks/disputes/README.md#get) - Get dispute
-* [list](docs/sdks/disputes/README.md#list) - List disputes
-
-### [sales.locations](docs/sdks/locations/README.md)
-
-* [get](docs/sdks/locations/README.md#get) - Get location
-* [list](docs/sdks/locations/README.md#list) - List locations
-
-### [sales.orders](docs/sdks/orders/README.md)
-
-* [get](docs/sdks/orders/README.md#get) - Get order
-* [list](docs/sdks/orders/README.md#list) - List orders
-
-### [sales.payment_methods](docs/sdks/paymentmethods/README.md)
-
-* [get](docs/sdks/paymentmethods/README.md#get) - Get payment method
-* [list](docs/sdks/paymentmethods/README.md#list) - List payment methods
-
-### [sales.payments](docs/sdks/codatlendingsalespayments/README.md)
-
-* [get](docs/sdks/codatlendingsalespayments/README.md#get) - Get payment
-* [list](docs/sdks/codatlendingsalespayments/README.md#list) - List payments
-
-### [sales.product_categories](docs/sdks/productcategories/README.md)
-
-* [get](docs/sdks/productcategories/README.md#get) - Get product category
-* [list](docs/sdks/productcategories/README.md#list) - List product categories
-
-### [sales.products](docs/sdks/products/README.md)
-
-* [get](docs/sdks/products/README.md#get) - Get product
-* [list](docs/sdks/products/README.md#list) - List products
-
-### [sales.transactions](docs/sdks/codatlendingtransactions/README.md)
-
-* [get](docs/sdks/codatlendingtransactions/README.md#get) - Get transaction
-* [list](docs/sdks/codatlendingtransactions/README.md#list) - List transactions
-
-### [sales.metrics](docs/sdks/metrics/README.md)
-
-* [get_customer_retention](docs/sdks/metrics/README.md#get_customer_retention) - Get customer retention metrics
-* [get_lifetime_value](docs/sdks/metrics/README.md#get_lifetime_value) - Get lifetime value metrics
-* [get_revenue](docs/sdks/metrics/README.md#get_revenue) - Get commerce revenue metrics
-
-### [sales.reports](docs/sdks/codatlendingreports/README.md)
-
-* [get_orders](docs/sdks/codatlendingreports/README.md#get_orders) - Get orders report
-* [get_refunds](docs/sdks/codatlendingreports/README.md#get_refunds) - Get refunds report
-
-### [company_info](docs/sdks/companyinfo/README.md)
-
-* [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
-* [get_commerce_profile](docs/sdks/companyinfo/README.md#get_commerce_profile) - Get company commerce profile
-
-
-### [accounts_receivable.customers](docs/sdks/customers/README.md)
+#### [accounts_receivable.customers](docs/sdks/customers/README.md)
 
 * [download_attachment](docs/sdks/customers/README.md#download_attachment) - Download customer attachment
 * [get](docs/sdks/customers/README.md#get) - Get customer
@@ -270,7 +188,7 @@ asyncio.run(main())
 * [list](docs/sdks/customers/README.md#list) - List customers
 * [list_attachments](docs/sdks/customers/README.md#list_attachments) - List customer attachments
 
-### [accounts_receivable.direct_incomes](docs/sdks/directincomes/README.md)
+#### [accounts_receivable.direct_incomes](docs/sdks/directincomes/README.md)
 
 * [download_attachment](docs/sdks/directincomes/README.md#download_attachment) - Download direct income attachment
 * [get](docs/sdks/directincomes/README.md#get) - Get direct income
@@ -278,7 +196,7 @@ asyncio.run(main())
 * [list](docs/sdks/directincomes/README.md#list) - List direct incomes
 * [list_attachments](docs/sdks/directincomes/README.md#list_attachments) - List direct income attachments
 
-### [accounts_receivable.invoices](docs/sdks/invoices/README.md)
+#### [accounts_receivable.invoices](docs/sdks/invoices/README.md)
 
 * [download_attachment](docs/sdks/invoices/README.md#download_attachment) - Download invoice attachment
 * [download_pdf](docs/sdks/invoices/README.md#download_pdf) - Get invoice as PDF
@@ -288,110 +206,73 @@ asyncio.run(main())
 * [list_attachments](docs/sdks/invoices/README.md#list_attachments) - List invoice attachments
 * [list_reconciled](docs/sdks/invoices/README.md#list_reconciled) - List reconciled invoices
 
-### [accounts_receivable.credit_notes](docs/sdks/creditnotes/README.md)
-
-* [get](docs/sdks/creditnotes/README.md#get) - Get credit note
-* [list](docs/sdks/creditnotes/README.md#list) - List credit notes
-
-### [accounts_receivable.payments](docs/sdks/payments/README.md)
+#### [accounts_receivable.payments](docs/sdks/payments/README.md)
 
 * [get](docs/sdks/payments/README.md#get) - Get payment
 * [list](docs/sdks/payments/README.md#list) - List payments
 
-### [accounts_receivable.reports](docs/sdks/reports/README.md)
+#### [accounts_receivable.reports](docs/sdks/reports/README.md)
 
 * [get_aged_creditors](docs/sdks/reports/README.md#get_aged_creditors) - Aged creditors report
 * [get_aged_debtors](docs/sdks/reports/README.md#get_aged_debtors) - Aged debtors report
 * [is_aged_creditors_available](docs/sdks/reports/README.md#is_aged_creditors_available) - Aged creditors report available
 * [is_aged_debtors_available](docs/sdks/reports/README.md#is_aged_debtors_available) - Aged debtors report available
 
-### [file_upload](docs/sdks/fileupload/README.md)
+### [bank_statements](docs/sdks/bankstatements/README.md)
 
-* [download](docs/sdks/fileupload/README.md#download) - Download all files for a company
-* [list_uploaded](docs/sdks/fileupload/README.md#list_uploaded) - List all files uploaded by a company
-* [upload](docs/sdks/fileupload/README.md#upload) - Upload files for a company
+* [end_upload_session](docs/sdks/bankstatements/README.md#end_upload_session) - End upload session
+* [get_upload_configuration](docs/sdks/bankstatements/README.md#get_upload_configuration) - Get upload configuration
+* [set_upload_configuration](docs/sdks/bankstatements/README.md#set_upload_configuration) - Set upload configuration
+* [start_upload_session](docs/sdks/bankstatements/README.md#start_upload_session) - Start upload session
+* [upload_bank_statement_data](docs/sdks/bankstatements/README.md#upload_bank_statement_data) - Upload data
 
-
-### [loan_writeback.bank_accounts](docs/sdks/bankaccounts/README.md)
-
-* [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
-* [get_create_update_model](docs/sdks/bankaccounts/README.md#get_create_update_model) - Get create/update bank account model
-
-### [loan_writeback.bank_transactions](docs/sdks/banktransactions/README.md)
-
-* [create](docs/sdks/banktransactions/README.md#create) - Create bank account transactions
-* [get_create_model](docs/sdks/banktransactions/README.md#get_create_model) - Get create bank account transactions model
-
-### [loan_writeback.accounts](docs/sdks/codatlendingloanwritebackaccounts/README.md)
-
-* [create](docs/sdks/codatlendingloanwritebackaccounts/README.md#create) - Create account
-* [get_create_model](docs/sdks/codatlendingloanwritebackaccounts/README.md#get_create_model) - Get create account model
-
-### [loan_writeback.direct_costs](docs/sdks/directcosts/README.md)
-
-* [create](docs/sdks/directcosts/README.md#create) - Create direct cost
-* [get_create_model](docs/sdks/directcosts/README.md#get_create_model) - Get create direct cost model
-
-### [loan_writeback.payments](docs/sdks/codatlendingpayments/README.md)
-
-* [create](docs/sdks/codatlendingpayments/README.md#create) - Create payment
-* [get_create_model](docs/sdks/codatlendingpayments/README.md#get_create_model) - Get create payment model
-
-### [loan_writeback.suppliers](docs/sdks/codatlendingsuppliers/README.md)
-
-* [create](docs/sdks/codatlendingsuppliers/README.md#create) - Create supplier
-* [get_create_update_model](docs/sdks/codatlendingsuppliers/README.md#get_create_update_model) - Get create/update supplier model
-
-### [loan_writeback.transfers](docs/sdks/transfers/README.md)
-
-* [create](docs/sdks/transfers/README.md#create) - Create transfer
-* [get_create_model](docs/sdks/transfers/README.md#get_create_model) - Get create transfer model
-
-### [loan_writeback.create_operations](docs/sdks/createoperations/README.md)
-
-* [get](docs/sdks/createoperations/README.md#get) - Get create operation
-* [list](docs/sdks/createoperations/README.md#list) - List create operations
+### [banking](docs/sdks/banking/README.md)
 
 
-### [financial_statements.accounts](docs/sdks/codatlendingfinancialstatementsaccounts/README.md)
+#### [banking.account_balances](docs/sdks/accountbalances/README.md)
 
-* [get](docs/sdks/codatlendingfinancialstatementsaccounts/README.md#get) - Get account
-* [list](docs/sdks/codatlendingfinancialstatementsaccounts/README.md#list) - List accounts
+* [list](docs/sdks/accountbalances/README.md#list) - List account balances
 
-### [financial_statements.balance_sheet](docs/sdks/balancesheet/README.md)
+#### [banking.accounts](docs/sdks/codatlendingaccounts/README.md)
 
-* [get](docs/sdks/balancesheet/README.md#get) - Get balance sheet
-* [get_categorized_accounts](docs/sdks/balancesheet/README.md#get_categorized_accounts) - Get categorized balance sheet statement
+* [get](docs/sdks/codatlendingaccounts/README.md#get) - Get account
+* [list](docs/sdks/codatlendingaccounts/README.md#list) - List accounts
 
-### [financial_statements.cash_flow](docs/sdks/cashflow/README.md)
+#### [banking.categorized_statement](docs/sdks/categorizedstatement/README.md)
 
-* [get](docs/sdks/cashflow/README.md#get) - Get cash flow statement
+* [get](docs/sdks/categorizedstatement/README.md#get) - Get categorized bank statement
 
-### [financial_statements.profit_and_loss](docs/sdks/profitandloss/README.md)
+#### [banking.transaction_categories](docs/sdks/transactioncategories/README.md)
 
-* [get](docs/sdks/profitandloss/README.md#get) - Get profit and loss
-* [get_categorized_accounts](docs/sdks/profitandloss/README.md#get_categorized_accounts) - Get categorized profit and loss statement
+* [get](docs/sdks/transactioncategories/README.md#get) - Get transaction category
+* [list](docs/sdks/transactioncategories/README.md#list) - List transaction categories
 
-### [manage_data](docs/sdks/managedata/README.md)
+#### [banking.transactions](docs/sdks/codatlendingbankingtransactions/README.md)
 
-* [get_status](docs/sdks/managedata/README.md#get_status) - Get data status
+* [get](docs/sdks/codatlendingbankingtransactions/README.md#get) - Get bank transaction
+* [list](docs/sdks/codatlendingbankingtransactions/README.md#list) - List transactions
 
-### [manage_data.refresh](docs/sdks/refresh/README.md)
 
-* [all_data_types](docs/sdks/refresh/README.md#all_data_types) - Refresh all data
-* [data_type](docs/sdks/refresh/README.md#data_type) - Refresh data type
+### [companies](docs/sdks/companies/README.md)
 
-### [manage_data.pull_operations](docs/sdks/pulloperations/README.md)
+* [create](docs/sdks/companies/README.md#create) - Create company
+* [delete](docs/sdks/companies/README.md#delete) - Delete a company
+* [get](docs/sdks/companies/README.md#get) - Get company
+* [list](docs/sdks/companies/README.md#list) - List companies
+* [update](docs/sdks/companies/README.md#update) - Update company
 
-* [get](docs/sdks/pulloperations/README.md#get) - Get pull operation
-* [list](docs/sdks/pulloperations/README.md#list) - List pull operations
+### [company_info](docs/sdks/companyinfo/README.md)
 
-### [liabilities](docs/sdks/liabilities/README.md)
+* [get_accounting_profile](docs/sdks/companyinfo/README.md#get_accounting_profile) - Get company accounting profile
+* [get_commerce_profile](docs/sdks/companyinfo/README.md#get_commerce_profile) - Get company commerce profile
 
-* [generate_loan_summary](docs/sdks/liabilities/README.md#generate_loan_summary) - Generate loan summaries report
-* [generate_loan_transactions](docs/sdks/liabilities/README.md#generate_loan_transactions) - Generate loan transactions report
-* [get_loan_summary](docs/sdks/liabilities/README.md#get_loan_summary) - Get loan summaries
-* [list_loan_transactions](docs/sdks/liabilities/README.md#list_loan_transactions) - List loan transactions
+### [connections](docs/sdks/connections/README.md)
+
+* [create](docs/sdks/connections/README.md#create) - Create connection
+* [delete](docs/sdks/connections/README.md#delete) - Delete connection
+* [get](docs/sdks/connections/README.md#get) - Get connection
+* [list](docs/sdks/connections/README.md#list) - List connections
+* [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
 ### [data_integrity](docs/sdks/dataintegrity/README.md)
 
@@ -404,6 +285,190 @@ asyncio.run(main())
 * [download](docs/sdks/excelreports/README.md#download) - Download Excel report
 * [generate](docs/sdks/excelreports/README.md#generate) - Generate Excel report
 * [get_status](docs/sdks/excelreports/README.md#get_status) - Get Excel report status
+
+### [file_upload](docs/sdks/fileupload/README.md)
+
+* [download](docs/sdks/fileupload/README.md#download) - Download all files for a company
+* [list_uploaded](docs/sdks/fileupload/README.md#list_uploaded) - List all files uploaded by a company
+* [upload](docs/sdks/fileupload/README.md#upload) - Upload files for a company
+
+### [financial_statements](docs/sdks/financialstatements/README.md)
+
+
+#### [financial_statements.accounts](docs/sdks/codatlendingfinancialstatementsaccounts/README.md)
+
+* [get](docs/sdks/codatlendingfinancialstatementsaccounts/README.md#get) - Get account
+* [list](docs/sdks/codatlendingfinancialstatementsaccounts/README.md#list) - List accounts
+
+#### [financial_statements.balance_sheet](docs/sdks/balancesheet/README.md)
+
+* [get](docs/sdks/balancesheet/README.md#get) - Get balance sheet
+* [get_categorized_accounts](docs/sdks/balancesheet/README.md#get_categorized_accounts) - Get categorized balance sheet statement
+
+#### [financial_statements.cash_flow](docs/sdks/cashflow/README.md)
+
+* [get](docs/sdks/cashflow/README.md#get) - Get cash flow statement
+
+#### [financial_statements.profit_and_loss](docs/sdks/profitandloss/README.md)
+
+* [get](docs/sdks/profitandloss/README.md#get) - Get profit and loss
+* [get_categorized_accounts](docs/sdks/profitandloss/README.md#get_categorized_accounts) - Get categorized profit and loss statement
+
+### [liabilities](docs/sdks/liabilities/README.md)
+
+* [generate_loan_summary](docs/sdks/liabilities/README.md#generate_loan_summary) - Generate loan summaries report
+* [generate_loan_transactions](docs/sdks/liabilities/README.md#generate_loan_transactions) - Generate loan transactions report
+* [get_loan_summary](docs/sdks/liabilities/README.md#get_loan_summary) - Get loan summaries
+* [list_loan_transactions](docs/sdks/liabilities/README.md#list_loan_transactions) - List loan transactions
+
+### [loan_writeback](docs/sdks/loanwriteback/README.md)
+
+
+#### [loan_writeback.accounts](docs/sdks/codatlendingloanwritebackaccounts/README.md)
+
+* [create](docs/sdks/codatlendingloanwritebackaccounts/README.md#create) - Create account
+* [get_create_model](docs/sdks/codatlendingloanwritebackaccounts/README.md#get_create_model) - Get create account model
+
+#### [loan_writeback.bank_accounts](docs/sdks/bankaccounts/README.md)
+
+* [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
+* [get_create_update_model](docs/sdks/bankaccounts/README.md#get_create_update_model) - Get create/update bank account model
+
+#### [loan_writeback.bank_transactions](docs/sdks/banktransactions/README.md)
+
+* [create](docs/sdks/banktransactions/README.md#create) - Create bank account transactions
+* [get_create_model](docs/sdks/banktransactions/README.md#get_create_model) - Get create bank account transactions model
+
+#### [loan_writeback.create_operations](docs/sdks/createoperations/README.md)
+
+* [get](docs/sdks/createoperations/README.md#get) - Get create operation
+* [list](docs/sdks/createoperations/README.md#list) - List create operations
+
+#### [loan_writeback.direct_costs](docs/sdks/directcosts/README.md)
+
+* [create](docs/sdks/directcosts/README.md#create) - Create direct cost
+* [get_create_model](docs/sdks/directcosts/README.md#get_create_model) - Get create direct cost model
+
+#### [loan_writeback.payments](docs/sdks/codatlendingpayments/README.md)
+
+* [create](docs/sdks/codatlendingpayments/README.md#create) - Create payment
+* [get_create_model](docs/sdks/codatlendingpayments/README.md#get_create_model) - Get create payment model
+
+#### [loan_writeback.suppliers](docs/sdks/codatlendingsuppliers/README.md)
+
+* [create](docs/sdks/codatlendingsuppliers/README.md#create) - Create supplier
+* [get_create_update_model](docs/sdks/codatlendingsuppliers/README.md#get_create_update_model) - Get create/update supplier model
+
+#### [loan_writeback.transfers](docs/sdks/transfers/README.md)
+
+* [create](docs/sdks/transfers/README.md#create) - Create transfer
+* [get_create_model](docs/sdks/transfers/README.md#get_create_model) - Get create transfer model
+
+### [manage_data](docs/sdks/managedata/README.md)
+
+* [get_status](docs/sdks/managedata/README.md#get_status) - Get data status
+
+#### [manage_data.pull_operations](docs/sdks/pulloperations/README.md)
+
+* [get](docs/sdks/pulloperations/README.md#get) - Get pull operation
+* [list](docs/sdks/pulloperations/README.md#list) - List pull operations
+
+#### [manage_data.refresh](docs/sdks/refresh/README.md)
+
+* [all_data_types](docs/sdks/refresh/README.md#all_data_types) - Refresh all data
+* [data_type](docs/sdks/refresh/README.md#data_type) - Refresh data type
+
+### [sales](docs/sdks/sales/README.md)
+
+
+#### [sales.customers](docs/sdks/codatlendingcustomers/README.md)
+
+* [get](docs/sdks/codatlendingcustomers/README.md#get) - Get customer
+* [list](docs/sdks/codatlendingcustomers/README.md#list) - List customers
+
+#### [sales.disputes](docs/sdks/disputes/README.md)
+
+* [get](docs/sdks/disputes/README.md#get) - Get dispute
+* [list](docs/sdks/disputes/README.md#list) - List disputes
+
+#### [sales.locations](docs/sdks/locations/README.md)
+
+* [get](docs/sdks/locations/README.md#get) - Get location
+* [list](docs/sdks/locations/README.md#list) - List locations
+
+#### [sales.metrics](docs/sdks/metrics/README.md)
+
+* [get_customer_retention](docs/sdks/metrics/README.md#get_customer_retention) - Get customer retention metrics
+* [get_lifetime_value](docs/sdks/metrics/README.md#get_lifetime_value) - Get lifetime value metrics
+* [get_revenue](docs/sdks/metrics/README.md#get_revenue) - Get commerce revenue metrics
+
+#### [sales.orders](docs/sdks/orders/README.md)
+
+* [get](docs/sdks/orders/README.md#get) - Get order
+* [list](docs/sdks/orders/README.md#list) - List orders
+
+#### [sales.payment_methods](docs/sdks/paymentmethods/README.md)
+
+* [get](docs/sdks/paymentmethods/README.md#get) - Get payment method
+* [list](docs/sdks/paymentmethods/README.md#list) - List payment methods
+
+#### [sales.payments](docs/sdks/codatlendingsalespayments/README.md)
+
+* [get](docs/sdks/codatlendingsalespayments/README.md#get) - Get payment
+* [list](docs/sdks/codatlendingsalespayments/README.md#list) - List payments
+
+#### [sales.product_categories](docs/sdks/productcategories/README.md)
+
+* [get](docs/sdks/productcategories/README.md#get) - Get product category
+* [list](docs/sdks/productcategories/README.md#list) - List product categories
+
+#### [sales.products](docs/sdks/products/README.md)
+
+* [get](docs/sdks/products/README.md#get) - Get product
+* [list](docs/sdks/products/README.md#list) - List products
+
+#### [sales.reports](docs/sdks/codatlendingreports/README.md)
+
+* [get_orders](docs/sdks/codatlendingreports/README.md#get_orders) - Get orders report
+* [get_refunds](docs/sdks/codatlendingreports/README.md#get_refunds) - Get refunds report
+
+#### [sales.transactions](docs/sdks/codatlendingtransactions/README.md)
+
+* [get](docs/sdks/codatlendingtransactions/README.md#get) - Get transaction
+* [list](docs/sdks/codatlendingtransactions/README.md#list) - List transactions
+
+### [transactions](docs/sdks/transactions/README.md)
+
+
+#### [transactions.account_transactions](docs/sdks/accounttransactions/README.md)
+
+* [get](docs/sdks/accounttransactions/README.md#get) - Get account transaction
+* [list](docs/sdks/accounttransactions/README.md#list) - List account transactions
+
+#### [transactions.direct_costs](docs/sdks/codatlendingdirectcosts/README.md)
+
+* [download_attachment](docs/sdks/codatlendingdirectcosts/README.md#download_attachment) - Download direct cost attachment
+* [get](docs/sdks/codatlendingdirectcosts/README.md#get) - Get direct cost
+* [get_attachment](docs/sdks/codatlendingdirectcosts/README.md#get_attachment) - Get direct cost attachment
+* [list](docs/sdks/codatlendingdirectcosts/README.md#list) - List direct costs
+* [list_attachments](docs/sdks/codatlendingdirectcosts/README.md#list_attachments) - List direct cost attachments
+
+#### [transactions.journal_entries](docs/sdks/journalentries/README.md)
+
+* [get](docs/sdks/journalentries/README.md#get) - Get journal entry
+* [list](docs/sdks/journalentries/README.md#list) - List journal entries
+
+#### [transactions.journals](docs/sdks/journals/README.md)
+
+* [get](docs/sdks/journals/README.md#get) - Get journal
+* [list](docs/sdks/journals/README.md#list) - List journals
+
+#### [transactions.transfers](docs/sdks/codatlendingtransfers/README.md)
+
+* [get](docs/sdks/codatlendingtransfers/README.md#get) - Get transfer
+* [list](docs/sdks/codatlendingtransfers/README.md#list) - List transfers
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -425,15 +490,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 },
     RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
@@ -456,15 +515,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -499,26 +552,20 @@ s = CodatLending(
 res = None
 try:
     res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
-})
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
+
+    if res is not None:
+        # handle response
+        pass
 
 except errors.ErrorMessage as e:
-    # handle exception
+    # handle e.data: errors.ErrorMessageData
     raise(e)
 except errors.SDKError as e:
     # handle exception
     raise(e)
-
-if res is not None:
-    # handle response
-    pass
-
 ```
 <!-- End Error Handling [errors] -->
 
@@ -546,15 +593,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -578,15 +619,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -699,15 +734,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -746,7 +775,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 s.file_upload.upload(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

@@ -10,9 +10,8 @@ from typing_extensions import NotRequired
 class DataSourceTypedDict(TypedDict):
     accounts: NotRequired[List[AccountsTypedDict]]
     r"""An array containing bank account data for each connected banking data source that have the following data types enabled: `banking-accounts`, `banking-transactions`."""
-    
+
 
 class DataSource(BaseModel):
     accounts: Optional[List[Accounts]] = None
     r"""An array containing bank account data for each connected banking data source that have the following data types enabled: `banking-accounts`, `banking-transactions`."""
-    

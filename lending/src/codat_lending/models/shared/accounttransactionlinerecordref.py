@@ -10,6 +10,7 @@ from typing_extensions import Annotated, NotRequired
 
 class AccountTransactionLineRecordRefDataType(str, Enum):
     r"""Name of underlying data type."""
+
     BANK_TRANSACTIONS = "bankTransactions"
     BILL_CREDIT_NOTES = "billCreditNotes"
     BILL_PAYMENTS = "billPayments"
@@ -22,20 +23,24 @@ class AccountTransactionLineRecordRefDataType(str, Enum):
     PAYMENTS = "payments"
     TRANSFERS = "transfers"
 
+
 class AccountTransactionLineRecordRefTypedDict(TypedDict):
     r"""Links an account transaction line to the underlying record that created it."""
-    
+
     data_type: NotRequired[AccountTransactionLineRecordRefDataType]
     r"""Name of underlying data type."""
     id: NotRequired[str]
     r"""'id' of the underlying record or data type."""
-    
+
 
 class AccountTransactionLineRecordRef(BaseModel):
     r"""Links an account transaction line to the underlying record that created it."""
-    
-    data_type: Annotated[Optional[AccountTransactionLineRecordRefDataType], pydantic.Field(alias="dataType")] = None
+
+    data_type: Annotated[
+        Optional[AccountTransactionLineRecordRefDataType],
+        pydantic.Field(alias="dataType"),
+    ] = None
     r"""Name of underlying data type."""
+
     id: Optional[str] = None
     r"""'id' of the underlying record or data type."""
-    

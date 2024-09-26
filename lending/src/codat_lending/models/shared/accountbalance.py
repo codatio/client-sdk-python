@@ -19,15 +19,25 @@ class AccountBalanceTypedDict(TypedDict):
     r"""Funds that are not yet available in the balance"""
     reserved: NotRequired[Any]
     r"""Funds reserved as holdings"""
-    
+
 
 class AccountBalance(BaseModel):
-    available: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+    available: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The account's current balance"""
+
     currency: Optional[str] = None
     r"""The currency of the account"""
-    pending: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    pending: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""Funds that are not yet available in the balance"""
+
     reserved: Optional[Any] = None
     r"""Funds reserved as holdings"""
-    

@@ -34,7 +34,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.loan_writeback.accounts.create(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -43,7 +42,7 @@ res = s.loan_writeback.accounts.create(request={
         "current_balance": Decimal("0"),
         "description": "Invoices the business has issued but has not yet collected payment on.",
         "fully_qualified_category": "Asset.Current",
-        "fully_qualified_name": "Cash On Hand",
+        "fully_qualified_name": "Fixed Asset",
         "name": "Accounts Receivable",
         "nominal_code": "610",
         "status": shared.AccountStatus.ACTIVE,
@@ -100,7 +99,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.loan_writeback.accounts.get_create_model(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

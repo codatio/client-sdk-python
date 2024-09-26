@@ -13,11 +13,19 @@ class GetAccountingBillPaymentRequestTypedDict(TypedDict):
     r"""Unique identifier for a bill payment."""
     company_id: str
     r"""Unique identifier for a company."""
-    
+
 
 class GetAccountingBillPaymentRequest(BaseModel):
-    bill_payment_id: Annotated[str, pydantic.Field(alias="billPaymentId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    bill_payment_id: Annotated[
+        str,
+        pydantic.Field(alias="billPaymentId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a bill payment."""
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    

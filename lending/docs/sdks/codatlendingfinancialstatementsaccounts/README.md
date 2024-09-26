@@ -31,9 +31,8 @@ s = CodatLending(
     ),
 )
 
-
 res = s.financial_statements.accounts.get(request={
-    "account_id": "<value>",
+    "account_id": "<id>",
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
 })
 
@@ -81,7 +80,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.financial_statements.accounts.list(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
