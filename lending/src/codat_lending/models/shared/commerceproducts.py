@@ -18,15 +18,18 @@ class CommerceProductsTypedDict(TypedDict):
     total_results: int
     r"""Total number of items."""
     results: NotRequired[List[CommerceProductTypedDict]]
-    
+
 
 class CommerceProducts(BaseModel):
     links: Annotated[Links, pydantic.Field(alias="_links")]
+
     page_number: Annotated[int, pydantic.Field(alias="pageNumber")]
     r"""Current page number."""
+
     page_size: Annotated[int, pydantic.Field(alias="pageSize")]
     r"""Number of items to return in results array."""
+
     total_results: Annotated[int, pydantic.Field(alias="totalResults")]
     r"""Total number of items."""
+
     results: Optional[List[CommerceProduct]] = None
-    

@@ -29,7 +29,7 @@ class DataIntegrityByAmountTypedDict(TypedDict):
     r"""The total of unmatched and matched."""
     unmatched: NotRequired[Decimal]
     r"""The sum of the absolute value of transactions of the type specified in the route which don't have a match."""
-    
+
 
 class DataIntegrityByAmount(BaseModel):
     currency: Optional[str] = None
@@ -41,12 +41,34 @@ class DataIntegrityByAmount(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    match_percentage: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="matchPercentage")] = None
+
+    match_percentage: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="matchPercentage"),
+    ] = None
     r"""The percentage of the absolute value of transactions of the type specified in the route which have a match."""
-    matched: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    matched: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The sum of the absolute value of transactions of the type specified in the route which have a match."""
-    total: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    total: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The total of unmatched and matched."""
-    unmatched: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    unmatched: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The sum of the absolute value of transactions of the type specified in the route which don't have a match."""
-    

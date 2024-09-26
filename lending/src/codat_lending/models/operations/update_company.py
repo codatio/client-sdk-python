@@ -12,11 +12,20 @@ from typing_extensions import Annotated, NotRequired
 class UpdateCompanyRequestTypedDict(TypedDict):
     company_id: str
     r"""Unique identifier for a company."""
-    company_request_body: NotRequired[shared_companyrequestbody.CompanyRequestBodyTypedDict]
-    
+    company_request_body: NotRequired[
+        shared_companyrequestbody.CompanyRequestBodyTypedDict
+    ]
+
 
 class UpdateCompanyRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    company_request_body: Annotated[Optional[shared_companyrequestbody.CompanyRequestBody], FieldMetadata(request=RequestMetadata(media_type="application/json"))] = None
-    
+
+    company_request_body: Annotated[
+        Optional[shared_companyrequestbody.CompanyRequestBody],
+        FieldMetadata(request=RequestMetadata(media_type="application/json")),
+    ] = None

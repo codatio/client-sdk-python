@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .commerceaddress import CommerceAddress, CommerceAddressTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
 from pydantic import model_serializer
 from typing import List, Optional, TypedDict
@@ -14,7 +20,7 @@ class CommerceCustomerTypedDict(TypedDict):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-customers) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
     addresses: NotRequired[List[CommerceAddressTypedDict]]
@@ -51,18 +57,20 @@ class CommerceCustomerTypedDict(TypedDict):
     phone: NotRequired[Nullable[str]]
     r"""A phone number."""
     source_modified_date: NotRequired[str]
-    
+
 
 class CommerceCustomer(BaseModel):
     r"""When a customer places an order with the connected commerce store their details are added to the Customers dataset. You can use the data from the Customers endpoints to calculate key metrics, such as customer churn.
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-customers) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
+
     addresses: Optional[List[CommerceAddress]] = None
     r"""Addresses of the customer"""
+
     created_date: Annotated[Optional[str], pydantic.Field(alias="createdDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -84,21 +92,42 @@ class CommerceCustomer(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     customer_name: Annotated[Optional[str], pydantic.Field(alias="customerName")] = None
     r"""Name of the customer"""
-    default_currency: Annotated[Optional[str], pydantic.Field(alias="defaultCurrency")] = None
+
+    default_currency: Annotated[
+        Optional[str], pydantic.Field(alias="defaultCurrency")
+    ] = None
+
     email_address: Annotated[Optional[str], pydantic.Field(alias="emailAddress")] = None
     r"""Email address of the customer"""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     note: Optional[str] = None
     r"""Any additional information about the customer"""
+
     phone: OptionalNullable[str] = UNSET
     r"""A phone number."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["addresses", "createdDate", "customerName", "defaultCurrency", "emailAddress", "modifiedDate", "note", "phone", "sourceModifiedDate"]
+        optional_fields = [
+            "addresses",
+            "createdDate",
+            "customerName",
+            "defaultCurrency",
+            "emailAddress",
+            "modifiedDate",
+            "note",
+            "phone",
+            "sourceModifiedDate",
+        ]
         nullable_fields = ["phone"]
         null_default_fields = []
 
@@ -109,9 +138,13 @@ class CommerceCustomer(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -121,4 +154,3 @@ class CommerceCustomer(BaseModel):
                 m[k] = val
 
         return m
-        

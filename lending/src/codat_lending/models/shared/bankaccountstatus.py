@@ -6,6 +6,7 @@ from enum import Enum
 
 class BankAccountStatus(str, Enum):
     r"""Status of the bank account."""
+
     UNKNOWN = "Unknown"
     ACTIVE = "Active"
     ARCHIVED = "Archived"

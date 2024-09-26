@@ -18,15 +18,23 @@ class LoanSummaryRecordRefTypedDict(TypedDict):
     r"""The integration type begin referred to."""
     record_ref_type: NotRequired[LoanSummaryRecordRefType]
     r"""The datatype being referred to."""
-    
+
 
 class LoanSummaryRecordRef(BaseModel):
-    data_connection_id: Annotated[Optional[str], pydantic.Field(alias="dataConnectionId")] = None
+    data_connection_id: Annotated[
+        Optional[str], pydantic.Field(alias="dataConnectionId")
+    ] = None
     r"""The dataConnectionId the object being referred to is associated with."""
+
     id: Optional[str] = None
     r"""The id of the object being referred to."""
-    integration_type: Annotated[Optional[LoanSummaryIntegrationType], pydantic.Field(alias="integrationType")] = None
+
+    integration_type: Annotated[
+        Optional[LoanSummaryIntegrationType], pydantic.Field(alias="integrationType")
+    ] = None
     r"""The integration type begin referred to."""
-    record_ref_type: Annotated[Optional[LoanSummaryRecordRefType], pydantic.Field(alias="recordRefType")] = None
+
+    record_ref_type: Annotated[
+        Optional[LoanSummaryRecordRefType], pydantic.Field(alias="recordRefType")
+    ] = None
     r"""The datatype being referred to."""
-    

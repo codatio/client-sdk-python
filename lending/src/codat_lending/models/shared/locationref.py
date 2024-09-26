@@ -8,18 +8,18 @@ from typing_extensions import NotRequired
 
 class LocationRefTypedDict(TypedDict):
     r"""Reference to the geographic location where the order was placed."""
-    
+
     id: str
     r"""The unique identitifer of the location being referenced."""
     name: NotRequired[str]
     r"""Name of the location being referenced."""
-    
+
 
 class LocationRef(BaseModel):
     r"""Reference to the geographic location where the order was placed."""
-    
+
     id: str
     r"""The unique identitifer of the location being referenced."""
+
     name: Optional[str] = None
     r"""Name of the location being referenced."""
-    

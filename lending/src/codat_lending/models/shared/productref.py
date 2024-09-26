@@ -8,18 +8,18 @@ from typing_extensions import NotRequired
 
 class ProductRefTypedDict(TypedDict):
     r"""Reference that links the line item to the correct product details."""
-    
+
     id: str
     r"""The unique identifier of the product being referenced."""
     name: NotRequired[str]
     r"""Name of the product being referenced."""
-    
+
 
 class ProductRef(BaseModel):
     r"""Reference that links the line item to the correct product details."""
-    
+
     id: str
     r"""The unique identifier of the product being referenced."""
+
     name: Optional[str] = None
     r"""Name of the product being referenced."""
-    

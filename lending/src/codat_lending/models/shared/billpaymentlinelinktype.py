@@ -6,6 +6,7 @@ from enum import Enum
 
 class BillPaymentLineLinkType(str, Enum):
     r"""Types of links to bill payment lines."""
+
     UNKNOWN = "Unknown"
     UNLINKED = "Unlinked"
     BILL = "Bill"

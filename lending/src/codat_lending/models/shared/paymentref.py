@@ -3,7 +3,13 @@
 from __future__ import annotations
 from .paymentstatus import PaymentStatus
 from .paymenttype import PaymentType
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -78,13 +84,19 @@ class PaymentRefTypedDict(TypedDict):
     r"""Status of the payment."""
     type: NotRequired[Nullable[PaymentType]]
     r"""Type of payment."""
-    
+
 
 class PaymentRef(BaseModel):
     id: str
     r"""A unique, persistent identifier for this record"""
-    amount: Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = UNSET
+
+    amount: Annotated[
+        OptionalNullable[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = UNSET
     r"""Payment Amount (including gratuity)."""
+
     created_date: Annotated[Optional[str], pydantic.Field(alias="createdDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -106,6 +118,7 @@ class PaymentRef(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -115,6 +128,7 @@ class PaymentRef(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     due_date: Annotated[Optional[str], pydantic.Field(alias="dueDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -136,18 +150,37 @@ class PaymentRef(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
-    payment_provider: Annotated[Optional[str], pydantic.Field(alias="paymentProvider")] = None
+
+    payment_provider: Annotated[
+        Optional[str], pydantic.Field(alias="paymentProvider")
+    ] = None
     r"""Service provider of the payment, if applicable."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     status: Optional[PaymentStatus] = None
     r"""Status of the payment."""
+
     type: OptionalNullable[PaymentType] = UNSET
     r"""Type of payment."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["amount", "createdDate", "currency", "dueDate", "modifiedDate", "paymentProvider", "sourceModifiedDate", "status", "type"]
+        optional_fields = [
+            "amount",
+            "createdDate",
+            "currency",
+            "dueDate",
+            "modifiedDate",
+            "paymentProvider",
+            "sourceModifiedDate",
+            "status",
+            "type",
+        ]
         nullable_fields = ["amount", "type"]
         null_default_fields = []
 
@@ -158,9 +191,13 @@ class PaymentRef(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -170,4 +207,3 @@ class PaymentRef(BaseModel):
                 m[k] = val
 
         return m
-        

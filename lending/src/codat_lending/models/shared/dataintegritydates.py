@@ -9,7 +9,7 @@ from typing_extensions import Annotated, NotRequired
 
 class DataIntegrityDatesTypedDict(TypedDict):
     r"""Only returned for transactions. For accounts, there is nothing returned."""
-    
+
     max_date: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -94,11 +94,11 @@ class DataIntegrityDatesTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
 
 class DataIntegrityDates(BaseModel):
     r"""Only returned for transactions. For accounts, there is nothing returned."""
-    
+
     max_date: Annotated[Optional[str], pydantic.Field(alias="maxDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -120,7 +120,10 @@ class DataIntegrityDates(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    max_overlapping_date: Annotated[Optional[str], pydantic.Field(alias="maxOverlappingDate")] = None
+
+    max_overlapping_date: Annotated[
+        Optional[str], pydantic.Field(alias="maxOverlappingDate")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -141,6 +144,7 @@ class DataIntegrityDates(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     min_date: Annotated[Optional[str], pydantic.Field(alias="minDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -162,7 +166,10 @@ class DataIntegrityDates(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    min_overlapping_date: Annotated[Optional[str], pydantic.Field(alias="minOverlappingDate")] = None
+
+    min_overlapping_date: Annotated[
+        Optional[str], pydantic.Field(alias="minOverlappingDate")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -183,4 +190,3 @@ class DataIntegrityDates(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    

@@ -10,15 +10,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -44,11 +38,6 @@ async def main():
     res = await s.companies.create_async(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
-        "groups": [
-            {
-                "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-            },
-        ],
     })
     if res is not None:
         # handle response

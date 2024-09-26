@@ -15,13 +15,26 @@ class GetCommerceDisputeRequestTypedDict(TypedDict):
     r"""Unique identifier for a connection."""
     dispute_id: str
     r"""Unique identifier for a dispute."""
-    
+
 
 class GetCommerceDisputeRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    dispute_id: Annotated[str, pydantic.Field(alias="disputeId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    dispute_id: Annotated[
+        str,
+        pydantic.Field(alias="disputeId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a dispute."""
-    

@@ -2,42 +2,138 @@
 
 from .accountbalance import AccountBalance, AccountBalanceTypedDict
 from .accountbalanceamounts import AccountBalanceAmounts, AccountBalanceAmountsTypedDict
-from .accountcategoriesupdatedwebhook import AccountCategoriesUpdatedWebhook, AccountCategoriesUpdatedWebhookTypedDict
-from .accountcategoriesupdatedwebhookdata import AccountCategoriesUpdatedWebhookData, AccountCategoriesUpdatedWebhookDataTypedDict
+from .accountcategoriesupdatedwebhook import (
+    AccountCategoriesUpdatedWebhook,
+    AccountCategoriesUpdatedWebhookTypedDict,
+)
+from .accountcategoriesupdatedwebhookdata import (
+    AccountCategoriesUpdatedWebhookData,
+    AccountCategoriesUpdatedWebhookDataTypedDict,
+)
 from .accountcategorylevel import AccountCategoryLevel, AccountCategoryLevelTypedDict
 from .accountidentifiers import AccountIdentifiers, AccountIdentifiersTypedDict
 from .accountidentifiertype import AccountIdentifierType
-from .accountingaccount import AccountingAccount, AccountingAccountTypedDict, AccountingAccountValidDataTypeLinks, AccountingAccountValidDataTypeLinksTypedDict
+from .accountingaccount import (
+    AccountingAccount,
+    AccountingAccountTypedDict,
+    AccountingAccountValidDataTypeLinks,
+    AccountingAccountValidDataTypeLinksTypedDict,
+)
 from .accountingaccounts import AccountingAccounts, AccountingAccountsTypedDict
-from .accountingaccounttransaction import AccountingAccountTransaction, AccountingAccountTransactionStatus, AccountingAccountTransactionTypedDict
-from .accountingaccounttransactions import AccountingAccountTransactions, AccountingAccountTransactionsTypedDict
+from .accountingaccounttransaction import (
+    AccountingAccountTransaction,
+    AccountingAccountTransactionStatus,
+    AccountingAccountTransactionTypedDict,
+)
+from .accountingaccounttransactions import (
+    AccountingAccountTransactions,
+    AccountingAccountTransactionsTypedDict,
+)
 from .accountingaddress import AccountingAddress, AccountingAddressTypedDict
 from .accountingaddresstype import AccountingAddressType
-from .accountingagedcreditorreport import AccountingAgedCreditorReport, AccountingAgedCreditorReportTypedDict
-from .accountingageddebtorreport import AccountingAgedDebtorReport, AccountingAgedDebtorReportTypedDict
+from .accountingagedcreditorreport import (
+    AccountingAgedCreditorReport,
+    AccountingAgedCreditorReportTypedDict,
+)
+from .accountingageddebtorreport import (
+    AccountingAgedDebtorReport,
+    AccountingAgedDebtorReportTypedDict,
+)
 from .accountingattachment import AccountingAttachment, AccountingAttachmentTypedDict
-from .accountingbalancesheet import AccountingBalanceSheet, AccountingBalanceSheetTypedDict
+from .accountingbalancesheet import (
+    AccountingBalanceSheet,
+    AccountingBalanceSheetTypedDict,
+)
 from .accountingbankaccount import AccountingBankAccount, AccountingBankAccountTypedDict
-from .accountingbankaccounts import AccountingBankAccounts, AccountingBankAccountsTypedDict
+from .accountingbankaccounts import (
+    AccountingBankAccounts,
+    AccountingBankAccountsTypedDict,
+)
 from .accountingbankaccounttype import AccountingBankAccountType
-from .accountingbanktransaction import AccountingBankTransaction, AccountingBankTransactionTypedDict
-from .accountingbanktransactions import AccountingBankTransactions, AccountingBankTransactionsTypedDict
-from .accountingbill import AccountingBill, AccountingBillTypedDict, PurchaseOrderReference, PurchaseOrderReferenceTypedDict, WithholdingTax, WithholdingTaxTypedDict
-from .accountingbillcreditnote import AccountingBillCreditNote, AccountingBillCreditNoteTypedDict
-from .accountingbillcreditnotes import AccountingBillCreditNotes, AccountingBillCreditNotesTypedDict
+from .accountingbanktransaction import (
+    AccountingBankTransaction,
+    AccountingBankTransactionTypedDict,
+)
+from .accountingbanktransactions import (
+    AccountingBankTransactions,
+    AccountingBankTransactionsTypedDict,
+)
+from .accountingbill import (
+    AccountingBill,
+    AccountingBillTypedDict,
+    PurchaseOrderReference,
+    PurchaseOrderReferenceTypedDict,
+    WithholdingTax,
+    WithholdingTaxTypedDict,
+)
+from .accountingbillcreditnote import (
+    AccountingBillCreditNote,
+    AccountingBillCreditNoteTypedDict,
+)
+from .accountingbillcreditnotes import (
+    AccountingBillCreditNotes,
+    AccountingBillCreditNotesTypedDict,
+)
 from .accountingbillpayment import AccountingBillPayment, AccountingBillPaymentTypedDict
-from .accountingbillpayments import AccountingBillPayments, AccountingBillPaymentsTypedDict
+from .accountingbillpayments import (
+    AccountingBillPayments,
+    AccountingBillPaymentsTypedDict,
+)
 from .accountingbills import AccountingBills, AccountingBillsTypedDict
-from .accountingcashflowstatement import AccountingCashFlowStatement, AccountingCashFlowStatementTypedDict
+from .accountingcashflowstatement import (
+    AccountingCashFlowStatement,
+    AccountingCashFlowStatementTypedDict,
+)
 from .accountingcompanyinfo import AccountingCompanyInfo, AccountingCompanyInfoTypedDict
-from .accountingcreateaccountresponse import AccountingCreateAccountResponse, AccountingCreateAccountResponseAccountingAccount, AccountingCreateAccountResponseAccountingAccountTypedDict, AccountingCreateAccountResponseTypedDict, AccountingCreateAccountResponseValidDataTypeLinks, AccountingCreateAccountResponseValidDataTypeLinksTypedDict
-from .accountingcreatebankaccountresponse import AccountingCreateBankAccountResponse, AccountingCreateBankAccountResponseAccountingBankAccount, AccountingCreateBankAccountResponseAccountingBankAccountTypedDict, AccountingCreateBankAccountResponseTypedDict
-from .accountingcreatebanktransactions import AccountingCreateBankTransactions, AccountingCreateBankTransactionsTypedDict
-from .accountingcreatebanktransactionsresponse import AccountingCreateBankAccountTransactions, AccountingCreateBankAccountTransactionsTypedDict, AccountingCreateBankTransactionsResponse, AccountingCreateBankTransactionsResponseTypedDict
-from .accountingcreatedirectcostresponse import AccountingCreateDirectCostResponse, AccountingCreateDirectCostResponseAccountingDirectCost, AccountingCreateDirectCostResponseAccountingDirectCostTypedDict, AccountingCreateDirectCostResponseTypedDict
-from .accountingcreatepaymentresponse import AccountingCreatePaymentResponse, AccountingCreatePaymentResponseAccountingPayment, AccountingCreatePaymentResponseAccountingPaymentTypedDict, AccountingCreatePaymentResponseTypedDict
-from .accountingcreatesupplierresponse import AccountingCreateSupplierResponse, AccountingCreateSupplierResponseAccountingSupplier, AccountingCreateSupplierResponseAccountingSupplierTypedDict, AccountingCreateSupplierResponseTypedDict
-from .accountingcreatetransferresponse import AccountingCreateTransferResponse, AccountingCreateTransferResponseAccountingTransfer, AccountingCreateTransferResponseAccountingTransferTypedDict, AccountingCreateTransferResponseTypedDict
+from .accountingcreateaccountresponse import (
+    AccountingCreateAccountResponse,
+    AccountingCreateAccountResponseAccountingAccount,
+    AccountingCreateAccountResponseAccountingAccountTypedDict,
+    AccountingCreateAccountResponseTypedDict,
+    AccountingCreateAccountResponseValidDataTypeLinks,
+    AccountingCreateAccountResponseValidDataTypeLinksTypedDict,
+)
+from .accountingcreatebankaccountresponse import (
+    AccountingCreateBankAccountResponse,
+    AccountingCreateBankAccountResponseAccountingBankAccount,
+    AccountingCreateBankAccountResponseAccountingBankAccountTypedDict,
+    AccountingCreateBankAccountResponseTypedDict,
+)
+from .accountingcreatebanktransactions import (
+    AccountingCreateBankTransactions,
+    AccountingCreateBankTransactionsTypedDict,
+)
+from .accountingcreatebanktransactionsresponse import (
+    AccountingCreateBankAccountTransactions,
+    AccountingCreateBankAccountTransactionsTypedDict,
+    AccountingCreateBankTransactionsResponse,
+    AccountingCreateBankTransactionsResponseTypedDict,
+)
+from .accountingcreatedirectcostresponse import (
+    AccountingCreateDirectCostResponse,
+    AccountingCreateDirectCostResponseAccountingDirectCost,
+    AccountingCreateDirectCostResponseAccountingDirectCostTypedDict,
+    AccountingCreateDirectCostResponseTypedDict,
+)
+from .accountingcreatepaymentresponse import (
+    AccountingCreatePaymentResponse,
+    AccountingCreatePaymentResponseAccountingPayment,
+    AccountingCreatePaymentResponseAccountingPaymentTypedDict,
+    AccountingCreatePaymentResponseTypedDict,
+)
+from .accountingcreatesupplierresponse import (
+    AccountingCreateSupplierResponse,
+    AccountingCreateSupplierResponseAccountingSupplier,
+    AccountingCreateSupplierResponseAccountingSupplierTypedDict,
+    AccountingCreateSupplierResponseTypedDict,
+)
+from .accountingcreatetransferresponse import (
+    AccountingCreateTransferResponse,
+    AccountingCreateTransferResponseAccountingTransfer,
+    AccountingCreateTransferResponseAccountingTransferTypedDict,
+    AccountingCreateTransferResponseStatus,
+    AccountingCreateTransferResponseTypedDict,
+)
 from .accountingcreditnote import AccountingCreditNote, AccountingCreditNoteTypedDict
 from .accountingcreditnotes import AccountingCreditNotes, AccountingCreditNotesTypedDict
 from .accountingcustomer import AccountingCustomer, AccountingCustomerTypedDict
@@ -45,66 +141,169 @@ from .accountingcustomerref import AccountingCustomerRef, AccountingCustomerRefT
 from .accountingcustomers import AccountingCustomers, AccountingCustomersTypedDict
 from .accountingdirectcost import AccountingDirectCost, AccountingDirectCostTypedDict
 from .accountingdirectcosts import AccountingDirectCosts, AccountingDirectCostsTypedDict
-from .accountingdirectincome import AccountingDirectIncome, AccountingDirectIncomeTypedDict
-from .accountingdirectincomes import AccountingDirectIncomes, AccountingDirectIncomesTypedDict
-from .accountinginvoice import AccountingInvoice, AccountingInvoiceDataType, AccountingInvoiceTypedDict, SalesOrderReference, SalesOrderReferenceTypedDict
+from .accountingdirectincome import (
+    AccountingDirectIncome,
+    AccountingDirectIncomeTypedDict,
+)
+from .accountingdirectincomes import (
+    AccountingDirectIncomes,
+    AccountingDirectIncomesTypedDict,
+)
+from .accountinginvoice import (
+    AccountingInvoice,
+    AccountingInvoiceDataType,
+    AccountingInvoiceTypedDict,
+    SalesOrderReference,
+    SalesOrderReferenceTypedDict,
+)
 from .accountinginvoices import AccountingInvoices, AccountingInvoicesTypedDict
 from .accountingjournal import AccountingJournal, AccountingJournalTypedDict
-from .accountingjournalentries import AccountingJournalEntries, AccountingJournalEntriesTypedDict
-from .accountingjournalentry import AccountingJournalEntry, AccountingJournalEntryTypedDict
+from .accountingjournalentries import (
+    AccountingJournalEntries,
+    AccountingJournalEntriesTypedDict,
+)
+from .accountingjournalentry import (
+    AccountingJournalEntry,
+    AccountingJournalEntryTypedDict,
+)
 from .accountingjournals import AccountingJournals, AccountingJournalsTypedDict
 from .accountingpayment import AccountingPayment, AccountingPaymentTypedDict
-from .accountingpaymentallocation import AccountingPaymentAllocation, AccountingPaymentAllocationTypedDict, Allocation, AllocationTypedDict
+from .accountingpaymentallocation import (
+    AccountingPaymentAllocation,
+    AccountingPaymentAllocationTypedDict,
+    Allocation,
+    AllocationTypedDict,
+)
 from .accountingpayments import AccountingPayments, AccountingPaymentsTypedDict
-from .accountingprofitandlossreport import AccountingProfitAndLossReport, AccountingProfitAndLossReportTypedDict
+from .accountingprofitandlossreport import (
+    AccountingProfitAndLossReport,
+    AccountingProfitAndLossReportTypedDict,
+)
 from .accountingsupplier import AccountingSupplier, AccountingSupplierTypedDict
 from .accountingsuppliers import AccountingSuppliers, AccountingSuppliersTypedDict
-from .accountingtransfer import AccountingTransfer, AccountingTransferTypedDict
+from .accountingtransfer import (
+    AccountingTransfer,
+    AccountingTransferStatus,
+    AccountingTransferTypedDict,
+)
 from .accountingtransfers import AccountingTransfers, AccountingTransfersTypedDict
 from .accountinstitution import AccountInstitution, AccountInstitutionTypedDict
-from .accountprototype import AccountPrototype, AccountPrototypeTypedDict, ValidDataTypeLinks, ValidDataTypeLinksTypedDict
+from .accountprototype import (
+    AccountPrototype,
+    AccountPrototypeTypedDict,
+    ValidDataTypeLinks,
+    ValidDataTypeLinksTypedDict,
+)
 from .accountref import AccountRef, AccountRefTypedDict
 from .accounts import Accounts, AccountsTypedDict
-from .accountspayabletracking import AccountsPayableTracking, AccountsPayableTrackingTypedDict
-from .accountsreceivabletracking import AccountsReceivableTracking, AccountsReceivableTrackingTypedDict, RecordReference, RecordReferenceTypedDict
+from .accountspayabletracking import (
+    AccountsPayableTracking,
+    AccountsPayableTrackingTypedDict,
+)
+from .accountsreceivabletracking import (
+    AccountsReceivableTracking,
+    AccountsReceivableTrackingTypedDict,
+    RecordReference,
+    RecordReferenceTypedDict,
+)
 from .accountstatus import AccountStatus
-from .accounttransactionline import AccountTransactionLine, AccountTransactionLineTypedDict
-from .accounttransactionlinerecordref import AccountTransactionLineRecordRef, AccountTransactionLineRecordRefDataType, AccountTransactionLineRecordRefTypedDict
+from .accounttransactionline import (
+    AccountTransactionLine,
+    AccountTransactionLineTypedDict,
+)
+from .accounttransactionlinerecordref import (
+    AccountTransactionLineRecordRef,
+    AccountTransactionLineRecordRefDataType,
+    AccountTransactionLineRecordRefTypedDict,
+)
 from .accounttype import AccountType
 from .agedcreditor import AgedCreditor, AgedCreditorTypedDict
-from .agedcurrencyoutstanding import AgedCurrencyOutstanding, AgedCurrencyOutstandingTypedDict
+from .agedcurrencyoutstanding import (
+    AgedCurrencyOutstanding,
+    AgedCurrencyOutstandingTypedDict,
+)
 from .ageddebtor import AgedDebtor, AgedDebtorTypedDict
 from .agedoutstandingamount import AgedOutstandingAmount, AgedOutstandingAmountTypedDict
-from .agedoutstandingamountdetail import AgedOutstandingAmountDetail, AgedOutstandingAmountDetailTypedDict
+from .agedoutstandingamountdetail import (
+    AgedOutstandingAmountDetail,
+    AgedOutstandingAmountDetailTypedDict,
+)
 from .attachments import Attachments, AttachmentsTypedDict
 from .balancesheet import BalanceSheet, BalanceSheetTypedDict
 from .bankaccountref import BankAccountRef, BankAccountRefTypedDict
 from .bankaccountstatus import BankAccountStatus
 from .bankingaccount import BankingAccount, BankingAccountTypedDict
 from .bankingaccountbalance import BankingAccountBalance, BankingAccountBalanceTypedDict
-from .bankingaccountbalances import BankingAccountBalances, BankingAccountBalancesTypedDict
+from .bankingaccountbalances import (
+    BankingAccountBalances,
+    BankingAccountBalancesTypedDict,
+)
 from .bankingaccounts import BankingAccounts, BankingAccountsTypedDict
 from .bankingtransaction import BankingTransaction, BankingTransactionTypedDict
-from .bankingtransactioncategories import BankingTransactionCategories, BankingTransactionCategoriesTypedDict
-from .bankingtransactioncategory import BankingTransactionCategory, BankingTransactionCategoryTypedDict
+from .bankingtransactioncategories import (
+    BankingTransactionCategories,
+    BankingTransactionCategoriesTypedDict,
+)
+from .bankingtransactioncategory import (
+    BankingTransactionCategory,
+    BankingTransactionCategoryTypedDict,
+)
 from .bankingtransactionref import BankingTransactionRef, BankingTransactionRefTypedDict
 from .bankingtransactions import BankingTransactions, BankingTransactionsTypedDict
-from .bankstatementuploadconfiguration import BankStatementUploadConfiguration, BankStatementUploadConfigurationTypedDict, Source
+from .bankstatementuploadconfiguration import (
+    BankStatementUploadConfiguration,
+    BankStatementUploadConfigurationTypedDict,
+    Source,
+)
 from .banktransactiontype import BankTransactionType
-from .billcreditnotelineitem import BillCreditNoteLineItem, BillCreditNoteLineItemTypedDict, ItemReference, ItemReferenceTypedDict, TaxRateReference, TaxRateReferenceTypedDict
+from .billcreditnotelineitem import (
+    BillCreditNoteLineItem,
+    BillCreditNoteLineItemTypedDict,
+    ItemReference,
+    ItemReferenceTypedDict,
+    TaxRateReference,
+    TaxRateReferenceTypedDict,
+)
 from .billcreditnotestatus import BillCreditNoteStatus
 from .billedtotype import BilledToType
 from .billedtotype1 import BilledToType1
-from .billlineitem import BillLineItem, BillLineItemDataType, BillLineItemTypedDict, RecordLineReference, RecordLineReferenceTypedDict
+from .billedtotype2 import BilledToType2
+from .billlineitem import (
+    BillLineItem,
+    BillLineItemDataType,
+    BillLineItemTypedDict,
+    RecordLineReference,
+    RecordLineReferenceTypedDict,
+)
 from .billpaymentline import BillPaymentLine, BillPaymentLineTypedDict
 from .billpaymentlinelink import BillPaymentLineLink, BillPaymentLineLinkTypedDict
 from .billpaymentlinelinktype import BillPaymentLineLinkType
 from .billstatus import BillStatus
 from .cashflowstatement import CashFlowStatement, CashFlowStatementTypedDict
-from .clientratelimitreachedwebhook import ClientRateLimitReachedWebhook, ClientRateLimitReachedWebhookTypedDict
-from .clientratelimitreachedwebhookdata import ClientRateLimitReachedWebhookData, ClientRateLimitReachedWebhookDataTypedDict
-from .clientratelimitresetwebhook import ClientRateLimitResetWebhook, ClientRateLimitResetWebhookTypedDict
-from .clientratelimitresetwebhookdata import ClientRateLimitResetWebhookData, ClientRateLimitResetWebhookDataTypedDict
+from .clientratelimitreachedwebhook import (
+    ClientRateLimitReachedWebhook,
+    ClientRateLimitReachedWebhookTypedDict,
+)
+from .clientratelimitreachedwebhookdata import (
+    ClientRateLimitReachedWebhookData,
+    ClientRateLimitReachedWebhookDataTypedDict,
+)
+from .clientratelimitresetwebhook import (
+    ClientRateLimitResetWebhook,
+    ClientRateLimitResetWebhookTypedDict,
+)
+from .clientratelimitresetwebhookdata import (
+    ClientRateLimitResetWebhookData,
+    ClientRateLimitResetWebhookDataTypedDict,
+)
+from .clientratelimitwebhook import (
+    ClientRateLimitWebhook,
+    ClientRateLimitWebhookTypedDict,
+)
+from .clientratelimitwebhookpayload import (
+    ClientRateLimitWebhookPayload,
+    ClientRateLimitWebhookPayloadTypedDict,
+)
 from .codatfile import CodatFile, CodatFileTypedDict
 from .commerceaddress import CommerceAddress, CommerceAddressTypedDict
 from .commerceaddresstype import CommerceAddressType
@@ -119,38 +318,69 @@ from .commercelocations import CommerceLocations, CommerceLocationsTypedDict
 from .commerceorder import CommerceOrder, CommerceOrderTypedDict
 from .commerceorders import CommerceOrders, CommerceOrdersTypedDict
 from .commercepayment import CommercePayment, CommercePaymentTypedDict
-from .commercepaymentmethod import CommercePaymentMethod, CommercePaymentMethodStatus, CommercePaymentMethodTypedDict
-from .commercepaymentmethods import CommercePaymentMethods, CommercePaymentMethodsTypedDict
+from .commercepaymentmethod import (
+    CommercePaymentMethod,
+    CommercePaymentMethodStatus,
+    CommercePaymentMethodTypedDict,
+)
+from .commercepaymentmethods import (
+    CommercePaymentMethods,
+    CommercePaymentMethodsTypedDict,
+)
 from .commercepayments import CommercePayments, CommercePaymentsTypedDict
 from .commerceproduct import CommerceProduct, CommerceProductTypedDict
-from .commerceproductcategories import CommerceProductCategories, CommerceProductCategoriesTypedDict
-from .commerceproductcategory import CommerceProductCategory, CommerceProductCategoryTypedDict
+from .commerceproductcategories import (
+    CommerceProductCategories,
+    CommerceProductCategoriesTypedDict,
+)
+from .commerceproductcategory import (
+    CommerceProductCategory,
+    CommerceProductCategoryTypedDict,
+)
 from .commerceproducts import CommerceProducts, CommerceProductsTypedDict
 from .commercerecordref import CommerceRecordRef, CommerceRecordRefTypedDict
 from .commercereport import CommerceReport, CommerceReportTypedDict
-from .commercereportcomponent import CommerceReportComponent, CommerceReportComponentTypedDict
-from .commercereportdimension import CommerceReportDimension, CommerceReportDimensionItems, CommerceReportDimensionItemsTypedDict, CommerceReportDimensionTypedDict
+from .commercereportcomponent import (
+    CommerceReportComponent,
+    CommerceReportComponentTypedDict,
+)
+from .commercereportdimension import (
+    CommerceReportDimension,
+    CommerceReportDimensionItems,
+    CommerceReportDimensionItemsTypedDict,
+    CommerceReportDimensionTypedDict,
+)
 from .commercereporterror import CommerceReportError, CommerceReportErrorTypedDict
 from .commercereportmeasure import CommerceReportMeasure, CommerceReportMeasureTypedDict
 from .commercetransaction import CommerceTransaction, CommerceTransactionTypedDict
 from .commercetransactions import CommerceTransactions, CommerceTransactionsTypedDict
 from .companies import Companies, CompaniesTypedDict
-from .company import Company, CompanyTypedDict, GroupReference, GroupReferenceTypedDict
+from .company import Company, CompanyTags, CompanyTagsTypedDict, CompanyTypedDict
 from .companyrequestbody import CompanyRequestBody, CompanyRequestBodyTypedDict
 from .connection import Connection, ConnectionTypedDict, SourceType
 from .connections import Connections, ConnectionsTypedDict
 from .contact import Contact, ContactTypedDict
 from .contactref import ContactRef, ContactRefDataType, ContactRefTypedDict
-from .createbankaccounttransaction import CreateBankAccountTransaction, CreateBankAccountTransactionTypedDict
+from .createbankaccounttransaction import (
+    CreateBankAccountTransaction,
+    CreateBankAccountTransactionTypedDict,
+)
 from .creditnotelineitem import CreditNoteLineItem, CreditNoteLineItemTypedDict
 from .creditnotestatus import CreditNoteStatus
 from .customerstatus import CustomerStatus
-from .dataconnectionerror import DataConnectionError, DataConnectionErrorTypedDict, ErrorStatus
+from .dataconnectionerror import (
+    DataConnectionError,
+    DataConnectionErrorTypedDict,
+    ErrorStatus,
+)
 from .dataconnectionstatus import DataConnectionStatus
 from .dataintegrityamounts import DataIntegrityAmounts, DataIntegrityAmountsTypedDict
 from .dataintegritybyamount import DataIntegrityByAmount, DataIntegrityByAmountTypedDict
 from .dataintegritybycount import DataIntegrityByCount, DataIntegrityByCountTypedDict
-from .dataintegrityconnectionid import DataIntegrityConnectionID, DataIntegrityConnectionIDTypedDict
+from .dataintegrityconnectionid import (
+    DataIntegrityConnectionID,
+    DataIntegrityConnectionIDTypedDict,
+)
 from .dataintegritydatatype import DataIntegrityDataType
 from .dataintegritydates import DataIntegrityDates, DataIntegrityDatesTypedDict
 from .dataintegritydetail import DataIntegrityDetail, DataIntegrityDetailTypedDict
@@ -158,8 +388,14 @@ from .dataintegritydetails import DataIntegrityDetails, DataIntegrityDetailsType
 from .dataintegritymatch import DataIntegrityMatch, DataIntegrityMatchTypedDict
 from .dataintegritystatus import DataIntegrityStatus, DataIntegrityStatusTypedDict
 from .dataintegritystatuses import DataIntegrityStatuses, DataIntegrityStatusesTypedDict
-from .dataintegritystatusinfo import DataIntegrityStatusInfo, DataIntegrityStatusInfoTypedDict
-from .dataintegritysummaries import DataIntegritySummaries, DataIntegritySummariesTypedDict
+from .dataintegritystatusinfo import (
+    DataIntegrityStatusInfo,
+    DataIntegrityStatusInfoTypedDict,
+)
+from .dataintegritysummaries import (
+    DataIntegritySummaries,
+    DataIntegritySummariesTypedDict,
+)
 from .dataintegritysummary import DataIntegritySummary, DataIntegritySummaryTypedDict
 from .datasource import DataSource, DataSourceTypedDict
 from .datastatus import DataStatus, DataStatusTypedDict, DataTypes
@@ -168,14 +404,38 @@ from .directcostlineitem import DirectCostLineItem, DirectCostLineItemTypedDict
 from .directcostprototype import DirectCostPrototype, DirectCostPrototypeTypedDict
 from .directincomelineitem import DirectIncomeLineItem, DirectIncomeLineItemTypedDict
 from .disputestatus import DisputeStatus
-from .enduploadsessionrequest import EndUploadSessionRequest, EndUploadSessionRequestStatus, EndUploadSessionRequestTypedDict
+from .enduploadsessionrequest import (
+    EndUploadSessionRequest,
+    EndUploadSessionRequestStatus,
+    EndUploadSessionRequestTypedDict,
+)
 from .enhancedcashflowitem import EnhancedCashFlowItem, EnhancedCashFlowItemTypedDict
-from .enhancedcashflowtransaction import EnhancedCashFlowTransaction, EnhancedCashFlowTransactionTypedDict
-from .enhancedcashflowtransactions import EnhancedCashFlowTransactions, EnhancedCashFlowTransactionsTypedDict
-from .enhancedfinancialreport import EnhancedFinancialReport, EnhancedFinancialReportTypedDict, ReportItem, ReportItemTypedDict
-from .enhancedinvoicereportitem import EnhancedInvoiceReportItem, EnhancedInvoiceReportItemTypedDict
-from .enhancedinvoicesreport import EnhancedInvoicesReport, EnhancedInvoicesReportTypedDict
-from .enhancedreportaccountcategory import EnhancedReportAccountCategory, EnhancedReportAccountCategoryTypedDict
+from .enhancedcashflowtransaction import (
+    EnhancedCashFlowTransaction,
+    EnhancedCashFlowTransactionTypedDict,
+)
+from .enhancedcashflowtransactions import (
+    EnhancedCashFlowTransactions,
+    EnhancedCashFlowTransactionsTypedDict,
+)
+from .enhancedfinancialreport import (
+    EnhancedFinancialReport,
+    EnhancedFinancialReportTypedDict,
+    ReportItem,
+    ReportItemTypedDict,
+)
+from .enhancedinvoicereportitem import (
+    EnhancedInvoiceReportItem,
+    EnhancedInvoiceReportItemTypedDict,
+)
+from .enhancedinvoicesreport import (
+    EnhancedInvoicesReport,
+    EnhancedInvoicesReportTypedDict,
+)
+from .enhancedreportaccountcategory import (
+    EnhancedReportAccountCategory,
+    EnhancedReportAccountCategoryTypedDict,
+)
 from .enhancedreportinfo import EnhancedReportInfo, EnhancedReportInfoTypedDict
 from .errorvalidation import ErrorValidation, ErrorValidationTypedDict
 from .errorvalidationitem import ErrorValidationItem, ErrorValidationItemTypedDict
@@ -189,8 +449,20 @@ from .invoicelineitem import InvoiceLineItem, InvoiceLineItemTypedDict
 from .invoicestatus import InvoiceStatus
 from .itemref import ItemRef, ItemRefTypedDict
 from .items import Items, ItemsTypedDict
-from .journalentryrecordref import JournalEntryRecordRef, JournalEntryRecordRefDataType, JournalEntryRecordRefTypedDict
-from .journalline import ContactReference, ContactReferenceTypedDict, JournalLine, JournalLineDataType, JournalLineTracking, JournalLineTrackingTypedDict, JournalLineTypedDict
+from .journalentryrecordref import (
+    JournalEntryRecordRef,
+    JournalEntryRecordRefDataType,
+    JournalEntryRecordRefTypedDict,
+)
+from .journalline import (
+    ContactReference,
+    ContactReferenceTypedDict,
+    JournalLine,
+    JournalLineDataType,
+    JournalLineTracking,
+    JournalLineTrackingTypedDict,
+    JournalLineTypedDict,
+)
 from .journalref import JournalRef, JournalRefTypedDict
 from .journalstatus import JournalStatus
 from .lendingcustomerref import LendingCustomerRef, LendingCustomerRefTypedDict
@@ -203,14 +475,23 @@ from .loansummaryrecordreftype import LoanSummaryRecordRefType
 from .loansummaryreportinfo import LoanSummaryReportInfo, LoanSummaryReportInfoTypedDict
 from .loansummaryreportitem import LoanSummaryReportItem, LoanSummaryReportItemTypedDict
 from .loantransactions import LoanTransactions, LoanTransactionsTypedDict
-from .loantransactionsreportinfo import LoanTransactionsReportInfo, LoanTransactionsReportInfoTypedDict
+from .loantransactionsreportinfo import (
+    LoanTransactionsReportInfo,
+    LoanTransactionsReportInfoTypedDict,
+)
 from .locationref import LocationRef, LocationRefTypedDict
 from .metadata import Metadata, MetadataTypedDict
-from .orderdiscountallocation import OrderDiscountAllocation, OrderDiscountAllocationTypedDict
+from .orderdiscountallocation import (
+    OrderDiscountAllocation,
+    OrderDiscountAllocationTypedDict,
+)
 from .orderlineitem import OrderLineItem, OrderLineItemTypedDict
 from .path import Path
 from .payment import Payment, PaymentTypedDict
-from .paymentallocationpayment import PaymentAllocationPayment, PaymentAllocationPaymentTypedDict
+from .paymentallocationpayment import (
+    PaymentAllocationPayment,
+    PaymentAllocationPaymentTypedDict,
+)
 from .paymentline import PaymentLine, PaymentLineTypedDict
 from .paymentlinelink import PaymentLineLink, PaymentLineLinkTypedDict
 from .paymentlinktype import PaymentLinkType
@@ -222,7 +503,10 @@ from .periodunit import PeriodUnit
 from .phonenumber import PhoneNumber, PhoneNumberTypedDict
 from .phonenumbertype import PhoneNumberType
 from .productinventory import ProductInventory, ProductInventoryTypedDict
-from .productinventorylocation import ProductInventoryLocation, ProductInventoryLocationTypedDict
+from .productinventorylocation import (
+    ProductInventoryLocation,
+    ProductInventoryLocationTypedDict,
+)
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .productref import ProductRef, ProductRefTypedDict
 from .productvariant import ProductVariant, ProductVariantTypedDict
@@ -247,7 +531,10 @@ from .pushoptiontype import PushOptionType
 from .pushvalidationinfo import PushValidationInfo, PushValidationInfoTypedDict
 from .recordref import RecordRef, RecordRefTypedDict
 from .reportbasis import ReportBasis
-from .reportcomponentmeasure import ReportComponentMeasure, ReportComponentMeasureTypedDict
+from .reportcomponentmeasure import (
+    ReportComponentMeasure,
+    ReportComponentMeasureTypedDict,
+)
 from .reportinfo import ReportInfo, ReportInfoTypedDict
 from .reportinput import ReportInput
 from .reportitems import LoanTransactionType, ReportItems, ReportItemsTypedDict
@@ -257,19 +544,34 @@ from .security import Security, SecurityTypedDict
 from .servicecharge import ServiceCharge, ServiceChargeTypedDict
 from .servicechargetype import ServiceChargeType
 from .sourceref import SourceRef, SourceRefTypedDict
-from .startuploadsessionrequest import StartUploadSessionRequest, StartUploadSessionRequestDataType, StartUploadSessionRequestTypedDict
+from .startuploadsessionrequest import (
+    StartUploadSessionRequest,
+    StartUploadSessionRequestDataType,
+    StartUploadSessionRequestTypedDict,
+)
 from .status import Status
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from .supplierref import SupplierRef, SupplierRefTypedDict
 from .supplierstatus import SupplierStatus
-from .taxcomponentallocation import TaxComponentAllocation, TaxComponentAllocationTypedDict
+from .tags import Tags, TagsTypedDict
+from .taxcomponentallocation import (
+    TaxComponentAllocation,
+    TaxComponentAllocationTypedDict,
+)
 from .taxcomponentref import TaxComponentRef, TaxComponentRefTypedDict
 from .taxrateref import TaxRateRef, TaxRateRefTypedDict
 from .tracking import Tracking, TrackingTypedDict
 from .trackingcategoryref import TrackingCategoryRef, TrackingCategoryRefTypedDict
-from .trackingrecordref import TrackingRecordRef, TrackingRecordRefDataType, TrackingRecordRefTypedDict
+from .trackingrecordref import (
+    TrackingRecordRef,
+    TrackingRecordRefDataType,
+    TrackingRecordRefTypedDict,
+)
 from .transactioncategory import TransactionCategory, TransactionCategoryTypedDict
-from .transactioncategoryref import TransactionCategoryRef, TransactionCategoryRefTypedDict
+from .transactioncategoryref import (
+    TransactionCategoryRef,
+    TransactionCategoryRefTypedDict,
+)
 from .transactioncategorystatus import TransactionCategoryStatus
 from .transactioncode import TransactionCode
 from .transactionsourceref import TransactionSourceRef, TransactionSourceRefTypedDict
@@ -279,7 +581,596 @@ from .transferaccount import TransferAccount, TransferAccountTypedDict
 from .validation import Validation, ValidationTypedDict
 from .validationitem import ValidationItem, ValidationItemTypedDict
 from .weblink import Type, WebLink, WebLinkTypedDict
-from .withholdingtax_items import WithholdingTaxItems, WithholdingTaxItemsTypedDict
 from .zero import Zero, ZeroDataType, ZeroTypedDict
 
-__all__ = ["AccountBalance", "AccountBalanceAmounts", "AccountBalanceAmountsTypedDict", "AccountBalanceTypedDict", "AccountCategoriesUpdatedWebhook", "AccountCategoriesUpdatedWebhookData", "AccountCategoriesUpdatedWebhookDataTypedDict", "AccountCategoriesUpdatedWebhookTypedDict", "AccountCategoryLevel", "AccountCategoryLevelTypedDict", "AccountIdentifierType", "AccountIdentifiers", "AccountIdentifiersTypedDict", "AccountInstitution", "AccountInstitutionTypedDict", "AccountPrototype", "AccountPrototypeTypedDict", "AccountRef", "AccountRefTypedDict", "AccountStatus", "AccountTransactionLine", "AccountTransactionLineRecordRef", "AccountTransactionLineRecordRefDataType", "AccountTransactionLineRecordRefTypedDict", "AccountTransactionLineTypedDict", "AccountType", "AccountingAccount", "AccountingAccountTransaction", "AccountingAccountTransactionStatus", "AccountingAccountTransactionTypedDict", "AccountingAccountTransactions", "AccountingAccountTransactionsTypedDict", "AccountingAccountTypedDict", "AccountingAccountValidDataTypeLinks", "AccountingAccountValidDataTypeLinksTypedDict", "AccountingAccounts", "AccountingAccountsTypedDict", "AccountingAddress", "AccountingAddressType", "AccountingAddressTypedDict", "AccountingAgedCreditorReport", "AccountingAgedCreditorReportTypedDict", "AccountingAgedDebtorReport", "AccountingAgedDebtorReportTypedDict", "AccountingAttachment", "AccountingAttachmentTypedDict", "AccountingBalanceSheet", "AccountingBalanceSheetTypedDict", "AccountingBankAccount", "AccountingBankAccountType", "AccountingBankAccountTypedDict", "AccountingBankAccounts", "AccountingBankAccountsTypedDict", "AccountingBankTransaction", "AccountingBankTransactionTypedDict", "AccountingBankTransactions", "AccountingBankTransactionsTypedDict", "AccountingBill", "AccountingBillCreditNote", "AccountingBillCreditNoteTypedDict", "AccountingBillCreditNotes", "AccountingBillCreditNotesTypedDict", "AccountingBillPayment", "AccountingBillPaymentTypedDict", "AccountingBillPayments", "AccountingBillPaymentsTypedDict", "AccountingBillTypedDict", "AccountingBills", "AccountingBillsTypedDict", "AccountingCashFlowStatement", "AccountingCashFlowStatementTypedDict", "AccountingCompanyInfo", "AccountingCompanyInfoTypedDict", "AccountingCreateAccountResponse", "AccountingCreateAccountResponseAccountingAccount", "AccountingCreateAccountResponseAccountingAccountTypedDict", "AccountingCreateAccountResponseTypedDict", "AccountingCreateAccountResponseValidDataTypeLinks", "AccountingCreateAccountResponseValidDataTypeLinksTypedDict", "AccountingCreateBankAccountResponse", "AccountingCreateBankAccountResponseAccountingBankAccount", "AccountingCreateBankAccountResponseAccountingBankAccountTypedDict", "AccountingCreateBankAccountResponseTypedDict", "AccountingCreateBankAccountTransactions", "AccountingCreateBankAccountTransactionsTypedDict", "AccountingCreateBankTransactions", "AccountingCreateBankTransactionsResponse", "AccountingCreateBankTransactionsResponseTypedDict", "AccountingCreateBankTransactionsTypedDict", "AccountingCreateDirectCostResponse", "AccountingCreateDirectCostResponseAccountingDirectCost", "AccountingCreateDirectCostResponseAccountingDirectCostTypedDict", "AccountingCreateDirectCostResponseTypedDict", "AccountingCreatePaymentResponse", "AccountingCreatePaymentResponseAccountingPayment", "AccountingCreatePaymentResponseAccountingPaymentTypedDict", "AccountingCreatePaymentResponseTypedDict", "AccountingCreateSupplierResponse", "AccountingCreateSupplierResponseAccountingSupplier", "AccountingCreateSupplierResponseAccountingSupplierTypedDict", "AccountingCreateSupplierResponseTypedDict", "AccountingCreateTransferResponse", "AccountingCreateTransferResponseAccountingTransfer", "AccountingCreateTransferResponseAccountingTransferTypedDict", "AccountingCreateTransferResponseTypedDict", "AccountingCreditNote", "AccountingCreditNoteTypedDict", "AccountingCreditNotes", "AccountingCreditNotesTypedDict", "AccountingCustomer", "AccountingCustomerRef", "AccountingCustomerRefTypedDict", "AccountingCustomerTypedDict", "AccountingCustomers", "AccountingCustomersTypedDict", "AccountingDirectCost", "AccountingDirectCostTypedDict", "AccountingDirectCosts", "AccountingDirectCostsTypedDict", "AccountingDirectIncome", "AccountingDirectIncomeTypedDict", "AccountingDirectIncomes", "AccountingDirectIncomesTypedDict", "AccountingInvoice", "AccountingInvoiceDataType", "AccountingInvoiceTypedDict", "AccountingInvoices", "AccountingInvoicesTypedDict", "AccountingJournal", "AccountingJournalEntries", "AccountingJournalEntriesTypedDict", "AccountingJournalEntry", "AccountingJournalEntryTypedDict", "AccountingJournalTypedDict", "AccountingJournals", "AccountingJournalsTypedDict", "AccountingPayment", "AccountingPaymentAllocation", "AccountingPaymentAllocationTypedDict", "AccountingPaymentTypedDict", "AccountingPayments", "AccountingPaymentsTypedDict", "AccountingProfitAndLossReport", "AccountingProfitAndLossReportTypedDict", "AccountingSupplier", "AccountingSupplierTypedDict", "AccountingSuppliers", "AccountingSuppliersTypedDict", "AccountingTransfer", "AccountingTransferTypedDict", "AccountingTransfers", "AccountingTransfersTypedDict", "Accounts", "AccountsPayableTracking", "AccountsPayableTrackingTypedDict", "AccountsReceivableTracking", "AccountsReceivableTrackingTypedDict", "AccountsTypedDict", "AgedCreditor", "AgedCreditorTypedDict", "AgedCurrencyOutstanding", "AgedCurrencyOutstandingTypedDict", "AgedDebtor", "AgedDebtorTypedDict", "AgedOutstandingAmount", "AgedOutstandingAmountDetail", "AgedOutstandingAmountDetailTypedDict", "AgedOutstandingAmountTypedDict", "Allocation", "AllocationTypedDict", "Attachments", "AttachmentsTypedDict", "BalanceSheet", "BalanceSheetTypedDict", "BankAccountRef", "BankAccountRefTypedDict", "BankAccountStatus", "BankStatementUploadConfiguration", "BankStatementUploadConfigurationTypedDict", "BankTransactionType", "BankingAccount", "BankingAccountBalance", "BankingAccountBalanceTypedDict", "BankingAccountBalances", "BankingAccountBalancesTypedDict", "BankingAccountTypedDict", "BankingAccounts", "BankingAccountsTypedDict", "BankingTransaction", "BankingTransactionCategories", "BankingTransactionCategoriesTypedDict", "BankingTransactionCategory", "BankingTransactionCategoryTypedDict", "BankingTransactionRef", "BankingTransactionRefTypedDict", "BankingTransactionTypedDict", "BankingTransactions", "BankingTransactionsTypedDict", "BillCreditNoteLineItem", "BillCreditNoteLineItemTypedDict", "BillCreditNoteStatus", "BillLineItem", "BillLineItemDataType", "BillLineItemTypedDict", "BillPaymentLine", "BillPaymentLineLink", "BillPaymentLineLinkType", "BillPaymentLineLinkTypedDict", "BillPaymentLineTypedDict", "BillStatus", "BilledToType", "BilledToType1", "CashFlowStatement", "CashFlowStatementTypedDict", "ClientRateLimitReachedWebhook", "ClientRateLimitReachedWebhookData", "ClientRateLimitReachedWebhookDataTypedDict", "ClientRateLimitReachedWebhookTypedDict", "ClientRateLimitResetWebhook", "ClientRateLimitResetWebhookData", "ClientRateLimitResetWebhookDataTypedDict", "ClientRateLimitResetWebhookTypedDict", "CodatFile", "CodatFileTypedDict", "CommerceAddress", "CommerceAddressType", "CommerceAddressTypedDict", "CommerceCompanyInfo", "CommerceCompanyInfoTypedDict", "CommerceCustomer", "CommerceCustomerRef", "CommerceCustomerRefTypedDict", "CommerceCustomerTypedDict", "CommerceCustomers", "CommerceCustomersTypedDict", "CommerceDispute", "CommerceDisputeTypedDict", "CommerceDisputes", "CommerceDisputesTypedDict", "CommerceLocation", "CommerceLocationTypedDict", "CommerceLocations", "CommerceLocationsTypedDict", "CommerceOrder", "CommerceOrderTypedDict", "CommerceOrders", "CommerceOrdersTypedDict", "CommercePayment", "CommercePaymentMethod", "CommercePaymentMethodStatus", "CommercePaymentMethodTypedDict", "CommercePaymentMethods", "CommercePaymentMethodsTypedDict", "CommercePaymentTypedDict", "CommercePayments", "CommercePaymentsTypedDict", "CommerceProduct", "CommerceProductCategories", "CommerceProductCategoriesTypedDict", "CommerceProductCategory", "CommerceProductCategoryTypedDict", "CommerceProductTypedDict", "CommerceProducts", "CommerceProductsTypedDict", "CommerceRecordRef", "CommerceRecordRefTypedDict", "CommerceReport", "CommerceReportComponent", "CommerceReportComponentTypedDict", "CommerceReportDimension", "CommerceReportDimensionItems", "CommerceReportDimensionItemsTypedDict", "CommerceReportDimensionTypedDict", "CommerceReportError", "CommerceReportErrorTypedDict", "CommerceReportMeasure", "CommerceReportMeasureTypedDict", "CommerceReportTypedDict", "CommerceTransaction", "CommerceTransactionTypedDict", "CommerceTransactions", "CommerceTransactionsTypedDict", "Companies", "CompaniesTypedDict", "Company", "CompanyRequestBody", "CompanyRequestBodyTypedDict", "CompanyTypedDict", "Connection", "ConnectionTypedDict", "Connections", "ConnectionsTypedDict", "Contact", "ContactRef", "ContactRefDataType", "ContactRefTypedDict", "ContactReference", "ContactReferenceTypedDict", "ContactTypedDict", "CreateBankAccountTransaction", "CreateBankAccountTransactionTypedDict", "CreditNoteLineItem", "CreditNoteLineItemTypedDict", "CreditNoteStatus", "CustomerStatus", "DataConnectionError", "DataConnectionErrorTypedDict", "DataConnectionStatus", "DataIntegrityAmounts", "DataIntegrityAmountsTypedDict", "DataIntegrityByAmount", "DataIntegrityByAmountTypedDict", "DataIntegrityByCount", "DataIntegrityByCountTypedDict", "DataIntegrityConnectionID", "DataIntegrityConnectionIDTypedDict", "DataIntegrityDataType", "DataIntegrityDates", "DataIntegrityDatesTypedDict", "DataIntegrityDetail", "DataIntegrityDetailTypedDict", "DataIntegrityDetails", "DataIntegrityDetailsTypedDict", "DataIntegrityMatch", "DataIntegrityMatchTypedDict", "DataIntegrityStatus", "DataIntegrityStatusInfo", "DataIntegrityStatusInfoTypedDict", "DataIntegrityStatusTypedDict", "DataIntegrityStatuses", "DataIntegrityStatusesTypedDict", "DataIntegritySummaries", "DataIntegritySummariesTypedDict", "DataIntegritySummary", "DataIntegritySummaryTypedDict", "DataSource", "DataSourceTypedDict", "DataStatus", "DataStatusTypedDict", "DataType", "DataTypes", "DatasetStatus", "DirectCostLineItem", "DirectCostLineItemTypedDict", "DirectCostPrototype", "DirectCostPrototypeTypedDict", "DirectIncomeLineItem", "DirectIncomeLineItemTypedDict", "DisputeStatus", "EndUploadSessionRequest", "EndUploadSessionRequestStatus", "EndUploadSessionRequestTypedDict", "EnhancedCashFlowItem", "EnhancedCashFlowItemTypedDict", "EnhancedCashFlowTransaction", "EnhancedCashFlowTransactionTypedDict", "EnhancedCashFlowTransactions", "EnhancedCashFlowTransactionsTypedDict", "EnhancedFinancialReport", "EnhancedFinancialReportTypedDict", "EnhancedInvoiceReportItem", "EnhancedInvoiceReportItemTypedDict", "EnhancedInvoicesReport", "EnhancedInvoicesReportTypedDict", "EnhancedReportAccountCategory", "EnhancedReportAccountCategoryTypedDict", "EnhancedReportInfo", "EnhancedReportInfoTypedDict", "ErrorStatus", "ErrorValidation", "ErrorValidationItem", "ErrorValidationItemTypedDict", "ErrorValidationTypedDict", "ExcelReportTypes", "ExcelStatus", "ExcelStatusTypedDict", "File", "FileTypedDict", "FileUpload", "FileUploadTypedDict", "GroupReference", "GroupReferenceTypedDict", "HalRef", "HalRefTypedDict", "IntegrityStatus", "InvoiceLineItem", "InvoiceLineItemTypedDict", "InvoiceStatus", "ItemRef", "ItemRefTypedDict", "ItemReference", "ItemReferenceTypedDict", "Items", "ItemsTypedDict", "JournalEntryRecordRef", "JournalEntryRecordRefDataType", "JournalEntryRecordRefTypedDict", "JournalLine", "JournalLineDataType", "JournalLineTracking", "JournalLineTrackingTypedDict", "JournalLineTypedDict", "JournalRef", "JournalRefTypedDict", "JournalStatus", "LendingCustomerRef", "LendingCustomerRefTypedDict", "Links", "LinksTypedDict", "LoanRef", "LoanRefTypedDict", "LoanSummary", "LoanSummaryIntegrationType", "LoanSummaryRecordRef", "LoanSummaryRecordRefType", "LoanSummaryRecordRefTypedDict", "LoanSummaryReportInfo", "LoanSummaryReportInfoTypedDict", "LoanSummaryReportItem", "LoanSummaryReportItemTypedDict", "LoanSummaryTypedDict", "LoanTransactionType", "LoanTransactions", "LoanTransactionsReportInfo", "LoanTransactionsReportInfoTypedDict", "LoanTransactionsTypedDict", "LocationRef", "LocationRefTypedDict", "Metadata", "MetadataTypedDict", "OrderDiscountAllocation", "OrderDiscountAllocationTypedDict", "OrderLineItem", "OrderLineItemTypedDict", "Path", "Payment", "PaymentAllocationPayment", "PaymentAllocationPaymentTypedDict", "PaymentLine", "PaymentLineLink", "PaymentLineLinkTypedDict", "PaymentLineTypedDict", "PaymentLinkType", "PaymentMethodRef", "PaymentMethodRefTypedDict", "PaymentRef", "PaymentRefTypedDict", "PaymentStatus", "PaymentType", "PaymentTypedDict", "PeriodUnit", "PhoneNumber", "PhoneNumberType", "PhoneNumberTypedDict", "ProductInventory", "ProductInventoryLocation", "ProductInventoryLocationTypedDict", "ProductInventoryTypedDict", "ProductPrice", "ProductPriceTypedDict", "ProductRef", "ProductRefTypedDict", "ProductVariant", "ProductVariantRef", "ProductVariantRefTypedDict", "ProductVariantStatus", "ProductVariantTypedDict", "ProfitAndLossReport", "ProfitAndLossReportTypedDict", "ProjectRef", "ProjectRefTypedDict", "PropertieItemRef", "PropertieItemRefTypedDict", "PullOperation", "PullOperationTypedDict", "PullOperations", "PullOperationsTypedDict", "PurchaseOrderReference", "PurchaseOrderReferenceTypedDict", "PushChangeType", "PushFieldValidation", "PushFieldValidationTypedDict", "PushOperation", "PushOperationChange", "PushOperationChangeTypedDict", "PushOperationRef", "PushOperationRefTypedDict", "PushOperationStatus", "PushOperationTypedDict", "PushOperations", "PushOperationsTypedDict", "PushOption", "PushOptionChoice", "PushOptionChoiceTypedDict", "PushOptionProperty", "PushOptionPropertyTypedDict", "PushOptionType", "PushOptionTypedDict", "PushValidationInfo", "PushValidationInfoTypedDict", "RecordLineReference", "RecordLineReferenceTypedDict", "RecordRef", "RecordRefTypedDict", "RecordReference", "RecordReferenceTypedDict", "ReportBasis", "ReportComponentMeasure", "ReportComponentMeasureTypedDict", "ReportInfo", "ReportInfoTypedDict", "ReportInput", "ReportItem", "ReportItemTypedDict", "ReportItems", "ReportItemsTypedDict", "ReportLine", "ReportLineTypedDict", "SalesOrderReference", "SalesOrderReferenceTypedDict", "SchemaDataType", "Security", "SecurityTypedDict", "ServiceCharge", "ServiceChargeType", "ServiceChargeTypedDict", "Source", "SourceRef", "SourceRefTypedDict", "SourceType", "StartUploadSessionRequest", "StartUploadSessionRequestDataType", "StartUploadSessionRequestTypedDict", "Status", "SupplementalData", "SupplementalDataTypedDict", "SupplierRef", "SupplierRefTypedDict", "SupplierStatus", "TaxComponentAllocation", "TaxComponentAllocationTypedDict", "TaxComponentRef", "TaxComponentRefTypedDict", "TaxRateRef", "TaxRateRefTypedDict", "TaxRateReference", "TaxRateReferenceTypedDict", "Tracking", "TrackingCategoryRef", "TrackingCategoryRefTypedDict", "TrackingRecordRef", "TrackingRecordRefDataType", "TrackingRecordRefTypedDict", "TrackingTypedDict", "TransactionCategory", "TransactionCategoryRef", "TransactionCategoryRefTypedDict", "TransactionCategoryStatus", "TransactionCategoryTypedDict", "TransactionCode", "TransactionSourceRef", "TransactionSourceRefTypedDict", "TransactionSourceType", "TransactionType", "TransferAccount", "TransferAccountTypedDict", "Type", "ValidDataTypeLinks", "ValidDataTypeLinksTypedDict", "Validation", "ValidationItem", "ValidationItemTypedDict", "ValidationTypedDict", "WebLink", "WebLinkTypedDict", "WithholdingTax", "WithholdingTaxItems", "WithholdingTaxItemsTypedDict", "WithholdingTaxTypedDict", "Zero", "ZeroDataType", "ZeroTypedDict"]
+__all__ = [
+    "AccountBalance",
+    "AccountBalanceAmounts",
+    "AccountBalanceAmountsTypedDict",
+    "AccountBalanceTypedDict",
+    "AccountCategoriesUpdatedWebhook",
+    "AccountCategoriesUpdatedWebhookData",
+    "AccountCategoriesUpdatedWebhookDataTypedDict",
+    "AccountCategoriesUpdatedWebhookTypedDict",
+    "AccountCategoryLevel",
+    "AccountCategoryLevelTypedDict",
+    "AccountIdentifierType",
+    "AccountIdentifiers",
+    "AccountIdentifiersTypedDict",
+    "AccountInstitution",
+    "AccountInstitutionTypedDict",
+    "AccountPrototype",
+    "AccountPrototypeTypedDict",
+    "AccountRef",
+    "AccountRefTypedDict",
+    "AccountStatus",
+    "AccountTransactionLine",
+    "AccountTransactionLineRecordRef",
+    "AccountTransactionLineRecordRefDataType",
+    "AccountTransactionLineRecordRefTypedDict",
+    "AccountTransactionLineTypedDict",
+    "AccountType",
+    "AccountingAccount",
+    "AccountingAccountTransaction",
+    "AccountingAccountTransactionStatus",
+    "AccountingAccountTransactionTypedDict",
+    "AccountingAccountTransactions",
+    "AccountingAccountTransactionsTypedDict",
+    "AccountingAccountTypedDict",
+    "AccountingAccountValidDataTypeLinks",
+    "AccountingAccountValidDataTypeLinksTypedDict",
+    "AccountingAccounts",
+    "AccountingAccountsTypedDict",
+    "AccountingAddress",
+    "AccountingAddressType",
+    "AccountingAddressTypedDict",
+    "AccountingAgedCreditorReport",
+    "AccountingAgedCreditorReportTypedDict",
+    "AccountingAgedDebtorReport",
+    "AccountingAgedDebtorReportTypedDict",
+    "AccountingAttachment",
+    "AccountingAttachmentTypedDict",
+    "AccountingBalanceSheet",
+    "AccountingBalanceSheetTypedDict",
+    "AccountingBankAccount",
+    "AccountingBankAccountType",
+    "AccountingBankAccountTypedDict",
+    "AccountingBankAccounts",
+    "AccountingBankAccountsTypedDict",
+    "AccountingBankTransaction",
+    "AccountingBankTransactionTypedDict",
+    "AccountingBankTransactions",
+    "AccountingBankTransactionsTypedDict",
+    "AccountingBill",
+    "AccountingBillCreditNote",
+    "AccountingBillCreditNoteTypedDict",
+    "AccountingBillCreditNotes",
+    "AccountingBillCreditNotesTypedDict",
+    "AccountingBillPayment",
+    "AccountingBillPaymentTypedDict",
+    "AccountingBillPayments",
+    "AccountingBillPaymentsTypedDict",
+    "AccountingBillTypedDict",
+    "AccountingBills",
+    "AccountingBillsTypedDict",
+    "AccountingCashFlowStatement",
+    "AccountingCashFlowStatementTypedDict",
+    "AccountingCompanyInfo",
+    "AccountingCompanyInfoTypedDict",
+    "AccountingCreateAccountResponse",
+    "AccountingCreateAccountResponseAccountingAccount",
+    "AccountingCreateAccountResponseAccountingAccountTypedDict",
+    "AccountingCreateAccountResponseTypedDict",
+    "AccountingCreateAccountResponseValidDataTypeLinks",
+    "AccountingCreateAccountResponseValidDataTypeLinksTypedDict",
+    "AccountingCreateBankAccountResponse",
+    "AccountingCreateBankAccountResponseAccountingBankAccount",
+    "AccountingCreateBankAccountResponseAccountingBankAccountTypedDict",
+    "AccountingCreateBankAccountResponseTypedDict",
+    "AccountingCreateBankAccountTransactions",
+    "AccountingCreateBankAccountTransactionsTypedDict",
+    "AccountingCreateBankTransactions",
+    "AccountingCreateBankTransactionsResponse",
+    "AccountingCreateBankTransactionsResponseTypedDict",
+    "AccountingCreateBankTransactionsTypedDict",
+    "AccountingCreateDirectCostResponse",
+    "AccountingCreateDirectCostResponseAccountingDirectCost",
+    "AccountingCreateDirectCostResponseAccountingDirectCostTypedDict",
+    "AccountingCreateDirectCostResponseTypedDict",
+    "AccountingCreatePaymentResponse",
+    "AccountingCreatePaymentResponseAccountingPayment",
+    "AccountingCreatePaymentResponseAccountingPaymentTypedDict",
+    "AccountingCreatePaymentResponseTypedDict",
+    "AccountingCreateSupplierResponse",
+    "AccountingCreateSupplierResponseAccountingSupplier",
+    "AccountingCreateSupplierResponseAccountingSupplierTypedDict",
+    "AccountingCreateSupplierResponseTypedDict",
+    "AccountingCreateTransferResponse",
+    "AccountingCreateTransferResponseAccountingTransfer",
+    "AccountingCreateTransferResponseAccountingTransferTypedDict",
+    "AccountingCreateTransferResponseStatus",
+    "AccountingCreateTransferResponseTypedDict",
+    "AccountingCreditNote",
+    "AccountingCreditNoteTypedDict",
+    "AccountingCreditNotes",
+    "AccountingCreditNotesTypedDict",
+    "AccountingCustomer",
+    "AccountingCustomerRef",
+    "AccountingCustomerRefTypedDict",
+    "AccountingCustomerTypedDict",
+    "AccountingCustomers",
+    "AccountingCustomersTypedDict",
+    "AccountingDirectCost",
+    "AccountingDirectCostTypedDict",
+    "AccountingDirectCosts",
+    "AccountingDirectCostsTypedDict",
+    "AccountingDirectIncome",
+    "AccountingDirectIncomeTypedDict",
+    "AccountingDirectIncomes",
+    "AccountingDirectIncomesTypedDict",
+    "AccountingInvoice",
+    "AccountingInvoiceDataType",
+    "AccountingInvoiceTypedDict",
+    "AccountingInvoices",
+    "AccountingInvoicesTypedDict",
+    "AccountingJournal",
+    "AccountingJournalEntries",
+    "AccountingJournalEntriesTypedDict",
+    "AccountingJournalEntry",
+    "AccountingJournalEntryTypedDict",
+    "AccountingJournalTypedDict",
+    "AccountingJournals",
+    "AccountingJournalsTypedDict",
+    "AccountingPayment",
+    "AccountingPaymentAllocation",
+    "AccountingPaymentAllocationTypedDict",
+    "AccountingPaymentTypedDict",
+    "AccountingPayments",
+    "AccountingPaymentsTypedDict",
+    "AccountingProfitAndLossReport",
+    "AccountingProfitAndLossReportTypedDict",
+    "AccountingSupplier",
+    "AccountingSupplierTypedDict",
+    "AccountingSuppliers",
+    "AccountingSuppliersTypedDict",
+    "AccountingTransfer",
+    "AccountingTransferStatus",
+    "AccountingTransferTypedDict",
+    "AccountingTransfers",
+    "AccountingTransfersTypedDict",
+    "Accounts",
+    "AccountsPayableTracking",
+    "AccountsPayableTrackingTypedDict",
+    "AccountsReceivableTracking",
+    "AccountsReceivableTrackingTypedDict",
+    "AccountsTypedDict",
+    "AgedCreditor",
+    "AgedCreditorTypedDict",
+    "AgedCurrencyOutstanding",
+    "AgedCurrencyOutstandingTypedDict",
+    "AgedDebtor",
+    "AgedDebtorTypedDict",
+    "AgedOutstandingAmount",
+    "AgedOutstandingAmountDetail",
+    "AgedOutstandingAmountDetailTypedDict",
+    "AgedOutstandingAmountTypedDict",
+    "Allocation",
+    "AllocationTypedDict",
+    "Attachments",
+    "AttachmentsTypedDict",
+    "BalanceSheet",
+    "BalanceSheetTypedDict",
+    "BankAccountRef",
+    "BankAccountRefTypedDict",
+    "BankAccountStatus",
+    "BankStatementUploadConfiguration",
+    "BankStatementUploadConfigurationTypedDict",
+    "BankTransactionType",
+    "BankingAccount",
+    "BankingAccountBalance",
+    "BankingAccountBalanceTypedDict",
+    "BankingAccountBalances",
+    "BankingAccountBalancesTypedDict",
+    "BankingAccountTypedDict",
+    "BankingAccounts",
+    "BankingAccountsTypedDict",
+    "BankingTransaction",
+    "BankingTransactionCategories",
+    "BankingTransactionCategoriesTypedDict",
+    "BankingTransactionCategory",
+    "BankingTransactionCategoryTypedDict",
+    "BankingTransactionRef",
+    "BankingTransactionRefTypedDict",
+    "BankingTransactionTypedDict",
+    "BankingTransactions",
+    "BankingTransactionsTypedDict",
+    "BillCreditNoteLineItem",
+    "BillCreditNoteLineItemTypedDict",
+    "BillCreditNoteStatus",
+    "BillLineItem",
+    "BillLineItemDataType",
+    "BillLineItemTypedDict",
+    "BillPaymentLine",
+    "BillPaymentLineLink",
+    "BillPaymentLineLinkType",
+    "BillPaymentLineLinkTypedDict",
+    "BillPaymentLineTypedDict",
+    "BillStatus",
+    "BilledToType",
+    "BilledToType1",
+    "BilledToType2",
+    "CashFlowStatement",
+    "CashFlowStatementTypedDict",
+    "ClientRateLimitReachedWebhook",
+    "ClientRateLimitReachedWebhookData",
+    "ClientRateLimitReachedWebhookDataTypedDict",
+    "ClientRateLimitReachedWebhookTypedDict",
+    "ClientRateLimitResetWebhook",
+    "ClientRateLimitResetWebhookData",
+    "ClientRateLimitResetWebhookDataTypedDict",
+    "ClientRateLimitResetWebhookTypedDict",
+    "ClientRateLimitWebhook",
+    "ClientRateLimitWebhookPayload",
+    "ClientRateLimitWebhookPayloadTypedDict",
+    "ClientRateLimitWebhookTypedDict",
+    "CodatFile",
+    "CodatFileTypedDict",
+    "CommerceAddress",
+    "CommerceAddressType",
+    "CommerceAddressTypedDict",
+    "CommerceCompanyInfo",
+    "CommerceCompanyInfoTypedDict",
+    "CommerceCustomer",
+    "CommerceCustomerRef",
+    "CommerceCustomerRefTypedDict",
+    "CommerceCustomerTypedDict",
+    "CommerceCustomers",
+    "CommerceCustomersTypedDict",
+    "CommerceDispute",
+    "CommerceDisputeTypedDict",
+    "CommerceDisputes",
+    "CommerceDisputesTypedDict",
+    "CommerceLocation",
+    "CommerceLocationTypedDict",
+    "CommerceLocations",
+    "CommerceLocationsTypedDict",
+    "CommerceOrder",
+    "CommerceOrderTypedDict",
+    "CommerceOrders",
+    "CommerceOrdersTypedDict",
+    "CommercePayment",
+    "CommercePaymentMethod",
+    "CommercePaymentMethodStatus",
+    "CommercePaymentMethodTypedDict",
+    "CommercePaymentMethods",
+    "CommercePaymentMethodsTypedDict",
+    "CommercePaymentTypedDict",
+    "CommercePayments",
+    "CommercePaymentsTypedDict",
+    "CommerceProduct",
+    "CommerceProductCategories",
+    "CommerceProductCategoriesTypedDict",
+    "CommerceProductCategory",
+    "CommerceProductCategoryTypedDict",
+    "CommerceProductTypedDict",
+    "CommerceProducts",
+    "CommerceProductsTypedDict",
+    "CommerceRecordRef",
+    "CommerceRecordRefTypedDict",
+    "CommerceReport",
+    "CommerceReportComponent",
+    "CommerceReportComponentTypedDict",
+    "CommerceReportDimension",
+    "CommerceReportDimensionItems",
+    "CommerceReportDimensionItemsTypedDict",
+    "CommerceReportDimensionTypedDict",
+    "CommerceReportError",
+    "CommerceReportErrorTypedDict",
+    "CommerceReportMeasure",
+    "CommerceReportMeasureTypedDict",
+    "CommerceReportTypedDict",
+    "CommerceTransaction",
+    "CommerceTransactionTypedDict",
+    "CommerceTransactions",
+    "CommerceTransactionsTypedDict",
+    "Companies",
+    "CompaniesTypedDict",
+    "Company",
+    "CompanyRequestBody",
+    "CompanyRequestBodyTypedDict",
+    "CompanyTags",
+    "CompanyTagsTypedDict",
+    "CompanyTypedDict",
+    "Connection",
+    "ConnectionTypedDict",
+    "Connections",
+    "ConnectionsTypedDict",
+    "Contact",
+    "ContactRef",
+    "ContactRefDataType",
+    "ContactRefTypedDict",
+    "ContactReference",
+    "ContactReferenceTypedDict",
+    "ContactTypedDict",
+    "CreateBankAccountTransaction",
+    "CreateBankAccountTransactionTypedDict",
+    "CreditNoteLineItem",
+    "CreditNoteLineItemTypedDict",
+    "CreditNoteStatus",
+    "CustomerStatus",
+    "DataConnectionError",
+    "DataConnectionErrorTypedDict",
+    "DataConnectionStatus",
+    "DataIntegrityAmounts",
+    "DataIntegrityAmountsTypedDict",
+    "DataIntegrityByAmount",
+    "DataIntegrityByAmountTypedDict",
+    "DataIntegrityByCount",
+    "DataIntegrityByCountTypedDict",
+    "DataIntegrityConnectionID",
+    "DataIntegrityConnectionIDTypedDict",
+    "DataIntegrityDataType",
+    "DataIntegrityDates",
+    "DataIntegrityDatesTypedDict",
+    "DataIntegrityDetail",
+    "DataIntegrityDetailTypedDict",
+    "DataIntegrityDetails",
+    "DataIntegrityDetailsTypedDict",
+    "DataIntegrityMatch",
+    "DataIntegrityMatchTypedDict",
+    "DataIntegrityStatus",
+    "DataIntegrityStatusInfo",
+    "DataIntegrityStatusInfoTypedDict",
+    "DataIntegrityStatusTypedDict",
+    "DataIntegrityStatuses",
+    "DataIntegrityStatusesTypedDict",
+    "DataIntegritySummaries",
+    "DataIntegritySummariesTypedDict",
+    "DataIntegritySummary",
+    "DataIntegritySummaryTypedDict",
+    "DataSource",
+    "DataSourceTypedDict",
+    "DataStatus",
+    "DataStatusTypedDict",
+    "DataType",
+    "DataTypes",
+    "DatasetStatus",
+    "DirectCostLineItem",
+    "DirectCostLineItemTypedDict",
+    "DirectCostPrototype",
+    "DirectCostPrototypeTypedDict",
+    "DirectIncomeLineItem",
+    "DirectIncomeLineItemTypedDict",
+    "DisputeStatus",
+    "EndUploadSessionRequest",
+    "EndUploadSessionRequestStatus",
+    "EndUploadSessionRequestTypedDict",
+    "EnhancedCashFlowItem",
+    "EnhancedCashFlowItemTypedDict",
+    "EnhancedCashFlowTransaction",
+    "EnhancedCashFlowTransactionTypedDict",
+    "EnhancedCashFlowTransactions",
+    "EnhancedCashFlowTransactionsTypedDict",
+    "EnhancedFinancialReport",
+    "EnhancedFinancialReportTypedDict",
+    "EnhancedInvoiceReportItem",
+    "EnhancedInvoiceReportItemTypedDict",
+    "EnhancedInvoicesReport",
+    "EnhancedInvoicesReportTypedDict",
+    "EnhancedReportAccountCategory",
+    "EnhancedReportAccountCategoryTypedDict",
+    "EnhancedReportInfo",
+    "EnhancedReportInfoTypedDict",
+    "ErrorStatus",
+    "ErrorValidation",
+    "ErrorValidationItem",
+    "ErrorValidationItemTypedDict",
+    "ErrorValidationTypedDict",
+    "ExcelReportTypes",
+    "ExcelStatus",
+    "ExcelStatusTypedDict",
+    "File",
+    "FileTypedDict",
+    "FileUpload",
+    "FileUploadTypedDict",
+    "HalRef",
+    "HalRefTypedDict",
+    "IntegrityStatus",
+    "InvoiceLineItem",
+    "InvoiceLineItemTypedDict",
+    "InvoiceStatus",
+    "ItemRef",
+    "ItemRefTypedDict",
+    "ItemReference",
+    "ItemReferenceTypedDict",
+    "Items",
+    "ItemsTypedDict",
+    "JournalEntryRecordRef",
+    "JournalEntryRecordRefDataType",
+    "JournalEntryRecordRefTypedDict",
+    "JournalLine",
+    "JournalLineDataType",
+    "JournalLineTracking",
+    "JournalLineTrackingTypedDict",
+    "JournalLineTypedDict",
+    "JournalRef",
+    "JournalRefTypedDict",
+    "JournalStatus",
+    "LendingCustomerRef",
+    "LendingCustomerRefTypedDict",
+    "Links",
+    "LinksTypedDict",
+    "LoanRef",
+    "LoanRefTypedDict",
+    "LoanSummary",
+    "LoanSummaryIntegrationType",
+    "LoanSummaryRecordRef",
+    "LoanSummaryRecordRefType",
+    "LoanSummaryRecordRefTypedDict",
+    "LoanSummaryReportInfo",
+    "LoanSummaryReportInfoTypedDict",
+    "LoanSummaryReportItem",
+    "LoanSummaryReportItemTypedDict",
+    "LoanSummaryTypedDict",
+    "LoanTransactionType",
+    "LoanTransactions",
+    "LoanTransactionsReportInfo",
+    "LoanTransactionsReportInfoTypedDict",
+    "LoanTransactionsTypedDict",
+    "LocationRef",
+    "LocationRefTypedDict",
+    "Metadata",
+    "MetadataTypedDict",
+    "OrderDiscountAllocation",
+    "OrderDiscountAllocationTypedDict",
+    "OrderLineItem",
+    "OrderLineItemTypedDict",
+    "Path",
+    "Payment",
+    "PaymentAllocationPayment",
+    "PaymentAllocationPaymentTypedDict",
+    "PaymentLine",
+    "PaymentLineLink",
+    "PaymentLineLinkTypedDict",
+    "PaymentLineTypedDict",
+    "PaymentLinkType",
+    "PaymentMethodRef",
+    "PaymentMethodRefTypedDict",
+    "PaymentRef",
+    "PaymentRefTypedDict",
+    "PaymentStatus",
+    "PaymentType",
+    "PaymentTypedDict",
+    "PeriodUnit",
+    "PhoneNumber",
+    "PhoneNumberType",
+    "PhoneNumberTypedDict",
+    "ProductInventory",
+    "ProductInventoryLocation",
+    "ProductInventoryLocationTypedDict",
+    "ProductInventoryTypedDict",
+    "ProductPrice",
+    "ProductPriceTypedDict",
+    "ProductRef",
+    "ProductRefTypedDict",
+    "ProductVariant",
+    "ProductVariantRef",
+    "ProductVariantRefTypedDict",
+    "ProductVariantStatus",
+    "ProductVariantTypedDict",
+    "ProfitAndLossReport",
+    "ProfitAndLossReportTypedDict",
+    "ProjectRef",
+    "ProjectRefTypedDict",
+    "PropertieItemRef",
+    "PropertieItemRefTypedDict",
+    "PullOperation",
+    "PullOperationTypedDict",
+    "PullOperations",
+    "PullOperationsTypedDict",
+    "PurchaseOrderReference",
+    "PurchaseOrderReferenceTypedDict",
+    "PushChangeType",
+    "PushFieldValidation",
+    "PushFieldValidationTypedDict",
+    "PushOperation",
+    "PushOperationChange",
+    "PushOperationChangeTypedDict",
+    "PushOperationRef",
+    "PushOperationRefTypedDict",
+    "PushOperationStatus",
+    "PushOperationTypedDict",
+    "PushOperations",
+    "PushOperationsTypedDict",
+    "PushOption",
+    "PushOptionChoice",
+    "PushOptionChoiceTypedDict",
+    "PushOptionProperty",
+    "PushOptionPropertyTypedDict",
+    "PushOptionType",
+    "PushOptionTypedDict",
+    "PushValidationInfo",
+    "PushValidationInfoTypedDict",
+    "RecordLineReference",
+    "RecordLineReferenceTypedDict",
+    "RecordRef",
+    "RecordRefTypedDict",
+    "RecordReference",
+    "RecordReferenceTypedDict",
+    "ReportBasis",
+    "ReportComponentMeasure",
+    "ReportComponentMeasureTypedDict",
+    "ReportInfo",
+    "ReportInfoTypedDict",
+    "ReportInput",
+    "ReportItem",
+    "ReportItemTypedDict",
+    "ReportItems",
+    "ReportItemsTypedDict",
+    "ReportLine",
+    "ReportLineTypedDict",
+    "SalesOrderReference",
+    "SalesOrderReferenceTypedDict",
+    "SchemaDataType",
+    "Security",
+    "SecurityTypedDict",
+    "ServiceCharge",
+    "ServiceChargeType",
+    "ServiceChargeTypedDict",
+    "Source",
+    "SourceRef",
+    "SourceRefTypedDict",
+    "SourceType",
+    "StartUploadSessionRequest",
+    "StartUploadSessionRequestDataType",
+    "StartUploadSessionRequestTypedDict",
+    "Status",
+    "SupplementalData",
+    "SupplementalDataTypedDict",
+    "SupplierRef",
+    "SupplierRefTypedDict",
+    "SupplierStatus",
+    "Tags",
+    "TagsTypedDict",
+    "TaxComponentAllocation",
+    "TaxComponentAllocationTypedDict",
+    "TaxComponentRef",
+    "TaxComponentRefTypedDict",
+    "TaxRateRef",
+    "TaxRateRefTypedDict",
+    "TaxRateReference",
+    "TaxRateReferenceTypedDict",
+    "Tracking",
+    "TrackingCategoryRef",
+    "TrackingCategoryRefTypedDict",
+    "TrackingRecordRef",
+    "TrackingRecordRefDataType",
+    "TrackingRecordRefTypedDict",
+    "TrackingTypedDict",
+    "TransactionCategory",
+    "TransactionCategoryRef",
+    "TransactionCategoryRefTypedDict",
+    "TransactionCategoryStatus",
+    "TransactionCategoryTypedDict",
+    "TransactionCode",
+    "TransactionSourceRef",
+    "TransactionSourceRefTypedDict",
+    "TransactionSourceType",
+    "TransactionType",
+    "TransferAccount",
+    "TransferAccountTypedDict",
+    "Type",
+    "ValidDataTypeLinks",
+    "ValidDataTypeLinksTypedDict",
+    "Validation",
+    "ValidationItem",
+    "ValidationItemTypedDict",
+    "ValidationTypedDict",
+    "WebLink",
+    "WebLinkTypedDict",
+    "WithholdingTax",
+    "WithholdingTaxTypedDict",
+    "Zero",
+    "ZeroDataType",
+    "ZeroTypedDict",
+]

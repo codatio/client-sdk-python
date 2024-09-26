@@ -13,11 +13,19 @@ class GetAccountingSupplierRequestTypedDict(TypedDict):
     r"""Unique identifier for a company."""
     supplier_id: str
     r"""Unique identifier for a supplier."""
-    
+
 
 class GetAccountingSupplierRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    supplier_id: Annotated[str, pydantic.Field(alias="supplierId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    supplier_id: Annotated[
+        str,
+        pydantic.Field(alias="supplierId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a supplier."""
-    

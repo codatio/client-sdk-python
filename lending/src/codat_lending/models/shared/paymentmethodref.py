@@ -8,18 +8,18 @@ from typing_extensions import NotRequired
 
 class PaymentMethodRefTypedDict(TypedDict):
     r"""The payment method the record is linked to in the accounting or commerce software."""
-    
+
     id: str
     r"""The unique identifier of the location being referenced."""
     name: NotRequired[str]
     r"""Name of the location being referenced."""
-    
+
 
 class PaymentMethodRef(BaseModel):
     r"""The payment method the record is linked to in the accounting or commerce software."""
-    
+
     id: str
     r"""The unique identifier of the location being referenced."""
+
     name: Optional[str] = None
     r"""Name of the location being referenced."""
-    

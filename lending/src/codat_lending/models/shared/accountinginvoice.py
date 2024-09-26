@@ -2,13 +2,22 @@
 
 from __future__ import annotations
 from .accountingcustomerref import AccountingCustomerRef, AccountingCustomerRefTypedDict
-from .accountingpaymentallocation import AccountingPaymentAllocation, AccountingPaymentAllocationTypedDict
+from .accountingpaymentallocation import (
+    AccountingPaymentAllocation,
+    AccountingPaymentAllocationTypedDict,
+)
 from .invoicelineitem import InvoiceLineItem, InvoiceLineItemTypedDict
 from .invoicestatus import InvoiceStatus
+from .items import Items, ItemsTypedDict
 from .metadata import Metadata, MetadataTypedDict
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
-from .withholdingtax_items import WithholdingTaxItems, WithholdingTaxItemsTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 from enum import Enum
@@ -22,21 +31,26 @@ from typing_extensions import Annotated, NotRequired
 
 class AccountingInvoiceDataType(str, Enum):
     r"""The underlying data type associated to the reference `id`."""
+
     SALES_ORDERS = "salesOrders"
+
 
 class SalesOrderReferenceTypedDict(TypedDict):
     data_type: NotRequired[AccountingInvoiceDataType]
     r"""The underlying data type associated to the reference `id`."""
     id: NotRequired[str]
     r"""Unique identifier to a record in `dataType`."""
-    
+
 
 class SalesOrderReference(BaseModel):
-    data_type: Annotated[Optional[AccountingInvoiceDataType], pydantic.Field(alias="dataType")] = None
+    data_type: Annotated[
+        Optional[AccountingInvoiceDataType], pydantic.Field(alias="dataType")
+    ] = None
     r"""The underlying data type associated to the reference `id`."""
+
     id: Optional[str] = None
     r"""Unique identifier to a record in `dataType`."""
-    
+
 
 class AccountingInvoiceTypedDict(TypedDict):
     r"""> **Invoices or bills?**
@@ -69,7 +83,7 @@ class AccountingInvoiceTypedDict(TypedDict):
     >
     > In Sage 50 and ClearBooks, you may prefer to use the **invoiceNumber** to identify an invoice rather than the invoice **id**. Each time a draft invoice is submitted or printed, the draft **id** becomes void and a submitted invoice with a new **id** exists in its place. In both platforms, the **invoiceNumber** should remain the same.
     """
-    
+
     amount_due: Decimal
     r"""Amount outstanding on the invoice."""
     issue_date: str
@@ -208,7 +222,9 @@ class AccountingInvoiceTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    payment_allocations: NotRequired[Nullable[List[AccountingPaymentAllocationTypedDict]]]
+    payment_allocations: NotRequired[
+        Nullable[List[AccountingPaymentAllocationTypedDict]]
+    ]
     r"""An array of payment allocations."""
     sales_order_refs: NotRequired[Nullable[List[SalesOrderReferenceTypedDict]]]
     r"""List of references to related Sales orders."""
@@ -222,8 +238,8 @@ class AccountingInvoiceTypedDict(TypedDict):
     """
     total_discount: NotRequired[Nullable[Decimal]]
     r"""Numerical value of discounts applied to the invoice."""
-    withholding_tax: NotRequired[Nullable[List[WithholdingTaxItemsTypedDict]]]
-    
+    withholding_tax: NotRequired[Nullable[List[ItemsTypedDict]]]
+
 
 class AccountingInvoice(BaseModel):
     r"""> **Invoices or bills?**
@@ -256,9 +272,17 @@ class AccountingInvoice(BaseModel):
     >
     > In Sage 50 and ClearBooks, you may prefer to use the **invoiceNumber** to identify an invoice rather than the invoice **id**. Each time a draft invoice is submitted or printed, the draft **id** becomes void and a submitted invoice with a new **id** exists in its place. In both platforms, the **invoiceNumber** should remain the same.
     """
-    
-    amount_due: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="amountDue")]
+
+    amount_due: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="amountDue"),
+    ]
     r"""Amount outstanding on the invoice."""
+
     issue_date: Annotated[str, pydantic.Field(alias="issueDate")]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -280,6 +304,7 @@ class AccountingInvoice(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     status: InvoiceStatus
     r"""Current state of the invoice:
 
@@ -289,14 +314,47 @@ class AccountingInvoice(BaseModel):
     - `Paid` - Invoice is paid in full. This includes if the invoice has been credited or overpaid (amountDue == 0).
     - `Void` - An invoice can become Void when it's deleted, refunded, written off, or cancelled. A voided invoice may still be PartiallyPaid, and so all outstanding amounts on voided invoices are removed from the accounts receivable account.
     """
-    total_amount: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalAmount")]
+
+    total_amount: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalAmount"),
+    ]
     r"""Amount of the invoice, inclusive of tax."""
-    total_tax_amount: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalTaxAmount")]
+
+    total_tax_amount: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalTaxAmount"),
+    ]
     r"""Amount of tax on the invoice."""
-    additional_tax_amount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="additionalTaxAmount")] = None
+
+    additional_tax_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="additionalTaxAmount"),
+    ] = None
     r"""Additional tax amount applied to invoice."""
-    additional_tax_percentage: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="additionalTaxPercentage")] = None
+
+    additional_tax_percentage: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="additionalTaxPercentage"),
+    ] = None
     r"""Percentage rate of any additional tax applied to the invoice."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -306,7 +364,15 @@ class AccountingInvoice(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    currency_rate: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="currencyRate")] = UNSET
+
+    currency_rate: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="currencyRate"),
+    ] = UNSET
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.
@@ -340,9 +406,21 @@ class AccountingInvoice(BaseModel):
     |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, specify a currencyRate in the request body.  |
     """
-    customer_ref: Annotated[Optional[AccountingCustomerRef], pydantic.Field(alias="customerRef")] = None
-    discount_percentage: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="discountPercentage")] = UNSET
+
+    customer_ref: Annotated[
+        Optional[AccountingCustomerRef], pydantic.Field(alias="customerRef")
+    ] = None
+
+    discount_percentage: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="discountPercentage"),
+    ] = UNSET
     r"""Percentage rate (from 0 to 100) of discounts applied to the invoice. For example: A 5% discount will return a value of `5`, not `0.05`."""
+
     due_date: Annotated[Optional[str], pydantic.Field(alias="dueDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -364,16 +442,27 @@ class AccountingInvoice(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     id: Optional[str] = None
     r"""Identifier for the invoice, unique to the company in the accounting software."""
-    invoice_number: Annotated[OptionalNullable[str], pydantic.Field(alias="invoiceNumber")] = UNSET
+
+    invoice_number: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="invoiceNumber")
+    ] = UNSET
     r"""Friendly reference for the invoice. If available, this appears in the file name of invoice attachments."""
-    line_items: Annotated[OptionalNullable[List[InvoiceLineItem]], pydantic.Field(alias="lineItems")] = UNSET
+
+    line_items: Annotated[
+        OptionalNullable[List[InvoiceLineItem]], pydantic.Field(alias="lineItems")
+    ] = UNSET
     r"""An array of line items."""
+
     metadata: Optional[Metadata] = None
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     note: OptionalNullable[str] = UNSET
     r"""Any additional information about the invoice. Where possible, Codat links to a data field in the accounting software that is publicly available. This means that the contents of the note field are included when an invoice is emailed from the accounting software to the customer."""
+
     paid_on_date: Annotated[Optional[str], pydantic.Field(alias="paidOnDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -395,26 +484,92 @@ class AccountingInvoice(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    payment_allocations: Annotated[OptionalNullable[List[AccountingPaymentAllocation]], pydantic.Field(alias="paymentAllocations")] = UNSET
+
+    payment_allocations: Annotated[
+        OptionalNullable[List[AccountingPaymentAllocation]],
+        pydantic.Field(alias="paymentAllocations"),
+    ] = UNSET
     r"""An array of payment allocations."""
-    sales_order_refs: Annotated[OptionalNullable[List[SalesOrderReference]], pydantic.Field(alias="salesOrderRefs")] = UNSET
+
+    sales_order_refs: Annotated[
+        OptionalNullable[List[SalesOrderReference]],
+        pydantic.Field(alias="salesOrderRefs"),
+    ] = UNSET
     r"""List of references to related Sales orders."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    sub_total: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="subTotal")] = UNSET
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
+    sub_total: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="subTotal"),
+    ] = UNSET
     r"""Total amount of the invoice excluding any taxes."""
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    total_discount: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalDiscount")] = UNSET
+
+    total_discount: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalDiscount"),
+    ] = UNSET
     r"""Numerical value of discounts applied to the invoice."""
-    withholding_tax: Annotated[OptionalNullable[List[WithholdingTaxItems]], pydantic.Field(alias="withholdingTax")] = UNSET
-    
+
+    withholding_tax: Annotated[
+        OptionalNullable[List[Items]], pydantic.Field(alias="withholdingTax")
+    ] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["additionalTaxAmount", "additionalTaxPercentage", "currency", "currencyRate", "customerRef", "discountPercentage", "dueDate", "id", "invoiceNumber", "lineItems", "metadata", "modifiedDate", "note", "paidOnDate", "paymentAllocations", "salesOrderRefs", "sourceModifiedDate", "subTotal", "supplementalData", "totalDiscount", "withholdingTax"]
-        nullable_fields = ["currencyRate", "discountPercentage", "invoiceNumber", "lineItems", "note", "paymentAllocations", "salesOrderRefs", "subTotal", "totalDiscount", "withholdingTax"]
+        optional_fields = [
+            "additionalTaxAmount",
+            "additionalTaxPercentage",
+            "currency",
+            "currencyRate",
+            "customerRef",
+            "discountPercentage",
+            "dueDate",
+            "id",
+            "invoiceNumber",
+            "lineItems",
+            "metadata",
+            "modifiedDate",
+            "note",
+            "paidOnDate",
+            "paymentAllocations",
+            "salesOrderRefs",
+            "sourceModifiedDate",
+            "subTotal",
+            "supplementalData",
+            "totalDiscount",
+            "withholdingTax",
+        ]
+        nullable_fields = [
+            "currencyRate",
+            "discountPercentage",
+            "invoiceNumber",
+            "lineItems",
+            "note",
+            "paymentAllocations",
+            "salesOrderRefs",
+            "subTotal",
+            "totalDiscount",
+            "withholdingTax",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -424,9 +579,13 @@ class AccountingInvoice(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -436,4 +595,3 @@ class AccountingInvoice(BaseModel):
                 m[k] = val
 
         return m
-        

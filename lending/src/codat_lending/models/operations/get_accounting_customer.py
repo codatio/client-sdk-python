@@ -13,11 +13,19 @@ class GetAccountingCustomerRequestTypedDict(TypedDict):
     r"""Unique identifier for a company."""
     customer_id: str
     r"""Unique identifier for a customer."""
-    
+
 
 class GetAccountingCustomerRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    customer_id: Annotated[str, pydantic.Field(alias="customerId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    customer_id: Annotated[
+        str,
+        pydantic.Field(alias="customerId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a customer."""
-    

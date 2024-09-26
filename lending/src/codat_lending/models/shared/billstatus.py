@@ -6,6 +6,7 @@ from enum import Enum
 
 class BillStatus(str, Enum):
     r"""Current state of the bill."""
+
     UNKNOWN = "Unknown"
     OPEN = "Open"
     PARTIALLY_PAID = "PartiallyPaid"

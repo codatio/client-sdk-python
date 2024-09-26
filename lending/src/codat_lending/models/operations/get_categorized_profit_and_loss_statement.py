@@ -15,13 +15,26 @@ class GetCategorizedProfitAndLossStatementRequestTypedDict(TypedDict):
     r"""The number of periods to return. If not provided, 12 periods will be used as the default value."""
     report_date: NotRequired[str]
     r"""The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month."""
-    
+
 
 class GetCategorizedProfitAndLossStatementRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    number_of_periods: Annotated[Optional[int], pydantic.Field(alias="numberOfPeriods"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    number_of_periods: Annotated[
+        Optional[int],
+        pydantic.Field(alias="numberOfPeriods"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""The number of periods to return. If not provided, 12 periods will be used as the default value."""
-    report_date: Annotated[Optional[str], pydantic.Field(alias="reportDate"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    report_date: Annotated[
+        Optional[str],
+        pydantic.Field(alias="reportDate"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month."""
-    

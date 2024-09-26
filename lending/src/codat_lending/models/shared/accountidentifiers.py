@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .accountidentifiertype import AccountIdentifierType
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
 from pydantic import model_serializer
 from typing import TypedDict
@@ -11,7 +17,7 @@ from typing_extensions import Annotated, NotRequired
 
 class AccountIdentifiersTypedDict(TypedDict):
     r"""An object containing bank account identification information."""
-    
+
     type: AccountIdentifierType
     r"""Type of account"""
     bank_code: NotRequired[Nullable[str]]
@@ -32,14 +38,17 @@ class AccountIdentifiersTypedDict(TypedDict):
     r"""The account number for the account. When combined with the`bankCode`, this is usually enough to uniquely identify an account within a jurisdiction."""
     subtype: NotRequired[Nullable[str]]
     r"""Detailed account category"""
-    
+
 
 class AccountIdentifiers(BaseModel):
     r"""An object containing bank account identification information."""
-    
+
     type: AccountIdentifierType
     r"""Type of account"""
-    bank_code: Annotated[OptionalNullable[str], pydantic.Field(alias="bankCode")] = UNSET
+
+    bank_code: Annotated[OptionalNullable[str], pydantic.Field(alias="bankCode")] = (
+        UNSET
+    )
     r"""The local (usually national) routing number for the account.
 
     This is known by different names in different countries:
@@ -47,21 +56,42 @@ class AccountIdentifiers(BaseModel):
     * routing number (Canada, USA)
     * sort code (UK)
     """
+
     bic: OptionalNullable[str] = UNSET
     r"""The ISO 9362 code (commonly called SWIFT code, SWIFT-BIC or BIC) for the account."""
+
     iban: OptionalNullable[str] = UNSET
     r"""The international bank account number (IBAN) for the account, if known."""
-    masked_account_number: Annotated[OptionalNullable[str], pydantic.Field(alias="maskedAccountNumber")] = UNSET
+
+    masked_account_number: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="maskedAccountNumber")
+    ] = UNSET
     r"""A portion of the actual account `number` to help account identification where number is tokenised (Plaid only)"""
+
     number: OptionalNullable[str] = UNSET
     r"""The account number for the account. When combined with the`bankCode`, this is usually enough to uniquely identify an account within a jurisdiction."""
+
     subtype: OptionalNullable[str] = UNSET
     r"""Detailed account category"""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["bankCode", "bic", "iban", "maskedAccountNumber", "number", "subtype"]
-        nullable_fields = ["bankCode", "bic", "iban", "maskedAccountNumber", "number", "subtype"]
+        optional_fields = [
+            "bankCode",
+            "bic",
+            "iban",
+            "maskedAccountNumber",
+            "number",
+            "subtype",
+        ]
+        nullable_fields = [
+            "bankCode",
+            "bic",
+            "iban",
+            "maskedAccountNumber",
+            "number",
+            "subtype",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -71,9 +101,13 @@ class AccountIdentifiers(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -83,4 +117,3 @@ class AccountIdentifiers(BaseModel):
                 m[k] = val
 
         return m
-        

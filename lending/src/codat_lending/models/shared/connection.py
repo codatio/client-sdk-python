@@ -3,15 +3,23 @@
 from __future__ import annotations
 from .dataconnectionerror import DataConnectionError, DataConnectionErrorTypedDict
 from .dataconnectionstatus import DataConnectionStatus
-from codat_lending.types import BaseModel
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from enum import Enum
 import pydantic
-from typing import Any, Dict, List, Optional, TypedDict
+from pydantic import model_serializer
+from typing import Dict, List, Optional, TypedDict
 from typing_extensions import Annotated, NotRequired
 
 
 class SourceType(str, Enum):
     r"""The type of platform of the connection."""
+
     ACCOUNTING = "Accounting"
     BANKING = "Banking"
     BANK_FEED = "BankFeed"
@@ -19,6 +27,7 @@ class SourceType(str, Enum):
     EXPENSE = "Expense"
     OTHER = "Other"
     UNKNOWN = "Unknown"
+
 
 class ConnectionTypedDict(TypedDict):
     r"""A connection represents a [company's](https://docs.codat.io/lending-api#/schemas/Company) connection to a data source and allows you to synchronize data (pull and/or push) with that source.
@@ -32,7 +41,7 @@ class ConnectionTypedDict(TypedDict):
 
     Before you can use a data connection to pull or push data, the company must grant you access to their business data by [linking the connection](https://docs.codat.io/auth-flow/overview).
     """
-    
+
     created: str
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -70,9 +79,8 @@ class ConnectionTypedDict(TypedDict):
     r"""The type of platform of the connection."""
     status: DataConnectionStatus
     r"""The current authorization status of the data connection."""
-    additional_properties: NotRequired[Any]
-    connection_info: NotRequired[Dict[str, str]]
-    data_connection_errors: NotRequired[List[DataConnectionErrorTypedDict]]
+    connection_info: NotRequired[Nullable[Dict[str, str]]]
+    data_connection_errors: NotRequired[Nullable[List[DataConnectionErrorTypedDict]]]
     last_sync: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -94,7 +102,7 @@ class ConnectionTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
 
 class Connection(BaseModel):
     r"""A connection represents a [company's](https://docs.codat.io/lending-api#/schemas/Company) connection to a data source and allows you to synchronize data (pull and/or push) with that source.
@@ -108,7 +116,7 @@ class Connection(BaseModel):
 
     Before you can use a data connection to pull or push data, the company must grant you access to their business data by [linking the connection](https://docs.codat.io/auth-flow/overview).
     """
-    
+
     created: str
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -130,25 +138,40 @@ class Connection(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     id: str
     r"""Unique identifier for a company's data connection."""
+
     integration_id: Annotated[str, pydantic.Field(alias="integrationId")]
     r"""A Codat ID representing the integration."""
+
     integration_key: Annotated[str, pydantic.Field(alias="integrationKey")]
     r"""A unique four-character ID that identifies the platform of the company's data connection. This ensures continuity if the platform changes its name in the future."""
+
     link_url: Annotated[str, pydantic.Field(alias="linkUrl")]
     r"""The link URL your customers can use to authorize access to their business application."""
+
     platform_name: Annotated[str, pydantic.Field(alias="platformName")]
     r"""Name of integration connected to company."""
+
     source_id: Annotated[str, pydantic.Field(alias="sourceId")]
     r"""A source-specific ID used to distinguish between different sources originating from the same data connection. In general, a data connection is a single data source. However, for TrueLayer, `sourceId` is associated with a specific bank and has a many-to-one relationship with the `integrationId`."""
+
     source_type: Annotated[SourceType, pydantic.Field(alias="sourceType")]
     r"""The type of platform of the connection."""
+
     status: DataConnectionStatus
     r"""The current authorization status of the data connection."""
-    additional_properties: Annotated[Optional[Any], pydantic.Field(alias="additionalProperties")] = None
-    connection_info: Annotated[Optional[Dict[str, str]], pydantic.Field(alias="connectionInfo")] = None
-    data_connection_errors: Annotated[Optional[List[DataConnectionError]], pydantic.Field(alias="dataConnectionErrors")] = None
+
+    connection_info: Annotated[
+        OptionalNullable[Dict[str, str]], pydantic.Field(alias="connectionInfo")
+    ] = UNSET
+
+    data_connection_errors: Annotated[
+        OptionalNullable[List[DataConnectionError]],
+        pydantic.Field(alias="dataConnectionErrors"),
+    ] = UNSET
+
     last_sync: Annotated[Optional[str], pydantic.Field(alias="lastSync")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -170,4 +193,33 @@ class Connection(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = ["connectionInfo", "dataConnectionErrors", "lastSync"]
+        nullable_fields = ["connectionInfo", "dataConnectionErrors"]
+        null_default_fields = []
+
+        serialized = handler(self)
+
+        m = {}
+
+        for n, f in self.model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            serialized.pop(k, None)
+
+            optional_nullable = k in optional_fields and k in nullable_fields
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
+
+            if val is not None and val != UNSET_SENTINEL:
+                m[k] = val
+            elif val != UNSET_SENTINEL and (
+                not k in optional_fields or (optional_nullable and is_set)
+            ):
+                m[k] = val
+
+        return m

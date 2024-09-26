@@ -26,7 +26,7 @@ class CommerceTransactionTypedDict(TypedDict):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-transactions) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
     created_date: NotRequired[str]
@@ -104,7 +104,7 @@ class CommerceTransactionTypedDict(TypedDict):
     - `Refund` — Refunds to a customer's credit or debit card.
     - `Transfer` — Secure transfer of funds to the seller's bank account.
     """
-    
+
 
 class CommerceTransaction(BaseModel):
     r"""Details of all financial transactions recorded in the commerce or point of sale system are added to the Transactions data type. For example, payments, service charges, and fees.
@@ -118,9 +118,10 @@ class CommerceTransaction(BaseModel):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-transactions) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
+
     created_date: Annotated[Optional[str], pydantic.Field(alias="createdDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -142,6 +143,7 @@ class CommerceTransaction(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -151,8 +153,12 @@ class CommerceTransaction(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
-    source_created_date: Annotated[Optional[str], pydantic.Field(alias="sourceCreatedDate")] = None
+
+    source_created_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceCreatedDate")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -173,18 +179,37 @@ class CommerceTransaction(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     sub_type: Annotated[Optional[str], pydantic.Field(alias="subType")] = None
     r"""Non-standardised transaction type data from the commerce software"""
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    total_amount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalAmount")] = None
+
+    total_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalAmount"),
+    ] = None
     r"""The total transaction amount"""
-    transaction_source_ref: Annotated[Optional[TransactionSourceRef], pydantic.Field(alias="transactionSourceRef")] = None
+
+    transaction_source_ref: Annotated[
+        Optional[TransactionSourceRef], pydantic.Field(alias="transactionSourceRef")
+    ] = None
     r"""Link to the source event which triggered this transaction"""
+
     type: Optional[TransactionType] = None
     r"""The type of the platform transaction:
     - `Unknown`
@@ -196,4 +221,3 @@ class CommerceTransaction(BaseModel):
     - `Refund` — Refunds to a customer's credit or debit card.
     - `Transfer` — Secure transfer of funds to the seller's bank account.
     """
-    

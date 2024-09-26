@@ -9,14 +9,13 @@ from typing_extensions import Annotated, NotRequired
 
 class SourceRefTypedDict(TypedDict):
     r"""A source reference containing the `sourceType` object \"Banking\"."""
-    
+
     source_type: NotRequired[str]
     r"""The data source type."""
-    
+
 
 class SourceRef(BaseModel):
     r"""A source reference containing the `sourceType` object \"Banking\"."""
-    
+
     source_type: Annotated[Optional[str], pydantic.Field(alias="sourceType")] = None
     r"""The data source type."""
-    

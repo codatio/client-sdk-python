@@ -6,6 +6,7 @@ from enum import Enum
 
 class PaymentType(str, Enum):
     r"""Type of payment."""
+
     CASH = "Cash"
     CARD = "Card"
     INVOICE = "Invoice"

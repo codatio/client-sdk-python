@@ -6,6 +6,7 @@ from enum import Enum
 
 class DataConnectionStatus(str, Enum):
     r"""The current authorization status of the data connection."""
+
     PENDING_AUTH = "PendingAuth"
     LINKED = "Linked"
     UNLINKED = "Unlinked"

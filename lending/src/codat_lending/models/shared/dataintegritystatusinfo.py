@@ -34,11 +34,14 @@ class DataIntegrityStatusInfoTypedDict(TypedDict):
     """
     status_message: NotRequired[str]
     r"""Detailed explanation supporting the status value."""
-    
+
 
 class DataIntegrityStatusInfo(BaseModel):
-    current_status: Annotated[Optional[IntegrityStatus], pydantic.Field(alias="currentStatus")] = None
+    current_status: Annotated[
+        Optional[IntegrityStatus], pydantic.Field(alias="currentStatus")
+    ] = None
     r"""The current status of the most recently run matching algorithm."""
+
     last_matched: Annotated[Optional[str], pydantic.Field(alias="lastMatched")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -60,6 +63,8 @@ class DataIntegrityStatusInfo(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    status_message: Annotated[Optional[str], pydantic.Field(alias="statusMessage")] = None
+
+    status_message: Annotated[Optional[str], pydantic.Field(alias="statusMessage")] = (
+        None
+    )
     r"""Detailed explanation supporting the status value."""
-    

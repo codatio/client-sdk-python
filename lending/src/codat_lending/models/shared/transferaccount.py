@@ -14,7 +14,7 @@ from typing_extensions import Annotated, NotRequired
 
 class TransferAccountTypedDict(TypedDict):
     r"""Account details of the account sending or receiving the transfer."""
-    
+
     account_ref: NotRequired[AccountRefTypedDict]
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
     amount: NotRequired[Decimal]
@@ -28,15 +28,23 @@ class TransferAccountTypedDict(TypedDict):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    
+
 
 class TransferAccount(BaseModel):
     r"""Account details of the account sending or receiving the transfer."""
-    
-    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = None
+
+    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = (
+        None
+    )
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
-    amount: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    amount: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The amount transferred between accounts."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -46,4 +54,3 @@ class TransferAccount(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    

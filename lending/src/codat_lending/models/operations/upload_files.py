@@ -15,12 +15,24 @@ class UploadFilesRequestTypedDict(TypedDict):
     connection_id: str
     r"""Unique identifier for a connection."""
     file_upload: NotRequired[shared_fileupload.FileUploadTypedDict]
-    
+
 
 class UploadFilesRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    file_upload: Annotated[Optional[shared_fileupload.FileUpload], FieldMetadata(request=RequestMetadata(media_type="multipart/form-data"))] = None
-    
+
+    file_upload: Annotated[
+        Optional[shared_fileupload.FileUpload],
+        FieldMetadata(request=RequestMetadata(media_type="multipart/form-data")),
+    ] = None

@@ -108,11 +108,19 @@ class EnhancedInvoiceReportItemTypedDict(TypedDict):
     """
     total_amount: NotRequired[Decimal]
     r"""Invoice's total amount."""
-    
+
 
 class EnhancedInvoiceReportItem(BaseModel):
-    amount_due: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="amountDue")] = None
+    amount_due: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="amountDue"),
+    ] = None
     r"""Invoice's total amount due."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -122,7 +130,11 @@ class EnhancedInvoiceReportItem(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    customer_ref: Annotated[Optional[LendingCustomerRef], pydantic.Field(alias="customerRef")] = None
+
+    customer_ref: Annotated[
+        Optional[LendingCustomerRef], pydantic.Field(alias="customerRef")
+    ] = None
+
     due_date: Annotated[Optional[str], pydantic.Field(alias="dueDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -144,10 +156,15 @@ class EnhancedInvoiceReportItem(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     id: Optional[str] = None
     r"""ID of the invoice, which may be a GUID but it may be something else depending on the accounting software."""
-    invoice_number: Annotated[Optional[str], pydantic.Field(alias="invoiceNumber")] = None
+
+    invoice_number: Annotated[Optional[str], pydantic.Field(alias="invoiceNumber")] = (
+        None
+    )
     r"""Invoice number."""
+
     issue_date: Annotated[Optional[str], pydantic.Field(alias="issueDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -169,7 +186,9 @@ class EnhancedInvoiceReportItem(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     paid_on_date: Annotated[Optional[str], pydantic.Field(alias="paidOnDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -191,8 +210,13 @@ class EnhancedInvoiceReportItem(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     payments: Optional[List[Payment]] = None
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     status: Optional[InvoiceStatus] = None
     r"""Current state of the invoice:
 
@@ -202,6 +226,13 @@ class EnhancedInvoiceReportItem(BaseModel):
     - `Paid` - Invoice is paid in full. This includes if the invoice has been credited or overpaid (amountDue == 0).
     - `Void` - An invoice can become Void when it's deleted, refunded, written off, or cancelled. A voided invoice may still be PartiallyPaid, and so all outstanding amounts on voided invoices are removed from the accounts receivable account.
     """
-    total_amount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalAmount")] = None
+
+    total_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalAmount"),
+    ] = None
     r"""Invoice's total amount."""
-    

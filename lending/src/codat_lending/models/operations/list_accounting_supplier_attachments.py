@@ -15,13 +15,26 @@ class ListAccountingSupplierAttachmentsRequestTypedDict(TypedDict):
     r"""Unique identifier for a connection."""
     supplier_id: str
     r"""Unique identifier for a supplier."""
-    
+
 
 class ListAccountingSupplierAttachmentsRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    supplier_id: Annotated[str, pydantic.Field(alias="supplierId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    supplier_id: Annotated[
+        str,
+        pydantic.Field(alias="supplierId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a supplier."""
-    

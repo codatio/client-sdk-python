@@ -17,15 +17,33 @@ class DownloadAccountingDirectIncomeAttachmentRequestTypedDict(TypedDict):
     r"""Unique identifier for a connection."""
     direct_income_id: str
     r"""Unique identifier for a direct income."""
-    
+
 
 class DownloadAccountingDirectIncomeAttachmentRequest(BaseModel):
-    attachment_id: Annotated[str, pydantic.Field(alias="attachmentId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    attachment_id: Annotated[
+        str,
+        pydantic.Field(alias="attachmentId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for an attachment."""
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    direct_income_id: Annotated[str, pydantic.Field(alias="directIncomeId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    direct_income_id: Annotated[
+        str,
+        pydantic.Field(alias="directIncomeId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a direct income."""
-    

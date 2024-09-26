@@ -15,13 +15,26 @@ class GetCommercePaymentMethodRequestTypedDict(TypedDict):
     r"""Unique identifier for a connection."""
     payment_method_id: str
     r"""Unique identifier for a payment method."""
-    
+
 
 class GetCommercePaymentMethodRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    payment_method_id: Annotated[str, pydantic.Field(alias="paymentMethodId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    payment_method_id: Annotated[
+        str,
+        pydantic.Field(alias="paymentMethodId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a payment method."""
-    

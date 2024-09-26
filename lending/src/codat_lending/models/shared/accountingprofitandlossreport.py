@@ -33,7 +33,7 @@ class AccountingProfitAndLossReportTypedDict(TypedDict):
     **Want to pull this in a standardised structure?**
     Our [Enhanced Financials](https://docs.codat.io/lending/features/financial-statements-overview) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
     """
-    
+
     currency: str
     r"""Base currency of the company in which the profit and loss report is presented."""
     report_basis: ReportBasis
@@ -82,7 +82,7 @@ class AccountingProfitAndLossReportTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
 
 class AccountingProfitAndLossReport(BaseModel):
     r"""> **Language tip:** Profit and loss statement is also referred to as **income statement** under US GAAP (Generally Accepted Accounting Principles).
@@ -108,14 +108,19 @@ class AccountingProfitAndLossReport(BaseModel):
     **Want to pull this in a standardised structure?**
     Our [Enhanced Financials](https://docs.codat.io/lending/features/financial-statements-overview) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
     """
-    
+
     currency: str
     r"""Base currency of the company in which the profit and loss report is presented."""
+
     report_basis: Annotated[ReportBasis, pydantic.Field(alias="reportBasis")]
     r"""The basis of a report."""
+
     reports: List[ProfitAndLossReport]
     r"""An array of profit and loss reports."""
-    earliest_available_month: Annotated[Optional[str], pydantic.Field(alias="earliestAvailableMonth")] = None
+
+    earliest_available_month: Annotated[
+        Optional[str], pydantic.Field(alias="earliestAvailableMonth")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -136,7 +141,10 @@ class AccountingProfitAndLossReport(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    most_recent_available_month: Annotated[Optional[str], pydantic.Field(alias="mostRecentAvailableMonth")] = None
+
+    most_recent_available_month: Annotated[
+        Optional[str], pydantic.Field(alias="mostRecentAvailableMonth")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -157,4 +165,3 @@ class AccountingProfitAndLossReport(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    

@@ -10,12 +10,12 @@ from typing_extensions import Annotated, NotRequired
 class CommerceReportDimensionItemsTypedDict(TypedDict):
     index: NotRequired[int]
     r"""The dimension's items index."""
-    
+
 
 class CommerceReportDimensionItems(BaseModel):
     index: Optional[int] = None
     r"""The dimension's items index."""
-    
+
 
 class CommerceReportDimensionTypedDict(TypedDict):
     display_name: NotRequired[str]
@@ -25,14 +25,16 @@ class CommerceReportDimensionTypedDict(TypedDict):
     items: NotRequired[List[CommerceReportDimensionItemsTypedDict]]
     type: NotRequired[str]
     r"""The dimension's type."""
-    
+
 
 class CommerceReportDimension(BaseModel):
     display_name: Annotated[Optional[str], pydantic.Field(alias="displayName")] = None
     r"""The dimension's display name."""
+
     index: Optional[int] = None
     r"""The dimension's index."""
+
     items: Optional[List[CommerceReportDimensionItems]] = None
+
     type: Optional[str] = None
     r"""The dimension's type."""
-    

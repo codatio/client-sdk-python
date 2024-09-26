@@ -18,13 +18,20 @@ class ReportComponentMeasureTypedDict(TypedDict):
     r"""The measure's display name."""
     value: NotRequired[Decimal]
     r"""The measure's value."""
-    
+
 
 class ReportComponentMeasure(BaseModel):
     index: Optional[int] = None
     r"""The measure's index."""
-    measure_display_name: Annotated[Optional[str], pydantic.Field(alias="measureDisplayName")] = None
+
+    measure_display_name: Annotated[
+        Optional[str], pydantic.Field(alias="measureDisplayName")
+    ] = None
     r"""The measure's display name."""
-    value: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    value: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""The measure's value."""
-    

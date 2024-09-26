@@ -31,11 +31,10 @@ s = CodatLending(
     ),
 )
 
-
 res = s.sales.disputes.get(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "dispute_id": "<value>",
+    "dispute_id": "<id>",
 })
 
 if res is not None:
@@ -83,7 +82,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.sales.disputes.list(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

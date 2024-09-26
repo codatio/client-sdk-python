@@ -11,11 +11,11 @@ class TransactionSourceRefTypedDict(TypedDict):
     r"""The unique identitifer of the record being referenced"""
     type: TransactionSourceType
     r"""The type of source the transaction arose."""
-    
+
 
 class TransactionSourceRef(BaseModel):
     id: str
     r"""The unique identitifer of the record being referenced"""
+
     type: TransactionSourceType
     r"""The type of source the transaction arose."""
-    

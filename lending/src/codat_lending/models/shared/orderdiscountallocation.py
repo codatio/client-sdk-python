@@ -16,11 +16,18 @@ class OrderDiscountAllocationTypedDict(TypedDict):
     r"""Name of the discount in the commerce or point of sale platform."""
     total_amount: NotRequired[Decimal]
     r"""Total amount of discount applied, excluding tax. This is typically positive (for discounts which decrease the amount of the order line), but can also be negative (for discounts which increase the amount of the order line)."""
-    
+
 
 class OrderDiscountAllocation(BaseModel):
     name: Optional[str] = None
     r"""Name of the discount in the commerce or point of sale platform."""
-    total_amount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalAmount")] = None
+
+    total_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalAmount"),
+    ] = None
     r"""Total amount of discount applied, excluding tax. This is typically positive (for discounts which decrease the amount of the order line), but can also be negative (for discounts which increase the amount of the order line)."""
-    

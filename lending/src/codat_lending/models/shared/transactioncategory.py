@@ -17,13 +17,26 @@ class TransactionCategoryTypedDict(TypedDict):
     r"""An ordered array of category level confidences where each element is the confidence of the corresponding item in the `levels` array."""
     levels: NotRequired[List[str]]
     r"""The suggested category is an ordered array of category levels where each element (or level) is a subcategory of the previous element (or level)."""
-    
+
 
 class TransactionCategory(BaseModel):
-    confidence: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+    confidence: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""Returns the aggregate confidence of the suggested category for the transaction. The value is between 0 and 100."""
-    confidences: Optional[List[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))]]] = None
+
+    confidences: Optional[
+        List[
+            Annotated[
+                Decimal,
+                BeforeValidator(validate_decimal),
+                PlainSerializer(serialize_decimal(False)),
+            ]
+        ]
+    ] = None
     r"""An ordered array of category level confidences where each element is the confidence of the corresponding item in the `levels` array."""
+
     levels: Optional[List[str]] = None
     r"""The suggested category is an ordered array of category levels where each element (or level) is a subcategory of the previous element (or level)."""
-    

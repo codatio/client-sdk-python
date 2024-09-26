@@ -15,7 +15,7 @@ class CommerceLocationTypedDict(TypedDict):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-locations) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
     address: NotRequired[CommerceAddressTypedDict]
@@ -23,7 +23,7 @@ class CommerceLocationTypedDict(TypedDict):
     name: NotRequired[str]
     r"""Name of this location"""
     source_modified_date: NotRequired[str]
-    
+
 
 class CommerceLocation(BaseModel):
     r"""The Location datatype holds information on the geographic location at which stocks of products may be held, as referenced in the Products data type.
@@ -32,12 +32,17 @@ class CommerceLocation(BaseModel):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-locations) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
+
     address: Optional[CommerceAddress] = None
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     name: Optional[str] = None
     r"""Name of this location"""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None

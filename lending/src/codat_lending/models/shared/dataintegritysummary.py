@@ -14,11 +14,16 @@ class DataIntegritySummaryTypedDict(TypedDict):
     by_count: NotRequired[DataIntegrityByCountTypedDict]
     type: NotRequired[str]
     r"""The data type which the data type in the URL has been matched against. For example, if you've matched accountTransactions and banking-transactions, and you call this endpoint with accountTransactions in the URL, this property would be banking-transactions."""
-    
+
 
 class DataIntegritySummary(BaseModel):
-    by_amount: Annotated[Optional[DataIntegrityByAmount], pydantic.Field(alias="byAmount")] = None
-    by_count: Annotated[Optional[DataIntegrityByCount], pydantic.Field(alias="byCount")] = None
+    by_amount: Annotated[
+        Optional[DataIntegrityByAmount], pydantic.Field(alias="byAmount")
+    ] = None
+
+    by_count: Annotated[
+        Optional[DataIntegrityByCount], pydantic.Field(alias="byCount")
+    ] = None
+
     type: Optional[str] = None
     r"""The data type which the data type in the URL has been matched against. For example, if you've matched accountTransactions and banking-transactions, and you call this endpoint with accountTransactions in the URL, this property would be banking-transactions."""
-    

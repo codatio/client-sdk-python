@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .accountref import AccountRef, AccountRefTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -88,11 +94,14 @@ class PaymentAllocationPaymentTypedDict(TypedDict):
     r"""Reference to the allocated payment."""
     total_amount: NotRequired[Decimal]
     r"""Total amount that was paid."""
-    
+
 
 class PaymentAllocationPayment(BaseModel):
-    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = None
+    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = (
+        None
+    )
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -102,7 +111,15 @@ class PaymentAllocationPayment(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    currency_rate: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="currencyRate")] = UNSET
+
+    currency_rate: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="currencyRate"),
+    ] = UNSET
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.
@@ -136,10 +153,13 @@ class PaymentAllocationPayment(BaseModel):
     |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, specify a currencyRate in the request body.  |
     """
+
     id: Optional[str] = None
     r"""Identifier of the allocated payment."""
+
     note: OptionalNullable[str] = UNSET
     r"""Notes attached to the allocated payment."""
+
     paid_on_date: Annotated[Optional[str], pydantic.Field(alias="paidOnDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -161,14 +181,32 @@ class PaymentAllocationPayment(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     reference: OptionalNullable[str] = UNSET
     r"""Reference to the allocated payment."""
-    total_amount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalAmount")] = None
+
+    total_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalAmount"),
+    ] = None
     r"""Total amount that was paid."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["accountRef", "currency", "currencyRate", "id", "note", "paidOnDate", "reference", "totalAmount"]
+        optional_fields = [
+            "accountRef",
+            "currency",
+            "currencyRate",
+            "id",
+            "note",
+            "paidOnDate",
+            "reference",
+            "totalAmount",
+        ]
         nullable_fields = ["currencyRate", "note", "reference"]
         null_default_fields = []
 
@@ -179,9 +217,13 @@ class PaymentAllocationPayment(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -191,4 +233,3 @@ class PaymentAllocationPayment(BaseModel):
                 m[k] = val
 
         return m
-        

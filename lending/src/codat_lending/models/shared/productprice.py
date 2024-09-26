@@ -23,7 +23,7 @@ class ProductPriceTypedDict(TypedDict):
     """
     unit_price: NotRequired[Decimal]
     r"""The product variant's unit price."""
-    
+
 
 class ProductPrice(BaseModel):
     currency: Optional[str] = None
@@ -35,6 +35,13 @@ class ProductPrice(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    unit_price: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="unitPrice")] = None
+
+    unit_price: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="unitPrice"),
+    ] = None
     r"""The product variant's unit price."""
-    

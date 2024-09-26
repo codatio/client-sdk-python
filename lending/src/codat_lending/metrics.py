@@ -7,12 +7,15 @@ from codat_lending.models import errors, operations, shared
 from codat_lending.types import BaseModel, OptionalNullable, UNSET
 from typing import Any, Optional, Union, cast
 
+
 class Metrics(BaseSDK):
-    
-    
     def get_customer_retention(
-        self, *,
-        request: Union[operations.GetCommerceCustomerRetentionMetricsRequest, operations.GetCommerceCustomerRetentionMetricsRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetCommerceCustomerRetentionMetricsRequest,
+            operations.GetCommerceCustomerRetentionMetricsRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -58,14 +61,16 @@ class Metrics(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.GetCommerceCustomerRetentionMetricsRequest)
+            request = utils.unmarshal(
+                request, operations.GetCommerceCustomerRetentionMetricsRequest
+            )
         request = cast(operations.GetCommerceCustomerRetentionMetricsRequest, request)
-        
+
         req = self.build_request(
             method="GET",
             path="/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/customerRetention",
@@ -80,45 +85,71 @@ class Metrics(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="get-commerce-customer-retention-metrics", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-commerce-customer-retention-metrics",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.CommerceReport])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def get_customer_retention_async(
-        self, *,
-        request: Union[operations.GetCommerceCustomerRetentionMetricsRequest, operations.GetCommerceCustomerRetentionMetricsRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetCommerceCustomerRetentionMetricsRequest,
+            operations.GetCommerceCustomerRetentionMetricsRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -164,15 +195,17 @@ class Metrics(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.GetCommerceCustomerRetentionMetricsRequest)
+            request = utils.unmarshal(
+                request, operations.GetCommerceCustomerRetentionMetricsRequest
+            )
         request = cast(operations.GetCommerceCustomerRetentionMetricsRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/customerRetention",
             base_url=base_url,
@@ -186,45 +219,71 @@ class Metrics(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="get-commerce-customer-retention-metrics", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-commerce-customer-retention-metrics",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.CommerceReport])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def get_lifetime_value(
-        self, *,
-        request: Union[operations.GetCommerceLifetimeValueMetricsRequest, operations.GetCommerceLifetimeValueMetricsRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetCommerceLifetimeValueMetricsRequest,
+            operations.GetCommerceLifetimeValueMetricsRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -264,14 +323,16 @@ class Metrics(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.GetCommerceLifetimeValueMetricsRequest)
+            request = utils.unmarshal(
+                request, operations.GetCommerceLifetimeValueMetricsRequest
+            )
         request = cast(operations.GetCommerceLifetimeValueMetricsRequest, request)
-        
+
         req = self.build_request(
             method="GET",
             path="/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/lifetimeValue",
@@ -286,45 +347,71 @@ class Metrics(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="get-commerce-lifetime-value-metrics", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-commerce-lifetime-value-metrics",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.CommerceReport])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def get_lifetime_value_async(
-        self, *,
-        request: Union[operations.GetCommerceLifetimeValueMetricsRequest, operations.GetCommerceLifetimeValueMetricsRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetCommerceLifetimeValueMetricsRequest,
+            operations.GetCommerceLifetimeValueMetricsRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -364,15 +451,17 @@ class Metrics(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.GetCommerceLifetimeValueMetricsRequest)
+            request = utils.unmarshal(
+                request, operations.GetCommerceLifetimeValueMetricsRequest
+            )
         request = cast(operations.GetCommerceLifetimeValueMetricsRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/lifetimeValue",
             base_url=base_url,
@@ -386,45 +475,71 @@ class Metrics(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="get-commerce-lifetime-value-metrics", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-commerce-lifetime-value-metrics",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.CommerceReport])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def get_revenue(
-        self, *,
-        request: Union[operations.GetCommerceRevenueMetricsRequest, operations.GetCommerceRevenueMetricsRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetCommerceRevenueMetricsRequest,
+            operations.GetCommerceRevenueMetricsRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -465,14 +580,16 @@ class Metrics(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.GetCommerceRevenueMetricsRequest)
+            request = utils.unmarshal(
+                request, operations.GetCommerceRevenueMetricsRequest
+            )
         request = cast(operations.GetCommerceRevenueMetricsRequest, request)
-        
+
         req = self.build_request(
             method="GET",
             path="/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/revenue",
@@ -487,45 +604,71 @@ class Metrics(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="get-commerce-revenue-metrics", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-commerce-revenue-metrics",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.CommerceReport])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def get_revenue_async(
-        self, *,
-        request: Union[operations.GetCommerceRevenueMetricsRequest, operations.GetCommerceRevenueMetricsRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetCommerceRevenueMetricsRequest,
+            operations.GetCommerceRevenueMetricsRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -566,15 +709,17 @@ class Metrics(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.GetCommerceRevenueMetricsRequest)
+            request = utils.unmarshal(
+                request, operations.GetCommerceRevenueMetricsRequest
+            )
         request = cast(operations.GetCommerceRevenueMetricsRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/revenue",
             base_url=base_url,
@@ -588,38 +733,60 @@ class Metrics(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="get-commerce-revenue-metrics", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-commerce-revenue-metrics",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.CommerceReport])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )

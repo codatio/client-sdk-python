@@ -5,7 +5,13 @@ from .accountingbankaccounttype import AccountingBankAccountType
 from .bankaccountstatus import BankAccountStatus
 from .metadata import Metadata, MetadataTypedDict
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -34,7 +40,7 @@ class AccountingBankAccountTypedDict(TypedDict):
     * The currency and balance of the account.
     * The sort code and account number.
     """
-    
+
     account_name: NotRequired[Nullable[str]]
     r"""Name of the bank account in the accounting software."""
     account_number: NotRequired[Nullable[str]]
@@ -93,7 +99,7 @@ class AccountingBankAccountTypedDict(TypedDict):
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    
+
 
 class AccountingBankAccount(BaseModel):
     r"""> **Accessing Bank Accounts through Banking API**
@@ -113,10 +119,15 @@ class AccountingBankAccount(BaseModel):
     * The currency and balance of the account.
     * The sort code and account number.
     """
-    
-    account_name: Annotated[OptionalNullable[str], pydantic.Field(alias="accountName")] = UNSET
+
+    account_name: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="accountName")
+    ] = UNSET
     r"""Name of the bank account in the accounting software."""
-    account_number: Annotated[OptionalNullable[str], pydantic.Field(alias="accountNumber")] = UNSET
+
+    account_number: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="accountNumber")
+    ] = UNSET
     r"""Account number for the bank account.
 
     Xero integrations
@@ -125,15 +136,32 @@ class AccountingBankAccount(BaseModel):
     FreeAgent integrations
     For Credit accounts, only the last four digits are required. For other types, the field is optional.
     """
-    account_type: Annotated[Optional[AccountingBankAccountType], pydantic.Field(alias="accountType")] = None
+
+    account_type: Annotated[
+        Optional[AccountingBankAccountType], pydantic.Field(alias="accountType")
+    ] = None
     r"""The type of transactions and balances on the account.
     For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.
     For Debit accounts, positive balances are assets, and positive transactions **increase** assets.
     """
-    available_balance: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="availableBalance")] = UNSET
+
+    available_balance: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="availableBalance"),
+    ] = UNSET
     r"""Total available balance of the bank account as reported by the underlying data source. This may take into account overdrafts or pending transactions for example."""
-    balance: Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = UNSET
+
+    balance: Annotated[
+        OptionalNullable[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = UNSET
     r"""Balance of the bank account."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -143,40 +171,94 @@ class AccountingBankAccount(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     i_ban: Annotated[OptionalNullable[str], pydantic.Field(alias="iBan")] = UNSET
     r"""International bank account number of the account. Often used when making or receiving international payments."""
+
     id: Optional[str] = None
     r"""Identifier for the account, unique for the company in the accounting software."""
+
     institution: OptionalNullable[str] = UNSET
     r"""The institution of the bank account."""
+
     metadata: Optional[Metadata] = None
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
-    nominal_code: Annotated[OptionalNullable[str], pydantic.Field(alias="nominalCode")] = UNSET
+
+    nominal_code: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="nominalCode")
+    ] = UNSET
     r"""Code used to identify each nominal account for a business."""
-    overdraft_limit: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="overdraftLimit")] = UNSET
+
+    overdraft_limit: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="overdraftLimit"),
+    ] = UNSET
     r"""Pre-arranged overdraft limit of the account.
 
     The value is always positive. For example, an overdraftLimit of `1000` means that the balance of the account can go down to `-1000`.
     """
-    sort_code: Annotated[OptionalNullable[str], pydantic.Field(alias="sortCode")] = UNSET
+
+    sort_code: Annotated[OptionalNullable[str], pydantic.Field(alias="sortCode")] = (
+        UNSET
+    )
     r"""Sort code for the bank account.
 
     Xero integrations
     The sort code is only displayed when the currency = GBP and the sort code and account number sum to 14 digits. For non-GBP accounts, this field is not populated.
     """
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     status: Optional[BankAccountStatus] = None
     r"""Status of the bank account."""
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["accountName", "accountNumber", "accountType", "availableBalance", "balance", "currency", "iBan", "id", "institution", "metadata", "modifiedDate", "nominalCode", "overdraftLimit", "sortCode", "sourceModifiedDate", "status", "supplementalData"]
-        nullable_fields = ["accountName", "accountNumber", "availableBalance", "balance", "iBan", "institution", "nominalCode", "overdraftLimit", "sortCode"]
+        optional_fields = [
+            "accountName",
+            "accountNumber",
+            "accountType",
+            "availableBalance",
+            "balance",
+            "currency",
+            "iBan",
+            "id",
+            "institution",
+            "metadata",
+            "modifiedDate",
+            "nominalCode",
+            "overdraftLimit",
+            "sortCode",
+            "sourceModifiedDate",
+            "status",
+            "supplementalData",
+        ]
+        nullable_fields = [
+            "accountName",
+            "accountNumber",
+            "availableBalance",
+            "balance",
+            "iBan",
+            "institution",
+            "nominalCode",
+            "overdraftLimit",
+            "sortCode",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -186,9 +268,13 @@ class AccountingBankAccount(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -198,4 +284,3 @@ class AccountingBankAccount(BaseModel):
                 m[k] = val
 
         return m
-        

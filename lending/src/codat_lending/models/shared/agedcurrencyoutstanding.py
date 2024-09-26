@@ -20,11 +20,15 @@ class AgedCurrencyOutstandingTypedDict(TypedDict):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    
+
 
 class AgedCurrencyOutstanding(BaseModel):
-    aged_outstanding_amounts: Annotated[Optional[List[AgedOutstandingAmount]], pydantic.Field(alias="agedOutstandingAmounts")] = None
+    aged_outstanding_amounts: Annotated[
+        Optional[List[AgedOutstandingAmount]],
+        pydantic.Field(alias="agedOutstandingAmounts"),
+    ] = None
     r"""Array of outstanding amounts by period."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -34,4 +38,3 @@ class AgedCurrencyOutstanding(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    

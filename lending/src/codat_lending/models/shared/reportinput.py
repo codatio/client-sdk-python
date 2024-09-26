@@ -6,6 +6,7 @@ from enum import Enum
 
 class ReportInput(str, Enum):
     r"""Accounting method used to prepare the cash flow statement."""
+
     UNKNOWN = "Unknown"
     INDIRECT = "Indirect"
     DIRECT = "Direct"

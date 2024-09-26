@@ -6,7 +6,13 @@ from .contact import Contact, ContactTypedDict
 from .customerstatus import CustomerStatus
 from .metadata import Metadata, MetadataTypedDict
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
 from pydantic import model_serializer
 from typing import List, Optional, TypedDict
@@ -23,7 +29,7 @@ class AccountingCustomerTypedDict(TypedDict):
     Customers' data links to accounts receivable [invoices](https://docs.codat.io/lending-api#/schemas/Invoice).
 
     """
-    
+
     status: CustomerStatus
     r"""Status of customer."""
     addresses: NotRequired[Nullable[List[AccountingAddressTypedDict]]]
@@ -61,7 +67,7 @@ class AccountingCustomerTypedDict(TypedDict):
     """
     tax_number: NotRequired[Nullable[str]]
     r"""Company tax number."""
-    
+
 
 class AccountingCustomer(BaseModel):
     r"""> View the coverage for customers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=customers\" target=\"_blank\">Data coverage explorer</a>.
@@ -73,18 +79,29 @@ class AccountingCustomer(BaseModel):
     Customers' data links to accounts receivable [invoices](https://docs.codat.io/lending-api#/schemas/Invoice).
 
     """
-    
+
     status: CustomerStatus
     r"""Status of customer."""
+
     addresses: OptionalNullable[List[AccountingAddress]] = UNSET
     r"""An array of Addresses."""
-    contact_name: Annotated[OptionalNullable[str], pydantic.Field(alias="contactName")] = UNSET
+
+    contact_name: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="contactName")
+    ] = UNSET
     r"""Name of the main contact for the identified customer."""
+
     contacts: OptionalNullable[List[Contact]] = UNSET
     r"""An array of Contacts."""
-    customer_name: Annotated[OptionalNullable[str], pydantic.Field(alias="customerName")] = UNSET
+
+    customer_name: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="customerName")
+    ] = UNSET
     r"""Name of the customer as recorded in the accounting system, typically the company name."""
-    default_currency: Annotated[Optional[str], pydantic.Field(alias="defaultCurrency")] = None
+
+    default_currency: Annotated[
+        Optional[str], pydantic.Field(alias="defaultCurrency")
+    ] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
     ## Unknown currencies
@@ -93,29 +110,72 @@ class AccountingCustomer(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    email_address: Annotated[OptionalNullable[str], pydantic.Field(alias="emailAddress")] = UNSET
+
+    email_address: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="emailAddress")
+    ] = UNSET
     r"""Email address the customer can be contacted by."""
+
     id: Optional[str] = None
     r"""Identifier for the customer, unique to the company in the accounting software."""
+
     metadata: Optional[Metadata] = None
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     phone: OptionalNullable[str] = UNSET
     r"""Phone number the customer can be contacted by."""
-    registration_number: Annotated[OptionalNullable[str], pydantic.Field(alias="registrationNumber")] = UNSET
+
+    registration_number: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="registrationNumber")
+    ] = UNSET
     r"""Company number. In the UK, this is typically the Companies House company registration number."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    tax_number: Annotated[OptionalNullable[str], pydantic.Field(alias="taxNumber")] = UNSET
+
+    tax_number: Annotated[OptionalNullable[str], pydantic.Field(alias="taxNumber")] = (
+        UNSET
+    )
     r"""Company tax number."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["addresses", "contactName", "contacts", "customerName", "defaultCurrency", "emailAddress", "id", "metadata", "modifiedDate", "phone", "registrationNumber", "sourceModifiedDate", "supplementalData", "taxNumber"]
-        nullable_fields = ["addresses", "contactName", "contacts", "customerName", "emailAddress", "phone", "registrationNumber", "taxNumber"]
+        optional_fields = [
+            "addresses",
+            "contactName",
+            "contacts",
+            "customerName",
+            "defaultCurrency",
+            "emailAddress",
+            "id",
+            "metadata",
+            "modifiedDate",
+            "phone",
+            "registrationNumber",
+            "sourceModifiedDate",
+            "supplementalData",
+            "taxNumber",
+        ]
+        nullable_fields = [
+            "addresses",
+            "contactName",
+            "contacts",
+            "customerName",
+            "emailAddress",
+            "phone",
+            "registrationNumber",
+            "taxNumber",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -125,9 +185,13 @@ class AccountingCustomer(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -137,4 +201,3 @@ class AccountingCustomer(BaseModel):
                 m[k] = val
 
         return m
-        

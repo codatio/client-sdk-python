@@ -5,7 +5,13 @@ from .accountingaddress import AccountingAddress, AccountingAddressTypedDict
 from .phonenumber import PhoneNumber, PhoneNumberTypedDict
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from .weblink import WebLink, WebLinkTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, TypedDict
@@ -21,7 +27,7 @@ class AccountingCompanyInfoTypedDict(TypedDict):
     >
     > Company profile is standard information that is held in the accounting software about a company. `Companies` is an endpoint that lists businesses in the Codat system that have linked and shared their data sources.
     """
-    
+
     accounting_platform_ref: NotRequired[Nullable[str]]
     r"""Identifier or reference for the company in the accounting software."""
     addresses: NotRequired[Nullable[List[AccountingAddressTypedDict]]]
@@ -113,7 +119,7 @@ class AccountingCompanyInfoTypedDict(TypedDict):
     r"""Company tax number."""
     web_links: NotRequired[Nullable[List[WebLinkTypedDict]]]
     r"""An array of weblinks."""
-    
+
 
 class AccountingCompanyInfo(BaseModel):
     r"""> View the coverage for company profile in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\" target=\"_blank\">Data coverage explorer</a>.
@@ -124,17 +130,30 @@ class AccountingCompanyInfo(BaseModel):
     >
     > Company profile is standard information that is held in the accounting software about a company. `Companies` is an endpoint that lists businesses in the Codat system that have linked and shared their data sources.
     """
-    
-    accounting_platform_ref: Annotated[OptionalNullable[str], pydantic.Field(alias="accountingPlatformRef")] = UNSET
+
+    accounting_platform_ref: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="accountingPlatformRef")
+    ] = UNSET
     r"""Identifier or reference for the company in the accounting software."""
+
     addresses: OptionalNullable[List[AccountingAddress]] = UNSET
     r"""An array of Addresses."""
-    base_currency: Annotated[OptionalNullable[str], pydantic.Field(alias="baseCurrency")] = UNSET
+
+    base_currency: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="baseCurrency")
+    ] = UNSET
     r"""Currency set in the accounting software of the linked company. Used by the currency rate."""
-    company_legal_name: Annotated[OptionalNullable[str], pydantic.Field(alias="companyLegalName")] = UNSET
+
+    company_legal_name: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="companyLegalName")
+    ] = UNSET
     r"""Registered legal name of the linked company."""
-    company_name: Annotated[OptionalNullable[str], pydantic.Field(alias="companyName")] = UNSET
+
+    company_name: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="companyName")
+    ] = UNSET
     r"""Name of the linked company."""
+
     created_date: Annotated[Optional[str], pydantic.Field(alias="createdDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -156,7 +175,10 @@ class AccountingCompanyInfo(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    financial_year_start_date: Annotated[Optional[str], pydantic.Field(alias="financialYearStartDate")] = None
+
+    financial_year_start_date: Annotated[
+        Optional[str], pydantic.Field(alias="financialYearStartDate")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -177,7 +199,10 @@ class AccountingCompanyInfo(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    ledger_lock_date: Annotated[Optional[str], pydantic.Field(alias="ledgerLockDate")] = None
+
+    ledger_lock_date: Annotated[
+        Optional[str], pydantic.Field(alias="ledgerLockDate")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -198,29 +223,73 @@ class AccountingCompanyInfo(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    phone_numbers: Annotated[OptionalNullable[List[PhoneNumber]], pydantic.Field(alias="phoneNumbers")] = UNSET
+
+    phone_numbers: Annotated[
+        OptionalNullable[List[PhoneNumber]], pydantic.Field(alias="phoneNumbers")
+    ] = UNSET
     r"""An array of phone numbers."""
-    registration_number: Annotated[OptionalNullable[str], pydantic.Field(alias="registrationNumber")] = UNSET
+
+    registration_number: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="registrationNumber")
+    ] = UNSET
     r"""Registration number given to the linked company by the companies authority in the country of origin. In the UK this is Companies House."""
-    source_urls: Annotated[OptionalNullable[Dict[str, str]], pydantic.Field(alias="sourceUrls")] = UNSET
+
+    source_urls: Annotated[
+        OptionalNullable[Dict[str, str]], pydantic.Field(alias="sourceUrls")
+    ] = UNSET
     r"""URL addresses for the accounting source.
 
     For example, for Xero integrations two URLs are returned. These have many potential use cases, such as [deep linking](https://developer.xero.com/documentation/api-guides/deep-link-xero).
     """
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    tax_number: Annotated[OptionalNullable[str], pydantic.Field(alias="taxNumber")] = UNSET
+
+    tax_number: Annotated[OptionalNullable[str], pydantic.Field(alias="taxNumber")] = (
+        UNSET
+    )
     r"""Company tax number."""
-    web_links: Annotated[OptionalNullable[List[WebLink]], pydantic.Field(alias="webLinks")] = UNSET
+
+    web_links: Annotated[
+        OptionalNullable[List[WebLink]], pydantic.Field(alias="webLinks")
+    ] = UNSET
     r"""An array of weblinks."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["accountingPlatformRef", "addresses", "baseCurrency", "companyLegalName", "companyName", "createdDate", "financialYearStartDate", "ledgerLockDate", "phoneNumbers", "registrationNumber", "sourceUrls", "supplementalData", "taxNumber", "webLinks"]
-        nullable_fields = ["accountingPlatformRef", "addresses", "baseCurrency", "companyLegalName", "companyName", "phoneNumbers", "registrationNumber", "sourceUrls", "taxNumber", "webLinks"]
+        optional_fields = [
+            "accountingPlatformRef",
+            "addresses",
+            "baseCurrency",
+            "companyLegalName",
+            "companyName",
+            "createdDate",
+            "financialYearStartDate",
+            "ledgerLockDate",
+            "phoneNumbers",
+            "registrationNumber",
+            "sourceUrls",
+            "supplementalData",
+            "taxNumber",
+            "webLinks",
+        ]
+        nullable_fields = [
+            "accountingPlatformRef",
+            "addresses",
+            "baseCurrency",
+            "companyLegalName",
+            "companyName",
+            "phoneNumbers",
+            "registrationNumber",
+            "sourceUrls",
+            "taxNumber",
+            "webLinks",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -230,9 +299,13 @@ class AccountingCompanyInfo(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -242,4 +315,3 @@ class AccountingCompanyInfo(BaseModel):
                 m[k] = val
 
         return m
-        

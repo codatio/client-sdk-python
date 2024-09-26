@@ -6,6 +6,7 @@ from enum import Enum
 
 class TransactionCode(str, Enum):
     r"""Code to identify the underlying transaction."""
+
     UNKNOWN = "Unknown"
     FEE = "Fee"
     PAYMENT = "Payment"

@@ -16,13 +16,26 @@ class RefreshDataTypeRequestTypedDict(TypedDict):
     r"""A key for a Codat data type."""
     connection_id: NotRequired[str]
     r"""Optionally, provide a data connection id to only queue pull operations on that connection."""
-    
+
 
 class RefreshDataTypeRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    data_type: Annotated[shared_schema_datatype.SchemaDataType, pydantic.Field(alias="dataType"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    data_type: Annotated[
+        shared_schema_datatype.SchemaDataType,
+        pydantic.Field(alias="dataType"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""A key for a Codat data type."""
-    connection_id: Annotated[Optional[str], pydantic.Field(alias="connectionId"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    connection_id: Annotated[
+        Optional[str],
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""Optionally, provide a data connection id to only queue pull operations on that connection."""
-    

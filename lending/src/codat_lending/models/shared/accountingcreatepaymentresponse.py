@@ -11,7 +11,13 @@ from .pushoperationchange import PushOperationChange, PushOperationChangeTypedDi
 from .pushoperationstatus import PushOperationStatus
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from .validation import Validation, ValidationTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -22,7 +28,9 @@ from typing import List, Optional, TypedDict
 from typing_extensions import Annotated, NotRequired, deprecated
 
 
-@deprecated("warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.")
+@deprecated(
+    "warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+)
 class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
     r"""> **Payments or bill payments?**
     >
@@ -166,7 +174,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
     - The base currency for the accounts receivable account.
     - The currency of the item.
 
-    ```json title=\"Currency rate example\" 
+    ```json title=\"Currency rate example\"
     {
     \"id\": \"123\",
     \"note\": \"\",
@@ -198,7 +206,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
     ## Simple examples
 
-    ```json title=\"Payment for invoice\" 
+    ```json title=\"Payment for invoice\"
     {
     \"totalAmount\": 1000,
     \"lines\": [
@@ -218,7 +226,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Allocation of credit note\" 
+    ```json title=\"Allocation of credit note\"
     {
     \"totalAmount\": 0,
     \"lines\": [
@@ -243,7 +251,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Payment of invoice and payment on account\" 
+    ```json title=\"Payment of invoice and payment on account\"
     {
     \"totalAmount\": 2000,
     \"lines\": [
@@ -273,7 +281,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Refund of credit note\" 
+    ```json title=\"Refund of credit note\"
     {
     \"totalAmount\": -1000,
     \"lines\": [
@@ -293,7 +301,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Refund on accounts receivable account\" 
+    ```json title=\"Refund on accounts receivable account\"
     {
     \"totalAmount\": -1000,
     \"lines\": [
@@ -313,7 +321,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Linked refund on accounts receivable account\" 
+    ```json title=\"Linked refund on accounts receivable account\"
     {
     \"id\" : \"payment-001\",
     \"totalAmount\": 1000,
@@ -350,7 +358,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Using a credit note and cash to pay an invoice\" 
+    ```json title=\"Using a credit note and cash to pay an invoice\"
     {
     \"totalAmount\": 250,
     \"lines\": [
@@ -387,7 +395,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
     ## Complex examples
 
-    ```json title=\"Use two credit notes and 1000 in to \"bank\" (cash, cheque etc.) to pay invoice\" 
+    ```json title=\"Use two credit notes and 1000 in to \"bank\" (cash, cheque etc.) to pay invoice\"
     {
     \"totalAmount\": 1000,
     \"lines\": [
@@ -437,7 +445,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Pay an invoice with two credit notes and cash, with 1000 left 'on account'\" 
+    ```json title=\"Pay an invoice with two credit notes and cash, with 1000 left 'on account'\"
     {
     \"totalAmount\": 2000,
     \"lines\": [
@@ -497,7 +505,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Two credit notes pay two invoices with no allocation amount specified\" 
+    ```json title=\"Two credit notes pay two invoices with no allocation amount specified\"
     {
     \"totalAmount\": 0,
     \"lines\": [
@@ -532,7 +540,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Two credit notes and cash pay three invoices with no allocation amount specified, and refund cash\" 
+    ```json title=\"Two credit notes and cash pay three invoices with no allocation amount specified, and refund cash\"
     {
     \"totalAmount\": 2000,
     \"lines\": [
@@ -600,7 +608,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
     In this example, a payment on account is used to pay the same invoice in January and again in February.
 
-    ```json title=\"January\" 
+    ```json title=\"January\"
     {
     \"id\": \"001\",
     \"totalAmount\": 5000,
@@ -632,7 +640,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"February\" 
+    ```json title=\"February\"
     {
     \"id\": \"001\",
     \"totalAmount\": 5000,
@@ -674,7 +682,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
 
 
 
-    ```json title=\"Two credit notes and some cash pay two invoices with no allocations specified\" 
+    ```json title=\"Two credit notes and some cash pay two invoices with no allocations specified\"
     {
     \"totalAmount\": 500,
     \"lines\": [
@@ -703,7 +711,7 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
     }
     ```
     """
-    
+
     date_: str
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -791,9 +799,11 @@ class AccountingCreatePaymentResponseAccountingPaymentTypedDict(TypedDict):
     """
     total_amount: NotRequired[Decimal]
     r"""Amount of the payment in the payment currency. This value should never change and represents the amount of money paid into the customer's account."""
-    
 
-@deprecated("warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.")
+
+@deprecated(
+    "warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+)
 class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
     r"""> **Payments or bill payments?**
     >
@@ -937,7 +947,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
     - The base currency for the accounts receivable account.
     - The currency of the item.
 
-    ```json title=\"Currency rate example\" 
+    ```json title=\"Currency rate example\"
     {
     \"id\": \"123\",
     \"note\": \"\",
@@ -969,7 +979,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
     ## Simple examples
 
-    ```json title=\"Payment for invoice\" 
+    ```json title=\"Payment for invoice\"
     {
     \"totalAmount\": 1000,
     \"lines\": [
@@ -989,7 +999,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Allocation of credit note\" 
+    ```json title=\"Allocation of credit note\"
     {
     \"totalAmount\": 0,
     \"lines\": [
@@ -1014,7 +1024,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Payment of invoice and payment on account\" 
+    ```json title=\"Payment of invoice and payment on account\"
     {
     \"totalAmount\": 2000,
     \"lines\": [
@@ -1044,7 +1054,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Refund of credit note\" 
+    ```json title=\"Refund of credit note\"
     {
     \"totalAmount\": -1000,
     \"lines\": [
@@ -1064,7 +1074,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Refund on accounts receivable account\" 
+    ```json title=\"Refund on accounts receivable account\"
     {
     \"totalAmount\": -1000,
     \"lines\": [
@@ -1084,7 +1094,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Linked refund on accounts receivable account\" 
+    ```json title=\"Linked refund on accounts receivable account\"
     {
     \"id\" : \"payment-001\",
     \"totalAmount\": 1000,
@@ -1121,7 +1131,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Using a credit note and cash to pay an invoice\" 
+    ```json title=\"Using a credit note and cash to pay an invoice\"
     {
     \"totalAmount\": 250,
     \"lines\": [
@@ -1158,7 +1168,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
     ## Complex examples
 
-    ```json title=\"Use two credit notes and 1000 in to \"bank\" (cash, cheque etc.) to pay invoice\" 
+    ```json title=\"Use two credit notes and 1000 in to \"bank\" (cash, cheque etc.) to pay invoice\"
     {
     \"totalAmount\": 1000,
     \"lines\": [
@@ -1208,7 +1218,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Pay an invoice with two credit notes and cash, with 1000 left 'on account'\" 
+    ```json title=\"Pay an invoice with two credit notes and cash, with 1000 left 'on account'\"
     {
     \"totalAmount\": 2000,
     \"lines\": [
@@ -1268,7 +1278,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Two credit notes pay two invoices with no allocation amount specified\" 
+    ```json title=\"Two credit notes pay two invoices with no allocation amount specified\"
     {
     \"totalAmount\": 0,
     \"lines\": [
@@ -1303,7 +1313,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Two credit notes and cash pay three invoices with no allocation amount specified, and refund cash\" 
+    ```json title=\"Two credit notes and cash pay three invoices with no allocation amount specified, and refund cash\"
     {
     \"totalAmount\": 2000,
     \"lines\": [
@@ -1371,7 +1381,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
     In this example, a payment on account is used to pay the same invoice in January and again in February.
 
-    ```json title=\"January\" 
+    ```json title=\"January\"
     {
     \"id\": \"001\",
     \"totalAmount\": 5000,
@@ -1403,7 +1413,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"February\" 
+    ```json title=\"February\"
     {
     \"id\": \"001\",
     \"totalAmount\": 5000,
@@ -1445,7 +1455,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
 
 
-    ```json title=\"Two credit notes and some cash pay two invoices with no allocations specified\" 
+    ```json title=\"Two credit notes and some cash pay two invoices with no allocations specified\"
     {
     \"totalAmount\": 500,
     \"lines\": [
@@ -1474,7 +1484,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
     }
     ```
     """
-    
+
     date_: Annotated[str, pydantic.Field(alias="date")]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -1496,8 +1506,12 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = None
+
+    account_ref: Annotated[Optional[AccountRef], pydantic.Field(alias="accountRef")] = (
+        None
+    )
     r"""Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account."""
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -1507,7 +1521,15 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    currency_rate: Annotated[Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="currencyRate")] = UNSET
+
+    currency_rate: Annotated[
+        Annotated[
+            OptionalNullable[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="currencyRate"),
+    ] = UNSET
     r"""Rate to convert the total amount of the payment into the base currency for the company at the time of the payment.
 
     Currency rates in Codat are implemented as the multiple of foreign currency units to each base currency unit.
@@ -1541,31 +1563,72 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
     |-------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | QuickBooks Online | Transaction currency differs from base currency | If currency rate value is left `null`, a rate of 1 will be used by QBO by default. To override this, specify a currencyRate in the request body.  |
     """
-    customer_ref: Annotated[Optional[AccountingCustomerRef], pydantic.Field(alias="customerRef")] = None
+
+    customer_ref: Annotated[
+        Optional[AccountingCustomerRef], pydantic.Field(alias="customerRef")
+    ] = None
+
     id: Optional[str] = None
     r"""Identifier for the payment, unique to the company in the accounting software."""
+
     lines: OptionalNullable[List[PaymentLine]] = UNSET
     r"""An array of payment lines."""
+
     metadata: Optional[Metadata] = None
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     note: OptionalNullable[str] = UNSET
     r"""Any additional information associated with the payment."""
-    payment_method_ref: Annotated[Optional[PaymentMethodRef], pydantic.Field(alias="paymentMethodRef")] = None
+
+    payment_method_ref: Annotated[
+        Optional[PaymentMethodRef], pydantic.Field(alias="paymentMethodRef")
+    ] = None
     r"""The payment method the record is linked to in the accounting or commerce software."""
+
     reference: OptionalNullable[str] = UNSET
     r"""Friendly reference for the payment."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    total_amount: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="totalAmount")] = None
+
+    total_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="totalAmount"),
+    ] = None
     r"""Amount of the payment in the payment currency. This value should never change and represents the amount of money paid into the customer's account."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["accountRef", "currency", "currencyRate", "customerRef", "id", "lines", "metadata", "modifiedDate", "note", "paymentMethodRef", "reference", "sourceModifiedDate", "supplementalData", "totalAmount"]
+        optional_fields = [
+            "accountRef",
+            "currency",
+            "currencyRate",
+            "customerRef",
+            "id",
+            "lines",
+            "metadata",
+            "modifiedDate",
+            "note",
+            "paymentMethodRef",
+            "reference",
+            "sourceModifiedDate",
+            "supplementalData",
+            "totalAmount",
+        ]
         nullable_fields = ["currencyRate", "lines", "note", "reference"]
         null_default_fields = []
 
@@ -1576,9 +1639,13 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -1588,7 +1655,7 @@ class AccountingCreatePaymentResponseAccountingPayment(BaseModel):
                 m[k] = val
 
         return m
-        
+
 
 class AccountingCreatePaymentResponseTypedDict(TypedDict):
     company_id: str
@@ -1645,7 +1712,9 @@ class AccountingCreatePaymentResponseTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    data: NotRequired[Nullable[AccountingCreatePaymentResponseAccountingPaymentTypedDict]]
+    data: NotRequired[
+        Nullable[AccountingCreatePaymentResponseAccountingPaymentTypedDict]
+    ]
     data_type: NotRequired[DataType]
     r"""Available data types"""
     error_message: NotRequired[Nullable[str]]
@@ -1656,15 +1725,18 @@ class AccountingCreatePaymentResponseTypedDict(TypedDict):
     r"""Number of seconds the push operation must complete within before it times out."""
     validation: NotRequired[ValidationTypedDict]
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""
-    
+
 
 class AccountingCreatePaymentResponse(BaseModel):
     company_id: Annotated[str, pydantic.Field(alias="companyId")]
     r"""Unique identifier for your SMB in Codat."""
+
     data_connection_key: Annotated[str, pydantic.Field(alias="dataConnectionKey")]
     r"""Unique identifier for a company's data connection."""
+
     push_operation_key: Annotated[str, pydantic.Field(alias="pushOperationKey")]
     r"""A unique identifier generated by Codat to represent this single push operation. This identifier can be used to track the status of the push, and should be persisted."""
+
     requested_on_utc: Annotated[str, pydantic.Field(alias="requestedOnUtc")]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -1686,13 +1758,19 @@ class AccountingCreatePaymentResponse(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     status: PushOperationStatus
     r"""The current status of the push operation."""
+
     status_code: Annotated[int, pydantic.Field(alias="statusCode")]
     r"""Push status code."""
+
     changes: OptionalNullable[List[PushOperationChange]] = UNSET
     r"""Contains a single entry that communicates which record has changed and the manner in which it changed."""
-    completed_on_utc: Annotated[Optional[str], pydantic.Field(alias="completedOnUtc")] = None
+
+    completed_on_utc: Annotated[
+        Optional[str], pydantic.Field(alias="completedOnUtc")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -1713,22 +1791,53 @@ class AccountingCreatePaymentResponse(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     data: OptionalNullable[AccountingCreatePaymentResponseAccountingPayment] = UNSET
+
     data_type: Annotated[Optional[DataType], pydantic.Field(alias="dataType")] = None
     r"""Available data types"""
-    error_message: Annotated[OptionalNullable[str], pydantic.Field(alias="errorMessage")] = UNSET
+
+    error_message: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="errorMessage")
+    ] = UNSET
     r"""A message about the error."""
-    timeout_in_minutes: Annotated[OptionalNullable[int], pydantic.Field(alias="timeoutInMinutes")] = UNSET
+
+    timeout_in_minutes: Annotated[
+        OptionalNullable[int], pydantic.Field(alias="timeoutInMinutes")
+    ] = UNSET
     r"""Number of minutes the push operation must complete within before it times out."""
-    timeout_in_seconds: Annotated[OptionalNullable[int], pydantic.Field(deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.", alias="timeoutInSeconds")] = UNSET
+
+    timeout_in_seconds: Annotated[
+        OptionalNullable[int],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.",
+            alias="timeoutInSeconds",
+        ),
+    ] = UNSET
     r"""Number of seconds the push operation must complete within before it times out."""
+
     validation: Optional[Validation] = None
     r"""A human-readable object describing validation decisions Codat has made when pushing data into the platform. If a push has failed because of validation errors, they will be detailed here."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["changes", "completedOnUtc", "data", "dataType", "errorMessage", "timeoutInMinutes", "timeoutInSeconds", "validation"]
-        nullable_fields = ["changes", "data", "errorMessage", "timeoutInMinutes", "timeoutInSeconds"]
+        optional_fields = [
+            "changes",
+            "completedOnUtc",
+            "data",
+            "dataType",
+            "errorMessage",
+            "timeoutInMinutes",
+            "timeoutInSeconds",
+            "validation",
+        ]
+        nullable_fields = [
+            "changes",
+            "data",
+            "errorMessage",
+            "timeoutInMinutes",
+            "timeoutInSeconds",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -1738,9 +1847,13 @@ class AccountingCreatePaymentResponse(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -1750,4 +1863,3 @@ class AccountingCreatePaymentResponse(BaseModel):
                 m[k] = val
 
         return m
-        

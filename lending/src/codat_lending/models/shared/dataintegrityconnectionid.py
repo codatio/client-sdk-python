@@ -11,11 +11,11 @@ class DataIntegrityConnectionIDTypedDict(TypedDict):
     r"""An array of strings. The connection IDs for the type specified in the url."""
     target: NotRequired[List[str]]
     r"""An array of strings. The connection IDs for the type being matched to."""
-    
+
 
 class DataIntegrityConnectionID(BaseModel):
     source: Optional[List[str]] = None
     r"""An array of strings. The connection IDs for the type specified in the url."""
+
     target: Optional[List[str]] = None
     r"""An array of strings. The connection IDs for the type being matched to."""
-    

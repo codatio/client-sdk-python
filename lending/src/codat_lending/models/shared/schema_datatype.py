@@ -6,6 +6,7 @@ from enum import Enum
 
 class SchemaDataType(str, Enum):
     r"""Available data types"""
+
     ACCOUNT_TRANSACTIONS = "accountTransactions"
     BALANCE_SHEET = "balanceSheet"
     BANK_ACCOUNTS = "bankAccounts"

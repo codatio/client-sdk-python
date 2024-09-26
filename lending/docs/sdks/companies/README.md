@@ -34,15 +34,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -90,7 +84,6 @@ s = CodatLending(
     ),
 )
 
-
 s.companies.delete(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
 })
@@ -133,7 +126,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.companies.get(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -183,7 +175,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.list(request={
     "order_by": "-modifiedDate",
     "page": 1,
@@ -219,7 +210,6 @@ if res is not None:
 ## update
 
 ﻿Use the *Update company* endpoint to update both the name and description of the company. 
-If you use [groups](https://docs.codat.io/lending-api#/schemas/Group) to manage a set of companies, use the [Add company](https://docs.codat.io/lending-api#/operations/add-company-to-group) or [Remove company](https://docs.codat.io/lending-api#/operations/remove-company-from-group) endpoints to add or remove a company from a group.
 
 A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/lending-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
@@ -236,17 +226,11 @@ s = CodatLending(
     ),
 )
 
-
 res = s.companies.update(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "company_request_body": {
         "name": "New Name",
         "description": "Requested early access to the new financing scheme.",
-        "groups": [
-            {
-                "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-            },
-        ],
     },
 })
 

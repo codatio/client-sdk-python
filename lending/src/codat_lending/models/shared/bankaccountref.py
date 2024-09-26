@@ -8,18 +8,18 @@ from typing_extensions import NotRequired
 
 class BankAccountRefTypedDict(TypedDict):
     r"""Links to the Account transactions data type."""
-    
+
     id: NotRequired[str]
     r"""Bank account 'id' for the account transaction."""
     name: NotRequired[str]
     r"""bank account 'name' for the account transaction."""
-    
+
 
 class BankAccountRef(BaseModel):
     r"""Links to the Account transactions data type."""
-    
+
     id: Optional[str] = None
     r"""Bank account 'id' for the account transaction."""
+
     name: Optional[str] = None
     r"""bank account 'name' for the account transaction."""
-    

@@ -2,16 +2,28 @@
 
 from __future__ import annotations
 from codat_lending.types import BaseModel
-from typing import Optional, TypedDict
-from typing_extensions import NotRequired
+from codat_lending.utils import serialize_decimal, validate_decimal
+from decimal import Decimal
+from pydantic.functional_serializers import PlainSerializer
+from pydantic.functional_validators import BeforeValidator
+from typing import TypedDict
+from typing_extensions import Annotated
 
 
 class ItemsTypedDict(TypedDict):
-    id: NotRequired[str]
-    r"""Unique identifier for the group."""
-    
+    amount: Decimal
+    r"""Amount of tax withheld."""
+    name: str
+    r"""Name assigned to withheld tax."""
+
 
 class Items(BaseModel):
-    id: Optional[str] = None
-    r"""Unique identifier for the group."""
-    
+    amount: Annotated[
+        Decimal,
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ]
+    r"""Amount of tax withheld."""
+
+    name: str
+    r"""Name assigned to withheld tax."""

@@ -23,7 +23,7 @@ class CommercePaymentTypedDict(TypedDict):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-payments) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
     amount: NotRequired[Decimal]
@@ -92,7 +92,7 @@ class CommercePaymentTypedDict(TypedDict):
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    
+
 
 class CommercePayment(BaseModel):
     r"""Payments contain details of all payments made by customers to a company, including: amounts, currency used, payment method, payment provider, and payment status.
@@ -103,11 +103,17 @@ class CommercePayment(BaseModel):
 
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-payments) for this data type.
     """
-    
+
     id: str
     r"""A unique, persistent identifier for this record"""
-    amount: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    amount: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""Payment Amount (including gratuity)"""
+
     created_date: Annotated[Optional[str], pydantic.Field(alias="createdDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -129,6 +135,7 @@ class CommercePayment(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -138,6 +145,7 @@ class CommercePayment(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     due_date: Annotated[Optional[str], pydantic.Field(alias="dueDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -159,17 +167,30 @@ class CommercePayment(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
-    payment_method_ref: Annotated[Optional[PaymentMethodRef], pydantic.Field(alias="paymentMethodRef")] = None
+
+    payment_method_ref: Annotated[
+        Optional[PaymentMethodRef], pydantic.Field(alias="paymentMethodRef")
+    ] = None
     r"""The payment method the record is linked to in the accounting or commerce software."""
-    payment_provider: Annotated[Optional[str], pydantic.Field(alias="paymentProvider")] = None
+
+    payment_provider: Annotated[
+        Optional[str], pydantic.Field(alias="paymentProvider")
+    ] = None
     r"""Service provider of the payment, if applicable."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     status: Optional[PaymentStatus] = None
     r"""Status of the payment."""
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
-    

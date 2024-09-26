@@ -6,6 +6,7 @@ from enum import Enum
 
 class IntegrityStatus(str, Enum):
     r"""The current status of the most recently run matching algorithm."""
+
     UNKNOWN = "Unknown"
     DOES_NOT_EXIST = "DoesNotExist"
     ERROR = "Error"

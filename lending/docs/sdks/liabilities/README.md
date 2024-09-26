@@ -33,7 +33,6 @@ s = CodatLending(
     ),
 )
 
-
 s.liabilities.generate_loan_summary(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "source_type": operations.SourceType.ACCOUNTING,
@@ -79,7 +78,6 @@ s = CodatLending(
     ),
 )
 
-
 s.liabilities.generate_loan_transactions(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "source_type": operations.QueryParamSourceType.ACCOUNTING,
@@ -124,7 +122,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.liabilities.get_loan_summary(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -176,7 +173,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.liabilities.list_loan_transactions(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

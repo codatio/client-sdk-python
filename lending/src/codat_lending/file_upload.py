@@ -8,13 +8,16 @@ from codat_lending.types import BaseModel, OptionalNullable, UNSET
 import httpx
 from typing import Any, List, Optional, Union, cast
 
+
 class FileUpload(BaseSDK):
     r"""Endpoints to manage uploaded files."""
-    
-    
+
     def download(
-        self, *,
-        request: Union[operations.DownloadFilesRequest, operations.DownloadFilesRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.DownloadFilesRequest, operations.DownloadFilesRequestTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -32,14 +35,14 @@ class FileUpload(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.DownloadFilesRequest)
         request = cast(operations.DownloadFilesRequest, request)
-        
+
         req = self.build_request(
             method="GET",
             path="/companies/{companyId}/files/download",
@@ -54,46 +57,71 @@ class FileUpload(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="download-files", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="download-files",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
             stream=True,
-            retry_config=retry_config
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/octet-stream"):
             return http_res
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def download_async(
-        self, *,
-        request: Union[operations.DownloadFilesRequest, operations.DownloadFilesRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.DownloadFilesRequest, operations.DownloadFilesRequestTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -111,15 +139,15 @@ class FileUpload(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.DownloadFilesRequest)
         request = cast(operations.DownloadFilesRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/companies/{companyId}/files/download",
             base_url=base_url,
@@ -133,46 +161,71 @@ class FileUpload(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="download-files", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="download-files",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
             stream=True,
-            retry_config=retry_config
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/octet-stream"):
             return http_res
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def list_uploaded(
-        self, *,
-        request: Union[operations.ListFilesRequest, operations.ListFilesRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.ListFilesRequest, operations.ListFilesRequestTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -190,14 +243,14 @@ class FileUpload(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ListFilesRequest)
         request = cast(operations.ListFilesRequest, request)
-        
+
         req = self.build_request(
             method="GET",
             path="/companies/{companyId}/files",
@@ -212,45 +265,69 @@ class FileUpload(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="list-files", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="list-files",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[List[shared.File]])
-        if utils.match_response(http_res, ["401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def list_uploaded_async(
-        self, *,
-        request: Union[operations.ListFilesRequest, operations.ListFilesRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.ListFilesRequest, operations.ListFilesRequestTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -268,15 +345,15 @@ class FileUpload(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ListFilesRequest)
         request = cast(operations.ListFilesRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/companies/{companyId}/files",
             base_url=base_url,
@@ -290,45 +367,69 @@ class FileUpload(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="list-files", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="list-files",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[List[shared.File]])
-        if utils.match_response(http_res, ["401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def upload(
-        self, *,
-        request: Union[operations.UploadFilesRequest, operations.UploadFilesRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.UploadFilesRequest, operations.UploadFilesRequestTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -352,14 +453,14 @@ class FileUpload(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.UploadFilesRequest)
         request = cast(operations.UploadFilesRequest, request)
-        
+
         req = self.build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/files",
@@ -372,48 +473,79 @@ class FileUpload(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.file_upload, False, True, "multipart", Optional[shared.FileUpload]),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.file_upload,
+                False,
+                True,
+                "multipart",
+                Optional[shared.FileUpload],
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="upload-files", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="upload-files",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "*"):
             return
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def upload_async(
-        self, *,
-        request: Union[operations.UploadFilesRequest, operations.UploadFilesRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.UploadFilesRequest, operations.UploadFilesRequestTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -437,15 +569,15 @@ class FileUpload(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.UploadFilesRequest)
         request = cast(operations.UploadFilesRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/files",
             base_url=base_url,
@@ -457,41 +589,69 @@ class FileUpload(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.file_upload, False, True, "multipart", Optional[shared.FileUpload]),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.file_upload,
+                False,
+                True,
+                "multipart",
+                Optional[shared.FileUpload],
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="upload-files", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="upload-files",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "*"):
             return
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )

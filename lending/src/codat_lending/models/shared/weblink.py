@@ -9,24 +9,26 @@ from typing_extensions import NotRequired
 
 class Type(str, Enum):
     r"""The type of the weblink."""
+
     WEBSITE = "Website"
     SOCIAL = "Social"
     UNKNOWN = "Unknown"
 
+
 class WebLinkTypedDict(TypedDict):
     r"""Weblink associated with the company."""
-    
+
     type: NotRequired[Type]
     r"""The type of the weblink."""
     url: NotRequired[str]
     r"""The full URL for the weblink."""
-    
+
 
 class WebLink(BaseModel):
     r"""Weblink associated with the company."""
-    
+
     type: Optional[Type] = None
     r"""The type of the weblink."""
+
     url: Optional[str] = None
     r"""The full URL for the weblink."""
-    

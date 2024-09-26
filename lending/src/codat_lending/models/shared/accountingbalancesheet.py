@@ -28,7 +28,7 @@ class AccountingBalanceSheetTypedDict(TypedDict):
     **Want to pull this in a standardised structure?**
     Our [Enhanced Financials](https://docs.codat.io/lending/features/financial-statements-overview) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
     """
-    
+
     currency: str
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -82,7 +82,7 @@ class AccountingBalanceSheetTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
 
 class AccountingBalanceSheet(BaseModel):
     r"""> View the coverage for balance sheet in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=balanceSheet\" target=\"_blank\">Data coverage explorer</a>.
@@ -104,7 +104,7 @@ class AccountingBalanceSheet(BaseModel):
     **Want to pull this in a standardised structure?**
     Our [Enhanced Financials](https://docs.codat.io/lending/features/financial-statements-overview) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
     """
-    
+
     currency: str
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -114,9 +114,13 @@ class AccountingBalanceSheet(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
+
     reports: List[BalanceSheet]
     r"""An array of balance sheet reports."""
-    earliest_available_month: Annotated[Optional[str], pydantic.Field(alias="earliestAvailableMonth")] = None
+
+    earliest_available_month: Annotated[
+        Optional[str], pydantic.Field(alias="earliestAvailableMonth")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -137,7 +141,10 @@ class AccountingBalanceSheet(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    most_recent_available_month: Annotated[Optional[str], pydantic.Field(alias="mostRecentAvailableMonth")] = None
+
+    most_recent_available_month: Annotated[
+        Optional[str], pydantic.Field(alias="mostRecentAvailableMonth")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -158,4 +165,3 @@ class AccountingBalanceSheet(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    

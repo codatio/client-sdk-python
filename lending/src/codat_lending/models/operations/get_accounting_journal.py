@@ -13,11 +13,19 @@ class GetAccountingJournalRequestTypedDict(TypedDict):
     r"""Unique identifier for a company."""
     journal_id: str
     r"""Unique identifier for a journal."""
-    
+
 
 class GetAccountingJournalRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    journal_id: Annotated[str, pydantic.Field(alias="journalId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    journal_id: Annotated[
+        str,
+        pydantic.Field(alias="journalId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a journal."""
-    

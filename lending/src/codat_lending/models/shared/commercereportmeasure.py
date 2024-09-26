@@ -16,15 +16,17 @@ class CommerceReportMeasureTypedDict(TypedDict):
     r"""The measure's type."""
     units: NotRequired[str]
     r"""The measure's units e.g. percentage (%)."""
-    
+
 
 class CommerceReportMeasure(BaseModel):
     display_name: Annotated[Optional[str], pydantic.Field(alias="displayName")] = None
     r"""The measure's display name."""
+
     index: Optional[int] = None
     r"""The measure's index."""
+
     type: Optional[str] = None
     r"""The measure's type."""
+
     units: Optional[str] = None
     r"""The measure's units e.g. percentage (%)."""
-    

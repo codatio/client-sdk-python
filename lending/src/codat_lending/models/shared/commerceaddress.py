@@ -23,21 +23,26 @@ class CommerceAddressTypedDict(TypedDict):
     r"""The fourth line of the address, or region"""
     type: NotRequired[CommerceAddressType]
     r"""The type of the address"""
-    
+
 
 class CommerceAddress(BaseModel):
     city: Optional[str] = None
     r"""The third line of the address, or city"""
+
     country: Optional[str] = None
     r"""The country for the address"""
+
     line1: Optional[str] = None
     r"""The first line of the address"""
+
     line2: Optional[str] = None
     r"""The second line of the address"""
+
     postal_code: Annotated[Optional[str], pydantic.Field(alias="postalCode")] = None
     r"""The postal (or zip) code for the address"""
+
     region: Optional[str] = None
     r"""The fourth line of the address, or region"""
+
     type: Optional[CommerceAddressType] = None
     r"""The type of the address"""
-    

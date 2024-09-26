@@ -11,10 +11,10 @@ class EnhancedReportAccountCategoryTypedDict(TypedDict):
     levels: NotRequired[List[AccountCategoryLevelTypedDict]]
     status: NotRequired[str]
     r"""Returns a status of \"Suggested\" or \"Confirmed\". If an account has a confirmed category, it will replace any suggested category returned."""
-    
+
 
 class EnhancedReportAccountCategory(BaseModel):
     levels: Optional[List[AccountCategoryLevel]] = None
+
     status: Optional[str] = None
     r"""Returns a status of \"Suggested\" or \"Confirmed\". If an account has a confirmed category, it will replace any suggested category returned."""
-    

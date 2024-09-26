@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .transactioncategorystatus import TransactionCategoryStatus
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
 from pydantic import model_serializer
 from typing import Optional, TypedDict
@@ -14,7 +20,7 @@ class BankingTransactionCategoryTypedDict(TypedDict):
 
     Responses are paged, so you should provide `page` and `pageSize` query parameters in your request.
     """
-    
+
     id: str
     r"""The unique identifier of the bank transaction category."""
     name: str
@@ -27,30 +33,46 @@ class BankingTransactionCategoryTypedDict(TypedDict):
     source_modified_date: NotRequired[str]
     status: NotRequired[TransactionCategoryStatus]
     r"""The status of the transaction category."""
-    
+
 
 class BankingTransactionCategory(BaseModel):
     r"""The Banking Transaction Categories data type provides a list of hierarchical categories associated with a transaction for greater contextual meaning to transaction activity.
 
     Responses are paged, so you should provide `page` and `pageSize` query parameters in your request.
     """
-    
+
     id: str
     r"""The unique identifier of the bank transaction category."""
+
     name: str
     r"""The name of the bank transaction category."""
+
     has_children: Annotated[Optional[bool], pydantic.Field(alias="hasChildren")] = None
     r"""A Boolean indicating whether there are other bank transaction categories beneath this one in the hierarchy."""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
-    parent_id: Annotated[OptionalNullable[str], pydantic.Field(alias="parentId")] = UNSET
+
+    parent_id: Annotated[OptionalNullable[str], pydantic.Field(alias="parentId")] = (
+        UNSET
+    )
     r"""The unique identifier of the parent bank transaction category."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     status: Optional[TransactionCategoryStatus] = None
     r"""The status of the transaction category."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["hasChildren", "modifiedDate", "parentId", "sourceModifiedDate", "status"]
+        optional_fields = [
+            "hasChildren",
+            "modifiedDate",
+            "parentId",
+            "sourceModifiedDate",
+            "status",
+        ]
         nullable_fields = ["parentId"]
         null_default_fields = []
 
@@ -61,9 +83,13 @@ class BankingTransactionCategory(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -73,4 +99,3 @@ class BankingTransactionCategory(BaseModel):
                 m[k] = val
 
         return m
-        

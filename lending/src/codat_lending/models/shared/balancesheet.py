@@ -39,12 +39,21 @@ class BalanceSheetTypedDict(TypedDict):
     """
     equity: NotRequired[ReportLineTypedDict]
     liabilities: NotRequired[ReportLineTypedDict]
-    
+
 
 class BalanceSheet(BaseModel):
-    net_assets: Annotated[Annotated[Decimal, BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="netAssets")]
+    net_assets: Annotated[
+        Annotated[
+            Decimal,
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="netAssets"),
+    ]
     r"""Value of net assets for a company in their base currency."""
+
     assets: Optional[ReportLine] = None
+
     date_: Annotated[Optional[str], pydantic.Field(alias="date")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -66,6 +75,7 @@ class BalanceSheet(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     equity: Optional[ReportLine] = None
+
     liabilities: Optional[ReportLine] = None
-    

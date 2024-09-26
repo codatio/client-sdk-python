@@ -15,13 +15,26 @@ class GetBankingTransactionCategoryRequestTypedDict(TypedDict):
     r"""Unique identifier for a connection."""
     transaction_category_id: str
     r"""The unique identifier for a banking transaction category"""
-    
+
 
 class GetBankingTransactionCategoryRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    connection_id: Annotated[str, pydantic.Field(alias="connectionId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a connection."""
-    transaction_category_id: Annotated[str, pydantic.Field(alias="transactionCategoryId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    transaction_category_id: Annotated[
+        str,
+        pydantic.Field(alias="transactionCategoryId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""The unique identifier for a banking transaction category"""
-    

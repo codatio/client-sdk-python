@@ -6,6 +6,7 @@ from enum import Enum
 
 class BillCreditNoteStatus(str, Enum):
     r"""Current state of the bill credit note"""
+
     UNKNOWN = "Unknown"
     DRAFT = "Draft"
     SUBMITTED = "Submitted"

@@ -9,15 +9,16 @@ from typing_extensions import NotRequired
 
 class EndUploadSessionRequestStatus(str, Enum):
     r"""An indicator to cancel the dataset processing or trigger ingestion and enrichment of data."""
+
     CANCEL = "Cancel"
     PROCESS = "Process"
+
 
 class EndUploadSessionRequestTypedDict(TypedDict):
     status: NotRequired[EndUploadSessionRequestStatus]
     r"""An indicator to cancel the dataset processing or trigger ingestion and enrichment of data."""
-    
+
 
 class EndUploadSessionRequest(BaseModel):
     status: Optional[EndUploadSessionRequestStatus] = None
     r"""An indicator to cancel the dataset processing or trigger ingestion and enrichment of data."""
-    

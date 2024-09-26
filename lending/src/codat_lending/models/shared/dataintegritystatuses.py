@@ -9,8 +9,7 @@ from typing_extensions import NotRequired
 
 class DataIntegrityStatusesTypedDict(TypedDict):
     metadata: NotRequired[List[DataIntegrityStatusTypedDict]]
-    
+
 
 class DataIntegrityStatuses(BaseModel):
     metadata: Optional[List[DataIntegrityStatus]] = None
-    

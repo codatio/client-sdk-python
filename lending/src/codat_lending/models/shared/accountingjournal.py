@@ -3,7 +3,13 @@
 from __future__ import annotations
 from .journalstatus import JournalStatus
 from .metadata import Metadata, MetadataTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
 from pydantic import model_serializer
 from typing import Optional, TypedDict
@@ -35,7 +41,7 @@ class AccountingJournalTypedDict(TypedDict):
     > When pushing journal entries to an accounting software that doesn’t support multiple journals (multi-book accounting), the entries will be linked to the platform-generic journal. The Journals data type will only include one object.
 
     """
-    
+
     created_on: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -78,7 +84,7 @@ class AccountingJournalTypedDict(TypedDict):
     r"""Current journal status."""
     type: NotRequired[Nullable[str]]
     r"""The type of the journal."""
-    
+
 
 class AccountingJournal(BaseModel):
     r"""> **Language tip:** For line items, or individual transactions, of a company's financial documents, refer to the [Journal entries](https://docs.codat.io/lending-api#/schemas/JournalEntry) data type
@@ -105,7 +111,7 @@ class AccountingJournal(BaseModel):
     > When pushing journal entries to an accounting software that doesn’t support multiple journals (multi-book accounting), the entries will be linked to the platform-generic journal. The Journals data type will only include one object.
 
     """
-    
+
     created_on: Annotated[Optional[str], pydantic.Field(alias="createdOn")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -127,31 +133,59 @@ class AccountingJournal(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     has_children: Annotated[Optional[bool], pydantic.Field(alias="hasChildren")] = None
     r"""If the journal has child journals, this value is true. If it doesn’t, it is false."""
+
     id: Optional[str] = None
     r"""Journal ID."""
-    journal_code: Annotated[OptionalNullable[str], pydantic.Field(alias="journalCode")] = UNSET
+
+    journal_code: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="journalCode")
+    ] = UNSET
     r"""Native journal number or code."""
+
     metadata: Optional[Metadata] = None
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     name: OptionalNullable[str] = UNSET
     r"""Journal name.
     The maximum length for a journal name is 256 characters. All characters above that number will be truncated.
     """
-    parent_id: Annotated[OptionalNullable[str], pydantic.Field(alias="parentId")] = UNSET
+
+    parent_id: Annotated[OptionalNullable[str], pydantic.Field(alias="parentId")] = (
+        UNSET
+    )
     r"""Parent journal ID.
     If the journal is a parent journal, this value is not present.
     """
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     status: Optional[JournalStatus] = None
     r"""Current journal status."""
+
     type: OptionalNullable[str] = UNSET
     r"""The type of the journal."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["createdOn", "hasChildren", "id", "journalCode", "metadata", "modifiedDate", "name", "parentId", "sourceModifiedDate", "status", "type"]
+        optional_fields = [
+            "createdOn",
+            "hasChildren",
+            "id",
+            "journalCode",
+            "metadata",
+            "modifiedDate",
+            "name",
+            "parentId",
+            "sourceModifiedDate",
+            "status",
+            "type",
+        ]
         nullable_fields = ["journalCode", "name", "parentId", "type"]
         null_default_fields = []
 
@@ -162,9 +196,13 @@ class AccountingJournal(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -174,4 +212,3 @@ class AccountingJournal(BaseModel):
                 m[k] = val
 
         return m
-        

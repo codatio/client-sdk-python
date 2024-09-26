@@ -31,10 +31,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.payments.get(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "payment_id": "<value>",
+    "payment_id": "<id>",
 })
 
 if res is not None:
@@ -82,7 +81,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.accounts_receivable.payments.list(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

@@ -15,10 +15,8 @@ from typing_extensions import Annotated, NotRequired
 
 
 class ProductVariantTypedDict(TypedDict):
-    r"""Represents a variation of a product available for sale, for example an item of clothing that may be available for sale in multiple sizes and colors.
+    r"""Represents a variation of a product available for sale, for example an item of clothing that may be available for sale in multiple sizes and colors."""
 
-    """
-    
     id: str
     r"""A unique, persistent identifier for this record"""
     barcode: NotRequired[str]
@@ -64,17 +62,17 @@ class ProductVariantTypedDict(TypedDict):
     r"""Unit of measure for the variant, such as `kg` or `meters`."""
     vat_percentage: NotRequired[Decimal]
     r"""VAT rate for the product variant if sales taxes are enabled."""
-    
+
 
 class ProductVariant(BaseModel):
-    r"""Represents a variation of a product available for sale, for example an item of clothing that may be available for sale in multiple sizes and colors.
+    r"""Represents a variation of a product available for sale, for example an item of clothing that may be available for sale in multiple sizes and colors."""
 
-    """
-    
     id: str
     r"""A unique, persistent identifier for this record"""
+
     barcode: Optional[str] = None
     r"""Unique product number of the variant. This might be a barcode, UPC, ISBN, etc."""
+
     created_date: Annotated[Optional[str], pydantic.Field(alias="createdDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -96,24 +94,49 @@ class ProductVariant(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     inventory: Optional[ProductInventory] = None
     r"""Information about the total inventory as well as the locations inventory is in."""
-    is_tax_enabled: Annotated[Optional[bool], pydantic.Field(alias="isTaxEnabled")] = None
+
+    is_tax_enabled: Annotated[Optional[bool], pydantic.Field(alias="isTaxEnabled")] = (
+        None
+    )
     r"""Whether sales taxes are enabled for this product variant."""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     name: Optional[str] = None
     r"""Name of the product recorded in the commerce or point of sale platform."""
+
     prices: Optional[List[ProductPrice]] = None
     r"""Prices for the product variants in different currencies."""
-    shipping_required: Annotated[Optional[bool], pydantic.Field(alias="shippingRequired")] = None
+
+    shipping_required: Annotated[
+        Optional[bool], pydantic.Field(alias="shippingRequired")
+    ] = None
     r"""Indicates whether or not the product requires physical delivery."""
+
     sku: Optional[str] = None
     r"""SKU (stock keeping unit) of the variant, as defined by the merchant."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
     status: Optional[ProductVariantStatus] = None
     r"""The status of the product variant."""
-    unit_of_measure: Annotated[Optional[str], pydantic.Field(alias="unitOfMeasure")] = None
+
+    unit_of_measure: Annotated[Optional[str], pydantic.Field(alias="unitOfMeasure")] = (
+        None
+    )
     r"""Unit of measure for the variant, such as `kg` or `meters`."""
-    vat_percentage: Annotated[Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))], pydantic.Field(alias="vatPercentage")] = None
+
+    vat_percentage: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="vatPercentage"),
+    ] = None
     r"""VAT rate for the product variant if sales taxes are enabled."""
-    

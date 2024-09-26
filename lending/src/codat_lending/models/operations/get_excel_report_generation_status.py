@@ -14,11 +14,19 @@ class GetExcelReportGenerationStatusRequestTypedDict(TypedDict):
     r"""Unique identifier for a company."""
     report_type: shared_excelreporttypes.ExcelReportTypes
     r"""The type of report you want to generate and download."""
-    
+
 
 class GetExcelReportGenerationStatusRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    report_type: Annotated[shared_excelreporttypes.ExcelReportTypes, pydantic.Field(alias="reportType"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))]
+
+    report_type: Annotated[
+        shared_excelreporttypes.ExcelReportTypes,
+        pydantic.Field(alias="reportType"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ]
     r"""The type of report you want to generate and download."""
-    

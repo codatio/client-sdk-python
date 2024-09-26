@@ -13,11 +13,19 @@ class GetPullOperationRequestTypedDict(TypedDict):
     r"""Unique identifier for a company."""
     dataset_id: str
     r"""Unique identifier for the dataset that completed its sync."""
-    
+
 
 class GetPullOperationRequest(BaseModel):
-    company_id: Annotated[str, pydantic.Field(alias="companyId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    company_id: Annotated[
+        str,
+        pydantic.Field(alias="companyId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for a company."""
-    dataset_id: Annotated[str, pydantic.Field(alias="datasetId"), FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    dataset_id: Annotated[
+        str,
+        pydantic.Field(alias="datasetId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""Unique identifier for the dataset that completed its sync."""
-    

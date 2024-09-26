@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .taxcomponentref import TaxComponentRef, TaxComponentRefTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -18,14 +24,21 @@ class TaxComponentAllocationTypedDict(TypedDict):
     r"""Tax amount on order line sale as available from source commerce software."""
     tax_component_ref: NotRequired[TaxComponentRefTypedDict]
     r"""Taxes rates reference object depending on the rates being available on source commerce software."""
-    
+
 
 class TaxComponentAllocation(BaseModel):
-    rate: Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = UNSET
+    rate: Annotated[
+        OptionalNullable[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = UNSET
     r"""Tax amount on order line sale as available from source commerce software."""
-    tax_component_ref: Annotated[Optional[TaxComponentRef], pydantic.Field(alias="taxComponentRef")] = None
+
+    tax_component_ref: Annotated[
+        Optional[TaxComponentRef], pydantic.Field(alias="taxComponentRef")
+    ] = None
     r"""Taxes rates reference object depending on the rates being available on source commerce software."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["rate", "taxComponentRef"]
@@ -39,9 +52,13 @@ class TaxComponentAllocation(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -51,4 +68,3 @@ class TaxComponentAllocation(BaseModel):
                 m[k] = val
 
         return m
-        

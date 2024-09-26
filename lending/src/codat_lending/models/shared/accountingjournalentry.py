@@ -6,7 +6,13 @@ from .journalline import JournalLine, JournalLineTypedDict
 from .journalref import JournalRef, JournalRefTypedDict
 from .metadata import Metadata, MetadataTypedDict
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
-from codat_lending.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
 from pydantic import model_serializer
 from typing import List, Optional, TypedDict
@@ -37,7 +43,7 @@ class AccountingJournalEntryTypedDict(TypedDict):
     > **Pushing journal entries**
     > Codat only supports journal entries in the base currency of the company that are pushed into accounts denominated in the same base currency.
     """
-    
+
     created_on: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -119,7 +125,7 @@ class AccountingJournalEntryTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
 
 class AccountingJournalEntry(BaseModel):
     r"""> **Language tip:** For the top-level record of a company's financial transactions, refer to the [Journals](https://docs.codat.io/lending-api#/schemas/Journal) data type
@@ -145,7 +151,7 @@ class AccountingJournalEntry(BaseModel):
     > **Pushing journal entries**
     > Codat only supports journal entries in the base currency of the company that are pushed into accounts denominated in the same base currency.
     """
-    
+
     created_on: Annotated[Optional[str], pydantic.Field(alias="createdOn")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -167,16 +173,27 @@ class AccountingJournalEntry(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     description: OptionalNullable[str] = UNSET
     r"""Optional description of the journal entry."""
+
     id: Optional[str] = None
     r"""Unique identifier of the journal entry for the company in the accounting software."""
-    journal_lines: Annotated[OptionalNullable[List[JournalLine]], pydantic.Field(alias="journalLines")] = UNSET
+
+    journal_lines: Annotated[
+        OptionalNullable[List[JournalLine]], pydantic.Field(alias="journalLines")
+    ] = UNSET
     r"""An array of journal lines."""
-    journal_ref: Annotated[Optional[JournalRef], pydantic.Field(alias="journalRef")] = None
+
+    journal_ref: Annotated[Optional[JournalRef], pydantic.Field(alias="journalRef")] = (
+        None
+    )
     r"""Links journal entries to the relevant journal in accounting integrations that use multi-book accounting (multiple journals)."""
+
     metadata: Optional[Metadata] = None
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
+
     posted_on: Annotated[Optional[str], pydantic.Field(alias="postedOn")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -198,14 +215,24 @@ class AccountingJournalEntry(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    record_ref: Annotated[Optional[JournalEntryRecordRef], pydantic.Field(alias="recordRef")] = None
+
+    record_ref: Annotated[
+        Optional[JournalEntryRecordRef], pydantic.Field(alias="recordRef")
+    ] = None
     r"""Links a journal entry to the underlying record that created it."""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    supplemental_data: Annotated[Optional[SupplementalData], pydantic.Field(alias="supplementalData")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
+    supplemental_data: Annotated[
+        Optional[SupplementalData], pydantic.Field(alias="supplementalData")
+    ] = None
     r"""Supplemental data is additional data you can include in our standard data types.
 
     It is referenced as a configured dynamic key value pair that is unique to the accounting software. [Learn more](https://docs.codat.io/using-the-api/supplemental-data/overview) about supplemental data.
     """
+
     updated_on: Annotated[Optional[str], pydantic.Field(alias="updatedOn")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -227,10 +254,23 @@ class AccountingJournalEntry(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["createdOn", "description", "id", "journalLines", "journalRef", "metadata", "modifiedDate", "postedOn", "recordRef", "sourceModifiedDate", "supplementalData", "updatedOn"]
+        optional_fields = [
+            "createdOn",
+            "description",
+            "id",
+            "journalLines",
+            "journalRef",
+            "metadata",
+            "modifiedDate",
+            "postedOn",
+            "recordRef",
+            "sourceModifiedDate",
+            "supplementalData",
+            "updatedOn",
+        ]
         nullable_fields = ["description", "journalLines"]
         null_default_fields = []
 
@@ -241,9 +281,13 @@ class AccountingJournalEntry(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -253,4 +297,3 @@ class AccountingJournalEntry(BaseModel):
                 m[k] = val
 
         return m
-        

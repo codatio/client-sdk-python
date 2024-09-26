@@ -39,12 +39,15 @@ class LoanTransactionsReportInfoTypedDict(TypedDict):
     r"""The name of the report."""
     total_results: NotRequired[int]
     r"""The total number of transactions returned."""
-    
+
 
 class LoanTransactionsReportInfo(BaseModel):
     company_name: Annotated[Optional[str], pydantic.Field(alias="companyName")] = None
     r"""Name of the company queried."""
-    generated_date: Annotated[Optional[str], pydantic.Field(alias="generatedDate")] = None
+
+    generated_date: Annotated[Optional[str], pydantic.Field(alias="generatedDate")] = (
+        None
+    )
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -65,12 +68,15 @@ class LoanTransactionsReportInfo(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     page_number: Annotated[Optional[int], pydantic.Field(alias="pageNumber")] = None
     r"""The page number."""
+
     page_size: Annotated[Optional[int], pydantic.Field(alias="pageSize")] = None
     r"""Queried page size."""
+
     report_name: Annotated[Optional[str], pydantic.Field(alias="reportName")] = None
     r"""The name of the report."""
+
     total_results: Annotated[Optional[int], pydantic.Field(alias="totalResults")] = None
     r"""The total number of transactions returned."""
-    

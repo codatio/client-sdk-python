@@ -19,7 +19,7 @@ class BankingAccountBalanceTypedDict(TypedDict):
     >
     > Whilst you can choose to sync hourly, this may incur usage charges from Plaid or TrueLayer.
     """
-    
+
     account_id: str
     r"""The unique identifier of the account."""
     balance: AccountBalanceAmountsTypedDict
@@ -47,7 +47,7 @@ class BankingAccountBalanceTypedDict(TypedDict):
     """
     modified_date: NotRequired[str]
     source_modified_date: NotRequired[str]
-    
+
 
 class BankingAccountBalance(BaseModel):
     r"""The Banking Account Balances data type provides a list of balances for a bank account including end-of-day batch balance or running balances per transaction.
@@ -60,11 +60,13 @@ class BankingAccountBalance(BaseModel):
     >
     > Whilst you can choose to sync hourly, this may incur usage charges from Plaid or TrueLayer.
     """
-    
+
     account_id: Annotated[str, pydantic.Field(alias="accountId")]
     r"""The unique identifier of the account."""
+
     balance: AccountBalanceAmounts
     r"""Depending on the data provided by the underlying bank, not all balances are always available."""
+
     date_: Annotated[str, pydantic.Field(alias="date")]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -86,6 +88,9 @@ class BankingAccountBalance(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None

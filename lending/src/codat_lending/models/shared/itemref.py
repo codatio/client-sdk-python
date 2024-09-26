@@ -14,13 +14,16 @@ class ItemRefTypedDict(TypedDict):
     r"""The id of the object, e.g. the Journal entry."""
     type: NotRequired[str]
     r"""The data type the loan transaction entry was extracted from."""
-    
+
 
 class ItemRef(BaseModel):
-    data_connection_id: Annotated[Optional[str], pydantic.Field(alias="dataConnectionId")] = None
+    data_connection_id: Annotated[
+        Optional[str], pydantic.Field(alias="dataConnectionId")
+    ] = None
     r"""The data connection id being referenced."""
+
     id: Optional[str] = None
     r"""The id of the object, e.g. the Journal entry."""
+
     type: Optional[str] = None
     r"""The data type the loan transaction entry was extracted from."""
-    

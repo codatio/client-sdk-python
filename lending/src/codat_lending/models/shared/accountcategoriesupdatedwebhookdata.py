@@ -10,9 +10,8 @@ from typing_extensions import Annotated, NotRequired
 class AccountCategoriesUpdatedWebhookDataTypedDict(TypedDict):
     modified_date: NotRequired[str]
     r"""The date on which the company's account categories were last modified in Codat."""
-    
+
 
 class AccountCategoriesUpdatedWebhookData(BaseModel):
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
     r"""The date on which the company's account categories were last modified in Codat."""
-    

@@ -18,7 +18,7 @@ class CommerceCompanyInfoTypedDict(TypedDict):
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=companyInfo) for this data type.
 
     """
-    
+
     account_balances: NotRequired[List[AccountBalanceTypedDict]]
     r"""The available and current cash balances for the company's accounts"""
     addresses: NotRequired[List[CommerceAddressTypedDict]]
@@ -69,7 +69,7 @@ class CommerceCompanyInfoTypedDict(TypedDict):
     r"""URL addresses for the originating system. For example, potential use cases include 'deeplinking' to the originating system"""
     web_links: NotRequired[List[WebLinkTypedDict]]
     r"""Weblinks associated with the company"""
-    
+
 
 class CommerceCompanyInfo(BaseModel):
     r"""In the Codat system, company profile includes standard commercial details about
@@ -78,11 +78,15 @@ class CommerceCompanyInfo(BaseModel):
     Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=companyInfo) for this data type.
 
     """
-    
-    account_balances: Annotated[Optional[List[AccountBalance]], pydantic.Field(alias="accountBalances")] = None
+
+    account_balances: Annotated[
+        Optional[List[AccountBalance]], pydantic.Field(alias="accountBalances")
+    ] = None
     r"""The available and current cash balances for the company's accounts"""
+
     addresses: Optional[List[CommerceAddress]] = None
     r"""Addresses associated with the company"""
+
     base_currency: Annotated[Optional[str], pydantic.Field(alias="baseCurrency")] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
@@ -92,12 +96,20 @@ class CommerceCompanyInfo(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    commerce_platform_ref: Annotated[Optional[str], pydantic.Field(alias="commercePlatformRef")] = None
+
+    commerce_platform_ref: Annotated[
+        Optional[str], pydantic.Field(alias="commercePlatformRef")
+    ] = None
     r"""Identifier or reference for the company in the commerce software"""
-    company_legal_name: Annotated[Optional[str], pydantic.Field(alias="companyLegalName")] = None
+
+    company_legal_name: Annotated[
+        Optional[str], pydantic.Field(alias="companyLegalName")
+    ] = None
     r"""The full legal name of the company"""
+
     company_name: Annotated[Optional[str], pydantic.Field(alias="companyName")] = None
     r"""The name of the company"""
+
     created_date: Annotated[Optional[str], pydantic.Field(alias="createdDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -119,14 +131,29 @@ class CommerceCompanyInfo(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
-    phone_numbers: Annotated[Optional[List[PhoneNumber]], pydantic.Field(alias="phoneNumbers")] = None
+
+    phone_numbers: Annotated[
+        Optional[List[PhoneNumber]], pydantic.Field(alias="phoneNumbers")
+    ] = None
     r"""Phone numbers associated with the company"""
-    registration_number: Annotated[Optional[str], pydantic.Field(alias="registrationNumber")] = None
+
+    registration_number: Annotated[
+        Optional[str], pydantic.Field(alias="registrationNumber")
+    ] = None
     r"""The registration number of the company"""
-    source_modified_date: Annotated[Optional[str], pydantic.Field(alias="sourceModifiedDate")] = None
-    source_urls: Annotated[Optional[Dict[str, str]], pydantic.Field(alias="sourceUrls")] = None
+
+    source_modified_date: Annotated[
+        Optional[str], pydantic.Field(alias="sourceModifiedDate")
+    ] = None
+
+    source_urls: Annotated[
+        Optional[Dict[str, str]], pydantic.Field(alias="sourceUrls")
+    ] = None
     r"""URL addresses for the originating system. For example, potential use cases include 'deeplinking' to the originating system"""
-    web_links: Annotated[Optional[List[WebLink]], pydantic.Field(alias="webLinks")] = None
+
+    web_links: Annotated[Optional[List[WebLink]], pydantic.Field(alias="webLinks")] = (
+        None
+    )
     r"""Weblinks associated with the company"""
-    

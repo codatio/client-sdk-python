@@ -31,10 +31,9 @@ s = CodatLending(
     ),
 )
 
-
 res = s.transactions.journal_entries.get(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "journal_entry_id": "<value>",
+    "journal_entry_id": "<id>",
 })
 
 if res is not None:
@@ -82,7 +81,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.transactions.journal_entries.list(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

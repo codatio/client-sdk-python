@@ -6,6 +6,7 @@ from enum import Enum
 
 class AccountIdentifierType(str, Enum):
     r"""Type of account"""
+
     ACCOUNT = "Account"
     CARD = "Card"
     CREDIT = "Credit"

@@ -31,11 +31,10 @@ s = CodatLending(
     ),
 )
 
-
 s.bank_statements.end_upload_session(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "dataset_id": "d58db2ab-edef-4881-8b6b-a7e79d33244c",
+    "dataset_id": "d8baee81-bb77-4d34-bcc3-0ef7526e0bde",
 })
 
 # Use the SDK ...
@@ -76,7 +75,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.bank_statements.get_upload_configuration(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -127,7 +125,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.bank_statements.set_upload_configuration(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -183,7 +180,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.bank_statements.start_upload_session(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -232,24 +228,21 @@ s = CodatLending(
     ),
 )
 
-
 s.bank_statements.upload_bank_statement_data(request={
     "request_body": {
-        "balance": {},
-        "currency": "Lek",
+        "currency": "Philippine Peso",
         "id": "<id>",
         "identifiers": {
-            "type": shared.AccountIdentifierType.INVESTMENT,
+            "type": "Investment",
         },
-        "institution": {},
+        "modifiedDate": "2022-10-23T00:00:00Z",
         "name": "<value>",
-        "type": shared.AccountingBankAccountType.DEBIT,
-        "modified_date": "2022-10-23T00:00:00Z",
-        "source_modified_date": "2022-10-23T00:00:00Z",
+        "sourceModifiedDate": "2022-10-23T00:00:00Z",
+        "type": "Credit",
     },
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "dataset_id": "15fc5ae4-359b-4dee-ba7c-3a22596ededc",
+    "dataset_id": "e39deaca-29ee-4c0f-8c9b-4b58f7a91429",
 })
 
 # Use the SDK ...

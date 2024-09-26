@@ -6,6 +6,7 @@ from enum import Enum
 
 class AccountingAddressType(str, Enum):
     r"""The type of the address"""
+
     UNKNOWN = "Unknown"
     BILLING = "Billing"
     DELIVERY = "Delivery"

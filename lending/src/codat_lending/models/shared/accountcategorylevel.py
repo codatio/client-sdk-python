@@ -13,18 +13,22 @@ from typing_extensions import Annotated, NotRequired
 
 class AccountCategoryLevelTypedDict(TypedDict):
     r"""An object containing an ordered list of account category levels."""
-    
+
     confidence: NotRequired[Decimal]
     r"""Confidence level of the category. This will only be populated where `status` is `Suggested`."""
     level_name: NotRequired[str]
     r"""Account category name."""
-    
+
 
 class AccountCategoryLevel(BaseModel):
     r"""An object containing an ordered list of account category levels."""
-    
-    confidence: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = None
+
+    confidence: Annotated[
+        Optional[Decimal],
+        BeforeValidator(validate_decimal),
+        PlainSerializer(serialize_decimal(False)),
+    ] = None
     r"""Confidence level of the category. This will only be populated where `status` is `Suggested`."""
+
     level_name: Annotated[Optional[str], pydantic.Field(alias="levelName")] = None
     r"""Account category name."""
-    

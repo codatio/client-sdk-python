@@ -13,7 +13,7 @@ from typing_extensions import Annotated, NotRequired
 
 class AccountsPayableTrackingTypedDict(TypedDict):
     r"""Categories, and a project and customer, against which the item is tracked."""
-    
+
     category_refs: List[TrackingCategoryRefTypedDict]
     is_billed_to: BilledToType
     r"""Defines if the invoice or credit note is billed/rebilled to a project or customer."""
@@ -21,16 +21,25 @@ class AccountsPayableTrackingTypedDict(TypedDict):
     r"""Defines if the invoice or credit note is billed/rebilled to a project or customer."""
     customer_ref: NotRequired[AccountingCustomerRefTypedDict]
     project_ref: NotRequired[ProjectRefTypedDict]
-    
+
 
 class AccountsPayableTracking(BaseModel):
     r"""Categories, and a project and customer, against which the item is tracked."""
-    
-    category_refs: Annotated[List[TrackingCategoryRef], pydantic.Field(alias="categoryRefs")]
+
+    category_refs: Annotated[
+        List[TrackingCategoryRef], pydantic.Field(alias="categoryRefs")
+    ]
+
     is_billed_to: Annotated[BilledToType, pydantic.Field(alias="isBilledTo")]
     r"""Defines if the invoice or credit note is billed/rebilled to a project or customer."""
+
     is_rebilled_to: Annotated[BilledToType, pydantic.Field(alias="isRebilledTo")]
     r"""Defines if the invoice or credit note is billed/rebilled to a project or customer."""
-    customer_ref: Annotated[Optional[AccountingCustomerRef], pydantic.Field(alias="customerRef")] = None
-    project_ref: Annotated[Optional[ProjectRef], pydantic.Field(alias="projectRef")] = None
-    
+
+    customer_ref: Annotated[
+        Optional[AccountingCustomerRef], pydantic.Field(alias="customerRef")
+    ] = None
+
+    project_ref: Annotated[Optional[ProjectRef], pydantic.Field(alias="projectRef")] = (
+        None
+    )

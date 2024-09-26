@@ -27,7 +27,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.reports.get_aged_creditors(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "number_of_periods": 12,
@@ -77,7 +76,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.reports.get_aged_debtors(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "number_of_periods": 12,
@@ -126,7 +124,6 @@ s = CodatLending(
     ),
 )
 
-
 res = s.accounts_receivable.reports.is_aged_creditors_available(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
 })
@@ -171,7 +168,6 @@ s = CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
-
 
 res = s.accounts_receivable.reports.is_aged_debtors_available(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

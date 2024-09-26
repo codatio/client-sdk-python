@@ -10,26 +10,29 @@ from typing_extensions import Annotated, NotRequired
 
 class Source(str, Enum):
     r"""The source of the banking data that determines its format"""
+
     CODAT = "codat"
+
 
 class BankStatementUploadConfigurationTypedDict(TypedDict):
     r"""Configuration settings for uploading banking data to Codat"""
-    
+
     account_id: NotRequired[str]
     r"""The ID of the account in the third-party platform"""
     provider_id: NotRequired[str]
     r"""TrueLayer provider ID (only required if source is TrueLayer)"""
     source: NotRequired[Source]
     r"""The source of the banking data that determines its format"""
-    
+
 
 class BankStatementUploadConfiguration(BaseModel):
     r"""Configuration settings for uploading banking data to Codat"""
-    
+
     account_id: Annotated[Optional[str], pydantic.Field(alias="accountId")] = None
     r"""The ID of the account in the third-party platform"""
+
     provider_id: Annotated[Optional[str], pydantic.Field(alias="providerId")] = None
     r"""TrueLayer provider ID (only required if source is TrueLayer)"""
+
     source: Optional[Source] = None
     r"""The source of the banking data that determines its format"""
-    

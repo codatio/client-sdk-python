@@ -7,13 +7,17 @@ from codat_lending.models import errors, operations, shared
 from codat_lending.types import BaseModel, OptionalNullable, UNSET
 from typing import Any, Optional, Union, cast
 
+
 class DataIntegrity(BaseSDK):
     r"""Match mutable accounting data with immutable banking data to increase confidence in financial data."""
-    
-    
+
     def details(
-        self, *,
-        request: Union[operations.ListDataIntegrityDetailsRequest, operations.ListDataIntegrityDetailsRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.ListDataIntegrityDetailsRequest,
+            operations.ListDataIntegrityDetailsRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -33,14 +37,16 @@ class DataIntegrity(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.ListDataIntegrityDetailsRequest)
+            request = utils.unmarshal(
+                request, operations.ListDataIntegrityDetailsRequest
+            )
         request = cast(operations.ListDataIntegrityDetailsRequest, request)
-        
+
         req = self.build_request(
             method="GET",
             path="/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/details",
@@ -55,45 +61,73 @@ class DataIntegrity(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="list-data-integrity-details", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="list-data-integrity-details",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.DataIntegrityDetails])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[shared.DataIntegrityDetails]
+            )
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def details_async(
-        self, *,
-        request: Union[operations.ListDataIntegrityDetailsRequest, operations.ListDataIntegrityDetailsRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.ListDataIntegrityDetailsRequest,
+            operations.ListDataIntegrityDetailsRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -113,15 +147,17 @@ class DataIntegrity(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.ListDataIntegrityDetailsRequest)
+            request = utils.unmarshal(
+                request, operations.ListDataIntegrityDetailsRequest
+            )
         request = cast(operations.ListDataIntegrityDetailsRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/details",
             base_url=base_url,
@@ -135,45 +171,73 @@ class DataIntegrity(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="list-data-integrity-details", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="list-data-integrity-details",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.DataIntegrityDetails])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[shared.DataIntegrityDetails]
+            )
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def status(
-        self, *,
-        request: Union[operations.GetDataIntegrityStatusRequest, operations.GetDataIntegrityStatusRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetDataIntegrityStatusRequest,
+            operations.GetDataIntegrityStatusRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -198,14 +262,14 @@ class DataIntegrity(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetDataIntegrityStatusRequest)
         request = cast(operations.GetDataIntegrityStatusRequest, request)
-        
+
         req = self.build_request(
             method="GET",
             path="/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/status",
@@ -220,45 +284,72 @@ class DataIntegrity(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="get-data-integrity-status", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-data-integrity-status",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.DataIntegrityStatuses])
-        if utils.match_response(http_res, ["401","402","403","404","429","500","503"], "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[shared.DataIntegrityStatuses]
+            )
+        if utils.match_response(
+            http_res,
+            ["401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def status_async(
-        self, *,
-        request: Union[operations.GetDataIntegrityStatusRequest, operations.GetDataIntegrityStatusRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetDataIntegrityStatusRequest,
+            operations.GetDataIntegrityStatusRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -283,15 +374,15 @@ class DataIntegrity(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetDataIntegrityStatusRequest)
         request = cast(operations.GetDataIntegrityStatusRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/status",
             base_url=base_url,
@@ -305,45 +396,72 @@ class DataIntegrity(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="get-data-integrity-status", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-data-integrity-status",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.DataIntegrityStatuses])
-        if utils.match_response(http_res, ["401","402","403","404","429","500","503"], "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[shared.DataIntegrityStatuses]
+            )
+        if utils.match_response(
+            http_res,
+            ["401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def summaries(
-        self, *,
-        request: Union[operations.GetDataIntegritySummariesRequest, operations.GetDataIntegritySummariesRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetDataIntegritySummariesRequest,
+            operations.GetDataIntegritySummariesRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -365,14 +483,16 @@ class DataIntegrity(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.GetDataIntegritySummariesRequest)
+            request = utils.unmarshal(
+                request, operations.GetDataIntegritySummariesRequest
+            )
         request = cast(operations.GetDataIntegritySummariesRequest, request)
-        
+
         req = self.build_request(
             method="GET",
             path="/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/summaries",
@@ -387,45 +507,73 @@ class DataIntegrity(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="get-data-integrity-summaries", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-data-integrity-summaries",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.DataIntegritySummaries])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[shared.DataIntegritySummaries]
+            )
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def summaries_async(
-        self, *,
-        request: Union[operations.GetDataIntegritySummariesRequest, operations.GetDataIntegritySummariesRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            operations.GetDataIntegritySummariesRequest,
+            operations.GetDataIntegritySummariesRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -447,15 +595,17 @@ class DataIntegrity(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.GetDataIntegritySummariesRequest)
+            request = utils.unmarshal(
+                request, operations.GetDataIntegritySummariesRequest
+            )
         request = cast(operations.GetDataIntegritySummariesRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/summaries",
             base_url=base_url,
@@ -469,38 +619,62 @@ class DataIntegrity(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
             else:
-                retries = utils.RetryConfig("backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True)
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "408",
-                "429",
-                "5XX"
-            ])                
-        
+            retry_config = (retries, ["408", "429", "5XX"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="get-data-integrity-summaries", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="get-data-integrity-summaries",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","401","402","403","404","429","4XX","500","503","5XX"],
-            retry_config=retry_config
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.DataIntegritySummaries])
-        if utils.match_response(http_res, ["400","401","402","403","404","429","500","503"], "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[shared.DataIntegritySummaries]
+            )
+        if utils.match_response(
+            http_res,
+            ["400", "401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise errors.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise errors.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
