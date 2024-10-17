@@ -73,9 +73,9 @@ class PushOperation:
     r"""Available data types"""
     error_message: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('errorMessage'), 'exclude': lambda f: f is PushOperation.UNSET }})
     r"""A message about the error."""
-    timeout_in_minutes: Optional[int] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is PushOperation.UNSET }})
+    timeout_in_minutes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInMinutes'), 'exclude': lambda f: f is PushOperation.UNSET }})
     r"""Number of minutes the push operation must complete within before it times out."""
-    timeout_in_seconds: Optional[int] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInSeconds'), 'exclude': lambda f: f is PushOperation.UNSET }})
+    timeout_in_seconds: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timeoutInSeconds'), 'exclude': lambda f: f is PushOperation.UNSET }})
     r"""Number of seconds the push operation must complete within before it times out.
 
     Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
