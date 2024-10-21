@@ -3,7 +3,7 @@
 
 ## Overview
 
-Create and manage your Codat companies.
+Create and manage your SMB users' companies.
 
 ### Available Operations
 
@@ -25,25 +25,24 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 ### Example Usage
 
 ```python
-import codatsyncpayables
-from codatsyncpayables.models import shared
+from codat_sync_for_payables_version_1 import CodatSyncPayables
+from codat_sync_for_payables_version_1.models import shared
 
-s = codatsyncpayables.CodatSyncPayables(
+s = CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
+res = s.companies.create(request={
+    "name": "Technicalium",
+    "description": "Requested early access to the new financing scheme.",
+})
 
-res = s.companies.create(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -53,16 +52,16 @@ if res.company is not None:
 | `request`                                                              | [shared.CompanyRequestBody](../../models/shared/companyrequestbody.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
 | `retries`                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)       | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |
 
-
 ### Response
 
-**[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)**
+**[shared.Company](../../models/shared/company.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## delete
 
@@ -75,24 +74,21 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-paya
 ### Example Usage
 
 ```python
-import codatsyncpayables
-from codatsyncpayables.models import operations, shared
+from codat_sync_for_payables_version_1 import CodatSyncPayables
+from codat_sync_for_payables_version_1.models import shared
 
-s = codatsyncpayables.CodatSyncPayables(
+s = CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.DeleteCompanyRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+s.companies.delete(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.companies.delete(req)
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
@@ -102,16 +98,12 @@ if res.status_code == 200:
 | `request`                                                                          | [operations.DeleteCompanyRequest](../../models/operations/deletecompanyrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
-### Response
-
-**[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)**
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get
 
@@ -124,24 +116,23 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-paya
 ### Example Usage
 
 ```python
-import codatsyncpayables
-from codatsyncpayables.models import operations, shared
+from codat_sync_for_payables_version_1 import CodatSyncPayables
+from codat_sync_for_payables_version_1.models import shared
 
-s = codatsyncpayables.CodatSyncPayables(
+s = CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.GetCompanyRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.companies.get(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+})
 
-res = s.companies.get(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -151,16 +142,16 @@ if res.company is not None:
 | `request`                                                                    | [operations.GetCompanyRequest](../../models/operations/getcompanyrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 | `retries`                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)             | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |
 
-
 ### Response
 
-**[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)**
+**[shared.Company](../../models/shared/company.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list
 
@@ -172,26 +163,26 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-paya
 ### Example Usage
 
 ```python
-import codatsyncpayables
-from codatsyncpayables.models import operations, shared
+from codat_sync_for_payables_version_1 import CodatSyncPayables
+from codat_sync_for_payables_version_1.models import shared
 
-s = codatsyncpayables.CodatSyncPayables(
+s = CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.ListCompaniesRequest(
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
+res = s.companies.list(request={
+    "order_by": "-modifiedDate",
+    "page": 1,
+    "page_size": 100,
+    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+})
 
-res = s.companies.list(req)
-
-if res.companies is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -201,21 +192,20 @@ if res.companies is not None:
 | `request`                                                                          | [operations.ListCompaniesRequest](../../models/operations/listcompaniesrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)**
+**[shared.Companies](../../models/shared/companies.md)**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4x-5xx                          | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
 ﻿Use the *Update company* endpoint to update both the name and description of the company. 
-If you use [groups](https://docs.codat.io/sync-for-payables-api#/schemas/Group) to manage a set of companies, use the [Add company](https://docs.codat.io/sync-for-payables-api#/operations/add-company-to-group) or [Remove company](https://docs.codat.io/sync-for-payables-api#/operations/remove-company-from-group) endpoints to add or remove a company from a group.
 
 A [company](https://docs.codat.io/sync-for-payables-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/sync-for-payables-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
@@ -223,24 +213,27 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-paya
 ### Example Usage
 
 ```python
-import codatsyncpayables
-from codatsyncpayables.models import operations, shared
+from codat_sync_for_payables_version_1 import CodatSyncPayables
+from codat_sync_for_payables_version_1.models import shared
 
-s = codatsyncpayables.CodatSyncPayables(
+s = CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 )
 
-req = operations.UpdateCompanyRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
+res = s.companies.update(request={
+    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    "company_request_body": {
+        "name": "New Name",
+        "description": "Requested early access to the new financing scheme.",
+    },
+})
 
-res = s.companies.update(req)
-
-if res.company is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -250,13 +243,13 @@ if res.company is not None:
 | `request`                                                                          | [operations.UpdateCompanyRequest](../../models/operations/updatecompanyrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)**
+**[shared.Company](../../models/shared/company.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4x-5xx                      | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
