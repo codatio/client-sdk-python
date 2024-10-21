@@ -22,7 +22,7 @@ python:
   description: Use Codat's Files API to upload your SMB customers' files.
   enumFormat: enum
   flattenGlobalSecurity: false
-  flattenRequests: true
+  flattenRequests: false
   imports:
     option: openapi
     paths:
@@ -33,7 +33,7 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
-  methodArguments: infer - optional - args
+  methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: codat-files
   responseFormat: flat

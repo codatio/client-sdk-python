@@ -23,7 +23,7 @@ python:
     software.
   enumFormat: enum
   flattenGlobalSecurity: false
-  flattenRequests: true
+  flattenRequests: false
   imports:
     option: openapi
     paths:
@@ -34,7 +34,7 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
-  methodArguments: infer - optional - args
+  methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: codat-bankfeeds
   responseFormat: flat

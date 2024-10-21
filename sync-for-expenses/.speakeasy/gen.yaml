@@ -36,6 +36,6 @@ python:
   authors:
   - Speakeasy
   enumFormat: enum
-  flattenRequests: true
-  methodArguments: infer - optional - args
+  flattenRequests: false
+  methodArguments: infer-optional-args
   templateVersion: v2
