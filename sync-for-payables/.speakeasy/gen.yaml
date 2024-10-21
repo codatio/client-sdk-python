@@ -1,8 +1,10 @@
 configVersion: 2.0.0
 generation:
   sdkClassName: CodatSyncPayables
+  maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
+  useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
@@ -10,18 +12,21 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 python:
-  version: 0.0.0
+  version: 4.0.0
   additionalDependencies:
     dev: {}
     main: {}
   author: Codat
   authors:
-  - Speakeasy
+    - Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Streamline your customers' accounts payable workflow.
   enumFormat: enum
+  fixFlags:
+    responseRequiredSep2024: true
   flattenGlobalSecurity: false
   flattenRequests: false
+  flatteningOrder: parameters-first
   imports:
     option: openapi
     paths:
