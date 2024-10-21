@@ -17,11 +17,11 @@ python:
     main: {}
   author: Codat
   authors:
-    - Speakeasy
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Use Codat's Files API to upload your SMB customers' files.
   enumFormat: enum
-  flattenGlobalSecurity: true
+  flattenGlobalSecurity: false
   flattenRequests: false
   imports:
     option: openapi

@@ -17,9 +17,10 @@ python:
     main: {}
   author: Codat
   authors:
-    - Speakeasy
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
-  description: Set up bank feeds from accounts in your application to supported accounting platforms.
+  description: Set up bank feeds from accounts in your application to supported accounting
+    software.
   enumFormat: enum
   flattenGlobalSecurity: false
   flattenRequests: false

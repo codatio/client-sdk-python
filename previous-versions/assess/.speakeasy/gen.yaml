@@ -17,11 +17,12 @@ python:
     main: {}
   author: Codat
   authors:
-    - Speakeasy
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
-  description: Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
+  description: Make credit decisions backed by enhanced financials, metrics, reports,
+    and data integrity features.
   enumFormat: enum
-  flattenGlobalSecurity: true
+  flattenGlobalSecurity: false
   flattenRequests: false
   imports:
     option: openapi

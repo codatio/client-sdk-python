@@ -17,20 +17,20 @@ python:
     main: {}
   author: Codat
   authors:
-    - Speakeasy
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Access standardized commerce data from our commerce integrations.
   enumFormat: enum
-  flattenGlobalSecurity: true
+  flattenGlobalSecurity: false
   flattenRequests: false
   imports:
     option: openapi
     paths:
-      callbacks: ""
-      errors: ""
-      operations: ""
-      shared: ""
-      webhooks: ""
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models/shared
+      webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
   methodArguments: infer-optional-args

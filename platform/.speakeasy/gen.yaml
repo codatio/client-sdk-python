@@ -13,12 +13,12 @@ generation:
 python:
   version: 3.5.0
   additionalDependencies:
-    dependencies: {}
-    extraDependencies:
-      dev: {}
+    dev: {}
+    main: {}
   author: Codat
   clientServerStatusCodesAsErrors: true
-  description: Manage the building blocks of Codat, including companies, connections, and more.
+  description: Manage the building blocks of Codat, including companies, connections,
+    and more.
   flattenGlobalSecurity: false
   imports:
     option: openapi
@@ -33,4 +33,10 @@ python:
   outputModelSuffix: output
   packageName: codat-platform
   projectUrls: {}
-  responseFormat: envelope
+  responseFormat: flat
+  authors:
+  - Speakeasy
+  enumFormat: enum
+  flattenRequests: false
+  methodArguments: infer-optional-args
+  templateVersion: v2
