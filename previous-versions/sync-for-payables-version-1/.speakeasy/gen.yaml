@@ -8,11 +8,13 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
   telemetryEnabled: true
+  auth:
+    oAuth2ClientCredentialsEnabled: false
 python:
   version: 3.2.0
   author: Codat
   clientServerStatusCodesAsErrors: true
-  description: Streamline your customers' accounts payable workflow.
+  description: Push expenses to accounting software.
   flattenGlobalSecurity: false
   imports:
     option: openapi
@@ -25,4 +27,14 @@ python:
   inputModelSuffix: input
   maxMethodParams: 0
   outputModelSuffix: output
-  packageName: codat-sync-for-payables
+  packageName: codat-sync-for-payables-version-1
+  additionalDependencies:
+    dev: {}
+    main: {}
+  authors:
+  - Speakeasy
+  enumFormat: enum
+  flattenRequests: true
+  methodArguments: infer - optional - args
+  responseFormat: flat
+  templateVersion: v2

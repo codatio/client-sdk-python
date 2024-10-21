@@ -14,16 +14,16 @@ python:
   version: 7.1.0
   additionalDependencies:
     dev: {}
-    main:
-      python-dateutil: 2.9.0.post0
+    main: {}
   author: Codat
   authors:
-    - Speakeasy
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
-  description: Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
+  description: Make credit decisions backed by enhanced financials, metrics, reports,
+    and data integrity features.
   enumFormat: enum
   flattenGlobalSecurity: false
-  flattenRequests: false
+  flattenRequests: true
   imports:
     option: openapi
     paths:
@@ -34,7 +34,7 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
-  methodArguments: infer-optional-args
+  methodArguments: infer - optional - args
   outputModelSuffix: output
   packageName: codat-lending
   responseFormat: flat

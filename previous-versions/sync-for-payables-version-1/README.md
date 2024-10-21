@@ -286,7 +286,7 @@ if res.company is not None:
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 <!-- Start Codat Support Notes -->
-### Support
+## Support
 
 If you encounter any challenges while utilizing our SDKs, please don't hesitate to reach out for assistance. 
 You can raise any issues by contacting your dedicated Codat representative or reaching out to our [support team](mailto:support@codat.io).

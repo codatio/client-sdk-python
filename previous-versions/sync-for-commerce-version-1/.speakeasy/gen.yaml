@@ -1,4 +1,4 @@
-configVersion: 1.0.0
+configVersion: 2.0.0
 management:
   docChecksum: 1d7cc7d07be3f391ff109aaa9777a017
   docVersion: '1.1'
@@ -11,6 +11,12 @@ generation:
   usageSnippets:
     optionalPropertyRendering: withExample
   telemetryEnabled: true
+  fixes:
+    nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
 features:
   python:
     core: 4.3.0
@@ -25,7 +31,7 @@ python:
   author: Codat
   clientServerStatusCodesAsErrors: true
   description: Push merchants' data from your ecommerce or point-of-sale (POS) platform
-    into your merchants' accounting platform.
+    into your merchants' accounting software.
   flattenGlobalSecurity: false
   imports:
     option: openapi
@@ -42,3 +48,13 @@ python:
   packageName: codat-sync-for-commerce-version-1
   published: true
   repoSubDirectory: previous-versions/sync-for-commerce-version-1
+  additionalDependencies:
+    dev: {}
+    main: {}
+  authors:
+  - Speakeasy
+  enumFormat: enum
+  flattenRequests: true
+  methodArguments: infer - optional - args
+  responseFormat: flat
+  templateVersion: v2

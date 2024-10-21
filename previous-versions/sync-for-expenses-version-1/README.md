@@ -1,7 +1,7 @@
 # Sync for Expenses version 1
 
 <!-- Start Codat Library Description -->
-Push expenses to accounting platforms.
+Push expenses to accounting software.
 <!-- End Codat Library Description -->
 
 <!-- Start SDK Installation [installation] -->
@@ -319,7 +319,7 @@ if res.company is not None:
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 <!-- Start Codat Support Notes -->
-### Support
+## Support
 
 If you encounter any challenges while utilizing our SDKs, please don't hesitate to reach out for assistance. 
 You can raise any issues by contacting your dedicated Codat representative or reaching out to our [support team](mailto:support@codat.io).

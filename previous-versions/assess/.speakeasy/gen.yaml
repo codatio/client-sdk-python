@@ -17,12 +17,13 @@ python:
     main: {}
   author: Codat
   authors:
-    - Speakeasy
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
-  description: Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
+  description: Make credit decisions backed by enhanced financials, metrics, reports,
+    and data integrity features.
   enumFormat: enum
-  flattenGlobalSecurity: true
-  flattenRequests: false
+  flattenGlobalSecurity: false
+  flattenRequests: true
   imports:
     option: openapi
     paths:
@@ -33,7 +34,7 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
-  methodArguments: infer-optional-args
+  methodArguments: infer - optional - args
   outputModelSuffix: output
   packageName: codat-assess
   responseFormat: flat

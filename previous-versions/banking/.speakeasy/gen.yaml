@@ -17,23 +17,23 @@ python:
     main: {}
   author: Codat
   authors:
-    - Speakeasy
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Access standardized banking data from our banking integrations.
   enumFormat: enum
   flattenGlobalSecurity: false
-  flattenRequests: false
+  flattenRequests: true
   imports:
     option: openapi
     paths:
-      callbacks: ""
-      errors: ""
-      operations: ""
-      shared: ""
-      webhooks: ""
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models/shared
+      webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
-  methodArguments: infer-optional-args
+  methodArguments: infer - optional - args
   outputModelSuffix: output
   packageName: codat-banking
   responseFormat: flat

@@ -17,12 +17,13 @@ python:
     main: {}
   author: Codat
   authors:
-    - Speakeasy
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
-  description: Push merchants' data from your ecommerce or point-of-sale (POS) platform into your merchants' accounting platform.
+  description: Push merchants' data from your ecommerce or point-of-sale (POS) platform
+    into your merchants' accounting software.
   enumFormat: enum
   flattenGlobalSecurity: false
-  flattenRequests: false
+  flattenRequests: true
   imports:
     option: openapi
     paths:
@@ -33,7 +34,7 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
-  methodArguments: infer-optional-args
+  methodArguments: infer - optional - args
   outputModelSuffix: output
   packageName: codat-sync-for-commerce
   responseFormat: flat

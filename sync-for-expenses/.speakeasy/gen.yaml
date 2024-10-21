@@ -13,12 +13,11 @@ generation:
 python:
   version: 6.2.0
   additionalDependencies:
-    dependencies: {}
-    extraDependencies:
-      dev: {}
+    dev: {}
+    main: {}
   author: Codat
   clientServerStatusCodesAsErrors: true
-  description: Push expenses to accounting platforms.
+  description: Push expenses to accounting software.
   flattenGlobalSecurity: false
   imports:
     option: openapi
@@ -33,4 +32,10 @@ python:
   outputModelSuffix: output
   packageName: codat-sync-for-expenses
   projectUrls: {}
-  responseFormat: envelope
+  responseFormat: flat
+  authors:
+  - Speakeasy
+  enumFormat: enum
+  flattenRequests: true
+  methodArguments: infer - optional - args
+  templateVersion: v2

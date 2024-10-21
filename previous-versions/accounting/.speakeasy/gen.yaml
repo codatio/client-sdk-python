@@ -17,12 +17,12 @@ python:
     main: {}
   author: Codat
   authors:
-    - Speakeasy
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Access standardized accounting data from our accounting integrations.
   enumFormat: enum
   flattenGlobalSecurity: false
-  flattenRequests: false
+  flattenRequests: true
   imports:
     option: openapi
     paths:
@@ -33,7 +33,7 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
-  methodArguments: infer-optional-args
+  methodArguments: infer - optional - args
   outputModelSuffix: output
   packageName: codat-accounting
   responseFormat: flat

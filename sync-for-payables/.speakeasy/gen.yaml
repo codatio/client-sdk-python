@@ -1,6 +1,6 @@
 configVersion: 2.0.0
 generation:
-  sdkClassName: CodatPlatform
+  sdkClassName: CodatSyncPayables
   usageSnippets:
     optionalPropertyRendering: withExample
   fixes:
@@ -9,17 +9,19 @@ generation:
     requestResponseComponentNamesFeb2024: false
   auth:
     oAuth2ClientCredentialsEnabled: false
-  telemetryEnabled: true
 python:
-  version: 3.5.0
+  version: 0.0.0
   additionalDependencies:
     dev: {}
     main: {}
   author: Codat
+  authors:
+  - Speakeasy
   clientServerStatusCodesAsErrors: true
-  description: Manage the building blocks of Codat, including companies, connections,
-    and more.
+  description: Streamline your customers' accounts payable workflow.
+  enumFormat: enum
   flattenGlobalSecurity: false
+  flattenRequests: true
   imports:
     option: openapi
     paths:
@@ -30,13 +32,8 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
-  outputModelSuffix: output
-  packageName: codat-platform
-  projectUrls: {}
-  responseFormat: flat
-  authors:
-  - Speakeasy
-  enumFormat: enum
-  flattenRequests: true
   methodArguments: infer - optional - args
+  outputModelSuffix: output
+  packageName: codat-sync-for-payables
+  responseFormat: flat
   templateVersion: v2
