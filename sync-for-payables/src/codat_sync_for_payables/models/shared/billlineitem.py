@@ -27,14 +27,14 @@ class BillLineItemTypedDict(TypedDict):
     r"""Number of units of goods or services received."""
     account_ref: BillAccountRefTypedDict
     r"""Reference to the account to which the line item is linked."""
-    tax_rate_ref: BillTaxRateRefTypedDict
-    r"""Reference to the tax rate to which the line item is linked."""
     description: NotRequired[Nullable[str]]
     r"""Friendly name of the goods or services received."""
     tax_amount: NotRequired[Decimal]
     r"""Amount of tax applied to the line item."""
     total_amount: NotRequired[Nullable[Decimal]]
     r"""Total amount of the line, including tax."""
+    tax_rate_ref: NotRequired[BillTaxRateRefTypedDict]
+    r"""Reference to the tax rate to which the line item is linked."""
 
 
 class BillLineItem(BaseModel):
@@ -57,9 +57,6 @@ class BillLineItem(BaseModel):
 
     account_ref: Annotated[BillAccountRef, pydantic.Field(alias="accountRef")]
     r"""Reference to the account to which the line item is linked."""
-
-    tax_rate_ref: Annotated[BillTaxRateRef, pydantic.Field(alias="taxRateRef")]
-    r"""Reference to the tax rate to which the line item is linked."""
 
     description: OptionalNullable[str] = UNSET
     r"""Friendly name of the goods or services received."""
@@ -84,9 +81,14 @@ class BillLineItem(BaseModel):
     ] = UNSET
     r"""Total amount of the line, including tax."""
 
+    tax_rate_ref: Annotated[
+        Optional[BillTaxRateRef], pydantic.Field(alias="taxRateRef")
+    ] = None
+    r"""Reference to the tax rate to which the line item is linked."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["description", "taxAmount", "totalAmount"]
+        optional_fields = ["description", "taxAmount", "totalAmount", "taxRateRef"]
         nullable_fields = ["description", "totalAmount"]
         null_default_fields = []
 

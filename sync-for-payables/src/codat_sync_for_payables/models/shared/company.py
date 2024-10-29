@@ -11,16 +11,8 @@ from codat_sync_for_payables.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import List, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class CompanyTagsTypedDict(TypedDict):
-    r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
-
-
-class CompanyTags(BaseModel):
-    r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
 
 
 class CompanyTypedDict(TypedDict):
@@ -85,7 +77,7 @@ class CompanyTypedDict(TypedDict):
     r"""Name of user that created the company in Codat."""
     products: NotRequired[List[str]]
     r"""An array of products that are currently enabled for the company."""
-    tags: NotRequired[CompanyTagsTypedDict]
+    tags: NotRequired[Dict[str, str]]
     r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
     data_connections: NotRequired[List[ConnectionTypedDict]]
 
@@ -162,7 +154,7 @@ class Company(BaseModel):
     products: Optional[List[str]] = None
     r"""An array of products that are currently enabled for the company."""
 
-    tags: Optional[CompanyTags] = None
+    tags: Optional[Dict[str, str]] = None
     r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
 
     data_connections: Annotated[
