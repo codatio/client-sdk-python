@@ -14,7 +14,7 @@ class BillMappingOptionsTypedDict(TypedDict):
     r"""The bill mapping options for a company's accounting software."""
 
     accounts: NotRequired[List[AccountMappingOptionTypedDict]]
-    tax_rate: NotRequired[List[TaxRateMappingOptionTypedDict]]
+    tax_rates: NotRequired[List[TaxRateMappingOptionTypedDict]]
     pagination: NotRequired[PaginationTypedDict]
 
 
@@ -23,8 +23,8 @@ class BillMappingOptions(BaseModel):
 
     accounts: Optional[List[AccountMappingOption]] = None
 
-    tax_rate: Annotated[
-        Optional[List[TaxRateMappingOption]], pydantic.Field(alias="taxRate")
+    tax_rates: Annotated[
+        Optional[List[TaxRateMappingOption]], pydantic.Field(alias="taxRates")
     ] = None
 
     pagination: Optional[Pagination] = None

@@ -156,12 +156,12 @@ res = s.bills.create(request={
                 "account_ref": {
                     "id": "46f9461e-788b-4906-8b74-d1ea17f6dc10",
                 },
-                "tax_rate_ref": {
-                    "id": "INPUT2",
-                },
                 "description": "Half day training - Microsoft Office",
                 "tax_amount": Decimal("360"),
                 "total_amount": Decimal("2160"),
+                "tax_rate_ref": {
+                    "id": "INPUT2",
+                },
             },
             {
                 "unit_amount": Decimal("4000"),
@@ -169,12 +169,12 @@ res = s.bills.create(request={
                 "account_ref": {
                     "id": "f96c9458-d724-47bf-8f74-a9d5726465ce",
                 },
-                "tax_rate_ref": {
-                    "id": "INPUT2",
-                },
                 "description": "Desktop/network support via email & phone.Per month fixed fee for minimum 20 hours/month.",
                 "tax_amount": Decimal("800"),
                 "total_amount": Decimal("4800"),
+                "tax_rate_ref": {
+                    "id": "INPUT2",
+                },
             },
             {
                 "unit_amount": Decimal("32"),
@@ -182,12 +182,12 @@ res = s.bills.create(request={
                 "account_ref": {
                     "id": "cba6527d-f102-4538-b421-e483233e9d5a",
                 },
-                "tax_rate_ref": {
-                    "id": "INPUT2",
-                },
                 "description": "Stationery charges",
                 "tax_amount": Decimal("51.2"),
                 "total_amount": Decimal("307.2"),
+                "tax_rate_ref": {
+                    "id": "INPUT2",
+                },
             },
         ],
     },

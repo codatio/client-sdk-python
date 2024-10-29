@@ -51,7 +51,7 @@ from .clientratelimitwebhookpayload import (
 )
 from .codatfile import CodatFile, CodatFileTypedDict
 from .companies import Companies, CompaniesTypedDict
-from .company import Company, CompanyTags, CompanyTagsTypedDict, CompanyTypedDict
+from .company import Company, CompanyTypedDict
 from .companyinformation import CompanyInformation, CompanyInformationTypedDict
 from .companyrequestbody import CompanyRequestBody, CompanyRequestBodyTypedDict
 from .connection import Connection, ConnectionTypedDict, SourceType
@@ -74,7 +74,6 @@ from .supplierprototype import SupplierPrototype, SupplierPrototypeTypedDict
 from .supplierref import SupplierRef, SupplierRefTypedDict
 from .suppliers import Suppliers, SuppliersTypedDict
 from .supplierstatus import SupplierStatus
-from .tags import Tags, TagsTypedDict
 from .taxratemappingoption import (
     TaxRateMappingOption,
     TaxRateMappingOptionTypedDict,
@@ -143,8 +142,6 @@ __all__ = [
     "CompanyInformationTypedDict",
     "CompanyRequestBody",
     "CompanyRequestBodyTypedDict",
-    "CompanyTags",
-    "CompanyTagsTypedDict",
     "CompanyTypedDict",
     "Connection",
     "ConnectionTypedDict",
@@ -178,8 +175,6 @@ __all__ = [
     "SupplierTypedDict",
     "Suppliers",
     "SuppliersTypedDict",
-    "Tags",
-    "TagsTypedDict",
     "TaxRateMappingOption",
     "TaxRateMappingOptionTypedDict",
     "TaxRateStatus",

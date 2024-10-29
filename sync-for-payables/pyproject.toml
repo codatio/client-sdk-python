@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "codat-sync-for-payables"
-version = "4.0.0"
+version = "5.0.0"
 description = "Streamline your customers' accounts payable workflow."
 authors = ["Speakeasy",]
 readme = "README-PYPI.md"
