@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 0722f07c-657c-4062-93f1-39ee3fe757d0
 management:
-  docChecksum: fbf8f2528e5a3e33fc271641da46c916
+  docChecksum: 16c2aba5060738f14671556b6526c400
   docVersion: 3.0.0
-  speakeasyVersion: 1.423.1
+  speakeasyVersion: 1.423.3
   generationVersion: 2.442.11
-  releaseVersion: 5.0.0
-  configChecksum: b486ff3d7b57c3e5c67ee0c5958295e6
+  releaseVersion: 6.0.0
+  configChecksum: 969122e26723670a0043a6789d53d844
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: sync-for-payables
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-payables
@@ -69,7 +69,6 @@ generatedFiles:
   - docs/models/operations/uploadbillattachmentrequest.md
   - docs/models/shared/accountmappingoption.md
   - docs/models/shared/accountstatus.md
-  - docs/models/shared/accounttype.md
   - docs/models/shared/address.md
   - docs/models/shared/addresstype.md
   - docs/models/shared/attachment.md
@@ -178,7 +177,6 @@ generatedFiles:
   - src/codat_sync_for_payables/models/shared/__init__.py
   - src/codat_sync_for_payables/models/shared/accountmappingoption.py
   - src/codat_sync_for_payables/models/shared/accountstatus.py
-  - src/codat_sync_for_payables/models/shared/accounttype.py
   - src/codat_sync_for_payables/models/shared/address.py
   - src/codat_sync_for_payables/models/shared/addresstype.py
   - src/codat_sync_for_payables/models/shared/attachment.py
@@ -187,6 +185,7 @@ generatedFiles:
   - src/codat_sync_for_payables/models/shared/bankaccountmappingoption.py
   - src/codat_sync_for_payables/models/shared/bankaccountprototype.py
   - src/codat_sync_for_payables/models/shared/bankaccountstatus.py
+  - src/codat_sync_for_payables/models/shared/bankaccounttype.py
   - src/codat_sync_for_payables/models/shared/bill.py
   - src/codat_sync_for_payables/models/shared/billaccountref.py
   - src/codat_sync_for_payables/models/shared/billlineitem.py

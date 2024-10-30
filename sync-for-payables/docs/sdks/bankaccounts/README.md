@@ -32,7 +32,7 @@ res = s.bank_accounts.create(request={
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     "bank_account_prototype": {
         "name": "Plutus - Payables - Bank Account 12",
-        "account_type": shared.AccountType.DEBIT,
+        "account_type": shared.BankAccountType.DEBIT,
         "account_number": "0120 0440",
         "currency": "GBP",
         "nominal_code": "22",

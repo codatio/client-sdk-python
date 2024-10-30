@@ -2,18 +2,18 @@
 
 from .accountmappingoption import AccountMappingOption, AccountMappingOptionTypedDict
 from .accountstatus import AccountStatus
-from .accounttype import AccountType
 from .address import Address, AddressTypedDict
 from .addresstype import AddressType
 from .attachment import Attachment, AttachmentTypedDict
 from .attachmentupload import AttachmentUpload, AttachmentUploadTypedDict
-from .bankaccount import BankAccount, BankAccountType, BankAccountTypedDict
+from .bankaccount import BankAccount, BankAccountTypedDict
 from .bankaccountmappingoption import (
     BankAccountMappingOption,
     BankAccountMappingOptionTypedDict,
 )
 from .bankaccountprototype import BankAccountPrototype, BankAccountPrototypeTypedDict
 from .bankaccountstatus import BankAccountStatus
+from .bankaccounttype import BankAccountType
 from .bill import Bill, BillTypedDict
 from .billaccountref import BillAccountRef, BillAccountRefTypedDict
 from .billlineitem import BillLineItem, BillLineItemTypedDict
@@ -84,7 +84,6 @@ __all__ = [
     "AccountMappingOption",
     "AccountMappingOptionTypedDict",
     "AccountStatus",
-    "AccountType",
     "Address",
     "AddressType",
     "AddressTypedDict",
