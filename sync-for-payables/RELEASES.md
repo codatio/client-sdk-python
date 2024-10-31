@@ -29,3 +29,13 @@ Based on:
 - [python v6.0.0] sync-for-payables
 ### Releases
 - [PyPI v6.0.0] https://pypi.org/project/codat-sync-for-payables/6.0.0 - sync-for-payables
+
+## 2024-10-31 13:31:23
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.423.5 (2.445.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v7.0.0] sync-for-payables
+### Releases
+- [PyPI v7.0.0] https://pypi.org/project/codat-sync-for-payables/7.0.0 - sync-for-payables

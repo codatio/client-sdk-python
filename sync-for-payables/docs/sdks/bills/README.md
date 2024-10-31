@@ -235,13 +235,15 @@ s = CodatSyncPayables(
     ),
 )
 
-s.bills.upload_attachment(request={
+res = s.bills.upload_attachment(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     "bill_id": "EILBDVJVNUAGVKRQ",
 })
 
-# Use the SDK ...
+if res is not None:
+    # handle response
+    pass
 
 ```
 
@@ -251,6 +253,10 @@ s.bills.upload_attachment(request={
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | `request`                                                                                        | [operations.UploadBillAttachmentRequest](../../models/operations/uploadbillattachmentrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
+
+### Response
+
+**[shared.Attachment](../../models/shared/attachment.md)**
 
 ### Errors
 
@@ -298,7 +304,7 @@ if res is not None:
 
 ### Response
 
-**[shared.Attachment](../../models/shared/attachment.md)**
+**[List[shared.Attachment]](../../models/.md)**
 
 ### Errors
 

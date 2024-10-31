@@ -6,7 +6,7 @@ from codat_sync_for_payables._hooks import HookContext
 from codat_sync_for_payables.models import errors, operations, shared
 from codat_sync_for_payables.types import BaseModel, OptionalNullable, UNSET
 import httpx
-from typing import Any, Optional, Union, cast
+from typing import Any, List, Optional, Union, cast
 
 
 class Bills(BaseSDK):
@@ -692,7 +692,7 @@ class Bills(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ):
+    ) -> shared.Attachment:
         r"""Upload bill attachment
 
         The *Upload bill attachment* endpoint uploads an attachment and assigns it against a specific `billId`.
@@ -773,8 +773,8 @@ class Bills(BaseSDK):
         )
 
         data: Any = None
-        if utils.match_response(http_res, "201", "*"):
-            return
+        if utils.match_response(http_res, "201", "application/json"):
+            return utils.unmarshal_json(http_res.text, shared.Attachment)
         if utils.match_response(
             http_res,
             ["400", "401", "402", "403", "404", "429", "500", "503"],
@@ -807,7 +807,7 @@ class Bills(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ):
+    ) -> shared.Attachment:
         r"""Upload bill attachment
 
         The *Upload bill attachment* endpoint uploads an attachment and assigns it against a specific `billId`.
@@ -888,8 +888,8 @@ class Bills(BaseSDK):
         )
 
         data: Any = None
-        if utils.match_response(http_res, "201", "*"):
-            return
+        if utils.match_response(http_res, "201", "application/json"):
+            return utils.unmarshal_json(http_res.text, shared.Attachment)
         if utils.match_response(
             http_res,
             ["400", "401", "402", "403", "404", "429", "500", "503"],
@@ -922,7 +922,7 @@ class Bills(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> shared.Attachment:
+    ) -> List[shared.Attachment]:
         r"""List bill attachments
 
         The *List bill attachments* endpoint returns a list of attachments available to download for a given `billId`.
@@ -948,7 +948,7 @@ class Bills(BaseSDK):
 
         req = self.build_request(
             method="GET",
-            path="/companies/{companyId}/connections/{connectionId}/bills/{billId}/attachments",
+            path="/companies/{companyId}/connections/{connectionId}/payables/bills/{billId}/attachments",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -997,7 +997,7 @@ class Bills(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, shared.Attachment)
+            return utils.unmarshal_json(http_res.text, List[shared.Attachment])
         if utils.match_response(
             http_res,
             ["401", "402", "403", "404", "409", "429", "500", "503"],
@@ -1030,7 +1030,7 @@ class Bills(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> shared.Attachment:
+    ) -> List[shared.Attachment]:
         r"""List bill attachments
 
         The *List bill attachments* endpoint returns a list of attachments available to download for a given `billId`.
@@ -1056,7 +1056,7 @@ class Bills(BaseSDK):
 
         req = self.build_request_async(
             method="GET",
-            path="/companies/{companyId}/connections/{connectionId}/bills/{billId}/attachments",
+            path="/companies/{companyId}/connections/{connectionId}/payables/bills/{billId}/attachments",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -1105,7 +1105,7 @@ class Bills(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, shared.Attachment)
+            return utils.unmarshal_json(http_res.text, List[shared.Attachment])
         if utils.match_response(
             http_res,
             ["401", "402", "403", "404", "409", "429", "500", "503"],
