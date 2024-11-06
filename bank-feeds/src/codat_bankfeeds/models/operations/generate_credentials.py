@@ -5,8 +5,8 @@ from codat_bankfeeds.types import BaseModel
 from codat_bankfeeds.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 import io
 import pydantic
-from typing import IO, TypedDict, Union
-from typing_extensions import Annotated
+from typing import IO, Union
+from typing_extensions import Annotated, TypedDict
 
 
 class GenerateCredentialsRequestTypedDict(TypedDict):

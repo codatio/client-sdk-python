@@ -73,14 +73,15 @@ from .clientratelimitwebhookpayload import (
     ClientRateLimitWebhookPayloadTypedDict,
 )
 from .companies import Companies, CompaniesTypedDict
-from .company import Company, CompanyTypedDict, Tags, TagsTypedDict
+from .company import Company, CompanyTypedDict
 from .companyinformation import CompanyInformation, CompanyInformationTypedDict
-from .companyrequestbody import (
-    CompanyRequestBody,
-    CompanyRequestBodyTypedDict,
-    GroupReference,
-    GroupReferenceTypedDict,
+from .companyreference import (
+    CompanyReference,
+    CompanyReferenceLinks,
+    CompanyReferenceLinksTypedDict,
+    CompanyReferenceTypedDict,
 )
+from .companyrequestbody import CompanyRequestBody, CompanyRequestBodyTypedDict
 from .companysyncstatus import CompanySyncStatus, CompanySyncStatusTypedDict
 from .configuration import Configuration, ConfigurationTypedDict
 from .configurationcontactref import (
@@ -196,6 +197,10 @@ __all__ = [
     "Company",
     "CompanyInformation",
     "CompanyInformationTypedDict",
+    "CompanyReference",
+    "CompanyReferenceLinks",
+    "CompanyReferenceLinksTypedDict",
+    "CompanyReferenceTypedDict",
     "CompanyRequestBody",
     "CompanyRequestBodyTypedDict",
     "CompanySyncStatus",
@@ -228,8 +233,6 @@ __all__ = [
     "ErrorValidationItem",
     "ErrorValidationItemTypedDict",
     "ErrorValidationTypedDict",
-    "GroupReference",
-    "GroupReferenceTypedDict",
     "HalRef",
     "HalRefTypedDict",
     "Links",
@@ -280,8 +283,6 @@ __all__ = [
     "SyncAsExpensesTypedDict",
     "SyncConfiguration",
     "SyncConfigurationTypedDict",
-    "Tags",
-    "TagsTypedDict",
     "TargetAccountOption",
     "TargetAccountOptionTypedDict",
     "Type",

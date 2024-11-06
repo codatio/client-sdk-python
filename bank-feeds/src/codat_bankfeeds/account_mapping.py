@@ -5,7 +5,7 @@ from codat_bankfeeds import utils
 from codat_bankfeeds._hooks import HookContext
 from codat_bankfeeds.models import errors, operations, shared
 from codat_bankfeeds.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Optional, Union, cast
+from typing import Any, List, Optional, Union, cast
 
 
 class AccountMapping(BaseSDK):
@@ -26,11 +26,13 @@ class AccountMapping(BaseSDK):
 
         The *Create bank account mapping* endpoint creates a new mapping between a source bank account and a potential account in the accounting software (target account).
 
-        A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
+        A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end user's account in the underlying software).
 
-        To find valid target account options, first call list bank feed account mappings.
+        To find valid target account options, first call the [List bank feed account mappings](https://docs.codat.io//bank-feeds-api#/operations/get-bank-account-mapping) endpoint.
 
-        This endpoint is only needed if building an account management UI.
+        > **For custom builds only**
+        >
+        > Only use this endpoint if you are building your own account management UI.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -120,15 +122,17 @@ class AccountMapping(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -147,11 +151,13 @@ class AccountMapping(BaseSDK):
 
         The *Create bank account mapping* endpoint creates a new mapping between a source bank account and a potential account in the accounting software (target account).
 
-        A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
+        A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end user's account in the underlying software).
 
-        To find valid target account options, first call list bank feed account mappings.
+        To find valid target account options, first call the [List bank feed account mappings](https://docs.codat.io//bank-feeds-api#/operations/get-bank-account-mapping) endpoint.
 
-        This endpoint is only needed if building an account management UI.
+        > **For custom builds only**
+        >
+        > Only use this endpoint if you are building your own account management UI.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -241,15 +247,17 @@ class AccountMapping(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -263,14 +271,16 @@ class AccountMapping(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.BankFeedMapping]:
-        r"""List bank feed account mappings
+    ) -> Optional[List[shared.BankFeedMapping]]:
+        r"""List bank feed accounts
 
-        The *List bank account mappings* endpoint returns information about a source bank account and any current or potential target mapping accounts.
+        The *List bank accounts* endpoint returns information about a source bank account and any current or potential target mapping accounts.
 
-        A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
+        A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end user's account in the underlying software).
 
-        This endpoint is only needed if building an account management UI.
+        > **For custom builds only**
+        >
+        > Only use this endpoint if you are building your own account management UI.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -339,7 +349,9 @@ class AccountMapping(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.BankFeedMapping])
+            return utils.unmarshal_json(
+                http_res.text, Optional[List[shared.BankFeedMapping]]
+            )
         if utils.match_response(
             http_res,
             ["401", "402", "403", "404", "429", "500", "503"],
@@ -348,15 +360,17 @@ class AccountMapping(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -370,14 +384,16 @@ class AccountMapping(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.BankFeedMapping]:
-        r"""List bank feed account mappings
+    ) -> Optional[List[shared.BankFeedMapping]]:
+        r"""List bank feed accounts
 
-        The *List bank account mappings* endpoint returns information about a source bank account and any current or potential target mapping accounts.
+        The *List bank accounts* endpoint returns information about a source bank account and any current or potential target mapping accounts.
 
-        A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
+        A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end user's account in the underlying software).
 
-        This endpoint is only needed if building an account management UI.
+        > **For custom builds only**
+        >
+        > Only use this endpoint if you are building your own account management UI.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -446,7 +462,9 @@ class AccountMapping(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.BankFeedMapping])
+            return utils.unmarshal_json(
+                http_res.text, Optional[List[shared.BankFeedMapping]]
+            )
         if utils.match_response(
             http_res,
             ["401", "402", "403", "404", "429", "500", "503"],
@@ -455,14 +473,16 @@ class AccountMapping(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )

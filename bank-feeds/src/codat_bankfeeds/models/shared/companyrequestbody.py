@@ -2,18 +2,8 @@
 
 from __future__ import annotations
 from codat_bankfeeds.types import BaseModel
-from typing import List, Optional, TypedDict
-from typing_extensions import NotRequired
-
-
-class GroupReferenceTypedDict(TypedDict):
-    id: NotRequired[str]
-    r"""Unique identifier for the group."""
-
-
-class GroupReference(BaseModel):
-    id: Optional[str] = None
-    r"""Unique identifier for the group."""
+from typing import Dict, Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class CompanyRequestBodyTypedDict(TypedDict):
@@ -21,8 +11,8 @@ class CompanyRequestBodyTypedDict(TypedDict):
     r"""Name of company being connected."""
     description: NotRequired[str]
     r"""Additional information about the company. This can be used to store foreign IDs, references, etc."""
-    groups: NotRequired[List[GroupReferenceTypedDict]]
-    r"""Reference to the groups that the company is assigned to."""
+    tags: NotRequired[Dict[str, str]]
+    r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
 
 
 class CompanyRequestBody(BaseModel):
@@ -32,5 +22,5 @@ class CompanyRequestBody(BaseModel):
     description: Optional[str] = None
     r"""Additional information about the company. This can be used to store foreign IDs, references, etc."""
 
-    groups: Optional[List[GroupReference]] = None
-    r"""Reference to the groups that the company is assigned to."""
+    tags: Optional[Dict[str, str]] = None
+    r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
