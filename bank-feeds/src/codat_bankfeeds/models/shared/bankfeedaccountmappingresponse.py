@@ -10,36 +10,32 @@ from codat_bankfeeds.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class BankFeedAccountMappingResponseTypedDict(TypedDict):
-    r"""The result from POSTing a Bank Account mapping."""
-
     error: NotRequired[Nullable[str]]
     r"""Error returned during the post request"""
-    status: NotRequired[Nullable[str]]
-    r"""Status of the POST request."""
     source_account_id: NotRequired[str]
     r"""Unique ID for the source account."""
+    status: NotRequired[Nullable[str]]
+    r"""Status of the POST request."""
     target_account_id: NotRequired[Nullable[str]]
     r"""Unique ID for the target account."""
 
 
 class BankFeedAccountMappingResponse(BaseModel):
-    r"""The result from POSTing a Bank Account mapping."""
-
-    error: Annotated[OptionalNullable[str], pydantic.Field(alias="Error")] = UNSET
+    error: OptionalNullable[str] = UNSET
     r"""Error returned during the post request"""
-
-    status: Annotated[OptionalNullable[str], pydantic.Field(alias="Status")] = UNSET
-    r"""Status of the POST request."""
 
     source_account_id: Annotated[
         Optional[str], pydantic.Field(alias="sourceAccountId")
     ] = None
     r"""Unique ID for the source account."""
+
+    status: OptionalNullable[str] = UNSET
+    r"""Status of the POST request."""
 
     target_account_id: Annotated[
         OptionalNullable[str], pydantic.Field(alias="targetAccountId")
@@ -48,8 +44,8 @@ class BankFeedAccountMappingResponse(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["Error", "Status", "sourceAccountId", "targetAccountId"]
-        nullable_fields = ["Error", "Status", "targetAccountId"]
+        optional_fields = ["error", "sourceAccountId", "status", "targetAccountId"]
+        nullable_fields = ["error", "status", "targetAccountId"]
         null_default_fields = []
 
         serialized = handler(self)

@@ -8,8 +8,8 @@ from codat_bankfeeds.models.shared import (
 from codat_bankfeeds.types import BaseModel
 from codat_bankfeeds.utils import FieldMetadata, PathParamMetadata
 import pydantic
-from typing import List, TypedDict, Union
-from typing_extensions import Annotated
+from typing import List, Union
+from typing_extensions import Annotated, TypedDict
 
 
 class ListSourceAccountsRequestTypedDict(TypedDict):

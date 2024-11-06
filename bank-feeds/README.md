@@ -96,11 +96,6 @@ s = CodatBankFeeds(
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -126,11 +121,6 @@ async def main():
     res = await s.companies.create_async(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
-        "groups": [
-            {
-                "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-            },
-        ],
     })
     if res is not None:
         # handle response
@@ -149,7 +139,7 @@ asyncio.run(main())
 ### [account_mapping](docs/sdks/accountmapping/README.md)
 
 * [create](docs/sdks/accountmapping/README.md#create) - Create bank feed account mapping
-* [get](docs/sdks/accountmapping/README.md#get) - List bank feed account mappings
+* [get](docs/sdks/accountmapping/README.md#get) - List bank feed accounts
 
 ### [bank_accounts](docs/sdks/bankaccounts/README.md)
 
@@ -262,11 +252,6 @@ s = CodatBankFeeds(
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 },
     RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
@@ -292,11 +277,6 @@ s = CodatBankFeeds(
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -311,12 +291,23 @@ if res is not None:
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+By default, an API error will raise a errors.SDKError exception, which has the following properties:
+
+| Property        | Type             | Description           |
+|-----------------|------------------|-----------------------|
+| `.status_code`  | *int*            | The HTTP status code  |
+| `.message`      | *str*            | The error message     |
+| `.raw_response` | *httpx.Response* | The raw HTTP response |
+| `.body`         | *str*            | The response content  |
+
+When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create_async` method may raise the following exceptions:
+
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ### Example
 
@@ -335,11 +326,6 @@ try:
     res = s.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
-        "groups": [
-            {
-                "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-            },
-        ],
     })
 
     if res is not None:
@@ -384,11 +370,6 @@ s = CodatBankFeeds(
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -415,11 +396,6 @@ s = CodatBankFeeds(
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:
@@ -539,11 +515,6 @@ s = CodatBankFeeds(
 res = s.companies.create(request={
     "name": "Technicalium",
     "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
 })
 
 if res is not None:

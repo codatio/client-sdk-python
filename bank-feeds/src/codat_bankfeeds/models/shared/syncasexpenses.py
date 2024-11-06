@@ -6,8 +6,8 @@ from .configurationcustomer import ConfigurationCustomer, ConfigurationCustomerT
 from .configurationsupplier import ConfigurationSupplier, ConfigurationSupplierTypedDict
 from codat_bankfeeds.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SyncAsExpensesTypedDict(TypedDict):

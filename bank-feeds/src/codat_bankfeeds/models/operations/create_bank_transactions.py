@@ -12,8 +12,8 @@ from codat_bankfeeds.utils import (
     RequestMetadata,
 )
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CreateBankTransactionsRequestTypedDict(TypedDict):

@@ -11,16 +11,8 @@ from codat_bankfeeds.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
-
-
-class TagsTypedDict(TypedDict):
-    r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
-
-
-class Tags(BaseModel):
-    r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
+from typing import Dict, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CompanyTypedDict(TypedDict):
@@ -84,7 +76,9 @@ class CompanyTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    tags: NotRequired[TagsTypedDict]
+    products: NotRequired[List[str]]
+    r"""An array of products that are currently enabled for the company."""
+    tags: NotRequired[Dict[str, str]]
     r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
 
 
@@ -161,7 +155,10 @@ class Company(BaseModel):
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
 
-    tags: Optional[Tags] = None
+    products: Optional[List[str]] = None
+    r"""An array of products that are currently enabled for the company."""
+
+    tags: Optional[Dict[str, str]] = None
     r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
 
     @model_serializer(mode="wrap")
@@ -172,6 +169,7 @@ class Company(BaseModel):
             "dataConnections",
             "description",
             "lastSync",
+            "products",
             "tags",
         ]
         nullable_fields = ["createdByUserName"]
