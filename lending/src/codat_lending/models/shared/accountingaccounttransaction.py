@@ -21,8 +21,8 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AccountingAccountTransactionStatus(str, Enum):
@@ -36,8 +36,6 @@ class AccountingAccountTransactionStatus(str, Enum):
 
 class AccountingAccountTransactionTypedDict(TypedDict):
     r"""> **Language tip:** In Codat, account transactions represent all transactions posted to a bank account within an accounting software. For bank transactions posted within a banking platform, refer to [Banking transactions](https://docs.codat.io/lending-api#/operations/list-all-banking-transactions).
-
-    > View the coverage for account transactions in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=accountTransactions\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 
@@ -139,8 +137,6 @@ class AccountingAccountTransactionTypedDict(TypedDict):
 
 class AccountingAccountTransaction(BaseModel):
     r"""> **Language tip:** In Codat, account transactions represent all transactions posted to a bank account within an accounting software. For bank transactions posted within a banking platform, refer to [Banking transactions](https://docs.codat.io/lending-api#/operations/list-all-banking-transactions).
-
-    > View the coverage for account transactions in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=accountTransactions\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 

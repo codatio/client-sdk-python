@@ -18,9 +18,6 @@ The *Create payment* endpoint creates a new [payment](https://docs.codat.io/lend
 
 Required data may vary by integration. To see what data to post, first call [Get create payment model](https://docs.codat.io/lending-api#/operations/get-create-payments-model).
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating an account.
-
-
 ### Example Usage
 
 ```python
@@ -94,11 +91,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
-
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get_create_model
 
@@ -109,9 +105,6 @@ The *Get create payment model* endpoint returns the expected data for the reques
 **Integration-specific behaviour**
 
 See the *response examples* for integration-specific indicative models.
-
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments) for integrations that support creating a payment.
-
 
 ### Example Usage
 
@@ -149,7 +142,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |

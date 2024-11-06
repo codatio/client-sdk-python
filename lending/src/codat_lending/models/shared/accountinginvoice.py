@@ -25,8 +25,8 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AccountingInvoiceDataType(str, Enum):
@@ -58,8 +58,6 @@ class AccountingInvoiceTypedDict(TypedDict):
     > We distinguish between invoices where the company *owes money* vs. *is owed money*. If the company issued an invoice, and is owed money (accounts receivable) we call this an Invoice.
     >
     > See [Bills](https://docs.codat.io/lending-api#/schemas/Bill) for the accounts payable equivalent of bills.
-
-    View the coverage for invoices in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 
@@ -247,8 +245,6 @@ class AccountingInvoice(BaseModel):
     > We distinguish between invoices where the company *owes money* vs. *is owed money*. If the company issued an invoice, and is owed money (accounts receivable) we call this an Invoice.
     >
     > See [Bills](https://docs.codat.io/lending-api#/schemas/Bill) for the accounts payable equivalent of bills.
-
-    View the coverage for invoices in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=invoices\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 

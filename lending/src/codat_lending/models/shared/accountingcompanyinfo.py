@@ -14,14 +14,12 @@ from codat_lending.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import Dict, List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Dict, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AccountingCompanyInfoTypedDict(TypedDict):
-    r"""> View the coverage for company profile in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\" target=\"_blank\">Data coverage explorer</a>.
-
-    Company info provides standard details about a linked company such as their address, phone number, and company registration.
+    r"""Company info provides standard details about a linked company such as their address, phone number, and company registration.
 
     > **Company information or companies?**
     >
@@ -122,9 +120,7 @@ class AccountingCompanyInfoTypedDict(TypedDict):
 
 
 class AccountingCompanyInfo(BaseModel):
-    r"""> View the coverage for company profile in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=cashFlowStatement\" target=\"_blank\">Data coverage explorer</a>.
-
-    Company info provides standard details about a linked company such as their address, phone number, and company registration.
+    r"""Company info provides standard details about a linked company such as their address, phone number, and company registration.
 
     > **Company information or companies?**
     >

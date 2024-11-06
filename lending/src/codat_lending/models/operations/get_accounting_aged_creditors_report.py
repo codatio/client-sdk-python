@@ -5,8 +5,8 @@ from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
 from datetime import date
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class GetAccountingAgedCreditorsReportRequestTypedDict(TypedDict):

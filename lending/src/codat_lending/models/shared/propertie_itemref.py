@@ -9,8 +9,7 @@ from codat_lending.types import (
     UNSET_SENTINEL,
 )
 from pydantic import model_serializer
-from typing import TypedDict
-from typing_extensions import NotRequired
+from typing_extensions import NotRequired, TypedDict
 
 
 class PropertieItemRefTypedDict(TypedDict):

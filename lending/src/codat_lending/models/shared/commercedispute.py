@@ -5,8 +5,8 @@ from .disputestatus import DisputeStatus
 from .transactionsourceref import TransactionSourceRef, TransactionSourceRefTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import Any, List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Any, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CommerceDisputeTypedDict(TypedDict):
@@ -16,8 +16,6 @@ class CommerceDisputeTypedDict(TypedDict):
     - They've been the victim of online fraud.
 
     You can use data from the Disputes endpoints to calculate key metrics, such as the number of chargebacks.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for this data type.
     """
 
     currency: str
@@ -92,8 +90,6 @@ class CommerceDispute(BaseModel):
     - They've been the victim of online fraud.
 
     You can use data from the Disputes endpoints to calculate key metrics, such as the number of chargebacks.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for this data type.
     """
 
     currency: str

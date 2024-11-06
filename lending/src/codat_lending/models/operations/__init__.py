@@ -5,6 +5,10 @@ from .create_bank_account import (
     CreateBankAccountRequest,
     CreateBankAccountRequestTypedDict,
 )
+from .create_bank_account_mapping import (
+    CreateBankAccountMappingRequest,
+    CreateBankAccountMappingRequestTypedDict,
+)
 from .create_bank_transactions import (
     CreateBankTransactionsRequest,
     CreateBankTransactionsRequestTypedDict,
@@ -20,6 +24,14 @@ from .create_direct_cost import (
     CreateDirectCostRequestTypedDict,
 )
 from .create_payment import CreatePaymentRequest, CreatePaymentRequestTypedDict
+from .create_source_account import (
+    CreateSourceAccountRequest,
+    CreateSourceAccountRequestBody,
+    CreateSourceAccountRequestBodyTypedDict,
+    CreateSourceAccountRequestTypedDict,
+    CreateSourceAccountResponseBody,
+    CreateSourceAccountResponseBodyTypedDict,
+)
 from .create_supplier import CreateSupplierRequest, CreateSupplierRequestTypedDict
 from .create_transfer import CreateTransferRequest, CreateTransferRequestTypedDict
 from .delete_company import DeleteCompanyRequest, DeleteCompanyRequestTypedDict
@@ -75,6 +87,7 @@ from .generate_loan_transactions import (
     GenerateLoanTransactionsRequestTypedDict,
     QueryParamSourceType,
 )
+from .generate_report import GenerateReportRequest, GenerateReportRequestTypedDict
 from .get_accounting_account import (
     GetAccountingAccountRequest,
     GetAccountingAccountRequestTypedDict,
@@ -512,6 +525,7 @@ from .list_reconciled_invoices import (
     ListReconciledInvoicesRequest,
     ListReconciledInvoicesRequestTypedDict,
 )
+from .list_reports import ListReportsRequest, ListReportsRequestTypedDict
 from .refresh_all_data_types import (
     RefreshAllDataTypesRequest,
     RefreshAllDataTypesRequestTypedDict,
@@ -543,6 +557,8 @@ from .upload_files import UploadFilesRequest, UploadFilesRequestTypedDict
 __all__ = [
     "CreateAccountRequest",
     "CreateAccountRequestTypedDict",
+    "CreateBankAccountMappingRequest",
+    "CreateBankAccountMappingRequestTypedDict",
     "CreateBankAccountRequest",
     "CreateBankAccountRequestTypedDict",
     "CreateBankTransactionsRequest",
@@ -555,6 +571,12 @@ __all__ = [
     "CreateDirectCostRequestTypedDict",
     "CreatePaymentRequest",
     "CreatePaymentRequestTypedDict",
+    "CreateSourceAccountRequest",
+    "CreateSourceAccountRequestBody",
+    "CreateSourceAccountRequestBodyTypedDict",
+    "CreateSourceAccountRequestTypedDict",
+    "CreateSourceAccountResponseBody",
+    "CreateSourceAccountResponseBodyTypedDict",
     "CreateSupplierRequest",
     "CreateSupplierRequestTypedDict",
     "CreateTransferRequest",
@@ -589,6 +611,8 @@ __all__ = [
     "GenerateLoanSummaryRequestTypedDict",
     "GenerateLoanTransactionsRequest",
     "GenerateLoanTransactionsRequestTypedDict",
+    "GenerateReportRequest",
+    "GenerateReportRequestTypedDict",
     "GetAccountingAccountRequest",
     "GetAccountingAccountRequestTypedDict",
     "GetAccountingAccountTransactionRequest",
@@ -817,6 +841,8 @@ __all__ = [
     "ListPullOperationsRequestTypedDict",
     "ListReconciledInvoicesRequest",
     "ListReconciledInvoicesRequestTypedDict",
+    "ListReportsRequest",
+    "ListReportsRequestTypedDict",
     "QueryParamSourceType",
     "RefreshAllDataTypesRequest",
     "RefreshAllDataTypesRequestTypedDict",

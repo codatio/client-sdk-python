@@ -3,11 +3,11 @@
 from __future__ import annotations
 from codat_lending.types import BaseModel
 from enum import Enum
-from typing import Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
-class Type(str, Enum):
+class WebLinkType(str, Enum):
     r"""The type of the weblink."""
 
     WEBSITE = "Website"
@@ -18,7 +18,7 @@ class Type(str, Enum):
 class WebLinkTypedDict(TypedDict):
     r"""Weblink associated with the company."""
 
-    type: NotRequired[Type]
+    type: NotRequired[WebLinkType]
     r"""The type of the weblink."""
     url: NotRequired[str]
     r"""The full URL for the weblink."""
@@ -27,7 +27,7 @@ class WebLinkTypedDict(TypedDict):
 class WebLink(BaseModel):
     r"""Weblink associated with the company."""
 
-    type: Optional[Type] = None
+    type: Optional[WebLinkType] = None
     r"""The type of the weblink."""
 
     url: Optional[str] = None

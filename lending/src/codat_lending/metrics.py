@@ -34,7 +34,7 @@ class Metrics(BaseSDK):
         - __Retention rate__: the ratio of existing customers within the specified period compared to the total customers at the end of the previous period represented as a percentage.
         - __Repeat rate__: the ratio of existing customers to total customers over the specified period represented as a percentage.
 
-        Learn more about the formulas used to calculate customer retention metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate customer retention metrics.
 
         #### Response structure
 
@@ -131,15 +131,17 @@ class Metrics(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -168,7 +170,7 @@ class Metrics(BaseSDK):
         - __Retention rate__: the ratio of existing customers within the specified period compared to the total customers at the end of the previous period represented as a percentage.
         - __Repeat rate__: the ratio of existing customers to total customers over the specified period represented as a percentage.
 
-        Learn more about the formulas used to calculate customer retention metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate customer retention metrics.
 
         #### Response structure
 
@@ -265,15 +267,17 @@ class Metrics(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -294,9 +298,7 @@ class Metrics(BaseSDK):
 
         This detail helps you assess a merchant's health and advise them on performance improvement strategies. It also provides you with key insights you need to assess the credit risk of a company.
 
-        Learn more about the formulas used to calculate the lifetime value metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
-
-        Refer to the [commerce reporting structure](https://docs.codat.io/lending/commerce-metrics/reporting-structure) page for more detail on commerce reports in Lending.
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate the lifetime value metrics.
 
         #### Response structure
 
@@ -393,15 +395,17 @@ class Metrics(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -422,9 +426,7 @@ class Metrics(BaseSDK):
 
         This detail helps you assess a merchant's health and advise them on performance improvement strategies. It also provides you with key insights you need to assess the credit risk of a company.
 
-        Learn more about the formulas used to calculate the lifetime value metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
-
-        Refer to the [commerce reporting structure](https://docs.codat.io/lending/commerce-metrics/reporting-structure) page for more detail on commerce reports in Lending.
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate the lifetime value metrics.
 
         #### Response structure
 
@@ -521,15 +523,17 @@ class Metrics(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -550,9 +554,7 @@ class Metrics(BaseSDK):
 
         This detail helps you assess a merchant's health and advise them on performance improvement strategies. It also provides you with key insights you need to assess the credit risk of a company.
 
-        Learn more about the formulas used to calculate the revenue metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
-
-        Refer to the [commerce reporting structure](https://docs.codat.io/lending/commerce-metrics/reporting-structure) page for more details on commerce reports in Lending.
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate the revenue metrics.
 
         #### Response structure
 
@@ -650,15 +652,17 @@ class Metrics(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -679,9 +683,7 @@ class Metrics(BaseSDK):
 
         This detail helps you assess a merchant's health and advise them on performance improvement strategies. It also provides you with key insights you need to assess the credit risk of a company.
 
-        Learn more about the formulas used to calculate the revenue metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
-
-        Refer to the [commerce reporting structure](https://docs.codat.io/lending/commerce-metrics/reporting-structure) page for more details on commerce reports in Lending.
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate the revenue metrics.
 
         #### Response structure
 
@@ -779,14 +781,16 @@ class Metrics(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )

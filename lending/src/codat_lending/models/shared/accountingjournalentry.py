@@ -15,14 +15,12 @@ from codat_lending.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AccountingJournalEntryTypedDict(TypedDict):
     r"""> **Language tip:** For the top-level record of a company's financial transactions, refer to the [Journals](https://docs.codat.io/lending-api#/schemas/Journal) data type
-
-    > View the coverage for journal entries in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journalEntries\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 
@@ -129,8 +127,6 @@ class AccountingJournalEntryTypedDict(TypedDict):
 
 class AccountingJournalEntry(BaseModel):
     r"""> **Language tip:** For the top-level record of a company's financial transactions, refer to the [Journals](https://docs.codat.io/lending-api#/schemas/Journal) data type
-
-    > View the coverage for journal entries in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=journalEntries\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 

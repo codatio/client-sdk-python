@@ -58,11 +58,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## delete
 
@@ -101,11 +100,10 @@ s.companies.delete(request={
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get
 
@@ -150,15 +148,14 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list
 
-﻿The *List companies* endpoint returns a list of [companies] associated to your instances.
+﻿The *List companies* endpoint returns a list of [companies](https://docs.codat.io/lending-api#/schemas/Company) associated to your instances.
 
 A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/lending-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
@@ -201,11 +198,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
-
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
@@ -253,7 +249,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |

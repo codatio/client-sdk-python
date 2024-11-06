@@ -4,15 +4,12 @@ from __future__ import annotations
 from .commercerecordref import CommerceRecordRef, CommerceRecordRefTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CommerceProductCategoryTypedDict(TypedDict):
-    r"""Product categories are used to classify a group of products together, either by type (e.g. \"Furniture\"), or sometimes by tax profile.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-productCategories) for this data type.
-    """
+    r"""Product categories are used to classify a group of products together, either by type (e.g. \"Furniture\"), or sometimes by tax profile."""
 
     ancestor_refs: NotRequired[List[CommerceRecordRefTypedDict]]
     r"""A collection of parent product categories implicitly ordered with the immediate parent last in the list."""
@@ -27,10 +24,7 @@ class CommerceProductCategoryTypedDict(TypedDict):
 
 
 class CommerceProductCategory(BaseModel):
-    r"""Product categories are used to classify a group of products together, either by type (e.g. \"Furniture\"), or sometimes by tax profile.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-productCategories) for this data type.
-    """
+    r"""Product categories are used to classify a group of products together, either by type (e.g. \"Furniture\"), or sometimes by tax profile."""
 
     ancestor_refs: Annotated[
         Optional[List[CommerceRecordRef]], pydantic.Field(alias="ancestorRefs")

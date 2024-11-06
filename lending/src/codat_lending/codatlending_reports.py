@@ -26,9 +26,7 @@ class CodatLendingReports(BaseSDK):
 
         This detail helps you assess a merchant's health and advise them on performance improvement strategies. It also provides you with key insights you need to assess the credit risk of a company.
 
-        Learn more about the formulas used to calculate the order metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
-
-        Refer to the [commerce reporting structure](https://docs.codat.io/lending/commerce-metrics/reporting-structure) page for more details on commerce reports in Lending.
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate the order metrics.
 
         #### Response structure
 
@@ -126,15 +124,17 @@ class CodatLendingReports(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -155,9 +155,7 @@ class CodatLendingReports(BaseSDK):
 
         This detail helps you assess a merchant's health and advise them on performance improvement strategies. It also provides you with key insights you need to assess the credit risk of a company.
 
-        Learn more about the formulas used to calculate the order metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
-
-        Refer to the [commerce reporting structure](https://docs.codat.io/lending/commerce-metrics/reporting-structure) page for more details on commerce reports in Lending.
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate the order metrics.
 
         #### Response structure
 
@@ -255,15 +253,17 @@ class CodatLendingReports(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -284,9 +284,7 @@ class CodatLendingReports(BaseSDK):
 
         This detail helps you assess a merchant's health and advise them on performance improvement strategies. It also provides you with key insights you need to assess the credit risk of a company.
 
-        Learn more about the formulas used to calculate the refunds metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
-
-        Refer to the [commerce reporting structure](https://docs.codat.io/lending/commerce-metrics/reporting-structure) page for more details on commerce reports in Lending.
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate the refunds metrics.
 
         #### Response structure
 
@@ -385,15 +383,17 @@ class CodatLendingReports(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -414,9 +414,7 @@ class CodatLendingReports(BaseSDK):
 
         This detail helps you assess a merchant's health and advise them on performance improvement strategies. It also provides you with key insights you need to assess the credit risk of a company.
 
-        Learn more about the formulas used to calculate the refunds metrics [here](https://docs.codat.io/lending/commerce-metrics/overview#what-metrics-are-available).
-
-        Refer to the [commerce reporting structure](https://docs.codat.io/lending/commerce-metrics/reporting-structure) page for more details on commerce reports in Lending.
+        [Learn more](https://docs.codat.io/lending/features/sales-overview#metrics) about the formulas used to calculate the refunds metrics.
 
         #### Response structure
 
@@ -515,14 +513,16 @@ class CodatLendingReports(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )

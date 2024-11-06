@@ -7,8 +7,8 @@ from .createbankaccounttransaction import (
 )
 from codat_lending.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AccountingCreateBankTransactionsTypedDict(TypedDict):

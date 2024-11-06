@@ -26,8 +26,8 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired, deprecated
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict, deprecated
 
 
 @deprecated(
@@ -35,8 +35,6 @@ from typing_extensions import Annotated, NotRequired, deprecated
 )
 class AccountingCreateDirectCostResponseAccountingDirectCostTypedDict(TypedDict):
     r"""> **Language tip:** Direct costs may also be referred to as **Spend transactions**, **Spend money transactions**, or **Payments** in various accounting software.
-
-    > View the coverage for direct costs in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 
@@ -147,8 +145,6 @@ class AccountingCreateDirectCostResponseAccountingDirectCostTypedDict(TypedDict)
 )
 class AccountingCreateDirectCostResponseAccountingDirectCost(BaseModel):
     r"""> **Language tip:** Direct costs may also be referred to as **Spend transactions**, **Spend money transactions**, or **Payments** in various accounting software.
-
-    > View the coverage for direct costs in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directCosts\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 

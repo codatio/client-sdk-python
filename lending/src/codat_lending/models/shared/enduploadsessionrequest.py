@@ -3,8 +3,8 @@
 from __future__ import annotations
 from codat_lending.types import BaseModel
 from enum import Enum
-from typing import Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class EndUploadSessionRequestStatus(str, Enum):

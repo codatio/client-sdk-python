@@ -17,9 +17,6 @@ The *Download direct income attachment* endpoint downloads a specific attachment
 
 [Direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support downloading a direct income attachment.
-
-
 ### Example Usage
 
 ```python
@@ -36,7 +33,7 @@ res = s.accounts_receivable.direct_incomes.download_attachment(request={
     "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "direct_income_id": "<id>",
+    "direct_income_id": "EILBDVJVNUAGVKRQ",
 })
 
 if res is not None:
@@ -58,19 +55,16 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get
 
 The *Get direct income* endpoint returns a single direct income for a given directIncomeId.
 
 [Direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support getting a specific direct income.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
@@ -90,7 +84,7 @@ s = CodatLending(
 res = s.accounts_receivable.direct_incomes.get(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "direct_income_id": "<id>",
+    "direct_income_id": "7110701885",
 })
 
 if res is not None:
@@ -112,20 +106,16 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
-
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get_attachment
 
 The *Get direct income attachment* endpoint returns a specific attachment for a given `directIncomeId` and `attachmentId`.
 
 [Direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support getting a direct income attachment.
-
 
 ### Example Usage
 
@@ -143,7 +133,7 @@ res = s.accounts_receivable.direct_incomes.get_attachment(request={
     "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "direct_income_id": "<id>",
+    "direct_income_id": "EILBDVJVNUAGVKRQ",
 })
 
 if res is not None:
@@ -165,11 +155,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list
 
@@ -220,19 +209,16 @@ if res is not None:
 
 ### Errors
 
-| Error Object                        | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 4xx-5xx                             | */*                                 |
-
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.ErrorMessage                         | 400, 401, 402, 403, 404, 409, 429, 500, 503 | application/json                            |
+| errors.SDKError                             | 4XX, 5XX                                    | \*/\*                                       |
 
 ## list_attachments
 
 The *List direct income attachments* endpoint returns a list of attachments available to download for given `directIncomeId`.
 
 [Direct incomes](https://docs.codat.io/lending-api#/schemas/DirectIncome) are sales of items directly to a customer where payment is received at the point of the sale.
-
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=directIncomes) for integrations that support listing direct income attachments.
 
 
 ### Example Usage
@@ -250,7 +236,7 @@ s = CodatLending(
 res = s.accounts_receivable.direct_incomes.list_attachments(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "direct_income_id": "<id>",
+    "direct_income_id": "EILBDVJVNUAGVKRQ",
 })
 
 if res is not None:
@@ -272,7 +258,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |

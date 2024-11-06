@@ -20,16 +20,14 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AccountingPaymentTypedDict(TypedDict):
     r"""> **Payments or bill payments?**
     >
     >  In Codat, payments represent accounts receivable only. For accounts payable, see [bill payments](https://docs.codat.io/lending-api#/schemas/BillPayment). These include [bills](https://docs.codat.io/lending-api#/schemas/Bill) and credit notes against bills.
-
-    > View the coverage for payments in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 
@@ -798,8 +796,6 @@ class AccountingPayment(BaseModel):
     r"""> **Payments or bill payments?**
     >
     >  In Codat, payments represent accounts receivable only. For accounts payable, see [bill payments](https://docs.codat.io/lending-api#/schemas/BillPayment). These include [bills](https://docs.codat.io/lending-api#/schemas/Bill) and credit notes against bills.
-
-    > View the coverage for payments in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=payments\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 

@@ -18,17 +18,15 @@ from codat_lending.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired, deprecated
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict, deprecated
 
 
 @deprecated(
     "warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
 )
 class AccountingCreateSupplierResponseAccountingSupplierTypedDict(TypedDict):
-    r"""> View the coverage for suppliers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers\" target=\"_blank\">Data coverage explorer</a>.
-
-    ## Overview
+    r"""## Overview
 
     From the **Suppliers** endpoints, you can retrieve a list of [all the suppliers for a company](https://docs.codat.io/lending-api#/operations/list-suppliers). Suppliers' data links to accounts payable [bills](https://docs.codat.io/lending-api#/schemas/Bill).
     """
@@ -67,9 +65,7 @@ class AccountingCreateSupplierResponseAccountingSupplierTypedDict(TypedDict):
     "warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
 )
 class AccountingCreateSupplierResponseAccountingSupplier(BaseModel):
-    r"""> View the coverage for suppliers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=suppliers\" target=\"_blank\">Data coverage explorer</a>.
-
-    ## Overview
+    r"""## Overview
 
     From the **Suppliers** endpoints, you can retrieve a list of [all the suppliers for a company](https://docs.codat.io/lending-api#/operations/list-suppliers). Suppliers' data links to accounts payable [bills](https://docs.codat.io/lending-api#/schemas/Bill).
     """

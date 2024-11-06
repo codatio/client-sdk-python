@@ -11,16 +11,8 @@ from codat_lending.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
-
-
-class CompanyTagsTypedDict(TypedDict):
-    r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
-
-
-class CompanyTags(BaseModel):
-    r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
+from typing import Dict, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CompanyTypedDict(TypedDict):
@@ -86,7 +78,7 @@ class CompanyTypedDict(TypedDict):
     """
     products: NotRequired[List[str]]
     r"""An array of products that are currently enabled for the company."""
-    tags: NotRequired[CompanyTagsTypedDict]
+    tags: NotRequired[Dict[str, str]]
     r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
 
 
@@ -166,7 +158,7 @@ class Company(BaseModel):
     products: Optional[List[str]] = None
     r"""An array of products that are currently enabled for the company."""
 
-    tags: Optional[CompanyTags] = None
+    tags: Optional[Dict[str, str]] = None
     r"""A collection of user-defined key-value pairs that store custom metadata against the company."""
 
     @model_serializer(mode="wrap")

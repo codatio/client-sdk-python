@@ -14,8 +14,6 @@ The *Get customer* endpoint returns a single customer for a given customerId.
 
 [Customers](https://docs.codat.io/lending-api#/schemas/Customer) are people or organizations that place orders, make payments and receive goods and/or services from the SMB.
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-customers) for integrations that support getting a specific customer.
-
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
@@ -34,7 +32,7 @@ s = CodatLending(
 res = s.sales.customers.get(request={
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "customer_id": "<id>",
+    "customer_id": "7110701885",
 })
 
 if res is not None:
@@ -56,11 +54,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 401,402,403,404,409,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
-
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## list
 
@@ -111,7 +108,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object                        | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.ErrorMessage                         | 400, 401, 402, 403, 404, 409, 429, 500, 503 | application/json                            |
+| errors.SDKError                             | 4XX, 5XX                                    | \*/\*                                       |

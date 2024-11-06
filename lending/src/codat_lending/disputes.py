@@ -26,8 +26,6 @@ class Disputes(BaseSDK):
 
         [Disputes](https://docs.codat.io/lending-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
 
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for integrations that support getting a specific dispute.
-
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
@@ -108,15 +106,17 @@ class Disputes(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -136,8 +136,6 @@ class Disputes(BaseSDK):
         The *Get dispute* endpoint returns a single dispute for a given disputeId.
 
         [Disputes](https://docs.codat.io/lending-api#/schemas/Dispute) are created when a customer is unsatisfied with their purchase or believe they have been charged incorrectly.
-
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-disputes) for integrations that support getting a specific dispute.
 
         Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
@@ -219,15 +217,17 @@ class Disputes(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -331,15 +331,17 @@ class Disputes(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -443,14 +445,16 @@ class Disputes(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
