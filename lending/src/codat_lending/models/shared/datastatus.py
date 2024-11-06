@@ -5,8 +5,8 @@ from .status import Status
 from codat_lending.types import BaseModel
 from enum import Enum
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class DataTypes(str, Enum):

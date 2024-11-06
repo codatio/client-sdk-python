@@ -5,8 +5,7 @@ from .codatfile import CodatFile, CodatFileTypedDict
 from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, MultipartFormMetadata
 import pydantic
-from typing import TypedDict
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypedDict
 
 
 class FileUploadTypedDict(TypedDict):

@@ -7,15 +7,13 @@ from .phonenumber import PhoneNumber, PhoneNumberTypedDict
 from .weblink import WebLink, WebLinkTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import Dict, List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Dict, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CommerceCompanyInfoTypedDict(TypedDict):
     r"""In the Codat system, company profile includes standard commercial details about
     a linked company, such as their address, phone number, and company registration.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=companyInfo) for this data type.
 
     """
 
@@ -74,8 +72,6 @@ class CommerceCompanyInfoTypedDict(TypedDict):
 class CommerceCompanyInfo(BaseModel):
     r"""In the Codat system, company profile includes standard commercial details about
     a linked company, such as their address, phone number, and company registration.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=companyInfo) for this data type.
 
     """
 

@@ -10,8 +10,8 @@ from decimal import Decimal
 import pydantic
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CommerceTransactionTypedDict(TypedDict):
@@ -23,8 +23,6 @@ class CommerceTransactionTypedDict(TypedDict):
     - Average transaction value
     - Returns
     - Payouts
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-transactions) for this data type.
     """
 
     id: str
@@ -115,8 +113,6 @@ class CommerceTransaction(BaseModel):
     - Average transaction value
     - Returns
     - Payouts
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-transactions) for this data type.
     """
 
     id: str

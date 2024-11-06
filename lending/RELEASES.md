@@ -129,3 +129,13 @@ Based on:
 - [python v7.1.0] lending
 ### Releases
 - [PyPI v7.1.0] https://pypi.org/project/codat-lending/7.1.0 - lending
+
+## 2024-11-06 15:04:25
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.431.0 (2.451.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v8.0.0] lending
+### Releases
+- [PyPI v8.0.0] https://pypi.org/project/codat-lending/8.0.0 - lending

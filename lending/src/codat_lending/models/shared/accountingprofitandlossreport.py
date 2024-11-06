@@ -5,14 +5,12 @@ from .profitandlossreport import ProfitAndLossReport, ProfitAndLossReportTypedDi
 from .reportbasis import ReportBasis
 from codat_lending.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AccountingProfitAndLossReportTypedDict(TypedDict):
     r"""> **Language tip:** Profit and loss statement is also referred to as **income statement** under US GAAP (Generally Accepted Accounting Principles).
-
-    > View the coverage for profit and loss in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=profitAndLoss\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 
@@ -86,8 +84,6 @@ class AccountingProfitAndLossReportTypedDict(TypedDict):
 
 class AccountingProfitAndLossReport(BaseModel):
     r"""> **Language tip:** Profit and loss statement is also referred to as **income statement** under US GAAP (Generally Accepted Accounting Principles).
-
-    > View the coverage for profit and loss in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=profitAndLoss\" target=\"_blank\">Data coverage explorer</a>.
 
     ## Overview
 

@@ -3,8 +3,7 @@
 from __future__ import annotations
 from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, SecurityMetadata
-from typing import TypedDict
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypedDict
 
 
 class SecurityTypedDict(TypedDict):

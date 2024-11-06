@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from codat_lending.types import BaseModel
-from typing import TypedDict
+from typing_extensions import TypedDict
 
 
 class TaxComponentRefTypedDict(TypedDict):

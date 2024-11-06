@@ -14,8 +14,8 @@ from codat_lending.utils import (
     RequestMetadata,
 )
 import pydantic
-from typing import Any, Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import Any, Optional, Union
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 UploadBankStatementDataRequestBodyTypedDict = Union[

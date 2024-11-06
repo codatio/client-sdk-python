@@ -10,8 +10,8 @@ from decimal import Decimal
 import pydantic
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CommercePaymentTypedDict(TypedDict):
@@ -20,8 +20,6 @@ class CommercePaymentTypedDict(TypedDict):
     Refunds are recorded as separate, negative payments. Note that a refund can only occur in relation to a payment that has been completed (i.e. has a status of `Paid`). When a customer cancels an order _before_ a payment has been completed, the payment shows as `Cancelled`.
 
     You can use data from the Payments endpoints to calculate key metrics, such as gross sales and monthly recurring revenue (MRR).
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-payments) for this data type.
     """
 
     id: str
@@ -100,8 +98,6 @@ class CommercePayment(BaseModel):
     Refunds are recorded as separate, negative payments. Note that a refund can only occur in relation to a payment that has been completed (i.e. has a status of `Paid`). When a customer cancels an order _before_ a payment has been completed, the payment shows as `Cancelled`.
 
     You can use data from the Payments endpoints to calculate key metrics, such as gross sales and monthly recurring revenue (MRR).
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-payments) for this data type.
     """
 
     id: str

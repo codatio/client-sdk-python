@@ -6,8 +6,7 @@ from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import TypedDict
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypedDict
 
 
 class ItemsTypedDict(TypedDict):

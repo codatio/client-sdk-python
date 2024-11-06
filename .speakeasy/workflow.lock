@@ -1,4 +1,4 @@
-speakeasyVersion: 1.423.5
+speakeasyVersion: 1.431.0
 sources:
     accounting-source:
         sourceNamespace: accounting-source
@@ -51,8 +51,8 @@ sources:
             - main
     lending-source:
         sourceNamespace: lending-source
-        sourceRevisionDigest: sha256:76acbb855a27cb6351b46d0a7cad80aad2ab990d5c3d7d9ce6b384f7e0f28a45
-        sourceBlobDigest: sha256:25ea8d26ce94e44b7731aa9355290766d9d5cfa14d1ebcfcb2e3f3e6ba2a155f
+        sourceRevisionDigest: sha256:db9283292e52e0b11e1dc217a45a967819382b72943f82f071818621ef7b643b
+        sourceBlobDigest: sha256:4525ee073b57729cfcb4c57cd3715fd634d44b091eb42b011966d87654980fc2
         tags:
             - latest
             - main
@@ -116,8 +116,8 @@ targets:
     lending-library:
         source: lending-source
         sourceNamespace: lending-source
-        sourceRevisionDigest: sha256:76acbb855a27cb6351b46d0a7cad80aad2ab990d5c3d7d9ce6b384f7e0f28a45
-        sourceBlobDigest: sha256:25ea8d26ce94e44b7731aa9355290766d9d5cfa14d1ebcfcb2e3f3e6ba2a155f
+        sourceRevisionDigest: sha256:db9283292e52e0b11e1dc217a45a967819382b72943f82f071818621ef7b643b
+        sourceBlobDigest: sha256:4525ee073b57729cfcb4c57cd3715fd634d44b091eb42b011966d87654980fc2
     sync-for-commerce-library:
         source: sync-for-commerce-source
         sourceNamespace: sync-for-commerce-source

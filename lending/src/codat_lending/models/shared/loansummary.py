@@ -5,8 +5,8 @@ from .loansummaryreportinfo import LoanSummaryReportInfo, LoanSummaryReportInfoT
 from .loansummaryreportitem import LoanSummaryReportItem, LoanSummaryReportItemTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class LoanSummaryTypedDict(TypedDict):

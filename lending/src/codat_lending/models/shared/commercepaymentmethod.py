@@ -4,8 +4,8 @@ from __future__ import annotations
 from codat_lending.types import BaseModel
 from enum import Enum
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CommercePaymentMethodStatus(str, Enum):
@@ -17,10 +17,7 @@ class CommercePaymentMethodStatus(str, Enum):
 
 
 class CommercePaymentMethodTypedDict(TypedDict):
-    r"""A Payment Method represents the payment method(s) used to make payments.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-paymentMethods) for this data type.
-    """
+    r"""A Payment Method represents the payment method(s) used to make payments."""
 
     id: str
     r"""A unique, persistent identifier for this record"""
@@ -33,10 +30,7 @@ class CommercePaymentMethodTypedDict(TypedDict):
 
 
 class CommercePaymentMethod(BaseModel):
-    r"""A Payment Method represents the payment method(s) used to make payments.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-paymentMethods) for this data type.
-    """
+    r"""A Payment Method represents the payment method(s) used to make payments."""
 
     id: str
     r"""A unique, persistent identifier for this record"""

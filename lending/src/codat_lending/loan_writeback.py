@@ -11,10 +11,12 @@ from codat_lending.codatlending_payments import CodatLendingPayments
 from codat_lending.codatlending_suppliers import CodatLendingSuppliers
 from codat_lending.create_operations import CreateOperations
 from codat_lending.direct_costs import DirectCosts
+from codat_lending.source_accounts import SourceAccounts
 from codat_lending.transfers import Transfers
 
 
 class LoanWriteback(BaseSDK):
+    source_accounts: SourceAccounts
     bank_accounts: BankAccounts
     bank_transactions: BankTransactions
     accounts: CodatLendingLoanWritebackAccounts
@@ -30,6 +32,7 @@ class LoanWriteback(BaseSDK):
         self._init_sdks()
 
     def _init_sdks(self):
+        self.source_accounts = SourceAccounts(self.sdk_configuration)
         self.bank_accounts = BankAccounts(self.sdk_configuration)
         self.bank_transactions = BankTransactions(self.sdk_configuration)
         self.accounts = CodatLendingLoanWritebackAccounts(self.sdk_configuration)

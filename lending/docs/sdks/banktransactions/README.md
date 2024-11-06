@@ -18,8 +18,6 @@ The *Create bank account transactions* endpoint creates new [bank account transa
 
 Required data may vary by integration. To see what data to post, first call [Get create bank transaction model](https://docs.codat.io/lending-api#/operations/get-create-bankTransactions-model).
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support creating a bank account transactions.
-
 
 ### Example Usage
 
@@ -34,7 +32,7 @@ s = CodatLending(
 )
 
 res = s.loan_writeback.bank_transactions.create(request={
-    "account_id": "<id>",
+    "account_id": "9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2",
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     "accounting_create_bank_transactions": {
@@ -69,11 +67,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
-
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get_create_model
 
@@ -84,9 +81,6 @@ The *Get create bank account transactions model* endpoint returns the expected d
 **Integration-specific behaviour**
 
 See the *response examples* for integration-specific indicative models.
-
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankTransactions) for integrations that support creating an bank transaction.
-
 
 ### Example Usage
 
@@ -101,7 +95,7 @@ s = CodatLending(
 )
 
 res = s.loan_writeback.bank_transactions.get_create_model(request={
-    "account_id": "<id>",
+    "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
 })
@@ -125,7 +119,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |

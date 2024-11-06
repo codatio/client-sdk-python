@@ -354,6 +354,11 @@ asyncio.run(main())
 * [create](docs/sdks/codatlendingpayments/README.md#create) - Create payment
 * [get_create_model](docs/sdks/codatlendingpayments/README.md#get_create_model) - Get create payment model
 
+#### [loan_writeback.source_accounts](docs/sdks/sourceaccounts/README.md)
+
+* [create](docs/sdks/sourceaccounts/README.md#create) - Create source account
+* [create_mapping](docs/sdks/sourceaccounts/README.md#create_mapping) - Create bank feed account mapping
+
 #### [loan_writeback.suppliers](docs/sdks/codatlendingsuppliers/README.md)
 
 * [create](docs/sdks/codatlendingsuppliers/README.md#create) - Create supplier
@@ -377,6 +382,11 @@ asyncio.run(main())
 
 * [all_data_types](docs/sdks/refresh/README.md#all_data_types) - Refresh all data
 * [data_type](docs/sdks/refresh/README.md#data_type) - Refresh data type
+
+### [manage_reports](docs/sdks/managereports/README.md)
+
+* [generate_report](docs/sdks/managereports/README.md#generate_report) - Generate report
+* [list_reports](docs/sdks/managereports/README.md#list_reports) - List reports
 
 ### [sales](docs/sdks/sales/README.md)
 
@@ -530,12 +540,23 @@ if res is not None:
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+By default, an API error will raise a errors.SDKError exception, which has the following properties:
+
+| Property        | Type             | Description           |
+|-----------------|------------------|-----------------------|
+| `.status_code`  | *int*            | The HTTP status code  |
+| `.message`      | *str*            | The error message     |
+| `.raw_response` | *httpx.Response* | The raw HTTP response |
+| `.body`         | *str*            | The response content  |
+
+When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create_async` method may raise the following exceptions:
+
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ### Example
 

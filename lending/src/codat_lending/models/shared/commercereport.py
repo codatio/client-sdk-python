@@ -13,8 +13,8 @@ from .commercereporterror import CommerceReportError, CommerceReportErrorTypedDi
 from .commercereportmeasure import CommerceReportMeasure, CommerceReportMeasureTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import Dict, List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Dict, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CommerceReportTypedDict(TypedDict):

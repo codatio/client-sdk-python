@@ -13,6 +13,7 @@ from .accountcategoriesupdatedwebhookdata import (
 from .accountcategorylevel import AccountCategoryLevel, AccountCategoryLevelTypedDict
 from .accountidentifiers import AccountIdentifiers, AccountIdentifiersTypedDict
 from .accountidentifiertype import AccountIdentifierType
+from .accountinfo import AccountInfo, AccountInfoTypedDict
 from .accountingaccount import (
     AccountingAccount,
     AccountingAccountTypedDict,
@@ -195,7 +196,12 @@ from .accountprototype import (
     ValidDataTypeLinksTypedDict,
 )
 from .accountref import AccountRef, AccountRefTypedDict
-from .accounts import Accounts, AccountsTypedDict
+from .accounts import (
+    Accounts,
+    AccountsTypedDict,
+    ReportSourceReference,
+    ReportSourceReferenceTypedDict,
+)
 from .accountspayabletracking import (
     AccountsPayableTracking,
     AccountsPayableTrackingTypedDict,
@@ -232,6 +238,14 @@ from .attachments import Attachments, AttachmentsTypedDict
 from .balancesheet import BalanceSheet, BalanceSheetTypedDict
 from .bankaccountref import BankAccountRef, BankAccountRefTypedDict
 from .bankaccountstatus import BankAccountStatus
+from .bankfeedbankaccountmapping import (
+    BankFeedBankAccountMapping,
+    BankFeedBankAccountMappingTypedDict,
+)
+from .bankfeedbankaccountmappingresponse import (
+    BankFeedBankAccountMappingResponse,
+    BankFeedBankAccountMappingResponseTypedDict,
+)
 from .bankingaccount import BankingAccount, BankingAccountTypedDict
 from .bankingaccountbalance import BankingAccountBalance, BankingAccountBalanceTypedDict
 from .bankingaccountbalances import (
@@ -267,7 +281,6 @@ from .billcreditnotelineitem import (
 from .billcreditnotestatus import BillCreditNoteStatus
 from .billedtotype import BilledToType
 from .billedtotype1 import BilledToType1
-from .billedtotype2 import BilledToType2
 from .billlineitem import (
     BillLineItem,
     BillLineItemDataType,
@@ -355,7 +368,13 @@ from .commercereportmeasure import CommerceReportMeasure, CommerceReportMeasureT
 from .commercetransaction import CommerceTransaction, CommerceTransactionTypedDict
 from .commercetransactions import CommerceTransactions, CommerceTransactionsTypedDict
 from .companies import Companies, CompaniesTypedDict
-from .company import Company, CompanyTags, CompanyTagsTypedDict, CompanyTypedDict
+from .company import Company, CompanyTypedDict
+from .companyreference import (
+    CompanyReference,
+    CompanyReferenceLinks,
+    CompanyReferenceLinksTypedDict,
+    CompanyReferenceTypedDict,
+)
 from .companyrequestbody import CompanyRequestBody, CompanyRequestBodyTypedDict
 from .connection import Connection, ConnectionTypedDict, SourceType
 from .connections import Connections, ConnectionsTypedDict
@@ -409,10 +428,11 @@ from .enduploadsessionrequest import (
     EndUploadSessionRequestStatus,
     EndUploadSessionRequestTypedDict,
 )
-from .enhancedcashflowitem import EnhancedCashFlowItem, EnhancedCashFlowItemTypedDict
-from .enhancedcashflowtransaction import (
-    EnhancedCashFlowTransaction,
-    EnhancedCashFlowTransactionTypedDict,
+from .enhancedcashflowitem import (
+    CashFlowTransaction,
+    CashFlowTransactionTypedDict,
+    EnhancedCashFlowItem,
+    EnhancedCashFlowItemTypedDict,
 )
 from .enhancedcashflowtransactions import (
     EnhancedCashFlowTransactions,
@@ -535,14 +555,34 @@ from .reportcomponentmeasure import (
     ReportComponentMeasure,
     ReportComponentMeasureTypedDict,
 )
+from .reportgenerationpayload import (
+    ReportGenerationPayload,
+    ReportGenerationPayloadTypedDict,
+)
 from .reportinfo import ReportInfo, ReportInfoTypedDict
 from .reportinput import ReportInput
 from .reportitems import LoanTransactionType, ReportItems, ReportItemsTypedDict
 from .reportline import ReportLine, ReportLineTypedDict
+from .reportoperation import (
+    ReportOperation,
+    ReportOperationStatus,
+    ReportOperationType,
+    ReportOperationTypedDict,
+)
+from .reports import Reports, ReportsTypedDict
+from .reporttype import ReportType
+from .routinginfo import RoutingInfo, RoutingInfoTypedDict, Type
 from .schema_datatype import SchemaDataType
 from .security import Security, SecurityTypedDict
 from .servicecharge import ServiceCharge, ServiceChargeTypedDict
 from .servicechargetype import ServiceChargeType
+from .sourceaccount import SourceAccount, SourceAccountStatus, SourceAccountTypedDict
+from .sourceaccountv2 import (
+    SourceAccountV2,
+    SourceAccountV2AccountType,
+    SourceAccountV2Status,
+    SourceAccountV2TypedDict,
+)
 from .sourceref import SourceRef, SourceRefTypedDict
 from .startuploadsessionrequest import (
     StartUploadSessionRequest,
@@ -553,7 +593,6 @@ from .status import Status
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from .supplierref import SupplierRef, SupplierRefTypedDict
 from .supplierstatus import SupplierStatus
-from .tags import Tags, TagsTypedDict
 from .taxcomponentallocation import (
     TaxComponentAllocation,
     TaxComponentAllocationTypedDict,
@@ -580,7 +619,7 @@ from .transactiontype import TransactionType
 from .transferaccount import TransferAccount, TransferAccountTypedDict
 from .validation import Validation, ValidationTypedDict
 from .validationitem import ValidationItem, ValidationItemTypedDict
-from .weblink import Type, WebLink, WebLinkTypedDict
+from .weblink import WebLink, WebLinkType, WebLinkTypedDict
 from .zero import Zero, ZeroDataType, ZeroTypedDict
 
 __all__ = [
@@ -597,6 +636,8 @@ __all__ = [
     "AccountIdentifierType",
     "AccountIdentifiers",
     "AccountIdentifiersTypedDict",
+    "AccountInfo",
+    "AccountInfoTypedDict",
     "AccountInstitution",
     "AccountInstitutionTypedDict",
     "AccountPrototype",
@@ -763,6 +804,10 @@ __all__ = [
     "BankAccountRef",
     "BankAccountRefTypedDict",
     "BankAccountStatus",
+    "BankFeedBankAccountMapping",
+    "BankFeedBankAccountMappingResponse",
+    "BankFeedBankAccountMappingResponseTypedDict",
+    "BankFeedBankAccountMappingTypedDict",
     "BankStatementUploadConfiguration",
     "BankStatementUploadConfigurationTypedDict",
     "BankTransactionType",
@@ -798,9 +843,10 @@ __all__ = [
     "BillStatus",
     "BilledToType",
     "BilledToType1",
-    "BilledToType2",
     "CashFlowStatement",
     "CashFlowStatementTypedDict",
+    "CashFlowTransaction",
+    "CashFlowTransactionTypedDict",
     "ClientRateLimitReachedWebhook",
     "ClientRateLimitReachedWebhookData",
     "ClientRateLimitReachedWebhookDataTypedDict",
@@ -876,10 +922,12 @@ __all__ = [
     "Companies",
     "CompaniesTypedDict",
     "Company",
+    "CompanyReference",
+    "CompanyReferenceLinks",
+    "CompanyReferenceLinksTypedDict",
+    "CompanyReferenceTypedDict",
     "CompanyRequestBody",
     "CompanyRequestBodyTypedDict",
-    "CompanyTags",
-    "CompanyTagsTypedDict",
     "CompanyTypedDict",
     "Connection",
     "ConnectionTypedDict",
@@ -947,8 +995,6 @@ __all__ = [
     "EndUploadSessionRequestTypedDict",
     "EnhancedCashFlowItem",
     "EnhancedCashFlowItemTypedDict",
-    "EnhancedCashFlowTransaction",
-    "EnhancedCashFlowTransactionTypedDict",
     "EnhancedCashFlowTransactions",
     "EnhancedCashFlowTransactionsTypedDict",
     "EnhancedFinancialReport",
@@ -1100,6 +1146,8 @@ __all__ = [
     "ReportBasis",
     "ReportComponentMeasure",
     "ReportComponentMeasureTypedDict",
+    "ReportGenerationPayload",
+    "ReportGenerationPayloadTypedDict",
     "ReportInfo",
     "ReportInfoTypedDict",
     "ReportInput",
@@ -1109,6 +1157,17 @@ __all__ = [
     "ReportItemsTypedDict",
     "ReportLine",
     "ReportLineTypedDict",
+    "ReportOperation",
+    "ReportOperationStatus",
+    "ReportOperationType",
+    "ReportOperationTypedDict",
+    "ReportSourceReference",
+    "ReportSourceReferenceTypedDict",
+    "ReportType",
+    "Reports",
+    "ReportsTypedDict",
+    "RoutingInfo",
+    "RoutingInfoTypedDict",
     "SalesOrderReference",
     "SalesOrderReferenceTypedDict",
     "SchemaDataType",
@@ -1118,6 +1177,13 @@ __all__ = [
     "ServiceChargeType",
     "ServiceChargeTypedDict",
     "Source",
+    "SourceAccount",
+    "SourceAccountStatus",
+    "SourceAccountTypedDict",
+    "SourceAccountV2",
+    "SourceAccountV2AccountType",
+    "SourceAccountV2Status",
+    "SourceAccountV2TypedDict",
     "SourceRef",
     "SourceRefTypedDict",
     "SourceType",
@@ -1130,8 +1196,6 @@ __all__ = [
     "SupplierRef",
     "SupplierRefTypedDict",
     "SupplierStatus",
-    "Tags",
-    "TagsTypedDict",
     "TaxComponentAllocation",
     "TaxComponentAllocationTypedDict",
     "TaxComponentRef",
@@ -1167,6 +1231,7 @@ __all__ = [
     "ValidationItemTypedDict",
     "ValidationTypedDict",
     "WebLink",
+    "WebLinkType",
     "WebLinkTypedDict",
     "WithholdingTax",
     "WithholdingTaxTypedDict",
