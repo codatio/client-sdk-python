@@ -10,8 +10,8 @@ from codat_bankfeeds.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CompanyInformationTypedDict(TypedDict):
@@ -21,10 +21,12 @@ class CompanyInformationTypedDict(TypedDict):
     r"""Currency set in the accounting software of the linked company."""
     company_name: NotRequired[str]
     r"""Name of the linked company."""
-    multicurrency_enabled: NotRequired[Nullable[bool]]
-    r"""Boolean showing if the organisation has multicurrency enabled"""
+    currencies: NotRequired[Nullable[List[str]]]
+    r"""Array of enabled currencies for the linked company."""
+    multicurrency_enabled: NotRequired[bool]
+    r"""Boolean showing if the organisation has multicurrency enabled."""
     plan_type: NotRequired[Nullable[str]]
-    r"""Accounting software subscription type such as Trial, Demo, Standard"""
+    r"""Accounting software subscription type such as Trial, Demo, Standard."""
 
 
 class CompanyInformation(BaseModel):
@@ -36,25 +38,29 @@ class CompanyInformation(BaseModel):
     company_name: Annotated[Optional[str], pydantic.Field(alias="companyName")] = None
     r"""Name of the linked company."""
 
+    currencies: OptionalNullable[List[str]] = UNSET
+    r"""Array of enabled currencies for the linked company."""
+
     multicurrency_enabled: Annotated[
-        OptionalNullable[bool], pydantic.Field(alias="multicurrencyEnabled")
-    ] = UNSET
-    r"""Boolean showing if the organisation has multicurrency enabled"""
+        Optional[bool], pydantic.Field(alias="multicurrencyEnabled")
+    ] = None
+    r"""Boolean showing if the organisation has multicurrency enabled."""
 
     plan_type: Annotated[OptionalNullable[str], pydantic.Field(alias="planType")] = (
         UNSET
     )
-    r"""Accounting software subscription type such as Trial, Demo, Standard"""
+    r"""Accounting software subscription type such as Trial, Demo, Standard."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
             "baseCurrency",
             "companyName",
+            "currencies",
             "multicurrencyEnabled",
             "planType",
         ]
-        nullable_fields = ["multicurrencyEnabled", "planType"]
+        nullable_fields = ["currencies", "planType"]
         null_default_fields = []
 
         serialized = handler(self)

@@ -20,8 +20,8 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import Any, Dict, List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired, deprecated
+from typing import Any, Dict, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict, deprecated
 
 
 class BankAccountCreateResponseBankAccountType(str, Enum):
@@ -133,9 +133,7 @@ class AccountingBankAccountTypedDict(TypedDict):
     >
     > This datatype was originally used for accessing bank account data both in accounting integrations and open banking aggregators.
     >
-    > To view bank account data through the Banking API, please refer to the new datatype [here](https://docs.codat.io/bank-feeds-api#/schemas/Account)
-
-    > View the coverage for bank accounts in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts\" target=\"_blank\">Data coverage explorer</a>.
+    > To view bank account data through the Banking API, please refer to the new [Banking: Account](https://docs.codat.io/bank-feeds-api#/schemas/Account) data type.
 
     ## Overview
 
@@ -215,9 +213,7 @@ class AccountingBankAccount(BaseModel):
     >
     > This datatype was originally used for accessing bank account data both in accounting integrations and open banking aggregators.
     >
-    > To view bank account data through the Banking API, please refer to the new datatype [here](https://docs.codat.io/bank-feeds-api#/schemas/Account)
-
-    > View the coverage for bank accounts in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bankAccounts\" target=\"_blank\">Data coverage explorer</a>.
+    > To view bank account data through the Banking API, please refer to the new [Banking: Account](https://docs.codat.io/bank-feeds-api#/schemas/Account) data type.
 
     ## Overview
 

@@ -39,7 +39,7 @@ class ErrorMessageData(BaseModel):
 
 
 class ErrorMessage(Exception):
-    r"""The request made is not valid."""
+    r"""Your `query` parameter was not correctly formed"""
 
     data: ErrorMessageData
 

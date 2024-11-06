@@ -8,17 +8,19 @@ Extra functionality for building an account management UI.
 ### Available Operations
 
 * [create](#create) - Create bank feed account mapping
-* [get](#get) - List bank feed account mappings
+* [get](#get) - List bank feed accounts
 
 ## create
 
 ﻿The *Create bank account mapping* endpoint creates a new mapping between a source bank account and a potential account in the accounting software (target account).
 
-A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
+A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end user's account in the underlying software).
 
-To find valid target account options, first call list bank feed account mappings.
+To find valid target account options, first call the [List bank feed account mappings](https://docs.codat.io//bank-feeds-api#/operations/get-bank-account-mapping) endpoint.
 
-This endpoint is only needed if building an account management UI.
+> **For custom builds only**
+>
+> Only use this endpoint if you are building your own account management UI.
 
 ### Example Usage
 
@@ -60,19 +62,20 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
-
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get
 
-﻿The *List bank account mappings* endpoint returns information about a source bank account and any current or potential target mapping accounts.
+﻿The *List bank accounts* endpoint returns information about a source bank account and any current or potential target mapping accounts.
 
-A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end users account in the underlying platform).
+A bank feed account mapping is a specified link between the source account (provided by the Codat user) and the target account (the end user's account in the underlying software).
 
-This endpoint is only needed if building an account management UI.
+> **For custom builds only**
+> 
+> Only use this endpoint if you are building your own account management UI.
 
 ### Example Usage
 
@@ -106,11 +109,11 @@ if res is not None:
 
 ### Response
 
-**[shared.BankFeedMapping](../../models/shared/bankfeedmapping.md)**
+**[List[shared.BankFeedMapping]](../../models/.md)**
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
