@@ -5,8 +5,8 @@ from .dataintegritybyamount import DataIntegrityByAmount, DataIntegrityByAmountT
 from .dataintegritybycount import DataIntegrityByCount, DataIntegrityByCountTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class DataIntegritySummaryTypedDict(TypedDict):

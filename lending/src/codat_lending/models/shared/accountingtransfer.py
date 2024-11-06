@@ -17,8 +17,8 @@ from codat_lending.types import (
 from enum import Enum
 import pydantic
 from pydantic import model_serializer
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AccountingTransferStatus(str, Enum):
@@ -31,10 +31,7 @@ class AccountingTransferStatus(str, Enum):
 
 
 class AccountingTransferTypedDict(TypedDict):
-    r"""> View the coverage for transfers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers\" target=\"_blank\">Data coverage explorer</a>.
-
-    A transfer records the movement of money between two bank accounts, or between a bank account and a nominal account. It is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction).
-    """
+    r"""A transfer records the movement of money between two bank accounts, or between a bank account and a nominal account. It is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction)."""
 
     contact_ref: NotRequired[ContactRefTypedDict]
     date_: NotRequired[str]
@@ -83,10 +80,7 @@ class AccountingTransferTypedDict(TypedDict):
 
 
 class AccountingTransfer(BaseModel):
-    r"""> View the coverage for transfers in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=transfers\" target=\"_blank\">Data coverage explorer</a>.
-
-    A transfer records the movement of money between two bank accounts, or between a bank account and a nominal account. It is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction).
-    """
+    r"""A transfer records the movement of money between two bank accounts, or between a bank account and a nominal account. It is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction)."""
 
     contact_ref: Annotated[Optional[ContactRef], pydantic.Field(alias="contactRef")] = (
         None

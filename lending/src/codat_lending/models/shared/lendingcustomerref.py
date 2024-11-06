@@ -10,8 +10,8 @@ from codat_lending.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class LendingCustomerRefTypedDict(TypedDict):

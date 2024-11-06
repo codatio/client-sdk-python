@@ -5,8 +5,8 @@ from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, MultipartFormMetadata
 import io
 import pydantic
-from typing import IO, Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import IO, Optional, Union
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CodatFileTypedDict(TypedDict):

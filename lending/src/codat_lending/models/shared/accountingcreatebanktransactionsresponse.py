@@ -18,8 +18,8 @@ from codat_lending.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired, deprecated
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict, deprecated
 
 
 @deprecated(

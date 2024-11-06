@@ -7,8 +7,7 @@ from codat_lending.models.shared import (
 from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, PathParamMetadata
 import pydantic
-from typing import TypedDict
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypedDict
 
 
 class GetDataIntegrityStatusRequestTypedDict(TypedDict):

@@ -19,16 +19,14 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class BankingTransactionTypedDict(TypedDict):
     r"""The Banking Transactions data type provides an immutable source of up-to-date information on income and expenditure.
 
     Responses are paged, so you should provide `page` and `pageSize` query parameters in your request.
-
-    View the coverage for banking transactions in the [Data Coverage Explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-transactions).
     """
 
     account_id: str
@@ -97,8 +95,6 @@ class BankingTransaction(BaseModel):
     r"""The Banking Transactions data type provides an immutable source of up-to-date information on income and expenditure.
 
     Responses are paged, so you should provide `page` and `pageSize` query parameters in your request.
-
-    View the coverage for banking transactions in the [Data Coverage Explorer](https://knowledge.codat.io/supported-features/banking?view=tab-by-data-type&dataType=banking-transactions).
     """
 
     account_id: Annotated[str, pydantic.Field(alias="accountId")]

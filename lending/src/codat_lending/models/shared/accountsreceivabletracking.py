@@ -3,13 +3,12 @@
 from __future__ import annotations
 from .accountingcustomerref import AccountingCustomerRef, AccountingCustomerRefTypedDict
 from .billedtotype1 import BilledToType1
-from .billedtotype2 import BilledToType2
 from .projectref import ProjectRef, ProjectRefTypedDict
 from .trackingcategoryref import TrackingCategoryRef, TrackingCategoryRefTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class RecordReferenceTypedDict(TypedDict):
@@ -43,7 +42,7 @@ class AccountsReceivableTrackingTypedDict(TypedDict):
     category_refs: List[TrackingCategoryRefTypedDict]
     is_billed_to: BilledToType1
     r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
-    is_rebilled_to: BilledToType2
+    is_rebilled_to: BilledToType1
     r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
     customer_ref: NotRequired[AccountingCustomerRefTypedDict]
     project_ref: NotRequired[ProjectRefTypedDict]
@@ -64,7 +63,7 @@ class AccountsReceivableTracking(BaseModel):
     is_billed_to: Annotated[BilledToType1, pydantic.Field(alias="isBilledTo")]
     r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
 
-    is_rebilled_to: Annotated[BilledToType2, pydantic.Field(alias="isRebilledTo")]
+    is_rebilled_to: Annotated[BilledToType1, pydantic.Field(alias="isRebilledTo")]
     r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
 
     customer_ref: Annotated[

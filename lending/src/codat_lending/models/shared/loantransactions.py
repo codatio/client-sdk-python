@@ -8,22 +8,17 @@ from .loantransactionsreportinfo import (
 from .reportitems import ReportItems, ReportItemsTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import Any, List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class LoanTransactionsTypedDict(TypedDict):
-    errors: NotRequired[List[Any]]
-    r"""If there are no errors, an empty array is returned."""
     report_info: NotRequired[LoanTransactionsReportInfoTypedDict]
     report_items: NotRequired[List[ReportItemsTypedDict]]
     r"""Contains object of reporting properties. The loan ref will reference a different object depending on the integration type."""
 
 
 class LoanTransactions(BaseModel):
-    errors: Optional[List[Any]] = None
-    r"""If there are no errors, an empty array is returned."""
-
     report_info: Annotated[
         Optional[LoanTransactionsReportInfo], pydantic.Field(alias="reportInfo")
     ] = None

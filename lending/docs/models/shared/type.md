@@ -1,12 +1,22 @@
 # Type
 
-The type of the weblink.
+The type of routing number.
 
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `WEBSITE` | Website   |
-| `SOCIAL`  | Social    |
-| `UNKNOWN` | Unknown   |
+| Name       | Value      |
+| ---------- | ---------- |
+| `RTN`      | rtn        |
+| `ABA`      | aba        |
+| `SWIFT`    | swift      |
+| `BSB`      | bsb        |
+| `IBAN`     | iban       |
+| `NZ2`      | nz2        |
+| `TRNO`     | trno       |
+| `SORTCODE` | sortcode   |
+| `BLZ`      | blz        |
+| `IFSC`     | ifsc       |
+| `BANKCODE` | bankcode   |
+| `APCA`     | apca       |
+| `CLABE`    | clabe      |

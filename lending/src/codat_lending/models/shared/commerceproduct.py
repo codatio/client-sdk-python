@@ -5,16 +5,12 @@ from .productvariant import ProductVariant, ProductVariantTypedDict
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CommerceProductTypedDict(TypedDict):
-    r"""A Product is an item in the company's inventory, and includes information about the price and quantity of all products, and variants thereof, available for sale.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-products) for this data type.
-
-    """
+    r"""A Product is an item in the company's inventory, and includes information about the price and quantity of all products, and variants thereof, available for sale."""
 
     id: str
     r"""A unique, persistent identifier for this record"""
@@ -38,11 +34,7 @@ class CommerceProductTypedDict(TypedDict):
 
 
 class CommerceProduct(BaseModel):
-    r"""A Product is an item in the company's inventory, and includes information about the price and quantity of all products, and variants thereof, available for sale.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-products) for this data type.
-
-    """
+    r"""A Product is an item in the company's inventory, and includes information about the price and quantity of all products, and variants thereof, available for sale."""
 
     id: str
     r"""A unique, persistent identifier for this record"""

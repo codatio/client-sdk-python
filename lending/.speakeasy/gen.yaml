@@ -9,21 +9,24 @@ generation:
     requestResponseComponentNamesFeb2024: false
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
   telemetryEnabled: true
 python:
-  version: 7.1.0
+  version: 8.0.0
   additionalDependencies:
     dev: {}
     main: {}
   author: Codat
   authors:
-  - Speakeasy
+    - Speakeasy
   clientServerStatusCodesAsErrors: true
-  description: Make credit decisions backed by enhanced financials, metrics, reports,
-    and data integrity features.
+  description: Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features.
   enumFormat: enum
+  fixFlags:
+    responseRequiredSep2024: false
   flattenGlobalSecurity: false
   flattenRequests: false
+  flatteningOrder: parameters-first
   imports:
     option: openapi
     paths:

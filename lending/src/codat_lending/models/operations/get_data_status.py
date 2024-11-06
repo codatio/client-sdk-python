@@ -5,8 +5,8 @@ from codat_lending.models.shared import datastatus as shared_datastatus
 from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, PathParamMetadata
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class GetDataStatusRequestTypedDict(TypedDict):

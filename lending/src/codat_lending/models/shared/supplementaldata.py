@@ -9,8 +9,8 @@ from codat_lending.types import (
     UNSET_SENTINEL,
 )
 from pydantic import model_serializer
-from typing import Any, Dict, TypedDict
-from typing_extensions import NotRequired
+from typing import Any, Dict
+from typing_extensions import NotRequired, TypedDict
 
 
 class SupplementalDataTypedDict(TypedDict):

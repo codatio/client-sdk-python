@@ -5,8 +5,7 @@ from codat_lending.models.shared import excelreporttypes as shared_excelreportty
 from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
 import pydantic
-from typing import TypedDict
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypedDict
 
 
 class GenerateExcelReportRequestTypedDict(TypedDict):

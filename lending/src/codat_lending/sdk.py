@@ -24,6 +24,7 @@ from codat_lending.financial_statements import FinancialStatements
 from codat_lending.liabilities import Liabilities
 from codat_lending.loan_writeback import LoanWriteback
 from codat_lending.manage_data import ManageData
+from codat_lending.manage_reports import ManageReports
 from codat_lending.models import shared
 from codat_lending.sales import Sales
 from codat_lending.transactions import Transactions
@@ -66,6 +67,7 @@ class CodatLending(BaseSDK):
     r"""Create and manage your SMB users' companies."""
     connections: Connections
     r"""Create new and manage existing data connections for a company."""
+    loan_writeback: LoanWriteback
     bank_statements: BankStatements
     r"""Retrieve banking data from linked bank accounts."""
     transactions: Transactions
@@ -79,9 +81,10 @@ class CodatLending(BaseSDK):
     accounts_receivable: AccountsReceivable
     file_upload: FileUpload
     r"""Endpoints to manage uploaded files."""
-    loan_writeback: LoanWriteback
     financial_statements: FinancialStatements
     manage_data: ManageData
+    manage_reports: ManageReports
+    r"""Endpoints to manage generation of reports"""
     liabilities: Liabilities
     r"""Debt and other liabilities."""
     data_integrity: DataIntegrity
@@ -164,6 +167,7 @@ class CodatLending(BaseSDK):
     def _init_sdks(self):
         self.companies = Companies(self.sdk_configuration)
         self.connections = Connections(self.sdk_configuration)
+        self.loan_writeback = LoanWriteback(self.sdk_configuration)
         self.bank_statements = BankStatements(self.sdk_configuration)
         self.transactions = Transactions(self.sdk_configuration)
         self.accounting_bank_data = CodatLendingAccountingBankData(
@@ -175,9 +179,9 @@ class CodatLending(BaseSDK):
         self.company_info = CompanyInfo(self.sdk_configuration)
         self.accounts_receivable = AccountsReceivable(self.sdk_configuration)
         self.file_upload = FileUpload(self.sdk_configuration)
-        self.loan_writeback = LoanWriteback(self.sdk_configuration)
         self.financial_statements = FinancialStatements(self.sdk_configuration)
         self.manage_data = ManageData(self.sdk_configuration)
+        self.manage_reports = ManageReports(self.sdk_configuration)
         self.liabilities = Liabilities(self.sdk_configuration)
         self.data_integrity = DataIntegrity(self.sdk_configuration)
         self.excel_reports = ExcelReports(self.sdk_configuration)

@@ -4,16 +4,14 @@ from __future__ import annotations
 from .commerceaddress import CommerceAddress, CommerceAddressTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CommerceLocationTypedDict(TypedDict):
     r"""The Location datatype holds information on the geographic location at which stocks of products may be held, as referenced in the Products data type.
 
     A Location also holds information on geographic locations where orders were placed, as referenced in the Orders data type.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-locations) for this data type.
     """
 
     id: str
@@ -29,8 +27,6 @@ class CommerceLocation(BaseModel):
     r"""The Location datatype holds information on the geographic location at which stocks of products may be held, as referenced in the Products data type.
 
     A Location also holds information on geographic locations where orders were placed, as referenced in the Orders data type.
-
-    Explore our [data coverage](https://knowledge.codat.io/supported-features/commerce?view=tab-by-data-type&dataType=commerce-locations) for this data type.
     """
 
     id: str

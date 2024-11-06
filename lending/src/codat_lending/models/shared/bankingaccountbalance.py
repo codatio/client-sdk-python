@@ -4,8 +4,8 @@ from __future__ import annotations
 from .accountbalanceamounts import AccountBalanceAmounts, AccountBalanceAmountsTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class BankingAccountBalanceTypedDict(TypedDict):

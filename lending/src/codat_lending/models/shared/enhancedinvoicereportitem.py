@@ -10,8 +10,8 @@ from decimal import Decimal
 import pydantic
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class EnhancedInvoiceReportItemTypedDict(TypedDict):

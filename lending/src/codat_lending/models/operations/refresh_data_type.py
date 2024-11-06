@@ -5,8 +5,8 @@ from codat_lending.models.shared import schema_datatype as shared_schema_datatyp
 from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class RefreshDataTypeRequestTypedDict(TypedDict):

@@ -13,8 +13,8 @@ from codat_lending.types import (
 from enum import Enum
 import pydantic
 from pydantic import model_serializer
-from typing import Dict, List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Dict, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SourceType(str, Enum):

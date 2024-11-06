@@ -4,14 +4,12 @@ from __future__ import annotations
 from .balancesheet import BalanceSheet, BalanceSheetTypedDict
 from codat_lending.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AccountingBalanceSheetTypedDict(TypedDict):
-    r"""> View the coverage for balance sheet in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=balanceSheet\" target=\"_blank\">Data coverage explorer</a>.
-
-    ## Overview
+    r"""## Overview
 
     The balance sheet is a snapshot of a company's accounts at a single point in time that provides a statement of the assets, liabilities and equity of an organization. It gives interested parties an idea of the company's financial position, in addition to displaying what the company owns and owes.
 
@@ -85,9 +83,7 @@ class AccountingBalanceSheetTypedDict(TypedDict):
 
 
 class AccountingBalanceSheet(BaseModel):
-    r"""> View the coverage for balance sheet in the <a className=\"external\" href=\"https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=balanceSheet\" target=\"_blank\">Data coverage explorer</a>.
-
-    ## Overview
+    r"""## Overview
 
     The balance sheet is a snapshot of a company's accounts at a single point in time that provides a statement of the assets, liabilities and equity of an organization. It gives interested parties an idea of the company's financial position, in addition to displaying what the company owns and owes.
 
