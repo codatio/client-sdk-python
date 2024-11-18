@@ -5,6 +5,7 @@ from .accountingpaymentallocation import (
     AccountingPaymentAllocation,
     AccountingPaymentAllocationTypedDict,
 )
+from .accountingrecordref import AccountingRecordRef, AccountingRecordRefTypedDict
 from .billcreditnotelineitem import (
     BillCreditNoteLineItem,
     BillCreditNoteLineItemTypedDict,
@@ -12,7 +13,6 @@ from .billcreditnotelineitem import (
 from .billcreditnotestatus import BillCreditNoteStatus
 from .items import Items, ItemsTypedDict
 from .metadata import Metadata, MetadataTypedDict
-from .recordref import RecordRef, RecordRefTypedDict
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from .supplierref import SupplierRef, SupplierRefTypedDict
 from codat_lending.types import (
@@ -84,7 +84,7 @@ class AccountingBillCreditNoteTypedDict(TypedDict):
     """
     bill_credit_note_number: NotRequired[Nullable[str]]
     r"""Friendly reference for the bill credit note."""
-    created_from_refs: NotRequired[Nullable[List[RecordRefTypedDict]]]
+    created_from_refs: NotRequired[Nullable[List[AccountingRecordRefTypedDict]]]
     r"""An array of records the credit note was created from."""
     currency: NotRequired[str]
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
@@ -275,7 +275,8 @@ class AccountingBillCreditNote(BaseModel):
     r"""Friendly reference for the bill credit note."""
 
     created_from_refs: Annotated[
-        OptionalNullable[List[RecordRef]], pydantic.Field(alias="createdFromRefs")
+        OptionalNullable[List[AccountingRecordRef]],
+        pydantic.Field(alias="createdFromRefs"),
     ] = UNSET
     r"""An array of records the credit note was created from."""
 

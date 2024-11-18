@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .accountingcustomerref import AccountingCustomerRef, AccountingCustomerRefTypedDict
+from .accountingrecordref import AccountingRecordRef, AccountingRecordRefTypedDict
 from .billedtotype1 import BilledToType1
 from .projectref import ProjectRef, ProjectRefTypedDict
 from .trackingcategoryref import TrackingCategoryRef, TrackingCategoryRefTypedDict
@@ -9,31 +10,6 @@ from codat_lending.types import BaseModel
 import pydantic
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class RecordReferenceTypedDict(TypedDict):
-    r"""Links the current record to the underlying record or data type that created it.
-
-    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
-    """
-
-    data_type: NotRequired[str]
-    r"""Allowed name of the 'dataType'."""
-    id: NotRequired[str]
-    r"""'id' of the underlying record or data type."""
-
-
-class RecordReference(BaseModel):
-    r"""Links the current record to the underlying record or data type that created it.
-
-    For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
-    """
-
-    data_type: Annotated[Optional[str], pydantic.Field(alias="dataType")] = None
-    r"""Allowed name of the 'dataType'."""
-
-    id: Optional[str] = None
-    r"""'id' of the underlying record or data type."""
 
 
 class AccountsReceivableTrackingTypedDict(TypedDict):
@@ -46,7 +22,7 @@ class AccountsReceivableTrackingTypedDict(TypedDict):
     r"""Defines if the bill or bill credit note is billed/rebilled to a project."""
     customer_ref: NotRequired[AccountingCustomerRefTypedDict]
     project_ref: NotRequired[ProjectRefTypedDict]
-    record_ref: NotRequired[RecordReferenceTypedDict]
+    record_ref: NotRequired[AccountingRecordRefTypedDict]
     r"""Links the current record to the underlying record or data type that created it.
 
     For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
@@ -75,7 +51,7 @@ class AccountsReceivableTracking(BaseModel):
     )
 
     record_ref: Annotated[
-        Optional[RecordReference], pydantic.Field(alias="recordRef")
+        Optional[AccountingRecordRef], pydantic.Field(alias="recordRef")
     ] = None
     r"""Links the current record to the underlying record or data type that created it.
 

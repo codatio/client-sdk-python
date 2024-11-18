@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "codat-lending"
-version = "8.0.0"
+version = "9.0.0"
 description = "Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features."
 authors = ["Speakeasy",]
 readme = "README-PYPI.md"

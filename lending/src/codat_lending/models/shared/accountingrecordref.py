@@ -7,7 +7,7 @@ from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class RecordRefTypedDict(TypedDict):
+class AccountingRecordRefTypedDict(TypedDict):
     r"""Links the current record to the underlying record or data type that created it.
 
     For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
@@ -19,7 +19,7 @@ class RecordRefTypedDict(TypedDict):
     r"""'id' of the underlying record or data type."""
 
 
-class RecordRef(BaseModel):
+class AccountingRecordRef(BaseModel):
     r"""Links the current record to the underlying record or data type that created it.
 
     For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.

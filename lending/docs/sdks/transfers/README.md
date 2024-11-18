@@ -48,6 +48,7 @@ res = s.loan_writeback.transfers.create(request={
         "description": "test transfers push 20230126 12.08",
         "from_": {
             "account_ref": {
+                "data_type": "bankAccounts",
                 "id": "80000028-1671794219",
             },
             "amount": Decimal("12"),
@@ -61,6 +62,7 @@ res = s.loan_writeback.transfers.create(request={
         "status": shared.AccountingTransferStatus.UNKNOWN,
         "to": {
             "account_ref": {
+                "data_type": "bankAccounts",
                 "id": "80000004-1671793811",
             },
             "amount": Decimal("12"),
