@@ -180,6 +180,7 @@ from .accountingprofitandlossreport import (
     AccountingProfitAndLossReport,
     AccountingProfitAndLossReportTypedDict,
 )
+from .accountingrecordref import AccountingRecordRef, AccountingRecordRefTypedDict
 from .accountingsupplier import AccountingSupplier, AccountingSupplierTypedDict
 from .accountingsuppliers import AccountingSuppliers, AccountingSuppliersTypedDict
 from .accountingtransfer import (
@@ -209,8 +210,6 @@ from .accountspayabletracking import (
 from .accountsreceivabletracking import (
     AccountsReceivableTracking,
     AccountsReceivableTrackingTypedDict,
-    RecordReference,
-    RecordReferenceTypedDict,
 )
 from .accountstatus import AccountStatus
 from .accounttransactionline import (
@@ -549,7 +548,6 @@ from .pushoptionchoice import PushOptionChoice, PushOptionChoiceTypedDict
 from .pushoptionproperty import PushOptionProperty, PushOptionPropertyTypedDict
 from .pushoptiontype import PushOptionType
 from .pushvalidationinfo import PushValidationInfo, PushValidationInfoTypedDict
-from .recordref import RecordRef, RecordRefTypedDict
 from .reportbasis import ReportBasis
 from .reportcomponentmeasure import (
     ReportComponentMeasure,
@@ -770,6 +768,8 @@ __all__ = [
     "AccountingPaymentsTypedDict",
     "AccountingProfitAndLossReport",
     "AccountingProfitAndLossReportTypedDict",
+    "AccountingRecordRef",
+    "AccountingRecordRefTypedDict",
     "AccountingSupplier",
     "AccountingSupplierTypedDict",
     "AccountingSuppliers",
@@ -1139,10 +1139,6 @@ __all__ = [
     "PushValidationInfoTypedDict",
     "RecordLineReference",
     "RecordLineReferenceTypedDict",
-    "RecordRef",
-    "RecordRefTypedDict",
-    "RecordReference",
-    "RecordReferenceTypedDict",
     "ReportBasis",
     "ReportComponentMeasure",
     "ReportComponentMeasureTypedDict",

@@ -1,4 +1,4 @@
-# RecordRef
+# AccountingRecordRef
 
 Links the current record to the underlying record or data type that created it. 
 
