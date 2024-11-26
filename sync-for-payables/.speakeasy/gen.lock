@@ -5,8 +5,8 @@ management:
   docVersion: 3.0.0
   speakeasyVersion: 1.447.0
   generationVersion: 2.463.0
-  releaseVersion: 8.0.0
-  configChecksum: 9028371eea0ec73c624506c8be79da1c
+  releaseVersion: 8.0.1
+  configChecksum: 5965fe92b6f377d879959498007138b9
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: sync-for-payables
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-payables
