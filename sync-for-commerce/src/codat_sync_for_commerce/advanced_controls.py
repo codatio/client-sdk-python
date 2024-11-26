@@ -38,9 +38,9 @@ class AdvancedControls(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        if not isinstance(request, BaseModel) and request is not None:
-            request = utils.unmarshal(request, shared.CreateCompany)
-        request = cast(shared.CreateCompany, request)
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, Optional[shared.CreateCompany])
+        request = cast(Optional[shared.CreateCompany], request)
 
         req = self.build_request(
             method="POST",
@@ -104,15 +104,17 @@ class AdvancedControls(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -143,9 +145,9 @@ class AdvancedControls(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        if not isinstance(request, BaseModel) and request is not None:
-            request = utils.unmarshal(request, shared.CreateCompany)
-        request = cast(shared.CreateCompany, request)
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, Optional[shared.CreateCompany])
+        request = cast(Optional[shared.CreateCompany], request)
 
         req = self.build_request_async(
             method="POST",
@@ -209,15 +211,17 @@ class AdvancedControls(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -312,15 +316,17 @@ class AdvancedControls(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -415,15 +421,17 @@ class AdvancedControls(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -432,7 +440,7 @@ class AdvancedControls(BaseSDK):
         *,
         request: Union[
             operations.ListCompaniesRequest, operations.ListCompaniesRequestTypedDict
-        ],
+        ] = operations.ListCompaniesRequest(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -518,15 +526,17 @@ class AdvancedControls(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -535,7 +545,7 @@ class AdvancedControls(BaseSDK):
         *,
         request: Union[
             operations.ListCompaniesRequest, operations.ListCompaniesRequestTypedDict
-        ],
+        ] = operations.ListCompaniesRequest(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -621,15 +631,17 @@ class AdvancedControls(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -726,15 +738,17 @@ class AdvancedControls(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )
 
@@ -831,14 +845,16 @@ class AdvancedControls(BaseSDK):
             data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
             raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res.text, http_res
+                "API error occurred", http_res.status_code, http_res_text, http_res
             )
 
         content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
         raise errors.SDKError(
             f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
             http_res.status_code,
-            http_res.text,
+            http_res_text,
             http_res,
         )

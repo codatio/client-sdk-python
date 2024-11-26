@@ -4,8 +4,8 @@ from __future__ import annotations
 from codat_sync_for_commerce.types import BaseModel
 from enum import Enum
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class OutputFormat(str, Enum):

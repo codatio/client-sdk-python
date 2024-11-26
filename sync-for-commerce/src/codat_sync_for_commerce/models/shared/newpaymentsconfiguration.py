@@ -11,8 +11,8 @@ from codat_sync_for_commerce.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import Dict, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Dict, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class NewPaymentsConfigurationTypedDict(TypedDict):

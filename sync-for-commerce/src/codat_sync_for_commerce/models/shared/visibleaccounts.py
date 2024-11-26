@@ -10,8 +10,8 @@ from codat_sync_for_commerce.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import List, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class VisibleAccountsTypedDict(TypedDict):

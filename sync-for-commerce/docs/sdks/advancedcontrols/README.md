@@ -22,25 +22,19 @@ Creates a Codat company
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.advanced_controls.create_company(request={
+        "name": "string",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.advanced_controls.create_company(request={
-    "name": "string",
-    "description": "Requested early access to the new financing scheme.",
-    "groups": [
-        {
-            "id": "60d2fa12-8a04-11ee-b9d1-0242ac120002",
-        },
-    ],
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -57,11 +51,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get_configuration
 
@@ -73,19 +66,18 @@ Returns a company's commerce sync configuration'.
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.advanced_controls.get_configuration(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.advanced_controls.get_configuration(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -102,11 +94,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list_companies
 
@@ -118,22 +109,21 @@ Returns a list of companies.
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.advanced_controls.list_companies(request={
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.advanced_controls.list_companies(request={
-    "order_by": "-modifiedDate",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -150,11 +140,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
-
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## set_configuration
 
@@ -166,19 +155,18 @@ Sets a company's commerce sync configuration.
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.advanced_controls.set_configuration(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.advanced_controls.set_configuration(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -195,7 +183,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object                        | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.ErrorMessage                 | 400,401,402,403,404,409,429,500,503 | application/json                    |
-| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.ErrorMessage                         | 400, 401, 402, 403, 404, 409, 429, 500, 503 | application/json                            |
+| errors.SDKError                             | 4XX, 5XX                                    | \*/\*                                       |
