@@ -22,30 +22,50 @@ To find valid target account options, first call the [List bank feed account map
 >
 > Only use this endpoint if you are building your own account management UI.
 
+#### Account mapping variability
+
+The method of mapping the source account to the target account varies depending on the accounting software your company uses.
+
+#### Mapping options:
+
+1. **API Mapping**: Integrate the mapping journey directly into your application for a seamless user experience.
+2. **Codat UI Mapping**: If you prefer a quicker setup, you can utilize Codat's provided user interface for mapping.
+3. **Accounting Platform Mapping**: For some accounting software, the mapping process must be conducted within the software itself.
+
+### Integration-specific behaviour
+
+| Bank Feed Integration | API Mapping | Codat UI Mapping | Accounting Platform Mapping |
+| --------------------- | ----------- | ---------------- | --------------------------- |
+| Xero                  | ✅          | ✅               |                             |
+| FreeAgent             | ✅          | ✅               |                             |
+| Oracle NetSuite       | ✅          | ✅               |                             |
+| Exact Online (NL)     | ✅          | ✅               |                             |
+| QuickBooks Online     |             |                  | ✅                          |
+| Sage                  |             |                  | ✅                          |
+
 ### Example Usage
 
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.account_mapping.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bank_feed_account_mapping": {
+            "source_account_id": "acc-002",
+            "target_account_id": "account-081",
+        },
+    })
 
-res = s.account_mapping.create(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "bank_feed_account_mapping": {
-        "source_account_id": "acc-002",
-        "target_account_id": "account-081",
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -83,20 +103,19 @@ A bank feed account mapping is a specified link between the source account (prov
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.account_mapping.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.account_mapping.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

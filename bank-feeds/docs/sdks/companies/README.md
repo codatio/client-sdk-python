@@ -10,6 +10,7 @@ Create and manage your SMB users' companies.
 * [create](#create) - Create company
 * [delete](#delete) - Delete a company
 * [get](#get) - Get company
+* [get_access_token](#get_access_token) - Get company access token
 * [list](#list) - List companies
 * [update](#update) - Update company
 
@@ -28,20 +29,19 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -77,17 +77,16 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.companies.delete(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-s.companies.delete(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -119,19 +118,18 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.companies.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -153,6 +151,50 @@ if res is not None:
 | errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
 | errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
+## get_access_token
+
+Use the _Get company access token_ endpoint to return an access token for the specified company ID to use in Codat's embedded UI products.
+
+
+### Example Usage
+
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as s:
+    res = s.companies.get_access_token(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    if res is not None:
+        # handle response
+        pass
+
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.GetCompanyAccessTokenRequest](../../models/operations/getcompanyaccesstokenrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
+
+### Response
+
+**[shared.CompanyAccessToken](../../models/shared/companyaccesstoken.md)**
+
+### Errors
+
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+
 ## list
 
 ﻿The *List companies* endpoint returns a list of [companies](https://docs.codat.io/bank-feeds-api#/schemas/Company) associated to your instances.
@@ -166,22 +208,21 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.list(request={
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.companies.list(request={
-    "order_by": "-modifiedDate",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -216,23 +257,22 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.update(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "company_request_body": {
+            "name": "New Name",
+            "description": "Requested early access to the new financing scheme.",
+        },
+    })
 
-res = s.companies.update(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "company_request_body": {
-        "name": "New Name",
-        "description": "Requested early access to the new financing scheme.",
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

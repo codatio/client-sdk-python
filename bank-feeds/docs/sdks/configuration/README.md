@@ -20,19 +20,18 @@ Configure bank feeds for a company.
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.configuration.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.configuration.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -64,22 +63,21 @@ if res is not None:
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
-
-res = s.configuration.set(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "configuration": {
+) as s:
+    res = s.configuration.set(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    },
-})
+        "configuration": {
+            "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        },
+    })
 
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

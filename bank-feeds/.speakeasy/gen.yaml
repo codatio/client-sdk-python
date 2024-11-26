@@ -12,7 +12,7 @@ generation:
     oAuth2PasswordEnabled: false
   telemetryEnabled: true
 python:
-  version: 8.0.0
+  version: 9.0.0
   additionalDependencies:
     dev: {}
     main: {}
@@ -20,6 +20,7 @@ python:
   authors:
     - Speakeasy
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKError
   description: Set up bank feeds from accounts in your application to supported accounting software.
   enumFormat: enum
   fixFlags:

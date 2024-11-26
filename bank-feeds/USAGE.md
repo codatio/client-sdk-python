@@ -4,20 +4,19 @@
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 ```
 
 </br>
@@ -30,18 +29,19 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
 async def main():
-    s = CodatBankFeeds(
+    async with CodatBankFeeds(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    )
-    res = await s.companies.create_async(request={
-        "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
-    })
-    if res is not None:
-        # handle response
-        pass
+    ) as s:
+        res = await s.companies.create_async(request={
+            "name": "Technicalium",
+            "description": "Requested early access to the new financing scheme.",
+        })
+
+        if res is not None:
+            # handle response
+            pass
 
 asyncio.run(main())
 ```

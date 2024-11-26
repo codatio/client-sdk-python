@@ -12,6 +12,22 @@ from .create_bank_transactions import (
     CreateBankTransactionsRequest,
     CreateBankTransactionsRequestTypedDict,
 )
+from .create_batch_source_account import (
+    CreateBatchSourceAccount1,
+    CreateBatchSourceAccount1TypedDict,
+    CreateBatchSourceAccountRequest,
+    CreateBatchSourceAccountRequestBody,
+    CreateBatchSourceAccountRequestBodyTypedDict,
+    CreateBatchSourceAccountRequestTypedDict,
+    CreateBatchSourceAccountResponse,
+    CreateBatchSourceAccountResponseBody,
+    CreateBatchSourceAccountResponseBodyTypedDict,
+    CreateBatchSourceAccountResponseTypedDict,
+    CreateBatchSourceAccountSourceAccountsResponseBody,
+    CreateBatchSourceAccountSourceAccountsResponseBodyTypedDict,
+    One,
+    OneTypedDict,
+)
 from .create_connection import (
     CreateConnectionRequest,
     CreateConnectionRequestBody,
@@ -45,12 +61,20 @@ from .get_bank_account_mapping import (
     GetBankAccountMappingRequestTypedDict,
 )
 from .get_company import GetCompanyRequest, GetCompanyRequestTypedDict
+from .get_company_access_token import (
+    GetCompanyAccessTokenRequest,
+    GetCompanyAccessTokenRequestTypedDict,
+)
 from .get_company_information import (
     GetCompanyInformationRequest,
     GetCompanyInformationRequestTypedDict,
 )
 from .get_configuration import GetConfigurationRequest, GetConfigurationRequestTypedDict
 from .get_connection import GetConnectionRequest, GetConnectionRequestTypedDict
+from .get_create_bank_transactions_model import (
+    GetCreateBankTransactionsModelRequest,
+    GetCreateBankTransactionsModelRequestTypedDict,
+)
 from .get_create_bankaccounts_model import (
     GetCreateBankAccountsModelRequest,
     GetCreateBankAccountsModelRequestTypedDict,
@@ -99,6 +123,18 @@ __all__ = [
     "CreateBankAccountRequestTypedDict",
     "CreateBankTransactionsRequest",
     "CreateBankTransactionsRequestTypedDict",
+    "CreateBatchSourceAccount1",
+    "CreateBatchSourceAccount1TypedDict",
+    "CreateBatchSourceAccountRequest",
+    "CreateBatchSourceAccountRequestBody",
+    "CreateBatchSourceAccountRequestBodyTypedDict",
+    "CreateBatchSourceAccountRequestTypedDict",
+    "CreateBatchSourceAccountResponse",
+    "CreateBatchSourceAccountResponseBody",
+    "CreateBatchSourceAccountResponseBodyTypedDict",
+    "CreateBatchSourceAccountResponseTypedDict",
+    "CreateBatchSourceAccountSourceAccountsResponseBody",
+    "CreateBatchSourceAccountSourceAccountsResponseBodyTypedDict",
     "CreateConnectionRequest",
     "CreateConnectionRequestBody",
     "CreateConnectionRequestBodyTypedDict",
@@ -121,6 +157,8 @@ __all__ = [
     "GenerateCredentialsRequestTypedDict",
     "GetBankAccountMappingRequest",
     "GetBankAccountMappingRequestTypedDict",
+    "GetCompanyAccessTokenRequest",
+    "GetCompanyAccessTokenRequestTypedDict",
     "GetCompanyInformationRequest",
     "GetCompanyInformationRequestTypedDict",
     "GetCompanyRequest",
@@ -131,6 +169,8 @@ __all__ = [
     "GetConnectionRequestTypedDict",
     "GetCreateBankAccountsModelRequest",
     "GetCreateBankAccountsModelRequestTypedDict",
+    "GetCreateBankTransactionsModelRequest",
+    "GetCreateBankTransactionsModelRequestTypedDict",
     "GetCreateOperationRequest",
     "GetCreateOperationRequestTypedDict",
     "GetLastSuccessfulRequest",
@@ -147,6 +187,8 @@ __all__ = [
     "ListSourceAccountsRequestTypedDict",
     "ListSourceAccountsResponseBody",
     "ListSourceAccountsResponseBodyTypedDict",
+    "One",
+    "OneTypedDict",
     "SetConfigurationRequest",
     "SetConfigurationRequestTypedDict",
     "UnlinkConnectionRequest",
