@@ -26,22 +26,21 @@ For example, to retrieve only active suppliers (i.e. `status=Active`) or supplie
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.suppliers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "continuation_token": "continuationToken=eyJwYWdlIjoyLCJwYWdlU2l6ZSI6MTAwLCJwYWdlQ291bnQiOjExfQ==",
+        "query": "sourceModifiedDate>2023-12-15T00:00:00.000Z",
+    })
 
-res = s.suppliers.list(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "continuation_token": "continuationToken=eyJwYWdlIjoyLCJwYWdlU2l6ZSI6MTAwLCJwYWdlQ291bnQiOjExfQ==",
-    "query": "sourceModifiedDate>2023-12-15T00:00:00.000Z",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -76,39 +75,38 @@ The *Create supplier* endpoint creates a new [supplier](https://docs.codat.io/sy
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.suppliers.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "supplier_prototype": {
+            "supplier_name": "Greggs",
+            "status": shared.SupplierStatus.ACTIVE,
+            "contact_name": "Greg Greggs",
+            "email_address": "greg@greggs.com",
+            "phone": "+44 (0)1223 322410",
+            "addresses": [
+                {
+                    "type": shared.AddressType.BILLING,
+                    "line1": "Flat 1",
+                    "line2": "2 Dennis Avenue",
+                    "city": "London",
+                    "region": "Camden",
+                    "country": "GBR",
+                    "postal_code": "EC1N 7TE",
+                },
+            ],
+            "default_currency": "GBP",
+        },
+    })
 
-res = s.suppliers.create(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "supplier_prototype": {
-        "supplier_name": "Greggs",
-        "status": shared.SupplierStatus.ACTIVE,
-        "contact_name": "Greg Greggs",
-        "email_address": "greg@greggs.com",
-        "phone": "+44 (0)1223 322410",
-        "addresses": [
-            {
-                "type": shared.AddressType.BILLING,
-                "line1": "Flat 1",
-                "line2": "2 Dennis Avenue",
-                "city": "London",
-                "region": "Camden",
-                "country": "GBR",
-                "postal_code": "EC1N 7TE",
-            },
-        ],
-        "default_currency": "GBP",
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

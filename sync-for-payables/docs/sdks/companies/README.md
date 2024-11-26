@@ -15,7 +15,7 @@ Create and manage your SMB users' companies.
 
 ## list
 
-﻿The *List companies* endpoint returns a list of [companies] associated to your instances.
+﻿The *List companies* endpoint returns a list of [companies](https://docs.codat.io/sync-for-payables-api#/schemas/Company) associated to your instances.
 
 A [company](https://docs.codat.io/sync-for-payables-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/sync-for-payables-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
@@ -26,22 +26,21 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-paya
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.list(request={
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "order_by": "-modifiedDate",
+    })
 
-res = s.companies.list(request={
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "order_by": "-modifiedDate",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -78,20 +77,19 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -126,23 +124,22 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-paya
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.update(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "company_request_body": {
+            "name": "New Name",
+            "description": "Requested early access to the new financing scheme.",
+        },
+    })
 
-res = s.companies.update(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "company_request_body": {
-        "name": "New Name",
-        "description": "Requested early access to the new financing scheme.",
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -178,17 +175,16 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-paya
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.companies.delete(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-s.companies.delete(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -220,19 +216,18 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-paya
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.companies.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

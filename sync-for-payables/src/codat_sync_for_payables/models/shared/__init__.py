@@ -53,6 +53,12 @@ from .codatfile import CodatFile, CodatFileTypedDict
 from .companies import Companies, CompaniesTypedDict
 from .company import Company, CompanyTypedDict
 from .companyinformation import CompanyInformation, CompanyInformationTypedDict
+from .companyreference import (
+    CompanyReference,
+    CompanyReferenceLinks,
+    CompanyReferenceLinksTypedDict,
+    CompanyReferenceTypedDict,
+)
 from .companyrequestbody import CompanyRequestBody, CompanyRequestBodyTypedDict
 from .connection import Connection, ConnectionTypedDict, SourceType
 from .connections import Connections, ConnectionsTypedDict
@@ -139,6 +145,10 @@ __all__ = [
     "Company",
     "CompanyInformation",
     "CompanyInformationTypedDict",
+    "CompanyReference",
+    "CompanyReferenceLinks",
+    "CompanyReferenceLinksTypedDict",
+    "CompanyReferenceTypedDict",
     "CompanyRequestBody",
     "CompanyRequestBodyTypedDict",
     "CompanyTypedDict",

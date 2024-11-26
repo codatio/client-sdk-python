@@ -28,22 +28,21 @@ Mapping options are a set of accounts and tax rates used to configure the SMB's 
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bills.get_bill_options(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "continuation_token": "continuationToken=eyJwYWdlIjoyLCJwYWdlU2l6ZSI6MTAwLCJwYWdlQ291bnQiOjExfQ==",
+        "status_query": "status=Archived",
+    })
 
-res = s.bills.get_bill_options(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "continuation_token": "continuationToken=eyJwYWdlIjoyLCJwYWdlU2l6ZSI6MTAwLCJwYWdlQ291bnQiOjExfQ==",
-    "status_query": "status=Archived",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -79,22 +78,21 @@ By default, the endpoint will return all bills with a status of 'Open' & 'Partia
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bills.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "continuation_token": "continuationToken=eyJwYWdlIjoyLCJwYWdlU2l6ZSI6MTAwLCJwYWdlQ291bnQiOjExfQ==",
+        "query": "status=Open",
+    })
 
-res = s.bills.list(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "continuation_token": "continuationToken=eyJwYWdlIjoyLCJwYWdlU2l6ZSI6MTAwLCJwYWdlQ291bnQiOjExfQ==",
-    "query": "status=Open",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -129,73 +127,72 @@ from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 from decimal import Decimal
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
-
-res = s.bills.create(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "bill_prototype": {
-        "supplier_ref": {
-            "id": "1262c350-fe0f-40ec-aeff-41c95b4a45af",
-            "supplier_name": "DIISR - Small Business Services",
+) as s:
+    res = s.bills.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bill_prototype": {
+            "supplier_ref": {
+                "id": "1262c350-fe0f-40ec-aeff-41c95b4a45af",
+                "supplier_name": "DIISR - Small Business Services",
+            },
+            "issue_date": "2023-04-23T00:00:00",
+            "due_date": "2023-04-23T00:00:00",
+            "currency": "GBP",
+            "status": shared.BillStatus.OPEN,
+            "reference": "bill_b8qmmj4ksf1suax",
+            "currency_rate": Decimal("1"),
+            "line_items": [
+                {
+                    "unit_amount": Decimal("1800"),
+                    "quantity": Decimal("1"),
+                    "account_ref": {
+                        "id": "46f9461e-788b-4906-8b74-d1ea17f6dc10",
+                    },
+                    "description": "Half day training - Microsoft Office",
+                    "tax_amount": Decimal("360"),
+                    "total_amount": Decimal("2160"),
+                    "tax_rate_ref": {
+                        "id": "INPUT2",
+                    },
+                },
+                {
+                    "unit_amount": Decimal("4000"),
+                    "quantity": Decimal("1"),
+                    "account_ref": {
+                        "id": "f96c9458-d724-47bf-8f74-a9d5726465ce",
+                    },
+                    "description": "Desktop/network support via email & phone.Per month fixed fee for minimum 20 hours/month.",
+                    "tax_amount": Decimal("800"),
+                    "total_amount": Decimal("4800"),
+                    "tax_rate_ref": {
+                        "id": "INPUT2",
+                    },
+                },
+                {
+                    "unit_amount": Decimal("32"),
+                    "quantity": Decimal("8"),
+                    "account_ref": {
+                        "id": "cba6527d-f102-4538-b421-e483233e9d5a",
+                    },
+                    "description": "Stationery charges",
+                    "tax_amount": Decimal("51.2"),
+                    "total_amount": Decimal("307.2"),
+                    "tax_rate_ref": {
+                        "id": "INPUT2",
+                    },
+                },
+            ],
         },
-        "issue_date": "2023-04-23T00:00:00",
-        "due_date": "2023-04-23T00:00:00",
-        "currency": "GBP",
-        "status": shared.BillStatus.OPEN,
-        "reference": "bill_b8qmmj4ksf1suax",
-        "currency_rate": Decimal("1"),
-        "line_items": [
-            {
-                "unit_amount": Decimal("1800"),
-                "quantity": Decimal("1"),
-                "account_ref": {
-                    "id": "46f9461e-788b-4906-8b74-d1ea17f6dc10",
-                },
-                "description": "Half day training - Microsoft Office",
-                "tax_amount": Decimal("360"),
-                "total_amount": Decimal("2160"),
-                "tax_rate_ref": {
-                    "id": "INPUT2",
-                },
-            },
-            {
-                "unit_amount": Decimal("4000"),
-                "quantity": Decimal("1"),
-                "account_ref": {
-                    "id": "f96c9458-d724-47bf-8f74-a9d5726465ce",
-                },
-                "description": "Desktop/network support via email & phone.Per month fixed fee for minimum 20 hours/month.",
-                "tax_amount": Decimal("800"),
-                "total_amount": Decimal("4800"),
-                "tax_rate_ref": {
-                    "id": "INPUT2",
-                },
-            },
-            {
-                "unit_amount": Decimal("32"),
-                "quantity": Decimal("8"),
-                "account_ref": {
-                    "id": "cba6527d-f102-4538-b421-e483233e9d5a",
-                },
-                "description": "Stationery charges",
-                "tax_amount": Decimal("51.2"),
-                "total_amount": Decimal("307.2"),
-                "tax_rate_ref": {
-                    "id": "INPUT2",
-                },
-            },
-        ],
-    },
-})
+    })
 
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -229,21 +226,20 @@ The *Upload bill attachment* endpoint uploads an attachment and assigns it again
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bills.upload_attachment(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bill_id": "EILBDVJVNUAGVKRQ",
+    })
 
-res = s.bills.upload_attachment(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "bill_id": "EILBDVJVNUAGVKRQ",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -277,21 +273,20 @@ The *List bill attachments* endpoint returns a list of attachments available to 
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bills.list_attachments(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bill_id": "EILBDVJVNUAGVKRQ",
+    })
 
-res = s.bills.list_attachments(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "bill_id": "EILBDVJVNUAGVKRQ",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -328,22 +323,21 @@ Check out our [coverage explorer](https://knowledge.codat.io/supported-features/
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bills.download_attachment(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bill_id": "EILBDVJVNUAGVKRQ",
+        "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.bills.download_attachment(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "bill_id": "EILBDVJVNUAGVKRQ",
-    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
