@@ -5,8 +5,8 @@ from .commerceconfiguration import CommerceConfiguration, CommerceConfigurationT
 from .syncschedule import SyncSchedule, SyncScheduleTypedDict
 from codat_sync_for_commerce.types import BaseModel
 import pydantic
-from typing import Any, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Any, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class ConfigurationTypedDict(TypedDict):

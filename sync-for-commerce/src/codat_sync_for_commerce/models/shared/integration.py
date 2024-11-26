@@ -5,8 +5,8 @@ from .datatypefeature import DataTypeFeature, DataTypeFeatureTypedDict
 from .sourcetype import SourceType
 from codat_sync_for_commerce.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class IntegrationTypedDict(TypedDict):

@@ -11,8 +11,8 @@ from codat_sync_for_commerce.types import (
 from enum import Enum
 import pydantic
 from pydantic import model_serializer
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class ErrorStatus(str, Enum):

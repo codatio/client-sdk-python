@@ -11,8 +11,8 @@ from codat_sync_for_commerce.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import Any, List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Any, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SyncStatusTypedDict(TypedDict):

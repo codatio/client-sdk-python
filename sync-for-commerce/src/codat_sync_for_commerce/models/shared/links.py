@@ -4,8 +4,8 @@ from __future__ import annotations
 from .halref import HalRef, HalRefTypedDict
 from codat_sync_for_commerce.types import BaseModel
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class LinksTypedDict(TypedDict):

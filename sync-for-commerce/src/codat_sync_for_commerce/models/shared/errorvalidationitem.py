@@ -10,8 +10,7 @@ from codat_sync_for_commerce.types import (
 )
 import pydantic
 from pydantic import model_serializer
-from typing import TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class ErrorValidationItemTypedDict(TypedDict):

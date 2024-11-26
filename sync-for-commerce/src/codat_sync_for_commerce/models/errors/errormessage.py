@@ -41,7 +41,7 @@ class ErrorMessageData(BaseModel):
 
 
 class ErrorMessage(Exception):
-    r"""Your `query` parameter was not correctly formed"""
+    r"""Your API request was not properly authorized."""
 
     data: ErrorMessageData
 

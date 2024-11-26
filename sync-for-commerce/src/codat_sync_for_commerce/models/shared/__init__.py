@@ -11,7 +11,13 @@ from .brandingimage import BrandingImage, BrandingImageTypedDict
 from .brandinglogo import BrandingLogo, BrandingLogoTypedDict
 from .commerceconfiguration import CommerceConfiguration, CommerceConfigurationTypedDict
 from .companies import Companies, CompaniesTypedDict
-from .company import Company, CompanyTypedDict, Tags, TagsTypedDict
+from .company import Company, CompanyTypedDict
+from .companyreference import (
+    CompanyReference,
+    CompanyReferenceLinks,
+    CompanyReferenceLinksTypedDict,
+    CompanyReferenceTypedDict,
+)
 from .companysyncstatus import CompanySyncStatus, CompanySyncStatusTypedDict
 from .configuration import Configuration, ConfigurationTypedDict
 from .configurationmapsettings import (
@@ -22,12 +28,12 @@ from .configurationmapsettings import (
 from .configurationoption import ConfigurationOption, ConfigurationOptionTypedDict
 from .connection import Connection, ConnectionTypedDict
 from .connections import Connections, ConnectionsTypedDict
-from .createcompany import (
-    CreateCompany,
-    CreateCompanyTypedDict,
-    GroupReference,
-    GroupReferenceTypedDict,
+from .connectionwebhook import ConnectionWebhook, ConnectionWebhookTypedDict
+from .connectionwebhookpayload import (
+    ConnectionWebhookPayload,
+    ConnectionWebhookPayloadTypedDict,
 )
+from .createcompany import CreateCompany, CreateCompanyTypedDict
 from .dataconnectionerror import (
     DataConnectionError,
     DataConnectionErrorTypedDict,
@@ -107,6 +113,10 @@ __all__ = [
     "Companies",
     "CompaniesTypedDict",
     "Company",
+    "CompanyReference",
+    "CompanyReferenceLinks",
+    "CompanyReferenceLinksTypedDict",
+    "CompanyReferenceTypedDict",
     "CompanySyncStatus",
     "CompanySyncStatusTypedDict",
     "CompanyTypedDict",
@@ -118,6 +128,10 @@ __all__ = [
     "ConfigurationTypedDict",
     "Connection",
     "ConnectionTypedDict",
+    "ConnectionWebhook",
+    "ConnectionWebhookPayload",
+    "ConnectionWebhookPayloadTypedDict",
+    "ConnectionWebhookTypedDict",
     "Connections",
     "ConnectionsTypedDict",
     "CreateCompany",
@@ -141,8 +155,6 @@ __all__ = [
     "FeesConfigurationTypedDict",
     "FeesSupplier",
     "FeesSupplierTypedDict",
-    "GroupReference",
-    "GroupReferenceTypedDict",
     "Grouping",
     "GroupingLevels",
     "GroupingLevelsTypedDict",
@@ -201,8 +213,6 @@ __all__ = [
     "SyncSummaryTypedDict",
     "SyncToLatestArgs",
     "SyncToLatestArgsTypedDict",
-    "Tags",
-    "TagsTypedDict",
     "TaxRateAmount",
     "TaxRateAmountTypedDict",
     "TaxRateMapping",

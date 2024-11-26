@@ -9,8 +9,8 @@ from codat_sync_for_commerce.types import (
     UNSET_SENTINEL,
 )
 from pydantic import model_serializer
-from typing import Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class ConfigurationOptionTypedDict(TypedDict):

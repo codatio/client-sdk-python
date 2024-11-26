@@ -5,8 +5,8 @@ from .supportedfeature import SupportedFeature, SupportedFeatureTypedDict
 from codat_sync_for_commerce.types import BaseModel
 from enum import Enum
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class DataTypes(str, Enum):

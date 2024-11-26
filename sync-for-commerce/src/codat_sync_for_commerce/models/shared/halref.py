@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 from codat_sync_for_commerce.types import BaseModel
-from typing import Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class HalRefTypedDict(TypedDict):

@@ -11,8 +11,8 @@ from codat_sync_for_commerce.utils import (
     QueryParamMetadata,
     RequestMetadata,
 )
-from typing import Dict, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Dict, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class UpdateConfigTextSyncFlowRequestTypedDict(TypedDict):

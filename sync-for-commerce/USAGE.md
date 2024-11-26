@@ -4,19 +4,18 @@
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+        "locale": shared.Locale.EN_US,
+    })
 
-res = s.sync_flow_settings.get_config_text_sync_flow(request={
-    "locale": shared.Locale.EN_US,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 ```
 
 </br>
@@ -29,17 +28,18 @@ from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
 async def main():
-    s = CodatSyncCommerce(
+    async with CodatSyncCommerce(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    )
-    res = await s.sync_flow_settings.get_config_text_sync_flow_async(request={
-        "locale": shared.Locale.EN_US,
-    })
-    if res is not None:
-        # handle response
-        pass
+    ) as s:
+        res = await s.sync_flow_settings.get_config_text_sync_flow_async(request={
+            "locale": shared.Locale.EN_US,
+        })
+
+        if res is not None:
+            # handle response
+            pass
 
 asyncio.run(main())
 ```
