@@ -238,7 +238,7 @@ class Connections(BaseSDK):
 
         Creates a connection for the company by providing a valid `platformKey`.
 
-        Use the [List Integrations](https://docs.codat.io/sync-for-payables-api#/operations/list-integrations) endpoint to access valid platform keys.
+        Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-integrations) endpoint to access valid platform keys.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -352,7 +352,7 @@ class Connections(BaseSDK):
 
         Creates a connection for the company by providing a valid `platformKey`.
 
-        Use the [List Integrations](https://docs.codat.io/sync-for-payables-api#/operations/list-integrations) endpoint to access valid platform keys.
+        Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-integrations) endpoint to access valid platform keys.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method

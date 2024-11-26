@@ -21,28 +21,27 @@ The *Create bank account* endpoint creates a new [bank account](https://docs.cod
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bank_accounts.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bank_account_prototype": {
+            "name": "Plutus - Payables - Bank Account 12",
+            "account_type": shared.BankAccountType.DEBIT,
+            "account_number": "0120 0440",
+            "currency": "GBP",
+            "nominal_code": "22",
+            "sort_code": "50-50-50",
+        },
+    })
 
-res = s.bank_accounts.create(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "bank_account_prototype": {
-        "name": "Plutus - Payables - Bank Account 12",
-        "account_type": shared.BankAccountType.DEBIT,
-        "account_number": "0120 0440",
-        "currency": "GBP",
-        "nominal_code": "22",
-        "sort_code": "50-50-50",
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

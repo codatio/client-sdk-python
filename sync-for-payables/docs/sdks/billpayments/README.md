@@ -24,22 +24,21 @@ Mapping options are a set of bank accounts used to configure the SMB's payables 
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bill_payments.get_payment_options(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "continuation_token": "continuationToken=eyJwYWdlIjoyLCJwYWdlU2l6ZSI6MTAwLCJwYWdlQ291bnQiOjExfQ==",
+        "status_query": "status=Archived",
+    })
 
-res = s.bill_payments.get_payment_options(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "continuation_token": "continuationToken=eyJwYWdlIjoyLCJwYWdlU2l6ZSI6MTAwLCJwYWdlQ291bnQiOjExfQ==",
-    "status_query": "status=Archived",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -74,30 +73,29 @@ from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 from decimal import Decimal
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
-
-res = s.bill_payments.create(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "bill_id": "9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2",
-    "bill_payment_prototype": {
-        "amount": Decimal("22"),
-        "date_": "2022-10-23T00:00:00.000Z",
-        "account_ref": {
-            "id": "7bda9f44sr56",
+) as s:
+    res = s.bill_payments.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bill_id": "9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2",
+        "bill_payment_prototype": {
+            "amount": Decimal("22"),
+            "date_": "2022-10-23T00:00:00.000Z",
+            "account_ref": {
+                "id": "7bda9f44sr56",
+            },
+            "reference": "Bill Payment against bill c13e37b6 dfaa-4894-b3be-9fe97bda9f44",
+            "currency_rate": Decimal("1"),
         },
-        "reference": "Bill Payment against bill c13e37b6 dfaa-4894-b3be-9fe97bda9f44",
-        "currency_rate": Decimal("1"),
-    },
-})
+    })
 
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

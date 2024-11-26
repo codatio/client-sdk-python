@@ -37,22 +37,21 @@ poetry add codat-sync-for-payables
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.list(request={
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "order_by": "-modifiedDate",
+    })
 
-res = s.companies.list(request={
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "order_by": "-modifiedDate",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 ```
 
 </br>
@@ -65,20 +64,21 @@ from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
 async def main():
-    s = CodatSyncPayables(
+    async with CodatSyncPayables(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    )
-    res = await s.companies.list_async(request={
-        "page": 1,
-        "page_size": 100,
-        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-        "order_by": "-modifiedDate",
-    })
-    if res is not None:
-        # handle response
-        pass
+    ) as s:
+        res = await s.companies.list_async(request={
+            "page": 1,
+            "page_size": 100,
+            "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+            "order_by": "-modifiedDate",
+        })
+
+        if res is not None:
+            # handle response
+            pass
 
 asyncio.run(main())
 ```
@@ -212,21 +212,20 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bills.upload_attachment(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bill_id": "EILBDVJVNUAGVKRQ",
+    })
 
-res = s.bills.upload_attachment(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "bill_id": "EILBDVJVNUAGVKRQ",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End File uploads [file-upload] -->
@@ -242,23 +241,22 @@ from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 from codatsyncpayables.utils import BackoffStrategy, RetryConfig
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.list(request={
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "order_by": "-modifiedDate",
+    },
+        RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-res = s.companies.list(request={
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "order_by": "-modifiedDate",
-},
-    RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -268,23 +266,22 @@ from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 from codatsyncpayables.utils import BackoffStrategy, RetryConfig
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.list(request={
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "order_by": "-modifiedDate",
+    })
 
-res = s.companies.list(request={
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "order_by": "-modifiedDate",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Retries [retries] -->
@@ -305,10 +302,10 @@ By default, an API error will raise a errors.SDKError exception, which has the f
 
 When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `list_async` method may raise the following exceptions:
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type          | Status Code                            | Content Type     |
+| ------------------- | -------------------------------------- | ---------------- |
+| errors.ErrorMessage | 400, 401, 402, 403, 404, 429, 500, 503 | application/json |
+| errors.SDKError     | 4XX, 5XX                               | \*/\*            |
 
 ### Example
 
@@ -316,14 +313,49 @@ When custom error responses are specified for an operation, the SDK may also rai
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import errors, shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = None
+    try:
+        res = s.companies.list(request={
+            "page": 1,
+            "page_size": 100,
+            "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+            "order_by": "-modifiedDate",
+        })
 
-res = None
-try:
+        if res is not None:
+            # handle response
+            pass
+
+    except errors.ErrorMessage as e:
+        # handle e.data: errors.ErrorMessageData
+        raise(e)
+    except errors.SDKError as e:
+        # handle exception
+        raise(e)
+```
+<!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+```python
+from codat_sync_for_payables import CodatSyncPayables
+from codat_sync_for_payables.models import shared
+
+with CodatSyncPayables(
+    server_url="https://api.codat.io",
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as s:
     res = s.companies.list(request={
         "page": 1,
         "page_size": 100,
@@ -334,78 +366,6 @@ try:
     if res is not None:
         # handle response
         pass
-
-except errors.ErrorMessage as e:
-    # handle e.data: errors.ErrorMessageData
-    raise(e)
-except errors.SDKError as e:
-    # handle exception
-    raise(e)
-```
-<!-- End Error Handling [errors] -->
-
-<!-- Start Server Selection [server] -->
-## Server Selection
-
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.codat.io` | None |
-
-#### Example
-
-```python
-from codat_sync_for_payables import CodatSyncPayables
-from codat_sync_for_payables.models import shared
-
-s = CodatSyncPayables(
-    server_idx=0,
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-)
-
-res = s.companies.list(request={
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "order_by": "-modifiedDate",
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
-```python
-from codat_sync_for_payables import CodatSyncPayables
-from codat_sync_for_payables.models import shared
-
-s = CodatSyncPayables(
-    server_url="https://api.codat.io",
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-)
-
-res = s.companies.list(request={
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "order_by": "-modifiedDate",
-})
-
-if res is not None:
-    # handle response
-    pass
 
 ```
 <!-- End Server Selection [server] -->
@@ -498,31 +458,30 @@ s = CodatSyncPayables(async_client=CustomClient(httpx.AsyncClient()))
 
 This SDK supports the following security scheme globally:
 
-| Name          | Type          | Scheme        |
-| ------------- | ------------- | ------------- |
-| `auth_header` | apiKey        | API key       |
+| Name          | Type   | Scheme  |
+| ------------- | ------ | ------- |
+| `auth_header` | apiKey | API key |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```python
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
 
-s = CodatSyncPayables(
+with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.list(request={
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "order_by": "-modifiedDate",
+    })
 
-res = s.companies.list(request={
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-    "order_by": "-modifiedDate",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Authentication [security] -->
