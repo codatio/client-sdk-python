@@ -9,16 +9,25 @@ generation:
     requestResponseComponentNamesFeb2024: false
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
   telemetryEnabled: true
 python:
-  version: 6.2.0
+  version: 7.0.0
   additionalDependencies:
     dev: {}
     main: {}
   author: Codat
+  authors:
+    - Speakeasy
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKError
   description: Push expenses to accounting software.
+  enumFormat: enum
+  fixFlags:
+    responseRequiredSep2024: false
   flattenGlobalSecurity: false
+  flattenRequests: false
+  flatteningOrder: parameters-first
   imports:
     option: openapi
     paths:
@@ -29,13 +38,9 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
+  methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: codat-sync-for-expenses
   projectUrls: {}
   responseFormat: flat
-  authors:
-  - Speakeasy
-  enumFormat: enum
-  flattenRequests: false
-  methodArguments: infer-optional-args
   templateVersion: v2

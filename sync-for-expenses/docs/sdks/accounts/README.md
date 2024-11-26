@@ -3,7 +3,7 @@
 
 ## Overview
 
-Accounts
+Create accounts and view create account options.
 
 ### Available Operations
 
@@ -20,31 +20,37 @@ The *Create account* endpoint creates a new [account](https://docs.codat.io/sync
 
 Required data may vary by integration. To see what data to post, first call [Get create account model](https://docs.codat.io/sync-for-expenses-api#/operations/get-create-chartOfAccounts-model).
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
-
-
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+from decimal import Decimal
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "account_prototype": {
+            "currency": "USD",
+            "current_balance": Decimal("0"),
+            "description": "Invoices the business has issued but has not yet collected payment on.",
+            "fully_qualified_category": "Asset.Current",
+            "fully_qualified_name": "Fixed Asset",
+            "name": "Accounts Receivable",
+            "nominal_code": "610",
+            "status": shared.AccountStatus.ACTIVE,
+            "type": shared.AccountType.ASSET,
+        },
+    })
 
-req = operations.CreateAccountRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
-
-res = s.accounts.create(req)
-
-if res.create_account_response is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -55,16 +61,16 @@ if res.create_account_response is not None:
 | `request`                                                                          | [operations.CreateAccountRequest](../../models/operations/createaccountrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.CreateAccountResponse](../../models/operations/createaccountresponse.md)**
+**[shared.CreateAccountResponse](../../models/shared/createaccountresponse.md)**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get_create_model
 
@@ -76,31 +82,25 @@ The *Get create account model* endpoint returns the expected data for the reques
 
 See the *response examples* for integration-specific indicative models.
 
-Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=chartOfAccounts) for integrations that support creating an account.
-
-
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-req = operations.GetCreateChartOfAccountsModelRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
-
-res = s.accounts.get_create_model(req)
-
-if res.push_option is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -111,13 +111,13 @@ if res.push_option is not None:
 | `request`                                                                                                          | [operations.GetCreateChartOfAccountsModelRequest](../../models/operations/getcreatechartofaccountsmodelrequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
 | `retries`                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                                 | Configuration to override the default retry behavior of the client.                                                |
 
-
 ### Response
 
-**[operations.GetCreateChartOfAccountsModelResponse](../../models/operations/getcreatechartofaccountsmodelresponse.md)**
+**[shared.PushOption](../../models/shared/pushoption.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |

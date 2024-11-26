@@ -3,7 +3,7 @@
 
 ## Overview
 
-Create expense transactions.
+Create and update transactions that represent your customers' spend.
 
 ### Available Operations
 
@@ -12,43 +12,80 @@ Create expense transactions.
 
 ## create
 
-The *Create expense* endpoint creates an [expense transaction](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) in the accounting platform for a given company's connection. 
+The *Create expense* endpoint creates an [expense transaction](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) in the accounting software for a given company's connection. 
 
 [Expense transactions](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) represent transactions made with a company debit or credit card. 
 
+### Supported Integrations
 
-**Integration-specific behaviour**
-
-Some accounting platforms support the option of pushing transactions to a draft state. This can be done by setting the postAsDraft property on the transaction to true. For platforms without this feature, the postAsDraft property should be ignored or set to false.
-
-| Integration | Draft State | Details                                                                                                      |  
-|-------------|-------------|--------------------------------------------------------------------------------------------------------------|
-| Dynamics 365 Business Central | Yes   | Setting postAsDraft to true will push the transactions to a drafted state rather than posting directly to the ledger. For transactions in a draft state, they can then be approved and posted within the accounting platform. |
-| Quickbooks Online | No | -  |
-| Xero | No | - |
-| NetSuite | No | - |
+| Integration                   | Supported |
+|-------------------------------|-----------|
+| Dynamics 365 Business Central | Yes       |
+| FreeAgent                     | Yes       |
+| QuickBooks Desktop            | Yes       |
+| QuickBooks Online             | Yes       |
+| Oracle NetSuite               | Yes       |
+| Xero                          | Yes       |
 
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+from decimal import Decimal
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.expenses.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "request_body": [
+            {
+                "currency": "GBP",
+                "id": "4d7c6929-7770-412b-91bb-44d3bc71d111",
+                "issue_date": "2024-05-21T00:00:00+00:00",
+                "type": shared.ExpenseTransactionType.PAYMENT,
+                "bank_account_ref": {
+                    "id": "97",
+                },
+                "contact_ref": {
+                    "id": "430",
+                    "type": shared.Type.SUPPLIER,
+                },
+                "currency_rate": Decimal("1"),
+                "lines": [
+                    {
+                        "net_amount": Decimal("100"),
+                        "account_ref": {
+                            "id": "35",
+                        },
+                        "invoice_to": {
+                            "id": "504",
+                            "type": shared.InvoiceToType.CUSTOMER,
+                        },
+                        "tax_amount": Decimal("20"),
+                        "tax_rate_ref": {
+                            "id": "23_Bills",
+                        },
+                        "tracking_refs": [
+                            {
+                                "data_type": shared.TrackingRefDataType.TRACKING_CATEGORIES,
+                                "id": "DEPARTMENT_5",
+                            },
+                        ],
+                    },
+                ],
+                "merchant_name": "Amazon UK",
+                "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
+            },
+        ],
+    })
 
-req = operations.CreateExpenseTransactionRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
-
-res = s.expenses.create(req)
-
-if res.create_expense_response is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -59,50 +96,89 @@ if res.create_expense_response is not None:
 | `request`                                                                                                | [operations.CreateExpenseTransactionRequest](../../models/operations/createexpensetransactionrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 | `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
-
 ### Response
 
-**[operations.CreateExpenseTransactionResponse](../../models/operations/createexpensetransactionresponse.md)**
+**[shared.CreateExpenseResponse](../../models/shared/createexpenseresponse.md)**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
-The *Update expense* endpoint updates an existing [expense transaction](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) in the accounting platform for a given company's connection. 
+The *Update expense* endpoint updates an existing [expense transaction](https://docs.codat.io/sync-for-expenses-api#/schemas/UpdateExpenseRequest) in the accounting software for a given company's connection. 
 
-[Expense transactions](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) represent transactions made with a company debit or credit card. 
+[Expense transactions](https://docs.codat.io/sync-for-expenses-api#/schemas/UpdateExpenseRequest) represent transactions made with a company debit or credit card. 
 
-
-**Integration-specific behaviour**
-
-At the moment you can update expenses only for Xero ([Payment](https://docs.codat.io/expenses/sync-process/expense-transactions#transaction-types) transaction type only).
+### Supported Integrations
+The following integrations are supported for the [Payment](https://docs.codat.io/expenses/sync-process/expense-transactions#transaction-types) transaction `type` only: 
+| Integration           | Supported |
+|-----------------------|-----------|
+| FreeAgent             | Yes       |
+| QuickBooks Online     | Yes       |
+| Oracle NetSuite       | Yes       |
+| Xero                  | Yes       |
 
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+from decimal import Decimal
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.expenses.update(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "transaction_id": "336694d8-2dca-4cb5-a28d-3ccb83e55eee",
+        "update_expense_request": {
+            "currency": "GBP",
+            "issue_date": "2024-05-21T00:00:00+00:00",
+            "type": shared.UpdateExpenseRequestType.PAYMENT,
+            "bank_account_ref": {
+                "id": "97",
+            },
+            "contact_ref": {
+                "id": "430",
+                "type": shared.Type.SUPPLIER,
+            },
+            "currency_rate": Decimal("1"),
+            "lines": [
+                {
+                    "net_amount": Decimal("100"),
+                    "account_ref": {
+                        "id": "35",
+                    },
+                    "invoice_to": {
+                        "id": "504",
+                        "type": shared.InvoiceToType.CUSTOMER,
+                    },
+                    "tax_amount": Decimal("20"),
+                    "tax_rate_ref": {
+                        "id": "23_Bills",
+                    },
+                    "tracking_refs": [
+                        {
+                            "data_type": shared.TrackingRefDataType.TRACKING_CATEGORIES,
+                            "id": "DEPARTMENT_5",
+                        },
+                    ],
+                },
+            ],
+            "merchant_name": "Amazon UK",
+            "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
+        },
+    })
 
-req = operations.UpdateExpenseTransactionRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    transaction_id='336694d8-2dca-4cb5-a28d-3ccb83e55eee',
-)
-
-res = s.expenses.update(req)
-
-if res.update_expense_response is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -113,13 +189,13 @@ if res.update_expense_response is not None:
 | `request`                                                                                                | [operations.UpdateExpenseTransactionRequest](../../models/operations/updateexpensetransactionrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 | `retries`                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                         | :heavy_minus_sign:                                                                                       | Configuration to override the default retry behavior of the client.                                      |
 
-
 ### Response
 
-**[operations.UpdateExpenseTransactionResponse](../../models/operations/updateexpensetransactionresponse.md)**
+**[shared.UpdateExpenseResponse](../../models/shared/updateexpenseresponse.md)**
+
 ### Errors
 
-| Error Object                        | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.ErrorMessage                 | 400,401,402,403,404,422,429,500,503 | application/json                    |
-| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.ErrorMessage                         | 400, 401, 402, 403, 404, 422, 429, 500, 503 | application/json                            |
+| errors.SDKError                             | 4XX, 5XX                                    | \*/\*                                       |
