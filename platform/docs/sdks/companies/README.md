@@ -7,11 +7,54 @@ Create and manage your SMB users' companies.
 
 ### Available Operations
 
+* [add_product](#add_product) - Add product
 * [create](#create) - Create company
 * [delete](#delete) - Delete a company
 * [get](#get) - Get company
+* [get_access_token](#get_access_token) - Get company access token
 * [list](#list) - List companies
+* [remove_product](#remove_product) - Remove product
 * [update](#update) - Update company
+
+## add_product
+
+Use the *Add product* endpoint to enable a product for the company specified by `companyId`.
+
+> Note: This feature is currently in alpha and available only to participants in the development program.
+
+### Example Usage
+
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as s:
+    s.companies.add_product(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "product_identifier": "lending",
+    })
+
+    # Use the SDK ...
+
+```
+
+### Parameters
+
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `request`                                                                    | [operations.AddProductRequest](../../models/operations/addproductrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `retries`                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)             | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |
+
+### Errors
+
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## create
 
@@ -25,25 +68,21 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+    })
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
-
-res = s.companies.create(req)
-
-if res.company is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -54,16 +93,16 @@ if res.company is not None:
 | `request`                                                              | [shared.CompanyRequestBody](../../models/shared/companyrequestbody.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
 | `retries`                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)       | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |
 
-
 ### Response
 
-**[operations.CreateCompanyResponse](../../models/operations/createcompanyresponse.md)**
+**[shared.Company](../../models/shared/company.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## delete
 
@@ -76,24 +115,19 @@ Each company can have multiple [connections](https://docs.codat.io/platform-api#
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.companies.delete(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-req = operations.DeleteCompanyRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
-
-res = s.companies.delete(req)
-
-if res is not None:
-    # handle response
-    pass
+    # Use the SDK ...
 
 ```
 
@@ -104,16 +138,12 @@ if res is not None:
 | `request`                                                                          | [operations.DeleteCompanyRequest](../../models/operations/deletecompanyrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
-### Response
-
-**[operations.DeleteCompanyResponse](../../models/operations/deletecompanyresponse.md)**
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get
 
@@ -126,24 +156,21 @@ Each company can have multiple [connections](https://docs.codat.io/platform-api#
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-req = operations.GetCompanyRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
-
-res = s.companies.get(req)
-
-if res.company is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -154,20 +181,64 @@ if res.company is not None:
 | `request`                                                                    | [operations.GetCompanyRequest](../../models/operations/getcompanyrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 | `retries`                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)             | :heavy_minus_sign:                                                           | Configuration to override the default retry behavior of the client.          |
 
+### Response
+
+**[shared.Company](../../models/shared/company.md)**
+
+### Errors
+
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+
+## get_access_token
+
+Use the _Get company access token_ endpoint to return an access token for the specified company ID to use in Codat's embedded UI products.
+
+
+### Example Usage
+
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as s:
+    res = s.companies.get_access_token(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    if res is not None:
+        # handle response
+        pass
+
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.GetCompanyAccessTokenRequest](../../models/operations/getcompanyaccesstokenrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
 
 ### Response
 
-**[operations.GetCompanyResponse](../../models/operations/getcompanyresponse.md)**
+**[shared.CompanyAccessToken](../../models/shared/companyaccesstoken.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list
 
-﻿The *List companies* endpoint returns a list of [companies] associated to your instances.
+﻿The *List companies* endpoint returns a list of [companies](https://docs.codat.io/platform-api#/schemas/Company) associated to your instances.
 
 A [company](https://docs.codat.io/platform-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/platform-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
@@ -175,26 +246,24 @@ Each company can have multiple [connections](https://docs.codat.io/platform-api#
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.list(request={
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-req = operations.ListCompaniesRequest(
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
-
-res = s.companies.list(req)
-
-if res.companies is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -205,21 +274,60 @@ if res.companies is not None:
 | `request`                                                                          | [operations.ListCompaniesRequest](../../models/operations/listcompaniesrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.ListCompaniesResponse](../../models/operations/listcompaniesresponse.md)**
+**[shared.Companies](../../models/shared/companies.md)**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+
+## remove_product
+
+Use the *Remove product* endpoint to disable a product for the company specified by `companyId`.
+
+> Note: This feature is currently in alpha and available only to participants in the development program.
+
+### Example Usage
+
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as s:
+    s.companies.remove_product(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "product_identifier": "expenses",
+    })
+
+    # Use the SDK ...
+
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.RemoveProductRequest](../../models/operations/removeproductrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
+
+### Errors
+
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## update
 
 ﻿Use the *Update company* endpoint to update both the name and description of the company. 
-If you use [groups](https://docs.codat.io/platform-api#/schemas/Group) to manage a set of companies, use the [Add company](https://docs.codat.io/platform-api#/operations/add-company-to-group) or [Remove company](https://docs.codat.io/platform-api#/operations/remove-company-from-group) endpoints to add or remove a company from a group.
 
 A [company](https://docs.codat.io/platform-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/platform-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
@@ -227,24 +335,24 @@ Each company can have multiple [connections](https://docs.codat.io/platform-api#
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.update(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "company_request_body": {
+            "name": "New Name",
+        },
+    })
 
-req = operations.UpdateCompanyRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
-
-res = s.companies.update(req)
-
-if res.company is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -255,13 +363,13 @@ if res.company is not None:
 | `request`                                                                          | [operations.UpdateCompanyRequest](../../models/operations/updatecompanyrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.UpdateCompanyResponse](../../models/operations/updatecompanyresponse.md)**
+**[shared.Company](../../models/shared/company.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |

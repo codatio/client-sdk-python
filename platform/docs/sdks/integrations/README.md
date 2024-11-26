@@ -18,24 +18,21 @@ Get single integration, by platformKey
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.integrations.get(request={
+        "platform_key": "gbol",
+    })
 
-req = operations.GetIntegrationRequest(
-    platform_key='gbol',
-)
-
-res = s.integrations.get(req)
-
-if res.integration is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -46,16 +43,16 @@ if res.integration is not None:
 | `request`                                                                            | [operations.GetIntegrationRequest](../../models/operations/getintegrationrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
-
 ### Response
 
-**[operations.GetIntegrationResponse](../../models/operations/getintegrationresponse.md)**
+**[shared.Integration](../../models/shared/integration.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get_branding
 
@@ -64,24 +61,21 @@ Get branding for platform.
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.integrations.get_branding(request={
+        "platform_key": "gbol",
+    })
 
-req = operations.GetIntegrationsBrandingRequest(
-    platform_key='gbol',
-)
-
-res = s.integrations.get_branding(req)
-
-if res.branding is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -92,16 +86,16 @@ if res.branding is not None:
 | `request`                                                                                              | [operations.GetIntegrationsBrandingRequest](../../models/operations/getintegrationsbrandingrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
 | `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
-
 ### Response
 
-**[operations.GetIntegrationsBrandingResponse](../../models/operations/getintegrationsbrandingresponse.md)**
+**[shared.Branding](../../models/shared/branding.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list
 
@@ -110,26 +104,24 @@ List your available integrations
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.integrations.list(request={
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-req = operations.ListIntegrationsRequest(
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
-
-res = s.integrations.list(req)
-
-if res.integrations is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -140,13 +132,13 @@ if res.integrations is not None:
 | `request`                                                                                | [operations.ListIntegrationsRequest](../../models/operations/listintegrationsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.ListIntegrationsResponse](../../models/operations/listintegrationsresponse.md)**
+**[shared.Integrations](../../models/shared/integrations.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 400,401,402,403,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |

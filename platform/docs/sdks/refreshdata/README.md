@@ -24,24 +24,19 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.refresh_data.all(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-req = operations.RefreshCompanyDataRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
-
-res = s.refresh_data.all(req)
-
-if res is not None:
-    # handle response
-    pass
+    # Use the SDK ...
 
 ```
 
@@ -52,16 +47,12 @@ if res is not None:
 | `request`                                                                                    | [operations.RefreshCompanyDataRequest](../../models/operations/refreshcompanydatarequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
-
-### Response
-
-**[operations.RefreshCompanyDataResponse](../../models/operations/refreshcompanydataresponse.md)**
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## by_data_type
 
@@ -72,25 +63,22 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.refresh_data.by_data_type(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "data_type": shared.SchemaDataType.INVOICES,
+    })
 
-req = operations.RefreshDataTypeRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    data_type=shared.SchemaDataType.INVOICES,
-)
-
-res = s.refresh_data.by_data_type(req)
-
-if res.pull_operation is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -101,16 +89,16 @@ if res.pull_operation is not None:
 | `request`                                                                              | [operations.RefreshDataTypeRequest](../../models/operations/refreshdatatyperequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 | `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
 
-
 ### Response
 
-**[operations.RefreshDataTypeResponse](../../models/operations/refreshdatatyperesponse.md)**
+**[shared.PullOperation](../../models/shared/pulloperation.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get
 
@@ -119,24 +107,21 @@ Get the state of each data type for a company
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.refresh_data.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-req = operations.GetCompanyDataStatusRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
-
-res = s.refresh_data.get(req)
-
-if res.data_statuses is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -147,16 +132,16 @@ if res.data_statuses is not None:
 | `request`                                                                                        | [operations.GetCompanyDataStatusRequest](../../models/operations/getcompanydatastatusrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 | `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
-
 ### Response
 
-**[operations.GetCompanyDataStatusResponse](../../models/operations/getcompanydatastatusresponse.md)**
+**[shared.DataStatuses](../../models/shared/datastatuses.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get_pull_operation
 
@@ -165,25 +150,22 @@ Retrieve information about a single dataset or pull operation.
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.refresh_data.get_pull_operation(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "dataset_id": "71a4c0fb-8e15-45bd-958d-330b4e6e9f07",
+    })
 
-req = operations.GetPullOperationRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    dataset_id='7911a54a-c808-4f4b-b87e-b195f52b4da5',
-)
-
-res = s.refresh_data.get_pull_operation(req)
-
-if res.pull_operation is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -194,16 +176,16 @@ if res.pull_operation is not None:
 | `request`                                                                                | [operations.GetPullOperationRequest](../../models/operations/getpulloperationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.GetPullOperationResponse](../../models/operations/getpulloperationresponse.md)**
+**[shared.PullOperation](../../models/shared/pulloperation.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list_pull_operations
 
@@ -212,27 +194,25 @@ Gets the pull operation history (datasets) for a given company.
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.refresh_data.list_pull_operations(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-req = operations.ListPullOperationsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
-
-res = s.refresh_data.list_pull_operations(req)
-
-if res.pull_operations is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -243,13 +223,13 @@ if res.pull_operations is not None:
 | `request`                                                                                    | [operations.ListPullOperationsRequest](../../models/operations/listpulloperationsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `retries`                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                             | :heavy_minus_sign:                                                                           | Configuration to override the default retry behavior of the client.                          |
 
-
 ### Response
 
-**[operations.ListPullOperationsResponse](../../models/operations/listpulloperationsresponse.md)**
+**[shared.PullOperations](../../models/shared/pulloperations.md)**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |

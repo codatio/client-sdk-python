@@ -29,43 +29,39 @@ A [custom data type](https://docs.codat.io/using-the-api/custom-data) is an addi
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
-
-req = operations.ConfigureCustomDataTypeRequest(
-    custom_data_identifier='DynamicsPurchaseOrders',
-    platform_key='gbol',
-    custom_data_type_configuration=shared.CustomDataTypeConfiguration(
-        data_source='api/purchaseOrders?$filter=currencyCode eq \'NOK\'',
-        key_by=[
-            '$[*].id',
-        ],
-        required_data={
-            'currencyCode': '$[*].currencyCode',
-            'id': '$[*].id',
-            'number': '$[*].number',
-            'orderDate': '$[*].orderDate',
-            'totalAmountExcludingTax': '$[*].totalAmountExcludingTax',
-            'totalTaxAmount': '$[*].totalTaxAmount',
-            'vendorName': '$[*].number',
+) as s:
+    res = s.custom_data_type.configure(request={
+        "custom_data_identifier": "DynamicsPurchaseOrders",
+        "platform_key": "gbol",
+        "custom_data_type_configuration": {
+            "data_source": "api/purchaseOrders",
+            "key_by": [
+                "$[*].id",
+            ],
+            "required_data": {
+                "currency": "$[*].currencyCode",
+                "number": "$[*].number",
+                "date": "$[*].orderDate",
+                "totalexvat": "$[*].totalAmountExcludingTax",
+                "totaltax": "$[*].totalTaxAmount",
+                "vendor": "$[*].number",
+            },
+            "source_modified_date": [
+                "$[*].lastModifiedDateTime",
+            ],
         },
-        source_modified_date=[
-            '$[*].lastModifiedDateTime',
-        ],
-    ),
-)
+    })
 
-res = s.custom_data_type.configure(req)
-
-if res.custom_data_type_configuration is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -76,16 +72,16 @@ if res.custom_data_type_configuration is not None:
 | `request`                                                                                              | [operations.ConfigureCustomDataTypeRequest](../../models/operations/configurecustomdatatyperequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
 | `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
 
-
 ### Response
 
-**[operations.ConfigureCustomDataTypeResponse](../../models/operations/configurecustomdatatyperesponse.md)**
+**[shared.CustomDataTypeConfiguration](../../models/shared/customdatatypeconfiguration.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get_configuration
 
@@ -96,25 +92,22 @@ A [custom data type](https://docs.codat.io/using-the-api/custom-data) is an addi
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.custom_data_type.get_configuration(request={
+        "custom_data_identifier": "DynamicsPurchaseOrders",
+        "platform_key": "gbol",
+    })
 
-req = operations.GetCustomDataTypeConfigurationRequest(
-    custom_data_identifier='DynamicsPurchaseOrders',
-    platform_key='gbol',
-)
-
-res = s.custom_data_type.get_configuration(req)
-
-if res.custom_data_type_records is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -125,16 +118,16 @@ if res.custom_data_type_records is not None:
 | `request`                                                                                                            | [operations.GetCustomDataTypeConfigurationRequest](../../models/operations/getcustomdatatypeconfigurationrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `retries`                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                                   | Configuration to override the default retry behavior of the client.                                                  |
 
-
 ### Response
 
-**[operations.GetCustomDataTypeConfigurationResponse](../../models/operations/getcustomdatatypeconfigurationresponse.md)**
+**[shared.CustomDataTypeRecords](../../models/shared/customdatatyperecords.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list
 
@@ -145,28 +138,25 @@ A [custom data type](https://docs.codat.io/using-the-api/custom-data) is an addi
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.custom_data_type.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "custom_data_identifier": "DynamicsPurchaseOrders",
+        "page": 1,
+        "page_size": 100,
+    })
 
-req = operations.ListCustomDataTypeRecordsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    custom_data_identifier='DynamicsPurchaseOrders',
-    page=1,
-    page_size=100,
-)
-
-res = s.custom_data_type.list(req)
-
-if res.custom_data_type_records is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -177,16 +167,16 @@ if res.custom_data_type_records is not None:
 | `request`                                                                                                  | [operations.ListCustomDataTypeRecordsRequest](../../models/operations/listcustomdatatyperecordsrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
 | `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
 
-
 ### Response
 
-**[operations.ListCustomDataTypeRecordsResponse](../../models/operations/listcustomdatatyperecordsresponse.md)**
+**[shared.CustomDataTypeRecords](../../models/shared/customdatatyperecords.md)**
+
 ### Errors
 
-| Error Object                        | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.ErrorMessage                 | 400,401,402,403,404,429,451,500,503 | application/json                    |
-| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.ErrorMessage                         | 400, 401, 402, 403, 404, 429, 451, 500, 503 | application/json                            |
+| errors.SDKError                             | 4XX, 5XX                                    | \*/\*                                       |
 
 ## refresh
 
@@ -195,26 +185,23 @@ The *Refresh custom data type* endpoint refreshes the specified custom data type
 ### Example Usage
 
 ```python
-import codatplatform
-from codatplatform.models import operations, shared
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-s = codatplatform.CodatPlatform(
+with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.custom_data_type.refresh(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "custom_data_identifier": "DynamicsPurchaseOrders",
+    })
 
-req = operations.RefreshCustomDataTypeRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-    custom_data_identifier='DynamicsPurchaseOrders',
-)
-
-res = s.custom_data_type.refresh(req)
-
-if res.pull_operation is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -225,13 +212,13 @@ if res.pull_operation is not None:
 | `request`                                                                                          | [operations.RefreshCustomDataTypeRequest](../../models/operations/refreshcustomdatatyperequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
 | `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
 
-
 ### Response
 
-**[operations.RefreshCustomDataTypeResponse](../../models/operations/refreshcustomdatatyperesponse.md)**
+**[shared.PullOperation](../../models/shared/pulloperation.md)**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 401,402,403,404,429,451,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 401, 402, 403, 404, 429, 451, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
