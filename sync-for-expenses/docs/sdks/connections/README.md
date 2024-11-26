@@ -3,7 +3,7 @@
 
 ## Overview
 
-Create and manage partner expense connection.
+Create new and manage existing data connections for a company.
 
 ### Available Operations
 
@@ -18,29 +18,29 @@ Create and manage partner expense connection.
 
 ﻿Creates a connection for the company by providing a valid `platformKey`. 
 
-Use the [List Integrations](https://docs.codat.io/sync-for-expenses-api#/operations/list-integrations) endpoint to access valid platform keys. 
+Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-integrations) endpoint to access valid platform keys. 
 
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.connections.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "request_body": {
+            "platform_key": "gbol",
+        },
+    })
 
-req = operations.CreateConnectionRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
-
-res = s.connections.create(req)
-
-if res.connection is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -51,16 +51,16 @@ if res.connection is not None:
 | `request`                                                                                | [operations.CreateConnectionRequest](../../models/operations/createconnectionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.CreateConnectionResponse](../../models/operations/createconnectionresponse.md)**
+**[shared.Connection](../../models/shared/connection.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## create_partner_expense_connection
 
@@ -69,24 +69,21 @@ Creates a partner expense data connection
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.connections.create_partner_expense_connection(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-req = operations.CreatePartnerExpenseConnectionRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-)
-
-res = s.connections.create_partner_expense_connection(req)
-
-if res.connection is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -97,16 +94,16 @@ if res.connection is not None:
 | `request`                                                                                                            | [operations.CreatePartnerExpenseConnectionRequest](../../models/operations/createpartnerexpenseconnectionrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 | `retries`                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                     | :heavy_minus_sign:                                                                                                   | Configuration to override the default retry behavior of the client.                                                  |
 
-
 ### Response
 
-**[operations.CreatePartnerExpenseConnectionResponse](../../models/operations/createpartnerexpenseconnectionresponse.md)**
+**[shared.Connection](../../models/shared/connection.md)**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## delete
 
@@ -116,25 +113,20 @@ This operation is not reversible. The end user would need to reauthorize a new d
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.connections.delete(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-req = operations.DeleteConnectionRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
-
-res = s.connections.delete(req)
-
-if res is not None:
-    # handle response
-    pass
+    # Use the SDK ...
 
 ```
 
@@ -145,16 +137,12 @@ if res is not None:
 | `request`                                                                                | [operations.DeleteConnectionRequest](../../models/operations/deleteconnectionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
-### Response
-
-**[operations.DeleteConnectionResponse](../../models/operations/deleteconnectionresponse.md)**
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get
 
@@ -163,25 +151,22 @@ if res is not None:
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.connections.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-req = operations.GetConnectionRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
-
-res = s.connections.get(req)
-
-if res.connection is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -192,16 +177,16 @@ if res.connection is not None:
 | `request`                                                                          | [operations.GetConnectionRequest](../../models/operations/getconnectionrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 | `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
-
 ### Response
 
-**[operations.GetConnectionResponse](../../models/operations/getconnectionresponse.md)**
+**[shared.Connection](../../models/shared/connection.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list
 
@@ -210,27 +195,25 @@ if res.connection is not None:
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.connections.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-req = operations.ListConnectionsRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    order_by='-modifiedDate',
-    page=1,
-    page_size=100,
-)
-
-res = s.connections.list(req)
-
-if res.connections is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -241,16 +224,16 @@ if res.connections is not None:
 | `request`                                                                              | [operations.ListConnectionsRequest](../../models/operations/listconnectionsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 | `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
 
-
 ### Response
 
-**[operations.ListConnectionsResponse](../../models/operations/listconnectionsresponse.md)**
+**[shared.Connections](../../models/shared/connections.md)**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## unlink
 
@@ -259,25 +242,25 @@ if res.connections is not None:
 ### Example Usage
 
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import operations, shared
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.connections.unlink(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "request_body": {
+            "status": shared.DataConnectionStatus.UNLINKED,
+        },
+    })
 
-req = operations.UnlinkConnectionRequest(
-    company_id='8a210b68-6988-11ed-a1eb-0242ac120002',
-    connection_id='2e9d2c44-f675-40ba-8049-353bfcb5e171',
-)
-
-res = s.connections.unlink(req)
-
-if res.connection is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -288,13 +271,13 @@ if res.connection is not None:
 | `request`                                                                                | [operations.UnlinkConnectionRequest](../../models/operations/unlinkconnectionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 | `retries`                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                         | :heavy_minus_sign:                                                                       | Configuration to override the default retry behavior of the client.                      |
 
-
 ### Response
 
-**[operations.UnlinkConnectionResponse](../../models/operations/unlinkconnectionresponse.md)**
+**[shared.Connection](../../models/shared/connection.md)**
+
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |

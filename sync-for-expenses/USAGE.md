@@ -1,24 +1,46 @@
 <!-- Start SDK Example Usage [usage] -->
 ```python
-import codatsyncexpenses
-from codatsyncexpenses.models import shared
+# Synchronous Example
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
-s = codatsyncexpenses.CodatSyncExpenses(
+with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+    })
 
-req = shared.CompanyRequestBody(
-    name='Bank of Dave',
-    description='Requested early access to the new financing scheme.',
-)
+    if res is not None:
+        # handle response
+        pass
+```
 
-res = s.companies.create(req)
+</br>
 
-if res.company is not None:
-    # handle response
-    pass
+The same SDK client can also be used to make asychronous requests by importing asyncio.
+```python
+# Asynchronous Example
+import asyncio
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
+async def main():
+    async with CodatSyncExpenses(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as s:
+        res = await s.companies.create_async(request={
+            "name": "Technicalium",
+        })
+
+        if res is not None:
+            # handle response
+            pass
+
+asyncio.run(main())
 ```
 <!-- End SDK Example Usage [usage] -->
