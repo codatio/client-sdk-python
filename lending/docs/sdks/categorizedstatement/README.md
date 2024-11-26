@@ -21,22 +21,21 @@ The _Get categorized bank statement_ endpoint provides a fully categorized list 
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.banking.categorized_statement.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.banking.categorized_statement.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

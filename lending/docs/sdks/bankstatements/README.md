@@ -25,19 +25,18 @@ A session is a one-time process that enables you to upload bank statements to Co
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.bank_statements.end_upload_session(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "dataset_id": "d8baee81-bb77-4d34-bcc3-0ef7526e0bde",
+    })
 
-s.bank_statements.end_upload_session(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "dataset_id": "d8baee81-bb77-4d34-bcc3-0ef7526e0bde",
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -69,20 +68,19 @@ When you use the [*Upload data*](https://docs.codat.io/lending-api#/operations/u
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bank_statements.get_upload_configuration(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.bank_statements.get_upload_configuration(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -118,24 +116,23 @@ Each data connection can only have one configuration for each company and extern
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bank_statements.set_upload_configuration(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bank_statement_upload_configuration": {
+            "account_id": "abc123-ABC",
+            "source": shared.Source.CODAT,
+        },
+    })
 
-res = s.bank_statements.set_upload_configuration(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "bank_statement_upload_configuration": {
-        "account_id": "abc123-ABC",
-        "source": shared.Source.CODAT,
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -171,20 +168,19 @@ You can only have one active session per data type at a time. You can complete o
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.bank_statements.start_upload_session(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.bank_statements.start_upload_session(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -218,30 +214,29 @@ Make sure you created configuration for the account using the [*Set upload confi
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
-
-s.bank_statements.upload_bank_statement_data(request={
-    "request_body": {
-        "currency": "Philippine Peso",
-        "id": "<id>",
-        "identifiers": {
-            "type": "Investment",
+) as s:
+    s.bank_statements.upload_bank_statement_data(request={
+        "request_body": {
+            "currency": "Philippine Peso",
+            "id": "<id>",
+            "identifiers": {
+                "type": "Investment",
+            },
+            "modifiedDate": "2022-10-23T00:00:00Z",
+            "name": "<value>",
+            "sourceModifiedDate": "2022-10-23T00:00:00Z",
+            "type": "Credit",
         },
-        "modifiedDate": "2022-10-23T00:00:00Z",
-        "name": "<value>",
-        "sourceModifiedDate": "2022-10-23T00:00:00Z",
-        "type": "Credit",
-    },
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "dataset_id": "e39deaca-29ee-4c0f-8c9b-4b58f7a91429",
-})
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "dataset_id": "e39deaca-29ee-4c0f-8c9b-4b58f7a91429",
+    })
 
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 

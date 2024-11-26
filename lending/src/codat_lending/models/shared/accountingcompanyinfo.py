@@ -23,7 +23,7 @@ class AccountingCompanyInfoTypedDict(TypedDict):
 
     > **Company information or companies?**
     >
-    > Company profile is standard information that is held in the accounting software about a company. `Companies` is an endpoint that lists businesses in the Codat system that have linked and shared their data sources.
+    > Company information is standard information that is held in the accounting software about a company. `Companies` is an endpoint that lists businesses in the Codat system that have linked and shared their data sources.
     """
 
     accounting_platform_ref: NotRequired[Nullable[str]]
@@ -124,7 +124,7 @@ class AccountingCompanyInfo(BaseModel):
 
     > **Company information or companies?**
     >
-    > Company profile is standard information that is held in the accounting software about a company. `Companies` is an endpoint that lists businesses in the Codat system that have linked and shared their data sources.
+    > Company information is standard information that is held in the accounting software about a company. `Companies` is an endpoint that lists businesses in the Codat system that have linked and shared their data sources.
     """
 
     accounting_platform_ref: Annotated[

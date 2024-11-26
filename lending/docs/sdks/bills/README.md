@@ -23,22 +23,21 @@ The *Download bill attachment* endpoint downloads a specific attachment for a gi
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_payable.bills.download_attachment(request={
+        "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "bill_id": "EILBDVJVNUAGVKRQ",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.accounts_payable.bills.download_attachment(request={
-    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "bill_id": "EILBDVJVNUAGVKRQ",
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -79,20 +78,19 @@ To access the `paymentAllocations` property, ensure that the `billPayments` data
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_payable.bills.get(request={
+        "bill_id": "7110701885",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.accounts_payable.bills.get(request={
-    "bill_id": "7110701885",
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -126,22 +124,21 @@ The *Get bill attachment* endpoint returns a specific attachment for a given `bi
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_payable.bills.get_attachment(request={
+        "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "bill_id": "EILBDVJVNUAGVKRQ",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.accounts_payable.bills.get_attachment(request={
-    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "bill_id": "EILBDVJVNUAGVKRQ",
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -182,23 +179,22 @@ To access the `paymentAllocations` property, ensure that the `billPayments` data
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_payable.bills.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.accounts_payable.bills.list(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "order_by": "-modifiedDate",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -233,21 +229,20 @@ The *List bill attachments* endpoint returns a list of attachments available to 
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_payable.bills.list_attachments(request={
+        "bill_id": "EILBDVJVNUAGVKRQ",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.accounts_payable.bills.list_attachments(request={
-    "bill_id": "EILBDVJVNUAGVKRQ",
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

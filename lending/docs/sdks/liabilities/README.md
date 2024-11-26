@@ -27,18 +27,17 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.liabilities.generate_loan_summary(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "source_type": operations.SourceType.ACCOUNTING,
+    })
 
-s.liabilities.generate_loan_summary(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "source_type": operations.SourceType.ACCOUNTING,
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -71,18 +70,17 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.liabilities.generate_loan_transactions(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "source_type": operations.QueryParamSourceType.ACCOUNTING,
+    })
 
-s.liabilities.generate_loan_transactions(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "source_type": operations.QueryParamSourceType.ACCOUNTING,
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -115,20 +113,19 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.liabilities.get_loan_summary(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "source_type": operations.GetLoanSummaryQueryParamSourceType.BANKING,
+    })
 
-res = s.liabilities.get_loan_summary(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "source_type": operations.GetLoanSummaryQueryParamSourceType.BANKING,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -165,20 +162,19 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.liabilities.list_loan_transactions(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "source_type": operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
+    })
 
-res = s.liabilities.list_loan_transactions(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "source_type": operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

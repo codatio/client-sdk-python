@@ -25,20 +25,19 @@ You can [learn more](https://docs.codat.io/lending/features/excel-download-overv
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.excel_reports.download(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "report_type": shared.ExcelReportTypes.ENHANCED_FINANCIALS,
+    })
 
-res = s.excel_reports.download(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "report_type": shared.ExcelReportTypes.ENHANCED_FINANCIALS,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -86,20 +85,19 @@ In response, the endpoint returns the [status](https://docs.codat.io/lending-api
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.excel_reports.generate(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "report_type": shared.ExcelReportTypes.ENHANCED_INVOICES,
+    })
 
-res = s.excel_reports.generate(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "report_type": shared.ExcelReportTypes.ENHANCED_INVOICES,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -135,20 +133,19 @@ When the report generation completes successfully, the `inProgress` property wil
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.excel_reports.get_status(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "report_type": shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
+    })
 
-res = s.excel_reports.get_status(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "report_type": shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

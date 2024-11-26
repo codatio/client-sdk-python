@@ -25,22 +25,21 @@ Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.connections.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "request_body": {
+            "platform_key": "gbol",
+        },
+    })
 
-res = s.connections.create(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "request_body": {
-        "platform_key": "gbol",
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -73,18 +72,17 @@ This operation is not reversible. The end user would need to reauthorize a new d
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.connections.delete(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-s.connections.delete(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -112,20 +110,19 @@ s.connections.delete(request={
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.connections.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.connections.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -157,23 +154,22 @@ if res is not None:
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.connections.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.connections.list(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "order_by": "-modifiedDate",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -205,23 +201,22 @@ if res is not None:
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.connections.unlink(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "request_body": {
+            "status": shared.DataConnectionStatus.UNLINKED,
+        },
+    })
 
-res = s.connections.unlink(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "request_body": {
-        "status": shared.DataConnectionStatus.UNLINKED,
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

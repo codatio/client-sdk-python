@@ -22,17 +22,16 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.manage_data.refresh.all_data_types(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-s.manage_data.refresh.all_data_types(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -62,20 +61,19 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.manage_data.refresh.data_type(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "data_type": shared.SchemaDataType.INVOICES,
+    })
 
-res = s.manage_data.refresh.data_type(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "data_type": shared.SchemaDataType.INVOICES,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

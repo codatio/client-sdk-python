@@ -15,21 +15,27 @@ from codat_lending.utils import (
 )
 import pydantic
 from typing import Any, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-UploadBankStatementDataRequestBodyTypedDict = Union[
-    shared_bankingtransactions.BankingTransactionsTypedDict,
-    shared_bankingaccount.BankingAccountTypedDict,
-    Any,
-]
+UploadBankStatementDataRequestBodyTypedDict = TypeAliasType(
+    "UploadBankStatementDataRequestBodyTypedDict",
+    Union[
+        shared_bankingtransactions.BankingTransactionsTypedDict,
+        shared_bankingaccount.BankingAccountTypedDict,
+        Any,
+    ],
+)
 
 
-UploadBankStatementDataRequestBody = Union[
-    shared_bankingtransactions.BankingTransactions,
-    shared_bankingaccount.BankingAccount,
-    Any,
-]
+UploadBankStatementDataRequestBody = TypeAliasType(
+    "UploadBankStatementDataRequestBody",
+    Union[
+        shared_bankingtransactions.BankingTransactions,
+        shared_bankingaccount.BankingAccount,
+        Any,
+    ],
+)
 
 
 class UploadBankStatementDataRequestTypedDict(TypedDict):

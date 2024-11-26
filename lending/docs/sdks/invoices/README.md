@@ -26,22 +26,21 @@ The *Download invoice attachment* endpoint downloads a specific attachment for a
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.invoices.download_attachment(request={
+        "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "invoice_id": "EILBDVJVNUAGVKRQ",
+    })
 
-res = s.accounts_receivable.invoices.download_attachment(request={
-    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "invoice_id": "EILBDVJVNUAGVKRQ",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -73,20 +72,19 @@ if res is not None:
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.invoices.download_pdf(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "invoice_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
 
-res = s.accounts_receivable.invoices.download_pdf(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "invoice_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -127,20 +125,19 @@ To access the `paymentAllocations` property, ensure that the `payments` data typ
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.invoices.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "invoice_id": "7110701885",
+    })
 
-res = s.accounts_receivable.invoices.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "invoice_id": "7110701885",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -175,22 +172,21 @@ The *Get invoice attachment* endpoint returns a specific attachment for a given 
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.invoices.get_attachment(request={
+        "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "invoice_id": "EILBDVJVNUAGVKRQ",
+    })
 
-res = s.accounts_receivable.invoices.get_attachment(request={
-    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "invoice_id": "EILBDVJVNUAGVKRQ",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -238,23 +234,22 @@ To access the `paymentAllocations` property, ensure that the `payments` data typ
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.invoices.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.accounts_receivable.invoices.list(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "order_by": "-modifiedDate",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -288,21 +283,20 @@ The *List invoice attachments* endpoint returns a list of attachments available 
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.invoices.list_attachments(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "invoice_id": "EILBDVJVNUAGVKRQ",
+    })
 
-res = s.accounts_receivable.invoices.list_attachments(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "invoice_id": "EILBDVJVNUAGVKRQ",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -334,22 +328,21 @@ Gets a list of invoices linked to the corresponding banking transaction
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.invoices.list_reconciled(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.accounts_receivable.invoices.list_reconciled(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

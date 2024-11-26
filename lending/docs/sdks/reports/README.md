@@ -21,22 +21,21 @@ from codat_lending import CodatLending
 from codat_lending.models import shared
 import dateutil.parser
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": dateutil.parser.parse("2022-12-31").date(),
+    })
 
-res = s.accounts_receivable.reports.get_aged_creditors(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "number_of_periods": 12,
-    "period_length_days": 30,
-    "report_date": dateutil.parser.parse("2022-12-31").date(),
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -69,22 +68,21 @@ from codat_lending import CodatLending
 from codat_lending.models import shared
 import dateutil.parser
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": dateutil.parser.parse("2022-12-31").date(),
+    })
 
-res = s.accounts_receivable.reports.get_aged_debtors(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "number_of_periods": 12,
-    "period_length_days": 30,
-    "report_date": dateutil.parser.parse("2022-12-31").date(),
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -116,19 +114,18 @@ Indicates whether the aged creditor report is available for the company.
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.reports.is_aged_creditors_available(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.accounts_receivable.reports.is_aged_creditors_available(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -160,19 +157,18 @@ Indicates whether the aged debtors report is available for the company.
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.accounts_receivable.reports.is_aged_debtors_available(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.accounts_receivable.reports.is_aged_debtors_available(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

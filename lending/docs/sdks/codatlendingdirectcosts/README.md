@@ -24,22 +24,21 @@ The *Download direct cost attachment* endpoint downloads a specific attachment f
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.transactions.direct_costs.download_attachment(request={
+        "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_cost_id": "EILBDVJVNUAGVKRQ",
+    })
 
-res = s.transactions.direct_costs.download_attachment(request={
-    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "direct_cost_id": "EILBDVJVNUAGVKRQ",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -76,21 +75,20 @@ Before using this endpoint, you must have [retrieved data for the company](https
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.transactions.direct_costs.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_cost_id": "7110701885",
+    })
 
-res = s.transactions.direct_costs.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "direct_cost_id": "7110701885",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -124,22 +122,21 @@ The *Get direct cost attachment* endpoint returns a specific attachment for a gi
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.transactions.direct_costs.get_attachment(request={
+        "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_cost_id": "EILBDVJVNUAGVKRQ",
+    })
 
-res = s.transactions.direct_costs.get_attachment(request={
-    "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "direct_cost_id": "EILBDVJVNUAGVKRQ",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -176,24 +173,23 @@ Before using this endpoint, you must have [retrieved data for the company](https
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.transactions.direct_costs.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.transactions.direct_costs.list(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "order_by": "-modifiedDate",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -228,21 +224,20 @@ The *List direct cost attachments* endpoint returns a list of attachments availa
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.transactions.direct_costs.list_attachments(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_cost_id": "EILBDVJVNUAGVKRQ",
+    })
 
-res = s.transactions.direct_costs.list_attachments(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "direct_cost_id": "EILBDVJVNUAGVKRQ",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

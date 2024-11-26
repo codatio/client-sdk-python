@@ -25,93 +25,77 @@ from codat_lending import CodatLending
 from codat_lending.models import shared
 from decimal import Decimal
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
-
-res = s.loan_writeback.direct_costs.create(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "direct_cost_prototype": {
-        "currency": "USD",
-        "issue_date": "2023-03-21T10:19:52.223Z",
-        "line_items": [
-            {
-                "quantity": Decimal("1"),
-                "unit_amount": Decimal("7"),
-                "account_ref": {
-                    "id": "8000000D-1671793811",
-                    "name": "Purchases - Hardware for Resale",
-                },
-                "description": "test description line 1",
-                "discount_amount": Decimal("0"),
-                "discount_percentage": Decimal("0"),
-                "item_ref": {
-                    "id": "80000001-1674566705",
-                    "name": "item test",
-                },
-                "sub_total": Decimal("99"),
-                "tax_amount": Decimal("360"),
-                "total_amount": Decimal("70"),
-                "tracking": {
-                    "record_refs": [
+) as s:
+    res = s.loan_writeback.direct_costs.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_cost_prototype": {
+            "currency": "USD",
+            "issue_date": "2023-03-21T10:19:52.223Z",
+            "line_items": [
+                {
+                    "quantity": Decimal("1"),
+                    "unit_amount": Decimal("7"),
+                    "account_ref": {
+                        "id": "8000000D-1671793811",
+                        "name": "Purchases - Hardware for Resale",
+                    },
+                    "description": "test description line 1",
+                    "discount_amount": Decimal("0"),
+                    "discount_percentage": Decimal("0"),
+                    "item_ref": {
+                        "id": "80000001-1674566705",
+                        "name": "item test",
+                    },
+                    "sub_total": Decimal("99"),
+                    "tax_amount": Decimal("360"),
+                    "total_amount": Decimal("70"),
+                    "tracking_category_refs": [
                         {
-                            "data_type": shared.TrackingRecordRefDataType.TRACKING_CATEGORIES,
-                        },
-                        {
-                            "data_type": shared.TrackingRecordRefDataType.TRACKING_CATEGORIES,
+                            "id": "80000001-1674553252",
+                            "name": "Class 1",
                         },
                     ],
-                    "invoice_to": {
-                        "data_type": "invoice",
+                },
+            ],
+            "payment_allocations": [
+                {
+                    "allocation": {
+                        "allocated_on_date": "2023-01-29T10:19:52.223Z",
+                        "currency_rate": Decimal("0"),
+                        "total_amount": Decimal("88"),
+                    },
+                    "payment": {
+                        "account_ref": {
+                            "id": "80000028-1671794219",
+                            "name": "Bank Account 1",
+                        },
+                        "note": "payment allocations note",
+                        "paid_on_date": "2023-01-28T10:19:52.223Z",
+                        "reference": "payment allocations reference",
+                        "total_amount": Decimal("54"),
                     },
                 },
-                "tracking_category_refs": [
-                    {
-                        "id": "80000001-1674553252",
-                        "name": "Class 1",
-                    },
-                ],
+            ],
+            "sub_total": Decimal("362"),
+            "tax_amount": Decimal("4"),
+            "total_amount": Decimal("366"),
+            "contact_ref": {
+                "id": "80000001-1671793885",
+                "data_type": shared.ContactRefDataType.SUPPLIERS,
             },
-        ],
-        "payment_allocations": [
-            {
-                "allocation": {
-                    "allocated_on_date": "2023-01-29T10:19:52.223Z",
-                    "currency": "USD",
-                    "currency_rate": Decimal("0"),
-                    "total_amount": Decimal("88"),
-                },
-                "payment": {
-                    "account_ref": {
-                        "id": "80000028-1671794219",
-                        "name": "Bank Account 1",
-                    },
-                    "currency": "GBP",
-                    "note": "payment allocations note",
-                    "paid_on_date": "2023-01-28T10:19:52.223Z",
-                    "reference": "payment allocations reference",
-                    "total_amount": Decimal("54"),
-                },
-            },
-        ],
-        "sub_total": Decimal("362"),
-        "tax_amount": Decimal("4"),
-        "total_amount": Decimal("366"),
-        "contact_ref": {
-            "id": "80000001-1671793885",
-            "data_type": shared.ContactRefDataType.SUPPLIERS,
+            "note": "directCost 21/03 09.20",
+            "reference": "test ref",
         },
-        "note": "directCost 21/03 09.20",
-        "reference": "test ref",
-    },
-})
+    })
 
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -150,20 +134,19 @@ See the *response examples* for integration-specific indicative models.
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.loan_writeback.direct_costs.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.loan_writeback.direct_costs.get_create_model(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

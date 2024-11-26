@@ -26,20 +26,19 @@ This action triggers the system to refresh and pull the necessary data from the 
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.manage_reports.generate_report(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "report_type": shared.ReportType.CATEGORIZED_BANK_STATEMENT,
+    })
 
-res = s.manage_reports.generate_report(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "report_type": shared.ReportType.CATEGORIZED_BANK_STATEMENT,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -75,23 +74,22 @@ Use the *List reports* endpoint to return details about all reports generated fo
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.manage_reports.list_reports(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.manage_reports.list_reports(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "order_by": "-modifiedDate",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

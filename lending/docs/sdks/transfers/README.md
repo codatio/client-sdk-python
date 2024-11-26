@@ -25,61 +25,60 @@ from codat_lending import CodatLending
 from codat_lending.models import shared
 from decimal import Decimal
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.loan_writeback.transfers.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "accounting_transfer": {
+            "contact_ref": {
+                "id": "80000028-167239230944",
+                "data_type": shared.ContactRefDataType.CUSTOMERS,
+            },
+            "date_": "2023-01-26T11:51:18.104Z",
+            "deposited_record_refs": [
+                {
+                    "data_type": "accountTransaction",
+                },
+            ],
+            "description": "test transfers push 20230126 12.08",
+            "from_": {
+                "account_ref": {
+                    "data_type": "bankAccounts",
+                    "id": "80000028-1671794219",
+                },
+                "amount": Decimal("12"),
+                "currency": "USD",
+            },
+            "metadata": {
+                "is_deleted": True,
+            },
+            "modified_date": "2022-10-23T00:00:00Z",
+            "source_modified_date": "2022-10-23T00:00:00Z",
+            "status": shared.AccountingTransferStatus.UNKNOWN,
+            "to": {
+                "account_ref": {
+                    "data_type": "bankAccounts",
+                    "id": "80000004-1671793811",
+                },
+                "amount": Decimal("12"),
+                "currency": "EUR",
+            },
+            "tracking_category_refs": [
+                {
+                    "id": "80000001-1674553252",
+                    "name": "Class 1",
+                },
+            ],
+        },
+    })
 
-res = s.loan_writeback.transfers.create(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "accounting_transfer": {
-        "contact_ref": {
-            "id": "80000028-167239230944",
-            "data_type": shared.ContactRefDataType.CUSTOMERS,
-        },
-        "date_": "2023-01-26T11:51:18.104Z",
-        "deposited_record_refs": [
-            {
-                "data_type": "accountTransaction",
-            },
-        ],
-        "description": "test transfers push 20230126 12.08",
-        "from_": {
-            "account_ref": {
-                "data_type": "bankAccounts",
-                "id": "80000028-1671794219",
-            },
-            "amount": Decimal("12"),
-            "currency": "USD",
-        },
-        "metadata": {
-            "is_deleted": True,
-        },
-        "modified_date": "2022-10-23T00:00:00Z",
-        "source_modified_date": "2022-10-23T00:00:00Z",
-        "status": shared.AccountingTransferStatus.UNKNOWN,
-        "to": {
-            "account_ref": {
-                "data_type": "bankAccounts",
-                "id": "80000004-1671793811",
-            },
-            "amount": Decimal("12"),
-            "currency": "EUR",
-        },
-        "tracking_category_refs": [
-            {
-                "id": "80000001-1674553252",
-                "name": "Class 1",
-            },
-        ],
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -118,20 +117,19 @@ See the *response examples* for integration-specific indicative models.
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.loan_writeback.transfers.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.loan_writeback.transfers.get_create_model(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

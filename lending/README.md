@@ -85,20 +85,19 @@ poetry add codat-lending
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 ```
 
 </br>
@@ -111,18 +110,19 @@ from codat_lending import CodatLending
 from codat_lending.models import shared
 
 async def main():
-    s = CodatLending(
+    async with CodatLending(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    )
-    res = await s.companies.create_async(request={
-        "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
-    })
-    if res is not None:
-        # handle response
-        pass
+    ) as s:
+        res = await s.companies.create_async(request={
+            "name": "Technicalium",
+            "description": "Requested early access to the new financing scheme.",
+        })
+
+        if res is not None:
+            # handle response
+            pass
 
 asyncio.run(main())
 ```
@@ -494,21 +494,20 @@ from codat_lending import CodatLending
 from codat_lending.models import shared
 from codatlending.utils import BackoffStrategy, RetryConfig
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    },
+        RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-},
-    RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -518,21 +517,20 @@ from codat_lending import CodatLending
 from codat_lending.models import shared
 from codatlending.utils import BackoffStrategy, RetryConfig
 
-s = CodatLending(
+with CodatLending(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Retries [retries] -->
@@ -564,29 +562,28 @@ When custom error responses are specified for an operation, the SDK may also rai
 from codat_lending import CodatLending
 from codat_lending.models import errors, shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = None
+    try:
+        res = s.companies.create(request={
+            "name": "Technicalium",
+            "description": "Requested early access to the new financing scheme.",
+        })
 
-res = None
-try:
-    res = s.companies.create(request={
-        "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
-    })
+        if res is not None:
+            # handle response
+            pass
 
-    if res is not None:
-        # handle response
-        pass
-
-except errors.ErrorMessage as e:
-    # handle e.data: errors.ErrorMessageData
-    raise(e)
-except errors.SDKError as e:
-    # handle exception
-    raise(e)
+    except errors.ErrorMessage as e:
+        # handle e.data: errors.ErrorMessageData
+        raise(e)
+    except errors.SDKError as e:
+        # handle exception
+        raise(e)
 ```
 <!-- End Error Handling [errors] -->
 
@@ -600,21 +597,20 @@ The default server can also be overridden globally by passing a URL to the `serv
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     server_url="https://api.codat.io",
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Server Selection [server] -->
@@ -716,20 +712,19 @@ You can set the security parameters through the `security` optional parameter wh
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Authentication [security] -->
@@ -758,18 +753,17 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.file_upload.upload(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-s.file_upload.upload(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 <!-- End File uploads [file-upload] -->
