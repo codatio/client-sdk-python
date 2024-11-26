@@ -9,7 +9,7 @@ from codat_bankfeeds.types import BaseModel
 from codat_bankfeeds.utils import FieldMetadata, PathParamMetadata
 import pydantic
 from typing import List, Union
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
 class ListSourceAccountsRequestTypedDict(TypedDict):
@@ -35,15 +35,21 @@ class ListSourceAccountsRequest(BaseModel):
     r"""Unique identifier for a connection."""
 
 
-ListSourceAccountsResponseBodyTypedDict = Union[
-    List[shared_sourceaccountv2.SourceAccountV2TypedDict],
-    List[shared_sourceaccount.SourceAccountTypedDict],
-]
+ListSourceAccountsResponseBodyTypedDict = TypeAliasType(
+    "ListSourceAccountsResponseBodyTypedDict",
+    Union[
+        List[shared_sourceaccountv2.SourceAccountV2TypedDict],
+        List[shared_sourceaccount.SourceAccountTypedDict],
+    ],
+)
 r"""Success"""
 
 
-ListSourceAccountsResponseBody = Union[
-    List[shared_sourceaccountv2.SourceAccountV2],
-    List[shared_sourceaccount.SourceAccount],
-]
+ListSourceAccountsResponseBody = TypeAliasType(
+    "ListSourceAccountsResponseBody",
+    Union[
+        List[shared_sourceaccountv2.SourceAccountV2],
+        List[shared_sourceaccount.SourceAccount],
+    ],
+)
 r"""Success"""

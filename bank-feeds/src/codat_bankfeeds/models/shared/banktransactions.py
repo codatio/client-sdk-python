@@ -43,9 +43,13 @@ class BankTransactionType(str, Enum):
 
 
 class BankTransactionsTypedDict(TypedDict):
-    amount: Decimal
+    amount: NotRequired[Decimal]
     r"""The amount transacted in the bank transaction."""
-    date_: str
+    balance: NotRequired[Decimal]
+    r"""The remaining balance in the account with ID `accountId`. This field is optional for QuickBooks Online but is required for Xero, Sage, NetSuite, Exact, and FreeAgent."""
+    counterparty: NotRequired[Nullable[str]]
+    r"""The giving or receiving party such as a person or organization."""
+    date_: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -66,14 +70,10 @@ class BankTransactionsTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
-    id: str
-    r"""Identifier for the bank account transaction, unique for the company in the accounting software."""
-    balance: NotRequired[Decimal]
-    r"""The remaining balance in the account with ID `accountId`. This field is optional for QuickBooks Online but is required for Xero, Sage, NetSuite, Exact, and FreeAgent."""
-    counterparty: NotRequired[Nullable[str]]
-    r"""The giving or receiving party such as a person or organization."""
     description: NotRequired[Nullable[str]]
     r"""Description of the bank transaction."""
+    id: NotRequired[str]
+    r"""Identifier for the bank account transaction, unique for the company in the accounting software."""
     reconciled: NotRequired[Nullable[bool]]
     r"""`True` if the bank transaction has been [reconciled](https://www.xero.com/uk/guides/what-is-bank-reconciliation/) in the accounting software."""
     reference: NotRequired[Nullable[str]]
@@ -84,36 +84,11 @@ class BankTransactionsTypedDict(TypedDict):
 
 class BankTransactions(BaseModel):
     amount: Annotated[
-        Decimal,
+        Optional[Decimal],
         BeforeValidator(validate_decimal),
         PlainSerializer(serialize_decimal(False)),
-    ]
+    ] = None
     r"""The amount transacted in the bank transaction."""
-
-    date_: Annotated[str, pydantic.Field(alias="date")]
-    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
-
-    ```
-    2020-10-08T22:40:50Z
-    2021-01-01T00:00:00
-    ```
-
-
-
-    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
-
-    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
-    - Unqualified local time: `2021-11-15T01:00:00`
-    - UTC time offsets: `2021-11-15T01:00:00-05:00`
-
-    > Time zones
-    >
-    > Not all dates from Codat will contain information about time zones.
-    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
-    """
-
-    id: str
-    r"""Identifier for the bank account transaction, unique for the company in the accounting software."""
 
     balance: Annotated[
         Optional[Decimal],
@@ -125,8 +100,33 @@ class BankTransactions(BaseModel):
     counterparty: OptionalNullable[str] = UNSET
     r"""The giving or receiving party such as a person or organization."""
 
+    date_: Annotated[Optional[str], pydantic.Field(alias="date")] = None
+    r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
+
+    ```
+    2020-10-08T22:40:50Z
+    2021-01-01T00:00:00
+    ```
+
+
+
+    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:
+
+    - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z`
+    - Unqualified local time: `2021-11-15T01:00:00`
+    - UTC time offsets: `2021-11-15T01:00:00-05:00`
+
+    > Time zones
+    >
+    > Not all dates from Codat will contain information about time zones.
+    > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
+    """
+
     description: OptionalNullable[str] = UNSET
     r"""Description of the bank transaction."""
+
+    id: Optional[str] = None
+    r"""Identifier for the bank account transaction, unique for the company in the accounting software."""
 
     reconciled: OptionalNullable[bool] = UNSET
     r"""`True` if the bank transaction has been [reconciled](https://www.xero.com/uk/guides/what-is-bank-reconciliation/) in the accounting software."""
@@ -142,9 +142,12 @@ class BankTransactions(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "amount",
             "balance",
             "counterparty",
+            "date",
             "description",
+            "id",
             "reconciled",
             "reference",
             "transactionType",

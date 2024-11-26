@@ -87,20 +87,19 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 ```
 
 </br>
@@ -113,18 +112,19 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
 async def main():
-    s = CodatBankFeeds(
+    async with CodatBankFeeds(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    )
-    res = await s.companies.create_async(request={
-        "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
-    })
-    if res is not None:
-        # handle response
-        pass
+    ) as s:
+        res = await s.companies.create_async(request={
+            "name": "Technicalium",
+            "description": "Requested early access to the new financing scheme.",
+        })
+
+        if res is not None:
+            # handle response
+            pass
 
 asyncio.run(main())
 ```
@@ -153,6 +153,7 @@ asyncio.run(main())
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
 * [get](docs/sdks/companies/README.md#get) - Get company
+* [get_access_token](docs/sdks/companies/README.md#get_access_token) - Get company access token
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [update](docs/sdks/companies/README.md#update) - Update company
 
@@ -175,7 +176,8 @@ asyncio.run(main())
 
 ### [source_accounts](docs/sdks/sourceaccounts/README.md)
 
-* [create](docs/sdks/sourceaccounts/README.md#create) - Create source account
+* [create](docs/sdks/sourceaccounts/README.md#create) - Create single source account
+* [create_batch](docs/sdks/sourceaccounts/README.md#create_batch) - Create source accounts
 * [delete](docs/sdks/sourceaccounts/README.md#delete) - Delete source account
 * [delete_credentials](docs/sdks/sourceaccounts/README.md#delete_credentials) - Delete all source account credentials
 * [generate_credentials](docs/sdks/sourceaccounts/README.md#generate_credentials) - Generate source account credentials
@@ -189,6 +191,7 @@ asyncio.run(main())
 ### [transactions](docs/sdks/transactions/README.md)
 
 * [create](docs/sdks/transactions/README.md#create) - Create bank transactions
+* [get_create_model](docs/sdks/transactions/README.md#get_create_model) - Get create bank transactions model
 * [get_create_operation](docs/sdks/transactions/README.md#get_create_operation) - Get create operation
 * [list_create_operations](docs/sdks/transactions/README.md#list_create_operations) - List create operations
 
@@ -213,21 +216,20 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.source_accounts.generate_credentials(request={
+        "request_body": open("example.file", "rb"),
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.source_accounts.generate_credentials(request={
-    "request_body": open("example.file", "rb"),
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End File uploads [file-upload] -->
@@ -243,21 +245,20 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 from codatbankfeeds.utils import BackoffStrategy, RetryConfig
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    },
+        RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-},
-    RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -267,21 +268,20 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 from codatbankfeeds.utils import BackoffStrategy, RetryConfig
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Retries [retries] -->
@@ -304,10 +304,10 @@ By default, an API error will raise a errors.SDKError exception, which has the f
 
 When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create_async` method may raise the following exceptions:
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type          | Status Code                       | Content Type     |
+| ------------------- | --------------------------------- | ---------------- |
+| errors.ErrorMessage | 400, 401, 402, 403, 429, 500, 503 | application/json |
+| errors.SDKError     | 4XX, 5XX                          | \*/\*            |
 
 ### Example
 
@@ -315,29 +315,28 @@ When custom error responses are specified for an operation, the SDK may also rai
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import errors, shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = None
+    try:
+        res = s.companies.create(request={
+            "name": "Technicalium",
+            "description": "Requested early access to the new financing scheme.",
+        })
 
-res = None
-try:
-    res = s.companies.create(request={
-        "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
-    })
+        if res is not None:
+            # handle response
+            pass
 
-    if res is not None:
-        # handle response
-        pass
-
-except errors.ErrorMessage as e:
-    # handle e.data: errors.ErrorMessageData
-    raise(e)
-except errors.SDKError as e:
-    # handle exception
-    raise(e)
+    except errors.ErrorMessage as e:
+        # handle e.data: errors.ErrorMessageData
+        raise(e)
+    except errors.SDKError as e:
+        # handle exception
+        raise(e)
 ```
 <!-- End Error Handling [errors] -->
 
@@ -346,39 +345,6 @@ except errors.SDKError as e:
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.codat.io` | None |
-
-#### Example
-
-```python
-from codat_bankfeeds import CodatBankFeeds
-from codat_bankfeeds.models import shared
-
-s = CodatBankFeeds(
-    server_idx=0,
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-)
-
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
-
 ### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
@@ -386,21 +352,20 @@ The default server can also be overridden globally by passing a URL to the `serv
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     server_url="https://api.codat.io",
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Server Selection [server] -->
@@ -497,29 +462,28 @@ s = CodatBankFeeds(async_client=CustomClient(httpx.AsyncClient()))
 
 This SDK supports the following security scheme globally:
 
-| Name          | Type          | Scheme        |
-| ------------- | ------------- | ------------- |
-| `auth_header` | apiKey        | API key       |
+| Name          | Type   | Scheme  |
+| ------------- | ------ | ------- |
+| `auth_header` | apiKey | API key |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
-s = CodatBankFeeds(
+with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Authentication [security] -->

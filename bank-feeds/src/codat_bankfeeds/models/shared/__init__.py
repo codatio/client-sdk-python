@@ -74,6 +74,7 @@ from .clientratelimitwebhookpayload import (
 )
 from .companies import Companies, CompaniesTypedDict
 from .company import Company, CompanyTypedDict
+from .companyaccesstoken import CompanyAccessToken, CompanyAccessTokenTypedDict
 from .companyinformation import CompanyInformation, CompanyInformationTypedDict
 from .companyreference import (
     CompanyReference,
@@ -127,11 +128,25 @@ from .pushvalidationinfo import PushValidationInfo, PushValidationInfoTypedDict
 from .routinginfo import RoutingInfo, RoutingInfoTypedDict, Type
 from .security import Security, SecurityTypedDict
 from .sourceaccount import SourceAccount, SourceAccountTypedDict, Status
+from .sourceaccountbatchcreateresponse import (
+    SourceAccountBatchCreateResponse,
+    SourceAccountBatchCreateResponseTypedDict,
+)
+from .sourceaccountbatcherrorresponse import (
+    Result,
+    ResultTypedDict,
+    SourceAccountBatchErrorResponse,
+    SourceAccountBatchErrorResponseTypedDict,
+)
 from .sourceaccountv2 import (
     AccountType,
     SourceAccountV2,
     SourceAccountV2Status,
     SourceAccountV2TypedDict,
+)
+from .sourceaccountv2batchcreateresponse import (
+    SourceAccountV2BatchCreateResponse,
+    SourceAccountV2BatchCreateResponseTypedDict,
 )
 from .sourceaccountwebhook import SourceAccountWebhook, SourceAccountWebhookTypedDict
 from .sourceaccountwebhookpayload import (
@@ -195,6 +210,8 @@ __all__ = [
     "Companies",
     "CompaniesTypedDict",
     "Company",
+    "CompanyAccessToken",
+    "CompanyAccessTokenTypedDict",
     "CompanyInformation",
     "CompanyInformationTypedDict",
     "CompanyReference",
@@ -260,13 +277,21 @@ __all__ = [
     "PushOptionTypedDict",
     "PushValidationInfo",
     "PushValidationInfoTypedDict",
+    "Result",
+    "ResultTypedDict",
     "RoutingInfo",
     "RoutingInfoTypedDict",
     "Security",
     "SecurityTypedDict",
     "SourceAccount",
+    "SourceAccountBatchCreateResponse",
+    "SourceAccountBatchCreateResponseTypedDict",
+    "SourceAccountBatchErrorResponse",
+    "SourceAccountBatchErrorResponseTypedDict",
     "SourceAccountTypedDict",
     "SourceAccountV2",
+    "SourceAccountV2BatchCreateResponse",
+    "SourceAccountV2BatchCreateResponseTypedDict",
     "SourceAccountV2Status",
     "SourceAccountV2TypedDict",
     "SourceAccountWebhook",
