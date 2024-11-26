@@ -9,17 +9,25 @@ generation:
     requestResponseComponentNamesFeb2024: false
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
   telemetryEnabled: true
 python:
-  version: 3.5.0
+  version: 4.0.0
   additionalDependencies:
     dev: {}
     main: {}
   author: Codat
+  authors:
+    - Speakeasy
   clientServerStatusCodesAsErrors: true
-  description: Manage the building blocks of Codat, including companies, connections,
-    and more.
+  defaultErrorName: SDKError
+  description: Manage the building blocks of Codat, including companies, connections, and more.
+  enumFormat: enum
+  fixFlags:
+    responseRequiredSep2024: false
   flattenGlobalSecurity: false
+  flattenRequests: false
+  flatteningOrder: parameters-first
   imports:
     option: openapi
     paths:
@@ -30,13 +38,9 @@ python:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
+  methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: codat-platform
   projectUrls: {}
   responseFormat: flat
-  authors:
-  - Speakeasy
-  enumFormat: enum
-  flattenRequests: false
-  methodArguments: infer-optional-args
   templateVersion: v2
