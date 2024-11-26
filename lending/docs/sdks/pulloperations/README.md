@@ -18,20 +18,19 @@ Retrieve information about a single dataset or pull operation.
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.manage_data.pull_operations.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "dataset_id": "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    })
 
-res = s.manage_data.pull_operations.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "dataset_id": "b888f774-3e7c-4135-a18c-6b985523c4bc",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -63,23 +62,22 @@ Gets the pull operation history (datasets) for a given company.
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.manage_data.pull_operations.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.manage_data.pull_operations.list(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "order_by": "-modifiedDate",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

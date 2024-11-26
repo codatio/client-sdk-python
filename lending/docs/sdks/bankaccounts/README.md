@@ -24,26 +24,25 @@ Required data may vary by integration. To see what data to post, first call [Get
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.loan_writeback.bank_accounts.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "accounting_bank_account": {
+            "currency": "USD",
+            "modified_date": "2022-10-23T00:00:00Z",
+            "source_modified_date": "2022-10-23T00:00:00Z",
+            "status": shared.BankAccountStatus.ACTIVE,
+        },
+    })
 
-res = s.loan_writeback.bank_accounts.create(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "accounting_bank_account": {
-        "currency": "USD",
-        "modified_date": "2022-10-23T00:00:00Z",
-        "source_modified_date": "2022-10-23T00:00:00Z",
-        "status": shared.BankAccountStatus.ACTIVE,
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -82,20 +81,19 @@ See the *response examples* for integration-specific indicative models.
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.loan_writeback.bank_accounts.get_create_update_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
-res = s.loan_writeback.bank_accounts.get_create_update_model(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

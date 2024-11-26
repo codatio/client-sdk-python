@@ -47,24 +47,23 @@ The report data then combines multiple reporting dimensions and measures and out
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sales.metrics.get_customer_retention(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "number_of_periods": 431272,
+        "period_length": 497588,
+        "period_unit": shared.PeriodUnit.DAY,
+        "report_date": "29-09-2020",
+    })
 
-res = s.sales.metrics.get_customer_retention(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "number_of_periods": 431272,
-    "period_length": 497588,
-    "period_unit": shared.PeriodUnit.DAY,
-    "report_date": "29-09-2020",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -116,24 +115,23 @@ The report data then combines multiple reporting dimensions and measures and out
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sales.metrics.get_lifetime_value(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "number_of_periods": 500610,
+        "period_length": 900865,
+        "period_unit": shared.PeriodUnit.YEAR,
+        "report_date": "29-09-2020",
+    })
 
-res = s.sales.metrics.get_lifetime_value(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "number_of_periods": 500610,
-    "period_length": 900865,
-    "period_unit": shared.PeriodUnit.YEAR,
-    "report_date": "29-09-2020",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -186,24 +184,23 @@ The report data then combines multiple reporting dimensions and measures and out
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sales.metrics.get_revenue(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "number_of_periods": 120092,
+        "period_length": 307462,
+        "period_unit": shared.PeriodUnit.YEAR,
+        "report_date": "29-09-2020",
+    })
 
-res = s.sales.metrics.get_revenue(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "number_of_periods": 120092,
-    "period_length": 307462,
-    "period_unit": shared.PeriodUnit.YEAR,
-    "report_date": "29-09-2020",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

@@ -18,22 +18,21 @@ Gets the latest balance sheet for a company.
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.financial_statements.balance_sheet.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "period_length": 4,
+        "periods_to_compare": 20,
+        "start_month": "2022-10-23T00:00:00Z",
+    })
 
-res = s.financial_statements.balance_sheet.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "period_length": 4,
-    "periods_to_compare": 20,
-    "start_month": "2022-10-23T00:00:00Z",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -67,20 +66,19 @@ Codat suggests a category for each account automatically, but you can [change it
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.financial_statements.balance_sheet.get_categorized_accounts(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "report_date": "29-09-2020",
+    })
 
-res = s.financial_statements.balance_sheet.get_categorized_accounts(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "report_date": "29-09-2020",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

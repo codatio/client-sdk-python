@@ -39,24 +39,23 @@ The report data then combines multiple reporting dimensions and measures and out
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sales.reports.get_orders(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "number_of_periods": 393849,
+        "period_length": 491586,
+        "period_unit": shared.PeriodUnit.YEAR,
+        "report_date": "29-09-2020",
+    })
 
-res = s.sales.reports.get_orders(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "number_of_periods": 393849,
-    "period_length": 491586,
-    "period_unit": shared.PeriodUnit.YEAR,
-    "report_date": "29-09-2020",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -110,24 +109,23 @@ The report data then combines multiple reporting dimensions and measures and out
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sales.reports.get_refunds(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "number_of_periods": 810912,
+        "period_length": 277786,
+        "period_unit": shared.PeriodUnit.MONTH,
+        "report_date": "29-09-2020",
+    })
 
-res = s.sales.reports.get_refunds(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    "number_of_periods": 810912,
-    "period_length": 277786,
-    "period_unit": shared.PeriodUnit.MONTH,
-    "report_date": "29-09-2020",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

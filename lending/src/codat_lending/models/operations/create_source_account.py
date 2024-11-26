@@ -9,18 +9,22 @@ from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 import pydantic
 from typing import Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CreateSourceAccountRequestBodyTypedDict = Union[
-    shared_sourceaccount.SourceAccountTypedDict,
-    shared_sourceaccountv2.SourceAccountV2TypedDict,
-]
+CreateSourceAccountRequestBodyTypedDict = TypeAliasType(
+    "CreateSourceAccountRequestBodyTypedDict",
+    Union[
+        shared_sourceaccount.SourceAccountTypedDict,
+        shared_sourceaccountv2.SourceAccountV2TypedDict,
+    ],
+)
 
 
-CreateSourceAccountRequestBody = Union[
-    shared_sourceaccount.SourceAccount, shared_sourceaccountv2.SourceAccountV2
-]
+CreateSourceAccountRequestBody = TypeAliasType(
+    "CreateSourceAccountRequestBody",
+    Union[shared_sourceaccount.SourceAccount, shared_sourceaccountv2.SourceAccountV2],
+)
 
 
 class CreateSourceAccountRequestTypedDict(TypedDict):
@@ -52,14 +56,18 @@ class CreateSourceAccountRequest(BaseModel):
     ] = None
 
 
-CreateSourceAccountResponseBodyTypedDict = Union[
-    shared_sourceaccount.SourceAccountTypedDict,
-    shared_sourceaccountv2.SourceAccountV2TypedDict,
-]
+CreateSourceAccountResponseBodyTypedDict = TypeAliasType(
+    "CreateSourceAccountResponseBodyTypedDict",
+    Union[
+        shared_sourceaccount.SourceAccountTypedDict,
+        shared_sourceaccountv2.SourceAccountV2TypedDict,
+    ],
+)
 r"""Success"""
 
 
-CreateSourceAccountResponseBody = Union[
-    shared_sourceaccount.SourceAccount, shared_sourceaccountv2.SourceAccountV2
-]
+CreateSourceAccountResponseBody = TypeAliasType(
+    "CreateSourceAccountResponseBody",
+    Union[shared_sourceaccount.SourceAccount, shared_sourceaccountv2.SourceAccountV2],
+)
 r"""Success"""

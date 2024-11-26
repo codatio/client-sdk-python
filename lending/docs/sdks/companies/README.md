@@ -28,20 +28,19 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.create(request={
+        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+    })
 
-res = s.companies.create(request={
-    "name": "Technicalium",
-    "description": "Requested early access to the new financing scheme.",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -77,17 +76,16 @@ Each company can have multiple [connections](https://docs.codat.io/lending-api#/
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    s.companies.delete(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-s.companies.delete(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -119,19 +117,18 @@ Each company can have multiple [connections](https://docs.codat.io/lending-api#/
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.companies.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -166,22 +163,21 @@ Each company can have multiple [connections](https://docs.codat.io/lending-api#/
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.list(request={
+        "order_by": "-modifiedDate",
+        "page": 1,
+        "page_size": 100,
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
 
-res = s.companies.list(request={
-    "order_by": "-modifiedDate",
-    "page": 1,
-    "page_size": 100,
-    "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -216,23 +212,22 @@ Each company can have multiple [connections](https://docs.codat.io/lending-api#/
 from codat_lending import CodatLending
 from codat_lending.models import shared
 
-s = CodatLending(
+with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.companies.update(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "company_request_body": {
+            "name": "New Name",
+            "description": "Requested early access to the new financing scheme.",
+        },
+    })
 
-res = s.companies.update(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "company_request_body": {
-        "name": "New Name",
-        "description": "Requested early access to the new financing scheme.",
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
