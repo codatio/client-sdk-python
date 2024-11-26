@@ -5,8 +5,8 @@ from .groupinglevels import GroupingLevels, GroupingLevelsTypedDict
 from .groupingperiod import GroupingPeriod, GroupingPeriodTypedDict
 from codat_sync_for_commerce.types import BaseModel
 import pydantic
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class GroupingTypedDict(TypedDict):

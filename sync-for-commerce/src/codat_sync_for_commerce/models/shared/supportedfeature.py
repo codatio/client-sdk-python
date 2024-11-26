@@ -5,8 +5,7 @@ from .featurestate import FeatureState
 from .featuretype import FeatureType
 from codat_sync_for_commerce.types import BaseModel
 import pydantic
-from typing import TypedDict
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypedDict
 
 
 class SupportedFeatureTypedDict(TypedDict):

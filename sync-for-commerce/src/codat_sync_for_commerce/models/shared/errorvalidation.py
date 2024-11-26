@@ -10,8 +10,8 @@ from codat_sync_for_commerce.types import (
     UNSET_SENTINEL,
 )
 from pydantic import model_serializer
-from typing import List, TypedDict
-from typing_extensions import NotRequired
+from typing import List
+from typing_extensions import NotRequired, TypedDict
 
 
 class ErrorValidationTypedDict(TypedDict):

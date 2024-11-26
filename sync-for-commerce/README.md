@@ -88,19 +88,18 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+        "locale": shared.Locale.EN_US,
+    })
 
-res = s.sync_flow_settings.get_config_text_sync_flow(request={
-    "locale": shared.Locale.EN_US,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 ```
 
 </br>
@@ -113,17 +112,18 @@ from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
 async def main():
-    s = CodatSyncCommerce(
+    async with CodatSyncCommerce(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    )
-    res = await s.sync_flow_settings.get_config_text_sync_flow_async(request={
-        "locale": shared.Locale.EN_US,
-    })
-    if res is not None:
-        # handle response
-        pass
+    ) as s:
+        res = await s.sync_flow_settings.get_config_text_sync_flow_async(request={
+            "locale": shared.Locale.EN_US,
+        })
+
+        if res is not None:
+            # handle response
+            pass
 
 asyncio.run(main())
 ```
@@ -189,20 +189,19 @@ from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 from codatsynccommerce.utils import BackoffStrategy, RetryConfig
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+        "locale": shared.Locale.EN_US,
+    },
+        RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-res = s.sync_flow_settings.get_config_text_sync_flow(request={
-    "locale": shared.Locale.EN_US,
-},
-    RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -212,48 +211,12 @@ from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 from codatsynccommerce.utils import BackoffStrategy, RetryConfig
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
-
-res = s.sync_flow_settings.get_config_text_sync_flow(request={
-    "locale": shared.Locale.EN_US,
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-<!-- End Retries [retries] -->
-
-<!-- Start Error Handling [errors] -->
-## Error Handling
-
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
-
-| Error Object            | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ErrorMessage     | 401,402,403,429,500,503 | application/json        |
-| errors.SDKError         | 4xx-5xx                 | */*                     |
-
-### Example
-
-```python
-from codat_sync_for_commerce import CodatSyncCommerce
-from codat_sync_for_commerce.models import errors, shared
-
-s = CodatSyncCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-)
-
-res = None
-try:
+) as s:
     res = s.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
@@ -262,49 +225,62 @@ try:
         # handle response
         pass
 
-except errors.ErrorMessage as e:
-    # handle e.data: errors.ErrorMessageData
-    raise(e)
-except errors.SDKError as e:
-    # handle exception
-    raise(e)
+```
+<!-- End Retries [retries] -->
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
+
+By default, an API error will raise a errors.SDKError exception, which has the following properties:
+
+| Property        | Type             | Description           |
+|-----------------|------------------|-----------------------|
+| `.status_code`  | *int*            | The HTTP status code  |
+| `.message`      | *str*            | The error message     |
+| `.raw_response` | *httpx.Response* | The raw HTTP response |
+| `.body`         | *str*            | The response content  |
+
+When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `get_config_text_sync_flow_async` method may raise the following exceptions:
+
+| Error Type          | Status Code                  | Content Type     |
+| ------------------- | ---------------------------- | ---------------- |
+| errors.ErrorMessage | 401, 402, 403, 429, 500, 503 | application/json |
+| errors.SDKError     | 4XX, 5XX                     | \*/\*            |
+
+### Example
+
+```python
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import errors, shared
+
+with CodatSyncCommerce(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as s:
+    res = None
+    try:
+        res = s.sync_flow_settings.get_config_text_sync_flow(request={
+            "locale": shared.Locale.EN_US,
+        })
+
+        if res is not None:
+            # handle response
+            pass
+
+    except errors.ErrorMessage as e:
+        # handle e.data: errors.ErrorMessageData
+        raise(e)
+    except errors.SDKError as e:
+        # handle exception
+        raise(e)
 ```
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
 ## Server Selection
-
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.codat.io` | None |
-
-#### Example
-
-```python
-from codat_sync_for_commerce import CodatSyncCommerce
-from codat_sync_for_commerce.models import shared
-
-s = CodatSyncCommerce(
-    server_idx=0,
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-)
-
-res = s.sync_flow_settings.get_config_text_sync_flow(request={
-    "locale": shared.Locale.EN_US,
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
 
 ### Override Server URL Per-Client
 
@@ -313,20 +289,19 @@ The default server can also be overridden globally by passing a URL to the `serv
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     server_url="https://api.codat.io",
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+        "locale": shared.Locale.EN_US,
+    })
 
-res = s.sync_flow_settings.get_config_text_sync_flow(request={
-    "locale": shared.Locale.EN_US,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Server Selection [server] -->
@@ -419,28 +394,27 @@ s = CodatSyncCommerce(async_client=CustomClient(httpx.AsyncClient()))
 
 This SDK supports the following security scheme globally:
 
-| Name          | Type          | Scheme        |
-| ------------- | ------------- | ------------- |
-| `auth_header` | apiKey        | API key       |
+| Name          | Type   | Scheme  |
+| ------------- | ------ | ------- |
+| `auth_header` | apiKey | API key |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```python
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+        "locale": shared.Locale.EN_US,
+    })
 
-res = s.sync_flow_settings.get_config_text_sync_flow(request={
-    "locale": shared.Locale.EN_US,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Authentication [security] -->

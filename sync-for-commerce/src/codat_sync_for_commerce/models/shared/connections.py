@@ -5,8 +5,8 @@ from .connection import Connection, ConnectionTypedDict
 from .links import Links, LinksTypedDict
 from codat_sync_for_commerce.types import BaseModel
 import pydantic
-from typing import List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class ConnectionsTypedDict(TypedDict):

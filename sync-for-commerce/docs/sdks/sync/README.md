@@ -25,20 +25,19 @@ Get the sync status for a specified sync
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "sync_id": "6fb40d5e-b13e-11ed-afa1-0242ac120002",
+    })
 
-res = s.sync.get(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "sync_id": "6fb40d5e-b13e-11ed-afa1-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -55,11 +54,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get_last_successful_sync
 
@@ -71,19 +69,18 @@ Gets the status of the last successful sync
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync.get_last_successful_sync(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.sync.get_last_successful_sync(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -100,11 +97,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get_latest_sync
 
@@ -116,19 +112,18 @@ Gets the latest sync status
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync.get_latest_sync(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.sync.get_latest_sync(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -145,11 +140,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get_status
 
@@ -161,19 +155,18 @@ Gets a list of sync statuses.
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync.get_status(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.sync.get_status(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -190,11 +183,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list
 
@@ -206,19 +198,18 @@ Gets a list of sync statuses
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
-res = s.sync.list(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -235,11 +226,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ErrorMessage         | 401,402,403,404,429,500,503 | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
-
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## request
 
@@ -251,22 +241,21 @@ Run a Commerce sync from the last successful sync up to the date provided (optio
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
+) as s:
+    res = s.sync.request(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "sync_to_latest_args": {
+            "sync_to": "2022-10-23T00:00:00Z",
+        },
+    })
 
-res = s.sync.request(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "sync_to_latest_args": {
-        "sync_to": "2022-10-23T00:00:00Z",
-    },
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -283,11 +272,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
-
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## request_for_date_range
 
@@ -299,25 +287,24 @@ Initiate a sync for the specified start date to the specified finish date in the
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-s = CodatSyncCommerce(
+with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-)
-
-res = s.sync.request_for_date_range(request={
-    "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-    "sync_range": {
-        "date_range": {
-            "finish": "2022-10-23T00:00:00Z",
-            "start": "2022-10-23T00:00:00Z",
+) as s:
+    res = s.sync.request_for_date_range(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "sync_range": {
+            "date_range": {
+                "finish": "2022-10-23T00:00:00Z",
+                "start": "2022-10-23T00:00:00Z",
+            },
         },
-    },
-})
+    })
 
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -334,7 +321,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.ErrorMessage             | 400,401,402,403,404,429,500,503 | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
+| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
