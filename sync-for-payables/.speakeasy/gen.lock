@@ -3,10 +3,10 @@ id: 0722f07c-657c-4062-93f1-39ee3fe757d0
 management:
   docChecksum: 05c2a60eb0f4b40cda5e4a92d94e7b93
   docVersion: 3.0.0
-  speakeasyVersion: 1.447.0
-  generationVersion: 2.463.0
-  releaseVersion: 8.0.1
-  configChecksum: 5965fe92b6f377d879959498007138b9
+  speakeasyVersion: 1.448.0
+  generationVersion: 2.466.0
+  releaseVersion: 8.0.2
+  configChecksum: 770f66b877a0dda395dc34450854e097
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: sync-for-payables
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-payables

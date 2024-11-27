@@ -1,4 +1,4 @@
-speakeasyVersion: 1.447.0
+speakeasyVersion: 1.448.0
 sources:
     accounting-source:
         sourceNamespace: accounting-source
@@ -84,11 +84,11 @@ sources:
             - prealpha
     sync-for-payables-source:
         sourceNamespace: sync-for-payables-source
-        sourceRevisionDigest: sha256:d7393b1c3960ef78ce61f74e76c9f76e9ba1014126e542b1fce6e1c8688af9d4
+        sourceRevisionDigest: sha256:24533e2542e722cc2a54d350b8124a864d69ed4460b3fda7156caf3e8d822ca0
         sourceBlobDigest: sha256:57b656eed2c5a98f97da8f59e196bb8052ead3cc7c87673cdf5e19c6badbb570
         tags:
             - latest
-            - speakeasy-sdk-regen-1732645896
+            - speakeasy-sdk-regen-1732702202
             - 3.0.0
     sync-for-payables-version-1-source:
         sourceNamespace: sync-for-payables-version-1-source
@@ -166,10 +166,10 @@ targets:
     sync-for-payables-library:
         source: sync-for-payables-source
         sourceNamespace: sync-for-payables-source
-        sourceRevisionDigest: sha256:d7393b1c3960ef78ce61f74e76c9f76e9ba1014126e542b1fce6e1c8688af9d4
+        sourceRevisionDigest: sha256:24533e2542e722cc2a54d350b8124a864d69ed4460b3fda7156caf3e8d822ca0
         sourceBlobDigest: sha256:57b656eed2c5a98f97da8f59e196bb8052ead3cc7c87673cdf5e19c6badbb570
-        codeSamplesNamespace: sync-for-payables-source-code-samples
-        codeSamplesRevisionDigest: sha256:fa0ba162494da09ccab343e9ea42bd76d8005329469bb7ad3e8c63af12af8067
+        codeSamplesNamespace: sync-for-payables-source-python-code-samples
+        codeSamplesRevisionDigest: sha256:ee15bf6aec481ca23d8e2cb43d251e239334292e4affce738c03ef74f3e092b3
     sync-for-payables-version-1-library:
         source: sync-for-payables-version-1-source
         sourceNamespace: sync-for-payables-version-1-source
@@ -265,7 +265,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/accounting-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/accounting-source-python-code-samples
                 blocking: false
         assess-library:
             target: python
@@ -276,7 +276,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/assess-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/assess-source-python-code-samples
                 blocking: false
         bank-feeds-library:
             target: python
@@ -287,7 +287,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/bank-feeds-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/bank-feeds-source-python-code-samples
                 blocking: false
         banking-library:
             target: python
@@ -298,7 +298,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/banking-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/banking-source-python-code-samples
                 blocking: false
         commerce-library:
             target: python
@@ -309,7 +309,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/commerce-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/commerce-source-python-code-samples
                 blocking: false
         common-library:
             target: python
@@ -320,7 +320,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/common-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/common-source-python-code-samples
                 blocking: false
         files-library:
             target: python
@@ -331,7 +331,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/files-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/files-source-python-code-samples
                 blocking: false
         lending-library:
             target: python
@@ -342,7 +342,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/lending-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/lending-source-python-code-samples
                 blocking: false
         platform-library:
             target: python
@@ -353,7 +353,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/platform-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/platform-source-python-code-samples
                 blocking: false
         sync-for-commerce-library:
             target: python
@@ -364,7 +364,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/sync-for-commerce-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/sync-for-commerce-source-python-code-samples
                 blocking: false
         sync-for-commerce-version-1-library:
             target: python
@@ -382,7 +382,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/sync-for-expenses-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/sync-for-expenses-source-python-code-samples
                 blocking: false
         sync-for-expenses-version-1-library:
             target: python
@@ -400,7 +400,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/sync-for-payables-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/sync-for-payables-source-python-code-samples
                 blocking: false
         sync-for-payables-version-1-library:
             target: python
@@ -411,7 +411,7 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/sync-for-payables-version-1-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/sync-for-payables-version-1-source-python-code-samples
                 blocking: false
         sync-for-payroll-library:
             target: python
@@ -422,5 +422,5 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/codat/codat/sync-for-payroll-source-code-samples
+                    location: registry.speakeasyapi.dev/codat/codat/sync-for-payroll-source-python-code-samples
                 blocking: false
