@@ -29,8 +29,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.supplemental_data.configure(request={
+) as codat_platform:
+    codat_platform.supplemental_data.configure(request={
         "data_type": operations.DataType.INVOICES,
         "platform_key": "gbol",
         "supplemental_data_configuration": {},
@@ -70,8 +70,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.supplemental_data.get_configuration(request={
+) as codat_platform:
+    res = codat_platform.supplemental_data.get_configuration(request={
         "data_type": operations.PathParamDataType.INVOICES,
         "platform_key": "gbol",
     })

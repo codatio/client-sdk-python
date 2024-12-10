@@ -36,17 +36,22 @@ These end points cover creating and managing your companies, data connections, a
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Platform](#platform)
+  * [Endpoints](#endpoints)
+  * [SDK Installation](#sdk-installation)
+  * [Example Usage](#example-usage)
+  * [IDE Support](#ide-support)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Debugging](#debugging)
+  * [Support](#support)
 
-* [SDK Installation](#sdk-installation)
-* [IDE Support](#ide-support)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -92,18 +97,25 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
 
-with CodatPlatform(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-) as s:
-    res = s.settings.create_api_key(request={
-        "name": "azure-invoice-finance-processor",
+with CodatPlatform() as codat_platform:
+    codat_platform.company_data_connection_status_changed(request={
+        "alert_id": "a9367074-b5c3-42c4-9be4-be129f43577e",
+        "client_id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140",
+        "client_name": "Bank of Dave",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "data": {
+            "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+            "new_status": shared.DataConnectionStatus.LINKED,
+            "old_status": shared.DataConnectionStatus.PENDING_AUTH,
+            "platform_key": "gbol",
+        },
+        "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "message": "Data connection for SandBox status changed from PendingAuth to Linked",
+        "rule_id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac",
+        "rule_type": "DataConnectionStatusChanged",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Use the SDK ...
 ```
 
 </br>
@@ -116,18 +128,25 @@ from codat_platform import CodatPlatform
 from codat_platform.models import shared
 
 async def main():
-    async with CodatPlatform(
-        security=shared.Security(
-            auth_header="Basic BASE_64_ENCODED(API_KEY)",
-        ),
-    ) as s:
-        res = await s.settings.create_api_key_async(request={
-            "name": "azure-invoice-finance-processor",
+    async with CodatPlatform() as codat_platform:
+        await codat_platform.company_data_connection_status_changed_async(request={
+            "alert_id": "a9367074-b5c3-42c4-9be4-be129f43577e",
+            "client_id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140",
+            "client_name": "Bank of Dave",
+            "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+            "data": {
+                "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+                "new_status": shared.DataConnectionStatus.LINKED,
+                "old_status": shared.DataConnectionStatus.PENDING_AUTH,
+                "platform_key": "gbol",
+            },
+            "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+            "message": "Data connection for SandBox status changed from PendingAuth to Linked",
+            "rule_id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac",
+            "rule_type": "DataConnectionStatusChanged",
         })
 
-        if res is not None:
-            # handle response
-            pass
+        # Use the SDK ...
 
 asyncio.run(main())
 ```
@@ -234,14 +253,14 @@ To change the default retry strategy for a single API call, simply provide a `Re
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
-from codatplatform.utils import BackoffStrategy, RetryConfig
+from codat_platform.utils import BackoffStrategy, RetryConfig
 
 with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.create_api_key(request={
+) as codat_platform:
+    res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
@@ -256,15 +275,15 @@ If you'd like to override the default retry strategy for all operations that sup
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
-from codatplatform.utils import BackoffStrategy, RetryConfig
+from codat_platform.utils import BackoffStrategy, RetryConfig
 
 with CodatPlatform(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.create_api_key(request={
+) as codat_platform:
+    res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
@@ -306,10 +325,10 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
+) as codat_platform:
     res = None
     try:
-        res = s.settings.create_api_key(request={
+        res = codat_platform.settings.create_api_key(request={
             "name": "azure-invoice-finance-processor",
         })
 
@@ -341,8 +360,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.create_api_key(request={
+) as codat_platform:
+    res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
@@ -454,8 +473,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.create_api_key(request={
+) as codat_platform:
+    res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 

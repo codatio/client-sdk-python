@@ -39,8 +39,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.create_api_key(request={
+) as codat_platform:
+    res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
@@ -91,8 +91,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.delete_api_key(request={
+) as codat_platform:
+    res = codat_platform.settings.delete_api_key(request={
         "api_key_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -134,8 +134,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.get_profile()
+) as codat_platform:
+    res = codat_platform.settings.get_profile()
 
     if res is not None:
         # handle response
@@ -174,8 +174,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.get_sync_settings()
+) as codat_platform:
+    res = codat_platform.settings.get_sync_settings()
 
     if res is not None:
         # handle response
@@ -218,8 +218,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.list_api_keys()
+) as codat_platform:
+    res = codat_platform.settings.list_api_keys()
 
     if res is not None:
         # handle response
@@ -258,8 +258,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.update_profile(request={
+) as codat_platform:
+    res = codat_platform.settings.update_profile(request={
         "name": "Bob's Burgers",
         "redirect_url": "https://bobs-burgers.{countrySuffix}/{companyId}",
         "confirm_company_name": True,
@@ -309,8 +309,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.settings.update_sync_settings(request={
+) as codat_platform:
+    codat_platform.settings.update_sync_settings(request={
         "client_id": "c4907f05-7024-4fc0-bf55-4785be5c9671",
         "settings": [
             {

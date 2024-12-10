@@ -3,10 +3,10 @@ id: ede4f28e-23c0-442d-89ba-baa76ae2da6e
 management:
   docChecksum: 8dd29c2f971fac587d6257d3c3eca25b
   docVersion: 3.0.0
-  speakeasyVersion: 1.446.1
-  generationVersion: 2.462.1
-  releaseVersion: 4.0.0
-  configChecksum: 8aab7a9c74fb5a44bb773628d9ba74f9
+  speakeasyVersion: 1.453.8
+  generationVersion: 2.474.15
+  releaseVersion: 4.0.1
+  configChecksum: 00c866dd6230e423e4aecbbefce8fcfb
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: platform
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=platform
@@ -15,7 +15,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.6.8
+    core: 5.6.11
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.0
     enumUnions: 0.1.0
@@ -1283,4 +1283,108 @@ examples:
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error processing request - not valid.", "service": "PublicApi", "statusCode": 400}
+  Client rate limit reached:
+    speakeasy-default-client-rate-limit-reached:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "Data": {"DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z"}, "Message": "The current daily rate limit quota of 1000 requests for bae71d36-ff47-420a-b4a6-f8c9ddf41140 has been reached.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reached"}
+  Client rate limit reset:
+    speakeasy-default-client-rate-limit-reset:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "Data": {"DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z", "QuotaRemaining": 1000, "ResetReason": "The quota was reset because it is a new day."}, "Message": "The current daily rate limit quota for client 30e0f9d2-52c0-4c9f-a806-bcd98a3bcd7e has been reset to 1000 requests.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reset"}
+  Company data connection status changed:
+    speakeasy-default-company-data-connection-status-changed:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Data": {"dataConnectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "newStatus": "Linked", "oldStatus": "PendingAuth", "platformKey": "gbol"}, "DataConnectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "Message": "Data connection for SandBox status changed from PendingAuth to Linked", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "DataConnectionStatusChanged"}
+  Data sync completed:
+    speakeasy-default-data-sync-completed:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Data": {"dataType": "invoices", "datasetId": "1541a5ee-0d84-4b6e-a7f7-c07c1f216333"}, "DataConnectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "Message": "Data sync of type creditNotes completed for company 7626befb-0c7d-49a4-9366-bc4c81b4e4b7", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Data sync completed"}
+  Dataset data changed:
+    speakeasy-default-dataset-data-changed:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Data": {"dataType": "invoices", "datasetId": "6586f21b-ad4d-4d06-a309-712af47184a2"}, "DataConnectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "Message": "Data has changed for dataset type invoices, company 8a210b68-6988-11ed-a1eb-0242ac120002", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Dataset data changed"}
+  Dataset status has changed to an error state:
+    speakeasy-default-dataset-status-has-changed-to-an-error-state:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Data": {"dataType": "invoices", "datasetId": "6586f21b-ad4d-4d06-a309-712af47184a2", "datasetStatus": "ProcessingError"}, "DataConnectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "Message": "ERROR: syncing payments triggered a ProcessingError notification at 2020-04-21T12:12:57.4250446Z.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Data Sync Status Changed To Error"}
+  New company synchronized:
+    speakeasy-default-new-company-synchronized:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "DataConnectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "Message": "Company 8a210b68-6988-11ed-a1eb-0242ac120002 synced for the first time", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "New company synchronised"}
+  Push operation has timed out:
+    speakeasy-default-push-operation-has-timed-out:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Data": {"dataType": "invoices", "pushOperationGuid": "c2f8847d-3047-4619-a157-6d947d8e4a73", "pushOperationKey": "c2f8847d-3047-4619-a157-6d947d8e4a73"}, "DataConnectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "Message": "ERROR: pushing invoices never finished in time, timing out at 2020-09-07T08:42:13", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Push Operation Timed Out"}
+  Push operation status has changed:
+    speakeasy-default-push-operation-status-has-changed:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Data": {"dataType": "invoices", "pushOperationKey": "c2f8847d-3047-4619-a157-6d947d8e4a73", "status": "Success"}, "DataConnectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "Message": "invoices triggered notification for PushOperationStatusChanged at 2019-05-22T18:19:42.742Z", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Push Operation Status Changed()"}
+  client.rateLimit.reached:
+    Reached:
+      requestBody:
+        application/json: {"eventType": "client.rateLimit.reached", "generatedDate": "2024-09-01T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dailyQuota": 12000, "expiryDate": "2024-09-01T12:14:14Z", "quotaRemaining": 0}}
+  client.rateLimit.reset:
+    Reset:
+      requestBody:
+        application/json: {"eventType": "client.rateLimit.reset", "generatedDate": "2024-09-01T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dailyQuota": 12000, "expiryDate": "2024-09-01T23:59:99Z", "quotaRemaining": 11993}}
+  company.created:
+    Company created:
+      requestBody:
+        application/json: {"eventType": "company.created", "generatedDate": "2024-08-08T17:10:34.015Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"created": "2022-01-01T12:00:00.000Z", "description": "Requested a loan for refurb.", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "lastSync": "2022-01-01T12:00:00.000Z", "name": "Bank of Dave", "redirect": "https://link.codat.io/company/0498e921-9b53-4396-a412-4f2f5983b0a2", "tags": {"customerRegion": "us", "uid": "335a086e-8563-4b03-94e3-39544225ecb6"}}}
+  company.deleted:
+    Company deleted:
+      requestBody:
+        application/json: {"eventType": "company.deleted", "generatedDate": "2024-08-08T17:10:34.015Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"created": "2022-01-01T12:00:00.000Z", "description": "Requested a loan for refurb.", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "lastSync": "2022-01-01T12:00:00.000Z", "name": "Bank of Dave", "redirect": "https://link.codat.io/company/0498e921-9b53-4396-a412-4f2f5983b0a2", "tags": {"customerRegion": "uk", "uid": "f6b0c253-16c7-4da1-a0c5-9c871e9c9d6c"}}}
+  connection.connected:
+    Connection connected:
+      requestBody:
+        application/json: {"eventType": "connection.connected", "generatedDate": "2024-08-08T17:10:34.015Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connection": {"created": "2022-10-27T09:53:29Z", "id": "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd", "integrationId": "bf083d72-62c7-493e-aec9-81b4dbba7e2c", "integrationKey": "dfxm", "lastSync": "2022-10-27T10:22:43.646Z", "linkUrl": "https://link-api.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/connections/ee2eb431-c0fa-4dc9-93fa-d29781c12bcd/start", "platformName": "Basiq", "sourceId": "bdd831ce-eebd-4896-89a7-20e5ee8989ee", "sourceType": "Banking", "status": "Linked"}, "referenceCompany": {"description": "internal_id_mxO7rLfo", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Bank of Dave", "tags": {"customerRegion": "us", "uid": "335a086e-8563-4b03-94e3-39544225ecb6"}}}}
+  connection.created:
+    Connection created:
+      requestBody:
+        application/json: {"eventType": "connection.created", "generatedDate": "2024-08-08T17:10:34.015Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connection": {"created": "2022-10-27T09:53:29Z", "id": "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd", "integrationId": "bf083d72-62c7-493e-aec9-81b4dbba7e2c", "integrationKey": "dfxm", "lastSync": "2022-10-27T10:22:43.646Z", "linkUrl": "https://link-api.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/connections/ee2eb431-c0fa-4dc9-93fa-d29781c12bcd/start", "platformName": "Basiq", "sourceId": "bdd831ce-eebd-4896-89a7-20e5ee8989ee", "sourceType": "Banking", "status": "PendingAuth"}, "referenceCompany": {"description": "internal_id_mxO7rLfo", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Bank of Dave", "tags": {"customerRegion": "us", "uid": "335a086e-8563-4b03-94e3-39544225ecb6"}}}}
+  connection.deleted:
+    Deleted:
+      requestBody:
+        application/json: {"eventType": "connection.deleted", "generatedDate": "2024-08-08T17:10:34.015Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connection": {"created": "2022-10-27T09:53:29Z", "id": "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd", "integrationId": "bf083d72-62c7-493e-aec9-81b4dbba7e2c", "integrationKey": "dfxm", "lastSync": "2022-10-27T10:22:43.646Z", "linkUrl": "https://link-api.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/connections/ee2eb431-c0fa-4dc9-93fa-d29781c12bcd/start", "platformName": "Basiq", "sourceId": "bdd831ce-eebd-4896-89a7-20e5ee8989ee", "sourceType": "Banking", "status": "Linked"}, "referenceCompany": {"description": "internal_id_mxO7rLfo", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Bank of Dave", "tags": {"customerRegion": "us", "uid": "335a086e-8563-4b03-94e3-39544225ecb6"}}}}
+  connection.disconnected:
+    Unlinked:
+      requestBody:
+        application/json: {"eventType": "connection.disconnected", "generatedDate": "2024-08-08T17:10:34.015Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connection": {"created": "2022-10-27T09:53:29Z", "id": "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd", "integrationId": "bf083d72-62c7-493e-aec9-81b4dbba7e2c", "integrationKey": "dfxm", "lastSync": "2022-10-27T10:22:43.646Z", "linkUrl": "https://link-api.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/connections/ee2eb431-c0fa-4dc9-93fa-d29781c12bcd/start", "platformName": "Basiq", "sourceId": "bdd831ce-eebd-4896-89a7-20e5ee8989ee", "sourceType": "Banking", "status": "Unlinked"}, "referenceCompany": {"description": "internal_id_mxO7rLfo", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Bank of Dave", "tags": {"customerRegion": "us", "uid": "335a086e-8563-4b03-94e3-39544225ecb6"}}}}
+    De-authorized:
+      requestBody:
+        application/json: {"generatedDate": "2024-08-08T17:10:34.015Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connection": {"created": "2022-10-27T09:53:29Z", "dataConnectionErrors": [{"errorMessage": "The integration de-authorized access to the connection.", "erroredOnUtc": "2022-12-27T09:53:29Z", "status": "Active", "statusCode": "401", "statusText": "The integration de-authorized access to the connection."}], "id": "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd", "integrationId": "bf083d72-62c7-493e-aec9-81b4dbba7e2c", "integrationKey": "dfxm", "lastSync": "2022-10-27T10:22:43.646Z", "linkUrl": "https://link-api.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/connections/ee2eb431-c0fa-4dc9-93fa-d29781c12bcd/start", "platformName": "Basiq", "sourceId": "bdd831ce-eebd-4896-89a7-20e5ee8989ee", "sourceType": "Banking", "status": "Deauthorized"}, "referenceCompany": {"description": "internal_id_mxO7rLfo", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Bank of Dave", "tags": {"customerRegion": "us", "uid": "335a086e-8563-4b03-94e3-39544225ecb6"}}}}
+  connection.failed:
+    Connection failed:
+      requestBody:
+        application/json: {"eventType": "connection.failed", "generatedDate": "2024-08-08T17:10:34.015Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connection": {"created": "2022-10-27T09:53:29Z", "dataConnectionErrors": [{"errorMessage": "User cancelled", "erroredOnUtc": "2022-10-27T09:53:29Z", "status": "Active", "statusCode": "403", "statusText": "User cancelled linking"}], "id": "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd", "integrationId": "bf083d72-62c7-493e-aec9-81b4dbba7e2c", "integrationKey": "dfxm", "linkUrl": "https://link-api.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/connections/ee2eb431-c0fa-4dc9-93fa-d29781c12bcd/start", "platformName": "Basiq", "sourceId": "bdd831ce-eebd-4896-89a7-20e5ee8989ee", "sourceType": "Banking", "status": "PendingAuth"}, "referenceCompany": {"description": "internal_id_mxO7rLfo", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Bank of Dave", "tags": {"customerRegion": "us", "uid": "335a086e-8563-4b03-94e3-39544225ecb6"}}}}
+  connection.reconnected:
+    Reconnected:
+      requestBody:
+        application/json: {"eventType": "connection.reconnected", "generatedDate": "2024-08-08T17:10:34.015Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connection": {"created": "2022-10-27T09:53:29Z", "id": "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd", "integrationId": "bf083d72-62c7-493e-aec9-81b4dbba7e2c", "integrationKey": "dfxm", "lastSync": "2022-10-27T10:22:43.646Z", "linkUrl": "https://link-api.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/connections/ee2eb431-c0fa-4dc9-93fa-d29781c12bcd/start", "platformName": "Basiq", "sourceId": "bdd831ce-eebd-4896-89a7-20e5ee8989ee", "sourceType": "Banking", "status": "Linked"}, "referenceCompany": {"description": "internal_id_mxO7rLfo", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Bank of Dave", "tags": {"customerRegion": "us", "uid": "335a086e-8563-4b03-94e3-39544225ecb6"}}}}
+  read.completed:
+    Read completed:
+      requestBody:
+        application/json: {"eventType": "read.completed", "generatedDate": "2022-10-23T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dataTypes": [{"connectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "dataType": "invoices", "recordsModified": false, "status": "Complete"}], "modifiedFromDate": "2022-10-23T00:00:00Z", "referenceCompany": {"description": "Requested early access to the new financing scheme.", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Toft stores"}}}
+  read.completed.initial:
+    Initial:
+      requestBody:
+        application/json: {"eventType": "read.completed.initial", "generatedDate": "2022-10-23T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dataTypes": [{"connectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "dataType": "invoices", "recordsModified": false, "status": "Complete"}], "modifiedFromDate": "2022-10-23T00:00:00Z", "referenceCompany": {"description": "Requested early access to the new financing scheme.", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Toft stores"}}}
+  '{dataType}.write.successful':
+    Record:
+      requestBody:
+        application/json: {"eventType": "{dataType}.write.successful", "generatedDate": "2023-05-03T10:00:23Z", "id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "payload": {"completedOnDate": "2023-05-03T10:00:23Z", "connectionId": "12571faf-0898-47e7-afdd-0fe9eb0a9bf5", "id": "a9367074-b5c3-42c4-9be4-be129f43577e", "record": {"id": "bil_1Nispe2eZvKYlo2Cd31jOCgZ"}, "referenceCompany": {"description": "cust_1MtJUT2eZvKYlo2CNaw2HvEv", "id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "name": "Toft stores"}, "requestedOnDate": "2023-05-03T10:00:00Z", "status": "Success", "type": "Create"}}
+    Attachment:
+      requestBody:
+        application/json: {"eventType": "{dataType}.write.successful", "generatedDate": "2023-05-03T10:00:23Z", "id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "payload": {"attachmentId": "att_1AZtxr2eZvKYlo2CJDX8whov", "completedOnDate": "2023-05-03T10:00:23Z", "connectionId": "12571faf-0898-47e7-afdd-0fe9eb0a9bf5", "id": "a9367074-b5c3-42c4-9be4-be129f43577e", "record": {"id": "bil_1Nispe2eZvKYlo2Cd31jOCgZ"}, "referenceCompany": {"description": "cust_1MtJUT2eZvKYlo2CNaw2HvEv", "id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "name": "Toft stores"}, "requestedOnDate": "2023-05-03T10:00:00Z", "status": "Success", "type": "UploadAttachment"}}
+  '{dataType}.write.unsuccessful':
+    Record:
+      requestBody:
+        application/json: {"eventType": "{dataType}.write.unsuccessful", "generatedDate": "2023-05-03T10:00:23Z", "id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "payload": {"completedOnDate": "2023-05-03T10:00:23Z", "connectionId": "12571faf-0898-47e7-afdd-0fe9eb0a9bf5", "id": "a9367074-b5c3-42c4-9be4-be129f43577e", "referenceCompany": {"description": "cust_1MtJUT2eZvKYlo2CNaw2HvEv", "id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "name": "Toft stores"}, "requestedOnDate": "2023-05-03T10:00:00Z", "status": "Failed", "type": "Update"}}
+    Record timed out:
+      requestBody:
+        application/json: {"eventType": "{dataType}.write.unsuccessful", "generatedDate": "2023-05-03T10:00:23Z", "id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "payload": {"completedOnDate": "2023-05-03T10:00:23Z", "connectionId": "12571faf-0898-47e7-afdd-0fe9eb0a9bf5", "id": "a9367074-b5c3-42c4-9be4-be129f43577e", "referenceCompany": {"description": "cust_1MtJUT2eZvKYlo2CNaw2HvEv", "id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "name": "Toft stores"}, "requestedOnDate": "2023-05-03T10:00:00Z", "status": "TimedOut", "type": "Delete"}}
+    Attachment:
+      requestBody:
+        application/json: {"eventType": "{dataType}.write.unsuccessful", "generatedDate": "2023-05-03T10:00:23Z", "id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "payload": {"completedOnDate": "2023-05-03T10:00:23Z", "connectionId": "12571faf-0898-47e7-afdd-0fe9eb0a9bf5", "id": "a9367074-b5c3-42c4-9be4-be129f43577e", "record": {"id": "bil_1Nispe2eZvKYlo2Cd31jOCgZ"}, "referenceCompany": {"description": "cust_1MtJUT2eZvKYlo2CNaw2HvEv", "id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "name": "Toft stores"}, "requestedOnDate": "2023-05-03T10:00:00Z", "status": "TimedOut", "type": "UploadAttachment"}}
 generatedTests: {}

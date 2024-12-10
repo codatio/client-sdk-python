@@ -8,8 +8,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.settings.create_api_key(request={
+) as codat_platform:
+    res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
@@ -32,8 +32,8 @@ async def main():
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    ) as s:
-        res = await s.settings.create_api_key_async(request={
+    ) as codat_platform:
+        res = await codat_platform.settings.create_api_key_async(request={
             "name": "azure-invoice-finance-processor",
         })
 

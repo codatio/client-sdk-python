@@ -32,8 +32,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.webhooks.create(request={
+) as codat_platform:
+    res = codat_platform.webhooks.create(request={
         "notifiers": {
             "emails": [
                 "info@client.com",
@@ -87,8 +87,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.webhooks.create_consumer(request={
+) as codat_platform:
+    res = codat_platform.webhooks.create_consumer(request={
         "event_types": [
             "DataSyncCompleted",
             "Dataset data changed",
@@ -136,8 +136,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.webhooks.delete_consumer(request={
+) as codat_platform:
+    codat_platform.webhooks.delete_consumer(request={
         "webhook_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -177,8 +177,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.webhooks.get(request={
+) as codat_platform:
+    res = codat_platform.webhooks.get(request={
         "rule_id": "7318949f-c008-4936-a8ff-10d7ab563fa6",
     })
 
@@ -224,8 +224,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.webhooks.list(request={
+) as codat_platform:
+    res = codat_platform.webhooks.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
         "page_size": 100,
@@ -272,8 +272,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.webhooks.list_consumers()
+) as codat_platform:
+    res = codat_platform.webhooks.list_consumers()
 
     if res is not None:
         # handle response
