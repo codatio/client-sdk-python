@@ -25,8 +25,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.integrations.get(request={
+) as codat_platform:
+    res = codat_platform.integrations.get(request={
         "platform_key": "gbol",
     })
 
@@ -68,8 +68,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.integrations.get_branding(request={
+) as codat_platform:
+    res = codat_platform.integrations.get_branding(request={
         "platform_key": "gbol",
     })
 
@@ -111,8 +111,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.integrations.list(request={
+) as codat_platform:
+    res = codat_platform.integrations.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
         "page_size": 100,

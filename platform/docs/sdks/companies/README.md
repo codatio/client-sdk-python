@@ -32,8 +32,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.companies.add_product(request={
+) as codat_platform:
+    codat_platform.companies.add_product(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "product_identifier": "lending",
     })
@@ -75,8 +75,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_platform:
+    res = codat_platform.companies.create(request={
         "name": "Technicalium",
     })
 
@@ -122,8 +122,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.companies.delete(request={
+) as codat_platform:
+    codat_platform.companies.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -163,8 +163,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.get(request={
+) as codat_platform:
+    res = codat_platform.companies.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -207,8 +207,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.get_access_token(request={
+) as codat_platform:
+    res = codat_platform.companies.get_access_token(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -253,8 +253,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.list(request={
+) as codat_platform:
+    res = codat_platform.companies.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
         "page_size": 100,
@@ -301,8 +301,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.companies.remove_product(request={
+) as codat_platform:
+    codat_platform.companies.remove_product(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "product_identifier": "expenses",
     })
@@ -342,8 +342,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.update(request={
+) as codat_platform:
+    res = codat_platform.companies.update(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
             "name": "New Name",

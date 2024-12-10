@@ -31,8 +31,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.refresh_data.all(request={
+) as codat_platform:
+    codat_platform.refresh_data.all(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -70,8 +70,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.refresh_data.by_data_type(request={
+) as codat_platform:
+    res = codat_platform.refresh_data.by_data_type(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "data_type": shared.SchemaDataType.INVOICES,
     })
@@ -114,8 +114,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.refresh_data.get(request={
+) as codat_platform:
+    res = codat_platform.refresh_data.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -157,8 +157,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.refresh_data.get_pull_operation(request={
+) as codat_platform:
+    res = codat_platform.refresh_data.get_pull_operation(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "dataset_id": "71a4c0fb-8e15-45bd-958d-330b4e6e9f07",
     })
@@ -201,8 +201,8 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.refresh_data.list_pull_operations(request={
+) as codat_platform:
+    res = codat_platform.refresh_data.list_pull_operations(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
         "page": 1,
