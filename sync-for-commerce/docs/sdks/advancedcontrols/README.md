@@ -26,8 +26,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.advanced_controls.create_company(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.advanced_controls.create_company(request={
         "name": "string",
         "description": "Requested early access to the new financing scheme.",
     })
@@ -70,8 +70,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.advanced_controls.get_configuration(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.advanced_controls.get_configuration(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -113,8 +113,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.advanced_controls.list_companies(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.advanced_controls.list_companies(request={
         "order_by": "-modifiedDate",
         "page": 1,
         "page_size": 100,
@@ -159,8 +159,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.advanced_controls.set_configuration(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.advanced_controls.set_configuration(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 

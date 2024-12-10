@@ -26,8 +26,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
@@ -69,8 +69,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync_flow_settings.get_visible_accounts(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync_flow_settings.get_visible_accounts(request={
         "client_id": "86fe9741-738d-4f2c-8e96-9c3f84156e91",
         "platform_key": "gbol",
     })
@@ -113,8 +113,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync_flow_settings.update_config_text_sync_flow(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync_flow_settings.update_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
@@ -156,8 +156,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync_flow_settings.update_visible_accounts_sync_flow(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync_flow_settings.update_visible_accounts_sync_flow(request={
         "platform_key": "gbol",
     })
 

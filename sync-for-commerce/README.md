@@ -32,17 +32,22 @@ Not seeing the endpoints you're expecting? We've [reorganized our products](http
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Sync for Commerce](#sync-for-commerce)
+  * [Endpoints](#endpoints)
+  * [SDK Installation](#sdk-installation)
+  * [Example Usage](#example-usage)
+  * [IDE Support](#ide-support)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Debugging](#debugging)
+  * [Support](#support)
 
-* [SDK Installation](#sdk-installation)
-* [IDE Support](#ide-support)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -88,18 +93,33 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
-with CodatSyncCommerce(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-) as s:
-    res = s.sync_flow_settings.get_config_text_sync_flow(request={
-        "locale": shared.Locale.EN_US,
+with CodatSyncCommerce() as codat_sync_commerce:
+    codat_sync_commerce.connection_deleted(request={
+        "event_type": "connection.created",
+        "generated_date": "2022-10-23T00:00:00Z",
+        "id": "ba29118f-5406-4e59-b05c-ba307ca38d01",
+        "payload": {
+            "connection": {
+                "created": "2022-10-23T00:00:00Z",
+                "id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+                "integration_id": "fd321cb6-7963-4506-b873-e99593a45e30",
+                "integration_key": "dfxm",
+                "link_url": "https://link-api.codat.io/companies/86bd88cb-44ab-4dfb-b32f-87b19b14287f/connections/2e2eb431-c1fa-4dc9-93fa-d29781c12bcd/start",
+                "platform_name": "Basiq",
+                "source_id": "35b92968-9851-4095-ad60-395c95cbcba4",
+                "source_type": shared.SourceType.ACCOUNTING,
+                "status": shared.DataConnectionStatus.LINKED,
+                "last_sync": "2022-10-23T00:00:00Z",
+            },
+            "reference_company": {
+                "description": "Requested early access to the new financing scheme.",
+                "id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+                "name": "Codat Ltd.",
+            },
+        },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Use the SDK ...
 ```
 
 </br>
@@ -112,18 +132,33 @@ from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
 async def main():
-    async with CodatSyncCommerce(
-        security=shared.Security(
-            auth_header="Basic BASE_64_ENCODED(API_KEY)",
-        ),
-    ) as s:
-        res = await s.sync_flow_settings.get_config_text_sync_flow_async(request={
-            "locale": shared.Locale.EN_US,
+    async with CodatSyncCommerce() as codat_sync_commerce:
+        await codat_sync_commerce.connection_deleted_async(request={
+            "event_type": "connection.created",
+            "generated_date": "2022-10-23T00:00:00Z",
+            "id": "ba29118f-5406-4e59-b05c-ba307ca38d01",
+            "payload": {
+                "connection": {
+                    "created": "2022-10-23T00:00:00Z",
+                    "id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+                    "integration_id": "fd321cb6-7963-4506-b873-e99593a45e30",
+                    "integration_key": "dfxm",
+                    "link_url": "https://link-api.codat.io/companies/86bd88cb-44ab-4dfb-b32f-87b19b14287f/connections/2e2eb431-c1fa-4dc9-93fa-d29781c12bcd/start",
+                    "platform_name": "Basiq",
+                    "source_id": "35b92968-9851-4095-ad60-395c95cbcba4",
+                    "source_type": shared.SourceType.ACCOUNTING,
+                    "status": shared.DataConnectionStatus.LINKED,
+                    "last_sync": "2022-10-23T00:00:00Z",
+                },
+                "reference_company": {
+                    "description": "Requested early access to the new financing scheme.",
+                    "id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+                    "name": "Codat Ltd.",
+                },
+            },
         })
 
-        if res is not None:
-            # handle response
-            pass
+        # Use the SDK ...
 
 asyncio.run(main())
 ```
@@ -187,14 +222,14 @@ To change the default retry strategy for a single API call, simply provide a `Re
 ```python
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
-from codatsynccommerce.utils import BackoffStrategy, RetryConfig
+from codat_sync_for_commerce.utils import BackoffStrategy, RetryConfig
 
 with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
@@ -209,15 +244,15 @@ If you'd like to override the default retry strategy for all operations that sup
 ```python
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
-from codatsynccommerce.utils import BackoffStrategy, RetryConfig
+from codat_sync_for_commerce.utils import BackoffStrategy, RetryConfig
 
 with CodatSyncCommerce(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
@@ -259,10 +294,10 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
+) as codat_sync_commerce:
     res = None
     try:
-        res = s.sync_flow_settings.get_config_text_sync_flow(request={
+        res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
             "locale": shared.Locale.EN_US,
         })
 
@@ -294,8 +329,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
@@ -407,8 +442,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 

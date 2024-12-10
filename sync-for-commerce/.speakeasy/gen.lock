@@ -3,10 +3,10 @@ id: 3b92187c-e150-4a7c-9381-a62db9757019
 management:
   docChecksum: 4dd3691e8d9cbb167c6a1a7bffed41b8
   docVersion: "1.1"
-  speakeasyVersion: 1.446.1
-  generationVersion: 2.462.1
-  releaseVersion: 6.0.0
-  configChecksum: 2a50d118ee0568e3c9e55392665245a1
+  speakeasyVersion: 1.453.8
+  generationVersion: 2.474.15
+  releaseVersion: 6.0.1
+  configChecksum: 397ff36e157098ee12c6ed9f5a8e5ee0
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: sync-for-commerce
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-commerce
@@ -15,7 +15,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.6.8
+    core: 5.6.11
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.0
     enumUnions: 0.1.0
@@ -566,4 +566,12 @@ examples:
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}
+  Sync Connection Deleted:
+    speakeasy-default-sync-connection-deleted:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Message": "Sync connection for company Tesco (8a210b68-6988-11ed-a1eb-0242ac120002) deleted", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Sync Connection Deleted"}
+  connection.deleted:
+    speakeasy-default-connection-deleted:
+      requestBody:
+        application/json: {"eventType": "connection.created", "generatedDate": "2022-10-23T00:00:00Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connection": {"created": "2022-10-23T00:00:00Z", "id": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "integrationId": "fd321cb6-7963-4506-b873-e99593a45e30", "integrationKey": "dfxm", "lastSync": "2022-10-23T00:00:00Z", "linkUrl": "https://link-api.codat.io/companies/86bd88cb-44ab-4dfb-b32f-87b19b14287f/connections/2e2eb431-c1fa-4dc9-93fa-d29781c12bcd/start", "platformName": "Basiq", "sourceId": "35b92968-9851-4095-ad60-395c95cbcba4", "sourceType": "Accounting", "status": "Linked"}, "referenceCompany": {"description": "Requested early access to the new financing scheme.", "id": "8a210b68-6988-11ed-a1eb-0242ac120002", "name": "Codat Ltd."}}}
 generatedTests: {}

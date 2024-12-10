@@ -8,8 +8,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync_flow_settings.get_config_text_sync_flow(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
@@ -32,8 +32,8 @@ async def main():
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    ) as s:
-        res = await s.sync_flow_settings.get_config_text_sync_flow_async(request={
+    ) as codat_sync_commerce:
+        res = await codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow_async(request={
             "locale": shared.Locale.EN_US,
         })
 

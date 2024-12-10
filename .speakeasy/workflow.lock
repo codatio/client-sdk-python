@@ -68,11 +68,11 @@ sources:
             - 3.0.0
     sync-for-commerce-source:
         sourceNamespace: sync-for-commerce-source
-        sourceRevisionDigest: sha256:6d5e5550a748f71a9e40dde1c1a69b1719d16b4ba34df3caad9d76471865ed5b
+        sourceRevisionDigest: sha256:df4334894c5b162a67c75770369c6fd6c0cf7b4ce5374c2f9654c2fc6da9fcb5
         sourceBlobDigest: sha256:1d1592cd53dae647bff1e58e43cb64f19f9da714cfc6f6198c43659b89b05369
         tags:
             - latest
-            - speakeasy-sdk-regen-1732635208
+            - speakeasy-sdk-regen-1733826200
             - "1.1"
     sync-for-expenses-source:
         sourceNamespace: sync-for-expenses-source
@@ -152,10 +152,10 @@ targets:
     sync-for-commerce-library:
         source: sync-for-commerce-source
         sourceNamespace: sync-for-commerce-source
-        sourceRevisionDigest: sha256:6d5e5550a748f71a9e40dde1c1a69b1719d16b4ba34df3caad9d76471865ed5b
+        sourceRevisionDigest: sha256:df4334894c5b162a67c75770369c6fd6c0cf7b4ce5374c2f9654c2fc6da9fcb5
         sourceBlobDigest: sha256:1d1592cd53dae647bff1e58e43cb64f19f9da714cfc6f6198c43659b89b05369
-        codeSamplesNamespace: sync-for-commerce-source-code-samples
-        codeSamplesRevisionDigest: sha256:3b9ecd425a767a3ec537a2496260b5f66bcc810311faa362630aecb65f6c8367
+        codeSamplesNamespace: sync-for-commerce-source-python-code-samples
+        codeSamplesRevisionDigest: sha256:f936f9db889b789f7d3b90695f9b203b63e08f2f32dc96d753e5bd322d6af49a
     sync-for-expenses-library:
         source: sync-for-expenses-source
         sourceNamespace: sync-for-expenses-source

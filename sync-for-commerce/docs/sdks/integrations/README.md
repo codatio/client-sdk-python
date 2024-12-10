@@ -24,8 +24,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.integrations.get_branding(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.integrations.get_branding(request={
         "platform_key": "gbol",
     })
 
@@ -67,8 +67,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.integrations.list(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.integrations.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
         "page_size": 100,

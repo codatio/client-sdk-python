@@ -29,8 +29,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync.get(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "sync_id": "6fb40d5e-b13e-11ed-afa1-0242ac120002",
     })
@@ -73,8 +73,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync.get_last_successful_sync(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync.get_last_successful_sync(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -116,8 +116,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync.get_latest_sync(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync.get_latest_sync(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -159,8 +159,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync.get_status(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync.get_status(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -202,8 +202,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync.list(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -245,8 +245,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync.request(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync.request(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "sync_to_latest_args": {
             "sync_to": "2022-10-23T00:00:00Z",
@@ -291,8 +291,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.sync.request_for_date_range(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.sync.request_for_date_range(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "sync_range": {
             "date_range": {
