@@ -32,8 +32,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
@@ -79,8 +79,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.companies.delete(request={
+) as codat_sync_expenses:
+    codat_sync_expenses.companies.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -120,8 +120,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.get(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.companies.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -166,8 +166,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.list(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.companies.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
         "page_size": 100,
@@ -215,8 +215,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.update(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.companies.update(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
             "name": "New Name",

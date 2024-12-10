@@ -8,8 +8,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
@@ -32,8 +32,8 @@ async def main():
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    ) as s:
-        res = await s.companies.create_async(request={
+    ) as codat_sync_expenses:
+        res = await codat_sync_expenses.companies.create_async(request={
             "name": "Technicalium",
         })
 

@@ -32,8 +32,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.adjustments.create(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.adjustments.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "request_body": [
             {

@@ -30,8 +30,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.create(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.connections.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "request_body": {
             "platform_key": "gbol",
@@ -76,8 +76,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.create_partner_expense_connection(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.connections.create_partner_expense_connection(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -120,8 +120,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.connections.delete(request={
+) as codat_sync_expenses:
+    codat_sync_expenses.connections.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -158,8 +158,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.get(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.connections.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -202,8 +202,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.list(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.connections.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
         "page": 1,
@@ -249,8 +249,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.unlink(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.connections.unlink(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": {

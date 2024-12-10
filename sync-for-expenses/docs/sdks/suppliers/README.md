@@ -33,8 +33,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.suppliers.create(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.suppliers.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "supplier": {
@@ -88,8 +88,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.suppliers.get(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.suppliers.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "supplier_id": "7110701885",
     })
@@ -137,8 +137,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.suppliers.list(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.suppliers.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
         "page": 1,
@@ -190,8 +190,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.suppliers.update(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.suppliers.update(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "supplier_id": "EILBDVJVNUAGVKRQ",

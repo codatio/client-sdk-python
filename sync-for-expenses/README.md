@@ -42,18 +42,23 @@ Not seeing the endpoints you're expecting? We've [reorganized our products](http
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Sync for Expenses](#sync-for-expenses)
+  * [Endpoints](#endpoints)
+  * [SDK Installation](#sdk-installation)
+  * [Example Usage](#example-usage)
+  * [IDE Support](#ide-support)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [File uploads](#file-uploads)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Debugging](#debugging)
+  * [Support](#support)
 
-* [SDK Installation](#sdk-installation)
-* [IDE Support](#ide-support)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [File uploads](#file-uploads)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -97,20 +102,20 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 ```python
 # Synchronous Example
 from codat_sync_for_expenses import CodatSyncExpenses
-from codat_sync_for_expenses.models import shared
 
-with CodatSyncExpenses(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-) as s:
-    res = s.companies.create(request={
-        "name": "Technicalium",
+with CodatSyncExpenses() as codat_sync_expenses:
+    codat_sync_expenses.client_rate_limit_reached(request={
+        "event_type": "client.rateLimit.reached",
+        "generated_date": "2024-09-01T00:00:00Z",
+        "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
+        "payload": {
+            "daily_quota": 12000,
+            "expiry_date": "2024-09-01T12:14:14Z",
+            "quota_remaining": 0,
+        },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Use the SDK ...
 ```
 
 </br>
@@ -120,21 +125,21 @@ The same SDK client can also be used to make asychronous requests by importing a
 # Asynchronous Example
 import asyncio
 from codat_sync_for_expenses import CodatSyncExpenses
-from codat_sync_for_expenses.models import shared
 
 async def main():
-    async with CodatSyncExpenses(
-        security=shared.Security(
-            auth_header="Basic BASE_64_ENCODED(API_KEY)",
-        ),
-    ) as s:
-        res = await s.companies.create_async(request={
-            "name": "Technicalium",
+    async with CodatSyncExpenses() as codat_sync_expenses:
+        await codat_sync_expenses.client_rate_limit_reached_async(request={
+            "event_type": "client.rateLimit.reached",
+            "generated_date": "2024-09-01T00:00:00Z",
+            "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
+            "payload": {
+                "daily_quota": 12000,
+                "expiry_date": "2024-09-01T12:14:14Z",
+                "quota_remaining": 0,
+            },
         })
 
-        if res is not None:
-            # handle response
-            pass
+        # Use the SDK ...
 
 asyncio.run(main())
 ```
@@ -271,8 +276,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.attachments.upload(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.attachments.upload(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "sync_id": "6fb40d5e-b13e-11ed-afa1-0242ac120002",
         "transaction_id": "336694d8-2dca-4cb5-a28d-3ccb83e55eee",
@@ -294,14 +299,14 @@ To change the default retry strategy for a single API call, simply provide a `Re
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from codatsyncexpenses.utils import BackoffStrategy, RetryConfig
+from codat_sync_for_expenses.utils import BackoffStrategy, RetryConfig
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
@@ -316,15 +321,15 @@ If you'd like to override the default retry strategy for all operations that sup
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from codatsyncexpenses.utils import BackoffStrategy, RetryConfig
+from codat_sync_for_expenses.utils import BackoffStrategy, RetryConfig
 
 with CodatSyncExpenses(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
@@ -366,10 +371,10 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
+) as codat_sync_expenses:
     res = None
     try:
-        res = s.companies.create(request={
+        res = codat_sync_expenses.companies.create(request={
             "name": "Technicalium",
         })
 
@@ -401,8 +406,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
@@ -514,8 +519,8 @@ with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_sync_expenses:
+    res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
