@@ -29,8 +29,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.create(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.connections.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "request_body": {
             "platform_key": "gbol",
@@ -75,8 +75,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.get_sync_flow_url(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.connections.get_sync_flow_url(request={
         "accounting_key": "<value>",
         "commerce_key": "<value>",
     })
@@ -119,8 +119,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.list(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.connections.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
         "page": 1,
@@ -166,8 +166,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.update_authorization(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.connections.update_authorization(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -210,8 +210,8 @@ with CodatSyncCommerce(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.update_connection(request={
+) as codat_sync_commerce:
+    res = codat_sync_commerce.connections.update_connection(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
