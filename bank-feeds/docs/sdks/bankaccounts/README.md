@@ -31,8 +31,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.bank_accounts.create(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.bank_accounts.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "bank_account_prototype": {
@@ -86,8 +86,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.bank_accounts.get_create_model(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.bank_accounts.get_create_model(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -135,8 +135,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.bank_accounts.list(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.bank_accounts.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "order_by": "-modifiedDate",

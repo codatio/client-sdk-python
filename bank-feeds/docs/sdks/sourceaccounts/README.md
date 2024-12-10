@@ -33,8 +33,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.source_accounts.create(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.source_accounts.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": {
@@ -102,8 +102,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.source_accounts.create_batch(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.source_accounts.create_batch(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": [
@@ -173,8 +173,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.source_accounts.delete(request={
+) as codat_bank_feeds:
+    codat_bank_feeds.source_accounts.delete(request={
         "account_id": "7110701885",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -214,8 +214,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.source_accounts.delete_credentials(request={
+) as codat_bank_feeds:
+    codat_bank_feeds.source_accounts.delete_credentials(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -258,8 +258,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.source_accounts.generate_credentials(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.source_accounts.generate_credentials(request={
         "request_body": open("example.file", "rb"),
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -308,8 +308,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.source_accounts.list(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.source_accounts.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -358,8 +358,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.source_accounts.update(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.source_accounts.update(request={
         "account_id": "7110701885",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",

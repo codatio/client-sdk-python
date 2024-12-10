@@ -8,8 +8,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
@@ -33,8 +33,8 @@ async def main():
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    ) as s:
-        res = await s.companies.create_async(request={
+    ) as codat_bank_feeds:
+        res = await codat_bank_feeds.companies.create_async(request={
             "name": "Technicalium",
             "description": "Requested early access to the new financing scheme.",
         })

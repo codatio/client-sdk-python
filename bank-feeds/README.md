@@ -30,18 +30,23 @@ A bank feed is a connection between a source bank account in your application an
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Bank Feeds](#bank-feeds)
+  * [Endpoints](#endpoints)
+  * [SDK Installation](#sdk-installation)
+  * [Example Usage](#example-usage)
+  * [IDE Support](#ide-support)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [File uploads](#file-uploads)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Debugging](#debugging)
+  * [Support](#support)
 
-* [SDK Installation](#sdk-installation)
-* [IDE Support](#ide-support)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [File uploads](#file-uploads)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -86,20 +91,37 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 # Synchronous Example
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+from decimal import Decimal
 
-with CodatBankFeeds(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-) as s:
-    res = s.companies.create(request={
-        "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
+with CodatBankFeeds() as codat_bank_feeds:
+    codat_bank_feeds.bank_feeds_source_account_connected(request={
+        "event_type": "bankFeeds.sourceAccount.connected",
+        "generated_date": "2022-10-23T00:00:00Z",
+        "id": "ba29118f-5406-4e59-b05c-ba307ca38d01",
+        "payload": {
+            "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+            "reference_company": {
+                "description": "Requested early access to the new financing scheme.",
+                "id": "0498e921-9b53-4396-a412-4f2f5983b0a2",
+                "links": {
+                    "portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary",
+                },
+                "name": "Toft stores",
+            },
+            "source_account": {
+                "id": "acc-002",
+                "account_name": "account-081",
+                "account_number": "12345678",
+                "balance": Decimal("99.99"),
+                "currency": "GBP",
+                "modified_date": "2023-01-09T14:14:14.105Z",
+                "sort_code": "040004",
+                "status": shared.Status.PENDING,
+            },
+        },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Use the SDK ...
 ```
 
 </br>
@@ -110,21 +132,38 @@ The same SDK client can also be used to make asychronous requests by importing a
 import asyncio
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+from decimal import Decimal
 
 async def main():
-    async with CodatBankFeeds(
-        security=shared.Security(
-            auth_header="Basic BASE_64_ENCODED(API_KEY)",
-        ),
-    ) as s:
-        res = await s.companies.create_async(request={
-            "name": "Technicalium",
-            "description": "Requested early access to the new financing scheme.",
+    async with CodatBankFeeds() as codat_bank_feeds:
+        await codat_bank_feeds.bank_feeds_source_account_connected_async(request={
+            "event_type": "bankFeeds.sourceAccount.connected",
+            "generated_date": "2022-10-23T00:00:00Z",
+            "id": "ba29118f-5406-4e59-b05c-ba307ca38d01",
+            "payload": {
+                "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+                "reference_company": {
+                    "description": "Requested early access to the new financing scheme.",
+                    "id": "0498e921-9b53-4396-a412-4f2f5983b0a2",
+                    "links": {
+                        "portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary",
+                    },
+                    "name": "Toft stores",
+                },
+                "source_account": {
+                    "id": "acc-002",
+                    "account_name": "account-081",
+                    "account_number": "12345678",
+                    "balance": Decimal("99.99"),
+                    "currency": "GBP",
+                    "modified_date": "2023-01-09T14:14:14.105Z",
+                    "sort_code": "040004",
+                    "status": shared.Status.PENDING,
+                },
+            },
         })
 
-        if res is not None:
-            # handle response
-            pass
+        # Use the SDK ...
 
 asyncio.run(main())
 ```
@@ -220,8 +259,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.source_accounts.generate_credentials(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.source_accounts.generate_credentials(request={
         "request_body": open("example.file", "rb"),
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -243,14 +282,14 @@ To change the default retry strategy for a single API call, simply provide a `Re
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
-from codatbankfeeds.utils import BackoffStrategy, RetryConfig
+from codat_bankfeeds.utils import BackoffStrategy, RetryConfig
 
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     },
@@ -266,15 +305,15 @@ If you'd like to override the default retry strategy for all operations that sup
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
-from codatbankfeeds.utils import BackoffStrategy, RetryConfig
+from codat_bankfeeds.utils import BackoffStrategy, RetryConfig
 
 with CodatBankFeeds(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
@@ -319,10 +358,10 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
+) as codat_bank_feeds:
     res = None
     try:
-        res = s.companies.create(request={
+        res = codat_bank_feeds.companies.create(request={
             "name": "Technicalium",
             "description": "Requested early access to the new financing scheme.",
         })
@@ -357,8 +396,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
@@ -475,8 +514,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })

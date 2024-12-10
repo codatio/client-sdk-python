@@ -3,10 +3,10 @@ id: 07093ad1-99d8-4bbd-a29c-a624e1b0e25a
 management:
   docChecksum: af010093774a298b2b6a17e641f9cd1b
   docVersion: 3.0.0
-  speakeasyVersion: 1.446.1
-  generationVersion: 2.462.1
-  releaseVersion: 9.0.0
-  configChecksum: a1263ee2debf9d8e8034a743cd18f050
+  speakeasyVersion: 1.453.8
+  generationVersion: 2.474.15
+  releaseVersion: 9.0.1
+  configChecksum: 8ec4388e5997c479ecac5ec505c82d48
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: bank-feeds
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=bank-feeds
@@ -15,7 +15,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.6.8
+    core: 5.6.11
     decimal: 1.0.0
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.0
@@ -1172,4 +1172,28 @@ examples:
       responses:
         "401":
           application/json: {"canBeRetried": "Unknown", "correlationId": "7eb40d6b415d7bcd99ce658268284056", "detailedErrorCode": 0, "error": "Unauthorized", "service": "PublicApi", "statusCode": 401}
+  Client rate limit reached:
+    speakeasy-default-client-rate-limit-reached:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "Data": {"DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z"}, "Message": "The current daily rate limit quota of 1000 requests for bae71d36-ff47-420a-b4a6-f8c9ddf41140 has been reached.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reached"}
+  Client rate limit reset:
+    speakeasy-default-client-rate-limit-reset:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "Data": {"DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z", "QuotaRemaining": 1000, "ResetReason": "The quota was reset because it is a new day."}, "Message": "The current daily rate limit quota for client 30e0f9d2-52c0-4c9f-a806-bcd98a3bcd7e has been reset to 1000 requests.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reset"}
+  bankFeeds.sourceAccount.connected:
+    Connected:
+      requestBody:
+        application/json: {"eventType": "bankFeeds.sourceAccount.connected", "generatedDate": "2022-10-23T00:00:00Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "referenceCompany": {"description": "Requested early access to the new financing scheme.", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Toft stores"}, "sourceAccount": {"accountName": "account-081", "accountNumber": "12345678", "balance": 99.99, "currency": "GBP", "id": "acc-002", "modifiedDate": "2023-01-09T14:14:14.105Z", "sortCode": "040004", "status": "pending"}}}
+  bankFeeds.sourceAccount.disconnected:
+    Disconnected:
+      requestBody:
+        application/json: {"eventType": "bankFeeds.sourceAccount.disconnected", "generatedDate": "2022-10-23T00:00:00Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"connectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "referenceCompany": {"description": "Requested early access to the new financing scheme.", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Toft stores"}, "sourceAccount": {"accountName": "account-081", "accountNumber": "12345678", "balance": 99.99, "currency": "GBP", "id": "acc-002", "modifiedDate": "2023-01-09T14:14:14.105Z", "sortCode": "040004", "status": "pending"}}}
+  client.rateLimit.reached:
+    Reached:
+      requestBody:
+        application/json: {"eventType": "client.rateLimit.reached", "generatedDate": "2024-09-01T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dailyQuota": 12000, "expiryDate": "2024-09-01T12:14:14Z", "quotaRemaining": 0}}
+  client.rateLimit.reset:
+    Reset:
+      requestBody:
+        application/json: {"eventType": "client.rateLimit.reset", "generatedDate": "2024-09-01T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dailyQuota": 12000, "expiryDate": "2024-09-01T23:59:99Z", "quotaRemaining": 11993}}
 generatedTests: {}

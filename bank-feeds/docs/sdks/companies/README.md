@@ -33,8 +33,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
@@ -81,8 +81,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.companies.delete(request={
+) as codat_bank_feeds:
+    codat_bank_feeds.companies.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -122,8 +122,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.get(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -166,8 +166,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.get_access_token(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.get_access_token(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -212,8 +212,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.list(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
         "page_size": 100,
@@ -261,8 +261,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.update(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.companies.update(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
             "name": "New Name",
