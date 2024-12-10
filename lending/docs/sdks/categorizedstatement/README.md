@@ -25,8 +25,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.banking.categorized_statement.get(request={
+) as codat_lending:
+    res = codat_lending.banking.categorized_statement.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "page": 1,
         "page_size": 100,

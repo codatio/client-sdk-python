@@ -3,10 +3,10 @@ id: c22ee3eb-abe5-40e9-bcf6-8be944e72a7b
 management:
   docChecksum: 9d2203249a565b88959fb122711a1f33
   docVersion: 3.0.0
-  speakeasyVersion: 1.447.0
-  generationVersion: 2.463.0
-  releaseVersion: 10.0.0
-  configChecksum: 86504764483be53c74a1b92dec0be5a9
+  speakeasyVersion: 1.453.8
+  generationVersion: 2.474.15
+  releaseVersion: 10.0.1
+  configChecksum: 0c3003cb61623fa1f82cc340f29da6b8
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: lending
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=lending
@@ -15,7 +15,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.6.8
+    core: 5.6.11
     decimal: 1.0.0
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.0
@@ -11348,4 +11348,28 @@ examples:
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error processing request - not valid.", "service": "PublicApi", "statusCode": 400}
+  Account categories updated:
+    speakeasy-default-account-categories-updated:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Data": {"modifiedDate": "2022-10-23"}, "DataConnectionId": "2e9d2c44-f675-40ba-8049-353bfcb5e171", "Message": "Account categories updated for company f1c35bdc-1546-41b9-baf4-3f31135af968.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Account Categories Updated"}
+  Client rate limit reached:
+    speakeasy-default-client-rate-limit-reached:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "Data": {"DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z"}, "Message": "The current daily rate limit quota of 1000 requests for bae71d36-ff47-420a-b4a6-f8c9ddf41140 has been reached.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reached"}
+  Client rate limit reset:
+    speakeasy-default-client-rate-limit-reset:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "Data": {"DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z", "QuotaRemaining": 1000, "ResetReason": "The quota was reset because it is a new day."}, "Message": "The current daily rate limit quota for client 30e0f9d2-52c0-4c9f-a806-bcd98a3bcd7e has been reset to 1000 requests.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reset"}
+  client.rateLimit.reached:
+    Reached:
+      requestBody:
+        application/json: {"eventType": "client.rateLimit.reached", "generatedDate": "2024-09-01T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dailyQuota": 12000, "expiryDate": "2024-09-01T12:14:14Z", "quotaRemaining": 0}}
+  client.rateLimit.reset:
+    Reset:
+      requestBody:
+        application/json: {"eventType": "client.rateLimit.reset", "generatedDate": "2024-09-01T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dailyQuota": 12000, "expiryDate": "2024-09-01T23:59:99Z", "quotaRemaining": 11993}}
+  report.categorizedBankStatement.generate.successful:
+    Successful:
+      requestBody:
+        application/json: {"eventType": "reports.categorizedBankStatement.generate.successful", "generatedDate": "2023-05-03T10:00:23Z", "id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "payload": {"id": "bb42ce7e-720a-4ac5-b640-f24f53ff47c8", "referenceCompany": {"description": "internal_id_mxO7rLfo", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "links": {"portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary"}, "name": "Bank of Dave", "tags": {"customerRegion": "us", "uid": "335a086e-8563-4b03-94e3-39544225ecb6"}}}}
 generatedTests: {}

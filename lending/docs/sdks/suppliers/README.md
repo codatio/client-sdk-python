@@ -28,8 +28,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_payable.suppliers.download_attachment(request={
+) as codat_lending:
+    res = codat_lending.accounts_payable.suppliers.download_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -79,8 +79,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_payable.suppliers.get(request={
+) as codat_lending:
+    res = codat_lending.accounts_payable.suppliers.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "supplier_id": "7110701885",
     })
@@ -126,8 +126,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_payable.suppliers.get_attachment(request={
+) as codat_lending:
+    res = codat_lending.accounts_payable.suppliers.get_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -177,8 +177,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_payable.suppliers.list(request={
+) as codat_lending:
+    res = codat_lending.accounts_payable.suppliers.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
         "page": 1,
@@ -227,8 +227,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_payable.suppliers.list_attachments(request={
+) as codat_lending:
+    res = codat_lending.accounts_payable.suppliers.list_attachments(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "supplier_id": "EILBDVJVNUAGVKRQ",
