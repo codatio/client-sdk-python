@@ -28,8 +28,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.transactions.direct_costs.download_attachment(request={
+) as codat_lending:
+    res = codat_lending.transactions.direct_costs.download_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -79,8 +79,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.transactions.direct_costs.get(request={
+) as codat_lending:
+    res = codat_lending.transactions.direct_costs.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "direct_cost_id": "7110701885",
@@ -126,8 +126,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.transactions.direct_costs.get_attachment(request={
+) as codat_lending:
+    res = codat_lending.transactions.direct_costs.get_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -177,8 +177,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.transactions.direct_costs.list(request={
+) as codat_lending:
+    res = codat_lending.transactions.direct_costs.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "order_by": "-modifiedDate",
@@ -228,8 +228,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.transactions.direct_costs.list_attachments(request={
+) as codat_lending:
+    res = codat_lending.transactions.direct_costs.list_attachments(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "direct_cost_id": "EILBDVJVNUAGVKRQ",

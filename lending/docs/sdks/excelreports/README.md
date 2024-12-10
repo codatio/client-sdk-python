@@ -29,8 +29,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.excel_reports.download(request={
+) as codat_lending:
+    res = codat_lending.excel_reports.download(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_type": shared.ExcelReportTypes.ENHANCED_FINANCIALS,
     })
@@ -89,8 +89,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.excel_reports.generate(request={
+) as codat_lending:
+    res = codat_lending.excel_reports.generate(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_type": shared.ExcelReportTypes.ENHANCED_INVOICES,
     })
@@ -137,8 +137,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.excel_reports.get_status(request={
+) as codat_lending:
+    res = codat_lending.excel_reports.get_status(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_type": shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
     })

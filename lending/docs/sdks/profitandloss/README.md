@@ -22,8 +22,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.financial_statements.profit_and_loss.get(request={
+) as codat_lending:
+    res = codat_lending.financial_statements.profit_and_loss.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "period_length": 4,
         "periods_to_compare": 20,
@@ -70,8 +70,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.financial_statements.profit_and_loss.get_categorized_accounts(request={
+) as codat_lending:
+    res = codat_lending.financial_statements.profit_and_loss.get_categorized_accounts(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_date": "29-09-2020",
     })

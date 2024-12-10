@@ -29,8 +29,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.bank_statements.end_upload_session(request={
+) as codat_lending:
+    codat_lending.bank_statements.end_upload_session(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "dataset_id": "d8baee81-bb77-4d34-bcc3-0ef7526e0bde",
@@ -72,8 +72,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.bank_statements.get_upload_configuration(request={
+) as codat_lending:
+    res = codat_lending.bank_statements.get_upload_configuration(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -120,8 +120,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.bank_statements.set_upload_configuration(request={
+) as codat_lending:
+    res = codat_lending.bank_statements.set_upload_configuration(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "bank_statement_upload_configuration": {
@@ -172,8 +172,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.bank_statements.start_upload_session(request={
+) as codat_lending:
+    res = codat_lending.bank_statements.start_upload_session(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -218,8 +218,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.bank_statements.upload_bank_statement_data(request={
+) as codat_lending:
+    codat_lending.bank_statements.upload_bank_statement_data(request={
         "request_body": {
             "currency": "Philippine Peso",
             "id": "<id>",

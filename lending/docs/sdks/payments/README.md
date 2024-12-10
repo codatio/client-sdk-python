@@ -27,8 +27,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_receivable.payments.get(request={
+) as codat_lending:
+    res = codat_lending.accounts_receivable.payments.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "payment_id": "7110701885",
     })
@@ -76,8 +76,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_receivable.payments.list(request={
+) as codat_lending:
+    res = codat_lending.accounts_receivable.payments.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
         "page": 1,

@@ -30,8 +30,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_receivable.invoices.download_attachment(request={
+) as codat_lending:
+    res = codat_lending.accounts_receivable.invoices.download_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -76,8 +76,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_receivable.invoices.download_pdf(request={
+) as codat_lending:
+    res = codat_lending.accounts_receivable.invoices.download_pdf(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "invoice_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
@@ -129,8 +129,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_receivable.invoices.get(request={
+) as codat_lending:
+    res = codat_lending.accounts_receivable.invoices.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "invoice_id": "7110701885",
     })
@@ -176,8 +176,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_receivable.invoices.get_attachment(request={
+) as codat_lending:
+    res = codat_lending.accounts_receivable.invoices.get_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -238,8 +238,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_receivable.invoices.list(request={
+) as codat_lending:
+    res = codat_lending.accounts_receivable.invoices.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
         "page": 1,
@@ -287,8 +287,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_receivable.invoices.list_attachments(request={
+) as codat_lending:
+    res = codat_lending.accounts_receivable.invoices.list_attachments(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "invoice_id": "EILBDVJVNUAGVKRQ",
@@ -332,8 +332,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.accounts_receivable.invoices.list_reconciled(request={
+) as codat_lending:
+    res = codat_lending.accounts_receivable.invoices.list_reconciled(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "page": 1,
         "page_size": 100,

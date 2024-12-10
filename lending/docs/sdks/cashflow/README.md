@@ -21,8 +21,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.financial_statements.cash_flow.get(request={
+) as codat_lending:
+    res = codat_lending.financial_statements.cash_flow.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "period_length": 4,
         "periods_to_compare": 20,

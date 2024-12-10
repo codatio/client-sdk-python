@@ -38,18 +38,23 @@ The Lending API is built on top of the latest accounting, commerce, and banking 
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Lending](#lending)
+  * [Endpoints](#endpoints)
+  * [SDK Installation](#sdk-installation)
+  * [Example Usage](#example-usage)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [IDE Support](#ide-support)
+  * [File uploads](#file-uploads)
+  * [Debugging](#debugging)
+  * [Support](#support)
 
-* [SDK Installation](#sdk-installation)
-* [IDE Support](#ide-support)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [File uploads](#file-uploads)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -83,21 +88,23 @@ poetry add codat-lending
 ```python
 # Synchronous Example
 from codat_lending import CodatLending
-from codat_lending.models import shared
 
-with CodatLending(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-) as s:
-    res = s.companies.create(request={
-        "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
+with CodatLending() as codat_lending:
+    codat_lending.account_categories_updated(request={
+        "alert_id": "a9367074-b5c3-42c4-9be4-be129f43577e",
+        "client_id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140",
+        "client_name": "Bank of Dave",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "data": {
+            "modified_date": "2022-10-23",
+        },
+        "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "message": "Account categories updated for company f1c35bdc-1546-41b9-baf4-3f31135af968.",
+        "rule_id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac",
+        "rule_type": "Account Categories Updated",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Use the SDK ...
 ```
 
 </br>
@@ -107,22 +114,24 @@ The same SDK client can also be used to make asychronous requests by importing a
 # Asynchronous Example
 import asyncio
 from codat_lending import CodatLending
-from codat_lending.models import shared
 
 async def main():
-    async with CodatLending(
-        security=shared.Security(
-            auth_header="Basic BASE_64_ENCODED(API_KEY)",
-        ),
-    ) as s:
-        res = await s.companies.create_async(request={
-            "name": "Technicalium",
-            "description": "Requested early access to the new financing scheme.",
+    async with CodatLending() as codat_lending:
+        await codat_lending.account_categories_updated_async(request={
+            "alert_id": "a9367074-b5c3-42c4-9be4-be129f43577e",
+            "client_id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140",
+            "client_name": "Bank of Dave",
+            "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+            "data": {
+                "modified_date": "2022-10-23",
+            },
+            "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+            "message": "Account categories updated for company f1c35bdc-1546-41b9-baf4-3f31135af968.",
+            "rule_id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac",
+            "rule_type": "Account Categories Updated",
         })
 
-        if res is not None:
-            # handle response
-            pass
+        # Use the SDK ...
 
 asyncio.run(main())
 ```
@@ -492,14 +501,14 @@ To change the default retry strategy for a single API call, simply provide a `Re
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from codatlending.utils import BackoffStrategy, RetryConfig
+from codat_lending.utils import BackoffStrategy, RetryConfig
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_lending:
+    res = codat_lending.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     },
@@ -515,15 +524,15 @@ If you'd like to override the default retry strategy for all operations that sup
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from codatlending.utils import BackoffStrategy, RetryConfig
+from codat_lending.utils import BackoffStrategy, RetryConfig
 
 with CodatLending(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_lending:
+    res = codat_lending.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
@@ -566,10 +575,10 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
+) as codat_lending:
     res = None
     try:
-        res = s.companies.create(request={
+        res = codat_lending.companies.create(request={
             "name": "Technicalium",
             "description": "Requested early access to the new financing scheme.",
         })
@@ -602,8 +611,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_lending:
+    res = codat_lending.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
@@ -716,8 +725,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_lending:
+    res = codat_lending.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
@@ -757,8 +766,8 @@ with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.file_upload.upload(request={
+) as codat_lending:
+    codat_lending.file_upload.upload(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
