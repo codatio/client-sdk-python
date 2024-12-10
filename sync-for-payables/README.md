@@ -35,23 +35,20 @@ poetry add codat-sync-for-payables
 ```python
 # Synchronous Example
 from codat_sync_for_payables import CodatSyncPayables
-from codat_sync_for_payables.models import shared
 
-with CodatSyncPayables(
-    security=shared.Security(
-        auth_header="Basic BASE_64_ENCODED(API_KEY)",
-    ),
-) as s:
-    res = s.companies.list(request={
-        "page": 1,
-        "page_size": 100,
-        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-        "order_by": "-modifiedDate",
+with CodatSyncPayables() as codat_sync_payables:
+    codat_sync_payables.client_rate_limit_reached(request={
+        "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
+        "event_type": "client.rateLimit.reached",
+        "generated_date": "2024-09-01T00:00:00Z",
+        "payload": {
+            "daily_quota": 12000,
+            "quota_remaining": 0,
+            "expiry_date": "2024-09-01T12:14:14Z",
+        },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Use the SDK ...
 ```
 
 </br>
@@ -61,24 +58,21 @@ The same SDK client can also be used to make asychronous requests by importing a
 # Asynchronous Example
 import asyncio
 from codat_sync_for_payables import CodatSyncPayables
-from codat_sync_for_payables.models import shared
 
 async def main():
-    async with CodatSyncPayables(
-        security=shared.Security(
-            auth_header="Basic BASE_64_ENCODED(API_KEY)",
-        ),
-    ) as s:
-        res = await s.companies.list_async(request={
-            "page": 1,
-            "page_size": 100,
-            "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
-            "order_by": "-modifiedDate",
+    async with CodatSyncPayables() as codat_sync_payables:
+        await codat_sync_payables.client_rate_limit_reached_async(request={
+            "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
+            "event_type": "client.rateLimit.reached",
+            "generated_date": "2024-09-01T00:00:00Z",
+            "payload": {
+                "daily_quota": 12000,
+                "quota_remaining": 0,
+                "expiry_date": "2024-09-01T12:14:14Z",
+            },
         })
 
-        if res is not None:
-            # handle response
-            pass
+        # Use the SDK ...
 
 asyncio.run(main())
 ```
@@ -174,18 +168,23 @@ The bill pay kit is an API and a set of supporting tools designed to integrate a
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+  * [SDK Installation](#sdk-installation)
+  * [Example Usage](#example-usage)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Supported Integrations](#supported-integrations)
+  * [Endpoints](#endpoints)
+  * [IDE Support](#ide-support)
+  * [File uploads](#file-uploads)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Debugging](#debugging)
+  * [Support](#support)
 
-* [SDK Installation](#sdk-installation)
-* [IDE Support](#ide-support)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [File uploads](#file-uploads)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start IDE Support [idesupport] -->
@@ -216,8 +215,8 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.bills.upload_attachment(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.bills.upload_attachment(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "bill_id": "EILBDVJVNUAGVKRQ",
@@ -239,14 +238,14 @@ To change the default retry strategy for a single API call, simply provide a `Re
 ```python
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
-from codatsyncpayables.utils import BackoffStrategy, RetryConfig
+from codat_sync_for_payables.utils import BackoffStrategy, RetryConfig
 
 with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.list(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.companies.list(request={
         "page": 1,
         "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
@@ -264,15 +263,15 @@ If you'd like to override the default retry strategy for all operations that sup
 ```python
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
-from codatsyncpayables.utils import BackoffStrategy, RetryConfig
+from codat_sync_for_payables.utils import BackoffStrategy, RetryConfig
 
 with CodatSyncPayables(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.list(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.companies.list(request={
         "page": 1,
         "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
@@ -317,10 +316,10 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
+) as codat_sync_payables:
     res = None
     try:
-        res = s.companies.list(request={
+        res = codat_sync_payables.companies.list(request={
             "page": 1,
             "page_size": 100,
             "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
@@ -355,8 +354,8 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.list(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.companies.list(request={
         "page": 1,
         "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
@@ -471,8 +470,8 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.list(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.companies.list(request={
         "page": 1,
         "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",

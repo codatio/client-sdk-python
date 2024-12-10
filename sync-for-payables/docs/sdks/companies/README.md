@@ -30,8 +30,8 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.list(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.companies.list(request={
         "page": 1,
         "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
@@ -81,8 +81,8 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.create(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
@@ -128,8 +128,8 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.update(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.companies.update(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
             "name": "New Name",
@@ -179,8 +179,8 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.companies.delete(request={
+) as codat_sync_payables:
+    codat_sync_payables.companies.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -220,8 +220,8 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.get(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.companies.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 

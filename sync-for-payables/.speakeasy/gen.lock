@@ -3,10 +3,10 @@ id: 0722f07c-657c-4062-93f1-39ee3fe757d0
 management:
   docChecksum: 05c2a60eb0f4b40cda5e4a92d94e7b93
   docVersion: 3.0.0
-  speakeasyVersion: 1.448.0
-  generationVersion: 2.466.0
-  releaseVersion: 8.0.2
-  configChecksum: 770f66b877a0dda395dc34450854e097
+  speakeasyVersion: 1.453.8
+  generationVersion: 2.474.15
+  releaseVersion: 8.0.3
+  configChecksum: 52f1dd427d39b22a834f77dd51ec7337
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: sync-for-payables
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-payables
@@ -15,7 +15,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.6.8
+    core: 5.6.11
     decimal: 1.0.0
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.0
@@ -954,4 +954,20 @@ examples:
       responses:
         "400":
           application/json: {"statusCode": 400, "service": "PublicApi", "error": "Error processing request - not valid.", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "canBeRetried": "Unknown", "detailedErrorCode": 0}
+  client.rateLimit.reached:
+    Reached:
+      requestBody:
+        application/json: {"id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "eventType": "client.rateLimit.reached", "generatedDate": "2024-09-01T00:00:00Z", "payload": {"dailyQuota": 12000, "quotaRemaining": 0, "expiryDate": "2024-09-01T12:14:14Z"}}
+  client.rateLimit.reset:
+    Reset:
+      requestBody:
+        application/json: {"id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "eventType": "client.rateLimit.reset", "generatedDate": "2024-09-01T00:00:00Z", "payload": {"dailyQuota": 12000, "quotaRemaining": 11993, "expiryDate": "2024-09-01T23:59:99Z"}}
+  Client rate limit reached:
+    speakeasy-default-client-rate-limit-reached:
+      requestBody:
+        application/json: {"ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reached", "AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "Message": "The current daily rate limit quota of 1000 requests for bae71d36-ff47-420a-b4a6-f8c9ddf41140 has been reached.", "Data": {"DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z"}}
+  Client rate limit reset:
+    speakeasy-default-client-rate-limit-reset:
+      requestBody:
+        application/json: {"ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reset", "AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "Message": "The current daily rate limit quota for client 30e0f9d2-52c0-4c9f-a806-bcd98a3bcd7e has been reset to 1000 requests.", "Data": {"QuotaRemaining": 1000, "ResetReason": "The quota was reset because it is a new day.", "DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z"}}
 generatedTests: {}
