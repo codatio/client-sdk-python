@@ -24,8 +24,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.configuration.get(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.configuration.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -67,8 +67,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.configuration.set(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.configuration.set(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "configuration": {
             "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

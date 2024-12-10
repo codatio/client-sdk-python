@@ -29,8 +29,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.create(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.connections.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "request_body": {
             "platform_key": "gbol",
@@ -76,8 +76,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    s.connections.delete(request={
+) as codat_bank_feeds:
+    codat_bank_feeds.connections.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -114,8 +114,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.get(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.connections.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -158,8 +158,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.list(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.connections.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
         "page": 1,
@@ -205,8 +205,8 @@ with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.connections.unlink(request={
+) as codat_bank_feeds:
+    res = codat_bank_feeds.connections.unlink(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": {
