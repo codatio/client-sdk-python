@@ -3,10 +3,10 @@ id: a2c830ee-4f93-4e8e-8f01-48d0991317f5
 management:
   docChecksum: c99953b67f6a5e5522a0340e273decdb
   docVersion: prealpha
-  speakeasyVersion: 1.447.0
-  generationVersion: 2.463.0
-  releaseVersion: 7.0.0
-  configChecksum: 6f483801042fce2cb5d58c6bbeaa9ed1
+  speakeasyVersion: 1.453.8
+  generationVersion: 2.474.15
+  releaseVersion: 7.0.1
+  configChecksum: 748c8b0d651d25e7b0b603920971a83e
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: sync-for-expenses
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-expenses
@@ -15,7 +15,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.6.8
+    core: 5.6.11
     decimal: 1.0.0
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.0
@@ -1381,7 +1381,7 @@ examples:
         path:
           companyId: "8a210b68-6988-11ed-a1eb-0242ac120002"
           connectionId: "2e9d2c44-f675-40ba-8049-353bfcb5e171"
-          customerId: "7110701885"
+          customerId: "EILBDVJVNUAGVKRQ"
         query: {}
       requestBody:
         application/json: {"contacts": [{"modifiedDate": "2022-10-23T00:00:00Z", "phone": [{"number": "01224 658 999", "type": "Fax"}], "status": "Active"}, {"modifiedDate": "2022-10-23T00:00:00Z", "phone": [], "status": "Archived"}, {"modifiedDate": "2022-10-23T00:00:00Z", "phone": [{"number": "+44 25691 154789", "type": "Primary"}], "status": "Archived"}], "defaultCurrency": "EUR", "modifiedDate": "2022-10-23T00:00:00Z", "sourceModifiedDate": "2022-10-23T00:00:00Z", "status": "Archived"}
@@ -2267,4 +2267,36 @@ examples:
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error processing request - not valid.", "service": "PublicApi", "statusCode": 400}
+  Client rate limit reached:
+    speakeasy-default-client-rate-limit-reached:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "Data": {"DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z"}, "Message": "The current daily rate limit quota of 1000 requests for bae71d36-ff47-420a-b4a6-f8c9ddf41140 has been reached.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reached"}
+  Client rate limit reset:
+    speakeasy-default-client-rate-limit-reset:
+      requestBody:
+        application/json: {"AlertId": "a9367074-b5c3-42c4-9be4-be129f43577e", "ClientId": "bae71d36-ff47-420a-b4a6-f8c9ddf41140", "ClientName": "Bank of Dave", "Data": {"DailyQuota": 1000, "ExpiresUtc": "2022-10-23T00:00:00Z", "QuotaRemaining": 1000, "ResetReason": "The quota was reset because it is a new day."}, "Message": "The current daily rate limit quota for client 30e0f9d2-52c0-4c9f-a806-bcd98a3bcd7e has been reset to 1000 requests.", "RuleId": "70af3071-65d9-4ec3-b3cb-5283e8d55dac", "RuleType": "Rate Limit Reset"}
+  SyncCompleted:
+    speakeasy-default-sync-completed:
+      requestBody:
+        application/json: {"AlertId": "33a4f8e9-09ae-4334-9b00-7bbe83024672", "ClientId": "30e0f9d2-52c0-4c9f-a806-bcd98a3bcd7e", "ClientName": "Expense Sync", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Data": {"syncId": "a9367074-b5c3-42c4-9be4-be129f43577e", "syncType": "Expense"}, "Message": "Sync 321363b4-efa9-4fbc-b71c-0b58d62f3248 for company 1f9559e7-8368-48c9-bdf4-f158e16b8b85 of type Expense completed successfully.", "RuleId": "5c27631d-3b63-4b50-8228-ee502fd113eb", "RuleType": "Sync Completed"}
+  SyncFailed:
+    speakeasy-default-sync-failed:
+      requestBody:
+        application/json: {"AlertId": "72c1103b-7f17-4a3a-8db5-67c2d360a516", "ClientId": "30e0f9d2-52c0-4c9f-a806-bcd98a3bcd7e", "ClientName": "Expense Sync", "CompanyId": "8a210b68-6988-11ed-a1eb-0242ac120002", "Data": {"FailureStage": "Pushing", "syncId": "a9367074-b5c3-42c4-9be4-be129f43577e", "syncType": "Expense"}, "Message": "Sync 3bead2a1-1b3d-4d90-8077-cddc5ca68b01 for company 1f9559e7-8368-48c9-bdf4-f158e16b8b85 of type Expense has failed at step Pushing.", "RuleId": "289c80dc-2aee-4b71-afff-9acd8d051080", "RuleType": "Sync Failed"}
+  client.rateLimit.reached:
+    Reached:
+      requestBody:
+        application/json: {"eventType": "client.rateLimit.reached", "generatedDate": "2024-09-01T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dailyQuota": 12000, "expiryDate": "2024-09-01T12:14:14Z", "quotaRemaining": 0}}
+  client.rateLimit.reset:
+    Reset:
+      requestBody:
+        application/json: {"eventType": "client.rateLimit.reset", "generatedDate": "2024-09-01T00:00:00Z", "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b", "payload": {"dailyQuota": 12000, "expiryDate": "2024-09-01T23:59:99Z", "quotaRemaining": 11993}}
+  expenses.sync.successful:
+    Successful:
+      requestBody:
+        application/json: {"eventType": "expenses.sync.successful", "generatedDate": "2024-09-01T00:00:00Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"referenceCompany": {"description": "Syncing expenses", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "name": "Toft stores"}, "syncId": "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd", "transactions": [{"errorMessage": null, "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479", "status": "Completed"}, {"errorMessage": null, "id": "e7f8a3d5-0c3c-4c9b-b5d3-56b4a43b62e4", "status": "Completed"}]}}
+  expenses.sync.unsuccessful:
+    Unsuccessful:
+      requestBody:
+        application/json: {"eventType": "expenses.sync.unsuccessful", "generatedDate": "2024-09-01T00:00:00Z", "id": "ba29118f-5406-4e59-b05c-ba307ca38d01", "payload": {"referenceCompany": {"description": "Syncing expenses", "id": "0498e921-9b53-4396-a412-4f2f5983b0a2", "name": "Toft stores"}, "syncId": "ee2eb431-c0fa-4dc9-93fa-d29781c12bcd", "transactions": [{"errorMessage": null, "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479", "status": "Completed"}, {"errorMessage": "Insufficient funds", "id": "e7f8a3d5-0c3c-4c9b-b5d3-56b4a43b62e4", "status": "Failed"}]}}
 generatedTests: {}

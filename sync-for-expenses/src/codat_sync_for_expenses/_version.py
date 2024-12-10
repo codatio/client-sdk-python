@@ -3,7 +3,7 @@
 import importlib.metadata
 
 __title__: str = "codat-sync-for-expenses"
-__version__: str = "7.0.0"
+__version__: str = "7.0.1"
 
 try:
     if __package__ is not None:
