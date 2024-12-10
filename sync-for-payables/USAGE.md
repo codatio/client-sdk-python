@@ -8,8 +8,8 @@ with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as s:
-    res = s.companies.list(request={
+) as codat_sync_payables:
+    res = codat_sync_payables.companies.list(request={
         "page": 1,
         "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
@@ -35,8 +35,8 @@ async def main():
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
-    ) as s:
-        res = await s.companies.list_async(request={
+    ) as codat_sync_payables:
+        res = await codat_sync_payables.companies.list_async(request={
             "page": 1,
             "page_size": 100,
             "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
