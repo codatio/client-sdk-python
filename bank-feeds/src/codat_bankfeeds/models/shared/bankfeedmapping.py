@@ -108,7 +108,7 @@ class BankFeedMapping(BaseModel):
     ] = None
     r"""Account number for the source account."""
 
-    source_balance: Annotated[Optional[str], pydantic.Field(alias="sourceBalance")] = (
+    source_balance: Annotated[Optional[int], pydantic.Field(alias="sourceBalance")] = (
         None
     )
     r"""Balance for the source account."""
