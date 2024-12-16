@@ -27,42 +27,29 @@ The _Create Source Account_ endpoint allows you to create a representation of a 
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
-from decimal import Decimal
 
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.source_accounts.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": {
-            "account_name": "account-081",
-            "account_number": "12345670",
-            "account_type": shared.AccountType.CHECKING,
-            "balance": Decimal("99.99"),
-            "currency": "GBP",
-            "id": "acc-001",
             "account_info": {
-                "account_open_date": "2023-05-06T00:00:00Z",
-                "available_balance": Decimal("10"),
-                "description": "account description 1",
-                "nickname": "account 123",
+                "account_open_date": "2022-10-23",
             },
-            "feed_start_date": "2024-05-01T00:00:00Z",
-            "modified_date": "2024-08-02T00:00:00.000Z",
-            "routing_info": {
-                "bank_code": "21001088",
-                "type": shared.Type.BANKCODE,
-            },
-            "status": shared.SourceAccountV2Status.PENDING,
+            "currency": "USD",
+            "modified_date": "2022-10-23T00:00:00Z",
         },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -103,6 +90,7 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.source_accounts.create_batch(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -132,9 +120,10 @@ with CodatBankFeeds(
         ],
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -174,6 +163,7 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     codat_bank_feeds.source_accounts.delete(request={
         "account_id": "7110701885",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -215,6 +205,7 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     codat_bank_feeds.source_accounts.delete_credentials(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -259,15 +250,17 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.source_accounts.generate_credentials(request={
         "request_body": open("example.file", "rb"),
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -309,14 +302,16 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.source_accounts.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -359,6 +354,7 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.source_accounts.update(request={
         "account_id": "7110701885",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -377,9 +373,10 @@ with CodatBankFeeds(
         },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

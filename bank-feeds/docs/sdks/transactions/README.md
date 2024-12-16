@@ -35,6 +35,7 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.transactions.create(request={
         "account_id": "9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -79,9 +80,10 @@ with CodatBankFeeds(
         },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -124,15 +126,17 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.transactions.get_create_model(request={
         "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -173,14 +177,16 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.transactions.get_create_operation(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "push_operation_key": "1fb73c31-a851-46c2-ab8a-5ce6e25b57b8",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -221,6 +227,7 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.transactions.list_create_operations(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
@@ -229,9 +236,10 @@ with CodatBankFeeds(
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

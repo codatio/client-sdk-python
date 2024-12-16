@@ -25,13 +25,15 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.configuration.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -68,6 +70,7 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.configuration.set(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "configuration": {
@@ -75,9 +78,10 @@ with CodatBankFeeds(
         },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
