@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "codat-bankfeeds"
-version = "9.0.1"
+version = "10.0.0"
 description = "Set up bank feeds from accounts in your application to supported accounting software."
 authors = ["Speakeasy",]
 readme = "README-PYPI.md"

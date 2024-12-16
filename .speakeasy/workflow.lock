@@ -1,4 +1,4 @@
-speakeasyVersion: 1.453.8
+speakeasyVersion: 1.455.5
 sources:
     accounting-source:
         sourceNamespace: accounting-source
@@ -16,11 +16,11 @@ sources:
             - main
     bank-feeds-source:
         sourceNamespace: bank-feeds-source
-        sourceRevisionDigest: sha256:9133167d1473dc045331f1cfa81fb00aa3234e2b2b438f6808f576b259a76be8
-        sourceBlobDigest: sha256:b5233f0bab180b8aae271a0d5ab149316931ec9e84a140e1c073a2025305eb7d
+        sourceRevisionDigest: sha256:9aaa05521af2d39743759c03b1f419f63c5d9726a66c9b9e448e95a9a53ccf2b
+        sourceBlobDigest: sha256:d8080d68edd35d878fad42ac6b343ac5c287f2cab63280c281a2adad5ddd117a
         tags:
             - latest
-            - speakeasy-sdk-regen-1733825306
+            - speakeasy-sdk-regen-1734364659
             - 3.0.0
     banking-source:
         sourceNamespace: banking-source
@@ -111,10 +111,10 @@ targets:
     bank-feeds-library:
         source: bank-feeds-source
         sourceNamespace: bank-feeds-source
-        sourceRevisionDigest: sha256:9133167d1473dc045331f1cfa81fb00aa3234e2b2b438f6808f576b259a76be8
-        sourceBlobDigest: sha256:b5233f0bab180b8aae271a0d5ab149316931ec9e84a140e1c073a2025305eb7d
+        sourceRevisionDigest: sha256:9aaa05521af2d39743759c03b1f419f63c5d9726a66c9b9e448e95a9a53ccf2b
+        sourceBlobDigest: sha256:d8080d68edd35d878fad42ac6b343ac5c287f2cab63280c281a2adad5ddd117a
         codeSamplesNamespace: bank-feeds-source-python-code-samples
-        codeSamplesRevisionDigest: sha256:213db3e6e8d49d181aa23b48af0e4b8fc917552e39fb8ef2a69edab2eaa52e67
+        codeSamplesRevisionDigest: sha256:44e2ed21312eba2cf9216de98b7101573e310f02fb8aa33f930d02296c84821f
     banking-library:
         source: banking-source
         sourceNamespace: banking-source

@@ -3,10 +3,22 @@
 from __future__ import annotations
 from .companyreference import CompanyReference, CompanyReferenceTypedDict
 from .sourceaccount import SourceAccount, SourceAccountTypedDict
+from .sourceaccountv2 import SourceAccountV2, SourceAccountV2TypedDict
 from codat_bankfeeds.types import BaseModel
 import pydantic
-from typing import Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing import Optional, Union
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+
+
+SourceAccountWebhookPayloadSourceAccountTypedDict = TypeAliasType(
+    "SourceAccountWebhookPayloadSourceAccountTypedDict",
+    Union[SourceAccountTypedDict, SourceAccountV2TypedDict],
+)
+
+
+SourceAccountWebhookPayloadSourceAccount = TypeAliasType(
+    "SourceAccountWebhookPayloadSourceAccount", Union[SourceAccount, SourceAccountV2]
+)
 
 
 class SourceAccountWebhookPayloadTypedDict(TypedDict):
@@ -15,8 +27,7 @@ class SourceAccountWebhookPayloadTypedDict(TypedDict):
     connection_id: NotRequired[str]
     r"""Unique identifier for a company's data connection."""
     reference_company: NotRequired[CompanyReferenceTypedDict]
-    source_account: NotRequired[SourceAccountTypedDict]
-    r"""The target bank account in a supported accounting software for ingestion into a bank feed."""
+    source_account: NotRequired[SourceAccountWebhookPayloadSourceAccountTypedDict]
 
 
 class SourceAccountWebhookPayload(BaseModel):
@@ -31,6 +42,6 @@ class SourceAccountWebhookPayload(BaseModel):
     ] = None
 
     source_account: Annotated[
-        Optional[SourceAccount], pydantic.Field(alias="sourceAccount")
+        Optional[SourceAccountWebhookPayloadSourceAccount],
+        pydantic.Field(alias="sourceAccount"),
     ] = None
-    r"""The target bank account in a supported accounting software for ingestion into a bank feed."""

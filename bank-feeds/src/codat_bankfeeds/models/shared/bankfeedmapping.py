@@ -9,8 +9,12 @@ from codat_bankfeeds.types import (
     UNSET,
     UNSET_SENTINEL,
 )
+from codat_bankfeeds.utils import serialize_decimal, validate_decimal
+from decimal import Decimal
 import pydantic
 from pydantic import model_serializer
+from pydantic.functional_serializers import PlainSerializer
+from pydantic.functional_validators import BeforeValidator
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -45,7 +49,7 @@ class BankFeedMappingTypedDict(TypedDict):
     r"""Name for the source account."""
     source_account_number: NotRequired[str]
     r"""Account number for the source account."""
-    source_balance: NotRequired[str]
+    source_balance: NotRequired[Decimal]
     r"""Balance for the source account."""
     source_currency: NotRequired[str]
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
@@ -108,9 +112,14 @@ class BankFeedMapping(BaseModel):
     ] = None
     r"""Account number for the source account."""
 
-    source_balance: Annotated[Optional[str], pydantic.Field(alias="sourceBalance")] = (
-        None
-    )
+    source_balance: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="sourceBalance"),
+    ] = None
     r"""Balance for the source account."""
 
     source_currency: Annotated[

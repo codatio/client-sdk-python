@@ -3,7 +3,9 @@
 from __future__ import annotations
 from codat_bankfeeds.models.shared import (
     sourceaccount as shared_sourceaccount,
+    sourceaccountprototype as shared_sourceaccountprototype,
     sourceaccountv2 as shared_sourceaccountv2,
+    sourceaccountv2prototype as shared_sourceaccountv2prototype,
 )
 from codat_bankfeeds.types import BaseModel
 from codat_bankfeeds.utils import FieldMetadata, PathParamMetadata, RequestMetadata
@@ -15,15 +17,18 @@ from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 CreateSourceAccountRequestBodyTypedDict = TypeAliasType(
     "CreateSourceAccountRequestBodyTypedDict",
     Union[
-        shared_sourceaccount.SourceAccountTypedDict,
-        shared_sourceaccountv2.SourceAccountV2TypedDict,
+        shared_sourceaccountprototype.SourceAccountPrototypeTypedDict,
+        shared_sourceaccountv2prototype.SourceAccountV2PrototypeTypedDict,
     ],
 )
 
 
 CreateSourceAccountRequestBody = TypeAliasType(
     "CreateSourceAccountRequestBody",
-    Union[shared_sourceaccount.SourceAccount, shared_sourceaccountv2.SourceAccountV2],
+    Union[
+        shared_sourceaccountprototype.SourceAccountPrototype,
+        shared_sourceaccountv2prototype.SourceAccountV2Prototype,
+    ],
 )
 
 

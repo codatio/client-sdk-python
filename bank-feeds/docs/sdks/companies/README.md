@@ -34,14 +34,16 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -82,6 +84,7 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     codat_bank_feeds.companies.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
@@ -123,13 +126,15 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.companies.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -167,13 +172,15 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.companies.get_access_token(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -202,6 +209,19 @@ with CodatBankFeeds(
 A [company](https://docs.codat.io/bank-feeds-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/bank-feeds-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
+## Filter by tags
+
+The *List companies* endpoint supports the filtering of companies using [tags](https://docs.codat.io/using-the-api/managing-companies#add-metadata-to-a-company). It supports the following operators with [Codat’s query language](https://docs.codat.io/using-the-api/querying):
+
+- equals (`=`)
+- not equals (`!=`)
+- contains (`~`)
+
+For example, you can use the querying to filter companies tagged with a specific foreign key, region, or owning team: 
+- Foreign key: `uid = {yourCustomerId}`
+- Region: `region != uk`
+- Owning team and region: `region = uk && owningTeam = invoice-finance`
+
 ### Example Usage
 
 ```python
@@ -213,16 +233,19 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.companies.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
         "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "tags": "region=uk && team=invoice-finance",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -262,6 +285,7 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.companies.update(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
@@ -270,9 +294,10 @@ with CodatBankFeeds(
         },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

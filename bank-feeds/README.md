@@ -94,6 +94,7 @@ from codat_bankfeeds.models import shared
 from decimal import Decimal
 
 with CodatBankFeeds() as codat_bank_feeds:
+
     codat_bank_feeds.bank_feeds_source_account_connected(request={
         "event_type": "bankFeeds.sourceAccount.connected",
         "generated_date": "2022-10-23T00:00:00Z",
@@ -136,6 +137,7 @@ from decimal import Decimal
 
 async def main():
     async with CodatBankFeeds() as codat_bank_feeds:
+
         await codat_bank_feeds.bank_feeds_source_account_connected_async(request={
             "event_type": "bankFeeds.sourceAccount.connected",
             "generated_date": "2022-10-23T00:00:00Z",
@@ -260,15 +262,17 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.source_accounts.generate_credentials(request={
         "request_body": open("example.file", "rb"),
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End File uploads [file-upload] -->
@@ -289,15 +293,17 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -313,14 +319,16 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Retries [retries] -->
@@ -361,14 +369,16 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
     res = None
     try:
+
         res = codat_bank_feeds.companies.create(request={
             "name": "Technicalium",
             "description": "Requested early access to the new financing scheme.",
         })
 
-        if res is not None:
-            # handle response
-            pass
+        assert res is not None
+
+        # Handle response
+        print(res)
 
     except errors.ErrorMessage as e:
         # handle e.data: errors.ErrorMessageData
@@ -397,14 +407,16 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Server Selection [server] -->
@@ -515,14 +527,16 @@ with CodatBankFeeds(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_bank_feeds:
+
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Authentication [security] -->

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .accountinfo import AccountInfo, AccountInfoTypedDict
+from .accounttype import AccountType
 from .routinginfo import RoutingInfo, RoutingInfoTypedDict
 from codat_bankfeeds.types import (
     BaseModel,
@@ -12,7 +13,6 @@ from codat_bankfeeds.types import (
 )
 from codat_bankfeeds.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
-from enum import Enum
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
@@ -21,38 +21,17 @@ from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class SourceAccountV2AccountType(str, Enum):
-    r"""The type of bank account e.g. checking, savings, loan, creditCard, prepaidCard."""
-
-    CHECKING = "checking"
-    SAVINGS = "savings"
-    LOAN = "loan"
-    CREDIT_CARD = "creditCard"
-    PREPAID_CARD = "prepaidCard"
-
-
-class SourceAccountV2Status(str, Enum):
-    r"""Status of the source account."""
-
-    PENDING = "pending"
-    CONNECTED = "connected"
-    CONNECTING = "connecting"
-    DISCONNECTED = "disconnected"
-    UNKNOWN = "unknown"
-
-
-class SourceAccountV2TypedDict(TypedDict):
-    r"""The target bank account in a supported accounting software for ingestion into a bank feed."""
-
-    account_name: str
+class SourceAccountV2PrototypeTypedDict(TypedDict):
+    account_info: NotRequired[Nullable[AccountInfoTypedDict]]
+    account_name: NotRequired[str]
     r"""The bank account name."""
-    account_number: str
+    account_number: NotRequired[str]
     r"""The account number."""
-    account_type: SourceAccountV2AccountType
+    account_type: NotRequired[AccountType]
     r"""The type of bank account e.g. checking, savings, loan, creditCard, prepaidCard."""
-    balance: Decimal
+    balance: NotRequired[Decimal]
     r"""The latest balance for the bank account."""
-    currency: str
+    currency: NotRequired[str]
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
     ## Unknown currencies
@@ -61,15 +40,8 @@ class SourceAccountV2TypedDict(TypedDict):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    id: str
+    id: NotRequired[str]
     r"""Unique ID for the bank account."""
-    account_info: NotRequired[Nullable[AccountInfoTypedDict]]
-    feed_start_date: NotRequired[Nullable[str]]
-    r"""In Codat's data model, dates are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date fields are formatted as strings; for example:
-    ```
-    2020-10-08
-    ```
-    """
     modified_date: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -95,32 +67,34 @@ class SourceAccountV2TypedDict(TypedDict):
     r"""Routing information for the bank. This does not include account number."""
     sort_code: NotRequired[Nullable[str]]
     r"""The sort code."""
-    status: NotRequired[Nullable[SourceAccountV2Status]]
-    r"""Status of the source account."""
 
 
-class SourceAccountV2(BaseModel):
-    r"""The target bank account in a supported accounting software for ingestion into a bank feed."""
+class SourceAccountV2Prototype(BaseModel):
+    account_info: Annotated[
+        OptionalNullable[AccountInfo], pydantic.Field(alias="accountInfo")
+    ] = UNSET
 
-    account_name: Annotated[str, pydantic.Field(alias="accountName")]
+    account_name: Annotated[Optional[str], pydantic.Field(alias="accountName")] = None
     r"""The bank account name."""
 
-    account_number: Annotated[str, pydantic.Field(alias="accountNumber")]
+    account_number: Annotated[Optional[str], pydantic.Field(alias="accountNumber")] = (
+        None
+    )
     r"""The account number."""
 
     account_type: Annotated[
-        SourceAccountV2AccountType, pydantic.Field(alias="accountType")
-    ]
+        Optional[AccountType], pydantic.Field(alias="accountType")
+    ] = None
     r"""The type of bank account e.g. checking, savings, loan, creditCard, prepaidCard."""
 
     balance: Annotated[
-        Decimal,
+        Optional[Decimal],
         BeforeValidator(validate_decimal),
         PlainSerializer(serialize_decimal(False)),
-    ]
+    ] = None
     r"""The latest balance for the bank account."""
 
-    currency: str
+    currency: Optional[str] = None
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
     ## Unknown currencies
@@ -130,21 +104,8 @@ class SourceAccountV2(BaseModel):
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
 
-    id: str
+    id: Optional[str] = None
     r"""Unique ID for the bank account."""
-
-    account_info: Annotated[
-        OptionalNullable[AccountInfo], pydantic.Field(alias="accountInfo")
-    ] = UNSET
-
-    feed_start_date: Annotated[
-        OptionalNullable[str], pydantic.Field(alias="feedStartDate")
-    ] = UNSET
-    r"""In Codat's data model, dates are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date fields are formatted as strings; for example:
-    ```
-    2020-10-08
-    ```
-    """
 
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -178,20 +139,21 @@ class SourceAccountV2(BaseModel):
     )
     r"""The sort code."""
 
-    status: OptionalNullable[SourceAccountV2Status] = UNSET
-    r"""Status of the source account."""
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
             "accountInfo",
-            "feedStartDate",
+            "accountName",
+            "accountNumber",
+            "accountType",
+            "balance",
+            "currency",
+            "id",
             "modifiedDate",
             "routingInfo",
             "sortCode",
-            "status",
         ]
-        nullable_fields = ["accountInfo", "feedStartDate", "sortCode", "status"]
+        nullable_fields = ["accountInfo", "sortCode"]
         null_default_fields = []
 
         serialized = handler(self)

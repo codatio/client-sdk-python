@@ -17,6 +17,8 @@ class ListCompaniesRequestTypedDict(TypedDict):
     r"""Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging)."""
     query: NotRequired[str]
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
+    tags: NotRequired[str]
+    r"""Filter companies by tags using the \"equals\" (=), \"not equals\" (!=), and \"contains\" (~) operators with [Codat’s query language](https://docs.codat.io/using-the-api/querying)."""
 
 
 class ListCompaniesRequest(BaseModel):
@@ -45,3 +47,9 @@ class ListCompaniesRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = None
     r"""Codat query string. [Read more](https://docs.codat.io/using-the-api/querying)."""
+
+    tags: Annotated[
+        Optional[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
+    r"""Filter companies by tags using the \"equals\" (=), \"not equals\" (!=), and \"contains\" (~) operators with [Codat’s query language](https://docs.codat.io/using-the-api/querying)."""
