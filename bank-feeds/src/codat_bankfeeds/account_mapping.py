@@ -76,7 +76,7 @@ class AccountMapping(BaseSDK):
             )
         request = cast(operations.CreateBankAccountMappingRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping",
             base_url=base_url,
@@ -225,7 +225,7 @@ class AccountMapping(BaseSDK):
             )
         request = cast(operations.CreateBankAccountMappingRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping",
             base_url=base_url,
@@ -349,7 +349,7 @@ class AccountMapping(BaseSDK):
             request = utils.unmarshal(request, operations.GetBankAccountMappingRequest)
         request = cast(operations.GetBankAccountMappingRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping",
             base_url=base_url,
@@ -465,7 +465,7 @@ class AccountMapping(BaseSDK):
             request = utils.unmarshal(request, operations.GetBankAccountMappingRequest)
         request = cast(operations.GetBankAccountMappingRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping",
             base_url=base_url,

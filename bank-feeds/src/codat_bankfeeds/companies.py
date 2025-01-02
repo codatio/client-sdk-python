@@ -49,7 +49,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, Optional[shared.CompanyRequestBody])
         request = cast(Optional[shared.CompanyRequestBody], request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies",
             base_url=base_url,
@@ -164,7 +164,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, Optional[shared.CompanyRequestBody])
         request = cast(Optional[shared.CompanyRequestBody], request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies",
             base_url=base_url,
@@ -278,7 +278,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.DeleteCompanyRequest)
         request = cast(operations.DeleteCompanyRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="DELETE",
             path="/companies/{companyId}",
             base_url=base_url,
@@ -389,7 +389,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.DeleteCompanyRequest)
         request = cast(operations.DeleteCompanyRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="DELETE",
             path="/companies/{companyId}",
             base_url=base_url,
@@ -500,7 +500,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.GetCompanyRequest)
         request = cast(operations.GetCompanyRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}",
             base_url=base_url,
@@ -611,7 +611,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.GetCompanyRequest)
         request = cast(operations.GetCompanyRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}",
             base_url=base_url,
@@ -720,7 +720,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.GetCompanyAccessTokenRequest)
         request = cast(operations.GetCompanyAccessTokenRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/accessToken",
             base_url=base_url,
@@ -831,7 +831,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.GetCompanyAccessTokenRequest)
         request = cast(operations.GetCompanyAccessTokenRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/accessToken",
             base_url=base_url,
@@ -956,7 +956,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.ListCompaniesRequest)
         request = cast(operations.ListCompaniesRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies",
             base_url=base_url,
@@ -1080,7 +1080,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.ListCompaniesRequest)
         request = cast(operations.ListCompaniesRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies",
             base_url=base_url,
@@ -1191,7 +1191,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.UpdateCompanyRequest)
         request = cast(operations.UpdateCompanyRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="PUT",
             path="/companies/{companyId}",
             base_url=base_url,
@@ -1308,7 +1308,7 @@ class Companies(BaseSDK):
             request = utils.unmarshal(request, operations.UpdateCompanyRequest)
         request = cast(operations.UpdateCompanyRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PUT",
             path="/companies/{companyId}",
             base_url=base_url,

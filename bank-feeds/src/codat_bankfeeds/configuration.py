@@ -45,7 +45,7 @@ class Configuration(BaseSDK):
             request = utils.unmarshal(request, operations.GetConfigurationRequest)
         request = cast(operations.GetConfigurationRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/sync/banking/config",
             base_url=base_url,
@@ -153,7 +153,7 @@ class Configuration(BaseSDK):
             request = utils.unmarshal(request, operations.GetConfigurationRequest)
         request = cast(operations.GetConfigurationRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/sync/banking/config",
             base_url=base_url,
@@ -261,7 +261,7 @@ class Configuration(BaseSDK):
             request = utils.unmarshal(request, operations.SetConfigurationRequest)
         request = cast(operations.SetConfigurationRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/sync/banking/config",
             base_url=base_url,
@@ -376,7 +376,7 @@ class Configuration(BaseSDK):
             request = utils.unmarshal(request, operations.SetConfigurationRequest)
         request = cast(operations.SetConfigurationRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/sync/banking/config",
             base_url=base_url,

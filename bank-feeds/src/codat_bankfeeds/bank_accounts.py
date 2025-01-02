@@ -51,7 +51,7 @@ class BankAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.CreateBankAccountRequest)
         request = cast(operations.CreateBankAccountRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts",
             base_url=base_url,
@@ -175,7 +175,7 @@ class BankAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.CreateBankAccountRequest)
         request = cast(operations.CreateBankAccountRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts",
             base_url=base_url,
@@ -302,7 +302,7 @@ class BankAccounts(BaseSDK):
             )
         request = cast(operations.GetCreateBankAccountsModelRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/options/bankAccounts",
             base_url=base_url,
@@ -419,7 +419,7 @@ class BankAccounts(BaseSDK):
             )
         request = cast(operations.GetCreateBankAccountsModelRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/options/bankAccounts",
             base_url=base_url,
@@ -532,7 +532,7 @@ class BankAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.ListBankAccountsRequest)
         request = cast(operations.ListBankAccountsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts",
             base_url=base_url,
@@ -647,7 +647,7 @@ class BankAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.ListBankAccountsRequest)
         request = cast(operations.ListBankAccountsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts",
             base_url=base_url,

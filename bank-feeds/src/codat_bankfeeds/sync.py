@@ -45,7 +45,7 @@ class Sync(BaseSDK):
             request = utils.unmarshal(request, operations.GetLastSuccessfulRequest)
         request = cast(operations.GetLastSuccessfulRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/sync/banking/syncs/lastSuccessful/status",
             base_url=base_url,
@@ -155,7 +155,7 @@ class Sync(BaseSDK):
             request = utils.unmarshal(request, operations.GetLastSuccessfulRequest)
         request = cast(operations.GetLastSuccessfulRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/sync/banking/syncs/lastSuccessful/status",
             base_url=base_url,

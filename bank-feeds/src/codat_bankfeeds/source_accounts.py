@@ -49,7 +49,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.CreateSourceAccountRequest)
         request = cast(operations.CreateSourceAccountRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts",
             base_url=base_url,
@@ -170,7 +170,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.CreateSourceAccountRequest)
         request = cast(operations.CreateSourceAccountRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts",
             base_url=base_url,
@@ -293,7 +293,7 @@ class SourceAccounts(BaseSDK):
             )
         request = cast(operations.CreateBatchSourceAccountRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/batch",
             base_url=base_url,
@@ -422,7 +422,7 @@ class SourceAccounts(BaseSDK):
             )
         request = cast(operations.CreateBatchSourceAccountRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/batch",
             base_url=base_url,
@@ -549,7 +549,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.DeleteSourceAccountRequest)
         request = cast(operations.DeleteSourceAccountRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="DELETE",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}",
             base_url=base_url,
@@ -660,7 +660,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.DeleteSourceAccountRequest)
         request = cast(operations.DeleteSourceAccountRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="DELETE",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}",
             base_url=base_url,
@@ -772,7 +772,7 @@ class SourceAccounts(BaseSDK):
             )
         request = cast(operations.DeleteBankFeedCredentialsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="DELETE",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials",
             base_url=base_url,
@@ -884,7 +884,7 @@ class SourceAccounts(BaseSDK):
             )
         request = cast(operations.DeleteBankFeedCredentialsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="DELETE",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials",
             base_url=base_url,
@@ -998,7 +998,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.GenerateCredentialsRequest)
         request = cast(operations.GenerateCredentialsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials",
             base_url=base_url,
@@ -1121,7 +1121,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.GenerateCredentialsRequest)
         request = cast(operations.GenerateCredentialsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials",
             base_url=base_url,
@@ -1243,7 +1243,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.ListSourceAccountsRequest)
         request = cast(operations.ListSourceAccountsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts",
             base_url=base_url,
@@ -1358,7 +1358,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.ListSourceAccountsRequest)
         request = cast(operations.ListSourceAccountsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts",
             base_url=base_url,
@@ -1452,7 +1452,9 @@ class SourceAccounts(BaseSDK):
 
         ### Tips and pitfalls
 
-        * This endpoint only updates the `accountName` field.
+        * This endpoint makes it possible to update the `accountName`, `status`, and `balance` fields.
+        * The `status` field can only be updated to 'disconnected'.
+        * The `balance` field can only be updated on accounts that are **not** 'connected'.
         * Updates made here apply exclusively to source accounts and will not affect target accounts in the accounting software.
 
         :param request: The request object to send.
@@ -1473,7 +1475,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.UpdateSourceAccountRequest)
         request = cast(operations.UpdateSourceAccountRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="PATCH",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}",
             base_url=base_url,
@@ -1573,7 +1575,9 @@ class SourceAccounts(BaseSDK):
 
         ### Tips and pitfalls
 
-        * This endpoint only updates the `accountName` field.
+        * This endpoint makes it possible to update the `accountName`, `status`, and `balance` fields.
+        * The `status` field can only be updated to 'disconnected'.
+        * The `balance` field can only be updated on accounts that are **not** 'connected'.
         * Updates made here apply exclusively to source accounts and will not affect target accounts in the accounting software.
 
         :param request: The request object to send.
@@ -1594,7 +1598,7 @@ class SourceAccounts(BaseSDK):
             request = utils.unmarshal(request, operations.UpdateSourceAccountRequest)
         request = cast(operations.UpdateSourceAccountRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PATCH",
             path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}",
             base_url=base_url,
