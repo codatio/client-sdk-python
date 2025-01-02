@@ -47,7 +47,7 @@ class CompanyInformation(BaseSDK):
             request = utils.unmarshal(request, operations.GetCompanyInformationRequest)
         request = cast(operations.GetCompanyInformationRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/bankFeeds/info",
             base_url=base_url,
@@ -160,7 +160,7 @@ class CompanyInformation(BaseSDK):
             request = utils.unmarshal(request, operations.GetCompanyInformationRequest)
         request = cast(operations.GetCompanyInformationRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/bankFeeds/info",
             base_url=base_url,

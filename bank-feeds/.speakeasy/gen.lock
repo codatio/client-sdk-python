@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 07093ad1-99d8-4bbd-a29c-a624e1b0e25a
 management:
-  docChecksum: 66b0b2a05ab126aac947c52e5cee36e3
+  docChecksum: 7050649b7090acb5300cf9dd99184a18
   docVersion: 3.0.0
-  speakeasyVersion: 1.455.5
-  generationVersion: 2.479.3
-  releaseVersion: 10.0.0
-  configChecksum: ff8ffd8b2ba28524f91955857db0c0a5
+  speakeasyVersion: 1.460.3
+  generationVersion: 2.484.0
+  releaseVersion: 10.1.0
+  configChecksum: 4f9668dae8ae716d7faad38875af6181
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: bank-feeds
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=bank-feeds
@@ -15,7 +15,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.7.2
+    core: 5.7.4
     decimal: 1.0.0
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.0
@@ -24,10 +24,10 @@ features:
     examples: 3.0.0
     globalSecurity: 3.0.2
     globalSecurityCallbacks: 1.0.0
-    globalServerURLs: 3.0.0
+    globalServerURLs: 3.1.0
     inputOutputModels: 3.0.0
     methodArguments: 1.0.2
-    nameOverrides: 3.0.0
+    nameOverrides: 3.0.1
     nullables: 1.0.0
     responseFormat: 1.0.1
     retries: 3.0.2

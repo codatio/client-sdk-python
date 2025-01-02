@@ -52,7 +52,7 @@ class Transactions(BaseSDK):
             request = utils.unmarshal(request, operations.CreateBankTransactionsRequest)
         request = cast(operations.CreateBankTransactionsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions",
             base_url=base_url,
@@ -177,7 +177,7 @@ class Transactions(BaseSDK):
             request = utils.unmarshal(request, operations.CreateBankTransactionsRequest)
         request = cast(operations.CreateBankTransactionsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions",
             base_url=base_url,
@@ -303,7 +303,7 @@ class Transactions(BaseSDK):
             )
         request = cast(operations.GetCreateBankTransactionsModelRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/options/bankAccounts/{accountId}/bankTransactions",
             base_url=base_url,
@@ -419,7 +419,7 @@ class Transactions(BaseSDK):
             )
         request = cast(operations.GetCreateBankTransactionsModelRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/options/bankAccounts/{accountId}/bankTransactions",
             base_url=base_url,
@@ -531,7 +531,7 @@ class Transactions(BaseSDK):
             request = utils.unmarshal(request, operations.GetCreateOperationRequest)
         request = cast(operations.GetCreateOperationRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/push/{pushOperationKey}",
             base_url=base_url,
@@ -643,7 +643,7 @@ class Transactions(BaseSDK):
             request = utils.unmarshal(request, operations.GetCreateOperationRequest)
         request = cast(operations.GetCreateOperationRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/push/{pushOperationKey}",
             base_url=base_url,
@@ -755,7 +755,7 @@ class Transactions(BaseSDK):
             request = utils.unmarshal(request, operations.ListCreateOperationsRequest)
         request = cast(operations.ListCreateOperationsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/push",
             base_url=base_url,
@@ -868,7 +868,7 @@ class Transactions(BaseSDK):
             request = utils.unmarshal(request, operations.ListCreateOperationsRequest)
         request = cast(operations.ListCreateOperationsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/push",
             base_url=base_url,

@@ -47,7 +47,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.CreateConnectionRequest)
         request = cast(operations.CreateConnectionRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections",
             base_url=base_url,
@@ -164,7 +164,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.CreateConnectionRequest)
         request = cast(operations.CreateConnectionRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections",
             base_url=base_url,
@@ -280,7 +280,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.DeleteConnectionRequest)
         request = cast(operations.DeleteConnectionRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="DELETE",
             path="/companies/{companyId}/connections/{connectionId}",
             base_url=base_url,
@@ -389,7 +389,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.DeleteConnectionRequest)
         request = cast(operations.DeleteConnectionRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="DELETE",
             path="/companies/{companyId}/connections/{connectionId}",
             base_url=base_url,
@@ -496,7 +496,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.GetConnectionRequest)
         request = cast(operations.GetConnectionRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}",
             base_url=base_url,
@@ -603,7 +603,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.GetConnectionRequest)
         request = cast(operations.GetConnectionRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}",
             base_url=base_url,
@@ -711,7 +711,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.ListConnectionsRequest)
         request = cast(operations.ListConnectionsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections",
             base_url=base_url,
@@ -820,7 +820,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.ListConnectionsRequest)
         request = cast(operations.ListConnectionsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections",
             base_url=base_url,
@@ -929,7 +929,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.UnlinkConnectionRequest)
         request = cast(operations.UnlinkConnectionRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="PATCH",
             path="/companies/{companyId}/connections/{connectionId}",
             base_url=base_url,
@@ -1044,7 +1044,7 @@ class Connections(BaseSDK):
             request = utils.unmarshal(request, operations.UnlinkConnectionRequest)
         request = cast(operations.UnlinkConnectionRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PATCH",
             path="/companies/{companyId}/connections/{connectionId}",
             base_url=base_url,

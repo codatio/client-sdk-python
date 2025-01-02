@@ -339,7 +339,9 @@ with CodatBankFeeds(
 
 ### Tips and pitfalls
 
-* This endpoint only updates the `accountName` field.
+* This endpoint makes it possible to update the `accountName`, `status`, and `balance` fields.
+    * The `status` field can only be updated to 'disconnected'.
+    * The `balance` field can only be updated on accounts that are **not** 'connected'.
 * Updates made here apply exclusively to source accounts and will not affect target accounts in the accounting software.
 
 ### Example Usage
