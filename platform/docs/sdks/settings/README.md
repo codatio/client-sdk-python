@@ -40,13 +40,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -92,13 +94,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.delete_api_key(request={
         "api_key_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -135,11 +139,13 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.get_profile()
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -175,11 +181,13 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.get_sync_settings()
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -219,11 +227,13 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.list_api_keys()
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -259,6 +269,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.update_profile(request={
         "name": "Bob's Burgers",
         "redirect_url": "https://bobs-burgers.{countrySuffix}/{companyId}",
@@ -271,9 +282,10 @@ with CodatPlatform(
         ],
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -310,6 +322,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     codat_platform.settings.update_sync_settings(request={
         "client_id": "c4907f05-7024-4fc0-bf55-4785be5c9671",
         "settings": [

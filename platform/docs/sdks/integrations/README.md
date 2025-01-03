@@ -26,13 +26,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.integrations.get(request={
         "platform_key": "gbol",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -69,13 +71,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.integrations.get_branding(request={
         "platform_key": "gbol",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -112,6 +116,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.integrations.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
@@ -119,9 +124,10 @@ with CodatPlatform(
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

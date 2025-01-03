@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: ede4f28e-23c0-442d-89ba-baa76ae2da6e
 management:
-  docChecksum: 8dd29c2f971fac587d6257d3c3eca25b
+  docChecksum: 4b57c244e0d8859fcf9a19ba7fb84dc5
   docVersion: 3.0.0
-  speakeasyVersion: 1.453.8
-  generationVersion: 2.474.15
-  releaseVersion: 4.0.1
-  configChecksum: 00c866dd6230e423e4aecbbefce8fcfb
+  speakeasyVersion: 1.460.6
+  generationVersion: 2.484.4
+  releaseVersion: 4.1.0
+  configChecksum: 7a61554aefecb864593dfd5d20501c6a
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: platform
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=platform
@@ -15,20 +15,20 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.6.11
+    core: 5.7.4
     defaultEnabledRetries: 0.2.0
-    deprecations: 3.0.0
+    deprecations: 3.0.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
     examples: 3.0.0
     globalSecurity: 3.0.2
     globalSecurityCallbacks: 1.0.0
-    globalServerURLs: 3.0.0
+    globalServerURLs: 3.1.0
     groups: 3.0.0
     ignores: 3.0.0
     inputOutputModels: 3.0.0
     methodArguments: 1.0.2
-    nameOverrides: 3.0.0
+    nameOverrides: 3.0.1
     nullables: 1.0.0
     responseFormat: 1.0.1
     retries: 3.0.2
@@ -192,7 +192,7 @@ generatedFiles:
   - docs/sdks/companies/README.md
   - docs/sdks/connectionmanagement/README.md
   - docs/sdks/connections/README.md
-  - docs/sdks/corssettings/README.md
+  - docs/sdks/cors/README.md
   - docs/sdks/customdatatype/README.md
   - docs/sdks/integrations/README.md
   - docs/sdks/pushdata/README.md
@@ -215,7 +215,7 @@ generatedFiles:
   - src/codat_platform/companies.py
   - src/codat_platform/connection_management.py
   - src/codat_platform/connections.py
-  - src/codat_platform/cors_settings.py
+  - src/codat_platform/cors.py
   - src/codat_platform/custom_data_type.py
   - src/codat_platform/httpclient.py
   - src/codat_platform/integrations.py
@@ -550,6 +550,7 @@ examples:
           pageSize: 100
           query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
           orderBy: "-modifiedDate"
+          tags: "region=uk && team=invoice-finance"
       responses:
         "200":
           application/json: {"_links": {"current": {"href": "/companies/{id}/data/{dataType}?page=1&pageSize=10"}, "self": {"href": "/companies/{id}/data/{dataType}"}}, "pageNumber": 1, "pageSize": 10, "totalResults": 1}
@@ -561,6 +562,7 @@ examples:
           pageSize: 100
           query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
           orderBy: "-modifiedDate"
+          tags: "region=uk && team=invoice-finance"
       responses:
         "200":
           application/json: {"_links": {"current": {"href": "/companies?page=1&pageSize=100"}, "self": {"href": "/companies"}}, "pageNumber": 1, "pageSize": 100, "results": [{"created": "2022-01-01T11:30:00Z", "createdByUserName": "Mike Smith", "dataConnections": [{"created": "2022-01-01T11:30:00Z", "id": "51baa045-4836-4317-a42e-3542e991e581", "integrationId": "1c312d69-e638-46d4-ad31-72e6c3ba8390", "integrationKey": "vjms", "lastSync": "2022-01-01T12:30:00.000Z", "linkUrl": "https://link-api.codat.io/companies/3fa85f64-5717-4562-b3fc-2c963f66afa6/connections/51baa045-4836-4317-a42e-3542e991e581/start", "platformName": "Pandle", "sourceId": "396c3158-5dd7-481b-a7c4-a795ca31792b", "sourceType": "Accounting", "status": "Linked"}], "description": "My Test Company make testing software", "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "lastSync": "2022-01-01T12:30:00.000Z", "name": "My Test Company", "redirect": "https://link.codat.io/company/3fa85f64-5717-4562-b3fc-2c963f66afa6", "referenceSubsidiaryCompanies": []}], "totalResults": 1}
@@ -571,6 +573,7 @@ examples:
           pageSize: 100
           query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
           orderBy: "-modifiedDate"
+          tags: "region=uk && team=invoice-finance"
       responses:
         "200":
           application/json: {"_links": {"current": {"href": "/companies?page=1&pageSize=100"}, "self": {"href": "/companies"}}, "pageNumber": 1, "pageSize": 100, "results": [{"created": "2022-01-01T11:30:00Z", "createdByUserName": "Joe Bloggs", "dataConnections": [{"created": "2022-01-01T11:30:00Z", "id": "51baa045-4836-4317-a42e-3542e991e581", "integrationId": "1c312d69-e638-46d4-ad31-72e6c3ba8390", "integrationKey": "vjms", "lastSync": "2022-01-01T12:30:00.000Z", "linkUrl": "https://link-api.codat.io/companies/d1568dde-adf6-11ed-afa1-0242ac120002/connections/51baa045-4836-4317-a42e-3542e991e581/start", "platformName": "Pandle", "sourceId": "396c3158-5dd7-481b-a7c4-a795ca31792b", "sourceType": "Accounting", "status": "Linked"}], "description": "Technology services, including web and app design and development", "id": "d1568dde-adf6-11ed-afa1-0242ac120002", "lastSync": "2022-01-01T12:30:00.000Z", "name": "Technicalium", "redirect": "https://link.codat.io/company/d1568dde-adf6-11ed-afa1-0242ac120002", "referenceSubsidiaryCompanies": []}, {"created": "2022-11-10T10:45:18Z", "createdByUserName": "Dan Tzabar", "dataConnections": [], "id": "ab12c58d-a678-4ebf-a159-ae99e1807bd0", "name": "Toft stores", "redirect": "https://link.codat.io/company/ab12c58d-a678-4ebf-a159-ae99e1807bd0", "referenceSubsidiaryCompanies": [{"id": "c8d3af58-7011-47ce-b3f2-89faf300ef6d", "links": {"portal": "https://app.codat.io/companies/c8d3af58-7011-47ce-b3f2-89faf300ef6d/summary"}, "name": "Toft stores UK"}, {"id": "db94eddc-9212-4568-9b5c-3eab0e325913", "links": {"portal": "https://app.codat.io/companies/db94eddc-9212-4568-9b5c-3eab0e325913/summary"}, "name": "Toft stores US"}]}, {"created": "2022-11-10T10:45:18Z", "createdByUserName": "Dan Tzabar", "dataConnections": [{"created": "2022-01-01T11:30:00Z", "id": "d5ab61b7-1ad0-46fd-9f9f-b6761047941e", "integrationId": "cc750323-5a47-4f28-8d8e-30fbbf2ce137", "integrationKey": "akxx", "lastSync": "2022-01-01T12:30:00.000Z", "linkUrl": "https://link-api.codat.io/companies/c8d3af58-7011-47ce-b3f2-89faf300ef6d/connections/d5ab61b7-1ad0-46fd-9f9f-b6761047941e/start", "platformName": "Oracle NetSuite", "sourceId": "9815b998-024d-4415-a40b-89903b2cad6f", "sourceType": "Accounting", "status": "Linked"}], "id": "c8d3af58-7011-47ce-b3f2-89faf300ef6d", "name": "Toft stores UK", "redirect": "https://link.codat.io/company/c8d3af58-7011-47ce-b3f2-89faf300ef6d", "referenceParentCompany": {"id": "ab12c58d-a678-4ebf-a159-ae99e1807bd0", "links": {"portal": "https://app.codat.io/companies/ab12c58d-a678-4ebf-a159-ae99e1807bd0/summary"}, "name": "Toft stores"}, "referenceSubsidiaryCompanies": []}, {"created": "2022-11-10T10:45:18Z", "createdByUserName": "Dan Tzabar", "dataConnections": [{"created": "2022-01-01T11:30:00Z", "id": "1e5c8c9e-27fd-4ba9-9a2a-d02ba65bc2fb", "integrationId": "cc750323-5a47-4f28-8d8e-30fbbf2ce137", "integrationKey": "akxx", "lastSync": "2022-01-01T12:30:00.000Z", "linkUrl": "https://link-api.codat.io/companies/db94eddc-9212-4568-9b5c-3eab0e325913/connections/1e5c8c9e-27fd-4ba9-9a2a-d02ba65bc2fb/start", "platformName": "Oracle NetSuite", "sourceId": "9815b998-024d-4415-a40b-89903b2cad6f", "sourceType": "Accounting", "status": "Linked"}], "id": "db94eddc-9212-4568-9b5c-3eab0e325913", "name": "Toft stores US", "redirect": "https://link.codat.io/company/db94eddc-9212-4568-9b5c-3eab0e325913", "referenceParentCompany": {"id": "ab12c58d-a678-4ebf-a159-ae99e1807bd0", "links": {"portal": "https://app.codat.io/companies/ab12c58d-a678-4ebf-a159-ae99e1807bd0/summary"}, "name": "Toft stores"}, "referenceSubsidiaryCompanies": []}], "totalResults": 3}
@@ -581,6 +584,7 @@ examples:
           pageSize: 100
           query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
           orderBy: "-modifiedDate"
+          tags: "region=uk && team=invoice-finance"
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "detailedErrorCode": 0, "error": "Error parsing query - Malformed query.", "service": "ClientsApi", "statusCode": 400}
@@ -591,6 +595,7 @@ examples:
           pageSize: 100
           query: "id=e3334455-1aed-4e71-ab43-6bccf12092ee"
           orderBy: "-modifiedDate"
+          tags: "region=uk && team=invoice-finance"
       responses:
         "400":
           application/json: {"canBeRetried": "Unknown", "correlationId": "98457fb9956b7f9b4b2fd4f6e23bb5c8", "detailedErrorCode": 0, "error": "Error parsing query - Could not resolve property isCompleted on Dataset", "service": "PullApi", "statusCode": 400}

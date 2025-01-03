@@ -10,6 +10,7 @@ from codat_platform._hooks import SDKHooks
 from codat_platform.companies import Companies
 from codat_platform.connection_management import ConnectionManagement
 from codat_platform.connections import Connections
+from codat_platform.cors import Cors
 from codat_platform.custom_data_type import CustomDataType
 from codat_platform.integrations import Integrations
 from codat_platform.models import shared
@@ -65,6 +66,7 @@ class CodatPlatform(BaseSDK):
     r"""Initiate and monitor Create, Update, and Delete operations."""
     refresh_data: RefreshData
     r"""Initiate data refreshes, view pull status and history."""
+    cors: Cors
     integrations: Integrations
     r"""Get a list of integrations supported by Codat and their logos."""
     supplemental_data: SupplementalData
@@ -152,6 +154,7 @@ class CodatPlatform(BaseSDK):
         self.custom_data_type = CustomDataType(self.sdk_configuration)
         self.push_data = PushData(self.sdk_configuration)
         self.refresh_data = RefreshData(self.sdk_configuration)
+        self.cors = Cors(self.sdk_configuration)
         self.integrations = Integrations(self.sdk_configuration)
         self.supplemental_data = SupplementalData(self.sdk_configuration)
         self.webhooks = Webhooks(self.sdk_configuration)

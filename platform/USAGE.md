@@ -9,13 +9,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 ```
 
 </br>
@@ -33,13 +35,15 @@ async def main():
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
     ) as codat_platform:
+
         res = await codat_platform.settings.create_api_key_async(request={
             "name": "azure-invoice-finance-processor",
         })
 
-        if res is not None:
-            # handle response
-            pass
+        assert res is not None
+
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```

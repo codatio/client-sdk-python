@@ -33,6 +33,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     codat_platform.companies.add_product(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "product_identifier": "lending",
@@ -76,13 +77,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.companies.create(request={
         "name": "Technicalium",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -123,6 +126,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     codat_platform.companies.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
@@ -164,13 +168,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.companies.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -208,13 +214,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.companies.get_access_token(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -243,6 +251,19 @@ with CodatPlatform(
 A [company](https://docs.codat.io/platform-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/platform-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
+## Filter by tags
+
+The *List companies* endpoint supports the filtering of companies using [tags](https://docs.codat.io/using-the-api/managing-companies#add-metadata-to-a-company). It supports the following operators with [Codat’s query language](https://docs.codat.io/using-the-api/querying):
+
+- equals (`=`)
+- not equals (`!=`)
+- contains (`~`)
+
+For example, you can use the querying to filter companies tagged with a specific foreign key, region, or owning team: 
+- Foreign key: `uid = {yourCustomerId}`
+- Region: `region != uk`
+- Owning team and region: `region = uk && owningTeam = invoice-finance`
+
 ### Example Usage
 
 ```python
@@ -254,16 +275,19 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.companies.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
         "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "tags": "region=uk && team=invoice-finance",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -302,6 +326,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     codat_platform.companies.remove_product(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "product_identifier": "expenses",
@@ -343,6 +368,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.companies.update(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
@@ -350,9 +376,10 @@ with CodatPlatform(
         },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

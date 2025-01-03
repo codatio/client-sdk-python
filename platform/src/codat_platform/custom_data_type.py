@@ -5,7 +5,7 @@ from codat_platform import utils
 from codat_platform._hooks import HookContext
 from codat_platform.models import errors, operations, shared
 from codat_platform.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class CustomDataType(BaseSDK):
@@ -21,6 +21,7 @@ class CustomDataType(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.CustomDataTypeConfiguration]:
         r"""Configure custom data type
 
@@ -40,6 +41,7 @@ class CustomDataType(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -55,7 +57,7 @@ class CustomDataType(BaseSDK):
             )
         request = cast(operations.ConfigureCustomDataTypeRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="PUT",
             path="/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}",
             base_url=base_url,
@@ -66,6 +68,7 @@ class CustomDataType(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.custom_data_type_configuration,
@@ -147,6 +150,7 @@ class CustomDataType(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.CustomDataTypeConfiguration]:
         r"""Configure custom data type
 
@@ -166,6 +170,7 @@ class CustomDataType(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -181,7 +186,7 @@ class CustomDataType(BaseSDK):
             )
         request = cast(operations.ConfigureCustomDataTypeRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PUT",
             path="/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}",
             base_url=base_url,
@@ -192,6 +197,7 @@ class CustomDataType(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.custom_data_type_configuration,
@@ -273,6 +279,7 @@ class CustomDataType(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.CustomDataTypeRecords]:
         r"""Get custom data configuration
 
@@ -284,6 +291,7 @@ class CustomDataType(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -299,7 +307,7 @@ class CustomDataType(BaseSDK):
             )
         request = cast(operations.GetCustomDataTypeConfigurationRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}",
             base_url=base_url,
@@ -310,6 +318,7 @@ class CustomDataType(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -384,6 +393,7 @@ class CustomDataType(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.CustomDataTypeRecords]:
         r"""Get custom data configuration
 
@@ -395,6 +405,7 @@ class CustomDataType(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -410,7 +421,7 @@ class CustomDataType(BaseSDK):
             )
         request = cast(operations.GetCustomDataTypeConfigurationRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/integrations/{platformKey}/dataTypes/custom/{customDataIdentifier}",
             base_url=base_url,
@@ -421,6 +432,7 @@ class CustomDataType(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -495,6 +507,7 @@ class CustomDataType(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.CustomDataTypeRecords]:
         r"""List custom data type records
 
@@ -506,6 +519,7 @@ class CustomDataType(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -521,7 +535,7 @@ class CustomDataType(BaseSDK):
             )
         request = cast(operations.ListCustomDataTypeRecordsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/custom/{customDataIdentifier}",
             base_url=base_url,
@@ -532,6 +546,7 @@ class CustomDataType(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -608,6 +623,7 @@ class CustomDataType(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.CustomDataTypeRecords]:
         r"""List custom data type records
 
@@ -619,6 +635,7 @@ class CustomDataType(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -634,7 +651,7 @@ class CustomDataType(BaseSDK):
             )
         request = cast(operations.ListCustomDataTypeRecordsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/custom/{customDataIdentifier}",
             base_url=base_url,
@@ -645,6 +662,7 @@ class CustomDataType(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -721,6 +739,7 @@ class CustomDataType(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.PullOperation]:
         r"""Refresh custom data type
 
@@ -730,6 +749,7 @@ class CustomDataType(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -743,7 +763,7 @@ class CustomDataType(BaseSDK):
             request = utils.unmarshal(request, operations.RefreshCustomDataTypeRequest)
         request = cast(operations.RefreshCustomDataTypeRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/data/queue/custom/{customDataIdentifier}",
             base_url=base_url,
@@ -754,6 +774,7 @@ class CustomDataType(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -827,6 +848,7 @@ class CustomDataType(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.PullOperation]:
         r"""Refresh custom data type
 
@@ -836,6 +858,7 @@ class CustomDataType(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -849,7 +872,7 @@ class CustomDataType(BaseSDK):
             request = utils.unmarshal(request, operations.RefreshCustomDataTypeRequest)
         request = cast(operations.RefreshCustomDataTypeRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/data/queue/custom/{customDataIdentifier}",
             base_url=base_url,
@@ -860,6 +883,7 @@ class CustomDataType(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
