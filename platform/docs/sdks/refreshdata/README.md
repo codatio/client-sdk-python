@@ -32,6 +32,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     codat_platform.refresh_data.all(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
@@ -71,14 +72,16 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.refresh_data.by_data_type(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "data_type": shared.SchemaDataType.INVOICES,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -115,13 +118,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.refresh_data.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -158,14 +163,16 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.refresh_data.get_pull_operation(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "dataset_id": "71a4c0fb-8e15-45bd-958d-330b4e6e9f07",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -202,6 +209,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.refresh_data.list_pull_operations(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
@@ -210,9 +218,10 @@ with CodatPlatform(
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

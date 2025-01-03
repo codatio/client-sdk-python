@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "codat-platform"
-version = "4.0.1"
+version = "4.1.0"
 description = "Manage the building blocks of Codat, including companies, connections, and more."
 authors = ["Speakeasy",]
 readme = "README-PYPI.md"

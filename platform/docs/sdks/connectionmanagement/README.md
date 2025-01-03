@@ -7,13 +7,20 @@ Configure UI and retrieve access tokens for authentication used by **Connections
 
 ### Available Operations
 
-* [get_access_token](#get_access_token) - Get access token
+* [~~get~~](#get) - Get access token (old) :warning: **Deprecated** Use [get_access_token](docs/sdks/companies/README.md#get_access_token) instead.
 
-## get_access_token
+## ~~get~~
 
-﻿Use the *Get access token* endpoint to retrieve a new access token for use with the [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management). The token is only valid for one hour and applies to a single company.
+﻿The new `/companies/{companyId}/accessToken` endpoint replaces this endpoint and includes additional functionality.
+
+Use the *Get access token* endpoint to retrieve a new access token for use with the [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management). The token is only valid for one hour and applies to a single company.
 
 The embeddable [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) lets your customers control access to their data by allowing them to manage their existing connections.
+
+> :warning: **DEPRECATED**: The endpoint for generating company-specific connection management access tokens has been deprecated.
+Codat now supports a global company access token, providing seamless access across multiple products.
+Update your integration to use the global token for improved efficiency and consistency.
+. Use `get_access_token` instead.
 
 ### Example Usage
 
@@ -26,13 +33,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
-    res = codat_platform.connection_management.get_access_token(request={
+
+    res = codat_platform.connection_management.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

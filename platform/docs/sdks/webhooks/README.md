@@ -33,6 +33,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.webhooks.create(request={
         "notifiers": {
             "emails": [
@@ -44,9 +45,10 @@ with CodatPlatform(
         "company_id": "39b73b17-cc2e-429e-915d-71654e9dcd1e",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -88,6 +90,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.webhooks.create_consumer(request={
         "event_types": [
             "DataSyncCompleted",
@@ -96,9 +99,10 @@ with CodatPlatform(
         "url": "https://example.com/webhoook-consumer",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -137,6 +141,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     codat_platform.webhooks.delete_consumer(request={
         "webhook_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
@@ -178,13 +183,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.webhooks.get(request={
         "rule_id": "7318949f-c008-4936-a8ff-10d7ab563fa6",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -225,6 +232,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.webhooks.list(request={
         "order_by": "-modifiedDate",
         "page": 1,
@@ -232,9 +240,10 @@ with CodatPlatform(
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -273,11 +282,13 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.webhooks.list_consumers()
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

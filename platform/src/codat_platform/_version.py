@@ -3,7 +3,7 @@
 import importlib.metadata
 
 __title__: str = "codat-platform"
-__version__: str = "4.0.1"
+__version__: str = "4.1.0"
 
 try:
     if __package__ is not None:

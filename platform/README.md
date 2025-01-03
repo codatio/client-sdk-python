@@ -98,22 +98,23 @@ from codat_platform import CodatPlatform
 from codat_platform.models import shared
 
 with CodatPlatform() as codat_platform:
-    codat_platform.company_data_connection_status_changed(request={
-        "alert_id": "a9367074-b5c3-42c4-9be4-be129f43577e",
-        "client_id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140",
-        "client_name": "Bank of Dave",
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "data": {
-            "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-            "new_status": shared.DataConnectionStatus.LINKED,
-            "old_status": shared.DataConnectionStatus.PENDING_AUTH,
-            "platform_key": "gbol",
-        },
-        "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "message": "Data connection for SandBox status changed from PendingAuth to Linked",
-        "rule_id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac",
-        "rule_type": "DataConnectionStatusChanged",
-    })
+
+    codat_platform.company_data_connection_status_changed(request=shared.ConnectionStatusChangedWebhook(
+        alert_id="a9367074-b5c3-42c4-9be4-be129f43577e",
+        client_id="bae71d36-ff47-420a-b4a6-f8c9ddf41140",
+        client_name="Bank of Dave",
+        company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+        data=shared.ConnectionStatusChangedWebhookData(
+            data_connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+            new_status=shared.DataConnectionStatus.LINKED,
+            old_status=shared.DataConnectionStatus.PENDING_AUTH,
+            platform_key="gbol",
+        ),
+        data_connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        message="Data connection for SandBox status changed from PendingAuth to Linked",
+        rule_id="70af3071-65d9-4ec3-b3cb-5283e8d55dac",
+        rule_type="DataConnectionStatusChanged",
+    ))
 
     # Use the SDK ...
 ```
@@ -129,22 +130,23 @@ from codat_platform.models import shared
 
 async def main():
     async with CodatPlatform() as codat_platform:
-        await codat_platform.company_data_connection_status_changed_async(request={
-            "alert_id": "a9367074-b5c3-42c4-9be4-be129f43577e",
-            "client_id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140",
-            "client_name": "Bank of Dave",
-            "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-            "data": {
-                "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-                "new_status": shared.DataConnectionStatus.LINKED,
-                "old_status": shared.DataConnectionStatus.PENDING_AUTH,
-                "platform_key": "gbol",
-            },
-            "data_connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-            "message": "Data connection for SandBox status changed from PendingAuth to Linked",
-            "rule_id": "70af3071-65d9-4ec3-b3cb-5283e8d55dac",
-            "rule_type": "DataConnectionStatusChanged",
-        })
+
+        await codat_platform.company_data_connection_status_changed_async(request=shared.ConnectionStatusChangedWebhook(
+            alert_id="a9367074-b5c3-42c4-9be4-be129f43577e",
+            client_id="bae71d36-ff47-420a-b4a6-f8c9ddf41140",
+            client_name="Bank of Dave",
+            company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+            data=shared.ConnectionStatusChangedWebhookData(
+                data_connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+                new_status=shared.DataConnectionStatus.LINKED,
+                old_status=shared.DataConnectionStatus.PENDING_AUTH,
+                platform_key="gbol",
+            ),
+            data_connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+            message="Data connection for SandBox status changed from PendingAuth to Linked",
+            rule_id="70af3071-65d9-4ec3-b3cb-5283e8d55dac",
+            rule_type="DataConnectionStatusChanged",
+        ))
 
         # Use the SDK ...
 
@@ -170,14 +172,9 @@ asyncio.run(main())
 * [remove_product](docs/sdks/companies/README.md#remove_product) - Remove product
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [connection_management](docs/sdks/connectionmanagement/README.md)
+### [~~connection_management~~](docs/sdks/connectionmanagement/README.md)
 
-* [get_access_token](docs/sdks/connectionmanagement/README.md#get_access_token) - Get access token
-
-#### [connection_management.cors_settings](docs/sdks/corssettings/README.md)
-
-* [get](docs/sdks/corssettings/README.md#get) - Get CORS settings
-* [set](docs/sdks/corssettings/README.md#set) - Set CORS settings
+* [~~get~~](docs/sdks/connectionmanagement/README.md#get) - Get access token (old) :warning: **Deprecated** Use [get_access_token](docs/sdks/companies/README.md#get_access_token) instead.
 
 ### [connections](docs/sdks/connections/README.md)
 
@@ -187,6 +184,11 @@ asyncio.run(main())
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 * [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
+
+### [cors](docs/sdks/cors/README.md)
+
+* [get](docs/sdks/cors/README.md#get) - Get CORS settings
+* [set](docs/sdks/cors/README.md#set) - Set CORS settings
 
 ### [custom_data_type](docs/sdks/customdatatype/README.md)
 
@@ -260,14 +262,16 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -283,13 +287,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Retries [retries] -->
@@ -328,13 +334,15 @@ with CodatPlatform(
 ) as codat_platform:
     res = None
     try:
+
         res = codat_platform.settings.create_api_key(request={
             "name": "azure-invoice-finance-processor",
         })
 
-        if res is not None:
-            # handle response
-            pass
+        assert res is not None
+
+        # Handle response
+        print(res)
 
     except errors.ErrorMessage as e:
         # handle e.data: errors.ErrorMessageData
@@ -361,13 +369,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Server Selection [server] -->
@@ -474,13 +484,15 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Authentication [security] -->

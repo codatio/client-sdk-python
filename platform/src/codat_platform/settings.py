@@ -5,7 +5,7 @@ from codat_platform import utils
 from codat_platform._hooks import HookContext
 from codat_platform.models import errors, operations, shared
 from codat_platform.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class Settings(BaseSDK):
@@ -20,6 +20,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.APIKeyDetails]:
         r"""Create API key
 
@@ -39,6 +40,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -52,7 +54,7 @@ class Settings(BaseSDK):
             request = utils.unmarshal(request, Optional[shared.CreateAPIKey])
         request = cast(Optional[shared.CreateAPIKey], request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/apiKeys",
             base_url=base_url,
@@ -63,6 +65,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[shared.CreateAPIKey]
@@ -138,6 +141,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.APIKeyDetails]:
         r"""Create API key
 
@@ -157,6 +161,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -170,7 +175,7 @@ class Settings(BaseSDK):
             request = utils.unmarshal(request, Optional[shared.CreateAPIKey])
         request = cast(Optional[shared.CreateAPIKey], request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/apiKeys",
             base_url=base_url,
@@ -181,6 +186,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[shared.CreateAPIKey]
@@ -256,6 +262,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ErrorMessage]:
         r"""Delete API key
 
@@ -274,6 +281,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -287,7 +295,7 @@ class Settings(BaseSDK):
             request = utils.unmarshal(request, operations.DeleteAPIKeyRequest)
         request = cast(operations.DeleteAPIKeyRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="DELETE",
             path="/apiKeys/{apiKeyId}",
             base_url=base_url,
@@ -298,6 +306,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -369,6 +378,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ErrorMessage]:
         r"""Delete API key
 
@@ -387,6 +397,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -400,7 +411,7 @@ class Settings(BaseSDK):
             request = utils.unmarshal(request, operations.DeleteAPIKeyRequest)
         request = cast(operations.DeleteAPIKeyRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="DELETE",
             path="/apiKeys/{apiKeyId}",
             base_url=base_url,
@@ -411,6 +422,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -479,6 +491,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Profile]:
         r"""Get profile
 
@@ -487,6 +500,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -495,7 +509,7 @@ class Settings(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/profile",
             base_url=base_url,
@@ -506,6 +520,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -562,6 +577,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Profile]:
         r"""Get profile
 
@@ -570,6 +586,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -578,7 +595,7 @@ class Settings(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/profile",
             base_url=base_url,
@@ -589,6 +606,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -645,6 +663,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.SyncSettings]:
         r"""Get sync settings
 
@@ -653,6 +672,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -661,7 +681,7 @@ class Settings(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/profile/syncSettings",
             base_url=base_url,
@@ -672,6 +692,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -728,6 +749,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.SyncSettings]:
         r"""Get sync settings
 
@@ -736,6 +758,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -744,7 +767,7 @@ class Settings(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/profile/syncSettings",
             base_url=base_url,
@@ -755,6 +778,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -811,6 +835,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.APIKeys]:
         r"""List API keys
 
@@ -823,6 +848,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -831,7 +857,7 @@ class Settings(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/apiKeys",
             base_url=base_url,
@@ -842,6 +868,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -898,6 +925,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.APIKeys]:
         r"""List API keys
 
@@ -910,6 +938,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -918,7 +947,7 @@ class Settings(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/apiKeys",
             base_url=base_url,
@@ -929,6 +958,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -986,6 +1016,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Profile]:
         r"""Update profile
 
@@ -995,6 +1026,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1008,7 +1040,7 @@ class Settings(BaseSDK):
             request = utils.unmarshal(request, Optional[shared.Profile])
         request = cast(Optional[shared.Profile], request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="PUT",
             path="/profile",
             base_url=base_url,
@@ -1019,6 +1051,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[shared.Profile]
@@ -1079,6 +1112,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Profile]:
         r"""Update profile
 
@@ -1088,6 +1122,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1101,7 +1136,7 @@ class Settings(BaseSDK):
             request = utils.unmarshal(request, Optional[shared.Profile])
         request = cast(Optional[shared.Profile], request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PUT",
             path="/profile",
             base_url=base_url,
@@ -1112,6 +1147,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[shared.Profile]
@@ -1177,6 +1213,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ):
         r"""Update all sync settings
 
@@ -1186,6 +1223,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1203,7 +1241,7 @@ class Settings(BaseSDK):
             Optional[operations.UpdateProfileSyncSettingsRequestBody], request
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/profile/syncSettings",
             base_url=base_url,
@@ -1214,6 +1252,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request,
@@ -1283,6 +1322,7 @@ class Settings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ):
         r"""Update all sync settings
 
@@ -1292,6 +1332,7 @@ class Settings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1309,7 +1350,7 @@ class Settings(BaseSDK):
             Optional[operations.UpdateProfileSyncSettingsRequestBody], request
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/profile/syncSettings",
             base_url=base_url,
@@ -1320,6 +1361,7 @@ class Settings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request,

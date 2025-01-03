@@ -119,3 +119,13 @@ Based on:
 - [python v4.0.1] platform
 ### Releases
 - [PyPI v4.0.1] https://pypi.org/project/codat-platform/4.0.1 - platform
+
+## 2025-01-03 09:16:43
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.460.6 (2.484.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v4.1.0] platform
+### Releases
+- [PyPI v4.1.0] https://pypi.org/project/codat-platform/4.1.0 - platform

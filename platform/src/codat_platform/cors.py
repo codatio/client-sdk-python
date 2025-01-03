@@ -5,16 +5,17 @@ from codat_platform import utils
 from codat_platform._hooks import HookContext
 from codat_platform.models import errors, shared
 from codat_platform.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
-class CorsSettings(BaseSDK):
+class Cors(BaseSDK):
     def get(
         self,
         *,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
         r"""Get CORS settings
 
@@ -27,6 +28,7 @@ class CorsSettings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -35,7 +37,7 @@ class CorsSettings(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/connectionManagement/corsSettings",
             base_url=base_url,
@@ -46,6 +48,7 @@ class CorsSettings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -116,6 +119,7 @@ class CorsSettings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
         r"""Get CORS settings
 
@@ -128,6 +132,7 @@ class CorsSettings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -136,7 +141,7 @@ class CorsSettings(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/connectionManagement/corsSettings",
             base_url=base_url,
@@ -147,6 +152,7 @@ class CorsSettings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -223,6 +229,7 @@ class CorsSettings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
         r"""Set CORS settings
 
@@ -236,6 +243,7 @@ class CorsSettings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -251,7 +259,7 @@ class CorsSettings(BaseSDK):
             )
         request = cast(Optional[shared.ConnectionManagementAllowedOrigins], request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/connectionManagement/corsSettings",
             base_url=base_url,
@@ -262,6 +270,7 @@ class CorsSettings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request,
@@ -345,6 +354,7 @@ class CorsSettings(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
         r"""Set CORS settings
 
@@ -358,6 +368,7 @@ class CorsSettings(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -373,7 +384,7 @@ class CorsSettings(BaseSDK):
             )
         request = cast(Optional[shared.ConnectionManagementAllowedOrigins], request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/connectionManagement/corsSettings",
             base_url=base_url,
@@ -384,6 +395,7 @@ class CorsSettings(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request,

@@ -1,5 +1,5 @@
-# CorsSettings
-(*connection_management.cors_settings*)
+# Cors
+(*cors*)
 
 ## Overview
 
@@ -27,11 +27,13 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
-    res = codat_platform.connection_management.cors_settings.get()
 
-    if res is not None:
-        # handle response
-        pass
+    res = codat_platform.cors.get()
+
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -71,15 +73,17 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
-    res = codat_platform.connection_management.cors_settings.set(request={
+
+    res = codat_platform.cors.set(request={
         "allowed_origins": [
             "https://www.bank-of-dave.com",
         ],
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

@@ -30,6 +30,7 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     codat_platform.supplemental_data.configure(request={
         "data_type": operations.DataType.INVOICES,
         "platform_key": "gbol",
@@ -71,14 +72,16 @@ with CodatPlatform(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_platform:
+
     res = codat_platform.supplemental_data.get_configuration(request={
         "data_type": operations.PathParamDataType.INVOICES,
         "platform_key": "gbol",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

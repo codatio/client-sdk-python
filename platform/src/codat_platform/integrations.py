@@ -5,7 +5,7 @@ from codat_platform import utils
 from codat_platform._hooks import HookContext
 from codat_platform.models import errors, operations, shared
 from codat_platform.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class Integrations(BaseSDK):
@@ -20,6 +20,7 @@ class Integrations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Integration]:
         r"""Get integration
 
@@ -29,6 +30,7 @@ class Integrations(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -42,7 +44,7 @@ class Integrations(BaseSDK):
             request = utils.unmarshal(request, operations.GetIntegrationRequest)
         request = cast(operations.GetIntegrationRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/integrations/{platformKey}",
             base_url=base_url,
@@ -53,6 +55,7 @@ class Integrations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -124,6 +127,7 @@ class Integrations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Integration]:
         r"""Get integration
 
@@ -133,6 +137,7 @@ class Integrations(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -146,7 +151,7 @@ class Integrations(BaseSDK):
             request = utils.unmarshal(request, operations.GetIntegrationRequest)
         request = cast(operations.GetIntegrationRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/integrations/{platformKey}",
             base_url=base_url,
@@ -157,6 +162,7 @@ class Integrations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -229,6 +235,7 @@ class Integrations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Branding]:
         r"""Get branding
 
@@ -238,6 +245,7 @@ class Integrations(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -253,7 +261,7 @@ class Integrations(BaseSDK):
             )
         request = cast(operations.GetIntegrationsBrandingRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/integrations/{platformKey}/branding",
             base_url=base_url,
@@ -264,6 +272,7 @@ class Integrations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -336,6 +345,7 @@ class Integrations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Branding]:
         r"""Get branding
 
@@ -345,6 +355,7 @@ class Integrations(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -360,7 +371,7 @@ class Integrations(BaseSDK):
             )
         request = cast(operations.GetIntegrationsBrandingRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/integrations/{platformKey}/branding",
             base_url=base_url,
@@ -371,6 +382,7 @@ class Integrations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -443,6 +455,7 @@ class Integrations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Integrations]:
         r"""List integrations
 
@@ -452,6 +465,7 @@ class Integrations(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -465,7 +479,7 @@ class Integrations(BaseSDK):
             request = utils.unmarshal(request, operations.ListIntegrationsRequest)
         request = cast(operations.ListIntegrationsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/integrations",
             base_url=base_url,
@@ -476,6 +490,7 @@ class Integrations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -548,6 +563,7 @@ class Integrations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Integrations]:
         r"""List integrations
 
@@ -557,6 +573,7 @@ class Integrations(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -570,7 +587,7 @@ class Integrations(BaseSDK):
             request = utils.unmarshal(request, operations.ListIntegrationsRequest)
         request = cast(operations.ListIntegrationsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/integrations",
             base_url=base_url,
@@ -581,6 +598,7 @@ class Integrations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
