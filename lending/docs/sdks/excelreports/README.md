@@ -30,14 +30,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.excel_reports.download(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_type": shared.ExcelReportTypes.ENHANCED_FINANCIALS,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -90,14 +92,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.excel_reports.generate(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_type": shared.ExcelReportTypes.ENHANCED_INVOICES,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -138,14 +142,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.excel_reports.get_status(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_type": shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

@@ -200,6 +200,10 @@ from .get_accounting_transfer import (
     GetAccountingTransferRequest,
     GetAccountingTransferRequestTypedDict,
 )
+from .get_bank_account_mapping import (
+    GetBankAccountMappingRequest,
+    GetBankAccountMappingRequestTypedDict,
+)
 from .get_bank_statement_upload_configuration import (
     GetBankStatementUploadConfigurationRequest,
     GetBankStatementUploadConfigurationRequestTypedDict,
@@ -669,6 +673,8 @@ __all__ = [
     "GetAccountingSupplierRequestTypedDict",
     "GetAccountingTransferRequest",
     "GetAccountingTransferRequestTypedDict",
+    "GetBankAccountMappingRequest",
+    "GetBankAccountMappingRequestTypedDict",
     "GetBankStatementUploadConfigurationRequest",
     "GetBankStatementUploadConfigurationRequestTypedDict",
     "GetBankingAccountRequest",

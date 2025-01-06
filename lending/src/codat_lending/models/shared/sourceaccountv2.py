@@ -93,6 +93,8 @@ class SourceAccountV2TypedDict(TypedDict):
     """
     routing_info: NotRequired[RoutingInfoTypedDict]
     r"""Routing information for the bank. This does not include account number."""
+    sort_code: NotRequired[Nullable[str]]
+    r"""The sort code."""
     status: NotRequired[Nullable[SourceAccountV2Status]]
     r"""Status of the source account."""
 
@@ -171,6 +173,11 @@ class SourceAccountV2(BaseModel):
     ] = None
     r"""Routing information for the bank. This does not include account number."""
 
+    sort_code: Annotated[OptionalNullable[str], pydantic.Field(alias="sortCode")] = (
+        UNSET
+    )
+    r"""The sort code."""
+
     status: OptionalNullable[SourceAccountV2Status] = UNSET
     r"""Status of the source account."""
 
@@ -181,9 +188,10 @@ class SourceAccountV2(BaseModel):
             "feedStartDate",
             "modifiedDate",
             "routingInfo",
+            "sortCode",
             "status",
         ]
-        nullable_fields = ["accountInfo", "feedStartDate", "status"]
+        nullable_fields = ["accountInfo", "feedStartDate", "sortCode", "status"]
         null_default_fields = []
 
         serialized = handler(self)

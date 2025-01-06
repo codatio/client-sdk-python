@@ -6,7 +6,7 @@ from codat_lending._hooks import HookContext
 from codat_lending.models import errors, operations, shared
 from codat_lending.types import BaseModel, OptionalNullable, UNSET
 import httpx
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class CodatLendingDirectCosts(BaseSDK):
@@ -20,6 +20,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[httpx.Response]:
         r"""Download direct cost attachment
 
@@ -32,6 +33,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -49,7 +51,7 @@ class CodatLendingDirectCosts(BaseSDK):
             operations.DownloadAccountingDirectCostAttachmentRequest, request
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}/download",
             base_url=base_url,
@@ -60,6 +62,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/octet-stream",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -134,6 +137,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[httpx.Response]:
         r"""Download direct cost attachment
 
@@ -146,6 +150,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -163,7 +168,7 @@ class CodatLendingDirectCosts(BaseSDK):
             operations.DownloadAccountingDirectCostAttachmentRequest, request
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}/download",
             base_url=base_url,
@@ -174,6 +179,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/octet-stream",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -248,6 +254,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingDirectCost]:
         r"""Get direct cost
 
@@ -262,6 +269,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -277,7 +285,7 @@ class CodatLendingDirectCosts(BaseSDK):
             )
         request = cast(operations.GetAccountingDirectCostRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}",
             base_url=base_url,
@@ -288,6 +296,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -363,6 +372,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingDirectCost]:
         r"""Get direct cost
 
@@ -377,6 +387,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -392,7 +403,7 @@ class CodatLendingDirectCosts(BaseSDK):
             )
         request = cast(operations.GetAccountingDirectCostRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}",
             base_url=base_url,
@@ -403,6 +414,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -478,6 +490,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingAttachment]:
         r"""Get direct cost attachment
 
@@ -489,6 +502,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -504,7 +518,7 @@ class CodatLendingDirectCosts(BaseSDK):
             )
         request = cast(operations.GetAccountingDirectCostAttachmentRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}",
             base_url=base_url,
@@ -515,6 +529,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -589,6 +604,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingAttachment]:
         r"""Get direct cost attachment
 
@@ -600,6 +616,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -615,7 +632,7 @@ class CodatLendingDirectCosts(BaseSDK):
             )
         request = cast(operations.GetAccountingDirectCostAttachmentRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}",
             base_url=base_url,
@@ -626,6 +643,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -700,6 +718,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingDirectCosts]:
         r"""List direct costs
 
@@ -714,6 +733,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -729,7 +749,7 @@ class CodatLendingDirectCosts(BaseSDK):
             )
         request = cast(operations.ListAccountingDirectCostsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts",
             base_url=base_url,
@@ -740,6 +760,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -816,6 +837,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingDirectCosts]:
         r"""List direct costs
 
@@ -830,6 +852,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -845,7 +868,7 @@ class CodatLendingDirectCosts(BaseSDK):
             )
         request = cast(operations.ListAccountingDirectCostsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts",
             base_url=base_url,
@@ -856,6 +879,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -932,6 +956,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Attachments]:
         r"""List direct cost attachments
 
@@ -944,6 +969,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -959,7 +985,7 @@ class CodatLendingDirectCosts(BaseSDK):
             )
         request = cast(operations.ListAccountingDirectCostAttachmentsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments",
             base_url=base_url,
@@ -970,6 +996,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -1043,6 +1070,7 @@ class CodatLendingDirectCosts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Attachments]:
         r"""List direct cost attachments
 
@@ -1055,6 +1083,7 @@ class CodatLendingDirectCosts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1070,7 +1099,7 @@ class CodatLendingDirectCosts(BaseSDK):
             )
         request = cast(operations.ListAccountingDirectCostAttachmentsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments",
             base_url=base_url,
@@ -1081,6 +1110,7 @@ class CodatLendingDirectCosts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )

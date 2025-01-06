@@ -23,6 +23,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.financial_statements.balance_sheet.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "period_length": 4,
@@ -30,9 +31,10 @@ with CodatLending(
         "start_month": "2022-10-23T00:00:00Z",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -71,14 +73,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.financial_statements.balance_sheet.get_categorized_accounts(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_date": "29-09-2020",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

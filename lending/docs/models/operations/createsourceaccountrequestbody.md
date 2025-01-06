@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### `shared.SourceAccountV2`
+### `shared.SourceAccountV2Prototype`
 
 ```python
-value: shared.SourceAccountV2 = /* values here */
+value: shared.SourceAccountV2Prototype = /* values here */
 ```
 
-### `shared.SourceAccount`
+### `shared.SourceAccountPrototype`
 
 ```python
-value: shared.SourceAccount = /* values here */
+value: shared.SourceAccountPrototype = /* values here */
 ```
 

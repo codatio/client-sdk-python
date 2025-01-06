@@ -30,6 +30,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     codat_lending.bank_statements.end_upload_session(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -73,14 +74,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.bank_statements.get_upload_configuration(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -121,6 +124,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.bank_statements.set_upload_configuration(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -130,9 +134,10 @@ with CodatLending(
         },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -173,14 +178,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.bank_statements.start_upload_session(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -212,15 +219,16 @@ Make sure you created configuration for the account using the [*Set upload confi
 
 ```python
 from codat_lending import CodatLending
-from codat_lending.models import shared
+from codat_lending.models import operations, shared
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
-    codat_lending.bank_statements.upload_bank_statement_data(request={
-        "request_body": {
+
+    codat_lending.bank_statements.upload_bank_statement_data(request=operations.UploadBankStatementDataRequest(
+        request_body={
             "currency": "Philippine Peso",
             "id": "<id>",
             "identifiers": {
@@ -231,10 +239,10 @@ with CodatLending(
             "sourceModifiedDate": "2022-10-23T00:00:00Z",
             "type": "Credit",
         },
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "dataset_id": "e39deaca-29ee-4c0f-8c9b-4b58f7a91429",
-    })
+        company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+        connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        dataset_id="e39deaca-29ee-4c0f-8c9b-4b58f7a91429",
+    ))
 
     # Use the SDK ...
 

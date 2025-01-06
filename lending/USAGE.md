@@ -9,14 +9,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 ```
 
 </br>
@@ -34,14 +36,16 @@ async def main():
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
     ) as codat_lending:
+
         res = await codat_lending.companies.create_async(request={
             "name": "Technicalium",
             "description": "Requested early access to the new financing scheme.",
         })
 
-        if res is not None:
-            # handle response
-            pass
+        assert res is not None
+
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```

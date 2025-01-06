@@ -28,6 +28,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.data_integrity.details(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
@@ -37,9 +38,10 @@ with CodatLending(
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -83,14 +85,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.data_integrity.status(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -131,15 +135,17 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.data_integrity.summaries(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

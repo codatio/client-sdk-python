@@ -22,7 +22,7 @@ Required data may vary by integration. To see what data to post, first call [Get
 
 ```python
 from codat_lending import CodatLending
-from codat_lending.models import shared
+from codat_lending.models import operations, shared
 from decimal import Decimal
 
 with CodatLending(
@@ -30,22 +30,23 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
-    res = codat_lending.loan_writeback.transfers.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "accounting_transfer": {
-            "contact_ref": {
+
+    res = codat_lending.loan_writeback.transfers.create(request=operations.CreateTransferRequest(
+        company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
+        connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        accounting_transfer=shared.AccountingTransfer(
+            contact_ref={
                 "id": "80000028-167239230944",
                 "data_type": shared.ContactRefDataType.CUSTOMERS,
             },
-            "date_": "2023-01-26T11:51:18.104Z",
-            "deposited_record_refs": [
+            date_="2023-01-26T11:51:18.104Z",
+            deposited_record_refs=[
                 {
                     "data_type": "accountTransaction",
                 },
             ],
-            "description": "test transfers push 20230126 12.08",
-            "from_": {
+            description="test transfers push 20230126 12.08",
+            from_={
                 "account_ref": {
                     "data_type": "bankAccounts",
                     "id": "80000028-1671794219",
@@ -53,13 +54,13 @@ with CodatLending(
                 "amount": Decimal("12"),
                 "currency": "USD",
             },
-            "metadata": {
+            metadata={
                 "is_deleted": True,
             },
-            "modified_date": "2022-10-23T00:00:00Z",
-            "source_modified_date": "2022-10-23T00:00:00Z",
-            "status": shared.AccountingTransferStatus.UNKNOWN,
-            "to": {
+            modified_date="2022-10-23T00:00:00Z",
+            source_modified_date="2022-10-23T00:00:00Z",
+            status=shared.AccountingTransferStatus.UNKNOWN,
+            to={
                 "account_ref": {
                     "data_type": "bankAccounts",
                     "id": "80000004-1671793811",
@@ -67,18 +68,19 @@ with CodatLending(
                 "amount": Decimal("12"),
                 "currency": "EUR",
             },
-            "tracking_category_refs": [
+            tracking_category_refs=[
                 {
                     "id": "80000001-1674553252",
                     "name": "Class 1",
                 },
             ],
-        },
-    })
+        ),
+    ))
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -122,14 +124,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.loan_writeback.transfers.get_create_model(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

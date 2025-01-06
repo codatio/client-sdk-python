@@ -4,7 +4,6 @@ from __future__ import annotations
 from .codatfile import CodatFile, CodatFileTypedDict
 from codat_lending.types import BaseModel
 from codat_lending.utils import FieldMetadata, MultipartFormMetadata
-import pydantic
 from typing_extensions import Annotated, TypedDict
 
 
@@ -15,8 +14,6 @@ class FileUploadTypedDict(TypedDict):
 
 class FileUpload(BaseModel):
     file: Annotated[
-        CodatFile,
-        pydantic.Field(alias=""),
-        FieldMetadata(multipart=MultipartFormMetadata(file=True)),
+        CodatFile, FieldMetadata(multipart=MultipartFormMetadata(file=True))
     ]
     r"""The file to be uploaded as an attachment."""

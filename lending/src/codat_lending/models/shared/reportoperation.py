@@ -27,6 +27,7 @@ class ReportOperationType(str, Enum):
     r"""The name of the report generated."""
 
     CATEGORIZED_BANK_STATEMENT = "categorizedBankStatement"
+    CREDIT_MODEL = "creditModel"
 
 
 class ReportOperationTypedDict(TypedDict):

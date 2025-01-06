@@ -8,7 +8,7 @@ from codat_lending.models import errors, operations
 from codat_lending.pull_operations import PullOperations
 from codat_lending.refresh import Refresh
 from codat_lending.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class ManageData(BaseSDK):
@@ -33,6 +33,7 @@ class ManageData(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[operations.GetDataStatusDataStatuses]:
         r"""Get data status
 
@@ -42,6 +43,7 @@ class ManageData(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -55,7 +57,7 @@ class ManageData(BaseSDK):
             request = utils.unmarshal(request, operations.GetDataStatusRequest)
         request = cast(operations.GetDataStatusRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/dataStatus",
             base_url=base_url,
@@ -66,6 +68,7 @@ class ManageData(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -139,6 +142,7 @@ class ManageData(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[operations.GetDataStatusDataStatuses]:
         r"""Get data status
 
@@ -148,6 +152,7 @@ class ManageData(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -161,7 +166,7 @@ class ManageData(BaseSDK):
             request = utils.unmarshal(request, operations.GetDataStatusRequest)
         request = cast(operations.GetDataStatusRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/dataStatus",
             base_url=base_url,
@@ -172,6 +177,7 @@ class ManageData(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
