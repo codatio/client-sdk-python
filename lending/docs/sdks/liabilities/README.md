@@ -32,6 +32,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     codat_lending.liabilities.generate_loan_summary(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "source_type": operations.SourceType.ACCOUNTING,
@@ -75,6 +76,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     codat_lending.liabilities.generate_loan_transactions(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "source_type": operations.QueryParamSourceType.ACCOUNTING,
@@ -118,14 +120,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.liabilities.get_loan_summary(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "source_type": operations.GetLoanSummaryQueryParamSourceType.BANKING,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -167,14 +171,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.liabilities.list_loan_transactions(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "source_type": operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

@@ -30,6 +30,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.connections.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "request_body": {
@@ -37,9 +38,10 @@ with CodatLending(
         },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -77,6 +79,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     codat_lending.connections.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -115,14 +118,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.connections.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -159,6 +164,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.connections.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
@@ -167,9 +173,10 @@ with CodatLending(
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -206,6 +213,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.connections.unlink(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -214,9 +222,10 @@ with CodatLending(
         },
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

@@ -28,15 +28,17 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.sales.locations.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "location_id": "7110701885",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -78,14 +80,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.sales.locations.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

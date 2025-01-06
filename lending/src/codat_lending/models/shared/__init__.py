@@ -245,6 +245,7 @@ from .bankfeedbankaccountmappingresponse import (
     BankFeedBankAccountMappingResponse,
     BankFeedBankAccountMappingResponseTypedDict,
 )
+from .bankfeedmapping import BankFeedMapping, BankFeedMappingTypedDict
 from .bankingaccount import BankingAccount, BankingAccountTypedDict
 from .bankingaccountbalance import BankingAccountBalance, BankingAccountBalanceTypedDict
 from .bankingaccountbalances import (
@@ -533,6 +534,7 @@ from .productvariantref import ProductVariantRef, ProductVariantRefTypedDict
 from .productvariantstatus import ProductVariantStatus
 from .profitandlossreport import ProfitAndLossReport, ProfitAndLossReportTypedDict
 from .projectref import ProjectRef, ProjectRefTypedDict
+from .propertie_accounttype import PropertieAccountType
 from .propertie_itemref import PropertieItemRef, PropertieItemRefTypedDict
 from .pulloperation import DatasetStatus, PullOperation, PullOperationTypedDict
 from .pulloperations import PullOperations, PullOperationsTypedDict
@@ -570,16 +572,25 @@ from .reportoperation import (
 from .reports import Reports, ReportsTypedDict
 from .reporttype import ReportType
 from .routinginfo import RoutingInfo, RoutingInfoTypedDict, Type
+from .schema import Schema, SchemaTypedDict
 from .schema_datatype import SchemaDataType
 from .security import Security, SecurityTypedDict
 from .servicecharge import ServiceCharge, ServiceChargeTypedDict
 from .servicechargetype import ServiceChargeType
 from .sourceaccount import SourceAccount, SourceAccountStatus, SourceAccountTypedDict
+from .sourceaccountprototype import (
+    SourceAccountPrototype,
+    SourceAccountPrototypeTypedDict,
+)
 from .sourceaccountv2 import (
     SourceAccountV2,
     SourceAccountV2AccountType,
     SourceAccountV2Status,
     SourceAccountV2TypedDict,
+)
+from .sourceaccountv2prototype import (
+    SourceAccountV2Prototype,
+    SourceAccountV2PrototypeTypedDict,
 )
 from .sourceref import SourceRef, SourceRefTypedDict
 from .startuploadsessionrequest import (
@@ -591,6 +602,7 @@ from .status import Status
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from .supplierref import SupplierRef, SupplierRefTypedDict
 from .supplierstatus import SupplierStatus
+from .targetaccountoption import TargetAccountOption, TargetAccountOptionTypedDict
 from .taxcomponentallocation import (
     TaxComponentAllocation,
     TaxComponentAllocationTypedDict,
@@ -808,6 +820,8 @@ __all__ = [
     "BankFeedBankAccountMappingResponse",
     "BankFeedBankAccountMappingResponseTypedDict",
     "BankFeedBankAccountMappingTypedDict",
+    "BankFeedMapping",
+    "BankFeedMappingTypedDict",
     "BankStatementUploadConfiguration",
     "BankStatementUploadConfigurationTypedDict",
     "BankTransactionType",
@@ -1108,6 +1122,7 @@ __all__ = [
     "ProfitAndLossReportTypedDict",
     "ProjectRef",
     "ProjectRefTypedDict",
+    "PropertieAccountType",
     "PropertieItemRef",
     "PropertieItemRefTypedDict",
     "PullOperation",
@@ -1166,7 +1181,9 @@ __all__ = [
     "RoutingInfoTypedDict",
     "SalesOrderReference",
     "SalesOrderReferenceTypedDict",
+    "Schema",
     "SchemaDataType",
+    "SchemaTypedDict",
     "Security",
     "SecurityTypedDict",
     "ServiceCharge",
@@ -1174,10 +1191,14 @@ __all__ = [
     "ServiceChargeTypedDict",
     "Source",
     "SourceAccount",
+    "SourceAccountPrototype",
+    "SourceAccountPrototypeTypedDict",
     "SourceAccountStatus",
     "SourceAccountTypedDict",
     "SourceAccountV2",
     "SourceAccountV2AccountType",
+    "SourceAccountV2Prototype",
+    "SourceAccountV2PrototypeTypedDict",
     "SourceAccountV2Status",
     "SourceAccountV2TypedDict",
     "SourceRef",
@@ -1192,6 +1213,8 @@ __all__ = [
     "SupplierRef",
     "SupplierRefTypedDict",
     "SupplierStatus",
+    "TargetAccountOption",
+    "TargetAccountOptionTypedDict",
     "TaxComponentAllocation",
     "TaxComponentAllocationTypedDict",
     "TaxComponentRef",

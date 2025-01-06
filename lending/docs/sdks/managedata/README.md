@@ -22,13 +22,15 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.manage_data.get_status(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

@@ -6,7 +6,7 @@ from codat_lending._hooks import HookContext
 from codat_lending.models import errors, operations, shared
 from codat_lending.types import BaseModel, OptionalNullable, UNSET
 import httpx
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class DirectIncomes(BaseSDK):
@@ -20,6 +20,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[httpx.Response]:
         r"""Download direct income attachment
 
@@ -31,6 +32,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -48,7 +50,7 @@ class DirectIncomes(BaseSDK):
             operations.DownloadAccountingDirectIncomeAttachmentRequest, request
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}/download",
             base_url=base_url,
@@ -59,6 +61,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/octet-stream",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -133,6 +136,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[httpx.Response]:
         r"""Download direct income attachment
 
@@ -144,6 +148,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -161,7 +166,7 @@ class DirectIncomes(BaseSDK):
             operations.DownloadAccountingDirectIncomeAttachmentRequest, request
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}/download",
             base_url=base_url,
@@ -172,6 +177,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/octet-stream",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -246,6 +252,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingDirectIncome]:
         r"""Get direct income
 
@@ -260,6 +267,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -275,7 +283,7 @@ class DirectIncomes(BaseSDK):
             )
         request = cast(operations.GetAccountingDirectIncomeRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}",
             base_url=base_url,
@@ -286,6 +294,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -361,6 +370,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingDirectIncome]:
         r"""Get direct income
 
@@ -375,6 +385,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -390,7 +401,7 @@ class DirectIncomes(BaseSDK):
             )
         request = cast(operations.GetAccountingDirectIncomeRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}",
             base_url=base_url,
@@ -401,6 +412,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -476,6 +488,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingAttachment]:
         r"""Get direct income attachment
 
@@ -487,6 +500,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -502,7 +516,7 @@ class DirectIncomes(BaseSDK):
             )
         request = cast(operations.GetAccountingDirectIncomeAttachmentRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}",
             base_url=base_url,
@@ -513,6 +527,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -587,6 +602,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingAttachment]:
         r"""Get direct income attachment
 
@@ -598,6 +614,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -613,7 +630,7 @@ class DirectIncomes(BaseSDK):
             )
         request = cast(operations.GetAccountingDirectIncomeAttachmentRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments/{attachmentId}",
             base_url=base_url,
@@ -624,6 +641,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -698,6 +716,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingDirectIncomes]:
         r"""List direct incomes
 
@@ -712,6 +731,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -727,7 +747,7 @@ class DirectIncomes(BaseSDK):
             )
         request = cast(operations.ListAccountingDirectIncomesRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes",
             base_url=base_url,
@@ -738,6 +758,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -814,6 +835,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.AccountingDirectIncomes]:
         r"""List direct incomes
 
@@ -828,6 +850,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -843,7 +866,7 @@ class DirectIncomes(BaseSDK):
             )
         request = cast(operations.ListAccountingDirectIncomesRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes",
             base_url=base_url,
@@ -854,6 +877,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -930,6 +954,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Attachments]:
         r"""List direct income attachments
 
@@ -942,6 +967,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -957,7 +983,7 @@ class DirectIncomes(BaseSDK):
             )
         request = cast(operations.ListAccountingDirectIncomeAttachmentsRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments",
             base_url=base_url,
@@ -968,6 +994,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -1041,6 +1068,7 @@ class DirectIncomes(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Attachments]:
         r"""List direct income attachments
 
@@ -1053,6 +1081,7 @@ class DirectIncomes(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1068,7 +1097,7 @@ class DirectIncomes(BaseSDK):
             )
         request = cast(operations.ListAccountingDirectIncomeAttachmentsRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}/attachments",
             base_url=base_url,
@@ -1079,6 +1108,7 @@ class DirectIncomes(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )

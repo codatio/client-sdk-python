@@ -10,9 +10,7 @@ from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class ReportCategorizedBankStatementGenerateSuccessfulReportGenerationWebhookTypedDict(
-    TypedDict
-):
+class ReportsCreditModelGenerateSuccessfulReportGenerationWebhookTypedDict(TypedDict):
     event_type: NotRequired[str]
     r"""The type of event."""
     generated_date: NotRequired[str]
@@ -43,9 +41,7 @@ class ReportCategorizedBankStatementGenerateSuccessfulReportGenerationWebhookTyp
     ]
 
 
-class ReportCategorizedBankStatementGenerateSuccessfulReportGenerationWebhook(
-    BaseModel
-):
+class ReportsCreditModelGenerateSuccessfulReportGenerationWebhook(BaseModel):
     event_type: Annotated[Optional[str], pydantic.Field(alias="eventType")] = None
     r"""The type of event."""
 

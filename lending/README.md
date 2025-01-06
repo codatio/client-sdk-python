@@ -90,6 +90,7 @@ poetry add codat-lending
 from codat_lending import CodatLending
 
 with CodatLending() as codat_lending:
+
     codat_lending.account_categories_updated(request={
         "alert_id": "a9367074-b5c3-42c4-9be4-be129f43577e",
         "client_id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140",
@@ -117,6 +118,7 @@ from codat_lending import CodatLending
 
 async def main():
     async with CodatLending() as codat_lending:
+
         await codat_lending.account_categories_updated_async(request={
             "alert_id": "a9367074-b5c3-42c4-9be4-be129f43577e",
             "client_id": "bae71d36-ff47-420a-b4a6-f8c9ddf41140",
@@ -367,6 +369,7 @@ asyncio.run(main())
 
 * [create](docs/sdks/sourceaccounts/README.md#create) - Create source account
 * [create_mapping](docs/sdks/sourceaccounts/README.md#create_mapping) - Create bank feed account mapping
+* [list_mappings](docs/sdks/sourceaccounts/README.md#list_mappings) - List bank feed account mappings
 
 #### [loan_writeback.suppliers](docs/sdks/codatlendingsuppliers/README.md)
 
@@ -508,15 +511,17 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -532,14 +537,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Retries [retries] -->
@@ -578,14 +585,16 @@ with CodatLending(
 ) as codat_lending:
     res = None
     try:
+
         res = codat_lending.companies.create(request={
             "name": "Technicalium",
             "description": "Requested early access to the new financing scheme.",
         })
 
-        if res is not None:
-            # handle response
-            pass
+        assert res is not None
+
+        # Handle response
+        print(res)
 
     except errors.ErrorMessage as e:
         # handle e.data: errors.ErrorMessageData
@@ -612,14 +621,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Server Selection [server] -->
@@ -726,14 +737,16 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.companies.create(request={
         "name": "Technicalium",
         "description": "Requested early access to the new financing scheme.",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Authentication [security] -->
@@ -767,6 +780,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     codat_lending.file_upload.upload(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",

@@ -28,6 +28,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.accounts_receivable.direct_incomes.download_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -35,9 +36,10 @@ with CodatLending(
         "direct_income_id": "EILBDVJVNUAGVKRQ",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -79,15 +81,17 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.accounts_receivable.direct_incomes.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "direct_income_id": "7110701885",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -126,6 +130,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.accounts_receivable.direct_incomes.get_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
@@ -133,9 +138,10 @@ with CodatLending(
         "direct_income_id": "EILBDVJVNUAGVKRQ",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -177,6 +183,7 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.accounts_receivable.direct_incomes.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -186,9 +193,10 @@ with CodatLending(
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -228,15 +236,17 @@ with CodatLending(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_lending:
+
     res = codat_lending.accounts_receivable.direct_incomes.list_attachments(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "direct_income_id": "EILBDVJVNUAGVKRQ",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 

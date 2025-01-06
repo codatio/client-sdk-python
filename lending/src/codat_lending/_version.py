@@ -3,7 +3,7 @@
 import importlib.metadata
 
 __title__: str = "codat-lending"
-__version__: str = "10.0.1"
+__version__: str = "10.1.0"
 
 try:
     if __package__ is not None:
