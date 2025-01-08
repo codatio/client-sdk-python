@@ -1155,20 +1155,20 @@ class Companies(BaseSDK):
             http_res,
         )
 
-    def update(
+    def replace(
         self,
         *,
         request: Union[
-            operations.UpdateCompanyRequest, operations.UpdateCompanyRequestTypedDict
+            operations.ReplaceCompanyRequest, operations.ReplaceCompanyRequestTypedDict
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.Company]:
-        r"""Update company
+        r"""Replace company
 
-        Use the *Update company* endpoint to update both the name and description of the company.
+        Use the *Replace company* endpoint to replace the existing name, description, and tags of the company. Calling the endpoint will replace existing values even if new values haven't been defined in the payload.
 
         A [company](https://docs.codat.io/bank-feeds-api#/schemas/Company) represents a business sharing access to their data.
         Each company can have multiple [connections](https://docs.codat.io/bank-feeds-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
@@ -1188,8 +1188,8 @@ class Companies(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, operations.UpdateCompanyRequest)
-        request = cast(operations.UpdateCompanyRequest, request)
+            request = utils.unmarshal(request, operations.ReplaceCompanyRequest)
+        request = cast(operations.ReplaceCompanyRequest, request)
 
         req = self._build_request(
             method="PUT",
@@ -1210,6 +1210,241 @@ class Companies(BaseSDK):
                 True,
                 "json",
                 Optional[shared.CompanyRequestBody],
+            ),
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+            else:
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["408", "429", "5XX"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                operation_id="replace-company",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=[
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
+        )
+
+        data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(http_res.text, Optional[shared.Company])
+        if utils.match_response(
+            http_res,
+            ["401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
+            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=data)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
+
+    async def replace_async(
+        self,
+        *,
+        request: Union[
+            operations.ReplaceCompanyRequest, operations.ReplaceCompanyRequestTypedDict
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[shared.Company]:
+        r"""Replace company
+
+        Use the *Replace company* endpoint to replace the existing name, description, and tags of the company. Calling the endpoint will replace existing values even if new values haven't been defined in the payload.
+
+        A [company](https://docs.codat.io/bank-feeds-api#/schemas/Company) represents a business sharing access to their data.
+        Each company can have multiple [connections](https://docs.codat.io/bank-feeds-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, operations.ReplaceCompanyRequest)
+        request = cast(operations.ReplaceCompanyRequest, request)
+
+        req = self._build_request_async(
+            method="PUT",
+            path="/companies/{companyId}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.company_request_body,
+                False,
+                True,
+                "json",
+                Optional[shared.CompanyRequestBody],
+            ),
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+            else:
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["408", "429", "5XX"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                operation_id="replace-company",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=[
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
+        )
+
+        data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(http_res.text, Optional[shared.Company])
+        if utils.match_response(
+            http_res,
+            ["401", "402", "403", "404", "429", "500", "503"],
+            "application/json",
+        ):
+            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=data)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
+        raise errors.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
+
+    def update(
+        self,
+        *,
+        request: Union[
+            operations.UpdateCompanyRequest, operations.UpdateCompanyRequestTypedDict
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[shared.Company]:
+        r"""Update company
+
+        Use the *Update company* endpoint to update the name, description, or tags of the company.
+
+        The *Update company* endpoint doesn't have any required fields. If any of the fields provided are `null` or not provided, they won't be included in the update.
+
+        A [company](https://docs.codat.io/bank-feeds-api#/schemas/Company) represents a business sharing access to their data.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, operations.UpdateCompanyRequest)
+        request = cast(operations.UpdateCompanyRequest, request)
+
+        req = self._build_request(
+            method="PATCH",
+            path="/companies/{companyId}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.company_update_request,
+                False,
+                True,
+                "json",
+                Optional[shared.CompanyUpdateRequest],
             ),
             timeout_ms=timeout_ms,
         )
@@ -1285,10 +1520,11 @@ class Companies(BaseSDK):
     ) -> Optional[shared.Company]:
         r"""Update company
 
-        Use the *Update company* endpoint to update both the name and description of the company.
+        Use the *Update company* endpoint to update the name, description, or tags of the company.
+
+        The *Update company* endpoint doesn't have any required fields. If any of the fields provided are `null` or not provided, they won't be included in the update.
 
         A [company](https://docs.codat.io/bank-feeds-api#/schemas/Company) represents a business sharing access to their data.
-        Each company can have multiple [connections](https://docs.codat.io/bank-feeds-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1309,7 +1545,7 @@ class Companies(BaseSDK):
         request = cast(operations.UpdateCompanyRequest, request)
 
         req = self._build_request_async(
-            method="PUT",
+            method="PATCH",
             path="/companies/{companyId}",
             base_url=base_url,
             url_variables=url_variables,
@@ -1322,11 +1558,11 @@ class Companies(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.company_request_body,
+                request.company_update_request,
                 False,
                 True,
                 "json",
-                Optional[shared.CompanyRequestBody],
+                Optional[shared.CompanyUpdateRequest],
             ),
             timeout_ms=timeout_ms,
         )

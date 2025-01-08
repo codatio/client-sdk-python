@@ -85,6 +85,7 @@ from .companyreference import (
 )
 from .companyrequestbody import CompanyRequestBody, CompanyRequestBodyTypedDict
 from .companysyncstatus import CompanySyncStatus, CompanySyncStatusTypedDict
+from .companyupdaterequest import CompanyUpdateRequest, CompanyUpdateRequestTypedDict
 from .configuration import Configuration, ConfigurationTypedDict
 from .configurationcontactref import (
     ConfigurationContactRef,
@@ -234,6 +235,8 @@ __all__ = [
     "CompanySyncStatus",
     "CompanySyncStatusTypedDict",
     "CompanyTypedDict",
+    "CompanyUpdateRequest",
+    "CompanyUpdateRequestTypedDict",
     "Configuration",
     "ConfigurationContactRef",
     "ConfigurationContactRefTypedDict",

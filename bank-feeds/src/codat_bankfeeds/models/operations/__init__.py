@@ -103,6 +103,7 @@ from .list_source_accounts import (
     ListSourceAccountsResponseBody,
     ListSourceAccountsResponseBodyTypedDict,
 )
+from .replace_company import ReplaceCompanyRequest, ReplaceCompanyRequestTypedDict
 from .set_configuration import SetConfigurationRequest, SetConfigurationRequestTypedDict
 from .unlink_connection import (
     UnlinkConnectionRequest,
@@ -189,6 +190,8 @@ __all__ = [
     "ListSourceAccountsResponseBodyTypedDict",
     "One",
     "OneTypedDict",
+    "ReplaceCompanyRequest",
+    "ReplaceCompanyRequestTypedDict",
     "SetConfigurationRequest",
     "SetConfigurationRequestTypedDict",
     "UnlinkConnectionRequest",
