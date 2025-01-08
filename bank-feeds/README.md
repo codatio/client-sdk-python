@@ -196,6 +196,7 @@ asyncio.run(main())
 * [get](docs/sdks/companies/README.md#get) - Get company
 * [get_access_token](docs/sdks/companies/README.md#get_access_token) - Get company access token
 * [list](docs/sdks/companies/README.md#list) - List companies
+* [replace](docs/sdks/companies/README.md#replace) - Replace company
 * [update](docs/sdks/companies/README.md#update) - Update company
 
 ### [company_information](docs/sdks/companyinformation/README.md)

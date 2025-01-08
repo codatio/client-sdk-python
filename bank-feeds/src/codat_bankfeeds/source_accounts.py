@@ -352,7 +352,7 @@ class SourceAccounts(BaseSDK):
         )
 
         data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
+        if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[operations.CreateBatchSourceAccountResponseBody]
             )
@@ -481,7 +481,7 @@ class SourceAccounts(BaseSDK):
         )
 
         data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
+        if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[operations.CreateBatchSourceAccountResponseBody]
             )

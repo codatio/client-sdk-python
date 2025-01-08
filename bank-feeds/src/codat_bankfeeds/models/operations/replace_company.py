@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from codat_bankfeeds.models.shared import (
-    companyupdaterequest as shared_companyupdaterequest,
+    companyrequestbody as shared_companyrequestbody,
 )
 from codat_bankfeeds.types import BaseModel
 from codat_bankfeeds.utils import FieldMetadata, PathParamMetadata, RequestMetadata
@@ -11,15 +11,15 @@ from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class UpdateCompanyRequestTypedDict(TypedDict):
+class ReplaceCompanyRequestTypedDict(TypedDict):
     company_id: str
     r"""Unique identifier for a company."""
-    company_update_request: NotRequired[
-        shared_companyupdaterequest.CompanyUpdateRequestTypedDict
+    company_request_body: NotRequired[
+        shared_companyrequestbody.CompanyRequestBodyTypedDict
     ]
 
 
-class UpdateCompanyRequest(BaseModel):
+class ReplaceCompanyRequest(BaseModel):
     company_id: Annotated[
         str,
         pydantic.Field(alias="companyId"),
@@ -27,7 +27,7 @@ class UpdateCompanyRequest(BaseModel):
     ]
     r"""Unique identifier for a company."""
 
-    company_update_request: Annotated[
-        Optional[shared_companyupdaterequest.CompanyUpdateRequest],
+    company_request_body: Annotated[
+        Optional[shared_companyrequestbody.CompanyRequestBody],
         FieldMetadata(request=RequestMetadata(media_type="application/json")),
     ] = None
