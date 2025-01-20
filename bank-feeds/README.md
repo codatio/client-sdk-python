@@ -297,7 +297,6 @@ with CodatBankFeeds(
 
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
@@ -323,7 +322,6 @@ with CodatBankFeeds(
 
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
     })
 
     assert res is not None
@@ -352,10 +350,11 @@ By default, an API error will raise a errors.SDKError exception, which has the f
 
 When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create_async` method may raise the following exceptions:
 
-| Error Type          | Status Code                       | Content Type     |
-| ------------------- | --------------------------------- | ---------------- |
-| errors.ErrorMessage | 400, 401, 402, 403, 429, 500, 503 | application/json |
-| errors.SDKError     | 4XX, 5XX                          | \*/\*            |
+| Error Type          | Status Code             | Content Type     |
+| ------------------- | ----------------------- | ---------------- |
+| errors.ErrorMessage | 400, 401, 402, 403, 429 | application/json |
+| errors.ErrorMessage | 500, 503                | application/json |
+| errors.SDKError     | 4XX, 5XX                | \*/\*            |
 
 ### Example
 
@@ -373,7 +372,6 @@ with CodatBankFeeds(
 
         res = codat_bank_feeds.companies.create(request={
             "name": "Technicalium",
-            "description": "Requested early access to the new financing scheme.",
         })
 
         assert res is not None
@@ -381,6 +379,9 @@ with CodatBankFeeds(
         # Handle response
         print(res)
 
+    except errors.ErrorMessage as e:
+        # handle e.data: errors.ErrorMessageData
+        raise(e)
     except errors.ErrorMessage as e:
         # handle e.data: errors.ErrorMessageData
         raise(e)
@@ -411,7 +412,6 @@ with CodatBankFeeds(
 
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
     })
 
     assert res is not None
@@ -531,7 +531,6 @@ with CodatBankFeeds(
 
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
     })
 
     assert res is not None

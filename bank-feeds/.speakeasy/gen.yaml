@@ -12,7 +12,7 @@ generation:
     oAuth2PasswordEnabled: false
   telemetryEnabled: true
 python:
-  version: 10.1.1
+  version: 10.2.0
   additionalDependencies:
     dev: {}
     main: {}
@@ -22,6 +22,7 @@ python:
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   description: Set up bank feeds from accounts in your application to supported accounting software.
+  enableCustomCodeRegions: false
   enumFormat: enum
   fixFlags:
     responseRequiredSep2024: false
