@@ -134,6 +134,10 @@ from .sourceaccountbatchcreateresponse import (
     SourceAccountBatchCreateResponse,
     SourceAccountBatchCreateResponseTypedDict,
 )
+from .sourceaccountbatchcreateresult import (
+    SourceAccountBatchCreateResult,
+    SourceAccountBatchCreateResultTypedDict,
+)
 from .sourceaccountbatcherrorresponse import (
     Result,
     ResultTypedDict,
@@ -154,6 +158,10 @@ from .sourceaccountv2batchcreateresponse import (
     SourceAccountV2BatchCreateResponse,
     SourceAccountV2BatchCreateResponseTypedDict,
 )
+from .sourceaccountv2batchcreateresult import (
+    SourceAccountV2BatchCreateResult,
+    SourceAccountV2BatchCreateResultTypedDict,
+)
 from .sourceaccountv2prototype import (
     SourceAccountV2Prototype,
     SourceAccountV2PrototypeTypedDict,
@@ -171,6 +179,7 @@ from .syncconfiguration import SyncConfiguration, SyncConfigurationTypedDict
 from .targetaccountoption import TargetAccountOption, TargetAccountOptionTypedDict
 from .validation import Validation, ValidationTypedDict
 from .validationitem import ValidationItem, ValidationItemTypedDict
+
 
 __all__ = [
     "AccountInfo",
@@ -300,6 +309,8 @@ __all__ = [
     "SourceAccount",
     "SourceAccountBatchCreateResponse",
     "SourceAccountBatchCreateResponseTypedDict",
+    "SourceAccountBatchCreateResult",
+    "SourceAccountBatchCreateResultTypedDict",
     "SourceAccountBatchErrorResponse",
     "SourceAccountBatchErrorResponseTypedDict",
     "SourceAccountPrototype",
@@ -309,6 +320,8 @@ __all__ = [
     "SourceAccountV2AccountType",
     "SourceAccountV2BatchCreateResponse",
     "SourceAccountV2BatchCreateResponseTypedDict",
+    "SourceAccountV2BatchCreateResult",
+    "SourceAccountV2BatchCreateResultTypedDict",
     "SourceAccountV2Prototype",
     "SourceAccountV2PrototypeTypedDict",
     "SourceAccountV2Status",

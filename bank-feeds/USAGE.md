@@ -12,7 +12,6 @@ with CodatBankFeeds(
 
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
-        "description": "Requested early access to the new financing scheme.",
     })
 
     assert res is not None
@@ -39,7 +38,6 @@ async def main():
 
         res = await codat_bank_feeds.companies.create_async(request={
             "name": "Technicalium",
-            "description": "Requested early access to the new financing scheme.",
         })
 
         assert res is not None
