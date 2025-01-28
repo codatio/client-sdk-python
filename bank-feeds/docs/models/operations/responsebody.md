@@ -1,4 +1,4 @@
-# CreateBatchSourceAccountResponseBody
+# ResponseBody
 
 
 ## Supported Types
@@ -13,11 +13,5 @@ value: shared.SourceAccountV2BatchCreateResponse = /* values here */
 
 ```python
 value: shared.SourceAccountBatchCreateResponse = /* values here */
-```
-
-### `shared.SourceAccountBatchErrorResponse`
-
-```python
-value: shared.SourceAccountBatchErrorResponse = /* values here */
 ```
 

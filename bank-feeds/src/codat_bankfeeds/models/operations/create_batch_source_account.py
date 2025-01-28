@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 from codat_bankfeeds.models.shared import (
-    sourceaccount as shared_sourceaccount,
     sourceaccountbatchcreateresponse as shared_sourceaccountbatchcreateresponse,
     sourceaccountbatcherrorresponse as shared_sourceaccountbatcherrorresponse,
-    sourceaccountv2 as shared_sourceaccountv2,
+    sourceaccountprototype as shared_sourceaccountprototype,
     sourceaccountv2batchcreateresponse as shared_sourceaccountv2batchcreateresponse,
+    sourceaccountv2prototype as shared_sourceaccountv2prototype,
 )
 from codat_bankfeeds.types import BaseModel
 from codat_bankfeeds.utils import FieldMetadata, PathParamMetadata, RequestMetadata
@@ -18,8 +18,8 @@ from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 CreateBatchSourceAccountRequestBodyTypedDict = TypeAliasType(
     "CreateBatchSourceAccountRequestBodyTypedDict",
     Union[
-        List[shared_sourceaccountv2.SourceAccountV2TypedDict],
-        List[shared_sourceaccount.SourceAccountTypedDict],
+        List[shared_sourceaccountv2prototype.SourceAccountV2PrototypeTypedDict],
+        List[shared_sourceaccountprototype.SourceAccountPrototypeTypedDict],
     ],
 )
 
@@ -27,8 +27,8 @@ CreateBatchSourceAccountRequestBodyTypedDict = TypeAliasType(
 CreateBatchSourceAccountRequestBody = TypeAliasType(
     "CreateBatchSourceAccountRequestBody",
     Union[
-        List[shared_sourceaccountv2.SourceAccountV2],
-        List[shared_sourceaccount.SourceAccount],
+        List[shared_sourceaccountv2prototype.SourceAccountV2Prototype],
+        List[shared_sourceaccountprototype.SourceAccountPrototype],
     ],
 )
 
@@ -62,8 +62,8 @@ class CreateBatchSourceAccountRequest(BaseModel):
     ] = None
 
 
-CreateBatchSourceAccount1TypedDict = TypeAliasType(
-    "CreateBatchSourceAccount1TypedDict",
+CreateBatchSourceAccountResponseBodyTypedDict = TypeAliasType(
+    "CreateBatchSourceAccountResponseBodyTypedDict",
     Union[
         shared_sourceaccountv2batchcreateresponse.SourceAccountV2BatchCreateResponseTypedDict,
         shared_sourceaccountbatchcreateresponse.SourceAccountBatchCreateResponseTypedDict,
@@ -72,8 +72,8 @@ CreateBatchSourceAccount1TypedDict = TypeAliasType(
 )
 
 
-CreateBatchSourceAccount1 = TypeAliasType(
-    "CreateBatchSourceAccount1",
+CreateBatchSourceAccountResponseBody = TypeAliasType(
+    "CreateBatchSourceAccountResponseBody",
     Union[
         shared_sourceaccountv2batchcreateresponse.SourceAccountV2BatchCreateResponse,
         shared_sourceaccountbatchcreateresponse.SourceAccountBatchCreateResponse,
@@ -82,18 +82,8 @@ CreateBatchSourceAccount1 = TypeAliasType(
 )
 
 
-CreateBatchSourceAccountSourceAccountsResponseBodyTypedDict = List[
-    CreateBatchSourceAccount1TypedDict
-]
-r"""Multi-Status"""
-
-
-CreateBatchSourceAccountSourceAccountsResponseBody = List[CreateBatchSourceAccount1]
-r"""Multi-Status"""
-
-
-OneTypedDict = TypeAliasType(
-    "OneTypedDict",
+ResponseBodyTypedDict = TypeAliasType(
+    "ResponseBodyTypedDict",
     Union[
         shared_sourceaccountv2batchcreateresponse.SourceAccountV2BatchCreateResponseTypedDict,
         shared_sourceaccountbatchcreateresponse.SourceAccountBatchCreateResponseTypedDict,
@@ -101,8 +91,8 @@ OneTypedDict = TypeAliasType(
 )
 
 
-One = TypeAliasType(
-    "One",
+ResponseBody = TypeAliasType(
+    "ResponseBody",
     Union[
         shared_sourceaccountv2batchcreateresponse.SourceAccountV2BatchCreateResponse,
         shared_sourceaccountbatchcreateresponse.SourceAccountBatchCreateResponse,
@@ -110,27 +100,15 @@ One = TypeAliasType(
 )
 
 
-CreateBatchSourceAccountResponseBodyTypedDict = List[OneTypedDict]
-r"""Success"""
-
-
-CreateBatchSourceAccountResponseBody = List[One]
-r"""Success"""
-
-
 CreateBatchSourceAccountResponseTypedDict = TypeAliasType(
     "CreateBatchSourceAccountResponseTypedDict",
     Union[
-        CreateBatchSourceAccountResponseBodyTypedDict,
-        CreateBatchSourceAccountSourceAccountsResponseBodyTypedDict,
+        List[ResponseBodyTypedDict], List[CreateBatchSourceAccountResponseBodyTypedDict]
     ],
 )
 
 
 CreateBatchSourceAccountResponse = TypeAliasType(
     "CreateBatchSourceAccountResponse",
-    Union[
-        CreateBatchSourceAccountResponseBody,
-        CreateBatchSourceAccountSourceAccountsResponseBody,
-    ],
+    Union[List[ResponseBody], List[CreateBatchSourceAccountResponseBody]],
 )

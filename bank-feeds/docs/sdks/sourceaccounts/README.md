@@ -27,6 +27,7 @@ The _Create Source Account_ endpoint allows you to create a representation of a 
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+from decimal import Decimal
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -38,10 +39,15 @@ with CodatBankFeeds(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": {
+            "account_name": "<value>",
+            "account_number": "<value>",
+            "account_type": shared.AccountType.CREDIT_CARD,
+            "balance": Decimal("4174.58"),
+            "currency": "GBP",
+            "id": "<id>",
             "account_info": {
                 "account_open_date": "2022-10-23",
             },
-            "currency": "USD",
             "modified_date": "2022-10-23T00:00:00Z",
         },
     })
@@ -84,7 +90,6 @@ The _Batch create source accounts_ endpoint allows you to create multiple repres
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
-from decimal import Decimal
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -97,26 +102,14 @@ with CodatBankFeeds(
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": [
             {
-                "id": "acc-002",
-                "account_name": "account-081",
-                "account_number": "12345670",
-                "account_type": "Credit",
-                "balance": Decimal("99.99"),
-                "currency": "GBP",
-                "modified_date": "2023-01-09T14:14:14.1057478Z",
-                "sort_code": "123456",
-                "status": shared.Status.PENDING,
+                "id": "<id>",
+                "currency": "EUR",
+                "modified_date": "2022-10-23T00:00:00Z",
             },
             {
-                "id": "acc-003",
-                "account_name": "account-095",
-                "account_number": "12345671",
-                "account_type": "Credit",
-                "balance": Decimal("0"),
+                "id": "<id>",
                 "currency": "USD",
-                "modified_date": "2023-01-09T14:14:14.1057478Z",
-                "sort_code": "123456",
-                "status": shared.Status.PENDING,
+                "modified_date": "2022-10-23T00:00:00Z",
             },
         ],
     })
@@ -141,11 +134,11 @@ with CodatBankFeeds(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 400, 401, 402, 403, 404, 409, 429 | application/json                  |
-| errors.ErrorMessage               | 500, 503                          | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## delete
 
