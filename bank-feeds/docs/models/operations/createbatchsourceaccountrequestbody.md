@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### `List[shared.SourceAccountV2]`
+### `List[shared.SourceAccountV2Prototype]`
 
 ```python
-value: List[shared.SourceAccountV2] = /* values here */
+value: List[shared.SourceAccountV2Prototype] = /* values here */
 ```
 
-### `List[shared.SourceAccount]`
+### `List[shared.SourceAccountPrototype]`
 
 ```python
-value: List[shared.SourceAccount] = /* values here */
+value: List[shared.SourceAccountPrototype] = /* values here */
 ```
 

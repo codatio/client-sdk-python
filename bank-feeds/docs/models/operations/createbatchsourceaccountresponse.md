@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### `operations.CreateBatchSourceAccountResponseBody`
+### `List[operations.ResponseBody]`
 
 ```python
-value: operations.CreateBatchSourceAccountResponseBody = /* values here */
+value: List[operations.ResponseBody] = /* values here */
 ```
 
-### `operations.CreateBatchSourceAccountSourceAccountsResponseBody`
+### `List[operations.CreateBatchSourceAccountResponseBody]`
 
 ```python
-value: operations.CreateBatchSourceAccountSourceAccountsResponseBody = /* values here */
+value: List[operations.CreateBatchSourceAccountResponseBody] = /* values here */
 ```
 

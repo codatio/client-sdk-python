@@ -19,6 +19,8 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SourceAccountPrototypeTypedDict(TypedDict):
+    id: str
+    r"""Unique ID for the bank account."""
     account_name: NotRequired[Nullable[str]]
     r"""The bank account name."""
     account_number: NotRequired[Nullable[str]]
@@ -36,8 +38,6 @@ class SourceAccountPrototypeTypedDict(TypedDict):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    id: NotRequired[str]
-    r"""Unique ID for the bank account."""
     modified_date: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -64,6 +64,9 @@ class SourceAccountPrototypeTypedDict(TypedDict):
 
 
 class SourceAccountPrototype(BaseModel):
+    id: str
+    r"""Unique ID for the bank account."""
+
     account_name: Annotated[
         OptionalNullable[str], pydantic.Field(alias="accountName")
     ] = UNSET
@@ -95,9 +98,6 @@ class SourceAccountPrototype(BaseModel):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-
-    id: Optional[str] = None
-    r"""Unique ID for the bank account."""
 
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -134,7 +134,6 @@ class SourceAccountPrototype(BaseModel):
             "accountType",
             "balance",
             "currency",
-            "id",
             "modifiedDate",
             "sortCode",
         ]

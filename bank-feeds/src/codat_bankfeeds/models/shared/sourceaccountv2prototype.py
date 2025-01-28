@@ -22,16 +22,15 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SourceAccountV2PrototypeTypedDict(TypedDict):
-    account_info: NotRequired[Nullable[AccountInfoTypedDict]]
-    account_name: NotRequired[str]
+    account_name: str
     r"""The bank account name."""
-    account_number: NotRequired[str]
+    account_number: str
     r"""The account number."""
-    account_type: NotRequired[AccountType]
+    account_type: AccountType
     r"""The type of bank account e.g. checking, savings, loan, creditCard, prepaidCard."""
-    balance: NotRequired[Decimal]
+    balance: Decimal
     r"""The latest balance for the bank account."""
-    currency: NotRequired[str]
+    currency: str
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
     ## Unknown currencies
@@ -40,8 +39,9 @@ class SourceAccountV2PrototypeTypedDict(TypedDict):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    id: NotRequired[str]
+    id: str
     r"""Unique ID for the bank account."""
+    account_info: NotRequired[Nullable[AccountInfoTypedDict]]
     modified_date: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -70,31 +70,23 @@ class SourceAccountV2PrototypeTypedDict(TypedDict):
 
 
 class SourceAccountV2Prototype(BaseModel):
-    account_info: Annotated[
-        OptionalNullable[AccountInfo], pydantic.Field(alias="accountInfo")
-    ] = UNSET
-
-    account_name: Annotated[Optional[str], pydantic.Field(alias="accountName")] = None
+    account_name: Annotated[str, pydantic.Field(alias="accountName")]
     r"""The bank account name."""
 
-    account_number: Annotated[Optional[str], pydantic.Field(alias="accountNumber")] = (
-        None
-    )
+    account_number: Annotated[str, pydantic.Field(alias="accountNumber")]
     r"""The account number."""
 
-    account_type: Annotated[
-        Optional[AccountType], pydantic.Field(alias="accountType")
-    ] = None
+    account_type: Annotated[AccountType, pydantic.Field(alias="accountType")]
     r"""The type of bank account e.g. checking, savings, loan, creditCard, prepaidCard."""
 
     balance: Annotated[
-        Optional[Decimal],
+        Decimal,
         BeforeValidator(validate_decimal),
         PlainSerializer(serialize_decimal(False)),
-    ] = None
+    ]
     r"""The latest balance for the bank account."""
 
-    currency: Optional[str] = None
+    currency: str
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
     ## Unknown currencies
@@ -104,8 +96,12 @@ class SourceAccountV2Prototype(BaseModel):
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
 
-    id: Optional[str] = None
+    id: str
     r"""Unique ID for the bank account."""
+
+    account_info: Annotated[
+        OptionalNullable[AccountInfo], pydantic.Field(alias="accountInfo")
+    ] = UNSET
 
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -141,18 +137,7 @@ class SourceAccountV2Prototype(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "accountInfo",
-            "accountName",
-            "accountNumber",
-            "accountType",
-            "balance",
-            "currency",
-            "id",
-            "modifiedDate",
-            "routingInfo",
-            "sortCode",
-        ]
+        optional_fields = ["accountInfo", "modifiedDate", "routingInfo", "sortCode"]
         nullable_fields = ["accountInfo", "sortCode"]
         null_default_fields = []
 
