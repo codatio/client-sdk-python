@@ -27,13 +27,15 @@ with CodatSyncCommerce(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_commerce:
+
     res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -50,10 +52,11 @@ with CodatSyncCommerce(
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ErrorMessage          | 401, 402, 403, 429, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ErrorMessage | 401, 402, 403, 429  | application/json    |
+| errors.ErrorMessage | 500, 503            | application/json    |
+| errors.SDKError     | 4XX, 5XX            | \*/\*               |
 
 ## get_visible_accounts
 
@@ -70,14 +73,16 @@ with CodatSyncCommerce(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_commerce:
+
     res = codat_sync_commerce.sync_flow_settings.get_visible_accounts(request={
-        "client_id": "86fe9741-738d-4f2c-8e96-9c3f84156e91",
+        "client_id": "8f9478fc-e6cf-445e-b122-74136f8fd7ab",
         "platform_key": "gbol",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -94,10 +99,11 @@ with CodatSyncCommerce(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## update_config_text_sync_flow
 
@@ -114,13 +120,15 @@ with CodatSyncCommerce(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_commerce:
+
     res = codat_sync_commerce.sync_flow_settings.update_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -137,10 +145,11 @@ with CodatSyncCommerce(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 400, 401, 402, 403, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## update_visible_accounts_sync_flow
 
@@ -157,13 +166,15 @@ with CodatSyncCommerce(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_commerce:
+
     res = codat_sync_commerce.sync_flow_settings.update_visible_accounts_sync_flow(request={
         "platform_key": "gbol",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -180,7 +191,8 @@ with CodatSyncCommerce(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

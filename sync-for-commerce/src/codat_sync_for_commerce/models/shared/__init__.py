@@ -74,10 +74,6 @@ from .salescustomer import SalesCustomer, SalesCustomerTypedDict
 from .security import Security, SecurityTypedDict
 from .sourcetype import SourceType
 from .supportedfeature import SupportedFeature, SupportedFeatureTypedDict
-from .syncconnectiondeletedwebhook import (
-    SyncConnectionDeletedWebhook,
-    SyncConnectionDeletedWebhookTypedDict,
-)
 from .syncflowurl import SyncFlowURL, SyncFlowURLTypedDict
 from .syncfrequency import SyncFrequency
 from .syncrange import DateRange, DateRangeTypedDict, SyncRange, SyncRangeTypedDict
@@ -94,6 +90,7 @@ from .taxrateamount import TaxRateAmount, TaxRateAmountTypedDict
 from .taxratemapping import TaxRateMapping, TaxRateMappingTypedDict
 from .updateconnection import UpdateConnection, UpdateConnectionTypedDict
 from .visibleaccounts import VisibleAccounts, VisibleAccountsTypedDict
+
 
 __all__ = [
     "AccountConfiguration",
@@ -196,8 +193,6 @@ __all__ = [
     "SourceType",
     "SupportedFeature",
     "SupportedFeatureTypedDict",
-    "SyncConnectionDeletedWebhook",
-    "SyncConnectionDeletedWebhookTypedDict",
     "SyncDateRangeUtc",
     "SyncDateRangeUtcTypedDict",
     "SyncFlowURL",

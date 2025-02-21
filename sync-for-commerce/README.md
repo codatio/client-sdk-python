@@ -11,7 +11,7 @@ Sync for Commerce: The API for Sync for Commerce.
 
 Sync for Commerce automatically replicates and reconciles sales data from a merchant’s source PoS, Payments, and eCommerce systems into their accounting software. This eliminates manual processing by merchants and transforms their ability to run and grow their business.
   
-[Explore product](https://docs.codat.io/commerce/overview) | [See our OpenAPI spec](https://github.com/codatio/oas)
+[Explore solution](https://docs.codat.io/commerce/overview) | [See our OpenAPI spec](https://github.com/codatio/oas)
 
 Not seeing the endpoints you're expecting? We've [reorganized our products](https://docs.codat.io/updates/230901-new-products), and you may be using a [different version of Sync for Commerce](https://docs.codat.io/sync-for-commerce-v1-api#/).
 
@@ -45,6 +45,7 @@ Not seeing the endpoints you're expecting? We've [reorganized our products](http
   * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Authentication](#authentication)
+  * [Resource Management](#resource-management)
   * [Debugging](#debugging)
   * [Support](#support)
 
@@ -52,6 +53,11 @@ Not seeing the endpoints you're expecting? We've [reorganized our products](http
 
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+> [!NOTE]
+> **Python version upgrade policy**
+>
+> Once a Python version reaches its [official end of life date](https://devguide.python.org/versions/), a 3-month grace period is provided for users to upgrade. Following this grace period, the minimum python version supported in the SDK will be updated.
 
 The SDK can be installed with either *pip* or *poetry* package managers.
 
@@ -70,6 +76,37 @@ pip install codat-sync-for-commerce
 ```bash
 poetry add codat-sync-for-commerce
 ```
+
+### Shell and script usage with `uv`
+
+You can use this SDK in a Python shell with [uv](https://docs.astral.sh/uv/) and the `uvx` command that comes with it like so:
+
+```shell
+uvx --from codat-sync-for-commerce python
+```
+
+It's also possible to write a standalone Python script without needing to set up a whole project like so:
+
+```python
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = [
+#     "codat-sync-for-commerce",
+# ]
+# ///
+
+from codat_sync_for_commerce import CodatSyncCommerce
+
+sdk = CodatSyncCommerce(
+  # SDK arguments
+)
+
+# Rest of script here...
+```
+
+Once that is saved to a file, you can run it with `uv run script.py` where
+`script.py` can be replaced with the actual file name.
 <!-- End SDK Installation [installation] -->
 
 ## Example Usage
@@ -94,6 +131,7 @@ from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
 
 with CodatSyncCommerce() as codat_sync_commerce:
+
     codat_sync_commerce.connection_deleted(request={
         "event_type": "connection.created",
         "generated_date": "2022-10-23T00:00:00Z",
@@ -109,6 +147,16 @@ with CodatSyncCommerce() as codat_sync_commerce:
                 "source_id": "35b92968-9851-4095-ad60-395c95cbcba4",
                 "source_type": shared.SourceType.ACCOUNTING,
                 "status": shared.DataConnectionStatus.LINKED,
+                "data_connection_errors": [
+                    {
+                        "errored_on_utc": "2022-10-23T00:00:00Z",
+                        "resolved_on_utc": "2022-10-23T00:00:00Z",
+                    },
+                    {
+                        "errored_on_utc": "2022-10-23T00:00:00Z",
+                        "resolved_on_utc": "2022-10-23T00:00:00Z",
+                    },
+                ],
                 "last_sync": "2022-10-23T00:00:00Z",
             },
             "reference_company": {
@@ -133,6 +181,7 @@ from codat_sync_for_commerce.models import shared
 
 async def main():
     async with CodatSyncCommerce() as codat_sync_commerce:
+
         await codat_sync_commerce.connection_deleted_async(request={
             "event_type": "connection.created",
             "generated_date": "2022-10-23T00:00:00Z",
@@ -148,6 +197,16 @@ async def main():
                     "source_id": "35b92968-9851-4095-ad60-395c95cbcba4",
                     "source_type": shared.SourceType.ACCOUNTING,
                     "status": shared.DataConnectionStatus.LINKED,
+                    "data_connection_errors": [
+                        {
+                            "errored_on_utc": "2022-10-23T00:00:00Z",
+                            "resolved_on_utc": "2022-10-23T00:00:00Z",
+                        },
+                        {
+                            "errored_on_utc": "2022-10-23T00:00:00Z",
+                            "resolved_on_utc": "2022-10-23T00:00:00Z",
+                        },
+                    ],
                     "last_sync": "2022-10-23T00:00:00Z",
                 },
                 "reference_company": {
@@ -229,14 +288,16 @@ with CodatSyncCommerce(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_commerce:
+
     res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -252,13 +313,15 @@ with CodatSyncCommerce(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_commerce:
+
     res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Retries [retries] -->
@@ -279,10 +342,11 @@ By default, an API error will raise a errors.SDKError exception, which has the f
 
 When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `get_config_text_sync_flow_async` method may raise the following exceptions:
 
-| Error Type          | Status Code                  | Content Type     |
-| ------------------- | ---------------------------- | ---------------- |
-| errors.ErrorMessage | 401, 402, 403, 429, 500, 503 | application/json |
-| errors.SDKError     | 4XX, 5XX                     | \*/\*            |
+| Error Type          | Status Code        | Content Type     |
+| ------------------- | ------------------ | ---------------- |
+| errors.ErrorMessage | 401, 402, 403, 429 | application/json |
+| errors.ErrorMessage | 500, 503           | application/json |
+| errors.SDKError     | 4XX, 5XX           | \*/\*            |
 
 ### Example
 
@@ -297,14 +361,19 @@ with CodatSyncCommerce(
 ) as codat_sync_commerce:
     res = None
     try:
+
         res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
             "locale": shared.Locale.EN_US,
         })
 
-        if res is not None:
-            # handle response
-            pass
+        assert res is not None
 
+        # Handle response
+        print(res)
+
+    except errors.ErrorMessage as e:
+        # handle e.data: errors.ErrorMessageData
+        raise(e)
     except errors.ErrorMessage as e:
         # handle e.data: errors.ErrorMessageData
         raise(e)
@@ -319,7 +388,7 @@ with CodatSyncCommerce(
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+The default server can be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 from codat_sync_for_commerce import CodatSyncCommerce
 from codat_sync_for_commerce.models import shared
@@ -330,13 +399,15 @@ with CodatSyncCommerce(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_commerce:
+
     res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Server Selection [server] -->
@@ -443,16 +514,48 @@ with CodatSyncCommerce(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_commerce:
+
     res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Resource Management [resource-management] -->
+## Resource Management
+
+The `CodatSyncCommerce` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
+
+[context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
+
+```python
+from codat_sync_for_commerce import CodatSyncCommerce
+from codat_sync_for_commerce.models import shared
+def main():
+    with CodatSyncCommerce(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as codat_sync_commerce:
+        # Rest of application here...
+
+
+# Or when using async:
+async def amain():
+    async with CodatSyncCommerce(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as codat_sync_commerce:
+        # Rest of application here...
+```
+<!-- End Resource Management [resource-management] -->
 
 <!-- Start Debugging [debug] -->
 ## Debugging

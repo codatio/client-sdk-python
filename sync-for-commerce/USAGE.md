@@ -9,13 +9,15 @@ with CodatSyncCommerce(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_commerce:
+
     res = codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow(request={
         "locale": shared.Locale.EN_US,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    assert res is not None
+
+    # Handle response
+    print(res)
 ```
 
 </br>
@@ -33,13 +35,15 @@ async def main():
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
     ) as codat_sync_commerce:
+
         res = await codat_sync_commerce.sync_flow_settings.get_config_text_sync_flow_async(request={
             "locale": shared.Locale.EN_US,
         })
 
-        if res is not None:
-            # handle response
-            pass
+        assert res is not None
+
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```
