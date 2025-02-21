@@ -4,15 +4,16 @@ generation:
   usageSnippets:
     optionalPropertyRendering: withExample
   fixes:
-    nameResolutionDec2023: false
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+    securityFeb2025: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
   telemetryEnabled: true
 python:
-  version: 6.0.1
+  version: 6.1.0
   additionalDependencies:
     dev: {}
     main: {}
@@ -22,6 +23,7 @@ python:
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   description: Push merchants' data from your ecommerce or point-of-sale (POS) platform into your merchants' accounting software.
+  enableCustomCodeRegions: false
   enumFormat: enum
   fixFlags:
     responseRequiredSep2024: false
@@ -41,5 +43,6 @@ python:
   methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: codat-sync-for-commerce
+  pytestTimeout: 0
   responseFormat: flat
   templateVersion: v2
