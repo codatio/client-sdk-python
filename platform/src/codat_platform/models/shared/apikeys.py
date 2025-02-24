@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 from .apikeydetails import APIKeyDetails, APIKeyDetailsTypedDict
-from codat_platform.types import BaseModel
+from codat_platform.types import BaseModel, Nullable
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
 class APIKeysTypedDict(TypedDict):
-    results: NotRequired[List[APIKeyDetailsTypedDict]]
+    results: NotRequired[List[Nullable[APIKeyDetailsTypedDict]]]
 
 
 class APIKeys(BaseModel):
-    results: Optional[List[APIKeyDetails]] = None
+    results: Optional[List[Nullable[APIKeyDetails]]] = None

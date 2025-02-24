@@ -67,7 +67,6 @@ from .get_supplemental_data_configuration import (
     GetSupplementalDataConfigurationRequestTypedDict,
     PathParamDataType,
 )
-from .get_webhook import GetWebhookRequest, GetWebhookRequestTypedDict
 from .list_companies import ListCompaniesRequest, ListCompaniesRequestTypedDict
 from .list_connections import ListConnectionsRequest, ListConnectionsRequestTypedDict
 from .list_custom_data_type_records import (
@@ -79,7 +78,6 @@ from .list_pull_operations import (
     ListPullOperationsRequest,
     ListPullOperationsRequestTypedDict,
 )
-from .list_rules import ListRulesRequest, ListRulesRequestTypedDict
 from .refresh_company_data import (
     RefreshCompanyDataRequest,
     RefreshCompanyDataRequestTypedDict,
@@ -90,6 +88,7 @@ from .refresh_custom_data_type import (
 )
 from .refresh_data_type import RefreshDataTypeRequest, RefreshDataTypeRequestTypedDict
 from .remove_product import RemoveProductRequest, RemoveProductRequestTypedDict
+from .replace_company import ReplaceCompanyRequest, ReplaceCompanyRequestTypedDict
 from .unlink_connection import UnlinkConnectionRequest, UnlinkConnectionRequestTypedDict
 from .update_company import UpdateCompanyRequest, UpdateCompanyRequestTypedDict
 from .update_connection_authorization import (
@@ -100,6 +99,7 @@ from .update_profile_syncsettings import (
     UpdateProfileSyncSettingsRequestBody,
     UpdateProfileSyncSettingsRequestBodyTypedDict,
 )
+
 
 __all__ = [
     "AddProductRequest",
@@ -147,8 +147,6 @@ __all__ = [
     "GetPushOperationRequestTypedDict",
     "GetSupplementalDataConfigurationRequest",
     "GetSupplementalDataConfigurationRequestTypedDict",
-    "GetWebhookRequest",
-    "GetWebhookRequestTypedDict",
     "ListCompaniesRequest",
     "ListCompaniesRequestTypedDict",
     "ListConnectionsRequest",
@@ -159,8 +157,6 @@ __all__ = [
     "ListIntegrationsRequestTypedDict",
     "ListPullOperationsRequest",
     "ListPullOperationsRequestTypedDict",
-    "ListRulesRequest",
-    "ListRulesRequestTypedDict",
     "PathParamDataType",
     "RefreshCompanyDataRequest",
     "RefreshCompanyDataRequestTypedDict",
@@ -170,6 +166,8 @@ __all__ = [
     "RefreshDataTypeRequestTypedDict",
     "RemoveProductRequest",
     "RemoveProductRequestTypedDict",
+    "ReplaceCompanyRequest",
+    "ReplaceCompanyRequestTypedDict",
     "UnlinkConnectionRequest",
     "UnlinkConnectionRequestTypedDict",
     "UpdateCompanyRequest",

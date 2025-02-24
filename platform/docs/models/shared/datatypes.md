@@ -1,11 +1,52 @@
 # DataTypes
 
+Available data types
 
-## Fields
 
-| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `connection_id`                                                           | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | Unique identifier for a company's data connection.                        | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                      |
-| `data_type`                                                               | [Optional[shared.DataType]](../../models/shared/datatype.md)              | :heavy_minus_sign:                                                        | Available data types                                                      | invoices                                                                  |
-| `records_modified`                                                        | *Optional[bool]*                                                          | :heavy_minus_sign:                                                        | `True` if records have been created, updated or deleted in Codat's cache. | false                                                                     |
-| `status`                                                                  | [Optional[shared.Status]](../../models/shared/status.md)                  | :heavy_minus_sign:                                                        | The current status of the dataset.                                        |                                                                           |
+## Values
+
+| Name                             | Value                            |
+| -------------------------------- | -------------------------------- |
+| `ACCOUNT_TRANSACTIONS`           | accountTransactions              |
+| `BALANCE_SHEET`                  | balanceSheet                     |
+| `BANK_ACCOUNTS`                  | bankAccounts                     |
+| `BANK_TRANSACTIONS`              | bankTransactions                 |
+| `BILL_CREDIT_NOTES`              | billCreditNotes                  |
+| `BILL_PAYMENTS`                  | billPayments                     |
+| `BILLS`                          | bills                            |
+| `CASH_FLOW_STATEMENT`            | cashFlowStatement                |
+| `CHART_OF_ACCOUNTS`              | chartOfAccounts                  |
+| `COMPANY`                        | company                          |
+| `CREDIT_NOTES`                   | creditNotes                      |
+| `CUSTOMERS`                      | customers                        |
+| `DIRECT_COSTS`                   | directCosts                      |
+| `DIRECT_INCOMES`                 | directIncomes                    |
+| `INVOICES`                       | invoices                         |
+| `ITEM_RECEIPTS`                  | itemReceipts                     |
+| `ITEMS`                          | items                            |
+| `JOURNAL_ENTRIES`                | journalEntries                   |
+| `JOURNALS`                       | journals                         |
+| `PAYMENT_METHODS`                | paymentMethods                   |
+| `PAYMENTS`                       | payments                         |
+| `PROFIT_AND_LOSS`                | profitAndLoss                    |
+| `PURCHASE_ORDERS`                | purchaseOrders                   |
+| `SALES_ORDERS`                   | salesOrders                      |
+| `SUPPLIERS`                      | suppliers                        |
+| `TAX_RATES`                      | taxRates                         |
+| `TRACKING_CATEGORIES`            | trackingCategories               |
+| `TRANSFERS`                      | transfers                        |
+| `BANKING_ACCOUNT_BALANCES`       | banking-accountBalances          |
+| `BANKING_ACCOUNTS`               | banking-accounts                 |
+| `BANKING_TRANSACTION_CATEGORIES` | banking-transactionCategories    |
+| `BANKING_TRANSACTIONS`           | banking-transactions             |
+| `COMMERCE_COMPANY_INFO`          | commerce-companyInfo             |
+| `COMMERCE_CUSTOMERS`             | commerce-customers               |
+| `COMMERCE_DISPUTES`              | commerce-disputes                |
+| `COMMERCE_LOCATIONS`             | commerce-locations               |
+| `COMMERCE_ORDERS`                | commerce-orders                  |
+| `COMMERCE_PAYMENT_METHODS`       | commerce-paymentMethods          |
+| `COMMERCE_PAYMENTS`              | commerce-payments                |
+| `COMMERCE_PRODUCT_CATEGORIES`    | commerce-productCategories       |
+| `COMMERCE_PRODUCTS`              | commerce-products                |
+| `COMMERCE_TAX_COMPONENTS`        | commerce-taxComponents           |
+| `COMMERCE_TRANSACTIONS`          | commerce-transactions            |

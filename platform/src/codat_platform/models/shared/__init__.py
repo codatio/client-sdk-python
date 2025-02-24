@@ -6,22 +6,6 @@ from .branding import Branding, BrandingTypedDict
 from .brandingbutton import BrandingButton, BrandingButtonTypedDict
 from .brandingimage import BrandingImage, BrandingImageTypedDict
 from .brandinglogo import BrandingLogo, BrandingLogoTypedDict
-from .clientratelimitreachedwebhook import (
-    ClientRateLimitReachedWebhook,
-    ClientRateLimitReachedWebhookTypedDict,
-)
-from .clientratelimitreachedwebhookdata import (
-    ClientRateLimitReachedWebhookData,
-    ClientRateLimitReachedWebhookDataTypedDict,
-)
-from .clientratelimitresetwebhook import (
-    ClientRateLimitResetWebhook,
-    ClientRateLimitResetWebhookTypedDict,
-)
-from .clientratelimitresetwebhookdata import (
-    ClientRateLimitResetWebhookData,
-    ClientRateLimitResetWebhookDataTypedDict,
-)
 from .clientratelimitwebhook import (
     ClientRateLimitWebhook,
     ClientRateLimitWebhookTypedDict,
@@ -41,6 +25,7 @@ from .companyreference import (
     CompanyReferenceTypedDict,
 )
 from .companyrequestbody import CompanyRequestBody, CompanyRequestBodyTypedDict
+from .companyupdaterequest import CompanyUpdateRequest, CompanyUpdateRequestTypedDict
 from .companywebhook import CompanyWebhook, CompanyWebhookTypedDict
 from .connection import Connection, ConnectionTypedDict
 from .connectionmanagementaccesstoken import (
@@ -52,21 +37,12 @@ from .connectionmanagementallowedorigins import (
     ConnectionManagementAllowedOriginsTypedDict,
 )
 from .connections import Connections, ConnectionsTypedDict
-from .connectionstatuschangedwebhook import (
-    ConnectionStatusChangedWebhook,
-    ConnectionStatusChangedWebhookTypedDict,
-)
-from .connectionstatuschangedwebhookdata import (
-    ConnectionStatusChangedWebhookData,
-    ConnectionStatusChangedWebhookDataTypedDict,
-)
 from .connectionwebhook import ConnectionWebhook, ConnectionWebhookTypedDict
 from .connectionwebhookpayload import (
     ConnectionWebhookPayload,
     ConnectionWebhookPayloadTypedDict,
 )
 from .createapikey import CreateAPIKey, CreateAPIKeyTypedDict
-from .createrule import CreateRule, CreateRuleTypedDict
 from .customdatatypeconfiguration import (
     CustomDataTypeConfiguration,
     CustomDataTypeConfigurationTypedDict,
@@ -86,32 +62,11 @@ from .dataconnectionerror import (
     ErrorStatus,
 )
 from .dataconnectionstatus import DataConnectionStatus
-from .datasetdatachangedwebhook import (
-    DatasetDataChangedWebhook,
-    DatasetDataChangedWebhookData,
-    DatasetDataChangedWebhookDataTypedDict,
-    DatasetDataChangedWebhookTypedDict,
-)
-from .datasetstatuschangederrorwebhook import (
-    DatasetStatusChangedErrorWebhook,
-    DatasetStatusChangedErrorWebhookTypedDict,
-)
-from .datasetstatuschangederrorwebhookdata import (
-    DatasetStatusChangedErrorWebhookData,
-    DatasetStatusChangedErrorWebhookDataTypedDict,
-)
-from .datastatus import DataStatus, DataStatusDataTypes, DataStatusTypedDict
+from .datastatus import DataStatus, DataStatusTypedDict, DataTypes
 from .datastatuses import DataStatuses, DataStatusesTypedDict
-from .datasynccompletedwebhook import (
-    DataSyncCompletedWebhook,
-    DataSyncCompletedWebhookTypedDict,
-)
-from .datasynccompletedwebhookdata import (
-    DataSyncCompletedWebhookData,
-    DataSyncCompletedWebhookDataTypedDict,
-)
 from .datatype import DataType
 from .datatypefeature import DataTypeFeature, DataTypeFeatureTypedDict
+from .datatypereadsummary import DataTypeReadSummary, DataTypeReadSummaryTypedDict
 from .datatypewritewebhook import DataTypeWriteWebhook, DataTypeWriteWebhookTypedDict
 from .datatypewritewebhookpayload import (
     DataTypeWriteWebhookPayload,
@@ -131,10 +86,6 @@ from .imagereference import ImageReference, ImageReferenceTypedDict
 from .integration import Integration, IntegrationTypedDict
 from .integrations import Integrations, IntegrationsTypedDict
 from .links import Links, LinksTypedDict
-from .newcompanysynchronizedwebhook import (
-    NewCompanySynchronizedWebhook,
-    NewCompanySynchronizedWebhookTypedDict,
-)
 from .profile import Profile, ProfileTypedDict
 from .pulloperation import DatasetStatus, PullOperation, PullOperationTypedDict
 from .pulloperations import PullOperations, PullOperationsTypedDict
@@ -145,22 +96,6 @@ from .pushoperationchange import PushOperationChange, PushOperationChangeTypedDi
 from .pushoperationref import PushOperationRef, PushOperationRefTypedDict
 from .pushoperations import PushOperations, PushOperationsTypedDict
 from .pushoperationstatus import PushOperationStatus
-from .pushoperationstatuschangedwebhook import (
-    PushOperationStatusChangedWebhook,
-    PushOperationStatusChangedWebhookTypedDict,
-)
-from .pushoperationstatuschangedwebhookdata import (
-    PushOperationStatusChangedWebhookData,
-    PushOperationStatusChangedWebhookDataTypedDict,
-)
-from .pushoperationtimedoutwebhook import (
-    PushOperationTimedOutWebhook,
-    PushOperationTimedOutWebhookTypedDict,
-)
-from .pushoperationtimedoutwebhookdata import (
-    PushOperationTimedOutWebhookData,
-    PushOperationTimedOutWebhookDataTypedDict,
-)
 from .pushoption import PushOption, PushOptionTypedDict
 from .pushoptionchoice import PushOptionChoice, PushOptionChoiceTypedDict
 from .pushoptionproperty import PushOptionProperty, PushOptionPropertyTypedDict
@@ -168,8 +103,6 @@ from .pushoptiontype import PushOptionType
 from .pushvalidationinfo import PushValidationInfo, PushValidationInfoTypedDict
 from .readcompletedwebhook import ReadCompletedWebhook, ReadCompletedWebhookTypedDict
 from .readcompletedwebhookpayload import (
-    DataTypes,
-    DataTypesTypedDict,
     ReadCompletedWebhookPayload,
     ReadCompletedWebhookPayloadTypedDict,
 )
@@ -192,17 +125,15 @@ from .updateconnectionstatus import (
 )
 from .validation import Validation, ValidationTypedDict
 from .validationitem import ValidationItem, ValidationItemTypedDict
-from .webhook import Webhook, WebhookTypedDict
 from .webhookconsumer import WebhookConsumer, WebhookConsumerTypedDict
 from .webhookconsumerprototype import (
     WebhookConsumerPrototype,
     WebhookConsumerPrototypeTypedDict,
 )
 from .webhookconsumers import WebhookConsumers, WebhookConsumersTypedDict
-from .webhooknotifier import WebhookNotifier, WebhookNotifierTypedDict
-from .webhooks import Webhooks, WebhooksTypedDict
 from .writestatus import WriteStatus
 from .writetype import WriteType
+
 
 __all__ = [
     "APIKeyDetails",
@@ -217,14 +148,6 @@ __all__ = [
     "BrandingLogo",
     "BrandingLogoTypedDict",
     "BrandingTypedDict",
-    "ClientRateLimitReachedWebhook",
-    "ClientRateLimitReachedWebhookData",
-    "ClientRateLimitReachedWebhookDataTypedDict",
-    "ClientRateLimitReachedWebhookTypedDict",
-    "ClientRateLimitResetWebhook",
-    "ClientRateLimitResetWebhookData",
-    "ClientRateLimitResetWebhookDataTypedDict",
-    "ClientRateLimitResetWebhookTypedDict",
     "ClientRateLimitWebhook",
     "ClientRateLimitWebhookPayload",
     "ClientRateLimitWebhookPayloadTypedDict",
@@ -243,6 +166,8 @@ __all__ = [
     "CompanyRequestBody",
     "CompanyRequestBodyTypedDict",
     "CompanyTypedDict",
+    "CompanyUpdateRequest",
+    "CompanyUpdateRequestTypedDict",
     "CompanyWebhook",
     "CompanyWebhookTypedDict",
     "Connection",
@@ -250,10 +175,6 @@ __all__ = [
     "ConnectionManagementAccessTokenTypedDict",
     "ConnectionManagementAllowedOrigins",
     "ConnectionManagementAllowedOriginsTypedDict",
-    "ConnectionStatusChangedWebhook",
-    "ConnectionStatusChangedWebhookData",
-    "ConnectionStatusChangedWebhookDataTypedDict",
-    "ConnectionStatusChangedWebhookTypedDict",
     "ConnectionTypedDict",
     "ConnectionWebhook",
     "ConnectionWebhookPayload",
@@ -265,8 +186,6 @@ __all__ = [
     "ContentTypedDict",
     "CreateAPIKey",
     "CreateAPIKeyTypedDict",
-    "CreateRule",
-    "CreateRuleTypedDict",
     "CustomDataTypeConfiguration",
     "CustomDataTypeConfigurationTypedDict",
     "CustomDataTypeRecord",
@@ -277,17 +196,14 @@ __all__ = [
     "DataConnectionErrorTypedDict",
     "DataConnectionStatus",
     "DataStatus",
-    "DataStatusDataTypes",
     "DataStatusTypedDict",
     "DataStatuses",
     "DataStatusesTypedDict",
-    "DataSyncCompletedWebhook",
-    "DataSyncCompletedWebhookData",
-    "DataSyncCompletedWebhookDataTypedDict",
-    "DataSyncCompletedWebhookTypedDict",
     "DataType",
     "DataTypeFeature",
     "DataTypeFeatureTypedDict",
+    "DataTypeReadSummary",
+    "DataTypeReadSummaryTypedDict",
     "DataTypeWriteWebhook",
     "DataTypeWriteWebhookPayload",
     "DataTypeWriteWebhookPayloadTypedDict",
@@ -295,16 +211,7 @@ __all__ = [
     "DataTypeWriteWebhookRecordTypedDict",
     "DataTypeWriteWebhookTypedDict",
     "DataTypes",
-    "DataTypesTypedDict",
-    "DatasetDataChangedWebhook",
-    "DatasetDataChangedWebhookData",
-    "DatasetDataChangedWebhookDataTypedDict",
-    "DatasetDataChangedWebhookTypedDict",
     "DatasetStatus",
-    "DatasetStatusChangedErrorWebhook",
-    "DatasetStatusChangedErrorWebhookData",
-    "DatasetStatusChangedErrorWebhookDataTypedDict",
-    "DatasetStatusChangedErrorWebhookTypedDict",
     "ErrorMessage",
     "ErrorMessageTypedDict",
     "ErrorStatus",
@@ -326,8 +233,6 @@ __all__ = [
     "LinksTypedDict",
     "ModifiedDate",
     "ModifiedDateTypedDict",
-    "NewCompanySynchronizedWebhook",
-    "NewCompanySynchronizedWebhookTypedDict",
     "Profile",
     "ProfileTypedDict",
     "PullOperation",
@@ -343,14 +248,6 @@ __all__ = [
     "PushOperationRef",
     "PushOperationRefTypedDict",
     "PushOperationStatus",
-    "PushOperationStatusChangedWebhook",
-    "PushOperationStatusChangedWebhookData",
-    "PushOperationStatusChangedWebhookDataTypedDict",
-    "PushOperationStatusChangedWebhookTypedDict",
-    "PushOperationTimedOutWebhook",
-    "PushOperationTimedOutWebhookData",
-    "PushOperationTimedOutWebhookDataTypedDict",
-    "PushOperationTimedOutWebhookTypedDict",
     "PushOperationTypedDict",
     "PushOperations",
     "PushOperationsTypedDict",
@@ -388,18 +285,12 @@ __all__ = [
     "ValidationItem",
     "ValidationItemTypedDict",
     "ValidationTypedDict",
-    "Webhook",
     "WebhookConsumer",
     "WebhookConsumerPrototype",
     "WebhookConsumerPrototypeTypedDict",
     "WebhookConsumerTypedDict",
     "WebhookConsumers",
     "WebhookConsumersTypedDict",
-    "WebhookNotifier",
-    "WebhookNotifierTypedDict",
-    "WebhookTypedDict",
-    "Webhooks",
-    "WebhooksTypedDict",
     "WriteStatus",
     "WriteType",
 ]

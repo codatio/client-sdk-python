@@ -14,8 +14,6 @@ class ProfileTypedDict(TypedDict):
     r"""The name given to the instance."""
     redirect_url: str
     r"""The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB."""
-    alert_auth_header: NotRequired[str]
-    r"""Alert or webhooks authorization header."""
     api_key: NotRequired[str]
     r"""The API key for this Codat instance."""
     confirm_company_name: NotRequired[bool]
@@ -36,11 +34,6 @@ class Profile(BaseModel):
 
     redirect_url: Annotated[str, pydantic.Field(alias="redirectUrl")]
     r"""The redirect URL pasted on to the SMB once Codat's [Hosted Link](https://docs.codat.io/auth-flow/authorize-hosted-link) has been completed by the SMB."""
-
-    alert_auth_header: Annotated[
-        Optional[str], pydantic.Field(alias="alertAuthHeader")
-    ] = None
-    r"""Alert or webhooks authorization header."""
 
     api_key: Annotated[
         Optional[str],

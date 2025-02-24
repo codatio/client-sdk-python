@@ -2,43 +2,15 @@
 
 from __future__ import annotations
 from .companyreference import CompanyReference, CompanyReferenceTypedDict
-from .datatype import DataType
-from .status import Status
+from .datatypereadsummary import DataTypeReadSummary, DataTypeReadSummaryTypedDict
 from codat_platform.types import BaseModel
 import pydantic
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class DataTypesTypedDict(TypedDict):
-    connection_id: NotRequired[str]
-    r"""Unique identifier for a company's data connection."""
-    data_type: NotRequired[DataType]
-    r"""Available data types"""
-    records_modified: NotRequired[bool]
-    r"""`True` if records have been created, updated or deleted in Codat's cache."""
-    status: NotRequired[Status]
-    r"""The current status of the dataset."""
-
-
-class DataTypes(BaseModel):
-    connection_id: Annotated[Optional[str], pydantic.Field(alias="connectionId")] = None
-    r"""Unique identifier for a company's data connection."""
-
-    data_type: Annotated[Optional[DataType], pydantic.Field(alias="dataType")] = None
-    r"""Available data types"""
-
-    records_modified: Annotated[
-        Optional[bool], pydantic.Field(alias="recordsModified")
-    ] = None
-    r"""`True` if records have been created, updated or deleted in Codat's cache."""
-
-    status: Optional[Status] = None
-    r"""The current status of the dataset."""
-
-
 class ReadCompletedWebhookPayloadTypedDict(TypedDict):
-    data_types: NotRequired[List[DataTypesTypedDict]]
+    data_types: NotRequired[List[DataTypeReadSummaryTypedDict]]
     modified_from_date: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -65,7 +37,7 @@ class ReadCompletedWebhookPayloadTypedDict(TypedDict):
 
 class ReadCompletedWebhookPayload(BaseModel):
     data_types: Annotated[
-        Optional[List[DataTypes]], pydantic.Field(alias="dataTypes")
+        Optional[List[DataTypeReadSummary]], pydantic.Field(alias="dataTypes")
     ] = None
 
     modified_from_date: Annotated[

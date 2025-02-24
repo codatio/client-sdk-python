@@ -49,6 +49,7 @@ These end points cover creating and managing your companies, data connections, a
   * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Authentication](#authentication)
+  * [Resource Management](#resource-management)
   * [Debugging](#debugging)
   * [Support](#support)
 
@@ -56,6 +57,11 @@ These end points cover creating and managing your companies, data connections, a
 
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+> [!NOTE]
+> **Python version upgrade policy**
+>
+> Once a Python version reaches its [official end of life date](https://devguide.python.org/versions/), a 3-month grace period is provided for users to upgrade. Following this grace period, the minimum python version supported in the SDK will be updated.
 
 The SDK can be installed with either *pip* or *poetry* package managers.
 
@@ -74,6 +80,37 @@ pip install codat-platform
 ```bash
 poetry add codat-platform
 ```
+
+### Shell and script usage with `uv`
+
+You can use this SDK in a Python shell with [uv](https://docs.astral.sh/uv/) and the `uvx` command that comes with it like so:
+
+```shell
+uvx --from codat-platform python
+```
+
+It's also possible to write a standalone Python script without needing to set up a whole project like so:
+
+```python
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = [
+#     "codat-platform",
+# ]
+# ///
+
+from codat_platform import CodatPlatform
+
+sdk = CodatPlatform(
+  # SDK arguments
+)
+
+# Rest of script here...
+```
+
+Once that is saved to a file, you can run it with `uv run script.py` where
+`script.py` can be replaced with the actual file name.
 <!-- End SDK Installation [installation] -->
 
 ## Example Usage
@@ -95,26 +132,19 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 ```python
 # Synchronous Example
 from codat_platform import CodatPlatform
-from codat_platform.models import shared
 
-with CodatPlatform() as codat_platform:
+with CodatPlatform() as cp_client:
 
-    codat_platform.company_data_connection_status_changed(request=shared.ConnectionStatusChangedWebhook(
-        alert_id="a9367074-b5c3-42c4-9be4-be129f43577e",
-        client_id="bae71d36-ff47-420a-b4a6-f8c9ddf41140",
-        client_name="Bank of Dave",
-        company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-        data=shared.ConnectionStatusChangedWebhookData(
-            data_connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-            new_status=shared.DataConnectionStatus.LINKED,
-            old_status=shared.DataConnectionStatus.PENDING_AUTH,
-            platform_key="gbol",
-        ),
-        data_connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        message="Data connection for SandBox status changed from PendingAuth to Linked",
-        rule_id="70af3071-65d9-4ec3-b3cb-5283e8d55dac",
-        rule_type="DataConnectionStatusChanged",
-    ))
+    cp_client.client_rate_limit_reached(request={
+        "event_type": "client.rateLimit.reached",
+        "generated_date": "2024-09-01T00:00:00Z",
+        "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
+        "payload": {
+            "daily_quota": 12000,
+            "expiry_date": "2024-09-01T12:14:14Z",
+            "quota_remaining": 0,
+        },
+    })
 
     # Use the SDK ...
 ```
@@ -126,27 +156,20 @@ The same SDK client can also be used to make asychronous requests by importing a
 # Asynchronous Example
 import asyncio
 from codat_platform import CodatPlatform
-from codat_platform.models import shared
 
 async def main():
-    async with CodatPlatform() as codat_platform:
+    async with CodatPlatform() as cp_client:
 
-        await codat_platform.company_data_connection_status_changed_async(request=shared.ConnectionStatusChangedWebhook(
-            alert_id="a9367074-b5c3-42c4-9be4-be129f43577e",
-            client_id="bae71d36-ff47-420a-b4a6-f8c9ddf41140",
-            client_name="Bank of Dave",
-            company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-            data=shared.ConnectionStatusChangedWebhookData(
-                data_connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-                new_status=shared.DataConnectionStatus.LINKED,
-                old_status=shared.DataConnectionStatus.PENDING_AUTH,
-                platform_key="gbol",
-            ),
-            data_connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-            message="Data connection for SandBox status changed from PendingAuth to Linked",
-            rule_id="70af3071-65d9-4ec3-b3cb-5283e8d55dac",
-            rule_type="DataConnectionStatusChanged",
-        ))
+        await cp_client.client_rate_limit_reached_async(request={
+            "event_type": "client.rateLimit.reached",
+            "generated_date": "2024-09-01T00:00:00Z",
+            "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
+            "payload": {
+                "daily_quota": 12000,
+                "expiry_date": "2024-09-01T12:14:14Z",
+                "quota_remaining": 0,
+            },
+        })
 
         # Use the SDK ...
 
@@ -170,6 +193,7 @@ asyncio.run(main())
 * [get_access_token](docs/sdks/companies/README.md#get_access_token) - Get company access token
 * [list](docs/sdks/companies/README.md#list) - List companies
 * [remove_product](docs/sdks/companies/README.md#remove_product) - Remove product
+* [replace](docs/sdks/companies/README.md#replace) - Replace company
 * [update](docs/sdks/companies/README.md#update) - Update company
 
 ### [~~connection_management~~](docs/sdks/connectionmanagement/README.md)
@@ -185,10 +209,10 @@ asyncio.run(main())
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 * [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
 
-### [cors](docs/sdks/cors/README.md)
+### [~~cors~~](docs/sdks/cors/README.md)
 
-* [get](docs/sdks/cors/README.md#get) - Get CORS settings
-* [set](docs/sdks/cors/README.md#set) - Set CORS settings
+* [~~get~~](docs/sdks/cors/README.md#get) - Get CORS settings (old) :warning: **Deprecated** Use [get](docs/sdks/settings/README.md#get) instead.
+* [~~set~~](docs/sdks/cors/README.md#set) - Set CORS settings (old) :warning: **Deprecated** Use [set](docs/sdks/settings/README.md#set) instead.
 
 ### [custom_data_type](docs/sdks/customdatatype/README.md)
 
@@ -221,9 +245,11 @@ asyncio.run(main())
 
 * [create_api_key](docs/sdks/settings/README.md#create_api_key) - Create API key
 * [delete_api_key](docs/sdks/settings/README.md#delete_api_key) - Delete API key
+* [get](docs/sdks/settings/README.md#get) - Get CORS settings
 * [get_profile](docs/sdks/settings/README.md#get_profile) - Get profile
 * [get_sync_settings](docs/sdks/settings/README.md#get_sync_settings) - Get sync settings
 * [list_api_keys](docs/sdks/settings/README.md#list_api_keys) - List API keys
+* [set](docs/sdks/settings/README.md#set) - Set CORS settings
 * [update_profile](docs/sdks/settings/README.md#update_profile) - Update profile
 * [update_sync_settings](docs/sdks/settings/README.md#update_sync_settings) - Update all sync settings
 
@@ -234,11 +260,8 @@ asyncio.run(main())
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 
-* [~~create~~](docs/sdks/webhooks/README.md#create) - Create webhook (legacy) :warning: **Deprecated**
 * [create_consumer](docs/sdks/webhooks/README.md#create_consumer) - Create webhook consumer
 * [delete_consumer](docs/sdks/webhooks/README.md#delete_consumer) - Delete webhook consumer
-* [~~get~~](docs/sdks/webhooks/README.md#get) - Get webhook (legacy) :warning: **Deprecated**
-* [~~list~~](docs/sdks/webhooks/README.md#list) - List webhooks (legacy) :warning: **Deprecated**
 * [list_consumers](docs/sdks/webhooks/README.md#list_consumers) - List webhook consumers
 
 </details>
@@ -261,9 +284,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.create_api_key(request={
+    res = cp_client.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
@@ -286,9 +309,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.create_api_key(request={
+    res = cp_client.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
@@ -316,10 +339,11 @@ By default, an API error will raise a errors.SDKError exception, which has the f
 
 When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create_api_key_async` method may raise the following exceptions:
 
-| Error Type          | Status Code                            | Content Type     |
-| ------------------- | -------------------------------------- | ---------------- |
-| errors.ErrorMessage | 400, 401, 402, 403, 409, 429, 500, 503 | application/json |
-| errors.SDKError     | 4XX, 5XX                               | \*/\*            |
+| Error Type          | Status Code                  | Content Type     |
+| ------------------- | ---------------------------- | ---------------- |
+| errors.ErrorMessage | 400, 401, 402, 403, 409, 429 | application/json |
+| errors.ErrorMessage | 500, 503                     | application/json |
+| errors.SDKError     | 4XX, 5XX                     | \*/\*            |
 
 ### Example
 
@@ -331,11 +355,11 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
     res = None
     try:
 
-        res = codat_platform.settings.create_api_key(request={
+        res = cp_client.settings.create_api_key(request={
             "name": "azure-invoice-finance-processor",
         })
 
@@ -344,6 +368,9 @@ with CodatPlatform(
         # Handle response
         print(res)
 
+    except errors.ErrorMessage as e:
+        # handle e.data: errors.ErrorMessageData
+        raise(e)
     except errors.ErrorMessage as e:
         # handle e.data: errors.ErrorMessageData
         raise(e)
@@ -358,7 +385,7 @@ with CodatPlatform(
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+The default server can be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
@@ -368,9 +395,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.create_api_key(request={
+    res = cp_client.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
@@ -483,9 +510,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.create_api_key(request={
+    res = cp_client.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
@@ -496,6 +523,36 @@ with CodatPlatform(
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Resource Management [resource-management] -->
+## Resource Management
+
+The `CodatPlatform` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
+
+[context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
+
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+def main():
+    with CodatPlatform(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as cp_client:
+        # Rest of application here...
+
+
+# Or when using async:
+async def amain():
+    async with CodatPlatform(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as cp_client:
+        # Rest of application here...
+```
+<!-- End Resource Management [resource-management] -->
 
 <!-- Start Debugging [debug] -->
 ## Debugging
