@@ -6,9 +6,13 @@ from codat_platform._hooks import HookContext
 from codat_platform.models import errors, shared
 from codat_platform.types import BaseModel, OptionalNullable, UNSET
 from typing import Any, Mapping, Optional, Union, cast
+from typing_extensions import deprecated
 
 
 class Cors(BaseSDK):
+    @deprecated("""warning: ** DEPRECATED ** - The new [Get CORS settings](https://docs.codat.io/platform-api#/operations/get-cors-settings) endpoint replaces this endpoint and includes additional functionality.
+Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
+. Use get instead.""")
     def get(
         self,
         *,
@@ -17,13 +21,11 @@ class Cors(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
-        r"""Get CORS settings
+        r"""Get CORS settings (old)
 
         The *Get CORS settings* endpoint returns the allowed origins (i.e. your domains) you want to allow cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) with Codat.
 
-        Enabling CORS with Codat is required by our embeddable [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) to access Codat's API endpoints.
-
-        The embeddable [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) lets your customers control access to their data by allowing them to manage their existing connections.
+        Enabling CORS with Codat is required by our embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to access Codat's API endpoints.
 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -37,6 +39,8 @@ class Cors(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
         req = self._build_request(
             method="GET",
             path="/connectionManagement/corsSettings",
@@ -67,6 +71,7 @@ class Cors(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-connection-management-cors-settings",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -86,19 +91,25 @@ class Cors(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
             )
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -113,6 +124,9 @@ class Cors(BaseSDK):
             http_res,
         )
 
+    @deprecated("""warning: ** DEPRECATED ** - The new [Get CORS settings](https://docs.codat.io/platform-api#/operations/get-cors-settings) endpoint replaces this endpoint and includes additional functionality.
+Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
+. Use get instead.""")
     async def get_async(
         self,
         *,
@@ -121,13 +135,11 @@ class Cors(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
-        r"""Get CORS settings
+        r"""Get CORS settings (old)
 
         The *Get CORS settings* endpoint returns the allowed origins (i.e. your domains) you want to allow cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) with Codat.
 
-        Enabling CORS with Codat is required by our embeddable [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) to access Codat's API endpoints.
-
-        The embeddable [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) lets your customers control access to their data by allowing them to manage their existing connections.
+        Enabling CORS with Codat is required by our embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to access Codat's API endpoints.
 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -141,6 +153,8 @@ class Cors(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
         req = self._build_request_async(
             method="GET",
             path="/connectionManagement/corsSettings",
@@ -171,6 +185,7 @@ class Cors(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-connection-management-cors-settings",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -190,19 +205,25 @@ class Cors(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
             )
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -217,6 +238,9 @@ class Cors(BaseSDK):
             http_res,
         )
 
+    @deprecated("""warning: ** DEPRECATED ** - The new [Set CORS settings](https://docs.codat.io/platform-api#/operations/set-cors-settings) endpoint replaces this endpoint and includes additional functionality.
+Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
+. Use set instead.""")
     def set(
         self,
         *,
@@ -231,13 +255,11 @@ class Cors(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
-        r"""Set CORS settings
+        r"""Set CORS settings (old)
 
         The *Set CORS settings* endpoint allows you to register allowed origins (i.e. your domains) for use in cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)).
 
-        Enabling CORS with Codat is required by our embeddable [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) to access Codat's API endpoints.
-
-        The embeddable [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) lets your customers control access to their data by allowing them to manage their existing connections.
+        Enabling CORS with Codat is required by our embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to access Codat's API endpoints.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -252,6 +274,8 @@ class Cors(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -296,6 +320,7 @@ class Cors(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="set-connection-management-cors-settings",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -315,19 +340,25 @@ class Cors(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
             )
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -342,6 +373,9 @@ class Cors(BaseSDK):
             http_res,
         )
 
+    @deprecated("""warning: ** DEPRECATED ** - The new [Set CORS settings](https://docs.codat.io/platform-api#/operations/set-cors-settings) endpoint replaces this endpoint and includes additional functionality.
+Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
+. Use set instead.""")
     async def set_async(
         self,
         *,
@@ -356,13 +390,11 @@ class Cors(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
-        r"""Set CORS settings
+        r"""Set CORS settings (old)
 
         The *Set CORS settings* endpoint allows you to register allowed origins (i.e. your domains) for use in cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)).
 
-        Enabling CORS with Codat is required by our embeddable [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) to access Codat's API endpoints.
-
-        The embeddable [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) lets your customers control access to their data by allowing them to manage their existing connections.
+        Enabling CORS with Codat is required by our embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to access Codat's API endpoints.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -377,6 +409,8 @@ class Cors(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -421,6 +455,7 @@ class Cors(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="set-connection-management-cors-settings",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -440,19 +475,25 @@ class Cors(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
             )
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res

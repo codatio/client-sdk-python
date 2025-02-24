@@ -9,7 +9,7 @@ from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class DataStatusDataTypes(str, Enum):
+class DataTypes(str, Enum):
     r"""Available data types"""
 
     ACCOUNT_TRANSACTIONS = "accountTransactions"
@@ -62,7 +62,7 @@ class DataStatusTypedDict(TypedDict):
 
     current_status: Status
     r"""The current status of the dataset."""
-    data_type: DataStatusDataTypes
+    data_type: DataTypes
     r"""Available data types"""
     last_successful_sync: str
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -97,7 +97,7 @@ class DataStatus(BaseModel):
     current_status: Annotated[Status, pydantic.Field(alias="currentStatus")]
     r"""The current status of the dataset."""
 
-    data_type: Annotated[DataStatusDataTypes, pydantic.Field(alias="dataType")]
+    data_type: Annotated[DataTypes, pydantic.Field(alias="dataType")]
     r"""Available data types"""
 
     last_successful_sync: Annotated[str, pydantic.Field(alias="lastSuccessfulSync")]

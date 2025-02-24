@@ -29,9 +29,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    codat_platform.supplemental_data.configure(request={
+    cp_client.supplemental_data.configure(request={
         "data_type": operations.DataType.INVOICES,
         "platform_key": "gbol",
         "supplemental_data_configuration": {},
@@ -50,10 +50,11 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## get_configuration
 
@@ -71,9 +72,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.supplemental_data.get_configuration(request={
+    res = cp_client.supplemental_data.get_configuration(request={
         "data_type": operations.PathParamDataType.INVOICES,
         "platform_key": "gbol",
     })
@@ -98,7 +99,8 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

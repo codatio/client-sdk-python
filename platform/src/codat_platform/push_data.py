@@ -31,11 +31,6 @@ class PushData(BaseSDK):
 
         Codat tries not to limit users to pushing to a very limited number of standard categories, so we have implemented \"options\" endpoints, which allow us to expose to our clients the fields which are required to be pushed for a specific linked company, and the options which may be selected for each field.
 
-
-        > **Supported Integrations**
-        >
-        > Check out our [coverage explorer](https://knowledge.codat.io/) for integrations that support push (POST/PUT methods).
-
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -49,6 +44,8 @@ class PushData(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -86,6 +83,7 @@ class PushData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-create-update-model-options-by-data-type",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -105,17 +103,23 @@ class PushData(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -150,11 +154,6 @@ class PushData(BaseSDK):
 
         Codat tries not to limit users to pushing to a very limited number of standard categories, so we have implemented \"options\" endpoints, which allow us to expose to our clients the fields which are required to be pushed for a specific linked company, and the options which may be selected for each field.
 
-
-        > **Supported Integrations**
-        >
-        > Check out our [coverage explorer](https://knowledge.codat.io/) for integrations that support push (POST/PUT methods).
-
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -168,6 +167,8 @@ class PushData(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -205,6 +206,7 @@ class PushData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-create-update-model-options-by-data-type",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -224,17 +226,23 @@ class PushData(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -280,6 +288,8 @@ class PushData(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetPushOperationRequest)
@@ -315,6 +325,7 @@ class PushData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-push-operation",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -334,17 +345,23 @@ class PushData(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.PushOperation])
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -390,6 +407,8 @@ class PushData(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetPushOperationRequest)
@@ -425,6 +444,7 @@ class PushData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-push-operation",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -444,17 +464,23 @@ class PushData(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.PushOperation])
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -500,6 +526,8 @@ class PushData(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetCompanyPushHistoryRequest)
@@ -535,6 +563,7 @@ class PushData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-company-push-history",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -555,17 +584,23 @@ class PushData(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.PushOperations])
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -611,6 +646,8 @@ class PushData(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetCompanyPushHistoryRequest)
@@ -646,6 +683,7 @@ class PushData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-company-push-history",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -666,17 +704,23 @@ class PushData(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.PushOperations])
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res

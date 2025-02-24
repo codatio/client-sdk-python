@@ -1,0 +1,11 @@
+# DataTypeReadSummary
+
+
+## Fields
+
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `connection_id`                                                           | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | Unique identifier for a company's data connection.                        | 2e9d2c44-f675-40ba-8049-353bfcb5e171                                      |
+| `data_type`                                                               | [Optional[shared.DataType]](../../models/shared/datatype.md)              | :heavy_minus_sign:                                                        | Available data types                                                      | invoices                                                                  |
+| `records_modified`                                                        | *Optional[bool]*                                                          | :heavy_minus_sign:                                                        | `True` if records have been created, updated or deleted in Codat's cache. | false                                                                     |
+| `status`                                                                  | [Optional[shared.Status]](../../models/shared/status.md)                  | :heavy_minus_sign:                                                        | The current status of the dataset.                                        |                                                                           |

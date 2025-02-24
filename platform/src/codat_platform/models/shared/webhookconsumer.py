@@ -21,9 +21,7 @@ class WebhookConsumerTypedDict(TypedDict):
 
     """
 
-    company_id: NotRequired[Nullable[str]]
-    r"""Unique identifier of the company to indicate company-specific events. The associated webhook consumer will receive events only for the specified ID."""
-    company_tags: NotRequired[List[str]]
+    company_tags: NotRequired[Nullable[List[str]]]
     r"""Company tags provide an additional way to filter messages, independent of event types. Company tags are case-sensitive, and only messages from companies with matching tags will be sent to this endpoint. Use the format `tagKey:tagValue`."""
     disabled: NotRequired[Nullable[bool]]
     r"""Flag that enables or disables the endpoint from receiving events. Disabled when set to `true`."""
@@ -42,18 +40,9 @@ class WebhookConsumer(BaseModel):
 
     """
 
-    company_id: Annotated[
-        OptionalNullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.",
-            alias="companyId",
-        ),
-    ] = UNSET
-    r"""Unique identifier of the company to indicate company-specific events. The associated webhook consumer will receive events only for the specified ID."""
-
     company_tags: Annotated[
-        Optional[List[str]], pydantic.Field(alias="companyTags")
-    ] = None
+        OptionalNullable[List[str]], pydantic.Field(alias="companyTags")
+    ] = UNSET
     r"""Company tags provide an additional way to filter messages, independent of event types. Company tags are case-sensitive, and only messages from companies with matching tags will be sent to this endpoint. Use the format `tagKey:tagValue`."""
 
     disabled: OptionalNullable[bool] = False
@@ -72,15 +61,8 @@ class WebhookConsumer(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "companyId",
-            "companyTags",
-            "disabled",
-            "eventTypes",
-            "id",
-            "url",
-        ]
-        nullable_fields = ["companyId", "disabled"]
+        optional_fields = ["companyTags", "disabled", "eventTypes", "id", "url"]
+        nullable_fields = ["companyTags", "disabled"]
         null_default_fields = []
 
         serialized = handler(self)

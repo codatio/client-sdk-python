@@ -9,9 +9,11 @@ Manage company profile configuration, sync settings, and API keys.
 
 * [create_api_key](#create_api_key) - Create API key
 * [delete_api_key](#delete_api_key) - Delete API key
+* [get](#get) - Get CORS settings
 * [get_profile](#get_profile) - Get profile
 * [get_sync_settings](#get_sync_settings) - Get sync settings
 * [list_api_keys](#list_api_keys) - List API keys
+* [set](#set) - Set CORS settings
 * [update_profile](#update_profile) - Update profile
 * [update_sync_settings](#update_sync_settings) - Update all sync settings
 
@@ -39,9 +41,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.create_api_key(request={
+    res = cp_client.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
 
@@ -65,10 +67,11 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 409, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 409, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## delete_api_key
 
@@ -93,9 +96,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.delete_api_key(request={
+    res = cp_client.settings.delete_api_key(request={
         "api_key_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -119,10 +122,56 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+
+## get
+
+﻿The *Get CORS settings* endpoint returns the allowed origins (i.e. your domains) you want to allow cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) with Codat. 
+
+Enabling CORS with Codat is required by our embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to access Codat's API endpoints.
+
+### Example Usage
+
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.settings.get()
+
+    assert res is not None
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[shared.ConnectionManagementAllowedOrigins](../../models/shared/connectionmanagementallowedorigins.md)**
+
+### Errors
+
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## get_profile
 
@@ -138,9 +187,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.get_profile()
+    res = cp_client.settings.get_profile()
 
     assert res is not None
 
@@ -161,10 +210,11 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ErrorMessage          | 401, 402, 403, 429, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ErrorMessage | 401, 402, 403, 429  | application/json    |
+| errors.ErrorMessage | 500, 503            | application/json    |
+| errors.SDKError     | 4XX, 5XX            | \*/\*               |
 
 ## get_sync_settings
 
@@ -180,9 +230,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.get_sync_settings()
+    res = cp_client.settings.get_sync_settings()
 
     assert res is not None
 
@@ -203,10 +253,11 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ErrorMessage          | 401, 402, 403, 429, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ErrorMessage | 401, 402, 403, 429  | application/json    |
+| errors.ErrorMessage | 500, 503            | application/json    |
+| errors.SDKError     | 4XX, 5XX            | \*/\*               |
 
 ## list_api_keys
 
@@ -226,9 +277,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.list_api_keys()
+    res = cp_client.settings.list_api_keys()
 
     assert res is not None
 
@@ -249,10 +300,61 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ErrorMessage          | 401, 402, 403, 429, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ErrorMessage | 401, 402, 403, 429  | application/json    |
+| errors.ErrorMessage | 500, 503            | application/json    |
+| errors.SDKError     | 4XX, 5XX            | \*/\*               |
+
+## set
+
+﻿The *Set CORS settings* endpoint allows you to register allowed origins (i.e. your domains) for use in cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)).
+ 
+Enabling CORS with Codat is required by our embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to access Codat's API endpoints.
+
+### Example Usage
+
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.settings.set(request={
+        "allowed_origins": [
+            "https://www.bank-of-dave.com",
+        ],
+    })
+
+    assert res is not None
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                              | [shared.ConnectionManagementAllowedOrigins](../../models/shared/connectionmanagementallowedorigins.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `retries`                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                       | :heavy_minus_sign:                                                                                     | Configuration to override the default retry behavior of the client.                                    |
+
+### Response
+
+**[shared.ConnectionManagementAllowedOrigins](../../models/shared/connectionmanagementallowedorigins.md)**
+
+### Errors
+
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## update_profile
 
@@ -268,9 +370,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    res = codat_platform.settings.update_profile(request={
+    res = cp_client.settings.update_profile(request={
         "name": "Bob's Burgers",
         "redirect_url": "https://bobs-burgers.{countrySuffix}/{companyId}",
         "confirm_company_name": True,
@@ -302,10 +404,11 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ErrorMessage          | 401, 402, 403, 429, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ErrorMessage | 401, 402, 403, 429  | application/json    |
+| errors.ErrorMessage | 500, 503            | application/json    |
+| errors.SDKError     | 4XX, 5XX            | \*/\*               |
 
 ## update_sync_settings
 
@@ -321,9 +424,9 @@ with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_platform:
+) as cp_client:
 
-    codat_platform.settings.update_sync_settings(request={
+    cp_client.settings.update_sync_settings(request={
         "client_id": "c4907f05-7024-4fc0-bf55-4785be5c9671",
         "settings": [
             {
@@ -352,7 +455,8 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ErrorMessage          | 401, 402, 403, 429, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ErrorMessage | 401, 402, 403, 429  | application/json    |
+| errors.ErrorMessage | 500, 503            | application/json    |
+| errors.SDKError     | 4XX, 5XX            | \*/\*               |
