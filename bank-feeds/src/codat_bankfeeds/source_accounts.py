@@ -29,7 +29,7 @@ class SourceAccounts(BaseSDK):
         The _Create Source Account_ endpoint allows you to create a representation of a bank account within Codat's domain. The company can then map the source account to an existing or new target account in their accounting software.
 
         > ### Versioning
-        > If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+        > If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -44,6 +44,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.CreateSourceAccountRequest)
@@ -86,6 +88,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="create-source-account",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -106,7 +109,7 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[operations.CreateSourceAccountResponseBody]
@@ -114,11 +117,11 @@ class SourceAccounts(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -156,7 +159,7 @@ class SourceAccounts(BaseSDK):
         The _Create Source Account_ endpoint allows you to create a representation of a bank account within Codat's domain. The company can then map the source account to an existing or new target account in their accounting software.
 
         > ### Versioning
-        > If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+        > If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -171,6 +174,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.CreateSourceAccountRequest)
@@ -213,6 +218,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="create-source-account",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -233,7 +239,7 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[operations.CreateSourceAccountResponseBody]
@@ -241,11 +247,11 @@ class SourceAccounts(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -283,7 +289,7 @@ class SourceAccounts(BaseSDK):
         The _Batch create source accounts_ endpoint allows you to create multiple representations of your SMB's bank accounts within Codat's domain. The company can then map the source account to an existing or new target account in their accounting software.
 
         > ### Versioning
-        > If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+        > If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -298,6 +304,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -342,6 +350,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="create-batch-source-account",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -363,7 +372,7 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[List[operations.ResponseBody]]
@@ -376,16 +385,16 @@ class SourceAccounts(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["409", "4XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
             )
-        if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -418,7 +427,7 @@ class SourceAccounts(BaseSDK):
         The _Batch create source accounts_ endpoint allows you to create multiple representations of your SMB's bank accounts within Codat's domain. The company can then map the source account to an existing or new target account in their accounting software.
 
         > ### Versioning
-        > If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+        > If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -433,6 +442,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -477,6 +488,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="create-batch-source-account",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -498,7 +510,7 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[List[operations.ResponseBody]]
@@ -511,16 +523,16 @@ class SourceAccounts(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["409", "4XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
             )
-        if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -568,6 +580,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.DeleteSourceAccountRequest)
@@ -603,6 +617,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="delete-source-account",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -622,17 +637,17 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -685,6 +700,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.DeleteSourceAccountRequest)
@@ -720,6 +737,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="delete-source-account",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -739,17 +757,17 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -801,6 +819,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -838,6 +858,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="delete-bank-feed-credentials",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -857,17 +878,17 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -919,6 +940,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -956,6 +979,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="delete-bank-feed-credentials",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -975,17 +999,17 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -1041,6 +1065,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GenerateCredentialsRequest)
@@ -1083,6 +1109,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="generate-credentials",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1102,7 +1129,7 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[shared.BankAccountCredentials]
@@ -1110,11 +1137,11 @@ class SourceAccounts(BaseSDK):
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -1170,6 +1197,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GenerateCredentialsRequest)
@@ -1212,6 +1241,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="generate-credentials",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1231,7 +1261,7 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[shared.BankAccountCredentials]
@@ -1239,11 +1269,11 @@ class SourceAccounts(BaseSDK):
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -1283,7 +1313,7 @@ class SourceAccounts(BaseSDK):
         [Source accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) are the bank's bank account within Codat's domain from which transactions are synced into the accounting platform.
 
         > ### Versioning
-        > If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+        > If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1298,6 +1328,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ListSourceAccountsRequest)
@@ -1333,6 +1365,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="list-source-accounts",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1352,7 +1385,7 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[operations.ListSourceAccountsResponseBody]
@@ -1360,11 +1393,11 @@ class SourceAccounts(BaseSDK):
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -1404,7 +1437,7 @@ class SourceAccounts(BaseSDK):
         [Source accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) are the bank's bank account within Codat's domain from which transactions are synced into the accounting platform.
 
         > ### Versioning
-        > If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+        > If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1419,6 +1452,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ListSourceAccountsRequest)
@@ -1454,6 +1489,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="list-source-accounts",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1473,7 +1509,7 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[operations.ListSourceAccountsResponseBody]
@@ -1481,11 +1517,11 @@ class SourceAccounts(BaseSDK):
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -1542,6 +1578,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.UpdateSourceAccountRequest)
@@ -1584,6 +1622,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="update-source-account",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1604,17 +1643,17 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.SourceAccount])
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -1671,6 +1710,8 @@ class SourceAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.UpdateSourceAccountRequest)
@@ -1713,6 +1754,7 @@ class SourceAccounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="update-source-account",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1733,17 +1775,17 @@ class SourceAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.SourceAccount])
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(

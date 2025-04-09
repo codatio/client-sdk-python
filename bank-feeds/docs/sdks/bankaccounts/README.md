@@ -27,6 +27,7 @@ Required data may vary by integration. To see what data to post, first call [Get
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -34,12 +35,12 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.bank_accounts.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "bank_account_prototype": {
             "currency": "USD",
             "status": shared.BankAccountStatus.ACTIVE,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     assert res is not None
@@ -84,6 +85,7 @@ See the *response examples* for integration-specific indicative models.
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -137,6 +139,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -147,8 +150,6 @@ with CodatBankFeeds(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 

@@ -25,6 +25,7 @@ Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -32,10 +33,10 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.connections.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "request_body": {
             "platform_key": "gbol",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
     assert res is not None
@@ -74,6 +75,7 @@ This operation is not reversible. The end user would need to reauthorize a new d
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -114,6 +116,7 @@ with CodatBankFeeds(
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -162,6 +165,7 @@ with CodatBankFeeds(
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -171,8 +175,6 @@ with CodatBankFeeds(
     res = codat_bank_feeds.connections.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
@@ -212,6 +214,7 @@ with CodatBankFeeds(
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -219,11 +222,11 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.connections.unlink(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": {
             "status": shared.DataConnectionStatus.UNLINKED,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     assert res is not None

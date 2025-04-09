@@ -30,6 +30,7 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 from decimal import Decimal
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -37,9 +38,6 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.transactions.create(request={
-        "account_id": "9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2",
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "create_bank_transactions": {
             "account_id": "49cd5a42-b311-4750-9361-52e2ed1d4653",
             "transactions": [
@@ -78,7 +76,9 @@ with CodatBankFeeds(
                 },
             ],
         },
-        "allow_sync_on_push_complete": True,
+        "account_id": "9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     assert res is not None
@@ -122,6 +122,7 @@ See the *response examples* for integration-specific indicative models.
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -175,6 +176,7 @@ For bank feeds, your push operations will only relate to the `bankTransactions` 
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -226,6 +228,7 @@ For bank feeds, use this endpoint to view write operations related to the `bankT
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -235,8 +238,6 @@ with CodatBankFeeds(
     res = codat_bank_feeds.transactions.list_create_operations(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 

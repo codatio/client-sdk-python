@@ -30,6 +30,7 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -80,6 +81,7 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -123,6 +125,7 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -161,14 +164,16 @@ with CodatBankFeeds(
 
 ## get_access_token
 
-Use the _Get company access token_ endpoint to return an access token for the specified company ID to use in Codat's embedded UI products.
+Use the _Get company access token_ endpoint to return an access token for the specified company ID. The token is valid for one day. 
 
+The token is required by Codat's embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to verify the identity of the user and improve the reliability of data provided by them.
 
 ### Example Usage
 
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -232,6 +237,7 @@ For example, you can use the querying to filter companies tagged with a specific
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -240,8 +246,6 @@ with CodatBankFeeds(
 
     res = codat_bank_feeds.companies.list(request={
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
         "tags": "region=uk && team=invoice-finance",
     })
@@ -285,6 +289,7 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -292,10 +297,10 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.companies.replace(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
             "name": "New Name",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
     assert res is not None
@@ -338,6 +343,7 @@ A [company](https://docs.codat.io/bank-feeds-api#/schemas/Company) represents a 
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -345,12 +351,12 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.companies.update(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_update_request": {
             "tags": {
                 "refrence": "new reference",
             },
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
     assert res is not None

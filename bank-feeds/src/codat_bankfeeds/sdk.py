@@ -24,11 +24,11 @@ import weakref
 
 
 class CodatBankFeeds(BaseSDK):
-    r"""Bank Feeds API: Bank Feeds API enables your SMB users to set up bank feeds from accounts in your application to supported accounting software.
+    r"""Bank Feeds: Bank Feeds solution enables your SMB users to set up bank feeds from accounts in your application to supported accounting software.
 
     A bank feed is a connection between a source bank account in your application and a target bank account in a supported accounting software.
 
-    [Explore product](https://docs.codat.io/bank-feeds-api/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
+    [Explore solution](https://docs.codat.io/bank-feeds-api/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
 
     ---
     <!-- Start Codat Tags Table -->
@@ -87,15 +87,19 @@ class CodatBankFeeds(BaseSDK):
         :param retry_config: The retry configuration to use for all supported methods
         :param timeout_ms: Optional request timeout applied to each operation in milliseconds
         """
+        client_supplied = True
         if client is None:
             client = httpx.Client()
+            client_supplied = False
 
         assert issubclass(
             type(client), HttpClient
         ), "The provided client must implement the HttpClient protocol."
 
+        async_client_supplied = True
         if async_client is None:
             async_client = httpx.AsyncClient()
+            async_client_supplied = False
 
         if debug_logger is None:
             debug_logger = get_default_logger()
@@ -112,7 +116,9 @@ class CodatBankFeeds(BaseSDK):
             self,
             SDKConfiguration(
                 client=client,
+                client_supplied=client_supplied,
                 async_client=async_client,
+                async_client_supplied=async_client_supplied,
                 security=security,
                 server_url=server_url,
                 server_idx=server_idx,
@@ -126,7 +132,7 @@ class CodatBankFeeds(BaseSDK):
 
         current_server_url, *_ = self.sdk_configuration.get_server_details()
         server_url, self.sdk_configuration.client = hooks.sdk_init(
-            current_server_url, self.sdk_configuration.client
+            current_server_url, client
         )
         if current_server_url != server_url:
             self.sdk_configuration.server_url = server_url
@@ -139,7 +145,9 @@ class CodatBankFeeds(BaseSDK):
             close_clients,
             cast(ClientOwner, self.sdk_configuration),
             self.sdk_configuration.client,
+            self.sdk_configuration.client_supplied,
             self.sdk_configuration.async_client,
+            self.sdk_configuration.async_client_supplied,
         )
 
         self._init_sdks()
@@ -162,9 +170,17 @@ class CodatBankFeeds(BaseSDK):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        if self.sdk_configuration.client is not None:
+        if (
+            self.sdk_configuration.client is not None
+            and not self.sdk_configuration.client_supplied
+        ):
             self.sdk_configuration.client.close()
+        self.sdk_configuration.client = None
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
-        if self.sdk_configuration.async_client is not None:
+        if (
+            self.sdk_configuration.async_client is not None
+            and not self.sdk_configuration.async_client_supplied
+        ):
             await self.sdk_configuration.async_client.aclose()
+        self.sdk_configuration.async_client = None

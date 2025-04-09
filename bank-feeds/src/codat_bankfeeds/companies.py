@@ -44,6 +44,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, Optional[shared.CompanyRequestBody])
@@ -82,6 +84,7 @@ class Companies(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="create-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -101,17 +104,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Company])
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -165,6 +168,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, Optional[shared.CompanyRequestBody])
@@ -203,6 +208,7 @@ class Companies(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="create-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -222,17 +228,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Company])
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -285,6 +291,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.DeleteCompanyRequest)
@@ -320,6 +328,7 @@ class Companies(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="delete-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -339,17 +348,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -402,6 +411,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.DeleteCompanyRequest)
@@ -437,6 +448,7 @@ class Companies(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="delete-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -456,17 +468,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -519,6 +531,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetCompanyRequest)
@@ -554,6 +568,7 @@ class Companies(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -573,17 +588,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Company])
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -636,6 +651,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetCompanyRequest)
@@ -671,6 +688,7 @@ class Companies(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -690,17 +708,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Company])
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -735,8 +753,9 @@ class Companies(BaseSDK):
     ) -> Optional[shared.CompanyAccessToken]:
         r"""Get company access token
 
-        Use the _Get company access token_ endpoint to return an access token for the specified company ID to use in Codat's embedded UI products.
+        Use the _Get company access token_ endpoint to return an access token for the specified company ID. The token is valid for one day.
 
+        The token is required by Codat's embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to verify the identity of the user and improve the reliability of data provided by them.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -751,6 +770,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetCompanyAccessTokenRequest)
@@ -786,6 +807,7 @@ class Companies(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-company-access-token",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -805,7 +827,7 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[shared.CompanyAccessToken]
@@ -813,11 +835,11 @@ class Companies(BaseSDK):
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -852,8 +874,9 @@ class Companies(BaseSDK):
     ) -> Optional[shared.CompanyAccessToken]:
         r"""Get company access token
 
-        Use the _Get company access token_ endpoint to return an access token for the specified company ID to use in Codat's embedded UI products.
+        Use the _Get company access token_ endpoint to return an access token for the specified company ID. The token is valid for one day.
 
+        The token is required by Codat's embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to verify the identity of the user and improve the reliability of data provided by them.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -868,6 +891,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetCompanyAccessTokenRequest)
@@ -903,6 +928,7 @@ class Companies(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="get-company-access-token",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -922,7 +948,7 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
                 http_res.text, Optional[shared.CompanyAccessToken]
@@ -930,11 +956,11 @@ class Companies(BaseSDK):
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -999,6 +1025,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ListCompaniesRequest)
@@ -1034,6 +1062,7 @@ class Companies(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="list-companies",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1054,17 +1083,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Companies])
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -1129,6 +1158,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ListCompaniesRequest)
@@ -1164,6 +1195,7 @@ class Companies(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="list-companies",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1184,17 +1216,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Companies])
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -1246,6 +1278,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ReplaceCompanyRequest)
@@ -1288,6 +1322,7 @@ class Companies(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="replace-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1307,17 +1342,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Company])
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -1369,6 +1404,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ReplaceCompanyRequest)
@@ -1411,6 +1448,7 @@ class Companies(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="replace-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1430,17 +1468,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Company])
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
@@ -1493,6 +1531,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.UpdateCompanyRequest)
@@ -1535,6 +1575,7 @@ class Companies(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="update-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1554,17 +1595,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Company])
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.SDKError(
@@ -1617,6 +1658,8 @@ class Companies(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.UpdateCompanyRequest)
@@ -1659,6 +1702,7 @@ class Companies(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="update-company",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1678,17 +1722,17 @@ class Companies(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[shared.Company])
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
+            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
+            raise errors.ErrorMessage(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.SDKError(
