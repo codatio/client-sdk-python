@@ -7,11 +7,11 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Bank Feeds API: Bank Feeds API enables your SMB users to set up bank feeds from accounts in your application to supported accounting software.
+Bank Feeds: Bank Feeds solution enables your SMB users to set up bank feeds from accounts in your application to supported accounting software.
 
 A bank feed is a connection between a source bank account in your application and a target bank account in a supported accounting software.
 
-[Explore product](https://docs.codat.io/bank-feeds-api/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
+[Explore solution](https://docs.codat.io/bank-feeds-api/overview) | [See OpenAPI spec](https://github.com/codatio/oas)
 
 ---
 <!-- Start Codat Tags Table -->
@@ -75,6 +75,37 @@ pip install codat-bankfeeds
 ```bash
 poetry add codat-bankfeeds
 ```
+
+### Shell and script usage with `uv`
+
+You can use this SDK in a Python shell with [uv](https://docs.astral.sh/uv/) and the `uvx` command that comes with it like so:
+
+```shell
+uvx --from codat-bankfeeds python
+```
+
+It's also possible to write a standalone Python script without needing to set up a whole project like so:
+
+```python
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = [
+#     "codat-bankfeeds",
+# ]
+# ///
+
+from codat_bankfeeds import CodatBankFeeds
+
+sdk = CodatBankFeeds(
+  # SDK arguments
+)
+
+# Rest of script here...
+```
+
+Once that is saved to a file, you can run it with `uv run script.py` where
+`script.py` can be replaced with the actual file name.
 <!-- End SDK Installation [installation] -->
 
 ## Example Usage
@@ -99,6 +130,7 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 from decimal import Decimal
 
+
 with CodatBankFeeds() as codat_bank_feeds:
 
     codat_bank_feeds.bank_feeds_source_account_connected(request={
@@ -116,11 +148,11 @@ with CodatBankFeeds() as codat_bank_feeds:
                 "name": "Toft stores",
             },
             "source_account": {
-                "id": "acc-002",
                 "account_name": "account-081",
                 "account_number": "12345678",
                 "balance": Decimal("99.99"),
                 "currency": "GBP",
+                "id": "acc-002",
                 "modified_date": "2023-01-09T14:14:14.105Z",
                 "sort_code": "040004",
                 "status": shared.Status.PENDING,
@@ -142,6 +174,7 @@ from codat_bankfeeds.models import shared
 from decimal import Decimal
 
 async def main():
+
     async with CodatBankFeeds() as codat_bank_feeds:
 
         await codat_bank_feeds.bank_feeds_source_account_connected_async(request={
@@ -159,11 +192,11 @@ async def main():
                     "name": "Toft stores",
                 },
                 "source_account": {
-                    "id": "acc-002",
                     "account_name": "account-081",
                     "account_number": "12345678",
                     "balance": Decimal("99.99"),
                     "currency": "GBP",
+                    "id": "acc-002",
                     "modified_date": "2023-01-09T14:14:14.105Z",
                     "sort_code": "040004",
                     "status": shared.Status.PENDING,
@@ -264,6 +297,7 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -295,6 +329,7 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 from codat_bankfeeds.utils import BackoffStrategy, RetryConfig
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -318,6 +353,7 @@ If you'd like to override the default retry strategy for all operations that sup
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 from codat_bankfeeds.utils import BackoffStrategy, RetryConfig
+
 
 with CodatBankFeeds(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
@@ -368,6 +404,7 @@ When custom error responses are specified for an operation, the SDK may also rai
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import errors, shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -404,10 +441,11 @@ with CodatBankFeeds(
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+The default server can be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     server_url="https://api.codat.io",
@@ -529,6 +567,7 @@ You can set the security parameters through the `security` optional parameter wh
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -558,6 +597,7 @@ The `CodatBankFeeds` class implements the context manager protocol and registers
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 def main():
+
     with CodatBankFeeds(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -568,6 +608,7 @@ def main():
 
 # Or when using async:
 async def amain():
+
     async with CodatBankFeeds(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",

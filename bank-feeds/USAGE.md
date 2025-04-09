@@ -4,6 +4,7 @@
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -30,6 +31,7 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
 async def main():
+
     async with CodatBankFeeds(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",

@@ -53,7 +53,7 @@ class BankAccountsMetadata(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)
@@ -101,7 +101,7 @@ class BankAccountsSupplementalData(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)
@@ -361,7 +361,7 @@ class BankAccountsAccountingBankAccount(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)
@@ -390,7 +390,7 @@ class BankAccountsTypedDict(TypedDict):
     r"""Number of items to return in results array."""
     total_results: int
     r"""Total number of items."""
-    results: NotRequired[List[BankAccountsAccountingBankAccountTypedDict]]
+    results: NotRequired[List[Nullable[BankAccountsAccountingBankAccountTypedDict]]]
 
 
 class BankAccounts(BaseModel):
@@ -405,4 +405,4 @@ class BankAccounts(BaseModel):
     total_results: Annotated[int, pydantic.Field(alias="totalResults")]
     r"""Total number of items."""
 
-    results: Optional[List[BankAccountsAccountingBankAccount]] = None
+    results: Optional[List[Nullable[BankAccountsAccountingBankAccount]]] = None

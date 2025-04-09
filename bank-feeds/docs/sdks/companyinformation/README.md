@@ -13,13 +13,22 @@ Get detailed information about a company from the underlying accounting software
 
 Use the *Get company information* endpoint to return information about the company available from the underlying accounting software.
 
-
+### Supported Integrations
+| Integration           | Supported |
+|-----------------------|-----------|
+| Oracle NetSuite       | Yes       |
+| Xero                  | Yes       |
+| Exact                 | No        |
+| FreeAgent             | No        |
+| Sage                  | No        |
+| QuickBooks Online     | No        |
 
 ### Example Usage
 
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(

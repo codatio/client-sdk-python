@@ -19,6 +19,7 @@ Use the _Get last successful sync_ endpoint to obtain the status information for
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",

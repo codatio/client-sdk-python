@@ -20,7 +20,7 @@ Provide and manage lists of source bank accounts.
 The _Create Source Account_ endpoint allows you to create a representation of a bank account within Codat's domain. The company can then map the source account to an existing or new target account in their accounting software.
 
 > ### Versioning
-> If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+> If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
 ### Example Usage
 
@@ -29,6 +29,7 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 from decimal import Decimal
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -36,20 +37,20 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.source_accounts.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": {
+            "account_info": {
+                "account_open_date": "2022-10-23",
+            },
             "account_name": "<value>",
             "account_number": "<value>",
             "account_type": shared.AccountType.CREDIT_CARD,
             "balance": Decimal("4174.58"),
             "currency": "GBP",
             "id": "<id>",
-            "account_info": {
-                "account_open_date": "2022-10-23",
-            },
             "modified_date": "2022-10-23T00:00:00Z",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     assert res is not None
@@ -83,13 +84,14 @@ with CodatBankFeeds(
 The _Batch create source accounts_ endpoint allows you to create multiple representations of your SMB's bank accounts within Codat's domain. The company can then map the source account to an existing or new target account in their accounting software.
 
 > ### Versioning
-> If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+> If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
 ### Example Usage
 
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -98,20 +100,20 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.source_accounts.create_batch(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": [
             {
-                "id": "<id>",
                 "currency": "EUR",
+                "id": "<id>",
                 "modified_date": "2022-10-23T00:00:00Z",
             },
             {
-                "id": "<id>",
                 "currency": "USD",
+                "id": "<id>",
                 "modified_date": "2022-10-23T00:00:00Z",
             },
         ],
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     assert res is not None
@@ -152,6 +154,7 @@ Removing a source account will also remove any mapping between the source bank f
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -195,6 +198,7 @@ In cases where multiple credential sets have been generated, a single API call t
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -242,6 +246,7 @@ The old credentials will still be valid until the revoke credentials endpoint is
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -287,13 +292,14 @@ with CodatBankFeeds(
 [Source accounts](https://docs.codat.io/bank-feeds-api#/schemas/BankFeedAccount) are the bank's bank account within Codat's domain from which transactions are synced into the accounting platform.
 
 > ### Versioning
-> If you are integrating the Bank Feeds API with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
+> If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
 ### Example Usage
 
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
+
 
 with CodatBankFeeds(
     security=shared.Security(
@@ -350,6 +356,7 @@ from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
 from decimal import Decimal
 
+
 with CodatBankFeeds(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -357,20 +364,20 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.source_accounts.update(request={
-        "account_id": "7110701885",
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "source_account": {
-            "id": "acc-003",
             "account_name": "account-095",
             "account_number": "12345671",
             "account_type": "Credit",
             "balance": Decimal("0"),
             "currency": "USD",
+            "id": "acc-003",
             "modified_date": "2023-01-09T14:14:14.1057478Z",
             "sort_code": "123456",
             "status": shared.Status.PENDING,
         },
+        "account_id": "7110701885",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     assert res is not None
