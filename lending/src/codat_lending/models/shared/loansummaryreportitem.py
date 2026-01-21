@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 from .loansummaryrecordref import LoanSummaryRecordRef, LoanSummaryRecordRefTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import Optional
@@ -106,3 +107,29 @@ class LoanSummaryReportItem(BaseModel):
         pydantic.Field(alias="totalRepayments"),
     ] = None
     r"""The total loan repayments which includes capital plus any interest."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "balance",
+                "description",
+                "lender",
+                "recordRef",
+                "startDate",
+                "totalDrawdowns",
+                "totalRepayments",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

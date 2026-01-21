@@ -4,10 +4,11 @@ from __future__ import annotations
 from .accountref import AccountRef, AccountRefTypedDict
 from .sourceref import SourceRef, SourceRefTypedDict
 from .transactioncategory import TransactionCategory, TransactionCategoryTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import List, Optional
@@ -171,6 +172,36 @@ class CashFlowTransaction(BaseModel):
         Optional[TransactionCategory], pydantic.Field(alias="transactionCategory")
     ] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "accountRef",
+                "amount",
+                "counterpartyNames",
+                "currency",
+                "date",
+                "description",
+                "id",
+                "modifiedDate",
+                "platformName",
+                "sourceRef",
+                "transactionCategory",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class EnhancedCashFlowItemTypedDict(TypedDict):
     transactions: NotRequired[List[CashFlowTransactionTypedDict]]
@@ -180,3 +211,19 @@ class EnhancedCashFlowItemTypedDict(TypedDict):
 class EnhancedCashFlowItem(BaseModel):
     transactions: Optional[List[CashFlowTransaction]] = None
     r"""An array of transaction data."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["transactions"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

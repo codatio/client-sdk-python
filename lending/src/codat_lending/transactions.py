@@ -7,6 +7,7 @@ from codat_lending.codatlending_direct_costs import CodatLendingDirectCosts
 from codat_lending.codatlending_transfers import CodatLendingTransfers
 from codat_lending.journal_entries import JournalEntries
 from codat_lending.journals import Journals
+from typing import Optional
 
 
 class Transactions(BaseSDK):
@@ -16,14 +17,24 @@ class Transactions(BaseSDK):
     journal_entries: JournalEntries
     journals: Journals
 
-    def __init__(self, sdk_config: SDKConfiguration) -> None:
-        BaseSDK.__init__(self, sdk_config)
+    def __init__(
+        self, sdk_config: SDKConfiguration, parent_ref: Optional[object] = None
+    ) -> None:
+        BaseSDK.__init__(self, sdk_config, parent_ref=parent_ref)
         self.sdk_configuration = sdk_config
         self._init_sdks()
 
     def _init_sdks(self):
-        self.account_transactions = AccountTransactions(self.sdk_configuration)
-        self.direct_costs = CodatLendingDirectCosts(self.sdk_configuration)
-        self.transfers = CodatLendingTransfers(self.sdk_configuration)
-        self.journal_entries = JournalEntries(self.sdk_configuration)
-        self.journals = Journals(self.sdk_configuration)
+        self.account_transactions = AccountTransactions(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.direct_costs = CodatLendingDirectCosts(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.transfers = CodatLendingTransfers(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.journal_entries = JournalEntries(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.journals = Journals(self.sdk_configuration, parent_ref=self.parent_ref)

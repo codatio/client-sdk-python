@@ -5,8 +5,9 @@ from .accountingcustomerref import AccountingCustomerRef, AccountingCustomerRefT
 from .billedtotype import BilledToType
 from .projectref import ProjectRef, ProjectRefTypedDict
 from .trackingcategoryref import TrackingCategoryRef, TrackingCategoryRefTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -43,3 +44,19 @@ class AccountsPayableTracking(BaseModel):
     project_ref: Annotated[Optional[ProjectRef], pydantic.Field(alias="projectRef")] = (
         None
     )
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["customerRef", "projectRef"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

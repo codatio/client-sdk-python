@@ -7,10 +7,11 @@ from .orderlineitem import OrderLineItem, OrderLineItemTypedDict
 from .paymentref import PaymentRef, PaymentRefTypedDict
 from .servicecharge import ServiceCharge, ServiceChargeTypedDict
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, Nullable, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import List, Optional
@@ -80,7 +81,7 @@ class CommerceOrderTypedDict(TypedDict):
     order_line_items: NotRequired[List[OrderLineItemTypedDict]]
     order_number: NotRequired[str]
     r"""Friendly reference for the order in the commerce or point of sale platform."""
-    payments: NotRequired[List[PaymentRefTypedDict]]
+    payments: NotRequired[List[Nullable[PaymentRefTypedDict]]]
     service_charges: NotRequired[List[ServiceChargeTypedDict]]
     source_modified_date: NotRequired[str]
     supplemental_data: NotRequired[SupplementalDataTypedDict]
@@ -179,7 +180,7 @@ class CommerceOrder(BaseModel):
     order_number: Annotated[Optional[str], pydantic.Field(alias="orderNumber")] = None
     r"""Friendly reference for the order in the commerce or point of sale platform."""
 
-    payments: Optional[List[PaymentRef]] = None
+    payments: Optional[List[Nullable[PaymentRef]]] = None
 
     service_charges: Annotated[
         Optional[List[ServiceCharge]], pydantic.Field(alias="serviceCharges")
@@ -246,3 +247,40 @@ class CommerceOrder(BaseModel):
         pydantic.Field(alias="totalTaxAmount"),
     ] = None
     r"""Total amount of tax applied to the order."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "closedDate",
+                "country",
+                "createdDate",
+                "currency",
+                "customerRef",
+                "locationRef",
+                "modifiedDate",
+                "orderLineItems",
+                "orderNumber",
+                "payments",
+                "serviceCharges",
+                "sourceModifiedDate",
+                "supplementalData",
+                "totalAmount",
+                "totalDiscount",
+                "totalGratuity",
+                "totalRefund",
+                "totalTaxAmount",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

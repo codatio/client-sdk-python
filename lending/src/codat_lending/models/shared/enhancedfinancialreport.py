@@ -6,10 +6,11 @@ from .enhancedreportaccountcategory import (
     EnhancedReportAccountCategoryTypedDict,
 )
 from .enhancedreportinfo import EnhancedReportInfo, EnhancedReportInfoTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import List, Optional
@@ -87,6 +88,24 @@ class ReportItem(BaseModel):
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["accountCategory", "accountId", "accountName", "balance", "date"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class EnhancedFinancialReportTypedDict(TypedDict):
     report_info: NotRequired[EnhancedReportInfoTypedDict]
@@ -103,3 +122,19 @@ class EnhancedFinancialReport(BaseModel):
         Optional[List[ReportItem]], pydantic.Field(alias="reportItems")
     ] = None
     r"""An array of report items."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["reportInfo", "reportItems"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

@@ -8,6 +8,7 @@ from codat_lending.codatlending_financial_statements_accounts import (
     CodatLendingFinancialStatementsAccounts,
 )
 from codat_lending.profit_and_loss import ProfitAndLoss
+from typing import Optional
 
 
 class FinancialStatements(BaseSDK):
@@ -16,13 +17,21 @@ class FinancialStatements(BaseSDK):
     cash_flow: CashFlow
     profit_and_loss: ProfitAndLoss
 
-    def __init__(self, sdk_config: SDKConfiguration) -> None:
-        BaseSDK.__init__(self, sdk_config)
+    def __init__(
+        self, sdk_config: SDKConfiguration, parent_ref: Optional[object] = None
+    ) -> None:
+        BaseSDK.__init__(self, sdk_config, parent_ref=parent_ref)
         self.sdk_configuration = sdk_config
         self._init_sdks()
 
     def _init_sdks(self):
-        self.accounts = CodatLendingFinancialStatementsAccounts(self.sdk_configuration)
-        self.balance_sheet = BalanceSheet(self.sdk_configuration)
-        self.cash_flow = CashFlow(self.sdk_configuration)
-        self.profit_and_loss = ProfitAndLoss(self.sdk_configuration)
+        self.accounts = CodatLendingFinancialStatementsAccounts(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.balance_sheet = BalanceSheet(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.cash_flow = CashFlow(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.profit_and_loss = ProfitAndLoss(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )

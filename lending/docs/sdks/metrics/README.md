@@ -1,5 +1,4 @@
-# Metrics
-(*sales.metrics*)
+# Sales.Metrics
 
 ## Overview
 
@@ -43,26 +42,26 @@ The report data then combines multiple reporting dimensions and measures and out
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-commerce-customer-retention-metrics" method="get" path="/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/customerRetention" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.sales.metrics.get_customer_retention(request={
+    res = cl_client.sales.metrics.get_customer_retention(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "number_of_periods": 431272,
-        "period_length": 497588,
+        "number_of_periods": 292320,
+        "period_length": 555812,
         "period_unit": shared.PeriodUnit.DAY,
         "report_date": "29-09-2020",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -82,10 +81,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_lifetime_value
 
@@ -113,26 +113,26 @@ The report data then combines multiple reporting dimensions and measures and out
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-commerce-lifetime-value-metrics" method="get" path="/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/lifetimeValue" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.sales.metrics.get_lifetime_value(request={
+    res = cl_client.sales.metrics.get_lifetime_value(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "number_of_periods": 500610,
-        "period_length": 900865,
-        "period_unit": shared.PeriodUnit.YEAR,
+        "number_of_periods": 976344,
+        "period_length": 402759,
+        "period_unit": shared.PeriodUnit.DAY,
         "report_date": "29-09-2020",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -152,10 +152,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_revenue
 
@@ -184,26 +185,26 @@ The report data then combines multiple reporting dimensions and measures and out
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-commerce-revenue-metrics" method="get" path="/data/companies/{companyId}/connections/{connectionId}/assess/commerceMetrics/revenue" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.sales.metrics.get_revenue(request={
+    res = cl_client.sales.metrics.get_revenue(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "number_of_periods": 120092,
-        "period_length": 307462,
+        "number_of_periods": 459595,
+        "period_length": 44877,
         "period_unit": shared.PeriodUnit.YEAR,
         "report_date": "29-09-2020",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -223,7 +224,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

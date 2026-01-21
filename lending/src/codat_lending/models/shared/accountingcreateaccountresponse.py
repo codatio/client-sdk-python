@@ -126,31 +126,26 @@ class AccountingCreateAccountResponseValidDataTypeLinks(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["links", "property"]
-        nullable_fields = ["links", "property"]
-        null_default_fields = []
-
+        optional_fields = set(["links", "property"])
+        nullable_fields = set(["links", "property"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -355,56 +350,55 @@ class AccountingCreateAccountResponseAccountingAccount(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "currency",
-            "currentBalance",
-            "description",
-            "fullyQualifiedCategory",
-            "fullyQualifiedName",
-            "id",
-            "isBankAccount",
-            "metadata",
-            "modifiedDate",
-            "name",
-            "nominalCode",
-            "sourceModifiedDate",
-            "status",
-            "supplementalData",
-            "type",
-            "validDatatypeLinks",
-        ]
-        nullable_fields = [
-            "currentBalance",
-            "description",
-            "fullyQualifiedCategory",
-            "fullyQualifiedName",
-            "name",
-            "nominalCode",
-            "validDatatypeLinks",
-        ]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "currency",
+                "currentBalance",
+                "description",
+                "fullyQualifiedCategory",
+                "fullyQualifiedName",
+                "id",
+                "isBankAccount",
+                "metadata",
+                "modifiedDate",
+                "name",
+                "nominalCode",
+                "sourceModifiedDate",
+                "status",
+                "supplementalData",
+                "type",
+                "validDatatypeLinks",
+            ]
+        )
+        nullable_fields = set(
+            [
+                "currentBalance",
+                "description",
+                "fullyQualifiedCategory",
+                "fullyQualifiedName",
+                "name",
+                "nominalCode",
+                "validDatatypeLinks",
+            ]
+        )
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -573,45 +567,38 @@ class AccountingCreateAccountResponse(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "changes",
-            "completedOnUtc",
-            "data",
-            "dataType",
-            "errorMessage",
-            "timeoutInMinutes",
-            "timeoutInSeconds",
-            "validation",
-        ]
-        nullable_fields = [
-            "changes",
-            "data",
-            "errorMessage",
-            "timeoutInMinutes",
-            "timeoutInSeconds",
-        ]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "changes",
+                "completedOnUtc",
+                "data",
+                "dataType",
+                "errorMessage",
+                "timeoutInMinutes",
+                "timeoutInSeconds",
+                "validation",
+            ]
+        )
+        nullable_fields = set(
+            ["changes", "data", "errorMessage", "timeoutInMinutes", "timeoutInSeconds"]
+        )
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m

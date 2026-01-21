@@ -1,5 +1,4 @@
-# PullOperations
-(*manage_data.pull_operations*)
+# ManageData.PullOperations
 
 ## Overview
 
@@ -14,22 +13,22 @@ Retrieve information about a single dataset or pull operation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-pull-operation" method="get" path="/companies/{companyId}/data/history/{datasetId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.manage_data.pull_operations.get(request={
+    res = cl_client.manage_data.pull_operations.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "dataset_id": "b888f774-3e7c-4135-a18c-6b985523c4bc",
+        "dataset_id": "fa5f3e86-bd80-49b8-853c-5fbba4b201f5",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -49,10 +48,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## list
 
@@ -60,25 +60,23 @@ Gets the pull operation history (datasets) for a given company.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-pull-operations" method="get" path="/companies/{companyId}/data/history" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.manage_data.pull_operations.list(request={
+    res = cl_client.manage_data.pull_operations.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -98,7 +96,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

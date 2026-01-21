@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 from .dataintegritymatch import DataIntegrityMatch, DataIntegrityMatchTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import List, Optional
@@ -109,3 +110,30 @@ class DataIntegrityDetail(BaseModel):
 
     type: Optional[str] = None
     r"""The data type of the record."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "amount",
+                "connectionId",
+                "currency",
+                "date",
+                "description",
+                "id",
+                "matches",
+                "type",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

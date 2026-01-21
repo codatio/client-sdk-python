@@ -1,6 +1,6 @@
 # ReportOperationType
 
-The name of the report generated.
+The name of the generated report.
 
 
 ## Values
@@ -9,3 +9,4 @@ The name of the report generated.
 | ---------------------------- | ---------------------------- |
 | `CATEGORIZED_BANK_STATEMENT` | categorizedBankStatement     |
 | `CREDIT_MODEL`               | creditModel                  |
+| `SPEND_ANALYSIS`             | spendAnalysis                |

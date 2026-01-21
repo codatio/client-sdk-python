@@ -6,8 +6,9 @@ from .enhancedinvoicereportitem import (
     EnhancedInvoiceReportItemTypedDict,
 )
 from .reportinfo import ReportInfo, ReportInfoTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -16,8 +17,8 @@ class EnhancedInvoicesReportTypedDict(TypedDict):
     r"""The enhanced invoices report takes the key elements of the Invoices report verifying those marked as paid in the accounting software have actually been paid by matching with the bank statement."""
 
     report_info: NotRequired[ReportInfoTypedDict]
-    r"""Report additional information, which is specific to Lending API reports."""
-    report_items: NotRequired[List[EnhancedInvoiceReportItemTypedDict]]
+    r"""Report additional information, which is specific to Lending reports."""
+    report_items: NotRequired[List[Nullable[EnhancedInvoiceReportItemTypedDict]]]
 
 
 class EnhancedInvoicesReport(BaseModel):
@@ -26,8 +27,25 @@ class EnhancedInvoicesReport(BaseModel):
     report_info: Annotated[Optional[ReportInfo], pydantic.Field(alias="reportInfo")] = (
         None
     )
-    r"""Report additional information, which is specific to Lending API reports."""
+    r"""Report additional information, which is specific to Lending reports."""
 
     report_items: Annotated[
-        Optional[List[EnhancedInvoiceReportItem]], pydantic.Field(alias="reportItems")
+        Optional[List[Nullable[EnhancedInvoiceReportItem]]],
+        pydantic.Field(alias="reportItems"),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["reportInfo", "reportItems"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

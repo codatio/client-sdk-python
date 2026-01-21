@@ -13,6 +13,7 @@ from codat_lending.orders import Orders
 from codat_lending.payment_methods import PaymentMethods
 from codat_lending.product_categories import ProductCategories
 from codat_lending.products import Products
+from typing import Optional
 
 
 class Sales(BaseSDK):
@@ -28,20 +29,34 @@ class Sales(BaseSDK):
     metrics: Metrics
     reports: CodatLendingReports
 
-    def __init__(self, sdk_config: SDKConfiguration) -> None:
-        BaseSDK.__init__(self, sdk_config)
+    def __init__(
+        self, sdk_config: SDKConfiguration, parent_ref: Optional[object] = None
+    ) -> None:
+        BaseSDK.__init__(self, sdk_config, parent_ref=parent_ref)
         self.sdk_configuration = sdk_config
         self._init_sdks()
 
     def _init_sdks(self):
-        self.customers = CodatLendingCustomers(self.sdk_configuration)
-        self.disputes = Disputes(self.sdk_configuration)
-        self.locations = Locations(self.sdk_configuration)
-        self.orders = Orders(self.sdk_configuration)
-        self.payment_methods = PaymentMethods(self.sdk_configuration)
-        self.payments = CodatLendingSalesPayments(self.sdk_configuration)
-        self.product_categories = ProductCategories(self.sdk_configuration)
-        self.products = Products(self.sdk_configuration)
-        self.transactions = CodatLendingTransactions(self.sdk_configuration)
-        self.metrics = Metrics(self.sdk_configuration)
-        self.reports = CodatLendingReports(self.sdk_configuration)
+        self.customers = CodatLendingCustomers(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.disputes = Disputes(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.locations = Locations(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.orders = Orders(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.payment_methods = PaymentMethods(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.payments = CodatLendingSalesPayments(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.product_categories = ProductCategories(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.products = Products(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.transactions = CodatLendingTransactions(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.metrics = Metrics(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.reports = CodatLendingReports(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )

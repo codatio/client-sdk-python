@@ -1,5 +1,4 @@
-# CodatLendingPayments
-(*loan_writeback.payments*)
+# LoanWriteback.Payments
 
 ## Overview
 
@@ -14,28 +13,27 @@ The *Create payment* endpoint creates a new [payment](https://docs.codat.io/lend
 
 [Payments](https://docs.codat.io/lending-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
 
-**Integration-specific behaviour**
+**Integration-specific behavior**
 
 Required data may vary by integration. To see what data to post, first call [Get create payment model](https://docs.codat.io/lending-api#/operations/get-create-payments-model).
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="create-payment" method="post" path="/companies/{companyId}/connections/{connectionId}/push/payments" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
 from decimal import Decimal
 
+
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.loan_writeback.payments.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    res = cl_client.loan_writeback.payments.create(request={
         "accounting_payment": {
-            "date_": "2023-02-10T11:47:04.792Z",
             "account_ref": {
                 "id": "8000002E-1675267199",
                 "name": "Undeposited Funds",
@@ -43,36 +41,35 @@ with CodatLending(
             "currency": "USD",
             "currency_rate": Decimal("1"),
             "customer_ref": {
-                "id": "80000002-1674552702",
                 "company_name": "string",
+                "id": "80000002-1674552702",
             },
+            "date_": "2023-02-10T11:47:04.792Z",
             "lines": [
                 {
-                    "amount": Decimal("28"),
                     "allocated_on_date": "2023-02-11T11:47:04.792Z",
+                    "amount": Decimal("28"),
                     "links": [
                         {
-                            "type": shared.PaymentLinkType.INVOICE,
                             "amount": Decimal("-28"),
                             "currency_rate": Decimal("1"),
                             "id": "181-1676374586",
+                            "type": shared.PaymentLinkType.INVOICE,
                         },
                     ],
                 },
             ],
-            "modified_date": "2022-10-23T00:00:00Z",
             "note": "note 14/02 1147",
             "payment_method_ref": {
                 "id": "string",
                 "name": "string",
             },
             "reference": "ref 14/02 1147",
-            "source_modified_date": "2022-10-23T00:00:00Z",
             "total_amount": Decimal("28"),
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -92,10 +89,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_create_model
 
@@ -103,28 +101,28 @@ The *Get create payment model* endpoint returns the expected data for the reques
 
 [Payments](https://docs.codat.io/lending-api#/schemas/Payment) represent an allocation of money within any customer accounts receivable account.
 
-**Integration-specific behaviour**
+**Integration-specific behavior**
 
 See the *response examples* for integration-specific indicative models.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.loan_writeback.payments.get_create_model(request={
+    res = cl_client.loan_writeback.payments.get_create_model(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -144,7 +142,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

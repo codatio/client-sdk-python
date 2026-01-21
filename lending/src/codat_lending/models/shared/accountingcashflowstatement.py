@@ -4,8 +4,9 @@ from __future__ import annotations
 from .cashflowstatement import CashFlowStatement, CashFlowStatementTypedDict
 from .reportbasis import ReportBasis
 from .reportinput import ReportInput
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -24,7 +25,13 @@ class AccountingCashFlowStatementTypedDict(TypedDict):
     > Look at the cash flow statement to understand a company's ability to pay its bills. Although the balance sheet may show healthy earnings at a specific point in time, the cash flow statement allows you to see whether the company is meeting its financial commitments, such as paying creditors or its employees.
     """
 
-    currency: str
+    report_basis: ReportBasis
+    r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
+    report_input: ReportInput
+    r"""Accounting method used to prepare the cash flow statement."""
+    reports: List[CashFlowStatementTypedDict]
+    r"""Array of cash flow statements."""
+    currency: NotRequired[str]
     r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
 
     ## Unknown currencies
@@ -33,12 +40,6 @@ class AccountingCashFlowStatementTypedDict(TypedDict):
 
     There are only a very small number of edge cases where this currency code is returned by the Codat system.
     """
-    report_basis: ReportBasis
-    r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
-    report_input: ReportInput
-    r"""Accounting method used to prepare the cash flow statement."""
-    reports: List[CashFlowStatementTypedDict]
-    r"""Array of cash flow statements."""
     earliest_available_month: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -97,16 +98,6 @@ class AccountingCashFlowStatement(BaseModel):
     > Look at the cash flow statement to understand a company's ability to pay its bills. Although the balance sheet may show healthy earnings at a specific point in time, the cash flow statement allows you to see whether the company is meeting its financial commitments, such as paying creditors or its employees.
     """
 
-    currency: str
-    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
-
-    ## Unknown currencies
-
-    In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction.
-
-    There are only a very small number of edge cases where this currency code is returned by the Codat system.
-    """
-
     report_basis: Annotated[ReportBasis, pydantic.Field(alias="reportBasis")]
     r"""Accounting method used when aggregating the report data. In this case, `Cash`."""
 
@@ -115,6 +106,16 @@ class AccountingCashFlowStatement(BaseModel):
 
     reports: List[CashFlowStatement]
     r"""Array of cash flow statements."""
+
+    currency: Optional[str] = None
+    r"""The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.
+
+    ## Unknown currencies
+
+    In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction.
+
+    There are only a very small number of edge cases where this currency code is returned by the Codat system.
+    """
 
     earliest_available_month: Annotated[
         Optional[str], pydantic.Field(alias="earliestAvailableMonth")
@@ -163,3 +164,21 @@ class AccountingCashFlowStatement(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["currency", "earliestAvailableMonth", "mostRecentAvailableMonth"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
