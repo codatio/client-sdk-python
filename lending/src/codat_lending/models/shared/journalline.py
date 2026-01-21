@@ -46,31 +46,26 @@ class ContactReference(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["dataType"]
-        nullable_fields = ["dataType"]
-        null_default_fields = []
-
+        optional_fields = set(["dataType"])
+        nullable_fields = set(["dataType"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -90,31 +85,26 @@ class JournalLineTracking(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["recordRefs"]
-        nullable_fields = ["recordRefs"]
-        null_default_fields = []
-
+        optional_fields = set(["recordRefs"])
+        nullable_fields = set(["recordRefs"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -131,6 +121,10 @@ class JournalLineTypedDict(TypedDict):
     r"""Description of the journal line item."""
     tracking: NotRequired[JournalLineTrackingTypedDict]
     r"""List of record refs associated with the tracking information for the line (eg to a Tracking Category, or customer etc.)"""
+    transaction_amount: NotRequired[Decimal]
+    r"""The amount in the original transaction currency."""
+    transaction_currency: NotRequired[Nullable[str]]
+    r"""Currency of the original transaction."""
 
 
 class JournalLine(BaseModel):
@@ -162,38 +156,52 @@ class JournalLine(BaseModel):
     tracking: Optional[JournalLineTracking] = None
     r"""List of record refs associated with the tracking information for the line (eg to a Tracking Category, or customer etc.)"""
 
+    transaction_amount: Annotated[
+        Annotated[
+            Optional[Decimal],
+            BeforeValidator(validate_decimal),
+            PlainSerializer(serialize_decimal(False)),
+        ],
+        pydantic.Field(alias="transactionAmount"),
+    ] = None
+    r"""The amount in the original transaction currency."""
+
+    transaction_currency: Annotated[
+        OptionalNullable[str], pydantic.Field(alias="transactionCurrency")
+    ] = UNSET
+    r"""Currency of the original transaction."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "accountRef",
-            "contactRef",
-            "currency",
-            "description",
-            "tracking",
-        ]
-        nullable_fields = ["currency", "description"]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "accountRef",
+                "contactRef",
+                "currency",
+                "description",
+                "tracking",
+                "transactionAmount",
+                "transactionCurrency",
+            ]
+        )
+        nullable_fields = set(["currency", "description", "transactionCurrency"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m

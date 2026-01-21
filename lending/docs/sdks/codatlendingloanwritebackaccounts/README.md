@@ -1,5 +1,4 @@
-# CodatLendingLoanWritebackAccounts
-(*loan_writeback.accounts*)
+# LoanWriteback.Accounts
 
 ## Overview
 
@@ -14,40 +13,40 @@ The *Create account* endpoint creates a new [account](https://docs.codat.io/lend
 
 [Accounts](https://docs.codat.io/lending-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
-**Integration-specific behaviour**
+**Integration-specific behavior**
 
 Required data may vary by integration. To see what data to post, first call [Get create account model](https://docs.codat.io/lending-api#/operations/get-create-chartOfAccounts-model).
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="create-account" method="post" path="/companies/{companyId}/connections/{connectionId}/push/accounts" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
 from decimal import Decimal
 
+
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.loan_writeback.accounts.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    res = cl_client.loan_writeback.accounts.create(request={
         "account_prototype": {
-            "currency": "USD",
+            "currency": "GBP",
             "current_balance": Decimal("0"),
             "description": "Invoices the business has issued but has not yet collected payment on.",
             "fully_qualified_category": "Asset.Current",
-            "fully_qualified_name": "Fixed Asset",
+            "fully_qualified_name": "Cash On Hand",
             "name": "Accounts Receivable",
             "nominal_code": "610",
             "status": shared.AccountStatus.ACTIVE,
             "type": shared.AccountType.ASSET,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -67,10 +66,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_create_model
 
@@ -78,28 +78,28 @@ The *Get create account model* endpoint returns the expected data for the reques
 
 [Accounts](https://docs.codat.io/lending-api#/schemas/Account) are the categories a business uses to record accounting transactions.
 
-**Integration-specific behaviour**
+**Integration-specific behavior**
 
 See the *response examples* for integration-specific indicative models.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-create-chartOfAccounts-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/chartOfAccounts" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.loan_writeback.accounts.get_create_model(request={
+    res = cl_client.loan_writeback.accounts.get_create_model(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -119,7 +119,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

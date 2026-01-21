@@ -3,8 +3,9 @@
 from __future__ import annotations
 from .loansummaryreportinfo import LoanSummaryReportInfo, LoanSummaryReportInfoTypedDict
 from .loansummaryreportitem import LoanSummaryReportItem, LoanSummaryReportItemTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -24,3 +25,19 @@ class LoanSummary(BaseModel):
         Optional[List[LoanSummaryReportItem]], pydantic.Field(alias="reportItems")
     ] = None
     r"""Returns a summary of all loan activity for that integration type"""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["reportInfo", "reportItems"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

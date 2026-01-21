@@ -3,11 +3,12 @@
 from __future__ import annotations
 from .itemref import ItemRef, ItemRefTypedDict
 from .loanref import LoanRef, LoanRefTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 from enum import Enum
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import Optional
@@ -96,3 +97,21 @@ class ReportItems(BaseModel):
         Optional[LoanTransactionType], pydantic.Field(alias="loanTransactionType")
     ] = None
     r"""The type of loan transaction."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["amount", "date", "itemRef", "lender", "loanRef", "loanTransactionType"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

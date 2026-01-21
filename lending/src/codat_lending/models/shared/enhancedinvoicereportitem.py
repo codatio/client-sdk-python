@@ -4,10 +4,11 @@ from __future__ import annotations
 from .invoicestatus import InvoiceStatus
 from .lendingcustomerref import LendingCustomerRef, LendingCustomerRefTypedDict
 from .payment import Payment, PaymentTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import List, Optional
@@ -101,9 +102,9 @@ class EnhancedInvoiceReportItemTypedDict(TypedDict):
     r"""Current state of the invoice:
 
     - `Draft` - Invoice hasn't been submitted to the supplier. It may be in a pending state or is scheduled for future submission, for example by email.
-    - `Submitted` - Invoice is no longer a draft. It has been processed and, or, sent to the customer. In this state, it will impact the ledger. It also has no payments made against it (amountDue == totalAmount).
-    - `PartiallyPaid` - The balance paid against the invoice is positive, but less than the total invoice amount (0 < amountDue < totalAmount).
-    - `Paid` - Invoice is paid in full. This includes if the invoice has been credited or overpaid (amountDue == 0).
+    - `Submitted` - Invoice is no longer a draft. It has been processed and, or, sent to the customer. In this state, it will impact the ledger. It also has no payments made against it, meaning `amountDue` will usually equal `totalAmount` (unless tax is witheld).
+    - `PartiallyPaid` - The balance paid against the invoice is positive, but less than the total invoice amount, meaning `0 < amountDue < totalAmount`.
+    - `Paid` - Invoice is paid in full. This includes if the invoice has been credited or overpaid, meaning `amountDue == 0`.
     - `Void` - An invoice can become Void when it's deleted, refunded, written off, or cancelled. A voided invoice may still be PartiallyPaid, and so all outstanding amounts on voided invoices are removed from the accounts receivable account.
     """
     total_amount: NotRequired[Decimal]
@@ -221,9 +222,9 @@ class EnhancedInvoiceReportItem(BaseModel):
     r"""Current state of the invoice:
 
     - `Draft` - Invoice hasn't been submitted to the supplier. It may be in a pending state or is scheduled for future submission, for example by email.
-    - `Submitted` - Invoice is no longer a draft. It has been processed and, or, sent to the customer. In this state, it will impact the ledger. It also has no payments made against it (amountDue == totalAmount).
-    - `PartiallyPaid` - The balance paid against the invoice is positive, but less than the total invoice amount (0 < amountDue < totalAmount).
-    - `Paid` - Invoice is paid in full. This includes if the invoice has been credited or overpaid (amountDue == 0).
+    - `Submitted` - Invoice is no longer a draft. It has been processed and, or, sent to the customer. In this state, it will impact the ledger. It also has no payments made against it, meaning `amountDue` will usually equal `totalAmount` (unless tax is witheld).
+    - `PartiallyPaid` - The balance paid against the invoice is positive, but less than the total invoice amount, meaning `0 < amountDue < totalAmount`.
+    - `Paid` - Invoice is paid in full. This includes if the invoice has been credited or overpaid, meaning `amountDue == 0`.
     - `Void` - An invoice can become Void when it's deleted, refunded, written off, or cancelled. A voided invoice may still be PartiallyPaid, and so all outstanding amounts on voided invoices are removed from the accounts receivable account.
     """
 
@@ -236,3 +237,35 @@ class EnhancedInvoiceReportItem(BaseModel):
         pydantic.Field(alias="totalAmount"),
     ] = None
     r"""Invoice's total amount."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "amountDue",
+                "currency",
+                "customerRef",
+                "dueDate",
+                "id",
+                "invoiceNumber",
+                "issueDate",
+                "modifiedDate",
+                "paidOnDate",
+                "payments",
+                "sourceModifiedDate",
+                "status",
+                "totalAmount",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

@@ -13,6 +13,7 @@ from codat_lending.create_operations import CreateOperations
 from codat_lending.direct_costs import DirectCosts
 from codat_lending.source_accounts import SourceAccounts
 from codat_lending.transfers import Transfers
+from typing import Optional
 
 
 class LoanWriteback(BaseSDK):
@@ -26,18 +27,36 @@ class LoanWriteback(BaseSDK):
     transfers: Transfers
     create_operations: CreateOperations
 
-    def __init__(self, sdk_config: SDKConfiguration) -> None:
-        BaseSDK.__init__(self, sdk_config)
+    def __init__(
+        self, sdk_config: SDKConfiguration, parent_ref: Optional[object] = None
+    ) -> None:
+        BaseSDK.__init__(self, sdk_config, parent_ref=parent_ref)
         self.sdk_configuration = sdk_config
         self._init_sdks()
 
     def _init_sdks(self):
-        self.source_accounts = SourceAccounts(self.sdk_configuration)
-        self.bank_accounts = BankAccounts(self.sdk_configuration)
-        self.bank_transactions = BankTransactions(self.sdk_configuration)
-        self.accounts = CodatLendingLoanWritebackAccounts(self.sdk_configuration)
-        self.direct_costs = DirectCosts(self.sdk_configuration)
-        self.payments = CodatLendingPayments(self.sdk_configuration)
-        self.suppliers = CodatLendingSuppliers(self.sdk_configuration)
-        self.transfers = Transfers(self.sdk_configuration)
-        self.create_operations = CreateOperations(self.sdk_configuration)
+        self.source_accounts = SourceAccounts(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.bank_accounts = BankAccounts(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.bank_transactions = BankTransactions(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.accounts = CodatLendingLoanWritebackAccounts(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.direct_costs = DirectCosts(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.payments = CodatLendingPayments(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.suppliers = CodatLendingSuppliers(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.transfers = Transfers(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.create_operations = CreateOperations(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )

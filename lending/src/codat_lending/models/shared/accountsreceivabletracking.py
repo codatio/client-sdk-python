@@ -6,8 +6,9 @@ from .accountingrecordref import AccountingRecordRef, AccountingRecordRefTypedDi
 from .billedtotype1 import BilledToType1
 from .projectref import ProjectRef, ProjectRefTypedDict
 from .trackingcategoryref import TrackingCategoryRef, TrackingCategoryRefTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -57,3 +58,19 @@ class AccountsReceivableTracking(BaseModel):
 
     For example, if a journal entry is generated based on an invoice, this property allows you to connect the journal entry to the underlying invoice in our data model.
     """
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["customerRef", "projectRef", "recordRef"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

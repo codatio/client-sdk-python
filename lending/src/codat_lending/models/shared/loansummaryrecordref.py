@@ -3,8 +3,9 @@
 from __future__ import annotations
 from .loansummaryintegrationtype import LoanSummaryIntegrationType
 from .loansummaryrecordreftype import LoanSummaryRecordRefType
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -38,3 +39,21 @@ class LoanSummaryRecordRef(BaseModel):
         Optional[LoanSummaryRecordRefType], pydantic.Field(alias="recordRefType")
     ] = None
     r"""The datatype being referred to."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["dataConnectionId", "id", "integrationType", "recordRefType"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

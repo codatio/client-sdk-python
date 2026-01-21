@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 from .reportline import ReportLine, ReportLineTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import Optional
@@ -170,3 +171,29 @@ class ProfitAndLossReport(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "costOfSales",
+                "expenses",
+                "fromDate",
+                "income",
+                "otherExpenses",
+                "otherIncome",
+                "toDate",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

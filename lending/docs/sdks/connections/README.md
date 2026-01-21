@@ -1,5 +1,4 @@
 # Connections
-(*connections*)
 
 ## Overview
 
@@ -21,24 +20,24 @@ Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="create-connection" method="post" path="/companies/{companyId}/connections" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.connections.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    res = cl_client.connections.create(request={
         "request_body": {
             "platform_key": "gbol",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -58,10 +57,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## delete
 
@@ -70,17 +70,19 @@ This operation is not reversible. The end user would need to reauthorize a new d
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="delete-connection" method="delete" path="/companies/{companyId}/connections/{connectionId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    codat_lending.connections.delete(request={
+    cl_client.connections.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -98,10 +100,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## get
 
@@ -109,22 +112,22 @@ with CodatLending(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-connection" method="get" path="/companies/{companyId}/connections/{connectionId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.connections.get(request={
+    res = cl_client.connections.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -144,10 +147,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## list
 
@@ -155,25 +159,23 @@ with CodatLending(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-connections" method="get" path="/companies/{companyId}/connections" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.connections.list(request={
+    res = cl_client.connections.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -193,10 +195,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## unlink
 
@@ -204,25 +207,25 @@ with CodatLending(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="unlink-connection" method="patch" path="/companies/{companyId}/connections/{connectionId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.connections.unlink(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    res = cl_client.connections.unlink(request={
         "request_body": {
             "status": shared.DataConnectionStatus.UNLINKED,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -242,7 +245,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

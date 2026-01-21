@@ -3,8 +3,9 @@
 from __future__ import annotations
 from .commercecustomer import CommerceCustomer, CommerceCustomerTypedDict
 from .links import Links, LinksTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -17,7 +18,7 @@ class CommerceCustomersTypedDict(TypedDict):
     r"""Number of items to return in results array."""
     total_results: int
     r"""Total number of items."""
-    results: NotRequired[List[CommerceCustomerTypedDict]]
+    results: NotRequired[List[Nullable[CommerceCustomerTypedDict]]]
 
 
 class CommerceCustomers(BaseModel):
@@ -32,4 +33,20 @@ class CommerceCustomers(BaseModel):
     total_results: Annotated[int, pydantic.Field(alias="totalResults")]
     r"""Total number of items."""
 
-    results: Optional[List[CommerceCustomer]] = None
+    results: Optional[List[Nullable[CommerceCustomer]]] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["results"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

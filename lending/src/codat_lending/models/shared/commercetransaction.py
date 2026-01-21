@@ -4,10 +4,11 @@ from __future__ import annotations
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from .transactionsourceref import TransactionSourceRef, TransactionSourceRefTypedDict
 from .transactiontype import TransactionType
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import Optional
@@ -217,3 +218,32 @@ class CommerceTransaction(BaseModel):
     - `Refund` — Refunds to a customer's credit or debit card.
     - `Transfer` — Secure transfer of funds to the seller's bank account.
     """
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "createdDate",
+                "currency",
+                "modifiedDate",
+                "sourceCreatedDate",
+                "sourceModifiedDate",
+                "subType",
+                "supplementalData",
+                "totalAmount",
+                "transactionSourceRef",
+                "type",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

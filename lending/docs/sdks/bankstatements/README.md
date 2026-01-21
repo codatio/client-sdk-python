@@ -1,5 +1,4 @@
 # BankStatements
-(*bank_statements*)
 
 ## Overview
 
@@ -21,20 +20,22 @@ A session is a one-time process that enables you to upload bank statements to Co
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="end-bank-statement-upload-session" method="post" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/dataset/{datasetId}/endSession" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    codat_lending.bank_statements.end_upload_session(request={
+    cl_client.bank_statements.end_upload_session(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "dataset_id": "d8baee81-bb77-4d34-bcc3-0ef7526e0bde",
+        "dataset_id": "79c714cf-8643-4bc6-9b4e-8d1a971222b7",
     })
 
     # Use the SDK ...
@@ -50,10 +51,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_upload_configuration
 
@@ -65,22 +67,22 @@ When you use the [*Upload data*](https://docs.codat.io/lending-api#/operations/u
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-bank-statement-upload-configuration" method="get" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/configuration" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.bank_statements.get_upload_configuration(request={
+    res = cl_client.bank_statements.get_upload_configuration(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -100,10 +102,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## set_upload_configuration
 
@@ -115,26 +118,26 @@ Each data connection can only have one configuration for each company and extern
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="set-bank-statement-upload-configuration" method="post" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/configuration" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.bank_statements.set_upload_configuration(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    res = cl_client.bank_statements.set_upload_configuration(request={
         "bank_statement_upload_configuration": {
             "account_id": "abc123-ABC",
             "source": shared.Source.CODAT,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -154,10 +157,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## start_upload_session
 
@@ -169,22 +173,22 @@ You can only have one active session per data type at a time. You can complete o
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="start-bank-statement-upload-session" method="post" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/startSession" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.bank_statements.start_upload_session(request={
+    res = cl_client.bank_statements.start_upload_session(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -204,10 +208,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## upload_bank_statement_data
 
@@ -217,31 +222,54 @@ Make sure you created configuration for the account using the [*Set upload confi
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="upload-bank-statement-data" method="post" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/dataset/{datasetId}/upload" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    codat_lending.bank_statements.upload_bank_statement_data(request=operations.UploadBankStatementDataRequest(
+    cl_client.bank_statements.upload_bank_statement_data(request=operations.UploadBankStatementDataRequest(
         request_body={
-            "currency": "Philippine Peso",
-            "id": "<id>",
-            "identifiers": {
-                "type": "Investment",
-            },
-            "modifiedDate": "2022-10-23T00:00:00Z",
-            "name": "<value>",
-            "sourceModifiedDate": "2022-10-23T00:00:00Z",
-            "type": "Credit",
+            "results": [
+                {
+                    "id": "1703194f-7805-4da8-bac0-2ba5da4a4216",
+                    "name": "Business Current Account",
+                    "informalName": "Codat",
+                    "holder": "Codat Ltd",
+                    "type": "Debit",
+                    "balance": {
+                        "available": -459987.97,
+                        "current": -459964.9,
+                        "limit": 5000,
+                    },
+                    "identifiers": {
+                        "type": "Depository",
+                        "subtype": "checking",
+                        "number": "46762629",
+                        "bankCode": 9911,
+                        "iban": "GB29 LOYD 4773 2346 7626 29",
+                        "bic": "LOYDGB21006",
+                        "maskedAccountNumber": "LOYDGB21006",
+                    },
+                    "currency": "GBP",
+                    "institution": {
+                        "id": "lloyds-bank",
+                        "name": "Lloyds Bank",
+                    },
+                    "modifiedDate": "2022-05-23T16:32:50Z",
+                    "sourceModifiedDate": "2021-08-14T05:04:12",
+                },
+            ],
         },
         company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
         connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        dataset_id="e39deaca-29ee-4c0f-8c9b-4b58f7a91429",
+        dataset_id="f0095e43-88a7-4395-9f2c-1d5226e1c9e5",
     ))
 
     # Use the SDK ...
@@ -257,7 +285,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

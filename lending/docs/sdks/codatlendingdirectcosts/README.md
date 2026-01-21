@@ -1,5 +1,4 @@
-# CodatLendingDirectCosts
-(*transactions.direct_costs*)
+# Transactions.DirectCosts
 
 ## Overview
 
@@ -15,29 +14,29 @@
 
 The *Download direct cost attachment* endpoint downloads a specific attachment for a given `directCostId` and `attachmentId`.
 
-[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are business expenses that don't impact Accounts Payable.
 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="download-accounting-direct-cost-attachment" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}/download" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.transactions.direct_costs.download_attachment(request={
+    res = cl_client.transactions.direct_costs.download_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "direct_cost_id": "EILBDVJVNUAGVKRQ",
+        "direct_cost_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -57,39 +56,40 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## get
 
 The *Get direct cost* endpoint returns a single direct cost for a given directCostId.
 
-[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are business expenses that don't impact Accounts Payable.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-cost" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.transactions.direct_costs.get(request={
+    res = cl_client.transactions.direct_costs.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "direct_cost_id": "7110701885",
+        "direct_cost_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -109,37 +109,38 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 401, 402, 403, 404, 409, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_attachment
 
 The *Get direct cost attachment* endpoint returns a specific attachment for a given `directCostId` and `attachmentId`.
 
-[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are business expenses that don't impact Accounts Payable.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-cost-attachment" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments/{attachmentId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.transactions.direct_costs.get_attachment(request={
+    res = cl_client.transactions.direct_costs.get_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "direct_cost_id": "EILBDVJVNUAGVKRQ",
+        "direct_cost_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -159,42 +160,41 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## list
 
 The *List direct costs* endpoint returns a list of [direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) for a given company's connection.
 
-[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are business expenses that don't impact Accounts Payable.
 
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-costs" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directCosts" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.transactions.direct_costs.list(request={
+    res = cl_client.transactions.direct_costs.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -214,37 +214,38 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| errors.ErrorMessage                         | 400, 401, 402, 403, 404, 409, 429, 500, 503 | application/json                            |
-| errors.SDKError                             | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 404, 409, 429 | application/json                  |
+| errors.ErrorMessage               | 500, 503                          | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list_attachments
 
 The *List direct cost attachments* endpoint returns a list of attachments available to download for given `directCostId`.
 
-[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are purchases of items that are paid off at the point of the purchase.
+[Direct costs](https://docs.codat.io/lending-api#/schemas/DirectCost) are business expenses that don't impact Accounts Payable.
 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-cost-attachments" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directCosts/{directCostId}/attachments" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.transactions.direct_costs.list_attachments(request={
+    res = cl_client.transactions.direct_costs.list_attachments(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "direct_cost_id": "EILBDVJVNUAGVKRQ",
+        "direct_cost_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -264,7 +265,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 401, 402, 403, 404, 409, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

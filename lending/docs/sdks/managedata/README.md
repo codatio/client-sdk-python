@@ -1,5 +1,4 @@
 # ManageData
-(*manage_data*)
 
 ## Overview
 
@@ -13,21 +12,21 @@ Get the state of each data type for a company
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-data-status" method="get" path="/companies/{companyId}/dataStatus" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.manage_data.get_status(request={
+    res = cl_client.manage_data.get_status(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -47,7 +46,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

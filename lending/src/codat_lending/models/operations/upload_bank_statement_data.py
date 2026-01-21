@@ -6,7 +6,7 @@ from codat_lending.models.shared import (
     bankingtransactions as shared_bankingtransactions,
     path as shared_path,
 )
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import (
     FieldMetadata,
     PathParamMetadata,
@@ -14,6 +14,7 @@ from codat_lending.utils import (
     RequestMetadata,
 )
 import pydantic
+from pydantic import model_serializer
 from typing import Any, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
@@ -82,3 +83,19 @@ class UploadBankStatementDataRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = None
     r"""The endpoint path of the third-party banking service that the request body originates from. Only required if the source is not `codat`."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["path"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

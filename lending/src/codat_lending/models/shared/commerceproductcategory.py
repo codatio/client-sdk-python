@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 from .commercerecordref import CommerceRecordRef, CommerceRecordRefTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -45,3 +46,28 @@ class CommerceProductCategory(BaseModel):
     source_modified_date: Annotated[
         Optional[str], pydantic.Field(alias="sourceModifiedDate")
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "ancestorRefs",
+                "hasChildren",
+                "id",
+                "modifiedDate",
+                "name",
+                "sourceModifiedDate",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

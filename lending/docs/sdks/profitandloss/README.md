@@ -1,5 +1,4 @@
-# ProfitAndLoss
-(*financial_statements.profit_and_loss*)
+# FinancialStatements.ProfitAndLoss
 
 ## Overview
 
@@ -14,24 +13,24 @@ Gets the latest profit and loss for a company.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-accounting-profit-and-loss" method="get" path="/companies/{companyId}/data/financials/profitAndLoss" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.financial_statements.profit_and_loss.get(request={
+    res = cl_client.financial_statements.profit_and_loss.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "period_length": 4,
         "periods_to_compare": 20,
         "start_month": "2022-10-23T00:00:00Z",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -51,10 +50,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 401, 402, 403, 404, 409, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_categorized_accounts
 
@@ -64,22 +64,22 @@ Codat suggests a category for each account automatically, but you can [change it
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-categorized-profit-and-loss-statement" method="get" path="/companies/{companyId}/reports/enhancedProfitAndLoss/accounts" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.financial_statements.profit_and_loss.get_categorized_accounts(request={
+    res = cl_client.financial_statements.profit_and_loss.get_categorized_accounts(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_date": "29-09-2020",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -99,7 +99,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

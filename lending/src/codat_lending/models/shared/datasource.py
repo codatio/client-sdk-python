@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 from .accounts import Accounts, AccountsTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -15,3 +16,19 @@ class DataSourceTypedDict(TypedDict):
 class DataSource(BaseModel):
     accounts: Optional[List[Accounts]] = None
     r"""An array containing bank account data for each connected banking data source that have the following data types enabled: `banking-accounts`, `banking-transactions`."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["accounts"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

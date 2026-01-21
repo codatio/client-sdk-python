@@ -1,5 +1,4 @@
-# Reports
-(*accounts_receivable.reports*)
+# AccountsReceivable.Reports
 
 ## Overview
 
@@ -16,25 +15,25 @@ Returns aged creditors report for company that shows the total balance owed by a
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-import dateutil.parser
+from datetime import date
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.reports.get_aged_creditors(request={
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": dateutil.parser.parse("2022-12-31").date(),
+        "report_date": date.fromisoformat("2022-12-31"),
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -54,10 +53,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## get_aged_debtors
 
@@ -65,25 +65,25 @@ Returns aged debtors report for company that shows the total outstanding balance
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-import dateutil.parser
+from datetime import date
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.reports.get_aged_debtors(request={
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": dateutil.parser.parse("2022-12-31").date(),
+        "report_date": date.fromisoformat("2022-12-31"),
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -103,10 +103,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## is_aged_creditors_available
 
@@ -114,21 +115,21 @@ Indicates whether the aged creditor report is available for the company.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="is-aged-creditors-report-available" method="get" path="/companies/{companyId}/reports/agedCreditor/available" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.reports.is_aged_creditors_available(request={
+    res = cl_client.accounts_receivable.reports.is_aged_creditors_available(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -148,10 +149,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## is_aged_debtors_available
 
@@ -159,21 +161,21 @@ Indicates whether the aged debtors report is available for the company.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="is-aged-debtors-report-available" method="get" path="/companies/{companyId}/reports/agedDebtor/available" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.reports.is_aged_debtors_available(request={
+    res = cl_client.accounts_receivable.reports.is_aged_debtors_available(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -193,7 +195,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

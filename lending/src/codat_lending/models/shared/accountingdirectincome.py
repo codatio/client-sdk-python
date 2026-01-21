@@ -31,13 +31,12 @@ class AccountingDirectIncomeTypedDict(TypedDict):
 
     ## Overview
 
-    Direct incomes are incomes received directly from the business' operations. For example, cash sales of items to a customer, referral commissions, and service fee refunds are considered direct incomes.
+    Direct incomes are incomes received directly from the business' operations. For example, cash sales of items to a customer, referral commissions, and service fee refunds are considered direct incomes made at the point of sale.
 
     Direct incomes include:
 
     - Selling an item directly to a contact, and receiving payment at the point of the sale.
-    - Refunding an item in cash to a contact.
-    - Depositing money into a bank account.
+    - Refunding an item sold at the point of sale in cash to a contact.
 
     Direct incomes is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction).
 
@@ -138,13 +137,12 @@ class AccountingDirectIncome(BaseModel):
 
     ## Overview
 
-    Direct incomes are incomes received directly from the business' operations. For example, cash sales of items to a customer, referral commissions, and service fee refunds are considered direct incomes.
+    Direct incomes are incomes received directly from the business' operations. For example, cash sales of items to a customer, referral commissions, and service fee refunds are considered direct incomes made at the point of sale.
 
     Direct incomes include:
 
     - Selling an item directly to a contact, and receiving payment at the point of the sale.
-    - Refunding an item in cash to a contact.
-    - Depositing money into a bank account.
+    - Refunding an item sold at the point of sale in cash to a contact.
 
     Direct incomes is a child data type of [account transactions](https://docs.codat.io/lending-api#/schemas/AccountTransaction).
 
@@ -292,40 +290,37 @@ class AccountingDirectIncome(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "contactRef",
-            "currencyRate",
-            "id",
-            "metadata",
-            "modifiedDate",
-            "note",
-            "reference",
-            "sourceModifiedDate",
-            "supplementalData",
-        ]
-        nullable_fields = ["currencyRate", "note", "reference"]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "contactRef",
+                "currencyRate",
+                "id",
+                "metadata",
+                "modifiedDate",
+                "note",
+                "reference",
+                "sourceModifiedDate",
+                "supplementalData",
+            ]
+        )
+        nullable_fields = set(["currencyRate", "note", "reference"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m

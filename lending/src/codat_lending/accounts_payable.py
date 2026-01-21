@@ -6,6 +6,7 @@ from codat_lending.bill_credit_notes import BillCreditNotes
 from codat_lending.bill_payments import BillPayments
 from codat_lending.bills import Bills
 from codat_lending.suppliers import Suppliers
+from typing import Optional
 
 
 class AccountsPayable(BaseSDK):
@@ -14,13 +15,19 @@ class AccountsPayable(BaseSDK):
     bill_credit_notes: BillCreditNotes
     bill_payments: BillPayments
 
-    def __init__(self, sdk_config: SDKConfiguration) -> None:
-        BaseSDK.__init__(self, sdk_config)
+    def __init__(
+        self, sdk_config: SDKConfiguration, parent_ref: Optional[object] = None
+    ) -> None:
+        BaseSDK.__init__(self, sdk_config, parent_ref=parent_ref)
         self.sdk_configuration = sdk_config
         self._init_sdks()
 
     def _init_sdks(self):
-        self.bills = Bills(self.sdk_configuration)
-        self.suppliers = Suppliers(self.sdk_configuration)
-        self.bill_credit_notes = BillCreditNotes(self.sdk_configuration)
-        self.bill_payments = BillPayments(self.sdk_configuration)
+        self.bills = Bills(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.suppliers = Suppliers(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.bill_credit_notes = BillCreditNotes(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.bill_payments = BillPayments(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )

@@ -3,8 +3,9 @@
 from __future__ import annotations
 from .dataintegritybyamount import DataIntegrityByAmount, DataIntegrityByAmountTypedDict
 from .dataintegritybycount import DataIntegrityByCount, DataIntegrityByCountTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -27,3 +28,19 @@ class DataIntegritySummary(BaseModel):
 
     type: Optional[str] = None
     r"""The data type which the data type in the URL has been matched against. For example, if you've matched accountTransactions and banking-transactions, and you call this endpoint with accountTransactions in the URL, this property would be banking-transactions."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["byAmount", "byCount", "type"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

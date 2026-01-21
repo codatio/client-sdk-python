@@ -5,6 +5,7 @@ from codat_lending import utils
 from codat_lending._hooks import HookContext
 from codat_lending.models import errors, operations, shared
 from codat_lending.types import BaseModel, OptionalNullable, UNSET
+from codat_lending.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Mapping, Optional, Union, cast
 
 
@@ -20,7 +21,7 @@ class ProfitAndLoss(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.AccountingProfitAndLossReport]:
+    ) -> shared.AccountingProfitAndLossReport:
         r"""Get profit and loss
 
         Gets the latest profit and loss for a company.
@@ -38,6 +39,8 @@ class ProfitAndLoss(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -58,6 +61,7 @@ class ProfitAndLoss(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -75,8 +79,10 @@ class ProfitAndLoss(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-accounting-profit-and-loss",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -95,32 +101,27 @@ class ProfitAndLoss(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.AccountingProfitAndLossReport]
+            return unmarshal_json_response(
+                shared.AccountingProfitAndLossReport, http_res
             )
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "409", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "409", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def get_async(
         self,
@@ -133,7 +134,7 @@ class ProfitAndLoss(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.AccountingProfitAndLossReport]:
+    ) -> shared.AccountingProfitAndLossReport:
         r"""Get profit and loss
 
         Gets the latest profit and loss for a company.
@@ -151,6 +152,8 @@ class ProfitAndLoss(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -171,6 +174,7 @@ class ProfitAndLoss(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -188,8 +192,10 @@ class ProfitAndLoss(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-accounting-profit-and-loss",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -208,32 +214,27 @@ class ProfitAndLoss(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.AccountingProfitAndLossReport]
+            return unmarshal_json_response(
+                shared.AccountingProfitAndLossReport, http_res
             )
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "409", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "409", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def get_categorized_accounts(
         self,
@@ -246,7 +247,7 @@ class ProfitAndLoss(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.EnhancedFinancialReport]:
+    ) -> shared.EnhancedFinancialReport:
         r"""Get categorized profit and loss statement
 
         The *Get categorized profit and loss statement* endpoint returns a list of categorized accounts that appear on a company’s Profit and Loss statement. It also includes a balance as of the financial statement date.
@@ -266,6 +267,8 @@ class ProfitAndLoss(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -286,6 +289,7 @@ class ProfitAndLoss(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -303,8 +307,10 @@ class ProfitAndLoss(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-categorized-profit-and-loss-statement",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -323,32 +329,25 @@ class ProfitAndLoss(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.EnhancedFinancialReport]
-            )
+            return unmarshal_json_response(shared.EnhancedFinancialReport, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def get_categorized_accounts_async(
         self,
@@ -361,7 +360,7 @@ class ProfitAndLoss(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.EnhancedFinancialReport]:
+    ) -> shared.EnhancedFinancialReport:
         r"""Get categorized profit and loss statement
 
         The *Get categorized profit and loss statement* endpoint returns a list of categorized accounts that appear on a company’s Profit and Loss statement. It also includes a balance as of the financial statement date.
@@ -381,6 +380,8 @@ class ProfitAndLoss(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -401,6 +402,7 @@ class ProfitAndLoss(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -418,8 +420,10 @@ class ProfitAndLoss(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-categorized-profit-and-loss-statement",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -438,29 +442,22 @@ class ProfitAndLoss(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.EnhancedFinancialReport]
-            )
+            return unmarshal_json_response(shared.EnhancedFinancialReport, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)

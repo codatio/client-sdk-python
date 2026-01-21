@@ -1,5 +1,4 @@
-# Bills
-(*accounts_payable.bills*)
+# AccountsPayable.Bills
 
 ## Overview
 
@@ -19,24 +18,24 @@ The *Download bill attachment* endpoint downloads a specific attachment for a gi
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="download-accounting-bill-attachment" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}/download" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_payable.bills.download_attachment(request={
+    res = cl_client.accounts_payable.bills.download_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "bill_id": "EILBDVJVNUAGVKRQ",
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -56,10 +55,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## get
 
@@ -76,22 +76,22 @@ To access the `paymentAllocations` property, ensure that the `billPayments` data
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-accounting-bill" method="get" path="/companies/{companyId}/data/bills/{billId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_payable.bills.get(request={
-        "bill_id": "7110701885",
+    res = cl_client.accounts_payable.bills.get(request={
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -111,10 +111,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 401, 402, 403, 404, 409, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_attachment
 
@@ -124,24 +125,24 @@ The *Get bill attachment* endpoint returns a specific attachment for a given `bi
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-accounting-bill-attachment" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments/{attachmentId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_payable.bills.get_attachment(request={
+    res = cl_client.accounts_payable.bills.get_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "bill_id": "EILBDVJVNUAGVKRQ",
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -161,10 +162,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## list
 
@@ -181,25 +183,23 @@ To access the `paymentAllocations` property, ensure that the `billPayments` data
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-accounting-bills" method="get" path="/companies/{companyId}/data/bills" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_payable.bills.list(request={
+    res = cl_client.accounts_payable.bills.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -219,10 +219,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| errors.ErrorMessage                         | 400, 401, 402, 403, 404, 409, 429, 500, 503 | application/json                            |
-| errors.SDKError                             | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 404, 409, 429 | application/json                  |
+| errors.ErrorMessage               | 500, 503                          | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list_attachments
 
@@ -233,23 +234,23 @@ The *List bill attachments* endpoint returns a list of attachments available to 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-accounting-bill-attachments" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bills/{billId}/attachments" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_payable.bills.list_attachments(request={
-        "bill_id": "EILBDVJVNUAGVKRQ",
+    res = cl_client.accounts_payable.bills.list_attachments(request={
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -269,7 +270,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 401, 402, 403, 404, 409, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

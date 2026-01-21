@@ -3,8 +3,9 @@
 from __future__ import annotations
 from .profitandlossreport import ProfitAndLossReport, ProfitAndLossReportTypedDict
 from .reportbasis import ReportBasis
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -32,12 +33,12 @@ class AccountingProfitAndLossReportTypedDict(TypedDict):
     Our [Enhanced Financials](https://docs.codat.io/lending/features/financial-statements-overview) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
     """
 
-    currency: str
-    r"""Base currency of the company in which the profit and loss report is presented."""
     report_basis: ReportBasis
     r"""The basis of a report."""
     reports: List[ProfitAndLossReportTypedDict]
     r"""An array of profit and loss reports."""
+    currency: NotRequired[str]
+    r"""Base currency of the company in which the profit and loss report is presented."""
     earliest_available_month: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -105,14 +106,14 @@ class AccountingProfitAndLossReport(BaseModel):
     Our [Enhanced Financials](https://docs.codat.io/lending/features/financial-statements-overview) endpoints provide the same report under standardized headings, allowing you to pull it in the same format for all of your business customers.
     """
 
-    currency: str
-    r"""Base currency of the company in which the profit and loss report is presented."""
-
     report_basis: Annotated[ReportBasis, pydantic.Field(alias="reportBasis")]
     r"""The basis of a report."""
 
     reports: List[ProfitAndLossReport]
     r"""An array of profit and loss reports."""
+
+    currency: Optional[str] = None
+    r"""Base currency of the company in which the profit and loss report is presented."""
 
     earliest_available_month: Annotated[
         Optional[str], pydantic.Field(alias="earliestAvailableMonth")
@@ -161,3 +162,21 @@ class AccountingProfitAndLossReport(BaseModel):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["currency", "earliestAvailableMonth", "mostRecentAvailableMonth"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

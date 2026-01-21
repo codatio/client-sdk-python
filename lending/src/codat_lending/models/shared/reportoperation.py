@@ -24,14 +24,15 @@ class ReportOperationStatus(str, Enum):
 
 
 class ReportOperationType(str, Enum):
-    r"""The name of the report generated."""
+    r"""The name of the generated report."""
 
     CATEGORIZED_BANK_STATEMENT = "categorizedBankStatement"
     CREDIT_MODEL = "creditModel"
+    SPEND_ANALYSIS = "spendAnalysis"
 
 
 class ReportOperationTypedDict(TypedDict):
-    r"""Information about a report generation."""
+    r"""Information about report generation."""
 
     error_message: NotRequired[Nullable[str]]
     r"""A short message describing any errors that occurred while generating the report."""
@@ -61,7 +62,7 @@ class ReportOperationTypedDict(TypedDict):
     status: NotRequired[ReportOperationStatus]
     r"""The status of the report generation."""
     type: NotRequired[ReportOperationType]
-    r"""The name of the report generated."""
+    r"""The name of the generated report."""
     updated_date: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -86,7 +87,7 @@ class ReportOperationTypedDict(TypedDict):
 
 
 class ReportOperation(BaseModel):
-    r"""Information about a report generation."""
+    r"""Information about report generation."""
 
     error_message: Annotated[
         OptionalNullable[str], pydantic.Field(alias="errorMessage")
@@ -124,7 +125,7 @@ class ReportOperation(BaseModel):
     r"""The status of the report generation."""
 
     type: Optional[ReportOperationType] = None
-    r"""The name of the report generated."""
+    r"""The name of the generated report."""
 
     updated_date: Annotated[Optional[str], pydantic.Field(alias="updatedDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -150,37 +151,27 @@ class ReportOperation(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "errorMessage",
-            "id",
-            "requestedDate",
-            "status",
-            "type",
-            "updatedDate",
-        ]
-        nullable_fields = ["errorMessage"]
-        null_default_fields = []
-
+        optional_fields = set(
+            ["errorMessage", "id", "requestedDate", "status", "type", "updatedDate"]
+        )
+        nullable_fields = set(["errorMessage"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m

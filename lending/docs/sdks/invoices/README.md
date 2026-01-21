@@ -1,5 +1,4 @@
-# Invoices
-(*accounts_receivable.invoices*)
+# AccountsReceivable.Invoices
 
 ## Overview
 
@@ -22,24 +21,24 @@ The *Download invoice attachment* endpoint downloads a specific attachment for a
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="download-accounting-invoice-attachment" method="get" path="/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}/download" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.invoices.download_attachment(request={
+    res = cl_client.accounts_receivable.invoices.download_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "invoice_id": "EILBDVJVNUAGVKRQ",
+        "invoice_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -59,10 +58,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## download_pdf
 
@@ -70,22 +70,22 @@ with CodatLending(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="download-accounting-invoice-pdf" method="get" path="/companies/{companyId}/data/invoices/{invoiceId}/pdf" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.invoices.download_pdf(request={
+    res = cl_client.accounts_receivable.invoices.download_pdf(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "invoice_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -105,10 +105,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 401, 402, 403, 404, 409, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get
 
@@ -125,22 +126,22 @@ To access the `paymentAllocations` property, ensure that the `payments` data typ
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-accounting-invoice" method="get" path="/companies/{companyId}/data/invoices/{invoiceId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.invoices.get(request={
+    res = cl_client.accounts_receivable.invoices.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "invoice_id": "7110701885",
+        "invoice_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -160,10 +161,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 401, 402, 403, 404, 409, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_attachment
 
@@ -174,24 +176,24 @@ The *Get invoice attachment* endpoint returns a specific attachment for a given 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-accounting-invoice-attachment" method="get" path="/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments/{attachmentId}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.invoices.get_attachment(request={
+    res = cl_client.accounts_receivable.invoices.get_attachment(request={
         "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "invoice_id": "EILBDVJVNUAGVKRQ",
+        "invoice_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -211,10 +213,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## list
 
@@ -238,25 +241,23 @@ To access the `paymentAllocations` property, ensure that the `payments` data typ
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-accounting-invoices" method="get" path="/companies/{companyId}/data/invoices" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.invoices.list(request={
+    res = cl_client.accounts_receivable.invoices.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -276,10 +277,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| errors.ErrorMessage                         | 400, 401, 402, 403, 404, 409, 429, 500, 503 | application/json                            |
-| errors.SDKError                             | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 404, 409, 429 | application/json                  |
+| errors.ErrorMessage               | 500, 503                          | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## list_attachments
 
@@ -289,23 +291,23 @@ The *List invoice attachments* endpoint returns a list of attachments available 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-accounting-invoice-attachments" method="get" path="/companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}/attachments" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.invoices.list_attachments(request={
+    res = cl_client.accounts_receivable.invoices.list_attachments(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "invoice_id": "EILBDVJVNUAGVKRQ",
+        "invoice_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -325,10 +327,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 401, 402, 403, 404, 409, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 401, 402, 403, 404, 409, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## list_reconciled
 
@@ -336,24 +339,22 @@ Gets a list of invoices linked to the corresponding banking transaction
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-reconciled-invoices" method="get" path="/companies/{companyId}/reports/enhancedInvoices" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.accounts_receivable.invoices.list_reconciled(request={
+    res = cl_client.accounts_receivable.invoices.list_reconciled(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -373,7 +374,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

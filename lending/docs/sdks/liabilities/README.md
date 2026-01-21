@@ -1,5 +1,4 @@
 # Liabilities
-(*liabilities*)
 
 ## Overview
 
@@ -23,17 +22,19 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="generate-loan-summary" method="post" path="/companies/{companyId}/reports/liabilities/loans" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    codat_lending.liabilities.generate_loan_summary(request={
+    cl_client.liabilities.generate_loan_summary(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "source_type": operations.SourceType.ACCOUNTING,
     })
@@ -51,10 +52,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## generate_loan_transactions
 
@@ -67,19 +69,21 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="generate-loan-transactions" method="post" path="/companies/{companyId}/reports/liabilities/loans/transactions" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    codat_lending.liabilities.generate_loan_transactions(request={
+    cl_client.liabilities.generate_loan_transactions(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "source_type": operations.QueryParamSourceType.ACCOUNTING,
+        "source_type": operations.QueryParamSourceType.COMMERCE,
     })
 
     # Use the SDK ...
@@ -95,10 +99,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_loan_summary
 
@@ -111,22 +116,22 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-loan-summary" method="get" path="/companies/{companyId}/reports/liabilities/loans" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.liabilities.get_loan_summary(request={
+    res = cl_client.liabilities.get_loan_summary(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "source_type": operations.GetLoanSummaryQueryParamSourceType.BANKING,
+        "source_type": operations.GetLoanSummaryQueryParamSourceType.ACCOUNTING,
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -146,10 +151,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## list_loan_transactions
 
@@ -162,22 +168,22 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-loan-transactions" method="get" path="/companies/{companyId}/reports/liabilities/loans/transactions" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.liabilities.list_loan_transactions(request={
+    res = cl_client.liabilities.list_loan_transactions(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "source_type": operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -197,7 +203,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

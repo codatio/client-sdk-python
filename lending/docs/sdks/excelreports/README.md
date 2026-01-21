@@ -1,5 +1,4 @@
 # ExcelReports
-(*excel_reports*)
 
 ## Overview
 
@@ -21,22 +20,22 @@ You can [learn more](https://docs.codat.io/lending/features/excel-download-overv
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="download-excel-report" method="get" path="/data/companies/{companyId}/assess/excel/download" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.excel_reports.download(request={
+    res = cl_client.excel_reports.download(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "report_type": shared.ExcelReportTypes.ENHANCED_FINANCIALS,
+        "report_type": shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -56,10 +55,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## generate
 
@@ -83,22 +83,22 @@ In response, the endpoint returns the [status](https://docs.codat.io/lending-api
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="generate-excel-report" method="post" path="/data/companies/{companyId}/assess/excel" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.excel_reports.generate(request={
+    res = cl_client.excel_reports.generate(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "report_type": shared.ExcelReportTypes.ENHANCED_INVOICES,
+        "report_type": shared.ExcelReportTypes.ENHANCED_FINANCIALS,
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -118,10 +118,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get_status
 
@@ -133,22 +134,22 @@ When the report generation completes successfully, the `inProgress` property wil
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-excel-report-generation-status" method="get" path="/data/companies/{companyId}/assess/excel" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.excel_reports.get_status(request={
+    res = cl_client.excel_reports.get_status(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "report_type": shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -168,7 +169,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

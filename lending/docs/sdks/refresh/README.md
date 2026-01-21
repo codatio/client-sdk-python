@@ -1,5 +1,4 @@
-# Refresh
-(*manage_data.refresh*)
+# ManageData.Refresh
 
 ## Overview
 
@@ -18,17 +17,19 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="refresh-all-data-types" method="post" path="/companies/{companyId}/data/all" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    codat_lending.manage_data.refresh.all_data_types(request={
+    cl_client.manage_data.refresh.all_data_types(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -45,10 +46,11 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## data_type
 
@@ -58,22 +60,22 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="refresh-data-type" method="post" path="/companies/{companyId}/data/queue/{dataType}" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
+
 
 with CodatLending(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
-) as codat_lending:
+) as cl_client:
 
-    res = codat_lending.manage_data.refresh.data_type(request={
+    res = cl_client.manage_data.refresh.data_type(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "data_type": shared.SchemaDataType.INVOICES,
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -93,7 +95,8 @@ with CodatLending(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

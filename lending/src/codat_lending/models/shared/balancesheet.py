@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 from .reportline import ReportLine, ReportLineTypedDict
-from codat_lending.types import BaseModel
+from codat_lending.types import BaseModel, UNSET_SENTINEL
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
 from typing import Optional
@@ -79,3 +80,19 @@ class BalanceSheet(BaseModel):
     equity: Optional[ReportLine] = None
 
     liabilities: Optional[ReportLine] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["assets", "date", "equity", "liabilities"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
