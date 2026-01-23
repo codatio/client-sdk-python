@@ -1,5 +1,4 @@
 # Companies
-(*companies*)
 
 ## Overview
 
@@ -26,6 +25,7 @@ If forbidden characters (see `name` pattern) are present in the request, a compa
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -40,8 +40,6 @@ with CodatBankFeeds(
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -77,6 +75,7 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="delete-company" method="delete" path="/companies/{companyId}" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -121,6 +120,7 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-company" method="get" path="/companies/{companyId}" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -135,8 +135,6 @@ with CodatBankFeeds(
     res = codat_bank_feeds.companies.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -170,6 +168,7 @@ The token is required by Codat's embeddable UIs (such as [Connections SDK](https
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-company-access-token" method="get" path="/companies/{companyId}/accessToken" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -184,8 +183,6 @@ with CodatBankFeeds(
     res = codat_bank_feeds.companies.get_access_token(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -233,6 +230,7 @@ For example, you can use the querying to filter companies tagged with a specific
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-companies" method="get" path="/companies" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -249,8 +247,6 @@ with CodatBankFeeds(
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
         "tags": "region=uk && team=invoice-finance",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -285,6 +281,7 @@ Each company can have multiple [connections](https://docs.codat.io/bank-feeds-ap
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="replace-company" method="put" path="/companies/{companyId}" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -302,8 +299,6 @@ with CodatBankFeeds(
         },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -339,6 +334,7 @@ A [company](https://docs.codat.io/bank-feeds-api#/schemas/Company) represents a 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="update-company" method="patch" path="/companies/{companyId}" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -358,8 +354,6 @@ with CodatBankFeeds(
         },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)

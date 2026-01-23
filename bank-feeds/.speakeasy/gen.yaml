@@ -3,24 +3,42 @@ generation:
   sdkClassName: CodatBankFeeds
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   fixes:
     nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
     securityFeb2025: false
+    sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
+  persistentEdits: {}
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
   telemetryEnabled: true
 python:
-  version: 11.1.0
+  version: 11.2.0
   additionalDependencies:
     dev: {}
     main: {}
+  allowedRedefinedBuiltins:
+    - id
+    - object
+  asyncMode: both
   author: Codat
   authors:
     - Speakeasy
+  baseErrorName: CodatBankFeedsError
   clientServerStatusCodesAsErrors: true
+  constFieldCasing: upper
   defaultErrorName: SDKError
   description: Set up bank feeds from accounts in your application to supported accounting software.
   enableCustomCodeRegions: false
@@ -38,11 +56,20 @@ python:
       operations: models/operations
       shared: models/shared
       webhooks: models/webhooks
+  inferUnionDiscriminators: true
   inputModelSuffix: input
+  license: ""
   maxMethodParams: 0
   methodArguments: infer-optional-args
+  moduleName: ""
+  multipartArrayFormat: legacy
   outputModelSuffix: output
+  packageManager: poetry
   packageName: codat-bankfeeds
+  preApplyUnionDiscriminators: false
+  pytestFilterWarnings: []
   pytestTimeout: 0
   responseFormat: flat
+  sseFlatResponse: false
   templateVersion: v2
+  useAsyncHooks: false

@@ -58,7 +58,15 @@ A bank feed is a connection between a source bank account in your application an
 >
 > Once a Python version reaches its [official end of life date](https://devguide.python.org/versions/), a 3-month grace period is provided for users to upgrade. Following this grace period, the minimum python version supported in the SDK will be updated.
 
-The SDK can be installed with either *pip* or *poetry* package managers.
+The SDK can be installed with *uv*, *pip*, or *poetry* package managers.
+
+### uv
+
+*uv* is a fast Python package installer and resolver, designed as a drop-in replacement for pip and pip-tools. It's recommended for its speed and modern Python tooling capabilities.
+
+```bash
+uv add codat-bankfeeds
+```
 
 ### PIP
 
@@ -128,83 +136,46 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 # Synchronous Example
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
-from decimal import Decimal
 
 
-with CodatBankFeeds() as codat_bank_feeds:
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_bank_feeds:
 
-    codat_bank_feeds.bank_feeds_source_account_connected(request={
-        "event_type": "bankFeeds.sourceAccount.connected",
-        "generated_date": "2022-10-23T00:00:00Z",
-        "id": "ba29118f-5406-4e59-b05c-ba307ca38d01",
-        "payload": {
-            "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-            "reference_company": {
-                "description": "Requested early access to the new financing scheme.",
-                "id": "0498e921-9b53-4396-a412-4f2f5983b0a2",
-                "links": {
-                    "portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary",
-                },
-                "name": "Toft stores",
-            },
-            "source_account": {
-                "account_name": "account-081",
-                "account_number": "12345678",
-                "balance": Decimal("99.99"),
-                "currency": "GBP",
-                "id": "acc-002",
-                "modified_date": "2023-01-09T14:14:14.105Z",
-                "sort_code": "040004",
-                "status": shared.Status.PENDING,
-            },
-        },
+    res = codat_bank_feeds.companies.create(request={
+        "name": "Technicalium",
     })
 
-    # Use the SDK ...
+    # Handle response
+    print(res)
 ```
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
+
 ```python
 # Asynchronous Example
 import asyncio
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
-from decimal import Decimal
 
 async def main():
 
-    async with CodatBankFeeds() as codat_bank_feeds:
+    async with CodatBankFeeds(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as codat_bank_feeds:
 
-        await codat_bank_feeds.bank_feeds_source_account_connected_async(request={
-            "event_type": "bankFeeds.sourceAccount.connected",
-            "generated_date": "2022-10-23T00:00:00Z",
-            "id": "ba29118f-5406-4e59-b05c-ba307ca38d01",
-            "payload": {
-                "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-                "reference_company": {
-                    "description": "Requested early access to the new financing scheme.",
-                    "id": "0498e921-9b53-4396-a412-4f2f5983b0a2",
-                    "links": {
-                        "portal": "https://app.codat.io/companies/0498e921-9b53-4396-a412-4f2f5983b0a2/summary",
-                    },
-                    "name": "Toft stores",
-                },
-                "source_account": {
-                    "account_name": "account-081",
-                    "account_number": "12345678",
-                    "balance": Decimal("99.99"),
-                    "currency": "GBP",
-                    "id": "acc-002",
-                    "modified_date": "2023-01-09T14:14:14.105Z",
-                    "sort_code": "040004",
-                    "status": shared.Status.PENDING,
-                },
-            },
+        res = await codat_bank_feeds.companies.create_async(request={
+            "name": "Technicalium",
         })
 
-        # Use the SDK ...
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```
@@ -216,19 +187,18 @@ asyncio.run(main())
 <details open>
 <summary>Available methods</summary>
 
-### [account_mapping](docs/sdks/accountmapping/README.md)
+### [AccountMapping](docs/sdks/accountmapping/README.md)
 
 * [create](docs/sdks/accountmapping/README.md#create) - Create bank feed account mapping
 * [get](docs/sdks/accountmapping/README.md#get) - List bank feed accounts
 
-### [bank_accounts](docs/sdks/bankaccounts/README.md)
+### [BankAccounts](docs/sdks/bankaccounts/README.md)
 
 * [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
 * [get_create_model](docs/sdks/bankaccounts/README.md#get_create_model) - Get create/update bank account model
 * [list](docs/sdks/bankaccounts/README.md#list) - List bank accounts
 
-
-### [companies](docs/sdks/companies/README.md)
+### [Companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
@@ -238,16 +208,11 @@ asyncio.run(main())
 * [replace](docs/sdks/companies/README.md#replace) - Replace company
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [company_information](docs/sdks/companyinformation/README.md)
+### [CompanyInformation](docs/sdks/companyinformation/README.md)
 
 * [get](docs/sdks/companyinformation/README.md#get) - Get company information
 
-### [configuration](docs/sdks/configuration/README.md)
-
-* [get](docs/sdks/configuration/README.md#get) - Get configuration
-* [set](docs/sdks/configuration/README.md#set) - Set configuration
-
-### [connections](docs/sdks/connections/README.md)
+### [Connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [delete](docs/sdks/connections/README.md#delete) - Delete connection
@@ -255,7 +220,13 @@ asyncio.run(main())
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [source_accounts](docs/sdks/sourceaccounts/README.md)
+### [ManagedBankFeeds](docs/sdks/managedbankfeeds/README.md)
+
+* [get_latest_sync](docs/sdks/managedbankfeeds/README.md#get_latest_sync) - Get latest sync
+* [get_sync](docs/sdks/managedbankfeeds/README.md#get_sync) - Get sync
+* [run_ad_hoc_sync](docs/sdks/managedbankfeeds/README.md#run_ad_hoc_sync) - Run ad-hoc sync
+
+### [SourceAccounts](docs/sdks/sourceaccounts/README.md)
 
 * [create](docs/sdks/sourceaccounts/README.md#create) - Create single source account
 * [create_batch](docs/sdks/sourceaccounts/README.md#create_batch) - Create source accounts
@@ -265,11 +236,7 @@ asyncio.run(main())
 * [list](docs/sdks/sourceaccounts/README.md#list) - List source accounts
 * [update](docs/sdks/sourceaccounts/README.md#update) - Update source account
 
-### [sync](docs/sdks/sync/README.md)
-
-* [get_last_successful_sync](docs/sdks/sync/README.md#get_last_successful_sync) - Get last successful sync
-
-### [transactions](docs/sdks/transactions/README.md)
+### [Transactions](docs/sdks/transactions/README.md)
 
 * [create](docs/sdks/transactions/README.md#create) - Create bank transactions
 * [get_create_model](docs/sdks/transactions/README.md#get_create_model) - Get create bank transactions model
@@ -310,8 +277,6 @@ with CodatBankFeeds(
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    assert res is not None
-
     # Handle response
     print(res)
 
@@ -341,8 +306,6 @@ with CodatBankFeeds(
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    assert res is not None
-
     # Handle response
     print(res)
 
@@ -366,8 +329,6 @@ with CodatBankFeeds(
         "name": "Technicalium",
     })
 
-    assert res is not None
-
     # Handle response
     print(res)
 
@@ -379,27 +340,18 @@ with CodatBankFeeds(
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
+[`CodatBankFeedsError`](./src/codat_bankfeeds/models/errors/codatbankfeedserror.py) is the base class for all HTTP error responses. It has the following properties:
 
-By default, an API error will raise a errors.SDKError exception, which has the following properties:
-
-| Property        | Type             | Description           |
-|-----------------|------------------|-----------------------|
-| `.status_code`  | *int*            | The HTTP status code  |
-| `.message`      | *str*            | The error message     |
-| `.raw_response` | *httpx.Response* | The raw HTTP response |
-| `.body`         | *str*            | The response content  |
-
-When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create_async` method may raise the following exceptions:
-
-| Error Type          | Status Code             | Content Type     |
-| ------------------- | ----------------------- | ---------------- |
-| errors.ErrorMessage | 400, 401, 402, 403, 429 | application/json |
-| errors.ErrorMessage | 500, 503                | application/json |
-| errors.SDKError     | 4XX, 5XX                | \*/\*            |
+| Property           | Type             | Description                                                                             |
+| ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `err.message`      | `str`            | Error message                                                                           |
+| `err.status_code`  | `int`            | HTTP response status code eg `404`                                                      |
+| `err.headers`      | `httpx.Headers`  | HTTP response headers                                                                   |
+| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned.                                  |
+| `err.raw_response` | `httpx.Response` | Raw HTTP response                                                                       |
+| `err.data`         |                  | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
 ### Example
-
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import errors, shared
@@ -417,21 +369,46 @@ with CodatBankFeeds(
             "name": "Technicalium",
         })
 
-        assert res is not None
-
         # Handle response
         print(res)
 
-    except errors.ErrorMessage as e:
-        # handle e.data: errors.ErrorMessageData
-        raise(e)
-    except errors.ErrorMessage as e:
-        # handle e.data: errors.ErrorMessageData
-        raise(e)
-    except errors.SDKError as e:
-        # handle exception
-        raise(e)
+
+    except errors.CodatBankFeedsError as e:
+        # The base class for HTTP error responses
+        print(e.message)
+        print(e.status_code)
+        print(e.body)
+        print(e.headers)
+        print(e.raw_response)
+
+        # Depending on the method different errors may be thrown
+        if isinstance(e, errors.ErrorMessage):
+            print(e.data.can_be_retried)  # Optional[str]
+            print(e.data.correlation_id)  # Optional[str]
+            print(e.data.detailed_error_code)  # Optional[int]
+            print(e.data.error)  # Optional[str]
+            print(e.data.service)  # Optional[str]
 ```
+
+### Error Classes
+**Primary errors:**
+* [`CodatBankFeedsError`](./src/codat_bankfeeds/models/errors/codatbankfeedserror.py): The base class for HTTP error responses.
+  * [`ErrorMessage`](./src/codat_bankfeeds/models/errors/errormessage.py): Your `query` parameter was not correctly formed.
+
+<details><summary>Less common errors (5)</summary>
+
+<br />
+
+**Network errors:**
+* [`httpx.RequestError`](https://www.python-httpx.org/exceptions/#httpx.RequestError): Base class for request errors.
+    * [`httpx.ConnectError`](https://www.python-httpx.org/exceptions/#httpx.ConnectError): HTTP client was unable to make a request to a server.
+    * [`httpx.TimeoutException`](https://www.python-httpx.org/exceptions/#httpx.TimeoutException): HTTP request timed out.
+
+
+**Inherit from [`CodatBankFeedsError`](./src/codat_bankfeeds/models/errors/codatbankfeedserror.py)**:
+* [`ResponseValidationError`](./src/codat_bankfeeds/models/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 
@@ -457,8 +434,6 @@ with CodatBankFeeds(
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -577,8 +552,6 @@ with CodatBankFeeds(
     res = codat_bank_feeds.companies.create(request={
         "name": "Technicalium",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)

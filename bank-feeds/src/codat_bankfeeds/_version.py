@@ -3,10 +3,10 @@
 import importlib.metadata
 
 __title__: str = "codat-bankfeeds"
-__version__: str = "11.1.0"
+__version__: str = "11.2.0"
 __openapi_doc_version__: str = "3.0.0"
-__gen_version__: str = "2.568.2"
-__user_agent__: str = "speakeasy-sdk/python 11.1.0 2.568.2 3.0.0 codat-bankfeeds"
+__gen_version__: str = "2.799.0"
+__user_agent__: str = "speakeasy-sdk/python 11.2.0 2.799.0 3.0.0 codat-bankfeeds"
 
 try:
     if __package__ is not None:

@@ -1,5 +1,4 @@
 # SourceAccounts
-(*source_accounts*)
 
 ## Overview
 
@@ -24,10 +23,10 @@ The _Create Source Account_ endpoint allows you to create a representation of a 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="create-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
-from decimal import Decimal
 
 
 with CodatBankFeeds(
@@ -38,13 +37,6 @@ with CodatBankFeeds(
 
     res = codat_bank_feeds.source_accounts.create(request={
         "request_body": {
-            "account_info": {
-                "account_open_date": "2022-10-23",
-            },
-            "account_name": "<value>",
-            "account_number": "<value>",
-            "account_type": shared.AccountType.CREDIT_CARD,
-            "balance": Decimal("4174.58"),
             "currency": "GBP",
             "id": "<id>",
             "modified_date": "2022-10-23T00:00:00Z",
@@ -52,8 +44,6 @@ with CodatBankFeeds(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -88,6 +78,7 @@ The _Batch create source accounts_ endpoint allows you to create multiple repres
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="create-batch-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/batch" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -102,12 +93,7 @@ with CodatBankFeeds(
     res = codat_bank_feeds.source_accounts.create_batch(request={
         "request_body": [
             {
-                "currency": "EUR",
-                "id": "<id>",
-                "modified_date": "2022-10-23T00:00:00Z",
-            },
-            {
-                "currency": "USD",
+                "currency": "GBP",
                 "id": "<id>",
                 "modified_date": "2022-10-23T00:00:00Z",
             },
@@ -115,8 +101,6 @@ with CodatBankFeeds(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -151,6 +135,7 @@ Removing a source account will also remove any mapping between the source bank f
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="delete-source-account" method="delete" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -163,7 +148,7 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     codat_bank_feeds.source_accounts.delete(request={
-        "account_id": "7110701885",
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -195,6 +180,7 @@ In cases where multiple credential sets have been generated, a single API call t
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="delete-bank-feed-credentials" method="delete" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -242,6 +228,7 @@ The old credentials will still be valid until the revoke credentials endpoint is
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="generate-credentials" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -258,8 +245,6 @@ with CodatBankFeeds(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -296,6 +281,7 @@ with CodatBankFeeds(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-source-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -311,8 +297,6 @@ with CodatBankFeeds(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -351,6 +335,7 @@ with CodatBankFeeds(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="update-source-account" method="patch" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -365,22 +350,20 @@ with CodatBankFeeds(
 
     res = codat_bank_feeds.source_accounts.update(request={
         "source_account": {
-            "account_name": "account-095",
-            "account_number": "12345671",
+            "account_name": "account-081",
+            "account_number": "12345670",
             "account_type": "Credit",
-            "balance": Decimal("0"),
-            "currency": "USD",
-            "id": "acc-003",
+            "balance": Decimal("99.99"),
+            "currency": "GBP",
+            "id": "acc-002",
             "modified_date": "2023-01-09T14:14:14.1057478Z",
             "sort_code": "123456",
             "status": shared.Status.PENDING,
         },
-        "account_id": "7110701885",
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
