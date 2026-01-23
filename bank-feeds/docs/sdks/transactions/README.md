@@ -1,5 +1,4 @@
 # Transactions
-(*transactions*)
 
 ## Overview
 
@@ -18,13 +17,14 @@ Create new bank account transactions for a company's connections, and see previo
 
 [Bank transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) are records of monetary amounts that have moved in and out of an SMB's bank account.
 
-**Integration-specific behaviour**
+**Integration-specific behavior**
 
 The required properties may vary based on the integration. For detailed requirements specific to each accounting software, refer to the API reference examples.
 Alternatively, you can view the [Get create bank transaction model](https://docs.codat.io/bank-feeds-api#/operations/get-create-bank-transactions-model) for more information.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="create-bank-transactions" method="post" path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -45,7 +45,7 @@ with CodatBankFeeds(
                     "amount": Decimal("100"),
                     "balance": Decimal("100"),
                     "counterparty": "Bank of Example",
-                    "date_": "2023-08-22T10:21:00Z",
+                    "date_": "2023-08-22T10:21:00",
                     "description": "Repayment of Credit Card",
                     "id": "716422529",
                     "reconciled": True,
@@ -56,7 +56,7 @@ with CodatBankFeeds(
                     "amount": Decimal("-100"),
                     "balance": Decimal("0"),
                     "counterparty": "Amazon",
-                    "date_": "2023-08-22T10:22:00Z",
+                    "date_": "2023-08-22T10:22:00",
                     "description": "Amazon Purchase",
                     "id": "716422530",
                     "reconciled": False,
@@ -67,7 +67,7 @@ with CodatBankFeeds(
                     "amount": Decimal("-60"),
                     "balance": Decimal("-60"),
                     "counterparty": "Office Mart",
-                    "date_": "2023-08-22T10:23:00Z",
+                    "date_": "2023-08-22T10:23:00",
                     "description": "Office Supplies",
                     "id": "716422531",
                     "reconciled": False,
@@ -76,12 +76,10 @@ with CodatBankFeeds(
                 },
             ],
         },
-        "account_id": "9wg4lep4ush5cxs79pl8sozmsndbaukll3ind4g7buqbm1h2",
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -113,12 +111,13 @@ The *Get create bank account transactions model* endpoint returns the expected d
 
 [Bank account transactions](https://docs.codat.io/bank-feeds-api#/schemas/BankTransactions) are records of money that has moved in and out of an SMB's bank account.
 
-**Integration-specific behaviour**
+**Integration-specific behavior**
 
 See the *response examples* for integration-specific indicative models.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-create-bank-transactions-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/bankAccounts/{accountId}/bankTransactions" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -135,8 +134,6 @@ with CodatBankFeeds(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -172,6 +169,7 @@ For bank feeds, your push operations will only relate to the `bankTransactions` 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-create-operation" method="get" path="/companies/{companyId}/push/{pushOperationKey}" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -185,10 +183,8 @@ with CodatBankFeeds(
 
     res = codat_bank_feeds.transactions.get_create_operation(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "push_operation_key": "1b33a562-bac6-42b7-8818-d55dba8df363",
+        "push_operation_key": "23a26d56-6e3d-4414-865c-4fa7ebbb43e3",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -224,6 +220,7 @@ For bank feeds, use this endpoint to view write operations related to the `bankT
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-create-operations" method="get" path="/companies/{companyId}/push" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -240,8 +237,6 @@ with CodatBankFeeds(
         "order_by": "-modifiedDate",
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)

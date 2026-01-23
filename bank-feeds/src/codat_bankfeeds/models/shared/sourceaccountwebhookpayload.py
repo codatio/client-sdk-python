@@ -4,8 +4,9 @@ from __future__ import annotations
 from .companyreference import CompanyReference, CompanyReferenceTypedDict
 from .sourceaccount import SourceAccount, SourceAccountTypedDict
 from .sourceaccountv2 import SourceAccountV2, SourceAccountV2TypedDict
-from codat_bankfeeds.types import BaseModel
+from codat_bankfeeds.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
@@ -45,3 +46,21 @@ class SourceAccountWebhookPayload(BaseModel):
         Optional[SourceAccountWebhookPayloadSourceAccount],
         pydantic.Field(alias="sourceAccount"),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["companyId", "connectionId", "referenceCompany", "sourceAccount"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

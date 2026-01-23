@@ -7,20 +7,23 @@ from .utils.logger import Logger, get_default_logger
 from .utils.retries import RetryConfig
 from codat_bankfeeds import utils
 from codat_bankfeeds._hooks import SDKHooks
-from codat_bankfeeds.account_mapping import AccountMapping
-from codat_bankfeeds.bank_accounts import BankAccounts
-from codat_bankfeeds.companies import Companies
-from codat_bankfeeds.company_information import CompanyInformation
-from codat_bankfeeds.configuration import Configuration
-from codat_bankfeeds.connections import Connections
 from codat_bankfeeds.models import shared
-from codat_bankfeeds.source_accounts import SourceAccounts
-from codat_bankfeeds.sync import Sync
-from codat_bankfeeds.transactions import Transactions
 from codat_bankfeeds.types import OptionalNullable, UNSET
 import httpx
-from typing import Callable, Dict, Optional, Union, cast
+import importlib
+import sys
+from typing import Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
+
+if TYPE_CHECKING:
+    from codat_bankfeeds.account_mapping import AccountMapping
+    from codat_bankfeeds.bank_accounts import BankAccounts
+    from codat_bankfeeds.companies import Companies
+    from codat_bankfeeds.company_information import CompanyInformation
+    from codat_bankfeeds.connections import Connections
+    from codat_bankfeeds.managed_bank_feeds import ManagedBankFeeds
+    from codat_bankfeeds.source_accounts import SourceAccounts
+    from codat_bankfeeds.transactions import Transactions
 
 
 class CodatBankFeeds(BaseSDK):
@@ -45,24 +48,38 @@ class CodatBankFeeds(BaseSDK):
     <!-- End Codat Tags Table -->
     """
 
-    companies: Companies
+    companies: "Companies"
     r"""Create and manage your SMB users' companies."""
-    connections: Connections
+    connections: "Connections"
     r"""Create new and manage existing data connections for a company."""
-    account_mapping: AccountMapping
+    account_mapping: "AccountMapping"
     r"""Extra functionality for building an account management UI."""
-    company_information: CompanyInformation
+    managed_bank_feeds: "ManagedBankFeeds"
+    r"""Manage bank feed syncs for source accounts."""
+    company_information: "CompanyInformation"
     r"""Get detailed information about a company from the underlying accounting software."""
-    source_accounts: SourceAccounts
+    source_accounts: "SourceAccounts"
     r"""Provide and manage lists of source bank accounts."""
-    bank_accounts: BankAccounts
+    bank_accounts: "BankAccounts"
     r"""Access bank accounts in an SMBs accounting software."""
-    transactions: Transactions
+    transactions: "Transactions"
     r"""Create new bank account transactions for a company's connections, and see previous operations."""
-    configuration: Configuration
-    r"""Configure bank feeds for a company."""
-    sync: Sync
-    r"""Monitor the status of data syncs."""
+    _sub_sdk_map = {
+        "companies": ("codat_bankfeeds.companies", "Companies"),
+        "connections": ("codat_bankfeeds.connections", "Connections"),
+        "account_mapping": ("codat_bankfeeds.account_mapping", "AccountMapping"),
+        "managed_bank_feeds": (
+            "codat_bankfeeds.managed_bank_feeds",
+            "ManagedBankFeeds",
+        ),
+        "company_information": (
+            "codat_bankfeeds.company_information",
+            "CompanyInformation",
+        ),
+        "source_accounts": ("codat_bankfeeds.source_accounts", "SourceAccounts"),
+        "bank_accounts": ("codat_bankfeeds.bank_accounts", "BankAccounts"),
+        "transactions": ("codat_bankfeeds.transactions", "Transactions"),
+    }
 
     def __init__(
         self,
@@ -89,7 +106,7 @@ class CodatBankFeeds(BaseSDK):
         """
         client_supplied = True
         if client is None:
-            client = httpx.Client()
+            client = httpx.Client(follow_redirects=True)
             client_supplied = False
 
         assert issubclass(
@@ -98,7 +115,7 @@ class CodatBankFeeds(BaseSDK):
 
         async_client_supplied = True
         if async_client is None:
-            async_client = httpx.AsyncClient()
+            async_client = httpx.AsyncClient(follow_redirects=True)
             async_client_supplied = False
 
         if debug_logger is None:
@@ -126,9 +143,13 @@ class CodatBankFeeds(BaseSDK):
                 timeout_ms=timeout_ms,
                 debug_logger=debug_logger,
             ),
+            parent_ref=self,
         )
 
         hooks = SDKHooks()
+
+        # pylint: disable=protected-access
+        self.sdk_configuration.__dict__["_hooks"] = hooks
 
         current_server_url, *_ = self.sdk_configuration.get_server_details()
         server_url, self.sdk_configuration.client = hooks.sdk_init(
@@ -136,9 +157,6 @@ class CodatBankFeeds(BaseSDK):
         )
         if current_server_url != server_url:
             self.sdk_configuration.server_url = server_url
-
-        # pylint: disable=protected-access
-        self.sdk_configuration.__dict__["_hooks"] = hooks
 
         weakref.finalize(
             self,
@@ -150,18 +168,43 @@ class CodatBankFeeds(BaseSDK):
             self.sdk_configuration.async_client_supplied,
         )
 
-        self._init_sdks()
+    def dynamic_import(self, modname, retries=3):
+        for attempt in range(retries):
+            try:
+                return importlib.import_module(modname)
+            except KeyError:
+                # Clear any half-initialized module and retry
+                sys.modules.pop(modname, None)
+                if attempt == retries - 1:
+                    break
+        raise KeyError(f"Failed to import module '{modname}' after {retries} attempts")
 
-    def _init_sdks(self):
-        self.companies = Companies(self.sdk_configuration)
-        self.connections = Connections(self.sdk_configuration)
-        self.account_mapping = AccountMapping(self.sdk_configuration)
-        self.company_information = CompanyInformation(self.sdk_configuration)
-        self.source_accounts = SourceAccounts(self.sdk_configuration)
-        self.bank_accounts = BankAccounts(self.sdk_configuration)
-        self.transactions = Transactions(self.sdk_configuration)
-        self.configuration = Configuration(self.sdk_configuration)
-        self.sync = Sync(self.sdk_configuration)
+    def __getattr__(self, name: str):
+        if name in self._sub_sdk_map:
+            module_path, class_name = self._sub_sdk_map[name]
+            try:
+                module = self.dynamic_import(module_path)
+                klass = getattr(module, class_name)
+                instance = klass(self.sdk_configuration, parent_ref=self)
+                setattr(self, name, instance)
+                return instance
+            except ImportError as e:
+                raise AttributeError(
+                    f"Failed to import module {module_path} for attribute {name}: {e}"
+                ) from e
+            except AttributeError as e:
+                raise AttributeError(
+                    f"Failed to find class {class_name} in module {module_path} for attribute {name}: {e}"
+                ) from e
+
+        raise AttributeError(
+            f"'{type(self).__name__}' object has no attribute '{name}'"
+        )
+
+    def __dir__(self):
+        default_attrs = list(super().__dir__())
+        lazy_attrs = list(self._sub_sdk_map.keys())
+        return sorted(list(set(default_attrs + lazy_attrs)))
 
     def __enter__(self):
         return self

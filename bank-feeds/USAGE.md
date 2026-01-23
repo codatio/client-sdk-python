@@ -15,15 +15,14 @@ with CodatBankFeeds(
         "name": "Technicalium",
     })
 
-    assert res is not None
-
     # Handle response
     print(res)
 ```
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
+
 ```python
 # Asynchronous Example
 import asyncio
@@ -41,8 +40,6 @@ async def main():
         res = await codat_bank_feeds.companies.create_async(request={
             "name": "Technicalium",
         })
-
-        assert res is not None
 
         # Handle response
         print(res)

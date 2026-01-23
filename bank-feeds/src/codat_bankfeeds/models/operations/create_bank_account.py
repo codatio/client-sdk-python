@@ -4,7 +4,7 @@ from __future__ import annotations
 from codat_bankfeeds.models.shared import (
     bankaccountprototype as shared_bankaccountprototype,
 )
-from codat_bankfeeds.types import BaseModel
+from codat_bankfeeds.types import BaseModel, UNSET_SENTINEL
 from codat_bankfeeds.utils import (
     FieldMetadata,
     PathParamMetadata,
@@ -12,6 +12,7 @@ from codat_bankfeeds.utils import (
     RequestMetadata,
 )
 import pydantic
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -54,3 +55,19 @@ class CreateBankAccountRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = None
     r"""Time limit for the push operation to complete before it is timed out."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["bankAccountPrototype", "timeoutInMinutes"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

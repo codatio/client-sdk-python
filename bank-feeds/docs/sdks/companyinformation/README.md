@@ -1,5 +1,4 @@
 # CompanyInformation
-(*company_information*)
 
 ## Overview
 
@@ -25,6 +24,7 @@ Use the *Get company information* endpoint to return information about the compa
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-company-information" method="get" path="/companies/{companyId}/connections/{connectionId}/bankFeeds/info" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -40,8 +40,6 @@ with CodatBankFeeds(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
