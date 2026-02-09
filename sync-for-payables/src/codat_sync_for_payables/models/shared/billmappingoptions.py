@@ -4,8 +4,9 @@ from __future__ import annotations
 from .accountmappingoption import AccountMappingOption, AccountMappingOptionTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from .taxratemappingoption import TaxRateMappingOption, TaxRateMappingOptionTypedDict
-from codat_sync_for_payables.types import BaseModel
+from codat_sync_for_payables.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -13,7 +14,7 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 class BillMappingOptionsTypedDict(TypedDict):
     r"""The bill mapping options for a company's accounting software."""
 
-    accounts: NotRequired[List[AccountMappingOptionTypedDict]]
+    accounts: NotRequired[List[Nullable[AccountMappingOptionTypedDict]]]
     tax_rates: NotRequired[List[TaxRateMappingOptionTypedDict]]
     pagination: NotRequired[PaginationTypedDict]
 
@@ -21,10 +22,26 @@ class BillMappingOptionsTypedDict(TypedDict):
 class BillMappingOptions(BaseModel):
     r"""The bill mapping options for a company's accounting software."""
 
-    accounts: Optional[List[AccountMappingOption]] = None
+    accounts: Optional[List[Nullable[AccountMappingOption]]] = None
 
     tax_rates: Annotated[
         Optional[List[TaxRateMappingOption]], pydantic.Field(alias="taxRates")
     ] = None
 
     pagination: Optional[Pagination] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["accounts", "taxRates", "pagination"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

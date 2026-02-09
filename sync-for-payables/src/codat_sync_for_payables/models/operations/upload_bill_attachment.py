@@ -4,13 +4,14 @@ from __future__ import annotations
 from codat_sync_for_payables.models.shared import (
     attachmentupload as shared_attachmentupload,
 )
-from codat_sync_for_payables.types import BaseModel
+from codat_sync_for_payables.types import BaseModel, UNSET_SENTINEL
 from codat_sync_for_payables.utils import (
     FieldMetadata,
     PathParamMetadata,
     RequestMetadata,
 )
 import pydantic
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -51,3 +52,19 @@ class UploadBillAttachmentRequest(BaseModel):
         Optional[shared_attachmentupload.AttachmentUpload],
         FieldMetadata(request=RequestMetadata(media_type="multipart/form-data")),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["AttachmentUpload"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
