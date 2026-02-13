@@ -1,5 +1,7 @@
-# Cors
-(*cors*)
+# ~~Cors~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
@@ -20,9 +22,11 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-connection-management-cors-settings" method="get" path="/connectionManagement/corsSettings" example="Allowed origins" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -31,8 +35,6 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.cors.get()
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -67,11 +69,13 @@ Enabling CORS with Codat is required by our embeddable UIs (such as [Connections
 Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
 . Use `set` instead.
 
-### Example Usage
+### Example Usage: Allowed origins
 
+<!-- UsageSnippet language="python" operationID="set-connection-management-cors-settings" method="post" path="/connectionManagement/corsSettings" example="Allowed origins" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -85,7 +89,29 @@ with CodatPlatform(
         ],
     })
 
-    assert res is not None
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="python" operationID="set-connection-management-cors-settings" method="post" path="/connectionManagement/corsSettings" example="Unauthorized" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.cors.set(request={
+        "allowed_origins": [
+            "https://www.bank-of-dave.com",
+        ],
+    })
 
     # Handle response
     print(res)

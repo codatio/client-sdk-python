@@ -3,8 +3,9 @@
 from __future__ import annotations
 from .brandingbutton import BrandingButton, BrandingButtonTypedDict
 from .brandinglogo import BrandingLogo, BrandingLogoTypedDict
-from codat_platform.types import BaseModel
+from codat_platform.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -27,3 +28,19 @@ class Branding(BaseModel):
 
     source_id: Annotated[Optional[str], pydantic.Field(alias="sourceId")] = None
     r"""A source-specific ID used to distinguish between different sources originating from the same data connection. In general, a data connection is a single data source. However, for TrueLayer, `sourceId` is associated with a specific bank and has a many-to-one relationship with the `integrationId`."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["button", "logo", "sourceId"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

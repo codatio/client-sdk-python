@@ -1,5 +1,4 @@
 # Connections
-(*connections*)
 
 ## Overview
 
@@ -20,11 +19,13 @@ Create new and manage existing data connections for a company.
 
 Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-integrations) endpoint to access valid platform keys. 
 
-### Example Usage
+### Example Usage: Connection
 
+<!-- UsageSnippet language="python" operationID="create-connection" method="post" path="/companies/{companyId}/connections" example="Connection" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -33,13 +34,36 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.connections.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "request_body": {
             "platform_key": "gbol",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    assert res is not None
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="python" operationID="create-connection" method="post" path="/companies/{companyId}/connections" example="Unauthorized" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.connections.create(request={
+        "request_body": {
+            "platform_key": "gbol",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
 
     # Handle response
     print(res)
@@ -72,9 +96,11 @@ This operation is not reversible. The end user would need to reauthorize a new d
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="delete-connection" method="delete" path="/companies/{companyId}/connections/{connectionId}" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -112,9 +138,11 @@ with CodatPlatform(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-connection" method="get" path="/companies/{companyId}/connections/{connectionId}" example="Connection" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -126,8 +154,6 @@ with CodatPlatform(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -159,9 +185,11 @@ with CodatPlatform(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-connections" method="get" path="/companies/{companyId}/connections" example="Connections" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -174,8 +202,6 @@ with CodatPlatform(
         "order_by": "-modifiedDate",
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -207,9 +233,11 @@ with CodatPlatform(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="unlink-connection" method="patch" path="/companies/{companyId}/connections/{connectionId}" example="Example" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -218,14 +246,12 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.connections.unlink(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "update_connection_status": {
             "status": shared.DataConnectionStatus.UNLINKED,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -257,9 +283,11 @@ Update data connection's authorization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="update-connection-authorization" method="put" path="/companies/{companyId}/connections/{connectionId}/authorization" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -271,8 +299,6 @@ with CodatPlatform(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)

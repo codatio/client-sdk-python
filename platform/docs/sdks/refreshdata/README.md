@@ -1,5 +1,4 @@
 # RefreshData
-(*refresh_data*)
 
 ## Overview
 
@@ -23,9 +22,11 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="refresh-company-data" method="post" path="/companies/{companyId}/data/all" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -50,11 +51,11 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
-| errors.ErrorMessage     | 500, 503                | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## by_data_type
 
@@ -64,9 +65,11 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="refresh-data-type" method="post" path="/companies/{companyId}/data/queue/{dataType}" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -78,8 +81,6 @@ with CodatPlatform(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "data_type": shared.SchemaDataType.INVOICES,
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -99,11 +100,11 @@ with CodatPlatform(
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
-| errors.ErrorMessage     | 500, 503                | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get
 
@@ -111,9 +112,11 @@ Get the state of each data type for a company
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-company-data-status" method="get" path="/companies/{companyId}/dataStatus" example="Example" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -124,8 +127,6 @@ with CodatPlatform(
     res = cp_client.refresh_data.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -157,9 +158,11 @@ Retrieve information about a single dataset or pull operation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-pull-operation" method="get" path="/companies/{companyId}/data/history/{datasetId}" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -169,10 +172,8 @@ with CodatPlatform(
 
     res = cp_client.refresh_data.get_pull_operation(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "dataset_id": "71a4c0fb-8e15-45bd-958d-330b4e6e9f07",
+        "dataset_id": "fa5f3e86-bd80-49b8-853c-5fbba4b201f5",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -204,9 +205,11 @@ Gets the pull operation history (datasets) for a given company.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-pull-operations" method="get" path="/companies/{companyId}/data/history" example="Example" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -219,8 +222,6 @@ with CodatPlatform(
         "order_by": "-modifiedDate",
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)

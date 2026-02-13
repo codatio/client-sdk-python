@@ -4,6 +4,7 @@
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
 
+
 with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -14,15 +15,14 @@ with CodatPlatform(
         "name": "azure-invoice-finance-processor",
     })
 
-    assert res is not None
-
     # Handle response
     print(res)
 ```
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
+
 ```python
 # Asynchronous Example
 import asyncio
@@ -30,6 +30,7 @@ from codat_platform import CodatPlatform
 from codat_platform.models import shared
 
 async def main():
+
     async with CodatPlatform(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -39,8 +40,6 @@ async def main():
         res = await cp_client.settings.create_api_key_async(request={
             "name": "azure-invoice-finance-processor",
         })
-
-        assert res is not None
 
         # Handle response
         print(res)

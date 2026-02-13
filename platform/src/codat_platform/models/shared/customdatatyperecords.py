@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 from .customdatatyperecord import CustomDataTypeRecord, CustomDataTypeRecordTypedDict
-from codat_platform.types import BaseModel
+from codat_platform.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -33,3 +34,19 @@ class CustomDataTypeRecords(BaseModel):
 
     total_results: Annotated[Optional[int], pydantic.Field(alias="totalResults")] = None
     r"""Total number of items."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["pageNumber", "pageSize", "results", "totalResults"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

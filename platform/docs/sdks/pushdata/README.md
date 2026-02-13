@@ -1,5 +1,4 @@
 # PushData
-(*push_data*)
 
 ## Overview
 
@@ -21,9 +20,11 @@ Codat tries not to limit users to pushing to a very limited number of standard c
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-create-update-model-options-by-data-type" method="get" path="/companies/{companyId}/connections/{connectionId}/options/{dataType}" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -36,8 +37,6 @@ with CodatPlatform(
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "data_type": shared.SchemaDataType.INVOICES,
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -71,9 +70,11 @@ Write operations are actions that send requests to Codat, enabling the creation,
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-push-operation" method="get" path="/companies/{companyId}/push/{pushOperationKey}" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -83,10 +84,8 @@ with CodatPlatform(
 
     res = cp_client.push_data.get_operation(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "push_operation_key": "5ad92d18-1314-44b7-bd71-2a11cd0470da",
+        "push_operation_key": "660e8684-c0fb-4468-9e2a-b2e3b115d747",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -120,9 +119,11 @@ Write operations are actions that send requests to Codat, enabling the creation,
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-company-push-history" method="get" path="/companies/{companyId}/push" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -135,8 +136,6 @@ with CodatPlatform(
         "order_by": "-modifiedDate",
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)

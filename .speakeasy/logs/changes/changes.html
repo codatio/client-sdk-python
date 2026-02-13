@@ -98,6 +98,23 @@
 <body><h2 id="python-sdk-changes">Python SDK Changes:</h2>
 
 <ul>
+<li><code>codat_platform.companies.update()</code>:  <code>response.data_connections[].connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.connections.create()</code>:  <code>response.connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.connections.update_authorization()</code>:  <code>response.connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.connections.unlink()</code>:  <code>response.connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.companies.create()</code>:  <code>response.data_connections[].connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.companies.get()</code>:  <code>response.data_connections[].connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.companies.list()</code>:  <code>response.results[].data_connections[].connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.companies.replace()</code>:  <code>response.data_connections[].connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.connections.list()</code>:  <code>response.results[].connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.connections.get()</code>:  <code>response.connection_info.Map&lt;any&gt;</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>codat_platform.companies.get_company_sync_settings()</code>: <strong>Added</strong></li>
+<li><code>codat_platform.companies.refresh_product_data()</code>: <strong>Added</strong></li>
+<li><code>codat_platform.read_data.get_validation_results()</code>: <strong>Added</strong></li>
+<li><code>codat_platform.companies.set_company_sync_settings()</code>: <strong>Added</strong></li>
+<li><code>codat_platform.refresh_data.all()</code>:  <code>error.status[400]</code> <strong>Added</strong></li>
+<li><code>codat_platform.refresh_data.by_data_type()</code>:  <code>error.status[400]</code> <strong>Added</strong></li>
+<li><code>codat_platform.refresh_data.get()</code>:  <code>response.account_transactions.last_successful_sync</code> <strong>Changed</strong></li>
 <li><code>codat_lending.banking.categorized_statement.get()</code>:  <code>response.report_items[].transactions[].is_recurring</code> <strong>Added</strong></li>
 </ul>
 </body>
