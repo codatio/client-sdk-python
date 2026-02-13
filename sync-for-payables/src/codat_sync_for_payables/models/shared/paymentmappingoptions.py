@@ -6,8 +6,9 @@ from .bankaccountmappingoption import (
     BankAccountMappingOptionTypedDict,
 )
 from .pagination import Pagination, PaginationTypedDict
-from codat_sync_for_payables.types import BaseModel
+from codat_sync_for_payables.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -15,7 +16,7 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 class PaymentMappingOptionsTypedDict(TypedDict):
     r"""Gets the bill payments mapping options for a company's accounting software"""
 
-    bank_accounts: NotRequired[List[BankAccountMappingOptionTypedDict]]
+    bank_accounts: NotRequired[List[Nullable[BankAccountMappingOptionTypedDict]]]
     pagination: NotRequired[PaginationTypedDict]
 
 
@@ -23,7 +24,24 @@ class PaymentMappingOptions(BaseModel):
     r"""Gets the bill payments mapping options for a company's accounting software"""
 
     bank_accounts: Annotated[
-        Optional[List[BankAccountMappingOption]], pydantic.Field(alias="bankAccounts")
+        Optional[List[Nullable[BankAccountMappingOption]]],
+        pydantic.Field(alias="bankAccounts"),
     ] = None
 
     pagination: Optional[Pagination] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["bankAccounts", "pagination"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

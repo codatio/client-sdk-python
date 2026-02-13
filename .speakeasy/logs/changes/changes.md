@@ -16,3 +16,4 @@
 * `codat_platform.refresh_data.all()`:  `error.status[400]` **Added**
 * `codat_platform.refresh_data.by_data_type()`:  `error.status[400]` **Added**
 * `codat_platform.refresh_data.get()`:  `response.account_transactions.last_successful_sync` **Changed**
+* `codat_lending.banking.categorized_statement.get()`:  `response.report_items[].transactions[].is_recurring` **Added**

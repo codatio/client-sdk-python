@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: c22ee3eb-abe5-40e9-bcf6-8be944e72a7b
 management:
-  docChecksum: 4da6c8cf4dbb6342ba330ea8560f587d
+  docChecksum: 9c447111606083b3e909a159cdbccbff
   docVersion: 3.0.0
-  speakeasyVersion: 1.692.0
-  generationVersion: 2.797.1
-  releaseVersion: 10.2.0
-  configChecksum: 4b9737088b7192867c48fe3eb6fbc72b
+  speakeasyVersion: 1.701.0
+  generationVersion: 2.803.3
+  releaseVersion: 11.0.0
+  configChecksum: 9ea609ddb19d8000a4f9111d454b98bc
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: lending
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=lending
   published: true
 persistentEdits:
-  generation_id: b4113b51-ab4d-43db-b531-5ce35a59b020
-  pristine_commit_hash: 97b0c3bc840c80c503318620735350a18ddb3adf
-  pristine_tree_hash: 0aa325fc60631bcf52f8af3dbbc25dc9a016ccdc
+  generation_id: 336d99a0-639e-4fb6-a596-b51e4a023b9f
+  pristine_commit_hash: 8764d7de5315c44293a083314e492819787e8d33
+  pristine_tree_hash: e74e93e96e346c0751b7fb2284c565b1f3d25ba8
 features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.23.18
+    core: 6.0.1
     decimal: 1.0.0
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.2
@@ -36,7 +36,7 @@ features:
     multipartFileContentType: 1.0.0
     nameOverrides: 3.0.1
     nullables: 1.0.2
-    responseFormat: 1.0.1
+    responseFormat: 1.1.0
     retries: 3.0.3
     sdkHooks: 1.2.1
     serverEventsSentinels: 0.1.0
@@ -1187,8 +1187,8 @@ trackedFiles:
     pristine_git_object: 1f331550ebc20c19c399c6a24cb0f1baca155a1a
   docs/models/shared/cashflowtransaction.md:
     id: 730b1516cdcd
-    last_write_checksum: sha1:80568e7a09da264a400f67a095a253245599815e
-    pristine_git_object: 253597853c35e6798212396a00e22ec595ffb6ef
+    last_write_checksum: sha1:ebcc389184f3d2e42844607086434c3c3a6f2bd3
+    pristine_git_object: 4e43336d661c30eddc0f81b551eebe1d32054b04
   docs/models/shared/clientratelimitwebhook.md:
     id: b22baadb776e
     last_write_checksum: sha1:ee1cd514ebbaf89decc938f06891827cea87d72b
@@ -2331,12 +2331,12 @@ trackedFiles:
     pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
   pylintrc:
     id: 7ce8b9f946e6
-    last_write_checksum: sha1:758f4b6d48ab444b21f5aa37c59418ede235a774
-    pristine_git_object: 5993ca3da7978fb6070462f640a0d5c86c8f7c38
+    last_write_checksum: sha1:441146eaa42742ddfd82f5173c7ad43ce11f6512
+    pristine_git_object: fcc84e5812728a135a976d0bd11f68a9fc472467
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:6cc115d74e61e3803a368e51290a8e822a216b39
-    pristine_git_object: 8f558658e2844d163119d9394614f6af7c3fa7b0
+    last_write_checksum: sha1:b2e02a2375b35bade47a90a0ae8d6ffc776dc72c
+    pristine_git_object: e26831c1dda3da1e8ab7d27d46b305245a34f2a8
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:c1b297c532d7ea8ec3229b168b28ebd674f2b27c
@@ -2363,8 +2363,8 @@ trackedFiles:
     pristine_git_object: a8ca189f0ebd4331d18c3895edf8506588e35364
   src/codat_lending/_version.py:
     id: ed3dc1974049
-    last_write_checksum: sha1:8af6802766f84e745cc8b51c7daf5a002d1e2e3d
-    pristine_git_object: 76081562002162d181f2921b7ec13fd434602e07
+    last_write_checksum: sha1:85f4127f3ae4c2b36349687619aeef6bc39c0784
+    pristine_git_object: 9966247a10c251e8c6c41b551d3af0fab7858165
   src/codat_lending/account_balances.py:
     id: dddc5a9a4855
     last_write_checksum: sha1:65b45c9b8b46d0c5f99dc4008779f17debd1567f
@@ -3903,8 +3903,8 @@ trackedFiles:
     pristine_git_object: e685aa2552d254f4f4b8b04e71da7470074d61ac
   src/codat_lending/models/shared/enhancedcashflowitem.py:
     id: 99ce0f54ab2a
-    last_write_checksum: sha1:04593a2e5d0a50ab32082b356d7da1a5c33251a7
-    pristine_git_object: 55c273b9342a5df23063baa25a8798d4a1633701
+    last_write_checksum: sha1:4b0f77eebdf794cc725e18512b4c74680e9587dc
+    pristine_git_object: d350d8e0c5242d2376be36bf04f50713e18351a0
   src/codat_lending/models/shared/enhancedcashflowtransactions.py:
     id: ecedf0951acb
     last_write_checksum: sha1:80856b9b47ef7450692d685ec0b5c145941c30a0
@@ -4471,8 +4471,8 @@ trackedFiles:
     pristine_git_object: a9a640a1a7048736383f96c67c6290c86bf536ee
   src/codat_lending/utils/__init__.py:
     id: cc5afc4c54ff
-    last_write_checksum: sha1:398211d49b762a067ec6d10197a4b11dfd258ff5
-    pristine_git_object: c906e1e0192e9017fc13851eb23fc0c2753429c8
+    last_write_checksum: sha1:a1f6ae620fb6a3ccc30e99b427e49a0c8be463af
+    pristine_git_object: 15394a08a7e30033d319e44dd5734664ddb587e5
   src/codat_lending/utils/annotations.py:
     id: 428a6c350ef7
     last_write_checksum: sha1:a4824ad65f730303e4e1e3ec1febf87b4eb46dbc
@@ -16085,7 +16085,9 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Python SDK Changes:\n* `codat_lending.loan-writeback.source-accounts.create()`: \n  *  `request.request_body` **Changed** **Breaking** :warning:\n* `codat_lending.companies.create()`:  `response.data_connections.[].connection_info.{}` **Changed** **Breaking** :warning:\n* `codat_lending.companies.get()`:  `response.data_connections.[].connection_info.{}` **Changed** **Breaking** :warning:\n* `codat_lending.companies.list()`:  `response.results.[].data_connections.[].connection_info.{}` **Changed** **Breaking** :warning:\n* `codat_lending.companies.update()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response.data_connections.[].connection_info.{}` **Changed** **Breaking** :warning:\n* `codat_lending.connections.create()`:  `response.connection_info.{}` **Changed** **Breaking** :warning:\n* `codat_lending.connections.get()`:  `response.connection_info.{}` **Changed** **Breaking** :warning:\n* `codat_lending.connections.list()`:  `response.results.[].connection_info.{}` **Changed** **Breaking** :warning:\n* `codat_lending.connections.unlink()`:  `response.connection_info.{}` **Changed** **Breaking** :warning:\n* `codat_lending.loan-writeback.source-accounts.create-mapping()`: \n  *  `request.bank_feed_bank_account_mapping.feed_start_date` **Added**\n* `codat_lending.companies.replace()`: **Added**\n* `codat_lending.transactions.journal-entries.get()`:  `response.journal_lines.[]` **Changed**\n* `codat_lending.transactions.journal-entries.list()`:  `response.results.[].journal_lines.[]` **Changed**\n* `codat_lending.accounts-payable.bills.get()`:  `response.line_items.[]` **Changed**\n* `codat_lending.accounts-payable.bills.list()`:  `response.results.[].line_items.[]` **Changed**\n* `codat_lending.financial-statements.balance-sheet.get()`:  `response.currency` **Changed**\n* `codat_lending.financial-statements.cash-flow.get()`:  `response.currency` **Changed**\n* `codat_lending.financial-statements.profit-and-loss.get()`:  `response.currency` **Changed**\n* `codat_lending.manage-data.get-status()`:  `response.account_transactions.last_successful_sync` **Changed**\n* `codat_lending.manage-data.refresh.all-data-types()`:  `error.status[400]` **Added**\n* `codat_lending.manage-data.refresh.data-type()`:  `error.status[400]` **Added**\n* `codat_lending.manage_reports.generate-report()`:  `error.status[409]` **Added**\n"
+releaseNotes: |
+  ## Python SDK Changes:
+  * `codat_lending.banking.categorized_statement.get()`:  `response.report_items[].transactions[].is_recurring` **Added**
 generatedFiles:
   - .gitattributes
   - .python-version

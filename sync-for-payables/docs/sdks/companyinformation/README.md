@@ -1,5 +1,4 @@
 # CompanyInformation
-(*company_information*)
 
 ## Overview
 
@@ -17,23 +16,25 @@ Use the *Get company information* endpoint to return information about the compa
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-company-information" method="get" path="/companies/{companyId}/connections/{connectionId}/payables/info" example="Company information" -->
 ```python
 from codat_sync_for_payables import CodatSyncPayables
 from codat_sync_for_payables.models import shared
+
 
 with CodatSyncPayables(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_payables:
+
     res = codat_sync_payables.company_information.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -50,7 +51,8 @@ with CodatSyncPayables(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
