@@ -1,11 +1,11 @@
 
 [project]
 name = "codat-lending"
-version = "10.2.0"
+version = "11.0.0"
 description = "Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features."
 authors = [{ name = "Speakeasy" },]
 readme = "README-PYPI.md"
-requires-python = ">=3.9.2"
+requires-python = ">=3.10"
 dependencies = [
     "httpcore >=1.0.9",
     "httpx >=0.28.1",

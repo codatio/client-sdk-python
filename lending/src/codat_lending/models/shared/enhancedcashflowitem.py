@@ -4,7 +4,13 @@ from __future__ import annotations
 from .accountref import AccountRef, AccountRefTypedDict
 from .sourceref import SourceRef, SourceRefTypedDict
 from .transactioncategory import TransactionCategory, TransactionCategoryTypedDict
-from codat_lending.types import BaseModel, UNSET_SENTINEL
+from codat_lending.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from codat_lending.utils import serialize_decimal, validate_decimal
 from decimal import Decimal
 import pydantic
@@ -56,6 +62,8 @@ class CashFlowTransactionTypedDict(TypedDict):
     r"""The description of the bank transaction."""
     id: NotRequired[str]
     r"""The unique identifier of the bank transaction."""
+    is_recurring: NotRequired[Nullable[bool]]
+    r"""Indicates if the transaction is classified as recurring by Codat's categorization engine."""
     modified_date: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -140,6 +148,11 @@ class CashFlowTransaction(BaseModel):
     id: Optional[str] = None
     r"""The unique identifier of the bank transaction."""
 
+    is_recurring: Annotated[
+        OptionalNullable[bool], pydantic.Field(alias="isRecurring")
+    ] = UNSET
+    r"""Indicates if the transaction is classified as recurring by Codat's categorization engine."""
+
     modified_date: Annotated[Optional[str], pydantic.Field(alias="modifiedDate")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -183,21 +196,31 @@ class CashFlowTransaction(BaseModel):
                 "date",
                 "description",
                 "id",
+                "isRecurring",
                 "modifiedDate",
                 "platformName",
                 "sourceRef",
                 "transactionCategory",
             ]
         )
+        nullable_fields = set(["isRecurring"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
             if val != UNSET_SENTINEL:
-                if val is not None or k not in optional_fields:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
                     m[k] = val
 
         return m
