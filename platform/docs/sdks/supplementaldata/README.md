@@ -1,5 +1,4 @@
 # SupplementalData
-(*supplemental_data*)
 
 ## Overview
 
@@ -16,14 +15,16 @@ The *Configure* endpoint allows you to maintain or change configuration required
 
 [Supplemental data](https://docs.codat.io/using-the-api/supplemental-data/overview) is additional data you can include in Codat's standard data types.
 
-**Integration-specific behaviour**
+**Integration-specific behavior**
 See the *examples* for integration-specific frequently requested properties.
 
-### Example Usage
+### Example Usage: QBO - Customers
 
+<!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="QBO - Customers" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import operations, shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -32,9 +33,182 @@ with CodatPlatform(
 ) as cp_client:
 
     cp_client.supplemental_data.configure(request={
+        "supplemental_data_configuration": {},
         "data_type": operations.DataType.INVOICES,
         "platform_key": "gbol",
+    })
+
+    # Use the SDK ...
+
+```
+### Example Usage: QBO - Invoices
+
+<!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="QBO - Invoices" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import operations, shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    cp_client.supplemental_data.configure(request={
         "supplemental_data_configuration": {},
+        "data_type": operations.DataType.INVOICES,
+        "platform_key": "gbol",
+    })
+
+    # Use the SDK ...
+
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Unauthorized" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import operations, shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    cp_client.supplemental_data.configure(request={
+        "supplemental_data_configuration": {
+            "supplemental_data_config": {
+                "orders-supplemental-data": {
+                    "data_source": "/orders",
+                    "pull_data": {
+                        "orderNumber": "order_num",
+                    },
+                    "push_data": {
+                        "orderNumber": "order_num",
+                    },
+                },
+            },
+        },
+        "data_type": operations.DataType.INVOICES,
+        "platform_key": "gbol",
+    })
+
+    # Use the SDK ...
+
+```
+### Example Usage: Xero - Accounts
+
+<!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Accounts" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import operations, shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    cp_client.supplemental_data.configure(request={
+        "supplemental_data_configuration": {},
+        "data_type": operations.DataType.INVOICES,
+        "platform_key": "gbol",
+    })
+
+    # Use the SDK ...
+
+```
+### Example Usage: Xero - Contacts
+
+<!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Contacts" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import operations, shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    cp_client.supplemental_data.configure(request={
+        "supplemental_data_configuration": {},
+        "data_type": operations.DataType.INVOICES,
+        "platform_key": "gbol",
+    })
+
+    # Use the SDK ...
+
+```
+### Example Usage: Xero - Invoices
+
+<!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Invoices" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import operations, shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    cp_client.supplemental_data.configure(request={
+        "supplemental_data_configuration": {},
+        "data_type": operations.DataType.INVOICES,
+        "platform_key": "gbol",
+    })
+
+    # Use the SDK ...
+
+```
+### Example Usage: Xero - Items
+
+<!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Items" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import operations, shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    cp_client.supplemental_data.configure(request={
+        "supplemental_data_configuration": {},
+        "data_type": operations.DataType.INVOICES,
+        "platform_key": "gbol",
+    })
+
+    # Use the SDK ...
+
+```
+### Example Usage: Xero - Tax rates
+
+<!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Tax rates" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import operations, shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    cp_client.supplemental_data.configure(request={
+        "supplemental_data_configuration": {},
+        "data_type": operations.DataType.INVOICES,
+        "platform_key": "gbol",
     })
 
     # Use the SDK ...
@@ -64,9 +238,11 @@ The *Get configuration* endpoint returns supplemental data configuration previou
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-supplemental-data-configuration" method="get" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import operations, shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -78,8 +254,6 @@ with CodatPlatform(
         "data_type": operations.PathParamDataType.INVOICES,
         "platform_key": "gbol",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)

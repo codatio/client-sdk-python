@@ -5,6 +5,7 @@ from codat_platform import utils
 from codat_platform._hooks import HookContext
 from codat_platform.models import errors, operations, shared
 from codat_platform.types import BaseModel, OptionalNullable, UNSET
+from codat_platform.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Mapping, Optional, Union, cast
 
 
@@ -21,7 +22,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.APIKeyDetails]:
+    ) -> shared.APIKeyDetails:
         r"""Create API key
 
         Use the *Create API keys* endpoint to generate a new API key for your client.
@@ -72,6 +73,7 @@ class Settings(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[shared.CreateAPIKey]
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -89,9 +91,10 @@ class Settings(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="create-api-key",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -112,34 +115,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.APIKeyDetails])
+            return unmarshal_json_response(shared.APIKeyDetails, http_res)
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "409", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def create_api_key_async(
         self,
@@ -151,7 +143,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.APIKeyDetails]:
+    ) -> shared.APIKeyDetails:
         r"""Create API key
 
         Use the *Create API keys* endpoint to generate a new API key for your client.
@@ -202,6 +194,7 @@ class Settings(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[shared.CreateAPIKey]
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -219,9 +212,10 @@ class Settings(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="create-api-key",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -242,34 +236,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.APIKeyDetails])
+            return unmarshal_json_response(shared.APIKeyDetails, http_res)
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "409", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def delete_api_key(
         self,
@@ -281,7 +264,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ErrorMessage]:
+    ) -> shared.ErrorMessage:
         r"""Delete API key
 
         Use the *Delete API keys* endpoint to delete an existing API key, providing its valid `id` as a parameter. Note that this operation is not reversible.
@@ -328,6 +311,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -345,9 +329,10 @@ class Settings(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="delete-api-key",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -367,34 +352,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "204", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+            return unmarshal_json_response(shared.ErrorMessage, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def delete_api_key_async(
         self,
@@ -406,7 +380,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ErrorMessage]:
+    ) -> shared.ErrorMessage:
         r"""Delete API key
 
         Use the *Delete API keys* endpoint to delete an existing API key, providing its valid `id` as a parameter. Note that this operation is not reversible.
@@ -453,6 +427,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -470,9 +445,10 @@ class Settings(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="delete-api-key",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -492,34 +468,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "204", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.ErrorMessage])
+            return unmarshal_json_response(shared.ErrorMessage, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def get(
         self,
@@ -528,7 +493,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
+    ) -> shared.ConnectionManagementAllowedOrigins:
         r"""Get CORS settings
 
         The *Get CORS settings* endpoint returns the allowed origins (i.e. your domains) you want to allow cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) with Codat.
@@ -562,6 +527,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -579,9 +545,10 @@ class Settings(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-cors-settings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -601,36 +568,25 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
+            return unmarshal_json_response(
+                shared.ConnectionManagementAllowedOrigins, http_res
             )
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def get_async(
         self,
@@ -639,7 +595,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
+    ) -> shared.ConnectionManagementAllowedOrigins:
         r"""Get CORS settings
 
         The *Get CORS settings* endpoint returns the allowed origins (i.e. your domains) you want to allow cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) with Codat.
@@ -673,6 +629,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -690,9 +647,10 @@ class Settings(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-cors-settings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -712,36 +670,25 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
+            return unmarshal_json_response(
+                shared.ConnectionManagementAllowedOrigins, http_res
             )
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def get_profile(
         self,
@@ -750,7 +697,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.Profile]:
+    ) -> shared.Profile:
         r"""Get profile
 
         Fetch your Codat profile.
@@ -782,6 +729,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -799,9 +747,10 @@ class Settings(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-profile",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -811,34 +760,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Profile])
+            return unmarshal_json_response(shared.Profile, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def get_profile_async(
         self,
@@ -847,7 +785,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.Profile]:
+    ) -> shared.Profile:
         r"""Get profile
 
         Fetch your Codat profile.
@@ -879,6 +817,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -896,9 +835,10 @@ class Settings(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-profile",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -908,34 +848,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Profile])
+            return unmarshal_json_response(shared.Profile, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def get_sync_settings(
         self,
@@ -944,7 +873,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.SyncSettings]:
+    ) -> shared.SyncSettings:
         r"""Get sync settings
 
         Retrieve the [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-settings) for your client. This includes how often data types should be queued to be updated, and how much history should be fetched.
@@ -976,6 +905,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -993,9 +923,10 @@ class Settings(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-profile-syncSettings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1005,34 +936,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.SyncSettings])
+            return unmarshal_json_response(shared.SyncSettings, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def get_sync_settings_async(
         self,
@@ -1041,7 +961,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.SyncSettings]:
+    ) -> shared.SyncSettings:
         r"""Get sync settings
 
         Retrieve the [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-settings) for your client. This includes how often data types should be queued to be updated, and how much history should be fetched.
@@ -1073,6 +993,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1090,9 +1011,10 @@ class Settings(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-profile-syncSettings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1102,34 +1024,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.SyncSettings])
+            return unmarshal_json_response(shared.SyncSettings, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def list_api_keys(
         self,
@@ -1138,7 +1049,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.APIKeys]:
+    ) -> shared.APIKeys:
         r"""List API keys
 
         Use the *List API keys* endpoint to return a list of all API keys that currently exist for your client. This includes keys created via the Portal UI or the *Create API keys* endpoint.
@@ -1174,6 +1085,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1191,9 +1103,10 @@ class Settings(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="list-api-keys",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1203,34 +1116,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.APIKeys])
+            return unmarshal_json_response(shared.APIKeys, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def list_api_keys_async(
         self,
@@ -1239,7 +1141,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.APIKeys]:
+    ) -> shared.APIKeys:
         r"""List API keys
 
         Use the *List API keys* endpoint to return a list of all API keys that currently exist for your client. This includes keys created via the Portal UI or the *Create API keys* endpoint.
@@ -1275,6 +1177,7 @@ class Settings(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1292,9 +1195,10 @@ class Settings(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="list-api-keys",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1304,34 +1208,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.APIKeys])
+            return unmarshal_json_response(shared.APIKeys, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def set(
         self,
@@ -1346,7 +1239,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
+    ) -> shared.ConnectionManagementAllowedOrigins:
         r"""Set CORS settings
 
         The *Set CORS settings* endpoint allows you to register allowed origins (i.e. your domains) for use in cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)).
@@ -1395,6 +1288,7 @@ class Settings(BaseSDK):
                 "json",
                 Optional[shared.ConnectionManagementAllowedOrigins],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1412,9 +1306,10 @@ class Settings(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="set-cors-settings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1434,36 +1329,25 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
+            return unmarshal_json_response(
+                shared.ConnectionManagementAllowedOrigins, http_res
             )
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def set_async(
         self,
@@ -1478,7 +1362,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
+    ) -> shared.ConnectionManagementAllowedOrigins:
         r"""Set CORS settings
 
         The *Set CORS settings* endpoint allows you to register allowed origins (i.e. your domains) for use in cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)).
@@ -1527,6 +1411,7 @@ class Settings(BaseSDK):
                 "json",
                 Optional[shared.ConnectionManagementAllowedOrigins],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1544,9 +1429,10 @@ class Settings(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="set-cors-settings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1566,36 +1452,25 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
+            return unmarshal_json_response(
+                shared.ConnectionManagementAllowedOrigins, http_res
             )
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def update_profile(
         self,
@@ -1605,7 +1480,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.Profile]:
+    ) -> shared.Profile:
         r"""Update profile
 
         Update your Codat profile
@@ -1646,6 +1521,7 @@ class Settings(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[shared.Profile]
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1663,9 +1539,10 @@ class Settings(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="update-profile",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1675,34 +1552,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Profile])
+            return unmarshal_json_response(shared.Profile, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def update_profile_async(
         self,
@@ -1712,7 +1578,7 @@ class Settings(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.Profile]:
+    ) -> shared.Profile:
         r"""Update profile
 
         Update your Codat profile
@@ -1753,6 +1619,7 @@ class Settings(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[shared.Profile]
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1770,9 +1637,10 @@ class Settings(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="update-profile",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1782,34 +1650,23 @@ class Settings(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Profile])
+            return unmarshal_json_response(shared.Profile, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def update_sync_settings(
         self,
@@ -1873,6 +1730,7 @@ class Settings(BaseSDK):
                 "json",
                 Optional[operations.UpdateProfileSyncSettingsRequestBody],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1890,9 +1748,10 @@ class Settings(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="update-profile-syncSettings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1906,30 +1765,19 @@ class Settings(BaseSDK):
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def update_sync_settings_async(
         self,
@@ -1993,6 +1841,7 @@ class Settings(BaseSDK):
                 "json",
                 Optional[operations.UpdateProfileSyncSettingsRequestBody],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2010,9 +1859,10 @@ class Settings(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="update-profile-syncSettings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -2026,27 +1876,16 @@ class Settings(BaseSDK):
         if utils.match_response(
             http_res, ["401", "402", "403", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)

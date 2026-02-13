@@ -7,22 +7,27 @@ from .utils.logger import Logger, get_default_logger
 from .utils.retries import RetryConfig
 from codat_platform import utils
 from codat_platform._hooks import SDKHooks
-from codat_platform.companies import Companies
-from codat_platform.connection_management import ConnectionManagement
-from codat_platform.connections import Connections
-from codat_platform.cors import Cors
-from codat_platform.custom_data_type import CustomDataType
-from codat_platform.integrations import Integrations
 from codat_platform.models import shared
-from codat_platform.push_data import PushData
-from codat_platform.refresh_data import RefreshData
-from codat_platform.settings import Settings
-from codat_platform.supplemental_data import SupplementalData
 from codat_platform.types import OptionalNullable, UNSET
-from codat_platform.webhooks import Webhooks
 import httpx
-from typing import Callable, Dict, Optional, Union, cast
+import importlib
+import sys
+from typing import Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
+
+if TYPE_CHECKING:
+    from codat_platform.companies import Companies
+    from codat_platform.connection_management import ConnectionManagement
+    from codat_platform.connections import Connections
+    from codat_platform.cors import Cors
+    from codat_platform.custom_data_type import CustomDataType
+    from codat_platform.integrations import Integrations
+    from codat_platform.push_data import PushData
+    from codat_platform.read_data import ReadData
+    from codat_platform.refresh_data import RefreshData
+    from codat_platform.settings import Settings
+    from codat_platform.supplemental_data import SupplementalData
+    from codat_platform.webhooks import Webhooks
 
 
 class CodatPlatform(BaseSDK):
@@ -53,27 +58,46 @@ class CodatPlatform(BaseSDK):
     <!-- End Codat Tags Table -->
     """
 
-    settings: Settings
+    settings: "Settings"
     r"""Manage company profile configuration, sync settings, and API keys."""
-    companies: Companies
+    companies: "Companies"
     r"""Create and manage your SMB users' companies."""
-    connection_management: ConnectionManagement
+    connection_management: "ConnectionManagement"
     r"""Configure UI and retrieve access tokens for authentication used by **Connections SDK**."""
-    connections: Connections
+    connections: "Connections"
     r"""Create new and manage existing data connections for a company."""
-    custom_data_type: CustomDataType
+    custom_data_type: "CustomDataType"
     r"""Configure and pull additional data types that are not included in Codat's standardized data model."""
-    push_data: PushData
+    push_data: "PushData"
     r"""Initiate and monitor Create, Update, and Delete operations."""
-    refresh_data: RefreshData
+    refresh_data: "RefreshData"
     r"""Initiate data refreshes, view pull status and history."""
-    cors: Cors
-    integrations: Integrations
+    read_data: "ReadData"
+    r"""View validation outcomes for completed read data operations."""
+    cors: "Cors"
+    integrations: "Integrations"
     r"""Get a list of integrations supported by Codat and their logos."""
-    supplemental_data: SupplementalData
+    supplemental_data: "SupplementalData"
     r"""Configure and pull additional data you can include in Codat's standard data types."""
-    webhooks: Webhooks
+    webhooks: "Webhooks"
     r"""Create and manage webhooks that listen to Codat's events."""
+    _sub_sdk_map = {
+        "settings": ("codat_platform.settings", "Settings"),
+        "companies": ("codat_platform.companies", "Companies"),
+        "connection_management": (
+            "codat_platform.connection_management",
+            "ConnectionManagement",
+        ),
+        "connections": ("codat_platform.connections", "Connections"),
+        "custom_data_type": ("codat_platform.custom_data_type", "CustomDataType"),
+        "push_data": ("codat_platform.push_data", "PushData"),
+        "refresh_data": ("codat_platform.refresh_data", "RefreshData"),
+        "read_data": ("codat_platform.read_data", "ReadData"),
+        "cors": ("codat_platform.cors", "Cors"),
+        "integrations": ("codat_platform.integrations", "Integrations"),
+        "supplemental_data": ("codat_platform.supplemental_data", "SupplementalData"),
+        "webhooks": ("codat_platform.webhooks", "Webhooks"),
+    }
 
     def __init__(
         self,
@@ -98,15 +122,19 @@ class CodatPlatform(BaseSDK):
         :param retry_config: The retry configuration to use for all supported methods
         :param timeout_ms: Optional request timeout applied to each operation in milliseconds
         """
+        client_supplied = True
         if client is None:
-            client = httpx.Client()
+            client = httpx.Client(follow_redirects=True)
+            client_supplied = False
 
         assert issubclass(
             type(client), HttpClient
         ), "The provided client must implement the HttpClient protocol."
 
+        async_client_supplied = True
         if async_client is None:
-            async_client = httpx.AsyncClient()
+            async_client = httpx.AsyncClient(follow_redirects=True)
+            async_client_supplied = False
 
         if debug_logger is None:
             debug_logger = get_default_logger()
@@ -123,7 +151,9 @@ class CodatPlatform(BaseSDK):
             self,
             SDKConfiguration(
                 client=client,
+                client_supplied=client_supplied,
                 async_client=async_client,
+                async_client_supplied=async_client_supplied,
                 security=security,
                 server_url=server_url,
                 server_idx=server_idx,
@@ -131,42 +161,68 @@ class CodatPlatform(BaseSDK):
                 timeout_ms=timeout_ms,
                 debug_logger=debug_logger,
             ),
+            parent_ref=self,
         )
 
         hooks = SDKHooks()
 
+        # pylint: disable=protected-access
+        self.sdk_configuration.__dict__["_hooks"] = hooks
+
         current_server_url, *_ = self.sdk_configuration.get_server_details()
         server_url, self.sdk_configuration.client = hooks.sdk_init(
-            current_server_url, self.sdk_configuration.client
+            current_server_url, client
         )
         if current_server_url != server_url:
             self.sdk_configuration.server_url = server_url
-
-        # pylint: disable=protected-access
-        self.sdk_configuration.__dict__["_hooks"] = hooks
 
         weakref.finalize(
             self,
             close_clients,
             cast(ClientOwner, self.sdk_configuration),
             self.sdk_configuration.client,
+            self.sdk_configuration.client_supplied,
             self.sdk_configuration.async_client,
+            self.sdk_configuration.async_client_supplied,
         )
 
-        self._init_sdks()
+    def dynamic_import(self, modname, retries=3):
+        for attempt in range(retries):
+            try:
+                return importlib.import_module(modname)
+            except KeyError:
+                # Clear any half-initialized module and retry
+                sys.modules.pop(modname, None)
+                if attempt == retries - 1:
+                    break
+        raise KeyError(f"Failed to import module '{modname}' after {retries} attempts")
 
-    def _init_sdks(self):
-        self.settings = Settings(self.sdk_configuration)
-        self.companies = Companies(self.sdk_configuration)
-        self.connection_management = ConnectionManagement(self.sdk_configuration)
-        self.connections = Connections(self.sdk_configuration)
-        self.custom_data_type = CustomDataType(self.sdk_configuration)
-        self.push_data = PushData(self.sdk_configuration)
-        self.refresh_data = RefreshData(self.sdk_configuration)
-        self.cors = Cors(self.sdk_configuration)
-        self.integrations = Integrations(self.sdk_configuration)
-        self.supplemental_data = SupplementalData(self.sdk_configuration)
-        self.webhooks = Webhooks(self.sdk_configuration)
+    def __getattr__(self, name: str):
+        if name in self._sub_sdk_map:
+            module_path, class_name = self._sub_sdk_map[name]
+            try:
+                module = self.dynamic_import(module_path)
+                klass = getattr(module, class_name)
+                instance = klass(self.sdk_configuration, parent_ref=self)
+                setattr(self, name, instance)
+                return instance
+            except ImportError as e:
+                raise AttributeError(
+                    f"Failed to import module {module_path} for attribute {name}: {e}"
+                ) from e
+            except AttributeError as e:
+                raise AttributeError(
+                    f"Failed to find class {class_name} in module {module_path} for attribute {name}: {e}"
+                ) from e
+
+        raise AttributeError(
+            f"'{type(self).__name__}' object has no attribute '{name}'"
+        )
+
+    def __dir__(self):
+        default_attrs = list(super().__dir__())
+        lazy_attrs = list(self._sub_sdk_map.keys())
+        return sorted(list(set(default_attrs + lazy_attrs)))
 
     def __enter__(self):
         return self
@@ -175,9 +231,17 @@ class CodatPlatform(BaseSDK):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        if self.sdk_configuration.client is not None:
+        if (
+            self.sdk_configuration.client is not None
+            and not self.sdk_configuration.client_supplied
+        ):
             self.sdk_configuration.client.close()
+        self.sdk_configuration.client = None
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
-        if self.sdk_configuration.async_client is not None:
+        if (
+            self.sdk_configuration.async_client is not None
+            and not self.sdk_configuration.async_client_supplied
+        ):
             await self.sdk_configuration.async_client.aclose()
+        self.sdk_configuration.async_client = None

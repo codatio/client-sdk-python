@@ -1,5 +1,7 @@
-# ConnectionManagement
-(*connection_management*)
+# ~~ConnectionManagement~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
@@ -20,9 +22,11 @@ Update your integration to use the global token for improved efficiency and cons
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-connection-management-access-token" method="get" path="/companies/{companyId}/connectionManagement/accessToken" example="Access token" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -33,8 +37,6 @@ with CodatPlatform(
     res = cp_client.connection_management.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)

@@ -63,7 +63,15 @@ These end points cover creating and managing your companies, data connections, a
 >
 > Once a Python version reaches its [official end of life date](https://devguide.python.org/versions/), a 3-month grace period is provided for users to upgrade. Following this grace period, the minimum python version supported in the SDK will be updated.
 
-The SDK can be installed with either *pip* or *poetry* package managers.
+The SDK can be installed with *uv*, *pip*, or *poetry* package managers.
+
+### uv
+
+*uv* is a fast Python package installer and resolver, designed as a drop-in replacement for pip and pip-tools. It's recommended for its speed and modern Python tooling capabilities.
+
+```bash
+uv add codat-platform
+```
 
 ### PIP
 
@@ -94,7 +102,7 @@ It's also possible to write a standalone Python script without needing to set up
 ```python
 #!/usr/bin/env -S uv run --script
 # /// script
-# requires-python = ">=3.9"
+# requires-python = ">=3.10"
 # dependencies = [
 #     "codat-platform",
 # ]
@@ -132,46 +140,47 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 ```python
 # Synchronous Example
 from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
-with CodatPlatform() as cp_client:
 
-    cp_client.client_rate_limit_reached(request={
-        "event_type": "client.rateLimit.reached",
-        "generated_date": "2024-09-01T00:00:00Z",
-        "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
-        "payload": {
-            "daily_quota": 12000,
-            "expiry_date": "2024-09-01T12:14:14Z",
-            "quota_remaining": 0,
-        },
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.settings.create_api_key(request={
+        "name": "azure-invoice-finance-processor",
     })
 
-    # Use the SDK ...
+    # Handle response
+    print(res)
 ```
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
+
 ```python
 # Asynchronous Example
 import asyncio
 from codat_platform import CodatPlatform
+from codat_platform.models import shared
 
 async def main():
-    async with CodatPlatform() as cp_client:
 
-        await cp_client.client_rate_limit_reached_async(request={
-            "event_type": "client.rateLimit.reached",
-            "generated_date": "2024-09-01T00:00:00Z",
-            "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
-            "payload": {
-                "daily_quota": 12000,
-                "expiry_date": "2024-09-01T12:14:14Z",
-                "quota_remaining": 0,
-            },
+    async with CodatPlatform(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as cp_client:
+
+        res = await cp_client.settings.create_api_key_async(request={
+            "name": "azure-invoice-finance-processor",
         })
 
-        # Use the SDK ...
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```
@@ -183,24 +192,26 @@ asyncio.run(main())
 <details open>
 <summary>Available methods</summary>
 
-
-### [companies](docs/sdks/companies/README.md)
+### [Companies](docs/sdks/companies/README.md)
 
 * [add_product](docs/sdks/companies/README.md#add_product) - Add product
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
 * [get](docs/sdks/companies/README.md#get) - Get company
 * [get_access_token](docs/sdks/companies/README.md#get_access_token) - Get company access token
+* [get_company_sync_settings](docs/sdks/companies/README.md#get_company_sync_settings) - Get company sync settings
 * [list](docs/sdks/companies/README.md#list) - List companies
+* [refresh_product_data](docs/sdks/companies/README.md#refresh_product_data) - Refresh product data
 * [remove_product](docs/sdks/companies/README.md#remove_product) - Remove product
 * [replace](docs/sdks/companies/README.md#replace) - Replace company
+* [set_company_sync_settings](docs/sdks/companies/README.md#set_company_sync_settings) - Set company sync settings
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [~~connection_management~~](docs/sdks/connectionmanagement/README.md)
+### [~~ConnectionManagement~~](docs/sdks/connectionmanagement/README.md)
 
 * [~~get~~](docs/sdks/connectionmanagement/README.md#get) - Get access token (old) :warning: **Deprecated** Use [get_access_token](docs/sdks/companies/README.md#get_access_token) instead.
 
-### [connections](docs/sdks/connections/README.md)
+### [Connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [delete](docs/sdks/connections/README.md#delete) - Delete connection
@@ -209,31 +220,35 @@ asyncio.run(main())
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 * [update_authorization](docs/sdks/connections/README.md#update_authorization) - Update authorization
 
-### [~~cors~~](docs/sdks/cors/README.md)
+### [~~Cors~~](docs/sdks/cors/README.md)
 
 * [~~get~~](docs/sdks/cors/README.md#get) - Get CORS settings (old) :warning: **Deprecated** Use [get](docs/sdks/settings/README.md#get) instead.
 * [~~set~~](docs/sdks/cors/README.md#set) - Set CORS settings (old) :warning: **Deprecated** Use [set](docs/sdks/settings/README.md#set) instead.
 
-### [custom_data_type](docs/sdks/customdatatype/README.md)
+### [CustomDataType](docs/sdks/customdatatype/README.md)
 
 * [configure](docs/sdks/customdatatype/README.md#configure) - Configure custom data type
 * [get_configuration](docs/sdks/customdatatype/README.md#get_configuration) - Get custom data configuration
 * [list](docs/sdks/customdatatype/README.md#list) - List custom data type records
 * [refresh](docs/sdks/customdatatype/README.md#refresh) - Refresh custom data type
 
-### [integrations](docs/sdks/integrations/README.md)
+### [Integrations](docs/sdks/integrations/README.md)
 
 * [get](docs/sdks/integrations/README.md#get) - Get integration
 * [get_branding](docs/sdks/integrations/README.md#get_branding) - Get branding
 * [list](docs/sdks/integrations/README.md#list) - List integrations
 
-### [push_data](docs/sdks/pushdata/README.md)
+### [PushData](docs/sdks/pushdata/README.md)
 
 * [get_model_options](docs/sdks/pushdata/README.md#get_model_options) - Get push options
 * [get_operation](docs/sdks/pushdata/README.md#get_operation) - Get push operation
 * [list_operations](docs/sdks/pushdata/README.md#list_operations) - List push operations
 
-### [refresh_data](docs/sdks/refreshdata/README.md)
+### [ReadData](docs/sdks/readdata/README.md)
+
+* [get_validation_results](docs/sdks/readdata/README.md#get_validation_results) - Get validation results
+
+### [RefreshData](docs/sdks/refreshdata/README.md)
 
 * [all](docs/sdks/refreshdata/README.md#all) - Refresh all data
 * [by_data_type](docs/sdks/refreshdata/README.md#by_data_type) - Refresh data type
@@ -241,7 +256,7 @@ asyncio.run(main())
 * [get_pull_operation](docs/sdks/refreshdata/README.md#get_pull_operation) - Get pull operation
 * [list_pull_operations](docs/sdks/refreshdata/README.md#list_pull_operations) - List pull operations
 
-### [settings](docs/sdks/settings/README.md)
+### [Settings](docs/sdks/settings/README.md)
 
 * [create_api_key](docs/sdks/settings/README.md#create_api_key) - Create API key
 * [delete_api_key](docs/sdks/settings/README.md#delete_api_key) - Delete API key
@@ -253,12 +268,12 @@ asyncio.run(main())
 * [update_profile](docs/sdks/settings/README.md#update_profile) - Update profile
 * [update_sync_settings](docs/sdks/settings/README.md#update_sync_settings) - Update all sync settings
 
-### [supplemental_data](docs/sdks/supplementaldata/README.md)
+### [SupplementalData](docs/sdks/supplementaldata/README.md)
 
 * [configure](docs/sdks/supplementaldata/README.md#configure) - Configure
 * [get_configuration](docs/sdks/supplementaldata/README.md#get_configuration) - Get configuration
 
-### [webhooks](docs/sdks/webhooks/README.md)
+### [Webhooks](docs/sdks/webhooks/README.md)
 
 * [create_consumer](docs/sdks/webhooks/README.md#create_consumer) - Create webhook consumer
 * [delete_consumer](docs/sdks/webhooks/README.md#delete_consumer) - Delete webhook consumer
@@ -280,6 +295,7 @@ from codat_platform import CodatPlatform
 from codat_platform.models import shared
 from codat_platform.utils import BackoffStrategy, RetryConfig
 
+
 with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -290,8 +306,6 @@ with CodatPlatform(
         "name": "azure-invoice-finance-processor",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -304,6 +318,7 @@ from codat_platform import CodatPlatform
 from codat_platform.models import shared
 from codat_platform.utils import BackoffStrategy, RetryConfig
 
+
 with CodatPlatform(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
@@ -315,8 +330,6 @@ with CodatPlatform(
         "name": "azure-invoice-finance-processor",
     })
 
-    assert res is not None
-
     # Handle response
     print(res)
 
@@ -326,30 +339,22 @@ with CodatPlatform(
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
+[`CodatPlatformError`](./src/codat_platform/models/errors/codatplatformerror.py) is the base class for all HTTP error responses. It has the following properties:
 
-By default, an API error will raise a errors.SDKError exception, which has the following properties:
-
-| Property        | Type             | Description           |
-|-----------------|------------------|-----------------------|
-| `.status_code`  | *int*            | The HTTP status code  |
-| `.message`      | *str*            | The error message     |
-| `.raw_response` | *httpx.Response* | The raw HTTP response |
-| `.body`         | *str*            | The response content  |
-
-When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create_api_key_async` method may raise the following exceptions:
-
-| Error Type          | Status Code                  | Content Type     |
-| ------------------- | ---------------------------- | ---------------- |
-| errors.ErrorMessage | 400, 401, 402, 403, 409, 429 | application/json |
-| errors.ErrorMessage | 500, 503                     | application/json |
-| errors.SDKError     | 4XX, 5XX                     | \*/\*            |
+| Property           | Type             | Description                                                                             |
+| ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `err.message`      | `str`            | Error message                                                                           |
+| `err.status_code`  | `int`            | HTTP response status code eg `404`                                                      |
+| `err.headers`      | `httpx.Headers`  | HTTP response headers                                                                   |
+| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned.                                  |
+| `err.raw_response` | `httpx.Response` | Raw HTTP response                                                                       |
+| `err.data`         |                  | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
 ### Example
-
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import errors, shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -363,21 +368,46 @@ with CodatPlatform(
             "name": "azure-invoice-finance-processor",
         })
 
-        assert res is not None
-
         # Handle response
         print(res)
 
-    except errors.ErrorMessage as e:
-        # handle e.data: errors.ErrorMessageData
-        raise(e)
-    except errors.ErrorMessage as e:
-        # handle e.data: errors.ErrorMessageData
-        raise(e)
-    except errors.SDKError as e:
-        # handle exception
-        raise(e)
+
+    except errors.CodatPlatformError as e:
+        # The base class for HTTP error responses
+        print(e.message)
+        print(e.status_code)
+        print(e.body)
+        print(e.headers)
+        print(e.raw_response)
+
+        # Depending on the method different errors may be thrown
+        if isinstance(e, errors.ErrorMessage):
+            print(e.data.can_be_retried)  # Optional[str]
+            print(e.data.correlation_id)  # Optional[str]
+            print(e.data.detailed_error_code)  # Optional[int]
+            print(e.data.error)  # Optional[str]
+            print(e.data.service)  # Optional[str]
 ```
+
+### Error Classes
+**Primary errors:**
+* [`CodatPlatformError`](./src/codat_platform/models/errors/codatplatformerror.py): The base class for HTTP error responses.
+  * [`ErrorMessage`](./src/codat_platform/models/errors/errormessage.py): Your API request was not properly authorized.
+
+<details><summary>Less common errors (5)</summary>
+
+<br />
+
+**Network errors:**
+* [`httpx.RequestError`](https://www.python-httpx.org/exceptions/#httpx.RequestError): Base class for request errors.
+    * [`httpx.ConnectError`](https://www.python-httpx.org/exceptions/#httpx.ConnectError): HTTP client was unable to make a request to a server.
+    * [`httpx.TimeoutException`](https://www.python-httpx.org/exceptions/#httpx.TimeoutException): HTTP request timed out.
+
+
+**Inherit from [`CodatPlatformError`](./src/codat_platform/models/errors/codatplatformerror.py)**:
+* [`ResponseValidationError`](./src/codat_platform/models/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -390,6 +420,7 @@ The default server can be overridden globally by passing a URL to the `server_ur
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
 
+
 with CodatPlatform(
     server_url="https://api.codat.io",
     security=shared.Security(
@@ -400,8 +431,6 @@ with CodatPlatform(
     res = cp_client.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -506,6 +535,7 @@ You can set the security parameters through the `security` optional parameter wh
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
 
+
 with CodatPlatform(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -515,8 +545,6 @@ with CodatPlatform(
     res = cp_client.settings.create_api_key(request={
         "name": "azure-invoice-finance-processor",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -535,6 +563,7 @@ The `CodatPlatform` class implements the context manager protocol and registers 
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
 def main():
+
     with CodatPlatform(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
@@ -545,6 +574,7 @@ def main():
 
 # Or when using async:
 async def amain():
+
     async with CodatPlatform(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",

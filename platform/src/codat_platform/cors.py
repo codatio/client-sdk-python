@@ -5,6 +5,7 @@ from codat_platform import utils
 from codat_platform._hooks import HookContext
 from codat_platform.models import errors, shared
 from codat_platform.types import BaseModel, OptionalNullable, UNSET
+from codat_platform.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Mapping, Optional, Union, cast
 from typing_extensions import deprecated
 
@@ -20,7 +21,7 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
+    ) -> shared.ConnectionManagementAllowedOrigins:
         r"""Get CORS settings (old)
 
         The *Get CORS settings* endpoint returns the allowed origins (i.e. your domains) you want to allow cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) with Codat.
@@ -54,6 +55,7 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -71,9 +73,10 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-connection-management-cors-settings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -93,36 +96,25 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
+            return unmarshal_json_response(
+                shared.ConnectionManagementAllowedOrigins, http_res
             )
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     @deprecated("""warning: ** DEPRECATED ** - The new [Get CORS settings](https://docs.codat.io/platform-api#/operations/get-cors-settings) endpoint replaces this endpoint and includes additional functionality.
 Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
@@ -134,7 +126,7 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
+    ) -> shared.ConnectionManagementAllowedOrigins:
         r"""Get CORS settings (old)
 
         The *Get CORS settings* endpoint returns the allowed origins (i.e. your domains) you want to allow cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) with Codat.
@@ -168,6 +160,7 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -185,9 +178,10 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-connection-management-cors-settings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -207,36 +201,25 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
+            return unmarshal_json_response(
+                shared.ConnectionManagementAllowedOrigins, http_res
             )
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     @deprecated("""warning: ** DEPRECATED ** - The new [Set CORS settings](https://docs.codat.io/platform-api#/operations/set-cors-settings) endpoint replaces this endpoint and includes additional functionality.
 Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
@@ -254,7 +237,7 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
+    ) -> shared.ConnectionManagementAllowedOrigins:
         r"""Set CORS settings (old)
 
         The *Set CORS settings* endpoint allows you to register allowed origins (i.e. your domains) for use in cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)).
@@ -303,6 +286,7 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
                 "json",
                 Optional[shared.ConnectionManagementAllowedOrigins],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -320,9 +304,10 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="set-connection-management-cors-settings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -342,36 +327,25 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
+            return unmarshal_json_response(
+                shared.ConnectionManagementAllowedOrigins, http_res
             )
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     @deprecated("""warning: ** DEPRECATED ** - The new [Set CORS settings](https://docs.codat.io/platform-api#/operations/set-cors-settings) endpoint replaces this endpoint and includes additional functionality.
 Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
@@ -389,7 +363,7 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.ConnectionManagementAllowedOrigins]:
+    ) -> shared.ConnectionManagementAllowedOrigins:
         r"""Set CORS settings (old)
 
         The *Set CORS settings* endpoint allows you to register allowed origins (i.e. your domains) for use in cross-origin resource sharing ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)).
@@ -438,6 +412,7 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
                 "json",
                 Optional[shared.ConnectionManagementAllowedOrigins],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -455,9 +430,10 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="set-connection-management-cors-settings",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -477,33 +453,22 @@ Update your integrations to use the new path `/corsSettings` as the existing rou
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.ConnectionManagementAllowedOrigins]
+            return unmarshal_json_response(
+                shared.ConnectionManagementAllowedOrigins, http_res
             )
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)

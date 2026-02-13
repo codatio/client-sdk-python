@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 from .imagereference import ImageReference, ImageReferenceTypedDict
-from codat_platform.types import BaseModel
+from codat_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -15,3 +16,19 @@ class BrandingImageTypedDict(TypedDict):
 class BrandingImage(BaseModel):
     image: Optional[ImageReference] = None
     r"""Image reference."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["image"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

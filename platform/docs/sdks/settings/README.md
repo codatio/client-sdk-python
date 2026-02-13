@@ -1,5 +1,4 @@
 # Settings
-(*settings*)
 
 ## Overview
 
@@ -31,11 +30,13 @@ You can [read more](https://docs.codat.io/using-the-api/authentication) about au
 * If you require multiple API keys, perform multiple calls to the *Create API keys* endpoint. 
 * The number of API keys is limited to 10. If you have reached the maximum amount of keys, use the *Delete API key* endpoint to delete an unused key first.
 
-### Example Usage
+### Example Usage: API key details
 
+<!-- UsageSnippet language="python" operationID="create-api-key" method="post" path="/apiKeys" example="API key details" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -47,7 +48,71 @@ with CodatPlatform(
         "name": "azure-invoice-finance-processor",
     })
 
-    assert res is not None
+    # Handle response
+    print(res)
+
+```
+### Example Usage: API key details with name
+
+<!-- UsageSnippet language="python" operationID="create-api-key" method="post" path="/apiKeys" example="API key details with name" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.settings.create_api_key(request={
+        "name": "azure-invoice-finance-processor",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Create API key with name
+
+<!-- UsageSnippet language="python" operationID="create-api-key" method="post" path="/apiKeys" example="Create API key with name" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.settings.create_api_key(request={
+        "name": "azure-invoice-finance-processor",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Max length for name reached
+
+<!-- UsageSnippet language="python" operationID="create-api-key" method="post" path="/apiKeys" example="Max length for name reached" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.settings.create_api_key(request={
+        "name": "azure-invoice-finance-processor",
+    })
 
     # Handle response
     print(res)
@@ -88,9 +153,11 @@ You can [read more](https://docs.codat.io/using-the-api/authentication) about au
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="delete-api-key" method="delete" path="/apiKeys/{apiKeyId}" example="Conflict" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -101,8 +168,6 @@ with CodatPlatform(
     res = cp_client.settings.delete_api_key(request={
         "api_key_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -136,9 +201,11 @@ Enabling CORS with Codat is required by our embeddable UIs (such as [Connections
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-cors-settings" method="get" path="/corsSettings" example="Allowed origins" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -147,8 +214,6 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.settings.get()
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -179,9 +244,11 @@ Fetch your Codat profile.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-profile" method="get" path="/profile" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -190,8 +257,6 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.settings.get_profile()
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -222,9 +287,11 @@ Retrieve the [sync settings](https://docs.codat.io/knowledge-base/advanced-sync-
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-profile-syncSettings" method="get" path="/profile/syncSettings" example="Example" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -233,8 +300,6 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.settings.get_sync_settings()
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -269,9 +334,11 @@ You can [read more](https://docs.codat.io/using-the-api/authentication) about au
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-api-keys" method="get" path="/apiKeys" example="Example" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -280,8 +347,6 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.settings.list_api_keys()
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -312,11 +377,13 @@ with CodatPlatform(
  
 Enabling CORS with Codat is required by our embeddable UIs (such as [Connections SDK](https://docs.codat.io/auth-flow/optimize/connection-management) and [Link SDK](https://docs.codat.io/auth-flow/authorize-embedded-link)) to access Codat's API endpoints.
 
-### Example Usage
+### Example Usage: Allowed origins
 
+<!-- UsageSnippet language="python" operationID="set-cors-settings" method="post" path="/corsSettings" example="Allowed origins" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -330,7 +397,29 @@ with CodatPlatform(
         ],
     })
 
-    assert res is not None
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="python" operationID="set-cors-settings" method="post" path="/corsSettings" example="Unauthorized" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.settings.set(request={
+        "allowed_origins": [
+            "https://www.bank-of-dave.com",
+        ],
+    })
 
     # Handle response
     print(res)
@@ -362,9 +451,11 @@ Update your Codat profile
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="update-profile" method="put" path="/profile" example="Unauthorized" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -373,18 +464,16 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.settings.update_profile(request={
-        "name": "Bob's Burgers",
-        "redirect_url": "https://bobs-burgers.{countrySuffix}/{companyId}",
         "confirm_company_name": True,
         "icon_url": "https://client-images.codat.io/icon/042399f5-d104-4f38-9ce8-cac3524f4e88_3f5623af-d992-4c22-bc08-e58c520a8526.ico",
         "logo_url": "https://client-images.codat.io/logo/042399f5-d104-4f38-9ce8-cac3524f4e88_5806cb1f-7342-4c0e-a0a8-99bfbc47b0ff.png",
+        "name": "Bob's Burgers",
+        "redirect_url": "https://bobs-burgers.{countrySuffix}/{companyId}",
         "white_list_urls": [
             "https://bobs-burgers.com",
             "https://bobs-burgers.co.uk",
         ],
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -416,9 +505,11 @@ Update sync settings for all data types.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="update-profile-syncSettings" method="post" path="/profile/syncSettings" example="Unauthorized" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -427,17 +518,17 @@ with CodatPlatform(
 ) as cp_client:
 
     cp_client.settings.update_sync_settings(request={
-        "client_id": "c4907f05-7024-4fc0-bf55-4785be5c9671",
+        "client_id": "9807ce3e-cfa5-4370-b4f2-09c282b1598b",
         "settings": [
             {
                 "data_type": shared.DataType.INVOICES,
                 "fetch_on_first_link": True,
-                "sync_order": 0,
-                "sync_schedule": 24,
                 "is_locked": True,
                 "months_to_sync": 24,
                 "sync_from_utc": "2020-01-01T12:00:00.000Z",
                 "sync_from_window": 24,
+                "sync_order": 0,
+                "sync_schedule": 24,
             },
         ],
     })

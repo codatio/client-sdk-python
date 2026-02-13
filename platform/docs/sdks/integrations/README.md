@@ -1,5 +1,4 @@
 # Integrations
-(*integrations*)
 
 ## Overview
 
@@ -17,9 +16,11 @@ Get single integration, by platformKey
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-integration" method="get" path="/integrations/{platformKey}" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -30,8 +31,6 @@ with CodatPlatform(
     res = cp_client.integrations.get(request={
         "platform_key": "gbol",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -63,9 +62,11 @@ Get branding for platform.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-integrations-branding" method="get" path="/integrations/{platformKey}/branding" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -76,8 +77,6 @@ with CodatPlatform(
     res = cp_client.integrations.get_branding(request={
         "platform_key": "gbol",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -109,9 +108,11 @@ List your available integrations
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-integrations" method="get" path="/integrations" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -123,8 +124,6 @@ with CodatPlatform(
         "order_by": "-modifiedDate",
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
-
-    assert res is not None
 
     # Handle response
     print(res)

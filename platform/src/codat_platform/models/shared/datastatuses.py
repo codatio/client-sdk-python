@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 from .datastatus import DataStatus, DataStatusTypedDict
-from codat_platform.types import BaseModel
+from codat_platform.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -292,3 +293,65 @@ class DataStatuses(BaseModel):
 
     transfers: Optional[DataStatus] = None
     r"""Describes the state of data in the Codat cache for a company and data type"""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "accountTransactions",
+                "balanceSheet",
+                "bankAccounts",
+                "bankTransactions",
+                "banking-accountBalances",
+                "banking-accounts",
+                "banking-transactionCategories",
+                "banking-transactions",
+                "billCreditNotes",
+                "billPayments",
+                "bills",
+                "cashFlowStatement",
+                "chartOfAccounts",
+                "commerce-companyInfo",
+                "commerce-customers",
+                "commerce-disputes",
+                "commerce-locations",
+                "commerce-orders",
+                "commerce-paymentMethods",
+                "commerce-payments",
+                "commerce-productCategories",
+                "commerce-products",
+                "commerce-taxComponents",
+                "commerce-transactions",
+                "company",
+                "creditNotes",
+                "customers",
+                "directCosts",
+                "directIncomes",
+                "invoices",
+                "itemReceipts",
+                "items",
+                "journalEntries",
+                "journals",
+                "paymentMethods",
+                "payments",
+                "profitAndLoss",
+                "purchaseOrders",
+                "salesOrders",
+                "suppliers",
+                "taxRates",
+                "trackingCategories",
+                "transfers",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

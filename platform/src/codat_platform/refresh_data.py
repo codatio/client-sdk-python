@@ -5,6 +5,7 @@ from codat_platform import utils
 from codat_platform._hooks import HookContext
 from codat_platform.models import errors, operations, shared
 from codat_platform.types import BaseModel, OptionalNullable, UNSET
+from codat_platform.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Mapping, Optional, Union, cast
 
 
@@ -64,6 +65,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -81,13 +83,15 @@ class RefreshData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="refresh-company-data",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
             error_status_codes=[
+                "400",
                 "401",
                 "402",
                 "403",
@@ -105,32 +109,21 @@ class RefreshData(BaseSDK):
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(
-            http_res, ["401", "402", "403", "404", "429"], "application/json"
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def all_async(
         self,
@@ -185,6 +178,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -202,13 +196,15 @@ class RefreshData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="refresh-company-data",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
             error_status_codes=[
+                "400",
                 "401",
                 "402",
                 "403",
@@ -226,32 +222,21 @@ class RefreshData(BaseSDK):
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(
-            http_res, ["401", "402", "403", "404", "429"], "application/json"
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def by_data_type(
         self,
@@ -264,7 +249,7 @@ class RefreshData(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.PullOperation]:
+    ) -> shared.PullOperation:
         r"""Refresh data type
 
         Refreshes a given data type for a given company.
@@ -304,6 +289,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -321,13 +307,15 @@ class RefreshData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="refresh-data-type",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
             error_status_codes=[
+                "400",
                 "401",
                 "402",
                 "403",
@@ -343,34 +331,23 @@ class RefreshData(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.PullOperation])
+            return unmarshal_json_response(shared.PullOperation, http_res)
         if utils.match_response(
-            http_res, ["401", "402", "403", "404", "429"], "application/json"
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def by_data_type_async(
         self,
@@ -383,7 +360,7 @@ class RefreshData(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.PullOperation]:
+    ) -> shared.PullOperation:
         r"""Refresh data type
 
         Refreshes a given data type for a given company.
@@ -423,6 +400,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -440,13 +418,15 @@ class RefreshData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="refresh-data-type",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
             error_status_codes=[
+                "400",
                 "401",
                 "402",
                 "403",
@@ -462,34 +442,23 @@ class RefreshData(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.PullOperation])
+            return unmarshal_json_response(shared.PullOperation, http_res)
         if utils.match_response(
-            http_res, ["401", "402", "403", "404", "429"], "application/json"
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def get(
         self,
@@ -502,7 +471,7 @@ class RefreshData(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.DataStatuses]:
+    ) -> shared.DataStatuses:
         r"""Get data status
 
         Get the state of each data type for a company
@@ -540,6 +509,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -557,9 +527,10 @@ class RefreshData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-company-data-status",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -579,34 +550,23 @@ class RefreshData(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.DataStatuses])
+            return unmarshal_json_response(shared.DataStatuses, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def get_async(
         self,
@@ -619,7 +579,7 @@ class RefreshData(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.DataStatuses]:
+    ) -> shared.DataStatuses:
         r"""Get data status
 
         Get the state of each data type for a company
@@ -657,6 +617,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -674,9 +635,10 @@ class RefreshData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-company-data-status",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -696,34 +658,23 @@ class RefreshData(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.DataStatuses])
+            return unmarshal_json_response(shared.DataStatuses, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def get_pull_operation(
         self,
@@ -736,7 +687,7 @@ class RefreshData(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.PullOperation]:
+    ) -> shared.PullOperation:
         r"""Get pull operation
 
         Retrieve information about a single dataset or pull operation.
@@ -774,6 +725,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -791,9 +743,10 @@ class RefreshData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-pull-operation",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -813,34 +766,23 @@ class RefreshData(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.PullOperation])
+            return unmarshal_json_response(shared.PullOperation, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def get_pull_operation_async(
         self,
@@ -853,7 +795,7 @@ class RefreshData(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.PullOperation]:
+    ) -> shared.PullOperation:
         r"""Get pull operation
 
         Retrieve information about a single dataset or pull operation.
@@ -891,6 +833,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -908,9 +851,10 @@ class RefreshData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="get-pull-operation",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -930,34 +874,23 @@ class RefreshData(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.PullOperation])
+            return unmarshal_json_response(shared.PullOperation, http_res)
         if utils.match_response(
             http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def list_pull_operations(
         self,
@@ -970,7 +903,7 @@ class RefreshData(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.PullOperations]:
+    ) -> shared.PullOperations:
         r"""List pull operations
 
         Gets the pull operation history (datasets) for a given company.
@@ -1008,6 +941,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1025,9 +959,10 @@ class RefreshData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="list-pull-operations",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1048,34 +983,23 @@ class RefreshData(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.PullOperations])
+            return unmarshal_json_response(shared.PullOperations, http_res)
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def list_pull_operations_async(
         self,
@@ -1088,7 +1012,7 @@ class RefreshData(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[shared.PullOperations]:
+    ) -> shared.PullOperations:
         r"""List pull operations
 
         Gets the pull operation history (datasets) for a given company.
@@ -1126,6 +1050,7 @@ class RefreshData(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1143,9 +1068,10 @@ class RefreshData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="list-pull-operations",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1166,31 +1092,20 @@ class RefreshData(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.PullOperations])
+            return unmarshal_json_response(shared.PullOperations, http_res)
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, ["500", "503"], "application/json"):
-            response_data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=response_data)
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)

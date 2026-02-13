@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 from .status import Status
-from codat_platform.types import BaseModel
+from codat_platform.types import BaseModel, UNSET_SENTINEL
 from enum import Enum
 import pydantic
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -64,7 +65,7 @@ class DataStatusTypedDict(TypedDict):
     r"""The current status of the dataset."""
     data_type: DataTypes
     r"""Available data types"""
-    last_successful_sync: str
+    last_successful_sync: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -100,7 +101,9 @@ class DataStatus(BaseModel):
     data_type: Annotated[DataTypes, pydantic.Field(alias="dataType")]
     r"""Available data types"""
 
-    last_successful_sync: Annotated[str, pydantic.Field(alias="lastSuccessfulSync")]
+    last_successful_sync: Annotated[
+        Optional[str], pydantic.Field(alias="lastSuccessfulSync")
+    ] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
     ```
@@ -131,3 +134,21 @@ class DataStatus(BaseModel):
         None
     )
     r"""Unique identifier for most recent sync of data type."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["lastSuccessfulSync", "latestSuccessfulSyncId", "latestSyncId"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

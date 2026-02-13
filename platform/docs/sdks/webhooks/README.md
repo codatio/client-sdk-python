@@ -1,5 +1,4 @@
 # Webhooks
-(*webhooks*)
 
 ## Overview
 
@@ -20,11 +19,13 @@ Create and manage webhooks that listen to Codat's events.
 ### Tips and traps
 - The number of webhook consumers you can create is limited to 50. If you have reached the maximum number of consumers, use the [*Delete webhook consumer*](https://docs.codat.io/platform-api#/operations/delete-webhook-consumer) endpoint to delete an unused consumer first.
 
-### Example Usage
+### Example Usage: Subscribe consumer to one or more event types
 
+<!-- UsageSnippet language="python" operationID="create-webhook-consumer" method="post" path="/webhooks" example="Subscribe consumer to one or more event types" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -40,7 +41,31 @@ with CodatPlatform(
         "url": "https://example.com/webhoook-consumer",
     })
 
-    assert res is not None
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Subscribe consumer with disabled endpoint
+
+<!-- UsageSnippet language="python" operationID="create-webhook-consumer" method="post" path="/webhooks" example="Subscribe consumer with disabled endpoint" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.webhooks.create_consumer(request={
+        "disabled": True,
+        "event_types": [
+            "DataSyncCompleted",
+        ],
+        "url": "https://example.com/webhoook-consumer",
+    })
 
     # Handle response
     print(res)
@@ -74,9 +99,11 @@ with CodatPlatform(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="delete-webhook-consumer" method="delete" path="/webhooks/{webhookId}" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -115,9 +142,11 @@ with CodatPlatform(
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-webhook-consumers" method="get" path="/webhooks" example="Webhook consumers" -->
 ```python
 from codat_platform import CodatPlatform
 from codat_platform.models import shared
+
 
 with CodatPlatform(
     security=shared.Security(
@@ -126,8 +155,6 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.webhooks.list_consumers()
-
-    assert res is not None
 
     # Handle response
     print(res)

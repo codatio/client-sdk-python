@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 from .companydetails import CompanyDetails, CompanyDetailsTypedDict
-from codat_platform.types import BaseModel
+from codat_platform.types import BaseModel, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -69,3 +70,19 @@ class CompanyWebhook(BaseModel):
     r"""Unique identifier of the event"""
 
     payload: Optional[CompanyDetails] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["eventType", "generatedDate", "id", "payload"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

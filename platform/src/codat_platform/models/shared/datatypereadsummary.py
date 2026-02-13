@@ -2,10 +2,18 @@
 
 from __future__ import annotations
 from .datatype import DataType
+from .issue import Issue, IssueTypedDict
 from .status import Status
-from codat_platform.types import BaseModel
+from codat_platform.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 import pydantic
-from typing import Optional
+from pydantic import model_serializer
+from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -14,6 +22,8 @@ class DataTypeReadSummaryTypedDict(TypedDict):
     r"""Unique identifier for a company's data connection."""
     data_type: NotRequired[DataType]
     r"""Available data types"""
+    issues: NotRequired[Nullable[List[IssueTypedDict]]]
+    r"""A array of issues encountered during a data read."""
     records_modified: NotRequired[bool]
     r"""`True` if records have been created, updated or deleted in Codat's cache."""
     status: NotRequired[Status]
@@ -27,6 +37,9 @@ class DataTypeReadSummary(BaseModel):
     data_type: Annotated[Optional[DataType], pydantic.Field(alias="dataType")] = None
     r"""Available data types"""
 
+    issues: OptionalNullable[List[Issue]] = UNSET
+    r"""A array of issues encountered during a data read."""
+
     records_modified: Annotated[
         Optional[bool], pydantic.Field(alias="recordsModified")
     ] = None
@@ -34,3 +47,30 @@ class DataTypeReadSummary(BaseModel):
 
     status: Optional[Status] = None
     r"""The current status of the dataset."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["connectionId", "dataType", "issues", "recordsModified", "status"]
+        )
+        nullable_fields = set(["issues"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
+
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
+
+        return m
