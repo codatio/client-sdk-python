@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .billaccountref import BillAccountRef, BillAccountRefTypedDict
 from .billtaxrateref import BillTaxRateRef, BillTaxRateRefTypedDict
+from .trackingref import TrackingRef, TrackingRefTypedDict
 from codat_sync_for_payables.types import (
     BaseModel,
     Nullable,
@@ -16,50 +17,48 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_serializers import PlainSerializer
 from pydantic.functional_validators import BeforeValidator
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class BillLineItemTypedDict(TypedDict):
-    unit_amount: Decimal
-    r"""Unit price of the goods or service."""
-    quantity: Decimal
-    r"""Number of units of goods or services received."""
-    account_ref: BillAccountRefTypedDict
-    r"""Reference to the account to which the line item is linked."""
     description: NotRequired[Nullable[str]]
     r"""Friendly name of the goods or services received."""
+    unit_amount: NotRequired[Decimal]
+    r"""Unit price of the goods or service."""
+    quantity: NotRequired[Decimal]
+    r"""Number of units of goods or services received."""
     tax_amount: NotRequired[Decimal]
     r"""Amount of tax applied to the line item."""
+    account_ref: NotRequired[BillAccountRefTypedDict]
+    r"""Reference to the account to which the line item is linked."""
     total_amount: NotRequired[Nullable[Decimal]]
     r"""Total amount of the line, including tax."""
     tax_rate_ref: NotRequired[BillTaxRateRefTypedDict]
     r"""Reference to the tax rate to which the line item is linked."""
+    tracking_refs: NotRequired[Nullable[List[TrackingRefTypedDict]]]
 
 
 class BillLineItem(BaseModel):
+    description: OptionalNullable[str] = UNSET
+    r"""Friendly name of the goods or services received."""
+
     unit_amount: Annotated[
         Annotated[
-            Decimal,
+            Optional[Decimal],
             BeforeValidator(validate_decimal),
             PlainSerializer(serialize_decimal(False)),
         ],
         pydantic.Field(alias="unitAmount"),
-    ]
+    ] = None
     r"""Unit price of the goods or service."""
 
     quantity: Annotated[
-        Decimal,
+        Optional[Decimal],
         BeforeValidator(validate_decimal),
         PlainSerializer(serialize_decimal(False)),
-    ]
+    ] = None
     r"""Number of units of goods or services received."""
-
-    account_ref: Annotated[BillAccountRef, pydantic.Field(alias="accountRef")]
-    r"""Reference to the account to which the line item is linked."""
-
-    description: OptionalNullable[str] = UNSET
-    r"""Friendly name of the goods or services received."""
 
     tax_amount: Annotated[
         Annotated[
@@ -70,6 +69,11 @@ class BillLineItem(BaseModel):
         pydantic.Field(alias="taxAmount"),
     ] = None
     r"""Amount of tax applied to the line item."""
+
+    account_ref: Annotated[
+        Optional[BillAccountRef], pydantic.Field(alias="accountRef")
+    ] = None
+    r"""Reference to the account to which the line item is linked."""
 
     total_amount: Annotated[
         Annotated[
@@ -86,32 +90,42 @@ class BillLineItem(BaseModel):
     ] = None
     r"""Reference to the tax rate to which the line item is linked."""
 
+    tracking_refs: Annotated[
+        OptionalNullable[List[TrackingRef]], pydantic.Field(alias="trackingRefs")
+    ] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["description", "taxAmount", "totalAmount", "taxRateRef"]
-        nullable_fields = ["description", "totalAmount"]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "description",
+                "unitAmount",
+                "quantity",
+                "taxAmount",
+                "accountRef",
+                "totalAmount",
+                "taxRateRef",
+                "trackingRefs",
+            ]
+        )
+        nullable_fields = set(["description", "totalAmount", "trackingRefs"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
